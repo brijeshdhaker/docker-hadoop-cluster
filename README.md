@@ -1,5 +1,5 @@
-# hadoop-docker-demo
-A sample application with hadoop and docker.
+# docker-hadoop-cluster
+A sample docker application on docker hadoop cluster.
 
 This sample application shows how to use Docker to create a Hadoop cluster and a Big Data application in Java. It highlights several concepts like service scale, dynamic port allocation, container links, integration tests, debugging, etc.
 
@@ -38,12 +38,12 @@ docker-compose --file docker/docker-compose.yml exec yarn hdfs dfs -mkdir /files
 Put the file we are going to process on hdfs
 
 ```
-docker-compose --file docker/docker-compose.yml run docker-hadoop-example hdfs dfs -put /maven/test-data/text_for_word_count.txt /files/
+docker-compose --file docker/docker-compose.yml run hadoop-cluster-example hdfs dfs -put /maven/test-data/text_for_word_count.txt /files/
 ```
 
 Run our application
 ```
-docker-compose --file docker/docker-compose.yml run docker-hadoop-example hadoop jar /maven/jar/docker-hadoop-example-1.0-SNAPSHOT-mr.jar hdfs://namenode:9000 /files mongo yarn:8050
+docker-compose --file docker/docker-compose.yml run hadoop-cluster-example hadoop jar /maven/jar/docker-hadoop-cluster-1.0-SNAPSHOT-mr.jar hdfs://namenode:9000 /files mongo yarn:8050
 ```
 
 Stop all the services

@@ -147,14 +147,14 @@
                     <plugin>
                         <groupId>io.fabric8</groupId>
                         <artifactId>docker-maven-plugin</artifactId>
-                        <version>0.20.0</version>
+                        <version>0.34.1</version>
                         <configuration>
                             <!--  <registry>brijeshdhaker/creativelights.in</registry> -->
                             <images>
                                 <image>
-                                    <name>hadoop-docker-cluster</name>
+                                    <name>hadoop-cluster-example</name>
                                     <build>
-                                        <from>tailtarget/hadoop:2.7.2</from>
+                                        <from>hadoop:2.7.2</from>
                                         <assembly>
                                             <descriptorRef>project</descriptorRef>
                                             <inline>
@@ -162,7 +162,7 @@
                                                     <fileSet>
                                                         <directory>${basedir}/target</directory>
                                                         <includes>
-                                                            <include>hadoop-docker-cluster-1.0-SNAPSHOT-mr.jar</include>
+                                                            <include>docker-hadoop-cluster-1.0-SNAPSHOT-mr.jar</include>
                                                         </includes>
                                                         <outputDirectory>/jar</outputDirectory>
                                                     </fileSet>
@@ -181,7 +181,7 @@
                                 
                                 <!-- CREATES IMAGE FOR TESTING -->
                                 <image>
-                                    <name>hadoop-docker-cluster-tests</name>
+                                    <name>docker-hadoop-cluster-tests</name>
                                     <build>
                                         <from>maven:latest</from>
                                         <ports> 
