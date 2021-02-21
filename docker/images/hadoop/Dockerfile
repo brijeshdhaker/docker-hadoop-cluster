@@ -1,42 +1,49 @@
 #
-ARG java_image_tag=8-jre-slim
-FROM openjdk:${java_image_tag}
+# docker build -t hadoop:3.2.0 -f Dockerfile .
+#
+#
+FROM openjdk:8-jre-slim
 
 ####################
-# HADOOP
+# HADOOP 3.2.0
 ####################
 
-ENV HADOOP_VERSION	2.7.2
+ENV HADOOP_VERSION	3.2.0
 ENV HADOOP_HOME		/usr/local/hadoop
 ENV HADOOP_OPTS		-Djava.library.path=/usr/local/hadoop/lib/native
-ENV PATH		$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+ENV PATH			$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
-# libzip2 libsnappy1
+# http://archive.apache.org/dist/hadoop/core/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz 
+
+ADD tar-balls/hadoop-3.2.0.tar.gz /usr/local
+
 RUN apt-get update && \ 
-    DEBIAN_FRONTEND=noninteractive apt-get install -y wget libssl-dev && \
-    wget http://archive.apache.org/dist/hadoop/core/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz 
-
-RUN rm -rf /var/lib/apt/lists/* && \
-    tar -zxf hadoop-$HADOOP_VERSION.tar.gz && \
-    rm hadoop-$HADOOP_VERSION.tar.gz && \
-    mv hadoop-$HADOOP_VERSION /usr/local/hadoop && \
-    mkdir -p /usr/local/hadoop/logs
+	DEBIAN_FRONTEND=noninteractive apt-get install -y wget libssl-dev && \
+	rm -rf /var/lib/apt/lists/* && \
+	mv /usr/local/hadoop-$HADOOP_VERSION $HADOOP_HOME && \
+    mkdir -p $HADOOP_HOME/logs
 
 
 # Overwrite default HADOOP configuration files with our config files
-COPY conf  $HADOOP_HOME/etc/hadoop/
+COPY conf/core-site.xml  $HADOOP_HOME/etc/hadoop/core-site.xml
+COPY conf/fair-scheduler.xml  $HADOOP_HOME/etc/hadoop/fair-scheduler.xml
+COPY conf/hdfs-site.xml  $HADOOP_HOME/etc/hadoop/hdfs-site.xml
+COPY conf/mapred-site.xml  $HADOOP_HOME/etc/hadoop/mapred-site.xml
+COPY conf/yarn-site.xml  $HADOOP_HOME/etc/hadoop/yarn-site.xml
 
 # Helper script for starting namenode
 ADD start-namenode.sh /usr/local/bin/start-namenode.sh
+ADD start-hdfs.sh /usr/local/bin/start-hdfs.sh
 
 # Helper script for starting resourcemanager and history server
 ADD start-yarn-historyserver.sh /usr/local/bin/start-yarn-historyserver.sh
 
 # Formatting HDFS
 RUN mkdir -p /data && \
-    chmod +x /usr/local/bin/start-namenode.sh && \
+	chmod +x /usr/local/bin/start-namenode.sh && \
+	chmod +x /usr/local/bin/start-hdfs.sh && \
     chmod +x /usr/local/bin/start-yarn-historyserver.sh
- 
+
 VOLUME /data
 
 
@@ -50,18 +57,19 @@ VOLUME /data
 # http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml
 
 # HDFS: NameNode (NN):
-#	 8020 = fs.defaultFS			(IPC / File system metadata operations)
+#	9000 = fs.defaultFS			(IPC / File system metadata operations)
 #						(9000 is also frequently used alternatively)
-#	 8022 = dfs.namenode.servicerpc-address	(optional port used by HDFS daemons to avoid sharing RPC port)
-#    50070 = dfs.namenode.http-address	(HTTP  / NN Web UI)
-#	 50470 = dfs.namenode.https-address	(HTTPS / Secure UI)
+#	8022 = dfs.namenode.servicerpc-address	(optional port used by HDFS daemons to avoid sharing RPC port)
+#       9870 = dfs.namenode.http-address	(HTTP  / NN Web UI)
+#	9871 = dfs.namenode.https-address       (HTTPS / Secure UI)
 # HDFS: DataNode (DN):
-#	50010 = dfs.datanode.address		(Data transfer)
-#	50020 = dfs.datanode.ipc.address	(IPC / metadata operations)
-#	50075 = dfs.datanode.http.address	(HTTP  / DN Web UI)
-#	50475 = dfs.datanode.https.address	(HTTPS / Secure UI)
+#	9866 = dfs.datanode.address             (Data transfer)
+#	9867 = dfs.datanode.ipc.address         (IPC / metadata operations)
+#	9864 = dfs.datanode.http.address	(HTTP  / DN Web UI)
+#	9865 = dfs.datanode.https.address	(HTTPS / Secure UI)
 # HDFS: Secondary NameNode (SNN)
-#	50090 = dfs.secondary.http.address	(HTTP / Checkpoint for NameNode metadata)
-EXPOSE 9000 50070 50010 50020 50075 50090 19888 10020 8050 8031 8030
+#	9868 = dfs.secondary.http.address	(HTTP / Checkpoint for NameNode metadata)
+
+EXPOSE 9000 9870 9866 9867 9864 9868 19888 10020 8032 8031 8030
 
 CMD ["hdfs"]

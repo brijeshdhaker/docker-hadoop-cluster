@@ -4,8 +4,7 @@
 # we save a marker file.
 
 if [ ! -f /data/.already_formatted ]; then
-  echo FORMATTING NAMENODE
-
+  echo "Formatting  Name Node"
   mkdir -p /data/dfs/data
   mkdir -p /data/dfs/name
   mkdir -p /data/dfs/namesecondary

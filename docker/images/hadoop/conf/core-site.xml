@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
-<!-- Put site-specific property overrides in this file. -->
 
+<!-- Put site-specific property overrides in this file. -->
 <configuration>
     <property>
         <name>fs.default.name</name>
-        <value>hdfs://0.0.0.0:9000</value>
+        <value>hdfs://namenode:9000</value>
     </property>
 </configuration>

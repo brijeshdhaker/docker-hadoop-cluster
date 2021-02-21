@@ -2,3 +2,6 @@
 nbactions.xml
 target
 docker/data
+*.gz
+*.tgz
+*.jar

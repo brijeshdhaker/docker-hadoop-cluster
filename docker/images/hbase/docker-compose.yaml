@@ -1,0 +1,22 @@
+#
+#
+#
+version: '3.1'
+#
+services:
+#
+  hbase:
+    image: hbase:2.4.1
+    container_name: hbase
+    hostname: hbasemaster
+#    depends_on:
+#      - namenode
+    command: /usr/local/bin/start-hbase.sh
+#    restart: always
+    volumes:
+      - /e/apps/hostpath/hbase:/user/hbase
+    environment:
+      DATA_DIR: /user/hbase/data
+    ports:
+      - 10000:10000
+      - 10002:10002
