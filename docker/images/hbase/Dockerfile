@@ -10,7 +10,7 @@ FROM openjdk:8-jre-slim
 ENV BASE_DIR 		/usr/local
 ENV HBASE_HOME 		/usr/local/hbase
 ENV HBASE_VERSION	2.4.1
-ENV PATH		$PATH:$HBASE_HOME/bin
+ENV PATH		    $PATH:$HBASE_HOME/bin
 
 ADD tar-balls/hbase-2.4.1-bin.tar.gz $BASE_DIR
 
