@@ -1,20 +1,20 @@
 #
-# docker build -t spark:3.1.1 -f Dockerfile .
+# docker build -t spark:3.1.2 -f Dockerfile .
 #
 
 ARG spark_uid=185
 FROM openjdk:8-jre-slim
 
 ####################
-# SPARK 3.1.1
+# SPARK 3.1.2
 ####################
-ENV SPARK_VERSION   3.1.1
+ENV SPARK_VERSION   3.1.2
 ENV BASE_DIR        /usr/local
 ENV SPARK_HOME      /usr/local/spark
 
-ADD tar-balls/spark-3.1.1-bin-hadoop3.2.tgz $BASE_DIR
+ADD tar-balls/spark-3.1.2-bin-hadoop3.2.tgz $BASE_DIR
 
-RUN mv $BASE_DIR/spark-3.1.1-bin-hadoop3.2 $SPARK_HOME && \
+RUN mv $BASE_DIR/spark-3.1.2-bin-hadoop3.2 $SPARK_HOME && \
     mkdir -p $SPARK_HOME/work-dir 
 
 #

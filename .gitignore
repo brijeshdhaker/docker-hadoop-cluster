@@ -5,3 +5,8 @@ docker/data
 *.gz
 *.tgz
 *.jar
+libs
+tar-balls
+.classpath
+.project
+.idea

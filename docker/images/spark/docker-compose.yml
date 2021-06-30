@@ -21,7 +21,7 @@ services:
       HDFS_MODE: SingleNode    
 #    
   spark-master:
-    image: spark:3.0.1
+    image: spark:3.1.2
     container_name: spark-master
     hostname: spark-master
     ports:
@@ -36,7 +36,7 @@ services:
 
 #
   spark-node01:
-    image: spark:3.0.1
+    image: spark:3.1.2
     container_name: spark-node01
     hostname: spark-node01
     depends_on:
@@ -52,7 +52,7 @@ services:
 
 #
 #  spark-node02:
-#    image: spark:3.0.1
+#    image: spark:3.1.2
 #    container_name: spark-node02
 #    hostname: spark-node02
 #    depends_on:
@@ -68,7 +68,7 @@ services:
 
 #
 #  history-server:
-#    image: spark:3.0.1
+#    image: spark:3.1.2
 #    container_name: history-server
 #    hostname: history-server
 #    depends_on:
