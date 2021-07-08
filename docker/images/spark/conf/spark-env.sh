@@ -55,7 +55,7 @@
 # - SPARK_DAEMON_JAVA_OPTS, to set config properties for all daemons (e.g. "-Dx=y")
 # - SPARK_DAEMON_CLASSPATH, to set the classpath for all daemons
 # - SPARK_PUBLIC_DNS, to set the public dns name of the master or workers
-SPARK_PUBLIC_DNS=$(hostname  -s)
+SPARK_PUBLIC_DNS=$(hostname  -i)
 
 # Options for launcher
 # - SPARK_LAUNCHER_OPTS, to set config properties and Java options for the launcher (e.g. "-Dx=y")

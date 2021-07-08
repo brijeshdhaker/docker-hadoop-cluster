@@ -3,7 +3,7 @@
 #
 
 ARG spark_uid=185
-FROM openjdk:8-jre-slim
+FROM python:3.9.5
 
 ####################
 # SPARK 3.1.2
@@ -11,11 +11,23 @@ FROM openjdk:8-jre-slim
 ENV SPARK_VERSION   3.1.2
 ENV BASE_DIR        /usr/local
 ENV SPARK_HOME      /usr/local/spark
+ENV JAVA_HOME       /usr/local/java
 
+COPY requirements.pip /tmp/requirements.pip
+
+RUN apt-get update && \
+    pip3 install --upgrade pip setuptools && \
+    pip3 install -U -r /tmp/requirements.pip && \
+    # Removed the .cache to save space
+    rm -r /root/.cache && rm -rf /var/cache/apt/*
+
+ADD tar-balls/jdk-8u251-linux-x64.tar.gz $BASE_DIR
 ADD tar-balls/spark-3.1.2-bin-hadoop3.2.tgz $BASE_DIR
 
 RUN mv $BASE_DIR/spark-3.1.2-bin-hadoop3.2 $SPARK_HOME && \
-    mkdir -p $SPARK_HOME/work-dir 
+    mv $BASE_DIR/jdk1.8.0_251 $JAVA_HOME && \
+    mkdir -p $SPARK_HOME/work-dir && \
+    mkdir -p ${SPARK_HOME}/python
 
 #
 COPY conf/log4j.properties $SPARK_HOME/conf/
