@@ -1,21 +1,21 @@
 #
-# docker build -t hadoop:3.2.0 -f Dockerfile .
+# docker build -t hadoop:3.2.1 -f Dockerfile .
 #
 #
 FROM openjdk:8-jre-slim
 
 ####################
-# HADOOP 3.2.0
+# HADOOP 3.2.1
 ####################
 
-ENV HADOOP_VERSION	3.2.0
+ENV HADOOP_VERSION	3.2.1
 ENV HADOOP_HOME		/usr/local/hadoop
 ENV HADOOP_OPTS		-Djava.library.path=/usr/local/hadoop/lib/native
 ENV PATH			$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 # http://archive.apache.org/dist/hadoop/core/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz 
 
-ADD tar-balls/hadoop-3.2.0.tar.gz /usr/local
+ADD tar-balls/hadoop-3.2.1.tar.gz /usr/local
 
 RUN apt-get update && \ 
 	DEBIAN_FRONTEND=noninteractive apt-get install -y wget libssl-dev && \

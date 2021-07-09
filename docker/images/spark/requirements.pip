@@ -1,8 +1,0 @@
-flake8
-pytest
-requests
-certifi
-jellyfish
-numpy
-matplotlib
-vertica-python

@@ -6,7 +6,8 @@ docker/data
 *.tgz
 *.jar
 libs
-tar-balls
 .classpath
 .project
 .idea
+*.gz
+*.tar
