@@ -4,57 +4,42 @@
 
 version: '3'
 services:
-  mongo:
-    image: mongo:latest
-    hostname: mongo
-    container_name: mongo
-    restart: always
-#    environment:
-#      MONGO_INITDB_ROOT_USERNAME: mongoadmin
-#      MONGO_INITDB_ROOT_PASSWORD: secret
-    ports:
-      - 27017:27017
-#    volumes:
-#      - /apps/hostpath/mongo:/data/db
-
-#      
+#
   namenode:
-    image: hadoop:3.2.0
+    image: raspberry:5000/hadoop-3.2.1
     container_name: namenode
     ports:
       - "9000:9000"
       - "9870:9870"
     command: /usr/local/bin/start-namenode.sh
-    hostname: namenode
+    hostname: nodename.hadoop.svc.cluster.local
     volumes:
-      - /apps/hostpath/hadoop/data:/data
-      - /apps/hostpath/hadoop/in:/in
-#        
+      - /apps/hostpath:/apps/hostpath
+#
   datanode:
-    image: hadoop:3.2.0
+    image: raspberry:5000/hadoop-3.2.1
     command: hdfs datanode
     ports:
       - "9864:9864" 
       - "9866:9866"
     links:
       - namenode
-    hostname: datanode
+    hostname: datanode.hadoop.svc.cluster.local
     volumes:
-      - /apps/hostpath/hadoop/data:/data
-      - /apps/hostpath/hadoop/in:/in
-#          
+      - /apps/hostpath:/apps/hostpath
+#
   secondarynamenode:
-    image: hadoop:3.2.0
+    image: raspberry:5000/hadoop-3.2.1
     container_name: secondarynamenode
     command: hdfs secondarynamenode
     ports:
       - "9868:9868"
     links:
       - namenode
-    hostname: secondarynamenode
+    hostname: secondarynamenode.hadoop.svc.cluster.local
 #    
   yarn:
-    image: hadoop:3.2.0
+    image: raspberry:5000/hadoop-3.2.1
     container_name: yarn
     command: start-yarn-historyserver.sh
     ports:
@@ -66,11 +51,12 @@ services:
     links:
       - namenode
       - datanode
-    hostname: yarn
+    hostname: yarn.hadoop.svc.cluster.local
 #    
   nodemanager:
-    image: hadoop:3.2.0
+    image: raspberry:5000/hadoop-3.2.1
     command: yarn nodemanager
+    hostname: nodemanager.hadoop.svc.cluster.local
     ports:
       - "8042" 
     links:
@@ -86,4 +72,4 @@ services:
       - yarn 
       - namenode
     volumes:
-      - /apps/hostpath/hadoop/in:/in
+      - /apps/hostpath:/apps/hostpath
