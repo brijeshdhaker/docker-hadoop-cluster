@@ -1,5 +1,11 @@
 #
 # docker build -t spark:3.1.2 -f Dockerfile .
+# $ ./bin/docker-image-tool.sh -r raspberry:5000 -t 3.2.1 build
+# $ ./bin/docker-image-tool.sh -r raspberry:5000 -t 3.2.1 push
+# $ ./bin/docker-image-tool.sh -t 3.2.1 -p ./kubernetes/dockerfiles/spark/bindings/python/Dockerfile build
+# $ docker tag spark:3.1.2 raspberry:5000/spark:3.2.1
+# $ docker tag spark-py:3.1.2 raspberry:5000/spark-py:3.2.1
+#
 #
 
 ARG spark_uid=185

@@ -5,6 +5,8 @@ This sample application shows how to use Docker to create a Hadoop cluster and a
 
 ## Running Hadoop and our application:
 
+docker run -d -p 5000:5000 --restart=always --name registry registry:2
+
 
 Compile the application and generate the docker images
 

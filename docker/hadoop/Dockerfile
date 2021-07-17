@@ -1,10 +1,10 @@
 #
-# docker build -t hadoop-3.2.1 -f Dockerfile .
-# docker tag 1fe3d8f47868 raspberry:5000/hadoop-3.2.1
-# docker tag hadoop:3.2.1 raspberry:5000/hadoop-3.2.1
-# docker push raspberry:5000/hadoop-3.2.1
+# docker build -t hadoop-3.2.1:latest -f Dockerfile .
+# docker tag 1fe3d8f47868 raspberry:5000/hadoop-3.2.1:latest
+# docker tag hadoop:3.2.1 raspberry:5000/hadoop-3.2.1:latest
+# docker push raspberry:5000/hadoop-3.2.1:latest
 #
-# docker build -t raspberry:5000/hadoop-3.2.1 -f Dockerfile .
+# docker build -t raspberry:5000/hadoop-3.2.1:latest -f Dockerfile .
 #
 FROM openjdk:8-jre-slim
 
@@ -17,30 +17,20 @@ ENV HADOOP_HOME		/usr/local/hadoop
 ENV HADOOP_OPTS		-Djava.library.path=/usr/local/hadoop/lib/native
 ENV PATH			$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
-# http://archive.apache.org/dist/hadoop/core/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz 
+COPY tar-balls/hadoop-3.2.1.tar.gz /usr/local
 
-ADD tar-balls/hadoop-3.2.1.tar.gz /usr/local
-
-RUN apt-get update && \ 
+RUN apt-get update && \
 	DEBIAN_FRONTEND=noninteractive apt-get install -y wget libssl-dev && \
-	rm -rf /var/lib/apt/lists/* && \
-	mv /usr/local/hadoop-$HADOOP_VERSION $HADOOP_HOME && \
-    mkdir -p $HADOOP_HOME/logs && mkdir -p /tmp/work
-
+	tar -xvf /usr/local/hadoop-3.2.1.tar.gz -C /usr/local && \
+	ln -s /usr/local/hadoop-$HADOOP_VERSION ${HADOOP_HOME} && \
+    mkdir -p $HADOOP_HOME/logs && mkdir -p /tmp/work && \
+    rm -f /usr/local/hadoop-3.2.1.tar.gz  && \
+    rm -rf /var/lib/apt/lists/*
 
 # Overwrite default HADOOP configuration files with our config files
-COPY conf/core-site.xml  $HADOOP_HOME/etc/hadoop/core-site.xml
-COPY conf/fair-scheduler.xml  $HADOOP_HOME/etc/hadoop/fair-scheduler.xml
-COPY conf/hdfs-site.xml  $HADOOP_HOME/etc/hadoop/hdfs-site.xml
-COPY conf/mapred-site.xml  $HADOOP_HOME/etc/hadoop/mapred-site.xml
-COPY conf/yarn-site.xml  $HADOOP_HOME/etc/hadoop/yarn-site.xml
-
+COPY conf/*.xml  $HADOOP_HOME/etc/hadoop/
 # Helper script for starting namenode
-ADD start-namenode.sh /usr/local/bin/start-namenode.sh
-ADD start-hdfs.sh /usr/local/bin/start-hdfs.sh
-
-# Helper script for starting resourcemanager and history server
-ADD start-yarn-historyserver.sh /usr/local/bin/start-yarn-historyserver.sh
+COPY *.sh /usr/local/bin/
 
 # Formatting HDFS
 RUN mkdir -p /data && \

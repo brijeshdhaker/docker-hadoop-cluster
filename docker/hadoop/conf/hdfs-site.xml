@@ -11,19 +11,19 @@
     
     <property>
         <name>dfs.datanode.data.dir</name>
-        <value>file:///apps/hostpath/hadoop/data/dfs/data</value>
+        <value>file:///apps/hostpath/hadoop/dfs/data</value>
     </property>
     
     <property>
         <name>dfs.namenode.name.dir</name>
-        <value>file:///apps/hostpath/hadoop/data/dfs/name</value>
+        <value>file:///apps/hostpath/hadoop/dfs/name</value>
     </property>
     
     <property>
         <name>dfs.namenode.checkpoint.dir</name>
-        <value>file:///apps/hostpath/hadoop/data/dfs/namesecondary</value>
+        <value>file:///apps/hostpath/hadoop/dfs/namesecondary</value>
     </property>
-    
+
     <property>
         <name>dfs.client.use.datanode.hostname</name>
         <value>true</value>
@@ -33,7 +33,7 @@
         <name>dfs.datanode.use.datanode.hostname</name>
         <value>true</value>
     </property>
-    
+
     <property>
         <name>dfs.namenode.datanode.registration.ip-hostname-check</name>
         <value>false</value>
