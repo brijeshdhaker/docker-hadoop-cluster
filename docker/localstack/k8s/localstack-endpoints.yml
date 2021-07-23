@@ -1,0 +1,23 @@
+#
+# localstack.bigdata.svc.cluster.local
+#
+kind: Service
+apiVersion: v1
+metadata:
+  name: localstack
+  namespace: localstack
+spec:
+  ports:
+    - port: 4566
+      targetPort: 4566
+---
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: external-localstack
+  namespace: localstack
+subsets:
+  - addresses:
+      - ip: 192.168.0.103
+    ports:
+      - port: 4566

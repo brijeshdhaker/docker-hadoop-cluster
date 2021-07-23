@@ -17,14 +17,14 @@ ENV HADOOP_HOME		/usr/local/hadoop
 ENV HADOOP_OPTS		-Djava.library.path=/usr/local/hadoop/lib/native
 ENV PATH			$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
-COPY tar-balls/hadoop-3.2.1.tar.gz /usr/local
-
+#
+ADD tar-balls/hadoop-3.2.1.tar.gz /usr/local
+#
 RUN apt-get update && \
 	DEBIAN_FRONTEND=noninteractive apt-get install -y wget libssl-dev && \
-	tar -xvf /usr/local/hadoop-3.2.1.tar.gz -C /usr/local && \
 	ln -s /usr/local/hadoop-$HADOOP_VERSION ${HADOOP_HOME} && \
     mkdir -p $HADOOP_HOME/logs && mkdir -p /tmp/work && \
-    rm -f /usr/local/hadoop-3.2.1.tar.gz  && \
+    rm -f /usr/local/hadoop*.gz  && \
     rm -rf /var/lib/apt/lists/*
 
 # Overwrite default HADOOP configuration files with our config files

@@ -1,0 +1,23 @@
+#
+# docker-compose -H tcp://raspberry:2375 -f dc-notebook.yml up -d
+#
+version: '3.1'
+#
+services:
+#
+  jupyter-notebook:
+    image: spark-py-notebook:latest
+    container_name: jupyter-notebook
+    hostname: jupyter-notebook
+    ports:
+      - 8888:8888
+      - 7777:7777
+      - 2222:2222
+    volumes:
+      - /apps/hostpath/notebook:/home/notebook
+      - /apps/hostpath:/apps/hostpath
+    environment:
+      NODE_TYPE: NOTEBOOK-DRIVER
+      WEBUI_PORT: 8080
+      KUBECONFIG: /home/notebook/.kube/config
+#

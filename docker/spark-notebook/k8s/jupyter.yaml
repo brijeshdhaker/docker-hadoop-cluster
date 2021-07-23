@@ -1,0 +1,178 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: jupyter
+  labels:
+    release: jupyter
+#	
+---
+#
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: jupyter
+  labels:
+    release: jupyter
+  namespace: spark
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+    verbs:
+      - create
+      - get
+      - delete
+      - list
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - services
+    verbs:
+      - get
+      - create
+  - apiGroups:
+      - ""
+    resources:
+      - pods/log
+    verbs:
+      - get
+      - list
+  - apiGroups:
+      - ""
+    resources:
+      - pods/exec
+    verbs:
+      - create
+      - get
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    verbs:
+      - get
+      - create
+      - list
+      - watch
+      - delete
+#
+---
+#
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: jupyter
+  labels:
+    release: jupyter
+  namespace: spark
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: jupyter
+subjects:
+  - kind: ServiceAccount
+    name: jupyter
+    namespace: spark
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jupyter
+  labels:
+    release: jupyter
+spec:
+  type: LoadBalancer
+  selector:
+    release: jupyter
+  ports:
+    - name: http
+      port: 8888
+      protocol: TCP
+    - name: blockmanager
+      port: 7777
+      protocol: TCP
+    - name: driver
+      port: 2222
+      protocol: TCP
+#
+---
+#
+apiVersion: v1
+kind: Service
+metadata:
+  name: jupyter-headless
+  labels:
+    release: jupyter
+spec:
+  type: ClusterIP
+  clusterIP: None
+  publishNotReadyAddresses: false
+  selector:
+    release: jupyter
+  ports:
+    - name: http
+      port: 8888
+      protocol: TCP
+    - name: blockmanager
+      port: 7777
+      protocol: TCP
+    - name: driver
+      port: 2222
+      protocol: TCP
+#
+---
+#
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: jupyter
+  labels:
+    release: jupyter
+  namespace: spark
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      release: jupyter
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        release: jupyter
+    spec:
+      volumes:
+        - name: notebook-volume
+          hostPath:
+            path: /apps/hostpath/notebook      # directory location on host
+            type: Directory                    # this field is optional
+        - name: hostpath-volume
+          hostPath:
+            path: /apps/hostpath              # directory location on host
+            type: Directory                  # this field is optional
+      serviceAccountName: jupyter
+      containers:
+      - name: jupyter
+        image: spark-py-notebook:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: HDFS_MODE
+          value: SingleNode
+        ports:
+        - name: http
+          containerPort: 8888
+          protocol: TCP
+        - name: blockmanager
+          containerPort: 7777
+          protocol: TCP
+        - name: driver
+          containerPort: 2222
+          protocol: TCP
+        volumeMounts:
+        - mountPath: "/apps/hostpath"
+          name: hostpath-volume
+        - mountPath: "/home/notebook"
+          name: notebook-volume
+status: {}
