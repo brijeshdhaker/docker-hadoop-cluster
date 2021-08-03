@@ -1,8 +1,3 @@
-# docker-compose -f docker-compose.yml up -d
-# docker-compose -f docker-compose.yml down
-# docker-compose scale nodemanager=X; # X=integer number --> allows to add more nodes to the hadoop cluster for testing
-#
-# psql -h localhost -U postgres
 #
 #
 #

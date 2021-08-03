@@ -9,8 +9,5 @@
         <module name="docker-hadoop-cluster" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="docker-hadoop-cluster" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

@@ -17,7 +17,7 @@ services:
     volumes:
       - /apps/hostpath:/apps/hostpath
     environment:
-      - HDFS_MODE: SingleNode
+      HDFS_MODE: SingleNode
 
 #
 #networks:

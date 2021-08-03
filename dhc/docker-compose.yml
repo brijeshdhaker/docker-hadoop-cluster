@@ -1,0 +1,96 @@
+# docker-compose build
+# docker-compose up -d
+# docker-compose scale nodemanager=X; # X=integer number --> allows to add more nodes to the hadoop cluster for testing
+
+version: '3.1'
+services:
+
+  #
+  # Hadoop namenode
+  #
+  namenode:
+    image: dhc/hadoop:3.2.1
+    build:
+      context: .
+      dockerfile: docker/hadoop/Dockerfile
+    hostname: namenode
+    container_name: namenode
+    ports:
+      - "9000:9000"
+      - "9870:9870"
+      - "9866:9866"
+      - "9864:9864"
+    command: /start-namenode.sh
+    env_file:
+      - docker/.env
+    volumes:
+      - /apps/hadoop-3.2.1:/opt/hadoop
+      - /apps/hostpath:/apps/hostpath
+      - ./docker/hadoop/start-namenode.sh:/start-namenode.sh
+
+  #
+  #
+  #
+  datanode:
+    image: dhc/hadoop:3.2.1
+    command: hdfs datanode
+    hostname: datanode
+    container_name: datanode
+    ports:
+      - "50075" # local port dynamically assigned. allows node to be scaled up and down
+      - "50010:50010"
+    links:
+      - namenode
+    volumes:
+      - /apps/hadoop-3.2.1:/opt/hadoop
+      - /apps/hostpath:/apps/hostpath
+
+  #
+  #
+  #
+  secondarynamenode:
+      image: tailtarget/hadoop:2.7.2
+      container_name: secondarynamenode
+      hostname: datanode
+      command: hdfs secondarynamenode
+      ports:
+        - "50090:50090"
+      links:
+        - namenode
+      volumes:
+        - /apps/hadoop-3.2.1:/opt/hadoop
+        - /apps/hostpath:/apps/hostpath
+  #
+  #
+  #
+  yarn:
+    image: dhc/hadoop:3.2.1
+    container_name: yarn
+    hostname: yarn
+    command: /start-yarn-historyserver.sh
+    ports:
+      - "8088:8088"
+      - "8042:8042"
+      - "8050:8050"
+      - "19888:19888"
+      - "10020:10020"
+    links:
+      - namenode
+      - datanode
+    volumes:
+      - /apps/hadoop-3.2.1:/opt/hadoop
+      - /apps/hostpath:/apps/hostpath
+      - ./docker/yarn/start-yarn-historyserver.sh:/start-yarn-historyserver.sh
+      - ./docker/hadoop/start-namenode.sh:/start-namenode.sh
+  #
+  #
+  #
+  nodemanager:
+      image: dhc/hadoop:3.2.1
+      command: yarn nodemanager
+      ports:
+        - "8042"  # local port dynamically assigned. allows node to be scaled up and down
+      links:
+        - namenode
+        - datanode
+        - yarn

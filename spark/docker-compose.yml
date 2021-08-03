@@ -1,0 +1,23 @@
+# docker-compose build
+# docker-compose up -d
+# docker-compose scale nodemanager=X; # X=integer number --> allows to add more nodes to the hadoop cluster for testing
+
+version: '3.1'
+services:
+  #
+  # postgres setup
+  #
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    hostname: postgres
+    ports:
+      - "5432:5432"
+    env_file:
+      - docker/.env
+    volumes:
+      - /apps/hostpath:/apps/hostpath
+      - ./docker/postgres/init-setup.sh:/init-setup.sh
+  #
+  #
+  #
