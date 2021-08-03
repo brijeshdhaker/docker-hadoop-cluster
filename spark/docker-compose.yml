@@ -17,7 +17,7 @@ services:
       - docker/.env
     volumes:
       - /apps/hostpath:/apps/hostpath
-      - ./docker/postgres/init-setup.sh:/init-setup.sh
+
   #
   #
   #
