@@ -38,6 +38,8 @@ services:
       - "9864:9864"  # HTTP Server
       - "9866:9866"  # Streaming Server
       - "9867:9867"  # IPC Server
+    env_file:
+      - docker/.env
     links:
       - namenode
     volumes:
@@ -54,6 +56,8 @@ services:
       command: hdfs secondarynamenode
       ports:
         - "9868:9868"   # Web-server SecondaryNamenode
+      env_file:
+        - docker/.env
       links:
         - namenode
       volumes:
@@ -74,6 +78,8 @@ services:
       - "8088:8088"       # Http Port for yarn cluster
       - "19888:19888"     # History WebServer
       - "10020:10020"     # History Server Address
+    env_file:
+      - docker/.env
     links:
       - namenode
       - datanode
@@ -81,7 +87,6 @@ services:
       - /apps/hadoop-3.2.1:/opt/hadoop
       - /apps/hostpath:/apps/hostpath
       - ./docker/yarn/start-yarn-historyserver.sh:/start-yarn-historyserver.sh
-      - ./docker/hadoop/start-namenode.sh:/start-namenode.sh
 
   #
   # Hadoop NodeManager
@@ -94,6 +99,8 @@ services:
       ports:
         - "8040:8040"    # Localizer NodeManager
         - "8042:8042"    # Http Port NMWebApp
+      env_file:
+        - docker/.env
       links:
         - namenode
         - datanode

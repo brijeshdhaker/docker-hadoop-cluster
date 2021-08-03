@@ -1,17 +1,17 @@
 #!/bin/bash
 
-hdfs dfs -mkdir -p /mr-history/tmp 
-hdfs dfs -chmod -R 1777 /mr-history/tmp 
+${HADOOP_HOME}/bin/hdfs dfs -mkdir -p /mr-history/tmp
+${HADOOP_HOME}/bin/hdfs dfs -chmod -R 1777 /mr-history/tmp
 
-hdfs dfs -mkdir -p /mr-history/done 
-hdfs dfs -chmod -R 1777 /mr-history/done
+${HADOOP_HOME}/bin/hdfs dfs -mkdir -p /mr-history/done
+${HADOOP_HOME}/bin/hdfs dfs -chmod -R 1777 /mr-history/done
 
-hdfs dfs -mkdir -p /app-logs
-hdfs dfs -chmod -R 1777 /app-logs
+${HADOOP_HOME}/bin/hdfs dfs -mkdir -p /app-logs
+${HADOOP_HOME}/bin/hdfs dfs -chmod -R 1777 /app-logs
 
-hdfs dfs -mkdir -p /tmp/hadoop-yarn/staging
-hdfs dfs -chmod -R 1777 /tmp/hadoop-yarn/staging
+${HADOOP_HOME}/bin/hdfs dfs -mkdir -p /tmp/hadoop-yarn/staging
+${HADOOP_HOME}/bin/hdfs dfs -chmod -R 1777 /tmp/hadoop-yarn/staging
 
-mr-jobhistory-daemon.sh --config $HADOOP_HOME/etc/hadoop start historyserver
+${HADOOP_HOME}/sbin/mr-jobhistory-daemon.sh --config ${HADOOP_HOME}/etc/hadoop start historyserver
 
-yarn resourcemanager
+${HADOOP_HOME}/bin/yarn resourcemanager
