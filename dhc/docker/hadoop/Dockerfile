@@ -1,49 +1,40 @@
 #
+# docker build -t hadoop-3.2.1:latest -f Dockerfile .
 #
-#
+
+
 FROM openjdk:8-jre-slim
 
 ####################
-# HADOOP
+# HADOOP 3.2.1
 ####################
 
 ENV HADOOP_VERSION	3.2.1
 ENV HADOOP_HOME		/opt/hadoop
-ENV LOG_PATH        /usr/var/logs
-ENV HADOOP_OPTS		-Djava.library.path=$HADOOP_HOME/lib/native
-ENV PATH		    $PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+ENV HADOOP_OPTS		-Djava.library.path=/usr/local/hadoop/lib/native
+ENV PATH			$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
-RUN apt-get update && \ 
-    DEBIAN_FRONTEND=noninteractive apt-get install -y wget libssl-dev && \
-    rm -rf /var/lib/apt/lists/* && \
-    mkdir -p $LOG_PATH
+#
+ADD docker/hadoop/tar-balls/hadoop-3.2.1.tar.gz /opt
 
+#
+RUN apt-get update && \
+	DEBIAN_FRONTEND=noninteractive apt-get install -y wget libssl-dev && \
+	mv /opt/hadoop-$HADOOP_VERSION ${HADOOP_HOME} && \
+    mkdir -p $HADOOP_HOME/logs && mkdir -p /tmp/work && \
+    rm -f /opt/hadoop*.gz  && \
+    rm -rf /var/lib/apt/lists/*
 
 # Overwrite default HADOOP configuration files with our config files
-#COPY conf  $HADOOP_HOME/etc/hadoop/
+COPY docker/hadoop/conf/*.xml  $HADOOP_HOME/etc/hadoop/
 
-####################
-# PORTS
-####################
-#
-# http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_Reference_Guide/content/reference_chap2.html
-# http://www.cloudera.com/content/cloudera/en/documentation/core/latest/topics/cdh_ig_ports_cdh5.html
-# http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/core-default.xml
-# http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml
+# Helper script for starting namenode
+COPY docker/hadoop/*.sh /
 
-# HDFS: NameNode (NN):
-#	 8020 = fs.defaultFS			(IPC / File system metadata operations)
-#						(9000 is also frequently used alternatively)
-#	 8022 = dfs.namenode.servicerpc-address	(optional port used by HDFS daemons to avoid sharing RPC port)
-#    50070 = dfs.namenode.http-address	(HTTP  / NN Web UI)
-#	 50470 = dfs.namenode.https-address	(HTTPS / Secure UI)
-# HDFS: DataNode (DN):
-#	50010 = dfs.datanode.address		(Data transfer)
-#	50020 = dfs.datanode.ipc.address	(IPC / metadata operations)
-#	50075 = dfs.datanode.http.address	(HTTP  / DN Web UI)
-#	50475 = dfs.datanode.https.address	(HTTPS / Secure UI)
-# HDFS: Secondary NameNode (SNN)
-#	50090 = dfs.secondary.http.address	(HTTP / Checkpoint for NameNode metadata)
-EXPOSE 9000 50070 50010 50020 50075 50090 19888 10020 8050 8031 8030
+# Formatting HDFS
+RUN mkdir -p /data && \
+	chmod +x /start-namenode.sh && \
+	chmod +x /start-hdfs.sh && \
+    chmod +x /start-yarn-historyserver.sh
 
-#CMD ["hdfs"]
+

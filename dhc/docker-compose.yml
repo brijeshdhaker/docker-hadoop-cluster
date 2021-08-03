@@ -22,9 +22,7 @@ services:
     env_file:
       - docker/.env
     volumes:
-      - /apps/hadoop-3.2.1:/opt/hadoop
       - /apps/hostpath:/apps/hostpath
-      - ./docker/hadoop/start-namenode.sh:/start-namenode.sh
 
   #
   #
@@ -43,7 +41,6 @@ services:
     links:
       - namenode
     volumes:
-      - /apps/hadoop-3.2.1:/opt/hadoop
       - /apps/hostpath:/apps/hostpath
 
   #
@@ -61,8 +58,8 @@ services:
       links:
         - namenode
       volumes:
-        - /apps/hadoop-3.2.1:/opt/hadoop
         - /apps/hostpath:/apps/hostpath
+
   #
   # Hadoop ResourceManager
   #
@@ -84,9 +81,7 @@ services:
       - namenode
       - datanode
     volumes:
-      - /apps/hadoop-3.2.1:/opt/hadoop
       - /apps/hostpath:/apps/hostpath
-      - ./docker/yarn/start-yarn-historyserver.sh:/start-yarn-historyserver.sh
 
   #
   # Hadoop NodeManager
@@ -106,8 +101,25 @@ services:
         - datanode
         - yarn
       volumes:
-        - /apps/hadoop-3.2.1:/opt/hadoop
         - /apps/hostpath:/apps/hostpath
+
+  #
+  #
+  #
+#  edgenode:
+#    image: dhc/hadoop:3.2.1
+#    container_name: edgenode
+#    hostname: edgenode
+#    links:
+#      - yarn
+#      - namenode
+#    env_file:
+#      - docker/.env
+#    volumes:
+#      - /apps/hadoop-3.2.1:/opt/hadoop
+#      - /apps/jdk1.8.0_251:/opt/java
+#      - /apps/hostpath:/apps/hostpath
+
   #
   #
   #
