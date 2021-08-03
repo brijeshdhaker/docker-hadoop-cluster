@@ -32,7 +32,8 @@ services:
       - "9866:9866"
       - "9870:9870"
       - "9864:9864"
-    entrypoint: /start-hdfs.sh
+#    entrypoint: /start-hdfs.sh
+    command: /start-hdfs.sh
     env_file:
       - docker/.env
     environment:
