@@ -20,21 +20,7 @@ RUN apt-get update && \
 
 
 # Overwrite default HADOOP configuration files with our config files
-COPY conf  $HADOOP_HOME/etc/hadoop/
-
-# Helper script for starting namenode
-ADD start-namenode.sh /usr/local/bin/start-namenode.sh
-
-# Helper script for starting resourcemanager and history server
-ADD start-yarn-historyserver.sh /usr/local/bin/start-yarn-historyserver.sh
-
-# Formatting HDFS
-RUN mkdir -p /data && \
-    chmod +x /usr/local/bin/start-namenode.sh && \
-    chmod +x /usr/local/bin/start-yarn-historyserver.sh
- 
-VOLUME /data
-
+#COPY conf  $HADOOP_HOME/etc/hadoop/
 
 ####################
 # PORTS
@@ -60,6 +46,4 @@ VOLUME /data
 #	50090 = dfs.secondary.http.address	(HTTP / Checkpoint for NameNode metadata)
 EXPOSE 9000 50070 50010 50020 50075 50090 19888 10020 8050 8031 8030
 
-
-
-CMD ["hdfs"]
+#CMD ["hdfs"]
