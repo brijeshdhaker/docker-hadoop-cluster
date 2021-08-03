@@ -35,8 +35,8 @@ services:
     hostname: datanode
     container_name: datanode
     ports:
-      - "50075" # local port dynamically assigned. allows node to be scaled up and down
-      - "50010:50010"
+      - "9864:9864"
+      - "9866:9866"
     links:
       - namenode
     volumes:
@@ -52,7 +52,7 @@ services:
       hostname: datanode
       command: hdfs secondarynamenode
       ports:
-        - "50090:50090"
+        - "9868:9868"
       links:
         - namenode
       volumes:
@@ -67,9 +67,8 @@ services:
     hostname: yarn
     command: /start-yarn-historyserver.sh
     ports:
+      - "8032:8032"
       - "8088:8088"
-      - "8042:8042"
-      - "8050:8050"
       - "19888:19888"
       - "10020:10020"
     links:
@@ -90,7 +89,7 @@ services:
       hostname: nodemanager
       command: yarn nodemanager
       ports:
-        - "8042"  # local port dynamically assigned. allows node to be scaled up and down
+        - "8042:8042"
       links:
         - namenode
         - datanode
