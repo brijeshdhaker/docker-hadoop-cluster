@@ -72,8 +72,8 @@ services:
       - "8031:8031"
       - "8032:8032"
       - "8088:8088"       # Http Port for yarn cluster
-      - "19888:19888"
-      - "10020:10020"
+      - "19888:19888"     # History WebServer
+      - "10020:10020"     # History Server Address
     links:
       - namenode
       - datanode
