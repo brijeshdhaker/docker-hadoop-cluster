@@ -11,7 +11,8 @@ services:
     image: postgres:latest
     ports:
       - "5432:5432"
-    entrypoint: /init-setup.sh
+#    entrypoint: /init-setup.sh
+    command: /init-setup.sh
     env_file:
       - docker/.env
     volumes:
