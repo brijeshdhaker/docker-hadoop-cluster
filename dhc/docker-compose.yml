@@ -18,8 +18,6 @@ services:
     ports:
       - "9000:9000"
       - "9870:9870"
-      - "9866:9866"
-      - "9864:9864"
     command: /start-namenode.sh
     env_file:
       - docker/.env
