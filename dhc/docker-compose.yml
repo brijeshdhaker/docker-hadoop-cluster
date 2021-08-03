@@ -44,12 +44,12 @@ services:
       - /apps/hostpath:/apps/hostpath
 
   #
-  #
+  # Hadoop SecondaryNamenode
   #
   secondarynamenode:
       image: dhc/hadoop:3.2.1
       container_name: secondarynamenode
-      hostname: datanode
+      hostname: secondarynamenode
       command: hdfs secondarynamenode
       ports:
         - "9868:9868"
@@ -59,7 +59,7 @@ services:
         - /apps/hadoop-3.2.1:/opt/hadoop
         - /apps/hostpath:/apps/hostpath
   #
-  #
+  # Hadoop ResourceManager
   #
   yarn:
     image: dhc/hadoop:3.2.1
@@ -81,7 +81,7 @@ services:
       - ./docker/hadoop/start-namenode.sh:/start-namenode.sh
 
   #
-  #
+  # Hadoop NodeManager
   #
   nodemanager:
       image: dhc/hadoop:3.2.1
