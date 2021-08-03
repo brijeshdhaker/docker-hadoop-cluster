@@ -16,8 +16,8 @@ services:
     hostname: namenode
     container_name: namenode
     ports:
-      - "9000:9000"
-      - "9870:9870"
+      - "9000:9000"   # HDFS Port
+      - "9870:9870"   # HTTP Server
     command: /start-namenode.sh
     env_file:
       - docker/.env
@@ -35,8 +35,9 @@ services:
     hostname: datanode
     container_name: datanode
     ports:
-      - "9864:9864"
-      - "9866:9866"
+      - "9864:9864"  # HTTP Server
+      - "9866:9866"  # Streaming Server
+      - "9867:9867"  # IPC Server
     links:
       - namenode
     volumes:
@@ -52,7 +53,7 @@ services:
       hostname: secondarynamenode
       command: hdfs secondarynamenode
       ports:
-        - "9868:9868"
+        - "9868:9868"   # Web-server SecondaryNamenode
       links:
         - namenode
       volumes:
@@ -67,8 +68,10 @@ services:
     hostname: yarn
     command: /start-yarn-historyserver.sh
     ports:
+      - "8030:8030"
+      - "8031:8031"
       - "8032:8032"
-      - "8088:8088"
+      - "8088:8088"       # Http Port for yarn cluster
       - "19888:19888"
       - "10020:10020"
     links:
@@ -89,7 +92,8 @@ services:
       hostname: nodemanager
       command: yarn nodemanager
       ports:
-        - "8042:8042"
+        - "8040:8040"    # Localizer NodeManager
+        - "8042:8042"    # Http Port NMWebApp
       links:
         - namenode
         - datanode
