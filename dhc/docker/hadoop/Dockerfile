@@ -37,4 +37,8 @@ RUN mkdir -p /data && \
 	chmod +x /start-hdfs.sh && \
     chmod +x /start-yarn-historyserver.sh
 
+#
+
+
+
 

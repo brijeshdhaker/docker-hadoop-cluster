@@ -68,6 +68,9 @@ services:
     container_name: yarn
     hostname: yarn
     command: /start-yarn-historyserver.sh
+    depends_on:
+      - namenode
+      - datanode
     ports:
       - "8030:8030"
       - "8031:8031"
@@ -96,6 +99,10 @@ services:
         - "8042:8042"    # Http Port NMWebApp
       env_file:
         - docker/.env
+      depends_on:
+        - namenode
+        - datanode
+        - yarn
       links:
         - namenode
         - datanode

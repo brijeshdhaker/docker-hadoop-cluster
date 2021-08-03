@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# wait for namenode to to be up& running
+
+sleep 10
+
 ${HADOOP_HOME}/bin/hdfs dfs -mkdir -p /mr-history/tmp
 ${HADOOP_HOME}/bin/hdfs dfs -chmod -R 1777 /mr-history/tmp
 
