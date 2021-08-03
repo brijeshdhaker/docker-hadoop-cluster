@@ -14,7 +14,7 @@ ENV HADOOP_OPTS		-Djava.library.path=$HADOOP_HOME/lib/native
 ENV PATH		    $PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 RUN apt-get update && \ 
-    DEBIAN_FRONTEND=noninteractive apt-get install -y wget libzip2 libsnappy1 libssl-dev && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y wget libssl-dev && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir -p $LOG_PATH
 
