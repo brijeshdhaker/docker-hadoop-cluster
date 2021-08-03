@@ -82,11 +82,14 @@ services:
       - /apps/hostpath:/apps/hostpath
       - ./docker/yarn/start-yarn-historyserver.sh:/start-yarn-historyserver.sh
       - ./docker/hadoop/start-namenode.sh:/start-namenode.sh
+
   #
   #
   #
   nodemanager:
       image: dhc/hadoop:3.2.1
+      container_name: nodemanager
+      hostname: nodemanager
       command: yarn nodemanager
       ports:
         - "8042"  # local port dynamically assigned. allows node to be scaled up and down
@@ -94,3 +97,9 @@ services:
         - namenode
         - datanode
         - yarn
+      volumes:
+        - /apps/hadoop-3.2.1:/opt/hadoop
+        - /apps/hostpath:/apps/hostpath
+  #
+  #
+  #
