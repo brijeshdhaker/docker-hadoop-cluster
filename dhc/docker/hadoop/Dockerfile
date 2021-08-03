@@ -8,10 +8,10 @@ FROM openjdk:8-jre-slim
 ####################
 # HADOOP 3.2.1
 ####################
-
 ENV HADOOP_VERSION	3.2.1
+ENV JAVA_HOME       /usr/local/openjdk-8
 ENV HADOOP_HOME		/opt/hadoop
-ENV HADOOP_OPTS		-Djava.library.path=$HADOOP_HOME/lib/native
+ENV HADOOP_OPTS		-Djava.library.path=/opt/hadoop/lib/native
 ENV PATH			$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 #
