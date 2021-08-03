@@ -49,7 +49,7 @@ services:
   #
   #
   secondarynamenode:
-      image: tailtarget/hadoop:2.7.2
+      image: dhc/hadoop:3.2.1
       container_name: secondarynamenode
       hostname: datanode
       command: hdfs secondarynamenode
