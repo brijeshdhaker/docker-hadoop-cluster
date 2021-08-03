@@ -17,7 +17,6 @@ services:
       - docker/.env
     volumes:
       - /apps/hostpath:/apps/hostpath
-      - /custom/mount:/var/lib/postgresql/data
       - ./docker/postgres/init-setup.sh:/init-setup.sh
   #
   #
