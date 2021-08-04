@@ -5,7 +5,7 @@
 FROM dhc/hadoop:3.2.1
 
 #
-ARG hive_uid=186
+ARG hive_uid=1500
 
 ####################
 # HIVE
@@ -25,6 +25,7 @@ RUN mv $BASE_DIR/apache-hive-$HIVE_VERSION-bin $HIVE_HOME && \
 	mkdir -p /tmp/hive_io && \
 	mkdir -p /tmp/hive-scratch/operation_logs &&\
 	mkdir -p /tmp/hive-scratch/query_logs && \
+    useradd -u 1500 hive && \
 	rm $HIVE_HOME/lib/log4j-slf4j-impl-2.10.0.jar $HIVE_HOME/lib/guava*.jar
 
 #
@@ -32,7 +33,7 @@ COPY docker/hive/conf/hive-site.xml $HIVE_HOME/conf/
 COPY docker/hive/libs/*.jar $HIVE_HOME/lib/
 
 # Helper script for starting namenode
-ADD docker/hive/start-hive.sh /usr/local/bin/start-hive.sh
+ADD docker/hive/start-hive.sh /start-hive.sh
 
 WORKDIR $HIVE_HOME/work-dir
 

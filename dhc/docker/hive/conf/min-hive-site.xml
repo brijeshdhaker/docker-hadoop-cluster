@@ -4,25 +4,25 @@
 
     <property>
         <name>hive.exec.local.scratchdir</name>
-        <value>file:///tmp/hive-scratch</value>
+        <value>file:///apps/hostpath/hive/hive-scratch</value>
         <description>Local scratch space for Hive jobs</description>
     </property>
 
     <property>
         <name>hive.downloaded.resources.dir</name>
-        <value>file:///tmp/hive_io/${hive.session.id}_resources</value>
+        <value>file:///apps/hostpath/hive/hive_io/${hive.session.id}_resources</value>
         <description>Temporary local directory for added resources in the remote file system.</description>
     </property>
 
     <property>
         <name>hive.querylog.location</name>
-        <value>file:///tmp/hive-scratch/query_logs</value>
+        <value>file:///apps/hostpath/hive/hive-scratch/query_logs</value>
         <description>Location of Hive run time structured log file</description>
     </property>
 
     <property>
         <name>hive.server2.logging.operation.log.location</name>
-        <value>file:///tmp/hive-scratch/operation_logs</value>
+        <value>file:///apps/hostpath/hive/hive-scratch/operation_logs</value>
         <description>Top level directory where operation logs are stored if logging functionality is enabled
         </description>
     </property>

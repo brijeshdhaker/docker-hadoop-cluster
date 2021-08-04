@@ -14,21 +14,26 @@ export HIVE_HOME=/opt/hive
 export PATH=$PATH:$HIVE_HOME/sbin:$HIVE_HOME/bin
 export CLASSPATH=$CLASSPATH:$HADOOP_HOME/lib/*:$HIVE_HOME/lib/*od g+w /user/hive/warehouse
 
+#
+if [ ! -f /apps/hostpath/hive/hive-scratch ]; then
 
-if [ ! -f /tmp/hive-scratch ]; then
   echo "Creating warehouse  and scratch dir for hive"
-  mkdir -p /user/hive/warehouse
-  mkdir -p /tmp/hive-scratch/operation_logs
+  mkdir -p /apps/hostpath/hive/warehouse
+  mkdir -p /apps/hostpath/hive/metastore
+  mkdir -p /apps/hostpath/hive/hive-scratch/operation_logs
+
 fi
 
-## Create Hive Metastore Derby Database
-if [ ! -d /user/hive/metastore/metastore_db ]; then
+## Create hive metastore postgres database
+if [ ! -f /apps/hostpath/hive/.already_metastore ]; then
 
-  echo "Create Metastore Derby Database for Hive ."
+  echo "Create hive metastore postgres database ."
   ${HIVE_HOME}/bin/schematool -initSchema -dbType postgres
-
+  #
+  touch /apps/hostpath/hive/.already_metastore
 fi
 
+# Start Hive Server
 ${HIVE_HOME}/bin/hiveserver2
-
+echo "Hive Server Successfully started ."
 #
