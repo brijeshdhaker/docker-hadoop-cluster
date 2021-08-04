@@ -68,7 +68,7 @@ services:
   #
   #
   minio:
-    image: minio/minio
+    image: minio/minio:latest
     env_file:
       - docker/.env
     ports:
@@ -79,7 +79,7 @@ services:
   #
   #
   minio-setup:
-    image: minio/mc
+    image: minio/mc:latest
     build:
       context: .
       dockerfile: docker/minio/Dockerfile
