@@ -159,10 +159,11 @@ services:
     env_file:
       - docker/.env
     ports:
-      - "9090:8080"
+      - "9090:9090"
       - "4040:4040"
     volumes:
-      - /apps/spark-3.1.2:/opt/spark
+      - /apps/hostpath:/apps/hostpath
+      - /apps/spark-2.4.8:/opt/spark
       - /apps/hadoop-3.2.1:/opt/hadoop
 
   #

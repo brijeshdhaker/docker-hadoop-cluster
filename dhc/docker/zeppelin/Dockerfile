@@ -1,9 +1,19 @@
 FROM apache/zeppelin:0.9.0
 
-ENV SPARK_VERSION=3.1.2
-ENV HADOOP_VERSION=3.2
-ENV HADOOP_AWS_VERSION=3.2.0
-ENV AWS_SDK_VERSION=1.11.655
+####################
+# HIVE
+####################
+ENV BASE_DIR 		/opt
+ENV HADOOP_HOME		$BASE_DIR/hadoop
+ENV SPARK_HOME 	    $BASE_DIR/spark
+ENV ZEPPELIN_HOME 	$BASE_DIR/zeppelin
+ENV SPARK_VERSION   2.4.8
+ENV HADOOP_VERSION	3.2.1
+ENV HIVE_VERSION	3.1.2
+ENV PATH			$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$HIVE_HOME/bin
+
+#
+ARG zeppelin_uid=1000
 
 USER root
 
@@ -24,8 +34,13 @@ RUN cd /
 #    && rm spark/jars/guava-14.0.1.jar \
 #    && cd /
 
+#
+COPY docker/zeppelin/conf /opt/zeppelin/conf
 
+#
 COPY docker/zeppelin/airline-notebooks /opt/zeppelin/notebook/airline-notebooks
 RUN chmod -R 777 /opt/zeppelin/notebook/airline-notebooks/
 
-USER 1000
+# Specify the User that the actual main process will run as
+USER ${zeppelin_uid}
+
