@@ -12,7 +12,7 @@ export PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin
 #Hive Configurations
 export HIVE_HOME=/opt/hive
 export PATH=$PATH:$HIVE_HOME/sbin:$HIVE_HOME/bin
-export CLASSPATH=$CLASSPATH:$HADOOP_HOME/lib/*:$HIVE_HOME/lib/*od g+w /user/hive/warehouse
+export CLASSPATH=$CLASSPATH:$HADOOP_HOME/lib/*:$HIVE_HOME/lib/*
 
 #
 if [ ! -f /apps/hostpath/hive/hive-scratch ]; then
