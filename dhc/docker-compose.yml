@@ -164,8 +164,6 @@ services:
       - "4040:4040"
     volumes:
       - /apps/hostpath:/apps/hostpath
-      - /apps/spark-3.1.2:/opt/spark
-      - /apps/hadoop-3.2.1:/opt/hadoop
 
   #
   #
