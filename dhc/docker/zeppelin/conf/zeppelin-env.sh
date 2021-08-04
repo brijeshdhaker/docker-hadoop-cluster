@@ -18,7 +18,7 @@
 
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export USE_HADOOP=true                          # Whether include hadoop jars into zeppelin server process. (true or false)
-export SPARK_MASTER=yarn                          # Spark master url. eg. spark://master_addr:7077. Leave empty if you want to use local mode.
+export SPARK_MASTER=yarn                        # Spark master url. eg. spark://master_addr:7077. Leave empty if you want to use local mode.
 # export ZEPPELIN_ADDR                          # Bind address (default 127.0.0.1)
 export ZEPPELIN_PORT=9090                       # port number to listen (default 8080)
 # export ZEPPELIN_LOCAL_IP                      # Zeppelin's thrift server ip address, if not specified, one random IP address will be choosen.
@@ -78,7 +78,7 @@ export DOCKER_TIME_ZONE="Asia/Kolkata" # Set to the same time zone as the zeppel
 ##
 export SPARK_HOME=/opt/spark                    # (required) When it is defined, load it instead of Zeppelin embedded Spark libraries
 # export SPARK_SUBMIT_OPTIONS                   # (optional) extra options to pass to spark submit. eg) "--driver-memory 512M --executor-memory 1G".
-export SPARK_APP_NAME=zeppelin-app                  # (optional) The name of spark application.
+export SPARK_APP_NAME=zeppelin-app              # (optional) The name of spark application.
 export SPARK_CONF_DIR=${SPARK_HOME}/conf        # (optional) In the zeppelin interpreter on docker mode, Need to set the local spark conf folder path
 
 ## Use embedded spark binaries ##

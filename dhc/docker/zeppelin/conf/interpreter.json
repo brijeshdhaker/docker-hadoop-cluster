@@ -975,6 +975,12 @@
           "type": "string",
           "description": "The deploy mode of Spark driver program, either \"client\" or \"cluster\", Which means to launch driver program locally (\"client\") or remotely (\"cluster\") on one of the nodes inside the cluster."
         },
+        "spark.yarn.archive": {
+          "name": "spark.yarn.archive",
+          "value": "hdfs://namenode:9000/spark/archive/spark-archive-3.1.2.zip",
+          "type": "string",
+          "description": "cluster common spark-3.1.2 jars."
+        },
         "spark.app.name": {
           "name": "spark.app.name",
           "value": "zeppelin",

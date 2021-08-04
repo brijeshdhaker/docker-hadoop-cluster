@@ -24,5 +24,5 @@ then
 else
 	# HDFS on a MultiNode
 	echo "Starting HDFS Multinode Node cluster."
-    hdfs namenode	
+  hdfs namenode
 fi

@@ -71,9 +71,10 @@ services:
       - namenode
       - datanode
     ports:
-      - "8030:8030"
-      - "8031:8031"
-      - "8032:8032"
+      - "8030:8030"       # yarn.resourcemanager.scheduler.address
+      - "8031:8031"       # yarn.resourcemanager.resource-tracker.address
+      - "8032:8032"       # yarn.resourcemanager.address
+      - "8033:8033"       # yarn.resourcemanager.admin.address
       - "8088:8088"       # Http Port for yarn cluster
       - "19888:19888"     # History WebServer
       - "10020:10020"     # History Server Address
@@ -163,7 +164,7 @@ services:
       - "4040:4040"
     volumes:
       - /apps/hostpath:/apps/hostpath
-      - /apps/spark-2.4.8:/opt/spark
+      - /apps/spark-3.1.2:/opt/spark
       - /apps/hadoop-3.2.1:/opt/hadoop
 
   #

@@ -27,18 +27,19 @@
     <property>
         <name>dfs.client.use.datanode.hostname</name>
         <value>true</value>
+        <description>Whether clients should use datanode hostnames when connecting to datanodes.</description>
     </property>
     
     <property>
         <name>dfs.datanode.use.datanode.hostname</name>
         <value>true</value>
+        <description>Whether datanodes should use datanode hostnames when connecting to other datanodes for data transfer.</description>
     </property>
 
     <property>
         <name>dfs.namenode.datanode.registration.ip-hostname-check</name>
         <value>false</value>
     </property>
-    
 
     <property>
         <name>dfs.permissions</name>
@@ -49,6 +50,23 @@
         <name>fs.permissions.umask-mode</name>
         <value>000</value>
     </property>
-    
+
+    <property>
+        <name>dfs.datanode.http.address</name>
+        <value>0.0.0.0:9864</value>
+        <description>The datanode http server address and port. If the port is 0 then the server will start on a free port.</description>
+    </property>
+
+    <property>
+        <name>dfs.datanode.address</name>
+        <value>0.0.0.0:9866</value>
+        <description>The address where the datanode server will listen to. if the port is 0 then the server will start on a free port.</description>
+    </property>
+
+    <property>
+        <name>dfs.datanode.ipc.address</name>
+        <value>0.0.0.0:9867</value>
+        <description>The datanode ipc server address and port. If the port is 0 then the server will start on a free port.</description>
+    </property>
     
 </configuration>
