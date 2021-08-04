@@ -17,6 +17,10 @@ setup_minio_for_wordcount() {
     echo "Uploading $FILE_NAME.csv to s3"
     mc cp "$FILE_NAME".csv s3/word-count/flights-data/
   done
+  #
+  echo "Uploading users.parquet to s3"
+  mc cp /users.parquet s3/word-count/users-data/
+
 }
 echo "Creating s3 creds 'word-count' bucket on minio ${S3_ENDPOINT}"
 mc alias set s3 "${S3_ENDPOINT}" "${MINIO_ACCESS_KEY}" "${MINIO_SECRET_KEY}" --api S3v4

@@ -1,13 +1,11 @@
 .DS_Store
 nbactions.xml
 target
-docker/data
 *.gz
 *.tgz
+*.tar
 *.jar
-libs
 .classpath
 .project
 .idea
 *.gz
-*.tar

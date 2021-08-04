@@ -1,10 +1,9 @@
-# docker-compose build
-# docker-compose up -d
-# docker-compose scale nodemanager=X; # X=integer number --> allows to add more nodes to the hadoop cluster for testing
-
+#
+#
+#
 version: '3.1'
+#
 services:
-
   #
   # Hadoop namenode
   #
@@ -109,23 +108,62 @@ services:
         - yarn
       volumes:
         - /apps/hostpath:/apps/hostpath
+  #
+  # postgres sql
+  #
+  postgres:
+    image: dhc/postgres:latest
+    container_name: postgres
+    hostname: postgres
+    build:
+      context: .
+      dockerfile: docker/postgres/Dockerfile
+    command: /init-setup.sh
+    env_file:
+      - docker/.env
+    ports:
+      - "5432:5432"
+    volumes:
+      - /apps/hostpath:/apps/hostpath
 
   #
+  # Hive
   #
+  hive:
+    image: dhc/hive:3.2.1
+    container_name: hive
+    hostname: hive
+    build:
+      context: .
+      dockerfile: docker/hive/Dockerfile
+    env_file:
+      - docker/.env
+    depends_on:
+      - namenode
+      - datanode
+      - postgres
+    ports:
+      - "10000:10000"
+    volumes:
+      - /apps/hostpath:/apps/hostpath
+
   #
-#  edgenode:
-#    image: dhc/hadoop:3.2.1
-#    container_name: edgenode
-#    hostname: edgenode
-#    links:
-#      - yarn
-#      - namenode
-#    env_file:
-#      - docker/.env
-#    volumes:
-#      - /apps/hadoop-3.2.1:/opt/hadoop
-#      - /apps/jdk1.8.0_251:/opt/java
-#      - /apps/hostpath:/apps/hostpath
+  # Zeppelin Notebook
+  #
+  zeppelin:
+    image: dhc/zeppelin:0.9.0
+    container_name: zeppelin
+    build:
+      context: .
+      dockerfile: docker/zeppelin/Dockerfile
+    env_file:
+      - docker/.env
+    ports:
+      - "9090:8080"
+      - "4040:4040"
+    volumes:
+      - /apps/spark-3.1.2:/opt/spark
+      - /apps/hadoop-3.2.1:/opt/hadoop
 
   #
   #

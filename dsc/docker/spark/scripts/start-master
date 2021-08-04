@@ -1,0 +1,4 @@
+#!/bin/sh
+. /start-common.sh
+
+${SPARK_HOME}/bin/spark-class org.apache.spark.deploy.master.Master --ip $(hostname -i) --port 7077 --webui-port 8080
