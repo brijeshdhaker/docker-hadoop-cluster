@@ -15,7 +15,7 @@ ENV HADOOP_OPTS		-Djava.library.path=/opt/hadoop/lib/native
 ENV PATH			$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 #
-ADD docker/hadoop/tar-balls/hadoop-3.2.1.tar.gz /opt
+ADD tars/hadoop-3.2.1.tar.gz /opt
 
 #
 RUN apt-get update && \
