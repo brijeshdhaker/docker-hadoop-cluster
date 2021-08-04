@@ -46,7 +46,7 @@
 
     <property>
         <name>javax.jdo.option.ConnectionURL</name>
-        <value>jdbc:postgresql://hostmaster:5432/hive_store</value>
+        <value>jdbc:postgresql://postgres:5432/hive_store</value>
     </property>
 
     <property>
