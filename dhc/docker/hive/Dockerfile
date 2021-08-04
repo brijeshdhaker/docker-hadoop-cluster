@@ -35,7 +35,7 @@ COPY docker/hive/libs/*.jar $HIVE_HOME/lib/
 # Helper script for starting namenode
 ADD docker/hive/start-hive.sh /start-hive.sh
 
-WORKDIR $HIVE_HOME/work-dir
+WORKDIR $HIVE_HOME
 
 RUN chmod a+rwx $HIVE_HOME/*
 RUN chmod -Rf 777 /tmp/hive-scratch
