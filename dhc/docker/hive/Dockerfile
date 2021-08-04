@@ -18,7 +18,7 @@ ENV HIVE_VERSION	3.1.2
 ENV PATH			$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$HIVE_HOME/bin
 
 #wget https://apache.osuosl.org/hive/hive-3.1.2/apache-hive-3.1.2-bin.tar.gz
-ADD docker/hive/tars/apache-hive-$HIVE_VERSION-bin.tar.gz $BASE_DIR
+ADD tars/apache-hive-$HIVE_VERSION-bin.tar.gz $BASE_DIR
 
 RUN mv $BASE_DIR/apache-hive-$HIVE_VERSION-bin $HIVE_HOME && \
 	mkdir -p $HIVE_HOME/work-dir && \
@@ -30,7 +30,7 @@ RUN mv $BASE_DIR/apache-hive-$HIVE_VERSION-bin $HIVE_HOME && \
 
 #
 COPY docker/hive/conf/hive-site.xml $HIVE_HOME/conf/
-COPY docker/hive/libs/*.jar $HIVE_HOME/lib/
+COPY libs/*.jar $HIVE_HOME/lib/
 
 # Helper script for starting namenode
 ADD docker/hive/start-hive.sh /start-hive.sh
