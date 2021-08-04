@@ -130,7 +130,7 @@ services:
   # Hive
   #
   hive:
-    image: dhc/hive:3.2.1
+    image: dhc/hive:3.1.2
     container_name: hive
     hostname: hive
     build:
