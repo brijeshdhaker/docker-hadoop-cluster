@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<configuration>
+
+    <!--
+
+      <property>
+            <name>yarn.resourcemanager.scheduler.class</name>
+            <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler</value>
+      </property>
+
+      <property>
+            <name>yarn.scheduler.fair.allocation.file</name>
+            <value>/usr/local/hadoop/etc/hadoop/fair-scheduler.xml</value>
+      </property>
+
+      <property>
+            <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+            <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+      </property>
+
+      <property>
+            <name>yarn.log-aggregation-enable</name>
+            <value>true</value>
+      </property>
+
+    -->
+
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+
+    <property>
+        <name>yarn.acl.enable</name>
+        <value>0</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.hostname</name>
+        <value>yarn</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.hostname</name>
+        <value>nodemanager</value>
+    </property>
+
+    <property>
+        <name>yarn.log.server.url</name>
+        <value>http://yarn:19888/jobhistory/logs</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.address</name>
+        <value>yarn:8032</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.resource.memory-mb</name>
+        <value>4098</value>
+    </property>
+
+    <property>
+        <name>yarn.scheduler.maximum-allocation-mb</name>
+        <value>4098</value>
+    </property>
+
+    <property>
+        <name>yarn.scheduler.minimum-allocation-mb</name>
+        <value>128</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.vmem-check-enabled</name>
+        <value>false</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.env-whitelist</name>
+        <value>
+            JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_HOME,PATH,LANG,TZ,HADOOP_MAPRED_HOME
+        </value>
+    </property>
+
+    <property>
+        <name>yarn.application.classpath</name>
+        <value>
+            /opt/hadoop/hadoop/etc/hadoop, /opt/hadoop/hadoop/share/hadoop/common/*,
+            /opt/hadoop/hadoop/share/hadoop/common/lib/*, /opt/hadoop/hadoop/share/hadoop/hdfs/*,
+            /opt/hadoop/hadoop/share/hadoop/hdfs/lib/*, /opt/hadoop/hadoop/share/hadoop/mapreduce/*,
+            /opt/hadoop/hadoop/share/hadoop/mapreduce/lib/*, /opt/hadoop/hadoop/share/hadoop/yarn/*,
+            /opt/hadoop/hadoop/share/hadoop/yarn/lib/*, /opt/hadoop/hadoop/share/spark/*
+        </value>
+    </property>
+
+</configuration>
