@@ -3,8 +3,20 @@
 
 <!-- Put site-specific property overrides in this file. -->
 <configuration>
+
     <property>
         <name>fs.default.name</name>
-        <value>hdfs://namenode:9000</value>
+        <value>hdfs://0.0.0.0:9000</value>
     </property>
+
+    <property>
+        <name>hadoop.proxyuser.server.hosts</name>
+        <value>*</value>
+    </property>
+
+    <property>
+        <name>hadoop.proxyuser.server.groups</name>
+        <value>*</value>
+    </property>
+
 </configuration>

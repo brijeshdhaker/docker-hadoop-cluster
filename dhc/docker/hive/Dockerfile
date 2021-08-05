@@ -26,8 +26,11 @@ RUN mv $BASE_DIR/apache-hive-$HIVE_VERSION-bin $HIVE_HOME && \
 	mkdir -p /tmp/hive-scratch/operation_logs &&\
 	mkdir -p /tmp/hive-scratch/query_logs && \
     useradd -u 1500 hive && \
+    rm $HADOOP_HOME/etc/hadoop/core-site.xml  $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
 	rm $HIVE_HOME/lib/log4j-slf4j-impl-2.10.0.jar $HIVE_HOME/lib/guava*.jar
 
+# Overwrite default HADOOP configuration files with our config files
+COPY docker/hive/client-conf/*.xml  $HADOOP_HOME/etc/hadoop/
 #
 COPY docker/hive/conf/hive-site.xml $HIVE_HOME/conf/
 COPY libs/*.jar $HIVE_HOME/lib/

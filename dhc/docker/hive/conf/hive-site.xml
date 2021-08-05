@@ -20,6 +20,10 @@
   <!-- WARNING!!! You must make your changes in hive-site.xml instead.         -->
   <!-- Hive Execution Parameters -->
   <property>
+    <name>fs.default.name</name>
+    <value>hdfs://namenode:9000</value>
+  </property>
+  <property>
     <name>hive.exec.script.wrapper</name>
     <value/>
     <description/>
@@ -4818,7 +4822,7 @@
   </property>
   <property>
     <name>hive.server2.enable.doAs</name>
-    <value>true</value>
+    <value>false</value>
     <description>
       Setting this property to true will have HiveServer2 execute
       Hive operations as the user making the calls to it.
