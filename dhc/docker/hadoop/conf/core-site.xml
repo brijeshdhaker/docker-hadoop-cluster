@@ -6,7 +6,7 @@
 
     <property>
         <name>fs.default.name</name>
-        <value>hdfs://0.0.0.0:9000</value>
+        <value>hdfs://namenode:9000</value>
     </property>
 
     <property>
