@@ -7,9 +7,9 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
   CREATE DATABASE metastore;
   GRANT ALL PRIVILEGES ON DATABASE metastore TO hive;
 
-  CREATE USER postgres WITH PASSWORD 'postgres';
+  CREATE USER pgadmin WITH PASSWORD 'pgadmin';
   CREATE DATABASE dbstore;
-  GRANT ALL PRIVILEGES ON DATABASE dbstore TO postgres;
+  GRANT ALL PRIVILEGES ON DATABASE dbstore TO pgadmin;
 
   \c metastore
 
