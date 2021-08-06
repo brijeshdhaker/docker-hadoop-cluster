@@ -45,18 +45,18 @@ COPY resources/libs/*.jar $HIVE_HOME/lib/
 #hive-site.xml should be copied to $SPARK_HOME/conf folder
 
 #Custom configuration goes here
-ADD docker-hive/conf/hive-site.xml $HIVE_HOME/conf
-ADD docker-hive/conf/beeline-log4j2.properties $HIVE_HOME/conf
-ADD docker-hive/conf/hive-env.sh $HIVE_HOME/conf
-ADD docker-hive/conf/hive-exec-log4j2.properties $HIVE_HOME/conf
-ADD docker-hive/conf/hive-log4j2.properties $HIVE_HOME/conf
-ADD docker-hive/conf/ivysettings.xml $HIVE_HOME/conf
-ADD docker-hive/conf/llap-daemon-log4j2.properties $HIVE_HOME/conf
+ADD docker-hive/hive/conf/hive-site.xml $HIVE_HOME/conf
+ADD docker-hive/hive/conf/beeline-log4j2.properties $HIVE_HOME/conf
+ADD docker-hive/hive/conf/hive-env.sh $HIVE_HOME/conf
+ADD docker-hive/hive/conf/hive-exec-log4j2.properties $HIVE_HOME/conf
+ADD docker-hive/hive/conf/hive-log4j2.properties $HIVE_HOME/conf
+ADD docker-hive/hive/conf/ivysettings.xml $HIVE_HOME/conf
+ADD docker-hive/hive/conf/llap-daemon-log4j2.properties $HIVE_HOME/conf
 
-COPY docker-hive/startup.sh /usr/local/bin/
+COPY docker-hive/hive/startup.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/startup.sh
 
-COPY docker-hive/entrypoint.sh /usr/local/bin/
+COPY docker-hive/hive/entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 #

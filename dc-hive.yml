@@ -6,7 +6,7 @@ services:
     image: bde2020/hive-metastore-postgresql:3.1.2
     build:
       context: .
-      dockerfile: docker-hive-metastore-postgresql/Dockerfile
+      dockerfile: docker-hive/metastore/Dockerfile
     hostname: hive-metastore-postgresql
     container_name: hive-metastore-postgresql
     ports:
@@ -25,7 +25,7 @@ services:
     image: bde2020/hive:3.1.2-postgresql-metastore
     build:
       context: .
-      dockerfile: docker-hive/Dockerfile
+      dockerfile: docker-hive/hive/Dockerfile
     hostname: hive-metastore
     container_name: hive-metastore
     env_file:
@@ -43,7 +43,7 @@ services:
     image: bde2020/hive:3.1.2-postgresql-metastore
     build:
       context: .
-      dockerfile: docker-hive/Dockerfile
+      dockerfile: docker-hive/hive/Dockerfile
     hostname: hive-server
     container_name: hive-server
     env_file:
