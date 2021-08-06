@@ -145,11 +145,11 @@
           "local": false
         },
         {
-          "groupArtifactVersion": "/opt/spark/jars/hadoop-common-3.2.0.jar",
+          "groupArtifactVersion": "/opt/spark-3.1.2/jars/hadoop-common-3.2.0.jar",
           "local": false
         },
         {
-          "groupArtifactVersion": "/opt/spark/jars/protobuf-java-2.5.0.jar",
+          "groupArtifactVersion": "/opt/spark-3.1.2/jars/protobuf-java-2.5.0.jar",
           "local": false
         }
       ],
