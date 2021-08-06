@@ -1,0 +1,130 @@
+# docker-compose build
+# docker-compose up -d
+# docker-compose scale nodemanager=X; # X=integer number --> allows to add more nodes to the hadoop cluster for testing
+
+version: '3.1'
+services:
+  #
+  # postgres setup
+  #
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    hostname: postgres
+    ports:
+      - "5432:5432"
+    env_file:
+      - docker/.env
+    volumes:
+      - /apps/hostpath:/apps/hostpath
+
+  #
+  #
+  #
+  spark-master:
+    image: spark-py:3.1.2-latest
+    container_name: spark-master
+    hostname: spark-master
+    ports:
+      - "7077:7077"
+      - "8080:8080"
+    volumes:
+      - /apps/hostpath:/apps/hostpath
+    environment:
+      NODE_TYPE: MASTER
+      WEBUI_PORT: 8080
+
+  #
+  spark-node01:
+    image: spark-py:3.1.2-latest
+    container_name: spark-node01
+    hostname: spark-node01
+    depends_on:
+      - spark-master
+    ports:
+      - "8081:8081"
+    volumes:
+      - /apps/hostpath:/apps/hostpath
+    environment:
+      NODE_TYPE: WORKER
+      WEBUI_PORT: 8081
+
+  #
+  spark-node02:
+    image: spark-py:3.1.2-latest
+    container_name: spark-node02
+    hostname: spark-node02
+    depends_on:
+      - spark-master
+    ports:
+      - "8082:8082"
+    volumes:
+      - /apps/hostpath:/apps/hostpath
+    environment:
+      NODE_TYPE: WORKER
+      WEBUI_PORT: 8082
+
+  #
+  #
+  #
+  minio:
+    image: minio/minio:latest
+    env_file:
+      - docker/.env
+    ports:
+      - "9000:9000"
+    command: server /data
+
+  #
+  #
+  #
+  minio-setup:
+    image: minio/mc:latest
+    build:
+      context: ../dsc
+      dockerfile: docker/minio/Dockerfile
+    depends_on:
+      - minio
+    container_name: minio-setup
+    env_file:
+      - docker/.env
+    volumes:
+      # In case you have your own data to mount
+      - ./docker/minio/setup.sh:/setup.sh
+    entrypoint: /setup.sh
+
+  #
+  #
+  #
+  zeppelin:
+    image: dsc/zeppelin:0.9.0
+    container_name: zeppelin
+    build:
+      context: ../dsc
+      dockerfile: docker/zeppelin/Dockerfile
+    env_file:
+      - docker/.env
+    ports:
+      - "9090:8080"
+      - "4040:4040"
+    volumes:
+      - /apps/spark-3.1.2:/opt/spark
+      - /apps/hadoop-3.2.1:/opt/hadoop
+
+#
+#
+#
+#  history-server:
+#    image: spark-py:3.1.2-latest
+#    container_name: history-server
+#    hostname: history-server
+#    depends_on:
+#      - spark-master
+#    ports:
+#      - 18080:18080
+#    volumes:
+#      - /apps/hostpath:/apps/hostpath
+#    environment:
+#      NODE_TYPE: LOGSERVER
+
+

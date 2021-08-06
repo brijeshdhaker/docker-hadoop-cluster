@@ -1,0 +1,65 @@
+version: '3'
+services:
+  spark-base:
+    image: spark-base:3.1.2-hadoop3.2
+    container_name: spark-base
+    env_file:
+      - docker/.env
+    build:
+      context: .
+      dockerfile: docker/base/Dockerfile
+    ports:
+      - "3030:4040"
+    volumes:
+    - "./README.md:/README.md"
+
+  spark-master:
+    image: spark-master:3.1.2-hadoop3.2
+    container_name: spark-master
+    env_file:
+      - docker/.env
+    build:
+      context: .
+      dockerfile: docker/master/Dockerfile
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    volumes:
+      - "./README.md:/README.md"
+
+  spark-worker:
+    image: spark-worker:3.1.2-hadoop3.2
+    env_file:
+      - docker/.env
+    build:
+      context: .
+      dockerfile: docker/worker/Dockerfile
+    depends_on:
+      - spark-master
+    volumes:
+      - "./docker/zeppelin/users.parquet:/zeppelin/example-files/users.parquet"
+      # To allow tweaking log levels easily"
+      - "./docker/base/log4j.properties:/spark/conf/log4j.properties"
+      - "./README.md:/README.md"
+  minio:
+    image: minio/minio
+    env_file:
+      - docker/.env
+    ports:
+      - "9000:9000"
+    command: server /data
+
+  minio-setup:
+    image: minio/mc
+    build:
+      context: .
+      dockerfile: docker/minio/Dockerfile
+    depends_on:
+      - minio
+    container_name: minio-setup
+    env_file:
+      - docker/.env
+    volumes:
+      # In case you have your own data to mount
+      - ./docker/minio/setup.sh:/setup.sh
+    entrypoint: /setup.sh

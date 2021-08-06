@@ -1,0 +1,103 @@
+version: "3.5"
+
+services:
+#
+  hadoop-base:
+    image: bde2020/hadoop-base:2.0.0-hadoop3.2.1-java8
+    build:
+      context: .
+      dockerfile: docker-hadoop/base/Dockerfile
+
+#
+  namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    build:
+      context: .
+      dockerfile: docker-hadoop/namenode/Dockerfile
+    container_name: namenode
+    hostname: namenode
+    restart: always
+    ports:
+      - "9870:9870"
+      - "9000:9000"
+    volumes:
+      - hadoop_namenode:/hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=test
+    env_file:
+      - docker-hadoop/hadoop.env
+
+#
+  datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    build:
+      context: .
+      dockerfile: docker-hadoop/datanode/Dockerfile
+    container_name: datanode
+    hostname: datanode
+    ports:
+      - "9864:9864"
+      - "9866:9866"
+    restart: always
+    volumes:
+      - hadoop_datanode:/hadoop/dfs/data
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+    env_file:
+      - docker-hadoop/hadoop.env
+
+#
+  resourcemanager:
+    image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.2.1-java8
+    build:
+      context: .
+      dockerfile: docker-hadoop/resourcemanager/Dockerfile
+    container_name: resourcemanager
+    hostname: resourcemanager
+    restart: always
+    ports:
+      - "8088:8088"
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
+    env_file:
+      - docker-hadoop/hadoop.env
+
+#
+  nodemanager1:
+    image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.2.1-java8
+    build:
+      context: .
+      dockerfile: docker-hadoop/nodemanager/Dockerfile
+    container_name: nodemanager
+    hostname: nodemanager
+    restart: always
+    ports:
+      - "8042:8042"
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+    env_file:
+      - docker-hadoop/hadoop.env
+
+#
+  historyserver:
+    image: bde2020/hadoop-historyserver:2.0.0-hadoop3.2.1-java8
+    build:
+      context: .
+      dockerfile: docker-hadoop/historyserver/Dockerfile
+    container_name: historyserver
+    hostname: historyserver
+    restart: always
+    ports:
+      - "8188:8188"
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+    volumes:
+      - hadoop_historyserver:/hadoop/yarn/timeline
+    env_file:
+      - docker-hadoop/hadoop.env
+
+#
+volumes:
+  hadoop_namenode:
+  hadoop_datanode:
+  hadoop_historyserver:
