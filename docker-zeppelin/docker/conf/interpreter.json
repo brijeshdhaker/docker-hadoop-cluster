@@ -7,7 +7,7 @@
       "properties": {
         "default.url": {
           "name": "default.url",
-          "value": "jdbc:hive2://hive:10000",
+          "value": "jdbc:hive2://hive-server:10000",
           "type": "string",
           "description": "The URL for JDBC."
         },
