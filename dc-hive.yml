@@ -2,13 +2,13 @@ version: "3.5"
 #
 services:
 #
-  hive-metastore-postgresql:
-    image: bde2020/hive-metastore-postgresql:3.1.2
+  hive-postgresql:
+    image: bde2020/hive-postgresql:3.1.2
     build:
       context: .
-      dockerfile: docker-hive/metastore/Dockerfile
-    hostname: hive-metastore-postgresql
-    container_name: hive-metastore-postgresql
+      dockerfile: docker-hive/postgres/Dockerfile
+    hostname: hive-postgresql
+    container_name: hive-postgresql
     ports:
       - "5432:5432"
 
@@ -32,9 +32,9 @@ services:
       - docker-hive/hadoop-hive.env
     command: /opt/hive-3.1.2/bin/hive --service metastore
     environment:
-      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 hive-metastore-postgresql:5432"
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 hive-postgresql:5432"
     links:
-      - hive-metastore-postgresql
+      - hive-postgresql
     ports:
       - "9083:9083"
 
@@ -51,7 +51,7 @@ services:
     links:
       - hive-metastore  
     environment:
-      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-metastore/metastore"
+      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-postgresql/metastore"
       SERVICE_PRECONDITION: "hive-metastore:9083"
     ports:
       - "10000:10000"
