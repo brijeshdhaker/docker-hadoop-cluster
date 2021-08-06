@@ -6,7 +6,7 @@ version: '3.5'
 services:
 #
   spark-master:
-    image: bde2020/spark-py:3.1.2-latest
+    image: bde2020/spark-py:3.1.2
     build:
       context: .
       dockerfile: docker-spark/Dockerfile
@@ -25,10 +25,7 @@ services:
 
 #
   spark-node01:
-    image: bde2020/spark-py:3.1.2-latest
-    build:
-      context: .
-      dockerfile: docker-spark/Dockerfile
+    image: bde2020/spark-py:3.1.2
     container_name: spark-node01
     hostname: spark-node01
     depends_on:
@@ -45,10 +42,7 @@ services:
 
 #
   spark-node02:
-    image: bde2020/spark-py:3.1.2-latest
-    build:
-      context: .
-      dockerfile: docker-spark/Dockerfile
+    image: bde2020/spark-py:3.1.2
     container_name: spark-node02
     hostname: spark-node02
     depends_on:
@@ -65,10 +59,7 @@ services:
 
 #
   history-server:
-    image: bde2020/spark-py:3.1.2-latest
-    build:
-      context: .
-      dockerfile: docker-spark/Dockerfile
+    image: bde2020/spark-py:3.1.2
     container_name: history-server
     hostname: history-server
     depends_on:
