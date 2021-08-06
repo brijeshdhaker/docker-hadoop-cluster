@@ -65,6 +65,11 @@ beeline>!connect jdbc:hive2://hostmaster:10000 -n scott -p tiger
 bin/beeline -u jdbc:hive2://hostmaster:10000 scott tiger
 
 #
+# Documentation
+#
+https://cwiki.apache.org/confluence/display/Hive/Home#Home-HiveDocumentation
+
+#
 # Linux 
 #
 export SPARK_HOME=/apps/spark-3.1.2
@@ -80,5 +85,26 @@ SET SPARK_HOME=D:\apps\spark-3.1.2
 #
 #
 #
+$ wget https://repo1.maven.org/maven2/io/prestosql/presto-cli/308/presto-cli-308-executable.jar
+$ mv presto-cli-308-executable.jar presto.jar
+$ chmod +x presto.jar
+$ ./presto.jar --server localhost:8080 --catalog hive --schema default
+presto> select * from pokes;
+./presto --server localhost:8080 --catalog hive --schema default
+
+#
+#
+#
 show databases;
 CREATE DATABASE IF NOT EXISTS SPARK_APPS;
+
+CREATE TABLE IF NOT EXISTS SPARK_APPS.employee (
+id int,
+name string,
+age int,
+gender string )
+COMMENT 'Employee Table'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ',';
+
+LOAD DATA LOCAL INPATH '/home/hive/data.txt' INTO TABLE emp.employee;

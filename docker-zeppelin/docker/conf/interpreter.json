@@ -171,19 +171,19 @@
       "properties": {
         "default.url": {
           "name": "default.url",
-          "value": "jdbc:postgresql://postgres:5432/hive_store",
+          "value": "jdbc:postgresql://hive-postgresql:5432/dbstore",
           "type": "string",
           "description": "The URL for JDBC."
         },
         "default.user": {
           "name": "default.user",
-          "value": "hive_admin",
+          "value": "pgadmin",
           "type": "string",
           "description": "The JDBC user name"
         },
         "default.password": {
           "name": "default.password",
-          "value": "hive_admin",
+          "value": "pgadmin",
           "type": "password",
           "description": "The JDBC user password"
         },
