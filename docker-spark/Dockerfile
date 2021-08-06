@@ -19,7 +19,7 @@ ENV SPARK_HOME      /opt/spark
 
 #
 COPY docker-spark/conf $SPARK_HOME/conf/
-COPY docker-spark/libs $SPARK_HOME/jars/
+COPY resources/libs/*.jar $SPARK_HOME/jars/
 COPY docker-spark/scripts /
 
 RUN chmod a+rwx /start-common.sh /entrypoint.sh
