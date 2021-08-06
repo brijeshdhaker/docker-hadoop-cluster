@@ -6,8 +6,7 @@ FROM bde2020/hadoop-base:2.0.0-hadoop3.2.1-java8
 #
 ARG hive_uid=1500
 
-MAINTAINER Yiannis Mouchakis <gmouchakis@iit.demokritos.gr>
-MAINTAINER Ivan Ermilov <ivan.s.ermilov@gmail.com>
+MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
 # Allow buildtime config of HIVE_VERSION
 ARG HIVE_VERSION
@@ -60,11 +59,11 @@ RUN chmod +x /usr/local/bin/startup.sh
 COPY docker-hive/entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# Specify the User that the actual main process will run as
-USER ${hive_uid}
-
 #
 ENTRYPOINT ["entrypoint.sh"]
 
 #
 CMD startup.sh
+
+# Specify the User that the actual main process will run as
+#USER ${hive_uid}
