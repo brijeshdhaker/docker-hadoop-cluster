@@ -41,9 +41,6 @@ services:
 #
   hive-server:
     image: bde2020/hive:3.1.2-postgresql-metastore
-    build:
-      context: .
-      dockerfile: docker-hive/hive/Dockerfile
     hostname: hive-server
     container_name: hive-server
     env_file:
