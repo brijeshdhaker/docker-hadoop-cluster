@@ -19,7 +19,7 @@ setup_minio_for_wordcount() {
   done
   #
   echo "Uploading users.parquet to s3"
-  mc cp /users.parquet s3/word-count/users-data/
+  mc cp users.parquet s3/word-count/users-data/
 
 }
 echo "Creating s3 creds 'word-count' bucket on minio ${S3_ENDPOINT}"

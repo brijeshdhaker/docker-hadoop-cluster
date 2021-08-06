@@ -4,7 +4,7 @@ services:
     image: zeppelin
     container_name: zeppelin
     env_file:
-      - docker/.env
+      - docker/minio.env
     build:
       context: .
       dockerfile: docker/zeppelin/Dockerfile

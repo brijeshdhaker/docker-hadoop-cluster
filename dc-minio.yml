@@ -1,0 +1,37 @@
+#
+#
+#
+
+version: '3.5'
+services:
+#
+  minio:
+    image: bde2020/minio:latest
+    env_file:
+      - docker-minio/minio.env
+    ports:
+      - "9000:9000"
+    command: server /data
+
+#
+  minio-setup:
+    image: bde2020/minio-setup:latest
+    build:
+      context: .
+      dockerfile: docker-minio/minio/Dockerfile
+    depends_on:
+      - minio
+    container_name: minio-setup
+    env_file:
+      - docker-minio/minio.env
+    volumes:
+      # In case you have your own data to mount
+      - docker-minio/minio/setup.sh:/setup.sh
+    entrypoint: /setup.sh
+
+#
+
+#
+networks:
+  default:
+    name: minio.net

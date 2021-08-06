@@ -21,10 +21,6 @@ services:
       - /apps/hostpath:/apps/hostpath
 
 #
-#networks:
-#  default:
-#    external:
-#      name: bridge
-#  backend:
-#    driver: bridge
-#
+networks:
+  default:
+    name: zeppelin.net
