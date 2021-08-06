@@ -1,18 +1,21 @@
 #
 # docker-compose -H tcp://raspberry:2375 -f dc-notebook.yml up -d
 #
-version: '3.1'
+version: '3.5'
 #
 services:
 #
-  jupyter-notebook:
-    image: spark-py-notebook:latest
-    container_name: jupyter-notebook
-    hostname: jupyter-notebook
+  jupyternb:
+    image: bde2020/jupyternb:pyspark-3.2.1
+    build:
+      context: .
+      dockerfile: docker-jupyternb/Dockerfile
+    container_name: jupyternb
+    hostname: jupyternb
     ports:
-      - 8888:8888
-      - 7777:7777
-      - 2222:2222
+      - "8888:8888"
+      - "7777:7777"
+      - "2222:2222"
     volumes:
       - /apps/hostpath/notebook:/home/notebook
       - /apps/hostpath:/apps/hostpath
@@ -21,3 +24,7 @@ services:
       WEBUI_PORT: 8080
       KUBECONFIG: /home/notebook/.kube/config
 #
+#
+networks:
+  default:
+    name: home.net

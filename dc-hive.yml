@@ -65,4 +65,4 @@ volumes:
 #
 networks:
   default:
-     name: hive.net
+     name: home.net

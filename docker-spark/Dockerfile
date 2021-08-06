@@ -18,9 +18,10 @@ ENV SPARK_VERSION   3.1.2
 ENV SPARK_HOME      /opt/spark
 
 #
+COPY docker-spark/scripts /
 COPY docker-spark/conf $SPARK_HOME/conf/
 COPY resources/libs/*.jar $SPARK_HOME/jars/
-COPY docker-spark/scripts /
+
 
 RUN chmod a+rwx /start-common.sh /entrypoint.sh
 RUN chmod a+rwx /start-master /start-worker /start-logserver

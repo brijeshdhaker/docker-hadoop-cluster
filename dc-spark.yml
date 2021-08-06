@@ -6,7 +6,7 @@ version: '3.5'
 services:
 #
   spark-master:
-    image: spark-py:3.1.2-latest
+    image: bde2020/spark-py:3.1.2-latest
     build:
       context: .
       dockerfile: docker-spark/Dockerfile
@@ -25,7 +25,7 @@ services:
 
 #
   spark-node01:
-    image: spark-py:3.1.2-latest
+    image: bde2020/spark-py:3.1.2-latest
     build:
       context: .
       dockerfile: docker-spark/Dockerfile
@@ -45,7 +45,7 @@ services:
 
 #
   spark-node02:
-    image: spark-py:3.1.2-latest
+    image: bde2020/spark-py:3.1.2-latest
     build:
       context: .
       dockerfile: docker-spark/Dockerfile
@@ -65,7 +65,7 @@ services:
 
 #
   history-server:
-    image: spark-py:3.1.2-latest
+    image: bde2020/spark-py:3.1.2-latest
     build:
       context: .
       dockerfile: docker-spark/Dockerfile
@@ -85,4 +85,4 @@ services:
 #
 networks:
   default:
-    name: spark.net
+    name: home.net
