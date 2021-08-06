@@ -13,7 +13,7 @@
 
     <property>
         <name>yarn.resourcemanager.hostname</name>
-        <value>yarn</value>
+        <value>resourcemanager</value>
     </property>
 
     <property>
@@ -23,12 +23,12 @@
 
     <property>
         <name>yarn.log.server.url</name>
-        <value>http://yarn:19888/jobhistory/logs</value>
+        <value>http://resourcemanager:19888/jobhistory/logs</value>
     </property>
 
     <property>
         <name>yarn.resourcemanager.address</name>
-        <value>yarn:8032</value>
+        <value>resourcemanager:8032</value>
     </property>
 
     <property>
@@ -61,11 +61,11 @@
     <property>
         <name>yarn.application.classpath</name>
         <value>
-            /opt/hadoop/hadoop/etc/hadoop, /opt/hadoop/hadoop/share/hadoop/common/*,
-            /opt/hadoop/hadoop/share/hadoop/common/lib/*, /opt/hadoop/hadoop/share/hadoop/hdfs/*,
-            /opt/hadoop/hadoop/share/hadoop/hdfs/lib/*, /opt/hadoop/hadoop/share/hadoop/mapreduce/*,
-            /opt/hadoop/hadoop/share/hadoop/mapreduce/lib/*, /opt/hadoop/hadoop/share/hadoop/yarn/*,
-            /opt/hadoop/hadoop/share/hadoop/yarn/lib/*, /opt/hadoop/hadoop/share/spark/*
+            /opt/hadoop-3.2.1/hadoop/etc/hadoop, /opt/hadoop-3.2.1/hadoop/share/hadoop/common/*,
+            /opt/hadoop-3.2.1/hadoop/share/hadoop/common/lib/*, /opt/hadoop-3.2.1/hadoop/share/hadoop/hdfs/*,
+            /opt/hadoop-3.2.1/hadoop/share/hadoop/hdfs/lib/*, /opt/hadoop-3.2.1/hadoop/share/hadoop/mapreduce/*,
+            /opt/hadoop-3.2.1/hadoop/share/hadoop/mapreduce/lib/*, /opt/hadoop-3.2.1/hadoop/share/hadoop/yarn/*,
+            /opt/hadoop-3.2.1/hadoop/share/hadoop/yarn/lib/*, /opt/hadoop-3.2.1/hadoop/share/spark/*
         </value>
     </property>
 

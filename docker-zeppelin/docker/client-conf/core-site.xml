@@ -9,14 +9,4 @@
         <value>hdfs://namenode:9000</value>
     </property>
 
-    <property>
-        <name>hadoop.proxyuser.server.hosts</name>
-        <value>*</value>
-    </property>
-
-    <property>
-        <name>hadoop.proxyuser.server.groups</name>
-        <value>*</value>
-    </property>
-
 </configuration>

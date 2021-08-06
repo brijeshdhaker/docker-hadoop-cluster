@@ -1,0 +1,29 @@
+%spark.conf
+# This will point to the path we installed spark on the zeppelin docker image
+SPARK_HOME /opt/zeppelin/spark/
+
+# Will set the application name in the spark UI
+spark.app.name Zeppelin
+
+# set driver memory to 8g
+spark.driver.memory 8g
+
+# set executor memory 4g
+spark.executor.memory  4g
+spark.executor.cores 4
+
+# set execution mode
+master standalone
+
+# Will set the spark driver to be our zeppelin docker
+spark.submit.deployMode	client
+
+# Needed for our writing efficiently to our s3 minio docker - read more at https://spark.apache.org/docs/3.0.1/cloud-integration.html
+spark.speculation false
+spark.hadoop.mapreduce.fileoutputcommitter.algorithm.version 2
+spark.hadoop.fs.s3.impl org.apache.hadoop.fs.s3a.S3AFileSystem
+
+# Set to allow us to "point" to our mock s3 and use it interchangibly 
+spark.hadoop.fs.s3a.endpoint http://minio:9000
+spark.hadoop.fs.s3a.path.style.access true
+spark.hadoop.fs.s3a.connection.ssl.enabled false
