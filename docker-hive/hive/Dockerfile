@@ -39,7 +39,8 @@ RUN apt-get update && apt-get install -y wget procps && \
 	apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-COPY resources/libs/*.jar $HIVE_HOME/lib/
+COPY resources/libs/postgresql-42.2.23.jar $HIVE_HOME/lib/
+COPY resources/libs/guava-27.0-jre.jar $HIVE_HOME/lib/
 
 #Spark should be compiled with Hive to be able to use it
 #hive-site.xml should be copied to $SPARK_HOME/conf folder
