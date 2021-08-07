@@ -1274,7 +1274,7 @@
       "properties": {
         "SPARK_HOME": {
           "name": "SPARK_HOME",
-          "value": "/opt/spark",
+          "value": "/opt/spark-3.1.2",
           "type": "string",
           "description": "Location of spark distribution"
         },
