@@ -6,17 +6,15 @@ version: '3.5'
 services:
 
 #
-  spark-base:
-    image: bde2020/spark-base:3.1.2
-    build:
-      context: .
-      dockerfile: docker-spark/base/Dockerfile
-    container_name: spark-base
-    hostname: spark-base
-    env_file:
-      - docker-spark/spark.env
-    volumes:
-      - /apps/hostpath:/apps/hostpath
+#  spark-base:
+#    image: bde2020/spark-base:3.1.2
+#    build:
+#      context: .
+#      dockerfile: docker-spark/base/Dockerfile
+#    container_name: spark-base
+#    hostname: spark-base
+#    env_file:
+#      - docker-spark/spark.env
 
 #
   spark-master:

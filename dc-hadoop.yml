@@ -2,11 +2,11 @@ version: "3.5"
 
 services:
 #
-  hadoop-base:
-    image: bde2020/hadoop-base:2.0.0-hadoop3.2.1-java8
-    build:
-      context: .
-      dockerfile: docker-hadoop/base/Dockerfile
+#  hadoop-base:
+#    image: bde2020/hadoop-base:2.0.0-hadoop3.2.1-java8
+#    build:
+#      context: .
+#      dockerfile: docker-hadoop/base/Dockerfile
 
 #
   namenode:
@@ -21,6 +21,7 @@ services:
       - "9870:9870"
       - "9000:9000"
     volumes:
+      - /apps/hostpath:/apps/hostpath
       - hadoop_namenode:/hadoop/dfs/name
     environment:
       - CLUSTER_NAME=test
@@ -40,6 +41,7 @@ services:
       - "9866:9866"
     restart: always
     volumes:
+      - /apps/hostpath:/apps/hostpath
       - hadoop_datanode:/hadoop/dfs/data
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
@@ -57,6 +59,8 @@ services:
     restart: always
     ports:
       - "8088:8088"
+    volumes:
+      - /apps/hostpath:/apps/hostpath
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
     env_file:
@@ -73,6 +77,8 @@ services:
     restart: always
     ports:
       - "8042:8042"
+    volumes:
+      - /apps/hostpath:/apps/hostpath
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
     env_file:
@@ -92,6 +98,7 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
     volumes:
+      - /apps/hostpath:/apps/hostpath
       - hadoop_historyserver:/hadoop/yarn/timeline
     env_file:
       - docker-hadoop/hadoop.env

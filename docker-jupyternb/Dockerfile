@@ -6,7 +6,7 @@
 #
 
 ARG spark_uid=185
-FROM spark-py:latest
+FROM spark-py:3.1.2
 
 # Specify the User that the actual main process will run as
 USER ${spark_uid}

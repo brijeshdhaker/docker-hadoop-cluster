@@ -7,6 +7,9 @@ services:
 #
   minio:
     image: bde2020/minio:latest
+    build:
+      context: .
+      dockerfile: docker-minio/minio/Dockerfile
     env_file:
       - docker-minio/minio.env
     ports:
@@ -16,9 +19,6 @@ services:
 #
   minio-setup:
     image: bde2020/minio-setup:latest
-    build:
-      context: .
-      dockerfile: docker-minio/minio/Dockerfile
     depends_on:
       - minio
     container_name: minio-setup

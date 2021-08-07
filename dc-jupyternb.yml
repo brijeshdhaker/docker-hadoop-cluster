@@ -1,5 +1,5 @@
 #
-# docker-compose -H tcp://raspberry:2375 -f dc-notebook.yml up -d
+# docker-compose -H tcp://raspberry:2375 -f dc-jupyternb.yml up -d
 #
 version: '3.5'
 #
@@ -20,8 +20,6 @@ services:
       - /apps/hostpath/notebook:/home/notebook
       - /apps/hostpath:/apps/hostpath
     environment:
-      NODE_TYPE: NOTEBOOK-DRIVER
-      WEBUI_PORT: 8080
       KUBECONFIG: /home/notebook/.kube/config
 #
 #
