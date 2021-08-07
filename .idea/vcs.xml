@@ -4,7 +4,7 @@
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/docker-hadoop" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/docker-hive-metastore-postgresql" vcs="" />
-    <mapping directory="$PROJECT_DIR$/docker/zeppelin" vcs="" />
+    <mapping directory="$PROJECT_DIR$/docker/zeppelin" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/hive/docker-hive-metastore-postgresql" vcs="" />
   </component>
 </project>

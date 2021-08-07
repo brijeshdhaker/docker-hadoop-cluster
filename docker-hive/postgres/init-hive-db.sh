@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+if [ ! -f /apps/hostpath/postgres/.already_setup ]; then
+
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
 
   CREATE USER hive WITH PASSWORD 'hive';
@@ -29,3 +31,10 @@ WHERE tableowner = CURRENT_USER and schemaname = 'public';
   \i /tmp/grant-privs
 
 EOSQL
+
+  touch /apps/hostpath/postgres/.already_setup
+
+fi
+
+
+
