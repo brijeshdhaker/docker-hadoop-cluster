@@ -15,5 +15,10 @@ cd ${HIVE_HOME}/bin
 # Start Hive Server
 echo "Starting Hive Server ...."
 
-${HIVE_HOME}/bin/hiveserver2 --hiveconf hive.root.logger=INFO,console hive.server2.enable.doAs=false metastore.thrift.uris=thrift://hive-metastore:9083 	hive.metastore.uris=thrift://hive-metastore:9083 hive.metastore.uri.selection=SEQUENTIAL
+${HIVE_HOME}/bin/hiveserver2 --hiveconf hive.root.logger=INFO,console hive.server2.enable.doAs=false
 echo "Hive server successfully started ."
+
+# metastore.thrift.uris=thrift://hive-metastore:9083
+# hive.metastore.uris=thrift://hive-metastore:9083
+# hive.metastore.uri.selection=SEQUENTIAL
+
