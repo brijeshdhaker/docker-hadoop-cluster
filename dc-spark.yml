@@ -4,12 +4,26 @@
 
 version: '3.5'
 services:
+
 #
-  spark-master:
-    image: bde2020/spark-py:3.1.2
+  spark-base:
+    image: bde2020/spark-base:3.1.2
     build:
       context: .
-      dockerfile: docker-spark/Dockerfile
+      dockerfile: docker-spark/base/Dockerfile
+    container_name: spark-base
+    hostname: spark-base
+    env_file:
+      - docker-spark/spark.env
+    volumes:
+      - /apps/hostpath:/apps/hostpath
+
+#
+  spark-master:
+    image: bde2020/spark-master:3.1.2
+    build:
+      context: .
+      dockerfile: docker-spark/master/Dockerfile
     container_name: spark-master
     hostname: spark-master
     ports:
@@ -20,48 +34,47 @@ services:
     volumes:
       - /apps/hostpath:/apps/hostpath
     environment:
-      NODE_TYPE: MASTER
       WEBUI_PORT: 8080
 
-#
-  spark-node01:
-    image: bde2020/spark-py:3.1.2
-    container_name: spark-node01
-    hostname: spark-node01
+##
+  spark-worker01:
+    image: bde2020/spark-worker:3.1.2
+    build:
+      context: .
+      dockerfile: docker-spark/worker/Dockerfile
+    container_name: spark-worker01
+    hostname: spark-worker01
     depends_on:
       - spark-master
-    ports:
-      - "8081:8081"
     env_file:
       - docker-spark/spark.env
     volumes:
       - /apps/hostpath:/apps/hostpath
     environment:
-      NODE_TYPE: WORKER
-      WEBUI_PORT: 8081
+      WORKER_WEBUI_PORT: 8081
 
 #
-  spark-node02:
-    image: bde2020/spark-py:3.1.2
-    container_name: spark-node02
-    hostname: spark-node02
+  spark-worker02:
+    image: bde2020/spark-worker:3.1.2
+    container_name: spark-worker02
+    hostname: spark-worker02
     depends_on:
       - spark-master
-    ports:
-      - "8082:8082"
     env_file:
       - docker-spark/spark.env
     volumes:
       - /apps/hostpath:/apps/hostpath
     environment:
-      NODE_TYPE: WORKER
-      WEBUI_PORT: 8082
-
+      WORKER_WEBUI_PORT: 8081
 #
-  history-server:
-    image: bde2020/spark-py:3.1.2
+#
+  historyserver:
+    image: bde2020/history-server:3.1.2
+    build:
+      context: .
+      dockerfile: docker-spark/historyserver/Dockerfile
     container_name: history-server
-    hostname: history-server
+    hostname: historyserver
     depends_on:
       - spark-master
     ports:
@@ -70,8 +83,6 @@ services:
       - docker-spark/spark.env
     volumes:
       - /apps/hostpath:/apps/hostpath
-    environment:
-      NODE_TYPE: LOGSERVER
 
 #
 networks:

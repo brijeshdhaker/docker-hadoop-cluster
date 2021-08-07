@@ -1,4 +1,0 @@
-#!/bin/sh
-. /start-common.sh
-
-${SPARK_HOME}/bin/spark-class org.apache.spark.deploy.history.HistoryServer --properties-file ${SPARK_HOME}/conf/spark.logserver.conf
