@@ -7,7 +7,7 @@ services:
   # Zeppelin Notebook
   #
   zeppelin:
-    image: bde2020/zeppelin:0.9.0-hadoop3.2.1-java8
+    image: big-data/zeppelin:0.9.0-hadoop3.2.1-java8
     container_name: zeppelin
     build:
       context: .
@@ -23,4 +23,4 @@ services:
 #
 networks:
   default:
-    name: home.net
+    name: zeppelin.net

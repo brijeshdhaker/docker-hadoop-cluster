@@ -1,5 +1,5 @@
 #
-# docker build -t bde2020/hive-postgresql:3.1.2 -f Dockerfile .
+# docker build -t big-data/hive-postgresql:3.1.2 -f Dockerfile .
 #
 
 FROM postgres:9.5.3

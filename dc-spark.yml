@@ -7,7 +7,7 @@ services:
 
 #
   spark-base:
-    image: bde2020/spark-base:3.1.2
+    image: big-data/spark-base:3.1.2
     build:
       context: .
       dockerfile: docker-spark/base/Dockerfile
@@ -18,7 +18,7 @@ services:
 
 #
   spark-master:
-    image: bde2020/spark-master:3.1.2
+    image: big-data/spark-master:3.1.2
     build:
       context: .
       dockerfile: docker-spark/master/Dockerfile
@@ -36,7 +36,7 @@ services:
 
 ##
   spark-worker01:
-    image: bde2020/spark-worker:3.1.2
+    image: big-data/spark-worker:3.1.2
     build:
       context: .
       dockerfile: docker-spark/worker/Dockerfile
@@ -53,7 +53,7 @@ services:
 
 #
   spark-worker02:
-    image: bde2020/spark-worker:3.1.2
+    image: big-data/spark-worker:3.1.2
     container_name: spark-worker02
     hostname: spark-worker02
     depends_on:
@@ -67,7 +67,7 @@ services:
 #
 #
   spark-history:
-    image: bde2020/history-server:3.1.2
+    image: big-data/history-server:3.1.2
     build:
       context: .
       dockerfile: docker-spark/historyserver/Dockerfile
@@ -85,4 +85,4 @@ services:
 #
 networks:
   default:
-    name: home.net
+    name: spark.net

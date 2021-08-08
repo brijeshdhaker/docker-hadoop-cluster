@@ -6,7 +6,7 @@ version: '3.5'
 services:
 #
   minio:
-    image: bde2020/minio:latest
+    image: big-data/minio:latest
     build:
       context: .
       dockerfile: docker-minio/minio/Dockerfile
@@ -18,7 +18,7 @@ services:
 
 #
   minio-setup:
-    image: bde2020/minio-setup:latest
+    image: big-data/minio-setup:latest
     depends_on:
       - minio
     container_name: minio-setup
@@ -34,4 +34,4 @@ services:
 #
 networks:
   default:
-    name: home.net
+    name: minio.net

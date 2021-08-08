@@ -6,7 +6,7 @@ version: '3.5'
 services:
 #
   jupyternb:
-    image: bde2020/jupyternb:pyspark-3.2.1
+    image: big-data/jupyternb:pyspark-3.2.1
     build:
       context: .
       dockerfile: docker-jupyternb/Dockerfile

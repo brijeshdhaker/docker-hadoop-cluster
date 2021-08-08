@@ -1,9 +1,9 @@
 #
-# docker build -t bde2020/spark-master:3.1.2 -f ../../Dockerfile .
+# docker build -t big-data/spark-master:3.1.2 -f ../../Dockerfile .
 #
 
 #
-FROM bde2020/spark-base:3.1.2
+FROM big-data/spark-base:3.1.2
 
 #
 COPY docker-spark/historyserver/spark.logserver.conf $SPARK_HOME/conf/
