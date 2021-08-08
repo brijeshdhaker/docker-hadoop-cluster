@@ -1,8 +1,8 @@
 #
-# docker build -t bde2020/hive:3.1.2-postgresql-metastore -f Dockerfile .
+# docker build -t big-data/hive-base:3.2.1 -f Dockerfile .
 #
 
-FROM bde2020/hadoop-base:2.0.0-hadoop3.2.1-java8
+FROM big-data/hadoop-base:3.2.1
 #
 ARG hive_uid=1500
 

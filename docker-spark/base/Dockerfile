@@ -18,7 +18,7 @@ ENV SPARK_VERSION   3.1.2
 ENV SPARK_HOME      /opt/spark
 
 # Install Reuired
-RUN apt-get update && apt-get install -y --no-install-recommends wget net-tools curl netcat gnupg libsnappy-dev vim && \
+RUN apt-get update && apt-get install -y --no-install-recommends wget grep sed net-tools curl netcat gnupg libsnappy-dev vim && \
     rm ${SPARK_HOME}/jars/guava*.jar && \
 	apt-get clean && \
     rm -rf /var/lib/apt/lists/*

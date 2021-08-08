@@ -3,7 +3,7 @@ version: "3.5"
 services:
 #
   hive-postgresql:
-    image: bde2020/hive-postgresql:3.1.2
+    image: big-data/hive-postgresql:3.1.2
     build:
       context: .
       dockerfile: docker-hive/postgres/Dockerfile
@@ -24,7 +24,7 @@ services:
 
 #
   hive-metastore:
-    image: bde2020/hive:3.1.2-postgresql-metastore
+    image: big-data/hive:3.1.2
     build:
       context: .
       dockerfile: docker-hive/hive/Dockerfile
@@ -42,7 +42,7 @@ services:
 
 #
   hive-server:
-    image: bde2020/hive:3.1.2-postgresql-metastore
+    image: big-data/hive:3.1.2
     hostname: hive-server
     container_name: hive-server
     env_file:
@@ -64,4 +64,4 @@ volumes:
 #
 networks:
   default:
-     name: home.net
+     name: hive.net

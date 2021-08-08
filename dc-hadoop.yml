@@ -1,16 +1,16 @@
 version: "3.5"
 
 services:
-#
-#  hadoop-base:
-#    image: bde2020/hadoop-base:2.0.0-hadoop3.2.1-java8
-#    build:
-#      context: .
-#      dockerfile: docker-hadoop/base/Dockerfile
+  #
+  hadoop-base:
+    image: big-data/hadoop-base:3.2.1
+    build:
+      context: .
+      dockerfile: docker-hadoop/base/Dockerfile
 
-#
+  #
   namenode:
-    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    image: big-data/hadoop-namenode:3.2.1
     build:
       context: .
       dockerfile: docker-hadoop/namenode/Dockerfile
@@ -22,15 +22,14 @@ services:
       - "9000:9000"
     volumes:
       - /apps/hostpath:/apps/hostpath
-      - hadoop_namenode:/hadoop/dfs/name
     environment:
       - CLUSTER_NAME=test
     env_file:
       - docker-hadoop/hadoop.env
 
-#
+  #
   datanode:
-    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    image: big-data/hadoop-datanode:3.2.1
     build:
       context: .
       dockerfile: docker-hadoop/datanode/Dockerfile
@@ -42,15 +41,14 @@ services:
     restart: always
     volumes:
       - /apps/hostpath:/apps/hostpath
-      - hadoop_datanode:/hadoop/dfs/data
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
     env_file:
       - docker-hadoop/hadoop.env
 
-#
+  #
   resourcemanager:
-    image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.2.1-java8
+    image: big-data/hadoop-resourcemanager:3.2.1
     build:
       context: .
       dockerfile: docker-hadoop/resourcemanager/Dockerfile
@@ -66,9 +64,9 @@ services:
     env_file:
       - docker-hadoop/hadoop.env
 
-#
+  #
   nodemanager1:
-    image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.2.1-java8
+    image: big-data/hadoop-nodemanager:3.2.1
     build:
       context: .
       dockerfile: docker-hadoop/nodemanager/Dockerfile
@@ -84,22 +82,21 @@ services:
     env_file:
       - docker-hadoop/hadoop.env
 
-#
-  historyserver:
-    image: bde2020/hadoop-historyserver:2.0.0-hadoop3.2.1-java8
+  #
+  hadoop-historyserver:
+    image: big-data/hadoop-historyserver:3.2.1
     build:
       context: .
       dockerfile: docker-hadoop/historyserver/Dockerfile
-    container_name: historyserver
-    hostname: historyserver
+    container_name: hadoop-historyserver
+    hostname: hadoop-historyserver
     restart: always
     ports:
-      - "8188:8188"
+      - "19888:19888"
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
     volumes:
       - /apps/hostpath:/apps/hostpath
-      - hadoop_historyserver:/hadoop/yarn/timeline
     env_file:
       - docker-hadoop/hadoop.env
 
@@ -111,4 +108,4 @@ volumes:
 #
 networks:
   default:
-    name: home.net
+    name: hadoop.net

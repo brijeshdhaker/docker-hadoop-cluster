@@ -6,15 +6,15 @@ version: '3.5'
 services:
 
 #
-#  spark-base:
-#    image: bde2020/spark-base:3.1.2
-#    build:
-#      context: .
-#      dockerfile: docker-spark/base/Dockerfile
-#    container_name: spark-base
-#    hostname: spark-base
-#    env_file:
-#      - docker-spark/spark.env
+  spark-base:
+    image: bde2020/spark-base:3.1.2
+    build:
+      context: .
+      dockerfile: docker-spark/base/Dockerfile
+    container_name: spark-base
+    hostname: spark-base
+    env_file:
+      - docker-spark/spark.env
 
 #
   spark-master:
@@ -66,13 +66,13 @@ services:
       WORKER_WEBUI_PORT: 8081
 #
 #
-  historyserver:
+  spark-history:
     image: bde2020/history-server:3.1.2
     build:
       context: .
       dockerfile: docker-spark/historyserver/Dockerfile
-    container_name: history-server
-    hostname: historyserver
+    container_name: spark-history
+    hostname: spark-history
     depends_on:
       - spark-master
     ports:

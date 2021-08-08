@@ -23,7 +23,7 @@
 
     <property>
         <name>yarn.log.server.url</name>
-        <value>http://resourcemanager:19888/jobhistory/logs</value>
+        <value>http://hadoop-historyserver:19888/jobhistory/logs</value>
     </property>
 
     <property>
@@ -37,13 +37,13 @@
     </property>
 
     <property>
-        <name>yarn.scheduler.maximum-allocation-mb</name>
-        <value>4098</value>
+        <name>yarn.scheduler.minimum-allocation-mb</name>
+        <value>128</value>
     </property>
 
     <property>
-        <name>yarn.scheduler.minimum-allocation-mb</name>
-        <value>128</value>
+        <name>yarn.scheduler.maximum-allocation-mb</name>
+        <value>4098</value>
     </property>
 
     <property>
