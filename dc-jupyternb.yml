@@ -6,7 +6,7 @@ version: '3.5'
 services:
 #
   jupyternb:
-    image: big-data/jupyternb:pyspark-3.2.1
+    image: big-data/jupyternb:3.2.1
     build:
       context: .
       dockerfile: docker-jupyternb/Dockerfile
@@ -25,4 +25,4 @@ services:
 #
 networks:
   default:
-    name: home.net
+    name: jupyternb.net
