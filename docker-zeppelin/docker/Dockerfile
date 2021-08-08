@@ -1,5 +1,5 @@
 #
-# docker build -t big-data/zeppelin:0.10.0-hadoop3.2.1-java8 -f ../../Dockerfile .
+# docker build -t big-data/zeppelin:0.10.0 -f ../../Dockerfile .
 #
 
 FROM apache/zeppelin:0.9.0
