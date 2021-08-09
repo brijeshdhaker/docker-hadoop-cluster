@@ -34,4 +34,4 @@ services:
 #
 networks:
   default:
-    name: minio.net
+    name: bigdata.net

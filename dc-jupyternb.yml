@@ -25,4 +25,4 @@ services:
 #
 networks:
   default:
-    name: jupyternb.net
+    name: bigdata.net

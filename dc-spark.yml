@@ -85,4 +85,4 @@ services:
 #
 networks:
   default:
-    name: spark.net
+    name: bigdata.net
