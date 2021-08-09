@@ -1,14 +1,20 @@
 #!/bin/bash
 
-${HADOOP_HOME}/bin/hdfs dfs -rm -r /tmp
-${HADOOP_HOME}/bin/hdfs dfs -rm -r /user/hive/warehouse
-echo "HDFS dirs for hive successfully deleted ."
 
-${HADOOP_HOME}/bin/hdfs dfs -mkdir       /tmp
-${HADOOP_HOME}/bin/hdfs dfs -mkdir -p    /user/hive/warehouse
-${HADOOP_HOME}/bin/hdfs dfs -mkdir g+w   /tmp
-${HADOOP_HOME}/bin/hdfs dfs -chmod g+w   /user/hive/warehouse
-echo "HDFS dirs for hive successfully created ."
+if [ ! -f /apps/hostpath/hive/.already_setup ]; then
+
+  ${HADOOP_HOME}/bin/hdfs dfs -mkdir       /tmp
+  ${HADOOP_HOME}/bin/hdfs dfs -mkdir -p    /user/hive/warehouse
+  echo "HDFS dirs for hive successfully created ."
+
+  ${HADOOP_HOME}/bin/hdfs dfs -mkdir g+w   /tmp
+  ${HADOOP_HOME}/bin/hdfs dfs -chmod g+w   /user/hive/warehouse
+  echo "HDFS dirs permissions successfully updated."
+
+  touch /apps/hostpath/hive/.already_setup
+
+fi
+
 
 cd ${HIVE_HOME}/bin
 
