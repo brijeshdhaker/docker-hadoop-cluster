@@ -95,7 +95,9 @@ presto> select * from pokes;
 #
 #
 #
+
 show databases;
+
 CREATE DATABASE IF NOT EXISTS SPARK_APPS;
 
 CREATE TABLE IF NOT EXISTS SPARK_APPS.employee (
