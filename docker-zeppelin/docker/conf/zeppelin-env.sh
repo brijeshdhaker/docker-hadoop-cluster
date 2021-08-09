@@ -16,9 +16,9 @@
 # limitations under the License.
 #
 
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-export USE_HADOOP=true                          # Whether include hadoop jars into zeppelin server process. (true or false)
-export SPARK_MASTER=yarn                        # Spark master url. eg. spark://master_addr:7077. Leave empty if you want to use local mode.
+# export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+# export USE_HADOOP=true                          # Whether include hadoop jars into zeppelin server process. (true or false)
+# export SPARK_MASTER=yarn                        # Spark master url. eg. spark://master_addr:7077. Leave empty if you want to use local mode.
 # export ZEPPELIN_ADDR                          # Bind address (default 127.0.0.1)
 export ZEPPELIN_PORT=9090                       # port number to listen (default 8080)
 # export ZEPPELIN_LOCAL_IP                      # Zeppelin's thrift server ip address, if not specified, one random IP address will be choosen.
@@ -89,8 +89,8 @@ export SPARK_CONF_DIR=${SPARK_HOME}/conf        # (optional) In the zeppelin int
 export HADOOP_CONF_DIR=/opt/hadoop-3.2.1/etc/hadoop                        # yarn-site.xml is located in configuration directory in HADOOP_CONF_DIR.
 # Pyspark (supported with Spark 1.2.1 and above)
 # To configure pyspark, you need to set spark distribution's path to 'spark.home' property in Interpreter setting screen in Zeppelin GUI
-export PYSPARK_PYTHON=/opt/conda/bin/python                         # path to the python command. must be the same path on the driver(Zeppelin) and all workers.
-export PYTHONPATH=python3
+#export PYSPARK_PYTHON=/opt/conda/bin/python                         # path to the python command. must be the same path on the driver(Zeppelin) and all workers.
+#export PYTHONPATH=python3
 
 ## Spark interpreter options ##
 ##
@@ -104,8 +104,8 @@ export PYTHONPATH=python3
 
 ## To connect to HBase running on a cluster, either HBASE_HOME or HBASE_CONF_DIR must be set
 
-export HBASE_HOME=/opt/hbase                    # (require) Under which HBase scripts and configuration should be
-export HBASE_CONF_DIR=$HBASE_HOME/conf                # (optional) Alternatively, configuration directory can be set to point to the directory that has hbase-site.xml
+# export HBASE_HOME=/opt/hbase                    # (require) Under which HBase scripts and configuration should be
+# export HBASE_CONF_DIR=$HBASE_HOME/conf                # (optional) Alternatively, configuration directory can be set to point to the directory that has hbase-site.xml
 
 #### ZeppelinHub connection configuration ####
 # export ZEPPELINHUB_API_ADDRESS                # Refers to the address of the ZeppelinHub service in use

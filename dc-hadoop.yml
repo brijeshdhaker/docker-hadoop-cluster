@@ -92,7 +92,7 @@ services:
     hostname: hadoop-historyserver
     restart: always
     ports:
-      - "19888:19888"
+      - "8188:8188"
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
     volumes:

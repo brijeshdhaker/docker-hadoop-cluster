@@ -12,6 +12,8 @@ numpy
 matplotlib
 pyarrow
 flake8
+protobuf
+grpcio
 
 # Python Testing
 #pytest
