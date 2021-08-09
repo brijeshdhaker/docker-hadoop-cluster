@@ -100,6 +100,8 @@ show databases;
 
 CREATE DATABASE IF NOT EXISTS SPARK_APPS;
 
+DROP DATABASE [IF EXISTS] database_name [RESTRICT|CASCADE];
+
 CREATE TABLE IF NOT EXISTS SPARK_APPS.employee (
 id int,
 name string,

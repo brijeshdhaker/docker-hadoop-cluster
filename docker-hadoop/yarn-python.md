@@ -74,7 +74,7 @@ Specify the following properties to enable yarn mode for python interpreter, and
 
 ```
 zeppelin.interpreter.launcher yarn
-zeppelin.yarn.dist.archives /home/hadoop/python_3.tar.gz#environment
+zeppelin.yarn.dist.archives /apps/hostpath/uploads/python-3.7.10-venv.tar.gz#environment
 zeppelin.interpreter.conda.env.name environment
 ```
 
