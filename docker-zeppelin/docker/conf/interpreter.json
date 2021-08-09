@@ -2494,6 +2494,21 @@
           "name": "zeppelin.interpreter.yarn.queue",
           "value": "default",
           "type": "string"
+        },
+        "zeppelin.interpreter.launcher": {
+          "name": "zeppelin.interpreter.launcher",
+          "value": "yarn",
+          "type": "string"
+        },
+        "zeppelin.yarn.dist.archives": {
+          "name": "zeppelin.yarn.dist.archives",
+          "value": "/spark/archive/python-3.7.10-venv.tar.gz#environment",
+          "type": "string"
+        },
+        "zeppelin.interpreter.conda.env.name": {
+          "name": "zeppelin.interpreter.conda.env.name",
+          "value": "environment",
+          "type": "string"
         }
       },
       "status": "READY",
@@ -2826,6 +2841,21 @@
         "zeppelin.interpreter.yarn.queue": {
           "name": "zeppelin.interpreter.yarn.queue",
           "value": "default",
+          "type": "string"
+        },
+        "zeppelin.interpreter.launcher": {
+          "name": "zeppelin.interpreter.launcher",
+          "value": "yarn",
+          "type": "string"
+        },
+        "zeppelin.yarn.dist.archives": {
+          "name": "zeppelin.yarn.dist.archives",
+          "value": "/spark/archive/python-3.7.10-venv.tar.gz#environment",
+          "type": "string"
+        },
+        "zeppelin.interpreter.conda.env.name": {
+          "name": "zeppelin.interpreter.conda.env.name",
+          "value": "environment",
           "type": "string"
         }
       },
