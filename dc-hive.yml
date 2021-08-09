@@ -39,6 +39,8 @@ services:
       - hive-postgresql
     ports:
       - "9083:9083"
+    volumes:
+      - /apps/hostpath:/apps/hostpath
 
 #
   hive-server:
@@ -55,6 +57,8 @@ services:
     ports:
       - "10000:10000"
       - "10002:10002"
+    volumes:
+      - /apps/hostpath:/apps/hostpath
 
 #
 volumes:
