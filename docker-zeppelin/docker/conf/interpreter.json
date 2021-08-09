@@ -435,7 +435,7 @@
         },
         "PYSPARK_PYTHON": {
           "name": "PYSPARK_PYTHON",
-          "value": "python3",
+          "value": "./environment/bin/python",
           "type": "string",
           "description": "Python binary executable to use for PySpark in both driver and workers (default is python2.7 if available, otherwise python). Property `spark.pyspark.python` take precedence if it is set"
         },
@@ -510,6 +510,16 @@
           "name": "zeppelin.yarn.dist.archives",
           "value": "/spark/archive/python-3.7.10-venv.tar.gz#environment",
           "type": "textarea"
+        },
+        "zeppelin.interpreter.launcher": {
+          "name": "zeppelin.interpreter.launcher",
+          "value": "yarn",
+          "type": "string"
+        },
+        "spark.archives": {
+          "name": "spark.archives",
+          "value": "hdfs://namenode:9000/spark/archive/python-3.7.10-venv.tar.gz#environment",
+          "type": "string"
         }
       },
       "status": "READY",
@@ -4087,7 +4097,7 @@
         },
         "PYSPARK_PYTHON": {
           "name": "PYSPARK_PYTHON",
-          "value": "python",
+          "value": "./environment/bin/python",
           "type": "string",
           "description": "Python binary executable to use for PySpark in both driver and workers (default is python2.7 if available, otherwise python). Property `spark.pyspark.python` take precedence if it is set"
         },
