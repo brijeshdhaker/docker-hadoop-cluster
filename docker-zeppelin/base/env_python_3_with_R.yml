@@ -7,20 +7,24 @@ dependencies:
   - pycodestyle
   - scipy
   - numpy=1.19.5
+  - pandas
+  - pandasql
   - grpcio
   - protobuf
-  - pandasql
   - ipython
   - ipykernel
   - jupyter_client
-  - hvplot
-  - plotnine
+  - panel
+  - pyyaml
   - seaborn
+  - plotnine
+  - hvplot
   - intake
   - intake-parquet
   - intake-xarray
   - altair
   - vega_datasets
+  - pyarrow
   - plotly
   - pip
   - r-base=3

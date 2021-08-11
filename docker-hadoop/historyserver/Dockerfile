@@ -8,6 +8,7 @@ ENV YARN_CONF_yarn_timeline___service_leveldb___timeline___store_path=/apps/host
 
 RUN mkdir -p /apps/hostpath/hadoop/yarn/timeline
 
+COPY docker-hadoop/historyserver/hadoop-env.sh $HADOOP_HOME/etc/hadoop/hadoop-env.sh
 ADD docker-hadoop/historyserver/run.sh /run.sh
 RUN chmod a+x /run.sh
 
