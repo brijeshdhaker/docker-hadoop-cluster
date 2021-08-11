@@ -1,4 +1,5 @@
 #!/bin/sh
+
 # We set this so that we see all the executed lines in the console
 set -x
 # We'll run this function in case we want to upload data to the MinIO container
