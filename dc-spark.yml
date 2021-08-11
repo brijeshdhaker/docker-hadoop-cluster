@@ -1,0 +1,88 @@
+# docker-compose build
+# docker-compose up -d
+# docker-compose scale nodemanager=X; # X=integer number --> allows to add more nodes to the hadoop cluster for testing
+
+version: '3.5'
+services:
+
+#
+  spark-base:
+    image: big-data/spark-base:3.1.2
+    build:
+      context: .
+      dockerfile: docker-spark/base/Dockerfile
+    container_name: spark-base
+    hostname: spark-base
+    env_file:
+      - docker-spark/spark.env
+
+#
+  spark-master:
+    image: big-data/spark-master:3.1.2
+    build:
+      context: .
+      dockerfile: docker-spark/master/Dockerfile
+    container_name: spark-master
+    hostname: spark-master
+    ports:
+      - "7077:7077"
+      - "8080:8080"
+    env_file:
+      - docker-spark/spark.env
+    volumes:
+      - /apps/hostpath:/apps/hostpath
+    environment:
+      WEBUI_PORT: 8080
+
+##
+  spark-worker01:
+    image: big-data/spark-worker:3.1.2
+    build:
+      context: .
+      dockerfile: docker-spark/worker/Dockerfile
+    container_name: spark-worker01
+    hostname: spark-worker01
+    depends_on:
+      - spark-master
+    env_file:
+      - docker-spark/spark.env
+    volumes:
+      - /apps/hostpath:/apps/hostpath
+    environment:
+      WORKER_WEBUI_PORT: 8081
+
+#
+  spark-worker02:
+    image: big-data/spark-worker:3.1.2
+    container_name: spark-worker02
+    hostname: spark-worker02
+    depends_on:
+      - spark-master
+    env_file:
+      - docker-spark/spark.env
+    volumes:
+      - /apps/hostpath:/apps/hostpath
+    environment:
+      WORKER_WEBUI_PORT: 8081
+#
+#
+  spark-historyserver:
+    image: big-data/history-server:3.1.2
+    build:
+      context: .
+      dockerfile: docker-spark/historyserver/Dockerfile
+    container_name: spark-historyserver
+    hostname: spark-historyserver
+    depends_on:
+      - spark-master
+    ports:
+      - "18080:18080"
+    env_file:
+      - docker-spark/spark.env
+    volumes:
+      - /apps/hostpath:/apps/hostpath
+
+#
+networks:
+  default:
+    name: bigdata.net

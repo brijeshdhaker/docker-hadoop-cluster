@@ -1,0 +1,28 @@
+#
+# docker-compose -H tcp://raspberry:2375 -f dc-jupyternb.yml up -d
+#
+version: '3.5'
+#
+services:
+#
+  jupyternb:
+    image: big-data/jupyternb:3.2.1
+    build:
+      context: .
+      dockerfile: docker-jupyternb/Dockerfile
+    container_name: jupyternb
+    hostname: jupyternb
+    ports:
+      - "8888:8888"
+      - "7777:7777"
+      - "2222:2222"
+    volumes:
+      - /apps/hostpath/notebook:/home/notebook
+      - /apps/hostpath:/apps/hostpath
+    environment:
+      KUBECONFIG: /home/notebook/.kube/config
+#
+#
+networks:
+  default:
+    name: bigdata.net

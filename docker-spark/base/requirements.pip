@@ -1,0 +1,29 @@
+#
+#sparkmonitor==1.1.1
+pyspark==3.1.2
+
+# Data Analysis
+matplotlib
+pandas
+numpy
+pyarrow
+flake8
+protobuf
+grpcio
+
+# Python Testing
+#pytest
+#requests
+#certifi
+#jellyfish
+#vertica-python
+
+# Streaming
+#confluent-kafka
+#venv-pack
+
+# Machine Learning
+#seaborn
+#keras
+#tensorflow
+#sklearn
