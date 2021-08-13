@@ -1,5 +1,5 @@
 #
-# $ ./bin/docker-image-tool.sh -t latest -p ./kubernetes/dockerfiles/spark/bindings/python/Dockerfile build
+# $ ./bin/docker-image-tool.sh -t 3.1.2 -p ./kubernetes/dockerfiles/spark/bindings/python/Dockerfile build
 # $ docker build -t spark-py:3.1.2-latest -f Dockerfile .
 # $ docker tag spark-py:3.1.2-latest brijeshdhaker/spark-py:3.1.2-latest
 #
