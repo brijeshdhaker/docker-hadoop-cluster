@@ -14,22 +14,24 @@ services:
       - docker-minio/minio.env
     ports:
       - "9000:9000"
-    command: server /data
+      - "40000:40000"
+    command: server /apps/hostpath/minio --console-address 0.0.0.0:40000
+    volumes:
+      - /apps/hostpath:/apps/hostpath
 
 #
+  #
   minio-setup:
-    image: big-data/minio-setup:latest
+    image: big-data/mc:latest
+    build:
+      context: .
+      dockerfile: docker-minio/mc/Dockerfile
     depends_on:
       - minio
     container_name: minio-setup
     env_file:
       - docker-minio/minio.env
-    volumes:
-      # In case you have your own data to mount
-      - docker-minio/minio/setup.sh:/setup.sh
     entrypoint: /setup.sh
-
-#
 
 #
 networks:

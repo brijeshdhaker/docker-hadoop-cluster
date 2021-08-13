@@ -8,7 +8,6 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
 
 #
 ENV HADOOP_VERSION  3.2.1
-#
 ENV BASE_DIR 		/opt
 ENV JAVA_HOME       /usr/lib/jvm/java-8-openjdk-amd64/
 ENV HADOOP_HOME		$BASE_DIR/hadoop-3.2.1

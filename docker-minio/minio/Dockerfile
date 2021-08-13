@@ -1,12 +1,4 @@
 #
-#
-#
-
-#
-FROM minio/mc:latest
+FROM minio/minio:latest
 #
 RUN microdnf install wget
-#
-COPY docker-minio/minio/users.parquet /users.parquet
-
-#

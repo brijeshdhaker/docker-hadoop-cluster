@@ -6,6 +6,7 @@ FROM apache/zeppelin:0.10.0
 
 #
 ENV BASE_DIR 		/opt
+#ENV JAVA_HOME       /usr/lib/jvm/java-8-openjdk-arm64
 ENV JAVA_HOME       /usr/lib/jvm/java-8-openjdk-amd64
 ENV HADOOP_HOME		$BASE_DIR/hadoop-3.2.1
 ENV SPARK_HOME 	    $BASE_DIR/spark-3.1.2
@@ -15,8 +16,6 @@ ENV PATH			$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$SPARK_HOME/bin:$SPARK_HOME/
 #
 ADD resources/tars/hadoop-3.2.1.tar.gz ${BASE_DIR}/
 ADD resources/tars/spark-3.1.2-bin-hadoop3.2.tgz ${BASE_DIR}/
-#ADD resources/tars/zeppelin-0.10.0.tar.gz ${BASE_DIR}/
-
 
 USER root
 
