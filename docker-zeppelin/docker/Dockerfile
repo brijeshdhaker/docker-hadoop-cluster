@@ -16,8 +16,6 @@ ENV PATH			$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$SPARK_HOME/bin:$SPARK_HOME/
 #
 ADD resources/tars/hadoop-3.2.1.tar.gz ${BASE_DIR}/
 ADD resources/tars/spark-3.1.2-bin-hadoop3.2.tgz ${BASE_DIR}/
-#ADD resources/tars/zeppelin-0.10.0.tar.gz ${BASE_DIR}/
-
 
 USER root
 
