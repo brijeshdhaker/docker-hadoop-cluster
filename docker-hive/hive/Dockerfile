@@ -1,8 +1,8 @@
 #
-# docker build -t big-data/hive-base:3.2.1 -f Dockerfile .
+# docker build -t brijeshdhaker/hive-base:3.2.1 -f Dockerfile .
 #
 
-FROM big-data/hadoop-base:3.2.1
+FROM brijeshdhaker/hadoop-base:3.2.1
 #
 ARG hive_uid=1500
 

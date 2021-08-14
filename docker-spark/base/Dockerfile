@@ -1,7 +1,7 @@
 #
 # $ ./bin/docker-image-tool.sh -t 3.1.2 -p ./kubernetes/dockerfiles/spark/bindings/python/Dockerfile build
-# $ docker build -t big-data/spark-base:3.1.2 -f Dockerfile ../../
-# $ docker tag big-data/spark-base:3.1.2 brijeshdhaker/spark-base:3.1.2
+# $ docker build -t brijeshdhaker/spark-base:3.1.2 -f Dockerfile ../../
+# $ docker tag brijeshdhaker/spark-base:3.1.2 brijeshdhaker/spark-base:3.1.2
 #
 #
 
