@@ -1,5 +1,5 @@
 #Hadoop Configurations
-export HADOOP_HOME=/apps/hadoop-3.2.1
+export HADOOP_HOME=/opt/hadoop-3.2.1
 export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
 export HADOOP_MAPRED_HOME=${HADOOP_HOME}
 export HADOOP_COMMON_HOME=${HADOOP_HOME}
@@ -8,7 +8,7 @@ export YARN_HOME=${HADOOP_HOME}
 export PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin
 
 #Hive Configurations
-export HIVE_HOME=/apps/hive-3.1.2
+export HIVE_HOME=/opt/hive-3.1.2
 export PATH=$PATH:$HIVE_HOME/sbin:$HIVE_HOME/bin
 export CLASSPATH=$CLASSPATH:$HADOOP_HOME/lib/*:$HIVE_HOME/lib/*
 
@@ -22,7 +22,7 @@ echo "GRANT ALL PRIVILEGES ON DATABASE hive_store TO hive_admin;" | psql -U post
 #
 #
 #
-export HADOOP_HOME=/apps/hadoop-3.2.1
+export HADOOP_HOME=/opt/hadoop-3.2.1
 $HADOOP_HOME/bin/hdfs dfs -mkdir -p /user/hive/warehouse
 $HADOOP_HOME/bin/hdfs dfs -mkdir -p /user/tmp
 $HADOOP_HOME/bin/hdfs dfs -chmod g+w /user/tmp
@@ -35,10 +35,6 @@ cd $HIVE_HOME
 $ bin/schematool -initSchema -dbType postgres
 
 $ bin/hive --version
-
-$ bin/hive --version
-
-
 
 #
 #
@@ -72,7 +68,7 @@ https://cwiki.apache.org/confluence/display/Hive/Home#Home-HiveDocumentation
 #
 # Linux 
 #
-export SPARK_HOME=/apps/spark-3.1.2
+export SPARK_HOME=/opt/spark-3.1.2
 $SPARK_HOME/bin/beeline -u jdbc:hive2://192.168.0.100:10000 scott tiger
 
 #

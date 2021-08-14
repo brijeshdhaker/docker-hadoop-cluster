@@ -3,7 +3,7 @@ version: "3.5"
 services:
 #
   hive-postgresql:
-    image: big-data/hive-postgresql:3.1.2
+    image: brijeshdhaker/hive-postgresql:3.1.2
     build:
       context: .
       dockerfile: docker-hive/postgres/Dockerfile
@@ -24,7 +24,7 @@ services:
 
 #
   hive-metastore:
-    image: big-data/hive:3.1.2
+    image: brijeshdhaker/hive:3.1.2
     build:
       context: .
       dockerfile: docker-hive/hive/Dockerfile
@@ -44,7 +44,7 @@ services:
 
 #
   hive-server:
-    image: big-data/hive:3.1.2
+    image: brijeshdhaker/hive:3.1.2
     hostname: hive-server
     container_name: hive-server
     env_file:

@@ -6,7 +6,7 @@ version: '3.5'
 services:
 #
   minio:
-    image: big-data/minio:latest
+    image: brijeshdhaker/minio:latest
     build:
       context: .
       dockerfile: docker-minio/minio/Dockerfile
@@ -22,7 +22,7 @@ services:
 #
   #
   minio-setup:
-    image: big-data/mc:latest
+    image: brijeshdhaker/mc:latest
     build:
       context: .
       dockerfile: docker-minio/mc/Dockerfile

@@ -6,7 +6,7 @@ version: '3.5'
 services:
 #
   jupyternb:
-    image: big-data/jupyternb:3.2.1
+    image: brijeshdhaker/jupyternb:3.2.1
     build:
       context: .
       dockerfile: docker-jupyternb/Dockerfile

@@ -7,7 +7,7 @@ services:
   # Zeppelin Notebook
   #
   zeppelin:
-    image: big-data/zeppelin:0.10.0
+    image: brijeshdhaker/zeppelin:0.10.0
     container_name: zeppelin
     build:
       context: .

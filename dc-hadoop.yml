@@ -3,14 +3,14 @@ version: "3.5"
 services:
   #
   hadoop-base:
-    image: big-data/hadoop-base:3.2.1
+    image: brijeshdhaker/hadoop-base:3.2.1
     build:
       context: .
       dockerfile: docker-hadoop/base/Dockerfile
 
   #
   namenode:
-    image: big-data/hadoop-namenode:3.2.1
+    image: brijeshdhaker/hadoop-namenode:3.2.1
     build:
       context: .
       dockerfile: docker-hadoop/namenode/Dockerfile
@@ -29,7 +29,7 @@ services:
 
   #
   datanode:
-    image: big-data/hadoop-datanode:3.2.1
+    image: brijeshdhaker/hadoop-datanode:3.2.1
     build:
       context: .
       dockerfile: docker-hadoop/datanode/Dockerfile
@@ -48,7 +48,7 @@ services:
 
   #
   resourcemanager:
-    image: big-data/hadoop-resourcemanager:3.2.1
+    image: brijeshdhaker/hadoop-resourcemanager:3.2.1
     build:
       context: .
       dockerfile: docker-hadoop/resourcemanager/Dockerfile
@@ -66,7 +66,7 @@ services:
 
   #
   nodemanager1:
-    image: big-data/hadoop-nodemanager:3.2.1
+    image: brijeshdhaker/hadoop-nodemanager:3.2.1
     build:
       context: .
       dockerfile: docker-hadoop/nodemanager/Dockerfile
@@ -84,7 +84,7 @@ services:
 
   #
   hadoop-historyserver:
-    image: big-data/hadoop-historyserver:3.2.1
+    image: brijeshdhaker/hadoop-historyserver:3.2.1
     build:
       context: .
       dockerfile: docker-hadoop/historyserver/Dockerfile
