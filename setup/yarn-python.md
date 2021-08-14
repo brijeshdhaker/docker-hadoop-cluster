@@ -52,7 +52,7 @@ dependencies:
 
 ```bash
 
-conda env create -f env_python_3.yml
+conda env create -f venv_zeppelin.yml
 ```
 
 ```bash
