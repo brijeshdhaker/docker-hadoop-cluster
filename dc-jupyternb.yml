@@ -17,7 +17,7 @@ services:
       - "7777:7777"
       - "2222:2222"
     volumes:
-      - /apps/hostpath/notebook:/home/notebook
+      - /apps/hostpath/python/notebook:/home/notebook
       - /apps/hostpath:/apps/hostpath
     environment:
       KUBECONFIG: /home/notebook/.kube/config
