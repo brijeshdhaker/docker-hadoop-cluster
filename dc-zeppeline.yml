@@ -16,7 +16,6 @@ services:
       - docker-zeppelin/zeppelin.env
     ports:
       - "9090:9090"
-      - "4040:4040"
     volumes:
       - /apps/hostpath:/apps/hostpath
 
