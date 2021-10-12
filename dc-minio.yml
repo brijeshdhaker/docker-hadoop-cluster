@@ -17,7 +17,9 @@ services:
       - "40000:40000"
     command: server /apps/hostpath/minio --console-address 0.0.0.0:40000
     volumes:
+      - /apps/hostpath/minio/data:/data
       - /apps/hostpath:/apps/hostpath
+
 
 #
   #
