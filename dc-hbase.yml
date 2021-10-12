@@ -1,0 +1,50 @@
+version: "3.5"
+#
+services:
+#
+  zookeeper:
+    image: zookeeper:3.4.10
+    container_name: zookeeper
+    hostname: zookeeper
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=0.0.0.0:2888:3888
+    ports:
+      - 2181:2181
+#
+  hbase-master:
+    image: brijeshdhaker/hbase-master:2.4.6
+    build:
+      context: .
+      dockerfile: docker-hbase/hmaster/Dockerfile
+    hostname: hbase
+    container_name: hbase
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 zookeeper:2181"
+    env_file:
+      - docker-hbase/hbase-distributed.env
+    ports:
+      - 16010:16010
+    volumes:
+      - /apps/hostpath:/apps/hostpath
+
+#
+  hbase-region:
+    image: brijeshdhaker/hbase-standalone:2.4.6
+    build:
+      context: .
+      dockerfile: docker-hbase/hregionserver/Dockerfile
+    container_name: hbase-regionserver
+    hostname: hbase-regionserver
+    env_file:
+      - docker-hbase/hbase-distributed.env
+    environment:
+      HBASE_CONF_hbase_regionserver_hostname: hbase-region
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 zookeeper:2181 hbase-master:16010"
+    ports:
+      - 16030:16030
+
+#
+networks:
+  default:
+     name: bigdata.net
