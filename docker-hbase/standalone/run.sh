@@ -1,4 +1,7 @@
 #!/bin/bash
 
-/opt/hbase-$HBASE_VERSION/bin/start-hbase.sh
-tail -f /opt/hbase-$HBASE_VERSION/logs/*
+#
+${HBASE_HOME}/bin/start-hbase.sh
+
+#
+tail -f ${HBASE_HOME}/logs/*

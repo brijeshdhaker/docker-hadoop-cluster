@@ -11,14 +11,19 @@ services:
       ZOO_SERVERS: server.1=0.0.0.0:2888:3888
     ports:
       - 2181:2181
+    volumes:
+      - "/apps/hostpath:/apps/hostpath"
+      - "/apps/hostpath/hbase/zookeeper-dist:/data"
+      - "/apps/hostpath/hbase/zookeeper-log:/datalog"
+
 #
   hbase-master:
     image: brijeshdhaker/hbase-master:2.4.6
     build:
       context: .
       dockerfile: docker-hbase/hmaster/Dockerfile
-    hostname: hbase
-    container_name: hbase
+    hostname: hbase-master
+    container_name: hbase-master
     environment:
       SERVICE_PRECONDITION: "namenode:9870 datanode:9864 zookeeper:2181"
     env_file:
@@ -26,11 +31,11 @@ services:
     ports:
       - 16010:16010
     volumes:
-      - /apps/hostpath:/apps/hostpath
+      - "/apps/hostpath:/apps/hostpath"
 
 #
   hbase-region:
-    image: brijeshdhaker/hbase-standalone:2.4.6
+    image: brijeshdhaker/hbase-regionserver:2.4.6
     build:
       context: .
       dockerfile: docker-hbase/hregionserver/Dockerfile
@@ -43,6 +48,8 @@ services:
       SERVICE_PRECONDITION: "namenode:9870 datanode:9864 zookeeper:2181 hbase-master:16010"
     ports:
       - 16030:16030
+    volumes:
+      - "/apps/hostpath:/apps/hostpath"
 
 #
 networks:

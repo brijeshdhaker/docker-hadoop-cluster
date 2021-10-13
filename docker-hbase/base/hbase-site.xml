@@ -1,4 +1,30 @@
 <configuration>
 
+    <!--
+    <property>
+        <name>hbase.rootdir</name>
+        <value>file:///user/hbase/data</value>
+    </property>
+
+    <property>
+        <name>hbase.zookeeper.property.dataDir</name>
+        <value>file:///user/hbase/zookeeper</value>
+    </property>
+
+    <property>
+        <name>hbase.master.info.bindAddress</name>
+        <value>hbase-docker</value>
+    </property>
+
+    <property>
+        <name>hbase.regionserver.info.bindAddress</name>
+        <value>hbase-docker</value>
+    </property>
+
+    <property>
+        <name>hbase.zookeeper.property.clientPort</name>
+        <value>10231</value>
+    </property>
+    -->
 
 </configuration>
