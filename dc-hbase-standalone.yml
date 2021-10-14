@@ -11,7 +11,6 @@ services:
     hostname: hbase
     volumes:
       - "/apps/hostpath:/apps/hostpath"
-      - "/apps/hostpath/hbase/zookeeper:/zookeeper"
     ports:
       - 16000:16000
       - 16010:16010

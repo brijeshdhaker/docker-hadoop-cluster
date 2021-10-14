@@ -9,12 +9,14 @@ services:
     environment:
       ZOO_MY_ID: 1
       ZOO_SERVERS: server.1=0.0.0.0:2888:3888
+      ZOO_DATA_DIR: /apps/hostpath/hbase/zookeeper-distributed
+      ZOO_DATA_LOG_DIR: /apps/hostpath/hbase/zookeeper-log
     ports:
       - 2181:2181
     volumes:
       - "/apps/hostpath:/apps/hostpath"
-      - "/apps/hostpath/hbase/zookeeper-dist:/data"
-      - "/apps/hostpath/hbase/zookeeper-log:/datalog"
+#      - "/apps/hostpath/hbase/zookeeper-distributed:/data"
+#      - "/apps/hostpath/hbase/zookeeper-log:/datalog"
 
 #
   hbase-master:
