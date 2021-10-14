@@ -59,6 +59,7 @@ services:
       - "10002:10002"
     volumes:
       - /apps/hostpath:/apps/hostpath
+      - /opt/hbase-2.4.6:/opt/hbase-2.4.6
 
 #
 volumes:

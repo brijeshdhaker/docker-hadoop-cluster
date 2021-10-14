@@ -46,15 +46,11 @@ COPY resources/libs/guava-27.0-jre.jar $HIVE_HOME/lib/
 #hive-site.xml should be copied to $SPARK_HOME/conf folder
 
 #Custom configuration goes here
-ADD docker-hive/hive/conf/hive-site.xml $HIVE_HOME/conf
-ADD docker-hive/hive/conf/beeline-log4j2.properties $HIVE_HOME/conf
-ADD docker-hive/hive/conf/hive-env.sh $HIVE_HOME/conf
-ADD docker-hive/hive/conf/hive-exec-log4j2.properties $HIVE_HOME/conf
-ADD docker-hive/hive/conf/hive-log4j2.properties $HIVE_HOME/conf
-ADD docker-hive/hive/conf/ivysettings.xml $HIVE_HOME/conf
-ADD docker-hive/hive/conf/llap-daemon-log4j2.properties $HIVE_HOME/conf
+COPY docker-hive/hive/conf $HIVE_HOME/conf
 
+#
 COPY docker-hive/hive/startup.sh /usr/local/bin/
+
 RUN chmod +x /usr/local/bin/startup.sh
 
 COPY docker-hive/hive/entrypoint.sh /usr/local/bin/
