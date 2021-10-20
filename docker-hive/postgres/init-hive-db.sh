@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-if [ ! -f /apps/hostpath/postgres/.already_setup ]; then
+if [ ! -f /apps/hostpath/postgres/hive-3.1.2/.already_setup ]; then
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
 
@@ -17,7 +17,6 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
 
   \i /hive/hive-schema-3.1.0.postgres.sql
 
-
   \pset tuples_only
 
   \o /tmp/grant-privs
@@ -32,7 +31,7 @@ WHERE tableowner = CURRENT_USER and schemaname = 'public';
 
 EOSQL
 
-  touch /apps/hostpath/postgres/.already_setup
+  touch /apps/hostpath/postgres/hive-3.1.2/.already_setup
 
 fi
 

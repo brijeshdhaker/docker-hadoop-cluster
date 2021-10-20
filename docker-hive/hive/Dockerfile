@@ -1,5 +1,5 @@
 #
-# docker build -t brijeshdhaker/hive-base:3.2.1 -f Dockerfile .
+# docker build -t brijeshdhaker/hive-base:3.1.2 -f docker-hive/hive/Dockerfile .
 #
 
 FROM brijeshdhaker/hadoop-base:3.2.1
@@ -23,7 +23,7 @@ ENV PATH			$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$SPARK_HOME/bin:$SPARK_HOME/
 
 USER root
 
-WORKDIR ${BASE_DIR}
+WORKDIR ${HIVE_HOME}
 
 ADD resources/tars/apache-hive-${HIVE_VERSION}-bin.tar.gz /opt
 

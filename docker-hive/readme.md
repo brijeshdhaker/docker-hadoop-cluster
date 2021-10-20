@@ -37,9 +37,16 @@ $ bin/schematool -initSchema -dbType postgres
 $ bin/hive --version
 
 #
+# HIVE ON HDP
+#
+$HIVE_HOME/bin/beeline -u jdbc:hive2://sandbox-hdp.hortonworks.com:10000 -n hive -p hive
+
+
 #
 #
-bin/beeline -u jdbc:hive2:// -n scott -p tiger
+#
+$HIVE_HOME/bin/beeline -u jdbc:hive2:// -n scott -p tiger
+
 
 $HIVE_HOME/bin/hiveserver2
 
@@ -57,6 +64,8 @@ bin/beeline -u jdbc:hive2:// scott tiger
 #
 # Remote 
 #
+$HIVE_HOME/bin/beeline
+
 beeline>!connect jdbc:hive2://hive-server:10000 scott tiger
 (or)
 beeline>!connect jdbc:hive2://hive-server:10000 -n scott -p tiger
