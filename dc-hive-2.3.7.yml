@@ -3,10 +3,10 @@ version: "3.5"
 services:
 #
   hive-postgresql:
-    image: brijeshdhaker/hive-postgresql:3.1.2
+    image: brijeshdhaker/hive-postgresql:2.3.7
     build:
       context: .
-      dockerfile: docker-hive/postgres/Dockerfile
+      dockerfile: docker-hive-2.3.7/postgres/Dockerfile
     hostname: hive-postgresql
     container_name: hive-postgresql
     ports:
@@ -24,17 +24,17 @@ services:
 
 #
   hive-metastore:
-    image: brijeshdhaker/hive:3.1.2
+    image: brijeshdhaker/hive:2.3.7
     build:
       context: .
-      dockerfile: docker-hive/hive/Dockerfile
+      dockerfile: docker-hive-2.3.7/hive/Dockerfile
     hostname: hive-metastore
     container_name: hive-metastore
     env_file:
-      - docker-hive/hadoop-hive.env
-    command: /opt/hive-3.1.2/bin/hive --service metastore
+      - docker-hive-2.3.7/hive-2.3.7.env
+    command: /opt/hive-2.3.7/bin/hive --service metastore
     environment:
-      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 hive-postgresql:5432"
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-postgresql:5432"
     links:
       - hive-postgresql
     ports:
@@ -44,11 +44,11 @@ services:
 
 #
   hive-server:
-    image: brijeshdhaker/hive:3.1.2
+    image: brijeshdhaker/hive:2.3.7
     hostname: hive-server
     container_name: hive-server
     env_file:
-      - docker-hive/hadoop-hive.env
+      - docker-hive-2.3.7/hive-2.3.7.env
     links:
       - hive-metastore  
     environment:
@@ -59,7 +59,7 @@ services:
       - "10002:10002"
     volumes:
       - /apps/hostpath:/apps/hostpath
-      - /opt/hbase-2.4.6:/opt/hbase-2.4.6
+      - /opt/hbase-1.1.1:/opt/hbase-1.1.1
 
 #
 volumes:
