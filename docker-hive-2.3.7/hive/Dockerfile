@@ -1,5 +1,5 @@
 #
-# docker build -t brijeshdhaker/hive:3.1.2 -f docker-hive/hive/Dockerfile .
+# docker build -t brijeshdhaker/hive:2.3.7 -f docker-hive-2.3.7/hive/Dockerfile .
 #
 
 FROM brijeshdhaker/hadoop-base:2.7.7
@@ -36,7 +36,7 @@ RUN apt-get update && apt-get install -y wget procps && \
     rm ${HIVE_HOME}/lib/log4j-slf4j-impl-2.6.2.jar && \
     apt-get --purge remove -y wget && \
 	apt-get clean && \
-    rm -rf /var/lib/apt/lists/* \
+    rm -rf /var/lib/apt/lists/* && \
     rm /opt/apache-hive-2.3.7-bin.tar.gz
 
 COPY resources/libs/postgresql-42.2.23.jar $HIVE_HOME/lib/
@@ -46,10 +46,11 @@ COPY resources/libs/postgresql-42.2.23.jar $HIVE_HOME/lib/
 
 #Custom configuration goes here
 COPY docker-hive-2.3.7/hive/conf $HIVE_HOME/conf
+COPY docker-hbase-1.1.1/client/hbase-site.xml $HIVE_HOME/conf/
+COPY docker-hadoop-2.7.7/client/*.xml $HADOOP_HOME/etc/hadoop/
 
 #
 COPY docker-hive-2.3.7/hive/startup.sh /usr/local/bin/
-
 RUN chmod +x /usr/local/bin/startup.sh
 
 COPY docker-hive-2.3.7/hive/entrypoint.sh /usr/local/bin/

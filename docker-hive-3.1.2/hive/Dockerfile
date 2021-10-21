@@ -1,5 +1,5 @@
 #
-# docker build -t brijeshdhaker/hive-base:3.1.2 -f docker-hive/hive/Dockerfile .
+# docker build -t brijeshdhaker/hive-base:3.1.2 -f docker-hive-3.1.2/hive/Dockerfile .
 #
 
 FROM brijeshdhaker/hadoop-base:3.2.1
@@ -25,7 +25,7 @@ USER root
 
 WORKDIR ${HIVE_HOME}
 
-ADD resources/tars/apache-hive-${HIVE_VERSION}-bin.tar.gz /opt
+COPY resources/tars/apache-hive-3.1.2-bin.tar.gz /opt/apache-hive-3.1.2-bin.tar.gz
 
 #	wget https://archive.apache.org/dist/hive/hive-$HIVE_VERSION/apache-hive-$HIVE_VERSION-bin.tar.gz && \
 #	tar -xzvf apache-hive-$HIVE_VERSION-bin.tar.gz && \
@@ -33,11 +33,12 @@ ADD resources/tars/apache-hive-${HIVE_VERSION}-bin.tar.gz /opt
 #Install Hive and PostgreSQL JDBC
 RUN apt-get update && apt-get install -y wget procps && \
     useradd -u 1500 hive && \
-	mv apache-hive-$HIVE_VERSION-bin ${HIVE_HOME} && \
+	tar --strip-components=1 -zxvf  /opt/apache-hive-3.1.2-bin.tar.gz -C ${HIVE_HOME} && \
 	rm ${HIVE_HOME}/lib/log4j-slf4j-impl-2.10.0.jar ${HIVE_HOME}/lib/guava*.jar && \
 	apt-get --purge remove -y wget && \
 	apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    rm /opt/apache-hive-3.1.2-bin.tar.gz
 
 COPY resources/libs/postgresql-42.2.23.jar $HIVE_HOME/lib/
 COPY resources/libs/guava-27.0-jre.jar $HIVE_HOME/lib/
@@ -46,14 +47,16 @@ COPY resources/libs/guava-27.0-jre.jar $HIVE_HOME/lib/
 #hive-site.xml should be copied to $SPARK_HOME/conf folder
 
 #Custom configuration goes here
-COPY docker-hive/hive/conf $HIVE_HOME/conf
+COPY docker-hive-3.1.2/hive/conf $HIVE_HOME/conf
+COPY docker-hbase-2.4.6/client/hbase-site.xml $HIVE_HOME/conf/
+COPY docker-hadoop-2.7.7/client/*.xml $HADOOP_HOME/etc/hadoop/
 
 #
-COPY docker-hive/hive/startup.sh /usr/local/bin/
+COPY docker-hive-3.1.2/hive/startup.sh /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/startup.sh
 
-COPY docker-hive/hive/entrypoint.sh /usr/local/bin/
+COPY docker-hive-3.1.2/hive/entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 #

@@ -7,21 +7,11 @@
 
     $HIVE_HOME/bin/hive --auxpath $HIVE_HOME/lib/hive-hbase-handler-3.1.2.jar,$HIVE_HOME/lib/hbase-hadoop2-compat-2.0.0-alpha4.jar,$HIVE_HOME/lib/hbase-client-2.0.0-alpha4.jar,$HIVE_HOME/lib/hbase-server-2.0.0-alpha4.jar,$HIVE_HOME/lib/hbase-common-2.0.0-alpha4.jar,$HIVE_HOME/lib/hbase-mapreduce-2.0.0-alpha4.jar,$HIVE_HOME/lib/hive-exec-3.1.2.jar,$HIVE_HOME/lib/guava-27.0-jre.jar,$HIVE_HOME/lib/zookeeper-3.4.6.jar --files /opt/hbase-2.4.6/conf/hbase-site.xml --hiveconf hbase.master=hbase-master:60000
 
-    $HIVE_HOME/bin/hive --hiveconf hbase.master=hbase-master:16000
-
-
-$HIVE_HOME/bin/beeline -u jdbc:hive2://hive-server:10000 scott tiger --hiveconf hbase.master=hbase-master:16000
-set hbase.zookeeper.quorum=zookeeper;
-set hbase.master=hbase-master=16000;
-
 ## 1. add following property in hive-site.xml
 
 <property>
-<name>hive.aux.jars.path</name>
+<name>hive.aux.jars.pathh</name>
 <value>
-
-    file:///opt/hbase-1.1.1/lib/hbase-client-1.1.1.jar
-
 	file:///opt/hbase-2.4.6/lib/commons-lang3-3.9.jar,
 	file:///opt/hbase-2.4.6/lib/hbase-zookeeper-2.4.6.jar,
 	file:///opt/hbase-2.4.6/lib/hbase-mapreduce-2.4.6.jar,
@@ -55,29 +45,28 @@ set hbase.master=hbase-master=16000;
 
 ## 3. Create Hive Table
 
-    CREATE EXTERNAL TABLE hbase_table_emp(id int, name string, role string)
+    CREATE EXTERNAL TABLE hbase_table_emp(id int, name string, role string) 
     STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
     WITH SERDEPROPERTIES ("hbase.columns.mapping" = ":key,cf1:name,cf1:role")
-    TBLPROPERTIES ("hbase.table.name" = "employee");
+    TBLPROPERTIES ("hbase.table.name" = "emp");
 
 Lets verify this table emp in HBase shell and view its metadata.
 
     $ hbase shell
     hbase> list
-    hbase> describe 'employee'
+    hbase> describe 'emp'
 
-    create 'employee', 'cf1'
-
-    put 'employee', '1', 'cf1:name', 'Brijesh K'
-    put 'employee', '1', 'cf1:role', 'Engineer'
-    put 'employee', '2', 'cf1:name', 'Neeta K'
-    put 'employee', '2', 'cf1:role', 'House Wife'
-    put 'employee', '3', 'cf1:name', 'Keshvi'
-    put 'employee', '3', 'cf1:role', 'Student'
-    put 'employee', '4', 'cf1:name', 'Tejas K'
-    put 'employee', '4', 'cf1:role', 'Kid'
-    put 'employee', '5', 'cf1:name', 'Sanjay S'
-    put 'employee', '5', 'cf1:role', 'Professional'
+    create 'emp', 'cf1'
+    put 'emp', '1', 'cf1:name', 'Brijesh K'
+    put 'emp', '1', 'cf1:role', 'Engineer'
+    put 'emp', '2', 'cf1:name', 'Neeta K'
+    put 'emp', '2', 'cf1:role', 'House Wife'
+    put 'emp', '3', 'cf1:name', 'Keshvi'
+    put 'emp', '3', 'cf1:role', 'Student'
+    put 'emp', '4', 'cf1:name', 'Tejas K'
+    put 'emp', '4', 'cf1:role', 'Kid'
+    put 'emp', '5', 'cf1:name', 'Sanjay S'
+    put 'emp', '5', 'cf1:role', 'Professional'
 
     {
             "table":{"namespace":"default", "name":"emp"},
