@@ -11,17 +11,17 @@
     
     <property>
         <name>dfs.datanode.data.dir</name>
-        <value>file:///apps/hostpath/hadoop/dfs/data</value>
+        <value>file:///apps/hostpath/hadoop/2.7.7/dfs/data</value>
     </property>
     
     <property>
         <name>dfs.namenode.name.dir</name>
-        <value>file:///apps/hostpath/hadoop/dfs/name</value>
+        <value>file:///apps/hostpath/hadoop/2.7.7/dfs/name</value>
     </property>
     
     <property>
         <name>dfs.namenode.checkpoint.dir</name>
-        <value>file:///apps/hostpath/hadoop/dfs/namesecondary</value>
+        <value>file:///apps/hostpath/hadoop/2.7.7/dfs/namesecondary</value>
     </property>
     
     <property>
@@ -53,19 +53,19 @@
 
     <property>
         <name>dfs.datanode.http.address</name>
-        <value>0.0.0.0:9864</value>
+        <value>	0.0.0.0:50075</value>
         <description>The datanode http server address and port. If the port is 0 then the server will start on a free port.</description>
     </property>
 
     <property>
         <name>dfs.datanode.address</name>
-        <value>0.0.0.0:9866</value>
+        <value>0.0.0.0:50010</value>
         <description>The address where the datanode server will listen to. if the port is 0 then the server will start on a free port.</description>
     </property>
 
     <property>
         <name>dfs.datanode.ipc.address</name>
-        <value>0.0.0.0:9867</value>
+        <value>0.0.0.0:50020</value>
         <description>The datanode ipc server address and port. If the port is 0 then the server will start on a free port.</description>
     </property>
     
