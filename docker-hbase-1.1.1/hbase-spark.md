@@ -76,8 +76,7 @@ ROW                             COLUMN+CELL
    "rowKey STRING :key," +
    "firstName STRING Name:First, lastName STRING Name:Last," +
    "country STRING Address:Country, state STRING Address:State"
-   )
-   .option("hbase.table", "Person")
+   ).option("hbase.table", "Person")
    ).load()
 
 The columns mapping matches with the definition in the steps above.
@@ -114,15 +113,18 @@ We can also define a catalog for the table Person created above and then use it 
    
    import org.apache.hadoop.hbase.spark.datasources._
    
-   (spark.read
+   var hbaseDF = spark.read
    .options(Map(HBaseTableCatalog.tableCatalog->catalog))
    .format("org.apache.hadoop.hbase.spark")
-   .load()).show()
+   .load()
+   hbaseDF.show()
+
    The code can also be simplified as:
-   
-   (spark.read.format("org.apache.hadoop.hbase.spark")
+
+   var hbaseDF = spark.read.format("org.apache.hadoop.hbase.spark")
    .option("catalog",catalog)
-   .load()).show()
+   .load()
+   hbaseDF.show()
 
 ## Output:
    scala> (spark.read

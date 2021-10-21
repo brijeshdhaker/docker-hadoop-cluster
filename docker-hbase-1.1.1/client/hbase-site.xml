@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+    <property><name>DIR</name><value>/etc/hbase</value></property>
+    <property><name>hbase.rootdir</name><value>hdfs://namenode:9000/apps/hbase-1.1.1-distributed</value></property>
+    <property><name>hbase.master.port</name><value>16000</value></property>
+    <property><name>hbase.cluster.distributed</name><value>true</value></property>
+    <property><name>hbase.regionserver.info.port</name><value>16030</value></property>
+    <property><name>hbase.master.info.port</name><value>16010</value></property>
+    <property><name>hbase.zookeeper.quorum</name><value>zookeeper</value></property>
+    <property><name>hbase.master</name><value>hbase-master:16000</value></property>
+    <property><name>hbase.regionserver.port</name><value>16020</value></property>
+    <property><name>hbase.master.hostname</name><value>hbase-master</value></property>
+</configuration>
