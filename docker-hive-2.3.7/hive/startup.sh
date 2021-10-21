@@ -1,17 +1,17 @@
 #!/bin/bash
 
 
-if [ ! -f /apps/hostpath/hive/3.1.2/.already_setup ]; then
+if [ ! -f /apps/hostpath/hive/2.3.7/.already_setup ]; then
 
   ${HADOOP_HOME}/bin/hdfs dfs -mkdir       /tmp
-  ${HADOOP_HOME}/bin/hdfs dfs -mkdir -p    /apps/3.1.2/warehouse
+  ${HADOOP_HOME}/bin/hdfs dfs -mkdir -p    /apps/2.3.7/warehouse
   echo "HDFS dirs for hive successfully created ."
 
   ${HADOOP_HOME}/bin/hdfs dfs -mkdir g+w   /tmp
-  ${HADOOP_HOME}/bin/hdfs dfs -chmod g+w   /apps/3.1.2/warehouse
+  ${HADOOP_HOME}/bin/hdfs dfs -chmod g+w   /apps/2.3.7/warehouse
   echo "HDFS dirs permissions successfully updated."
 
-  touch /apps/hostpath/hive/3.1.2/.already_setup
+  touch /apps/hostpath/hive/2.3.7/.already_setup
 
 fi
 
