@@ -2,18 +2,11 @@ version: "3.5"
 
 services:
   #
-#  hadoop-base:
-#    image: brijeshdhaker/hadoop-base:3.2.1
-#    build:
-#      context: .
-#      dockerfile: docker-hadoop/base/Dockerfile
-
-  #
   namenode:
     image: brijeshdhaker/hadoop-namenode:3.2.1
     build:
       context: .
-      dockerfile: docker-hadoop/namenode/Dockerfile
+      dockerfile: docker-hadoop-3.2.1/namenode/Dockerfile
     container_name: namenode
     hostname: namenode
     restart: always
@@ -25,14 +18,14 @@ services:
     environment:
       - CLUSTER_NAME=test
     env_file:
-      - docker-hadoop/hadoop.env
+      - docker-hadoop-3.2.1/hadoop-3.2.1.env
 
   #
   datanode:
     image: brijeshdhaker/hadoop-datanode:3.2.1
     build:
       context: .
-      dockerfile: docker-hadoop/datanode/Dockerfile
+      dockerfile: docker-hadoop-3.2.1/datanode/Dockerfile
     container_name: datanode
     hostname: datanode
     ports:
@@ -44,34 +37,35 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
     env_file:
-      - docker-hadoop/hadoop.env
+      - docker-hadoop-3.2.1/hadoop-3.2.1.env
 
   #
   resourcemanager:
     image: brijeshdhaker/hadoop-resourcemanager:3.2.1
     build:
       context: .
-      dockerfile: docker-hadoop/resourcemanager/Dockerfile
+      dockerfile: docker-hadoop-3.2.1/resourcemanager/Dockerfile
     container_name: resourcemanager
     hostname: resourcemanager
     restart: always
     ports:
       - "8088:8088"
-      - "8030:8030"
+      - "8025:8025"
       - "8032:8032"
+      - "8050:8050"
     volumes:
       - /apps/hostpath:/apps/hostpath
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
     env_file:
-      - docker-hadoop/hadoop.env
+      - docker-hadoop-3.2.1/hadoop-3.2.1.env
 
   #
   nodemanager1:
     image: brijeshdhaker/hadoop-nodemanager:3.2.1
     build:
       context: .
-      dockerfile: docker-hadoop/nodemanager/Dockerfile
+      dockerfile: docker-hadoop-3.2.1/nodemanager/Dockerfile
     container_name: nodemanager
     hostname: nodemanager
     restart: always
@@ -82,14 +76,14 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
     env_file:
-      - docker-hadoop/hadoop.env
+      - docker-hadoop-3.2.1/hadoop-3.2.1.env
 
   #
   hadoop-historyserver:
     image: brijeshdhaker/hadoop-historyserver:3.2.1
     build:
       context: .
-      dockerfile: docker-hadoop/historyserver/Dockerfile
+      dockerfile: docker-hadoop-3.2.1/historyserver/Dockerfile
     container_name: hadoop-historyserver
     hostname: hadoop-historyserver
     restart: always
@@ -100,7 +94,7 @@ services:
     volumes:
       - /apps/hostpath:/apps/hostpath
     env_file:
-      - docker-hadoop/hadoop.env
+      - docker-hadoop-3.2.1/hadoop-3.2.1.env
 
 #
 volumes:
