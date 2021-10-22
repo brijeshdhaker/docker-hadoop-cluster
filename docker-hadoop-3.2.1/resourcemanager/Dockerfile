@@ -4,7 +4,7 @@ MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
 HEALTHCHECK CMD curl -f http://localhost:8088/ || exit 1
 
-ADD docker-hadoop/resourcemanager/run.sh /run.sh
+ADD docker-hadoop-3.2.1/resourcemanager/run.sh /run.sh
 RUN chmod a+x /run.sh
 
 EXPOSE 8088

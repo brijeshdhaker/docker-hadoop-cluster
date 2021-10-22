@@ -1,3 +1,7 @@
+#
+# docker build -t brijeshdhaker/hadoop-base:3.2.1 -f docker-hadoop-3.2.1/base/Dockerfile .
+#
+
 FROM debian:9
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
@@ -11,7 +15,6 @@ ENV HADOOP_VERSION  3.2.1
 ENV BASE_DIR 		/opt
 ENV JAVA_HOME       /usr/lib/jvm/java-8-openjdk-amd64/
 ENV HADOOP_HOME		$BASE_DIR/hadoop-3.2.1
-ENV ZEPPELIN_HOME 	$BASE_DIR/zeppelin
 
 # RUN curl -O https://dist.apache.org/repos/dist/release/hadoop/common/KEYS
 # RUN gpg --import KEYS
@@ -38,7 +41,7 @@ ENV MULTIHOMED_NETWORK=1
 ENV USER=root
 ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
-ADD docker-hadoop/base/entrypoint.sh /entrypoint.sh
+ADD docker-hadoop-3.2.1/base/entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
