@@ -84,6 +84,14 @@ export SPARK_HOME=/opt/spark-3.1.2
 $SPARK_HOME/bin/beeline -u jdbc:hive2://hive-server:10000 scott tiger
 
 #
+# HDP Sandbox
+#
+$ beeline -u jdbc:hive2://sandbox-hdp.hortonworks.com:10000 -n hive -p
+
+CREATE TABLE students (name VARCHAR(64), age INT, gpa DECIMAL(3,2));
+INSERT INTO TABLE students VALUES ('fred flintstone', 35, 1.28), ('barney rubble', 32, 2.32);
+
+#
 #
 # Windows
 #
