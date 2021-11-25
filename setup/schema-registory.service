@@ -1,0 +1,9 @@
+[Unit]
+ Description=Hortonworks-Registry Service
+ After=multi-user.target
+
+[Service]	
+ ExecStart=/usr/hdp/3.0.1.0-187/hortonworks-registry-0.2.1/bin/registry-server-start.sh /usr/hdp/3.0.1.0-187/hortonworks-registry-0.2.1/conf/registry-mysql.yaml
+
+[Install]
+ WantedBy=default.target
