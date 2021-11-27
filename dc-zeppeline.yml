@@ -1,21 +1,21 @@
 #
 #
-version: '3.5'
 #
+---
+#
+
+version: '3.5'
 services:
   #
   # Zeppelin Notebook
   #
   zeppelin:
-    image: brijeshdhaker/zeppelin:0.10.0
+    image: apache/zeppelin:0.10.0
     container_name: zeppelin
-    build:
-      context: .
-      dockerfile: docker-zeppelin/docker/Dockerfile
     env_file:
       - docker-zeppelin/zeppelin.env
     ports:
-      - "9090:9090"
+      - "28080:8080"
     volumes:
       - /apps/hostpath:/apps/hostpath
 
