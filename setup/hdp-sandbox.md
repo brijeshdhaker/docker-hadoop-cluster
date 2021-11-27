@@ -1,9 +1,4 @@
 #
-# Git Hub Token
-#
-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
-
-#
 # MySql Admin Password
 #
 root/hortonworks1
@@ -35,7 +30,7 @@ bin/nifi.sh set-single-user-credentials nifi-admin nifiadmin1234$
 #
 
 unix> mysql -u root -p
-unix> Enter password:<enter>
+unix> Enter password: hortonworks1
 mysql> create database schema_registry;
 mysql> CREATE USER 'registry_user'@'localhost' IDENTIFIED BY 'registry_password';
 mysql> GRANT ALL PRIVILEGES ON schema_registry.* TO 'registry_user'@'localhost' WITH GRANT OPTION;
