@@ -1,8 +1,8 @@
 #
-# docker build -t brijeshdhaker/hadoop-base:2.7.7 -f docker-hadoop-2.7.7/base/Dockerfile .
+# docker build -t brijeshdhaker/hadoop-base:2.7.4 -f docker-hadoop-2.7.4/base/Dockerfile .
 #
 
-FROM debian:9
+FROM ubuntu:20.04
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
@@ -11,10 +11,10 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
     && rm -rf /var/lib/apt/lists/*
 
 #
-ENV HADOOP_VERSION  2.7.7
+ENV HADOOP_VERSION  2.7.4
 ENV BASE_DIR 		/opt
 ENV JAVA_HOME       /usr/lib/jvm/java-8-openjdk-amd64/
-ENV HADOOP_HOME		$BASE_DIR/hadoop-2.7.7
+ENV HADOOP_HOME		$BASE_DIR/hadoop-2.7.4
 
 # RUN curl -O https://dist.apache.org/repos/dist/release/hadoop/common/KEYS
 # RUN gpg --import KEYS
@@ -28,7 +28,7 @@ ENV HADOOP_HOME		$BASE_DIR/hadoop-2.7.7
 #    && rm /tmp/hadoop.tar.gz*
 #
 
-ADD resources/tars/hadoop-2.7.7.tar.gz ${BASE_DIR}/
+ADD resources/tars/hadoop-2.7.4.tar.gz ${BASE_DIR}/
 
 RUN ln -s ${BASE_DIR}/hadoop-$HADOOP_VERSION/etc/hadoop /etc/hadoop
 
@@ -41,7 +41,7 @@ ENV MULTIHOMED_NETWORK=1
 ENV USER=root
 ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
-ADD docker-hadoop/base/entrypoint.sh /entrypoint.sh
+ADD docker-hadoop-2.7.4/base/entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]

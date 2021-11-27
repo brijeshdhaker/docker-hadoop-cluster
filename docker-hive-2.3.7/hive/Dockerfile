@@ -2,7 +2,7 @@
 # docker build -t brijeshdhaker/hive:2.3.7 -f docker-hive-2.3.7/hive/Dockerfile .
 #
 
-FROM brijeshdhaker/hadoop-base:2.7.7
+FROM brijeshdhaker/hadoop-base:2.7.4
 #
 ARG hive_uid=1500
 
@@ -16,7 +16,7 @@ ARG HIVE_VERSION
 
 ENV HIVE_VERSION=${HIVE_VERSION:-2.3.7}
 ENV BASE_DIR 		/opt
-ENV HADOOP_HOME     $BASE_DIR/hadoop-2.7.7
+ENV HADOOP_HOME     $BASE_DIR/hadoop-2.7.4
 ENV HIVE_HOME       $BASE_DIR/hive-2.3.7
 ENV PATH			$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$HIVE_HOME/bin
 
@@ -47,7 +47,7 @@ COPY resources/libs/postgresql-42.2.23.jar $HIVE_HOME/lib/
 #Custom configuration goes here
 COPY docker-hive-2.3.7/hive/conf $HIVE_HOME/conf
 COPY docker-hbase-1.1.1/client/hbase-site.xml $HIVE_HOME/conf/
-COPY docker-hadoop-2.7.7/client/*.xml $HADOOP_HOME/etc/hadoop/
+COPY docker-hadoop-2.7.4/client/*.xml $HADOOP_HOME/etc/hadoop/
 
 #
 COPY docker-hive-2.3.7/hive/startup.sh /usr/local/bin/

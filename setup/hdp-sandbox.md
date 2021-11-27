@@ -69,13 +69,6 @@ stream-simulator-jar-with-dependencies.jar \
 hortonworks.hdf.sam.refapp.trucking.simulator.schemaregistry.TruckSchemaRegistryLoader \
 http://sandbox-hdp.hortonworks.com:7788/api/v1
 
-http://sandbox-hdp.hortonworks.com:7788/api/v1/users
-
-java -cp \
-stream-simulator-jar-with-dependencies.jar \
-hortonworks.hdf.sam.refapp.trucking.simulator.schemaregistry.TruckSchemaRegistryLoader \
-http://localhost:7788/api/v1
-
 ## 3. Setting up an Enrichment Store, Creating an HBase Table, and Creating an HDFS Directory
 
 cd /usr/hdp/current/phoenix-client/bin

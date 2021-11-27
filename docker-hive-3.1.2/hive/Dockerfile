@@ -49,7 +49,7 @@ COPY resources/libs/guava-27.0-jre.jar $HIVE_HOME/lib/
 #Custom configuration goes here
 COPY docker-hive-3.1.2/hive/conf $HIVE_HOME/conf
 COPY docker-hbase-2.4.6/client/hbase-site.xml $HIVE_HOME/conf/
-COPY docker-hadoop-2.7.7/client/*.xml $HADOOP_HOME/etc/hadoop/
+COPY docker-hadoop-2.7.4/client/*.xml $HADOOP_HOME/etc/hadoop/
 
 #
 COPY docker-hive-3.1.2/hive/startup.sh /usr/local/bin/

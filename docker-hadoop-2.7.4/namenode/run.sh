@@ -15,15 +15,15 @@ fi
 echo "remove lost+found from $namedir"
 #rm -r $namedir/lost+found
 
-if [ ! -f /apps/hostpath/hadoop/2.7.7/.already_formatted ]; then
+if [ ! -f /apps/hostpath/hadoop/2.7.4/.already_formatted ]; then
 
   echo "Formatting namenode name directory: $namedir"
-  mkdir -p /apps/hostpath/hadoop/2.7.7/dfs/data
-  mkdir -p /apps/hostpath/hadoop/2.7.7/dfs/name
-  mkdir -p /apps/hostpath/hadoop/2.7.7/dfs/namesecondary
+  mkdir -p /apps/hostpath/hadoop/2.7.4/dfs/data
+  mkdir -p /apps/hostpath/hadoop/2.7.4/dfs/name
+  mkdir -p /apps/hostpath/hadoop/2.7.4/dfs/namesecondary
 
   $HADOOP_HOME/bin/hdfs --config $HADOOP_CONF_DIR namenode -format $CLUSTER_NAME
-  touch /apps/hostpath/hadoop/2.7.7/.already_formatted
+  touch /apps/hostpath/hadoop/2.7.4/.already_formatted
 
 fi
 
