@@ -18,6 +18,9 @@ services:
       - "28080:8080"
     volumes:
       - /apps/hostpath:/apps/hostpath
+      - /opt/spark-2.3.1:/opt/spark-2.3.1
+      - /opt/spark-3.1.2:/opt/spark-3.1.2
+      - /opt/hadoop-2.7.4:/opt/hadoop-2.7.4
 
 #
 networks:
