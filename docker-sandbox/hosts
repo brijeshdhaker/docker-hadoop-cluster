@@ -1,0 +1,30 @@
+#
+#
+#
+127.0.0.1       localhost
+
+#
+# HADOOP
+#
+127.0.0.1       namenode
+127.0.0.1       resourcemanager
+127.0.0.1       nodemanager
+127.0.0.1       hadoop-historyserver
+
+#
+# HBASE
+#
+127.0.0.1       hbase-master
+
+#
+# HIVE
+#
+127.0.0.1       hive-postgresql
+127.0.0.1       hive-metastore
+127.0.0.1       hive-server
+
+#
+# HDP Cluster
+#
+192.168.1.50    sandbox-hdp.hortonworks.com
+192.168.1.110   raspberry-pi.hortonworks.com
