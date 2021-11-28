@@ -66,4 +66,6 @@ volumes:
 #
 networks:
   default:
-     name: bigdata.net
+    external: true
+    driver: bridge
+    name: bigdata.net

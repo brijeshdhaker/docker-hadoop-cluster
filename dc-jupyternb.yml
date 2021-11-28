@@ -22,7 +22,10 @@ services:
     environment:
       KUBECONFIG: /home/notebook/.kube/config
 #
+
 #
 networks:
   default:
+    external: true
+    driver: bridge
     name: bigdata.net

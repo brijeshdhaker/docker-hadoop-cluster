@@ -1,6 +1,11 @@
 #!/bin/bash
 
 #
+# Docker network
+#
+docker network create bigdata.net
+
+#
 # Zookeeper Dirs
 #
 mkdir -p /apps/hostpath/zookeeper/data
