@@ -62,7 +62,7 @@ services:
       - docker-hadoop-2.7.4/hadoop-2.7.4.env
 
   #
-  nodemanager1:
+  nodemanager:
     image: brijeshdhaker/hadoop-nodemanager:2.7.4
     build:
       context: .
