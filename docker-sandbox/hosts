@@ -4,6 +4,11 @@
 127.0.0.1       localhost
 
 #
+#
+#
+127.0.0.1       zookeeper
+
+#
 # HADOOP
 #
 127.0.0.1       namenode
@@ -14,7 +19,8 @@
 #
 # HBASE
 #
-127.0.0.1       hbase-master
+127.0.0.1       hbase-master hbase-master.bigdata.net
+127.0.0.1       hbase-regionserver hbase-regionserver.bigdata.net
 
 #
 # HIVE

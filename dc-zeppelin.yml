@@ -23,6 +23,7 @@ services:
       - /opt/hive-2.3.7:/opt/hive-2.3.7
       - /opt/spark-2.3.1:/opt/spark-2.3.1
       - /opt/spark-3.1.2:/opt/spark-3.1.2
+      - /opt/hbase-2.4.6-client:/opt/hbase-2.4.6-client
 
 #
 networks:
