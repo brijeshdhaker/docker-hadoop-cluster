@@ -3,7 +3,7 @@
 #
 # Docker network
 #
-docker network create bigdata.net
+docker network create -d bridge bigdata.net
 
 #
 # Zookeeper Dirs

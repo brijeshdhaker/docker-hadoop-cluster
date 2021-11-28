@@ -79,13 +79,13 @@ services:
       - docker-hadoop-3.2.1/hadoop-3.2.1.env
 
   #
-  hadoop-historyserver:
+  historyserver:
     image: brijeshdhaker/hadoop-historyserver:3.2.1
     build:
       context: .
       dockerfile: docker-hadoop-3.2.1/historyserver/Dockerfile
-    container_name: hadoop-historyserver
-    hostname: hadoop-historyserver
+    container_name: historyserver
+    hostname: historyserver
     restart: always
     ports:
       - "8188:8188"

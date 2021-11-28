@@ -107,4 +107,5 @@ export HADOOP_CONF_DIR=/opt/hadoop-2.7.4/etc/hadoop
 --executor-memory 1G \
 --num-executors 2 \
 --conf "spark.yarn.archive=hdfs:///apps/spark-2.3.1/spark-2.3.1-jars.zip" \
+--conf "spark.yarn.jars=file:///opt/spark-2.3.1/jars/*.jar" \
 /opt/spark-2.3.1/examples/jars/spark-examples_2.11-2.3.1.jar 2

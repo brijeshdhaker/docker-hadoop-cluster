@@ -2,6 +2,8 @@
 #
 #
 127.0.0.1       localhost
+127.0.1.1       thinkpad
+172.30.0.1      thinkpad.bigdata.net
 
 #
 #
@@ -14,7 +16,7 @@
 127.0.0.1       namenode
 127.0.0.1       resourcemanager
 127.0.0.1       nodemanager
-127.0.0.1       hadoop-historyserver
+127.0.0.1       historyserver
 
 #
 # HBASE

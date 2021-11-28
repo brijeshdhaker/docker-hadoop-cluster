@@ -11,6 +11,8 @@ services:
     container_name: namenode
     hostname: namenode
     restart: always
+    extra_hosts:
+      - "thinkpad thinkpad.bigdata.net:host-gateway"
     ports:
       - "50070:50070"
       - "9000:9000"
@@ -29,6 +31,8 @@ services:
       dockerfile: docker-hadoop-2.7.4/datanode/Dockerfile
     container_name: datanode
     hostname: datanode
+    extra_hosts:
+      - "thinkpad thinkpad.bigdata.net:host-gateway"
     ports:
       - "50075:50075"
       - "50010:50010"
@@ -49,6 +53,8 @@ services:
     container_name: resourcemanager
     hostname: resourcemanager
     restart: always
+    extra_hosts:
+      - "thinkpad thinkpad.bigdata.net:host-gateway"
     ports:
       - "8088:8088"
       - "8025:8025"
@@ -57,7 +63,7 @@ services:
     volumes:
       - /apps/hostpath:/apps/hostpath
     environment:
-      SERVICE_PRECONDITION: "namenode:9000 namenode:50070 datanode:50075"
+      SERVICE_PRECONDITION: "namenode:9000  namenode:50070  datanode:50075"
     env_file:
       - docker-hadoop-2.7.4/hadoop-2.7.4.env
 
@@ -70,28 +76,32 @@ services:
     container_name: nodemanager
     hostname: nodemanager
     restart: always
+    extra_hosts:
+      - "thinkpad thinkpad.bigdata.net:host-gateway"
     ports:
       - "8042:8042"
     volumes:
       - /apps/hostpath:/apps/hostpath
     environment:
-      SERVICE_PRECONDITION: "namenode:9000 namenode:50070 datanode:50075 resourcemanager:8088"
+      SERVICE_PRECONDITION: "namenode:9000  namenode:50070  datanode:50075 resourcemanager:8088"
     env_file:
       - docker-hadoop-2.7.4/hadoop-2.7.4.env
 
   #
-  hadoop-historyserver:
+  historyserver:
     image: brijeshdhaker/hadoop-historyserver:2.7.4
     build:
       context: .
       dockerfile: docker-hadoop-2.7.4/historyserver/Dockerfile
-    container_name: hadoop-historyserver
-    hostname: hadoop-historyserver
+    container_name: historyserver
+    hostname: historyserver
     restart: always
+    extra_hosts:
+      - "thinkpad thinkpad.bigdata.net:host-gateway"
     ports:
       - "8188:8188"
     environment:
-      SERVICE_PRECONDITION: "namenode:9000 namenode:50070 datanode:50075 resourcemanager:8088"
+      SERVICE_PRECONDITION: "namenode:9000  namenode:50070  datanode:50075 resourcemanager:8088"
     volumes:
       - /apps/hostpath:/apps/hostpath
     env_file:

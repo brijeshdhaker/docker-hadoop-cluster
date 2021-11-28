@@ -23,7 +23,7 @@
 
     <property>
         <name>yarn.log.server.url</name>
-        <value>http://hadoop-historyserver:8188/jobhistory/logs</value>
+        <value>http://historyserver:8188/jobhistory/logs</value>
     </property>
 
     <property>
