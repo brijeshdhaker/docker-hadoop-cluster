@@ -12,15 +12,17 @@ services:
   zeppelin:
     image: apache/zeppelin:0.10.0
     container_name: zeppelin
+    hostname: zeppelin
     env_file:
       - docker-zeppelin/zeppelin.env
     ports:
       - "28080:8080"
     volumes:
       - /apps/hostpath:/apps/hostpath
+      - /opt/hadoop-2.7.4:/opt/hadoop-2.7.4
+      - /opt/hive-2.3.7:/opt/hive-2.3.7
       - /opt/spark-2.3.1:/opt/spark-2.3.1
       - /opt/spark-3.1.2:/opt/spark-3.1.2
-      - /opt/hadoop-2.7.4:/opt/hadoop-2.7.4
 
 #
 networks:
