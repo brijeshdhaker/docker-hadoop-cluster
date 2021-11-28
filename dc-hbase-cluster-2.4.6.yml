@@ -1,22 +1,12 @@
+#
+#
+#
+---
+#
+
 version: "3.5"
 #
 services:
-#
-#  zookeeper:
-#    image: zookeeper:3.4.10
-#    container_name: zookeeper
-#    hostname: zookeeper
-#    environment:
-#      ZOO_MY_ID: 1
-#      ZOO_SERVERS: server.1=0.0.0.0:2888:3888
-#      ZOO_DATA_DIR: /apps/hostpath/zookeeper/data
-#      ZOO_DATA_LOG_DIR: /apps/hostpath/zookeeper/logs
-#    ports:
-#      - 2181:2181
-#    volumes:
-#      - "/apps/hostpath:/apps/hostpath"
-
-
 #
   hbase-master:
     image: brijeshdhaker/hbase-master:2.4.6
