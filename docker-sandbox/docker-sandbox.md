@@ -93,11 +93,20 @@ su hdfs
 hadoop fs -mkdir /apps/trucking-app
 hadoop fs -chmod 777 /apps/trucking-app
 
+#
+#
+#
+
+hadoop fs -put  spark-2.3.1-jars.zip /apps/spark-2.3.1
+
+hdfs dfs -mkdir -p /apps/spark-2.3.1
+hdfs dfs -put /opt/spark-2.3.1/jars/spark-2.3.1-jars.zip /apps/spark-2.3.1
 
 #
-#
 # Run on a YARN cluster
-export HADOOP_CONF_DIR=/home/brijeshdhaker/git-repos/spark-scala-examples/src/main/resources
+#
+export HADOOP_CONF_DIR=/opt/hadoop-2.7.4/etc/hadoop
+#
 ./bin/spark-submit \
 --class org.apache.spark.examples.SparkPi \
 --master yarn \
