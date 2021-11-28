@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/opt/hbase-$HBASE_VERSION/bin/hbase master start
+/opt/hbase-2.4.6/bin/hbase master start
