@@ -1,9 +1,14 @@
 #!/bin/bash
 
 #
+# Zookeeper Dirs
 #
-#
+mkdir -p /apps/hostpath/zookeeper/data
+mkdir -p /apps/hostpath/zookeeper/logs
 
+#
+#
+#
 mkdir -p /apps/hostpath/hadoop/2.7.4/dfs/data
 mkdir -p /apps/hostpath/hadoop/2.7.4/dfs/name
 mkdir -p /apps/hostpath/hadoop/2.7.4/dfs/namesecondary
