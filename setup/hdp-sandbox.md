@@ -97,8 +97,12 @@ hadoop fs -chmod 777 /apps/trucking-app
 #
 #
 # Run on a YARN cluster
-#
-export HADOOP_CONF_DIR=/opt/hadoop-2.7.4/etc/hadoop
+# --conf "spark.yarn.jars=file:///opt/spark-2.3.1/jars/*.jar" \
+
+su hdfs
+hadoop fs -mkdir -p /user/brijeshdhaker/spark-jars
+hdfs dfs -put *zip /user/brijeshdhaker/spark-jars/spark-jars.zip
+
 #
 ./bin/spark-submit \
 --class org.apache.spark.examples.SparkPi \
@@ -106,6 +110,5 @@ export HADOOP_CONF_DIR=/opt/hadoop-2.7.4/etc/hadoop
 --deploy-mode cluster \
 --executor-memory 1G \
 --num-executors 2 \
---conf "spark.yarn.archive=hdfs:///apps/spark-2.3.1/spark-2.3.1-jars.zip" \
---conf "spark.yarn.jars=file:///opt/spark-2.3.1/jars/*.jar" \
-/opt/spark-2.3.1/examples/jars/spark-examples_2.11-2.3.1.jar 2
+--conf "spark.yarn.archive=hdfs:///user/brijeshdhaker/spark-jars/spark-jars.zip" \
+/usr/hdp/3.0.1.0-187/spark2/examples/jars/spark-examples_*.jar 2

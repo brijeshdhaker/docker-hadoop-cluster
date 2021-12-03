@@ -58,7 +58,7 @@ Lets verify this table emp in HBase shell and view its metadata.
     hbase> list
     hbase> describe 'employee'
 
-    create 'employee', 'cf1'
+    hbase> create 'employee', 'cf1'
 
     put 'employee', '1', 'cf1:name', 'Brijesh K'
     put 'employee', '1', 'cf1:role', 'Engineer'
