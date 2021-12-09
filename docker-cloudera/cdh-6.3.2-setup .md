@@ -56,6 +56,15 @@ HUE_HOME=/opt/cloudera/parcels/CDH/lib/hue
 export PYSPARK_DRIVER_PYTHON="/usr/bin/python2"
 export PYSPARK_PYTHON="/usr/bin/python2"
 
+```commandline
+brijeshdhaker@thinkpad:/opt/cloudera/parcels/CDH/lib/hadoop-hdfs$ sudo useradd -M hadoop
+brijeshdhaker@thinkpad:/opt/cloudera/parcels/CDH/lib/hadoop-hdfs$ sudo useradd -M hive
+brijeshdhaker@thinkpad:/opt/cloudera/parcels/CDH/lib/hadoop-hdfs$ sudo useradd -M spark
+brijeshdhaker@thinkpad:/opt/cloudera/parcels/CDH/lib/hadoop-hdfs$ sudo useradd -M hdfs
+brijeshdhaker@thinkpad:/opt/cloudera/parcels/CDH/lib/hadoop-hdfs$ sudo useradd -M hue
+brijeshdhaker@thinkpad:/opt/cloudera/parcels/CDH/lib/hadoop-hdfs$ sudo useradd -M impala
+brijeshdhaker@thinkpad:/opt/cloudera/parcels/CDH/lib/hadoop-hdfs$ sudo useradd -M mapred
+```
 #
 # HDFS Web Access
 #
@@ -116,12 +125,21 @@ vmware-uninstall-tools.pl
 sudo useradd -m brijeshdhaker
 sudo usermod -aG wheel brijeshdhaker
 
+#
+# Service Account
+#
+sudo adduser -d /home/zeppelin -s /sbin/nologin zeppelin
+sudo -u hdfs hadoop fs -mkdir -p /user/zeppelin
+sudo -u hdfs hadoop fs -chown -R zeppelin:zeppelin /user/zeppelin
+
+#
+#
+#
 sudo -u hdfs hadoop fs -mkdir -p /user/brijeshdhaker
-sudo -u hdfs hadoop fs -mkdir -p /user/brijeshdhaker/jars/spark-2.4.0
+sudo -u hdfs hadoop fs -chown -R brijeshdhaker:brijeshdhaker /user/brijeshdhaker
 sudo -u hdfs hadoop fs -mkdir -p /user/brijeshdhaker/archives
 sudo -u hdfs hadoop fs -chmod -R 777 /user/brijeshdhaker/archives
 sudo -u hdfs hadoop fs -chown -R brijeshdhaker:brijeshdhaker /user/brijeshdhaker
-
 
 
 
