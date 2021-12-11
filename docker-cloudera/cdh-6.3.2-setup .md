@@ -131,6 +131,7 @@ sudo usermod -aG wheel brijeshdhaker
 sudo adduser -d /home/zeppelin -s /sbin/nologin zeppelin
 sudo -u hdfs hadoop fs -mkdir -p /user/zeppelin
 sudo -u hdfs hadoop fs -chown -R zeppelin:zeppelin /user/zeppelin
+sudo -u hdfs hadoop fs -chmod -R 777 /user/zeppelin
 
 #
 #
@@ -139,7 +140,7 @@ sudo -u hdfs hadoop fs -mkdir -p /user/brijeshdhaker
 sudo -u hdfs hadoop fs -chown -R brijeshdhaker:brijeshdhaker /user/brijeshdhaker
 sudo -u hdfs hadoop fs -mkdir -p /user/brijeshdhaker/archives
 sudo -u hdfs hadoop fs -chmod -R 777 /user/brijeshdhaker/archives
-sudo -u hdfs hadoop fs -chown -R brijeshdhaker:brijeshdhaker /user/brijeshdhaker
+sudo -u hdfs hadoop fs -chown -R brijeshdhaker:brijeshdhaker /user/brijeshdhaker/archives
 
 
 

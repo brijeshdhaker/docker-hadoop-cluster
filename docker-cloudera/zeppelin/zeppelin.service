@@ -1,19 +1,16 @@
 [Unit]
-Description = "zeppelin"
-
-After = local-fs.target
-# stop on shutdown
-
-# Respawn the process on unexpected termination
-# respawn
-
-# respawn the job up to 7 times within a 5 second period.
-# If the job exceeds these values, it will be stopped and marked as failed.
-# respawn limit 7 5
+Description=Zeppelin Service
+After=syslog.target network.target
 
 [Service]
-# zeppelin was installed in /usr/share/zeppelin in this example
-ExecStart = /opt/zeppelin-0.10.0/bin/zeppelin-daemon.sh upstart
+Type=forking
+ExecStart=/opt/zeppelin/bin/zeppelin-daemon.sh start
+
+ExecStop=/opt/zeppelin/bin/zeppelin-daemon.sh stop
+ExecReload=/opt/zeppelin/bin/zeppelin-daemon.sh reload
+User=zeppelin
+Group=zeppelin
+Restart=always
 
 [Install]
-WantedBy = multi-user.target
+WantedBy=multi-user.target
