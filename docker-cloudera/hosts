@@ -1,6 +1,6 @@
 #
 #
-127.0.0.1	    localhost
+127.0.0.1	localhost
 127.0.0.1       namenode namenode.bigdata.net
 127.0.0.1       datanode datanode.bigdata.net
 127.0.0.1       resourcemanager resourcemanager.bigdata.net
@@ -19,14 +19,13 @@
 #
 #
 192.168.1.50    sandbox-hdp.hortonworks.com
-192.168.1.100   cloudera.bigdata.net
 192.168.1.110   raspberry-pi.hortonworks.com
 192.168.1.120   hostmaster.bigdata.net
 
 #
 #
-172.16.46.130   quickstart-bigdata
-172.16.46.1     thinkpad
+192.168.240.128   quickstart-bigdata
+192.168.240.1     thinkpad
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     ip6-localhost ip6-loopback

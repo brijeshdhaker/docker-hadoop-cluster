@@ -6,7 +6,7 @@
         <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler</value>
     </property>
     
-	<property>
+    <property>
         <name>yarn.scheduler.fair.allocation.file</name>
         <value>/usr/local/hadoop/etc/hadoop/fair-scheduler.xml</value>
     </property>
