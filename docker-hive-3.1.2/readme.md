@@ -312,11 +312,11 @@ LOCATION 's3://public-qubole/datasets/avro/episodes'
 #
 
 CREATE TABLE zipcodes(
-RecordNumber int,
-Country string,
-City string,
-Zipcode int)
-PARTITIONED BY(state string)
+    RecordNumber int,
+    Country string,
+    City string,
+    Zipcode int
+) PARTITIONED BY(state string)
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ',';
 
