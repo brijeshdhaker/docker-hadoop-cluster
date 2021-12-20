@@ -2,7 +2,7 @@
 # docker build -t brijeshdhaker/hadoop-base:3.2.1 -f docker-hadoop-3.2.1/base/Dockerfile .
 #
 
-FROM debian:9
+FROM ubuntu:20.04
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
