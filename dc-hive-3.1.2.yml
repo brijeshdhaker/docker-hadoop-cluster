@@ -34,7 +34,7 @@ services:
       - docker-hive-3.1.2/hive-3.1.2.env
     command: /opt/hive-3.1.2/bin/hive --service metastore
     environment:
-      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-postgresql:5432"
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 hive-postgresql:5432"
     links:
       - hive-postgresql
     ports:
@@ -59,12 +59,6 @@ services:
       - "10002:10002"
     volumes:
       - /apps/hostpath:/apps/hostpath
-      - /opt/hbase-2.4.6:/opt/hbase-2.4.6
-
-#
-volumes:
-  namenode:
-  datanode:
 
 #
 networks:
