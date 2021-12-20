@@ -20,7 +20,7 @@ set hbase.master=hbase-master=16000;
 <name>hive.aux.jars.path</name>
 <value>
 
-    file:///opt/hbase-1.1.1/lib/hbase-client-1.1.1.jar
+    	file:///opt/hbase-1.1.1/lib/hbase-client-1.1.1.jar
 
 	file:///opt/hbase-2.4.6/lib/commons-lang3-3.9.jar,
 	file:///opt/hbase-2.4.6/lib/hbase-zookeeper-2.4.6.jar,

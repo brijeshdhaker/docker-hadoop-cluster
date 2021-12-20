@@ -141,7 +141,7 @@
       ],
       "dependencies": [
         {
-          "groupArtifactVersion": "/apps/hostpath/drivers/hive-jdbc-3.1.2-standalone.jar",
+          "groupArtifactVersion": "/opt/hive-3.1.2/jdbc/hive-jdbc-3.1.2-standalone.jar",
           "local": false
         },
         {
