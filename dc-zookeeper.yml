@@ -1,0 +1,24 @@
+#
+#
+
+version: '3.5'
+
+services:
+  #
+  zookeeper:
+    image: bitnami/zookeeper:3.7
+    hostname: zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    volumes:
+      - "/apps/hostpath/zookeeper/snode:/bitnami/zookeeper"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+
+#
+networks:
+  default:
+    external: true
+    driver: bridge
+    name: bigdata.net
