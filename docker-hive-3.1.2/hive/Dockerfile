@@ -1,5 +1,5 @@
 #
-# docker build -t brijeshdhaker/hive-base:3.1.2 -f docker-hive-3.1.2/hive/Dockerfile .
+# docker build -t brijeshdhaker/hive:3.1.2 -f docker-hive-3.1.2/hive/Dockerfile .
 #
 
 FROM brijeshdhaker/hadoop-base:3.2.1

@@ -46,6 +46,7 @@ COPY resources/libs/postgresql-42.2.23.jar $HIVE_HOME/lib/
 
 #Custom configuration goes here
 COPY docker-hive-2.3.9/hive/conf $HIVE_HOME/conf
+COPY docker-hbase-2.4.9/client/hbase-site.xml $HIVE_HOME/conf/
 COPY docker-hadoop-2.10.1/client/*.xml $HADOOP_HOME/etc/hadoop/
 
 #
