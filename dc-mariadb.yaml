@@ -26,13 +26,13 @@ services:
 #      - back-tier
 
 #
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 9090:9000
-    networks:
-      - back-tier
+#  adminer:
+#    image: adminer
+#    restart: always
+#    ports:
+#      - 9090:9000
+#    networks:
+#      - back-tier
 #
 
 #

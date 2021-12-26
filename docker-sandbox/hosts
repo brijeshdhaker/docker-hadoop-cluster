@@ -2,34 +2,30 @@
 #
 #
 127.0.0.1       localhost
-127.0.1.1       thinkpad
-172.30.0.1      thinkpad.bigdata.net
+127.0.1.1       thinkpad thinkpad.sandbox-bigdata.net
+172.30.0.1      thinkpad.sandbox-bigdata.net
 
 #
-#
-#
-127.0.0.1       zookeeper
+127.0.0.1       zookeeper zookeeper.sandbox-bigdata.net
 
-#
 # HADOOP
-#
-127.0.0.1       namenode
-127.0.0.1       resourcemanager
-127.0.0.1       nodemanager
-127.0.0.1       historyserver
+127.0.0.1       namenode namenode.sandbox-bigdata.net
+127.0.0.1       datanode datanode.sandbox-bigdata.net
+127.0.0.1       resourcemanager resourcemanager.sandbox-bigdata.net
+127.0.0.1       nodemanager nodemanager.sandbox-bigdata.net
+127.0.0.1       historyserver historyserver.sandbox-bigdata.net
 
-#
 # HBASE
-#
-127.0.0.1       hbase-master hbase-master.bigdata.net
-127.0.0.1       hbase-regionserver hbase-regionserver.bigdata.net
+127.0.0.1       hbase-master hbase-master.sandbox-bigdata.net
+127.0.0.1       hbase-regionserver hbase-regionserver.sandbox-bigdata.net
+
+# HIVE
+127.0.0.1       hive-postgresql hive-postgresql.sandbox-bigdata.net
+127.0.0.1       hive-server hive-server.sandbox-bigdata.net
+127.0.0.1       hive-metastore hive-metastore.sandbox-bigdata.net
 
 #
-# HIVE
-#
-127.0.0.1       hive-postgresql
-127.0.0.1       hive-metastore
-127.0.0.1       hive-server
+127.0.0.1       zeppelin zeppelin.sandbox-bigdata.net
 
 #
 # HDP Cluster

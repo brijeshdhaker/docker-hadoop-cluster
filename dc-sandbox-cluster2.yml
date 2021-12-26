@@ -67,10 +67,10 @@ services:
   #
   #
   namenode:
-    image: brijeshdhaker/hadoop-namenode:2.7.4
+    image: brijeshdhaker/hadoop-namenode:2.10.1
     build:
       context: .
-      dockerfile: docker-hadoop-2.7.4/namenode/Dockerfile
+      dockerfile: docker-hadoop-2.10.1/namenode/Dockerfile
     container_name: namenode
     hostname: namenode
     restart: always
@@ -84,14 +84,14 @@ services:
     environment:
       - CLUSTER_NAME=test
     env_file:
-      - docker-hadoop-2.7.4/hadoop-2.7.4.env
+      - docker-hadoop-2.10.1/hadoop-2.10.1.env
 
   #
   datanode:
-    image: brijeshdhaker/hadoop-datanode:2.7.4
+    image: brijeshdhaker/hadoop-datanode:2.10.1
     build:
       context: .
-      dockerfile: docker-hadoop-2.7.4/datanode/Dockerfile
+      dockerfile: docker-hadoop-2.10.1/datanode/Dockerfile
     container_name: datanode
     hostname: datanode
     extra_hosts:
@@ -105,14 +105,14 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:50070"
     env_file:
-      - docker-hadoop-2.7.4/hadoop-2.7.4.env
+      - docker-hadoop-2.10.1/hadoop-2.10.1.env
 
   #
   resourcemanager:
-    image: brijeshdhaker/hadoop-resourcemanager:2.7.4
+    image: brijeshdhaker/hadoop-resourcemanager:2.10.1
     build:
       context: .
-      dockerfile: docker-hadoop-2.7.4/resourcemanager/Dockerfile
+      dockerfile: docker-hadoop-2.10.1/resourcemanager/Dockerfile
     container_name: resourcemanager
     hostname: resourcemanager
     restart: always
@@ -128,14 +128,14 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9000  namenode:50070  datanode:50075"
     env_file:
-      - docker-hadoop-2.7.4/hadoop-2.7.4.env
+      - docker-hadoop-2.10.1/hadoop-2.10.1.env
 
   #
   nodemanager:
-    image: brijeshdhaker/hadoop-nodemanager:2.7.4
+    image: brijeshdhaker/hadoop-nodemanager:2.10.1
     build:
       context: .
-      dockerfile: docker-hadoop-2.7.4/nodemanager/Dockerfile
+      dockerfile: docker-hadoop-2.10.1/nodemanager/Dockerfile
     container_name: nodemanager
     hostname: nodemanager
     restart: always
@@ -148,14 +148,14 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9000  namenode:50070  datanode:50075 resourcemanager:8088"
     env_file:
-      - docker-hadoop-2.7.4/hadoop-2.7.4.env
+      - docker-hadoop-2.10.1/hadoop-2.10.1.env
 
   #
   historyserver:
-    image: brijeshdhaker/hadoop-historyserver:2.7.4
+    image: brijeshdhaker/hadoop-historyserver:2.10.1
     build:
       context: .
-      dockerfile: docker-hadoop-2.7.4/historyserver/Dockerfile
+      dockerfile: docker-hadoop-2.10.1/historyserver/Dockerfile
     container_name: historyserver
     hostname: historyserver
     restart: always
@@ -168,16 +168,16 @@ services:
     volumes:
       - /apps/hostpath:/apps/hostpath
     env_file:
-      - docker-hadoop-2.7.4/hadoop-2.7.4.env
+      - docker-hadoop-2.10.1/hadoop-2.10.1.env
 
   #
   # Hive Server
   #
   hive-postgresql:
-    image: brijeshdhaker/hive-postgresql:2.3.7
+    image: brijeshdhaker/hive-postgresql:2.3.9
     build:
       context: .
-      dockerfile: docker-hive-2.3.7/postgres/Dockerfile
+      dockerfile: docker-hive-2.3.9/postgres/Dockerfile
     hostname: hive-postgresql
     container_name: hive-postgresql
     ports:
@@ -187,15 +187,15 @@ services:
 
   #
   hive-metastore:
-    image: brijeshdhaker/hive:2.3.7
+    image: brijeshdhaker/hive:2.3.9
     build:
       context: .
-      dockerfile: docker-hive-2.3.7/hive/Dockerfile
+      dockerfile: docker-hive-2.3.9/hive/Dockerfile
     hostname: hive-metastore
     container_name: hive-metastore
     env_file:
-      - docker-hive-2.3.7/hive-2.3.7.env
-    command: /opt/hive-2.3.7/bin/hive --service metastore
+      - docker-hive-2.3.9/hive-2.3.9.env
+    command: /opt/hive-2.3.9/bin/hive --service metastore
     environment:
       SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-postgresql:5432"
     links:
@@ -207,11 +207,11 @@ services:
 
   #
   hive-server:
-    image: brijeshdhaker/hive:2.3.7
+    image: brijeshdhaker/hive:2.3.9
     hostname: hive-server
     container_name: hive-server
     env_file:
-      - docker-hive-2.3.7/hive-2.3.7.env
+      - docker-hive-2.3.9/hive-2.3.9.env
     links:
       - hive-metastore
     environment:
@@ -222,22 +222,22 @@ services:
       - "10002:10002"
     volumes:
       - /apps/hostpath:/apps/hostpath
-      - /opt/sandbox/hbase-2.4.6:/opt/hbase-2.4.6
+      - /opt/sandbox/hbase-2.4.9:/opt/hbase-2.4.9
 
   #
   # Hbase Server
   #
   hbase-master:
-    image: brijeshdhaker/hbase-master:2.4.6
+    image: brijeshdhaker/hbase-master:2.4.9
     build:
       context: .
-      dockerfile: docker-hbase-2.4.6/hmaster/Dockerfile
+      dockerfile: docker-hbase-2.4.9/hmaster/Dockerfile
     hostname: hbase-master
     container_name: hbase-master
     environment:
       SERVICE_PRECONDITION: "namenode:9870 datanode:9864 zookeeper:2181"
     env_file:
-      - docker-hbase-2.4.6/hbase-distributed.env
+      - docker-hbase-2.4.9/hbase-distributed.env
     ports:
       - 16010:16010
     volumes:
@@ -245,14 +245,14 @@ services:
 
   #
   hbase-region:
-    image: brijeshdhaker/hbase-regionserver:2.4.6
+    image: brijeshdhaker/hbase-regionserver:2.4.9
     build:
       context: .
-      dockerfile: docker-hbase-2.4.6/hregionserver/Dockerfile
+      dockerfile: docker-hbase-2.4.9/hregionserver/Dockerfile
     container_name: hbase-regionserver
     hostname: hbase-regionserver
     env_file:
-      - docker-hbase-2.4.6/hbase-distributed.env
+      - docker-hbase-2.4.9/hbase-distributed.env
     environment:
       HBASE_CONF_hbase_regionserver_hostname: hbase-region
       SERVICE_PRECONDITION: "namenode:9870 datanode:9864 zookeeper:2181 hbase-master:16010"
@@ -274,10 +274,10 @@ services:
       - "9080:8080"
     volumes:
       - /apps/hostpath:/apps/hostpath
-      - /opt/sandbox/hadoop-2.7.4:/opt/hadoop-2.7.4
-      - /opt/sandbox/hive-2.3.7:/opt/hive-2.3.7
+      - /opt/sandbox/hadoop-2.10.1:/opt/hadoop-2.10.1
+      - /opt/sandbox/hive-2.3.9:/opt/hive-2.3.9
       - /opt/sandbox/spark-3.1.2:/opt/spark-3.1.2
-      - /opt/sandbox/hbase-2.4.6:/opt/hbase-2.4.6
+      - /opt/sandbox/hbase-2.4.9:/opt/hbase-2.4.9
 
 #
 networks:
