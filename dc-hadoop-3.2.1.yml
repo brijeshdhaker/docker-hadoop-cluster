@@ -50,9 +50,7 @@ services:
     restart: always
     ports:
       - "8088:8088"
-      - "8025:8025"
       - "8032:8032"
-      - "8050:8050"
     volumes:
       - /apps/hostpath:/apps/hostpath
     environment:
