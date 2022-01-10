@@ -11,17 +11,17 @@
     
     <property>
         <name>dfs.datanode.data.dir</name>
-        <value>file:///apps/hostpath/hadoop/2.10.1/dfs/data</value>
+        <value>file:///apps/hostpath/sandbox2/hadoop/dfs/data</value>
     </property>
     
     <property>
         <name>dfs.namenode.name.dir</name>
-        <value>file:///apps/hostpath/hadoop/2.10.1/dfs/name</value>
+        <value>file:///apps/hostpath/sandbox2/hadoop/dfs/name</value>
     </property>
     
     <property>
         <name>dfs.namenode.checkpoint.dir</name>
-        <value>file:///apps/hostpath/hadoop/2.10.1/dfs/namesecondary</value>
+        <value>file:///apps/hostpath/sandbox2/hadoop/dfs/namesecondary</value>
     </property>
     
     <property>
