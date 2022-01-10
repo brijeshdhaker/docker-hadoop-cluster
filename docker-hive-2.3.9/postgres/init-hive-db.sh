@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-if [ ! -f /apps/hostpath/postgres/hive-2.3.9/.already_setup ]; then
+if [ ! -f /apps/hostpath/sandbox2/hive/.already_setup ]; then
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
 
@@ -31,7 +31,7 @@ WHERE tableowner = CURRENT_USER and schemaname = 'public';
 
 EOSQL
 
-  touch /apps/hostpath/postgres/hive-2.3.9/.already_setup
+  touch /apps/hostpath/sandbox2/hive/.already_setup
 
 fi
 

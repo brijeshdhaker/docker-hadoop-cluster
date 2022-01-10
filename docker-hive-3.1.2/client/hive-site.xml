@@ -8,7 +8,7 @@
     <property><name>javax.jdo.option.ConnectionURL</name><value>jdbc:postgresql://hive-postgresql/metastore</value></property>
     <property><name>javax.jdo.option.ConnectionUserName</name><value>hive</value></property>
     <property><name>javax.jdo.option.ConnectionDriverName</name><value>org.postgresql.Driver</value></property>
-    <property><name>hive.metastore.warehouse.dir</name><value>hdfs://namenode:9000/apps/hive-3.1.2/warehouse</value></property>
+    <property><name>hive.metastore.warehouse.dir</name><value>hdfs://namenode:9000/user/hive/warehouse</value></property>
     <!--
     <property>
         <name>hive.aux.jars.path</name>
