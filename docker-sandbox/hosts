@@ -1,34 +1,40 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 #
 #
+127.0.0.1	localhost
+127.0.0.1       namenode namenode.bigdata.net
+127.0.0.1       datanode datanode.bigdata.net
+127.0.0.1       resourcemanager resourcemanager.bigdata.net
+127.0.0.1       nodemanager nodemanager.bigdata.net
+127.0.0.1       historyserver historyserver.bigdata.net
 #
-127.0.0.1       localhost
-127.0.1.1       thinkpad thinkpad.sandbox-bigdata.net
-172.30.0.1      thinkpad.sandbox-bigdata.net
-
+127.0.0.1       hive-postgresql hive-postgresql.bigdata.net
+127.0.0.1       hive-server hive-server.bigdata.net
+127.0.0.1       hive-metastore hive-metastore.bigdata.net
 #
-127.0.0.1       zookeeper zookeeper.sandbox-bigdata.net
-
-# HADOOP
-127.0.0.1       namenode namenode.sandbox-bigdata.net
-127.0.0.1       datanode datanode.sandbox-bigdata.net
-127.0.0.1       resourcemanager resourcemanager.sandbox-bigdata.net
-127.0.0.1       nodemanager nodemanager.sandbox-bigdata.net
-127.0.0.1       historyserver historyserver.sandbox-bigdata.net
-
-# HBASE
-127.0.0.1       hbase-master hbase-master.sandbox-bigdata.net
-127.0.0.1       hbase-regionserver hbase-regionserver.sandbox-bigdata.net
-
-# HIVE
-127.0.0.1       hive-postgresql hive-postgresql.sandbox-bigdata.net
-127.0.0.1       hive-server hive-server.sandbox-bigdata.net
-127.0.0.1       hive-metastore hive-metastore.sandbox-bigdata.net
-
+127.0.0.1       hbase-master hbase-master.bigdata.net hbase-master.sandbox-bigdata.net
+127.0.0.1       hbase-regionserver hbase-regionserver.bigdata.net hbase-regionserver.sandbox-bigdata.net
 #
-127.0.0.1       zeppelin zeppelin.sandbox-bigdata.net
-
+127.0.0.1	kafka-broker kafka-broker.bigdata.net kafka-broker.sandbox-bigdata.net
+127.0.0.1	schema-registry schema-registry.bigdata.net schema-registry.sandbox-bigdata.net
 #
-# HDP Cluster
+127.0.0.1       zookeeper zookeeper.bigdata.net zookeeper.sandbox-bigdata.net
+#
+127.0.0.1	zeppelin zeppelin.bigdata.net zeppelin.sandbox-bigdata.net
+127.0.0.1	nififlow nififlow.bigdata.net nififlow.sandbox-bigdata.net
+#
+172.18.0.1	hostmaster.bigdata.net host.docker.internal
+#
 #
 192.168.1.50    sandbox-hdp.hortonworks.com
 192.168.1.110   raspberry-pi.hortonworks.com
+#192.168.1.120   hostmaster.bigdata.net
+
+#
+#
+192.168.240.130   quickstart-bigdata
+192.168.240.1     thinkpad
+
+#
+#
