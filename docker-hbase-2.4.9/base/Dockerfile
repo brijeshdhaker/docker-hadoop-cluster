@@ -28,6 +28,7 @@ RUN mkdir -p /hbase-data && mkdir -p /zookeeper-data && mkdir -p $HBASE_HOME/log
 #
 ADD docker-hbase-2.4.9/base/hbase-site.xml $HBASE_HOME/conf
 ADD docker-hbase-2.4.9/base/entrypoint.sh /entrypoint.sh
+ADD docker-hbase-2.4.9/base/lib/*.jar $HBASE_HOME/lib/
 RUN chmod a+x /entrypoint.sh
 
 WORKDIR ${HBASE_HOME}

@@ -7,8 +7,11 @@ FROM ubuntu:20.04
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    openjdk-8-jdk net-tools curl netcat gnupg libsnappy-dev vim \
-    && rm -rf /var/lib/apt/lists/*
+    openjdk-8-jdk net-tools curl netcat gnupg libsnappy-dev vim python3 python3-pip \
+    && pip3 install --upgrade pip setuptools \
+    && rm -rf /var/lib/apt/lists/* \
+    # Removed the .cache to save space
+    && rm -r /root/.cache && rm -rf /var/cache/apt/*
 
 #
 ENV HADOOP_VERSION  3.2.1
