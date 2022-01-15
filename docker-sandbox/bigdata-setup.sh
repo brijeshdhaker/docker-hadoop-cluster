@@ -4,7 +4,7 @@
 # Docker network
 #
 docker network create -d bridge bigdata.net
-
+docker network create -d bridge sandbox-bigdata.net
 #
 # Require Dirs
 #

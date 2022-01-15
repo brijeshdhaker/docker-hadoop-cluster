@@ -23,7 +23,7 @@
 127.0.0.1	    zeppelin zeppelin.bigdata.net zeppelin.sandbox-bigdata.net
 127.0.0.1	    nififlow nififlow.bigdata.net nififlow.sandbox-bigdata.net
 #
-172.18.0.1	    hostmaster.bigdata.net host.docker.internal
+172.21.0.1	    sandbox-cluster-gateway thinkpad
 #
 #
 192.168.1.50    sandbox-hdp.hortonworks.com
@@ -33,7 +33,7 @@
 #
 #
 192.168.240.130   quickstart-bigdata
-192.168.240.1     thinkpad
+# 192.168.240.1     thinkpad
 
 #
 #
