@@ -1,0 +1,1 @@
+sudo docker run --hostname=quickstart.cloudera --privileged=true -t -i -v /home/chris/clouderacontainer:/src -m 12G -p 80:80 -p 8888:8888 -p 50070:50070 -p 1004:1004 -p 1006:1006 -p 7180:7180 -p 8020:8020 -p 8990:8990 -p 21050:21050 -p 88:88 -p 88:88/udp cloudera/quickstart /usr/bin/docker-quickstart

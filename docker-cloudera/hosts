@@ -1,0 +1,36 @@
+#
+#
+127.0.0.1	localhost
+127.0.0.1       namenode namenode.bigdata.net
+127.0.0.1       datanode datanode.bigdata.net
+127.0.0.1       resourcemanager resourcemanager.bigdata.net
+127.0.0.1       nodemanager nodemanager.bigdata.net
+127.0.0.1       historyserver historyserver.bigdata.net
+#
+127.0.0.1       hive-postgresql hive-postgresql.bigdata.net
+127.0.0.1       hive-server hive-server.bigdata.net
+127.0.0.1       hive-metastore hive-metastore.bigdata.net
+#
+127.0.0.1       hbase-master hbase-master.bigdata.net
+127.0.0.1       hbase-regionserver hbase-regionserver.bigdata.net
+#
+127.0.0.1       zookeeper zookeeper.bigdata.net
+
+#
+#
+192.168.1.50    sandbox-hdp.hortonworks.com
+192.168.1.110   raspberry-pi.hortonworks.com
+192.168.1.120   hostmaster.bigdata.net
+
+#
+#
+192.168.240.128   quickstart-bigdata
+192.168.240.1     thinkpad
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+

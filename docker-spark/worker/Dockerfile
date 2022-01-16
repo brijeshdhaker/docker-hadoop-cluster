@@ -1,8 +1,8 @@
 #
-# docker build -t big-data/spark-worker:3.1.2 -f ../../Dockerfile .
+# docker build -t brijeshdhaker/spark-worker:3.1.2 -f ../../Dockerfile .
 #
 
-FROM big-data/spark-base:3.1.2
+FROM brijeshdhaker/spark-base:3.1.2
 
 #
 COPY docker-spark/worker/worker.sh /

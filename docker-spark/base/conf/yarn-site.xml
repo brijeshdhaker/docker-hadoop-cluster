@@ -6,7 +6,7 @@
         <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler</value>
     </property>
     
-	<property>
+    <property>
         <name>yarn.scheduler.fair.allocation.file</name>
         <value>/usr/local/hadoop/etc/hadoop/fair-scheduler.xml</value>
     </property>
@@ -38,7 +38,7 @@
     
 	<property>
         <name>yarn.log.server.url</name>
-        <value>http://hadoop-historyserver:8188/jobhistory/logs</value>
+        <value>http://historyserver:8188/jobhistory/logs</value>
     </property>
 
 	<property>

@@ -6,7 +6,7 @@ version: '3.5'
 services:
 #
   jupyternb:
-    image: big-data/jupyternb:3.2.1
+    image: brijeshdhaker/jupyternb:3.2.1
     build:
       context: .
       dockerfile: docker-jupyternb/Dockerfile
@@ -17,12 +17,15 @@ services:
       - "7777:7777"
       - "2222:2222"
     volumes:
-      - /apps/hostpath/notebook:/home/notebook
+      - /apps/hostpath/python/notebook:/home/notebook
       - /apps/hostpath:/apps/hostpath
     environment:
       KUBECONFIG: /home/notebook/.kube/config
 #
+
 #
 networks:
   default:
+    external: true
+    driver: bridge
     name: bigdata.net

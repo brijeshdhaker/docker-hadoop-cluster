@@ -1,0 +1,61 @@
+#
+#
+
+version: '3.5'
+
+services:
+  zookeeper1:
+    image: docker.io/bitnami/zookeeper:3.7
+    hostname: zookeeper1
+    container_name: zookeeper1
+    ports:
+      - '2181'
+    volumes:
+      - /apps/hostpath/zookeeper/cluster/data_1:/bitnami/zookeeper
+    environment:
+      - ZOO_SERVER_ID=1
+      - ALLOW_ANONYMOUS_LOGIN=yes
+      - ZOO_SERVERS=zookeeper1:2888:3888,zookeeper2:2888:3888,zookeeper3:2888:3888
+  #
+  zookeeper2:
+    image: docker.io/bitnami/zookeeper:3.7
+    hostname: zookeeper2
+    container_name: zookeeper2
+    ports:
+      - '2181'
+    volumes:
+      - /apps/hostpath/zookeeper/cluster/data_2:/bitnami/zookeeper
+    environment:
+      - ZOO_SERVER_ID=2
+      - ALLOW_ANONYMOUS_LOGIN=yes
+      - ZOO_SERVERS=zookeeper1:2888:3888,zookeeper2:2888:3888,zookeeper3:2888:3888
+
+  #
+  zookeeper3:
+    image: docker.io/bitnami/zookeeper:3.7
+    hostname: zookeeper3
+    container_name: zookeeper3
+    ports:
+      - '2181'
+    volumes:
+      - /apps/hostpath/zookeeper/cluster/data_3:/bitnami/zookeeper
+    environment:
+      - ZOO_SERVER_ID=3
+      - ALLOW_ANONYMOUS_LOGIN=yes
+      - ZOO_SERVERS=zookeeper1:2888:3888,zookeeper2:2888:3888,zookeeper3:2888:3888
+
+#
+volumes:
+  zookeeper1_data:
+    driver: local
+  zookeeper2_data:
+    driver: local
+  zookeeper3_data:
+    driver: local
+
+#
+networks:
+  default:
+    external: true
+    driver: bridge
+    name: bigdata.net

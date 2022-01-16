@@ -1,8 +1,8 @@
 #
-# docker build -t big-data/spark-master:3.1.2 -f ../../Dockerfile .
+# docker build -t brijeshdhaker/spark-master:3.1.2 -f ../../Dockerfile .
 #
 
-FROM big-data/spark-base:3.1.2
+FROM brijeshdhaker/spark-base:3.1.2
 
 #
 COPY docker-spark/master/spark-yarn.conf $SPARK_HOME/conf/

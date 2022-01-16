@@ -1,0 +1,39 @@
+127.0.0.1       localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1             localhost localhost.localdomain localhost6 localhost6.localdomain6
+#
+#
+127.0.0.1       namenode namenode.bigdata.net
+127.0.0.1       datanode datanode.bigdata.net
+127.0.0.1       resourcemanager resourcemanager.bigdata.net
+127.0.0.1       nodemanager nodemanager.bigdata.net
+127.0.0.1       historyserver historyserver.bigdata.net
+#
+127.0.0.1       hive-postgresql hive-postgresql.bigdata.net
+127.0.0.1       hive-server hive-server.bigdata.net
+127.0.0.1       hive-metastore hive-metastore.bigdata.net
+#
+127.0.0.1       hbase-master hbase-master.bigdata.net hbase-master.sandbox-bigdata.net
+127.0.0.1       hbase-regionserver hbase-regionserver.bigdata.net hbase-regionserver.sandbox-bigdata.net
+#
+127.0.0.1	    kafka-broker kafka-broker.bigdata.net kafka-broker.sandbox-bigdata.net
+127.0.0.1	    schema-registry schema-registry.bigdata.net schema-registry.sandbox-bigdata.net
+#
+127.0.0.1       zookeeper zookeeper.bigdata.net zookeeper.sandbox-bigdata.net
+#
+127.0.0.1	    zeppelin zeppelin.bigdata.net zeppelin.sandbox-bigdata.net
+127.0.0.1	    nififlow nififlow.bigdata.net nififlow.sandbox-bigdata.net
+#
+172.21.0.1	    sandbox-cluster-gateway thinkpad
+#
+#
+192.168.1.50    sandbox-hdp.hortonworks.com
+192.168.1.110   raspberry-pi.hortonworks.com
+#192.168.1.120  hostmaster.bigdata.net
+
+#
+#
+192.168.240.130   quickstart-bigdata
+# 192.168.240.1     thinkpad
+
+#
+#
