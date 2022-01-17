@@ -17,7 +17,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
 ENV HADOOP_VERSION  3.2.1
 ENV BASE_DIR 		/opt
 ENV JAVA_HOME       /usr/lib/jvm/java-8-openjdk-amd64/
-ENV HADOOP_HOME		$BASE_DIR/hadoop-3.2.1
+ENV HADOOP_HOME		$BASE_DIR/hadoop-$HADOOP_VERSION
 
 # RUN curl -O https://dist.apache.org/repos/dist/release/hadoop/common/KEYS
 # RUN gpg --import KEYS
@@ -33,17 +33,18 @@ ENV HADOOP_HOME		$BASE_DIR/hadoop-3.2.1
 
 ADD resources/tars/hadoop-3.2.1.tar.gz ${BASE_DIR}/
 
-RUN ln -s ${BASE_DIR}/hadoop-$HADOOP_VERSION/etc/hadoop /etc/hadoop
+RUN ln -s ${HADOOP_HOME}/etc/hadoop /etc/hadoop
 
-RUN mkdir ${BASE_DIR}/hadoop-$HADOOP_VERSION/logs
+RUN mkdir ${HADOOP_HOME}/logs
 
 RUN mkdir /hadoop-data
 
 ENV HADOOP_CONF_DIR=/etc/hadoop
 ENV MULTIHOMED_NETWORK=1
 ENV USER=root
-ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+ENV PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin
 
+ADD docker-hadoop-3.2.1/base/fair-scheduler.xml ${HADOOP_HOME}/etc/hadoop
 ADD docker-hadoop-3.2.1/base/entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
 
