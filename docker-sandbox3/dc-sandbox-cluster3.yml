@@ -84,10 +84,10 @@ services:
   #
   # Mysql Database Server
   #
-  mysqlserver:
-    image: mysql/mysql-server:8.0.28
-    container_name: mysqlserver
-    hostname: mysqlserver
+  mariadb:
+    image: mariadb:10.3.27
+    container_name: mariadb
+    hostname: mariadb
     restart: always
     ports:
       - "3306:3306"
@@ -100,9 +100,8 @@ services:
       MYSQL_OPERATIONS_PASSWORD: p@SSW0rd
       MYSQL_ROOT_PASSWORD: p@SSW0rd
       MYSQL_DATABASE: PUBLIC
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: p@SSW0rd
-      MYSQL_ROOT_HOST: 172.18.0.1
+      MYSQL_USER: developer
+      MYSQL_PASSWORD: pDSSW0rd
 
   #
   # Cassandra Server
@@ -194,11 +193,11 @@ services:
     hostname: historyserver
     restart: always
     ports:
-      - "19888:19888"
+      - "8188:8188"
     environment:
-      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
     volumes:
-      - /apps/hostpath/sandbox3/hadoop/yarn/history:/tmp/yarn/history
+      - /apps/hostpath/sandbox3/hadoop/yarn/timeline:/hadoop/yarn/timeline
       - /apps/hostpath:/apps/hostpath
     env_file:
       - sandbox3.env
