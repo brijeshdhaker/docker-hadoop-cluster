@@ -1,15 +1,22 @@
 #
-# docker build -t brijeshdhaker/spark-master:3.1.2 -f ../../Dockerfile .
+# docker build -t brijeshdhaker/spark-historyserver:3.1.2 -f docker-spark/historyserver/Dockerfile .
 #
+ARG spark_uid=185
+#
+FROM spark:3.1.2
 
-#
-FROM brijeshdhaker/spark-base:3.1.2
+
+# Specify the User that the actual main process will run as
+USER ${spark_uid}
+ENV SPARK_VERSION   3.1.2
+ENV SPARK_HOME      /opt/spark
 
 #
 COPY docker-spark/historyserver/spark.logserver.conf $SPARK_HOME/conf/
 
 #
 COPY docker-spark/historyserver/historyserver.sh /
+
 #Give permission to execute scripts
 RUN cd / && chmod +x /*.sh
 
