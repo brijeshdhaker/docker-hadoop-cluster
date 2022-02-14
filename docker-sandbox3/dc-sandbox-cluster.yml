@@ -283,6 +283,20 @@ services:
     volumes:
       - "/apps/hostpath:/apps/hostpath"
 
+  #
+  #
+  #
+  spark-historyserver:
+    image: brijeshdhaker/spark-historyserver:3.1.2
+    container_name: spark-historyserver
+    hostname: spark-historyserver
+    depends_on:
+      - namenode
+      - datanode
+    ports:
+      - "18080:18080"
+    volumes:
+      - /apps/hostpath:/apps/hostpath
 
   #
   # Zeppelin Notebook
