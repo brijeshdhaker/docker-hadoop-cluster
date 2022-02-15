@@ -9,22 +9,24 @@ bash ~/Miniconda3-py38_4.10.3-Linux-x86_64.sh -b -p /opt/sandbox/conda
 #
 export PATH=/opt/sandbox/conda/bin:$PATH
 
+anaconda-navigator
 #
 #### Create Conda Virtual Env 
 #
 
 conda create --name pyspark3.8
 
-
+```
 conda create -y -n pyspark3.7 -c conda-forge pyarrow pandas conda-pack
 conda activate pyspark3.7
 conda pack -f -o pyspark3.7.tar.gz
+```
 
-
+```
 conda create -y -n pyspark3.8 -c conda-forge pyarrow pandas conda-pack
 conda activate pyspark3.8
 conda pack -f -o pyspark3.8.tar.gz
-
+```
 
 #
 #### Install Package in Virtual Environment
