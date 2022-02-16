@@ -17,6 +17,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
+      - /apps/hostpath/sandbox2/postgres:/var/lib/postgresql/data
       - /apps/hostpath:/apps/hostpath
 
 #

@@ -15,9 +15,9 @@ services:
       - "2181:2181"
     volumes:
       - /apps/hostpath:/apps/hostpath
-      - /apps/hostpath/sandbox3/zookeeper/secrets:/etc/zookeeper/secrets
-      - /apps/hostpath/sandbox3/zookeeper/data:/var/lib/zookeeper/data
-      - /apps/hostpath/sandbox3/zookeeper/log:/var/lib/zookeeper/log
+      - /apps/hostpath/sandbox2/zookeeper/secrets:/etc/zookeeper/secrets
+      - /apps/hostpath/sandbox2/zookeeper/data:/var/lib/zookeeper/data
+      - /apps/hostpath/sandbox2/zookeeper/log:/var/lib/zookeeper/log
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
@@ -37,8 +37,8 @@ services:
       - "19092:19092"
     volumes:
       - /apps/hostpath:/apps/hostpath
-      - /apps/hostpath/sandbox3/kafka-broker/secrets:/etc/kafka/secrets
-      - /apps/hostpath/sandbox3/kafka-broker/data:/var/lib/kafka/data
+      - /apps/hostpath/sandbox2/kafka-broker/secrets:/etc/kafka/secrets
+      - /apps/hostpath/sandbox2/kafka-broker/data:/var/lib/kafka/data
     environment:
       KAFKA_BROKER_ID: 0
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
@@ -74,7 +74,7 @@ services:
       - "8081:8081"
     volumes:
       - /apps/hostpath:/apps/hostpath
-      - /apps/hostpath/sandbox3/schema-registry/secrets:/etc/schema-registry/secrets
+      - /apps/hostpath/sandbox2/schema-registry/secrets:/etc/schema-registry/secrets
     environment:
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
       SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'kafka-broker:19092'
@@ -93,8 +93,8 @@ services:
       - "3306:3306"
     volumes:
       - /apps/hostpath:/apps/hostpath
-      - /apps/hostpath/sandbox3/mysql/conf:/etc/mysql/conf.d
-      - /apps/hostpath/sandbox3/mysql/data:/var/lib/mysql
+      - /apps/hostpath/sandbox2/mysql/conf:/etc/mysql/conf.d
+      - /apps/hostpath/sandbox2/mysql/data:/var/lib/mysql
     environment:
       MYSQL_OPERATIONS_USER: operate
       MYSQL_OPERATIONS_PASSWORD: p@SSW0rd
@@ -107,7 +107,7 @@ services:
   # Cassandra Server
   #
   cassandra:
-    image: cassandra:4.0.2
+    image: cassandra:latest
     hostname: cassandra
     container_name: cassandra
     restart: always
@@ -115,7 +115,7 @@ services:
       - "7000:7000"
     volumes:
       - /apps/hostpath:/apps/hostpath
-      - /apps/hostpath/sandbox3/cassandra/data:/var/lib/cassandra
+      - /apps/hostpath/sandbox2/cassandra/data:/var/lib/cassandra
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
 
@@ -123,108 +123,125 @@ services:
   # HDFS & YARN Sandbox
   #
   namenode:
-    image: brijeshdhaker/hadoop-namenode:3.2.1
+    image: brijeshdhaker/hadoop-namenode:2.10.1
     container_name: namenode
     hostname: namenode
     restart: always
+    extra_hosts:
+      - "hostmaster hostmaster.sandbox-bigdata.net:host-gateway"
     ports:
-      - "9870:9870"
+      - "50070:50070"
       - "9000:9000"
     volumes:
-      - /apps/hostpath/sandbox3/hadoop/dfs/name:/hadoop/dfs/name
       - /apps/hostpath:/apps/hostpath
     environment:
-      - CLUSTER_NAME=test
+      - CLUSTER_NAME=docker-sandbox
     env_file:
-      - sandbox3.env
+      - sandbox2.env
 
   #
   datanode:
-    image: brijeshdhaker/hadoop-datanode:3.2.1
+    image: brijeshdhaker/hadoop-datanode:2.10.1
     container_name: datanode
     hostname: datanode
+    extra_hosts:
+      - "hostmaster hostmaster.sandbox-bigdata.net:host-gateway"
     ports:
-      - "9864:9864"
-      - "9866:9866"
+      - "50075:50075"
+      - "50010:50010"
     restart: always
     volumes:
-      - /apps/hostpath/sandbox3/hadoop/dfs/data:/hadoop/dfs/data
       - /apps/hostpath:/apps/hostpath
     environment:
-      SERVICE_PRECONDITION: "namenode:9870"
+      SERVICE_PRECONDITION: "namenode:50070"
     env_file:
-      - sandbox3.env
+      - sandbox2.env
 
   #
   resourcemanager:
-    image: brijeshdhaker/hadoop-resourcemanager:3.2.1
+    image: brijeshdhaker/hadoop-resourcemanager:2.10.1
     container_name: resourcemanager
     hostname: resourcemanager
     restart: always
+    extra_hosts:
+      - "hostmaster hostmaster.sandbox-bigdata.net:host-gateway"
     ports:
       - "8088:8088"
       - "8032:8032"
     volumes:
       - /apps/hostpath:/apps/hostpath
     environment:
-      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
+      SERVICE_PRECONDITION: "namenode:9000  namenode:50070  datanode:50075"
     env_file:
-      - sandbox3.env
+      - sandbox2.env
 
   #
   nodemanager:
-    image: brijeshdhaker/hadoop-nodemanager:3.2.1
+    image: brijeshdhaker/hadoop-nodemanager:2.10.1
     container_name: nodemanager
     hostname: nodemanager
     restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '8'
+          memory: 8192M
+        reservations:
+          memory: 8192M
+    extra_hosts:
+      - "hostmaster hostmaster.sandbox-bigdata.net:host-gateway"
     ports:
       - "8042:8042"
+      - "19888:19888"
     volumes:
       - /apps/hostpath:/apps/hostpath
     environment:
-      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+      SERVICE_PRECONDITION: "namenode:9000  namenode:50070  datanode:50075 resourcemanager:8088"
     env_file:
-      - sandbox3.env
+      - sandbox2.env
 
   #
   historyserver:
-    image: brijeshdhaker/hadoop-historyserver:3.2.1
+    image: brijeshdhaker/hadoop-historyserver:2.10.1
     container_name: historyserver
     hostname: historyserver
     restart: always
+    extra_hosts:
+      - "hostmaster hostmaster.sandbox-bigdata.net:host-gateway"
     ports:
       - "8188:8188"
     environment:
-      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+      SERVICE_PRECONDITION: "namenode:9000  namenode:50070  datanode:50075 resourcemanager:8088"
     volumes:
-      - /apps/hostpath/sandbox3/hadoop/yarn/timeline:/hadoop/yarn/timeline
       - /apps/hostpath:/apps/hostpath
     env_file:
-      - sandbox3.env
+      - sandbox2.env
 
   #
   # Hive Server
   #
   hive-postgresql:
-    image: brijeshdhaker/hive-postgresql:3.1.2
+    image: brijeshdhaker/hive-postgresql:2.3.9
     hostname: hive-postgresql
     container_name: hive-postgresql
+    restart: always
     ports:
       - "5432:5432"
     volumes:
-      - /apps/hostpath/sandbox3/postgres:/var/lib/postgresql/data
+      - /apps/hostpath/sandbox2/postgres:/var/lib/postgresql/data
       - /apps/hostpath:/apps/hostpath
 
   #
   hive-metastore:
-    image: brijeshdhaker/hive:3.1.2
+    image: brijeshdhaker/hive:2.3.9
     hostname: hive-metastore
     container_name: hive-metastore
+    restart: always
     env_file:
-      - sandbox3.env
-    command: /opt/hive-3.1.2/bin/hive --service metastore
+      - sandbox2.env
+    command: /opt/hive-2.3.9/bin/hive --service metastore
     environment:
-      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 hive-postgresql:5432"
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-postgresql:5432"
     links:
       - hive-postgresql
     ports:
@@ -234,11 +251,12 @@ services:
 
   #
   hive-server:
-    image: brijeshdhaker/hive:3.1.2
+    image: brijeshdhaker/hive:2.3.9
     hostname: hive-server
     container_name: hive-server
+    restart: always
     env_file:
-      - sandbox3.env
+      - sandbox2.env
     links:
       - hive-metastore
     environment:
@@ -249,6 +267,7 @@ services:
       - "10002:10002"
     volumes:
       - /apps/hostpath:/apps/hostpath
+      - /opt/sandbox/hbase-2.4.9:/opt/hbase-2.4.9
 
   #
   # Hbase Server
@@ -257,46 +276,37 @@ services:
     image: brijeshdhaker/hbase-master:2.4.9
     hostname: hbase-master
     container_name: hbase-master
-    environment:
-      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 zookeeper:2181"
-    env_file:
-      - sandbox3.env
+    restart: always
+    depends_on:
+      - zookeeper
     ports:
       - "16000:16000"
       - "16010:16010"
     volumes:
       - "/apps/hostpath:/apps/hostpath"
+    environment:
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 zookeeper:2181"
+    env_file:
+      - sandbox2.env
 
   #
   hbase-region:
     image: brijeshdhaker/hbase-regionserver:2.4.9
     container_name: hbase-regionserver
     hostname: hbase-regionserver
-    env_file:
-      - sandbox3.env
-    environment:
-      HBASE_CONF_hbase_regionserver_hostname: hbase-region
-      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 zookeeper:2181 hbase-master:16010"
+    restart: always
+    depends_on:
+      - zookeeper
     ports:
       - "16020:16020"
       - "16030:16030"
     volumes:
       - "/apps/hostpath:/apps/hostpath"
-
-  #
-  #
-  #
-  spark-historyserver:
-    image: brijeshdhaker/spark-historyserver:3.1.2
-    container_name: spark-historyserver
-    hostname: spark-historyserver
-    depends_on:
-      - namenode
-      - datanode
-    ports:
-      - "18080:18080"
-    volumes:
-      - /apps/hostpath:/apps/hostpath
+    env_file:
+      - sandbox2.env
+    environment:
+      HBASE_CONF_hbase_regionserver_hostname: hbase-region
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 zookeeper:2181 hbase-master:16010"
 
   #
   # Zeppelin Notebook
@@ -305,21 +315,25 @@ services:
     image: apache/zeppelin:0.10.0
     container_name: zeppelin
     hostname: zeppelin
-    env_file:
-      - sandbox3.env
+    restart: always
+    extra_hosts:
+      - "hostmaster hostmaster.sandbox-bigdata.net:host-gateway"
     ports:
       - "9080:8080"
       - "4040:4040"
     volumes:
       - /apps/hostpath:/apps/hostpath
-      - /opt/sandbox/hadoop-3.2.1:/opt/hadoop-3.2.1
+      - /opt/sandbox/hadoop-2.10.1:/opt/hadoop-2.10.1
       - /opt/sandbox/hbase-2.4.9:/opt/hbase-2.4.9
       - /opt/sandbox/hbase-1.1.7:/opt/hbase-client
-      - /opt/sandbox/hive-3.1.2:/opt/hive-3.1.2
-      - /opt/sandbox/spark-3.1.2:/opt/spark-3.1.2
-      - /apps/hostpath/sandbox3/zeppelin/conf:/opt/zeppelin/conf
+      - /opt/sandbox/hive-2.3.9:/opt/hive-2.3.9
+      - /opt/sandbox/spark-2.3.4:/opt/spark-2.3.4
+      - /opt/sandbox/spark-3.1.2-2.7:/opt/spark-3.1.2
+      - /apps/hostpath/sandbox2/zeppelin/conf:/opt/zeppelin/conf
       - /apps/hostpath/.m2:/opt/zeppelin/.m2
       - /apps/hostpath/.ivy2:/opt/zeppelin/.ivy2
+    env_file:
+      - sandbox2.env
 
   #
   # Apache NiFi
@@ -334,13 +348,13 @@ services:
       - "19443:8443"
     volumes:
       - /apps/hostpath:/apps/hostpath
-      - /apps/hostpath/sandbox3/nifi/conf:/opt/nifi/nifi-current/conf
-      - /apps/hostpath/sandbox3/nifi/content_repository:/opt/nifi/nifi-current/content_repository
-      - /apps/hostpath/sandbox3/nifi/database_repository:/opt/nifi/nifi-current/database_repository
-      - /apps/hostpath/sandbox3/nifi/flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
-      - /apps/hostpath/sandbox3/nifi/provenance_repository:/opt/nifi/nifi-current/provenance_repository
-      - /apps/hostpath/sandbox3/nifi/logs:/opt/nifi/nifi-current/logs
-      - /apps/hostpath/sandbox3/nifi/state:/opt/nifi/nifi-current/state
+      - /apps/hostpath/sandbox2/nifi/conf:/opt/nifi/nifi-current/conf
+      - /apps/hostpath/sandbox2/nifi/content_repository:/opt/nifi/nifi-current/content_repository
+      - /apps/hostpath/sandbox2/nifi/database_repository:/opt/nifi/nifi-current/database_repository
+      - /apps/hostpath/sandbox2/nifi/flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
+      - /apps/hostpath/sandbox2/nifi/provenance_repository:/opt/nifi/nifi-current/provenance_repository
+      - /apps/hostpath/sandbox2/nifi/logs:/opt/nifi/nifi-current/logs
+      - /apps/hostpath/sandbox2/nifi/state:/opt/nifi/nifi-current/state
 
 #
 networks:
@@ -348,3 +362,4 @@ networks:
     external: true
     driver: bridge
     name: sandbox-bigdata.net
+

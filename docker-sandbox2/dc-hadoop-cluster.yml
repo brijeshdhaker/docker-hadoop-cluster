@@ -8,7 +8,7 @@ services:
   # HDFS & YARN Sandbox
   #
   namenode:
-    image: brijeshdhaker/hadoop-namenode:3.2.1
+    image: brijeshdhaker/hadoop-namenode:2.10.1
     container_name: namenode
     hostname: namenode
     restart: always
@@ -16,16 +16,16 @@ services:
       - "9870:9870"
       - "9000:9000"
     volumes:
-      - /apps/hostpath/sandbox3/hadoop/dfs/name:/hadoop/dfs/name
+      - /apps/hostpath/sandbox2/hadoop/dfs/name:/hadoop/dfs/name
       - /apps/hostpath:/apps/hostpath
     environment:
       - CLUSTER_NAME=test
     env_file:
-      - sandbox3.env
+      - sandbox2.env
 
   #
   datanode:
-    image: brijeshdhaker/hadoop-datanode:3.2.1
+    image: brijeshdhaker/hadoop-datanode:2.10.1
     container_name: datanode
     hostname: datanode
     ports:
@@ -33,16 +33,16 @@ services:
       - "9866:9866"
     restart: always
     volumes:
-      - /apps/hostpath/sandbox3/hadoop/dfs/data:/hadoop/dfs/data
+      - /apps/hostpath/sandbox2/hadoop/dfs/data:/hadoop/dfs/data
       - /apps/hostpath:/apps/hostpath
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
     env_file:
-      - sandbox3.env
+      - sandbox2.env
 
   #
   resourcemanager:
-    image: brijeshdhaker/hadoop-resourcemanager:3.2.1
+    image: brijeshdhaker/hadoop-resourcemanager:2.10.1
     container_name: resourcemanager
     hostname: resourcemanager
     restart: always
@@ -54,11 +54,11 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
     env_file:
-      - sandbox3.env
+      - sandbox2.env
 
   #
   nodemanager:
-    image: brijeshdhaker/hadoop-nodemanager:3.2.1
+    image: brijeshdhaker/hadoop-nodemanager:2.10.1
     container_name: nodemanager
     hostname: nodemanager
     restart: always
@@ -69,11 +69,11 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
     env_file:
-      - sandbox3.env
+      - sandbox2.env
 
   #
 #  timelineserver:
-#    image: brijeshdhaker/hadoop-timelineserver:3.2.1
+#    image: brijeshdhaker/hadoop-timelineserver:2.10.1
 #    container_name: timelineserver
 #    hostname: timelineserver
 #    restart: always
@@ -82,14 +82,14 @@ services:
 #    environment:
 #      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
 #    volumes:
-#      - /apps/hostpath/sandbox3/hadoop/yarn/timeline:/tmp/yarn/timeline
+#      - /apps/hostpath/sandbox2/hadoop/yarn/timeline:/tmp/yarn/timeline
 #      - /apps/hostpath:/apps/hostpath
 #    env_file:
-#      - sandbox3.env
+#      - sandbox2.env
 
   #
   historyserver:
-    image: brijeshdhaker/hadoop-historyserver:3.2.1
+    image: brijeshdhaker/hadoop-historyserver:2.10.1
     container_name: historyserver
     hostname: historyserver
     restart: always
@@ -98,32 +98,31 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
     volumes:
-      - /apps/hostpath/sandbox3/hadoop/yarn/history:/tmp/yarn/history
+      - /apps/hostpath/sandbox2/hadoop/yarn/history:/tmp/yarn/history
       - /apps/hostpath:/apps/hostpath
     env_file:
-      - sandbox3.env
+      - sandbox2.env
 
   #
   # Hive Server
   #
   hive-postgresql:
-    image: brijeshdhaker/hive-postgresql:3.1.2
+    image: brijeshdhaker/hive-postgresql:2.3.9
     hostname: hive-postgresql
     container_name: hive-postgresql
     ports:
       - "5432:5432"
     volumes:
-      - /apps/hostpath/sandbox3/postgres:/var/lib/postgresql/data
       - /apps/hostpath:/apps/hostpath
 
   #
   hive-metastore:
-    image: brijeshdhaker/hive:3.1.2
+    image: brijeshdhaker/hive:2.3.9
     hostname: hive-metastore
     container_name: hive-metastore
     env_file:
-      - sandbox3.env
-    command: /opt/hive-3.1.2/bin/hive --service metastore
+      - sandbox2.env
+    command: /opt/hive-2.3.9/bin/hive --service metastore
     environment:
       SERVICE_PRECONDITION: "namenode:9870 datanode:9864 hive-postgresql:5432"
     links:
@@ -135,11 +134,11 @@ services:
 
   #
   hive-server:
-    image: brijeshdhaker/hive:3.1.2
+    image: brijeshdhaker/hive:2.3.9
     hostname: hive-server
     container_name: hive-server
     env_file:
-      - sandbox3.env
+      - sandbox2.env
     links:
       - hive-metastore
     environment:
@@ -155,7 +154,7 @@ services:
   #
   #
   spark-historyserver:
-    image: brijeshdhaker/spark-historyserver:3.1.2
+    image: brijeshdhaker/spark-historyserver:2.3.9
     container_name: spark-historyserver
     hostname: spark-historyserver
     depends_on:
@@ -174,18 +173,18 @@ services:
     container_name: zeppelin
     hostname: zeppelin
     env_file:
-      - sandbox3.env
+      - sandbox2.env
     ports:
       - "9080:8080"
       - "4040:4040"
     volumes:
       - /apps/hostpath:/apps/hostpath
-      - /opt/sandbox/hadoop-3.2.1:/opt/hadoop-3.2.1
+      - /opt/sandbox/hadoop-2.10.1:/opt/hadoop-2.10.1
       - /opt/sandbox/hbase-2.4.9:/opt/hbase-2.4.9
       - /opt/sandbox/hbase-1.1.7:/opt/hbase-client
-      - /opt/sandbox/hive-3.1.2:/opt/hive-3.1.2
-      - /opt/sandbox/spark-3.1.2:/opt/spark-3.1.2
-      - /apps/hostpath/sandbox3/zeppelin/conf:/opt/zeppelin/conf
+      - /opt/sandbox/hive-2.3.9:/opt/hive-2.3.9
+      - /opt/sandbox/spark-2.3.9:/opt/spark-2.3.9
+      - /apps/hostpath/sandbox2/zeppelin/conf:/opt/zeppelin/conf
       - /apps/hostpath/.m2:/opt/zeppelin/.m2
       - /apps/hostpath/.ivy2:/opt/zeppelin/.ivy2
 

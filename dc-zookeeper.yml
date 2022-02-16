@@ -12,7 +12,7 @@ services:
     ports:
       - "2181:2181"
     volumes:
-      - "/apps/hostpath/zookeeper/snode:/bitnami/zookeeper"
+      - "/apps/standalone/zookeeper:/bitnami/zookeeper"
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
 

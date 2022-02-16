@@ -16,7 +16,7 @@ services:
       - "7000:7000"
     volumes:
       - /apps/hostpath:/apps/hostpath
-      - /apps/hostpath/sandbox3/cassandra/data:/var/lib/cassandra
+      - /apps/hostpath/sandbox2/cassandra/data:/var/lib/cassandra
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
 

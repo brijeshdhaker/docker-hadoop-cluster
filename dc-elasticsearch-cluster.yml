@@ -22,7 +22,7 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - /apps/hostpath/elasticsearch/es01:/usr/share/elasticsearch/data
+      - /apps/clusters/elasticsearch/es01:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
 #
@@ -41,7 +41,7 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - /apps/hostpath/elasticsearch/es02:/usr/share/elasticsearch/data
+      - /apps/clusters/elasticsearch/es02:/usr/share/elasticsearch/data
 #
   es03:
     image: elasticsearch:7.16.2
@@ -58,7 +58,7 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - /apps/hostpath/elasticsearch/es03:/usr/share/elasticsearch/data
+      - /apps/clusters/elasticsearch/es03:/usr/share/elasticsearch/data
 
   #
   kibana:
