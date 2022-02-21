@@ -290,6 +290,8 @@ services:
     image: brijeshdhaker/spark-historyserver:3.1.2
     container_name: spark-historyserver
     hostname: spark-historyserver
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864"
     depends_on:
       - namenode
       - datanode

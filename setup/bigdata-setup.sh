@@ -26,7 +26,7 @@ mkdir -p /apps/hostpath/sandbox3/hadoop/dfs/data
 mkdir -p /apps/hostpath/sandbox3/hadoop/dfs/name
 mkdir -p /apps/hostpath/sandbox3/hadoop/dfs/namesecondary
 
-mkdir -p /apps/hostpath/sandbox3/postgres/hive-3.1.2
+mkdir -p /apps/hostpath/sandbox3/postgres
 mkdir -p /apps/hostpath/sandbox3/hive
 #
 mkdir -p /apps/hostpath/drivers
