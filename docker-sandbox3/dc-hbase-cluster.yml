@@ -1,7 +1,7 @@
 #
 #
 #
-version: "3.5"
+version: "3.9"
 
 services:
   #
@@ -14,10 +14,10 @@ services:
     ports:
       - "2181:2181"
     volumes:
-      - /apps/hostpath:/apps/hostpath
-      - /apps/hostpath/sandbox3/zookeeper/secrets:/etc/zookeeper/secrets
-      - /apps/hostpath/sandbox3/zookeeper/data:/var/lib/zookeeper/data
-      - /apps/hostpath/sandbox3/zookeeper/log:/var/lib/zookeeper/log
+      - sandbox3_apps_hostpath:/apps/hostpath
+      - sandbox3_zookeeper_secrets:/etc/zookeeper/secrets
+      - sandbox3_zookeeper_data:/var/lib/zookeeper/data
+      - sandbox3_zookeeper_log:/var/lib/zookeeper/log
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
@@ -38,7 +38,7 @@ services:
       - "16000:16000"
       - "16010:16010"
     volumes:
-      - "/apps/hostpath:/apps/hostpath"
+      - sandbox3_apps_hostpath:/apps/hostpath
 
   #
   hbase-region:
@@ -54,7 +54,18 @@ services:
       - "16020:16020"
       - "16030:16030"
     volumes:
-      - "/apps/hostpath:/apps/hostpath"
+      - sandbox3_apps_hostpath:/apps/hostpath
+
+#
+volumes:
+  sandbox3_apps_hostpath:
+    external: true
+  sandbox3_zookeeper_secrets:
+    external: true
+  sandbox3_zookeeper_data:
+    external: true
+  sandbox3_zookeeper_log:
+    external: true
 
 #
 networks:
