@@ -1,7 +1,7 @@
 #
 #
 #
-version: "3.9"
+version: "3.5"
 
 services:
   #
@@ -156,7 +156,7 @@ services:
   # Zeppelin Notebook
   #
   zeppelin:
-    image: apache/zeppelin:0.10.0
+    image: apache/zeppelin:0.10.1
     container_name: zeppelin
     hostname: zeppelin
     env_file:
@@ -170,10 +170,11 @@ services:
       - sandbox3_hbase:/opt/hbase-2.4.9
       - sandbox3_hbase_client:/opt/hbase-client
       - sandbox3_hive:/opt/hive-3.1.2
-      - sandbox3_spark:/opt/spark-3.1.2
-      - sandbox3_zeppelin_conf:/opt/zeppelin/conf
-      - sandbox3_m2:/opt/zeppelin/.m2
-      - sandbox3_ivy2:/opt/zeppelin/.ivy2
+      - sandbox3_spark:/opt/spark
+      - sandbox3_zeppelin:/opt/zeppelin
+#      - sandbox3_zeppelin_conf:/opt/zeppelin/conf
+#      - sandbox3_m2:/opt/zeppelin/.m2
+#      - sandbox3_ivy2:/opt/zeppelin/.ivy2
 
 #
 volumes:
@@ -190,6 +191,8 @@ volumes:
   sandbox3_hadoop_yarn_history:
     external: true
   sandbox3_postgres:
+    external: true
+  sandbox3_zeppelin:
     external: true
   sandbox3_zeppelin_conf:
     external: true

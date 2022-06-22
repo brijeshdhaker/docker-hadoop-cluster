@@ -35,6 +35,8 @@ docker volume create --name sandbox3_hadoop_dfs_name --opt type=none --opt devic
 docker volume create --name sandbox3_hadoop_dfs_data --opt type=none --opt device=/apps/hostpath/sandbox3/hadoop/dfs/data --opt o=bind
 docker volume create --name sandbox3_hadoop_yarn_history --opt type=none --opt device=/apps/hostpath/sandbox3/hadoop/yarn/history --opt o=bind
 docker volume create --name sandbox3_postgres --opt type=none --opt device=/apps/hostpath/sandbox3/postgres --opt o=bind
+
+docker volume create --name sandbox3_zeppelin --opt type=none --opt device=/apps/hostpath/sandbox3/zeppelin --opt o=bind
 docker volume create --name sandbox3_zeppelin_conf --opt type=none --opt device=/apps/hostpath/sandbox3/zeppelin/conf --opt o=bind
 
 docker volume create --name sandbox3_nifi_conf --opt type=none --opt device=/apps/hostpath/sandbox3/nifi/conf --opt o=bind
@@ -80,6 +82,8 @@ docker volume create --name sandbox3_hadoop_dfs_name --opt type=none --opt devic
 docker volume create --name sandbox3_hadoop_dfs_data --opt type=none --opt device=/d/apps/hostpath/sandbox3/hadoop/dfs/data --opt o=bind
 docker volume create --name sandbox3_hadoop_yarn_history --opt type=none --opt device=/d/apps/hostpath/sandbox3/hadoop/yarn/history --opt o=bind
 docker volume create --name sandbox3_postgres --opt type=none --opt device=/d/apps/hostpath/sandbox3/postgres --opt o=bind
+
+docker volume create --name sandbox3_zeppelin --opt type=none --opt device=/d/apps/hostpath/sandbox3/zeppelin --opt o=bind
 docker volume create --name sandbox3_zeppelin_conf --opt type=none --opt device=/d/apps/hostpath/sandbox3/zeppelin/conf --opt o=bind
 
 docker volume create --name sandbox3_nifi_conf --opt type=none --opt device=/d/apps/hostpath/sandbox3/nifi/conf --opt o=bind

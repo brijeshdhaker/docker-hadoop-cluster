@@ -3,18 +3,12 @@
 #
 ARG spark_uid=185
 #
-FROM spark:3.1.2
+FROM apache/spark:v3.2.1
 
 # Specify the User that the actual main process will run as
 USER ${spark_uid}
 ENV SPARK_VERSION   3.1.2
 ENV SPARK_HOME      /opt/spark
-
-RUN apt-get install -y --no-install-recommends \
-    net-tools curl netcat vim \
-    && rm -rf /var/lib/apt/lists/* \
-    # Removed the .cache to save space
-    && rm -rf /var/cache/apt/*
 
 #
 COPY docker-spark/historyserver/spark.logserver.conf $SPARK_HOME/conf/
