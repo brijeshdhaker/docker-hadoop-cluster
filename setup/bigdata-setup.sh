@@ -11,6 +11,7 @@ docker network create -d bridge sandbox-bigdata.net
 # Linux Docker Volumes
 #
 docker volume create --name sandbox_apps_hostpath --opt type=none --opt device=/apps/hostpath --opt o=bind
+
 docker volume create --name sandbox_m2 --opt type=none --opt device=/apps/hostpath/.m2 --opt o=bind
 docker volume create --name sandbox_ivy2 --opt type=none --opt device=/apps/hostpath/.ivy2 --opt o=bind
 
@@ -32,8 +33,7 @@ docker volume create --name sandbox_cassandra_conf --opt type=none --opt device=
 docker volume create --name sandbox_mysql_data --opt type=none --opt device=/apps/sandbox/mysql/data --opt o=bind
 docker volume create --name sandbox_mysql_conf --opt type=none --opt device=/apps/sandbox/mysql/conf --opt o=bind
 
-docker volume create --name sandbox_hadoop_dfs_name --opt type=none --opt device=/apps/sandbox/hadoop/dfs/name --opt o=bind
-docker volume create --name sandbox_hadoop_dfs_data --opt type=none --opt device=/apps/sandbox/hadoop/dfs/data --opt o=bind
+docker volume create --name sandbox_hadoop_data --opt type=none --opt device=/apps/sandbox/hadoop --opt o=bind
 docker volume create --name sandbox_hadoop_yarn_history --opt type=none --opt device=/apps/sandbox/hadoop/yarn/history --opt o=bind
 
 docker volume create --name sandbox_postgres_data --opt type=none --opt device=/apps/sandbox/postgres/data --opt o=bind
@@ -60,7 +60,10 @@ docker volume create --name sandbox_spark --opt type=none --opt device=/opt/spar
 #
 # Windows Docker Volumes
 #
+
 docker volume create --name sandbox_apps_hostpath --opt type=none --opt device=/d/apps/hostpath --opt o=bind
+docker volume create --name sandbox_root_dir --opt type=none --opt device=/d/apps/sandbox --opt o=bind
+
 docker volume create --name sandbox_m2 --opt type=none --opt device=/d/apps/hostpath/.m2 --opt o=bind
 docker volume create --name sandbox_ivy2 --opt type=none --opt device=/d/apps/hostpath/.ivy2 --opt o=bind
 
@@ -82,8 +85,7 @@ docker volume create --name sandbox_cassandra_conf --opt type=none --opt device=
 docker volume create --name sandbox_mysql_data --opt type=none --opt device=/d/apps/sandbox/mysql/data --opt o=bind
 docker volume create --name sandbox_mysql_conf --opt type=none --opt device=/d/apps/sandbox/mysql/conf --opt o=bind
 
-docker volume create --name sandbox_hadoop_dfs_name --opt type=none --opt device=/d/apps/sandbox/hadoop/dfs/name --opt o=bind
-docker volume create --name sandbox_hadoop_dfs_data --opt type=none --opt device=/d/apps/sandbox/hadoop/dfs/data --opt o=bind
+docker volume create --name sandbox_hadoop_data --opt type=none --opt device=/d/apps/sandbox/hadoop --opt o=bind
 docker volume create --name sandbox_hadoop_yarn_history --opt type=none --opt device=/d/apps/sandbox/hadoop/yarn/history --opt o=bind
 
 docker volume create --name sandbox_hive_data --opt type=none --opt device=/d/apps/sandbox/hive --opt o=bind
