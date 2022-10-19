@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-if [ ! -f /apps/hostpath/sandbox3/hive/.already_setup ]; then
+if [ ! -f /hive/.already_setup ]; then
 
   ${HADOOP_HOME}/bin/hdfs dfs -mkdir       /tmp
   ${HADOOP_HOME}/bin/hdfs dfs -mkdir -p    /user/hive/warehouse
@@ -11,7 +11,7 @@ if [ ! -f /apps/hostpath/sandbox3/hive/.already_setup ]; then
   ${HADOOP_HOME}/bin/hdfs dfs -chmod g+w   /user/hive/warehouse
   echo "HDFS dirs permissions successfully updated."
 
-  touch /apps/hostpath/sandbox3/hive/.already_setup
+  touch /hive/.already_setup
 
 fi
 

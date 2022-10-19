@@ -36,6 +36,8 @@ docker volume create --name sandbox_mysql_conf --opt type=none --opt device=/app
 docker volume create --name sandbox_hadoop_data --opt type=none --opt device=/apps/sandbox/hadoop --opt o=bind
 docker volume create --name sandbox_hadoop_yarn_history --opt type=none --opt device=/apps/sandbox/hadoop/yarn/history --opt o=bind
 
+docker volume create --name sandbox_hive_data --opt type=none --opt device=/apps/sandbox/hive --opt o=bind
+
 docker volume create --name sandbox_postgres_data --opt type=none --opt device=/apps/sandbox/postgres/data --opt o=bind
 docker volume create --name sandbox_postgres_conf --opt type=none --opt device=/apps/sandbox/postgres/conf --opt o=bind
 docker volume create --name sandbox_postgres_init --opt type=none --opt device=/apps/sandbox/postgres/init.d --opt o=bind

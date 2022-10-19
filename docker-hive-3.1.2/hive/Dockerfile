@@ -1,6 +1,6 @@
 #
 # docker build -t brijeshdhaker/hive:3.1.2 -f docker-hive-3.1.2/hive/Dockerfile .
-#
+# docker push brijeshdhaker/hive:3.1.2
 
 FROM brijeshdhaker/hadoop-base:3.2.1
 #
