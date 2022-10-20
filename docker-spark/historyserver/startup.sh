@@ -15,6 +15,10 @@ if [ ! -f /apps/sandbox/spark/.already_setup ]; then
   ${HADOOP_HOME}/bin/hdfs dfs -mkdir -p    /tmp/spark/logs
   echo "Spark History Server log dirs successfully created ."
 
+  ${HADOOP_HOME}/bin/hdfs dfs -chmod g+w   /tmp/spark/logs
+  echo "Spark History Server log dirs permissions successfully updated."
+
+
   touch /apps/sandbox/spark/.already_setup
 
 fi
