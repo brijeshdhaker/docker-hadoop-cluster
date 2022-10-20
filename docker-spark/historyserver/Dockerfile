@@ -11,6 +11,12 @@ ENV SPARK_VERSION   3.1.2
 ENV SPARK_HOME      /opt/spark
 
 #
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends net-tools curl netcat \
+    && rm -rf /var/lib/apt/lists/* \
+    # Removed the .cache to save space
+    && rm -rf /var/cache/apt/*
+
+#
 COPY docker-spark/historyserver/spark.logserver.conf $SPARK_HOME/conf/
 
 #
