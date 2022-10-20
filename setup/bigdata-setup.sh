@@ -35,7 +35,10 @@ docker volume create --name sandbox_mysql_data --opt type=none --opt device=/app
 docker volume create --name sandbox_mysql_conf --opt type=none --opt device=/apps/sandbox/mysql/conf --opt o=bind
 
 docker volume create --name sandbox_hadoop_data --opt type=none --opt device=/apps/sandbox/hadoop --opt o=bind
-docker volume create --name sandbox_hadoop_yarn_history --opt type=none --opt device=/apps/sandbox/hadoop/yarn/history --opt o=bind
+docker volume create --name sandbox_hadoop_dfs_name --opt type=none --opt device=/apps/sandbox/hadoop/dfs/name --opt o=bind
+docker volume create --name sandbox_hadoop_dfs_data --opt type=none --opt device=/apps/sandbox/hadoop/dfs/data --opt o=bind
+
+docker volume create --name sandbox_yarn_history --opt type=none --opt device=/apps/sandbox/hadoop/yarn/history --opt o=bind
 
 docker volume create --name sandbox_hive_data --opt type=none --opt device=/apps/sandbox/hive --opt o=bind
 
@@ -89,7 +92,10 @@ docker volume create --name sandbox_mysql_data --opt type=none --opt device=/d/a
 docker volume create --name sandbox_mysql_conf --opt type=none --opt device=/d/apps/sandbox/mysql/conf --opt o=bind
 
 docker volume create --name sandbox_hadoop_data --opt type=none --opt device=/d/apps/sandbox/hadoop --opt o=bind
-docker volume create --name sandbox_hadoop_yarn_history --opt type=none --opt device=/d/apps/sandbox/hadoop/yarn/history --opt o=bind
+docker volume create --name sandbox_hadoop_dfs_name --opt type=none --opt device=/d/apps/sandbox/hadoop/dfs/name --opt o=bind
+docker volume create --name sandbox_hadoop_dfs_data --opt type=none --opt device=/d/apps/sandbox/hadoop/dfs/data --opt o=bind
+
+docker volume create --name sandbox_yarn_history --opt type=none --opt device=/d/apps/sandbox/hadoop/yarn/history --opt o=bind
 
 docker volume create --name sandbox_hive_data --opt type=none --opt device=/d/apps/sandbox/hive --opt o=bind
 
