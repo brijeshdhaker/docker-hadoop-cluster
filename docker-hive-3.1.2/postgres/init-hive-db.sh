@@ -5,9 +5,9 @@ if [ ! -f /var/lib/postgresql/data/.already_setup ]; then
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
 
-  CREATE USER hive WITH PASSWORD 'hive';
+  CREATE USER hiveadmin WITH PASSWORD 'hiveadmin';
   CREATE DATABASE metastore;
-  GRANT ALL PRIVILEGES ON DATABASE metastore TO hive;
+  GRANT ALL PRIVILEGES ON DATABASE metastore TO hiveadmin;
 
   CREATE USER docker WITH PASSWORD 'dockeradmin';
   CREATE DATABASE dockerdb;
@@ -25,7 +25,7 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
 
   \o /tmp/grant-privs
 
-  SELECT 'GRANT SELECT,INSERT,UPDATE,DELETE ON "' || schemaname || '"."' || tablename || '" TO hive ;'
+  SELECT 'GRANT SELECT,INSERT,UPDATE,DELETE ON "' || schemaname || '"."' || tablename || '" TO hiveadmin ;'
   FROM pg_tables
   WHERE tableowner = CURRENT_USER and schemaname = 'public';
 
