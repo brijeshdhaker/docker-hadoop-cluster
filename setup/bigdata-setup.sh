@@ -48,6 +48,7 @@ docker volume create --name sandbox_postgres_init --opt type=none --opt device=/
 
 docker volume create --name sandbox_zeppelin --opt type=none --opt device=/apps/sandbox/zeppelin --opt o=bind
 docker volume create --name sandbox_zeppelin_conf --opt type=none --opt device=/apps/sandbox/zeppelin/conf --opt o=bind
+docker volume create --name sandbox_zeppelin_notebook --opt type=none --opt device=/home/brijeshdhaker/IdeaProjects/zeppelin-notebooks --opt o=bind
 
 docker volume create --name sandbox_nifi_conf --opt type=none --opt device=/apps/sandbox/nifi/conf --opt o=bind
 docker volume create --name sandbox_nifi_content_repository --opt type=none --opt device=/apps/sandbox/nifi/content_repository --opt o=bind
@@ -106,6 +107,7 @@ docker volume create --name sandbox_postgres_init --opt type=none --opt device=/
 
 docker volume create --name sandbox_zeppelin --opt type=none --opt device=/d/apps/sandbox/zeppelin --opt o=bind
 docker volume create --name sandbox_zeppelin_conf --opt type=none --opt device=/d/apps/sandbox/zeppelin/conf --opt o=bind
+docker volume create --name sandbox_zeppelin_notebook --opt type=none --opt device=/c/Users/brije/IdeaProjects/zeppelin-notebooks --opt o=bind
 
 docker volume create --name sandbox_nifi_conf --opt type=none --opt device=/d/apps/sandbox/nifi/conf --opt o=bind
 docker volume create --name sandbox_nifi_content_repository --opt type=none --opt device=/d/apps/sandbox/nifi/content_repository --opt o=bind
