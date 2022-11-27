@@ -1,6 +1,6 @@
 #
 # docker build -t brijeshdhaker/hive:3.1.2 -f docker-hive-3.1.2/hive/Dockerfile .
-#
+# docker push brijeshdhaker/hive:3.1.2
 
 FROM brijeshdhaker/hadoop-base:3.2.1
 #
@@ -39,6 +39,8 @@ RUN apt-get update && apt-get install -y wget procps && \
     rm -rf /var/lib/apt/lists/* && \
     rm /opt/apache-hive-3.1.2-bin.tar.gz
 
+# Add Drivers & Other Libs
+COPY resources/libs/mysql-connector-java-8.0.23.jar $HIVE_HOME/lib/
 COPY resources/libs/postgresql-42.2.23.jar $HIVE_HOME/lib/
 COPY resources/libs/guava-27.0-jre.jar $HIVE_HOME/lib/
 

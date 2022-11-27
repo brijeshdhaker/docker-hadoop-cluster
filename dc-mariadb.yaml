@@ -10,9 +10,9 @@ services:
     hostname: mariadb
     restart: always
     volumes:
-      - /apps/hostpath/mysql/conf:/etc/mysql/conf.d
-      - /apps/hostpath/mysql/data:/var/lib/mysql
-      - /apps/hostpath:/apps/hostpath
+      - /apps/standalone/mysql/conf:/etc/mysql/conf.d
+      - /apps/standalone/mysql/data:/var/lib/mysql
+      - /apps:/apps
     environment:
       MYSQL_OPERATIONS_USER: operate
       MYSQL_OPERATIONS_PASSWORD: p@SSW0rd

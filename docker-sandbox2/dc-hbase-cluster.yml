@@ -1,0 +1,64 @@
+#
+#
+#
+version: "3.5"
+
+services:
+  #
+  # Zookeeper Server
+  #
+  zookeeper:
+    image: confluentinc/cp-zookeeper:5.5.0
+    hostname: zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    volumes:
+      - /apps/hostpath:/apps/hostpath
+      - /apps/hostpath/sandbox2/zookeeper/secrets:/etc/zookeeper/secrets
+      - /apps/hostpath/sandbox2/zookeeper/data:/var/lib/zookeeper/data
+      - /apps/hostpath/sandbox2/zookeeper/log:/var/lib/zookeeper/log
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ALLOW_UNSIGNED: "true"
+
+  #
+  # Hbase Server
+  #
+  hbase-master:
+    image: brijeshdhaker/hbase-master:2.4.9
+    hostname: hbase-master
+    container_name: hbase-master
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 zookeeper:2181"
+    env_file:
+      - sandbox2.env
+    ports:
+      - "16000:16000"
+      - "16010:16010"
+    volumes:
+      - "/apps/hostpath:/apps/hostpath"
+
+  #
+  hbase-region:
+    image: brijeshdhaker/hbase-regionserver:2.4.9
+    container_name: hbase-regionserver
+    hostname: hbase-regionserver
+    env_file:
+      - sandbox2.env
+    environment:
+      HBASE_CONF_hbase_regionserver_hostname: hbase-region
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 zookeeper:2181 hbase-master:16010"
+    ports:
+      - "16020:16020"
+      - "16030:16030"
+    volumes:
+      - "/apps/hostpath:/apps/hostpath"
+
+#
+networks:
+  default:
+    external: true
+    driver: bridge
+    name: sandbox-bigdata.net

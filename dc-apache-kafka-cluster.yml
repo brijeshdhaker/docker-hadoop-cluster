@@ -4,6 +4,46 @@
 version: '3.5'
 
 services:
+  zookeeper1:
+    image: docker.io/bitnami/zookeeper:3.7
+    hostname: zookeeper1
+    container_name: zookeeper1
+    ports:
+      - '2181'
+    volumes:
+      - /apps/clusters/zookeeper/data_1:/bitnami/zookeeper
+    environment:
+      - ZOO_SERVER_ID=1
+      - ALLOW_ANONYMOUS_LOGIN=yes
+      - ZOO_SERVERS=zookeeper1:2888:3888,zookeeper2:2888:3888,zookeeper3:2888:3888
+  #
+  zookeeper2:
+    image: docker.io/bitnami/zookeeper:3.7
+    hostname: zookeeper2
+    container_name: zookeeper2
+    ports:
+      - '2181'
+    volumes:
+      - /apps/clusters/zookeeper/data_2:/bitnami/zookeeper
+    environment:
+      - ZOO_SERVER_ID=2
+      - ALLOW_ANONYMOUS_LOGIN=yes
+      - ZOO_SERVERS=zookeeper1:2888:3888,zookeeper2:2888:3888,zookeeper3:2888:3888
+
+  #
+  zookeeper3:
+    image: docker.io/bitnami/zookeeper:3.7
+    hostname: zookeeper3
+    container_name: zookeeper3
+    ports:
+      - '2181'
+    volumes:
+      - /apps/clusters/zookeeper/data_3:/bitnami/zookeeper
+    environment:
+      - ZOO_SERVER_ID=3
+      - ALLOW_ANONYMOUS_LOGIN=yes
+      - ZOO_SERVERS=zookeeper1:2888:3888,zookeeper2:2888:3888,zookeeper3:2888:3888
+
   #
   kafka1:
     image: 'bitnami/kafka:latest'
@@ -13,7 +53,7 @@ services:
       - '9092'
       - '19092:19092'
     volumes:
-      - /apps/hostpath/kafka/cluster/data_1:/bitnami/kafka
+      - /apps/clusters/kafka/data_1:/bitnami/kafka
     environment:
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper1:2181,zookeeper2:2181,zookeeper3:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
@@ -31,7 +71,7 @@ services:
       - '9092'
       - '29092:29092'
     volumes:
-      - /apps/hostpath/kafka/cluster/data_2:/bitnami/kafka
+      - /apps/clusters/kafka/data_2:/bitnami/kafka
     environment:
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper1:2181,zookeeper2:2181,zookeeper3:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
@@ -50,7 +90,7 @@ services:
       - '9092'
       - '39092:39092'
     volumes:
-      - /apps/hostpath/kafka/cluster/data_3:/bitnami/
+      - /apps/clusters/kafka/data_3:/bitnami/kafka
     environment:
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper1:2181,zookeeper2:2181,zookeeper3:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
@@ -62,6 +102,12 @@ services:
 
 #
 volumes:
+  zookeeper1_data:
+    driver: local
+  zookeeper2_data:
+    driver: local
+  zookeeper3_data:
+    driver: local
   kafka1_data:
     driver: local
   kafka2_data:

@@ -1,17 +1,33 @@
 #
-# docker build -t brijeshdhaker/spark-master:3.1.2 -f ../../Dockerfile .
+# docker build -t brijeshdhaker/spark-historyserver:3.1.2 -f docker-spark/historyserver/Dockerfile .
 #
+ARG spark_uid=185
+#
+FROM apache/spark:v3.2.1
+
+# Specify the User that the actual main process will run as
+USER ${spark_uid}
+ENV SPARK_VERSION   3.1.2
+ENV SPARK_HOME      /opt/spark
 
 #
-FROM brijeshdhaker/spark-base:3.1.2
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends net-tools curl netcat \
+    && rm -rf /var/lib/apt/lists/* \
+    # Removed the .cache to save space
+    && rm -rf /var/cache/apt/*
 
 #
 COPY docker-spark/historyserver/spark.logserver.conf $SPARK_HOME/conf/
 
 #
-COPY docker-spark/historyserver/historyserver.sh /
+COPY docker-spark/historyserver/entrypoint.sh /
+COPY docker-spark/historyserver/startup.sh /
+
 #Give permission to execute scripts
 RUN cd / && chmod +x /*.sh
 
 #
-CMD ["/bin/bash", "/historyserver.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
+
+#
+CMD ["/bin/bash", "/startup.sh"]

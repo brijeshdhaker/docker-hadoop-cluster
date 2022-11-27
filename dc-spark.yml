@@ -4,7 +4,41 @@
 
 version: '3.5'
 services:
+  #
+  # HDFS & YARN Sandbox
+  #
+  namenode:
+    image: brijeshdhaker/hadoop-namenode:3.2.1
+    container_name: namenode
+    hostname: namenode
+    restart: always
+    ports:
+      - "9870:9870"
+      - "9000:9000"
+    volumes:
+      - sandbox3_hadoop_dfs_name:/hadoop/dfs/name
+      - sandbox3_apps_hostpath:/apps/hostpath
+    environment:
+      - CLUSTER_NAME=test
+    env_file:
+      - docker-spark/spark.env
 
+  #
+  datanode:
+    image: brijeshdhaker/hadoop-datanode:3.2.1
+    container_name: datanode
+    hostname: datanode
+    ports:
+      - "9864:9864"
+      - "9866:9866"
+    restart: always
+    volumes:
+      - sandbox3_hadoop_dfs_data:/hadoop/dfs/data
+      - sandbox3_apps_hostpath:/apps/hostpath
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+    env_file:
+      - docker-spark/spark.env
 #
   spark-base:
     image: brijeshdhaker/spark-base:3.1.2
@@ -30,7 +64,10 @@ services:
     env_file:
       - docker-spark/spark.env
     volumes:
-      - /apps/hostpath:/apps/hostpath
+      - sandbox3_apps_hostpath:/apps/hostpath
+      - sandbox3_hadoop:/opt/hadoop-3.2.1
+      - sandbox3_hive:/opt/hive-3.1.2
+      - sandbox3_spark:/opt/spark-3.1.2
     environment:
       WEBUI_PORT: 8080
 
@@ -49,7 +86,10 @@ services:
     env_file:
       - docker-spark/spark.env
     volumes:
-      - /apps/hostpath:/apps/hostpath
+      - sandbox3_apps_hostpath:/apps/hostpath
+      - sandbox3_hadoop:/opt/hadoop-3.2.1
+      - sandbox3_hive:/opt/hive-3.1.2
+      - sandbox3_spark:/opt/spark-3.1.2
     environment:
       WORKER_WEBUI_PORT: 8081
 
@@ -65,7 +105,10 @@ services:
     env_file:
       - docker-spark/spark.env
     volumes:
-      - /apps/hostpath:/apps/hostpath
+      - sandbox3_apps_hostpath:/apps/hostpath
+      - sandbox3_hadoop:/opt/hadoop-3.2.1
+      - sandbox3_hive:/opt/hive-3.1.2
+      - sandbox3_spark:/opt/spark-3.1.2
     environment:
       WORKER_WEBUI_PORT: 8082
 
@@ -81,14 +124,17 @@ services:
 #    env_file:
 #      - docker-spark/spark.env
 #    volumes:
-#      - /apps/hostpath:/apps/hostpath
+#        - sandbox3_apps_hostpath:/apps/hostpath
+#        - sandbox3_hadoop:/opt/hadoop-3.2.1
+#        - sandbox3_hive:/opt/hive-3.1.2
+#        - sandbox3_spark:/opt/spark-3.1.2
 #    environment:
 #      WORKER_WEBUI_PORT: 8083
 
 #
 #
   spark-historyserver:
-    image: brijeshdhaker/history-server:3.1.2
+    image: brijeshdhaker/spark-historyserver:3.1.2
     build:
       context: .
       dockerfile: docker-spark/historyserver/Dockerfile
@@ -101,11 +147,35 @@ services:
     env_file:
       - docker-spark/spark.env
     volumes:
-      - /apps/hostpath:/apps/hostpath
+      - sandbox3_apps_hostpath:/apps/hostpath
+      - sandbox3_hadoop:/opt/hadoop-3.2.1
+      - sandbox3_hive:/opt/hive-3.1.2
+      - sandbox3_spark:/opt/spark-3.1.2
+
+#
+volumes:
+  sandbox3_apps_hostpath:
+    external: true
+  sandbox3_hadoop_dfs_name:
+    external: true
+  sandbox3_hadoop_dfs_data:
+    external: true
+  sandbox3_hadoop_yarn_history:
+    external: true
+  sandbox3_hadoop:
+    external: true
+  sandbox3_hbase:
+    external: true
+  sandbox3_hbase_client:
+    external: true
+  sandbox3_hive:
+    external: true
+  sandbox3_spark:
+    external: true
 
 #
 networks:
   default:
     external: true
     driver: bridge
-    name: bigdata.net
+    name: sandbox-bigdata.net
