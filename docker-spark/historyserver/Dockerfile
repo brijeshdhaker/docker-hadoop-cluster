@@ -1,13 +1,13 @@
 #
-# docker build -t brijeshdhaker/spark-historyserver:3.1.2 -f docker-spark/historyserver/Dockerfile .
+# docker build -t brijeshdhaker/spark-historyserver:3.3.1 -f docker-spark/historyserver/Dockerfile .
 #
 ARG spark_uid=185
 #
-FROM apache/spark:v3.2.1
+FROM apache/spark:3.3.1
 
 # Specify the User that the actual main process will run as
 USER ${spark_uid}
-ENV SPARK_VERSION   3.1.2
+ENV SPARK_VERSION   3.3.1
 ENV SPARK_HOME      /opt/spark
 
 #
