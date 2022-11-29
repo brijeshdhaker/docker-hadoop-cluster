@@ -1,5 +1,6 @@
 #
 # docker build -t brijeshdhaker/spark-historyserver:3.3.1 -f docker-spark/historyserver/Dockerfile .
+# docker push brijeshdhaker/spark-historyserver:3.3.1
 #
 ARG spark_uid=185
 #
