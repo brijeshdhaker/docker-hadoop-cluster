@@ -1,0 +1,16 @@
+#
+# docker build -t brijeshdhaker/hadoop-nodemanager:3.3.4 -f docker-hadoop-3.3.4/nodemanager/Dockerfile .
+#
+
+FROM brijeshdhaker/hadoop-base:3.3.4
+
+MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
+
+HEALTHCHECK CMD curl -f http://localhost:8042/ || exit 1
+
+ADD docker-hadoop-3.3.4/nodemanager/run.sh /run.sh
+RUN chmod a+x /run.sh
+
+EXPOSE 8042
+
+CMD ["/run.sh"]

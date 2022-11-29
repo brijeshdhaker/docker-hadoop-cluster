@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<allocations>
+
+    <queue name="spark">
+        <minResources>0 mb, 1 vcores</minResources>
+        <maxResources>4096 mb, 4 vcores</maxResources>
+        <schedulingPolicy>fair</schedulingPolicy>
+        <weight>2.0</weight>
+        <queue name="client"/>
+        <queue name="cluster"/>
+    </queue>
+    <userMaxAppsDefault>100</userMaxAppsDefault>
+
+    <!--
+    <queuePlacementPolicy>
+        <rule name="primaryGroup" create="false"/>
+        <rule name="default" queue="big"/>
+    </queuePlacementPolicy>
+    -->
+</allocations>
