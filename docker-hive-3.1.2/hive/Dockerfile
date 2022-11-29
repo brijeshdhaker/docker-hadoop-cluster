@@ -2,7 +2,7 @@
 # docker build -t brijeshdhaker/hive:3.1.2 -f docker-hive-3.1.2/hive/Dockerfile .
 # docker push brijeshdhaker/hive:3.1.2
 
-FROM brijeshdhaker/hadoop-base:3.2.1
+FROM brijeshdhaker/hadoop-base:3.3.4
 #
 ARG hive_uid=1500
 
@@ -16,7 +16,7 @@ ARG HIVE_VERSION
 
 ENV HIVE_VERSION=${HIVE_VERSION:-3.1.2}
 ENV BASE_DIR 		/opt
-ENV HADOOP_HOME     $BASE_DIR/hadoop-3.2.1
+ENV HADOOP_HOME     $BASE_DIR/hadoop-3.3.4
 ENV HIVE_HOME       $BASE_DIR/hive-3.1.2
 ENV PATH			$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$HIVE_HOME/bin
 
@@ -50,7 +50,7 @@ COPY resources/libs/guava-27.0-jre.jar $HIVE_HOME/lib/
 #Custom configuration goes here
 COPY docker-hive-3.1.2/hive/conf $HIVE_HOME/conf
 COPY docker-hbase-2.4.9/client/hbase-site.xml $HIVE_HOME/conf/
-COPY docker-hadoop-3.2.1/client/*.xml $HADOOP_HOME/etc/hadoop/
+COPY docker-hadoop-3.3.4/client/*.xml $HADOOP_HOME/etc/hadoop/
 
 #
 COPY docker-hive-3.1.2/hive/startup.sh /usr/local/bin/
