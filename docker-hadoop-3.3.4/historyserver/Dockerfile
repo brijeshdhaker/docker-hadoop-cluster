@@ -1,5 +1,6 @@
 #
 # docker build -t brijeshdhaker/hadoop-historyserver:3.3.4 -f docker-hadoop-3.3.4/historyserver/Dockerfile .
+# docker push brijeshdhaker/hadoop-historyserver:3.3.4
 #
 
 FROM brijeshdhaker/hadoop-base:3.3.4

@@ -1,5 +1,6 @@
 #
 # docker build -t brijeshdhaker/hadoop-namenode:3.3.4 -f docker-hadoop-3.3.4/namenode/Dockerfile .
+# docker push brijeshdhaker/hadoop-namenode:3.3.4
 #
 
 FROM brijeshdhaker/hadoop-base:3.3.4

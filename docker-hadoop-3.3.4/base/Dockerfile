@@ -1,5 +1,6 @@
 #
 # docker build -t brijeshdhaker/hadoop-base:3.3.4 -f docker-hadoop-3.3.4/base/Dockerfile .
+# docker push brijeshdhaker/hadoop-base:3.3.4
 #
 
 FROM ubuntu:22.04
