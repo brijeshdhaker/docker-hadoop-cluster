@@ -159,4 +159,4 @@ sudo chown brijeshdhaker:brijeshdhaker -R /apps
 sudo chmod 777 -R /apps
 
 cd /opt
-sudo chown -R brijeshdhaker:root hadoop-3.2.1 hbase-1.1.7 hbase-2.4.9 hive-3.1.2 maven-3.6.3 spark-3.1.2
+sudo chown -R brijeshdhaker:root hadoop-3.3.4 hbase-1.1.7 hbase-2.4.9 hive-3.1.2 maven-3.6.3 spark-3.1.2

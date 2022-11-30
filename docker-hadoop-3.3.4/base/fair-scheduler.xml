@@ -3,7 +3,7 @@
 
     <queue name="spark">
         <minResources>0 mb, 1 vcores</minResources>
-        <maxResources>4096 mb, 4 vcores</maxResources>
+        <maxResources>6144 mb, 6 vcores</maxResources>
         <schedulingPolicy>fair</schedulingPolicy>
         <weight>2.0</weight>
         <queue name="client"/>
