@@ -1,5 +1,5 @@
 #
-# docker build -t brijeshdhaker/hadoop-datanode:3.3.4 -f docker-hadoop-3.3.4/nodemanager/Dockerfile .
+# docker build -t brijeshdhaker/hadoop-datanode:3.3.4 -f docker-hadoop-3.3.4/datanode/Dockerfile .
 # docker push brijeshdhaker/hadoop-datanode:3.3.4
 #
 
