@@ -35,8 +35,10 @@ docker volume create --name sandbox_mysql_data --opt type=none --opt device=/app
 docker volume create --name sandbox_mysql_conf --opt type=none --opt device=/apps/sandbox/mysql/conf --opt o=bind
 
 docker volume create --name sandbox_hadoop_data --opt type=none --opt device=/apps/sandbox/hadoop --opt o=bind
-docker volume create --name sandbox_hadoop_dfs_name --opt type=none --opt device=/apps/sandbox/hadoop/dfs/name --opt o=bind
-docker volume create --name sandbox_hadoop_dfs_data --opt type=none --opt device=/apps/sandbox/hadoop/dfs/data --opt o=bind
+docker volume create --name sandbox_hadoop321_dfs_name --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/dfs/name --opt o=bind
+docker volume create --name sandbox_hadoop321_dfs_data --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/dfs/data --opt o=bind
+docker volume create --name sandbox_hadoop334_dfs_name --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/dfs/name --opt o=bind
+docker volume create --name sandbox_hadoop334_dfs_data --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/dfs/data --opt o=bind
 
 docker volume create --name sandbox_yarn_history --opt type=none --opt device=/apps/sandbox/hadoop/yarn/history --opt o=bind
 
@@ -58,7 +60,8 @@ docker volume create --name sandbox_nifi_provenance_repository --opt type=none -
 docker volume create --name sandbox_nifi_log --opt type=none --opt device=/apps/sandbox/nifi/logs --opt o=bind
 docker volume create --name sandbox_nifi_state --opt type=none --opt device=/apps/sandbox/nifi/state --opt o=bind
 
-docker volume create --name sandbox_hadoop --opt type=none --opt device=/opt/hadoop-3.3.4 --opt o=bind
+docker volume create --name sandbox_hadoop_321 --opt type=none --opt device=/opt/hadoop-3.2.1 --opt o=bind
+docker volume create --name sandbox_hadoop_334 --opt type=none --opt device=/opt/hadoop-3.3.4 --opt o=bind
 docker volume create --name sandbox_hbase --opt type=none --opt device=/opt/hbase-2.4.9 --opt o=bind
 docker volume create --name sandbox_hbase_client --opt type=none --opt device=/opt/hbase-1.1.7 --opt o=bind
 docker volume create --name sandbox_hive --opt type=none --opt device=/opt/hive-3.1.2 --opt o=bind
@@ -117,7 +120,8 @@ docker volume create --name sandbox_nifi_provenance_repository --opt type=none -
 docker volume create --name sandbox_nifi_log --opt type=none --opt device=/d/apps/sandbox/nifi/logs --opt o=bind
 docker volume create --name sandbox_nifi_state --opt type=none --opt device=/d/apps/sandbox/nifi/state --opt o=bind
 
-docker volume create --name sandbox_hadoop --opt type=none --opt device=/d/opt/hadoop-3.3.4 --opt o=bind
+docker volume create --name sandbox_hadoop_321 --opt type=none --opt device=/d/opt/hadoop-3.2.1 --opt o=bind
+docker volume create --name sandbox_hadoop_334 --opt type=none --opt device=/d/opt/hadoop-3.3.4 --opt o=bind
 docker volume create --name sandbox_hbase --opt type=none --opt device=/d/opt/hbase-2.4.9 --opt o=bind
 docker volume create --name sandbox_hbase_client --opt type=none --opt device=/d/opt/hbase-1.1.7 --opt o=bind
 docker volume create --name sandbox_hive --opt type=none --opt device=/d/opt/hive-3.1.2 --opt o=bind
