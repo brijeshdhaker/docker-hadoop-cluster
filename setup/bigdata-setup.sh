@@ -60,6 +60,11 @@ docker volume create --name sandbox_nifi_provenance_repository --opt type=none -
 docker volume create --name sandbox_nifi_log --opt type=none --opt device=/apps/sandbox/nifi/logs --opt o=bind
 docker volume create --name sandbox_nifi_state --opt type=none --opt device=/apps/sandbox/nifi/state --opt o=bind
 
+docker volume create --name sandbox_airflow_sources --opt type=none --opt device=/apps/sandbox/airflow --opt o=bind
+docker volume create --name sandbox_airflow_dags --opt type=none --opt device=/apps/sandbox/airflow/dags --opt o=bind
+docker volume create --name sandbox_airflow_logs --opt type=none --opt device=/apps/sandbox/airflow/logs --opt o=bind
+docker volume create --name sandbox_airflow_plugins --opt type=none --opt device=/apps/sandbox/airflow/plugins --opt o=bind
+
 docker volume create --name sandbox_hadoop_321 --opt type=none --opt device=/opt/hadoop-3.2.1 --opt o=bind
 docker volume create --name sandbox_hadoop_334 --opt type=none --opt device=/opt/hadoop-3.3.4 --opt o=bind
 docker volume create --name sandbox_hbase --opt type=none --opt device=/opt/hbase-2.4.9 --opt o=bind
@@ -119,6 +124,11 @@ docker volume create --name sandbox_nifi_flowfile_repository --opt type=none --o
 docker volume create --name sandbox_nifi_provenance_repository --opt type=none --opt device=/d/apps/sandbox/nifi/provenance_repository --opt o=bind
 docker volume create --name sandbox_nifi_log --opt type=none --opt device=/d/apps/sandbox/nifi/logs --opt o=bind
 docker volume create --name sandbox_nifi_state --opt type=none --opt device=/d/apps/sandbox/nifi/state --opt o=bind
+
+docker volume create --name sandbox_airflow_sources --opt type=none --opt device=/d/apps/sandbox/airflow --opt o=bind
+docker volume create --name sandbox_airflow_dags --opt type=none --opt device=/d/apps/sandbox/airflow/dags --opt o=bind
+docker volume create --name sandbox_airflow_logs --opt type=none --opt device=/d/apps/sandbox/airflow/logs --opt o=bind
+docker volume create --name sandbox_airflow_plugins --opt type=none --opt device=/d/apps/sandbox/airflow/plugins --opt o=bind
 
 docker volume create --name sandbox_hadoop_321 --opt type=none --opt device=/d/opt/hadoop-3.2.1 --opt o=bind
 docker volume create --name sandbox_hadoop_334 --opt type=none --opt device=/d/opt/hadoop-3.3.4 --opt o=bind
