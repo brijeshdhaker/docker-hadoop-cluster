@@ -1,8 +1,8 @@
 #
-# docker build -t brijeshdhaker/hive:3.1.2 -f docker-hive-3.1.2/hive/Dockerfile .
-# docker push brijeshdhaker/hive:3.1.2
+# docker build -t brijeshdhaker/hive:3.1.2-3.3.4 -f docker-hive-3.1.2/hive/Dockerfile .
+# docker push brijeshdhaker/hive:3.1.2-3.3.4
 
-FROM brijeshdhaker/hadoop-base:3.2.1
+FROM brijeshdhaker/hadoop-base:3.3.4
 #
 ARG hive_uid=1500
 
@@ -16,7 +16,7 @@ ARG HIVE_VERSION
 
 ENV HIVE_VERSION=${HIVE_VERSION:-3.1.2}
 ENV BASE_DIR 		/opt
-ENV HADOOP_HOME     $BASE_DIR/hadoop-3.2.1
+ENV HADOOP_HOME     $BASE_DIR/hadoop-3.3.4
 ENV HIVE_HOME       $BASE_DIR/hive-3.1.2
 ENV PATH			$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$HIVE_HOME/bin
 
