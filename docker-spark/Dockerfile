@@ -1,6 +1,7 @@
 #
 # docker build -t brijeshdhaker/spark:3.3.1 -f docker-spark/Dockerfile .
-# docker pull apache/spark-py:3.3.1
+# docker push brijeshdhaker/spark:3.3.1
+#
 
 # builder step used to download and configure spark environment
 FROM openjdk:11.0.11-jre-slim-buster as builder
