@@ -8,10 +8,10 @@ export PATH=/opt/conda/bin:$PATH
 #export JAVA_HOME=/usr/java/jdk1.8.0_181-cloudera
 
 # JAVA_HOME for Fedora
-#export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
 
 # JAVA_HOME for Ubuntu
-export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+#export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
 export PATH=$PATH:$JAVA_HOME/bin
 
 # Maven Path

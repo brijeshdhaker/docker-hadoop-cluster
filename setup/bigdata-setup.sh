@@ -35,10 +35,8 @@ docker volume create --name sandbox_mysql_data --opt type=none --opt device=/app
 docker volume create --name sandbox_mysql_conf --opt type=none --opt device=/apps/sandbox/mysql/conf --opt o=bind
 
 docker volume create --name sandbox_hadoop_data --opt type=none --opt device=/apps/sandbox/hadoop --opt o=bind
-docker volume create --name sandbox_hadoop321_dfs_name --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/dfs/name --opt o=bind
-docker volume create --name sandbox_hadoop321_dfs_data --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/dfs/data --opt o=bind
-docker volume create --name sandbox_hadoop334_dfs_name --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/dfs/name --opt o=bind
-docker volume create --name sandbox_hadoop334_dfs_data --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/dfs/data --opt o=bind
+docker volume create --name sandbox_hadoop_dfs_name --opt type=none --opt device=/apps/sandbox/hadoop/dfs/name --opt o=bind
+docker volume create --name sandbox_hadoop_dfs_data --opt type=none --opt device=/apps/sandbox/hadoop/dfs/data --opt o=bind
 
 docker volume create --name sandbox_yarn_history --opt type=none --opt device=/apps/sandbox/hadoop/yarn/history --opt o=bind
 
@@ -65,12 +63,15 @@ docker volume create --name sandbox_airflow_dags --opt type=none --opt device=/a
 docker volume create --name sandbox_airflow_logs --opt type=none --opt device=/apps/sandbox/airflow/logs --opt o=bind
 docker volume create --name sandbox_airflow_plugins --opt type=none --opt device=/apps/sandbox/airflow/plugins --opt o=bind
 
-docker volume create --name sandbox_hadoop_321 --opt type=none --opt device=/opt/hadoop-3.2.1 --opt o=bind
-docker volume create --name sandbox_hadoop_334 --opt type=none --opt device=/opt/hadoop-3.3.4 --opt o=bind
+docker volume create --name sandbox_hadoop --opt type=none --opt device=/opt/hadoop-3.3.4 --opt o=bind
 docker volume create --name sandbox_hbase --opt type=none --opt device=/opt/hbase-2.4.9 --opt o=bind
 docker volume create --name sandbox_hbase_client --opt type=none --opt device=/opt/hbase-1.1.7 --opt o=bind
 docker volume create --name sandbox_hive --opt type=none --opt device=/opt/hive-3.1.2 --opt o=bind
 docker volume create --name sandbox_spark --opt type=none --opt device=/opt/spark-3.1.2 --opt o=bind
+
+docker volume create --name sandbox_hadoop_321 --opt type=none --opt device=/opt/hadoop-3.2.1 --opt o=bind
+docker volume create --name sandbox_hadoop321_dfs_name --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/dfs/name --opt o=bind
+docker volume create --name sandbox_hadoop321_dfs_data --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/dfs/data --opt o=bind
 
 #
 # Windows Docker Volumes
@@ -143,12 +144,12 @@ docker volume create --name sandbox_spark --opt type=none --opt device=/d/opt/sp
 # Require Dirs
 #
 sudo mkdir -p /apps
-sudo chown brijeshdhaker:brijeshdhaker -R /apps
-sudo chmod 777 -R /apps
+sudo chown brijeshdhaker:root -R /apps
+sudo chmod 775 -R /apps
 
-sudo mkdir -p /opt/sandbox
+sudo mkdir -p /apps/sandbox
 sudo chown brijeshdhaker:brijeshdhaker -R /opt/sandbox
-sudo chmod 777 -R /opt/sandbox
+sudo chmod 777 -R /apps/sandbox
 
 #
 mkdir -p /apps/sandbox/zookeeper/snode
@@ -169,7 +170,7 @@ mkdir -p /apps/hostpath/datasets
 mkdir -p /apps/hostpath/localstack
 
 
-sudo chown brijeshdhaker:brijeshdhaker -R /apps
+sudo chown brijeshdhaker:root -R /apps
 sudo chmod 777 -R /apps
 
 cd /opt
