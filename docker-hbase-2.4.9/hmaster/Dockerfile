@@ -1,3 +1,7 @@
+#
+# docker build -t brijeshdhaker/hbase-master:2.4.9 -f docker-hbase-2.4.9/hmaster/Dockerfile .
+#
+
 FROM brijeshdhaker/hbase-base:2.4.9
 
 COPY docker-hbase-2.4.9/hmaster/run.sh /run.sh

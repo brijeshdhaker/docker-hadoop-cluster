@@ -1,7 +1,7 @@
 #
 # docker build -t brijeshdhaker/hbase-base:2.4.9 -f docker-hbase-2.4.9/base/Dockerfile .
 #
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 

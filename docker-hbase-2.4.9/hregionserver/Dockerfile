@@ -1,3 +1,6 @@
+#
+# docker build -t brijeshdhaker/hbase-regionserver:2.4.9 -f docker-hbase-2.4.9/hregionserver/Dockerfile .
+#
 FROM brijeshdhaker/hbase-base:2.4.9
 
 COPY docker-hbase-2.4.9/hregionserver/run.sh /run.sh
