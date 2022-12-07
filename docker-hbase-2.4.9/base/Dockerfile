@@ -1,5 +1,6 @@
 #
 # docker build -t brijeshdhaker/hbase-base:2.4.9 -f docker-hbase-2.4.9/base/Dockerfile .
+# docker push brijeshdhaker/hbase-base:2.4.9
 #
 FROM ubuntu:22.04
 

@@ -1,5 +1,6 @@
 #
 # docker build -t brijeshdhaker/hbase-master:2.4.9 -f docker-hbase-2.4.9/hmaster/Dockerfile .
+# docker push brijeshdhaker/hbase-master:2.4.9
 #
 
 FROM brijeshdhaker/hbase-base:2.4.9
