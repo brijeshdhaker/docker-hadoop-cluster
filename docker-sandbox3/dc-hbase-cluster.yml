@@ -8,16 +8,17 @@ services:
   # Zookeeper Server
   #
   zookeeper:
-    image: confluentinc/cp-zookeeper:5.5.0
+    image: confluentinc/cp-zookeeper:7.1.2
     hostname: zookeeper
     container_name: zookeeper
     ports:
       - "2181:2181"
     volumes:
-      - sandbox3_apps_hostpath:/apps/hostpath
-      - sandbox3_zookeeper_secrets:/etc/zookeeper/secrets
-      - sandbox3_zookeeper_data:/var/lib/zookeeper/data
-      - sandbox3_zookeeper_log:/var/lib/zookeeper/log
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+      - sandbox_zookeeper_secrets:/etc/zookeeper/secrets
+      - sandbox_zookeeper_data:/var/lib/zookeeper/data
+      - sandbox_zookeeper_log:/var/lib/zookeeper/log
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
@@ -33,12 +34,13 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9870 datanode:9864 zookeeper:2181"
     env_file:
-      - sandbox3.env
+      - envs/docker_hbase.env
     ports:
       - "16000:16000"
       - "16010:16010"
     volumes:
-      - sandbox3_apps_hostpath:/apps/hostpath
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
 
   #
   hbase-region:
@@ -46,7 +48,7 @@ services:
     container_name: hbase-regionserver
     hostname: hbase-regionserver
     env_file:
-      - sandbox3.env
+      - envs/docker_hbase.env
     environment:
       HBASE_CONF_hbase_regionserver_hostname: hbase-region
       SERVICE_PRECONDITION: "namenode:9870 datanode:9864 zookeeper:2181 hbase-master:16010"
@@ -54,17 +56,20 @@ services:
       - "16020:16020"
       - "16030:16030"
     volumes:
-      - sandbox3_apps_hostpath:/apps/hostpath
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
 
 #
 volumes:
-  sandbox3_apps_hostpath:
+  sandbox_host_path:
     external: true
-  sandbox3_zookeeper_secrets:
+  sandbox_base_path:
     external: true
-  sandbox3_zookeeper_data:
+  sandbox_zookeeper_secrets:
     external: true
-  sandbox3_zookeeper_log:
+  sandbox_zookeeper_data:
+    external: true
+  sandbox_zookeeper_log:
     external: true
 
 #

@@ -5,7 +5,9 @@ version: "3.9"
 
 services:
   #
-  # HDFS & YARN Sandbox
+  # HDFS Sandbox
+  #
+
   #
   namenode:
     image: brijeshdhaker/hadoop-namenode:3.2.1
@@ -16,12 +18,13 @@ services:
       - "9870:9870"
       - "9000:9000"
     volumes:
-      - sandbox3_hadoop_dfs_name:/hadoop/dfs/name
-      - sandbox3_apps_hostpath:/apps/hostpath
+      - sandbox_hadoop321_dfs_name:/hadoop/dfs/name
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
     environment:
-      - CLUSTER_NAME=test
+      - CLUSTER_NAME=docker-sandbox
     env_file:
-      - sandbox3.env
+      - envs/docker_hadoop.env
 
   #
   datanode:
@@ -33,12 +36,17 @@ services:
       - "9866:9866"
     restart: always
     volumes:
-      - sandbox3_hadoop_dfs_data:/hadoop/dfs/data
-      - sandbox3_apps_hostpath:/apps/hostpath
+      - sandbox_hadoop321_dfs_data:/hadoop/dfs/data
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
     env_file:
-      - sandbox3.env
+      - envs/docker_hadoop.env
+
+  #
+  # YARN Sandbox
+  #
 
   #
   resourcemanager:
@@ -50,11 +58,12 @@ services:
       - "8088:8088"
       - "8032:8032"
     volumes:
-      - sandbox3_apps_hostpath:/apps/hostpath
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
     env_file:
-      - sandbox3.env
+      - envs/docker_hadoop.env
 
   #
   nodemanager:
@@ -65,11 +74,12 @@ services:
     ports:
       - "8042:8042"
     volumes:
-      - sandbox3_apps_hostpath:/apps/hostpath
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
     env_file:
-      - sandbox3.env
+      - envs/docker_hadoop.env
 
   #
   historyserver:
@@ -82,66 +92,86 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
     volumes:
-      - sandbox3_hadoop_yarn_history:/tmp/yarn/history
-      - sandbox3_apps_hostpath:/apps/hostpath
+      - sandbox_yarn_history:/tmp/yarn/history
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
     env_file:
-      - sandbox3.env
+      - envs/docker_hadoop.env
+
+  #
+  # Mysql Database Server
+  #
+
+  #
+  mysqlserver:
+    image: mysql/mysql-server:8.0.28
+    container_name: mysqlserver
+    hostname: mysqlserver
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+      - sandbox_mysql_conf:/etc/mysql/conf.d
+      - sandbox_mysql_data:/var/lib/mysql
+    env_file:
+      - envs/docker_mysql.env
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=p@SSW0rd --execute \"SHOW DATABASES;\""
+      # test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
 
   #
   # Hive Server
   #
-  hive-postgresql:
-    image: postgres:9.5.3
-    restart: always
-    hostname: hive-postgresql
-    container_name: hive-postgresql
-    ports:
-      - "5432:5432"
-    volumes:
-      - sandbox3_postgres_data:/var/lib/postgresql/data
-      - sandbox3_postgres_init:/docker-entrypoint-initdb.d
-      - sandbox3_apps_hostpath:/apps/hostpath
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: pgadmin
 
   #
   hive-metastore:
-    image: brijeshdhaker/hive:3.1.2
+    image: brijeshdhaker/hive:3.1.2-3.2.1
     hostname: hive-metastore
     container_name: hive-metastore
     env_file:
-      - sandbox3.env
+      - envs/docker_hive.env
     command: /opt/hive-3.1.2/bin/hive --service metastore
     environment:
-      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 hive-postgresql:5432"
+      SERVICE_PRECONDITION: "mysqlserver:3306"
     links:
-      - hive-postgresql
+      - mysqlserver
     ports:
       - "9083:9083"
     volumes:
-      - sandbox3_apps_hostpath:/apps/hostpath
-
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+    depends_on:
+      mysqlserver:
+        condition: service_healthy
   #
   hive-server:
-    image: brijeshdhaker/hive:3.1.2
+    image: brijeshdhaker/hive:3.1.2-3.2.1
     hostname: hive-server
     container_name: hive-server
     env_file:
-      - sandbox3.env
+      - envs/docker_hive.env
     links:
       - hive-metastore
+      - namenode
+      - datanode
     environment:
-      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-postgresql/metastore"
-      SERVICE_PRECONDITION: "hive-metastore:9083"
+      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:mysql://mysqlserver/metastore?createDatabaseIfNotExist=true;autoReconnect=true;useSSL=false"
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 hive-metastore:9083"
     ports:
       - "10000:10000"
       - "10002:10002"
     volumes:
-      - sandbox3_apps_hostpath:/apps/hostpath
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
 
   #
+  # Spark History Server
   #
+
   #
   spark-historyserver:
     image: brijeshdhaker/spark-historyserver:3.1.2
@@ -155,65 +185,80 @@ services:
     ports:
       - "18080:18080"
     volumes:
-      - sandbox3_apps_hostpath:/apps/hostpath
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
 
   #
   # Zeppelin Notebook
+  #
+
   #
   zeppelin:
     image: apache/zeppelin:0.10.1
     container_name: zeppelin
     hostname: zeppelin
     env_file:
-      - sandbox3.env
+      - envs/docker_zeppelin.env
     ports:
       - "9080:8080"
       - "4040:4040"
     volumes:
-      - sandbox3_apps_hostpath:/apps/hostpath
-      - sandbox3_hadoop:/opt/hadoop-3.2.1
-      - sandbox3_hbase:/opt/hbase-2.4.9
-      - sandbox3_hbase_client:/opt/hbase-client
-      - sandbox3_hive:/opt/hive-3.1.2
-      - sandbox3_spark:/opt/spark
-      - sandbox3_zeppelin:/opt/zeppelin
-#      - sandbox3_zeppelin_conf:/opt/zeppelin/conf
-#      - sandbox3_m2:/opt/zeppelin/.m2
-#      - sandbox3_ivy2:/opt/zeppelin/.ivy2
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+      - sandbox_hadoop_321:/opt/hadoop-3.2.1
+      - sandbox_hbase:/opt/hbase-2.4.9
+      - sandbox_hbase_client:/opt/hbase-client
+      - sandbox_hive:/opt/hive-3.1.2
+      - sandbox_spark:/opt/spark-3.1.2
+      - sandbox_zeppelin:/opt/zeppelin
+      - sandbox_zeppelin_notebook:/opt/notebook
+#      - sandbox_zeppelin_conf:/opt/zeppelin/conf
+#      - sandbox_m2:/opt/zeppelin/.m2
+#      - sandbox_ivy2:/opt/zeppelin/.ivy2
 
 #
 volumes:
-  sandbox3_apps_hostpath:
+  sandbox_host_path:
     external: true
-  sandbox3_m2:
+  sandbox_base_path:
     external: true
-  sandbox3_ivy2:
+  sandbox_m2:
     external: true
-  sandbox3_hadoop_dfs_name:
+  sandbox_ivy2:
     external: true
-  sandbox3_hadoop_dfs_data:
+  sandbox_hadoop_data:
     external: true
-  sandbox3_hadoop_yarn_history:
+  sandbox_hadoop321_dfs_name:
     external: true
-  sandbox3_postgres_data:
+  sandbox_hadoop321_dfs_data:
     external: true
-  sandbox3_postgres_conf:
+  sandbox_yarn_history:
     external: true
-  sandbox3_postgres_init:
+  sandbox_mysql_data:
     external: true
-  sandbox3_zeppelin:
+  sandbox_mysql_conf:
     external: true
-  sandbox3_zeppelin_conf:
+  sandbox_postgres_data:
     external: true
-  sandbox3_hadoop:
+  sandbox_postgres_conf:
     external: true
-  sandbox3_hbase:
+  sandbox_postgres_init:
     external: true
-  sandbox3_hbase_client:
+  sandbox_zeppelin:
     external: true
-  sandbox3_hive:
+  sandbox_zeppelin_conf:
     external: true
-  sandbox3_spark:
+  sandbox_zeppelin_notebook:
+    external: true
+  sandbox_hadoop_321:
+    external: true
+  sandbox_hbase:
+    external: true
+  sandbox_hbase_client:
+    external: true
+  sandbox_hive:
+    external: true
+  sandbox_spark:
     external: true
 
 #
