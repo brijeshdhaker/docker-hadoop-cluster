@@ -1,7 +1,14 @@
 # The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+# The following lines are desirable for IPv6 capable hosts
 
 ###
-127.0.0.1       localhost
+127.0.0.1       localhost thinkpad
 
 #
 127.0.0.1       namenode namenode.sandbox-bigdata.net
@@ -9,7 +16,7 @@
 127.0.0.1       resourcemanager resourcemanager.sandbox-bigdata.net
 127.0.0.1       nodemanager nodemanager.sandbox-bigdata.net
 127.0.0.1       historyserver historyserver.sandbox-bigdata.net
-127.0.0.1	    spark-historyserver spark-historyserver.sandbox-bigdata.net
+127.0.0.1       spark-historyserver spark-historyserver.sandbox-bigdata.net
 
 #
 127.0.0.1       hive-postgresql hive-postgresql.sandbox-bigdata.net
@@ -21,8 +28,8 @@
 127.0.0.1       hbase-regionserver hbase-regionserver.sandbox-bigdata.net
 
 #
-127.0.0.1	    kafka-broker kafka-broker.sandbox-bigdata.net
-127.0.0.1	    schema-registry schema-registry.sandbox-bigdata.net
+127.0.0.1       kafka-broker kafka-broker.sandbox-bigdata.net
+127.0.0.1       schema-registry schema-registry.sandbox-bigdata.net
 
 #
 127.0.0.1       airflow-webserver airflow-webserver.sandbox-bigdata.net
@@ -31,16 +38,17 @@
 127.0.0.1       zookeeper zookeeper.sandbox-bigdata.net
 
 #
-127.0.0.1	    zeppelin zeppelin.sandbox-bigdata.net
-127.0.0.1	    nififlow nififlow.sandbox-bigdata.net
-127.0.0.1	    mysqlserver mysqlserver.sandbox-bigdata.net
+127.0.0.1       zeppelin zeppelin.sandbox-bigdata.net
+127.0.0.1       nififlow nififlow.sandbox-bigdata.net
+127.0.0.1       mysqlserver mysqlserver.sandbox-bigdata.net
 
 #
-172.18.0.1	    thinkpad thinkpad.sandbox-bigdata.net sandbox-cluster-gateway
+172.18.0.1      sandbox-cluster-gateway
 192.168.1.120   hostmaster hostmaster.sandbox-bigdata.net
 
 #
 192.168.1.103   sandbox-hdp.hortonworks.com
+192.168.1.103   sandbox-host.hortonworks.com
 192.168.1.110   raspberry-pi.hortonworks.com
 
 #
