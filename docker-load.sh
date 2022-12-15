@@ -1,5 +1,8 @@
 #!/bin/bash
-
+#
+# docker load --input fedora.tar
+# docker load < busybox.tar.gz
+#
 cd docker_images/
 directory=`pwd`
 ls | grep tar > files.txt

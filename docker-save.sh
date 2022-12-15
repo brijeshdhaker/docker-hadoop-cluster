@@ -1,5 +1,7 @@
 #!/bin/bash
-
+#
+# docker save -o fedora-latest.tar fedora:latest
+#
 #files will be saved in the dir 'docker_images'
 mkdir docker_images
 cd docker_images
