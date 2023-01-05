@@ -1,0 +1,139 @@
+#--------------------------------------------
+# Step 1 : Make shared NFS directory
+#--------------------------------------------
+
+sudo apt install -y nfs-kernel-server
+
+#--------------------------------------------
+#Step 1 : Make shared NFS directory
+#--------------------------------------------
+
+sudo mkdir -p /mnt/nfs_share
+
+--------------------------------------------
+Step 2 : Set directory permissions
+--------------------------------------------
+
+sudo chown -R nobody:nogroup /mnt/nfs_share/
+
+--------------------------------------------
+Step 3: Set file permissions
+--------------------------------------------
+
+sudo chmod 777 /mnt/nfs_share/
+
+--------------------------------------------
+Step 4: Grant NFS access
+--------------------------------------------
+
+sudo vi /etc/exports
+
+/mnt/nfs_share 192.168.122.0/24(rw,sync,no_subtree_check)
+
+--------------------------------------------
+Step 5: Exporting NFS directory
+--------------------------------------------
+
+sudo exportfs -a
+
+--------------------------------------------
+Step 6: Restart NFS server
+--------------------------------------------
+
+sudo systemctl restart nfs-kernel-server
+
+Step 7: Grant Firewall access
+
+$ sudo ufw allow from 192.168.122.0/24 to any port nfs
+
+
+Step 8: Enable Firewall
+
+$ sudo ufw enable
+
+Step 9: Check Firewall status
+
+$ sudo ufw status
+
+
+############################################
+
+Installing NFS client on Ubuntu 22.04
+
+############################################
+
+$ sudo apt install nfs-common
+
+$ sudo mkdir -p /mnt/nfs_share
+
+$ sudo mount 192.168.122.1:/mnt/nfs_share /mnt/nfs_clientshare
+
+
+############################################
+
+Installing NFS client on Fedora - 37
+
+############################################
+
+$ dnf -y install nfs-utils
+
+$ vi /etc/idmapd.conf
+# line 5 : uncomment and change to your domain name
+Domain = srv.world
+
+$ mount -t nfs 192.168.122.1:/mnt/nfs_share /mnt/nfs_share
+
+$ df -hT
+Filesystem                     Type      Size  Used Avail Use% Mounted on
+devtmpfs                       devtmpfs  4.0M     0  4.0M   0% /dev
+tmpfs                          tmpfs     2.0G     0  2.0G   0% /dev/shm
+tmpfs                          tmpfs     784M  956K  783M   1% /run
+/dev/mapper/fedora_fedora-root xfs        15G  1.7G   14G  11% /
+tmpfs                          tmpfs     2.0G     0  2.0G   0% /tmp
+/dev/vda1                      xfs      1014M  196M  819M  20% /boot
+tmpfs                          tmpfs     392M     0  392M   0% /run/user/0
+dlp.srv.world:/home/nfs_share   nfs4       15G  1.7G   14G  11% /mnt
+# NFS share is mounted
+
+
+# if mount with NFSv3, add [-o vers=3] option
+
+$ mount -t nfs -o vers=3 192.168.122.1:/mnt/nfs_share /mnt/nfs_share
+
+$ df -hT /mnt
+Filesystem                   Type  Size  Used Avail Use% Mounted on
+dlp.srv.world:/home/nfs_share nfs    15G  1.5G   14G  10% /mnt
+
+
+
+[2]	To mount automatically when System starts, Configure setting in [/etc/fstab].
+
+[root@node01 ~]# vi /etc/fstab
+/dev/mapper/fedora_fedora-root /                       xfs     defaults        0 0
+UUID=7f281272-4da1-443f-ba6a-b5b42ce9c26b /boot        xfs     defaults        0 0
+# add to the end : set NFS share
+192.168.122.1:/mnt/nfs_share              /mnt/nfs_share         nfs     defaults        0 0
+
+
+[3]	To mount dynamically when anyone access to NFS Share, Configure AutoFS.
+
+[root@node01 ~]# dnf -y install autofs
+[root@node01 ~]# vi /etc/auto.master
+# add to the end
+/-    /etc/auto.mount
+
+[root@node01 ~]# vi /etc/auto.mount
+# create new : [mount point] [option] [location]
+/mnt   -fstype=nfs,rw  dlp.srv.world:/home/nfs_share
+
+[root@node01 ~]# systemctl enable --now autofs
+# move to the mount point to verify mounting
+[root@node01 ~]# cd /mnt
+[root@node01 mnt]# df -h /mnt
+Filesystem                    Size  Used Avail Use% Mounted on
+dlp.srv.world:/home/nfs_share   15G  1.7G   14G  11% /mnt
+
+[root@node01 mnt]# grep /mnt /proc/mounts
+/etc/auto.mount /mnt autofs rw,relatime,fd=17,pgrp=1037,timeout=300,minproto=5,maxproto=5,direct,pipe_ino=26815 0 0
+dlp.srv.world:/home/nfs_share /mnt nfs4 rw,relatime,vers=4.2,rsize=524288,wsize=524288,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=10.0.0.51,local_lock=none,addr=10.0.0.30 0 0
+
