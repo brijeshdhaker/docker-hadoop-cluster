@@ -43,6 +43,16 @@ ff02::2 ip6-allrouters
 127.0.0.1       mysqlserver mysqlserver.sandbox-bigdata.net
 
 #
+# Monitering Tools
+#
+127.0.0.1       prometheus prometheus.sandbox-bigdata.net
+127.0.0.1       nodeexporter nodeexporter.sandbox-bigdata.net
+127.0.0.1       alertmanager alertmanager.sandbox-bigdata.net
+127.0.0.1       cadvisor cadvisor.sandbox-bigdata.net
+127.0.0.1       grafana grafana.sandbox-bigdata.net
+
+
+#
 172.18.0.1      sandbox-cluster-gateway
 192.168.1.120   hostmaster hostmaster.sandbox-bigdata.net
 
