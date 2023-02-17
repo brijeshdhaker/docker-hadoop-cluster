@@ -50,6 +50,10 @@ ff02::2 ip6-allrouters
 127.0.0.1       alertmanager alertmanager.sandbox-bigdata.net
 127.0.0.1       cadvisor cadvisor.sandbox-bigdata.net
 127.0.0.1       grafana grafana.sandbox-bigdata.net
+127.0.0.1       influxdb influxdb.sandbox-bigdata.net
+127.0.0.1       statsd-exporter statsd-exporter.sandbox-bigdata.net
+127.0.0.1       graphite-exporter graphite-exporter.sandbox-bigdata.net
+127.0.0.1       graphite graphite.sandbox-bigdata.net
 
 
 #
