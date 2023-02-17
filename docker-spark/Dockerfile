@@ -27,7 +27,9 @@ SPARK_WORKLOAD="master"
 
 # Add Dependencies for PySpark
 RUN apt-get update && \
-#    apt-get install -y curl netcat vim wget software-properties-common ssh net-tools ca-certificates python3 python3-pip python3-numpy python3-matplotlib python3-scipy python3-pandas && \
+    apt-get install -y curl netcat vim wget ssh net-tools &&  \
+#    apt-get install -y software-properties-common ca-certificates &&  \
+#    apt-get install -y python3 python3-pip python3-numpy python3-matplotlib python3-scipy python3-pandas && \
 #    update-alternatives --install "/usr/bin/python" "python" "$(which python3)" 1  && \
     mkdir -p ${SPARK_HOME}/logs && chmod -Rf 777 ${SPARK_HOME}/logs && \
     useradd -g ${root_uid} -u ${spark_uid} spark
