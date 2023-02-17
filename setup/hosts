@@ -11,11 +11,18 @@ ff02::2 ip6-allrouters
 127.0.0.1       localhost thinkpad
 
 #
+# Hadoop Cluster
+#
 127.0.0.1       namenode namenode.sandbox-bigdata.net
 127.0.0.1       datanode datanode.sandbox-bigdata.net
 127.0.0.1       resourcemanager resourcemanager.sandbox-bigdata.net
 127.0.0.1       nodemanager nodemanager.sandbox-bigdata.net
 127.0.0.1       historyserver historyserver.sandbox-bigdata.net
+
+#
+# Spark Cluster
+#
+127.0.0.1       spark-master spark-master.sandbox-bigdata.net
 127.0.0.1       spark-historyserver spark-historyserver.sandbox-bigdata.net
 
 #
