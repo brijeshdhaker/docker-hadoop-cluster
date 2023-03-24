@@ -1,3 +1,8 @@
+#
+# docker build -t brijeshdhaker/hadoop-nodemanager:2.7.4 -f docker-hadoop-2.7.4/nodemanager/Dockerfile .
+# docker push brijeshdhaker/hadoop-nodemanager:2.7.4
+#
+
 FROM brijeshdhaker/hadoop-base:2.7.4
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"

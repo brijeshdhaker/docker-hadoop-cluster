@@ -1,0 +1,139 @@
+#
+# docker volume create --name sandbox_host_path --opt type=none --opt device=/apps/hostpath --opt o=bind
+# docker volume create --name sandbox_base_path --opt type=none --opt device=/apps/sandbox --opt o=bind
+# docker volume create --name sandbox_hadoop_27 --opt type=none --opt device=/opt/hadoop-2.7.4 --opt o=bind
+# docker volume create --name sandbox_hadoop_27_dfs_name --opt type=none --opt device=/apps/sandbox/hadoop-2.7.4/dfs/name --opt o=bind
+# docker volume create --name sandbox_hadoop_27_dfs_data --opt type=none --opt device=/apps/sandbox/hadoop-2.7.4/dfs/data --opt o=bind
+# docker volume create --name sandbox_hadoop_27_yarn_history --opt type=none --opt device=/apps/sandbox/hadoop-2.7.4/yarn/history --opt o=bind
+
+version: "3.5"
+
+services:
+  #
+  # HDFS Sandbox
+  #
+  namenode:
+    image: brijeshdhaker/hadoop-namenode:2.7.4
+    container_name: namenode
+    hostname: namenode
+    restart: always
+    extra_hosts:
+      - "thinkpad thinkpad.sandbox-bigdata.net:host-gateway"
+    ports:
+      - "50070:50070"
+      - "9000:9000"
+    volumes:
+      - sandbox_hadoop_27_dfs_name:/hadoop/dfs/name
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+    environment:
+      - CLUSTER_NAME=docker-bigdata-sandbox
+    env_file:
+      - docker-hadoop-2.7.4/hadoop-2.7.4.env
+
+  #
+  datanode:
+    image: brijeshdhaker/hadoop-datanode:2.7.4
+    build:
+      context: .
+      dockerfile: docker-hadoop-2.7.4/datanode/Dockerfile
+    container_name: datanode
+    hostname: datanode
+    extra_hosts:
+      - "thinkpad thinkpad.sandbox-bigdata.net:host-gateway"
+    ports:
+      - "50075:50075"
+      - "50010:50010"
+    restart: always
+    volumes:
+      - sandbox_hadoop_27_dfs_data:/hadoop/dfs/data
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+    environment:
+      SERVICE_PRECONDITION: "namenode:50070"
+    env_file:
+      - docker-hadoop-2.7.4/hadoop-2.7.4.env
+
+  #
+  resourcemanager:
+    image: brijeshdhaker/hadoop-resourcemanager:2.7.4
+    build:
+      context: .
+      dockerfile: docker-hadoop-2.7.4/resourcemanager/Dockerfile
+    container_name: resourcemanager
+    hostname: resourcemanager
+    restart: always
+    extra_hosts:
+      - "thinkpad thinkpad.sandbox-bigdata.net:host-gateway"
+    ports:
+      - "8088:8088"
+      - "8032:8032"
+    volumes:
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000  namenode:50070  datanode:50075"
+    env_file:
+      - docker-hadoop-2.7.4/hadoop-2.7.4.env
+
+  #
+  nodemanager:
+    image: brijeshdhaker/hadoop-nodemanager:2.7.4
+    build:
+      context: .
+      dockerfile: docker-hadoop-2.7.4/nodemanager/Dockerfile
+    container_name: nodemanager
+    hostname: nodemanager
+    restart: always
+    extra_hosts:
+      - "thinkpad thinkpad.sandbox-bigdata.net:host-gateway"
+    ports:
+      - "8042:8042"
+    volumes:
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000  namenode:50070  datanode:50075 resourcemanager:8088"
+    env_file:
+      - docker-hadoop-2.7.4/hadoop-2.7.4.env
+
+  #
+  historyserver:
+    image: brijeshdhaker/hadoop-historyserver:2.7.4
+    build:
+      context: .
+      dockerfile: docker-hadoop-2.7.4/historyserver/Dockerfile
+    container_name: historyserver
+    hostname: historyserver
+    restart: always
+    extra_hosts:
+      - "thinkpad thinkpad.sandbox-bigdata.net:host-gateway"
+    ports:
+      - "8188:8188"
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000  namenode:50070  datanode:50075 resourcemanager:8088"
+    volumes:
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+      - sandbox_hadoop_27_yarn_history:/hadoop/yarn/history
+    env_file:
+      - docker-hadoop-2.7.4/hadoop-2.7.4.env
+
+#
+volumes:
+  sandbox_host_path:
+    external: true
+  sandbox_base_path:
+    external: true
+  sandbox_hadoop_27_dfs_name:
+    external: true
+  sandbox_hadoop_27_dfs_data:
+    external: true
+  sandbox_hadoop_27_yarn_history:
+    external: true
+#
+networks:
+  default:
+    external: true
+    driver: bridge
+    name: sandbox-bigdata.net
