@@ -1,10 +1,10 @@
-FROM brijeshdhaker/hadoop-base:3.2.1
+FROM brijeshdhaker/hadoop-base:2.7.4
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
 HEALTHCHECK CMD curl -f http://localhost:8042/ || exit 1
 
-ADD docker-hadoop-3.2.1/nodemanager/run.sh /run.sh
+ADD docker-hadoop-2.7.4/nodemanager/run.sh /run.sh
 RUN chmod a+x /run.sh
 
 EXPOSE 8042

@@ -1,4 +1,9 @@
-FROM brijeshdhaker/hadoop-base:3.2.1
+#
+# docker build -t brijeshdhaker/hadoop-datanode:2.7.4 -f docker-hadoop-2.7.4/datanode/Dockerfile .
+# docker push brijeshdhaker/hadoop-datanode:2.7.4
+#
+
+FROM brijeshdhaker/hadoop-base:2.7.4
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
@@ -9,9 +14,9 @@ RUN mkdir -p /hadoop/dfs/data
 VOLUME /hadoop/dfs/data
 
 #
-ADD docker-hadoop-3.2.1/datanode/run.sh /run.sh
+ADD docker-hadoop-2.7.4/datanode/run.sh /run.sh
 RUN chmod a+x /run.sh
 
-EXPOSE 9864
+EXPOSE 50010
 
 CMD ["/run.sh"]

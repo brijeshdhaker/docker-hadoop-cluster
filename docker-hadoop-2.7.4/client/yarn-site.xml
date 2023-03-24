@@ -23,7 +23,7 @@
 
     <property>
         <name>yarn.log.server.url</name>
-        <value>http://historyserver:19888/jobhistory/logs</value>
+        <value>http://historyserver:8188/jobhistory/logs</value>
     </property>
 
     <property>
@@ -61,11 +61,11 @@
     <property>
         <name>yarn.application.classpath</name>
         <value>
-            /opt/hadoop-3.2.1/hadoop/etc/hadoop, /opt/hadoop-3.2.1/hadoop/share/hadoop/common/*,
-            /opt/hadoop-3.2.1/hadoop/share/hadoop/common/lib/*, /opt/hadoop-3.2.1/hadoop/share/hadoop/hdfs/*,
-            /opt/hadoop-3.2.1/hadoop/share/hadoop/hdfs/lib/*, /opt/hadoop-3.2.1/hadoop/share/hadoop/mapreduce/*,
-            /opt/hadoop-3.2.1/hadoop/share/hadoop/mapreduce/lib/*, /opt/hadoop-3.2.1/hadoop/share/hadoop/yarn/*,
-            /opt/hadoop-3.2.1/hadoop/share/hadoop/yarn/lib/*, /opt/hadoop-3.2.1/hadoop/share/spark/*
+            /opt/hadoop-2.7.4/hadoop/etc/hadoop, /opt/hadoop-2.7.4/hadoop/share/hadoop/common/*,
+            /opt/hadoop-2.7.4/hadoop/share/hadoop/common/lib/*, /opt/hadoop-2.7.4/hadoop/share/hadoop/hdfs/*,
+            /opt/hadoop-2.7.4/hadoop/share/hadoop/hdfs/lib/*, /opt/hadoop-2.7.4/hadoop/share/hadoop/mapreduce/*,
+            /opt/hadoop-2.7.4/hadoop/share/hadoop/mapreduce/lib/*, /opt/hadoop-2.7.4/hadoop/share/hadoop/yarn/*,
+            /opt/hadoop-2.7.4/hadoop/share/hadoop/yarn/lib/*, /opt/hadoop-2.7.4/hadoop/share/spark/*
         </value>
     </property>
 

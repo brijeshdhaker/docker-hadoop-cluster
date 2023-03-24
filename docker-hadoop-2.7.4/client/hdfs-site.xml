@@ -11,17 +11,17 @@
     
     <property>
         <name>dfs.datanode.data.dir</name>
-        <value>file:///hadoop/dfs/data</value>
+        <value>file:///apps/hostpath/hadoop/2.7.4/dfs/data</value>
     </property>
     
     <property>
         <name>dfs.namenode.name.dir</name>
-        <value>file:///hadoop/dfs/name</value>
+        <value>file:///apps/hostpath/hadoop/2.7.4/dfs/name</value>
     </property>
     
     <property>
         <name>dfs.namenode.checkpoint.dir</name>
-        <value>file:///hadoop/dfs/namesecondary</value>
+        <value>file:///apps/hostpath/hadoop/2.7.4/dfs/namesecondary</value>
     </property>
     
     <property>
@@ -53,7 +53,7 @@
 
     <property>
         <name>dfs.datanode.http.address</name>
-        <value>	0.0.0.0:50075</value>
+        <value>0.0.0.0:50075</value>
         <description>The datanode http server address and port. If the port is 0 then the server will start on a free port.</description>
     </property>
 
