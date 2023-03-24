@@ -1,3 +1,20 @@
+#
+# Hive with Spark Engine
+#
+
+ln -s /opt/spark-2.3.4/jars/spark-network-common_2.11-2.3.4.jar /opt/hive-3.1.2/lib/spark-network-common_2.11-2.3.4.jar
+ln -s /opt/spark-2.3.4/jars/spark-core_2.11-2.3.4.jar /opt/hive-3.1.2/lib/spark-core_2.11-2.3.4.jar
+ln -s /opt/spark-2.3.4/jars/scala-library-2.11.8.jar /opt/hive-3.1.2/lib/scala-library-2.11.8.jar
+
+$SPARK_HOME/sbin/start-master.sh
+$SPARK_HOME/bin/spark-class org.apache.spark.deploy.worker.Worker --webui-port 8081 spark://172.18.0.1:7077
+
+hive --hiveconf hive.root.logger=INFO,console --remote-host=localhost
+
+
+#
+#
+#
 #Hadoop Configurations
 export HADOOP_HOME=/opt/hadoop-3.2.1
 export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop

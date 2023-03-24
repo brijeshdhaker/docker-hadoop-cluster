@@ -1,38 +1,55 @@
+#
 # Use postgres/example user/password credentials
+#
 version: '3.9'
 
 services:
-# postgres:14.5
-  hive-postgresql:
+  #
+  # Postgres Database Server
+  #
+
+  # postgres:14.5
+  postgres:
     image: postgres:9.5.3
     restart: always
-    hostname: hive-postgresql
-    container_name: hive-postgresql
+    hostname: postgres
+    container_name: postgres
     ports:
       - "5432:5432"
     volumes:
-      - sandbox3_postgres_data:/var/lib/postgresql/data
-      - sandbox3_postgres_init:/docker-entrypoint-initdb.d
+      - sandbox_base_path:/apps/sandbox
+      - ./data/postgresql:/var/lib/postgresql/data
+      - sandbox_postgres_init:/docker-entrypoint-initdb.d
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: pgadmin
-#      PGDATA: /var/lib/postgresql/data
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 5s
+      retries: 5
 
-#
+  #
+  #
+  #
   adminer:
     image: adminer
     restart: always
+    hostname: adminer
+    container_name: adminer
     ports:
       - 8080:8080
 
 
 #
 volumes:
-  sandbox3_postgres_data:
+  sandbox_base_path:
     external: true
-  sandbox3_postgres_conf:
+  sandbox_postgres_data:
     external: true
-  sandbox3_postgres_init:
+  sandbox_postgres_conf:
+    external: true
+  sandbox_postgres_init:
     external: true
 
 #

@@ -8,3 +8,6 @@ target
 .classpath
 .project
 .idea
+/data/postgresql/*
+/data/mysql/*
+/data/cassandra/*
