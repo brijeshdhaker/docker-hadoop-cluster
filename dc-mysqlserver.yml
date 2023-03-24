@@ -1,4 +1,6 @@
 #
+# docker volume create --name sandbox_mysql_data --opt type=none --opt device=/apps/sandbox/mysql/data --opt o=bind
+# docker volume create --name sandbox_mysql_conf --opt type=none --opt device=/apps/sandbox/mysql/conf --opt o=bind
 #
 #
 version: "3.9"
@@ -14,26 +16,29 @@ services:
     restart: always
     ports:
       - "3306:3306"
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
     volumes:
-      - sandbox3_apps_hostpath:/apps/hostpath
-      - sandbox3_mysql_conf:/etc/mysql/conf.d
-      - sandbox3_mysql_data:/var/lib/mysql
-    environment:
-      MYSQL_OPERATIONS_USER: operate
-      MYSQL_OPERATIONS_PASSWORD: p@SSW0rd
-      MYSQL_ROOT_PASSWORD: p@SSW0rd
-      MYSQL_DATABASE: PUBLIC
-      MYSQL_USER: superuser
-      MYSQL_PASSWORD: p@SSW0rd
-      MYSQL_ROOT_HOST: 172.18.0.1
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+      - ./conf/mysql:/etc/mysql/conf.d
+      - ./data/mysql:/var/lib/mysql
+    env_file:
+      - envs/docker_mysql.env
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=p@SSW0rd --execute \"SHOW DATABASES;\""
+      # test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
 
 #
 volumes:
-  sandbox3_apps_hostpath:
+  sandbox_host_path:
     external: true
-  sandbox3_mysql_data:
+  sandbox_base_path:
     external: true
-  sandbox3_mysql_conf:
+  sandbox_mysql_data:
+    external: true
+  sandbox_mysql_conf:
     external: true
 
 #
