@@ -2,9 +2,9 @@
 # docker volume create --name sandbox_host_path --opt type=none --opt device=/apps/hostpath --opt o=bind
 # docker volume create --name sandbox_base_path --opt type=none --opt device=/apps/sandbox --opt o=bind
 # docker volume create --name sandbox_hadoop_27 --opt type=none --opt device=/opt/hadoop-2.7.4 --opt o=bind
-# docker volume create --name sandbox_hadoop_27_dfs_name --opt type=none --opt device=/apps/sandbox/hadoop-2.7.4/dfs/name --opt o=bind
-# docker volume create --name sandbox_hadoop_27_dfs_data --opt type=none --opt device=/apps/sandbox/hadoop-2.7.4/dfs/data --opt o=bind
-# docker volume create --name sandbox_hadoop_27_yarn_history --opt type=none --opt device=/apps/sandbox/hadoop-2.7.4/yarn/history --opt o=bind
+# docker volume create --name sandbox_hadoop_27_dfs --opt type=none --opt device=/apps/sandbox/hadoop-2.7.4/dfs --opt o=bind
+# docker volume create --name sandbox_hadoop_27_yarn --opt type=none --opt device=/apps/sandbox/hadoop-2.7.4/yarn --opt o=bind
+#
 
 version: "3.5"
 
@@ -23,13 +23,13 @@ services:
       - "50070:50070"
       - "9000:9000"
     volumes:
-      - sandbox_hadoop_27_dfs_name:/hadoop/dfs/name
+      - sandbox_hadoop_27_dfs:/hadoop/dfs
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
     environment:
       - CLUSTER_NAME=docker-bigdata-sandbox
     env_file:
-      - docker-hadoop-2.7.4/hadoop-2.7.4.env
+      - envs/docker_hadoop27.env
 
   #
   datanode:
@@ -46,13 +46,13 @@ services:
       - "50010:50010"
     restart: always
     volumes:
-      - sandbox_hadoop_27_dfs_data:/hadoop/dfs/data
+      - sandbox_hadoop_27_dfs:/hadoop/dfs
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
     environment:
       SERVICE_PRECONDITION: "namenode:50070"
     env_file:
-      - docker-hadoop-2.7.4/hadoop-2.7.4.env
+      - envs/docker_hadoop27.env
 
   #
   resourcemanager:
@@ -71,10 +71,11 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
+      - sandbox_hadoop_27_yarn:/yarn
     environment:
       SERVICE_PRECONDITION: "namenode:9000  namenode:50070  datanode:50075"
     env_file:
-      - docker-hadoop-2.7.4/hadoop-2.7.4.env
+      - envs/docker_hadoop27.env
 
   #
   nodemanager:
@@ -92,10 +93,11 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
+      - sandbox_hadoop_27_yarn:/yarn
     environment:
       SERVICE_PRECONDITION: "namenode:9000  namenode:50070  datanode:50075 resourcemanager:8088"
     env_file:
-      - docker-hadoop-2.7.4/hadoop-2.7.4.env
+      - envs/docker_hadoop27.env
 
   #
   historyserver:
@@ -115,9 +117,9 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-      - sandbox_hadoop_27_yarn_history:/hadoop/yarn/history
+      - sandbox_hadoop_27_yarn:/yarn
     env_file:
-      - docker-hadoop-2.7.4/hadoop-2.7.4.env
+      - envs/docker_hadoop27.env
 
 #
 volumes:
@@ -125,11 +127,9 @@ volumes:
     external: true
   sandbox_base_path:
     external: true
-  sandbox_hadoop_27_dfs_name:
+  sandbox_hadoop_27_dfs:
     external: true
-  sandbox_hadoop_27_dfs_data:
-    external: true
-  sandbox_hadoop_27_yarn_history:
+  sandbox_hadoop_27_yarn:
     external: true
 #
 networks:
