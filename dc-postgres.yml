@@ -1,6 +1,13 @@
 #
 # Use postgres/example user/password credentials
+
+# docker volume create --name sandbox_host_path --opt type=none --opt device=/apps/hostpath --opt o=bind
+# docker volume create --name sandbox_base_path --opt type=none --opt device=/apps/sandbox --opt o=bind
+# docker volume create --name sandbox_postgres_data --opt type=none --opt device=/apps/sandbox/postgres/data --opt o=bind
+# docker volume create --name sandbox_postgres_conf --opt type=none --opt device=/apps/sandbox/postgres/conf --opt o=bind
+# docker volume create --name sandbox_postgres_init --opt type=none --opt device=/apps/sandbox/postgres/init.d --opt o=bind
 #
+---
 version: '3.9'
 
 services:
@@ -18,7 +25,7 @@ services:
       - "5432:5432"
     volumes:
       - sandbox_base_path:/apps/sandbox
-      - ./data/postgresql:/var/lib/postgresql/data
+      - sandbox_postgres_data:/var/lib/postgresql/data
       - sandbox_postgres_init:/docker-entrypoint-initdb.d
     environment:
       POSTGRES_USER: postgres

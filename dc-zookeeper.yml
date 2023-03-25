@@ -1,24 +1,49 @@
 #
+# docker volume create --name sandbox_host_path --opt type=none --opt device=/apps/hostpath --opt o=bind
+# docker volume create --name sandbox_base_path --opt type=none --opt device=/apps/sandbox --opt o=bind
 #
-
-version: '3.5'
+# docker volume create --name sandbox_zookeeper_secrets --opt type=none --opt device=/apps/sandbox/zookeeper/secrets --opt o=bind
+# docker volume create --name sandbox_zookeeper_data --opt type=none --opt device=/apps/sandbox/zookeeper/data --opt o=bind
+# docker volume create --name sandbox_zookeeper_log --opt type=none --opt device=/apps/sandbox/zookeeper/log --opt o=bind
+#
+---
+version: '3.9'
 
 services:
   #
+  # Zookeeper Server
+  #
   zookeeper:
-    image: bitnami/zookeeper:3.7
+    image: confluentinc/cp-zookeeper:7.1.2
     hostname: zookeeper
     container_name: zookeeper
     ports:
       - "2181:2181"
     volumes:
-      - "/apps/standalone/zookeeper:/bitnami/zookeeper"
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+      - sandbox_zookeeper_secrets:/etc/zookeeper/secrets
+      - sandbox_zookeeper_data:/var/lib/zookeeper/data
+      - sandbox_zookeeper_log:/var/lib/zookeeper/log
     environment:
-      - ALLOW_ANONYMOUS_LOGIN=yes
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ALLOW_UNSIGNED: "true"
+
+#
+volumes:
+  sandbox_base_path:
+    external: true
+  sandbox_zookeeper_secrets:
+    external: true
+  sandbox_zookeeper_data:
+    external: true
+  sandbox_postgres_init:
+    external: true
 
 #
 networks:
   default:
     external: true
     driver: bridge
-    name: bigdata.net
+    name: sandbox-bigdata.net
