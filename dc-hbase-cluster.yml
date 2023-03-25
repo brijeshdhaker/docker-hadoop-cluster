@@ -1,0 +1,60 @@
+#
+#
+#
+
+#
+# zookeeper
+
+---
+
+version: "3.9"
+
+services:
+  #
+  # Hbase Server
+  #
+  hbase-master:
+    image: brijeshdhaker/hbase-master:2.4.9
+    hostname: hbase-master
+    container_name: hbase-master
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 zookeeper:2181"
+    env_file:
+      - envs/docker_hbase.env
+    ports:
+      - "16000:16000"
+      - "16010:16010"
+    volumes:
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+
+  #
+  hbase-region:
+    image: brijeshdhaker/hbase-regionserver:2.4.9
+    container_name: hbase-regionserver
+    hostname: hbase-regionserver
+    env_file:
+      - envs/docker_hbase.env
+    environment:
+      HBASE_CONF_hbase_regionserver_hostname: hbase-region
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 zookeeper:2181 hbase-master:16010"
+    ports:
+      - "16020:16020"
+      - "16030:16030"
+    volumes:
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+
+#
+volumes:
+  sandbox_host_path:
+    external: true
+  sandbox_base_path:
+    external: true
+
+#
+networks:
+  default:
+    external: true
+    driver: bridge
+    name: sandbox-bigdata.net
