@@ -3,8 +3,6 @@
 #
 # Docker network
 #
-docker network create -d bridge bigdata.net
-
 docker network create -d bridge sandbox-bigdata.net
 
 #
@@ -148,30 +146,12 @@ sudo chown brijeshdhaker:root -R /apps
 sudo chmod 775 -R /apps
 
 sudo mkdir -p /apps/sandbox
-sudo chown brijeshdhaker:brijeshdhaker -R /opt/sandbox
-sudo chmod 777 -R /apps/sandbox
+sudo chown brijeshdhaker:root -R /apps/sandbox
+sudo chmod 775 -R /apps/sandbox
 
-#
-mkdir -p /apps/sandbox/zookeeper/snode
-mkdir -p /apps/sandbox/zookeeper/data
-mkdir -p /apps/sandbox/zookeeper/secrets
-mkdir -p /apps/sandbox/zookeeper/logs
-#
-mkdir -p /apps/sandbox/hadoop/dfs/data
-mkdir -p /apps/sandbox/hadoop/dfs/name
-mkdir -p /apps/sandbox/hadoop/dfs/namesecondary
-
-mkdir -p /apps/sandbox/postgres
-mkdir -p /apps/sandbox/hive
-#
-mkdir -p /apps/hostpath/drivers
-mkdir -p /apps/hostpath/datasets
-#
-mkdir -p /apps/hostpath/localstack
-
-
-sudo chown brijeshdhaker:root -R /apps
-sudo chmod 777 -R /apps
+sudo mkdir -p /apps/hostpath
+sudo chown brijeshdhaker:root -R /apps/hostpath
+sudo chmod 775 -R /apps/hostpath
 
 cd /opt
 sudo chown -R brijeshdhaker:root hadoop-3.3.4 hbase-1.1.7 hbase-2.4.9 hive-3.1.2 maven-3.6.3 spark-3.1.2
