@@ -1,69 +1,58 @@
 version: "3.5"
 #
 services:
-#
-  hive-postgresql:
-    image: brijeshdhaker/hive-postgresql:3.1.2
-    build:
-      context: .
-      dockerfile: docker-hive-3.1.2/postgres/Dockerfile
-    hostname: hive-postgresql
-    container_name: hive-postgresql
-    ports:
-      - "5432:5432"
-    volumes:
-      - /apps/hostpath/sandbox3/postgres:/var/lib/postgresql/data
-      - /apps/hostpath:/apps/hostpath
 
-#
-#  presto-coordinator:
-#    image: shawnzhu/prestodb:0.181
-#    hostname: presto-coordinator
-#    container_name: presto-coordinator
-#    ports:
-#      - "8080:8080"
-
-#
+  #
+  # Hive Server
+  #
   hive-metastore:
     image: brijeshdhaker/hive:3.1.2
-    build:
-      context: .
-      dockerfile: docker-hive-3.1.2/hive/Dockerfile
     hostname: hive-metastore
     container_name: hive-metastore
     env_file:
-      - docker-hive-3.1.2/hive-3.1.2.env
-    command: /opt/hive-3.1.2/bin/hive --service metastore
+      - envs/docker_hive.env
+    command: /opt/hive/bin/hive --service metastore
     environment:
-      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 hive-postgresql:5432"
-    links:
-      - hive-postgresql
+      SERVICE_PRECONDITION: "mysqlserver:3306"
     ports:
       - "9083:9083"
     volumes:
-      - /apps/hostpath:/apps/hostpath
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+      - sandbox_hadoop_27:/opt/hadoop
 
-#
+  #
   hive-server:
     image: brijeshdhaker/hive:3.1.2
     hostname: hive-server
     container_name: hive-server
     env_file:
-      - docker-hive-3.1.2/hive-3.1.2.env
-    links:
-      - hive-metastore  
+      - envs/docker_hive.env
     environment:
-      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-postgresql/metastore"
-      SERVICE_PRECONDITION: "hive-metastore:9083"
+      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:mysql://mysqlserver:3306/metastore?createDatabaseIfNotExist=true;autoReconnect=true;useSSL=false"
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-metastore:9083"
+#      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 hive-metastore:9083"
     ports:
       - "10000:10000"
       - "10002:10002"
     volumes:
-      - /apps/hostpath:/apps/hostpath
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+      - sandbox_hadoop_27:/opt/hadoop
 
+#
+volumes:
+  sandbox_host_path:
+    external: true
+  sandbox_base_path:
+    external: true
+  sandbox_hadoop_27:
+    external: true
+  sandbox_hadoop_33_yarn:
+    external: true
 #
 networks:
   default:
     external: true
     driver: bridge
-    name: bigdata.net
+    name: sandbox-bigdata.net
