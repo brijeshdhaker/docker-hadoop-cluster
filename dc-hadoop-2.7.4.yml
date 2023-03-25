@@ -14,6 +14,9 @@ services:
   #
   namenode:
     image: brijeshdhaker/hadoop-namenode:2.7.4
+    build:
+      context: .
+      dockerfile: docker-hadoop-2.7.4/namenode/Dockerfile
     container_name: namenode
     hostname: namenode
     restart: always
