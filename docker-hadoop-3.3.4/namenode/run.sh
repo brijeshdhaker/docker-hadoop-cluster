@@ -15,7 +15,7 @@ fi
 echo "remove lost+found from $namedir"
 #rm -r $namedir/lost+found
 
-if [ ! -f /hadoop/dfs/name/.already_formatted ]; then
+if [ ! -f /hadoop/dfs/.already_formatted ]; then
 
   echo "Formatting name node name directory: $namedir"
   mkdir -p /hadoop/dfs/data
@@ -23,7 +23,7 @@ if [ ! -f /hadoop/dfs/name/.already_formatted ]; then
   mkdir -p /hadoop/dfs/namesecondary
 
   $HADOOP_HOME/bin/hdfs --config $HADOOP_CONF_DIR namenode -format $CLUSTER_NAME
-  touch /hadoop/dfs/name/.already_formatted
+  touch /hadoop/dfs/.already_formatted
 
 fi
 
