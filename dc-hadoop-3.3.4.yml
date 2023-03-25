@@ -1,9 +1,10 @@
 #
 # docker volume create --name sandbox_host_path --opt type=none --opt device=/apps/hostpath --opt o=bind
 # docker volume create --name sandbox_base_path --opt type=none --opt device=/apps/sandbox --opt o=bind
-# docker volume create --name sandbox_hadoop_33 --opt type=none --opt device=/opt/hadoop-3.3.4 --opt o=bind
-# docker volume create --name sandbox_hadoop_33_dfs --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/dfs --opt o=bind
-# docker volume create --name sandbox_hadoop_33_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/yarn --opt o=bind
+# docker volume create --name sandbox_hadoop_334 --opt type=none --opt device=/opt/hadoop-3.3.4 --opt o=bind
+#
+# docker volume create --name sandbox_hadoop_334_dfs --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/dfs --opt o=bind
+# docker volume create --name sandbox_hadoop_334_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/yarn --opt o=bind
 #
 
 version: "3.9"
@@ -24,7 +25,7 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-      - sandbox_hadoop_33_dfs:/hadoop/dfs
+      - sandbox_hadoop_334_dfs:/hadoop/dfs
     environment:
       - CLUSTER_NAME=docker-sandbox
     env_file:
@@ -45,7 +46,7 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-      - sandbox_hadoop_33_dfs:/hadoop/dfs
+      - sandbox_hadoop_334_dfs:/hadoop/dfs
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
     env_file:
@@ -106,7 +107,7 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-      - sandbox_hadoop_33_yarn:/tmp/yarn/history
+      - sandbox_hadoop_334_yarn:/yarn/history
     env_file:
       - envs/docker_hadoop33.env
 
@@ -116,9 +117,11 @@ volumes:
     external: true
   sandbox_base_path:
     external: true
-  sandbox_hadoop_33_dfs:
+  sandbox_hadoop_334:
     external: true
-  sandbox_hadoop_33_yarn:
+  sandbox_hadoop_334_dfs:
+    external: true
+  sandbox_hadoop_334_yarn:
     external: true
 #
 networks:

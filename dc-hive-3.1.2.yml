@@ -1,3 +1,8 @@
+#
+# docker volume create --name sandbox_hive_data --opt type=none --opt device=/apps/sandbox/hive --opt o=bind
+# docker volume create --name sandbox_hive_312 --opt type=none --opt device=/opt/hive-3.1.2 --opt o=bind
+#
+---
 version: "3.5"
 #
 services:
@@ -19,7 +24,8 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-      - sandbox_hadoop_27:/opt/hadoop
+#      - sandbox_hadoop_27:/opt/hadoop
+      - sandbox_hadoop_33:/opt/hadoop
 
   #
   hive-server:
@@ -30,15 +36,16 @@ services:
       - envs/docker_hive.env
     environment:
       HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:mysql://mysqlserver:3306/metastore?createDatabaseIfNotExist=true;autoReconnect=true;useSSL=false"
-      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-metastore:9083"
-#      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 hive-metastore:9083"
+#      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-metastore:9083"
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 hive-metastore:9083"
     ports:
       - "10000:10000"
       - "10002:10002"
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-      - sandbox_hadoop_27:/opt/hadoop
+#      - sandbox_hadoop_274:/opt/hadoop
+      - sandbox_hadoop_334:/opt/hadoop
 
 #
 volumes:
@@ -46,9 +53,11 @@ volumes:
     external: true
   sandbox_base_path:
     external: true
-  sandbox_hadoop_27:
+  sandbox_hadoop_274:
     external: true
-  sandbox_hadoop_33_yarn:
+  sandbox_hadoop_334:
+    external: true
+  sandbox_hadoop_334_yarn:
     external: true
 #
 networks:

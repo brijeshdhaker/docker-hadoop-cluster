@@ -1,48 +1,21 @@
 #
+# docker volume create --name sandbox_host_path --opt type=none --opt device=/apps/hostpath --opt o=bind
+# docker volume create --name sandbox_base_path --opt type=none --opt device=/apps/sandbox --opt o=bind
+# docker volume create --name sandbox_hadoop_274 --opt type=none --opt device=/opt/hadoop-2.7.4 --opt o=bind
+# docker volume create --name sandbox_hadoop_334 --opt type=none --opt device=/opt/hadoop-3.3.4 --opt o=bind
+# docker volume create --name sandbox_spark_312 --opt type=none --opt device=/opt/spark-3.1.2 --opt o=bind
+# docker volume create --name sandbox_hive_312 --opt type=none --opt device=/opt/hive-3.1.2 --opt o=bind
+# docker volume create --name sandbox_hbase_249 --opt type=none --opt device=/opt/hbase-2.4.9 --opt o=bind
+# docker volume create --name sandbox_hbase_117 --opt type=none --opt device=/opt/hbase-1.1.7 --opt o=bind
 #
+# docker volume create --name sandbox_zeppelin --opt type=none --opt device=/apps/sandbox/zeppelin --opt o=bind
+# docker volume create --name sandbox_zeppelin_notebook --opt type=none --opt device=/home/brijeshdhaker/IdeaProjects/zeppelin-notebooks --opt o=bind
 #
 ---
 #
 
 version: '3.5'
 services:
-  #
-  # HDFS & YARN Sandbox
-  #
-  namenode:
-    image: brijeshdhaker/hadoop-namenode:3.2.1
-    container_name: namenode
-    hostname: namenode
-    restart: always
-    ports:
-      - "9870:9870"
-      - "9000:9000"
-    volumes:
-      - sandbox3_hadoop_dfs_name:/hadoop/dfs/name
-      - sandbox3_apps_hostpath:/apps/hostpath
-    environment:
-      - CLUSTER_NAME=test
-    env_file:
-      - docker-zeppelin/zeppelin.env
-
-  #
-  datanode:
-    image: brijeshdhaker/hadoop-datanode:3.2.1
-    container_name: datanode
-    hostname: datanode
-    ports:
-      - "9864:9864"
-      - "9866:9866"
-    restart: always
-    volumes:
-      - sandbox3_hadoop_dfs_data:/hadoop/dfs/data
-      - sandbox3_apps_hostpath:/apps/hostpath
-    environment:
-      SERVICE_PRECONDITION: "namenode:9870"
-    env_file:
-      - docker-zeppelin/zeppelin.env
-
-
   #
   # Zeppelin Notebook
   #
@@ -51,36 +24,46 @@ services:
     container_name: zeppelin
     hostname: zeppelin
     env_file:
-      - docker-zeppelin/zeppelin.env
+      - envs/docker_zeppelin.env
     ports:
       - "9080:8080"
-      - "4040:4040"
     volumes:
-      - sandbox3_apps_hostpath:/apps/hostpath
-      - sandbox3_hadoop:/opt/hadoop-3.2.1
-      - sandbox3_hive:/opt/hive-3.1.2
-      - sandbox3_spark:/opt/spark-3.1.2
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+      - sandbox_hadoop_334:/opt/hadoop
+      - sandbox_hbase_249:/opt/hbase
+      - sandbox_hbase_117:/opt/hbase-client
+      - sandbox_hive_312:/opt/hive
+      - sandbox_spark_312:/opt/spark
+      - sandbox_zeppelin:/opt/zeppelin
+      - sandbox_zeppelin_notebook:/opt/notebook
+#      - sandbox_zeppelin_conf:/opt/zeppelin/conf
+#      - sandbox_m2:/opt/zeppelin/.m2
+#      - sandbox_ivy2:/opt/zeppelin/.ivy2
 
 #
 volumes:
-  sandbox3_apps_hostpath:
+  sandbox_host_path:
     external: true
-  sandbox3_hadoop_dfs_name:
+  sandbox_base_path:
     external: true
-  sandbox3_hadoop_dfs_data:
+  sandbox_zeppelin:
     external: true
-  sandbox3_hadoop_yarn_history:
+  sandbox_zeppelin_notebook:
     external: true
-  sandbox3_hadoop:
+  sandbox_hbase_249:
     external: true
-  sandbox3_hbase:
+  sandbox_hbase_117:
     external: true
-  sandbox3_hbase_client:
+  sandbox_hive_312:
     external: true
-  sandbox3_hive:
+  sandbox_spark_312:
     external: true
-  sandbox3_spark:
+  sandbox_hadoop_274:
     external: true
+  sandbox_hadoop_334:
+    external: true
+
 #
 networks:
   default:

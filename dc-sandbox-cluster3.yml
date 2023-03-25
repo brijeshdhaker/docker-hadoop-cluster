@@ -166,7 +166,7 @@ services:
     image: brijeshdhaker/hive-postgresql:3.1.2
     build:
       context: .
-      dockerfile: docker-hive-3.1.2/postgres/Dockerfile
+      dockerfile: postgres/Dockerfile
     hostname: hive-postgresql
     container_name: hive-postgresql
     ports:
@@ -179,7 +179,7 @@ services:
     image: brijeshdhaker/hive:3.1.2
     build:
       context: .
-      dockerfile: docker-hive-3.1.2/hive/Dockerfile
+      dockerfile: docker-hive-3.1.2/Dockerfile
     hostname: hive-metastore
     container_name: hive-metastore
     env_file:
