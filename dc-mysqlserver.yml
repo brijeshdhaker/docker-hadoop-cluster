@@ -20,8 +20,8 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
+      - sandbox_mysql_data:/var/lib/mysql
       - ./conf/mysql:/etc/mysql/conf.d
-      - ./data/mysql:/var/lib/mysql
     env_file:
       - envs/docker_mysql.env
     healthcheck:
