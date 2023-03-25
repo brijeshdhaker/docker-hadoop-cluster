@@ -72,4 +72,4 @@ ENTRYPOINT ["entrypoint.sh"]
 CMD startup.sh
 
 # Specify the User that the actual main process will run as
-#USER ${hive_uid}
+# USER ${hive_uid}:${hive_gid}
