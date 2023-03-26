@@ -206,8 +206,6 @@ services:
   #
   # Mysql Database Server
   #
-
-  #
   mysqlserver:
     image: mysql/mysql-server:8.0.28
     container_name: mysqlserver
@@ -235,13 +233,13 @@ services:
     command: /opt/hive/bin/hive --service metastore
     environment:
       SERVICE_PRECONDITION: "mysqlserver:3306"
-    links:
-      - mysqlserver
     ports:
       - "9083:9083"
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
+#      - sandbox_hadoop_27:/opt/hadoop
+      - sandbox_hadoop_33:/opt/hadoop
 
   #
   hive-server:
@@ -250,12 +248,9 @@ services:
     container_name: hive-server
     env_file:
       - envs/docker_hive.env
-    links:
-      - hive-metastore
-      - namenode
-      - datanode
     environment:
-      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:mysql://mysqlserver/metastore?createDatabaseIfNotExist=true;autoReconnect=true;useSSL=false"
+      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:mysql://mysqlserver:3306/metastore?createDatabaseIfNotExist=true;autoReconnect=true;useSSL=false"
+#      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-metastore:9083"
       SERVICE_PRECONDITION: "namenode:9870 datanode:9864 hive-metastore:9083"
     ports:
       - "10000:10000"
@@ -263,7 +258,8 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-
+#      - sandbox_hadoop_274:/opt/hadoop
+      - sandbox_hadoop_334:/opt/hadoop
 
   #
   # Hbase Server
@@ -367,49 +363,30 @@ services:
 
 #
 volumes:
-  sandbox_host_path:
-    external: true
-  sandbox_base_path:
-    external: true
-  sandbox_m2:
-    external: true
-  sandbox_ivy2:
-    external: true
+#
   sandbox_zookeeper_secrets:
     external: true
   sandbox_zookeeper_data:
     external: true
   sandbox_zookeeper_log:
     external: true
+#
   sandbox_kafka_secrets:
     external: true
   sandbox_kafka_data:
     external: true
   sandbox_kafka_log:
     external: true
+ #
   sandbox_cassandra_data:
     external: true
-  sandbox_mysql_data:
-    external: true
-  sandbox_mysql_conf:
-    external: true
+
+ #
   sandbox_hadoop_data:
     external: true
   sandbox_hadoop_dfs_name:
     external: true
   sandbox_hadoop_dfs_data:
-    external: true
-  sandbox_yarn_history:
-    external: true
-  sandbox_postgres_data:
-    external: true
-  sandbox_postgres_conf:
-    external: true
-  sandbox_postgres_init:
-    external: true
-  sandbox_zeppelin:
-    external: true
-  sandbox_zeppelin_conf:
     external: true
   sandbox_hadoop:
     external: true
@@ -435,7 +412,43 @@ volumes:
     external: true
   sandbox_nifi_state:
     external: true
+  #
+  sandbox_host_path:
+    external: true
+  sandbox_base_path:
+    external: true
+  sandbox_m2:
+    external: true
+  sandbox_ivy2:
+    external: true
+  #
+  sandbox_hadoop_274:
+    external: true
+  sandbox_hadoop_334:
+    external: true
+  sandbox_hadoop_334_dfs:
+    external: true
+  sandbox_hadoop_334_yarn:
+    external: true
+  #
+  sandbox_mysql_data:
+    external: true
+  sandbox_mysql_conf:
+    external: true
+  #
+  sandbox_zeppelin:
+    external: true
+  sandbox_zeppelin_notebook:
+    external: true
 
+  #
+  sandbox_hbase_249:
+    external: true
+  sandbox_hbase_117:
+    external: true
+  sandbox_hive_312:
+    external: true
+  sandbox_spark_312:
 
 #
 networks:
