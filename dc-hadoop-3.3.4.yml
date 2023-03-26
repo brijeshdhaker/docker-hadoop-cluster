@@ -29,7 +29,7 @@ services:
     environment:
       - CLUSTER_NAME=docker-sandbox
     env_file:
-      - envs/docker_hadoop33.env
+      - envs/docker_hadoop334.env
 
   #
   datanode:
@@ -50,7 +50,7 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
     env_file:
-      - envs/docker_hadoop33.env
+      - envs/docker_hadoop334.env
 
   #
   resourcemanager:
@@ -70,7 +70,7 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
     env_file:
-      - envs/docker_hadoop33.env
+      - envs/docker_hadoop334.env
 
   #
   nodemanager:
@@ -89,7 +89,7 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
     env_file:
-      - envs/docker_hadoop33.env
+      - envs/docker_hadoop334.env
 
   #
   historyserver:
@@ -109,7 +109,7 @@ services:
       - sandbox_base_path:/apps/sandbox
       - sandbox_hadoop_334_yarn:/yarn/history
     env_file:
-      - envs/docker_hadoop33.env
+      - envs/docker_hadoop334.env
 
 #
 volumes:
