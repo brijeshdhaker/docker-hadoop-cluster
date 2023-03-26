@@ -36,7 +36,7 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-      - ./envs/kibana.yml:/usr/share/kibana/config/kibana.yml
+      - ./conf/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
     ports:
       - 5601:5601
 

@@ -107,7 +107,7 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-      - sandbox_hadoop_334_yarn:/yarn/history
+      - sandbox_hadoop_334_yarn:/yarn
     env_file:
       - envs/docker_hadoop334.env
 

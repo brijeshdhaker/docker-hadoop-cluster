@@ -33,7 +33,7 @@ services:
         hard: -1
     volumes:
       - sandbox_es_es01_data:/usr/share/elasticsearch/data
-      - ./envs/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./conf/kibana/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ports:
       - 9200:9200
       - 9300:9300
@@ -56,7 +56,7 @@ services:
         hard: -1
     volumes:
       - sandbox_es_es02_data:/usr/share/elasticsearch/data
-      - ./envs/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./conf/kibana/kibana.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ports:
       - 9201:9200
       - 9301:9300
@@ -79,7 +79,7 @@ services:
         hard: -1
     volumes:
       - sandbox_es_es03_data:/usr/share/elasticsearch/data
-      - ./envs/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./conf/kibana/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ports:
       - 9203:9200
       - 9303:9300
@@ -90,7 +90,7 @@ services:
     container_name: kibana
     hostname: kibana
     volumes:
-      - ./envs/kibana.yml:/usr/share/kibana/config/kibana.yml
+      - ./conf/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
     ports:
       - 5601:5601
 
