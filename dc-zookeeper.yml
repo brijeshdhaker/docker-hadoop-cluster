@@ -2,8 +2,8 @@
 # docker volume create --name sandbox_host_path --opt type=none --opt device=/apps/hostpath --opt o=bind
 # docker volume create --name sandbox_base_path --opt type=none --opt device=/apps/sandbox --opt o=bind
 #
-# docker volume create --name sandbox_zookeeper_secrets --opt type=none --opt device=/apps/sandbox/zookeeper/secrets --opt o=bind
 # docker volume create --name sandbox_zookeeper_data --opt type=none --opt device=/apps/sandbox/zookeeper/data --opt o=bind
+# docker volume create --name sandbox_zookeeper_secrets --opt type=none --opt device=/apps/sandbox/zookeeper/secrets --opt o=bind
 # docker volume create --name sandbox_zookeeper_log --opt type=none --opt device=/apps/sandbox/zookeeper/log --opt o=bind
 #
 ---
@@ -34,11 +34,13 @@ services:
 volumes:
   sandbox_base_path:
     external: true
-  sandbox_zookeeper_secrets:
+  sandbox_host_path:
     external: true
   sandbox_zookeeper_data:
     external: true
-  sandbox_postgres_init:
+  sandbox_zookeeper_secrets:
+    external: true
+  sandbox_zookeeper_log:
     external: true
 
 #
