@@ -1,6 +1,10 @@
 #
+# docker volume create --name sandbox_host_path --opt type=none --opt device=/apps/hostpath --opt o=bind
+# docker volume create --name sandbox_base_path --opt type=none --opt device=/apps/sandbox --opt o=bind
 #
+# docker volume create --name sandbox_es_standalone_data --opt type=none --opt device=/apps/sandbox/elasticsearch/standalone/data --opt o=bind
 #
+---
 version: "3.9"
 
 services:
@@ -8,19 +12,20 @@ services:
   # elasticsearch Server
   #
   elasticsearch:
-    image: elasticsearch:7.8.1
+    image: elasticsearch:7.16.2
     container_name: elasticsearch
     hostname: elasticsearch
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-      - /apps/sandbox/elasticsearch/es00:/usr/share/elasticsearch/data
+      - sandbox_es_standalone_data:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
     environment:
       discovery.type: 'single-node'
       xpack.security.enabled: 'true'
       ELASTIC_PASSWORD: 'admin'
+
   #
   # kibana Server
   #
@@ -31,7 +36,7 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-      - ./kibana.yml:/usr/share/kibana/config/kibana.yml
+      - ./envs/kibana.yml:/usr/share/kibana/config/kibana.yml
     ports:
       - 5601:5601
 
@@ -40,6 +45,8 @@ volumes:
   sandbox_host_path:
     external: true
   sandbox_base_path:
+    external: true
+  sandbox_es_standalone_data:
     external: true
 
 #

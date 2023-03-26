@@ -1,15 +1,30 @@
 #
 #
 #
-
-#
-# zookeeper
-
 ---
-
 version: "3.9"
 
 services:
+  #
+  # Zookeeper Server
+  #
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.1.2
+    hostname: zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    volumes:
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+      - sandbox_zookeeper_secrets:/etc/zookeeper/secrets
+      - sandbox_zookeeper_data:/var/lib/zookeeper/data
+      - sandbox_zookeeper_log:/var/lib/zookeeper/log
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ALLOW_UNSIGNED: "true"
+
   #
   # Hbase Server
   #
@@ -50,6 +65,12 @@ volumes:
   sandbox_host_path:
     external: true
   sandbox_base_path:
+    external: true
+  sandbox_zookeeper_secrets:
+    external: true
+  sandbox_zookeeper_data:
+    external: true
+  sandbox_zookeeper_log:
     external: true
 
 #

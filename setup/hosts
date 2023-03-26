@@ -5,6 +5,15 @@
 192.168.1.7     thinkpad
 
 #
+# elasticsearch
+#
+127.0.0.1       elasticsearch elasticsearch.sandbox-bigdata.net
+127.0.0.1       es01 es01.sandbox-bigdata.net
+127.0.0.1       es02 es02.sandbox-bigdata.net
+127.0.0.1       es03 es03.sandbox-bigdata.net
+127.0.0.1       kibana kibana.sandbox-bigdata.net
+
+#
 # Hadoop Cluster
 #
 127.0.0.1       namenode namenode.sandbox-bigdata.net

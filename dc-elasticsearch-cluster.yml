@@ -1,7 +1,16 @@
 #
+# docker volume create --name sandbox_host_path --opt type=none --opt device=/apps/hostpath --opt o=bind
+# docker volume create --name sandbox_base_path --opt type=none --opt device=/apps/sandbox --opt o=bind
 #
+# docker volume create --name sandbox_es_standalone_data --opt type=none --opt device=/apps/sandbox/elasticsearch/standalone/data --opt o=bind
 #
-version: '3.5'
+# docker volume create --name sandbox_es_es01_data --opt type=none --opt device=/apps/sandbox/elasticsearch/cluster/es01/data --opt o=bind
+# docker volume create --name sandbox_es_es02_data --opt type=none --opt device=/apps/sandbox/elasticsearch/cluster/es02/data --opt o=bind
+# docker volume create --name sandbox_es_es03_data --opt type=none --opt device=/apps/sandbox/elasticsearch/cluster/es03/data --opt o=bind
+#
+
+---
+version: '3.9'
 #
 services:
   #
@@ -10,6 +19,7 @@ services:
   es01:
     image: elasticsearch:7.16.2
     container_name: es01
+    hostname: es01
     environment:
       - node.name=es01
       - cluster.name=es-docker-cluster
@@ -22,13 +32,14 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - /apps/clusters/elasticsearch/es01:/usr/share/elasticsearch/data
+      - sandbox_es_es01_data:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
 #
   es02:
     image: elasticsearch:7.16.2
     container_name: es02
+    hostname: es01
     environment:
       - node.name=es02
       - cluster.name=es-docker-cluster
@@ -41,11 +52,12 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - /apps/clusters/elasticsearch/es02:/usr/share/elasticsearch/data
+      - sandbox_es_es02_data:/usr/share/elasticsearch/data
 #
   es03:
     image: elasticsearch:7.16.2
     container_name: es03
+    hostname: es03
     environment:
       - node.name=es03
       - cluster.name=es-docker-cluster
@@ -58,23 +70,30 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - /apps/clusters/elasticsearch/es03:/usr/share/elasticsearch/data
+      - sandbox_es_es03_data:/usr/share/elasticsearch/data
 
   #
   kibana:
     image: kibana:7.8.1
+    container_name: kibana
+    hostname: kibana
     volumes:
-      - ./kibana.yml:/usr/share/kibana/config/kibana.yml
+      - ./envs/kibana.yml:/usr/share/kibana/config/kibana.yml
     ports:
       - 5601:5601
 
+#
 volumes:
-  data01:
-    driver: local
-  data02:
-    driver: local
-  data03:
-    driver: local
+  sandbox_host_path:
+    external: true
+  sandbox_base_path:
+    external: true
+  sandbox_es_es01_data:
+    external: true
+  sandbox_es_es02_data:
+    external: true
+  sandbox_es_es03_data:
+    external: true
 
 #
 networks:
