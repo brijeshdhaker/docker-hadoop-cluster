@@ -26,33 +26,41 @@ services:
       - discovery.seed_hosts=es02,es03
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx2048m"
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
       - sandbox_es_es01_data:/usr/share/elasticsearch/data
+      - ./envs/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ports:
       - 9200:9200
+      - 9300:9300
+
 #
   es02:
     image: elasticsearch:7.16.2
     container_name: es02
-    hostname: es01
+    hostname: es02
     environment:
       - node.name=es02
       - cluster.name=es-docker-cluster
       - discovery.seed_hosts=es01,es03
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx2048m"
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
       - sandbox_es_es02_data:/usr/share/elasticsearch/data
+      - ./envs/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+      - 9201:9200
+      - 9301:9300
+
 #
   es03:
     image: elasticsearch:7.16.2
@@ -64,13 +72,17 @@ services:
       - discovery.seed_hosts=es01,es02
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx2048m"
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
       - sandbox_es_es03_data:/usr/share/elasticsearch/data
+      - ./envs/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+      - 9203:9200
+      - 9303:9300
 
   #
   kibana:
