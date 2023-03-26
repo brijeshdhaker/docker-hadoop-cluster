@@ -56,8 +56,8 @@
 # Monitering Tools
 #
 127.0.0.1       prometheus prometheus.sandbox-bigdata.net
-127.0.0.1       nodeexporter nodeexporter.sandbox-bigdata.net
-127.0.0.1       alertmanager alertmanager.sandbox-bigdata.net
+127.0.0.1       node-exporter node-exporter.sandbox-bigdata.net
+127.0.0.1       alert-manager alert-manager.sandbox-bigdata.net
 127.0.0.1       cadvisor cadvisor.sandbox-bigdata.net
 127.0.0.1       grafana grafana.sandbox-bigdata.net
 127.0.0.1       influxdb influxdb.sandbox-bigdata.net

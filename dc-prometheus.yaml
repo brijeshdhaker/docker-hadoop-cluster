@@ -32,18 +32,18 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-      - sandbox_prometheus:/etc/prometheus
       - sandbox_prometheus_data:/prometheus
+      - ./conf/monitoring:/etc/prometheus
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
 
 #
 #
 #
-  nodeexporter:
+  node-exporter:
     image: prom/node-exporter:latest
-    hostname: nodeexporter
-    container_name: nodeexporter
+    hostname: node-exporter
+    container_name: node-exporter
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
@@ -64,21 +64,21 @@ services:
 #
 #
 #
-  alertmanager:
+  alert-manager:
     image: prom/alertmanager
-    hostname: alertmanager
-    container_name: alertmanager
+    hostname: alert-manager
+    container_name: alert-manager
     labels:
       type: prom-alertmanager
     ports:
       - 9003:9093
     volumes:
-      - sandbox_alert_manager:/etc/alertmanager/
       - sandbox_alert_manager_data:/alertmanager
-    restart: always
+      - ./conf/monitoring/alertmanager.yml:/etc/alertmanager/alertmanager.yml
     command:
-      - '--config.file=/etc/alertmanager/config.yml'
+      - '--config.file=/etc/alertmanager/alertmanager.yml'
       - '--storage.path=/alertmanager'
+    restart: always
   #    deploy:
   #      placement:
   #        constraints:
@@ -120,7 +120,7 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-      - ./conf/graphite_mapping.yaml:/tmp/graphite_mapping.yaml
+      - ./conf/monitoring/graphite_mapping.yaml:/tmp/graphite_mapping.yaml
 
   #
   #
@@ -135,7 +135,7 @@ services:
 #      - 9125:9125
 #      - 9125:9125/udp
 #    volumes:
-#      - ./conf/statsd_mapping.yaml:/tmp/statsd_mapping.yaml
+#      - ./conf/monitoring/statsd_mapping.yaml:/tmp/statsd_mapping.yaml
 
   #
   #
