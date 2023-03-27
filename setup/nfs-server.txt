@@ -66,51 +66,54 @@ $ sudo apt install nfs-common
 
 $ sudo mkdir -p /mnt/nfsshare
 
-$ sudo mount 192.168.122.1:/mnt/nfsshare /mnt/nfs_clientshare
+$ sudo mount 192.168.124.1:/mnt/nfsshare /mnt/nfs_clientshare
+
+
 
 ############################################
-
-Installing NFS Server on Fedora - 37
-
+# Installing NFS Server on Fedora - 37
 ############################################
-[root@dlp ~]# dnf -y install nfs-utils
-[root@dlp ~]# vi /etc/idmapd.conf
+
+[root@thinkpad ~]# dnf -y install nfs-utils libnfsidmap
+[root@thinkpad ~]# systemctl enable rpcbind
+[root@thinkpad ~]# systemctl enable nfs-server
+[root@thinkpad ~]# systemctl start rpcbind
+[root@thinkpad ~]# systemctl start nfs-server
+[root@thinkpad ~]# systemctl start rpc-statd
+[root@thinkpad ~]# systemctl start nfs-idmapd
+[root@thinkpad ~]# mkdir /mnt/nfsfileshare
+
+[root@thinkpad ~]# vi /etc/idmapd.conf
 # line 5 : uncomment and change to your domain name
 
 Domain = sandbox-bigdata.net
-[root@dlp ~]# vi /etc/exports
+
+[root@thinkpad ~]# vi /etc/exports
 # create new
+# for example, set [/mnt/nfsfileshare] as NFS share
+/mnt/nfsfileshare 192.168.124.0/24(rw,sync,no_root_squash)
 
-# for example, set [/home/nfsshare] as NFS share
 
-/home/nfsshare 10.0.0.0/24(rw,no_root_squash)
-[root@dlp ~]# mkdir /home/nfsshare
+[root@thinkpad ~]# systemctl enable --now rpcbind nfs-server
+[root@thinkpad ~]# exportfs -r
 
-[root@dlp ~]# systemctl enable --now rpcbind nfs-server
-
-[root@dlp ~]# firewall-cmd --add-service=nfs --permanent
-success
-
-# if use NFSv3, allow follows, too
+[root@thinkpad ~]# firewall-cmd --add-service=nfs --permanent
 [root@dlp ~]# firewall-cmd --add-service={nfs3,mountd,rpc-bind} --permanent
-success
-
 [root@dlp ~]# firewall-cmd --reload
-success
 
 ############################################
-
-Installing NFS client on Fedora - 37
-
+# Installing NFS client on Fedora - 37
 ############################################
 
-$ dnf -y install nfs-utils
+$ dnf -y install nfs-utils libnfsidmap
+$ systemctl enable rpcbind
+$ systemctl start rpcbind
 
 $ vi /etc/idmapd.conf
 # line 5 : uncomment and change to your domain name
 Domain = sandbox-bigdata.net
 
-$ mount -t nfs 192.168.122.1:/mnt/nfsshare /mnt/nfsshare
+$ mount -t nfs 192.168.124.1:/mnt/nfsfileshare /mnt/nfsshare
 
 $ df -hT
 Filesystem                     Type      Size  Used Avail Use% Mounted on
@@ -121,17 +124,17 @@ tmpfs                          tmpfs     784M  956K  783M   1% /run
 tmpfs                          tmpfs     2.0G     0  2.0G   0% /tmp
 /dev/vda1                      xfs      1014M  196M  819M  20% /boot
 tmpfs                          tmpfs     392M     0  392M   0% /run/user/0
-thinkpad.sandbox-bigdata.net:/home/nfsshare   nfs4       15G  1.7G   14G  11% /mnt
+k8c1h0.sandbox-bigdata.net:/home/nfsshare   nfs4       15G  1.7G   14G  11% /mnt
 # NFS share is mounted
 
 
 # if mount with NFSv3, add [-o vers=3] option
 
-$ mount -t nfs -o vers=3 192.168.122.1:/mnt/nfsshare /mnt/nfsshare
+$ mount -t nfs -o vers=3 192.168.124.1:/mnt/nfsfileshare /mnt/nfsshare
 
 $ df -hT /mnt
 Filesystem                   Type  Size  Used Avail Use% Mounted on
-thinkpad.sandbox-bigdata.net:/home/nfsshare nfs    15G  1.5G   14G  10% /mnt
+k8c1h0.sandbox-bigdata.net:/home/nfsshare nfs    15G  1.5G   14G  10% /mnt
 
 
 
@@ -141,7 +144,7 @@ thinkpad.sandbox-bigdata.net:/home/nfsshare nfs    15G  1.5G   14G  10% /mnt
 /dev/mapper/fedora_fedora-root /                       xfs     defaults        0 0
 UUID=7f281272-4da1-443f-ba6a-b5b42ce9c26b /boot        xfs     defaults        0 0
 # add to the end : set NFS share
-192.168.122.1:/mnt/nfsshare              /mnt/nfsshare         nfs     defaults        0 0
+thinkpad:/mnt/nfsshare              /mnt/nfsshare         nfs     defaults        0 0
 
 
 [3]	To mount dynamically when anyone access to NFS Share, Configure AutoFS.

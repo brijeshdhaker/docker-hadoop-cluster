@@ -129,12 +129,13 @@ docker volume create --name sandbox_airflow_dags --opt type=none --opt device=/d
 docker volume create --name sandbox_airflow_logs --opt type=none --opt device=/d/apps/sandbox/airflow/logs --opt o=bind
 docker volume create --name sandbox_airflow_plugins --opt type=none --opt device=/d/apps/sandbox/airflow/plugins --opt o=bind
 
+docker volume create --name sandbox_hadoop_274 --opt type=none --opt device=/opt/hadoop-2.7.4 --opt o=bind
 docker volume create --name sandbox_hadoop_321 --opt type=none --opt device=/d/opt/hadoop-3.2.1 --opt o=bind
-docker volume create --name sandbox_hadoop_334 --opt type=none --opt device=/d/opt/hadoop-3.3.4 --opt o=bind
-docker volume create --name sandbox_hbase --opt type=none --opt device=/d/opt/hbase-2.4.9 --opt o=bind
-docker volume create --name sandbox_hbase_client --opt type=none --opt device=/d/opt/hbase-1.1.7 --opt o=bind
-docker volume create --name sandbox_hive --opt type=none --opt device=/d/opt/hive-3.1.2 --opt o=bind
-docker volume create --name sandbox_spark --opt type=none --opt device=/d/opt/spark-3.1.2 --opt o=bind
+docker volume create --name sandbox_hadoop_334 --opt type=none --opt device=/opt/hadoop-3.3.4 --opt o=bind
+docker volume create --name sandbox_spark_312 --opt type=none --opt device=/opt/spark-3.1.2 --opt o=bind
+docker volume create --name sandbox_hive_312 --opt type=none --opt device=/opt/hive-3.1.2 --opt o=bind
+docker volume create --name sandbox_hbase_249 --opt type=none --opt device=/opt/hbase-2.4.9 --opt o=bind
+docker volume create --name sandbox_hbase_117 --opt type=none --opt device=/opt/hbase-1.1.7 --opt o=bind
 
 
 

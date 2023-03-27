@@ -4,18 +4,20 @@
 127.0.0.1       localhost
 192.168.1.7     thinkpad
 
-#
 # elasticsearch
-#
 127.0.0.1       elasticsearch elasticsearch.sandbox-bigdata.net
 127.0.0.1       es01 es01.sandbox-bigdata.net
 127.0.0.1       es02 es02.sandbox-bigdata.net
 127.0.0.1       es03 es03.sandbox-bigdata.net
 127.0.0.1       kibana kibana.sandbox-bigdata.net
 
-#
-# Hadoop Cluster
-#
+# cassandra
+127.0.0.1       cassandra cassandra.sandbox-bigdata.net
+
+# mysqlserver
+127.0.0.1       mysqlserver mysqlserver.sandbox-bigdata.net
+
+# hadoop & yarn cluster
 127.0.0.1       namenode namenode.sandbox-bigdata.net
 127.0.0.1       datanode datanode.sandbox-bigdata.net
 127.0.0.1       resourcemanager resourcemanager.sandbox-bigdata.net
@@ -23,42 +25,35 @@
 127.0.0.1       historyserver historyserver.sandbox-bigdata.net
 
 #
-# Spark Cluster
-#
-127.0.0.1       spark-master spark-master.sandbox-bigdata.net
-127.0.0.1       spark-historyserver spark-historyserver.sandbox-bigdata.net
-
-#
-127.0.0.1       hive-postgresql hive-postgresql.sandbox-bigdata.net
-127.0.0.1       hive-server hive-server.sandbox-bigdata.net
-127.0.0.1       hive-metastore hive-metastore.sandbox-bigdata.net
-
-#
 127.0.0.1       hbase-master hbase-master.sandbox-bigdata.net
 127.0.0.1       hbase-regionserver hbase-regionserver.sandbox-bigdata.net
 
 #
+127.0.0.1       postgresql postgresql.sandbox-bigdata.net
+127.0.0.1       hive-metastore hive-metastore.sandbox-bigdata.net
+127.0.0.1       hive-server hive-server.sandbox-bigdata.net
+
+# spark cluster
+127.0.0.1       spark-master spark-master.sandbox-bigdata.net
+127.0.0.1       spark-historyserver spark-historyserver.sandbox-bigdata.net
+
+#
+127.0.0.1       zeppelin zeppelin.sandbox-bigdata.net
+127.0.0.1       nififlow nififlow.sandbox-bigdata.net
+
+#
+127.0.0.1       zookeeper zookeeper.sandbox-bigdata.net
 127.0.0.1       kafka-broker kafka-broker.sandbox-bigdata.net
 127.0.0.1       schema-registry schema-registry.sandbox-bigdata.net
 
 #
 127.0.0.1       airflow-webserver airflow-webserver.sandbox-bigdata.net
 
-#
-127.0.0.1       zookeeper zookeeper.sandbox-bigdata.net
-
-#
-127.0.0.1       zeppelin zeppelin.sandbox-bigdata.net
-127.0.0.1       nififlow nififlow.sandbox-bigdata.net
-127.0.0.1       mysqlserver mysqlserver.sandbox-bigdata.net
-
-#
-# Monitering Tools
-#
+# Monitoring Tools
 127.0.0.1       prometheus prometheus.sandbox-bigdata.net
-127.0.0.1       node-exporter node-exporter.sandbox-bigdata.net
 127.0.0.1       alert-manager alert-manager.sandbox-bigdata.net
 127.0.0.1       cadvisor cadvisor.sandbox-bigdata.net
+127.0.0.1       node-exporter node-exporter.sandbox-bigdata.net
 127.0.0.1       grafana grafana.sandbox-bigdata.net
 127.0.0.1       influxdb influxdb.sandbox-bigdata.net
 127.0.0.1       statsd-exporter statsd-exporter.sandbox-bigdata.net
@@ -75,6 +70,13 @@
 192.168.1.103   sandbox-host.hortonworks.com
 192.168.1.110   raspberry-pi.hortonworks.com
 
-#
-192.168.56.101  quickstart-bigdata
+# virtual box
 192.168.56.1	quickstart-hostmaster
+192.168.56.101  quickstart-bigdata
+
+
+# k8s cluster
+192.168.124.1   k8c1h0 k8c1h0.sandbox-bigdata.net
+192.168.124.41  k8c1m0 k8c1m0.sandbox-bigdata.net
+192.168.124.50	k8c1s1 k8c1s1.sandbox-bigdata.net
+192.168.124.231	k8c1s2 k8c1s2.sandbox-bigdata.net
