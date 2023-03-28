@@ -12,12 +12,10 @@ version: '3.9'
 
 services:
   #
-  # Postgres Database Server
+  # postgres:15.2 database Server
   #
-
-  # postgres:14.5
   postgres:
-    image: postgres:9.5.3
+    image: postgres:15.2
     restart: always
     hostname: postgres
     container_name: postgres
@@ -27,10 +25,13 @@ services:
       - sandbox_base_path:/apps/sandbox
       - sandbox_postgres_data:/var/lib/postgresql/data
       - sandbox_postgres_init:/docker-entrypoint-initdb.d
+    env_file:
+      - envs/docker_postgres.env
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       PGDATA: /var/lib/postgresql/data
+      POSTGRES_INITDB_WALDIR: /var/lib/postgresql/data
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "postgres"]
       interval: 5s
