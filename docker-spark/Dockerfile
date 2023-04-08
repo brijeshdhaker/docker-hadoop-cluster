@@ -42,7 +42,7 @@ RUN apt-get update && \
 # && tar -xf apache-spark.tgz -C ${SPARK_HOME} --strip-components=1 \
 # && rm apache-spark.tgz
 
-WORKDIR ${SPARK_HOME}
+WORKDIR ${SPARK_HOME}/work-dir
 
 # COPY docker-spark/base/scripts /
 # COPY docker-spark/conf $SPARK_HOME/conf/
@@ -54,3 +54,5 @@ RUN cd / && chmod +x /opt/*.sh
 CMD ["/bin/bash", "/opt/start-spark.sh"]
 
 ENTRYPOINT ["/opt/entrypoint.sh"]
+
+# USER ${root_uid}:${root_uid}

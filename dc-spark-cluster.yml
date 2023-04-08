@@ -2,7 +2,7 @@
 # docker-compose up -d
 # docker-compose scale nodemanager=X; # X=integer number --> allows to add more nodes to the hadoop cluster for testing
 
-version: '3.5'
+version: '3.9'
 services:
   #
   # HDFS & YARN Sandbox
@@ -16,13 +16,13 @@ services:
       - "9870:9870"
       - "9000:9000"
     volumes:
-      - sandbox_hadoop_dfs_name:/hadoop/dfs/name
+      - sandbox_hadoop_334_dfs:/hadoop/dfs
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
     environment:
       - CLUSTER_NAME=docker-sandbox
     env_file:
-      - envs/docker_hadoop.env
+      - envs/docker_hadoop334.env
 
   #
   datanode:
@@ -34,19 +34,19 @@ services:
       - "9866:9866"
     restart: always
     volumes:
-      - sandbox_hadoop_dfs_data:/hadoop/dfs/data
+      - sandbox_hadoop_334_dfs:/hadoop/dfs
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
     env_file:
-      - envs/docker_hadoop.env
+      - envs/docker_hadoop334.env
 
   #
   #
   #
   spark-master:
-    image: brijeshdhaker/spark:3.3.1
+    image: brijeshdhaker/spark:3.1.2-standalone
     container_name: spark-master
     hostname: spark-master
     ports:
@@ -55,44 +55,47 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-      - sandbox_hadoop:/opt/hadoop-3.3.4
-      - sandbox_hive:/opt/hive-3.1.2
+      - sandbox_hadoop_334:/opt/hadoop
+      - sandbox_hive_312:/opt/hive
     environment:
       - SPARK_LOCAL_IP=spark-master
       - SPARK_WORKLOAD=master
       - WEBUI_PORT= 8080
-
+    env_file:
+      - envs/docker_spark312.env
   #
   #
   #
   spark-worker-a:
-    image: brijeshdhaker/spark:3.3.1
+    image: brijeshdhaker/spark:3.1.2-standalone
     container_name: spark-worker-a
     hostname: spark-worker-a
     ports:
       - "8081:8081"
     depends_on:
       - spark-master
+    env_file:
+      - envs/docker_spark312.env
     environment:
       - SPARK_MASTER=spark://spark-master:7077
-      - SPARK_WORKER_CORES=1
-      - SPARK_WORKER_MEMORY=1G
+      - SPARK_WORKLOAD=worker
+      - SPARK_WORKER_CORES=2
+      - SPARK_WORKER_MEMORY=2G
       - SPARK_DRIVER_MEMORY=1G
       - SPARK_EXECUTOR_MEMORY=1G
-      - SPARK_WORKLOAD=worker
       - SPARK_LOCAL_IP=spark-worker-a
       - SPARK_WORKER_WEBUI_PORT=8081
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-      - sandbox_hadoop:/opt/hadoop-3.3.4
-      - sandbox_hive:/opt/hive-3.1.2
+      - sandbox_hadoop_334:/opt/hadoop
+      - sandbox_hive_312:/opt/hive
 
   #
   #
   #
   spark-worker-b:
-    image: brijeshdhaker/spark:3.3.1
+    image: brijeshdhaker/spark:3.1.2-standalone
     container_name: spark-worker-b
     hostname: spark-worker-b
     ports:
@@ -101,24 +104,26 @@ services:
       - spark-master
     environment:
       - SPARK_MASTER=spark://spark-master:7077
-      - SPARK_WORKER_CORES=1
-      - SPARK_WORKER_MEMORY=1G
+      - SPARK_WORKER_CORES=2
+      - SPARK_WORKER_MEMORY=2G
       - SPARK_DRIVER_MEMORY=1G
       - SPARK_EXECUTOR_MEMORY=1G
       - SPARK_WORKLOAD=worker
       - SPARK_LOCAL_IP=spark-worker-b
       - SPARK_WORKER_WEBUI_PORT=8082
+    env_file:
+      - envs/docker_spark312.env
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-      - sandbox_hadoop:/opt/hadoop-3.3.4
-      - sandbox_hive:/opt/hive-3.1.2
+      - sandbox_hadoop_334:/opt/hadoop
+      - sandbox_hive_312:/opt/hive
 
   #
   #
   #
   spark-historyserver:
-    image: brijeshdhaker/spark:3.3.1
+    image: brijeshdhaker/spark:3.1.2-standalone
     container_name: spark-historyserver
     hostname: spark-historyserver
     environment:
@@ -128,9 +133,12 @@ services:
       - datanode
     ports:
       - "18080:18080"
+    env_file:
+      - envs/docker_spark312.env
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
+      - ./conf/spark/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf
 
   #
   # Zeppelin Notebook
@@ -147,11 +155,11 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-      - sandbox_hadoop:/opt/hadoop-3.3.4
-      - sandbox_hive:/opt/hive-3.1.2
-      - sandbox_hbase:/opt/hbase-2.4.9
-      - sandbox_hbase_client:/opt/hbase-client
-      - sandbox_spark:/opt/spark-3.1.2
+      - sandbox_hadoop_334:/opt/hadoop
+      - sandbox_hive_312:/opt/hive
+      - sandbox_hbase_249:/opt/hbase
+      - sandbox_hbase_117:/opt/hbase-client
+      - sandbox_spark_312:/opt/spark
       - sandbox_zeppelin:/opt/zeppelin
       - sandbox_zeppelin_notebook:/opt/notebook
 
@@ -162,27 +170,21 @@ volumes:
     external: true
   sandbox_base_path:
     external: true
-  sandbox_hadoop_data:
-    external: true
-  sandbox_hadoop_dfs_name:
-    external: true
-  sandbox_hadoop_dfs_data:
-    external: true
-  sandbox_yarn_history:
+  sandbox_hadoop_334_dfs:
     external: true
   sandbox_zeppelin:
     external: true
   sandbox_zeppelin_notebook:
     external: true
-  sandbox_hadoop:
+  sandbox_hadoop_334:
     external: true
-  sandbox_hbase:
+  sandbox_hbase_249:
     external: true
-  sandbox_hbase_client:
+  sandbox_hbase_117:
     external: true
-  sandbox_hive:
+  sandbox_hive_312:
     external: true
-  sandbox_spark:
+  sandbox_spark_312:
     external: true
 
 #
