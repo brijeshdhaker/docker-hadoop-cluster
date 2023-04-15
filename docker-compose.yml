@@ -181,19 +181,23 @@ services:
   #
   #
   spark-historyserver:
-    image: brijeshdhaker/spark-historyserver:3.1.2
+    image: brijeshdhaker/spark:3.1.2-standalone
     container_name: spark-historyserver
     hostname: spark-historyserver
     environment:
+      SPARK_WORKLOAD: HistoryServer
       SERVICE_PRECONDITION: "namenode:9870 datanode:9864"
     depends_on:
       - namenode
       - datanode
     ports:
       - "18080:18080"
+    env_file:
+      - envs/docker_spark312.env
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
+      - ./conf/spark/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf
 
   #
   # Zeppelin Notebook
