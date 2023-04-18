@@ -93,6 +93,8 @@ services:
       - envs/docker_hadoop334.env
 
   #
+  # YARN History Server
+  #
   historyserver:
     image: brijeshdhaker/hadoop-historyserver:3.3.4
     build:
@@ -102,13 +104,13 @@ services:
     hostname: historyserver
     restart: always
     ports:
-      - "8188:8188"
+      - "19888:19888"
     environment:
-      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-      - sandbox_hadoop_334_yarn:/yarn/history
+      - sandbox_hadoop_334_yarn:/yarn
     env_file:
       - envs/docker_hadoop334.env
 
