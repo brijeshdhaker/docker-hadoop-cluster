@@ -76,7 +76,7 @@
 
 
 # k8s cluster
-192.168.124.1   k8c1h0 k8c1h0.sandbox-bigdata.net
-192.168.124.41  k8c1m0 k8c1m0.sandbox-bigdata.net
-192.168.124.50	k8c1s1 k8c1s1.sandbox-bigdata.net
-192.168.124.231	k8c1s2 k8c1s2.sandbox-bigdata.net
+192.168.122.1   k8c1h0 k8c1h0.sandbox-bigdata.net
+192.168.122.23  k8c1m0 k8c1m0.sandbox-bigdata.net
+192.168.122.145	k8c1s1 k8c1s1.sandbox-bigdata.net
+192.168.122.204	k8c1s2 k8c1s2.sandbox-bigdata.net

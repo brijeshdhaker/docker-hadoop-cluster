@@ -8,19 +8,19 @@ sudo apt install -y nfs-kernel-server
 #Step 1 : Make shared NFS directory
 #--------------------------------------------
 
-sudo mkdir -p /mnt/nfsshare
+sudo mkdir -p /mnt/nfs-share
 
 --------------------------------------------
 Step 2 : Set directory permissions
 --------------------------------------------
 
-sudo chown -R nobody:nogroup /mnt/nfsshare/
+sudo chown -R nobody:nogroup /mnt/nfs-share/
 
 --------------------------------------------
 Step 3: Set file permissions
 --------------------------------------------
 
-sudo chmod 777 /mnt/nfsshare/
+sudo chmod 777 /mnt/nfs-share/
 
 --------------------------------------------
 Step 4: Grant NFS access
@@ -28,7 +28,8 @@ Step 4: Grant NFS access
 
 sudo vi /etc/exports
 
-/mnt/nfsshare 192.168.122.0/24(rw,sync,no_subtree_check)
+/mnt/nfs-share 192.168.122.0/24(rw,sync,no_subtree_check)
+/mnt/nfs-share localhost(rw,sync,no_subtree_check)
 
 --------------------------------------------
 Step 5: Exporting NFS directory
@@ -64,9 +65,9 @@ Installing NFS client on Ubuntu 22.04
 
 $ sudo apt install nfs-common
 
-$ sudo mkdir -p /mnt/nfsshare
+$ sudo mkdir -p /mnt/nfs-share
 
-$ sudo mount 192.168.124.1:/mnt/nfsshare /mnt/nfs_clientshare
+$ sudo mount 192.168.122.1:/mnt/nfs-share /mnt/nfs-share
 
 
 
@@ -81,7 +82,7 @@ $ sudo mount 192.168.124.1:/mnt/nfsshare /mnt/nfs_clientshare
 [root@thinkpad ~]# systemctl start nfs-server
 [root@thinkpad ~]# systemctl start rpc-statd
 [root@thinkpad ~]# systemctl start nfs-idmapd
-[root@thinkpad ~]# mkdir /mnt/nfsfileshare
+[root@thinkpad ~]# mkdir /mnt/nfs-share
 
 [root@thinkpad ~]# vi /etc/idmapd.conf
 # line 5 : uncomment and change to your domain name
@@ -90,8 +91,8 @@ Domain = sandbox-bigdata.net
 
 [root@thinkpad ~]# vi /etc/exports
 # create new
-# for example, set [/mnt/nfsfileshare] as NFS share
-/mnt/nfsfileshare 192.168.124.0/24(rw,sync,no_root_squash)
+# for example, set [/mnt/nfs-share] as NFS share
+/mnt/nfs-share 192.168.122.0/24(rw,sync,no_root_squash)
 
 
 [root@thinkpad ~]# systemctl enable --now rpcbind nfs-server
@@ -113,7 +114,7 @@ $ vi /etc/idmapd.conf
 # line 5 : uncomment and change to your domain name
 Domain = sandbox-bigdata.net
 
-$ mount -t nfs 192.168.124.1:/mnt/nfsfileshare /mnt/nfsshare
+$ mount -t nfs 192.168.122.1:/mnt/nfs-share /mnt/nfs-share
 
 $ df -hT
 Filesystem                     Type      Size  Used Avail Use% Mounted on
@@ -124,17 +125,17 @@ tmpfs                          tmpfs     784M  956K  783M   1% /run
 tmpfs                          tmpfs     2.0G     0  2.0G   0% /tmp
 /dev/vda1                      xfs      1014M  196M  819M  20% /boot
 tmpfs                          tmpfs     392M     0  392M   0% /run/user/0
-k8c1h0.sandbox-bigdata.net:/home/nfsshare   nfs4       15G  1.7G   14G  11% /mnt
+192.168.122.1:/home/nfs-share   nfs4       15G  1.7G   14G  11% /mnt
 # NFS share is mounted
 
 
 # if mount with NFSv3, add [-o vers=3] option
 
-$ mount -t nfs -o vers=3 192.168.124.1:/mnt/nfsfileshare /mnt/nfsshare
+$ mount -t nfs -o vers=3 192.168.122.1:/mnt/nfs-share /mnt/nfs-share
 
 $ df -hT /mnt
 Filesystem                   Type  Size  Used Avail Use% Mounted on
-k8c1h0.sandbox-bigdata.net:/home/nfsshare nfs    15G  1.5G   14G  10% /mnt
+192.168.122.1:/home/nfs-share nfs    15G  1.5G   14G  10% /mnt
 
 
 
@@ -144,7 +145,7 @@ k8c1h0.sandbox-bigdata.net:/home/nfsshare nfs    15G  1.5G   14G  10% /mnt
 /dev/mapper/fedora_fedora-root /                       xfs     defaults        0 0
 UUID=7f281272-4da1-443f-ba6a-b5b42ce9c26b /boot        xfs     defaults        0 0
 # add to the end : set NFS share
-thinkpad:/mnt/nfsshare              /mnt/nfsshare         nfs     defaults        0 0
+192.168.122.1:/mnt/nfs-share              /mnt/nfs-share         nfs     defaults        0 0
 
 
 [3]	To mount dynamically when anyone access to NFS Share, Configure AutoFS.
@@ -156,7 +157,7 @@ thinkpad:/mnt/nfsshare              /mnt/nfsshare         nfs     defaults      
 
 [root@node01 ~]# vi /etc/auto.mount
 # create new : [mount point] [option] [location]
-/mnt   -fstype=nfs,rw  thinkpad.sandbox-bigdata.net:/mnt/nfsshare
+/mnt   -fstype=nfs,rw  192.168.122.1:/mnt/nfs-share
 
 [root@node01 ~]# systemctl enable --now autofs
 # move to the mount point to verify mounting
@@ -164,9 +165,9 @@ thinkpad:/mnt/nfsshare              /mnt/nfsshare         nfs     defaults      
 [root@node01 ~]# cd /mnt
 [root@node01 mnt]# df -h /mnt
 Filesystem                    Size  Used Avail Use% Mounted on
-thinkpad.sandbox-bigdata.net:/home/nfsshare   15G  1.7G   14G  11% /mnt
+192.168.122.1:/home/nfs-share   15G  1.7G   14G  11% /mnt
 
 [root@node01 mnt]# grep /mnt /proc/mounts
 /etc/auto.mount /mnt autofs rw,relatime,fd=17,pgrp=1037,timeout=300,minproto=5,maxproto=5,direct,pipe_ino=26815 0 0
-thinkpad.sandbox-bigdata.net:/home/nfsshare /mnt nfs4 rw,relatime,vers=4.2,rsize=524288,wsize=524288,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=10.0.0.51,local_lock=none,addr=10.0.0.30 0 0
+192.168.122.1:/home/nfs-share /mnt nfs4 rw,relatime,vers=4.2,rsize=524288,wsize=524288,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=10.0.0.51,local_lock=none,addr=10.0.0.30 0 0
 

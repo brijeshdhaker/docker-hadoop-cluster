@@ -71,6 +71,14 @@ docker volume create --name sandbox_hadoop_321 --opt type=none --opt device=/opt
 docker volume create --name sandbox_hadoop321_dfs_name --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/dfs/name --opt o=bind
 docker volume create --name sandbox_hadoop321_dfs_data --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/dfs/data --opt o=bind
 
+docker volume create --name sandbox_hadoop_274 --opt type=none --opt device=/opt/hadoop-2.7.4 --opt o=bind
+docker volume create --name sandbox_hadoop_321 --opt type=none --opt device=/d/opt/hadoop-3.2.1 --opt o=bind
+docker volume create --name sandbox_hadoop_334 --opt type=none --opt device=/opt/hadoop-3.3.4 --opt o=bind
+docker volume create --name sandbox_spark_312 --opt type=none --opt device=/opt/spark-3.1.2 --opt o=bind
+docker volume create --name sandbox_hive_312 --opt type=none --opt device=/opt/hive-3.1.2 --opt o=bind
+docker volume create --name sandbox_hbase_249 --opt type=none --opt device=/opt/hbase-2.4.9 --opt o=bind
+docker volume create --name sandbox_hbase_117 --opt type=none --opt device=/opt/hbase-1.1.7 --opt o=bind
+
 #
 # Windows Docker Volumes
 #
@@ -153,6 +161,8 @@ sudo chmod 775 -R /apps/sandbox
 sudo mkdir -p /apps/hostpath
 sudo chown brijeshdhaker:root -R /apps/hostpath
 sudo chmod 775 -R /apps/hostpath
+
+sudo unzip apache-maven-3.6.3-bin.zip -d /opt
 
 cd /opt
 sudo chown -R brijeshdhaker:root hadoop-3.3.4 hbase-1.1.7 hbase-2.4.9 hive-3.1.2 maven-3.6.3 spark-3.1.2
