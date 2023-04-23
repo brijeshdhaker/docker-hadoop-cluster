@@ -69,9 +69,36 @@ x-airflow-common:
     &airflow-common-depends-on
     redisserver:
       condition: service_healthy
+    mysqlserver:
+      condition: service_healthy
 
 services:
-
+  #
+  # Mysql Database Server
+  #
+  mysqlserver:
+    image: mysql/mysql-server:8.0.28
+    container_name: mysqlserver
+    hostname: mysqlserver
+    restart: always
+    ports:
+      - "3306:3306"
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    volumes:
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+      - sandbox_mysql_data:/var/lib/mysql
+      - ./conf/mysql:/etc/mysql/conf.d
+    env_file:
+      - envs/docker_mysql.env
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=p@SSW0rd --execute \"SHOW DATABASES;\""
+      # test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
+  #
+  #
+  #
   redisserver:
     container_name: redisserver
     hostname: redisserver
@@ -284,6 +311,10 @@ volumes:
   sandbox_host_path:
     external: true
   sandbox_base_path:
+    external: true
+  sandbox_mysql_data:
+    external: true
+  sandbox_mysql_conf:
     external: true
   sandbox_airflow_sources:
     external: true
