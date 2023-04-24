@@ -5,10 +5,7 @@
 version: "3.9"
 
 services:
-  #
   # HDFS Sandbox
-  #
-  #
   namenode:
     image: brijeshdhaker/hadoop-namenode:3.3.4
     build:
@@ -50,10 +47,7 @@ services:
     env_file:
       - envs/docker_hadoop334.env
 
-  #
   # YARN Sandbox
-  #
-  #
   resourcemanager:
     image: brijeshdhaker/hadoop-resourcemanager:3.3.4
     build:
@@ -92,9 +86,7 @@ services:
     env_file:
       - envs/docker_hadoop334.env
 
-  #
   # YARN History Server
-  #
   historyserver:
     image: brijeshdhaker/hadoop-historyserver:3.3.4
     build:
@@ -114,9 +106,7 @@ services:
     env_file:
       - envs/docker_hadoop334.env
 
-  #
   # Mysql Database Server
-  #
   mysqlserver:
     image: mysql/mysql-server:8.0.28
     container_name: mysqlserver
@@ -138,9 +128,7 @@ services:
       timeout: 20s
       retries: 10
 
-  #
   # Hive Server
-  #
   hive-metastore:
     image: brijeshdhaker/hive:3.1.2
     hostname: hive-metastore
@@ -178,10 +166,7 @@ services:
 #      - sandbox_hadoop_274:/opt/hadoop
       - sandbox_hadoop_334:/opt/hadoop
 
-  #
   # Spark History Server
-  #
-  #
   spark-historyserver:
     image: brijeshdhaker/spark:3.1.2-standalone
     container_name: spark-historyserver
@@ -201,9 +186,7 @@ services:
       - sandbox_base_path:/apps/sandbox
       - ./conf/spark/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf
 
-  #
   # Zeppelin Notebook
-  #
   zeppelin:
     image: apache/zeppelin:0.10.1
     container_name: zeppelin
