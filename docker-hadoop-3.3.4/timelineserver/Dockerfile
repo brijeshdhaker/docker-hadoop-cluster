@@ -9,8 +9,8 @@ MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
 HEALTHCHECK CMD curl -f http://localhost:8188/ || exit 1
 
-RUN mkdir -p /tmp/yarn/timeline
-VOLUME /tmp/yarn/timeline
+RUN mkdir -p /yarn/timeline
+VOLUME /yarn
 
 ADD docker-hadoop-3.3.4/timelineserver/run.sh /run.sh
 RUN chmod a+x /run.sh
