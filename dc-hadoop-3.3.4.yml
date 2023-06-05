@@ -67,6 +67,9 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
+      - sandbox_hadoop_334_yarn:/yarn
+      - ./conf/yarn/fair-scheduler.xml:/opt/hadoop-3.3.4/etc/hadoop/fair-scheduler.xml
+      - ./conf/yarn/capacity-scheduler.xml:/opt/hadoop-3.3.4/etc/hadoop/capacity-scheduler.xml
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
     env_file:
@@ -86,6 +89,7 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
+      - sandbox_hadoop_334_yarn:/yarn
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
     env_file:
@@ -93,7 +97,7 @@ services:
 
 
   #
-  # YARN History Server
+  # YARN MR History Server
   #
   historyserver:
     image: brijeshdhaker/hadoop-historyserver:3.3.4
@@ -105,6 +109,28 @@ services:
     restart: always
     ports:
       - "19888:19888"
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
+    volumes:
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+      - sandbox_hadoop_334_yarn:/yarn
+    env_file:
+      - envs/docker_hadoop334.env
+
+  #
+  # YARN Timeline Server
+  #
+  timelineserver:
+    image: brijeshdhaker/hadoop-timelineserver:3.3.4
+    build:
+      context: .
+      dockerfile: docker-hadoop-3.3.4/timelineserver/Dockerfile
+    container_name: timelineserver
+    hostname: timelineserver
+    restart: always
+    ports:
+      - "8188:8188"
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
     volumes:

@@ -67,6 +67,11 @@ brijeshdhaker@thinkpad:~$ sudo useradd -M hdfs
 brijeshdhaker@thinkpad:~$ sudo useradd -M hue
 brijeshdhaker@thinkpad:~$ sudo useradd -M impala
 brijeshdhaker@thinkpad:~$ sudo useradd -M mapred
+
+useradd --system --no-create-home hive
+useradd --system --no-create-home hdfs
+useradd --system --no-create-home spark
+useradd --system [--no-create-home] <account name>
 ```
 #
 # HDFS Web Access
