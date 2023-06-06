@@ -8,7 +8,7 @@ FROM ubuntu:22.04
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    openjdk-8-jdk net-tools curl netcat gnupg libsnappy-dev vim python3 python3-pip \
+    openjdk-8-jdk net-tools netcat curl wget unzip grep sed gnupg libsnappy-dev vim python3 python3-pip \
     && pip3 install --upgrade pip setuptools \
     && rm -rf /var/lib/apt/lists/* \
     # Removed the .cache to save space
@@ -45,7 +45,6 @@ ENV MULTIHOMED_NETWORK=1
 ENV USER=root
 ENV PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin
 
-ADD docker-hadoop-3.3.4/base/fair-scheduler.xml ${HADOOP_HOME}/etc/hadoop
 ADD docker-hadoop-3.3.4/base/entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
 
