@@ -150,19 +150,17 @@ docker volume create --name sandbox_hbase_117 --opt type=none --opt device=/opt/
 #
 # Require Dirs
 #
-sudo mkdir -p /apps
+sudo mkdir -p /apps/{sandbox,hostpath}
 sudo chown brijeshdhaker:root -R /apps
 sudo chmod 775 -R /apps
 
-sudo mkdir -p /apps/sandbox
-sudo chown brijeshdhaker:root -R /apps/sandbox
-sudo chmod 775 -R /apps/sandbox
-
-sudo mkdir -p /apps/hostpath
-sudo chown brijeshdhaker:root -R /apps/hostpath
-sudo chmod 775 -R /apps/hostpath
+sudo tar -xvf hadoop-3.3.4.tar.gz -C /opt
+sudo tar -xvf spark-3.4.0-bin-hadoop3.tgz -C /opt
+sudo tar -xvf apache-hive-3.1.2-bin.tar.gz -C /opt
+sudo tar -xvf hbase-2.4.9-bin.tar.gz -C /opt
+sudo tar -xvf hbase-1.1.7-bin.tar.gz -C /opt
 
 sudo unzip apache-maven-3.6.3-bin.zip -d /opt
 
 cd /opt
-sudo chown -R brijeshdhaker:root hadoop-3.3.4 hbase-1.1.7 hbase-2.4.9 hive-3.1.2 maven-3.6.3 spark-3.1.2
+sudo chown -R brijeshdhaker:root hadoop-3.3.4 hbase-1.1.7 hbase-2.4.9 hive-3.1.2 maven-3.6.3 spark-3.4.0
