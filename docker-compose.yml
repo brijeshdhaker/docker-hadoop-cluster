@@ -189,7 +189,6 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-#      - sandbox_hadoop_274:/opt/hadoop
       - sandbox_hadoop_334:/opt/hadoop
 
   # Spark History Server
@@ -211,6 +210,33 @@ services:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
       - ./conf/spark/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf
+
+  #
+  # Gateway Node
+  #
+  gateway:
+    image: brijeshdhaker/edgenode:3.3.4
+    hostname: gateway
+    container_name: gateway
+    restart: always
+    ports:
+      - "22:22"
+    volumes:
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+      - sandbox_hadoop_334:/opt/hadoop
+      - sandbox_hbase_249:/opt/hbase
+      - sandbox_hbase_117:/opt/hbase-client
+      - sandbox_hive_312:/opt/hive
+      - sandbox_spark_340:/opt/spark
+      - sandbox_maven_363:/opt/maven-3.6.3
+      - ./conf/gateway/sandbox.profile:/home/brijeshdhaker/sandbox.profile
+    environment:
+      CLUSTER_NAME: "docker-sandbox"
+      ALLOW_ANONYMOUS_LOGIN: "yes"
+    env_file:
+      - ./envs/docker_gateway.env
+
 
   # Zeppelin Notebook
   zeppelin:

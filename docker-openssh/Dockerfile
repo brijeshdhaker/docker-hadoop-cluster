@@ -7,8 +7,7 @@ FROM ubuntu:22.04
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    openjdk-8-jdk net-tools curl netcat gnupg libsnappy-dev vim openssh-server \
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y openjdk-8-jdk net-tools curl netcat gnupg libsnappy-dev vim openssh-server \
     && mkdir /var/run/sshd \
     && echo 'root:Accoo7@k47' | chpasswd \
     && useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 brijeshdhaker \

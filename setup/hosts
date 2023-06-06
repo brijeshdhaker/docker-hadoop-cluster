@@ -24,30 +24,31 @@
 127.0.0.1       nodemanager nodemanager.sandbox-bigdata.net
 127.0.0.1       historyserver historyserver.sandbox-bigdata.net
 127.0.0.1       timelineserver timelineserver.sandbox-bigdata.net
+127.0.0.1       gateway gateway.sandbox-bigdata.net
 
-#
+# hbase
 127.0.0.1       hbase-master hbase-master.sandbox-bigdata.net
 127.0.0.1       hbase-regionserver hbase-regionserver.sandbox-bigdata.net
 
-#
+# hive
 127.0.0.1       postgresql postgresql.sandbox-bigdata.net
 127.0.0.1       hive-metastore hive-metastore.sandbox-bigdata.net
 127.0.0.1       hive-server hive-server.sandbox-bigdata.net
 
-# spark cluster
+# spark
 127.0.0.1       spark-master spark-master.sandbox-bigdata.net
 127.0.0.1       spark-historyserver spark-historyserver.sandbox-bigdata.net
 
-#
+# zeppelin
 127.0.0.1       zeppelin zeppelin.sandbox-bigdata.net
 127.0.0.1       nififlow nififlow.sandbox-bigdata.net
 
-#
+# zookeeper
 127.0.0.1       zookeeper zookeeper.sandbox-bigdata.net
 127.0.0.1       kafka-broker kafka-broker.sandbox-bigdata.net
 127.0.0.1       schema-registry schema-registry.sandbox-bigdata.net
 
-#
+# airflow
 127.0.0.1       airflow-webserver airflow-webserver.sandbox-bigdata.net
 
 # Monitoring Tools

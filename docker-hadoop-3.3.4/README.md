@@ -87,3 +87,15 @@ $SPARK_HOME/bin/spark-submit \
 --conf "spark.yarn.archive=hdfs:///archives/spark-3.1.2.zip" \
 --conf "spark.yarn.queue=default" \
 $SPARK_HOME/examples/jars/spark-examples_*.jar 50000
+
+
+$SPARK_HOME/bin/spark-submit \
+--class org.apache.spark.examples.SparkPi \
+--master yarn \
+--deploy-mode cluster \
+--driver-memory 640M \
+--executor-memory 640M \
+--num-executors 2 \
+--conf "spark.yarn.archive=hdfs:///archives/spark-3.4.0.zip" \
+--conf "spark.yarn.queue=default" \
+$SPARK_HOME/examples/jars/spark-examples_*.jar 50000

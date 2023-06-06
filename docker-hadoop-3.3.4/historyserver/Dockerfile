@@ -9,8 +9,8 @@ MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
 HEALTHCHECK CMD curl -f http://localhost:19888/ || exit 1
 
-RUN mkdir -p /yarn/history
-VOLUME /yarn
+RUN mkdir -p /mr/history
+VOLUME /mr
 
 ADD docker-hadoop-3.3.4/historyserver/run.sh /run.sh
 RUN chmod a+x /run.sh
