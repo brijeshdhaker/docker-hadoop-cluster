@@ -84,7 +84,7 @@ $SPARK_HOME/bin/spark-submit \
 --driver-memory 640M \
 --executor-memory 640M \
 --num-executors 2 \
---conf "spark.yarn.archive=hdfs:///archives/spark-3.1.2.zip" \
+--conf "spark.yarn.archive=hdfs://namenode:9000/archives/spark-3.1.2.zip" \
 --conf "spark.yarn.queue=default" \
 $SPARK_HOME/examples/jars/spark-examples_*.jar 50000
 
@@ -96,6 +96,6 @@ $SPARK_HOME/bin/spark-submit \
 --driver-memory 640M \
 --executor-memory 640M \
 --num-executors 2 \
---conf "spark.yarn.archive=hdfs:///archives/spark-3.4.0.zip" \
+--conf "spark.yarn.archive=hdfs://namenode:9000/archives/spark-3.4.0.zip" \
 --conf "spark.yarn.queue=default" \
 $SPARK_HOME/examples/jars/spark-examples_*.jar 50000

@@ -75,8 +75,12 @@ docker volume create --name sandbox_hadoop321_dfs_data --opt type=none --opt dev
 docker volume create --name sandbox_hadoop_274 --opt type=none --opt device=/opt/hadoop-2.7.4 --opt o=bind
 docker volume create --name sandbox_hadoop_321 --opt type=none --opt device=/d/opt/hadoop-3.2.1 --opt o=bind
 docker volume create --name sandbox_hadoop_334 --opt type=none --opt device=/opt/hadoop-3.3.4 --opt o=bind
+
 docker volume create --name sandbox_spark_312 --opt type=none --opt device=/opt/spark-3.1.2 --opt o=bind
+
 docker volume create --name sandbox_hive_312 --opt type=none --opt device=/opt/hive-3.1.2 --opt o=bind
+docker volume create --name sandbox_tez_010 --opt type=none --opt device=/opt/tez-0.10.2 --opt o=bind
+
 docker volume create --name sandbox_hbase_249 --opt type=none --opt device=/opt/hbase-2.4.9 --opt o=bind
 docker volume create --name sandbox_hbase_117 --opt type=none --opt device=/opt/hbase-1.1.7 --opt o=bind
 

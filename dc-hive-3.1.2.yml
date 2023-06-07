@@ -1,6 +1,7 @@
 #
 # docker volume create --name sandbox_hive_data --opt type=none --opt device=/apps/sandbox/hive --opt o=bind
 # docker volume create --name sandbox_hive_312 --opt type=none --opt device=/opt/hive-3.1.2 --opt o=bind
+# docker volume create --name sandbox_tez_010 --opt type=none --opt device=/opt/tez-0.10.2 --opt o=bind
 #
 ---
 version: "3.5"
@@ -24,8 +25,8 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-#      - sandbox_hadoop_27:/opt/hadoop
-      - sandbox_hadoop_33:/opt/hadoop
+      - sandbox_hadoop_334:/opt/hadoop
+      - sandbox_tez_010:/opt/tez
 
   #
   hive-server:
@@ -44,8 +45,8 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-#      - sandbox_hadoop_274:/opt/hadoop
       - sandbox_hadoop_334:/opt/hadoop
+      - sandbox_tez_010:/opt/tez
 
 #
 volumes:
@@ -53,11 +54,9 @@ volumes:
     external: true
   sandbox_base_path:
     external: true
-  sandbox_hadoop_274:
-    external: true
   sandbox_hadoop_334:
     external: true
-  sandbox_hadoop_334_yarn:
+  sandbox_tez_010:
     external: true
 #
 networks:
