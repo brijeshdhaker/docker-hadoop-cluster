@@ -31,11 +31,17 @@ echo "==========================================================================
 echo "==== /etc/krb5kdc/kdc.conf ========================================================"
 echo "==================================================================================="
 tee /etc/krb5kdc/kdc.conf <<EOF
+[kdcdefaults]
+    kdc_ports = 88
+
 [realms]
 	$REALM = {
 		acl_file = /etc/krb5kdc/kadm5.acl
+		kadmind_port = 749
+		max_life = 12h 0m 0s
 		max_renewable_life = 7d 0h 0m 0s
-		supported_enctypes = $SUPPORTED_ENCRYPTION_TYPES
+		master_key_type = aes256-cts-hmac-sha1-96
+		supported_enctypes = aes256-cts-hmac-sha1-96:normal aes128-cts-hmac-sha1-96:normal
 		default_principal_flags = +preauth
 	}
 EOF
@@ -74,6 +80,29 @@ echo "Adding noPermissions principal"
 kadmin.local -q "delete_principal -force noPermissions@$REALM"
 echo ""
 kadmin.local -q "addprinc -pw $KADMIN_PASSWORD noPermissions@$REALM"
+echo ""
+
+echo "Adding Users Principal"
+echo ""
+kadmin.local -q "delete_principal -force root/admin@SANDBOX-BIGDATA.NET"
+kadmin.local -q "addprinc -pw root root/admin@SANDBOX-BIGDATA.NET"
+echo ""
+kadmin.local -q "delete_principal -force brijeshdhaker/admin@SANDBOX-BIGDATA.NET"
+kadmin.local -q "addprinc -pw brijeshdhaker brijeshdhaker/admin@SANDBOX-BIGDATA.NET"
+
+echo "Adding Host Principals"
+echo ""
+kadmin.local -q "delete_principal -force hadoop/_HOST@SANDBOX-BIGDATA.NET"
+kadmin.local -q "addprinc -pw hadoop hadoop/_HOST@SANDBOX-BIGDATA.NET"
+echo ""
+kadmin.local -q "delete_principal -force hdfs/_HOST@SANDBOX-BIGDATA.NET"
+kadmin.local -q "addprinc -pw hdfs hdfs/_HOST@SANDBOX-BIGDATA.NET"
+echo ""
+kadmin.local -q "delete_principal -force hive/_HOST@SANDBOX-BIGDATA.NET"
+kadmin.local -q "addprinc -pw hive hive/_HOST@SANDBOX-BIGDATA.NET"
+echo ""
+kadmin.local -q "delete_principal -force yarn/_HOST@SANDBOX-BIGDATA.NET"
+kadmin.local -q "addprinc -pw yarn yarn/_HOST@SANDBOX-BIGDATA.NET"
 echo ""
 
 krb5kdc
