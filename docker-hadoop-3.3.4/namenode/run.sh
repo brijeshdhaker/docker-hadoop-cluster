@@ -20,19 +20,11 @@ if [ ! -f /hadoop/dfs/.already_formatted ]; then
   echo "Formatting name node name directory: $namedir"
   mkdir -p /hadoop/dfs/data
   mkdir -p /hadoop/dfs/name
-  mkdir -p /hadoop/dfs/namesecondary
+  mkdir -p /hadoop/dfs/secondary
 
   $HADOOP_HOME/bin/hdfs --config $HADOOP_CONF_DIR namenode -format $CLUSTER_NAME
   touch /hadoop/dfs/.already_formatted
 
 fi
-
-#
-#if [ "`ls -A $namedir`" == "" ]; then
-#
-#  echo "Formatting namenode name directory: $namedir"
-#  $HADOOP_HOME/bin/hdfs --config $HADOOP_CONF_DIR namenode -format $CLUSTER_NAME
-#
-#fi
 
 $HADOOP_HOME/bin/hdfs --config $HADOOP_CONF_DIR namenode
