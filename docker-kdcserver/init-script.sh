@@ -74,69 +74,58 @@ if [ ! -f /var/lib/krb5kdc/.already_setup ]; then
 
   echo "Adding $KADMIN_PRINCIPAL principal"
   kadmin.local -q "delete_principal -force $KADMIN_PRINCIPAL_FULL"
-  echo ""
   kadmin.local -q "addprinc -pw $KADMIN_PASSWORD $KADMIN_PRINCIPAL_FULL"
   echo ""
 
   echo "Adding noPermissions principal"
   kadmin.local -q "delete_principal -force noPermissions@$REALM"
-  echo ""
   kadmin.local -q "addprinc -pw $KADMIN_PASSWORD noPermissions@$REALM"
   echo ""
 
-  echo "Adding User Admin Principal"
+  echo "Adding OS User Principal"
   echo ""
-  kadmin.local -q "delete_principal -force root/admin@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "delete_principal -force brijeshdhaker/admin@SANDBOX-BIGDATA.NET"
-  echo ""
-  kadmin.local -q "addprinc -pw root root/admin@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "addprinc -pw brijeshdhaker brijeshdhaker/admin@SANDBOX-BIGDATA.NET"
+  OS_USERS=('root' 'hdfs' 'yarn' 'mepred' 'hive' 'spark' 'brijeshdhaker')
+  for ou in "${OS_USERS[@]}"
+  do
+    echo "Add kerberos principal $ou start ."
+    kadmin.local -q "delete_principal -force $ou@SANDBOX-BIGDATA.NET"
+    kadmin.local -q "addprinc -pw $ou $ou@SANDBOX-BIGDATA.NET"
+    echo "Add kerberos principal for user $ou complete."
+  done
 
-  echo "Adding Service Principals"
-  echo ""
-  kadmin.local -q "delete_principal -force nn/namenode@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "delete_principal -force dn/datanode@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "delete_principal -force sn/secondaynamenode@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "delete_principal -force rm/resourcemanager@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "delete_principal -force nm/nodemanager@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "delete_principal -force jhs/historyserver@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "delete_principal -force yts/timelineserver@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "delete_principal -force gw/gateway@SANDBOX-BIGDATA.NET"
+  # Set service instances
+  #for var in one two three; do echo "$var"; done
+  PRINCIPALS=('nn' 'dn' 'sn' 'rm' 'nm' 'jhs' 'yts' 'gw' 'host' 'HTTP')
+  SANDBOX_NODES=('namenode' 'datanode' 'datanode' 'resourcemanager' 'nodemanager' 'historyserver' 'timelineserver' 'gateway')
+  for pr in "${PRINCIPALS[@]}"
+  do
+    echo "Add kerberos principal $pr start ."
+    echo ""
+    for node in "${SANDBOX_NODES[@]}"
+    do
+        kadmin.local -q "delete_principal -force $pr/$node@SANDBOX-BIGDATA.NET"
+        kadmin.local -q "addprinc -pw $pr $pr/$node@SANDBOX-BIGDATA.NET"
+        echo "$pr/$node@SANDBOX-BIGDATA.NET principles added."
 
-  kadmin.local -q "delete_principal -force host/namenode@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "delete_principal -force host/datanode@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "delete_principal -force host/secondaynamenode@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "delete_principal -force host/resourcemanager@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "delete_principal -force host/nodemanager@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "delete_principal -force host/historyserver@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "delete_principal -force host/timelineserver@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "delete_principal -force host/gateway@SANDBOX-BIGDATA.NET"
+        kadmin.local ktadd -k "/etc/security/keytabs/$pr.service.$node.keytab" "$pr/$node@SANDBOX-BIGDATA.NET"
 
-  echo ""
+    done
+    echo "Add kerberos principal for $pr complete"
+  done
 
-  kadmin.local -q "addprinc -pw nn nn/namenode@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "addprinc -pw dn dn/datanode@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "addprinc -pw sn sn/secondaynamenode@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "addprinc -pw rm rm/resourcemanager@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "addprinc -pw nm nm/nodemanager@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "addprinc -pw jhs jhs/historyserver@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "addprinc -pw yts yts/timelineserver@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "addprinc -pw gw gw/gateway@SANDBOX-BIGDATA.NET"
+  for pr in "${PRINCIPALS[@]}"
+  do
+    mergekeytabs=""
+    for node in "${SANDBOX_NODES[@]}"
+    do
+        mergekeytabs+="rkt /etc/security/keytabs/$pr.service.$node.keytab\n"
+    done
+    mergekeytabs+="wkt /etc/security/keytabs/$pr.service.keytab\nquit"
+    echo ""
+    echo "$mergekeytabs"
+    echo -e "$mergekeytabs" | ktutil
+  done
 
-  kadmin.local -q "addprinc -pw nn host/namenode@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "addprinc -pw dn host/datanode@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "addprinc -pw sn host/secondaynamenode@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "addprinc -pw rm host/resourcemanager@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "addprinc -pw nm host/nodemanager@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "addprinc -pw jhs host/historyserver@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "addprinc -pw yts host/timelineserver@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "addprinc -pw gw host/gateway@SANDBOX-BIGDATA.NET"
-
-  kadmin.local -q "addprinc -pw hive hive/hive-server@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "addprinc -pw spark spark/spark@SANDBOX-BIGDATA.NET"
-  kadmin.local -q "addprinc -pw yarn yarn/spark@SANDBOX-BIGDATA.NET"
-
-  echo ""
   touch /var/lib/krb5kdc/.already_setup
   echo "Principles successfully generated."
   echo ""
