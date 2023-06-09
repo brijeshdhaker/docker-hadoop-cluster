@@ -31,15 +31,19 @@ ENV YARN_LOG_DIR=${YARN_LOG_DIR:-"/var/log/yarn"}
 #
 
 ADD resources/tars/hadoop-3.3.4.tar.gz ${BASE_DIR}/
-ADD docker-hadoop-3.3.4/base/entrypoint.sh /entrypoint.sh
+
+RUN mv -f ${BASE_DIR}/hadoop-3.3.4 ${BASE_DIR}/hadoop
+
 ADD docker-hadoop-3.3.4/base/hadoop-env.sh ${HADOOP_HOME}/etc/hadoop/hadoop-env.sh
 ADD docker-hadoop-3.3.4/base/core-site.xml ${HADOOP_HOME}/etc/hadoop/core-site.xml
 ADD docker-hadoop-3.3.4/base/jsvc ${HADOOP_HOME}/jsvc
+ADD docker-hadoop-3.3.4/base/entrypoint.sh /entrypoint.sh
 
-RUN ln -s ${HADOOP_HOME}/etc/hadoop /etc/hadoop && chown -Rf hdfs:hadoop /etc/hadoop && chmod 775 -Rf /etc/hadoop && \
-    chown -Rf hdfs:hadoop ${HADOOP_HOME} && chmod 775 -Rf ${HADOOP_HOME} && \
-    mkdir -p $HADOOP_LOG_DIR && chown -Rf hdfs:hadoop $HADOOP_LOG_DIR && chmod -Rf 775 $HADOOP_LOG_DIR && \
-    mkdir -p $YARN_LOG_DIR && chown -Rf yarn:hadoop $YARN_LOG_DIR && chmod -Rf 775 $YARN_LOG_DIR && \
+RUN set -x && \
+    ln -s ${HADOOP_HOME}/etc/hadoop /etc/hadoop && chmod -Rf 775 /etc/hadoop && \
+    chown -Rf hdfs:hadoop ${HADOOP_HOME} && chmod -Rf 775 ${HADOOP_HOME} && \
+    mkdir -p $HADOOP_LOG_DIR && chmod -Rf 775 $HADOOP_LOG_DIR && chown -Rf hdfs:hadoop $HADOOP_LOG_DIR && \
+    mkdir -p $YARN_LOG_DIR && chmod -Rf 775 $YARN_LOG_DIR && chown -Rf hdfs:hadoop $YARN_LOG_DIR && \
     chmod -Rf 755 /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
