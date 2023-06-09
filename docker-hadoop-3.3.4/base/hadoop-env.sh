@@ -432,4 +432,4 @@ JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
 KINIT_KEYTAB=/etc/security/keytabs/hdfs.keytab
 KINIT_PRINCIPAL=hdfs@SANDBOX.NET
 HDFS_DATANODE_SECURE_USER=hdfs
-JSVC_HOME=/opt/hadoop-3.3.4
+JSVC_HOME=/opt/hadoop

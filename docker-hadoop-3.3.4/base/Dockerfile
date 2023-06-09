@@ -3,22 +3,20 @@
 # docker push brijeshdhaker/hadoop-base:3.3.4
 #
 
-FROM ubuntu:22.04
+FROM brijeshdhaker/ubuntu:22.04
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    openjdk-8-jdk net-tools netcat curl wget unzip grep sed gnupg libsnappy-dev vim python3 python3-pip \
-    && pip3 install --upgrade pip setuptools \
-    && rm -rf /var/lib/apt/lists/* \
-    # Removed the .cache to save space
-    && rm -r /root/.cache && rm -rf /var/cache/apt/*
-
 #
-ENV HADOOP_VERSION  3.3.4
-ENV BASE_DIR 		/opt
-ENV JAVA_HOME       /usr/lib/jvm/java-8-openjdk-amd64/
-ENV HADOOP_HOME		$BASE_DIR/hadoop-$HADOOP_VERSION
+ENV HADOOP_VERSION=3.3.4
+ENV BASE_DIR=/opt
+ENV HADOOP_HOME=$BASE_DIR/hadoop
+ENV JSVC_HOME=$BASE_DIR/hadoop
+ENV HADOOP_CONF_DIR=/etc/hadoop
+ENV PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin
+ENV HADOOP_LOG_DIR=${HADOOP_LOG_DIR:-"/var/log/hadoop"}
+ENV YARN_LOG_DIR=${YARN_LOG_DIR:-"/var/log/yarn"}
+
 
 # RUN curl -O https://dist.apache.org/repos/dist/release/hadoop/common/KEYS
 # RUN gpg --import KEYS
@@ -33,19 +31,15 @@ ENV HADOOP_HOME		$BASE_DIR/hadoop-$HADOOP_VERSION
 #
 
 ADD resources/tars/hadoop-3.3.4.tar.gz ${BASE_DIR}/
-
-RUN ln -s ${HADOOP_HOME}/etc/hadoop /etc/hadoop
-
-RUN mkdir ${HADOOP_HOME}/logs
-
-RUN mkdir /hadoop-data
-
-ENV HADOOP_CONF_DIR=/etc/hadoop
-ENV MULTIHOMED_NETWORK=1
-ENV USER=root
-ENV PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin
-
 ADD docker-hadoop-3.3.4/base/entrypoint.sh /entrypoint.sh
-RUN chmod a+x /entrypoint.sh
+ADD docker-hadoop-3.3.4/base/hadoop-env.sh ${HADOOP_HOME}/etc/hadoop/hadoop-env.sh
+ADD docker-hadoop-3.3.4/base/core-site.xml ${HADOOP_HOME}/etc/hadoop/core-site.xml
+ADD docker-hadoop-3.3.4/base/jsvc ${HADOOP_HOME}/jsvc
+
+RUN ln -s ${HADOOP_HOME}/etc/hadoop /etc/hadoop && chown -Rf hdfs:hadoop /etc/hadoop && chmod 775 -Rf /etc/hadoop && \
+    chown -Rf hdfs:hadoop ${HADOOP_HOME} && chmod 775 -Rf ${HADOOP_HOME} && \
+    mkdir -p $HADOOP_LOG_DIR && chown -Rf hdfs:hadoop $HADOOP_LOG_DIR && chmod -Rf 775 $HADOOP_LOG_DIR && \
+    mkdir -p $YARN_LOG_DIR && chown -Rf yarn:hadoop $YARN_LOG_DIR && chmod -Rf 775 $YARN_LOG_DIR && \
+    chmod -Rf 755 /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
