@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+    <property>
+        <name>hadoop.security.auth_to_local</name>
+        <value>
+            RULE:[2:$1/$2@$0]([ndj]n/.*@SANDBOX\.NET)s/.*/hdfs/
+            RULE:[2:$1/$2@$0]([rn]m/.*@SANDBOX\.NET)s/.*/yarn/
+            RULE:[2:$1/$2@$0](jhs/.*@SANDBOX\.NET)s/.*/mapred/
+            DEFAULT
+        </value>
+    </property>
+</configuration>
