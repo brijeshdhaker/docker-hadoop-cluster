@@ -51,7 +51,7 @@
 
 # The java implementation to use. By default, this environment
 # variable is REQUIRED on ALL platforms except OS X!
-# export JAVA_HOME=
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 # Location of Hadoop.  By default, Hadoop will attempt to determine
 # this location based upon its execution path.
@@ -83,13 +83,13 @@
 
 # Enable extra debugging of Hadoop's JAAS binding, used to set up
 # Kerberos security.
-# export HADOOP_JAAS_DEBUG=true
+#export HADOOP_JAAS_DEBUG=true
 
 # Extra Java runtime options for all Hadoop commands. We don't support
 # IPv6 yet/still, so by default the preference is set to IPv4.
 # export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true"
 # For Kerberos debugging, an extended option set logs more information
-# export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true -Dsun.security.krb5.debug=true -Dsun.security.spnego.debug"
+export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true -Dsun.security.krb5.debug=false -Dsun.security.spnego.debug"
 
 # Some parts of the shell code may do special things dependent upon
 # the operating system.  We have to set this here. See the next
@@ -100,7 +100,7 @@ export HADOOP_OS_TYPE=${HADOOP_OS_TYPE:-$(uname -s)}
 # and clients (i.e., hdfs dfs -blah).  These get appended to HADOOP_OPTS for
 # such commands.  In most cases, # this should be left empty and
 # let users supply it on the command line.
-# export HADOOP_CLIENT_OPTS=""
+export HADOOP_CLIENT_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
 
 #
 # A note about classpaths.
@@ -189,37 +189,37 @@ export HADOOP_OS_TYPE=${HADOOP_OS_TYPE:-$(uname -s)}
 # A string representing this instance of hadoop. $USER by default.
 # This is used in writing log and pid files, so keep that in mind!
 # Java property: hadoop.id.str
-# export HADOOP_IDENT_STRING=$USER
+export HADOOP_IDENT_STRING=$USER
 
 # How many seconds to pause after stopping a daemon
 # export HADOOP_STOP_TIMEOUT=5
 
 # Where pid files are stored.  /tmp by default.
-# export HADOOP_PID_DIR=/tmp
+export HADOOP_PID_DIR=/tmp
 
 # Default log4j setting for interactive commands
 # Java property: hadoop.root.logger
-# export HADOOP_ROOT_LOGGER=INFO,console
+export HADOOP_ROOT_LOGGER=INFO,console
 
 # Default log4j setting for daemons spawned explicitly by
 # --daemon option of hadoop, hdfs, mapred and yarn command.
 # Java property: hadoop.root.logger
-# export HADOOP_DAEMON_ROOT_LOGGER=INFO,RFA
+export HADOOP_DAEMON_ROOT_LOGGER=INFO,RFA
 
 # Default log level and output location for security-related messages.
 # You will almost certainly want to change this on a per-daemon basis via
 # the Java property (i.e., -Dhadoop.security.logger=foo). (Note that the
 # defaults for the NN and 2NN override this by default.)
 # Java property: hadoop.security.logger
-# export HADOOP_SECURITY_LOGGER=INFO,NullAppender
+export HADOOP_SECURITY_LOGGER=INFO,NullAppender
 
 # Default process priority level
 # Note that sub-processes will also run at this level!
-# export HADOOP_NICENESS=0
+#export HADOOP_NICENESS=0
 
 # Default name for the service level authorization file
 # Java property: hadoop.policy.file
-# export HADOOP_POLICYFILE="hadoop-policy.xml"
+#export HADOOP_POLICYFILE="hadoop-policy.xml"
 
 #
 # NOTE: this is not used by default!  <-----
@@ -245,7 +245,7 @@ export HADOOP_OS_TYPE=${HADOOP_OS_TYPE:-$(uname -s)}
 # that bind to privileged ports to provide authentication of data transfer
 # protocol.  Jsvc is not required if SASL is configured for authentication of
 # data transfer protocol using non-privileged ports.
-# export JSVC_HOME=/usr/bin
+export JSVC_HOME=/usr/bin
 
 #
 # This directory contains pids for secure and privileged processes.
@@ -254,7 +254,7 @@ export HADOOP_OS_TYPE=${HADOOP_OS_TYPE:-$(uname -s)}
 #
 # This directory contains the logs for secure and privileged processes.
 # Java property: hadoop.log.dir
-# export HADOOP_SECURE_LOG=${HADOOP_LOG_DIR}
+export HADOOP_SECURE_LOG=${HADOOP_LOG_DIR}
 
 #
 # When running a secure daemon, the default value of HADOOP_IDENT_STRING
@@ -307,7 +307,7 @@ export HADOOP_OS_TYPE=${HADOOP_OS_TYPE:-$(uname -s)}
 # and therefore may override any similar flags set in HADOOP_OPTS
 #
 # This is the default:
-# export HDFS_DATANODE_OPTS="-Dhadoop.security.logger=ERROR,RFAS"
+export HDFS_DATANODE_OPTS="-Dhadoop.security.logger=ERROR,RFAS"
 
 # On secure datanodes, user to run the datanode as after dropping privileges.
 # This **MUST** be uncommented to enable secure HDFS if using privileged ports
@@ -315,12 +315,12 @@ export HADOOP_OS_TYPE=${HADOOP_OS_TYPE:-$(uname -s)}
 # defined if SASL is configured for authentication of data transfer protocol
 # using non-privileged ports.
 # This will replace the hadoop.id.str Java property in secure mode.
-# export HDFS_DATANODE_SECURE_USER=hdfs
+export HDFS_DATANODE_SECURE_USER=hdfs
 
 # Supplemental options for secure datanodes
 # By default, Hadoop uses jsvc which needs to know to launch a
 # server jvm.
-# export HDFS_DATANODE_SECURE_EXTRA_OPTS="-jvm server"
+export HDFS_DATANODE_SECURE_EXTRA_OPTS="-jvm server"
 
 ###
 # NFS3 Gateway specific parameters
@@ -427,9 +427,13 @@ export HADOOP_OS_TYPE=${HADOOP_OS_TYPE:-$(uname -s)}
 # Supplemental options for privileged registry DNS
 # By default, Hadoop uses jsvc which needs to know to launch a
 # server jvm.
-# export HADOOP_REGISTRYDNS_SECURE_EXTRA_OPTS="-jvm server"
-JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
-KINIT_KEYTAB=/etc/security/keytabs/hdfs.keytab
-KINIT_PRINCIPAL=hdfs@SANDBOX.NET
-HDFS_DATANODE_SECURE_USER=hdfs
-JSVC_HOME=/opt/hadoop
+export HADOOP_REGISTRYDNS_SECURE_EXTRA_OPTS="-jvm server"
+
+#
+JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+#
+KINIT_KEYTAB=/etc/kerberos/keytab/hdfs.service.keytab
+
+#
+KINIT_PRINCIPAL=hdfs/_HOST@SANDBOX.NET
