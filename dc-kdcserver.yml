@@ -25,32 +25,6 @@ services:
       - "749:749"
       - "88:88/udp"
 
-  #
-  kdcclient:
-    image: brijeshdhaker/kdcclient:22.04
-    hostname: 'kdcclient'
-    container_name: kdcclient
-    depends_on:
-      - kdcserver
-    env_file:
-      - ./envs/docker_kerberos.env
-
-  #
-  workstation:
-    image: brijeshdhaker/ubuntu:22.04
-    hostname: 'workstation'
-    container_name: workstation
-    command: python3 -m http.server 8000
-    depends_on:
-      - kdcserver
-    volumes:
-      - sandbox_host_path:/apps/hostpath
-      - sandbox_base_path:/apps/sandbox
-      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
-    env_file:
-      - ./envs/docker_kerberos.env
-
-
 #
 volumes:
   #

@@ -66,9 +66,8 @@ tee /etc/krb5kdc/kdc.conf <<EOF
 		kadmind_port = 749
 		max_life = 12h 0m 0s
 		max_renewable_life = 7d 0h 0m 0s
-		# master_key_type = aes256-cts
-		# supported_enctypes =  camellia256-cts:normal camellia128-cts:normal
-		supported_enctypes = aes256-cts:normal aes128-cts:normal arcfour-hmac:normal
+		# master_key_type = $MASTER_KEY_TYPE
+		supported_enctypes = aes256-cts:normal aes128-cts:normal des3-hmac-sha1:normal arcfour-hmac:normal camellia256-cts:normal camellia128-cts:normal
 		default_principal_flags = +renewable, +forwardable
 	}
 EOF
@@ -119,13 +118,17 @@ if [ ! -f /var/lib/krb5kdc/.already_setup ]; then
   OS_USERS=("root" "brijeshdhaker" "hdfs" "yarn" "mapred" "hive" "spark")
   for ou in "${OS_USERS[@]}"
   do
-  # kadmin.local -w kadmin -q "delete_principal -force brijeshdhaker@SANDBOX.NET"
-    kadmin.local -w $KADMIN_PASSWORD -q "delete_principal -force $ou@$REALM"
+    kadmin.local -q "delete_principal -force $ou@$REALM"
+    kadmin.local -q "addprinc -pw $KADMIN_PASSWORD $ou@$REALM"
+  done
 
-  # kadmin.local -w kadmin -q "addprinc -pw brijeshdhaker brijeshdhaker@SANDBOX.NET"
-    kadmin.local -w $KADMIN_PASSWORD -q "addprinc -pw $KUSERS_PASSWORD $ou@$REALM"
-
-  # kadmin.local ktadd -k "/etc/kerberos/keytabs/brijeshdhaker.keytab" brijeshdhaker@SANDBOX.NET
+  # Change Passwords for OS Users
+  for ou in "${OS_USERS[@]}"
+  do
+    ktmerge=""
+    ktmerge+="change_password $ou\n$KADMIN_PASSWORD\nk$KADMIN_PASSWORD\nquit"
+    echo ""
+    echo -e "$ktmerge" | kadmin -w $KADMIN_PASSWORD -p $KADMIN_PRINCIPAL_FULL
     kadmin.local ktadd -k "/etc/kerberos/keytabs/$ou.keytab" "$ou@$REALM"
   done
 
@@ -154,8 +157,22 @@ if [ ! -f /var/lib/krb5kdc/.already_setup ]; then
     for node in "${SANDBOX_NODES[@]}"
     do
         kadmin.local -q "delete_principal -force $pr/$node@$REALM"
-        kadmin.local -q "addprinc -pw $KUSERS_PASSWORD $pr/$node@$REALM"
-        kadmin.local ktadd -k "/etc/kerberos/keytabs/$pr.service.$node.keytab" "$pr/$node@$REALM"
+        kadmin.local -q "addprinc -pw $KADMIN_PASSWORD $pr/$node@$REALM"
+    done
+  done
+
+  # Change Passwords for OS Users
+  for pr in "${PRINCIPALS[@]}"
+  do
+    echo ""
+    for node in "${SANDBOX_NODES[@]}"
+    do
+      ktmerge=""
+      ktmerge+="change_password $pr/$node@$REALM\n$KADMIN_PASSWORD\n$KADMIN_PASSWORD\nquit"
+      echo ""
+      echo -e "$ktmerge" | kadmin -w $KADMIN_PASSWORD -p $KADMIN_PRINCIPAL_FULL
+      echo ""
+      kadmin.local ktadd -k "/etc/kerberos/keytabs/$pr.service.$node.keytab" "$pr/$node@$REALM"
     done
   done
 
@@ -190,7 +207,7 @@ if [ ! -f /var/lib/krb5kdc/.already_setup ]; then
   cp /etc/kerberos/keytabs/host-unmerged.keytab /etc/kerberos/keytabs/host.service.keytab
   cp /etc/kerberos/keytabs/HTTP-unmerged.keytab /etc/kerberos/keytabs/HTTP.service.keytab
   cp /etc/kerberos/keytabs/HTTP-unmerged.keytab /etc/kerberos/keytabs/spnego.service.keytab
-  chmod -Rf 777 /etc/kerberos/keytabs/*
+  chmod -Rf 755 /etc/kerberos/keytabs/*
 
   #
   touch /var/lib/krb5kdc/.already_setup

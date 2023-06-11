@@ -11,6 +11,8 @@ $SPARK_HOME/bin/spark-class org.apache.spark.deploy.worker.Worker --webui-port 8
 
 hive --hiveconf hive.root.logger=INFO,console --remote-host=localhost
 
+jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET
+beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@CLOUDERA.SITE"
 
 #
 #
@@ -64,7 +66,7 @@ $HIVE_HOME/bin/hiveserver2
 
 $HIVE_HOME/bin/beeline -u jdbc:hive2://localhost:10000 scott tiger
 
-$HIVE_HOME/bin/beeline -u jdbc:hive2://hive-server:10000 scott tiger
+$HIVE_HOME/bin/beeline -u jdbc:hive2://hiveserver.sandbox.net:10000 scott tiger
 
 bin/beeline -u jdbc:hive2:// -n scott -p tiger
 
@@ -77,11 +79,11 @@ bin/beeline -u jdbc:hive2:// scott tiger
 #
 $HIVE_HOME/bin/beeline
 
-beeline>!connect jdbc:hive2://hive-server:10000 scott tiger
+beeline>!connect jdbc:hive2://hiveserver.sandbox.net:10000 scott tiger
 (or)
-beeline>!connect jdbc:hive2://hive-server:10000 -n scott -p tiger
+beeline>!connect jdbc:hive2://hiveserver.sandbox.net:10000 -n scott -p tiger
 
-$HIVE_HOME/bin/beeline -u jdbc:hive2://hive-server:10000 scott tiger
+$HIVE_HOME/bin/beeline -u jdbc:hive2://hiveserver.sandbox.net:10000 scott tiger
 
 #
 # Documentation
@@ -92,7 +94,7 @@ https://cwiki.apache.org/confluence/display/Hive/Home#Home-HiveDocumentation
 # Linux 
 #
 export SPARK_HOME=/opt/spark-3.1.2
-$SPARK_HOME/bin/beeline -u jdbc:hive2://hive-server:10000 scott tiger
+$SPARK_HOME/bin/beeline -u jdbc:hive2://hiveserver.sandbox.net:10000 scott tiger
 
 #
 # HDP Sandbox
@@ -107,7 +109,7 @@ INSERT INTO TABLE students VALUES ('Brijesh Dhaker', 35, 1.28), ('Tejas Dhaker',
 # Windows
 #
 SET SPARK_HOME=D:\apps\spark-3.1.2
-%SPARK_HOME%\bin\beeline.cmd -u jdbc:hive2://hive-server:10000 scott tiger
+%SPARK_HOME%\bin\beeline.cmd -u jdbc:hive2://hiveserver.sandbox.net:10000 scott tiger
 
 #
 #

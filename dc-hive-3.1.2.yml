@@ -13,8 +13,8 @@ services:
   #
   metastore:
     image: brijeshdhaker/hive:3.1.2
-    hostname: metastore.sandbox.net
     container_name: metastore
+    hostname: metastore.sandbox.net
     env_file:
       - envs/docker_hive.env
     command: /opt/hive/bin/hive --service metastore
@@ -27,18 +27,18 @@ services:
       - sandbox_base_path:/apps/sandbox
       - sandbox_hadoop_334:/opt/hadoop
       - sandbox_tez_010:/opt/tez
+      - ./conf/kerberos:/etc/kerberos
 
   #
   hiveserver:
     image: brijeshdhaker/hive:3.1.2
-    hostname: hiveserver.sandbox.net
     container_name: hiveserver
+    hostname: hiveserver.sandbox.net
     env_file:
       - envs/docker_hive.env
     environment:
       HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:mysql://mysqlserver:3306/metastore?createDatabaseIfNotExist=true;autoReconnect=true;useSSL=false"
-#      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-metastore:9083"
-      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 hive-metastore:9083"
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 metastore:9083"
     ports:
       - "10000:10000"
       - "10002:10002"
@@ -47,6 +47,7 @@ services:
       - sandbox_base_path:/apps/sandbox
       - sandbox_hadoop_334:/opt/hadoop
       - sandbox_tez_010:/opt/tez
+      - ./conf/kerberos:/etc/kerberos
 
 #
 volumes:

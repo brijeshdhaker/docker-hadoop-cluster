@@ -4,12 +4,25 @@ bash-3.00$ kadmin -w kadmin -p kadmin/admin@SANDBOX.NET
 kadmin:
 list_principals *
 getprinc brijeshdhaker@SANDBOX.NET
+
+delete_principal root@SANDBOX.NET
 delete_principal brijeshdhaker@SANDBOX.NET
+delete_principal hdfs@SANDBOX.NET
+delete_principal yarn@SANDBOX.NET
+delete_principal mapred@SANDBOX.NET
+delete_principal hive@SANDBOX.NET
+
 change_password brijeshdhaker@SANDBOX.NET
 
 add_principal root@SANDBOX.NET
 add_principal brijeshdhaker@SANDBOX.NET
+add_principal hdfs@SANDBOX.NET
+add_principal yarn@SANDBOX.NET
+add_principal mapred@SANDBOX.NET
+add_principal hive@SANDBOX.NET
 
+
+hive/hiveserver.sandbox.net@SANDBOX.NET
 
 # 1. Add Principle
 
@@ -43,6 +56,8 @@ wkt /etc/kerberos/keytabs/brijeshdhaker.keytab   	-- password brijeshdhaker
 kinit -k -t /etc/kerberos/keytabs/root.keytab root@SANDBOX.NET
 kinit -k -t /etc/kerberos/keytabs/brijeshdhaker.keytab brijeshdhaker@SANDBOX.NET
 
+kinit -k -t /etc/kerberos/keytabs/hive.service.keytab hive/hiveserver.sandbox.net@SANDBOX.NET
+
 # OS Users
 klist -e -k -t /etc/kerberos/keytabs/root.keytab
 klist -e -k -t /etc/kerberos/keytabs/brijeshdhaker.keytab
@@ -54,7 +69,9 @@ klist -e -k -t /etc/kerberos/keytabs/mapred.keytab
 klist -e -k -t /etc/kerberos/keytabs/hdfs.service.keytab
 klist -e -k -t /etc/kerberos/keytabs/yarn.service.keytab
 klist -e -k -t /etc/kerberos/keytabs/mapred.service.keytab
+klist -e -k -t /etc/kerberos/keytabs/hive.service.keytab
 klist -e -k -t /etc/kerberos/keytabs/host.service.keytab
 klist -e -k -t /etc/kerberos/keytabs/HTTP.service.keytab
-
 # Services
+
+python -m http.server 8000
