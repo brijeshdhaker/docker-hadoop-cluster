@@ -6,6 +6,7 @@ target
 *.tar
 *.jar
 *.war
+*.keytab
 .classpath
 .project
 .idea
