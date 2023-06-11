@@ -88,6 +88,7 @@ echo "==========================================================================
 echo "==== Creating realm ==============================================================="
 echo "==================================================================================="
 MASTER_PASSWORD=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w30 | head -n1)
+echo "Database Master Password : $MASTER_PASSWORD"
 # This command also starts the krb5-kdc and krb5-admin-server services
 krb5_newrealm <<EOF
 $MASTER_PASSWORD
@@ -122,7 +123,7 @@ if [ ! -f /var/lib/krb5kdc/.already_setup ]; then
     kadmin.local -w $KADMIN_PASSWORD -q "delete_principal -force $ou@$REALM"
 
   # kadmin.local -w kadmin -q "addprinc -pw brijeshdhaker brijeshdhaker@SANDBOX.NET"
-    kadmin.local -w $KADMIN_PASSWORD -q "addprinc -pw $ou $ou@$REALM"
+    kadmin.local -w $KADMIN_PASSWORD -q "addprinc -pw $KUSERS_PASSWORD $ou@$REALM"
 
   # kadmin.local ktadd -k "/etc/kerberos/keytabs/brijeshdhaker.keytab" brijeshdhaker@SANDBOX.NET
     kadmin.local ktadd -k "/etc/kerberos/keytabs/$ou.keytab" "$ou@$REALM"
@@ -131,15 +132,29 @@ if [ ! -f /var/lib/krb5kdc/.already_setup ]; then
   echo "Adding service principal for all hosts."
   echo ""
   #for var in one two three; do echo "$var"; done
-  PRINCIPALS=("hdfs" "yarn" "mapred" "host" "HTTP")
-  SANDBOX_NODES=("namenode.sandbox.net" "datanode.sandbox.net" "secondary.sandbox.net" "resourcemanager.sandbox.net" "nodemanager.sandbox.net" "historyserver.sandbox.net" "timelineserver.sandbox.net" "gateway.sandbox.net" "thinkpad.sandbox.net")
+  PRINCIPALS=("hdfs" "yarn" "mapred" "hive" "metastore" "host" "HTTP")
+  SANDBOX_NODES=(
+    "namenode.sandbox.net"
+    "datanode.sandbox.net"
+    "secondary.sandbox.net"
+    "resourcemanager.sandbox.net"
+    "nodemanager.sandbox.net"
+    "historyserver.sandbox.net"
+    "timelineserver.sandbox.net"
+    "metastore.sandbox.net"
+    "hiveserver.sandbox.net"
+    "gateway.sandbox.net"
+    "thinkpad.sandbox.net"
+    "hostmaster.sandbox.net"
+    "dockerhost.sandbox.net"
+  )
   for pr in "${PRINCIPALS[@]}"
   do
     echo ""
     for node in "${SANDBOX_NODES[@]}"
     do
         kadmin.local -q "delete_principal -force $pr/$node@$REALM"
-        kadmin.local -q "addprinc -pw $pr $pr/$node@$REALM"
+        kadmin.local -q "addprinc -pw $KUSERS_PASSWORD $pr/$node@$REALM"
         kadmin.local ktadd -k "/etc/kerberos/keytabs/$pr.service.$node.keytab" "$pr/$node@$REALM"
     done
   done
@@ -159,7 +174,7 @@ if [ ! -f /var/lib/krb5kdc/.already_setup ]; then
   done
 
   # Create merged keytab
-  UNMPRINC=("hdfs" "yarn" "mapred")
+  UNMPRINC=("hdfs" "yarn" "mapred" "hive" "metastore")
   for upr in "${UNMPRINC[@]}"
   do
     ktmerge=""
@@ -175,8 +190,9 @@ if [ ! -f /var/lib/krb5kdc/.already_setup ]; then
   cp /etc/kerberos/keytabs/host-unmerged.keytab /etc/kerberos/keytabs/host.service.keytab
   cp /etc/kerberos/keytabs/HTTP-unmerged.keytab /etc/kerberos/keytabs/HTTP.service.keytab
   cp /etc/kerberos/keytabs/HTTP-unmerged.keytab /etc/kerberos/keytabs/spnego.service.keytab
-  chmod -Rf 775 /etc/kerberos/keytabs/*
+  chmod -Rf 777 /etc/kerberos/keytabs/*
 
+  #
   touch /var/lib/krb5kdc/.already_setup
   echo "Principles successfully generated."
   echo ""
