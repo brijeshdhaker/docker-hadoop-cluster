@@ -3,14 +3,15 @@
 # docker push brijeshdhaker/ubuntu-openssh:22.04
 #
 
-FROM ubuntu:22.04
+FROM brijeshdhaker/ubuntu:22.04
 
+#
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y openjdk-8-jdk net-tools curl netcat gnupg libsnappy-dev vim openssh-server \
+#
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server \
     && mkdir /var/run/sshd \
     && echo 'root:Accoo7@k47' | chpasswd \
-    && useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 brijeshdhaker \
     && usermod -aG sudo brijeshdhaker \
     && echo 'brijeshdhaker:Accoo7@k47' | chpasswd \
     && sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \

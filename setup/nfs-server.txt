@@ -87,7 +87,7 @@ $ sudo mount 192.168.122.1:/mnt/nfs-share /mnt/nfs-share
 [root@thinkpad ~]# vi /etc/idmapd.conf
 # line 5 : uncomment and change to your domain name
 
-Domain = sandbox-bigdata.net
+Domain = sandbox.net
 
 [root@thinkpad ~]# vi /etc/exports
 # create new
@@ -112,7 +112,7 @@ $ systemctl start rpcbind
 
 $ vi /etc/idmapd.conf
 # line 5 : uncomment and change to your domain name
-Domain = sandbox-bigdata.net
+Domain = sandbox.net
 
 $ mount -t nfs 192.168.122.1:/mnt/nfs-share /mnt/nfs-share
 

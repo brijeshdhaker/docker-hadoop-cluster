@@ -1,71 +1,72 @@
 # The following lines are desirable for IPv6 capable hosts
-
+# sed -i 's/sandbox-bigdata/sandbox/g' /etc/hosts
 ###
 127.0.0.1       localhost
-192.168.1.7     thinkpad
+192.168.1.7     thinkpad.sandbox.net thinkpad
 
 # elasticsearch
-127.0.0.1       elasticsearch elasticsearch.sandbox-bigdata.net
-127.0.0.1       es01 es01.sandbox-bigdata.net
-127.0.0.1       es02 es02.sandbox-bigdata.net
-127.0.0.1       es03 es03.sandbox-bigdata.net
-127.0.0.1       kibana kibana.sandbox-bigdata.net
+127.0.0.1       elasticsearch.sandbox.net elasticsearch
+127.0.0.1       es01.sandbox.net es01
+127.0.0.1       es02.sandbox.net es02
+127.0.0.1       es03.sandbox.net es03
+127.0.0.1       kibana.sandbox.net kibana
 
 # cassandra
-127.0.0.1       cassandra cassandra.sandbox-bigdata.net
+127.0.0.1       cassandra.sandbox.net cassandra
 
 # mysqlserver
-127.0.0.1       mysqlserver mysqlserver.sandbox-bigdata.net
+127.0.0.1       mysqlserver.sandbox.net mysqlserver
 
 # hadoop & yarn cluster
-127.0.0.1       namenode namenode.sandbox-bigdata.net
-127.0.0.1       datanode datanode.sandbox-bigdata.net
-127.0.0.1       resourcemanager resourcemanager.sandbox-bigdata.net
-127.0.0.1       nodemanager nodemanager.sandbox-bigdata.net
-127.0.0.1       historyserver historyserver.sandbox-bigdata.net
-127.0.0.1       timelineserver timelineserver.sandbox-bigdata.net
-127.0.0.1       gateway gateway.sandbox-bigdata.net
+127.0.0.1       namenode.sandbox.net namenode
+127.0.0.1       datanode.sandbox.net datanode
+127.0.0.1       resourcemanager.sandbox.net resourcemanager
+127.0.0.1       nodemanager.sandbox.net nodemanager
+127.0.0.1       historyserver.sandbox.net historyserver
+127.0.0.1       timelineserver.sandbox.net timelineserver
+127.0.0.1       gateway.sandbox.net gateway
 
 # hbase
-127.0.0.1       hbase-master hbase-master.sandbox-bigdata.net
-127.0.0.1       hbase-regionserver hbase-regionserver.sandbox-bigdata.net
+127.0.0.1       hbasemaster.sandbox.net hbasemaster
+127.0.0.1       regionserver.sandbox.net regionserver
 
 # hive
-127.0.0.1       postgresql postgresql.sandbox-bigdata.net
-127.0.0.1       hive-metastore hive-metastore.sandbox-bigdata.net
-127.0.0.1       hive-server hive-server.sandbox-bigdata.net
+127.0.0.1       postgresql.sandbox.net postgresql
+127.0.0.1       metastore.sandbox.net metastore
+127.0.0.1       hiveserver.sandbox.net hiveserver
+127.0.0.1	    tezui.sandbox.net tezui
 
 # spark
-127.0.0.1       spark-master spark-master.sandbox-bigdata.net
-127.0.0.1       spark-historyserver spark-historyserver.sandbox-bigdata.net
+127.0.0.1       sparkmaster.sandbox.net sparkmaster
+127.0.0.1       shs.sandbox.net shs
 
 # zeppelin
-127.0.0.1       zeppelin zeppelin.sandbox-bigdata.net
-127.0.0.1       nififlow nififlow.sandbox-bigdata.net
+127.0.0.1       zeppelin.sandbox.net zeppelin
+127.0.0.1       nififlow.sandbox.net nififlow
 
 # zookeeper
-127.0.0.1       zookeeper zookeeper.sandbox-bigdata.net
-127.0.0.1       kafka-broker kafka-broker.sandbox-bigdata.net
-127.0.0.1       schema-registry schema-registry.sandbox-bigdata.net
+127.0.0.1       zookeeper.sandbox.net zookeeper
+127.0.0.1       kafkabroker.sandbox.net kafkabroker
+127.0.0.1       schemaregistry.sandbox.net schemaregistry
 
 # airflow
-127.0.0.1       airflow-webserver airflow-webserver.sandbox-bigdata.net
+127.0.0.1       airflow-webserver.sandbox.net airflowwebserver
 
 # Monitoring Tools
-127.0.0.1       prometheus prometheus.sandbox-bigdata.net
-127.0.0.1       alert-manager alert-manager.sandbox-bigdata.net
-127.0.0.1       cadvisor cadvisor.sandbox-bigdata.net
-127.0.0.1       node-exporter node-exporter.sandbox-bigdata.net
-127.0.0.1       grafana grafana.sandbox-bigdata.net
-127.0.0.1       influxdb influxdb.sandbox-bigdata.net
-127.0.0.1       statsd-exporter statsd-exporter.sandbox-bigdata.net
-127.0.0.1       graphite-exporter graphite-exporter.sandbox-bigdata.net
-127.0.0.1       graphite graphite.sandbox-bigdata.net
+127.0.0.1       prometheus prometheus.sandbox.net
+127.0.0.1       alert-manager alert-manager.sandbox.net
+127.0.0.1       cadvisor cadvisor.sandbox.net
+127.0.0.1       node-exporter node-exporter.sandbox.net
+127.0.0.1       grafana grafana.sandbox.net
+127.0.0.1       influxdb influxdb.sandbox.net
+127.0.0.1       statsdexporter statsd-exporter.sandbox.net
+127.0.0.1       graphiteexporter graphite-exporter.sandbox.net
+127.0.0.1       graphite graphite.sandbox.net
 
 
 #
 172.18.0.1      sandbox-cluster-gateway
-192.168.1.120   hostmaster hostmaster.sandbox-bigdata.net
+192.168.1.120   hostmaster.sandbox.net hostmaster
 
 #
 192.168.1.103   sandbox-hdp.hortonworks.com
@@ -78,7 +79,7 @@
 
 
 # k8s cluster
-192.168.122.1   k8c1h0 k8c1h0.sandbox-bigdata.net
-192.168.122.23  k8c1m0 k8c1m0.sandbox-bigdata.net
-192.168.122.145	k8c1s1 k8c1s1.sandbox-bigdata.net
-192.168.122.204	k8c1s2 k8c1s2.sandbox-bigdata.net
+192.168.122.1   k8c1h0.sandbox.net k8c1h0
+192.168.122.23  k8c1m0.sandbox.net k8c1m0
+192.168.122.145	k8c1s1.sandbox.net k8c1s1
+192.168.122.204	k8c1s2.sandbox.net k8c1s2

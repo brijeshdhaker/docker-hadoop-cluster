@@ -3,7 +3,7 @@
 #
 # Docker network
 #
-docker network create -d bridge sandbox-bigdata.net
+docker network create -d bridge sandbox.net
 
 #
 # Linux Docker Volumes
