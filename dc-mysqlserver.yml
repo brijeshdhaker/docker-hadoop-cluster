@@ -12,7 +12,7 @@ services:
   mysqlserver:
     image: mysql/mysql-server:8.0.28
     container_name: mysqlserver
-    hostname: mysqlserver
+    hostname: mysqlserver.sandbox.net
     restart: always
     ports:
       - "3306:3306"
