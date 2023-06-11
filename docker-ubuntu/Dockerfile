@@ -28,7 +28,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 ENV PATH=$PATH:${JAVA_HOME}/bin
 
 RUN set -x && apt-get update && DEBIAN_FRONTEND=noninteractive && \
-    apt-get install -y --no-install-recommends sudo vim curl wget unzip grep sed gnupg net-tools netcat libsnappy-dev && \
+    apt-get install -y --no-install-recommends sudo vim curl wget unzip tar grep sed gnupg net-tools netcat libsnappy-dev && \
     apt-get install -y gcc && \
     apt-get install -y openjdk-8-jdk && \
     apt-get install -y openssh-server && \
