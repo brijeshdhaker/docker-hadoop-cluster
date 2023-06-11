@@ -22,7 +22,7 @@ if [ ! -f /hadoop/dfs/.already_formatted ]; then
   mkdir -p /hadoop/dfs/name
   mkdir -p /hadoop/dfs/secondary
 
-  $HADOOP_HOME/bin/hdfs --config $HADOOP_CONF_DIR namenode -format $CLUSTER_NAME
+  $HADOOP_HOME/bin/hdfs --config $HADOOP_CONF_DIR namenode -format $CLUSTER_NAME -force
   touch /hadoop/dfs/.already_formatted
 
 fi
