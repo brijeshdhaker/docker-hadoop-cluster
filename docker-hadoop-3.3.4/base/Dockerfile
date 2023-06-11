@@ -42,7 +42,7 @@ RUN set -x && \
     ln -s ${HADOOP_HOME}/etc/hadoop /etc/hadoop && chmod -Rf 777 /etc/hadoop && \
     chown -Rf hdfs:hadoop ${HADOOP_HOME} && chmod -Rf 777 ${HADOOP_HOME} && \
     mkdir -p $HADOOP_LOG_DIR && chmod -Rf 777 $HADOOP_LOG_DIR && chown -Rf hdfs:hadoop $HADOOP_LOG_DIR && \
-    mkdir -p $YARN_LOG_DIR && chmod -Rf 777 $YARN_LOG_DIR && chown -Rf hdfs:hadoop $YARN_LOG_DIR && \
+    mkdir -p $YARN_LOG_DIR && chmod -Rf 777 $YARN_LOG_DIR && chown -Rf yarn:hadoop $YARN_LOG_DIR && \
     chmod -Rf 777 /entrypoint.sh && chmod -Rf 777 /usr/bin/jsvc
 
 ENTRYPOINT ["/entrypoint.sh"]
