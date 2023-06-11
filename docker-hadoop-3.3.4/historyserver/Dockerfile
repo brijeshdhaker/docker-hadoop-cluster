@@ -9,12 +9,17 @@ MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
 HEALTHCHECK CMD curl -f http://localhost:19888/ || exit 1
 
-RUN mkdir -p /mr/history
-VOLUME /mr
-
 ADD docker-hadoop-3.3.4/historyserver/run.sh /run.sh
-RUN chmod a+x /run.sh
+RUN mkdir -p /mapred/history && \
+    chmod -Rf 777 /mapred/history && \
+    chown -Rf mapred:hadoop /mapred/history && \
+    chown mapred:hadoop /run.sh && chmod 775 /run.sh
+
+VOLUME /mapred
 
 EXPOSE 19888
+
+# Specify the User that the actual main process will run as
+USER mapred:hadoop
 
 CMD ["/run.sh"]
