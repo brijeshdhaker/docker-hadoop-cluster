@@ -5,6 +5,7 @@ target
 *.tgz
 *.tar
 *.jar
+*.war
 .classpath
 .project
 .idea

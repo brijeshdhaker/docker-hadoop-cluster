@@ -40,4 +40,4 @@ networks:
   default:
     external: true
     driver: bridge
-    name: bigdata.net
+    name: sandbox.net

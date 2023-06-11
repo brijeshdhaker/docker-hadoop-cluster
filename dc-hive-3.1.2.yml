@@ -11,10 +11,10 @@ services:
   #
   # Hive Server
   #
-  hive-metastore:
+  metastore:
     image: brijeshdhaker/hive:3.1.2
-    hostname: hive-metastore
-    container_name: hive-metastore
+    hostname: metastore.sandbox.net
+    container_name: metastore
     env_file:
       - envs/docker_hive.env
     command: /opt/hive/bin/hive --service metastore
@@ -29,10 +29,10 @@ services:
       - sandbox_tez_010:/opt/tez
 
   #
-  hive-server:
+  hiveserver:
     image: brijeshdhaker/hive:3.1.2
-    hostname: hive-server
-    container_name: hive-server
+    hostname: hiveserver.sandbox.net
+    container_name: hiveserver
     env_file:
       - envs/docker_hive.env
     environment:
@@ -63,4 +63,4 @@ networks:
   default:
     external: true
     driver: bridge
-    name: sandbox-bigdata.net
+    name: sandbox.net

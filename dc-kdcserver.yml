@@ -1,8 +1,11 @@
 #
-# docker volume create --name krb5_stash --opt type=none --opt device=/apps/hostpath/kerberos/stash --opt o=bind
-# docker volume create --name krb5_principal --opt type=none --opt device=/apps/hostpath/kerberos/principals --opt o=bind
+# docker volume create --name sandbox_krb5_stash --opt type=none --opt device=/apps/hostpath/kerberos/ --opt o=bind
+# docker volume create --name sandbox_krb5_principal --opt type=none --opt device=/apps/hostpath/kerberos/ --opt o=bind
+
 #
 # Based on https://github.com/ist-dsi/docker-kerberos
+#
+
 version: "3.9"
 services:
   #
@@ -11,8 +14,9 @@ services:
     hostname: 'kdcserver'
     container_name: kdcserver
     volumes:
-      # This is needed otherwise there won't be enough entropy to generate a new kerberos realm
-      - /dev/urandom:/dev/random
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+      - /dev/urandom:/dev/random      # This is needed otherwise there won't be enough entropy to generate a new kerberos realm
       - krb5_stash:/etc/krb5kdc
       - krb5_principal:/var/lib/krb5kdc/
     env_file:
@@ -31,6 +35,22 @@ services:
     env_file:
       - ./envs/docker_kerberos.env
 
+  #
+  workstation:
+    image: brijeshdhaker/ubuntu:22.04
+    hostname: 'workstation'
+    container_name: workstation
+    command: python3 -m http.server 8000
+    depends_on:
+      - kdcserver
+    volumes:
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
+    env_file:
+      - ./envs/docker_kerberos.env
+
+
 #
 volumes:
   #
@@ -47,4 +67,4 @@ networks:
   default:
     external: true
     driver: bridge
-    name: sandbox-bigdata.net
+    name: sandbox.net

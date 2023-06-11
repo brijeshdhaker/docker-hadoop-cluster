@@ -28,10 +28,10 @@ services:
   #
   # Hbase Server
   #
-  hbase-master:
+  hbasemaster:
     image: brijeshdhaker/hbase-master:2.4.9
-    hostname: hbase-master
-    container_name: hbase-master
+    hostname: hbasemaster.sandbox.net
+    container_name: hbasemaster
     environment:
       SERVICE_PRECONDITION: "namenode:9870 datanode:9864 zookeeper:2181"
     env_file:
@@ -44,10 +44,10 @@ services:
       - sandbox_base_path:/apps/sandbox
 
   #
-  hbase-region:
+  regionserver:
     image: brijeshdhaker/hbase-regionserver:2.4.9
-    container_name: hbase-regionserver
-    hostname: hbase-regionserver
+    container_name: regionserver
+    hostname: regionserver.sandbox.net
     env_file:
       - envs/docker_hbase.env
     environment:
@@ -78,4 +78,4 @@ networks:
   default:
     external: true
     driver: bridge
-    name: sandbox-bigdata.net
+    name: sandbox.net

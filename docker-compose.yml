@@ -187,11 +187,11 @@ services:
       - sandbox_hadoop_334:/opt/hadoop
       - sandbox_tez_010:/opt/tez
 
-  # Hive Server
-  tezui:
+  # Hive Tez UI
+  hive-tezui:
     image: brijeshdhaker/tezui:0.10.2
-    hostname: tezui
-    container_name: tezui
+    hostname: hivetezui
+    container_name: hivetezui
     environment:
       SERVICE_PRECONDITION: "namenode:9870 datanode:9864 hive-metastore:9083"
     ports:
@@ -324,4 +324,4 @@ networks:
   default:
     external: true
     driver: bridge
-    name: sandbox-bigdata.net
+    name: sandbox.net
