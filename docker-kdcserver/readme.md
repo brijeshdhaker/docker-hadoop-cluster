@@ -1,156 +1,113 @@
-====================================================
-==== Kerberos KDC and Kadmin ======================================================
-===================================================================================
-REALM: SANDBOX-BIGDATA.NET
-KADMIN_PRINCIPAL_FULL: kadmin/admin@SANDBOX-BIGDATA.NET
-KADMIN_PASSWORD: kadmin
+# 1. Add Principle
 
-===================================================================================
-==== /etc/krb5.conf ===============================================================
-===================================================================================
-[libdefaults]
-	default_realm = SANDBOX-BIGDATA.NET
-[realms]
-	SANDBOX-BIGDATA.NET = {
-		kdc_ports = 88,750
-		kadmind_port = 749
-		kdc = kdcserver
-		admin_server = kdcserver
-	}
+bash-3.00$ kadmin -p kadmin/admin@SANDBOX.NET
+kadmin:
 
-===================================================================================
-==== /etc/krb5kdc/kdc.conf ========================================================
-===================================================================================
-[realms]
-	SANDBOX-BIGDATA.NET = {
-		acl_file = /etc/krb5kdc/kadm5.acl
-		max_renewable_life = 7d 0h 0m 0s
-		supported_enctypes = aes256-cts-hmac-sha1-96:normal
-		default_principal_flags = +preauth
-	}
 
-===================================================================================
-==== /etc/krb5kdc/kadm5.acl =======================================================
-===================================================================================
-kadmin/admin@SANDBOX-BIGDATA.NET *
-noPermissions@SANDBOX-BIGDATA.NET X
+list_principals *
+getprinc kadmin/admin@SANDBOX.NET
+delete_principal
+change_password jdb
 
-===================================================================================
-==== Creating realm ===============================================================
-===================================================================================
-This script should be run on the master KDC/admin server to initialize
-a Kerberos realm.  It will ask you to type in a master key password.
-This password will be used to generate a key that is stored in
-/etc/krb5kdc/stash.  You should try to remember this password, but it
-is much more important that it be a strong password than that it be
-remembered.  However, if you lose the password and /etc/krb5kdc/stash,
-you cannot decrypt your Kerberos database.
-Loading random data
-Initializing database '/var/lib/krb5kdc/principal' for realm 'SANDBOX-BIGDATA.NET',
-master key name 'K/M@SANDBOX-BIGDATA.NET'
-You will be prompted for the database Master Password.
-It is important that you NOT FORGET this password.
-Enter KDC database master key:
-kdb5_util: Cannot open DB2 database '/var/lib/krb5kdc/principal': File exists while creating database '/var/lib/krb5kdc/principal'
-Re-enter KDC database master key to verify:
+add_principal root@SANDBOX.NET
+add_principal brijeshdhaker@SANDBOX.NET
 
-===================================================================================
-==== Creating default principals in the acl =======================================
-===================================================================================
-Adding kadmin/admin principal
-Authenticating as principal root/admin@SANDBOX-BIGDATA.NET with password.
-Principal "kadmin/admin@SANDBOX-BIGDATA.NET" deleted.
-Make sure that you have removed this principal from all ACLs before reusing.
+add_principal nn/namenode@SANDBOX.NET
+add_principal host/namenode@SANDBOX.NET
 
-No policy specified for kadmin/admin@SANDBOX-BIGDATA.NET; defaulting to no policy
-Authenticating as principal root/admin@SANDBOX-BIGDATA.NET with password.
-Principal "kadmin/admin@SANDBOX-BIGDATA.NET" created.
+add_principal dn/datanode@SANDBOX.NET
+add_principal host/datanode@SANDBOX.NET
 
-Adding noPermissions principal
-Authenticating as principal root/admin@SANDBOX-BIGDATA.NET with password.
-Principal "noPermissions@SANDBOX-BIGDATA.NET" deleted.
-Make sure that you have removed this principal from all ACLs before reusing.
+add_principal rm/resourcemanager@SANDBOX.NET
+add_principal host/resourcemanager@SANDBOX.NET
 
-No policy specified for noPermissions@SANDBOX-BIGDATA.NET; defaulting to no policy
-Authenticating as principal root/admin@SANDBOX-BIGDATA.NET with password.
-Principal "noPermissions@SANDBOX-BIGDATA.NET" created.
+add_principal nm/nodemanager@SANDBOX.NET
+add_principal host/nodemanager@SANDBOX.NET
 
-kadmind: starting...
-===================================================================================
-==== Kerberos KDC and Kadmin ======================================================
-===================================================================================
-REALM: SANDBOX-BIGDATA.NET
-KADMIN_PRINCIPAL_FULL: kadmin/admin@SANDBOX-BIGDATA.NET
-KADMIN_PASSWORD: kadmin
+add_principal jhs/historyserver@SANDBOX.NET
+add_principal host/historyserver@SANDBOX.NET
 
-===================================================================================
-==== /etc/krb5.conf ===============================================================
-===================================================================================
-[libdefaults]
-	default_realm = SANDBOX-BIGDATA.NET
-[realms]
-	SANDBOX-BIGDATA.NET = {
-		kdc_ports = 88,750
-		kadmind_port = 749
-		kdc = kdcserver
-		admin_server = kdcserver
-	}
+add_principal yts/_timelineserver@SANDBOX.NET
+add_principal host/timelineserver@SANDBOX.NET
 
-===================================================================================
-==== /etc/krb5kdc/kdc.conf ========================================================
-===================================================================================
-[realms]
-	SANDBOX-BIGDATA.NET = {
-		acl_file = /etc/krb5kdc/kadm5.acl
-		max_renewable_life = 7d 0h 0m 0s
-		supported_enctypes = aes256-cts-hmac-sha1-96:normal
-		default_principal_flags = +preauth
-	}
+add_principal gw/gateway@SANDBOX.NET
+add_principal host/gateway@SANDBOX.NET
 
-===================================================================================
-==== /etc/krb5kdc/kadm5.acl =======================================================
-===================================================================================
-kadmin/admin@SANDBOX-BIGDATA.NET *
-noPermissions@SANDBOX-BIGDATA.NET X
 
-===================================================================================
-==== Creating realm ===============================================================
-===================================================================================
-This script should be run on the master KDC/admin server to initialize
-a Kerberos realm.  It will ask you to type in a master key password.
-This password will be used to generate a key that is stored in
-/etc/krb5kdc/stash.  You should try to remember this password, but it
-is much more important that it be a strong password than that it be
-remembered.  However, if you lose the password and /etc/krb5kdc/stash,
-you cannot decrypt your Kerberos database.
-Loading random data
-Initializing database '/var/lib/krb5kdc/principal' for realm 'SANDBOX-BIGDATA.NET',
-master key name 'K/M@SANDBOX-BIGDATA.NET'
-You will be prompted for the database Master Password.
-It is important that you NOT FORGET this password.
-Enter KDC database master key:
-kdb5_util: Cannot open DB2 database '/var/lib/krb5kdc/principal': File exists while creating database '/var/lib/krb5kdc/principal'
-Re-enter KDC database master key to verify:
+# 1. Add Principle
 
-===================================================================================
-==== Creating default principals in the acl =======================================
-===================================================================================
-Adding kadmin/admin principal
-Authenticating as principal root/admin@SANDBOX-BIGDATA.NET with password.
-Principal "kadmin/admin@SANDBOX-BIGDATA.NET" deleted.
-Make sure that you have removed this principal from all ACLs before reusing.
+[root@test5~]#ktutil
 
-No policy specified for kadmin/admin@SANDBOX-BIGDATA.NET; defaulting to no policy
-Authenticating as principal root/admin@SANDBOX-BIGDATA.NET with password.
-Principal "kadmin/admin@SANDBOX-BIGDATA.NET" created.
+ktutil: add_entry -password -p brijeshdhaker/admin@SANDBOX.NET -k 1 -e des3-cbc-sha1-kd
+Password for brijeshdhaker/admin@SANDBOX.NET:
 
-Adding noPermissions principal
-Authenticating as principal root/admin@SANDBOX-BIGDATA.NET with password.
-Principal "noPermissions@SANDBOX-BIGDATA.NET" deleted.
-Make sure that you have removed this principal from all ACLs before reusing.
+ktutil: add_entry -password -p brijeshdhaker/admin@SANDBOX.NET -k 1 -e arcfour-hmac-md5
+Password for brijeshdhaker/admin@SANDBOX.NET:
 
-No policy specified for noPermissions@SANDBOX-BIGDATA.NET; defaulting to no policy
-Authenticating as principal root/admin@SANDBOX-BIGDATA.NET with password.
-Principal "noPermissions@SANDBOX-BIGDATA.NET" created.
+ktutil: add_entry -password -p brijeshdhaker/admin@SANDBOX.NET -k 1 -e des-hmac-sha1
+Password for brijeshdhaker/admin@SANDBOX.NET:
 
-kadmind: starting...
+ktutil: add_entry -password -p brijeshdhaker/admin@SANDBOX.NET -k 1 -e des-cbc-md5
+Password for brijeshdhaker/admin@SANDBOX.NET:
+
+ktutil: add_entry -password -p brijeshdhaker/admin@SANDBOX.NET -k 1 -e des-cbc-md4
+Password for brijeshdhaker/admin@SANDBOX.NET:
+
+# 3. Write Keytab 
+ktutil
+
+add_entry -password -p root/admin@SANDBOX.NET -k 1 -f
+add_entry -password -p brijeshdhaker/admin@SANDBOX.NET -k 1 -f
+wkt /etc/security/keytab/admins.keytab   	-- password admin
+
+add_entry -password -p nn/namenode@SANDBOX.NET -k 1 -f
+add_entry -password -p host/namenode@SANDBOX.NET -k 1 -f
+wkt /etc/security/keytab/nn.service.keytab	-- password nn
+
+add_entry -password -p dn/datanode@SANDBOX.NET -k 1 -f
+add_entry -password -p host/datanode@SANDBOX.NET -k 1 -f
+wkt /etc/security/keytab/dn.service.keytab  -- password dn
+
+add_entry -password -p rm/resourcemanager@SANDBOX.NET -k 1 -f
+add_entry -password -p host/resourcemanager@SANDBOX.NET -k 1 -f
+wkt /etc/security/keytab/rm.service.keytab  -- password rm
+
+add_entry -password -p nm/nodemanager@SANDBOX.NET -k 1 -f
+add_entry -password -p host/nodemanager@SANDBOX.NET -k 1 -f
+wkt /etc/security/keytab/nm.service.keytab 		-- password rm
+
+add_entry -password -p jhs/historyserver@SANDBOX.NET -k 1 -f
+add_entry -password -p host/historyserver@SANDBOX.NET -k 1 -f
+wkt /etc/security/keytab/jhs.service.keytab 	-- password rm
+
+add_entry -password -p yts/timelineserver@SANDBOX.NET -k 1 -f
+add_entry -password -p host/timelineserver@SANDBOX.NET -k 1 -f
+wkt /etc/security/keytab/yts.service.keytab 	-- password rm
+
+add_entry -password -p gw/gateway@SANDBOX.NET -k 1 -f
+add_entry -password -p host/gateway@SANDBOX.NET -k 1 -f
+wkt /etc/security/keytab/gw.service.keytab 		-- password rm
+
+HTTP/namenode@SANDBOX.NET
+HTTP/datanode@SANDBOX.NET
+
+
+#
+kinit -k -t /etc/kerberos/keytabs/root.keytab root@SANDBOX.NET
+kinit -k -t /etc/kerberos/keytabs/brijeshdhaker.keytab brijeshdhaker/admin@SANDBOX.NET
+
+# OS Users
+klist -e -k -t /etc/kerberos/keytabs/root.keytab
+klist -e -k -t /etc/kerberos/keytabs/brijeshdhaker.keytab
+klist -e -k -t /etc/kerberos/keytabs/yarn.keytab
+klist -e -k -t /etc/kerberos/keytabs/hdfs.keytab
+klist -e -k -t /etc/kerberos/keytabs/mapred.keytab
+
+# Services
+klist -e -k -t /etc/kerberos/keytabs/hdfs.service.keytab
+klist -e -k -t /etc/kerberos/keytabs/yarn.service.keytab
+klist -e -k -t /etc/kerberos/keytabs/mapred.service.keytab
+klist -e -k -t /etc/kerberos/keytabs/host.service.keytab
+klist -e -k -t /etc/kerberos/keytabs/HTTP.service.keytab
+
+# Services
