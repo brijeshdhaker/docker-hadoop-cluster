@@ -11,7 +11,6 @@ MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 ENV HADOOP_VERSION=3.3.4
 ENV BASE_DIR=/opt
 ENV HADOOP_HOME=$BASE_DIR/hadoop
-ENV JSVC_HOME=$BASE_DIR/hadoop
 ENV HADOOP_CONF_DIR=/etc/hadoop
 ENV PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin
 ENV HADOOP_LOG_DIR=${HADOOP_LOG_DIR:-"/var/log/hadoop"}
@@ -30,20 +29,20 @@ ENV YARN_LOG_DIR=${YARN_LOG_DIR:-"/var/log/yarn"}
 #    && rm /tmp/hadoop.tar.gz*
 #
 
-ADD resources/tars/hadoop-3.3.4.tar.gz ${BASE_DIR}/
+#
+ADD resources/bin/jsvc /usr/bin/jsvc
 
+#
+ADD resources/tars/hadoop-3.3.4.tar.gz ${BASE_DIR}/
 RUN mv -f ${BASE_DIR}/hadoop-3.3.4 ${BASE_DIR}/hadoop
 
-ADD docker-hadoop-3.3.4/base/hadoop-env.sh ${HADOOP_HOME}/etc/hadoop/hadoop-env.sh
-ADD docker-hadoop-3.3.4/base/core-site.xml ${HADOOP_HOME}/etc/hadoop/core-site.xml
-ADD docker-hadoop-3.3.4/base/jsvc ${HADOOP_HOME}/jsvc
 ADD docker-hadoop-3.3.4/base/entrypoint.sh /entrypoint.sh
 
 RUN set -x && \
-    ln -s ${HADOOP_HOME}/etc/hadoop /etc/hadoop && chmod -Rf 775 /etc/hadoop && \
-    chown -Rf hdfs:hadoop ${HADOOP_HOME} && chmod -Rf 775 ${HADOOP_HOME} && \
-    mkdir -p $HADOOP_LOG_DIR && chmod -Rf 775 $HADOOP_LOG_DIR && chown -Rf hdfs:hadoop $HADOOP_LOG_DIR && \
-    mkdir -p $YARN_LOG_DIR && chmod -Rf 775 $YARN_LOG_DIR && chown -Rf hdfs:hadoop $YARN_LOG_DIR && \
-    chmod -Rf 755 /entrypoint.sh
+    ln -s ${HADOOP_HOME}/etc/hadoop /etc/hadoop && chmod -Rf 777 /etc/hadoop && \
+    chown -Rf hdfs:hadoop ${HADOOP_HOME} && chmod -Rf 777 ${HADOOP_HOME} && \
+    mkdir -p $HADOOP_LOG_DIR && chmod -Rf 777 $HADOOP_LOG_DIR && chown -Rf hdfs:hadoop $HADOOP_LOG_DIR && \
+    mkdir -p $YARN_LOG_DIR && chmod -Rf 777 $YARN_LOG_DIR && chown -Rf hdfs:hadoop $YARN_LOG_DIR && \
+    chmod -Rf 777 /entrypoint.sh && chmod -Rf 777 /usr/bin/jsvc
 
 ENTRYPOINT ["/entrypoint.sh"]
