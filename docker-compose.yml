@@ -221,11 +221,12 @@ services:
       - ./conf/kerberos:/etc/kerberos
 
   # Hive Tez UI
-  hive-tezui:
+  hivetezui:
     image: brijeshdhaker/tezui:0.10.2
     container_name: hivetezui
     hostname: hivetezui.sandbox.net
     environment:
+      KRB5_CONFIG: "/etc/kerberos/krb5conf"
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870 metastore.sandbox.net:9083"
     ports:
       - "9999:9999"
@@ -253,7 +254,6 @@ services:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
       - ./conf/kerberos:/etc/kerberos
-      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - ./conf/spark/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf
 
   #
@@ -278,8 +278,10 @@ services:
       - sandbox_spark_340:/opt/spark
       - sandbox_maven_363:/opt/maven-3.6.3
       - ./conf/kerberos:/etc/kerberos
-      - ./conf/gateway/sandbox.profile:/home/brijeshdhaker/sandbox.profile
-      - ./conf/gateway/settings.xml:/home/brijeshdhaker/.m2/settings.xml
+      - ./conf/profiles/root.profile:/root/root.profile
+      - ./conf/profiles/sandbox.profile:/home/sandbox/sandbox.profile
+      - ./conf/profiles/brijeshdhaker.profile:/home/brijeshdhaker/brijeshdhaker.profile
+      - ./conf/maven/settings.xml:/home/brijeshdhaker/.m2/settings.xml
     environment:
       CLUSTER_NAME: "docker-sandbox"
       KRB5_CONFIG: "/etc/kerberos/krb5.conf"
@@ -308,6 +310,7 @@ services:
       - sandbox_spark_340:/opt/spark
       - sandbox_zeppelin:/opt/zeppelin
       - sandbox_zeppelin_notebook:/opt/notebook
+      - ./conf/kerberos:/etc/kerberos
 #      - sandbox_zeppelin_conf:/opt/zeppelin/conf
 #      - sandbox_m2:/opt/zeppelin/.m2
 #      - sandbox_ivy2:/opt/zeppelin/.ivy2
