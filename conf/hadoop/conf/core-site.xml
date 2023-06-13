@@ -14,76 +14,45 @@
 
     [2:$1%$2] translates myusername/admin@SANDBOX.NET to “myusername%admin"
 
-    CDP
-        RULE:[2:$1/$2@$0](nn/.*@.*IBM.COM)s/.*/hdfs/
-        RULE:[2:$1/$2@$0](dn/.*@.*IBM.COM)s/.*/hdfs/
-        RULE:[1:$1@$0](ces-<clustername>@IBM.COM)s/.*/hdfs/
-        RULE:[1:$1@$0](.*@IBM.COM)s/@.*//
-    IBM
-        RULE:[2:$1/$2@$0](nn/.*@.*IBM.COM)s/.*/hdfs/
-        RULE:[2:$1/$2@$0](dn/.*@.*IBM.COM)s/.*/hdfs/
-        RULE:[2:$1/$2@$0](nm/.*@.*IBM.COM)s/.*/yarn/
-        RULE:[2:$1/$2@$0](rm/.*@.*IBM.COM)s/.*/yarn/
-        RULE:[2:$1/$2@$0](jhs/.*@.*IBM.COM)s/.*/mapred/
-        RULE:[1:$1@$0](ces-<clustername>@IBM.COM)s/.*/hdfs/
-
     -->
 
     <property>
         <name>hadoop.security.auth_to_local</name>
         <value>
-            <!-- CDP -->
-            RULE:[2:$1/$2@$0]([*]/.*@SANDBOX\.NET)s/.*/hdfs/
-            RULE:[2:$1/$2@$0](hdfs/.*@.*SANDBOX\.NET)s/.*/hdfs/
-
-            <!-- [1:$1@$0] translates myusername@SANDBOX.NET to myusername@SANDBOX.NET -->
-            RULE:[1:$1@$0](brijeshdhaker@SANDBOX\.NET)s/.*/brijeshdhaker/
-
-            <!-- IBM -->
-            RULE:[2:$1/$2@$0](yarn/.*@.*SANDBOX\.NET)s/.*/yarn/
-            RULE:[2:$1/$2@$0](mapred/.*@.*SANDBOX\.NET)s/.*/mapred/
-            RULE:[1:$1@$0](.*@SANDBOX\.NET)s/@.*//
+        	RULE:[1:$1]/L
+			RULE:[2:$1]/L
+			RULE:[2:$1;$2](^.*;admin$)s/;admin$///L
+			RULE:[2:$1;$2](^.*;guest$)s/;guest$//g/L
             DEFAULT
         </value>
-	</property>
+    </property>
 
-    <property><name>hadoop.security.authorization</name><value>true</value></property>
-    <property><name>hadoop.security.authentication</name><value>kerberos</value></property>
-    <property><name>hadoop.http.authentication.kerberos.keytab</name><value>/etc/kerberos/keytabs/spnego.service.keytab</value></property>
-    <property><name>hadoop.http.authentication.type</name><value>kerberos</value></property>
-    <property><name>io.compression.codecs</name><value>org.apache.hadoop.io.compress.SnappyCodec</value></property>
-    <property><name>fs.defaultFS</name><value>hdfs://namenode.sandbox.net:9000</value></property>
-    <property><name>hadoop.http.authentication.kerberos.principal</name><value>HTTP/_HOST@SANDBOX.NET</value></property>
-    <property><name>hadoop.http.staticuser.user</name><value>root</value></property>
-    <property><name>hadoop.rpc.protection</name><value>authentication</value></property>
-
-    <!--
-    <property><name>hadoop.proxyuser.yarn.groups</name><value>*</value></property>
-    <property><name>hadoop.proxyuser.yarn.hosts</name><value>*</value></property>
-
-    <property><name>hadoop.proxyuser.mapred.groups</name><value>*</value></property>
-    <property><name>hadoop.proxyuser.mapred.hosts</name><value>*</value></property>
-
-    <property><name>hadoop.proxyuser.hive.groups</name><value>*</value></property>
-    <property><name>hadoop.proxyuser.hive.hosts</name><value>*</value></property>
-
-    <property><name>hadoop.proxyuser.root.groups</name><value>*</value></property>
-    <property><name>hadoop.proxyuser.root.hosts</name><value>*</value></property>
-
-    <property><name>hadoop.proxyuser.brijeshdhaker.groups</name><value>*</value></property>
-    <property><name>hadoop.proxyuser.brijeshdhaker.hosts</name><value>*</value></property>
-
-    <property><name>hadoop.proxyuser.hbase.groups</name><value>*</value></property>
-    <property><name>hadoop.proxyuser.hbase.hosts</name><value>*</value></property>
-
-    <property><name>hadoop.proxyuser.zeppelin.groups</name><value>*</value></property>
-    <property><name>hadoop.proxyuser.zeppelin.hosts</name><value>*</value></property>
-
-    <property><name>hadoop.proxyuser.spark.groups</name><value>*</value></property>
-    <property><name>hadoop.proxyuser.spark.hosts</name><value>*</value></property>
-
-    <property><name>hadoop.proxyuser.hadoop.groups</name><value>*</value></property>
-    <property><name>hadoop.proxyuser.hadoop.hosts</name><value>*</value></property>
-    -->
+	<property><name>hadoop.security.authorization</name><value>true</value></property>
+	<property><name>hadoop.proxyuser.yarn.groups</name><value>*</value></property>
+	<property><name>hadoop.proxyuser.mapred.groups</name><value>*</value></property>
+	<property><name>io.compression.codecs</name><value>org.apache.hadoop.io.compress.SnappyCodec</value></property>
+	<property><name>fs.defaultFS</name><value>hdfs://namenode.sandbox.net:9000</value></property>
+	<property><name>hadoop.proxyuser.spark.hosts</name><value>*</value></property>
+	<property><name>hadoop.proxyuser.yarn.hosts</name><value>*</value></property>
+	<property><name>hadoop.http.authentication.kerberos.principal</name><value>HTTP/_HOST@SANDBOX.NET</value></property>
+	<property><name>hadoop.proxyuser.hive.groups</name><value>*</value></property>
+	<property><name>hadoop.proxyuser.root.groups</name><value>*</value></property>
+	<property><name>hadoop.proxyuser.hive.hosts</name><value>*</value></property>
+	<property><name>hadoop.proxyuser.hbase.hosts</name><value>*</value></property>
+	<property><name>hadoop.http.authentication.kerberos.keytab</name><value>/etc/kerberos/keytabs/spnego.service.keytab</value></property>
+	<property><name>hadoop.proxyuser.brijeshdhaker.groups</name><value>*</value></property>
+	<property><name>hadoop.security.authentication</name><value>kerberos</value></property>
+	<property><name>hadoop.proxyuser.brijeshdhaker.hosts</name><value>*</value></property>
+	<property><name>hadoop.rpc.protection</name><value>authentication</value></property>
+	<property><name>hadoop.http.staticuser.user</name><value>hdfs</value></property>
+	<property><name>hadoop.proxyuser.hdfs.groups</name><value>*</value></property>
+	<property><name>hadoop.proxyuser.hbase.groups</name><value>*</value></property>
+	<property><name>hadoop.proxyuser.zeppelin.hosts</name><value>*</value></property>
+	<property><name>hadoop.proxyuser.zeppelin.groups</name><value>*</value></property>
+	<property><name>hadoop.proxyuser.spark.groups</name><value>*</value></property>
+	<property><name>hadoop.http.authentication.type</name><value>kerberos</value></property>
+	<property><name>hadoop.proxyuser.mapred.hosts</name><value>*</value></property>
+	<property><name>hadoop.proxyuser.root.hosts</name><value>*</value></property>
+	<property><name>hadoop.proxyuser.hdfs.hosts</name><value>*</value></property>
 
 </configuration>

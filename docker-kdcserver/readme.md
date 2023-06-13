@@ -47,10 +47,13 @@ Password for brijeshdhaker@SANDBOX.NET:
 ktutil
 
 add_entry -password -p root@SANDBOX.NET -k 1 -f
-wkt /etc/kerberos/keytabs/root.keytab   	-- password root
+wkt /etc/kerberos/keytabs/root.keytab  	-- password root
 
 add_entry -password -p brijeshdhaker@SANDBOX.NET -k 1 -f
 wkt /etc/kerberos/keytabs/brijeshdhaker.keytab   	-- password brijeshdhaker
+
+add_entry -password -p hive@SANDBOX.NET -k 1 -f
+wkt /etc/kerberos/keytabs/hive.keytab
 
 #
 kinit -k -t /etc/kerberos/keytabs/root.keytab root@SANDBOX.NET

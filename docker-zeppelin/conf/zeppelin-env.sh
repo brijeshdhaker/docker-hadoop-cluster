@@ -76,7 +76,7 @@ export DOCKER_TIME_ZONE="Asia/Kolkata" # Set to the same time zone as the zeppel
 ## Use provided spark installation ##
 ## defining SPARK_HOME makes Zeppelin run spark interpreter process using spark-submit
 ##
-export SPARK_HOME=/opt/spark-3.1.2                    # (required) When it is defined, load it instead of Zeppelin embedded Spark libraries
+export SPARK_HOME=/opt/spark                    # (required) When it is defined, load it instead of Zeppelin embedded Spark libraries
 # export SPARK_SUBMIT_OPTIONS                   # (optional) extra options to pass to spark submit. eg) "--driver-memory 512M --executor-memory 1G".
 export SPARK_APP_NAME=zeppelin-app              # (optional) The name of spark application.
 export SPARK_CONF_DIR=${SPARK_HOME}/conf        # (optional) In the zeppelin interpreter on docker mode, Need to set the local spark conf folder path
@@ -86,7 +86,7 @@ export SPARK_CONF_DIR=${SPARK_HOME}/conf        # (optional) In the zeppelin int
 ## however, it is not encouraged when you can define SPARK_HOME
 ##
 # Options read in YARN client mode
-export HADOOP_CONF_DIR=/opt/hadoop-3.2.1/etc/hadoop                        # yarn-site.xml is located in configuration directory in HADOOP_CONF_DIR.
+export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop                        # yarn-site.xml is located in configuration directory in HADOOP_CONF_DIR.
 # Pyspark (supported with Spark 1.2.1 and above)
 # To configure pyspark, you need to set spark distribution's path to 'spark.home' property in Interpreter setting screen in Zeppelin GUI
 #export PYSPARK_PYTHON=/opt/conda/bin/python                         # path to the python command. must be the same path on the driver(Zeppelin) and all workers.

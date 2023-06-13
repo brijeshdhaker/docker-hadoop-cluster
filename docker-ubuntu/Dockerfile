@@ -11,18 +11,10 @@ MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 ARG hadoop_gid=10001
 ARG hdfs_gid=10002
 ARG mapred_gid=10003
-
-# UID
-ARG hadoop_uid=10001
-ARG hdfs_uid=10002
-ARG hive_uid=10003
-ARG yarn_uid=10004
+ARG bduser_gid=10004
 
 #
-ARG PASSWD="Accoo7@k47"
-
-#
-ENV MULTIHOMED_NETWORK=1
+ENV MULTIHOMED_NETWORK=2
 ENV USER=root
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 ENV PATH=$PATH:${JAVA_HOME}/bin
@@ -48,10 +40,9 @@ RUN set -x && \
     groupadd -f -r -g ${hadoop_gid} hadoop && \
     groupadd -f -r -g ${hdfs_gid} hdfs && \
     groupadd -f -r -g ${mapred_gid} mapred && \
-    useradd -m -s /bin/bash brijeshdhaker && \
-    usermod -aG sudo brijeshdhaker && \
-    echo 'brijeshdhaker:Accoo7@k47' | chpasswd && \
-    mkdir -p /home/brijeshdhaker/.ssh && \
+    groupadd -f -r -g ${bduser_gid} bduser && \
+    useradd -m -s /bin/bash brijeshdhaker && usermod -aG sudo brijeshdhaker && \
+    echo 'brijeshdhaker:Accoo7@k47' | chpasswd && mkdir -p /home/brijeshdhaker/.ssh && \
     useradd -m -s /bin/bash -g ${hadoop_gid} -G users,sudo,hadoop hdfs && \
     useradd -m -s /bin/bash -g ${hadoop_gid} -G users,sudo,hadoop yarn && \
     useradd -m -s /bin/bash -g ${hadoop_gid} -G users,sudo,hadoop mapred && \
@@ -67,11 +58,9 @@ COPY docker-ubuntu/krb5.conf /etc/krb5.conf
 ADD docker-ubuntu/user-keys /home/brijeshdhaker/.ssh/
 COPY docker-ubuntu/user-keys/id_rsa.pub /home/brijeshdhaker/.ssh/authorized_keys
 
-
 # CMD ["/usr/sbin/sshd", "-D"]
 RUN set -x && \
-    chown -Rf brijeshdhaker:brijeshdhaker /home/brijeshdhaker/.ssh && \
-    chmod 600 /home/brijeshdhaker/.ssh/authorized_keys && \
+    chown -Rf brijeshdhaker:brijeshdhaker /home/brijeshdhaker/.ssh && chmod 600 /home/brijeshdhaker/.ssh/authorized_keys && \
     mkdir /var/run/sshd && \
     sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
     sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd && \

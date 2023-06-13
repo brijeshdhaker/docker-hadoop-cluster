@@ -11,25 +11,11 @@ $SPARK_HOME/bin/spark-class org.apache.spark.deploy.worker.Worker --webui-port 8
 
 hive --hiveconf hive.root.logger=INFO,console --remote-host=localhost
 
+### -- JDBC 
 jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET
-beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@CLOUDERA.SITE"
 
-#
-#
-#
-#Hadoop Configurations
-export HADOOP_HOME=/opt/hadoop-3.2.1
-export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
-export HADOOP_MAPRED_HOME=${HADOOP_HOME}
-export HADOOP_COMMON_HOME=${HADOOP_HOME}
-export HADOOP_HDFS_HOME=${HADOOP_HOME}
-export YARN_HOME=${HADOOP_HOME}
-export PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin
-
-#Hive Configurations
-export HIVE_HOME=/opt/hive-3.1.2
-export PATH=$PATH:$HIVE_HOME/sbin:$HIVE_HOME/bin
-export CLASSPATH=$CLASSPATH:$HADOOP_HOME/lib/*:$HIVE_HOME/lib/*
+### -- Beeline
+$HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET"
 
 #
 # Setup Metastore Database
@@ -41,19 +27,16 @@ echo "GRANT ALL PRIVILEGES ON DATABASE hive_store TO hive_admin;" | psql -U post
 #
 #
 #
-export HADOOP_HOME=/opt/hadoop-3.2.1
+export HADOOP_HOME=/opt/hadoop
 $HADOOP_HOME/bin/hdfs dfs -mkdir -p /user/hive/warehouse
 $HADOOP_HOME/bin/hdfs dfs -mkdir -p /user/tmp
 $HADOOP_HOME/bin/hdfs dfs -chmod g+w /user/tmp
 $HADOOP_HOME/bin/hdfs dfs -chmod g+w /user/hive/warehouse
 
 
-schematool -initSchema -dbType derby
-
-cd $HIVE_HOME
-$ bin/schematool -initSchema -dbType postgres
-
-$ bin/hive --version
+$ $HIVE_HOME/bin/schematool -initSchema -dbType derby
+$ $HIVE_HOME/bin/schematool -initSchema -dbType postgres
+$ $HIVE_HOME/bin/hive --version
 
 #
 #
@@ -68,7 +51,7 @@ $HIVE_HOME/bin/beeline -u jdbc:hive2://localhost:10000 scott tiger
 
 $HIVE_HOME/bin/beeline -u jdbc:hive2://hiveserver.sandbox.net:10000 scott tiger
 
-bin/beeline -u jdbc:hive2:// -n scott -p tiger
+$HIVE_HOMEbin/beeline -u jdbc:hive2:// -n scott -p tiger
 
 beeline>!connect jdbc:hive2:// -n scott -p tiger
 (or)
@@ -93,13 +76,13 @@ https://cwiki.apache.org/confluence/display/Hive/Home#Home-HiveDocumentation
 #
 # Linux 
 #
-export SPARK_HOME=/opt/spark-3.1.2
+export SPARK_HOME=/opt/spark
 $SPARK_HOME/bin/beeline -u jdbc:hive2://hiveserver.sandbox.net:10000 scott tiger
 
 #
 # HDP Sandbox
 #
-$ beeline -u jdbc:hive2://sandbox-hdp.hortonworks.com:10000 -n hive -p
+$ $HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET"
 
 CREATE TABLE students (name VARCHAR(64), age INT, gpa DECIMAL(3,2));
 INSERT INTO TABLE students VALUES ('Brijesh Dhaker', 35, 1.28), ('Tejas Dhaker', 32, 2.32);

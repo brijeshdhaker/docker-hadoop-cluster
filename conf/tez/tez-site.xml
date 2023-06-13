@@ -4,13 +4,13 @@
   
   <property>
     <name>tez.lib.uris</name>
-    <value>hdfs://namenode:9000/archives/tez.tar.gz</value>
+    <value>hdfs://namenode.sandbox.net:9000/archives/tez.tar.gz</value>
     <type>string</type>
   </property>
   
   <property>
     <name>tez.tez-ui.history-url.base</name>
-    <value>http://hivetezui:9999</value>
+    <value>http://http://hivetezui.sandbox.net:9999</value>
   </property>
   
   <property>

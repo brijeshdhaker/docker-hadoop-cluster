@@ -55,7 +55,7 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 # Location of Hadoop.  By default, Hadoop will attempt to determine
 # this location based upon its execution path.
-# export HADOOP_HOME=
+export HADOOP_HOME=/opt/hadoop
 
 # Location of Hadoop's configuration information.  i.e., where this
 # file is living. If this is not defined, Hadoop will attempt to
@@ -65,7 +65,7 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 # /etc/profile.d or equivalent.  Some options (such as
 # --config) may react strangely otherwise.
 #
-# export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
+export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
 
 # The maximum amount of heap to use (Java -Xmx).  If no unit
 # is provided, it will be converted to MB.  Daemons will
@@ -100,7 +100,7 @@ export HADOOP_OS_TYPE=${HADOOP_OS_TYPE:-$(uname -s)}
 # and clients (i.e., hdfs dfs -blah).  These get appended to HADOOP_OPTS for
 # such commands.  In most cases, # this should be left empty and
 # let users supply it on the command line.
-export HADOOP_CLIENT_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
+export HADOOP_CLIENT_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
 
 #
 # A note about classpaths.
@@ -184,7 +184,7 @@ export HADOOP_CLIENT_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
 # Where (primarily) daemon log files are stored.
 # ${HADOOP_HOME}/logs by default.
 # Java property: hadoop.log.dir
-# export HADOOP_LOG_DIR=${HADOOP_HOME}/logs
+export HADOOP_LOG_DIR=/var/log/hadoop
 
 # A string representing this instance of hadoop. $USER by default.
 # This is used in writing log and pid files, so keep that in mind!
@@ -211,7 +211,7 @@ export HADOOP_DAEMON_ROOT_LOGGER=INFO,RFA
 # the Java property (i.e., -Dhadoop.security.logger=foo). (Note that the
 # defaults for the NN and 2NN override this by default.)
 # Java property: hadoop.security.logger
-export HADOOP_SECURITY_LOGGER=INFO,NullAppender
+# export HADOOP_SECURITY_LOGGER=INFO,NullAppender
 
 # Default process priority level
 # Note that sub-processes will also run at this level!
@@ -428,12 +428,8 @@ export HDFS_DATANODE_SECURE_EXTRA_OPTS="-jvm server"
 # By default, Hadoop uses jsvc which needs to know to launch a
 # server jvm.
 export HADOOP_REGISTRYDNS_SECURE_EXTRA_OPTS="-jvm server"
-
 #
-JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export KRB5_CONFIG="/etc/kerberos/krb5.conf"
+export KINIT_KEYTAB=/etc/kerberos/keytab/hdfs.service.keytab
+export KINIT_PRINCIPAL=hdfs/_HOST@SANDBOX.NET
 
-#
-KINIT_KEYTAB=/etc/kerberos/keytab/hdfs.service.keytab
-
-#
-KINIT_PRINCIPAL=hdfs/_HOST@SANDBOX.NET

@@ -34,7 +34,7 @@
 127.0.0.1       postgresql.sandbox.net postgresql
 127.0.0.1       metastore.sandbox.net metastore
 127.0.0.1       hiveserver.sandbox.net hiveserver
-127.0.0.1	    tezui.sandbox.net tezui
+127.0.0.1	    hivetezui.sandbox.net hivetezui
 
 # spark
 127.0.0.1       sparkmaster.sandbox.net sparkmaster

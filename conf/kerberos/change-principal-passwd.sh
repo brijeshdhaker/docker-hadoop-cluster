@@ -1,7 +1,9 @@
 #!/bin/bash
 #
 #
-KADMIN_PRINCIPAL_FULL=$KADMIN_PRINCIPAL@$REALM
+KADMIN_PRINCIPAL_FULL=kadmin/admin@SANDBOX.NET
+KADMIN_PASSWORD=kadmin
+KUSERS_PASSWORD=kuser
 #
 #
 OS_USERS=("root" "brijeshdhaker" "hdfs" "yarn" "mapred" "hive" "spark")
