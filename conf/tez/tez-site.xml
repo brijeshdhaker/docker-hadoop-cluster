@@ -10,7 +10,7 @@
   
   <property>
     <name>tez.tez-ui.history-url.base</name>
-    <value>http://http://hivetezui.sandbox.net:9999</value>
+    <value>http://hivetezui.sandbox.net:9999</value>
   </property>
   
   <property>
