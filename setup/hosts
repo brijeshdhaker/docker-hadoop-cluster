@@ -38,7 +38,7 @@
 
 # spark
 127.0.0.1       sparkmaster.sandbox.net sparkmaster
-127.0.0.1       shs.sandbox.net shs
+127.0.0.1       sparkhistory.sandbox.net sparkhistory
 
 # zeppelin
 127.0.0.1       zeppelin.sandbox.net zeppelin
