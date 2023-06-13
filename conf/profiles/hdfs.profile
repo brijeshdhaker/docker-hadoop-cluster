@@ -47,7 +47,11 @@ fi
 #
 # Kerberos
 #
-KRB5_CONFIG=/etc/krb5.conf
-kinit -k -t /etc/kerberos/keytabs/brijeshdhaker.keytab brijeshdhaker@SANDBOX.NET
+KRB5_CONFIG=/etc/kerberos/krb5.conf
+kinit -k -t /etc/kerberos/keytabs/hdfs.keytab hdfs@SANDBOX.NET
 
 #
+#
+#
+HADOOP_CLIENT_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
+YARN_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
