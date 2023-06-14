@@ -2,37 +2,45 @@
 # Spark Image for Kubernetes
 #
 # cd $SPARK_HOME
-# docker build -t brijeshdhaker/spark:3.1.2 -f kubernetes/dockerfiles/spark/Dockerfile .
-# docker push brijeshdhaker/spark:3.1.2
+# docker build -t apache/spark:3.1.2 -f kubernetes/dockerfiles/spark/Dockerfile .
+# docker push apache/spark:3.1.2
 #
 
 #
-# docker build -t brijeshdhaker/spark:3.1.2-standalone -f docker-spark/Dockerfile .
-# docker push docker.io/brijeshdhaker/spark:3.1.2-standalone
+# docker build -t brijeshdhaker/spark:3.4.0 -f docker-spark/Dockerfile .
+# docker push docker.io/brijeshdhaker/spark:3.1.2
 #
 
-FROM brijeshdhaker/spark:3.1.2
+FROM brijeshdhaker/ubuntu:22.04
 
+ARG spark_gid=185
 ARG spark_uid=185
-ARG root_uid=0
 
-USER ${root_uid}
-
-#
-# Fix the value of PYTHONHASHSEED
 # Note: this is needed when you use Python 3.3 or greater
+ENV PYTHONHASHSEED=1
+ENV SPARK_VERSION=3.4.0
+ENV BASE_DIR=/opt
+ENV SPARK_HOME=$BASE_DIR/spark
+ENV SPARK_CONF_DIR=$SPARK_HOME/conf
+ENV PATH=$PATH:${SPARK_HOME}/bin:${SPARK_HOME}/sbin
+ENV SPARK_LOG_DIR=${SPARK_LOG_DIR:-"/var/log/spark"}
+ENV SPARK_WORKLOAD=${SPARK_WORKLOAD:-"master"}
+
+USER root
 #
-ENV PYTHONHASHSEED=1 \
-SPARK_WORKLOAD="master"
+COPY resources/tars/spark-3.4.0-bin-hadoop3.tgz /opt/spark-3.4.0-bin-hadoop3.tgz
 
 # Add Dependencies for PySpark
-RUN apt-get update && \
-    apt-get install -y curl netcat vim wget ssh net-tools &&  \
+RUN set -x && groupadd --system -g ${spark_gid} spark && useradd -m -s /bin/bash -g ${spark_gid} -G users,sudo,spark spark && \
+    mkdir -p  ${SPARK_HOME} && tar --strip-components=1 -zxvf  /opt/spark-3.4.0-bin-hadoop3.tgz -C ${SPARK_HOME} && \
+    chown -Rf spark:spark ${SPARK_HOME} && chmod -Rf 755 ${SPARK_HOME} && \
+#    ln -s ${SPARK_HOME}/conf /etc/spark/conf && chmod -Rf 755 /etc/spark/conf && \
+    mkdir -p $SPARK_LOG_DIR && chmod -Rf 777 $SPARK_LOG_DIR && chown -Rf spark:spark $SPARK_LOG_DIR && \
 #    apt-get install -y software-properties-common ca-certificates &&  \
 #    apt-get install -y python3 python3-pip python3-numpy python3-matplotlib python3-scipy python3-pandas && \
 #    update-alternatives --install "/usr/bin/python" "python" "$(which python3)" 1  && \
-    mkdir -p ${SPARK_HOME}/logs && chmod -Rf 777 ${SPARK_HOME}/logs && \
-    useradd -g ${root_uid} -u ${spark_uid} spark
+    rm -f /opt/spark-3.4.0-bin-hadoop3.tgz && \
+    echo "done."
 
 #
 # Download and uncompress spark from the apache archive
@@ -41,18 +49,16 @@ RUN apt-get update && \
 # && mkdir -p ${SPARK_HOME} \
 # && tar -xf apache-spark.tgz -C ${SPARK_HOME} --strip-components=1 \
 # && rm apache-spark.tgz
+WORKDIR ${SPARK_HOME}
 
-WORKDIR ${SPARK_HOME}/work-dir
-
-# COPY docker-spark/base/scripts /
-# COPY docker-spark/conf $SPARK_HOME/conf/
+#
 COPY docker-spark/*.sh /opt/
-
-#Give permission to execute scripts
-RUN cd / && chmod +x /opt/*.sh
-
-CMD ["/bin/bash", "/opt/start-spark.sh"]
+RUN cd / && chown -Rf spark:spark /opt/*.sh && chmod -Rf 755 /opt/*.sh
 
 ENTRYPOINT ["/opt/entrypoint.sh"]
 
-# USER ${root_uid}:${root_uid}
+# Specify the User that the actual main process will run as
+USER spark:spark
+
+CMD ["/bin/bash", "/opt/start-spark.sh"]
+

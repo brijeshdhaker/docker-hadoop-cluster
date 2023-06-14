@@ -21,9 +21,6 @@ add_principal yarn@SANDBOX.NET
 add_principal mapred@SANDBOX.NET
 add_principal hive@SANDBOX.NET
 
-
-hive/hiveserver.sandbox.net@SANDBOX.NET
-
 # 1. Add Principle
 
 [root@test5~]# ktutil
@@ -78,3 +75,39 @@ klist -e -k -t /etc/kerberos/keytabs/HTTP.service.keytab
 # Services
 
 python -m http.server 8000
+
+#
+# Adding Service Principal
+#
+
+$ sudo kadmin.local
+
+or
+$ kadmin -w kadmin -p kadmin/admin@SANDBOX.NET
+
+kadmin:  addprinc -randkey spark/sparkhistory.sandbox.net@SANDBOX.NET
+kadmin:  addprinc -randkey host/sparkhistory.sandbox.net@SANDBOX.NET
+kadmin:  addprinc -randkey HTTP/sparkhistory.sandbox.net@SANDBOX.NET
+
+## -- To create the Kerberos keytab files
+
+kadmin:  xst -norandkey -k hdfs.keytab hdfs/fully.qualified.domain.name HTTP/fully.qualified.domain.name
+
+or
+kadmin:  xst -k /etc/kerberos/keytabs/spark-unmerged.keytab spark/sparkhistory.sandbox.net
+kadmin:  xst -k /etc/kerberos/keytabs/HTTP.service.keytab HTTP/sparkhistory.sandbox.net
+
+$ ktutil
+ktutil:  rkt /etc/kerberos/keytabs/spark-unmerged.keytab
+ktutil:  rkt /etc/kerberos/keytabs/HTTP.service.keytab
+ktutil:  wkt /etc/kerberos/keytabs/spark.service.keytab
+ktutil:  clear
+ktutil:  rkt mapred-unmerged.keytab
+ktutil:  rkt http.keytab
+ktutil:  wkt mapred.keytab
+ktutil:  clear
+ktutil:  rkt yarn-unmerged.keytab
+ktutil:  rkt http.keytab
+ktutil:  wkt yarn.keytab
+ktutil:  clear
+ktutil:  q

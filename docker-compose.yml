@@ -207,7 +207,7 @@ services:
       - ./envs/docker_hive.env
     environment:
       HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:mysql://mysqlserver:3306/metastore?createDatabaseIfNotExist=true;autoReconnect=true;useSSL=false"
-      SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870 metastore.sandbox.net:9083 mysqlserver.sandbox.net:3306"
+      SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870 metastore.sandbox.net:9083"
     ports:
       - "10000:10000"
       - "10002:10002"
@@ -226,8 +226,8 @@ services:
     container_name: hivetezui
     hostname: hivetezui.sandbox.net
     environment:
-      KRB5_CONFIG: "/etc/kerberos/krb5conf"
-      SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870 metastore.sandbox.net:9083"
+      KRB5_CONFIG: "/etc/kerberos/krb5.conf"
+      SERVICE_PRECONDITION: "hiveserver.sandbox.net:10000 timelineserver.sandbox.net:8188"
     ports:
       - "9999:9999"
     volumes:
@@ -237,7 +237,7 @@ services:
 
   # Spark History Server
   sparkhistory:
-    image: brijeshdhaker/spark:3.1.2-standalone
+    image: docker.io/brijeshdhaker/spark:3.4.0
     container_name: sparkhistory
     hostname: sparkhistory.sandbox.net
     environment:
@@ -253,7 +253,9 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
+      - sandbox_hadoop_334:/opt/hadoop
       - ./conf/kerberos:/etc/kerberos
+      - ./conf/spark/spark-env.sh:/opt/spark/conf/spark-env.sh
       - ./conf/spark/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf
 
   #

@@ -88,6 +88,7 @@ $SPARK_HOME/bin/spark-submit \
 --conf "spark.yarn.queue=default" \
 $SPARK_HOME/examples/jars/spark-examples_*.jar 50000
 
+# --proxy-user
 
 $SPARK_HOME/bin/spark-submit \
 --class org.apache.spark.examples.SparkPi \
@@ -96,6 +97,10 @@ $SPARK_HOME/bin/spark-submit \
 --driver-memory 640M \
 --executor-memory 640M \
 --num-executors 2 \
---conf "spark.yarn.archive=hdfs://namenode:9000/archives/spark-3.4.0.zip" \
+--keytab /etc/kerberos/keytabs/brijeshdhaker.keytab \
+--principal brijeshdhaker@SANDBOX.NET \
+--conf "spark.yarn.archive=hdfs://namenode.sandbox.net:9000/archives/spark-3.4.0.zip" \
 --conf "spark.yarn.queue=default" \
-$SPARK_HOME/examples/jars/spark-examples_*.jar 50000
+--conf "spark.eventLog.enabled=true" \
+--conf "spark.eventLog.dir=hdfs://namenode.sandbox.net:9000/var/log/spark" \
+$SPARK_HOME/examples/jars/spark-examples_*.jar 100

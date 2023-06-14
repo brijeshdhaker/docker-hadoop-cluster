@@ -135,7 +135,7 @@ if [ ! -f /var/lib/krb5kdc/.already_setup ]; then
   echo "Adding service principal for all hosts."
   echo ""
   #for var in one two three; do echo "$var"; done
-  PRINCIPALS=("hdfs" "yarn" "mapred" "hive" "metastore" "host" "HTTP")
+  PRINCIPALS=("hdfs" "yarn" "mapred" "hive" "metastore" "spark" "hbase" "host" "HTTP")
   SANDBOX_NODES=(
     "namenode.sandbox.net"
     "datanode.sandbox.net"
@@ -150,6 +150,10 @@ if [ ! -f /var/lib/krb5kdc/.already_setup ]; then
     "thinkpad.sandbox.net"
     "hostmaster.sandbox.net"
     "dockerhost.sandbox.net"
+    "sparkhistory.sandbox.net"
+    "zookeeper.sandbox.net"
+    "hbasemaster.sandbox.net"
+    "regionserver.sandbox.net"
   )
   for pr in "${PRINCIPALS[@]}"
   do
@@ -161,7 +165,7 @@ if [ ! -f /var/lib/krb5kdc/.already_setup ]; then
     done
   done
 
-  # Change Passwords for OS Users
+  # Change Passwords for Service Users
   for pr in "${PRINCIPALS[@]}"
   do
     echo ""
