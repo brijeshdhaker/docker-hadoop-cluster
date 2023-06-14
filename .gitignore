@@ -10,6 +10,9 @@ target
 .classpath
 .project
 .idea
+*.pub
+*_key
+*_rsa
 /data/postgresql/*
 /data/mysql/*
 /data/cassandra/*
