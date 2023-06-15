@@ -28,7 +28,7 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
       ALLOW_UNSIGNED: "true"
 
-  kafka-broker:
+  kafkabroker:
     image: confluentinc/cp-server:7.1.2
     hostname: kafka-broker
     container_name: kafka-broker
@@ -62,7 +62,7 @@ services:
       CONFLUENT_METRICS_ENABLE: 'true'
       CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
 
-  schema-registry:
+  schemaregistry:
     image: confluentinc/cp-schema-registry:7.1.2
     hostname: schema-registry
     container_name: schema-registry
