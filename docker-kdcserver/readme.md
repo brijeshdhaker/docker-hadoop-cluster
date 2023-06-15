@@ -1,3 +1,132 @@
+====================================================
+==== Kerberos KDC and Kadmin ======================================================
+===================================================================================
+
+REALM: SANDBOX.NET
+ROOT_ADMIN_PRINCIPAL: root/admin@SANDBOX.NET
+KADMIN_PRINCIPAL_FULL: kadmin/admin@SANDBOX.NET
+KADMIN_PASSWORD: kadmin
+KUSERS_PASSWORD: kuser
+
+===================================================================================
+==== /etc/krb5.conf ===============================================================
+===================================================================================
+
+[logging]
+  default = FILE:/var/log/krb5libs.log
+  kdc = FILE:/var/log/krb5kdc.log
+  admin_server = FILE:/var/log/kadmind.log
+
+[libdefaults]
+  default_realm = SANDBOX.NET
+  dns_lookup_realm = false
+  dns_lookup_kdc = false
+  ticket_lifetime = 24h
+  renew_lifetime = 7d
+  forwardable = true
+# udp_preference_limit = 1  # when TCP only should be used.
+
+# uncomment the following if AD cross realm auth is ONLY providing DES encrypted tickets
+# allow-weak-crypto = true
+
+[realms]
+	SANDBOX.NET = {
+		kdc_ports = 88,750
+		kadmind_port = 749
+		kdc = kdcserver.sandbox.net
+		admin_server = kdcserver.sandbox.net
+	}
+[domain_realm]
+  .sandbox.net = SANDBOX.NET
+  sandbox.net = SANDBOX.NET
+
+
+===================================================================================
+==== /etc/krb5kdc/kdc.conf ========================================================
+===================================================================================
+[logging]
+    kdc = FILE:/var/log/krb5kdc.log
+    admin_server = FILE:/var/log/kadmin.log
+
+[kdcdefaults]
+    kdc_ports = 88
+    kdc_tcp_ports = 88
+
+[realms]
+	SANDBOX.NET = {
+		acl_file = /etc/krb5kdc/kadm5.acl
+		dict_file = /usr/share/dict/words
+		kadmind_port = 749
+		max_life = 12h 0m 0s
+		max_renewable_life = 7d 0h 0m 0s
+		# master_key_type = aes256-cts-hmac-sha1-96:normal
+		supported_enctypes = aes256-cts:normal aes128-cts:normal des3-hmac-sha1:normal arcfour-hmac:normal camellia256-cts:normal camellia128-cts:normal
+		default_principal_flags = +renewable, +forwardable
+	}
+
+===================================================================================
+==== /etc/krb5kdc/kadm5.acl =======================================================
+===================================================================================
+root/admin@SANDBOX.NET  *
+kadmin/admin@SANDBOX.NET *
+noPermissions@SANDBOX.NET X
+
+===================================================================================
+==== Creating realm ===============================================================
+===================================================================================
+Database Master Password : bMqCgWBP2wDqYtCK36BnoC1CNXj9Ee
+This script should be run on the master KDC/admin server to initialize
+a Kerberos realm.  It will ask you to type in a master key password.
+This password will be used to generate a key that is stored in
+/etc/krb5kdc/stash.  You should try to remember this password, but it
+is much more important that it be a strong password than that it be
+remembered.  However, if you lose the password and /etc/krb5kdc/stash,
+you cannot decrypt your Kerberos database.
+Loading random data
+Initializing database '/var/lib/krb5kdc/principal' for realm 'SANDBOX.NET',
+master key name 'K/M@SANDBOX.NET'
+You will be prompted for the database Master Password.
+It is important that you NOT FORGET this password.
+Enter KDC database master key:
+Re-enter KDC database master key to verify:
+ * Starting Kerberos KDC krb5kdc
+   ...done.
+ * Starting Kerberos administrative servers kadmind
+   ...done.
+
+
+Now that your realm is set up you may wish to create an administrative
+principal using the addprinc subcommand of the kadmin.local program.
+Then, this principal can be added to /etc/krb5kdc/kadm5.acl so that
+you can use the kadmin program on other computers.  Kerberos admin
+principals usually belong to a single user and end in /admin.  For
+example, if jruser is a Kerberos administrator, then in addition to
+the normal jruser principal, a jruser/admin principal should be
+created.
+
+Don't forget to set up DNS information so your clients can find your
+KDC and admin servers.  Doing so is documented in the administration
+guide.
+
+===================================================================================
+==== Creating default principals in the acl =======================================
+===================================================================================
+Adding root/admin@SANDBOX.NET principal
+delete_principal: Principal does not exist while deleting principal "root/admin@SANDBOX.NET"
+No policy specified for root/admin@SANDBOX.NET; defaulting to no policy
+Principal "root/admin@SANDBOX.NET" created.
+
+Adding kadmin/admin principal
+Principal "kadmin/admin@SANDBOX.NET" deleted.
+Principal "kadmin/admin@SANDBOX.NET" created.
+
+Adding noPermissions principal
+delete_principal: Principal does not exist while deleting principal "noPermissions@SANDBOX.NET"
+Principal "noPermissions@SANDBOX.NET" created.
+
+
+
+
 # 1. Add Principle
 
 bash-3.00$ kadmin -w kadmin -p kadmin/admin@SANDBOX.NET
@@ -111,3 +240,17 @@ ktutil:  rkt http.keytab
 ktutil:  wkt yarn.keytab
 ktutil:  clear
 ktutil:  q
+
+
+#
+#
+kadmin: ktadd -k /etc/kerberos/keytabs/brijesh-headless.keytab brijesh@SANDBOX.NET
+
+$ kadmin: addprinc -randkey zookeeper/fqdn.example.com@YOUR-REALM
+
+# 1. Create a service principal for the ZooKeeper server
+kadmin: addprinc -randkey zookeeper/zookeeper.sandbox.net@SANDBOX.NET
+
+# 2. Create a keytab file for the ZooKeeper server
+$ kadmin
+kadmin: xst -norandkey -k zookeeper.service.keytab zookeeper/zookeeper.sandbox.net@SANDBOX.NET

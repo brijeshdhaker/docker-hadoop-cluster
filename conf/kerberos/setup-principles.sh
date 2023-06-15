@@ -2,38 +2,32 @@
 
 #
 #
+ROOT_ADMIN_PRINCIPAL=root/admin@SANDBOX.NET
 KADMIN_PRINCIPAL_FULL=kadmin/admin@SANDBOX.NET
 KADMIN_PASSWORD=kadmin
 KUSERS_PASSWORD=kuser
 
 # delete existing keytab files
-rm -Rf /etc/kerberos/keytabs/*.keytab
-
 echo "Adding OS User Principal"
 echo ""
-OS_USERS=("root" "brijeshdhaker" "hdfs" "yarn" "mapred" "hive" "hbase" "spark")
+OS_USERS=("brijeshdhaker")
 for ou in "${OS_USERS[@]}"
 do
+  rm -Rf /etc/kerberos/users/$ou.keytab
   kadmin.local -q "delete_principal -force $ou@$REALM"
-  kadmin.local -q "addprinc -pw $KUSERS_PASSWORD $ou@$REALM"
+  kadmin.local -q "addprinc -randkey $ou@$REALM"
+  ktmerge="change_password $ou@$REALM\n$KUSERS_PASSWORD\n$KUSERS_PASSWORD\n"
+  echo -e "$ktmerge" | kadmin.local
+  kadmin.local -q "xst -norandkey -k /etc/kerberos/users/$ou.keytab $ou@$REALM"
+  chmod 444 /etc/kerberos/users/$ou.keytab
 done
 
-# Change passwords for OS Users
-for ou in "${OS_USERS[@]}"
-do
-  ktmerge=""
-  ktmerge+="change_password $ou\n$KUSERS_PASSWORD\nk$KUSERS_PASSWORD\nquit"
-  echo ""
-  echo -e "$ktmerge" | kadmin -w $KADMIN_PASSWORD -p $KADMIN_PRINCIPAL_FULL
-  kadmin.local ktadd -k "/etc/kerberos/keytabs/$ou.keytab" "$ou@$REALM"
-done
-
+#
 echo "Adding service principal for all hosts."
 echo ""
 #for var in one two three; do echo "$var"; done
-PRINCIPALS=("hdfs" "yarn" "mapred" "hive" "spark" "hbase" "host" "HTTP")
+SERVICES=("zookeeper" "hdfs" "yarn" "mapred" "hbase" "hive" "spark" "host" "HTTP")
 SANDBOX_NODES=(
-  "zookeeper.sandbox.net"
   "namenode.sandbox.net"
   "datanode.sandbox.net"
   "secondary.sandbox.net"
@@ -44,70 +38,72 @@ SANDBOX_NODES=(
   "metastore.sandbox.net"
   "hiveserver.sandbox.net"
   "sparkhistory.sandbox.net"
+  "zookeeper.sandbox.net"
   "hbasemaster.sandbox.net"
   "regionserver.sandbox.net"
   "gateway.sandbox.net"
   "thinkpad.sandbox.net"
-  "hostmaster.sandbox.net"
   "dockerhost.sandbox.net"
 )
-for pr in "${PRINCIPALS[@]}"
+for svc in "${SERVICES[@]}"
 do
   echo ""
   for node in "${SANDBOX_NODES[@]}"
   do
-      kadmin.local -q "delete_principal -force $pr/$node@$REALM"
-      kadmin.local -q "addprinc -randkey -pw $KUSERS_PASSWORD $pr/$node@$REALM"
-  done
-done
-
-# Change Passwords for Service Principals
-for pr in "${PRINCIPALS[@]}"
-do
-  echo ""
-  for node in "${SANDBOX_NODES[@]}"
-  do
-    ktmerge=""
-    ktmerge+="change_password $pr/$node@$REALM\n$KUSERS_PASSWORD\n$KUSERS_PASSWORD\nquit"
-    echo ""
-    echo -e "$ktmerge" | kadmin -w $KADMIN_PASSWORD -p $KADMIN_PRINCIPAL_FULL
-    echo ""
-    kadmin.local ktadd -k "/etc/kerberos/keytabs/$pr.service.$node.keytab" "$pr/$node@$REALM"
+      svc_principal=$svc/$node@$REALM
+      keytab=$svc.service.$node.keytab
+      rm -Rf /etc/kerberos/keytabs/$keytab
+      kadmin.local -q "delete_principal -force $svc_principal"
+      kadmin.local -q "addprinc -randkey $svc_principal"
+      ktmerge="change_password $svc_principal\n$KUSERS_PASSWORD\n$KUSERS_PASSWORD\n"
+      echo -e "$ktmerge" | kadmin.local
+      kadmin.local -q "xst -norandkey -k /etc/kerberos/keytabs/$keytab $svc_principal"
+      chmod 444 /etc/kerberos/keytabs/$keytab
   done
 done
 
 # Create unmerged keytab
-for pr in "${PRINCIPALS[@]}"
+for svc in "${SERVICES[@]}"
 do
+  rm -Rf /etc/kerberos/keytabs/$svc.keytab
   ktunmerged=""
   for node in "${SANDBOX_NODES[@]}"
   do
-      ktunmerged+="rkt /etc/kerberos/keytabs/$pr.service.$node.keytab\n"
+      ktunmerged+="rkt /etc/kerberos/keytabs/$svc.service.$node.keytab\n"
   done
-  ktunmerged+="wkt /etc/kerberos/keytabs/$pr-unmerged.keytab\n"
-  ktunmerged+="quit"
+  ktunmerged+="wkt /etc/kerberos/keytabs/$svc.keytab\nquit"
   echo ""
   echo -e "$ktunmerged" | ktutil
+  chmod 444 /etc/kerberos/keytabs/$svc.keytab
 done
 
 # Create merged keytab
-UNMPRINC=("hdfs" "yarn" "mapred" "hive" "metastore" "spark" "hbase")
-for upr in "${UNMPRINC[@]}"
+UNMERGED_SERVICES=("zookeeper" "hdfs" "yarn" "mapred" "hbase" "hive" "spark" )
+for usvc in "${UNMERGED_SERVICES[@]}"
 do
+  rm -Rf /etc/kerberos/keytabs/$usvc.service.keytab
   ktmerge=""
-  ktmerge+="rkt /etc/kerberos/keytabs/$upr-unmerged.keytab\n"
-  ktmerge+="rkt /etc/kerberos/keytabs/host-unmerged.keytab\n"
-  ktmerge+="wkt /etc/kerberos/keytabs/$upr.service.keytab\n"
-  ktmerge+="quit"
+  ktmerge+="rkt /etc/kerberos/keytabs/$usvc.keytab\n"
+  ktmerge+="rkt /etc/kerberos/keytabs/HTTP.keytab\n"
+  ktmerge+="rkt /etc/kerberos/keytabs/host.keytab\n"
+  ktmerge+="wkt /etc/kerberos/keytabs/$usvc.service.keytab\nquit"
   echo ""
   echo -e "$ktmerge" | ktutil
+  chmod 444 /etc/kerberos/keytabs/$usvc.service.keytab
 done
 
 # Setup spnego.service.keytab
-cp /etc/kerberos/keytabs/host-unmerged.keytab /etc/kerberos/keytabs/host.service.keytab
-cp /etc/kerberos/keytabs/HTTP-unmerged.keytab /etc/kerberos/keytabs/HTTP.service.keytab
-cp /etc/kerberos/keytabs/HTTP-unmerged.keytab /etc/kerberos/keytabs/spnego.service.keytab
-chmod -Rf 755 /etc/kerberos/keytabs/*
+rm -Rf /etc/kerberos/keytabs/host.service.keytab
+cp /etc/kerberos/keytabs/host.keytab /etc/kerberos/keytabs/host.service.keytab
+chmod 444 /etc/kerberos/keytabs/host.service.keytab
+
+rm -Rf /etc/kerberos/keytabs/HTTP.service.keytab
+cp /etc/kerberos/keytabs/HTTP.keytab /etc/kerberos/keytabs/HTTP.service.keytab
+chmod 444 /etc/kerberos/keytabs/HTTP.service.keytab
+
+rm -Rf /etc/kerberos/keytabs/spnego.service.keytab
+cp /etc/kerberos/keytabs/HTTP.keytab /etc/kerberos/keytabs/spnego.service.keytab
+chmod 444 /etc/kerberos/keytabs/spnego.service.keytab
 
 #
 echo "Principles successfully generated."

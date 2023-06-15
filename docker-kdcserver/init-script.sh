@@ -3,11 +3,15 @@
 echo "==================================================================================="
 echo "==== Kerberos KDC and Kadmin ======================================================"
 echo "==================================================================================="
+ROOT_ADMIN_PRINCIPAL=$ROOT_PRINCIPAL@$REALM
 KADMIN_PRINCIPAL_FULL=$KADMIN_PRINCIPAL@$REALM
 
+echo ""
 echo "REALM: $REALM"
+echo "ROOT_ADMIN_PRINCIPAL: $ROOT_ADMIN_PRINCIPAL"
 echo "KADMIN_PRINCIPAL_FULL: $KADMIN_PRINCIPAL_FULL"
 echo "KADMIN_PASSWORD: $KADMIN_PASSWORD"
+echo "KUSERS_PASSWORD: $KUSERS_PASSWORD"
 echo ""
 
 echo "==================================================================================="
@@ -77,8 +81,8 @@ echo "==========================================================================
 echo "==== /etc/krb5kdc/kadm5.acl ======================================================="
 echo "==================================================================================="
 tee /etc/krb5kdc/kadm5.acl <<EOF
+$ROOT_ADMIN_PRINCIPAL  *
 $KADMIN_PRINCIPAL_FULL *
-*/admin@$REALM *
 noPermissions@$REALM X
 EOF
 echo ""
@@ -100,126 +104,29 @@ echo "==== Creating default principals in the acl ==============================
 echo "==================================================================================="
 if [ ! -f /var/lib/krb5kdc/.already_setup ]; then
 
+  echo "Adding $ROOT_ADMIN_PRINCIPAL principal"
+  kadmin.local -q "delete_principal -force $ROOT_ADMIN_PRINCIPAL"
+  kadmin.local -q "addprinc -pw $KADMIN_PASSWORD $ROOT_ADMIN_PRINCIPAL"
+  kadmin.local -q "xst -norandkey -k /etc/kerberos/admin/root.keytab $ROOT_ADMIN_PRINCIPAL"
+  echo ""
+
   echo "Adding $KADMIN_PRINCIPAL principal"
   kadmin.local -q "delete_principal -force $KADMIN_PRINCIPAL_FULL"
   kadmin.local -q "addprinc -pw $KADMIN_PASSWORD $KADMIN_PRINCIPAL_FULL"
+  kadmin.local -q "xst -norandkey -k /etc/kerberos/admin/kadmin.keytab $KADMIN_PRINCIPAL_FULL"
   echo ""
 
   echo "Adding noPermissions principal"
   kadmin.local -q "delete_principal -force noPermissions@$REALM"
   kadmin.local -q "addprinc -pw $KADMIN_PASSWORD noPermissions@$REALM"
+  kadmin.local -q "xst -norandkey -k /etc/kerberos/admin/noPermissions.keytab noPermissions@$REALM"
   echo ""
 
-  # delete existing keytab files
-  rm -Rf /etc/kerberos/keytabs/*.keytab
-
-  echo "Adding OS User Principal"
-  echo ""
-  OS_USERS=("root" "brijeshdhaker" "hdfs" "yarn" "mapred" "hive" "spark")
-  for ou in "${OS_USERS[@]}"
-  do
-    kadmin.local -q "delete_principal -force $ou@$REALM"
-    kadmin.local -q "addprinc -pw $KADMIN_PASSWORD $ou@$REALM"
-  done
-
-  # Change Passwords for OS Users
-  for ou in "${OS_USERS[@]}"
-  do
-    ktmerge=""
-    ktmerge+="change_password $ou\n$KADMIN_PASSWORD\nk$KADMIN_PASSWORD\nquit"
-    echo ""
-    echo -e "$ktmerge" | kadmin -w $KADMIN_PASSWORD -p $KADMIN_PRINCIPAL_FULL
-    kadmin.local ktadd -k "/etc/kerberos/keytabs/$ou.keytab" "$ou@$REALM"
-  done
-
-  echo "Adding service principal for all hosts."
-  echo ""
-  #for var in one two three; do echo "$var"; done
-  PRINCIPALS=("hdfs" "yarn" "mapred" "hive" "metastore" "spark" "hbase" "host" "HTTP")
-  SANDBOX_NODES=(
-    "namenode.sandbox.net"
-    "datanode.sandbox.net"
-    "secondary.sandbox.net"
-    "resourcemanager.sandbox.net"
-    "nodemanager.sandbox.net"
-    "historyserver.sandbox.net"
-    "timelineserver.sandbox.net"
-    "metastore.sandbox.net"
-    "hiveserver.sandbox.net"
-    "gateway.sandbox.net"
-    "thinkpad.sandbox.net"
-    "hostmaster.sandbox.net"
-    "dockerhost.sandbox.net"
-    "sparkhistory.sandbox.net"
-    "zookeeper.sandbox.net"
-    "hbasemaster.sandbox.net"
-    "regionserver.sandbox.net"
-  )
-  for pr in "${PRINCIPALS[@]}"
-  do
-    echo ""
-    for node in "${SANDBOX_NODES[@]}"
-    do
-        kadmin.local -q "delete_principal -force $pr/$node@$REALM"
-        kadmin.local -q "addprinc -pw $KADMIN_PASSWORD $pr/$node@$REALM"
-    done
-  done
-
-  # Change Passwords for Service Users
-  for pr in "${PRINCIPALS[@]}"
-  do
-    echo ""
-    for node in "${SANDBOX_NODES[@]}"
-    do
-      ktmerge=""
-      ktmerge+="change_password $pr/$node@$REALM\n$KADMIN_PASSWORD\n$KADMIN_PASSWORD\nquit"
-      echo ""
-      echo -e "$ktmerge" | kadmin -w $KADMIN_PASSWORD -p $KADMIN_PRINCIPAL_FULL
-      echo ""
-      kadmin.local ktadd -k "/etc/kerberos/keytabs/$pr.service.$node.keytab" "$pr/$node@$REALM"
-    done
-  done
-
-  # Create unmerged keytab
-  for pr in "${PRINCIPALS[@]}"
-  do
-    ktunmerged=""
-    for node in "${SANDBOX_NODES[@]}"
-    do
-        ktunmerged+="rkt /etc/kerberos/keytabs/$pr.service.$node.keytab\n"
-    done
-    ktunmerged+="wkt /etc/kerberos/keytabs/$pr-unmerged.keytab\n"
-    ktunmerged+="quit"
-    echo ""
-    echo -e "$ktunmerged" | ktutil
-  done
-
-  # Create merged keytab
-  UNMPRINC=("hdfs" "yarn" "mapred" "hive" "metastore")
-  for upr in "${UNMPRINC[@]}"
-  do
-    ktmerge=""
-    ktmerge+="rkt /etc/kerberos/keytabs/$upr-unmerged.keytab\n"
-    ktmerge+="rkt /etc/kerberos/keytabs/host-unmerged.keytab\n"
-    ktmerge+="wkt /etc/kerberos/keytabs/$upr.service.keytab\n"
-    ktmerge+="quit"
-    echo ""
-    echo -e "$ktmerge" | ktutil
-  done
-
-  # Setup spnego.service.keytab
-  cp /etc/kerberos/keytabs/host-unmerged.keytab /etc/kerberos/keytabs/host.service.keytab
-  cp /etc/kerberos/keytabs/HTTP-unmerged.keytab /etc/kerberos/keytabs/HTTP.service.keytab
-  cp /etc/kerberos/keytabs/HTTP-unmerged.keytab /etc/kerberos/keytabs/spnego.service.keytab
-  chmod -Rf 755 /etc/kerberos/keytabs/*
-
-  #
-  touch /var/lib/krb5kdc/.already_setup
-  echo "Principles successfully generated."
+  echo "Admin principles successfully generated."
   echo ""
 else
   echo ""
-  echo "Principles already generated."
+  echo "Admin principles already generated."
   echo ""
 fi
 

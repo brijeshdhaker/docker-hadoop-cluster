@@ -9,6 +9,7 @@ FROM ubuntu:22.04
 ENV REALM ${REALM:-SANDBOX.NET}
 ENV MASTER_KEY_TYPE ${MASTER_KEY_TYPE:-aes256-cts-hmac-sha1-96:normal}
 ENV SUPPORTED_ENCRYPTION_TYPES ${SUPPORTED_ENCRYPTION_TYPES:-aes256-cts-hmac-sha1-96:normal aes128-cts-hmac-sha1-96:normal des3-hmac-sha1:normal des-cbc-md5:normal des-cbc-crc:normal}
+ENV ROOT_PRINCIPAL ${ROOT_PRINCIPAL:-root/admin}
 ENV KADMIN_PRINCIPAL ${KADMIN_PRINCIPAL:-kadmin/admin}
 ENV KADMIN_PASSWORD ${KADMIN_PASSWORD:-kadmin}
 ENV KUSERS_PASSWORD ${KUSERS_PASSWORD:-kuser}
