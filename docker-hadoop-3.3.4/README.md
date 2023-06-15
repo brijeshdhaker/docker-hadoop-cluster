@@ -97,10 +97,11 @@ $SPARK_HOME/bin/spark-submit \
 --driver-memory 640M \
 --executor-memory 640M \
 --num-executors 2 \
+--conf "spark.yarn.queue=default" \
 --keytab /etc/kerberos/keytabs/brijeshdhaker.keytab \
 --principal brijeshdhaker@SANDBOX.NET \
 --conf "spark.yarn.archive=hdfs://namenode.sandbox.net:9000/archives/spark-3.4.0.zip" \
---conf "spark.yarn.queue=default" \
+--conf "spark.yarn.queue=engineering" \
 --conf "spark.eventLog.enabled=true" \
 --conf "spark.eventLog.dir=hdfs://namenode.sandbox.net:9000/var/log/spark" \
 $SPARK_HOME/examples/jars/spark-examples_*.jar 100

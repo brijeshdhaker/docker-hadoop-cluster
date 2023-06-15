@@ -280,8 +280,7 @@ services:
       - sandbox_spark_340:/opt/spark
       - sandbox_maven_363:/opt/maven-3.6.3
       - ./conf/kerberos:/etc/kerberos
-      - ./conf/profiles/root.profile:/root/root.profile
-      - ./conf/profiles/sandbox.profile:/home/sandbox/sandbox.profile
+      - ./conf/profiles/sandbox.profile:/root/sandbox.profile
       - ./conf/profiles/brijeshdhaker.profile:/home/brijeshdhaker/brijeshdhaker.profile
       - ./conf/maven/settings.xml:/home/brijeshdhaker/.m2/settings.xml
     environment:
