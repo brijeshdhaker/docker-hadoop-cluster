@@ -104,7 +104,7 @@ services:
     image: brijeshdhaker/hadoop-namenode:3.3.4
     build:
       context: .
-      dockerfile: docker-hadoop-3.3.4/namenode/Dockerfile
+      dockerfile: docker-hadoop-3.2.1/namenode/Dockerfile
     container_name: namenode
     hostname: namenode
     restart: always
@@ -118,14 +118,14 @@ services:
     environment:
       - CLUSTER_NAME=docker-sandbox
     env_file:
-      - envs/docker_hadoop334.env
+      - envs/docker_hadoop321.env
 
   #
   datanode:
     image: brijeshdhaker/hadoop-datanode:3.3.4
     build:
       context: .
-      dockerfile: docker-hadoop-3.3.4/datanode/Dockerfile
+      dockerfile: docker-hadoop-3.2.1/datanode/Dockerfile
     container_name: datanode
     hostname: datanode
     ports:
@@ -139,7 +139,7 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
     env_file:
-      - envs/docker_hadoop334.env
+      - envs/docker_hadoop321.env
 
   # YARN Sandbox
   resourcemanager:
@@ -156,7 +156,7 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
     env_file:
-      - envs/docker_hadoop334.env
+      - envs/docker_hadoop321.env
 
   #
   nodemanager:
@@ -172,7 +172,7 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
     env_file:
-      - envs/docker_hadoop334.env
+      - envs/docker_hadoop321.env
 
   #
   historyserver:
@@ -189,7 +189,7 @@ services:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
     env_file:
-      - envs/docker_hadoop334.env
+      - envs/docker_hadoop321.env
 
   # Mysql Database Server
   mysqlserver:

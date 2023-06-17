@@ -28,10 +28,9 @@ echo "GRANT ALL PRIVILEGES ON DATABASE hive_store TO hive_admin;" | psql -U post
 #
 #
 export HADOOP_HOME=/opt/hadoop
-$HADOOP_HOME/bin/hdfs dfs -mkdir -p /user/hive/warehouse
-$HADOOP_HOME/bin/hdfs dfs -mkdir -p /user/tmp
-$HADOOP_HOME/bin/hdfs dfs -chmod g+w /user/tmp
-$HADOOP_HOME/bin/hdfs dfs -chmod g+w /user/hive/warehouse
+$HADOOP_HOME/bin/hdfs dfs -mkdir -p /warehouse/tablespace/managed/hive
+$HADOOP_HOME/bin/hdfs dfs -mkdir -p /warehouse/tablespace/external/hive
+$HADOOP_HOME/bin/hdfs dfs -chmod g+w /tmp
 
 
 $ $HIVE_HOME/bin/schematool -initSchema -dbType derby

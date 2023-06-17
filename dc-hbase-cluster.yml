@@ -1,5 +1,11 @@
 #
 #
+# docker volume create --name sandbox_hbase_300 --opt type=none --opt device=/opt/hbase-3.0.0 --opt o=bind
+# docker volume create --name sandbox_hbase_117 --opt type=none --opt device=/opt/hbase-1.1.7 --opt o=bind
+#
+
+#
+#
 #
 ---
 version: "3.9"
@@ -17,7 +23,6 @@ services:
       - "8080:8080"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_logs:/var/log
       - /apps/sandbox/zookeeper:/zookeeper
       - ./conf/zookeeper:/conf
       - ./conf/kerberos:/etc/kerberos
@@ -29,7 +34,7 @@ services:
   # Hbase Server
   #
   hmaster:
-    image: brijeshdhaker/hbase-master:2.5.5
+    image: brijeshdhaker/hbase-master:3.0.0
     hostname: hmaster.sandbox.net
     container_name: hmaster
     environment:
@@ -41,17 +46,14 @@ services:
       - "16010:16010"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_logs:/var/log
-#      - sandbox_hadoop_334:/opt/hadoop
+      - sandbox_hadoop_321:/opt/hadoop
       - ./conf/kerberos:/etc/kerberos
       - ./conf/hbase/hbase-env.sh:/opt/hbase/conf/hbase-env.sh
       - ./conf/hbase/hmaster-jaas.conf:/opt/hbase/conf/zk-jaas.conf
-#      - ./conf/hbase/hbase-site.xml:/opt/hbase/conf/hbase-site.xml
-      - ./conf/hadoop/conf/hdfs-site.xml:/opt/hbase/conf/hdfs-site.xml
-      - ./conf/hadoop/conf/core-site.xml:/opt/hbase/conf/core-site.xml
+
   #
   hregion:
-    image: brijeshdhaker/hbase-regionserver:2.5.5
+    image: brijeshdhaker/hbase-regionserver:3.0.0
     hostname: hregion.sandbox.net
     container_name: hregion
     env_file:
@@ -63,14 +65,11 @@ services:
       - "16030:16030"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_logs:/var/log
-#      - sandbox_hadoop_334:/opt/hadoop
+      - sandbox_hadoop_321:/opt/hadoop
       - ./conf/kerberos:/etc/kerberos
       - ./conf/hbase/hbase-env.sh:/opt/hbase/conf/hbase-env.sh
       - ./conf/hbase/hregion-jaas.conf:/opt/hbase/conf/zk-jaas.conf
       - ./conf/hbase/hbase-site.xml:/opt/hbase/conf/hbase-site.xml
-      - ./conf/hadoop/conf/hdfs-site.xml:/opt/hbase/conf/hdfs-site.xml
-      - ./conf/hadoop/conf/core-site.xml:/opt/hbase/conf/core-site.xml
 
 #
 volumes:
@@ -87,7 +86,7 @@ volumes:
   sandbox_zookeeper_log:
     external: true
 #
-  sandbox_hadoop_334:
+  sandbox_hadoop_321:
     external: true
 
 #

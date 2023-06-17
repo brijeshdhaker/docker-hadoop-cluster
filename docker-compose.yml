@@ -25,10 +25,10 @@ services:
 
   # HDFS Sandbox
   namenode:
-    image: brijeshdhaker/hadoop-namenode:3.3.4
+    image: brijeshdhaker/hadoop-namenode:3.2.1
     build:
       context: .
-      dockerfile: docker-hadoop-3.3.4/namenode/Dockerfile
+      dockerfile: docker-hadoop-3.2.1/namenode/Dockerfile
     container_name: namenode
     hostname: namenode.sandbox.net
     restart: no
@@ -37,20 +37,20 @@ services:
       - "9000:9000"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_334_dfs:/hadoop/dfs
+      - sandbox_hadoop_321_dfs:/hadoop/dfs
       - ./conf/kerberos:/etc/kerberos
     environment:
       CLUSTER_NAME: "docker-sandbox"
       MULTIHOMED_NETWORK: 2
     env_file:
-      - ./envs/docker_hadoop334.env
+      - envs/docker_hadoop321.env
 
   #
   datanode:
-    image: brijeshdhaker/hadoop-datanode:3.3.4
+    image: brijeshdhaker/hadoop-datanode:3.2.1
     build:
       context: .
-      dockerfile: docker-hadoop-3.3.4/datanode/Dockerfile
+      dockerfile: docker-hadoop-3.2.1/datanode/Dockerfile
     container_name: datanode
     hostname: datanode.sandbox.net
     ports:
@@ -59,21 +59,21 @@ services:
     restart: always
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_334_dfs:/hadoop/dfs
+      - sandbox_hadoop_321_dfs:/hadoop/dfs
       - ./conf/kerberos:/etc/kerberos
       - ./conf/hadoop/conf/hadoop-env.sh:/opt/hadoop/etc/hadoop/hadoop-env.sh
     environment:
       CLUSTER_NAME: "docker-sandbox"
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000"
     env_file:
-      - ./envs/docker_hadoop334.env
+      - envs/docker_hadoop321.env
 
   # YARN Sandbox
   resourcemanager:
-    image: brijeshdhaker/hadoop-resourcemanager:3.3.4
+    image: brijeshdhaker/hadoop-resourcemanager:3.2.1
     build:
       context: .
-      dockerfile: docker-hadoop-3.3.4/resourcemanager/Dockerfile
+      dockerfile: docker-hadoop-3.2.1/resourcemanager/Dockerfile
     container_name: resourcemanager
     hostname: resourcemanager.sandbox.net
     restart: always
@@ -81,7 +81,7 @@ services:
       - "8088:8088"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_334_yarn:/yarn
+      - sandbox_hadoop_321_yarn:/yarn
       - ./conf/kerberos:/etc/kerberos
       - ./conf/hadoop/conf/hadoop-env.sh:/opt/hadoop/etc/hadoop/hadoop-env.sh
       - ./conf/hadoop/conf/fair-scheduler.xml:/opt/hadoop/etc/hadoop/fair-scheduler.xml
@@ -89,14 +89,14 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
     env_file:
-      - ./envs/docker_hadoop334.env
+      - envs/docker_hadoop321.env
 
   #
   nodemanager:
-    image: brijeshdhaker/hadoop-nodemanager:3.3.4
+    image: brijeshdhaker/hadoop-nodemanager:3.2.1
     build:
       context: .
-      dockerfile: docker-hadoop-3.3.4/nodemanager/Dockerfile
+      dockerfile: docker-hadoop-3.2.1/nodemanager/Dockerfile
     container_name: nodemanager
     hostname: nodemanager.sandbox.net
     restart: always
@@ -104,19 +104,19 @@ services:
       - "8042:8042"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_334_yarn:/yarn
+      - sandbox_hadoop_321_yarn:/yarn
       - ./conf/kerberos:/etc/kerberos
     environment:
       SERVICE_PRECONDITION: "resourcemanager.sandbox.net:8088"
     env_file:
-      - ./envs/docker_hadoop334.env
+      - envs/docker_hadoop321.env
 
   # YARN Timeline Server
   timelineserver:
-    image: brijeshdhaker/hadoop-timelineserver:3.3.4
+    image: brijeshdhaker/hadoop-timelineserver:3.2.1
     build:
       context: .
-      dockerfile: docker-hadoop-3.3.4/historyserver/Dockerfile
+      dockerfile: docker-hadoop-3.2.1/historyserver/Dockerfile
     container_name: timelineserver
     hostname: timelineserver.sandbox.net
     restart: always
@@ -126,17 +126,17 @@ services:
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_334_yarn:/yarn
+      - sandbox_hadoop_321_yarn:/yarn
       - ./conf/kerberos:/etc/kerberos
     env_file:
-      - ./envs/docker_hadoop334.env
+      - envs/docker_hadoop321.env
 
   # MR History Server
   historyserver:
-    image: brijeshdhaker/hadoop-historyserver:3.3.4
+    image: brijeshdhaker/hadoop-historyserver:3.2.1
     build:
       context: .
-      dockerfile: docker-hadoop-3.3.4/historyserver/Dockerfile
+      dockerfile: docker-hadoop-3.2.1/historyserver/Dockerfile
     container_name: historyserver
     hostname: historyserver.sandbox.net
     restart: always
@@ -146,11 +146,11 @@ services:
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_334_mapred:/mapred
+      - sandbox_hadoop_321_mapred:/mapred
       - ./conf/kerberos:/etc/kerberos
       - ./conf/hadoop/conf/log4j.properties:/opt/hadoop/etc/hadoop/log4j.properties
     env_file:
-      - ./envs/docker_hadoop334.env
+      - envs/docker_hadoop321.env
 
   # Mysql Database Server
   mysqlserver:
@@ -187,7 +187,7 @@ services:
       - "9083:9083"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_334:/opt/hadoop
+      - sandbox_hadoop_321:/opt/hadoop
       - ./conf/kerberos:/etc/kerberos
 
   # Hive Server
@@ -205,7 +205,7 @@ services:
       - "10002:10002"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_334:/opt/hadoop
+      - sandbox_hadoop_321:/opt/hadoop
       - sandbox_tez_010:/opt/tez
       - ./conf/hadoop/conf/hadoop-env.sh:/opt/hadoop/etc/hadoop/hadoop-env.sh
       - ./conf/hive/conf/hive-env.sh:/opt/hive/conf/hive-env.sh
@@ -242,7 +242,7 @@ services:
       - ./envs/docker_spark312.env
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_334:/opt/hadoop
+      - sandbox_hadoop_321:/opt/hadoop
       - ./conf/kerberos:/etc/kerberos
       - ./conf/spark/spark-env.sh:/opt/spark/conf/spark-env.sh
       - ./conf/spark/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf
@@ -261,9 +261,8 @@ services:
       - "2222:22"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_334:/opt/hadoop
-      - sandbox_hbase_249:/opt/hbase
-      - sandbox_hbase_117:/opt/hbase-client
+      - sandbox_hadoop_321:/opt/hadoop
+      - sandbox_hbase_300:/opt/hbase
       - sandbox_hive_312:/opt/hive
       - sandbox_spark_340:/opt/spark
       - sandbox_maven_363:/opt/maven-3.6.3
@@ -292,9 +291,8 @@ services:
       - "9080:8080"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_334:/opt/hadoop
-      - sandbox_hbase_249:/opt/hbase
-      - sandbox_hbase_117:/opt/hbase-client
+      - sandbox_hadoop_321:/opt/hadoop
+      - sandbox_hbase_300:/opt/hbase
       - sandbox_hive_312:/opt/hive
       - sandbox_spark_340:/opt/spark
       - sandbox_zeppelin:/opt/zeppelin
@@ -330,13 +328,13 @@ volumes:
   sandbox_ivy2:
     external: true
 #
-  sandbox_hadoop_334:
+  sandbox_hadoop_321:
     external: true
-  sandbox_hadoop_334_dfs:
+  sandbox_hadoop_321_dfs:
     external: true
-  sandbox_hadoop_334_mapred:
+  sandbox_hadoop_321_mapred:
     external: true
-  sandbox_hadoop_334_yarn:
+  sandbox_hadoop_321_yarn:
     external: true
 #
   sandbox_mysql_data:
@@ -349,9 +347,7 @@ volumes:
   sandbox_zeppelin_notebook:
     external: true
 #
-  sandbox_hbase_249:
-    external: true
-  sandbox_hbase_117:
+  sandbox_hbase_300:
     external: true
 #
   sandbox_hive_312:

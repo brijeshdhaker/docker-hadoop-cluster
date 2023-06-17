@@ -1,3 +1,8 @@
+#
+# docker volume create --name sandbox_spark_312 --opt type=none --opt device=/opt/spark-3.1.2 --opt o=bind
+# docker volume create --name sandbox_spark_340 --opt type=none --opt device=/opt/spark-3.4.0 --opt o=bind
+#
+
 # docker-compose build
 # docker-compose up -d
 # docker-compose scale nodemanager=X; # X=integer number --> allows to add more nodes to the hadoop cluster for testing
@@ -22,7 +27,7 @@ services:
     environment:
       - CLUSTER_NAME=docker-sandbox
     env_file:
-      - envs/docker_hadoop334.env
+      - envs/docker_hadoop321.env
 
   #
   datanode:
@@ -40,7 +45,7 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
     env_file:
-      - envs/docker_hadoop334.env
+      - envs/docker_hadoop321.env
 
   #
   #
