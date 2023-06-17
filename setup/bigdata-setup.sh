@@ -110,7 +110,7 @@ sudo mkdir -p /apps/{sandbox,hostpath, var/log}
 sudo chown brijeshdhaker:root -R /apps
 sudo chmod 775 -R /apps
 
-sudo tar --strip-components=1 -xvf hadoop-3.3.4.tar.gz -C /opt/hadoop-3.3.4
+sudo tar --strip-components=1 -xvf hadoop-3.2.1.tar.gz -C /opt/hadoop-3.2.1
 sudo tar --strip-components=1 -xvf spark-3.4.0-bin-hadoop3.tgz -C /opt/spark-3.4.0
 sudo tar --strip-components=1 -xvf apache-hive-3.1.2-bin.tar.gz -C /opt/hive-3.1.2
 sudo tar --strip-components=1 -xvf hbase-2.4.9-bin.tar.gz -C /opt/hbase-2.4.9

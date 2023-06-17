@@ -31,7 +31,7 @@ services:
       dockerfile: docker-hadoop-3.3.4/namenode/Dockerfile
     container_name: namenode
     hostname: namenode.sandbox.net
-    restart: always
+    restart: no
     ports:
       - "9870:9870"
       - "9000:9000"
@@ -148,6 +148,7 @@ services:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_334_mapred:/mapred
       - ./conf/kerberos:/etc/kerberos
+      - ./conf/hadoop/conf/log4j.properties:/opt/hadoop/etc/hadoop/log4j.properties
     env_file:
       - ./envs/docker_hadoop334.env
 
@@ -260,7 +261,6 @@ services:
       - "2222:22"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_logs:/var/log
       - sandbox_hadoop_334:/opt/hadoop
       - sandbox_hbase_249:/opt/hbase
       - sandbox_hbase_117:/opt/hbase-client
@@ -269,7 +269,7 @@ services:
       - sandbox_maven_363:/opt/maven-3.6.3
       - /opt/zookeeper-3.7.1:/opt/zookeeper
       - ./conf/kerberos:/etc/kerberos
-      - ./conf/profiles/sandbox.profile:/root/sandbox.profile
+      - ./conf/profiles/sandbox.profile:/root/sandbox.profile:777
       - ./conf/profiles/brijeshdhaker.profile:/home/brijeshdhaker/brijeshdhaker.profile
       - ./conf/maven/settings.xml:/home/brijeshdhaker/.m2/settings.xml
     environment:

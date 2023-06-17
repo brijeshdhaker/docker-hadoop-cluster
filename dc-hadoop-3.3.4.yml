@@ -2,14 +2,14 @@
 # docker volume create --name sandbox_host_path --opt type=none --opt device=/apps/hostpath --opt o=bind
 # docker volume create --name sandbox_base_path --opt type=none --opt device=/apps/sandbox --opt o=bind
 #
-# docker volume create --name sandbox_hadoop_334_dfs --opt type=none --opt device=/apps/sandbox/hadoop-3.3.5/dfs --opt o=bind
+# docker volume create --name sandbox_hadoop_334_dfs --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/dfs --opt o=bind
 # docker volume create --name sandbox_hadoop_334_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.3.5/yarn --opt o=bind
 # docker volume create --name sandbox_hadoop_334_mapred --opt type=none --opt device=/apps/sandbox/hadoop-3.3.5/mapred --opt o=bind
 #
 # docker volume create --name sandbox_spark_312 --opt type=none --opt device=/opt/spark-3.1.2 --opt o=bind
 # docker volume create --name sandbox_hadoop_274 --opt type=none --opt device=/opt/hadoop-2.7.4 --opt o=bind
 #
-# docker volume create --name sandbox_hadoop_334 --opt type=none --opt device=/opt/hadoop-3.3.4 --opt o=bind
+# docker volume create --name sandbox_hadoop_334 --opt type=none --opt device=/opt/hadoop-3.2.1 --opt o=bind
 # docker volume create --name sandbox_spark_340 --opt type=none --opt device=/opt/spark-3.4.0 --opt o=bind
 # docker volume create --name sandbox_hive_312 --opt type=none --opt device=/opt/hive-3.1.2 --opt o=bind
 # docker volume create --name sandbox_hbase_249 --opt type=none --opt device=/opt/hbase-2.4.9 --opt o=bind

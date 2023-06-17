@@ -33,17 +33,17 @@ ENV MAPRED_LOG_DIR=${MAPRED_LOG_DIR:-"/apps/var/log/mapred"}
 ADD resources/bin/jsvc /usr/bin/jsvc
 
 #
-ADD resources/tars/hadoop-3.3.4.tar.gz ${BASE_DIR}/
-RUN mv -f ${BASE_DIR}/hadoop-3.3.4 ${BASE_DIR}/hadoop
-
+COPY resources/tars/hadoop-3.2.1.tar.gz ${BASE_DIR}/hadoop-3.2.1.tar.gz
 ADD docker-hadoop-3.3.4/base/entrypoint.sh /entrypoint.sh
 
 RUN set -x && \
-    ln -s ${HADOOP_HOME}/etc/hadoop /etc/hadoop && chmod -Rf 777 /etc/hadoop && \
-    chown -Rf hdfs:hadoop ${HADOOP_HOME} && chmod -Rf 777 ${HADOOP_HOME} && \
-    mkdir -p $HADOOP_LOG_DIR && chmod -Rf 777 $HADOOP_LOG_DIR && chown -Rf hdfs:hadoop $HADOOP_LOG_DIR && \
-    mkdir -p $YARN_LOG_DIR && chmod -Rf 777 $YARN_LOG_DIR && chown -Rf yarn:hadoop $YARN_LOG_DIR && \
-    mkdir -p $MAPRED_LOG_DIR && chmod -Rf 777 $MAPRED_LOG_DIR && chown -Rf mapred:hadoop $MAPRED_LOG_DIR && \
-    chmod -Rf 777 /entrypoint.sh && chmod -Rf 777 /usr/bin/jsvc
+    mkdir -p  ${HADOOP_HOME} && tar --strip-components=1 -zxvf  ${BASE_DIR}/hadoop-3.2.1.tar.gz -C ${HADOOP_HOME} && \
+    ln -s ${HADOOP_HOME}/etc/hadoop /etc/hadoop && chmod -Rf 775 /etc/hadoop && \
+    chown -Rf hdfs:hadoop ${HADOOP_HOME} && chmod -Rf 775 ${HADOOP_HOME} && \
+    mkdir -p $HADOOP_LOG_DIR && chmod -Rf 775 $HADOOP_LOG_DIR && chown -Rf hdfs:hadoop $HADOOP_LOG_DIR && \
+    mkdir -p $YARN_LOG_DIR && chmod -Rf 775 $YARN_LOG_DIR && chown -Rf yarn:hadoop $YARN_LOG_DIR && \
+    mkdir -p $MAPRED_LOG_DIR && chmod -Rf 775 $MAPRED_LOG_DIR && chown -Rf mapred:hadoop $MAPRED_LOG_DIR && \
+    chmod -Rf 775 /entrypoint.sh && chmod -Rf 775 /usr/bin/jsvc && \
+    echo "done...!!!"
 
 ENTRYPOINT ["/entrypoint.sh"]
