@@ -41,7 +41,7 @@
 # Default settings are applied according to the detected JVM version. Override these default
 # settings by specifying a value here. For more details on possible settings,
 # see http://hbase.apache.org/book.html#_jvm_tuning
-export HBASE_OPTS="$HBASE_OPTS -Djava.security.auth.login.config=/opt/hbase/conf/zk-jaas.conf -Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
+export HBASE_OPTS="$HBASE_OPTS -Dhbase.log.dir=/apps/var/log/hbase -Djava.security.auth.login.config=/opt/hbase/conf/zk-jaas.conf -Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
 export KRB5_CONFIG="/etc/kerberos/krb5.conf"
 # Uncomment one of the below three options to enable java garbage collection logging for the server-side processes.
 
