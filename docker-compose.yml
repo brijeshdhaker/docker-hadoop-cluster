@@ -197,7 +197,7 @@ services:
     env_file:
       - ./envs/docker_hive.env
     environment:
-      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:mysql://mysqlserver:3306/metastore?createDatabaseIfNotExist=true;autoReconnect=true;useSSL=false"
+      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:mysql://mysqlserver.sandbox.net:3306/metastore?createDatabaseIfNotExist=true;autoReconnect=true;useSSL=false"
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870 metastore.sandbox.net:9083"
     ports:
       - "10000:10000"
