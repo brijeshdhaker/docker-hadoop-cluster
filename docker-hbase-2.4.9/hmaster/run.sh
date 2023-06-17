@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/opt/hbase-2.4.9/bin/hbase master start
+$HBASE_HOME/bin/hbase master start

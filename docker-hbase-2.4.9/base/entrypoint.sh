@@ -24,11 +24,11 @@ function configure() {
         var="${envPrefix}_${c}"
         value=${!var}
         echo " - Setting $name=$value"
-        addProperty /etc/hbase/$module-site.xml $name "$value"
+        addProperty $path $name "$value"
     done
 }
 
-configure /etc/hbase/hbase-site.xml hbase HBASE_CONF
+configure $HBASE_HOME/conf/hbase-site.xml hbase HBASE_SITE
 
 function wait_for_it()
 {

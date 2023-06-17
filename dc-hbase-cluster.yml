@@ -7,40 +7,34 @@ version: "3.9"
 services:
   #
   # Zookeeper Server
-  #
+  # zookeeper:3.5.7
   zookeeper:
-    image: confluentinc/cp-zookeeper:7.1.2
+    image: zookeeper:3.5.7
     hostname: zookeeper.sandbox.net
     container_name: zookeeper
     ports:
       - "2181:2181"
+      - "8080:8080"
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
-      - sandbox_zookeeper_secrets:/etc/zookeeper/secrets
-      - sandbox_zookeeper_data:/var/lib/zookeeper/data
-      - sandbox_zookeeper_log:/var/lib/zookeeper/log
+      - sandbox_logs:/var/log
+      - /apps/sandbox/zookeeper:/zookeeper
+      - ./conf/zookeeper:/conf
       - ./conf/kerberos:/etc/kerberos
-      - ./conf/zookeeper/jaas.conf:/etc/kafka/jaas.conf
-      - ./conf/zookeeper/java.env:/etc/kafka/java.env
-      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
+      JVMFLAGS: "-Djava.security.auth.login.config=/conf/jaas.conf -Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
       KRB5_CONFIG: "/etc/kerberos/krb5.conf"
-      ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
-      ZOOKEEPER_AUTH_PROVIDER_SASL: "org.apache.zookeeper.server.auth.SASLAuthenticationProvider jaasLoginRenew=3600000"
-      ALLOW_UNSIGNED: "true"
-      JVMFLAGS: "-Djava.security.auth.login.config=/etc/zookeeper/conf/jaas.conf"
 
   #
   # Hbase Server
   #
-  hbasemaster:
-    image: brijeshdhaker/hbase-master:2.4.9
-    hostname: hbasemaster.sandbox.net
-    container_name: hbasemaster
+  hmaster:
+    image: brijeshdhaker/hbase-master:2.5.5
+    hostname: hmaster.sandbox.net
+    container_name: hmaster
     environment:
-      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 zookeeper:2181"
+      SERVICE_PRECONDITION: "namenode.sandbox.net:9870 zookeeper.sandbox.net:2181"
     env_file:
       - envs/docker_hbase.env
     ports:
@@ -49,37 +43,58 @@ services:
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
+      - sandbox_hadoop_334:/opt/hadoop
+      - ./conf/kerberos:/etc/kerberos
+      - ./conf/hbase/hbase-env.sh:/opt/hbase/conf/hbase-env.sh
+      - ./conf/hbase/hmaster-jaas.conf:/opt/hbase/conf/zk-jaas.conf
+#      - ./conf/hbase/hbase-site.xml:/opt/hbase/conf/hbase-site.xml
 
   #
-  regionserver:
-    image: brijeshdhaker/hbase-regionserver:2.4.9
-    hostname: regionserver.sandbox.net
-    container_name: regionserver
+  hregion:
+    image: brijeshdhaker/hbase-regionserver:2.5.5
+    hostname: hregion.sandbox.net
+    container_name: hregion
     env_file:
       - envs/docker_hbase.env
     environment:
-      HBASE_CONF_hbase_regionserver_hostname: hbase-region
-      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 zookeeper:2181 hbase-master:16010"
+      SERVICE_PRECONDITION: "namenode.sandbox.net:9870 zookeeper.sandbox.net:2181 hmaster.sandbox.net:16010"
     ports:
       - "16020:16020"
       - "16030:16030"
     volumes:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
+      - sandbox_hadoop_334:/opt/hadoop
+      - ./conf/kerberos:/etc/kerberos
+      - ./conf/hbase/hbase-env.sh:/opt/hbase/conf/hbase-env.sh
+      - ./conf/hbase/hregion-jaas.conf:/opt/hbase/conf/zk-jaas.conf
+      - ./conf/hbase/hbase-site.xml:/opt/hbase/conf/hbase-site.xml
 
 #
 volumes:
+#
   sandbox_host_path:
     external: true
   sandbox_base_path:
     external: true
+  sandbox_logs:
+    external: true
+#
   sandbox_zookeeper_secrets:
     external: true
   sandbox_zookeeper_data:
     external: true
   sandbox_zookeeper_log:
     external: true
-
+  #
+  sandbox_hadoop_334:
+    external: true
+  sandbox_hadoop_334_dfs:
+    external: true
+  sandbox_hadoop_334_mr:
+    external: true
+  sandbox_hadoop_334_yarn:
+    external: true
 #
 networks:
   default:

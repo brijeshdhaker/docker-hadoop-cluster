@@ -27,8 +27,9 @@
 127.0.0.1       gateway.sandbox.net gateway
 
 # hbase
-127.0.0.1       hbasemaster.sandbox.net hbasemaster
-127.0.0.1       regionserver.sandbox.net regionserver
+127.0.0.1       zookeeper.sandbox.net zookeeper
+127.0.0.1       hmaster.sandbox.net hmaster
+127.0.0.1       hregion.sandbox.net hregion
 
 # hive
 127.0.0.1       postgresql.sandbox.net postgresql
@@ -44,8 +45,7 @@
 127.0.0.1       zeppelin.sandbox.net zeppelin
 127.0.0.1       nififlow.sandbox.net nififlow
 
-# zookeeper
-127.0.0.1       zookeeper.sandbox.net zookeeper
+# kafka
 127.0.0.1       kafkabroker.sandbox.net kafkabroker
 127.0.0.1       schemaregistry.sandbox.net schemaregistry
 

@@ -13,9 +13,9 @@ ENV BASE_DIR=/opt
 ENV HADOOP_HOME=$BASE_DIR/hadoop
 ENV HADOOP_CONF_DIR=/etc/hadoop
 ENV PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin
-ENV HADOOP_LOG_DIR=${HADOOP_LOG_DIR:-"/var/log/hadoop"}
-ENV YARN_LOG_DIR=${YARN_LOG_DIR:-"/var/log/yarn"}
-ENV MAPRED_LOG_DIR=${MAPRED_LOG_DIR:-"/var/log/mapred"}
+ENV HADOOP_LOG_DIR=${HADOOP_LOG_DIR:-"/apps/var/log/hadoop"}
+ENV YARN_LOG_DIR=${YARN_LOG_DIR:-"/apps/var/log/yarn"}
+ENV MAPRED_LOG_DIR=${MAPRED_LOG_DIR:-"/apps/var/log/mapred"}
 
 # RUN curl -O https://dist.apache.org/repos/dist/release/hadoop/common/KEYS
 # RUN gpg --import KEYS

@@ -10,7 +10,7 @@ KUSERS_PASSWORD=kuser
 # delete existing keytab files
 echo "Adding OS User Principal"
 echo ""
-OS_USERS=("brijeshdhaker" "hdfs" "yarn" "mapred" "hbase" "hive" "spark")
+OS_USERS=("brijeshdhaker" "sandbox" "hdfs" "yarn" "mapred" "hive" "spark" "hbase" "zookeeper")
 for ou in "${OS_USERS[@]}"
 do
   rm -Rf /etc/kerberos/users/$ou.keytab
@@ -39,8 +39,8 @@ SANDBOX_NODES=(
   "hiveserver.sandbox.net"
   "sparkhistory.sandbox.net"
   "zookeeper.sandbox.net"
-  "hbasemaster.sandbox.net"
-  "regionserver.sandbox.net"
+  "hmaster.sandbox.net"
+  "hregion.sandbox.net"
   "gateway.sandbox.net"
   "thinkpad.sandbox.net"
   "dockerhost.sandbox.net"
@@ -78,7 +78,7 @@ do
 done
 
 # Create merged keytab
-UNMERGED_SERVICES=("zookeeper" "hdfs" "yarn" "mapred" "hbase" "hive" "spark" )
+UNMERGED_SERVICES=("hdfs" "yarn" "mapred" "hive" "spark" "hbase" "zookeeper")
 for usvc in "${UNMERGED_SERVICES[@]}"
 do
   rm -Rf /etc/kerberos/keytabs/$usvc.service.keytab
