@@ -8,13 +8,10 @@
 
 #
 # docker build -t brijeshdhaker/spark:3.4.0 -f docker-spark/Dockerfile .
-# docker push docker.io/brijeshdhaker/spark:3.1.2
+# docker push docker.io/brijeshdhaker/spark:3.4.0
 #
 
 FROM brijeshdhaker/ubuntu:22.04
-
-ARG spark_gid=185
-ARG spark_uid=185
 
 # Note: this is needed when you use Python 3.3 or greater
 ENV PYTHONHASHSEED=1
@@ -23,7 +20,7 @@ ENV BASE_DIR=/opt
 ENV SPARK_HOME=$BASE_DIR/spark
 ENV SPARK_CONF_DIR=$SPARK_HOME/conf
 ENV PATH=$PATH:${SPARK_HOME}/bin:${SPARK_HOME}/sbin
-ENV SPARK_LOG_DIR=${SPARK_LOG_DIR:-"/var/log/spark"}
+ENV SPARK_LOG_DIR=${SPARK_LOG_DIR:-"/apps/var/log/spark"}
 ENV SPARK_WORKLOAD=${SPARK_WORKLOAD:-"master"}
 
 USER root
@@ -31,7 +28,7 @@ USER root
 COPY resources/tars/spark-3.4.0-bin-hadoop3.tgz /opt/spark-3.4.0-bin-hadoop3.tgz
 
 # Add Dependencies for PySpark
-RUN set -x && groupadd --system -g ${spark_gid} spark && useradd -m -s /bin/bash -g ${spark_gid} -G users,sudo,spark spark && \
+RUN set -x && \
     mkdir -p  ${SPARK_HOME} && tar --strip-components=1 -zxvf  /opt/spark-3.4.0-bin-hadoop3.tgz -C ${SPARK_HOME} && \
     chown -Rf spark:spark ${SPARK_HOME} && chmod -Rf 755 ${SPARK_HOME} && \
 #    ln -s ${SPARK_HOME}/conf /etc/spark/conf && chmod -Rf 755 /etc/spark/conf && \
@@ -45,10 +42,10 @@ RUN set -x && groupadd --system -g ${spark_gid} spark && useradd -m -s /bin/bash
 #
 # Download and uncompress spark from the apache archive
 #
-# RUN wget --no-verbose -O apache-spark.tgz "https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.tgz" \
+# RUN wget --no-verbose -O /opt/apache-spark.tgz "https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.tgz" \
 # && mkdir -p ${SPARK_HOME} \
-# && tar -xf apache-spark.tgz -C ${SPARK_HOME} --strip-components=1 \
-# && rm apache-spark.tgz
+# && tar -xf /opt/apache-spark.tgz -C ${SPARK_HOME} --strip-components=1 \
+# && rm /opt/apache-spark.tgz
 WORKDIR ${SPARK_HOME}
 
 #
