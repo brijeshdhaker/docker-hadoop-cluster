@@ -56,7 +56,6 @@ RUN set -x && \
     groupadd -f -r -g ${mapred_gid} mapred && \
     groupadd -f -r -g ${hbase_gid} hbase && \
     groupadd -f -r -g ${spark_gid} spark && \
-    groupadd -f -r -g ${sandbox_gid} sandbox && \
     groupadd -f -r -g ${zookeeper_gid} zookeeper && \
     groupadd -f -r -g ${zeppelin_gid} zeppelin && \
     useradd -m -s /bin/bash brijeshdhaker && usermod -aG sandbox,sudo brijeshdhaker && \
