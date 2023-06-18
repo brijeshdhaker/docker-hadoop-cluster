@@ -1,15 +1,15 @@
 #
-# docker build -t brijeshdhaker/hadoop-historyserver:3.2.1 -f docker-hadoop-3.2.1/historyserver/Dockerfile .
-# docker push brijeshdhaker/hadoop-historyserver:3.2.1
+# docker build -t brijeshdhaker/hadoop-historyserver:3.2.4 -f docker-hadoop/historyserver/Dockerfile .
+# docker push brijeshdhaker/hadoop-historyserver:3.2.4
 #
 
-FROM brijeshdhaker/hadoop-base:3.2.1
+FROM brijeshdhaker/hadoop-base:3.2.4
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
 HEALTHCHECK CMD curl -f http://localhost:19888/ || exit 1
 
-ADD docker-hadoop-3.2.1/historyserver/run.sh /run.sh
+ADD docker-hadoop/historyserver/run.sh /run.sh
 RUN mkdir -p /mapred/history && \
     chmod -Rf 777 /mapred/history && \
     chown -Rf mapred:hadoop /mapred/history && \

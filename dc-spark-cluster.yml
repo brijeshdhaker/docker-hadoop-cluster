@@ -27,7 +27,7 @@ services:
     environment:
       - CLUSTER_NAME=docker-sandbox
     env_file:
-      - envs/docker_hadoop321.env
+      - envs/docker_hadoop.env
 
   #
   datanode:
@@ -45,7 +45,7 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
     env_file:
-      - envs/docker_hadoop321.env
+      - envs/docker_hadoop.env
 
   #
   #

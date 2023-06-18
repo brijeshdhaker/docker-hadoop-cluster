@@ -1,9 +1,9 @@
 #
-# docker build -t brijeshdhaker/hadoop-datanode:3.2.1 -f docker-hadoop-3.2.1/datanode/Dockerfile .
-# docker push brijeshdhaker/hadoop-datanode:3.2.1
+# docker build -t brijeshdhaker/hadoop-datanode:3.2.4 -f docker-hadoop/datanode/Dockerfile .
+# docker push brijeshdhaker/hadoop-datanode:3.2.4
 #
 
-FROM brijeshdhaker/hadoop-base:3.2.1
+FROM brijeshdhaker/hadoop-base:3.2.4
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
@@ -19,7 +19,7 @@ VOLUME /hadoop/dfs
 
 #
 ENV MULTIHOMED_NETWORK=0
-ADD docker-hadoop-3.2.1/datanode/run.sh /run.sh
+ADD docker-hadoop/datanode/run.sh /run.sh
 RUN chmod -Rf 755 /run.sh
 
 EXPOSE 9864

@@ -28,7 +28,7 @@ services:
     image: brijeshdhaker/hadoop-namenode:3.2.1
     build:
       context: .
-      dockerfile: docker-hadoop-3.2.1/namenode/Dockerfile
+      dockerfile: docker-hadoop/namenode/Dockerfile
     container_name: namenode
     hostname: namenode.sandbox.net
     restart: no
@@ -43,14 +43,14 @@ services:
       CLUSTER_NAME: "docker-sandbox"
       MULTIHOMED_NETWORK: 2
     env_file:
-      - envs/docker_hadoop321.env
+      - envs/docker_hadoop.env
 
   #
   datanode:
     image: brijeshdhaker/hadoop-datanode:3.2.1
     build:
       context: .
-      dockerfile: docker-hadoop-3.2.1/datanode/Dockerfile
+      dockerfile: docker-hadoop/datanode/Dockerfile
     container_name: datanode
     hostname: datanode.sandbox.net
     ports:
@@ -66,14 +66,14 @@ services:
       CLUSTER_NAME: "docker-sandbox"
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000"
     env_file:
-      - envs/docker_hadoop321.env
+      - envs/docker_hadoop.env
 
   # YARN Sandbox
   resourcemanager:
     image: brijeshdhaker/hadoop-resourcemanager:3.2.1
     build:
       context: .
-      dockerfile: docker-hadoop-3.2.1/resourcemanager/Dockerfile
+      dockerfile: docker-hadoop/resourcemanager/Dockerfile
     container_name: resourcemanager
     hostname: resourcemanager.sandbox.net
     restart: always
@@ -89,14 +89,14 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
     env_file:
-      - envs/docker_hadoop321.env
+      - envs/docker_hadoop.env
 
   #
   nodemanager:
     image: brijeshdhaker/hadoop-nodemanager:3.2.1
     build:
       context: .
-      dockerfile: docker-hadoop-3.2.1/nodemanager/Dockerfile
+      dockerfile: docker-hadoop/nodemanager/Dockerfile
     container_name: nodemanager
     hostname: nodemanager.sandbox.net
     restart: always
@@ -109,14 +109,14 @@ services:
     environment:
       SERVICE_PRECONDITION: "resourcemanager.sandbox.net:8088"
     env_file:
-      - envs/docker_hadoop321.env
+      - envs/docker_hadoop.env
 
   # YARN Timeline Server
   timelineserver:
     image: brijeshdhaker/hadoop-timelineserver:3.2.1
     build:
       context: .
-      dockerfile: docker-hadoop-3.2.1/historyserver/Dockerfile
+      dockerfile: docker-hadoop/historyserver/Dockerfile
     container_name: timelineserver
     hostname: timelineserver.sandbox.net
     restart: always
@@ -129,14 +129,14 @@ services:
       - sandbox_hadoop_321_yarn:/yarn
       - ./conf/kerberos:/etc/kerberos
     env_file:
-      - envs/docker_hadoop321.env
+      - envs/docker_hadoop.env
 
   # MR History Server
   historyserver:
     image: brijeshdhaker/hadoop-historyserver:3.2.1
     build:
       context: .
-      dockerfile: docker-hadoop-3.2.1/historyserver/Dockerfile
+      dockerfile: docker-hadoop/historyserver/Dockerfile
     container_name: historyserver
     hostname: historyserver.sandbox.net
     restart: always
@@ -150,7 +150,7 @@ services:
       - ./conf/kerberos:/etc/kerberos
       - ./conf/hadoop/conf/log4j.properties:/opt/hadoop/etc/hadoop/log4j.properties
     env_file:
-      - envs/docker_hadoop321.env
+      - envs/docker_hadoop.env
 
   # Mysql Database Server
   mysqlserver:

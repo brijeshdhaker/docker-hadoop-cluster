@@ -1,15 +1,15 @@
 #
-# docker build -t brijeshdhaker/hadoop-resourcemanager:3.2.1 -f docker-hadoop-3.2.1/resourcemanager/Dockerfile .
-# docker push brijeshdhaker/hadoop-resourcemanager:3.2.1
+# docker build -t brijeshdhaker/hadoop-resourcemanager:3.2.4 -f docker-hadoop/resourcemanager/Dockerfile .
+# docker push brijeshdhaker/hadoop-resourcemanager:3.2.4
 #
 
-FROM brijeshdhaker/hadoop-base:3.2.1
+FROM brijeshdhaker/hadoop-base:3.2.4
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
 HEALTHCHECK CMD curl -f http://localhost:8088/ || exit 1
 
-ADD docker-hadoop-3.2.1/resourcemanager/run.sh /run.sh
+ADD docker-hadoop/resourcemanager/run.sh /run.sh
 RUN chown yarn:hadoop /run.sh && chmod 775 /run.sh
 
 EXPOSE 8088
