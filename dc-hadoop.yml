@@ -2,10 +2,10 @@
 # docker volume create --name sandbox_host_path --opt type=none --opt device=/apps/hostpath --opt o=bind
 # docker volume create --name sandbox_base_path --opt type=none --opt device=/apps/sandbox --opt o=bind
 #
-# docker volume create --name sandbox_hadoop_321 --opt type=none --opt device=/opt/hadoop-3.2.1 --opt o=bind
-# docker volume create --name sandbox_hadoop_321_dfs --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/dfs --opt o=bind
-# docker volume create --name sandbox_hadoop_321_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/yarn --opt o=bind
-# docker volume create --name sandbox_hadoop_321_mapred --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/mapred --opt o=bind
+# docker volume create --name sandbox_hadoop_324 --opt type=none --opt device=/opt/hadoop-3.2.1 --opt o=bind
+# docker volume create --name sandbox_hadoop_324_dfs --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/dfs --opt o=bind
+# docker volume create --name sandbox_hadoop_324_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/yarn --opt o=bind
+# docker volume create --name sandbox_hadoop_324_mapred --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/mapred --opt o=bind
 #
 # docker volume create --name sandbox_hadoop_324 --opt type=none --opt device=/opt/hadoop-3.2.4 --opt o=bind
 # docker volume create --name sandbox_hadoop_324_dfs --opt type=none --opt device=/apps/sandbox/hadoop-3.2.4/dfs --opt o=bind
@@ -51,7 +51,7 @@ services:
       - "9000:9000"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_321_dfs:/hadoop/dfs
+      - sandbox_hadoop_324_dfs:/hadoop/dfs
       - ./conf/kerberos:/etc/kerberos
     environment:
       CLUSTER_NAME: "docker-sandbox"
@@ -74,7 +74,7 @@ services:
 #    command: ["/usr/sbin/sshd", "-D"]
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_321_dfs:/hadoop/dfs
+      - sandbox_hadoop_324_dfs:/hadoop/dfs
       - ./conf/kerberos:/etc/kerberos
       - ./conf/hadoop/conf/hadoop-env.sh:/opt/hadoop/etc/hadoop/hadoop-env.sh
     environment:
@@ -97,7 +97,7 @@ services:
       - "8032:8032"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_321_yarn:/yarn
+      - sandbox_hadoop_324_yarn:/yarn
       - ./conf/kerberos:/etc/kerberos
       - ./conf/yarn/fair-scheduler.xml:/opt/hadoop-3.2.4/etc/hadoop/fair-scheduler.xml
       - ./conf/yarn/capacity-scheduler.xml:/opt/hadoop-3.2.4/etc/hadoop/capacity-scheduler.xml
@@ -120,7 +120,7 @@ services:
       - "8042:8042"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_321_yarn:/yarn
+      - sandbox_hadoop_324_yarn:/yarn
       - ./conf/kerberos:/etc/kerberos
     environment:
       CLUSTER_NAME: "docker-sandbox"
@@ -147,7 +147,7 @@ services:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_321_mapred:/mapred
+      - sandbox_hadoop_324_mapred:/mapred
       - ./conf/kerberos:/etc/kerberos
     env_file:
       - envs/docker_hadoop.env
@@ -170,7 +170,7 @@ services:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_321_yarn:/yarn
+      - sandbox_hadoop_324_yarn:/yarn
       - ./conf/kerberos:/etc/kerberos
     env_file:
       - envs/docker_hadoop.env
@@ -190,7 +190,7 @@ services:
       - "2222:22"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_321:/opt/hadoop
+      - sandbox_hadoop_324:/opt/hadoop
       - sandbox_hbase_300:/opt/hbase
       - sandbox_hive_312:/opt/hive
       - sandbox_spark_340:/opt/spark
@@ -208,33 +208,35 @@ services:
 
 #
 volumes:
+#
   sandbox_apps_path:
     external: true
-  sandbox_host_path:
-    external: true
-  sandbox_base_path:
-    external: true
-  sandbox_hadoop_321_dfs:
-    external: true
-  sandbox_hadoop_321_mapred:
-    external: true
-  sandbox_hadoop_321_yarn:
-    external: true
-  sandbox_hadoop_321:
-    external: true
-  sandbox_hive_312:
-    external: true
-  sandbox_spark_340:
-    external: true
-  sandbox_hbase_249:
-    external: true
-  sandbox_hbase_117:
-    external: true
-  sandbox_maven_363:
-    external: true
+#
   sandbox_krb5_stash:
     external: true
   sandbox_krb5_principal:
+    external: true
+
+#
+  sandbox_hadoop_324_dfs:
+    external: true
+  sandbox_hadoop_324_mapred:
+    external: true
+  sandbox_hadoop_324_yarn:
+    external: true
+  sandbox_hadoop_324:
+    external: true
+#
+  sandbox_hive_312:
+    external: true
+#
+  sandbox_spark_340:
+    external: true
+#
+  sandbox_hbase_300:
+    external: true
+#
+  sandbox_maven_363:
     external: true
 
 #
