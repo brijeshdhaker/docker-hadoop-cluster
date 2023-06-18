@@ -1,5 +1,6 @@
 #
 # docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
+# docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
 #
 ---
 version: "3.9"
@@ -25,7 +26,7 @@ services:
 
   # HDFS Sandbox
   namenode:
-    image: brijeshdhaker/hadoop-namenode:3.2.1
+    image: brijeshdhaker/hadoop-namenode:3.2.4
     build:
       context: .
       dockerfile: docker-hadoop/namenode/Dockerfile
@@ -47,7 +48,7 @@ services:
 
   #
   datanode:
-    image: brijeshdhaker/hadoop-datanode:3.2.1
+    image: brijeshdhaker/hadoop-datanode:3.2.4
     build:
       context: .
       dockerfile: docker-hadoop/datanode/Dockerfile
@@ -70,7 +71,7 @@ services:
 
   # YARN Sandbox
   resourcemanager:
-    image: brijeshdhaker/hadoop-resourcemanager:3.2.1
+    image: brijeshdhaker/hadoop-resourcemanager:3.2.4
     build:
       context: .
       dockerfile: docker-hadoop/resourcemanager/Dockerfile
@@ -93,7 +94,7 @@ services:
 
   #
   nodemanager:
-    image: brijeshdhaker/hadoop-nodemanager:3.2.1
+    image: brijeshdhaker/hadoop-nodemanager:3.2.4
     build:
       context: .
       dockerfile: docker-hadoop/nodemanager/Dockerfile
@@ -113,7 +114,7 @@ services:
 
   # YARN Timeline Server
   timelineserver:
-    image: brijeshdhaker/hadoop-timelineserver:3.2.1
+    image: brijeshdhaker/hadoop-timelineserver:3.2.4
     build:
       context: .
       dockerfile: docker-hadoop/historyserver/Dockerfile
@@ -133,7 +134,7 @@ services:
 
   # MR History Server
   historyserver:
-    image: brijeshdhaker/hadoop-historyserver:3.2.1
+    image: brijeshdhaker/hadoop-historyserver:3.2.4
     build:
       context: .
       dockerfile: docker-hadoop/historyserver/Dockerfile
@@ -205,8 +206,8 @@ services:
       - "10002:10002"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_321:/opt/hadoop
-      - sandbox_tez_010:/opt/tez
+      - /opt/hadoop-3.2.4:/opt/hadoop
+      - sandbox_tez_092:/opt/tez
       - ./conf/hadoop/conf/hadoop-env.sh:/opt/hadoop/etc/hadoop/hadoop-env.sh
       - ./conf/hive/conf/hive-env.sh:/opt/hive/conf/hive-env.sh
       - ./conf/kerberos:/etc/kerberos
@@ -352,7 +353,7 @@ volumes:
 #
   sandbox_hive_312:
     external: true
-  sandbox_tez_010:
+  sandbox_tez_092:
     external: true
 #
   sandbox_spark_340:

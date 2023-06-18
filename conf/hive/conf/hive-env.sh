@@ -52,6 +52,7 @@ export HIVE_CONF_DIR=/opt/hive/conf
 
 # Folder containing extra libraries required for hive compilation/execution can be controlled by:
 # export HIVE_AUX_JARS_PATH=
+# export HADOOP_CLASSPATH=/opt/tez/conf:/opt/tez/*:/opt/tez/lib/*
 export KRB5_CONFIG="/etc/kerberos/krb5.conf"
 export YARN_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
 export HADOOP_CLIENT_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"

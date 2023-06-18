@@ -1,7 +1,7 @@
 #
 # docker volume create --name sandbox_hive_data --opt type=none --opt device=/apps/sandbox/hive --opt o=bind
 # docker volume create --name sandbox_hive_312 --opt type=none --opt device=/opt/hive-3.1.2 --opt o=bind
-# docker volume create --name sandbox_tez_010 --opt type=none --opt device=/opt/tez-0.10.2 --opt o=bind
+# docker volume create --name sandbox_tez_092 --opt type=none --opt device=/opt/tez-0.9.2 --opt o=bind
 #
 ---
 version: "3.5"
@@ -26,7 +26,7 @@ services:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
       - sandbox_hadoop_321:/opt/hadoop
-      - sandbox_tez_010:/opt/tez
+      - sandbox_tez_092:/opt/tez
       - ./conf/kerberos:/etc/kerberos
 
   #
@@ -46,7 +46,7 @@ services:
       - sandbox_host_path:/apps/hostpath
       - sandbox_base_path:/apps/sandbox
       - sandbox_hadoop_321:/opt/hadoop
-      - sandbox_tez_010:/opt/tez
+      - sandbox_tez_092:/opt/tez
       - ./conf/kerberos:/etc/kerberos
 
 #
@@ -57,7 +57,7 @@ volumes:
     external: true
   sandbox_hadoop_321:
     external: true
-  sandbox_tez_010:
+  sandbox_tez_092:
     external: true
 #
 networks:
