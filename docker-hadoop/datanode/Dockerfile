@@ -15,8 +15,6 @@ RUN mkdir -p /hadoop/dfs/data && \
     chmod -Rf 777 /hadoop/dfs/data && \
     chown -Rf hdfs:hadoop /hadoop/dfs/data
 
-VOLUME /hadoop/dfs
-
 #
 ENV MULTIHOMED_NETWORK=0
 ADD docker-hadoop/datanode/run.sh /run.sh

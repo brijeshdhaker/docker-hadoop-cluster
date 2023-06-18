@@ -16,8 +16,6 @@ RUN mkdir -p /hadoop/dfs/name && \
     chmod -Rf 777 /hadoop/dfs/name && \
     chown -Rf hdfs:hadoop /hadoop/dfs/name
 
-VOLUME /hadoop/dfs
-
 ADD docker-hadoop/namenode/run.sh /run.sh
 RUN chmod -Rf 755 /run.sh
 
