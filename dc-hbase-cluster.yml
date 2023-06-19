@@ -1,21 +1,17 @@
 #
 #
+# docker volume create --name sandbox_zookeeper_371 --opt type=none --opt device=/apps/sandbox/zookeeper-3.7.1 --opt o=bind
 # docker volume create --name sandbox_hbase_300 --opt type=none --opt device=/opt/hbase-3.0.0 --opt o=bind
 # docker volume create --name sandbox_hbase_117 --opt type=none --opt device=/opt/hbase-1.1.7 --opt o=bind
-#
-
-#
 #
 #
 ---
 version: "3.9"
 
 services:
-  #
   # Zookeeper Server
-  # zookeeper:3.5.7
   zookeeper:
-    image: zookeeper:3.5.7
+    image: brijeshdhaker/zookeeper:3.7.1
     hostname: zookeeper.sandbox.net
     container_name: zookeeper
     ports:
@@ -23,7 +19,7 @@ services:
       - "8080:8080"
     volumes:
       - sandbox_apps_path:/apps
-      - /apps/sandbox/zookeeper:/zookeeper
+      - sandbox_zookeeper_371:/zookeeper
       - ./conf/zookeeper:/conf
       - ./conf/kerberos:/etc/kerberos
     environment:
@@ -46,7 +42,7 @@ services:
       - "16010:16010"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_321:/opt/hadoop
+      - sandbox_hadoop_324:/opt/hadoop
       - ./conf/kerberos:/etc/kerberos
       - ./conf/hbase/hbase-env.sh:/opt/hbase/conf/hbase-env.sh
       - ./conf/hbase/hmaster-jaas.conf:/opt/hbase/conf/zk-jaas.conf
@@ -65,7 +61,7 @@ services:
       - "16030:16030"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_321:/opt/hadoop
+      - sandbox_hadoop_324:/opt/hadoop
       - ./conf/kerberos:/etc/kerberos
       - ./conf/hbase/hbase-env.sh:/opt/hbase/conf/hbase-env.sh
       - ./conf/hbase/hregion-jaas.conf:/opt/hbase/conf/zk-jaas.conf
@@ -76,17 +72,11 @@ volumes:
 #
   sandbox_apps_path:
     external: true
-  sandbox_logs:
+#
+  sandbox_zookeeper_371:
     external: true
 #
-  sandbox_zookeeper_secrets:
-    external: true
-  sandbox_zookeeper_data:
-    external: true
-  sandbox_zookeeper_log:
-    external: true
-#
-  sandbox_hadoop_321:
+  sandbox_hadoop_324:
     external: true
 
 #

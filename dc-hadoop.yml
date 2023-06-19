@@ -2,20 +2,13 @@
 # docker volume create --name sandbox_host_path --opt type=none --opt device=/apps/hostpath --opt o=bind
 # docker volume create --name sandbox_base_path --opt type=none --opt device=/apps/sandbox --opt o=bind
 #
-# docker volume create --name sandbox_hadoop_324 --opt type=none --opt device=/opt/hadoop-3.2.1 --opt o=bind
-# docker volume create --name sandbox_hadoop_324_dfs --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/dfs --opt o=bind
-# docker volume create --name sandbox_hadoop_324_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/yarn --opt o=bind
-# docker volume create --name sandbox_hadoop_324_mapred --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/mapred --opt o=bind
-#
 # docker volume create --name sandbox_hadoop_324 --opt type=none --opt device=/opt/hadoop-3.2.4 --opt o=bind
 # docker volume create --name sandbox_hadoop_324_dfs --opt type=none --opt device=/apps/sandbox/hadoop-3.2.4/dfs --opt o=bind
 # docker volume create --name sandbox_hadoop_324_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.2.4/yarn --opt o=bind
 # docker volume create --name sandbox_hadoop_324_mapred --opt type=none --opt device=/apps/sandbox/hadoop-3.2.4/mapred --opt o=bind
 #
-
-
 #
-
+---
 version: "3.9"
 
 services:

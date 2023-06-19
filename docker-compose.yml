@@ -29,19 +29,18 @@ services:
   # Zookeeper Server
   #
   zookeeper:
-    image: zookeeper:3.5.7
+    image: brijeshdhaker/zookeeper:3.7.1
     hostname: zookeeper.sandbox.net
     container_name: zookeeper
     ports:
       - "2181:2181"
-      - "8080:8080"
     volumes:
       - sandbox_apps_path:/apps
-      - /apps/sandbox/zookeeper:/zookeeper
-      - ./conf/zookeeper:/conf
+      - sandbox_zookeeper_371:/zookeeper
+      - ./conf/zookeeper:/opt/zookeeper/conf
       - ./conf/kerberos:/etc/kerberos
     environment:
-      JVMFLAGS: "-Djava.security.auth.login.config=/conf/jaas.conf -Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
+      JVMFLAGS: "-Djava.security.auth.login.config=/opt/zookeeper/conf/jaas.conf -Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
       KRB5_CONFIG: "/etc/kerberos/krb5.conf"
   #
   # HDFS Cluster
@@ -381,12 +380,6 @@ volumes:
 #
   sandbox_apps_path:
     external: true
-  sandbox_host_path:
-    external: true
-  sandbox_base_path:
-    external: true
-  sandbox_logs:
-    external: true
 #
   sandbox_krb5_stash:
     external: true
@@ -417,6 +410,9 @@ volumes:
   sandbox_zeppelin:
     external: true
   sandbox_zeppelin_notebook:
+    external: true
+#
+  sandbox_zookeeper_371:
     external: true
 #
   sandbox_hbase_300:
