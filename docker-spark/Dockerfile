@@ -7,15 +7,15 @@
 #
 
 #
-# docker build -t brijeshdhaker/spark:3.4.0 -f docker-spark/Dockerfile .
-# docker push docker.io/brijeshdhaker/spark:3.4.0
+# docker build -t brijeshdhaker/spark:3.1.3 -f docker-spark/Dockerfile .
+# docker push docker.io/brijeshdhaker/spark:3.1.3
 #
 
 FROM brijeshdhaker/ubuntu:22.04
 
 # Note: this is needed when you use Python 3.3 or greater
 ENV PYTHONHASHSEED=1
-ENV SPARK_VERSION=3.4.0
+ENV SPARK_VERSION=3.1.3
 ENV BASE_DIR=/opt
 ENV SPARK_HOME=$BASE_DIR/spark
 ENV SPARK_CONF_DIR=$SPARK_HOME/conf
@@ -25,18 +25,18 @@ ENV SPARK_WORKLOAD=${SPARK_WORKLOAD:-"master"}
 
 USER root
 #
-COPY resources/tars/spark-3.4.0-bin-hadoop3.tgz /opt/spark-3.4.0-bin-hadoop3.tgz
+COPY resources/tars/spark-3.1.3-bin-hadoop3.2.tgz /opt/spark-3.1.3-bin-hadoop3.2.tgz
 
 # Add Dependencies for PySpark
 RUN set -x && \
-    mkdir -p  ${SPARK_HOME} && tar --strip-components=1 -zxvf  /opt/spark-3.4.0-bin-hadoop3.tgz -C ${SPARK_HOME} && \
+    mkdir -p  ${SPARK_HOME} && tar --strip-components=1 -zxvf  /opt/spark-3.1.3-bin-hadoop3.2.tgz -C ${SPARK_HOME} && \
     chown -Rf spark:spark ${SPARK_HOME} && chmod -Rf 755 ${SPARK_HOME} && \
 #    ln -s ${SPARK_HOME}/conf /etc/spark/conf && chmod -Rf 755 /etc/spark/conf && \
     mkdir -p $SPARK_LOG_DIR && chmod -Rf 777 $SPARK_LOG_DIR && chown -Rf spark:spark $SPARK_LOG_DIR && \
 #    apt-get install -y software-properties-common ca-certificates &&  \
 #    apt-get install -y python3 python3-pip python3-numpy python3-matplotlib python3-scipy python3-pandas && \
 #    update-alternatives --install "/usr/bin/python" "python" "$(which python3)" 1  && \
-    rm -f /opt/spark-3.4.0-bin-hadoop3.tgz && \
+    rm -f /opt/spark-3.1.3-bin-hadoop3.2.tgz && \
     echo "done."
 
 #

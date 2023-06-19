@@ -47,7 +47,7 @@
 	<property><name>yarn.resourcemanager.webapp.https.address</name><value>resourcemanager.sandbox.net:8090</value></property>
 	<property><name>yarn.resourcemanager.hostname</name><value>resourcemanager.sandbox.net</value></property>
 	<property><name>yarn.nodemanager.remote-app-log-dir-suffix</name><value>logs</value></property>
-	<property><name>yarn.timeline-service.enabled</name><value>true</value></property>
+	<property><name>yarn.timeline-service.enabled</name><value>false</value></property>
 	<property><name>yarn.resourcemanager.store.class</name><value>org.apache.hadoop.yarn.server.resourcemanager.recovery.FileSystemRMStateStore</value></property>
 	<property><name>yarn.resourcemanager.resource_tracker.address</name><value>resourcemanager.sandbox.net:8031</value></property>
 	<property><name>yarn.timeline-service.delegation.token.max-lifetime</name><value>604800000</value></property>

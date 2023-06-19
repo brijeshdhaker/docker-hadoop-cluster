@@ -58,7 +58,7 @@ RUN set -x && \
     groupadd -f -r -g ${spark_gid} spark && \
     groupadd -f -r -g ${zookeeper_gid} zookeeper && \
     groupadd -f -r -g ${zeppelin_gid} zeppelin && \
-    useradd -m -s /bin/bash brijeshdhaker && usermod -aG sandbox,sudo brijeshdhaker && \
+    useradd -m -s /bin/bash brijeshdhaker && usermod -aG sandbox,sudo,hadoop brijeshdhaker && \
     echo 'brijeshdhaker:Accoo7@k47' | chpasswd && mkdir -p /home/brijeshdhaker/.ssh && \
     useradd -M -r -g ${hadoop_gid} -u ${hdfs_uid} -G hadoop hdfs && \
     useradd -M -r -g ${hadoop_gid} -u ${yarn_uid} -G hadoop yarn && \

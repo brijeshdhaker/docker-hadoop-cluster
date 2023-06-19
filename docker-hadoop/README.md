@@ -100,8 +100,9 @@ $SPARK_HOME/bin/spark-submit \
 --conf "spark.yarn.queue=default" \
 --keytab /etc/kerberos/keytabs/brijeshdhaker.keytab \
 --principal brijeshdhaker@SANDBOX.NET \
---conf "spark.yarn.archive=hdfs://namenode.sandbox.net:9000/archives/spark-3.4.0.zip" \
+--conf "spark.yarn.archive=hdfs://namenode.sandbox.net:9000/archives/spark-3.1.2.zip" \
 --conf "spark.yarn.queue=engineering" \
 --conf "spark.eventLog.enabled=true" \
---conf "spark.eventLog.dir=hdfs://namenode.sandbox.net:9000/var/log/spark" \
+--conf "spark.eventLog.dir=hdfs://namenode.sandbox.net:9000/apps/var/log/spark" \
+--conf "hadoop.yarn.timeline-service.enabled=false" \
 $SPARK_HOME/examples/jars/spark-examples_*.jar 100
