@@ -15,8 +15,6 @@ RUN mkdir -p /mapred/history && \
     chown -Rf mapred:hadoop /mapred/history && \
     chown mapred:hadoop /run.sh && chmod 775 /run.sh
 
-VOLUME /mapred
-
 EXPOSE 19888
 
 # Specify the User that the actual main process will run as

@@ -15,8 +15,6 @@ RUN mkdir -p /yarn/timeline && \
     chown -Rf yarn:hadoop /yarn/timeline && \
     chown yarn:hadoop /run.sh && chmod 775 /run.sh
 
-VOLUME /yarn
-
 EXPOSE 8188
 
 # Specify the User that the actual main process will run as
