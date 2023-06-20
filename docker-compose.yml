@@ -365,7 +365,7 @@ services:
       - sandbox_hadoop_324:/opt/hadoop
       - sandbox_hbase_300:/opt/hbase
       - sandbox_hive_312:/opt/hive
-      - sandbox_spark_313:/opt/spark
+      - sandbox_spark_312:/opt/spark
       - sandbox_zeppelin:/opt/zeppelin
       - sandbox_zeppelin_notebook:/opt/notebook
       - ./conf/kerberos:/etc/kerberos
@@ -423,7 +423,7 @@ volumes:
   sandbox_tez_092:
     external: true
 #
-  sandbox_spark_313:
+  sandbox_spark_312:
     external: true
 
 
