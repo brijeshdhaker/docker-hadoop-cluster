@@ -107,6 +107,8 @@ services:
       - sandbox_hadoop_324_yarn:/yarn
       - ./conf/kerberos:/etc/kerberos
       - ./conf/hadoop/conf/hadoop-env.sh:/opt/hadoop/etc/hadoop/hadoop-env.sh
+      - ./conf/hadoop/conf/yarn-env.sh:/opt/hadoop/etc/hadoop/yarn-env.sh
+#      - ./conf/hadoop/client/core-site.xml:/opt/hadoop/etc/hadoop/core-site.xml
       - ./conf/hadoop/conf/fair-scheduler.xml:/opt/hadoop/etc/hadoop/fair-scheduler.xml
       - ./conf/hadoop/conf/capacity-scheduler.xml:/opt/hadoop/etc/hadoop/capacity-scheduler.xml
     environment:
@@ -129,6 +131,9 @@ services:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_324_yarn:/yarn
       - ./conf/kerberos:/etc/kerberos
+ #     - ./conf/hadoop/client/core-site.xml:/opt/hadoop/etc/hadoop/core-site.xml
+      - ./conf/hadoop/conf/hadoop-env.sh:/opt/hadoop/etc/hadoop/hadoop-env.sh
+      - ./conf/hadoop/conf/yarn-env.sh:/opt/hadoop/etc/hadoop/yarn-env.sh
     environment:
       SERVICE_PRECONDITION: "resourcemanager.sandbox.net:8088"
     env_file:
@@ -151,6 +156,8 @@ services:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_324_yarn:/yarn
       - ./conf/kerberos:/etc/kerberos
+      - ./conf/hadoop/conf/hadoop-env.sh:/opt/hadoop/etc/hadoop/hadoop-env.sh
+      - ./conf/hadoop/conf/yarn-env.sh:/opt/hadoop/etc/hadoop/yarn-env.sh
     env_file:
       - envs/docker_hadoop.env
 
@@ -172,6 +179,8 @@ services:
       - sandbox_hadoop_324_mapred:/mapred
       - ./conf/kerberos:/etc/kerberos
       - ./conf/hadoop/conf/log4j.properties:/opt/hadoop/etc/hadoop/log4j.properties
+      - ./conf/hadoop/conf/hadoop-env.sh:/opt/hadoop/etc/hadoop/hadoop-env.sh
+      - ./conf/hadoop/conf/yarn-env.sh:/opt/hadoop/etc/hadoop/yarn-env.sh
     env_file:
       - envs/docker_hadoop.env
 
