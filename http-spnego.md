@@ -35,3 +35,9 @@ network.negotiate-auth.trusted-uris=.sandbox.net
 #
 google-chrome --auth-server-whitelist="*.sandbox.net"
 Chrome --auth-server-whitelist="*.sandbox.net"
+
+#
+#
+#
+
+https://superuser.com/questions/1707537/firefox-and-chromium-dont-do-kerberos-negotiation-curl-does
