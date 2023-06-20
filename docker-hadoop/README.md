@@ -70,9 +70,9 @@ $HADOOP_HOME/bin/hadoop jar $JAR_FILEPATH $CLASS_TO_RUN $PARAMS
 
 bin/hadoop jar hadoop-mapreduce-examples-<ver>.jar wordcount -files cachefile.txt -libjars mylib.jar -archives myarchive.zip input output
 
-yarn jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.4.jar wordcount "books/*" output
+yarn jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.4.jar wordcount "books/*" output
 
-yarn jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.4.jar -Dmapreduce.job.queuename=bronze wordcount "books/*" output
+yarn jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.4.jar -Dmapreduce.job.queuename=bronze wordcount "books/*" output
 
 spark-submit --class org.apache.spark.examples.SparkPi --master yarn --queue bronze /usr/hdp/2.x.x.x-xxxx/spark/lib/spark-examples-x.x.x.x.x.x.x-xxxx-hadoopx.x.x.x.x.x.x-xxxx.jar 10
 
