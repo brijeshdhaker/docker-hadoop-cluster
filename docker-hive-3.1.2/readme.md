@@ -75,23 +75,12 @@ https://cwiki.apache.org/confluence/display/Hive/Home#Home-HiveDocumentation
 #
 # Linux 
 #
-export SPARK_HOME=/opt/spark
-$SPARK_HOME/bin/beeline -u jdbc:hive2://hiveserver.sandbox.net:10000 scott tiger
-
-#
-# HDP Sandbox
-#
+export HIVE_HOME=/opt/hive
+$ $HIVE_HOME/bin/beeline -u jdbc:hive2://hiveserver.sandbox.net:10000 scott tiger
 $ $HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET"
 
 CREATE TABLE students (name VARCHAR(64), age INT, gpa DECIMAL(3,2));
 INSERT INTO TABLE students VALUES ('Brijesh Dhaker', 35, 1.28), ('Tejas Dhaker', 32, 2.32);
-
-#
-#
-# Windows
-#
-SET SPARK_HOME=D:\apps\spark-3.1.2
-%SPARK_HOME%\bin\beeline.cmd -u jdbc:hive2://hiveserver.sandbox.net:10000 scott tiger
 
 #
 #
