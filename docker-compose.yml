@@ -232,7 +232,7 @@ services:
       - "10002:10002"
     volumes:
       - sandbox_apps_path:/apps
-      - /opt/hadoop-3.2.4:/opt/hadoop
+      - sandbox_hadoop_324:/opt/hadoop
       - sandbox_tez_092:/opt/tez
       - ./conf/hadoop/conf/hadoop-env.sh:/opt/hadoop/etc/hadoop/hadoop-env.sh
       - ./conf/hive/conf/hive-env.sh:/opt/hive/conf/hive-env.sh
