@@ -1,5 +1,17 @@
 
-ilesystem	Path	User:Group	Permissions
+| filesystem | Path                  | User:Group  | Permissions |
+|------------|-----------------------|-------------|-------------|
+| local      | dfs.namenode.name.dir | hdfs:hadoop | drwx------  |
+| local      | dfs.datanode.data.dir | hdfs:hadoop | drwx------  |
+| local      | $HADOOP_LOG_DIR       | hdfs:hadoop | drwxrwxr-x  |
+|            |                       |             |             |
+|            |                       |             |             |
+|            |                       |             |             |
+|            |                       |             |             |
+|            |                       |             |             |
+|            |                       |             |             |
+
+|filesystem	Path	User:Group	Permissions
 local	dfs.namenode.name.dir	hdfs:hadoop	drwx------
 local	dfs.datanode.data.dir	hdfs:hadoop	drwx------
 local	$HADOOP_LOG_DIR	hdfs:hadoop	drwxrwxr-x

@@ -337,17 +337,12 @@ services:
       - sandbox_hadoop_324:/opt/hadoop
       - sandbox_hbase_300:/opt/hbase
       - sandbox_hive_312:/opt/hive
-      - /opt/spark-3.1.2:/opt/spark
+      - sandbox_spark_312:/opt/spark
       - sandbox_maven_363:/opt/maven-3.6.3
-      - /opt/zookeeper-3.7.1:/opt/zookeeper
+      - sandbox_zookeeper_371:/opt/zookeeper
       - ./conf/kerberos:/etc/kerberos
-      - ./conf/profiles/sandbox.profile:/root/sandbox.profile:777
       - ./conf/profiles/brijeshdhaker.profile:/home/brijeshdhaker/brijeshdhaker.profile
-      - ./conf/maven/settings.xml:/home/brijeshdhaker/.m2/settings.xml
     environment:
-      CLUSTER_NAME: "docker-sandbox"
-      KRB5_CONFIG: "/etc/kerberos/krb5.conf"
-      MULTIHOMED_NETWORK: 2
       ALLOW_ANONYMOUS_LOGIN: "yes"
     env_file:
       - ./envs/docker_gateway.env

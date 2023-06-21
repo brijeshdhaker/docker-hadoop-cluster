@@ -74,7 +74,11 @@ yarn jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.4.jar
 
 yarn jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.4.jar -Dmapreduce.job.queuename=bronze wordcount "books/*" output
 
-spark-submit --class org.apache.spark.examples.SparkPi --master yarn --queue bronze /usr/hdp/2.x.x.x-xxxx/spark/lib/spark-examples-x.x.x.x.x.x.x-xxxx-hadoopx.x.x.x.x.x.x-xxxx.jar 10
+spark-submit \
+--class org.apache.spark.examples.SparkPi \
+--master yarn 
+--queue bronze \
+/usr/hdp/2.x.x.x-xxxx/spark/lib/spark-examples-x.x.x.x.x.x.x-xxxx-hadoopx.x.x.x.x.x.x-xxxx.jar 10
 
 #
 $SPARK_HOME/bin/spark-submit \
@@ -97,9 +101,8 @@ $SPARK_HOME/bin/spark-submit \
 --driver-memory 640M \
 --executor-memory 640M \
 --num-executors 2 \
---conf "spark.yarn.queue=default" \
---keytab /etc/kerberos/keytabs/brijeshdhaker.keytab \
 --principal brijeshdhaker@SANDBOX.NET \
+--keytab /etc/kerberos/keytabs/brijeshdhaker.keytab \
 --conf "spark.yarn.archive=hdfs://namenode.sandbox.net:9000/archives/spark-3.1.2.zip" \
 --conf "spark.yarn.queue=engineering" \
 --conf "spark.eventLog.enabled=true" \
