@@ -10,7 +10,7 @@ KUSERS_PASSWORD=kuser
 # delete existing keytab files
 echo "Adding OS User Principal"
 echo ""
-OS_USERS=("brijeshdhaker" "sandbox" "hdfs" "yarn" "mapred" "hive" "spark" "hbase" "zookeeper")
+OS_USERS=("brijeshdhaker" "superuser" "hdfs" "yarn" "mapred" "hive" "spark" "hbase" "zookeeper")
 for ou in "${OS_USERS[@]}"
 do
   rm -Rf /etc/kerberos/users/$ou.keytab

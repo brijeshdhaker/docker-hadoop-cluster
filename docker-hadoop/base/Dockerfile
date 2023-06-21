@@ -11,7 +11,7 @@ MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 ENV HADOOP_VERSION=3.2.4
 ENV BASE_DIR=/opt
 ENV HADOOP_HOME=$BASE_DIR/hadoop
-ENV HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
+ENV HADOOP_CONF_DIR=/etc/hadoop/conf
 ENV PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin
 ENV HADOOP_LOG_DIR=${HADOOP_LOG_DIR:-"/apps/var/log/hadoop"}
 ENV YARN_LOG_DIR=${YARN_LOG_DIR:-"/apps/var/log/yarn"}
@@ -38,7 +38,7 @@ ADD docker-hadoop/base/entrypoint.sh /entrypoint.sh
 
 RUN set -x && \
     mkdir -p  ${HADOOP_HOME} && tar --strip-components=1 -zxvf  ${BASE_DIR}/hadoop-3.2.4.tar.gz -C ${HADOOP_HOME} && \
-    ln -s ${HADOOP_HOME}/etc/hadoop /etc/hadoop && chmod -Rf 775 /etc/hadoop && \
+    mkdir -p /etc/hadoop && ln -s ${HADOOP_HOME}/etc/hadoop ${HADOOP_CONF_DIR} && chmod -Rf 755 ${HADOOP_CONF_DIR} && \
     chown -Rf hdfs:hadoop ${HADOOP_HOME} && chmod -Rf 775 ${HADOOP_HOME} && \
     mkdir -p $HADOOP_LOG_DIR && chmod -Rf 775 $HADOOP_LOG_DIR && chown -Rf hdfs:hadoop $HADOOP_LOG_DIR && \
     mkdir -p $YARN_LOG_DIR && chmod -Rf 775 $YARN_LOG_DIR && chown -Rf yarn:hadoop $YARN_LOG_DIR && \

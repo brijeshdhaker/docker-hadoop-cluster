@@ -1,23 +1,80 @@
 #!/bin/bash
 
+hadoop_gid=1001
+hdfs_gid=1002
+mapred_gid=1003
+hive_gid=1004
+hbase_gid=1005
+zookeeper_gid=1006
+zeppelin_gid=1007
+spark_gid=1008
+yarn_gid=1009
+httpfs_gid=1010
+
+bdusers[1001]=hadoop
+bdusers[1002]=hdfs
+bdusers[1003]=mapred
+bdusers[1004]=hive
+bdusers[1005]=hbase
+bdusers[1006]=zookeeper
+bdusers[1007]=zeppelin
+bdusers[1008]=spark
+bdusers[1009]=yarn
+bdusers[1010]=httpfs
+
+# delete existing users
+for uid in {1001..1010}
+do
+  usr=${bdusers[$uid]}
+  deluser $usr
+done
+
+# delete existing users
+for gid in {1001..1010}
+do
+  grp=${bdusers[$gid]}
+  delgroup $grp
+done
+
 # Add Groups
-groupadd -f -r -g 1001 hadoop && \
-groupadd -f -r -g 1002 hdfs && \
-groupadd -f -r -g 1003 mapred && \
-groupadd -f -r -g 1005 hbase && \
-groupadd -f -r -g 185 spark && \
-groupadd -f -r -g 1006 zookeeper && \
-groupadd -f -r -g 1007 zeppelin
+for gid in {1001..1010}
+do
+  group=${bdusers[$gid]}
+  groupadd -f -r -g ${gid} $group
+done
 
 # Add Users
-useradd --no-create-home --system -g 1001 -u 999 -G hadoop hdfs && \
-useradd -M -r -g 1001 -u 998 -G hadoop yarn && \
-useradd -M -r -g 1001 -u 997 -G hadoop mapred && \
-useradd -M -r -g 1003 -u 996 -G mapred hive && \
-useradd -M -r -g 1005 -u 995 -G hbase hbase && \
-useradd -M -r -g 1006 -u 993 -G zookeeper zookeeper && \
-useradd -M -r -g 1007 -u 992 -G zeppelin zeppelin && \
-useradd -M -r -g 185 -u 994 -G spark spark
+for uid in {1001..1010}
+do
+  group=${bdusers[$gid]}
+  usr=${bdusers[$uid]}
+  deluser $usr
+done
+
+useradd -m -r -s /bin/bash -g ${hadoop_gid} -u ${hadoop_gid} -G hadoop hadoop && \
+useradd -m -s /bin/bash -g ${hdfs_gid} -u ${hdfs_gid} -G hdfs,hadoop hdfs && \
+useradd -m -s /bin/bash -g ${httpfs_gid} -u ${httpfs_gid} -G httpfs,hadoop httpfs && \
+useradd -m -s /bin/bash -g ${yarn_gid} -u ${yarn_gid} -G yarn,hadoop yarn && \
+useradd -m -s /bin/bash -g ${mapred_gid} -u ${mapred_gid} -G mapred,hadoop mapred && \
+useradd -m -s /bin/bash -g ${hive_gid} -u ${hive_gid} -G hive hive && \
+useradd -m -s /bin/bash -g ${hbase_gid} -u ${hbase_gid} -G hbase hbase && \
+useradd -m -s /bin/bash -g ${spark_gid} -u ${spark_gid} -G spark spark && \
+useradd -m -s /bin/bash -g ${zookeeper_gid} -u ${zookeeper_gid} -G zookeeper zookeeper && \
+useradd -m -s /bin/bash -g ${zeppelin_gid} -u ${zeppelin_gid} -G zeppelin zeppelin
+
+# without home dir
+# useradd --no-create-home --system -g 1001 -u 999 -G hadoop hdfs && \
+useradd -M -r -s /bin/bash -g ${hadoop_gid} -u ${hadoop_gid} -G hadoop hadoop && \
+useradd -M -r -s /bin/bash -g ${hdfs_gid} -u ${hdfs_gid} -G hdfs,hadoop hdfs && \
+useradd -M -r -s /bin/bash -g ${httpfs_gid} -u ${httpfs_gid} -G httpfs,hadoop httpfs && \
+useradd -M -r -s /bin/bash -g ${yarn_gid} -u ${yarn_gid} -G yarn,hadoop yarn && \
+useradd -M -r -s /bin/bash -g ${mapred_gid} -u ${mapred_gid} -G mapred,hadoop mapred && \
+useradd -M -r -s /bin/bash -g ${hive_gid} -u ${hive_gid} -G hive hive && \
+useradd -M -r -s /bin/bash -g ${hbase_gid} -u ${hbase_gid} -G hbase hbase && \
+useradd -M -r -s /bin/bash -g ${spark_gid} -u ${spark_gid} -G spark spark && \
+useradd -M -r -s /bin/bash -g ${zookeeper_gid} -u ${zookeeper_gid} -G zookeeper zookeeper && \
+useradd -M -r -s /bin/bash -g ${zeppelin_gid} -u ${zeppelin_gid} -G zeppelin zeppelin
+
 
 #
 # Docker network

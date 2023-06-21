@@ -15,17 +15,9 @@ ARG hive_gid=1004
 ARG hbase_gid=1005
 ARG zookeeper_gid=1006
 ARG zeppelin_gid=1007
-ARG spark_gid=185
-
-# UID
-ARG hdfs_uid=999
-ARG yarn_uid=998
-ARG mapred_uid=997
-ARG hive_uid=996
-ARG hbase_uid=995
-ARG spark_uid=994
-ARG zookeeper_uid=993
-ARG zeppelin_uid=992
+ARG spark_gid=1008
+ARG yarn_gid=1009
+ARG httpfs_gid=1010
 
 #
 ENV MULTIHOMED_NETWORK=2
@@ -38,7 +30,7 @@ RUN set -x && apt-get update && DEBIAN_FRONTEND=noninteractive && \
     apt-get install -y gcc && \
     apt-get install -y openjdk-8-jdk && \
     apt-get install -y openssh-server && \
-    apt-get install -y apt-transport-https locales krb5-user && \
+    apt-get install -y apt-transport-https locales krb5-user ldap-utils && \
     apt-get install -y python3 python3-pip && \
     pip3 install --upgrade pip setuptools && \
     rm -rf /var/lib/apt/lists/* && \
@@ -54,20 +46,24 @@ RUN set -x && \
     groupadd -f -r -g ${hadoop_gid} hadoop && \
     groupadd -f -r -g ${hdfs_gid} hdfs && \
     groupadd -f -r -g ${mapred_gid} mapred && \
+    groupadd -f -r -g ${hive_gid} hive && \
     groupadd -f -r -g ${hbase_gid} hbase && \
-    groupadd -f -r -g ${spark_gid} spark && \
     groupadd -f -r -g ${zookeeper_gid} zookeeper && \
     groupadd -f -r -g ${zeppelin_gid} zeppelin && \
-    useradd -m -s /bin/bash -G sudo,hadoop brijeshdhaker && \
-    echo 'brijeshdhaker:Accoo7@k47' | chpasswd && mkdir -p /home/brijeshdhaker/.ssh && \
-    useradd -M -r -g ${hadoop_gid} -u ${hdfs_uid} -G hadoop hdfs && \
-    useradd -M -r -g ${hadoop_gid} -u ${yarn_uid} -G hadoop yarn && \
-    useradd -M -r -g ${hadoop_gid} -u ${mapred_uid} -G hadoop mapred && \
-    useradd -M -r -g ${mapred_gid} -u ${hive_uid} -G mapred hive && \
-    useradd -M -r -g ${hbase_gid} -u $hbase_uid -G hbase hbase && \
-    useradd -M -r -g ${spark_gid} -u ${spark_uid} -G spark spark && \
-    useradd -M -r -g ${zookeeper_gid} -u ${zookeeper_uid} -G zookeeper zookeeper && \
-    useradd -M -r -g ${zeppelin_gid} -u ${zeppelin_uid} -G zeppelin zeppelin && \
+    groupadd -f -r -g ${spark_gid} spark && \
+    groupadd -f -r -g ${yarn_gid} yarn && \
+    groupadd -f -r -g ${httpfs_gid} httpfs && \
+    useradd -m -s /bin/bash -G sudo,hadoop brijeshdhaker && echo 'brijeshdhaker:Accoo7@k47' | chpasswd && mkdir -p /home/brijeshdhaker/.ssh && \
+    useradd -m -s /bin/bash -g ${hadoop_gid} -u ${hadoop_gid} -G hadoop hadoop && \
+    useradd -m -s /bin/bash -g ${hdfs_gid} -u ${hdfs_gid} -G hdfs,hadoop hdfs && \
+    useradd -m -s /bin/bash -g ${httpfs_gid} -u ${httpfs_gid} -G httpfs,hadoop httpfs && \
+    useradd -m -s /bin/bash -g ${yarn_gid} -u ${yarn_gid} -G yarn,hadoop yarn && \
+    useradd -m -s /bin/bash -g ${mapred_gid} -u ${mapred_gid} -G mapred,hadoop mapred && \
+    useradd -m -s /bin/bash -g ${hive_gid} -u ${hive_gid} -G hive hive && \
+    useradd -m -s /bin/bash -g ${hbase_gid} -u ${hbase_gid} -G hbase hbase && \
+    useradd -m -s /bin/bash -g ${spark_gid} -u ${spark_gid} -G spark spark && \
+    useradd -m -s /bin/bash -g ${zookeeper_gid} -u ${zookeeper_gid} -G zookeeper zookeeper && \
+    useradd -m -s /bin/bash -g ${zeppelin_gid} -u ${zeppelin_gid} -G zeppelin zeppelin && \
     echo "Users added successfully. "
 
 
