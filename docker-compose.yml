@@ -108,8 +108,6 @@ services:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_324_yarn:/yarn
       - ./conf/kerberos:/etc/kerberos
-      - ./conf/yarn/conf/capacity-scheduler.xml:/opt/hadoop/etc/hadoop/fair-scheduler.xml
-    # - ./conf/hadoop/conf/fair-scheduler.xml:/opt/hadoop/etc/hadoop/fair-scheduler.xml
     environment:
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
     env_file:
