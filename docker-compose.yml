@@ -101,19 +101,19 @@ services:
       dockerfile: docker-hadoop/resourcemanager/Dockerfile
     container_name: resourcemanager
     hostname: resourcemanager.sandbox.net
-    restart: always
+    restart: no
     ports:
       - "8088:8088"
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_324_yarn:/yarn
       - ./conf/kerberos:/etc/kerberos
-      - ./conf/hadoop/conf/fair-scheduler.xml:/opt/hadoop/etc/hadoop/fair-scheduler.xml
-      - ./conf/hadoop/conf/capacity-scheduler.xml:/opt/hadoop/etc/hadoop/capacity-scheduler.xml
+#      - ./conf/hadoop/conf/fair-scheduler.xml:/opt/hadoop/etc/hadoop/fair-scheduler.xml
+#      - ./conf/hadoop/conf/capacity-scheduler.xml:/opt/hadoop/etc/hadoop/capacity-scheduler.xml
     environment:
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
     env_file:
-      - envs/docker_hadoop.env
+      - envs/docker_yarn.env
 
   #
   nodemanager:
@@ -131,9 +131,11 @@ services:
       - sandbox_hadoop_324_yarn:/yarn
       - ./conf/kerberos:/etc/kerberos
     environment:
+      HADOOP_CONF_DIR: "/etc/yarn/conf"
+      YARN_CONF_DIR: "/etc/yarn/conf"
       SERVICE_PRECONDITION: "resourcemanager.sandbox.net:8088"
     env_file:
-      - envs/docker_hadoop.env
+      - envs/docker_yarn.env
 
   # YARN Timeline Server
   timelineserver:
