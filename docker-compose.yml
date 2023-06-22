@@ -153,7 +153,7 @@ services:
       - sandbox_hadoop_324_yarn:/yarn
       - ./conf/kerberos:/etc/kerberos
     env_file:
-      - envs/docker_hadoop.env
+      - envs/docker_yarn.env
 
   # MR History Server
   historyserver:
@@ -172,11 +172,8 @@ services:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_324_mapred:/mapred
       - ./conf/kerberos:/etc/kerberos
-      - ./conf/hadoop/conf/log4j.properties:/opt/hadoop/etc/hadoop/log4j.properties
-      - ./conf/hadoop/conf/hadoop-env.sh:/opt/hadoop/etc/hadoop/hadoop-env.sh
-      - ./conf/hadoop/conf/yarn-env.sh:/opt/hadoop/etc/hadoop/yarn-env.sh
     env_file:
-      - envs/docker_hadoop.env
+      - envs/docker_yarn.env
 
   #
   # Mysql Server
