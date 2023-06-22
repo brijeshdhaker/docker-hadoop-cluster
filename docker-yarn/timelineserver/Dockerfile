@@ -18,6 +18,6 @@ RUN mkdir -p /yarn/timeline && \
 EXPOSE 8188
 
 # Specify the User that the actual main process will run as
-USER yarn:hadoop
+# USER yarn:hadoop
 
 CMD ["/run.sh"]

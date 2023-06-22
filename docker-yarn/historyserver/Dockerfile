@@ -18,6 +18,6 @@ RUN mkdir -p /mapred/history && \
 EXPOSE 19888
 
 # Specify the User that the actual main process will run as
-USER mapred:hadoop
+# USER mapred:hadoop
 
 CMD ["/run.sh"]

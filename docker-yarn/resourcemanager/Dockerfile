@@ -17,6 +17,6 @@ RUN chown yarn:hadoop /run.sh && chmod 775 /run.sh
 EXPOSE 8088
 
 # Specify the User that the actual main process will run as
-USER yarn:hadoop
+#USER yarn:hadoop
 
 CMD ["/run.sh"]
