@@ -104,7 +104,7 @@ $SPARK_HOME/bin/spark-submit \
 --principal brijeshdhaker@SANDBOX.NET \
 --keytab /etc/kerberos/keytabs/brijeshdhaker.keytab \
 --conf "spark.yarn.archive=hdfs://namenode.sandbox.net:9000/archives/spark-3.1.2.zip" \
---conf "spark.yarn.queue=engineering" \
+--conf "spark.yarn.queue=default" \
 --conf "spark.eventLog.enabled=true" \
 --conf "spark.eventLog.dir=hdfs://namenode.sandbox.net:9000/apps/var/log/spark" \
 --conf "hadoop.yarn.timeline-service.enabled=false" \
