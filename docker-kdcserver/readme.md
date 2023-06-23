@@ -185,14 +185,20 @@ wkt /etc/kerberos/keytabs/hive.keytab
 kinit -k -t /etc/kerberos/keytabs/root.keytab root@SANDBOX.NET
 kinit -k -t /etc/kerberos/keytabs/brijeshdhaker.keytab brijeshdhaker@SANDBOX.NET
 
+kinit -k -t /etc/kerberos/keytabs/hdfs.service.keytab hdfs/thinkpad.sandbox.net@SANDBOX.NET
 kinit -k -t /etc/kerberos/keytabs/hive.service.keytab hive/hiveserver.sandbox.net@SANDBOX.NET
 
 # OS Users
-klist -e -k -t /etc/kerberos/keytabs/root.keytab
-klist -e -k -t /etc/kerberos/keytabs/brijeshdhaker.keytab
-klist -e -k -t /etc/kerberos/keytabs/yarn.keytab
-klist -e -k -t /etc/kerberos/keytabs/hdfs.keytab
-klist -e -k -t /etc/kerberos/keytabs/mapred.keytab
+klist -e -k -t /etc/kerberos/users/root.keytab
+klist -e -k -t /etc/kerberos/users/brijeshdhaker.keytab
+klist -e -k -t /etc/kerberos/users/hdfs.keytab
+klist -e -k -t /etc/kerberos/users/hive.keytab
+klist -e -k -t /etc/kerberos/users/hbase.keytab
+klist -e -k -t /etc/kerberos/users/mapred.keytab
+klist -e -k -t /etc/kerberos/users/sandbox.keytab
+klist -e -k -t /etc/kerberos/users/spark.keytab
+klist -e -k -t /etc/kerberos/users/yarn.keytab
+klist -e -k -t /etc/kerberos/users/zookeeper.keytab
 
 # Services
 klist -e -k -t /etc/kerberos/keytabs/hdfs.service.keytab
@@ -201,6 +207,7 @@ klist -e -k -t /etc/kerberos/keytabs/mapred.service.keytab
 klist -e -k -t /etc/kerberos/keytabs/hive.service.keytab
 klist -e -k -t /etc/kerberos/keytabs/host.service.keytab
 klist -e -k -t /etc/kerberos/keytabs/HTTP.service.keytab
+
 # Services
 
 python -m http.server 8000

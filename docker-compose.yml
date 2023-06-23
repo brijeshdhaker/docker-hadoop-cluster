@@ -26,6 +26,29 @@ services:
       - "88:88/udp"
 
   #
+  #
+  #
+  nginx:
+    image: brijeshdhaker/nginx:1.25.1
+    container_name: nginx
+    hostname: nginx.sandbox.net
+    #map ports you will need
+    ports:
+      - 80:80
+      - 5010:5010
+      - 443:443
+      - 8001:8001
+    #add volume with the keytab file
+    volumes:
+      - sandbox_apps_path:/apps
+      - ./conf/kerberos:/etc/kerberos
+      - ./conf/nginx/config:/home/spnego/config
+      - ./conf/nginx/nginx.conf:/etc/nginx/nginx.conf
+    environment:
+      KRB5_CONFIG: "/etc/kerberos/krb5.conf"
+#      KRB5_KTNAME: "/etc/kerberos/keytabs/spnego.service.keytab"
+
+  #
   # Zookeeper Server
   #
   zookeeper:
