@@ -10,7 +10,7 @@ KUSERS_PASSWORD=kuser
 # delete existing keytab files
 echo "Adding OS User Principal"
 echo ""
-OS_USERS=("brijeshdhaker" "superuser" "hdfs" "yarn" "mapred" "hive" "spark" "hbase" "zookeeper")
+OS_USERS=("brijeshdhaker" "hdfs" "yarn" "mapred" "hive" "spark" "hbase" "zookeeper" "zeppelin")
 for ou in "${OS_USERS[@]}"
 do
   rm -Rf /etc/kerberos/users/$ou.keytab
@@ -26,7 +26,7 @@ done
 echo "Adding service principal for all hosts."
 echo ""
 #for var in one two three; do echo "$var"; done
-SERVICES=("zookeeper" "hdfs" "yarn" "mapred" "hbase" "hive" "spark" "host" "HTTP")
+SERVICES=("zookeeper" "hdfs" "yarn" "mapred" "hbase" "hive" "spark" "host" "zeppelin" "HTTP")
 SANDBOX_NODES=(
   "namenode.sandbox.net"
   "datanode.sandbox.net"
@@ -41,6 +41,7 @@ SANDBOX_NODES=(
   "zookeeper.sandbox.net"
   "hmaster.sandbox.net"
   "hregion.sandbox.net"
+  "zeppelin.sandbox.net"
   "gateway.sandbox.net"
   "thinkpad.sandbox.net"
   "dockerhost.sandbox.net"
@@ -78,7 +79,7 @@ do
 done
 
 # Create merged keytab
-UNMERGED_SERVICES=("hdfs" "yarn" "mapred" "hive" "spark" "hbase" "zookeeper")
+UNMERGED_SERVICES=("hdfs" "yarn" "mapred" "hive" "spark" "hbase" "zookeeper" "zeppelin")
 for usvc in "${UNMERGED_SERVICES[@]}"
 do
   rm -Rf /etc/kerberos/keytabs/$usvc.service.keytab
