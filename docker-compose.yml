@@ -121,7 +121,7 @@ services:
     image: brijeshdhaker/hadoop-resourcemanager:3.2.4
     build:
       context: .
-      dockerfile: docker-hadoop/resourcemanager/Dockerfile
+      dockerfile: docker-yarn/resourcemanager/Dockerfile
     container_name: resourcemanager
     hostname: resourcemanager.sandbox.net
     restart: no
@@ -141,7 +141,7 @@ services:
     image: brijeshdhaker/hadoop-nodemanager:3.2.4
     build:
       context: .
-      dockerfile: docker-hadoop/nodemanager/Dockerfile
+      dockerfile: docker-yarn/nodemanager/Dockerfile
     container_name: nodemanager
     hostname: nodemanager.sandbox.net
     restart: no
@@ -163,7 +163,7 @@ services:
     image: brijeshdhaker/hadoop-timelineserver:3.2.4
     build:
       context: .
-      dockerfile: docker-hadoop/historyserver/Dockerfile
+      dockerfile: docker-yarn/historyserver/Dockerfile
     container_name: timelineserver
     hostname: timelineserver.sandbox.net
     restart: always
@@ -320,7 +320,7 @@ services:
   # Spark History Server
   #
   sparkhistory:
-    image: docker.io/brijeshdhaker/spark:3.4.0
+    image: brijeshdhaker/spark:3.1.3
     container_name: sparkhistory
     hostname: sparkhistory.sandbox.net
     environment:
@@ -374,22 +374,23 @@ services:
     image: apache/zeppelin:0.10.1
     container_name: zeppelin
     hostname: zeppelin.sandbox.net
+    environment:
+      ALLOW_ANONYMOUS_LOGIN: "yes"
+      KRB5_CONFIG: "/etc/kerberos/krb5.conf"
     env_file:
       - ./envs/docker_zeppelin.env
     ports:
       - "9080:8080"
     volumes:
       - sandbox_apps_path:/apps
+      - ./conf/kerberos:/etc/kerberos
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - sandbox_hadoop_324:/opt/hadoop
       - sandbox_hbase_300:/opt/hbase
       - sandbox_hive_312:/opt/hive
       - sandbox_spark_312:/opt/spark
       - sandbox_zeppelin:/opt/zeppelin
       - sandbox_zeppelin_notebook:/opt/notebook
-      - ./conf/kerberos:/etc/kerberos
-#      - sandbox_zeppelin_conf:/opt/zeppelin/conf
-#      - sandbox_m2:/opt/zeppelin/.m2
-#      - sandbox_ivy2:/opt/zeppelin/.ivy2
 
 #
 #

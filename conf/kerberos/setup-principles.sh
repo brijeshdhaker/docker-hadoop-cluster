@@ -78,7 +78,7 @@ do
   chmod 444 /etc/kerberos/keytabs/$svc.keytab
 done
 
-# Create merged keytab
+# Create merged keytab for services
 UNMERGED_SERVICES=("hdfs" "yarn" "mapred" "hive" "spark" "hbase" "zookeeper" "zeppelin")
 for usvc in "${UNMERGED_SERVICES[@]}"
 do

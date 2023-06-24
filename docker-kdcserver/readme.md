@@ -183,7 +183,8 @@ wkt /etc/kerberos/keytabs/hive.keytab
 
 #
 kinit -k -t /etc/kerberos/keytabs/root.keytab root@SANDBOX.NET
-kinit -k -t /etc/kerberos/keytabs/brijeshdhaker.keytab brijeshdhaker@SANDBOX.NET
+kinit -k -t /etc/kerberos/users/brijeshdhaker.keytab brijeshdhaker@SANDBOX.NET
+kinit -k -t /etc/kerberos/users/zeppelin.keytab zeppelin@SANDBOX.NET
 
 kinit -k -t /etc/kerberos/keytabs/hdfs.service.keytab hdfs/thinkpad.sandbox.net@SANDBOX.NET
 kinit -k -t /etc/kerberos/keytabs/hive.service.keytab hive/hiveserver.sandbox.net@SANDBOX.NET
