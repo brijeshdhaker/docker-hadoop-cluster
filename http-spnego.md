@@ -18,6 +18,9 @@ $ curl --cacert /path/to/truststore.pem --negotiate -u : -b ~/cookiejar.txt -c ~
 ## -- Insecure
 $ curl --negotiate -u : -b ~/cookiejar.txt -c ~/cookiejar.txt http://namenode.sandbox.net:9870/webhdfs/v1/?op=liststatus
 
+$ curl --negotiate -u : -b ~/cookiejar.txt -c ~/cookiejar.txt http://namenode.sandbox.net:9870/webhdfs/v1/?op=liststatus
+
+
 where:
 The --cacert option is required if you are using TLS/SSL certificates that curl does not recognize by default.
 The --negotiate option enables SPNEGO in curl.

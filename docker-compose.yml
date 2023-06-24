@@ -29,7 +29,7 @@ services:
   #
   #
   nginx:
-    image: brijeshdhaker/nginx:1.25.1
+    image: brijeshdhaker/nginx:1.15.1
     container_name: nginx
     hostname: nginx.sandbox.net
     #map ports you will need

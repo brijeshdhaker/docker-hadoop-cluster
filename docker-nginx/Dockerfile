@@ -1,15 +1,16 @@
 #
-# docker build -t brijeshdhaker/nginx:1.25.1 -f docker-hadoop/nginx/Dockerfile .
-# docker push brijeshdhaker/nginx:1.25.1
+# docker build -t brijeshdhaker/nginx:1.15.1 -f docker-nginx/Dockerfile .
+# docker push brijeshdhaker/nginx:1.15.1
 #
 # echo "172.18.0.1 thinkpad.sandbox.net thinkpad" >> /etc/hosts
 #
 FROM alpine:3.7
-MAINTAINER "Bulat Vakhitov - https://github.com/fclmman"
+
+MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
 CMD ["nginx", "-g", "daemon off;"]
 
-ENV NGINX_VERSION 1.25.1
+ENV NGINX_VERSION 1.15.1
 
 RUN set -ex \
   && apk add --no-cache \
@@ -34,21 +35,16 @@ RUN set -ex \
 
 RUN cd /tmp/nginx-${NGINX_VERSION} \
   && ./configure \
-    \
     --prefix=/etc/nginx \
     --sbin-path=/usr/sbin/nginx \
     --conf-path=/etc/nginx/nginx.conf \
     --error-log-path=/var/log/nginx/error.log \
     --pid-path=/var/run/nginx.pid \
     --lock-path=/var/run/nginx.lock \
-    \
     --user=nginx \
     --group=nginx \
-    \
     --with-threads \
-    \
     --with-file-aio \
-    \
     --with-http_ssl_module \
     --with-http_v2_module \
     --with-http_realip_module \
@@ -64,17 +60,14 @@ RUN cd /tmp/nginx-${NGINX_VERSION} \
     --with-http_secure_link_module \
     --with-http_slice_module \
     --with-http_stub_status_module \
-    \
     --http-log-path=/var/log/nginx/access.log \
     --http-client-body-temp-path=/var/cache/nginx/client_temp \
     --http-proxy-temp-path=/var/cache/nginx/proxy_temp \
     --http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp \
     --http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp \
     --http-scgi-temp-path=/var/cache/nginx/scgi_temp \
-    \
     --with-mail \
     --with-mail_ssl_module \
-    \
     --with-stream \
     --with-stream_ssl_module \
     --with-stream_realip_module \
@@ -86,6 +79,3 @@ RUN cd /tmp/nginx-${NGINX_VERSION} \
   && mkdir -p /var/cache/nginx \
   && apk del .build-deps \
   && rm -rf /tmp/*
-
-# ENV DOCKER_HOST_IP="172.18.0.1"
-# RUN set -ex  &&  echo "$DOCKER_HOST_IP thinkpad.sandbox.net thinkpad" >> /etc/hosts
