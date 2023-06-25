@@ -2,7 +2,7 @@
 
 # Add Gateway Host Information
 # export DOCKER_HOST_IP=$(route -n | awk '/UG[ \t]/{print $2}')
-# echo "$DOCKER_HOST_IP sandbox-cluster-gateway thinkpad" >> /etc/hosts
+# echo "$DOCKER_HOST_IP hostmaster.sandbox.net  hostmaster" >> /etc/hosts
 
 # Set some sensible defaults
 export CORE_CONF_fs_defaultFS=${CORE_CONF_fs_defaultFS:-hdfs://`hostname -f`:9000}

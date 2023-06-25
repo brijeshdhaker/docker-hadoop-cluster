@@ -16,9 +16,10 @@ Please enter the password for tucu@LOCALHOST:
 $ curl --cacert /path/to/truststore.pem --negotiate -u : -b ~/cookiejar.txt -c ~/cookiejar.txt https://localhost:14000/webhdfs/v1/?op=liststatus
 
 ## -- Insecure
-$ curl --negotiate -u : -b ~/cookiejar.txt -c ~/cookiejar.txt http://namenode.sandbox.net:9870/webhdfs/v1/?op=liststatus
+$ curl -i --negotiate -u : -b ~/cookiejar.txt -c ~/cookiejar.txt http://namenode.sandbox.net:9870/webhdfs/v1/?op=liststatus
 
-$ curl --negotiate -u : -b ~/cookiejar.txt -c ~/cookiejar.txt http://namenode.sandbox.net:9870/webhdfs/v1/?op=liststatus
+$ curl -i --negotiate -u : -b ~/cookiejar.txt -c ~/cookiejar.txt http://namenode.sandbox.net:9870/webhdfs/v1/user?op=liststatus
+
 
 
 where:

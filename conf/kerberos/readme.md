@@ -175,6 +175,9 @@ ktutil
 add_entry -password -p root@SANDBOX.NET -k 1 -f
 wkt /etc/kerberos/keytabs/root.keytab  	-- password root
 
+add_entry -password -p HTTP/nginx.sandbox.net@SANDBOX.NET -k 1 -f
+wkt /etc/kerberos/keytabs/nginx.service.keytab   	-- password brijeshdhaker
+
 add_entry -password -p brijeshdhaker@SANDBOX.NET -k 1 -f
 wkt /etc/kerberos/keytabs/brijeshdhaker.keytab   	-- password brijeshdhaker
 
@@ -208,6 +211,10 @@ klist -e -k -t /etc/kerberos/keytabs/mapred.service.keytab
 klist -e -k -t /etc/kerberos/keytabs/hive.service.keytab
 klist -e -k -t /etc/kerberos/keytabs/host.service.keytab
 klist -e -k -t /etc/kerberos/keytabs/HTTP.service.keytab
+
+# spnego
+klist -e -k -t /etc/kerberos/keytabs/spnego.service.keytab
+
 
 # Services
 

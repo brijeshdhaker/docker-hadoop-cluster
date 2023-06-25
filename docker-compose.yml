@@ -42,7 +42,6 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/kerberos:/etc/kerberos
-      - ./conf/nginx/config:/home/spnego/config
       - ./conf/nginx/nginx.conf:/etc/nginx/nginx.conf
     environment:
       KRB5_CONFIG: "/etc/kerberos/krb5.conf"
@@ -84,6 +83,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_324_dfs:/hadoop/dfs
+      - ./conf/kerberos/http_secret:/etc/security/http_secret
       - ./conf/kerberos:/etc/kerberos
     environment:
       CLUSTER_NAME: "docker-sandbox"
@@ -107,6 +107,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_324_dfs:/hadoop/dfs
+      - ./conf/kerberos/http_secret:/etc/security/http_secret
       - ./conf/kerberos:/etc/kerberos
     environment:
       CLUSTER_NAME: "docker-sandbox"

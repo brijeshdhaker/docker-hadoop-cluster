@@ -71,7 +71,7 @@ tee /etc/krb5kdc/kdc.conf <<EOF
 		max_life = 12h 0m 0s
 		max_renewable_life = 7d 0h 0m 0s
 		# master_key_type = $MASTER_KEY_TYPE
-		supported_enctypes = aes256-cts:normal aes128-cts:normal des3-hmac-sha1:normal arcfour-hmac:normal camellia256-cts:normal camellia128-cts:normal
+		supported_enctypes = $SUPPORTED_ENCRYPTION_TYPES
 		default_principal_flags = +renewable, +forwardable
 	}
 EOF

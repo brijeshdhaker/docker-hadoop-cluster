@@ -44,7 +44,7 @@ SANDBOX_NODES=(
   "zeppelin.sandbox.net"
   "gateway.sandbox.net"
   "thinkpad.sandbox.net"
-  "dockerhost.sandbox.net"
+  "hostmaster.sandbox.net"
 )
 for svc in "${SERVICES[@]}"
 do

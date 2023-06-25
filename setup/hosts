@@ -1,5 +1,6 @@
 # The following lines are desirable for IPv6 capable hosts
 # sed -i 's/sandbox-bigdata/sandbox/g' /etc/hosts
+
 ###
 127.0.0.1       localhost
 192.168.1.7     thinkpad.sandbox.net thinkpad
@@ -50,7 +51,7 @@
 127.0.0.1       schemaregistry.sandbox.net schemaregistry
 
 # airflow
-127.0.0.1       airflow-webserver.sandbox.net airflowwebserver
+127.0.0.1       airflowwebserver.sandbox.net airflowwebserver
 
 # Monitoring Tools
 127.0.0.1       prometheus prometheus.sandbox.net
@@ -65,8 +66,7 @@
 
 
 #
-172.18.0.1      sandbox-cluster-gateway
-192.168.1.120   hostmaster.sandbox.net hostmaster
+172.18.0.1      hostmaster.sandbox.net hostmaster
 
 #
 192.168.1.103   sandbox-hdp.hortonworks.com
