@@ -50,7 +50,6 @@
 	<property><name>hadoop.proxyuser.hive.groups</name><value>*</value></property>
 	<property><name>hadoop.proxyuser.root.groups</name><value>*</value></property>
 	<property><name>hadoop.proxyuser.hive.hosts</name><value>*</value></property>
-	<property><name>dfs.web.authentication.kerberos.principal</name><value>HTTP/_HOST@SANDBOX.NET</value></property>
 	<property><name>hadoop.proxyuser.hbase.hosts</name><value>*</value></property>
 	<property><name>hadoop.http.authentication.kerberos.keytab</name><value>/etc/kerberos/keytabs/spnego.service.keytab</value></property>
 	<property><name>hadoop.proxyuser.brijeshdhaker.groups</name><value>*</value></property>
@@ -60,7 +59,6 @@
 	<property><name>hadoop.http.staticuser.user</name><value>hdfs</value></property>
 	<property><name>hadoop.proxyuser.hdfs.groups</name><value>*</value></property>
 	<property><name>hadoop.proxyuser.hbase.groups</name><value>*</value></property>
-	<property><name>hadoop.http.authentication.simple.anonymous.allowed</name><value>true</value></property>
 	<property><name>hadoop.proxyuser.zeppelin.hosts</name><value>*</value></property>
 	<property><name>hadoop.proxyuser.zeppelin.groups</name><value>*</value></property>
 	<property><name>hadoop.proxyuser.spark.groups</name><value>*</value></property>
@@ -68,7 +66,6 @@
 	<property><name>hadoop.proxyuser.mapred.hosts</name><value>*</value></property>
 	<property><name>hadoop.proxyuser.root.hosts</name><value>*</value></property>
 	<property><name>hadoop.proxyuser.hdfs.hosts</name><value>*</value></property>
-	<property><name>dfs.web.authentication.kerberos.keytab</name><value>/etc/kerberos/keytabs/spnego.service.keytab</value></property>
-	<property><name>hadoop.http.authentication.cookie.domain</name><value>sandbox.net</value></property>
+	<property><name>hadoop.http.authentication.cookie.domain</name><value>.sandbox.net</value></property>
 
 </configuration>
