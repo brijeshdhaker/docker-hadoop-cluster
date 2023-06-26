@@ -82,3 +82,8 @@ export SPARK_HISTORY_OPTS="-Dspark.history.kerberos.enabled=true -Dspark.history
 # Options for beeline
 # - SPARK_BEELINE_OPTS, to set config properties only for the beeline cli (e.g. "-Dx=y")
 # - SPARK_BEELINE_MEMORY, Memory for beeline (e.g. 1000M, 2G) (Default: 1G)
+
+#
+#
+# Passing a Hadoop configuration directory
+export SPARK_DIST_CLASSPATH=$(${HADOOP_HOME}/bin/hadoop --config ${HADOOP_CONF_DIR} classpath)

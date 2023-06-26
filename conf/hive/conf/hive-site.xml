@@ -23,5 +23,3 @@
     <property><name>hive.metastore.sasl.enabled</name><value>true</value></property>
     <property><name>hive.server2.authentication.kerberos.keytab</name><value>/etc/kerberos/keytabs/hive.service.keytab</value></property>
 </configuration>
-
-

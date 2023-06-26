@@ -43,7 +43,7 @@
 
     cp HBASE_HOME/conf/hbase-site.xml $HIVE_HOME/conf/hbase-site.xml
     or
-    set hbase.zookeeper.quorum=zookeeper.bigdata.net;
+    set hbase.zookeeper.quorum=zookeeper.sandbox.net ;
 
 ## 3. Create Hive Table
 

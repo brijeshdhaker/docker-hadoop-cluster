@@ -1,14 +1,18 @@
 #!/bin/bash
 
 if [ ! -f /apps/sandbox/hive/.already_setup ]; then
-  ${HADOOP_HOME}/bin/hdfs dfs -mkdir       /tmp
-  ${HADOOP_HOME}/bin/hdfs dfs -mkdir -p    /user/hive/warehouse
+
+  ${HADOOP_HOME}/bin/hdfs dfs -mkdir -p /tmp
+  ${HADOOP_HOME}/bin/hdfs dfs -mkdir -p /warehouse/tablespace/managed/hive
+  ${HADOOP_HOME}/bin/hdfs dfs -mkdir -p /warehouse/tablespace/external/hive
   echo "HDFS dirs for hive successfully created ."
 
   ${HADOOP_HOME}/bin/hdfs dfs -mkdir g+w   /tmp
-  ${HADOOP_HOME}/bin/hdfs dfs -chmod g+w   /user/hive/warehouse
+  ${HADOOP_HOME}/bin/hdfs dfs -chmod g+w   /warehouse/tablespace/external/hive
+  ${HADOOP_HOME}/bin/hdfs dfs -chmod g+w   /warehouse/tablespace/managed/hive
   echo "HDFS dirs permissions successfully updated."
   touch /apps/sandbox/hive/.already_setup
+
 fi
 
 # For enabling hive to use the Tez engine

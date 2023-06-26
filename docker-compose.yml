@@ -258,8 +258,6 @@ services:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_324:/opt/hadoop
       - sandbox_tez_092:/opt/tez
-      - ./conf/hadoop/conf/hadoop-env.sh:/opt/hadoop/etc/hadoop/hadoop-env.sh
-      - ./conf/hive/conf/hive-env.sh:/opt/hive/conf/hive-env.sh
       - ./conf/kerberos:/etc/kerberos
 
   # Hive Tez UI

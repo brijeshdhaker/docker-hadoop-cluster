@@ -1,3 +1,22 @@
+
+## Testing
+Load data into Hive:
+```
+  $ docker-compose exec hive-server bash
+  # $HIVE_HOME/bin/beeline -u jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET
+  > CREATE TABLE pokes (foo INT, bar STRING);
+  > LOAD DATA LOCAL INPATH '/opt/hive/examples/files/kv1.txt' OVERWRITE INTO TABLE pokes;
+```
+
+Then query it from PrestoDB. You can get [presto.jar](https://prestosql.io/docs/current/installation/cli.html) from PrestoDB website:
+```
+  $ wget https://repo1.maven.org/maven2/io/prestosql/presto-cli/308/presto-cli-308-executable.jar
+  $ mv presto-cli-308-executable.jar presto.jar
+  $ chmod +x presto.jar
+  $ ./presto.jar --server localhost:8080 --catalog hive --schema default
+  presto> select * from pokes;
+```
+
 #
 # Hive with Spark Engine
 #
@@ -24,6 +43,10 @@ echo "CREATE DATABASE hive_store;" | psql -U postgres
 echo "CREATE USER hive_admin WITH PASSWORD 'hive_admin';" | psql -U postgres
 echo "GRANT ALL PRIVILEGES ON DATABASE hive_store TO hive_admin;" | psql -U postgres
 
+$ $HIVE_HOME/bin/schematool -initSchema -dbType derby
+$ $HIVE_HOME/bin/schematool -initSchema -dbType postgres
+$ $HIVE_HOME/bin/hive --version
+
 #
 #
 #
@@ -31,11 +54,6 @@ export HADOOP_HOME=/opt/hadoop
 $HADOOP_HOME/bin/hdfs dfs -mkdir -p /warehouse/tablespace/managed/hive
 $HADOOP_HOME/bin/hdfs dfs -mkdir -p /warehouse/tablespace/external/hive
 $HADOOP_HOME/bin/hdfs dfs -chmod g+w /tmp
-
-
-$ $HIVE_HOME/bin/schematool -initSchema -dbType derby
-$ $HIVE_HOME/bin/schematool -initSchema -dbType postgres
-$ $HIVE_HOME/bin/hive --version
 
 #
 #
@@ -81,6 +99,11 @@ $ $HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;p
 
 CREATE TABLE students (name VARCHAR(64), age INT, gpa DECIMAL(3,2));
 INSERT INTO TABLE students VALUES ('Brijesh Dhaker', 35, 1.28), ('Tejas Dhaker', 32, 2.32);
+
+#
+describe extended students;
+
+describe formatted students;
 
 #
 #
@@ -149,7 +172,7 @@ use SPARK_APPS;
 show tables;
 select * from EMPLOYEE where manager=7566;
 
-DROP TABLE IF EXISTS SPARK_APPS.EMPLOYEE_EXTERNAL_TABLE;
+DROP TABLE IF EXISTS EMPLOYEE_EXTERNAL_TABLE;
 CREATE EXTERNAL TABLE IF NOT EXISTS SPARK_APPS.EMPLOYEE_EXTERNAL_TABLE (
     empId int,
     empName string,

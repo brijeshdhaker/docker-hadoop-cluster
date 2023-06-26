@@ -74,11 +74,6 @@ yarn jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.4.jar
 
 yarn jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.4.jar -Dmapreduce.job.queuename=bronze wordcount "books/*" output
 
-spark-submit \
---class org.apache.spark.examples.SparkPi \
---master yarn 
---queue bronze \
-/usr/hdp/2.x.x.x-xxxx/spark/lib/spark-examples-x.x.x.x.x.x.x-xxxx-hadoopx.x.x.x.x.x.x-xxxx.jar 10
 
 #
 $SPARK_HOME/bin/spark-submit \
