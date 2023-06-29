@@ -1,5 +1,5 @@
 #
-# docker build -t brijeshdhaker/hbase-base:3.0.0 -f docker-hbase-3.0.0/base/Dockerfile .
+# docker build -t brijeshdhaker/hbase-base:3.0.0 -f docker-hbase/base/Dockerfile .
 # docker push brijeshdhaker/hbase-base:3.0.0
 #
 FROM brijeshdhaker/ubuntu:22.04
@@ -27,10 +27,10 @@ RUN set -x && \
     echo "done."
 
 #
-COPY docker-hbase-3.0.0/base/hbase-site.xml $HBASE_HOME/conf/
+COPY docker-hbase/base/hbase-site.xml $HBASE_HOME/conf/
 RUN chown -Rf hbase:hbase $HBASE_HOME/conf/hbase-site.xml && chmod -Rf 777 $HBASE_HOME/conf/hbase-site.xml
 #
-ADD docker-hbase-3.0.0/base/entrypoint.sh /entrypoint.sh
+ADD docker-hbase/base/entrypoint.sh /entrypoint.sh
 RUN chown -Rf hbase:hbase /entrypoint.sh && chmod -Rf 755 /entrypoint.sh
 
 WORKDIR ${HBASE_HOME}
