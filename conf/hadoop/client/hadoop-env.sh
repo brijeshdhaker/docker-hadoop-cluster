@@ -430,6 +430,6 @@ export HDFS_DATANODE_SECURE_EXTRA_OPTS="-jvm server"
 export HADOOP_REGISTRYDNS_SECURE_EXTRA_OPTS="-jvm server"
 #
 export KRB5_CONFIG="/etc/kerberos/krb5.conf"
-export KINIT_KEYTAB=/etc/kerberos/keytab/hdfs.service.keytab
-export KINIT_PRINCIPAL=hdfs/_HOST@SANDBOX.NET
+# export KINIT_KEYTAB=/etc/kerberos/keytab/hdfs.service.keytab
+# export KINIT_PRINCIPAL=hdfs/_HOST@SANDBOX.NET
 

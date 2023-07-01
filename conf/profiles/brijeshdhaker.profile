@@ -30,7 +30,7 @@ export PATH=$PATH:$HIVE_HOME/bin
 
 #
 export HADOOP_HOME=/opt/hadoop
-export HADOOP_CONF_DIR=/etc/hadoop/conf
+export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
 export HADOOP_MAPRED_HOME=/opt/hadoop
 export HADOOP_COMMON_HOME=/opt/hadoop
 #export HADOOP_HDFS_HOME=/opt/hadoop
@@ -40,7 +40,7 @@ export HADOOP_CLIENT_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
 
 #
 export YARN_HOME=/opt/hadoop
-export YARN_CONF_DIR=/etc/hadoop/conf
+export YARN_CONF_DIR=/opt/hadoop/etc/hadoop
 export YARN_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
 
 # Kerberos

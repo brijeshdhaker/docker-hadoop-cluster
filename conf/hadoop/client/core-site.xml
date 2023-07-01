@@ -25,9 +25,6 @@
 	  </value>
 	</property>
 
-
-     -->
-
 	<property>
 		<name>hadoop.security.auth_to_local</name>
 		<value>
@@ -38,6 +35,7 @@
 			DEFAULT
 		</value>
 	</property>
+	-->
 
 	<property><name>hadoop.security.authorization</name><value>true</value></property>
 	<property><name>hadoop.proxyuser.yarn.groups</name><value>*</value></property>

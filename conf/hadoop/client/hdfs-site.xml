@@ -17,9 +17,7 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
-
     <property><name>dfs.webhdfs.enabled</name><value>true</value></property>
-    <property><name>HADOOP_OPTS</name><value>-Djava.security.krb5.conf=/etc/kerberos/krb5.conf</value></property>
     <property><name>dfs.datanode.keytab.file</name><value>/etc/kerberos/keytabs/hdfs.service.keytab</value></property>
     <property><name>dfs.secondary.namenode.keytab.file</name><value>/etc/kerberos/keytab/hdfs.service.keytab</value></property>
     <property><name>dfs.replication</name><value>1</value></property>
