@@ -31,4 +31,8 @@ RUN set -x && \
     chmod -Rf 775 /entrypoint.sh && chmod -Rf 775 /usr/bin/jsvc && \
     echo "done...!!!"
 
+#Custom configuration goes here
+COPY conf/hadoop/conf/* ${HADOOP_HOME}/etc/hadoop
+RUN chmod -Rf 755 $HADOOP_CONF_DIR
+
 ENTRYPOINT ["/entrypoint.sh"]

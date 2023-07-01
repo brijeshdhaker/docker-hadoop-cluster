@@ -29,4 +29,8 @@ RUN set -x && \
     chmod -Rf 775 /entrypoint.sh && \
     echo "done...!!!"
 
+#Custom configuration goes here
+COPY conf/hadoop/conf/* ${YARN_HOME}/etc/hadoop
+RUN chmod -Rf 755 ${YARN_HOME}/etc/hadoop
+
 ENTRYPOINT ["/entrypoint.sh"]

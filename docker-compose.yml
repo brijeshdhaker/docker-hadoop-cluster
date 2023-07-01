@@ -131,11 +131,12 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_324_yarn:/yarn
+      - ./conf/hadoop/client:/etc/hadoop/conf
       - ./conf/kerberos:/etc/kerberos
     environment:
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
     env_file:
-      - envs/docker_yarn.env
+      - envs/docker_hadoop.env
 
   #
   nodemanager:
@@ -151,13 +152,14 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_324_yarn:/yarn
+      - ./conf/hadoop/client:/etc/hadoop/conf
       - ./conf/kerberos:/etc/kerberos
     environment:
       HADOOP_CONF_DIR: "/etc/yarn/conf"
       YARN_CONF_DIR: "/etc/yarn/conf"
       SERVICE_PRECONDITION: "resourcemanager.sandbox.net:8088"
     env_file:
-      - envs/docker_yarn.env
+      - envs/docker_hadoop.env
 
   # YARN Timeline Server
   timelineserver:
@@ -175,9 +177,10 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_324_yarn:/yarn
+      - ./conf/hadoop/client:/etc/hadoop/conf
       - ./conf/kerberos:/etc/kerberos
     env_file:
-      - envs/docker_yarn.env
+      - envs/docker_hadoop.env
 
   # MR History Server
   historyserver:
@@ -195,9 +198,10 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_324_mapred:/mapred
+      - ./conf/hadoop/client:/etc/hadoop/conf
       - ./conf/kerberos:/etc/kerberos
     env_file:
-      - envs/docker_yarn.env
+      - envs/docker_hadoop.env
 
   #
   # Mysql Server
@@ -231,6 +235,7 @@ services:
     hostname: metastore.sandbox.net
     env_file:
       - ./envs/docker_hive.env
+      - ./envs/docker_clients.env
     command: /opt/hive/bin/hive --service metastore
     environment:
       SERVICE_PRECONDITION: "mysqlserver.sandbox.net:3306"
@@ -239,6 +244,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_324:/opt/hadoop
+      - ./conf/hadoop/client:/etc/hadoop/conf
       - ./conf/kerberos:/etc/kerberos
 
   # Hive Server
@@ -248,6 +254,7 @@ services:
     hostname: hiveserver.sandbox.net
     env_file:
       - ./envs/docker_hive.env
+      - ./envs/docker_clients.env
     environment:
       HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:mysql://mysqlserver.sandbox.net:3306/metastore?createDatabaseIfNotExist=true;autoReconnect=true;useSSL=false"
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870 metastore.sandbox.net:9083"
@@ -257,6 +264,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_324:/opt/hadoop
+      - ./conf/hadoop/client:/etc/hadoop/conf
       - sandbox_tez_092:/opt/tez
       - ./conf/kerberos:/etc/kerberos
 
@@ -285,14 +293,15 @@ services:
       SERVICE_PRECONDITION: "namenode.sandbox.net:9870 zookeeper.sandbox.net:2181"
     env_file:
       - envs/docker_hbase.env
+      - envs/docker_clients.env
     ports:
       - "16000:16000"
       - "16010:16010"
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_324:/opt/hadoop
+      - ./conf/hadoop/client:/etc/hadoop/conf
       - ./conf/kerberos:/etc/kerberos
-      - ./conf/hbase/hbase-env.sh:/opt/hbase/conf/hbase-env.sh
       - ./conf/hbase/hmaster-jaas.conf:/opt/hbase/conf/zk-jaas.conf
 
   #
@@ -302,6 +311,7 @@ services:
     container_name: hregion
     env_file:
       - envs/docker_hbase.env
+      - envs/docker_clients.env
     environment:
       SERVICE_PRECONDITION: "namenode.sandbox.net:9870 zookeeper.sandbox.net:2181 hmaster.sandbox.net:16010"
     ports:
@@ -310,6 +320,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_324:/opt/hadoop
+      - ./conf/hadoop/client:/etc/hadoop/conf
       - ./conf/kerberos:/etc/kerberos
       - ./conf/hbase/hbase-env.sh:/opt/hbase/conf/hbase-env.sh
       - ./conf/hbase/hregion-jaas.conf:/opt/hbase/conf/zk-jaas.conf
@@ -331,10 +342,11 @@ services:
     ports:
       - "18080:18080"
     env_file:
-      - ./envs/docker_spark312.env
+      - ./envs/docker_clients.env
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_324:/opt/hadoop
+      - ./conf/hadoop/client:/etc/hadoop/conf
       - ./conf/kerberos:/etc/kerberos
       - ./conf/spark/spark-env.sh:/opt/spark/conf/spark-env.sh
       - ./conf/spark/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf
@@ -354,8 +366,11 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_324:/opt/hadoop
+      - ./conf/hadoop/client:/etc/hadoop/conf
       - sandbox_hbase_300:/opt/hbase
       - sandbox_hive_312:/opt/hive
+      - ./conf/hive/client:/etc/hive/conf
+      - sandbox_tez_092:/opt/tez
       - sandbox_spark_312:/opt/spark
       - sandbox_maven_363:/opt/maven-3.6.3
       - sandbox_zookeeper_371:/opt/zookeeper
@@ -364,7 +379,7 @@ services:
     environment:
       ALLOW_ANONYMOUS_LOGIN: "yes"
     env_file:
-      - ./envs/docker_gateway.env
+      - ./envs/docker_clients.env
 
   #
   # Zeppelin Notebook
@@ -375,9 +390,8 @@ services:
     hostname: zeppelin.sandbox.net
     environment:
       ALLOW_ANONYMOUS_LOGIN: "yes"
-      KRB5_CONFIG: "/etc/kerberos/krb5.conf"
     env_file:
-      - ./envs/docker_zeppelin.env
+      - ./envs/docker_clients.env
     ports:
       - "9080:8080"
     volumes:
@@ -385,11 +399,15 @@ services:
       - ./conf/kerberos:/etc/kerberos
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - sandbox_hadoop_324:/opt/hadoop
+      - ./conf/hadoop/client:/etc/hadoop/conf
       - sandbox_hbase_300:/opt/hbase
       - sandbox_hive_312:/opt/hive
+      - ./conf/hive/client:/etc/hive/conf
+      - sandbox_tez_092:/opt/tez
       - sandbox_spark_312:/opt/spark
       - sandbox_zeppelin:/opt/zeppelin
       - sandbox_zeppelin_notebook:/opt/notebook
+
 
 #
 #

@@ -10,7 +10,6 @@ MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 HEALTHCHECK CMD curl -f http://localhost:8042/ || exit 1
 
 #
-ADD docker-yarn/nodemanager/container-executor.cfg ${YARN_HOME}/etc/hadoop/container-executor.cfg
 RUN set -x && \
     chmod 755 ${YARN_HOME}/etc/hadoop/container-executor.cfg && \
     chown -Rf root:hadoop ${YARN_HOME}/bin/container-executor && chmod 6050 ${YARN_HOME}/bin/container-executor && \

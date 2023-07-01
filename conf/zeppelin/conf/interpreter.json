@@ -7,21 +7,9 @@
       "properties": {
         "default.url": {
           "name": "default.url",
-          "value": "jdbc:hive2://hive-server:10000",
+          "value": "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal\u003dhive/_HOST@SANDBOX.NET",
           "type": "string",
           "description": "The URL for JDBC."
-        },
-        "default.user": {
-          "name": "default.user",
-          "value": "hive",
-          "type": "string",
-          "description": "The JDBC user name"
-        },
-        "default.password": {
-          "name": "default.password",
-          "value": "hive",
-          "type": "password",
-          "description": "The JDBC user password"
         },
         "default.driver": {
           "name": "default.driver",
@@ -67,7 +55,7 @@
         },
         "zeppelin.jdbc.auth.kerberos.proxy.enable": {
           "name": "zeppelin.jdbc.auth.kerberos.proxy.enable",
-          "value": "true",
+          "value": true,
           "type": "checkbox",
           "description": "When auth type is Kerberos, enable/disable Kerberos proxy with the login user to get the connection. Default value is true."
         },
@@ -85,19 +73,19 @@
         },
         "zeppelin.jdbc.keytab.location": {
           "name": "zeppelin.jdbc.keytab.location",
-          "value": "",
+          "value": "/etc/kerberos/users/zeppelin.keytab",
           "type": "string",
           "description": "Kerberos keytab location"
         },
         "zeppelin.jdbc.principal": {
           "name": "zeppelin.jdbc.principal",
-          "value": "",
+          "value": "zeppelin@SANDBOX.NET",
           "type": "string",
           "description": "Kerberos principal"
         },
         "zeppelin.jdbc.interpolation": {
           "name": "zeppelin.jdbc.interpolation",
-          "value": false,
+          "value": true,
           "type": "checkbox",
           "description": "Enable ZeppelinContext variable interpolation into paragraph text"
         },
@@ -124,10 +112,14 @@
           "value": "1000",
           "type": "number",
           "description": "Query interval for hive statement"
+        },
+        "zeppelin.proxy.user.property": {
+          "name": "zeppelin.proxy.user.property",
+          "value": "hive.server2.proxy.user",
+          "type": "string"
         }
       },
-      "status": "ERROR",
-      "errorReason": "Source \u0027/opt/hadoop/share/hadoop/common/hadoop-common-3.2.4.jar\u0027 does not exist",
+      "status": "READY",
       "interpreterGroup": [
         {
           "name": "sql",
@@ -144,11 +136,6 @@
         {
           "groupArtifactVersion": "/opt/hive/jdbc/hive-jdbc-3.1.2-standalone.jar",
           "local": false
-        },
-        {
-          "groupArtifactVersion": "/opt/hadoop/share/hadoop/common/hadoop-common-3.2.4.jar",
-          "local": false,
-          "exclusions": []
         }
       ],
       "option": {
@@ -382,13 +369,13 @@
         },
         "zeppelin.jdbc.auth.type": {
           "name": "zeppelin.jdbc.auth.type",
-          "value": "",
+          "value": "KERBEROS",
           "type": "string",
           "description": "If auth type is needed, Example: KERBEROS"
         },
         "zeppelin.jdbc.auth.kerberos.proxy.enable": {
           "name": "zeppelin.jdbc.auth.kerberos.proxy.enable",
-          "value": "true",
+          "value": true,
           "type": "checkbox",
           "description": "When auth type is Kerberos, enable/disable Kerberos proxy with the login user to get the connection. Default value is true."
         },
@@ -406,13 +393,13 @@
         },
         "zeppelin.jdbc.keytab.location": {
           "name": "zeppelin.jdbc.keytab.location",
-          "value": "",
+          "value": "/etc/kerberos/users/zeppelin.keytab",
           "type": "string",
           "description": "Kerberos keytab location"
         },
         "zeppelin.jdbc.principal": {
           "name": "zeppelin.jdbc.principal",
-          "value": "",
+          "value": "zeppelin@SANDBOX.NET",
           "type": "string",
           "description": "Kerberos principal"
         },
@@ -453,22 +440,11 @@
         },
         "hive.url": {
           "name": "hive.url",
-          "value": "jdbc:hive2://hive-server:10000",
-          "type": "string"
-        },
-        "hive.user": {
-          "name": "hive.user",
-          "value": "hive",
-          "type": "string"
-        },
-        "hive.password": {
-          "name": "hive.password",
-          "value": "hive",
+          "value": "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal\u003dhive/_HOST@SANDBOX.NET",
           "type": "string"
         }
       },
-      "status": "ERROR",
-      "errorReason": "Source \u0027/opt/hadoop/share/hadoop/common/hadoop-common-3.2.4.jar\u0027 does not exist",
+      "status": "READY",
       "interpreterGroup": [
         {
           "name": "sql",
@@ -485,11 +461,6 @@
         {
           "groupArtifactVersion": "/opt/hive/jdbc/hive-jdbc-3.1.2-standalone.jar",
           "local": false
-        },
-        {
-          "groupArtifactVersion": "/opt/hadoop/share/hadoop/common/hadoop-common-3.2.4.jar",
-          "local": false,
-          "exclusions": []
         }
       ],
       "option": {
@@ -1209,25 +1180,25 @@
         },
         "shell.working.directory.user.home": {
           "name": "shell.working.directory.user.home",
-          "value": false,
+          "value": true,
           "type": "checkbox",
           "description": "If this set to true, the shell\u0027s working directory will be set to user home"
         },
         "zeppelin.shell.auth.type": {
           "name": "zeppelin.shell.auth.type",
-          "value": "",
+          "value": "KERBEROS",
           "type": "string",
           "description": "If auth type is needed, Example: KERBEROS"
         },
         "zeppelin.shell.keytab.location": {
           "name": "zeppelin.shell.keytab.location",
-          "value": "",
+          "value": "/etc/kerberos/users/zeppelin.keytab",
           "type": "string",
           "description": "Kerberos keytab location"
         },
         "zeppelin.shell.principal": {
           "name": "zeppelin.shell.principal",
-          "value": "",
+          "value": "zeppelin@SANDBOX.NET",
           "type": "string",
           "description": "Kerberos principal"
         },
@@ -1274,6 +1245,8 @@
       "option": {
         "remote": true,
         "port": -1,
+        "perNote": "shared",
+        "perUser": "shared",
         "isExistingProcess": false,
         "setPermission": false,
         "owners": [],
@@ -1287,7 +1260,7 @@
       "properties": {
         "SPARK_HOME": {
           "name": "SPARK_HOME",
-          "value": "/opt/spark-3.1.2",
+          "value": "/opt/spark",
           "type": "string",
           "description": "Location of spark distribution"
         },
@@ -1502,7 +1475,7 @@
         },
         "spark.yarn.queue": {
           "name": "spark.yarn.queue",
-          "value": "root.default",
+          "value": "engineering",
           "type": "textarea"
         },
         "spark.yarn.archive": {
@@ -1517,7 +1490,7 @@
         },
         "spark.eventLog.dir": {
           "name": "spark.eventLog.dir",
-          "value": "hdfs://namenode:9000/tmp/spark/logs",
+          "value": "hdfs://namenode:9000/apps/var/log/spark",
           "type": "string"
         },
         "spark.yarn.historyServer.allowTracking": {
@@ -1533,6 +1506,16 @@
         "spark.sql.catalog.spark_catalog": {
           "name": "spark.sql.catalog.spark_catalog",
           "value": "org.apache.spark.sql.delta.catalog.DeltaCatalog",
+          "type": "string"
+        },
+        "spark.kerberos.principal": {
+          "name": "spark.kerberos.principal",
+          "value": "brijeshdhaker@SANDBOX.NET",
+          "type": "string"
+        },
+        "spark.kerberos.keytab": {
+          "name": "spark.kerberos.keytab",
+          "value": "/etc/kerberos/keytabs/brijeshdhaker.keytab",
           "type": "string"
         }
       },
@@ -2046,7 +2029,7 @@
       "properties": {
         "hbase.home": {
           "name": "hbase.home",
-          "value": "/opt/hbase-client/",
+          "value": "/opt/hbase/",
           "type": "string",
           "description": "Installation directory of HBase"
         },
@@ -2063,8 +2046,7 @@
           "description": "Disable checks for unit and manual tests"
         }
       },
-      "status": "ERROR",
-      "errorReason": "Source \u0027/opt/hbase-client/lib/hbase-client-1.1.7.jar\u0027 does not exist",
+      "status": "READY",
       "interpreterGroup": [
         {
           "name": "hbase",
@@ -2078,16 +2060,16 @@
       ],
       "dependencies": [
         {
-          "groupArtifactVersion": "/opt/hbase-client/lib/hbase-client-1.1.7.jar",
+          "groupArtifactVersion": "/opt/hbase/lib/hbase-client-3.0.0-alpha-4.jar",
           "local": false
         },
         {
-          "groupArtifactVersion": "/opt/hbase-client/lib/hbase-protocol-1.1.7.jar",
+          "groupArtifactVersion": "/opt/hbase/lib/hbase-protocol-shaded-3.0.0-alpha-4.jar",
           "local": false,
           "exclusions": []
         },
         {
-          "groupArtifactVersion": "/opt/hbase-client/lib/hbase-common-1.1.7.jar",
+          "groupArtifactVersion": "/opt/hbase/lib/hbase-common-3.0.0-alpha-4.jar",
           "local": false,
           "exclusions": []
         }
@@ -3531,7 +3513,7 @@
     {
       "id": "local",
       "type": "default",
-      "url": "file:///apps/hostpath/.m2/repository",
+      "url": "file:///opt/zeppelin/.m2/repository",
       "host": "",
       "protocol": "file",
       "releasePolicy": {
@@ -3550,7 +3532,7 @@
     {
       "id": "local",
       "type": "default",
-      "url": "file:///apps/hostpath/.m2/repository",
+      "url": "file:///root/.m2/repository",
       "host": "",
       "protocol": "file",
       "releasePolicy": {

@@ -10,7 +10,6 @@ MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 HEALTHCHECK CMD curl -f http://localhost:8088/ || exit 1
 
 #
-ADD docker-yarn/resourcemanager/*.xml ${YARN_HOME}/etc/hadoop/
 ADD docker-yarn/resourcemanager/run.sh /run.sh
 RUN chown yarn:hadoop /run.sh && chmod 775 /run.sh
 

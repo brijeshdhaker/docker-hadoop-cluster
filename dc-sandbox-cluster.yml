@@ -299,7 +299,7 @@ services:
     container_name: zeppelin
     hostname: zeppelin
     env_file:
-      - envs/docker_zeppelin.env
+      - ./envs/docker_clients.env
     ports:
       - "9080:8080"
     volumes:

@@ -24,24 +24,28 @@ export PATH=$PATH:$HBASE_HOME/bin
 
 #
 export HIVE_HOME=/opt/hive
+export HIVE_CONF_DIR=/etc/hive/conf
 export PATH=$PATH:$HIVE_HOME/bin
+
 
 #
 export HADOOP_HOME=/opt/hadoop
-export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
+export HADOOP_CONF_DIR=/etc/hadoop/conf
 export HADOOP_MAPRED_HOME=/opt/hadoop
 export HADOOP_COMMON_HOME=/opt/hadoop
 #export HADOOP_HDFS_HOME=/opt/hadoop
-export YARN_HOME=/opt/hadoop
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${HADOOP_HOME}/lib/native
 export PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin:${HADOOP_HDFS_HOME}/bin:${HADOOP_HDFS_HOME}/sbin:${YARN_HOME}/bin:${YARN_HOME}/sbin:${HADOOP_MAPRED_HOME}/bin:${HADOOP_MAPRED_HOME}/sbin
+export HADOOP_CLIENT_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
+
+#
+export YARN_HOME=/opt/hadoop
+export YARN_CONF_DIR=/etc/hadoop/conf
+export YARN_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
 
 # Kerberos
-KRB5_CONFIG=/etc/kerberos/krb5.conf
+export KRB5_CONFIG=/etc/kerberos/krb5.conf
 kinit -k -t /etc/kerberos/users/brijeshdhaker.keytab brijeshdhaker@SANDBOX.NET
 
-#
-#
-#
-HADOOP_CLIENT_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
-YARN_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
+
+
