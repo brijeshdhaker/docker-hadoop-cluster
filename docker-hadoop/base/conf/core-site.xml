@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+	<property>
+		<name>hadoop.security.auth_to_local</name>
+		<value>
+			RULE:[2:$1/$2@$0](namenode/.*@SANDBOX\.NET)s/.*/hdfs/
+			RULE:[2:$1/$2@$0](datanode/.*@SANDBOX\.NET)s/.*/hdfs/
+			RULE:[2:$1/$2@$0](resourcemanager/.*@SANDBOX\.NET)s/.*/yarn/
+			RULE:[2:$1/$2@$0](nodemanager/.*@SANDBOX\.NET)s/.*/yarn/
+			RULE:[2:$1/$2@$0](timelineserver/.*@SANDBOX\.NET)s/.*/yarn/
+			RULE:[2:$1/$2@$0](historyserver/.*@SANDBOX\.NET)s/.*/mapred/
+			DEFAULT
+		</value>
+	</property>
+</configuration>

@@ -1,38 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
-    <!--
-    In the pattern section
-    $0 translates to the realm,
-    $1 translates to the first component
-    $2 to the second component.
-
-    [1:$1@$0] translates myusername@SANDBOX.NET to myusername@SANDBOX.NET
-    [2:$1] translates myusername/admin@ASANDBOX.NET to myusername
-    [2:$1%$2] translates myusername/admin@SANDBOX.NET to “myusername%admin"
-
-	<property>
-	  <name>hadoop.security.auth_to_local</name>
-	  <value>
-		RULE:[2:$1/$2@$0](namenode/.*@SANDBOX\.NET)s/.*/hdfs/
-		RULE:[2:$1/$2@$0](datanode/.*@SANDBOX\.NET)s/.*/hdfs/
-		RULE:[2:$1/$2@$0](resourcemanager/.*@SANDBOX\.NET)s/.*/yarn/
-		RULE:[2:$1/$2@$0](nodemanager/.*@SANDBOX\.NET)s/.*/yarn/
-		RULE:[2:$1/$2@$0](timelineserver/.*@SANDBOX\.NET)s/.*/yarn/
-		RULE:[2:$1/$2@$0](historyserver/.*@SANDBOX\.NET)s/.*/mapred/
-		DEFAULT
-	  </value>
-	</property>
-     -->
-	<property>
-		<name>hadoop.security.auth_to_local</name>
-		<value>
-			RULE:[1:$1]/L
-			RULE:[2:$1]/L
-			RULE:[2:$1;$2](^.*;admin$)s/;admin$///L
-			RULE:[2:$1;$2](^.*;guest$)s/;guest$//g/L
-			DEFAULT
-		</value>
-	</property>
-
+    <property>
+        <name>hadoop.security.auth_to_local</name>
+        <value>
+            RULE:[2:$1/$2@$0](namenode/.*@SANDBOX\.NET)s/.*/hdfs/
+            RULE:[2:$1/$2@$0](datanode/.*@SANDBOX\.NET)s/.*/hdfs/
+            RULE:[2:$1/$2@$0](resourcemanager/.*@SANDBOX\.NET)s/.*/yarn/
+            RULE:[2:$1/$2@$0](nodemanager/.*@SANDBOX\.NET)s/.*/yarn/
+            RULE:[2:$1/$2@$0](timelineserver/.*@SANDBOX\.NET)s/.*/yarn/
+            RULE:[2:$1/$2@$0](historyserver/.*@SANDBOX\.NET)s/.*/mapred/
+            DEFAULT
+        </value>
+    </property>
 </configuration>
