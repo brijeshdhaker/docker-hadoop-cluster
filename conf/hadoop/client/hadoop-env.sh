@@ -89,7 +89,7 @@ export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
 # IPv6 yet/still, so by default the preference is set to IPv4.
 # export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true"
 # For Kerberos debugging, an extended option set logs more information
-export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true -Dsun.security.krb5.debug=true -Dsun.security.spnego.debug"
+export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true -Dsun.security.krb5.debug=false -Dsun.security.spnego.debug"
 
 # Some parts of the shell code may do special things dependent upon
 # the operating system.  We have to set this here. See the next
