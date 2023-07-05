@@ -366,6 +366,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_324:/opt/hadoop
+      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - sandbox_hbase_300:/opt/hbase
       - sandbox_hive_312:/opt/hive
       - sandbox_tez_092:/opt/tez

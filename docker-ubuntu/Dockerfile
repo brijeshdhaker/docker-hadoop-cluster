@@ -68,7 +68,7 @@ RUN set -x && \
 
 
 #
-COPY docker-ubuntu/krb5.conf /etc/krb5.conf
+COPY conf/kerberos/krb5.conf /etc/krb5.conf
 
 # Copy the ssh public key in the authorized_keys file.
 # The idkey.pub below is a public key file you get from ssh-keygen. They are under ~/.ssh directory by default.

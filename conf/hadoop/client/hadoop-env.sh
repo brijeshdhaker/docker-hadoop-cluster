@@ -55,7 +55,7 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 # Location of Hadoop.  By default, Hadoop will attempt to determine
 # this location based upon its execution path.
-# export HADOOP_HOME=/opt/hadoop
+export HADOOP_HOME=/opt/hadoop
 
 # Location of Hadoop's configuration information.  i.e., where this
 # file is living. If this is not defined, Hadoop will attempt to
@@ -65,7 +65,7 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 # /etc/profile.d or equivalent.  Some options (such as
 # --config) may react strangely otherwise.
 #:w
-export HADOOP_CONF_DIR=/etc/hadoop/conf
+export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
 
 # The maximum amount of heap to use (Java -Xmx).  If no unit
 # is provided, it will be converted to MB.  Daemons will
@@ -89,12 +89,12 @@ export HADOOP_CONF_DIR=/etc/hadoop/conf
 # IPv6 yet/still, so by default the preference is set to IPv4.
 # export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true"
 # For Kerberos debugging, an extended option set logs more information
-export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true -Dsun.security.krb5.debug=false -Dsun.security.spnego.debug"
+export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true -Dsun.security.krb5.debug=true -Dsun.security.spnego.debug"
 
 # Some parts of the shell code may do special things dependent upon
 # the operating system.  We have to set this here. See the next
 # section as to why....
-export HADOOP_OS_TYPE=${HADOOP_OS_TYPE:-$(uname -s)}
+# export HADOOP_OS_TYPE=${HADOOP_OS_TYPE:-$(uname -s)}
 
 # Extra Java runtime options for some Hadoop commands
 # and clients (i.e., hdfs dfs -blah).  These get appended to HADOOP_OPTS for
@@ -204,7 +204,7 @@ export HADOOP_ROOT_LOGGER=INFO,console
 # Default log4j setting for daemons spawned explicitly by
 # --daemon option of hadoop, hdfs, mapred and yarn command.
 # Java property: hadoop.root.logger
-export HADOOP_DAEMON_ROOT_LOGGER=INFO,RFA
+# export HADOOP_DAEMON_ROOT_LOGGER=INFO,RFA
 
 # Default log level and output location for security-related messages.
 # You will almost certainly want to change this on a per-daemon basis via
@@ -245,7 +245,7 @@ export HADOOP_DAEMON_ROOT_LOGGER=INFO,RFA
 # that bind to privileged ports to provide authentication of data transfer
 # protocol.  Jsvc is not required if SASL is configured for authentication of
 # data transfer protocol using non-privileged ports.
-export JSVC_HOME=/usr/bin
+# export JSVC_HOME=/usr/bin
 
 #
 # This directory contains pids for secure and privileged processes.
@@ -307,7 +307,7 @@ export HADOOP_SECURE_LOG=${HADOOP_LOG_DIR}
 # and therefore may override any similar flags set in HADOOP_OPTS
 #
 # This is the default:
-export HDFS_DATANODE_OPTS="-Dhadoop.security.logger=ERROR,RFAS"
+# export HDFS_DATANODE_OPTS="-Dhadoop.security.logger=ERROR,RFAS"
 
 # On secure datanodes, user to run the datanode as after dropping privileges.
 # This **MUST** be uncommented to enable secure HDFS if using privileged ports
@@ -315,12 +315,12 @@ export HDFS_DATANODE_OPTS="-Dhadoop.security.logger=ERROR,RFAS"
 # defined if SASL is configured for authentication of data transfer protocol
 # using non-privileged ports.
 # This will replace the hadoop.id.str Java property in secure mode.
-export HDFS_DATANODE_SECURE_USER=hdfs
+# export HDFS_DATANODE_SECURE_USER=hdfs
 
 # Supplemental options for secure datanodes
 # By default, Hadoop uses jsvc which needs to know to launch a
 # server jvm.
-export HDFS_DATANODE_SECURE_EXTRA_OPTS="-jvm server"
+# export HDFS_DATANODE_SECURE_EXTRA_OPTS="-jvm server"
 
 ###
 # NFS3 Gateway specific parameters
@@ -427,9 +427,10 @@ export HDFS_DATANODE_SECURE_EXTRA_OPTS="-jvm server"
 # Supplemental options for privileged registry DNS
 # By default, Hadoop uses jsvc which needs to know to launch a
 # server jvm.
-export HADOOP_REGISTRYDNS_SECURE_EXTRA_OPTS="-jvm server"
+# export HADOOP_REGISTRYDNS_SECURE_EXTRA_OPTS="-jvm server"
 #
 export KRB5_CONFIG="/etc/kerberos/krb5.conf"
+export KRB5CCNAME="FILE:$HOME/krb5cc"
 # export KINIT_KEYTAB=/etc/kerberos/keytab/hdfs.service.keytab
 # export KINIT_PRINCIPAL=hdfs/_HOST@SANDBOX.NET
 
