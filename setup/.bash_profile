@@ -39,12 +39,12 @@ then
     export HIVE_HOME=/opt/hive-3.1.2
     export PATH=$PATH:$HIVE_HOME/bin
     #
-    export HADOOP_HOME=/opt/hadoop-3.2.4
+    export HADOOP_HOME=/opt/hadoop-3.2.1
     export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
-    export HADOOP_MAPRED_HOME=/opt/hadoop-3.2.4
-    export HADOOP_COMMON_HOME=/opt/hadoop-3.2.4
-    #export HADOOP_HDFS_HOME=/opt/hadoop-3.2.4
-    export YARN_HOME=/opt/hadoop-3.2.4
+    export HADOOP_MAPRED_HOME=/opt/hadoop-3.2.1
+    export HADOOP_COMMON_HOME=/opt/hadoop-3.2.1
+    #export HADOOP_HDFS_HOME=/opt/hadoop-3.2.1
+    export YARN_HOME=/opt/hadoop-3.2.1
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${HADOOP_HOME}/lib/native
     export PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin:${HADOOP_HDFS_HOME}/bin:${HADOOP_HDFS_HOME}/sbin:${YARN_HOME}/bin:${YARN_HOME}/sbin:${HADOOP_MAPRED_HOME}/bin:${HADOOP_MAPRED_HOME}/sbin
 

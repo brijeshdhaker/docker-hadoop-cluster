@@ -59,7 +59,7 @@ x-airflow-common:
     - sandbox_airflow_plugins:/opt/airflow/plugins
     - sandbox_host_path:/apps/hostpath
     - sandbox_base_path:/apps/sandbox
-    - sandbox_hadoop_324:/opt/hadoop
+    - sandbox_hadoop_321:/opt/hadoop
     - sandbox_hbase_300:/opt/hbase
     - sandbox_hbase_117:/opt/hbase-client
     - sandbox_hive_312:/opt/hive
@@ -332,7 +332,7 @@ volumes:
     external: true
   sandbox_spark_312:
     external: true
-  sandbox_hadoop_324:
+  sandbox_hadoop_321:
     external: true
 
 #
