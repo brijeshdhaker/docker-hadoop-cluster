@@ -52,3 +52,6 @@ Stop all the services
 ```
 docker-compose --file docker/docker-compose.yml down
 ``` 
+
+###
+ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsacat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keyschmod 0600 ~/.ssh/authorized_keysssh localhost

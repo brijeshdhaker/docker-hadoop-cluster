@@ -14,8 +14,16 @@
         <value>KERBEROS</value>
     </property>
     <property>
+        <name>hive.log.explain.output</name>
+        <value>true</value>
+    </property>
+    <property>
         <name>hive.metastore.uris</name>
         <value>thrift://metastore.sandbox.net:9083</value>
+    </property>
+    <property>
+        <name>tez.queue.name</name>
+        <value>engineering</value>
     </property>
     <property>
         <name>hive.metastore.authentication.type</name>
@@ -31,7 +39,7 @@
     </property>
     <property>
         <name>hive.server2.enable.doAs</name>
-        <value>false</value>
+        <value>true</value>
     </property>
     <property>
         <name>hive.metastore.kerberos.principal</name>
@@ -46,8 +54,28 @@
         <value>tez</value>
     </property>
     <property>
+        <name>hive.tez.container.size</name>
+        <value>-1</value>
+    </property>
+    <property>
+        <name>hive.tez.java.opts</name>
+        <value>-Djava.security.krb5.conf=/etc/kerberos/krb5.conf</value>
+    </property>
+    <property>
+        <name>hive.server2.tez.initialize.default.sessions</name>
+        <value>false</value>
+    </property>
+    <property>
+        <name>hive.server2.tez.default.queues</name>
+        <value>default</value>
+    </property>
+    <property>
         <name>datanucleus.autoCreateSchema</name>
         <value>false</value>
+    </property>
+    <property>
+        <name>hive.server2.tez.sessions.per.default.queue</name>
+        <value>1</value>
     </property>
     <property>
         <name>hive.metastore.client.principal</name>
@@ -74,10 +102,6 @@
         <value>hive/_HOST@SANDBOX.NET</value>
     </property>
     <property>
-        <name>hive.server2.authentication.client.kerberos.principal</name>
-        <value>hive/_HOST@SANDBOX.NET</value>
-    </property>
-    <property>
         <name>hive.exec.pre.hooks</name>
         <value>org.apache.hadoop.hive.ql.hooks.ATSHook</value>
     </property>
@@ -98,4 +122,3 @@
         <value>/etc/kerberos/keytabs/hive.service.keytab</value>
     </property>
 </configuration>
-

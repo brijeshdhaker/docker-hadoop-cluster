@@ -94,8 +94,13 @@ https://cwiki.apache.org/confluence/display/Hive/Home#Home-HiveDocumentation
 # Linux 
 #
 export HIVE_HOME=/opt/hive
-$ $HIVE_HOME/bin/beeline -u jdbc:hive2://hiveserver.sandbox.net:10000 scott tiger
-$ $HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET"
+$HIVE_HOME/bin/beeline -u jdbc:hive2://hiveserver.sandbox.net:10000 scott tiger
+$HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET"
+
+set tez.queue.name = true;
+bin/hive --hiveconf tez.queue.name=engineering
+set hive.execution.engine=mr;
+set hive.execution.engine=tez;
 
 CREATE TABLE students (name VARCHAR(64), age INT, gpa DECIMAL(3,2));
 INSERT INTO TABLE students VALUES ('Brijesh Dhaker', 35, 1.28), ('Tejas Dhaker', 32, 2.32);
@@ -104,6 +109,77 @@ INSERT INTO TABLE students VALUES ('Brijesh Dhaker', 35, 1.28), ('Tejas Dhaker',
 describe extended students;
 
 describe formatted students;
+
+# Validating Hive-on-Tez Installation
+    Use the following procedure to validate your configuration of Hive-on-Tez:
+
+Create a sample test.txt file:
+
+echo -e "alice miller\t49\t3.15" > student.txt
+
+Upload the new data file to HDFS:
+
+su $HDFS_USER 
+hadoop fs -mkdir -p /user/brijeshdhaker/student
+hadoop fs -copyFromLocal student.txt /user/brijeshdhaker/student
+
+Open the Hive command-line shell:
+
+$HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET"
+
+Create a table named student in Hive:
+
+hive> 
+
+CREATE EXTERNAL TABLE student(name string, age int, gpa double) 
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'STORED AS TEXTFILE 
+LOCATION '/user/brijeshdhaker/student';
+
+CREATE EXTERNAL TABLE student(name string, age int, gpa double)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'STORED AS TEXTFILE;
+
+CREATE EXTERNAL TABLE my_external_table (a string, b string)  
+ROW FORMAT SERDE 'com.mytables.MySerDe'
+WITH SERDEPROPERTIES ( "input.regex" = "*.csv")
+LOCATION '/user/data';       
+
+Execute the following query in Hive:
+
+hive> 
+SELECT COUNT(*) FROM student;
+SELECT * FROM student;
+
+If Hive-on-Tez is configured properly, this query should return successful results similar to the following:
+
+hive> SELECT COUNT(*) FROM student;
+Query ID = hdfs_20140604161313_544c4455-dfb3-4119-8b08-b70b46fee512
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+set mapreduce.job.reduces=<number>
+Starting Job = job_1401734196960_0007, Tracking URL = http://c6401.ambari.apache.org:8088/proxy/application_1401734196960_0007/
+Kill Command = /usr/lib/hadoop/bin/hadoop job -kill job_1401734196960_0007
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2014-06-04 16:13:24,116 Stage-1 map = 0%, reduce = 0%
+2014-06-04 16:13:30,670 Stage-1 map = 100%, reduce = 0%, Cumulative CPU 0.82 sec
+2014-06-04 16:13:39,065 Stage-1 map = 100%, reduce = 100%, Cumulative CPU 1.97 sec
+MapReduce Total cumulative CPU time: 1 seconds 970 msec
+Ended Job = job_1401734196960_0007
+MapReduce Jobs Launched:
+Job 0: Map: 1 Reduce: 1 Cumulative CPU: 1.97 sec HDFS Read: 240 HDFS Write: 2 SUCCESS
+Total MapReduce CPU Time Spent: 1 seconds 970 msec
+OK
+1
+Time taken: 28.47 seconds, Fetched: 1 row(s)
+hive>
+
+MSCK REPAIR TABLE student DROP PARTITIONS;
+
 
 #
 #
