@@ -14,7 +14,7 @@
     </property>
     <property>
         <name>yarn.scheduler.maximum-allocation-vcores</name>
-        <value>16</value>
+        <value>4</value>
     </property>
     <property>
         <name>yarn.timeline-service.delegation.key.update-interval</name>
@@ -122,7 +122,7 @@
     </property>
     <property>
         <name>yarn.scheduler.maximum-allocation-mb</name>
-        <value>16384</value>
+        <value>4096</value>
     </property>
     <property>
         <name>yarn.nodemanager.webapp.cross-origin.enabled</name>
@@ -133,12 +133,12 @@
         <value>resourcemanager.sandbox.net:8030</value>
     </property>
     <property>
-        <name>yarn.timeline-service.bind-host</name>
-        <value>0.0.0.0</value>
-    </property>
-    <property>
         <name>yarn.nodemanager.keytab</name>
         <value>/etc/kerberos/keytabs/yarn.service.keytab</value>
+    </property>
+    <property>
+        <name>yarn.timeline-service.bind-host</name>
+        <value>0.0.0.0</value>
     </property>
     <property>
         <name>yarn.timeline-service.http-authentication.proxyuser.hive_users</name>
@@ -194,7 +194,7 @@
     </property>
     <property>
         <name>yarn.scheduler.minimum-allocation-mb</name>
-        <value>512</value>
+        <value>1024</value>
     </property>
     <property>
         <name>yarn.admin.acl</name>

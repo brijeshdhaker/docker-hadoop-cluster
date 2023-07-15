@@ -99,11 +99,15 @@ $HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;pri
 
 set tez.queue.name = true;
 bin/hive --hiveconf tez.queue.name=engineering
+
+set hive.execution.engine;
 set hive.execution.engine=mr;
 set hive.execution.engine=tez;
 
 CREATE TABLE students (name VARCHAR(64), age INT, gpa DECIMAL(3,2));
 INSERT INTO TABLE students VALUES ('Brijesh Dhaker', 35, 1.28), ('Tejas Dhaker', 32, 2.32);
+INSERT INTO TABLE students VALUES ('Neeta Dhaker', 40, 2.82);
+INSERT INTO TABLE students VALUES ('Keshvi Dhaker', 12, 4.28);
 
 #
 describe extended students;
