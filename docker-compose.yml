@@ -230,7 +230,7 @@ services:
   # Hive Metastore
   #
   metastore:
-    image: brijeshdhaker/hive:3.1.2
+    image: brijeshdhaker/hive:3.1.3
     container_name: metastore
     hostname: metastore.sandbox.net
     env_file:
@@ -249,7 +249,7 @@ services:
 
   # Hive Server
   hiveserver:
-    image: brijeshdhaker/hive:3.1.2
+    image: brijeshdhaker/hive:3.1.3
     container_name: hiveserver
     hostname: hiveserver.sandbox.net
     env_file:
@@ -266,6 +266,7 @@ services:
       - sandbox_hadoop_321:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - sandbox_tez_092:/opt/tez
+      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
       - ./conf/kerberos:/etc/kerberos
 
   # Hive Tez UI
@@ -368,7 +369,7 @@ services:
       - sandbox_hadoop_321:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - sandbox_hbase_300:/opt/hbase
-      - sandbox_hive_312:/opt/hive
+      - /opt/hive-3.1.3:/opt/hive
       - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
       - sandbox_tez_092:/opt/tez
       - ./conf/tez/tez-site.xml:/opt/tez/conf/tez-site.xml

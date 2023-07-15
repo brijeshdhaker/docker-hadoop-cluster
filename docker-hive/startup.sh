@@ -18,6 +18,7 @@ fi
 # For enabling hive to use the Tez engine
 export HADOOP_CLASSPATH="$(${HADOOP_HOME}/bin/hadoop classpath):${TEZ_CONF_DIR}:$(find ${TEZ_HOME} -name "*.jar" | paste -sd ":")"
 
+
 # Start Hive Server
 echo "Starting Hive Server ...."
 ${HIVE_HOME}/bin/hiveserver2 --hiveconf hive.root.logger=INFO,console
