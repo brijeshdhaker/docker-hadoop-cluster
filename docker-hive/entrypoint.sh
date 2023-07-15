@@ -35,7 +35,7 @@ function configure() {
     done
 }
 
-configure ${HIVE_HOME}/conf/hive-site.xml hive HIVE_SITE_CONF
+configure ${HIVE_HOME}/conf/hive-site.xml hive HIVE_SITE
 
 function wait_for_it()
 {

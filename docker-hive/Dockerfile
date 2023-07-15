@@ -2,7 +2,7 @@
 # docker build -t brijeshdhaker/hive:3.1.2 -f docker-hive/Dockerfile .
 # docker push brijeshdhaker/hive:3.1.2
 
-FROM brijeshdhaker/ubuntu:22.04
+FROM brijeshdhaker/ubuntu:20.04
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 

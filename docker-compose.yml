@@ -257,7 +257,7 @@ services:
       - ./envs/docker_clients.env
     environment:
       HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:mysql://mysqlserver.sandbox.net:3306/metastore?createDatabaseIfNotExist=true;autoReconnect=true;useSSL=false"
-      SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870 metastore.sandbox.net:9083"
+      SERVICE_PRECONDITION: "namenode.sandbox.net:9000 metastore.sandbox.net:9083"
     ports:
       - "10000:10000"
       - "10002:10002"
@@ -355,7 +355,7 @@ services:
   # Gateway Node
   #
   gateway:
-    image: brijeshdhaker/ubuntu:22.04
+    image: brijeshdhaker/ubuntu:20.04
     container_name: gateway
     hostname: gateway.sandbox.net
     restart: always
@@ -369,7 +369,9 @@ services:
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - sandbox_hbase_300:/opt/hbase
       - sandbox_hive_312:/opt/hive
+      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
       - sandbox_tez_092:/opt/tez
+      - ./conf/tez/tez-site.xml:/opt/tez/conf/tez-site.xml
       - sandbox_spark_312:/opt/spark
       - sandbox_maven_363:/opt/maven-3.6.3
       - sandbox_zookeeper_371:/opt/zookeeper

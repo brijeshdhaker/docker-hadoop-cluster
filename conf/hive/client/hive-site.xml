@@ -2,28 +2,52 @@
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
     <property>
-        <name>hive.metastore.warehouse.external.dir</name>
-        <value>/warehouse/tablespace/external/hive</value>
-    </property>
-    <property>
-        <name>hive.metastore.warehouse.dir</name>
-        <value>/warehouse/tablespace/managed/hive</value>
-    </property>
-    <property>
         <name>hive.server2.authentication</name>
         <value>KERBEROS</value>
+    </property>
+    <property>
+        <name>datanucleus.autoCreateSchema</name>
+        <value>false</value>
     </property>
     <property>
         <name>hive.log.explain.output</name>
         <value>true</value>
     </property>
     <property>
-        <name>hive.metastore.uris</name>
-        <value>thrift://metastore.sandbox.net:9083</value>
+        <name>hive.metastore.kerberos.principal</name>
+        <value>hive/_HOST@SANDBOX.NET</value>
     </property>
     <property>
-        <name>tez.queue.name</name>
-        <value>engineering</value>
+        <name>hive.metastore.warehouse.external.dir</name>
+        <value>/warehouse/tablespace/external/hive</value>
+    </property>
+    <property>
+        <name>hive.server2.authentication.kerberos.principal</name>
+        <value>hive/_HOST@SANDBOX.NET</value>
+    </property>
+    <property>
+        <name>hive.metastore.client.principal</name>
+        <value>hive/_HOST@SANDBOX.NET</value>
+    </property>
+    <property>
+        <name>hive.metastore.sasl.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>hive.exec.post.hooks</name>
+        <value>org.apache.hadoop.hive.ql.hooks.ATSHook</value>
+    </property>
+    <property>
+        <name>hive.exec.dynamic.partition.mode</name>
+        <value>nonstrict</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionDriverName</name>
+        <value>com.mysql.cj.jdbc.Driver</value>
+    </property>
+    <property>
+        <name>hive.metastore.uris</name>
+        <value>thrift://metastore.sandbox.net:9083</value>
     </property>
     <property>
         <name>hive.metastore.authentication.type</name>
@@ -34,91 +58,47 @@
         <value>hiveadmin</value>
     </property>
     <property>
-        <name>hive.exec.post.hooks</name>
-        <value>org.apache.hadoop.hive.ql.hooks.ATSHook</value>
-    </property>
-    <property>
-        <name>hive.server2.enable.doAs</name>
-        <value>true</value>
-    </property>
-    <property>
-        <name>hive.metastore.kerberos.principal</name>
-        <value>hive/_HOST@SANDBOX.NET</value>
-    </property>
-    <property>
-        <name>javax.jdo.option.ConnectionURL</name>
-        <value>jdbc:mysql://mysqlserver.sandbox.net/metastore?createDatabaseIfNotExist=true</value>
-    </property>
-    <property>
-        <name>hive.execution.engine</name>
-        <value>tez</value>
-    </property>
-    <property>
-        <name>hive.tez.container.size</name>
-        <value>-1</value>
-    </property>
-    <property>
-        <name>hive.tez.java.opts</name>
-        <value>-Djava.security.krb5.conf=/etc/kerberos/krb5.conf</value>
-    </property>
-    <property>
-        <name>hive.server2.tez.initialize.default.sessions</name>
-        <value>false</value>
-    </property>
-    <property>
-        <name>hive.server2.tez.default.queues</name>
-        <value>default</value>
-    </property>
-    <property>
-        <name>datanucleus.autoCreateSchema</name>
-        <value>false</value>
-    </property>
-    <property>
-        <name>hive.server2.tez.sessions.per.default.queue</name>
-        <value>1</value>
-    </property>
-    <property>
-        <name>hive.metastore.client.principal</name>
-        <value>hive/_HOST@SANDBOX.NET</value>
-    </property>
-    <property>
-        <name>hive.metastore.event.db.notification.api.auth</name>
-        <value>false</value>
-    </property>
-    <property>
-        <name>hive.metastore.thrift.impersonation.enabled</name>
-        <value>false</value>
-    </property>
-    <property>
-        <name>hive.metastore.kerberos.keytab.file</name>
-        <value>/etc/kerberos/keytabs/hive.service.keytab</value>
-    </property>
-    <property>
         <name>hive.exec.failure.hooks</name>
         <value>org.apache.hadoop.hive.ql.hooks.ATSHook</value>
     </property>
     <property>
-        <name>hive.server2.authentication.kerberos.principal</name>
-        <value>hive/_HOST@SANDBOX.NET</value>
+        <name>hive.optimize.sort.dynamic.partition</name>
+        <value>false</value>
     </property>
     <property>
         <name>hive.exec.pre.hooks</name>
         <value>org.apache.hadoop.hive.ql.hooks.ATSHook</value>
     </property>
     <property>
-        <name>javax.jdo.option.ConnectionDriverName</name>
-        <value>com.mysql.cj.jdbc.Driver</value>
+        <name>hive.metastore.thrift.impersonation.enabled</name>
+        <value>false</value>
+    </property>
+    <property>
+        <name>hive.server2.enable.doAs</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>hive.metastore.event.db.notification.api.auth</name>
+        <value>false</value>
+    </property>
+    <property>
+        <name>hive.server2.authentication.kerberos.keytab</name>
+        <value>/etc/kerberos/keytabs/hive.service.keytab</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionURL</name>
+        <value>jdbc:mysql://mysqlserver.sandbox.net/metastore?createDatabaseIfNotExist=true</value>
+    </property>
+    <property>
+        <name>hive.metastore.warehouse.dir</name>
+        <value>/warehouse/tablespace/managed/hive</value>
     </property>
     <property>
         <name>javax.jdo.option.ConnectionPassword</name>
         <value>hiveadmin</value>
     </property>
     <property>
-        <name>hive.metastore.sasl.enabled</name>
-        <value>true</value>
-    </property>
-    <property>
-        <name>hive.server2.authentication.kerberos.keytab</name>
+        <name>hive.metastore.kerberos.keytab.file</name>
         <value>/etc/kerberos/keytabs/hive.service.keytab</value>
     </property>
 </configuration>

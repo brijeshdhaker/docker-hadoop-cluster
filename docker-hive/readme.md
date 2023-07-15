@@ -28,7 +28,7 @@ ln -s /opt/spark-2.3.4/jars/scala-library-2.11.8.jar /opt/hive-3.1.2/lib/scala-l
 $SPARK_HOME/sbin/start-master.sh
 $SPARK_HOME/bin/spark-class org.apache.spark.deploy.worker.Worker --webui-port 8081 spark://172.18.0.1:7077
 
-hive --hiveconf hive.root.logger=INFO,console --remote-host=localhost
+hive --hiveconf hive.root.logger=INFO,console --remote-host=hiveserver.sandbox.net:10000
 
 ### -- JDBC 
 jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET
@@ -68,7 +68,7 @@ $HIVE_HOME/bin/beeline -u jdbc:hive2://localhost:10000 scott tiger
 
 $HIVE_HOME/bin/beeline -u jdbc:hive2://hiveserver.sandbox.net:10000 scott tiger
 
-$HIVE_HOMEbin/beeline -u jdbc:hive2:// -n scott -p tiger
+$HIVE_HOME/bin/beeline -u jdbc:hive2:// -n scott -p tiger
 
 beeline>!connect jdbc:hive2:// -n scott -p tiger
 (or)
@@ -100,26 +100,51 @@ $HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;pri
 set tez.queue.name = true;
 bin/hive --hiveconf tez.queue.name=engineering
 
+dfs -ls /warehouse/tablespace/managed/hive ;
+
+#
+#
+#
+### --default
+SET hive.txn.manager=org.apache.hadoop.hive.ql.lockmgr.DummyTxnManager; 
+SET hive.support.concurrency=false;
+
+### 
+SET hive.txn.manager=org.apache.hadoop.hive.ql.lockmgr.DbTxnManager;
+SET hive.support.concurrency=true;
+
+#This property is not needed if you are using Hive 2.x or later
+set hive.enforce.bucketing = true;
 set hive.execution.engine;
 set hive.execution.engine=mr;
 set hive.execution.engine=tez;
 
-CREATE TABLE students (name VARCHAR(64), age INT, gpa DECIMAL(3,2));
-INSERT INTO TABLE students VALUES ('Brijesh Dhaker', 35, 1.28), ('Tejas Dhaker', 32, 2.32);
-INSERT INTO TABLE students VALUES ('Neeta Dhaker', 40, 2.82);
-INSERT INTO TABLE students VALUES ('Keshvi Dhaker', 12, 4.28);
+CREATE TABLE m_students (
+    name STRING, 
+    age  INT, 
+    gpa  DOUBLE
+);
+
+INSERT INTO TABLE m_students VALUES ('Brijesh Dhaker', 35, 1.28);
+INSERT INTO TABLE m_students VALUES ('Tejas Dhaker', 32, 2.32);
+INSERT INTO TABLE m_students VALUES ('Neeta Dhaker', 40, 2.82);
+INSERT INTO TABLE m_students VALUES ('Keshvi Dhaker', 12, 4.28);
 
 #
-describe extended students;
+describe extended m_students;
+describe formatted m_students;
 
-describe formatted students;
+select * from m_students;
+SELECT COUNT(*) FROM m_students;
 
 # Validating Hive-on-Tez Installation
     Use the following procedure to validate your configuration of Hive-on-Tez:
 
 Create a sample test.txt file:
 
-echo -e "alice miller\t49\t3.15" > student.txt
+echo -e "Brijesh D\t49\t3.15" > student.txt
+
+echo -e "Brijesh D\t49\t3.15\nNeeta D\t40\t4.15" > student.txt
 
 Upload the new data file to HDFS:
 
@@ -135,12 +160,38 @@ Create a table named student in Hive:
 
 hive> 
 
-CREATE EXTERNAL TABLE student(name string, age int, gpa double) 
+CREATE EXTERNAL TABLE e_students(
+    name STRING,
+    age  INT,
+    gpa  DOUBLE
+) 
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'STORED AS TEXTFILE 
 LOCATION '/user/brijeshdhaker/student';
 
-CREATE EXTERNAL TABLE student(name string, age int, gpa double)
+CREATE EXTERNAL TABLE e_students(
+    name STRING,
+    age  INT,
+    gpa  DOUBLE
+)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'STORED AS TEXTFILE;
+
+#
+describe extended e_students;
+describe formatted e_students;
+
+dfs -cp /user/brijeshdhaker/student/student.txt /warehouse/tablespace/external/hive/e_students/student.txt ;
+
+INSERT INTO TABLE e_students VALUES ('Brijesh Dhaker', 35, 1.28);
+INSERT INTO TABLE e_students VALUES ('Tejas Dhaker', 32, 2.32);
+INSERT INTO TABLE e_students VALUES ('Neeta Dhaker', 40, 2.82);
+INSERT INTO TABLE e_students VALUES ('Keshvi Dhaker', 12, 4.28);
+
+MSCK REPAIR TABLE e_students DROP PARTITIONS;
+
+select * from e_students;
+SELECT COUNT(*) FROM e_students;
+
+
 
 CREATE EXTERNAL TABLE my_external_table (a string, b string)  
 ROW FORMAT SERDE 'com.mytables.MySerDe'
@@ -150,8 +201,7 @@ LOCATION '/user/data';
 Execute the following query in Hive:
 
 hive> 
-SELECT COUNT(*) FROM student;
-SELECT * FROM student;
+
 
 If Hive-on-Tez is configured properly, this query should return successful results similar to the following:
 
@@ -182,7 +232,7 @@ OK
 Time taken: 28.47 seconds, Fetched: 1 row(s)
 hive>
 
-MSCK REPAIR TABLE student DROP PARTITIONS;
+
 
 
 #
@@ -196,15 +246,7 @@ presto> select * from pokes;
 ./presto --server localhost:8080 --catalog hive --schema default
 
 
-#
-#
-#
 
-SET hive.txn.manager=org.apache.hadoop.hive.ql.lockmgr.DbTxnManager;
-SET hive.support.concurrency=true;
-SET hive.support.concurrency=false;
-#This property is not needed if you are using Hive 2.x or later
-set hive.enforce.bucketing = true;
 #
 #
 #
