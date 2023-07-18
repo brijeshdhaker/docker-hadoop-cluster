@@ -267,7 +267,7 @@ services:
 
   # Hive Tez UI
   hivetezui:
-    image: brijeshdhaker/tezui:0.10.2
+    image: brijeshdhaker/tezui:0.9.2
     container_name: hivetezui
     hostname: hivetezui.sandbox.net
     environment:

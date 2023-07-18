@@ -2,7 +2,7 @@
 
 # Add Gateway Host Information
 export DOCKER_HOST_IP=$(route -n | awk '/UG[ \t]/{print $2}')
-echo "$DOCKER_HOST_IP hostmaster.sandbox.net  hostmaster" >> /etc/hosts
+# echo "$DOCKER_HOST_IP hostmaster.sandbox.net  hostmaster" >> /etc/hosts
 
 # Set some sensible defaults
 export CORE_SITE_fs_defaultFS=${CORE_SITE_fs_defaultFS:-hdfs://`hostname -f`:9000}
@@ -35,7 +35,7 @@ function configure() {
     done
 }
 
-configure ${HIVE_HOME}/conf/hive-site.xml hive HIVE_SITE_CONF
+configure ${HIVE_HOME}/conf/hive-site.xml hive HIVE_SITE
 
 function wait_for_it()
 {
