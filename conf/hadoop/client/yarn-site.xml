@@ -292,4 +292,14 @@
         <name>yarn.nodemanager.log-dirs</name>
         <value>/yarn/container-logs</value>
     </property>
+    <property>
+        <name>yarn.application.classpath</name>
+        <value>
+            /opt/hadoop/hadoop/etc/hadoop, /opt/hadoop/hadoop/share/hadoop/common/*,
+            /opt/hadoop/hadoop/share/hadoop/common/lib/*, /opt/hadoop/hadoop/share/hadoop/hdfs/*,
+            /opt/hadoop/hadoop/share/hadoop/hdfs/lib/*, /opt/hadoop/hadoop/share/hadoop/mapreduce/*,
+            /opt/hadoop/hadoop/share/hadoop/mapreduce/lib/*, /opt/hadoop/hadoop/share/hadoop/yarn/*,
+            /opt/hadoop/hadoop/share/hadoop/yarn/lib/*, /opt/hadoop/hadoop/share/spark/*
+        </value>
+    </property>
 </configuration>
