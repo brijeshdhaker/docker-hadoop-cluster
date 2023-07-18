@@ -40,7 +40,7 @@ export HADOOP_CLIENT_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
 
 #
 export YARN_HOME=/opt/hadoop
-export YARN_CONF_DIR=/opt/hadoop/etc/hadoop
+export YARN_SITE_DIR=/opt/hadoop/etc/hadoop
 export YARN_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
 
 # Kerberos

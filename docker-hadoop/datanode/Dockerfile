@@ -9,7 +9,7 @@ MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
 HEALTHCHECK CMD curl -f http://localhost:9864/ || exit 1
 
-ENV HDFS_CONF_dfs_datanode_data_dir=file:///hadoop/dfs/data
+ENV HDFS_SITE_dfs_datanode_data_dir=file:///hadoop/dfs/data
 
 RUN mkdir -p /hadoop/dfs/data && \
     chmod -Rf 777 /hadoop/dfs/data && \

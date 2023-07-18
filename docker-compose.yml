@@ -103,7 +103,7 @@ services:
       - "9864:9864"   # http
       - "9865:9865"   # https
       - "9866:9866"
-    restart: always
+    restart: no
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_321_dfs:/hadoop/dfs
@@ -122,7 +122,7 @@ services:
     image: brijeshdhaker/hadoop-resourcemanager:3.2.1
     build:
       context: .
-      dockerfile: docker-yarn/resourcemanager/Dockerfile
+      dockerfile: docker-hadoop/resourcemanager/Dockerfile
     container_name: resourcemanager
     hostname: resourcemanager.sandbox.net
     restart: no
@@ -131,7 +131,6 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_321_yarn:/yarn
-      - ./conf/hadoop/client:/etc/hadoop/conf
       - ./conf/kerberos:/etc/kerberos
     environment:
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
@@ -143,7 +142,7 @@ services:
     image: brijeshdhaker/hadoop-nodemanager:3.2.1
     build:
       context: .
-      dockerfile: docker-yarn/nodemanager/Dockerfile
+      dockerfile: docker-hadoop/nodemanager/Dockerfile
     container_name: nodemanager
     hostname: nodemanager.sandbox.net
     restart: no
@@ -152,11 +151,10 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_321_yarn:/yarn
-      - ./conf/hadoop/client:/etc/hadoop/conf
       - ./conf/kerberos:/etc/kerberos
     environment:
       HADOOP_CONF_DIR: "/etc/yarn/conf"
-      YARN_CONF_DIR: "/etc/yarn/conf"
+      YARN_SITE_DIR: "/etc/yarn/conf"
       SERVICE_PRECONDITION: "resourcemanager.sandbox.net:8088"
     env_file:
       - envs/docker_hadoop.env
@@ -166,10 +164,10 @@ services:
     image: brijeshdhaker/hadoop-timelineserver:3.2.1
     build:
       context: .
-      dockerfile: docker-yarn/historyserver/Dockerfile
+      dockerfile: docker-hadoop/historyserver/Dockerfile
     container_name: timelineserver
     hostname: timelineserver.sandbox.net
-    restart: always
+    restart: no
     ports:
       - "8188:8188"
     environment:
@@ -177,7 +175,6 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_321_yarn:/yarn
-      - ./conf/hadoop/client:/etc/hadoop/conf
       - ./conf/kerberos:/etc/kerberos
     env_file:
       - envs/docker_hadoop.env
@@ -190,7 +187,7 @@ services:
       dockerfile: docker-hadoop/historyserver/Dockerfile
     container_name: historyserver
     hostname: historyserver.sandbox.net
-    restart: always
+    restart: no
     ports:
       - "19888:19888"
     environment:
@@ -198,7 +195,6 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_321_mapred:/mapred
-      - ./conf/hadoop/client:/etc/hadoop/conf
       - ./conf/kerberos:/etc/kerberos
     env_file:
       - envs/docker_hadoop.env
@@ -256,7 +252,7 @@ services:
       - ./envs/docker_hive.env
       - ./envs/docker_clients.env
     environment:
-      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:mysql://mysqlserver.sandbox.net:3306/metastore?createDatabaseIfNotExist=true;autoReconnect=true;useSSL=false"
+      HIVE_CORE_SITE_javax_jdo_option_ConnectionURL: "jdbc:mysql://mysqlserver.sandbox.net:3306/metastore?createDatabaseIfNotExist=true;autoReconnect=true;useSSL=false"
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000 metastore.sandbox.net:9083"
     ports:
       - "10000:10000"
@@ -266,7 +262,7 @@ services:
       - sandbox_hadoop_321:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - sandbox_tez_092:/opt/tez
-      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
+      - ./conf/tez/tez-site.xml:/opt/tez/conf/tez-site.xml
       - ./conf/kerberos:/etc/kerberos
 
   # Hive Tez UI

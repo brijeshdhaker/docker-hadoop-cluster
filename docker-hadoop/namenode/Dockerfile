@@ -10,7 +10,7 @@ HEALTHCHECK CMD curl -f http://localhost:9870/ || exit 1
 
 #
 ENV MULTIHOMED_NETWORK=0
-ENV HDFS_CONF_dfs_namenode_name_dir=file:///hadoop/dfs/name
+ENV HDFS_SITE_dfs_namenode_name_dir=file:///hadoop/dfs/name
 
 RUN mkdir -p /hadoop/dfs/name && \
     chmod -Rf 777 /hadoop/dfs/name && \

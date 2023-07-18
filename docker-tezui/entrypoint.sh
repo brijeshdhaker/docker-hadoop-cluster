@@ -5,7 +5,7 @@ export DOCKER_HOST_IP=$(route -n | awk '/UG[ \t]/{print $2}')
 echo "$DOCKER_HOST_IP hostmaster.sandbox.net  hostmaster" >> /etc/hosts
 
 # Set some sensible defaults
-export CORE_CONF_fs_defaultFS=${CORE_CONF_fs_defaultFS:-hdfs://`hostname -f`:9000}
+export CORE_SITE_fs_defaultFS=${CORE_SITE_fs_defaultFS:-hdfs://`hostname -f`:9000}
 
 function addProperty() {
   local path=$1

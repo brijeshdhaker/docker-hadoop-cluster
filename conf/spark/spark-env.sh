@@ -42,7 +42,7 @@
 # - HADOOP_CONF_DIR, to point Spark towards Hadoop configuration files
 
 # Options read in YARN client/cluster mode
-# - YARN_CONF_DIR, to point Spark towards YARN configuration files when you use YARN
+# - YARN_SITE_DIR, to point Spark towards YARN configuration files when you use YARN
 
 # Options for the daemons used in the standalone deploy mode
 # - SPARK_MASTER_HOST, to bind the master to a different IP address or hostname

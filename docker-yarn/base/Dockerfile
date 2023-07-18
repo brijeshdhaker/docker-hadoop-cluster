@@ -11,7 +11,7 @@ MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 ENV HADOOP_VERSION=3.2.1
 ENV BASE_DIR=/opt
 ENV YARN_HOME=$BASE_DIR/hadoop
-ENV YARN_CONF_DIR=/etc/yarn/conf
+ENV YARN_SITE_DIR=/etc/yarn/conf
 ENV PATH=$PATH:${YARN_HOME}/bin:${YARN_HOME}/sbin
 ENV YARN_LOG_DIR=${YARN_LOG_DIR:-"/apps/var/log/yarn"}
 ENV MAPRED_LOG_DIR=${MAPRED_LOG_DIR:-"/apps/var/log/mapred"}
