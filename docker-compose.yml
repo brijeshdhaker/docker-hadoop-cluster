@@ -171,7 +171,7 @@ services:
     ports:
       - "8188:8188"
     environment:
-      SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
+      SERVICE_PRECONDITION: "namenode.sandbox.net:9000"
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_321_yarn:/yarn
@@ -226,7 +226,7 @@ services:
   # Hive Metastore
   #
   metastore:
-    image: brijeshdhaker/hive:3.1.3
+    image: brijeshdhaker/hive:3.1.2
     container_name: metastore
     hostname: metastore.sandbox.net
     env_file:
@@ -245,14 +245,13 @@ services:
 
   # Hive Server
   hiveserver:
-    image: brijeshdhaker/hive:3.1.3
+    image: brijeshdhaker/hive:3.1.2
     container_name: hiveserver
     hostname: hiveserver.sandbox.net
     env_file:
       - ./envs/docker_hive.env
       - ./envs/docker_clients.env
     environment:
-      HIVE_CORE_SITE_javax_jdo_option_ConnectionURL: "jdbc:mysql://mysqlserver.sandbox.net:3306/metastore?createDatabaseIfNotExist=true;autoReconnect=true;useSSL=false"
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000 metastore.sandbox.net:9083"
     ports:
       - "10000:10000"
@@ -365,7 +364,7 @@ services:
       - sandbox_hadoop_321:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - sandbox_hbase_300:/opt/hbase
-      - /opt/hive-3.1.3:/opt/hive
+      - sandbox_hive_312:/opt/hive
       - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
       - sandbox_tez_092:/opt/tez
       - ./conf/tez/tez-site.xml:/opt/tez/conf/tez-site.xml
