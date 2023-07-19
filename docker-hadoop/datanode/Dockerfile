@@ -7,7 +7,7 @@ FROM brijeshdhaker/hadoop-base:3.2.1
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
-HEALTHCHECK CMD curl -f http://localhost:9864/ || exit 1
+HEALTHCHECK CMD curl -f http://localhost:1006 || exit 1
 
 ENV HDFS_SITE_dfs_datanode_data_dir=file:///hadoop/dfs/data
 
