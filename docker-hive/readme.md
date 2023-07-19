@@ -118,6 +118,7 @@ set hive.enforce.bucketing = true;
 set hive.execution.engine;
 set hive.execution.engine=mr;
 set hive.execution.engine=tez;
+SET mapred.input.dir.recursive=true;
 
 CREATE TABLE m_students (
     name STRING, 

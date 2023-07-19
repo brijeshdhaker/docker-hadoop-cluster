@@ -2,7 +2,7 @@
 # docker build -t brijeshdhaker/hive:3.1.3 -f docker-hive/Dockerfile .
 # docker push brijeshdhaker/hive:3.1.3
 
-FROM brijeshdhaker/ubuntu:20.04
+FROM brijeshdhaker/ubuntu:22.04
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
@@ -39,7 +39,7 @@ COPY resources/libs/postgresql-42.2.23.jar $HIVE_HOME/lib/
 COPY resources/libs/guava-27.0-jre.jar $HIVE_HOME/lib/
 
 #Custom configuration goes here
-COPY conf/hive/* $HIVE_HOME/conf
+COPY conf/hive/conf $HIVE_HOME/conf
 RUN chmod -Rf 777 $HIVE_HOME && chown -Rf hive:mapred $HIVE_HOME
 
 #
