@@ -34,7 +34,7 @@ hive --hiveconf hive.root.logger=INFO,console --remote-host=hiveserver.sandbox.n
 jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET
 
 ### -- Beeline
-$HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET"
+$HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET" --silent=false
 
 #
 # Setup Metastore Database

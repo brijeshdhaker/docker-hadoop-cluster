@@ -228,6 +228,7 @@ services:
   metastore:
     image: brijeshdhaker/hive:3.1.3
     hostname: metastore.sandbox.net
+    container_name: metastore
     env_file:
       - ./envs/docker_hive.env
       - ./envs/docker_clients.env
