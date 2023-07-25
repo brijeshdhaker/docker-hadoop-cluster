@@ -226,8 +226,7 @@ services:
   # Hive Metastore
   #
   metastore:
-    image: brijeshdhaker/hive:3.1.2
-    container_name: metastore
+    image: brijeshdhaker/hive:3.1.3
     hostname: metastore.sandbox.net
     env_file:
       - ./envs/docker_hive.env
@@ -245,7 +244,7 @@ services:
 
   # Hive Server
   hiveserver:
-    image: brijeshdhaker/hive:3.1.2
+    image: brijeshdhaker/hive:3.1.3
     container_name: hiveserver
     hostname: hiveserver.sandbox.net
     env_file:
@@ -351,7 +350,7 @@ services:
   # Gateway Node
   #
   gateway:
-    image: brijeshdhaker/ubuntu:20.04
+    image: brijeshdhaker/ubuntu:22.04
     container_name: gateway
     hostname: gateway.sandbox.net
     restart: always
@@ -364,7 +363,7 @@ services:
       - sandbox_hadoop_321:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - sandbox_hbase_300:/opt/hbase
-      - sandbox_hive_312:/opt/hive
+      - sandbox_hive_313:/opt/hive
       - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
       - sandbox_tez_092:/opt/tez
       - ./conf/tez/tez-site.xml:/opt/tez/conf/tez-site.xml
@@ -398,7 +397,7 @@ services:
       - sandbox_hadoop_321:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - sandbox_hbase_300:/opt/hbase
-      - sandbox_hive_312:/opt/hive
+      - sandbox_hive_313:/opt/hive
       - ./conf/hive/client:/etc/hive/conf
       - sandbox_tez_092:/opt/tez
       - sandbox_spark_312:/opt/spark
@@ -451,7 +450,7 @@ volumes:
   sandbox_hbase_300:
     external: true
 #
-  sandbox_hive_312:
+  sandbox_hive_313:
     external: true
   sandbox_tez_092:
     external: true
