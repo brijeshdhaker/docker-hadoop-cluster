@@ -127,4 +127,9 @@ $SPARK_HOME/bin/spark-submit \
 --conf "hadoop.yarn.timeline-service.enabled=false" \
 --conf "spark.kerberos.keytab=/etc/kerberos/users/brijeshdhaker.keytab" \
 --conf "spark.kerberos.principal=brijeshdhaker@SANDBOX.NET" \
-$SPARK_HOME/examples/jars/spark-examples_*.jar 10000
+$SPARK_HOME/examples/jars/spark-examples_*.jar 1000
+
+#
+# Yarn
+#
+yarn app -list -appStates Finished
