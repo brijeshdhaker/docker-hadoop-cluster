@@ -269,3 +269,42 @@ kadmin: addprinc -randkey zookeeper/zookeeper.sandbox.net@SANDBOX.NET
 # 2. Create a keytab file for the ZooKeeper server
 $ kadmin
 kadmin: xst -norandkey -k zookeeper.service.keytab zookeeper/zookeeper.sandbox.net@SANDBOX.NET
+kadmin: xst -norandkey -k /etc/kerberos/keytabs/appuser.keytab appuser/kafkabroker.sandbox.net@SANDBOX.NET
+
+# 3. Create Keytab for kafka broker & registry 
+$ kadmin
+kadmin: delete_principal zookeeper/zookeeper.sandbox.net@SANDBOX.NET
+kadmin: delete_principal zkclient/zookeeper.sandbox.net@SANDBOX.NET
+kadmin: delete_principal kafka/kafkabroker.sandbox.net@SANDBOX.NET
+kadmin: delete_principal consumer/consumer.sandbox.net@SANDBOX.NET
+kadmin: delete_principal producer/producer.sandbox.net@SANDBOX.NET
+kadmin: delete_principal schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET
+
+kadmin: addprinc -randkey zookeeper/zookeeper.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey zkclient/zookeeper.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey kafka/kafkabroker.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey consumer/producer.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey producer/producer.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET
+
+kadmin: ktadd -k /etc/kerberos/keytabs/zookeeper.keytab zookeeper/zookeeper.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/zkclient.keytab zkclient/zookeeper.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/kafka.keytab kafka/kafkabroker.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/consumer.keytab consumer/consumer.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/producer.keytab producer/producer.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/schemaregistry.keytab schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET
+
+kadmin:  quit
+
+$ ktutil
+ktutil:  rkt /etc/kerberos/keytabs/kafkabroker.keytab
+ktutil:  rkt /etc/kerberos/keytabs/schemaregistry.keytab
+ktutil:  wkt /etc/kerberos/keytabs/kafka.keytab
+ktutil:  clear
+ktutil:  quit
+
+kinit -k -t /etc/kerberos/keytabs/appuser.keytab appuser/kafkabroker.sandbox.net@SANDBOX.NET
+kinit -k -t /etc/kerberos/keytabs/kafkabroker.keytab kafkabroker/kafkabroker.sandbox.net@SANDBOX.NET
+kinit -k -t /etc/kerberos/keytabs/hive.service.keytab hive/hiveserver.sandbox.net@SANDBOX.NET
+
+appuser/kafkabroker.sandbox.net@SANDBOX.NET

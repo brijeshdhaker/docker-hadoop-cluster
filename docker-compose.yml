@@ -1,6 +1,42 @@
 #
+
+#
 # docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
-# docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
+#
+# docker volume create --name sandbox_zookeeper_secrets --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop3/secrets --opt o=bind
+# docker volume create --name sandbox_zookeeper_data --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop3/data --opt o=bind
+# docker volume create --name sandbox_zookeeper_log --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop3/log --opt o=bind
+#
+# docker volume create --name sandbox_kafka_secrets --opt type=none --opt device=/apps/sandbox/kafka/hadoop3/secrets --opt o=bind
+# docker volume create --name sandbox_kafka_data --opt type=none --opt device=/apps/sandbox/kafka/hadoop3/data --opt o=bind
+# docker volume create --name sandbox_kafka_log --opt type=none --opt device=/apps/sandbox/kafka/hadoop3/log --opt o=bind
+#
+# docker volume create --name sandbox_cassandra_data --opt type=none --opt device=/apps/sandbox/cassandra/data --opt o=bind
+# docker volume create --name sandbox_cassandra_conf --opt type=none --opt device=/apps/sandbox/cassandra/conf --opt o=bind
+#
+# docker volume create --name sandbox_hadoop_321 --opt type=none --opt device=/opt/hadoop-3.2.1 --opt o=bind
+# docker volume create --name sandbox_hadoop_321_dfs --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/dfs --opt o=bind
+# docker volume create --name sandbox_hadoop_321_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/yarn --opt o=bind
+# docker volume create --name sandbox_hadoop_321_mapred --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/mapred --opt o=bind
+#
+# docker volume create --name sandbox_hive_313 --opt type=none --opt device=/opt/hive-3.1.3 --opt o=bind
+# docker volume create --name sandbox_tez_092 --opt type=none --opt device=/opt/tez-0.9.2 --opt o=bind
+#
+# docker volume create --name sandbox_hbase_300 --opt type=none --opt device=/opt/hbase-3.0.0 --opt o=bind
+# docker volume create --name sandbox_hbase_117 --opt type=none --opt device=/opt/hbase-1.1.7 --opt o=bind
+#
+# docker volume create --name sandbox_nifi_conf --opt type=none --opt device=/apps/sandbox/nifi/conf --opt o=bind
+# docker volume create --name sandbox_nifi_content_repository --opt type=none --opt device=/apps/sandbox/nifi/content_repository --opt o=bind
+# docker volume create --name sandbox_nifi_database_repository --opt type=none --opt device=/apps/sandbox/nifi/database_repository --opt o=bind
+# docker volume create --name sandbox_nifi_flowfile_repository --opt type=none --opt device=/apps/sandbox/nifi/flowfile_repository --opt o=bind
+# docker volume create --name sandbox_nifi_provenance_repository --opt type=none --opt device=/apps/sandbox/nifi/provenance_repository --opt o=bind
+# docker volume create --name sandbox_nifi_log --opt type=none --opt device=/apps/sandbox/nifi/logs --opt o=bind
+# docker volume create --name sandbox_nifi_state --opt type=none --opt device=/apps/sandbox/nifi/state --opt o=bind
+#
+# docker volume create --name sandbox_airflow_sources --opt type=none --opt device=/apps/sandbox/airflow --opt o=bind
+# docker volume create --name sandbox_airflow_dags --opt type=none --opt device=/apps/sandbox/airflow/dags --opt o=bind
+# docker volume create --name sandbox_airflow_logs --opt type=none --opt device=/apps/sandbox/airflow/logs --opt o=bind
+# docker volume create --name sandbox_airflow_plugins --opt type=none --opt device=/apps/sandbox/airflow/plugins --opt o=bind
 #
 ---
 version: "3.9"
@@ -48,22 +84,155 @@ services:
 #      KRB5_KTNAME: "/etc/kerberos/keytabs/spnego.service.keytab"
 
   #
+  # Cassandra Server
+  #
+  cassandra:
+    image: cassandra:4.1
+    hostname: cassandra
+    container_name: cassandra
+    restart: always
+    ports:
+      - "7000:7000"
+      - "7001:7001"  #
+      - "7199:7199"  # JMX
+      - "9042:9042"  # Native Transport
+      - "9160:9160"  # Thrift Clients
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_cassandra_data:/var/lib/cassandra
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+
+  #
   # Zookeeper Server
   #
   zookeeper:
-    image: brijeshdhaker/zookeeper:3.7.1
+    image: confluentinc/cp-zookeeper:7.5.0
     hostname: zookeeper.sandbox.net
     container_name: zookeeper
     ports:
       - "2181:2181"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_zookeeper_371:/zookeeper
+      - sandbox_zookeeper_secrets:/etc/zookeeper/secrets
+      - sandbox_zookeeper_data:/var/lib/zookeeper/data
+      - sandbox_zookeeper_log:/var/lib/zookeeper/log
       - ./conf/zookeeper:/opt/zookeeper/conf
       - ./conf/kerberos:/etc/kerberos
     environment:
-      JVMFLAGS: "-Djava.security.auth.login.config=/opt/zookeeper/conf/jaas.conf -Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ALLOW_UNSIGNED: "true"
       KRB5_CONFIG: "/etc/kerberos/krb5.conf"
+      KAFKA_OPTS: -Djava.security.auth.login.config=/opt/zookeeper/conf/zookeeper_jaas.conf 
+        -Djava.security.krb5.conf=/etc/kerberos/krb5.conf 
+        -Dsun.security.krb5.debug=true 
+        -Dzookeeper.requireClientAuthScheme=sasl
+        -Dzookeeper.kerberos.removeHostFromPrincipal=true
+        -Dzookeeper.kerberos.removeRealmFromPrincipal=true
+        -Djdk.tls.rejectClientInitiatedRenegotiation=true
+        -Dzookeeper.authProvider.1=org.apache.zookeeper.server.auth.SASLAuthenticationProvider
+      JVMFLAGS: "-Djava.security.auth.login.config=/opt/zookeeper/conf/zookeeper_jaas.conf -Djava.security.krb5.conf=/etc/kerberos/krb5.conf -Dsun.security.krb5.debug=true -Djdk.tls.rejectClientInitiatedRenegotiation=true -Dsun.net.spi.nameservice.provider.1=dns,sun -Dzookeeper.requireClientAuthScheme=sasl -Dzookeeper.kerberos.removeHostFromPrincipal=true -Dzookeeper.kerberos.removeRealmFromPrincipal=true -Dzookeeper.authProvider.1=org.apache.zookeeper.server.auth.SASLAuthenticationProvider"
+    labels:
+      - io.confluent.docker.testing=true
+    extra_hosts:
+      - "moby:127.0.0.1"
+
+  #
+  # Kafka Cluster
+  #
+  kafkabroker:
+    image: confluentinc/cp-server:7.5.0
+    hostname: kafkabroker.sandbox.net
+    container_name: kafkabroker
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+      - "19092:19092"
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_kafka_secrets:/etc/kafka/secrets
+      - sandbox_kafka_data:/var/lib/kafka/data
+      - ./conf/kafka/kafka_broker_jaas.conf:/etc/kafka/kafka_broker_jaas.conf
+      - ./conf/kerberos/keytabs:/etc/kerberos/keytabs
+      - ./conf/kerberos/krb5.conf:/etc/kafka/krb5.conf
+    environment:
+      KAFKA_BROKER_ID: 101
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper.sandbox.net:2181'
+      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_LISTENERS: INTERNAL://kafkabroker.sandbox.net:19092,EXTERNAL://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafkabroker.sandbox.net:19092,EXTERNAL://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:SASL_PLAINTEXT,EXTERNAL:SASL_PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      # KAFKA_SECURITY_INTER_BROKER_PROTOCOL: SASL_PLAINTEXT
+      KAFKA_SASL_MECHANISM_INTER_BROKER_PROTOCOL: GSSAPI
+      KAFKA_SASL_ENABLED_MECHANISMS: GSSAPI
+      KAFKA_SASL_KERBEROS_SERVICE_NAME: kafka
+      KAFKA_OPTS: -Djava.security.auth.login.config=/etc/kafka/kafka_broker_jaas.conf 
+        -Djava.security.krb5.conf=/etc/kafka/krb5.conf
+        -Dsun.security.krb5.debug=false
+        -Djdk.tls.rejectClientInitiatedRenegotiation=true
+        -Dzookeeper.sasl.client=true
+        -Dzookeeper.kerberos.removeHostFromPrincipal=true
+        -Dzookeeper.kerberos.removeRealmFromPrincipal=true
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_CONFLUENT_LICENSE_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_CONFLUENT_BALANCER_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      # Log4J
+      KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,org.apache.kafka=INFO"
+      KAFKA_LOG4J_ROOT_LOGLEVEL: INFO
+      KAFKA_LOG4J_LOGGER_KAFKA_AUTHORIZER_LOGGER: "INFO, authorizerAppender"
+      KAFKA_LOG4J_ADDITIVITY_KAFKA_AUTHORIZER_LOGGER: "false"
+      # Authorizer
+      # KAFKA_AUTHORIZER_CLASS_NAME: "kafka.security.auth.SimpleAclAuthorizer"
+      # KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
+      KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL: http://schemaregistry.sandbox.net:8081
+      KAFKA_METRIC_REPORTERS: io.confluent.metrics.reporter.ConfluentMetricsReporter
+      CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: kafkabroker.sandbox.net:19092
+      CONFLUENT_METRICS_REPORTER_ZOOKEEPER_CONNECT: 'zookeeper.sandbox.net:2181'
+      CONFLUENT_METRICS_REPORTER_SASL_MECHANISM: GSSAPI
+      CONFLUENT_METRICS_REPORTER_SECURITY_PROTOCOL: SASL_PLAINTEXT
+      CONFLUENT_METRICS_REPORTER_SASL_KERBEROS_SERVICE_NAME: kafka
+      CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS: 1
+      CONFLUENT_METRICS_ENABLE: 'true'
+      CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
+
+
+  #
+  schemaregistry:
+    image: confluentinc/cp-schema-registry:7.5.0
+    hostname: schemaregistry.sandbox.net
+    container_name: schemaregistry
+    depends_on:
+      - zookeeper
+      - kafkabroker
+    ports:
+      - "8081:8081"
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_kafka_secrets:/etc/schema-registry/secrets
+      - ./conf/kafka/registry_jaas.conf:/etc/kafka/registry_jaas.conf
+      - ./conf/kerberos/keytabs:/etc/kerberos/keytabs
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
+    environment:
+      SCHEMA_REGISTRY_HOST_NAME: schemaregistry.sandbox.net
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'kafkabroker.sandbox.net:19092'
+      # Configure SASL_SSL if SSL encryption is enabled, otherwise configure SASL_PLAINTEXT
+      SCHEMA_REGISTRY_KAFKASTORE_SECURITY_PROTOCOL: SASL_PLAINTEXT
+      SCHEMA_REGISTRY_KAFKASTORE_SASL_MECHANISM: GSSAPI
+      SCHEMA_REGISTRY_KAFKASTORE_SASL_KERBEROS_SERVICE_NAME: kafka
+      SCHEMA_REGISTRY_KAFKASTORE_SASL_JAAS_CONFIG: com.sun.security.auth.module.Krb5LoginModule required
+        useKeyTab=true
+        storeKey=true
+        useTicketCache=false
+        keyTab="/etc/kerberos/keytabs/schemaregistry.keytab"
+        principal="schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET";
+      SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
+      SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL: INFO
 
   #
   # HDFS Cluster
@@ -370,7 +539,6 @@ services:
       - ./conf/tez/tez-site.xml:/opt/tez/conf/tez-site.xml
       - sandbox_spark_312:/opt/spark
       - sandbox_maven_363:/opt/maven-3.6.3
-      - sandbox_zookeeper_371:/opt/zookeeper
       - ./conf/kerberos:/etc/kerberos
       - ./conf/profiles/brijeshdhaker.profile:/home/brijeshdhaker/brijeshdhaker.profile
     environment:
@@ -405,27 +573,47 @@ services:
       - sandbox_zeppelin:/opt/zeppelin
       - sandbox_zeppelin_notebook:/opt/notebook
 
+  #
+  # Apache NiFi
+  #
+  nififlow:
+    image: hortonworks/nifi:latest
+    container_name: nififlow
+    hostname: nififlow
+    restart: always
+    ports:
+      - "19090:8080"
+      - "19443:8443"
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_nifi_conf:/opt/nifi/nifi-current/conf
+      - sandbox_nifi_content_repository:/opt/nifi/nifi-current/content_repository
+      - sandbox_nifi_database_repository:/opt/nifi/nifi-current/database_repository
+      - sandbox_nifi_flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
+      - sandbox_nifi_provenance_repository:/opt/nifi/nifi-current/provenance_repository
+      - sandbox_nifi_log:/opt/nifi/nifi-current/logs
+      - sandbox_nifi_state:/opt/nifi/nifi-current/state
 
 #
 #
 #
 volumes:
-#
+  #
   sandbox_apps_path:
     external: true
-#
+  #
   sandbox_krb5_stash:
     external: true
   sandbox_krb5_principal:
     external: true
-#
+  #
   sandbox_maven_363:
     external: true
   sandbox_m2:
     external: true
   sandbox_ivy2:
     external: true
-#
+  #
   sandbox_hadoop_321:
     external: true
   sandbox_hadoop_321_dfs:
@@ -434,31 +622,70 @@ volumes:
     external: true
   sandbox_hadoop_321_yarn:
     external: true
-#
+  #
   sandbox_mysql_data:
     external: true
   sandbox_mysql_conf:
     external: true
-#
+  #
   sandbox_zeppelin:
     external: true
   sandbox_zeppelin_notebook:
     external: true
-#
-  sandbox_zookeeper_371:
+  #
+  sandbox_zookeeper_secrets:
     external: true
-#
+  sandbox_zookeeper_data:
+    external: true
+  sandbox_zookeeper_log:
+    external: true
+  #
+  sandbox_kafka_secrets:
+    external: true
+  sandbox_kafka_data:
+    external: true
+  sandbox_kafka_log:
+    external: true
+  #
+  sandbox_cassandra_data:
+    external: true
+  sandbox_cassandra_conf:
+    external: true
+  #
   sandbox_hbase_300:
     external: true
-#
+  #
   sandbox_hive_313:
     external: true
   sandbox_tez_092:
     external: true
-#
+  #
   sandbox_spark_312:
     external: true
-
+  #
+  sandbox_nifi_conf:
+    external: true
+  sandbox_nifi_content_repository:
+    external: true
+  sandbox_nifi_database_repository:
+    external: true
+  sandbox_nifi_flowfile_repository:
+    external: true
+  sandbox_nifi_provenance_repository:
+    external: true
+  sandbox_nifi_log:
+    external: true
+  sandbox_nifi_state:
+    external: true
+  #
+  sandbox_airflow_sources:
+    external: true
+  sandbox_airflow_dags:
+    external: true
+  sandbox_airflow_logs:
+    external: true
+  sandbox_airflow_plugins:
+    external: true
 
 #
 networks:

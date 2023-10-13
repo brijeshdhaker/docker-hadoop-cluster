@@ -26,7 +26,7 @@ done
 echo "Adding service principal for all hosts."
 echo ""
 #for var in one two three; do echo "$var"; done
-SERVICES=("zookeeper" "hdfs" "yarn" "mapred" "hbase" "hive" "spark" "host" "zeppelin" "HTTP")
+SERVICES=("zookeeper" "hdfs" "yarn" "mapred" "hbase" "hive" "spark" "host" "zeppelin" "HTTP", "kafka")
 SANDBOX_NODES=(
   "namenode.sandbox.net"
   "datanode.sandbox.net"
@@ -38,6 +38,8 @@ SANDBOX_NODES=(
   "metastore.sandbox.net"
   "hiveserver.sandbox.net"
   "sparkhistory.sandbox.net"
+  "kafkabroker.sandbox.net"
+  "schemaregistry.sandbox.net"
   "zookeeper.sandbox.net"
   "hmaster.sandbox.net"
   "hregion.sandbox.net"
