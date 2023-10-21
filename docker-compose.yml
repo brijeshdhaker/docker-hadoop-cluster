@@ -42,27 +42,31 @@
 version: "3.9"
 
 services:
-  #
   # Kerberos Server
-  #
   kdcserver:
     image: brijeshdhaker/kdcserver:22.04
     container_name: kdcserver
     hostname: kdcserver.sandbox.net
+    ports:
+      - "749:749"
+      - "88:88/udp"
     volumes:
       - sandbox_apps_path:/apps
       - /dev/urandom:/dev/random      # This is needed otherwise there won't be enough entropy to generate a new kerberos realm
       - sandbox_krb5_stash:/etc/krb5kdc
       - sandbox_krb5_principal:/var/lib/krb5kdc/
       - ./conf/kerberos:/etc/kerberos
+    environment:
+      REALM: SANDBOX.NET
+      DOMAIN_REALM: sandbox.net
+      MASTER_KEY_TYPE: aes256-cts-hmac-sha1-96:normal
+      SUPPORTED_ENCRYPTION_TYPES: aes256-cts-hmac-sha1-96:normal aes128-cts-hmac-sha1-96:normal
+      KADMIN_PRINCIPAL: kadmin/admin
+      KADMIN_PASSWORD: kadmin
+      KUSERS_PASSWORD: kuser
     env_file:
       - ./envs/docker_kerberos.env
-    ports:
-      - "749:749"
-      - "88:88/udp"
 
-  #
-  #
   #
   nginx:
     image: brijeshdhaker/nginx:1.15.1
@@ -83,9 +87,7 @@ services:
       KRB5_CONFIG: "/etc/kerberos/krb5.conf"
 #      KRB5_KTNAME: "/etc/kerberos/keytabs/spnego.service.keytab"
 
-  #
   # Cassandra Server
-  #
   cassandra:
     image: cassandra:4.1
     hostname: cassandra
@@ -103,9 +105,7 @@ services:
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
 
-  #
   # Zookeeper Server
-  #
   zookeeper:
     image: confluentinc/cp-zookeeper:7.5.0
     hostname: zookeeper.sandbox.net
@@ -114,33 +114,26 @@ services:
       - "2181:2181"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_zookeeper_secrets:/etc/zookeeper/secrets
       - sandbox_zookeeper_data:/var/lib/zookeeper/data
       - sandbox_zookeeper_log:/var/lib/zookeeper/log
-      - ./conf/zookeeper:/opt/zookeeper/conf
+      - ./conf/zookeeper:/etc/zookeeper/secrets
       - ./conf/kerberos:/etc/kerberos
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
       ALLOW_UNSIGNED: "true"
-      KRB5_CONFIG: "/etc/kerberos/krb5.conf"
-      KAFKA_OPTS: -Djava.security.auth.login.config=/opt/zookeeper/conf/zookeeper_jaas.conf 
-        -Djava.security.krb5.conf=/etc/kerberos/krb5.conf 
+      KRB5_CONFIG: "/etc/zookeeper/secrets/krb5.conf"
+      KAFKA_OPTS: -Djava.security.auth.login.config=/etc/zookeeper/secrets/zookeeper_jaas.conf 
+        -Djava.security.krb5.conf=/etc/zookeeper/secrets/krb5.conf 
         -Dsun.security.krb5.debug=true 
         -Dzookeeper.requireClientAuthScheme=sasl
-        -Dzookeeper.kerberos.removeHostFromPrincipal=true
-        -Dzookeeper.kerberos.removeRealmFromPrincipal=true
-        -Djdk.tls.rejectClientInitiatedRenegotiation=true
         -Dzookeeper.authProvider.1=org.apache.zookeeper.server.auth.SASLAuthenticationProvider
-      JVMFLAGS: "-Djava.security.auth.login.config=/opt/zookeeper/conf/zookeeper_jaas.conf -Djava.security.krb5.conf=/etc/kerberos/krb5.conf -Dsun.security.krb5.debug=true -Djdk.tls.rejectClientInitiatedRenegotiation=true -Dsun.net.spi.nameservice.provider.1=dns,sun -Dzookeeper.requireClientAuthScheme=sasl -Dzookeeper.kerberos.removeHostFromPrincipal=true -Dzookeeper.kerberos.removeRealmFromPrincipal=true -Dzookeeper.authProvider.1=org.apache.zookeeper.server.auth.SASLAuthenticationProvider"
     labels:
       - io.confluent.docker.testing=true
     extra_hosts:
-      - "moby:127.0.0.1"
+      - "thinkpad.sandbox.net:172.18.0.1"
 
-  #
   # Kafka Cluster
-  #
   kafkabroker:
     image: confluentinc/cp-server:7.5.0
     hostname: kafkabroker.sandbox.net
@@ -148,59 +141,51 @@ services:
     depends_on:
       - zookeeper
     ports:
-      - "9092:9092"
-      - "19092:19092"
+      - 19092:19092
+      - 19093:19093
+      - 19094:19094
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_kafka_secrets:/etc/kafka/secrets
       - sandbox_kafka_data:/var/lib/kafka/data
-      - ./conf/kafka/kafka_broker_jaas.conf:/etc/kafka/kafka_broker_jaas.conf
-      - ./conf/kerberos/keytabs:/etc/kerberos/keytabs
-      - ./conf/kerberos/krb5.conf:/etc/kafka/krb5.conf
+      - ./conf/kafka:/etc/kafka/secrets
+      - ./conf/kerberos:/etc/kerberos
     environment:
-      KAFKA_BROKER_ID: 101
+      KRB5_CONFIG: "/etc/kafka/secrets/krb5.conf"
+      KAFKA_BROKER_ID: "1"
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper.sandbox.net:2181'
-      KAFKA_ADVERTISED_HOST_NAME: localhost
-      KAFKA_LISTENERS: INTERNAL://kafkabroker.sandbox.net:19092,EXTERNAL://0.0.0.0:9092
-      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafkabroker.sandbox.net:19092,EXTERNAL://localhost:9092
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:SASL_PLAINTEXT,EXTERNAL:SASL_PLAINTEXT
-      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
-      # KAFKA_SECURITY_INTER_BROKER_PROTOCOL: SASL_PLAINTEXT
-      KAFKA_SASL_MECHANISM_INTER_BROKER_PROTOCOL: GSSAPI
-      KAFKA_SASL_ENABLED_MECHANISMS: GSSAPI
+      #
       KAFKA_SASL_KERBEROS_SERVICE_NAME: kafka
-      KAFKA_OPTS: -Djava.security.auth.login.config=/etc/kafka/kafka_broker_jaas.conf 
-        -Djava.security.krb5.conf=/etc/kafka/krb5.conf
-        -Dsun.security.krb5.debug=false
-        -Djdk.tls.rejectClientInitiatedRenegotiation=true
-        -Dzookeeper.sasl.client=true
-        -Dzookeeper.kerberos.removeHostFromPrincipal=true
-        -Dzookeeper.kerberos.removeRealmFromPrincipal=true
+      KAFKA_SASL_ENABLED_MECHANISMS: GSSAPI
+      KAFKA_SASL_MECHANISM_INTER_BROKER_PROTOCOL: GSSAPI
+      KAFKA_LISTENERS: INTERNAL_PLAIN://kafkabroker.sandbox.net:9092,INTERNAL_SASL://kafkabroker.sandbox.net:9093,INTERNAL_SSL://kafkabroker.sandbox.net:9094,EXTERNAL_PLAIN://localhost:19092,EXTERNAL_SASL://localhost:19093,EXTERNAL_SSL://localhost:19094
+      # https://docs.confluent.io/platform/current/kafka/multi-node.html#configure-multi-node-environment
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL_PLAIN://kafkabroker.sandbox.net:9092,INTERNAL_SASL://kafkabroker.sandbox.net:9093,INTERNAL_SSL://kafkabroker.sandbox.net:9094,EXTERNAL_PLAIN://localhost:19092,EXTERNAL_SASL://localhost:19093,EXTERNAL_SSL://localhost:19094
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL_SASL
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL_PLAIN:PLAINTEXT,INTERNAL_SASL:SASL_PLAINTEXT,INTERNAL_SSL:SASL_SSL,EXTERNAL_PLAIN:PLAINTEXT,EXTERNAL_SASL:SASL_PLAINTEXT,EXTERNAL_SSL:SASL_SSL
+      #
+      KAFKA_SSL_KEYSTORE_FILENAME: kafkabroker.keystore.jks
+      KAFKA_SSL_KEYSTORE_CREDENTIALS: kafkabroker_keystore_creds
+      KAFKA_SSL_KEY_CREDENTIALS: kafkabroker_sslkey_creds
+      KAFKA_SSL_TRUSTSTORE_FILENAME: kafkabroker.truststore.jks
+      KAFKA_SSL_TRUSTSTORE_CREDENTIALS: kafkabroker_truststore_creds
+      #
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
-      KAFKA_CONFLUENT_LICENSE_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_CONFLUENT_BALANCER_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_OPTS: -Djava.security.auth.login.config=/etc/kafka/secrets/kafka_broker_jaas.conf
+        -Djava.security.krb5.conf=/etc/kafka/secrets/krb5.conf 
+        -Dsun.security.krb5.debug=true 
+        -Dsun.net.spi.nameservice.provider.1=sun
       # Log4J
       KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,org.apache.kafka=INFO"
       KAFKA_LOG4J_ROOT_LOGLEVEL: INFO
       KAFKA_LOG4J_LOGGER_KAFKA_AUTHORIZER_LOGGER: "INFO, authorizerAppender"
       KAFKA_LOG4J_ADDITIVITY_KAFKA_AUTHORIZER_LOGGER: "false"
-      # Authorizer
-      # KAFKA_AUTHORIZER_CLASS_NAME: "kafka.security.auth.SimpleAclAuthorizer"
-      # KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
+      #
       KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL: http://schemaregistry.sandbox.net:8081
-      KAFKA_METRIC_REPORTERS: io.confluent.metrics.reporter.ConfluentMetricsReporter
-      CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: kafkabroker.sandbox.net:19092
-      CONFLUENT_METRICS_REPORTER_ZOOKEEPER_CONNECT: 'zookeeper.sandbox.net:2181'
-      CONFLUENT_METRICS_REPORTER_SASL_MECHANISM: GSSAPI
-      CONFLUENT_METRICS_REPORTER_SECURITY_PROTOCOL: SASL_PLAINTEXT
-      CONFLUENT_METRICS_REPORTER_SASL_KERBEROS_SERVICE_NAME: kafka
-      CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS: 1
-      CONFLUENT_METRICS_ENABLE: 'true'
-      CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
-
+    extra_hosts:
+      - "thinkpad.sandbox.net:172.18.0.1"
 
   #
   schemaregistry:
@@ -208,19 +193,18 @@ services:
     hostname: schemaregistry.sandbox.net
     container_name: schemaregistry
     depends_on:
-      - zookeeper
       - kafkabroker
     ports:
       - "8081:8081"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_kafka_secrets:/etc/schema-registry/secrets
-      - ./conf/kafka/registry_jaas.conf:/etc/kafka/registry_jaas.conf
-      - ./conf/kerberos/keytabs:/etc/kerberos/keytabs
-      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
+      - ./conf/kafka:/etc/schema-registry/secrets
+      - ./conf/kerberos:/etc/kerberos
+      - ./conf/kafka/krb5.conf:/etc/krb5.conf
     environment:
+      KRB5_CONFIG: "/etc/schema-registry/secrets/krb5.conf"
       SCHEMA_REGISTRY_HOST_NAME: schemaregistry.sandbox.net
-      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'kafkabroker.sandbox.net:19092'
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'kafkabroker.sandbox.net:9093'
       # Configure SASL_SSL if SSL encryption is enabled, otherwise configure SASL_PLAINTEXT
       SCHEMA_REGISTRY_KAFKASTORE_SECURITY_PROTOCOL: SASL_PLAINTEXT
       SCHEMA_REGISTRY_KAFKASTORE_SASL_MECHANISM: GSSAPI
@@ -233,6 +217,8 @@ services:
         principal="schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET";
       SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
       SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL: INFO
+    extra_hosts:
+      - "thinkpad.sandbox.net:172.18.0.1"
 
   #
   # HDFS Cluster

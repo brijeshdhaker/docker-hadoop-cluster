@@ -274,24 +274,24 @@ kadmin: xst -norandkey -k /etc/kerberos/keytabs/appuser.keytab appuser/kafkabrok
 # 3. Create Keytab for kafka broker & registry 
 $ kadmin
 kadmin: delete_principal zookeeper/zookeeper.sandbox.net@SANDBOX.NET
-kadmin: delete_principal zkclient/zookeeper.sandbox.net@SANDBOX.NET
 kadmin: delete_principal kafka/kafkabroker.sandbox.net@SANDBOX.NET
-kadmin: delete_principal consumer/consumer.sandbox.net@SANDBOX.NET
-kadmin: delete_principal producer/producer.sandbox.net@SANDBOX.NET
+kadmin: delete_principal zkclient@SANDBOX.NET
+kadmin: delete_principal consumer@SANDBOX.NET
+kadmin: delete_principal producer@SANDBOX.NET
 kadmin: delete_principal schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET
 
 kadmin: addprinc -randkey zookeeper/zookeeper.sandbox.net@SANDBOX.NET
-kadmin: addprinc -randkey zkclient/zookeeper.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey zkclient@SANDBOX.NET
 kadmin: addprinc -randkey kafka/kafkabroker.sandbox.net@SANDBOX.NET
-kadmin: addprinc -randkey consumer/producer.sandbox.net@SANDBOX.NET
-kadmin: addprinc -randkey producer/producer.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey consumer@SANDBOX.NET
+kadmin: addprinc -randkey producer@SANDBOX.NET
 kadmin: addprinc -randkey schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET
 
 kadmin: ktadd -k /etc/kerberos/keytabs/zookeeper.keytab zookeeper/zookeeper.sandbox.net@SANDBOX.NET
-kadmin: ktadd -k /etc/kerberos/keytabs/zkclient.keytab zkclient/zookeeper.sandbox.net@SANDBOX.NET
 kadmin: ktadd -k /etc/kerberos/keytabs/kafka.keytab kafka/kafkabroker.sandbox.net@SANDBOX.NET
-kadmin: ktadd -k /etc/kerberos/keytabs/consumer.keytab consumer/consumer.sandbox.net@SANDBOX.NET
-kadmin: ktadd -k /etc/kerberos/keytabs/producer.keytab producer/producer.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/zkclient.keytab zkclient@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/consumer.keytab consumer@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/producer.keytab producer@SANDBOX.NET
 kadmin: ktadd -k /etc/kerberos/keytabs/schemaregistry.keytab schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET
 
 kadmin:  quit

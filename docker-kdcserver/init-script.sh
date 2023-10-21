@@ -32,10 +32,8 @@ tee /etc/krb5.conf <<EOF
   ticket_lifetime = 24h
   renew_lifetime = 7d
   forwardable = true
-# udp_preference_limit = 1  # when TCP only should be used.
-
-# uncomment the following if AD cross realm auth is ONLY providing DES encrypted tickets
-# allow-weak-crypto = true
+  allow-weak-crypto = true
+  udp_preference_limit = 1
 
 [realms]
 	$REALM = {

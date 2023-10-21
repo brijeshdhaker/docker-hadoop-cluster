@@ -28,7 +28,7 @@ ENV PATH=$PATH:${JAVA_HOME}/bin
 RUN set -x && \
     echo "deb http://security.ubuntu.com/ubuntu focal-security main" | tee /etc/apt/sources.list.d/focal-security.list && \
     apt-get update && DEBIAN_FRONTEND=noninteractive && \
-    apt-get install -y --no-install-recommends sudo vim curl wget unzip tar grep sed gnupg net-tools netcat libsnappy-dev && \
+    apt-get install -y --no-install-recommends sudo vim curl wget unzip tar grep sed gnupg net-tools netcat libsnappy-dev kafkacat && \
     apt-get install -y gcc libc6 glibc-source && \
     apt-get install -y libssl1.1 && \
     dpkg -L libssl1.1 && \
