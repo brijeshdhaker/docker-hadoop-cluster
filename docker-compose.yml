@@ -125,8 +125,9 @@ services:
       KRB5_CONFIG: "/etc/zookeeper/secrets/krb5.conf"
       KAFKA_OPTS: -Djava.security.auth.login.config=/etc/zookeeper/secrets/zookeeper_jaas.conf 
         -Djava.security.krb5.conf=/etc/zookeeper/secrets/krb5.conf 
-        -Dsun.security.krb5.debug=true 
+        -Dsun.security.krb5.debug=false 
         -Dzookeeper.requireClientAuthScheme=sasl
+        -Dzookeeper.allowSaslFailedClients=false
         -Dzookeeper.authProvider.1=org.apache.zookeeper.server.auth.SASLAuthenticationProvider
     labels:
       - io.confluent.docker.testing=true
@@ -138,45 +139,57 @@ services:
     image: confluentinc/cp-server:7.5.0
     hostname: kafkabroker.sandbox.net
     container_name: kafkabroker
+    restart: on-failure
     depends_on:
       - zookeeper
     ports:
-      - 19092:19092
-      - 19093:19093
-      - 19094:19094
+      - 9092:9092
+      - 9093:9093
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_kafka_data:/var/lib/kafka/data
-      - ./conf/kafka:/etc/kafka/secrets
+      - ./conf/kafka/secrets:/etc/kafka/secrets
       - ./conf/kerberos:/etc/kerberos
     environment:
       KRB5_CONFIG: "/etc/kafka/secrets/krb5.conf"
       KAFKA_BROKER_ID: "1"
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper.sandbox.net:2181'
+      # ZOOKEEPER_SASL_ENABLED: 'FALSE'
       #
+      # Kerberos / GSSAPI Authentication mechanism
       KAFKA_SASL_KERBEROS_SERVICE_NAME: kafka
       KAFKA_SASL_ENABLED_MECHANISMS: GSSAPI
       KAFKA_SASL_MECHANISM_INTER_BROKER_PROTOCOL: GSSAPI
-      KAFKA_LISTENERS: INTERNAL_PLAIN://kafkabroker.sandbox.net:9092,INTERNAL_SASL://kafkabroker.sandbox.net:9093,INTERNAL_SSL://kafkabroker.sandbox.net:9094,EXTERNAL_PLAIN://localhost:19092,EXTERNAL_SASL://localhost:19093,EXTERNAL_SSL://localhost:19094
-      # https://docs.confluent.io/platform/current/kafka/multi-node.html#configure-multi-node-environment
-      KAFKA_ADVERTISED_LISTENERS: INTERNAL_PLAIN://kafkabroker.sandbox.net:9092,INTERNAL_SASL://kafkabroker.sandbox.net:9093,INTERNAL_SSL://kafkabroker.sandbox.net:9094,EXTERNAL_PLAIN://localhost:19092,EXTERNAL_SASL://localhost:19093,EXTERNAL_SSL://localhost:19094
-      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL_SASL
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL_PLAIN:PLAINTEXT,INTERNAL_SASL:SASL_PLAINTEXT,INTERNAL_SSL:SASL_SSL,EXTERNAL_PLAIN:PLAINTEXT,EXTERNAL_SASL:SASL_PLAINTEXT,EXTERNAL_SSL:SASL_SSL
       #
-      KAFKA_SSL_KEYSTORE_FILENAME: kafkabroker.keystore.jks
+      # https://docs.confluent.io/platform/current/kafka/multi-node.html#configure-multi-node-environment
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:19092, SASL_SSL://0.0.0.0:19093, EXTERNAL_PLAIN://0.0.0.0:9092, EXTERNAL_SASL://0.0.0.0:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafkabroker.sandbox.net:19092, SASL_SSL://kafkabroker.sandbox.net:19093, EXTERNAL_PLAIN://localhost:9092, EXTERNAL_SASL://localhost:9093
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT, SASL_SSL:SASL_SSL, EXTERNAL_PLAIN:PLAINTEXT, EXTERNAL_SASL:SASL_SSL
+      KAFKA_INTER_BROKER_LISTENER_NAME: SASL_SSL
+      ## KAFKA_SECURITY_INTER_BROKER_PROTOCOL: SASL_SSL
+      #
+      # SSL Additions
+      KAFKA_SSL_KEYSTORE_FILENAME: kafkabroker_keystore.jks
       KAFKA_SSL_KEYSTORE_CREDENTIALS: kafkabroker_keystore_creds
       KAFKA_SSL_KEY_CREDENTIALS: kafkabroker_sslkey_creds
-      KAFKA_SSL_TRUSTSTORE_FILENAME: kafkabroker.truststore.jks
-      KAFKA_SSL_TRUSTSTORE_CREDENTIALS: kafkabroker_truststore_creds
+      KAFKA_SSL_TRUSTSTORE_FILENAME: ca_truststore.jks
+      KAFKA_SSL_TRUSTSTORE_CREDENTIALS: ca_truststore_creds
+      KAFKA_SSL_CLIENT_AUTH: "required"
+      KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: " "
       #
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_DELETE_TOPIC_ENABLE: "true"
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
       KAFKA_OPTS: -Djava.security.auth.login.config=/etc/kafka/secrets/kafka_broker_jaas.conf
         -Djava.security.krb5.conf=/etc/kafka/secrets/krb5.conf 
-        -Dsun.security.krb5.debug=true 
-        -Dsun.net.spi.nameservice.provider.1=sun
+        -Dsun.security.krb5.debug=false
+#        -Djavax.net.ssl.keyStore=/etc/kafka/secrets/cacerts
+#        -Djavax.net.ssl.keyStorePassword=changeit
+#        -Djavax.net.ssl.trustStore=/etc/kafka/secrets/cacerts
+#        -Djavax.net.ssl.trustStorePassword=changeit
       # Log4J
       KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,org.apache.kafka=INFO"
       KAFKA_LOG4J_ROOT_LOGLEVEL: INFO
@@ -184,6 +197,7 @@ services:
       KAFKA_LOG4J_ADDITIVITY_KAFKA_AUTHORIZER_LOGGER: "false"
       #
       KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL: http://schemaregistry.sandbox.net:8081
+      CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: kafkabroker.sandbox.net:19093
     extra_hosts:
       - "thinkpad.sandbox.net:172.18.0.1"
 

@@ -13,6 +13,16 @@ target
 *.pub
 *_key
 *_rsa
+*.jks
+*.crt
+*.csr
+*.key
+*.pkcs12
+*.p12
+*.srl
+*.pem
+conf/kafka/secrets/cacerts
+conf/kafka/secrets/*_creds
 /data/postgresql/*
 /data/mysql/*
 /data/cassandra/*
