@@ -233,21 +233,8 @@ docker run -it \
 --network sandbox.net \
 edenhill/kcat:1.7.1 -b kafkabroker.sandbox.net:9092 -L -J | jq .
 
-docker run --tty \
---network sandbox.net \
---volume ./conf/kafka:/etc/kafka/secrets \
---volume ./conf/kerberos:/etc/kerberos \
---env KRB5_CONFIG=/etc/kafka/secrets/krb5.conf \
-confluentinc/cp-kcat \
-kafkacat -b kafkabroker.sandbox.net:9093 -L -J \
--X 'security.protocol=SASL_PLAINTEXT' \
--X 'sasl.mechanisms=GSSAPI' \
--X 'sasl.kerberos.service.name=kafka' \
--X 'sasl.kerberos.keytab=/etc/kerberos/keytabs/producer.keytab' \
--X 'sasl.kerberos.principal=producer@SANDBOX.NET'
 
-
-docker run --tty --rm \
+docker run -it --rm \
 --network sandbox.net \
 --volume ./conf/kafka:/etc/kafka/secrets \
 --volume ./conf/kerberos:/etc/kerberos \
@@ -261,7 +248,7 @@ kafkacat -b kafkabroker.sandbox.net:9093 -L -J \
 -X 'sasl.kerberos.principal=producer@SANDBOX.NET'
 
 
-docker run --rm \
+docker run --tty --rm \
 --network sandbox.net \
 --volume ./conf/kafka:/etc/kafka/secrets \
 --volume ./conf/kerberos:/etc/kerberos \
@@ -296,7 +283,7 @@ kafkacat -b kafkabroker.sandbox.net:9093 \
 #
 #
 #
-docker run --tty \
+docker run -it --rm \
 --network sandbox.net \
 --volume ./conf/kafka:/etc/kafka/secrets \
 --volume ./conf/kerberos:/etc/kerberos \
@@ -310,13 +297,3 @@ kafkacat -b kafkabroker.sandbox.net:9093 -C \
 -X 'sasl.kerberos.principal=consumer@SANDBOX.NET' \
 -K: -f '\nKey (%K bytes): %k\t\nValue (%S bytes): %s\n\Partition: %p\tOffset: %o\n--\n' \
 -t test_topic
-
-
-KafkaClient {
-    com.sun.security.auth.module.Krb5LoginModule required
-    debug=true
-    useKeyTab=true
-    storeKey=true
-    keyTab="/etc/kerberos/keytabs/kafka.keytab"
-    principal="kafka/kafkabroker.sandbox.net@SANDBOX.NET";
-};

@@ -42,3 +42,16 @@ do
   echo "confluent" > ${i}_keystore_creds
   echo "confluent" > ${i}_truststore_creds
 done
+
+## Verify Certificate
+keytool -list -v \
+    -keystore /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/conf/kafka/kafkabroker.keystore.jks \
+    -storepass confluent
+
+## Convert JKS to PKcs12 format
+keytool -importkeystore -srckeystore /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/conf/kafka/kafkabroker.keystore.jks -destkeystore /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/conf/kafka/kafkabroker.keystore.pkcs12 -deststoretype pkcs12
+
+
+keytool -list -v \
+    -keystore /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/conf/kafka/kafkabroker.keystore.pkcs12 \
+    -storepass confluent
