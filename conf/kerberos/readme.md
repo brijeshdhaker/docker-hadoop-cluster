@@ -278,6 +278,7 @@ kadmin: delete_principal kafka/kafkabroker.sandbox.net@SANDBOX.NET
 kadmin: delete_principal zkclient@SANDBOX.NET
 kadmin: delete_principal consumer@SANDBOX.NET
 kadmin: delete_principal producer@SANDBOX.NET
+kadmin: delete_principal kafkaclient@SANDBOX.NET
 kadmin: delete_principal schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET
 
 kadmin: addprinc -randkey zookeeper/zookeeper.sandbox.net@SANDBOX.NET
@@ -285,6 +286,7 @@ kadmin: addprinc -randkey zkclient@SANDBOX.NET
 kadmin: addprinc -randkey kafka/kafkabroker.sandbox.net@SANDBOX.NET
 kadmin: addprinc -randkey consumer@SANDBOX.NET
 kadmin: addprinc -randkey producer@SANDBOX.NET
+kadmin: addprinc -randkey kafkaclient@SANDBOX.NET
 kadmin: addprinc -randkey schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET
 
 kadmin: ktadd -k /etc/kerberos/keytabs/zookeeper.keytab zookeeper/zookeeper.sandbox.net@SANDBOX.NET
@@ -292,6 +294,7 @@ kadmin: ktadd -k /etc/kerberos/keytabs/kafka.keytab kafka/kafkabroker.sandbox.ne
 kadmin: ktadd -k /etc/kerberos/keytabs/zkclient.keytab zkclient@SANDBOX.NET
 kadmin: ktadd -k /etc/kerberos/keytabs/consumer.keytab consumer@SANDBOX.NET
 kadmin: ktadd -k /etc/kerberos/keytabs/producer.keytab producer@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/kafkaclient.keytab kafkaclient@SANDBOX.NET
 kadmin: ktadd -k /etc/kerberos/keytabs/schemaregistry.keytab schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET
 
 kadmin:  quit
@@ -302,9 +305,3 @@ ktutil:  rkt /etc/kerberos/keytabs/schemaregistry.keytab
 ktutil:  wkt /etc/kerberos/keytabs/kafka.keytab
 ktutil:  clear
 ktutil:  quit
-
-kinit -k -t /etc/kerberos/keytabs/appuser.keytab appuser/kafkabroker.sandbox.net@SANDBOX.NET
-kinit -k -t /etc/kerberos/keytabs/kafkabroker.keytab kafkabroker/kafkabroker.sandbox.net@SANDBOX.NET
-kinit -k -t /etc/kerberos/keytabs/hive.service.keytab hive/hiveserver.sandbox.net@SANDBOX.NET
-
-appuser/kafkabroker.sandbox.net@SANDBOX.NET

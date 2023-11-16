@@ -15,3 +15,6 @@ rm -f conf/kafka/secrets/*.key
 rm -f conf/kafka/secrets/*.pem
 rm -f conf/kafka/secrets/*.der
 rm -f conf/kafka/secrets/*.p12
+
+# Cleanup ext files
+rm -f conf/kafka/secrets/extfile

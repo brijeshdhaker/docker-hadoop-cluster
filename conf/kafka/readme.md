@@ -90,7 +90,7 @@ http://localhost:8081/subjects/auditlog-topic-avro-value/versions
 
 # List all subjects
 $ curl -X GET -i -H "Content-Type: application/vnd.schemaregistry.v1+json" \
-http://localhost:8081/subjects
+https://localhost:8081/subjects
 
 # List all schema versions registered under the subject "Kafka-value"
 $ curl -X GET -i -H "Content-Type: application/vnd.schemaregistry.v1+json" \
@@ -162,6 +162,11 @@ docker container stop $(docker container ls -a -q -f "label=io.confluent.docker"
 docker container stop $(docker container ls -a -q -f "label=io.confluent.docker") && docker system prune -a -f --volumes
 
 
+./kafka-avro-console-producer --broker-list localhost:9093 --topic myTopic \
+--producer.config ~/ect/kafka/producer.properties --property value.schema=‘{“type”:“record”,“name”:“myrecord”,“fields”:[{“name”:“f1”,“type”:“string”}]}’ \
+--property schema.registry.url=https://localhost:8081 --property schema.registry.ssl.truststore.location=/etc/kafka/security/schema.registry.client.truststore.jks --property schema.registry.ssl.truststore.password=myTrustStorePassword
+
+
 # To check the end offset set parameter time to value -1
 kafka-run-class kafka.tools.GetOffsetShell \
 --broker-list localhost:9092 \
@@ -217,49 +222,47 @@ sleep 5
 kafka-configs --zookeeper localhost:2181 --alter --entity-type topics --entity-name $topicName --delete-config retention.ms
 ```
 
-
-
-
 # List Topics
 
 docker run --rm \
 --network sandbox.net \
 confluentinc/cp-kcat \
-kcat -b kafkabroker.sandbox.net:9092 -L -J | jq .
+kcat -b kafkabroker.sandbox.net:19092 -L -J | jq .
 
 Or 
 
 docker run -it \
 --network sandbox.net \
-edenhill/kcat:1.7.1 -b kafkabroker.sandbox.net:9092 -L -J | jq .
+brijeshdhaker/kafka-clients:7.5.0 \
+kafkacat -b kafkabroker.sandbox.net:19092 -L -J | jq .
 
 
 docker run -it --rm \
 --network sandbox.net \
---volume ./conf/kafka:/etc/kafka/secrets \
+--volume ./conf/kafka/secrets:/etc/kafka/secrets \
 --volume ./conf/kerberos:/etc/kerberos \
---env KRB5_CONFIG=/etc/kafka/secrets/krb5.conf \
-confluentinc/kafka-clients:7.5.0 \
-kafkacat -b kafkabroker.sandbox.net:9093 -L -J \
+--env KRB5_CONFIG=/etc/kerberos/krb5.conf \
+brijeshdhaker/kafka-clients:7.5.0 \
+kafkacat -b kafkabroker.sandbox.net:9092 -L -J \
 -X 'security.protocol=SASL_PLAINTEXT' \
 -X 'sasl.mechanisms=GSSAPI' \
 -X 'sasl.kerberos.service.name=kafka' \
--X 'sasl.kerberos.keytab=/etc/kerberos/keytabs/producer.keytab' \
--X 'sasl.kerberos.principal=producer@SANDBOX.NET'
+-X 'sasl.kerberos.keytab=/etc/kerberos/keytabs/kafkaclient.keytab' \
+-X 'sasl.kerberos.principal=kafkaclient@SANDBOX.NET'
 
 
 docker run --tty --rm \
 --network sandbox.net \
 --volume ./conf/kafka:/etc/kafka/secrets \
 --volume ./conf/kerberos:/etc/kerberos \
---env KRB5_CONFIG=/etc/kafka/secrets/krb5.conf \
-confluentinc/kafka-clients:7.5.0 \
+--env KRB5_CONFIG=/etc/kerberos/krb5.conf \
+brijeshdhaker/kafka-clients:7.5.0 \
 kafkacat -b kafkabroker.sandbox.net:9093 -d all -L \
 -X 'security.protocol=SASL_PLAINTEXT' \
 -X 'sasl.mechanisms=GSSAPI' \
 -X 'sasl.kerberos.service.name=kafka' \
--X 'sasl.kerberos.keytab=/etc/kerberos/keytabs/producer.keytab' \
--X 'sasl.kerberos.principal=producer@SANDBOX.NET'
+-X 'sasl.kerberos.keytab=/etc/kerberos/keytabs/kafkaclient.keytab' \
+-X 'sasl.kerberos.principal=kafkaclient@SANDBOX.NET'
 
 
 #
@@ -269,14 +272,14 @@ docker run -it --rm \
 --network sandbox.net \
 --volume ./conf/kafka:/etc/kafka/secrets \
 --volume ./conf/kerberos:/etc/kerberos \
---env KRB5_CONFIG=/etc/kafka/secrets/krb5.conf \
-confluentinc/kafka-clients:7.5.0 \
+--env KRB5_CONFIG=/etc/kerberos/krb5.conf \
+brijeshdhaker/kafka-clients:7.5.0 \
 kafkacat -b kafkabroker.sandbox.net:9093 \
 -X 'security.protocol=SASL_PLAINTEXT' \
 -X 'sasl.mechanisms=GSSAPI' \
 -X 'sasl.kerberos.service.name=kafka' \
--X 'sasl.kerberos.keytab=/etc/kerberos/keytabs/producer.keytab' \
--X 'sasl.kerberos.principal=producer@SANDBOX.NET' \
+-X 'sasl.kerberos.keytab=/etc/kerberos/keytabs/kafkaclient.keytab' \
+-X 'sasl.kerberos.principal=kafkaclient@SANDBOX.NET' \
 -t test_topic \
 -P -l /etc/kafka/secrets/data/messages.txt
 
@@ -285,15 +288,160 @@ kafkacat -b kafkabroker.sandbox.net:9093 \
 #
 docker run -it --rm \
 --network sandbox.net \
---volume ./conf/kafka:/etc/kafka/secrets \
+--volume ./conf/kafka/secrets:/etc/kafka/secrets \
 --volume ./conf/kerberos:/etc/kerberos \
---env KRB5_CONFIG=/etc/kafka/secrets/krb5.conf \
-confluentinc/kafka-clients:7.5.0 \
-kafkacat -b kafkabroker.sandbox.net:9093 -C \
+--env KRB5_CONFIG=/etc/kerberos/krb5.conf \
+brijeshdhaker/kafka-clients:7.5.0 \
+kafkacat -b kafkabroker.sandbox.net:19092 -C \
 -X 'security.protocol=SASL_PLAINTEXT' \
 -X 'sasl.mechanisms=GSSAPI' \
 -X 'sasl.kerberos.service.name=kafka' \
--X 'sasl.kerberos.keytab=/etc/kerberos/keytabs/consumer.keytab' \
--X 'sasl.kerberos.principal=consumer@SANDBOX.NET' \
+-X 'sasl.kerberos.keytab=/etc/kerberos/keytabs/kafkaclient.keytab' \
+-X 'sasl.kerberos.principal=kafkaclient@SANDBOX.NET' \
 -K: -f '\nKey (%K bytes): %k\t\nValue (%S bytes): %s\n\Partition: %p\tOffset: %o\n--\n' \
 -t test_topic
+
+
+
+#
+# List Topics Using SASL_SSL
+#
+docker run -it --rm \
+--network sandbox.net \
+--volume ./conf/kafka/secrets:/etc/kafka/secrets \
+--volume ./conf/kerberos:/etc/kerberos \
+--env KRB5_CONFIG=/etc/kerberos/krb5.conf \
+brijeshdhaker/kafka-clients:7.5.0 \
+kafkacat -b kafkabroker.sandbox.net:19093 -L -J \
+-X 'security.protocol=SASL_SSL' \
+-X 'sasl.mechanisms=GSSAPI' \
+-X 'sasl.kerberos.service.name=kafka' \
+-X 'sasl.kerberos.keytab=/etc/kerberos/keytabs/kafkaclient.keytab' \
+-X 'sasl.kerberos.principal=kafkaclient@SANDBOX.NET' \
+-X 'ssl.key.location=/etc/kafka/secrets/clients.key' \
+-X 'ssl.key.password=confluent' \
+-X 'ssl.certificate.location=/etc/kafka/secrets/clients-signed.crt' \
+-X 'ssl.ca.location=/etc/kafka/secrets/sandbox-ca.pem'
+
+#
+# Producer Using SASL_SSL
+#
+docker run -it --rm \
+--hostname=clients.sandbox.net \
+--network sandbox.net \
+--volume ./conf/kafka/secrets:/etc/kafka/secrets \
+--volume ./conf/kerberos:/etc/kerberos \
+--env KRB5_CONFIG=/etc/kerberos/krb5.conf \
+brijeshdhaker/kafka-clients:7.5.0 \
+kafkacat -b kafkabroker.sandbox.net:19093 -P -t test_topic \
+-X 'security.protocol=SASL_SSL' \
+-X 'sasl.mechanisms=GSSAPI' \
+-X 'sasl.kerberos.service.name=kafka' \
+-X 'sasl.kerberos.keytab=/etc/kerberos/keytabs/kafkaclient.keytab' \
+-X 'sasl.kerberos.principal=kafkaclient@SANDBOX.NET' \
+-X 'ssl.key.location=/etc/kafka/secrets/clients.key' \
+-X 'ssl.key.password=confluent' \
+-X 'ssl.certificate.location=/etc/kafka/secrets/clients-signed.crt' \
+-X 'ssl.ca.location=/etc/kafka/secrets/sandbox-ca.pem' \
+-l /etc/kafka/secrets/data/messages.txt
+
+# Producing messages inline from a script
+docker run --interactive \
+--network docker-compose_default \
+brijeshdhaker/kafka-clients:7.5.0 \
+kafkacat -b kafka:29092 \
+-t test \
+-K: \
+-P <<EOF
+1:FOO
+2:BAR
+EOF
+
+#
+# Consumer Using SASL_SSL
+#
+docker run -it --rm \
+--hostname=clients.sandbox.net \
+--network sandbox.net \
+--volume ./conf/kafka/secrets:/etc/kafka/secrets \
+--volume ./conf/kerberos:/etc/kerberos \
+--env KRB5_CONFIG=/etc/kerberos/krb5.conf \
+brijeshdhaker/kafka-clients:7.5.0 \
+kafkacat -b kafkabroker.sandbox.net:19093 -C -t test_topic -o beginning \
+-f '\nKey (%K bytes): %k\t\nValue (%S bytes): %s\nTimestamp: %T\tPartition: %p\tOffset: %o\n--\n' -e \
+-X 'security.protocol=SASL_SSL' \
+-X 'sasl.mechanisms=GSSAPI' \
+-X 'sasl.kerberos.service.name=kafka' \
+-X 'sasl.kerberos.keytab=/etc/kerberos/keytabs/kafkaclient.keytab' \
+-X 'sasl.kerberos.principal=kafkaclient@SANDBOX.NET' \
+-X 'ssl.key.location=/etc/kafka/secrets/clients.key' \
+-X 'ssl.key.password=confluent' \
+-X 'ssl.certificate.location=/etc/kafka/secrets/clients-signed.crt' \
+-X 'ssl.ca.location=/etc/kafka/secrets/sandbox-ca.pem'
+
+
+docker run -it --rm \
+--hostname=clients.sandbox.net \
+--network sandbox.net \
+--volume ./conf/kafka/secrets:/etc/kafka/secrets \
+--volume ./conf/kafka/data:/etc/kafka/data \
+--volume ./conf/kerberos:/etc/kerberos \
+--env KRB5_CONFIG=/etc/kerberos/krb5.conf \
+brijeshdhaker/kafka-clients:7.5.0 \
+kafkacat -F /etc/kafka/secrets/cnf/librdkafka.config -C -t test_topic -o -10 \
+-f '\nKey (%K bytes): %k\t\nValue (%S bytes): %s\nTimestamp: %T\tPartition: %p\tOffset: %o\n--\n'
+
+
+#
+# List Topics
+#
+docker compose exec -it kafkaclient bash 
+
+docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka.config -b kafkabroker.sandbox.net:19093 -L"
+
+docker compose exec kafkaclient kafkacat -F /etc/kafka/secrets/cnf/librdkafka.config -b kafkabroker.sandbox.net:19093 -P -t test_topic -l /etc/kafka/secrets/data/messages.txt
+
+docker compose exec kafkaclient kafkacat -F /etc/kafka/secrets/cnf/librdkafka.config -C -t test_topic -o -10 -f '\nKey (%K bytes): %k\t\nValue (%S bytes): %s\nTimestamp: %T\tPartition: %p\tOffset: %o\n--\n'
+
+
+
+
+docker run --rm \
+--hostname=clients.sandbox.net \
+--network sandbox.net \
+--volume ./conf/kafka/secrets:/etc/kafka/secrets \
+--volume ./conf/kafka/data:/etc/kafka/data \
+--volume ./conf/kerberos:/etc/kerberos \
+--env KRB5_CONFIG=/etc/kerberos/krb5.conf \
+--env KAFKA_OPTS="-Djava.security.auth.login.config=/etc/kafka/secrets/jaas/kafkaclients_jaas.conf -Djava.security.krb5.conf=/etc/kerberos/krb5.conf -Dsun.security.krb5.debug=false" \
+confluentinc/cp-server:7.5.0 \
+sh -c "kafka-console-producer --topic kcat-test-topic \
+--broker-list kafkabroker.sandbox.net:19093 \
+--producer.config /etc/kafka/secrets/cnf/client-ssl.properties \
+--property parse.key=true \
+--property key.separator=, < /etc/kafka/secrets/data/kcat_messages.txt"
+
+
+docker compose exec kafkabroker sh -c "kafka-console-producer --topic kcat-test-topic \
+--broker-list kafkabroker.sandbox.net:19093 \
+--producer.config /etc/kafka/secrets/cnf/client-ssl.properties \
+--property parse.key=true \
+--property key.separator=, < /etc/kafka/secrets/kcat_messages.txt 2>/dev/null"
+
+
+# Consume messages
+```shell
+echo -e "\n# Consume messages from $topic_name"
+
+docker compose exec kafkabroker sh -c "kafka-console-consumer \
+--topic kcat-test-topic \
+--bootstrap-server kafkabroker.sandbox.net:19093 \
+--consumer.config /etc/kafka/secrets/cnf/client-ssl.properties \
+--from-beginning \
+--property print.key=true \
+--property key.separator=\",\" \
+--timeout-ms 5000 2>/dev/null"
+```
+
+
+docker compose exec kafkabroker sh -c "/bin/kafka-storage random-uuid"

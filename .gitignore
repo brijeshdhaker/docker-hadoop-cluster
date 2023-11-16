@@ -21,8 +21,9 @@ target
 *.p12
 *.srl
 *.pem
+*.der
 conf/kafka/secrets/cacerts
-conf/kafka/secrets/*_creds
+*_creds
 /data/postgresql/*
 /data/mysql/*
 /data/cassandra/*
