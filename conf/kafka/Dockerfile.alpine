@@ -23,7 +23,7 @@
 #
 # How to build (from confluent-kafka-python top-level directory):
 #  $ docker build -f examples/docker/Dockerfile.alpine .
-#
+#  $ docker build -t brijeshdhaker/kafka-clients:7.5.0 -f examples/docker/Dockerfile.alpine .
 #############################################################################
 
 FROM alpine:3.12

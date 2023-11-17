@@ -417,3 +417,5 @@ docker compose exec kafkabroker sh -c "kafka-console-consumer \
 
 docker run --rm \
 confluentinc/cp-server:7.5.0 sh -c "/bin/kafka-storage random-uuid"
+
+zookeeper-shell zookeeper:2181 ls /
