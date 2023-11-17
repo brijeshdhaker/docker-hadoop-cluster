@@ -443,5 +443,5 @@ docker compose exec kafkabroker sh -c "kafka-console-consumer \
 --timeout-ms 5000 2>/dev/null"
 ```
 
-
-docker compose exec kafkabroker sh -c "/bin/kafka-storage random-uuid"
+docker run --rm \
+confluentinc/cp-server:7.5.0 sh -c "/bin/kafka-storage random-uuid"

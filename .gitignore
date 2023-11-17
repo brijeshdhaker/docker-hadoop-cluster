@@ -27,3 +27,4 @@ conf/kafka/secrets/cacerts
 /data/postgresql/*
 /data/mysql/*
 /data/cassandra/*
+/conf/kafka/data/

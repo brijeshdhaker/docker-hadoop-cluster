@@ -14,7 +14,7 @@ openssl req -passin "pass:confluent" -passout "pass:confluent" -key kafkacat.cli
 openssl x509 -req -CA sandbox-ca.crt -CAkey sandbox-ca.key -in kafkacat.client.req -out kafkacat-ca1-signed.pem -days 9999 -CAcreateserial -passin "pass:confluent"
 
 
-for i in kafkabroker schemaregistry producer consumer
+for i in zookeeper kafkabroker schemaregistry producer consumer
 do
 	echo $i
 	# Create keystores

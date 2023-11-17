@@ -8,60 +8,146 @@ version: "3.9"
 
 services:
 
+  # Kerberos Server
+  kdcserver:
+    image: brijeshdhaker/kdcserver:22.04
+    container_name: kdcserver
+    hostname: kdcserver.sandbox.net
+    healthcheck:
+      test: echo srvr || exit 1
+      retries: 20
+      interval: 10s
+    ports:
+      - "749:749"
+      - "88:88/udp"
+    volumes:
+      - sandbox_apps_path:/apps
+      - /dev/urandom:/dev/random      # This is needed otherwise there won't be enough entropy to generate a new kerberos realm
+      - sandbox_krb5_stash:/etc/krb5kdc
+      - sandbox_krb5_principal:/var/lib/krb5kdc/
+      - ./conf/kerberos:/etc/kerberos
+    environment:
+      REALM: SANDBOX.NET
+      DOMAIN_REALM: sandbox.net
+      MASTER_KEY_TYPE: aes256-cts-hmac-sha1-96:normal
+      SUPPORTED_ENCRYPTION_TYPES: aes256-cts-hmac-sha1-96:normal aes128-cts-hmac-sha1-96:normal
+      KADMIN_PRINCIPAL: kadmin/admin
+      KADMIN_PASSWORD: kadmin
+      KUSERS_PASSWORD: kuser
+    env_file:
+      - ./envs/docker_kerberos.env
+
+
   # Zookeeper Server
   zookeeper:
     image: confluentinc/cp-zookeeper:7.5.0
-    hostname: zookeeper
+    hostname: zookeeper.sandbox.net
     container_name: zookeeper
+    healthcheck:
+      test: echo srvr | nc zookeeper.sandbox.net 2181 || exit 1
+      retries: 20
+      interval: 10s
     ports:
       - "2181:2181"
+      - "2182:2182"
+      - "8080:8080"
     volumes:
-      - sandbox_host_path:/apps/hostpath
-      - sandbox_base_path:/apps/sandbox
-      - sandbox_zookeeper_secrets:/etc/zookeeper/secrets
+      - sandbox_apps_path:/apps
       - sandbox_zookeeper_data:/var/lib/zookeeper/data
       - sandbox_zookeeper_log:/var/lib/zookeeper/log
+      - ./conf/zookeeper:/etc/zookeeper/secrets
+      - ./conf/kafka/secrets:/etc/kafka/secrets
+      - ./conf/kerberos:/etc/kerberos
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_SECURE_CLIENT_PORT: 2182
       ZOOKEEPER_TICK_TIME: 2000
-      ALLOW_UNSIGNED: "true"
+      #
+      ZOOKEEPER_SERVER_CNXN_FACTORY: org.apache.zookeeper.server.NettyServerCnxnFactory
+      ZOOKEEPER_SSL_ENABLED_PROTOCOLS: TLSv1.2
+      ZOOKEEPER_SSL_QUORUM_ENABLED_PROTOCOLS: TLSv1.2
+      ZOOKEEPER_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/zookeeper.keystore.jks
+      ZOOKEEPER_SSL_KEYSTORE_PASSWORD: confluent
+      ZOOKEEPER_SSL_KEYSTORE_TYPE: PKCS12
+      ZOOKEEPER_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/zookeeper.truststore.jks
+      ZOOKEEPER_SSL_TRUSTSTORE_PASSWORD: confluent
+      ZOOKEEPER_SSL_TRUSTSTORE_TYPE: JKS
+      ZOOKEEPER_SSL_CLIENT_AUTH: need
+      #
+      ZOOKEEPER_AUTH_PROVIDER_X509: org.apache.zookeeper.server.auth.X509AuthenticationProvider
+      ZOOKEEPER_AUTH_PROVIDER_SASL: org.apache.zookeeper.server.auth.SASLAuthenticationProvider
+      # ALLOW_UNSIGNED: "true"
+      KRB5_CONFIG: "/etc/kerberos/krb5.conf"
+      KAFKA_OPTS: -Djava.security.auth.login.config=/etc/zookeeper/secrets/zookeeper_jaas.conf
+        -Djava.security.krb5.conf=/etc/zookeeper/secrets/krb5.conf
+        -Dsun.security.krb5.debug=false
+#        -Dzookeeper.requireClientAuthScheme=sasl
+#        -Dzookeeper.allowSaslFailedClients=false
+#        -Dzookeeper.authProvider.1=org.apache.zookeeper.server.auth.SASLAuthenticationProvider
+    labels:
+      - io.confluent.docker.testing=true
+    extra_hosts:
+      - "thinkpad.sandbox.net:172.18.0.1"
 
   #
   # Apache Kafka Server
   #
   kafkabroker:
     image: confluentinc/cp-server:7.5.0
-    hostname: kafkabroker
+    hostname: kafkabroker.sandbox.net
     container_name: kafkabroker
+    # restart: on-failure
+    healthcheck:
+      test: nc kafkabroker.sandbox.net 9092 || exit 1
+      retries: 20
+      interval: 10s
     depends_on:
-      - zookeeper
+      zookeeper:
+        condition: service_healthy
     ports:
-      - "9092:9092"
-      - "19092:19092"
+      - 9092:9092
+      - 9093:9093
     volumes:
-      - sandbox_host_path:/apps/hostpath
-      - sandbox_base_path:/apps/sandbox
-      - sandbox_kafka_secrets:/etc/kafka/secrets
-      - sandbox_kafka_data:/var/lib/kafka/data
+      - sandbox_apps_path:/apps
+      - ./conf/kafka/data:/var/lib/kafka/data
+      - ./conf/kafka/secrets:/etc/kafka/secrets
+      - ./conf/kerberos:/etc/kerberos
     environment:
-      KAFKA_BROKER_ID: 100
-      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      #
+      KAFKA_BROKER_ID: '11'
+      KAFKA_BROKER_RACK: "R1"
+      KAFKA_JMX_PORT: 9991
+      #
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper.sandbox.net:2182'
+      KAFKA_ZOOKEEPER_SSL_CLIENT_ENABLE: 'true'
+      KAFKA_ZOOKEEPER_SET_ACL: 'true'
+      #
+      KAFKA_ZOOKEEPER_SSL_PROTOCOL: TLSv1.2
+      KAFKA_ZOOKEEPER_CLIENT_CNXN_SOCKET: org.apache.zookeeper.ClientCnxnSocketNetty
+      KAFKA_ZOOKEEPER_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafkabroker.keystore.jks
+      KAFKA_ZOOKEEPER_SSL_KEYSTORE_PASSWORD: confluent
+      KAFKA_ZOOKEEPER_SSL_KEYSTORE_TYPE: PKCS12
+      KAFKA_ZOOKEEPER_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafkabroker.truststore.jks
+      KAFKA_ZOOKEEPER_SSL_TRUSTSTORE_PASSWORD: confluent
+      KAFKA_ZOOKEEPER_SSL_TRUSTSTORE_TYPE: JKS
+      #
       KAFKA_ADVERTISED_HOST_NAME: localhost
       KAFKA_LISTENERS: INTERNAL://kafkabroker:19092,EXTERNAL://0.0.0.0:9092
       KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafkabroker:19092,EXTERNAL://localhost:9092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
-      KAFKA_METRIC_REPORTERS: io.confluent.metrics.reporter.ConfluentMetricsReporter
+
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
-      KAFKA_CONFLUENT_LICENSE_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_CONFLUENT_BALANCER_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
-      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
-      KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL: http://schema-registry:8081
-      CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: kafkabroker:19092
-      CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS: 1
-      CONFLUENT_METRICS_ENABLE: 'true'
+      # KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      # KAFKA_CONFLUENT_LICENSE_TOPIC_REPLICATION_FACTOR: 1
+      # KAFKA_CONFLUENT_BALANCER_TOPIC_REPLICATION_FACTOR: 1
+      # KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      # KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      # KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL: http://schema-registry:8081
+      # KAFKA_METRIC_REPORTERS: io.confluent.metrics.reporter.ConfluentMetricsReporter
+      # CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: kafkabroker:19092
+      # CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS: 1
+      # CONFLUENT_METRICS_ENABLE: 'true'
       CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
 
   #
@@ -77,8 +163,7 @@ services:
     ports:
       - "8081:8081"
     volumes:
-      - sandbox_host_path:/apps/hostpath
-      - sandbox_base_path:/apps/sandbox
+      - sandbox_apps_path:/apps
       - sandbox_kafka_secrets:/etc/schemaregistry/secrets
     environment:
       SCHEMA_REGISTRY_HOST_NAME: schemaregistry
@@ -88,9 +173,17 @@ services:
 
 #
 volumes:
-  sandbox_host_path:
+  #
+  sandbox_apps_path:
     external: true
-  sandbox_base_path:
+  #
+  sandbox_krb5_stash:
+    external: true
+  sandbox_krb5_principal:
+    external: true
+
+  #
+  sandbox_host_path:
     external: true
   sandbox_zookeeper_secrets:
     external: true
