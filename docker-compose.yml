@@ -184,6 +184,8 @@ services:
     environment:
       KRB5_CONFIG: "/etc/kerberos/krb5.conf"
       KAFKA_BROKER_ID: "1"
+      KAFKA_BROKER_RACK: "R1"
+      KAFKA_JMX_PORT: 9991
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper.sandbox.net:2181'
       # KAFKA_ZOOKEEPER_SSL_CLIENT_ENABLE: 'true'
       # https://docs.confluent.io/platform/current/kafka/multi-node.html#configure-multi-node-environment
@@ -223,8 +225,9 @@ services:
       KAFKA_SSL_KEY_CREDENTIALS: kafkabroker_sslkey_creds
       KAFKA_SSL_TRUSTSTORE_FILENAME: kafkabroker.truststore.jks
       KAFKA_SSL_TRUSTSTORE_CREDENTIALS: kafkabroker_truststore_creds
-      # KAFKA_SSL_CLIENT_AUTH: "required"
-      KAFKA_SSL_CLIENT_AUTH: "requested"
+      # To enable the broker to authenticate clients (two-way authentication)
+      KAFKA_SSL_CLIENT_AUTH: "required"
+      # The endpoint identification algorithm used by clients to validate server host name.
       KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: " "
       #
       KAFKA_LISTENER_NAME_SECURE_SSL_PRINCIPAL_MAPPING_RULES: RULE:^CN=([a-zA-Z0-9.]*).*$$/$$1/ , DEFAULT
