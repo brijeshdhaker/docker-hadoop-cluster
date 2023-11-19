@@ -29,10 +29,14 @@ kafkacat -b kafkabroker.sandbox.net:19092 -L -J \
 
 
 ## PLAINTEXT
-docker compose exec kafkaclient kafkacat -F /etc/kafka/secrets/cnf/librdkafka_plaintext.config -C -t test_topic -o -10 -e
+docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_plaintext.config -L"
+docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_plaintext.config -P -t test_topic -l /etc/kafka/secrets/data/messages.txt 2>/dev/null"
+docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_plaintext.config -C -t test_topic -o -10 -e"
 
 ## SASL_PLAINTEXT
-docker compose exec kafkaclient kafkacat -F /etc/kafka/secrets/cnf/librdkafka_sasl_paintext.config -C -t test_topic -o -10 -e
+docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_sasl_paintext.config -L"
+docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_sasl_paintext.config -P -t test_topic -l /etc/kafka/secrets/data/messages.txt 2>/dev/null"
+docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_sasl_paintext.config -C -t test_topic -o -10 -e"
 
 ## SASL_SSL
 docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_sasl_ssl.config -L"
@@ -40,7 +44,9 @@ docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdk
 docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_sasl_ssl.config -C -t test_topic -o -10 -f '\nKey (%K bytes): %k\t\nValue (%S bytes): %s\nTimestamp: %T\tPartition: %p\tOffset: %o\n--\n' -e 2>/dev/null"
 
 ## SSL
-docker compose exec kafkaclient kafkacat -F /etc/kafka/secrets/cnf/librdkafka_ssl.config -C -t test_topic -o -10 -e
+docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_ssl.config -L"
+docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_ssl.config -P -t test_topic -l /etc/kafka/secrets/data/messages.txt 2>/dev/null"
+docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_ssl.config -C -t test_topic -o -10 -e"
 
 
 ## From Host machine

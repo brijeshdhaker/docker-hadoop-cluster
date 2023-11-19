@@ -133,7 +133,7 @@ services:
       ZOOKEEPER_SECURE_CLIENT_PORT: 2182
       ZOOKEEPER_TICK_TIME: 2000
       KRB5_CONFIG: "/etc/kerberos/krb5.conf"
-      ALLOW_UNSIGNED: "true"
+      # ALLOW_UNSIGNED: "true"
       #
       ZOOKEEPER_SERVER_CNXN_FACTORY: org.apache.zookeeper.server.NettyServerCnxnFactory
       ZOOKEEPER_SSL_KEYSTORE_LOCATION: /etc/zookeeper/secrets/zookeeper.keystore.jks
@@ -142,14 +142,14 @@ services:
       ZOOKEEPER_SSL_TRUSTSTORE_LOCATION: /etc/zookeeper/secrets/zookeeper.truststore.jks
       ZOOKEEPER_SSL_TRUSTSTORE_PASSWORD: confluent
       ZOOKEEPER_SSL_TRUSTSTORE_TYPE: JKS
-      ZOOKEEPER_SSL_CLIENT_AUTH: need
+      ZOOKEEPER_SSL_CLIENT_AUTH: "need"
       #
       ZOOKEEPER_AUTH_PROVIDER_X509: org.apache.zookeeper.server.auth.X509AuthenticationProvider
       ZOOKEEPER_AUTH_PROVIDER_SASL: org.apache.zookeeper.server.auth.SASLAuthenticationProvider
       #
-      KAFKA_OPTS: -Djava.security.auth.login.config=/etc/zookeeper/secrets/jaas/zookeeper_jaas.conf 
-        -Djava.security.krb5.conf=/etc/kerberos/krb5.conf 
-        -Dsun.security.krb5.debug=false 
+      KAFKA_OPTS: -Djava.security.auth.login.config=/etc/zookeeper/secrets/jaas/zookeeper_jaas.conf
+        -Djava.security.krb5.conf=/etc/kerberos/krb5.conf
+        -Dsun.security.krb5.debug=false
 #        -Dzookeeper.requireClientAuthScheme=sasl
 #        -Dzookeeper.allowSaslFailedClients=false
 #        -Dzookeeper.authProvider.1=org.apache.zookeeper.server.auth.SASLAuthenticationProvider
@@ -186,19 +186,30 @@ services:
       KAFKA_BROKER_ID: "1"
       KAFKA_BROKER_RACK: "R1"
       KAFKA_JMX_PORT: 9991
-      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper.sandbox.net:2181'
+      #
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper.sandbox.net:2182'
+      KAFKA_ZOOKEEPER_CLIENT_CNXN_SOCKET: org.apache.zookeeper.ClientCnxnSocketNetty
+      KAFKA_ZOOKEEPER_SSL_CLIENT_ENABLE: 'true'
+      KAFKA_ZOOKEEPER_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafkabroker.keystore.jks
+      KAFKA_ZOOKEEPER_SSL_KEYSTORE_PASSWORD: confluent
+      KAFKA_ZOOKEEPER_SSL_KEYSTORE_TYPE: PKCS12
+      KAFKA_ZOOKEEPER_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafkabroker.truststore.jks
+      KAFKA_ZOOKEEPER_SSL_TRUSTSTORE_PASSWORD: confluent
+      KAFKA_ZOOKEEPER_SSL_TRUSTSTORE_TYPE: JKS
+      KAFKA_ZOOKEEPER_SET_ACL: 'true'
+
       # KAFKA_ZOOKEEPER_SSL_CLIENT_ENABLE: 'true'
       # https://docs.confluent.io/platform/current/kafka/multi-node.html#configure-multi-node-environment
       # KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:19092, SASL_SSL://0.0.0.0:19093, EXTERNAL_PLAIN://0.0.0.0:9092, EXTERNAL_SASL://0.0.0.0:9093
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,INTERNAL:SASL_PLAINTEXT,EXTERNAL:SASL_SSL,SSL:SSL
-      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_INTER_BROKER_LISTENER_NAME: EXTERNAL
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafkabroker.sandbox.net:19091,INTERNAL://kafkabroker.sandbox.net:19092,EXTERNAL://kafkabroker.sandbox.net:19093,SSL://kafkabroker.sandbox.net:19094
-      # KAFKA_SECURITY_INTER_BROKER_PROTOCOL: SASL_PLAINTEXT
+      #KAFKA_SECURITY_INTER_BROKER_PROTOCOL: SSL
       #
       ## Kerberos / GSSAPI Authentication mechanism
       KAFKA_SASL_KERBEROS_SERVICE_NAME: kafka
-      KAFKA_SASL_ENABLED_MECHANISMS: PLAIN,GSSAPI,SCRAM-SHA-256,SCRAM-SHA-512
-      KAFKA_SASL_MECHANISM_INTER_BROKER_PROTOCOL: PLAIN
+      KAFKA_SASL_ENABLED_MECHANISMS: PLAIN,GSSAPI
+      KAFKA_SASL_MECHANISM_INTER_BROKER_PROTOCOL: GSSAPI
       #
       ## Listener INTERNAL Configuration
       KAFKA_LISTENER_NAME_INTERNAL_SASL_ENABLED_MECHANISMS: PLAIN

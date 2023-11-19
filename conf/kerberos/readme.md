@@ -297,6 +297,22 @@ kadmin: ktadd -k /etc/kerberos/keytabs/producer.keytab producer@SANDBOX.NET
 kadmin: ktadd -k /etc/kerberos/keytabs/kafkaclient.keytab kafkaclient@SANDBOX.NET
 kadmin: ktadd -k /etc/kerberos/keytabs/schemaregistry.keytab schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET
 
+
+kadmin: addprinc -randkey zookeeper/zookeeper_a.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey zookeeper/zookeeper_b.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey zookeeper/zookeeper_c.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey kafka/kafkabroker_a.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey kafka/kafkabroker_b.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey kafka/kafkabroker_c.sandbox.net@SANDBOX.NET
+
+
+kadmin: ktadd -k /etc/kerberos/keytabs/zookeeper_a.keytab zookeeper/zookeeper_a.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/zookeeper_b.keytab zookeeper/zookeeper_b.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/zookeeper_c.keytab zookeeper/zookeeper_c.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/kafkabroker_a.keytab kafka/kafkabroker_a.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/kafkabroker_b.keytab kafka/kafkabroker_b.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/kafkabroker_c.keytab kafka/kafkabroker_c.sandbox.net@SANDBOX.NET
+
 kadmin:  quit
 
 $ ktutil
