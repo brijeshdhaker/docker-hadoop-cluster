@@ -29,3 +29,6 @@ conf/kafka/secrets/cacerts
 /data/mysql/*
 /data/cassandra/*
 /conf/kafka/data/
+/conf/cluster/*/data/*
+/conf/cluster/*/log/*
+/conf/cluster/*/secrets/*
