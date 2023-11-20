@@ -23,7 +23,8 @@ target
 *.pem
 *.der
 conf/kafka/secrets/cacerts
-*_creds
+*-creds
+*.extfile
 /data/postgresql/*
 /data/mysql/*
 /data/cassandra/*

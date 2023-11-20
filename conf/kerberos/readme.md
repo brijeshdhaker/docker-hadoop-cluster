@@ -290,7 +290,7 @@ kadmin: addprinc -randkey kafkaclient@SANDBOX.NET
 kadmin: addprinc -randkey schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET
 
 kadmin: ktadd -k /etc/kerberos/keytabs/zookeeper.keytab zookeeper/zookeeper.sandbox.net@SANDBOX.NET
-kadmin: ktadd -k /etc/kerberos/keytabs/kafka.keytab kafka/kafkabroker.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/kafkabroker.keytab kafka/kafkabroker.sandbox.net@SANDBOX.NET
 kadmin: ktadd -k /etc/kerberos/keytabs/zkclient.keytab zkclient@SANDBOX.NET
 kadmin: ktadd -k /etc/kerberos/keytabs/consumer.keytab consumer@SANDBOX.NET
 kadmin: ktadd -k /etc/kerberos/keytabs/producer.keytab producer@SANDBOX.NET
@@ -298,20 +298,27 @@ kadmin: ktadd -k /etc/kerberos/keytabs/kafkaclient.keytab kafkaclient@SANDBOX.NE
 kadmin: ktadd -k /etc/kerberos/keytabs/schemaregistry.keytab schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET
 
 
-kadmin: addprinc -randkey zookeeper/zookeeper_a.sandbox.net@SANDBOX.NET
-kadmin: addprinc -randkey zookeeper/zookeeper_b.sandbox.net@SANDBOX.NET
-kadmin: addprinc -randkey zookeeper/zookeeper_c.sandbox.net@SANDBOX.NET
-kadmin: addprinc -randkey kafka/kafkabroker_a.sandbox.net@SANDBOX.NET
-kadmin: addprinc -randkey kafka/kafkabroker_b.sandbox.net@SANDBOX.NET
-kadmin: addprinc -randkey kafka/kafkabroker_c.sandbox.net@SANDBOX.NET
+delete_principal zookeeper/zookeeper-a.sandbox.net@SANDBOX.NET
+delete_principal zookeeper/zookeeper-b.sandbox.net@SANDBOX.NET
+delete_principal zookeeper/zookeeper-c.sandbox.net@SANDBOX.NET
+delete_principal kafka/kafkabroker-a.sandbox.net@SANDBOX.NET
+delete_principal kafka/kafkabroker-b.sandbox.net@SANDBOX.NET
+delete_principal kafka/kafkabroker-c.sandbox.net@SANDBOX.NET
+
+kadmin: addprinc -randkey zookeeper/zookeeper-a.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey zookeeper/zookeeper-b.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey zookeeper/zookeeper-c.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey kafka/kafkabroker-a.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey kafka/kafkabroker-b.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey kafka/kafkabroker-c.sandbox.net@SANDBOX.NET
 
 
-kadmin: ktadd -k /etc/kerberos/keytabs/zookeeper_a.keytab zookeeper/zookeeper_a.sandbox.net@SANDBOX.NET
-kadmin: ktadd -k /etc/kerberos/keytabs/zookeeper_b.keytab zookeeper/zookeeper_b.sandbox.net@SANDBOX.NET
-kadmin: ktadd -k /etc/kerberos/keytabs/zookeeper_c.keytab zookeeper/zookeeper_c.sandbox.net@SANDBOX.NET
-kadmin: ktadd -k /etc/kerberos/keytabs/kafkabroker_a.keytab kafka/kafkabroker_a.sandbox.net@SANDBOX.NET
-kadmin: ktadd -k /etc/kerberos/keytabs/kafkabroker_b.keytab kafka/kafkabroker_b.sandbox.net@SANDBOX.NET
-kadmin: ktadd -k /etc/kerberos/keytabs/kafkabroker_c.keytab kafka/kafkabroker_c.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/zookeeper-a.keytab zookeeper/zookeeper-a.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/zookeeper-b.keytab zookeeper/zookeeper-b.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/zookeeper-c.keytab zookeeper/zookeeper-c.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/kafkabroker-a.keytab kafka/kafkabroker-a.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/kafkabroker-b.keytab kafka/kafkabroker-b.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /etc/kerberos/keytabs/kafkabroker-c.keytab kafka/kafkabroker-c.sandbox.net@SANDBOX.NET
 
 kadmin:  quit
 

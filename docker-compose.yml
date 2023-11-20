@@ -227,7 +227,7 @@ services:
         debug=true \
         useKeyTab=true \
         storeKey=true \
-        keyTab="/etc/kerberos/keytabs/kafka.keytab" \
+        keyTab="/etc/kerberos/keytabs/kafkabroker.keytab" \
         principal="kafka/kafkabroker.sandbox.net@SANDBOX.NET";
       #
       ## SSL Additions
@@ -241,8 +241,8 @@ services:
       # The endpoint identification algorithm used by clients to validate server host name.
       KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: " "
       #
-      KAFKA_LISTENER_NAME_SECURE_SSL_PRINCIPAL_MAPPING_RULES: RULE:^CN=([a-zA-Z0-9.]*).*$$/$$1/ , DEFAULT
-      KAFKA_LISTENER_NAME_TOKEN_SSL_PRINCIPAL_MAPPING_RULES: RULE:^CN=([a-zA-Z0-9.]*).*$$/$$1/ , DEFAULT
+      KAFKA_LISTENER_NAME_EXTERNAL_SSL_PRINCIPAL_MAPPING_RULES: RULE:^CN=([a-zA-Z0-9.]*).*$$/$$1/ , DEFAULT
+      KAFKA_LISTENER_NAME_SSL_SSL_PRINCIPAL_MAPPING_RULES: RULE:^CN=([a-zA-Z0-9.]*).*$$/$$1/ , DEFAULT
       ##
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
       KAFKA_DELETE_TOPIC_ENABLE: "true"

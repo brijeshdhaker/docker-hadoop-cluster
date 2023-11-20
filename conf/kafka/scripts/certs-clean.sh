@@ -17,4 +17,4 @@ rm -f conf/kafka/secrets/*.der
 rm -f conf/kafka/secrets/*.p12
 
 # Cleanup ext files
-rm -f conf/kafka/secrets/extfile
+rm -f conf/kafka/secrets/*.extfile
