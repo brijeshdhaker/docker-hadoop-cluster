@@ -150,6 +150,9 @@ services:
       KAFKA_OPTS: -Djava.security.auth.login.config=/etc/zookeeper/secrets/jaas/zookeeper_jaas.conf
         -Djava.security.krb5.conf=/etc/kerberos/krb5.conf
         -Dsun.security.krb5.debug=false
+        -Dkerberos.removeHostFromPrincipal=true
+        -Dkerberos.removeRealmFromPrincipal=true
+        -Dzookeeper.skipACL=true
 #        -Dzookeeper.requireClientAuthScheme=sasl
 #        -Dzookeeper.allowSaslFailedClients=false
 #        -Dzookeeper.authProvider.1=org.apache.zookeeper.server.auth.SASLAuthenticationProvider
@@ -561,6 +564,13 @@ services:
     image: brijeshdhaker/hbase-master:3.0.0
     hostname: hmaster.sandbox.net
     container_name: hmaster
+    healthcheck:
+      test: curl -f http://hmaster.sandbox.net:16010 || exit 1
+      retries: 20
+      interval: 10s
+    depends_on:
+      zookeeper:
+        condition: service_healthy
     environment:
       SERVICE_PRECONDITION: "namenode.sandbox.net:9870 zookeeper.sandbox.net:2181"
     env_file:
@@ -574,13 +584,17 @@ services:
       - sandbox_hadoop_321:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - ./conf/kerberos:/etc/kerberos
-      - ./conf/hbase/hmaster-jaas.conf:/opt/hbase/conf/zk-jaas.conf
+      - ./conf/hbase/zookeeper_jaas.conf:/opt/hbase/conf/zookeeper_jaas.conf
 
   #
   hregion:
     image: brijeshdhaker/hbase-regionserver:3.0.0
     hostname: hregion.sandbox.net
     container_name: hregion
+    healthcheck:
+      test: curl -f http://hregion.sandbox.net:16030 || exit 1
+      retries: 20
+      interval: 10s
     env_file:
       - envs/docker_hbase.env
       - envs/docker_clients.env
@@ -594,8 +608,8 @@ services:
       - sandbox_hadoop_321:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - ./conf/kerberos:/etc/kerberos
-      - ./conf/hbase/hbase-env.sh:/opt/hbase/conf/hbase-env.sh
-      - ./conf/hbase/hregion-jaas.conf:/opt/hbase/conf/zk-jaas.conf
+#      - ./conf/hbase/hbase-env.sh:/opt/hbase/conf/hbase-env.sh
+      - ./conf/hbase/zookeeper_jaas.conf:/opt/hbase/conf/zookeeper_jaas.conf
       - ./conf/hbase/hbase-site.xml:/opt/hbase/conf/hbase-site.xml
 
   #
