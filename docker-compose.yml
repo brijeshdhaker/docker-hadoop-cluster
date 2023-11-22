@@ -644,6 +644,10 @@ services:
     image: brijeshdhaker/ubuntu:22.04
     container_name: gateway
     hostname: gateway.sandbox.net
+    healthcheck:
+      test: nc -vz gateway.sandbox.net 22 || exit 1
+      retries: 20
+      interval: 10s
     restart: always
     command:
       - "/usr/sbin/sshd -D"
