@@ -17,28 +17,36 @@
         <name>hive.log.explain.output</name>
         <value>true</value>
     </property>
+
     <property>
         <name>hive.metastore.kerberos.principal</name>
         <value>hive/_HOST@SANDBOX.NET</value>
     </property>
     <property>
+        <name>hive.metastore.sasl.enabled</name>
+        <value>true</value>
+    </property>
+
+    <property>
         <name>hive.metastore.warehouse.external.dir</name>
         <value>/warehouse/tablespace/external/hive</value>
     </property>
+
     <property>
         <name>hive.server2.authentication.kerberos.principal</name>
         <value>hive/_HOST@SANDBOX.NET</value>
     </property>
+
+    <property>
+        <name>hive.metastore.kerberos.keytab.file</name>
+        <value>/etc/kerberos/keytabs/hive.service.keytab</value>
+    </property>
+
     <property>
         <name>hive.async.log.enabled</name>
         <value>false</value>
     </property>
-    <!--
-    <property>
-        <name>hive.metastore.sasl.enabled</name>
-        <value>true</value>
-    </property>
-    -->
+
     <property>
         <name>hive.exec.post.hooks</name>
         <value>org.apache.hadoop.hive.ql.hooks.ATSHook</value>
@@ -114,9 +122,5 @@
     <property>
         <name>javax.jdo.option.ConnectionPassword</name>
         <value>hiveadmin</value>
-    </property>
-    <property>
-        <name>hive.metastore.kerberos.keytab.file</name>
-        <value>/etc/kerberos/keytabs/hive.service.keytab</value>
     </property>
 </configuration>
