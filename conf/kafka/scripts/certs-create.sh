@@ -39,7 +39,7 @@ cat conf/kafka/secrets/sandbox-ca.crt conf/kafka/secrets/sandbox-ca.key > conf/k
 #
 # Create new keys,certificates, keystore & truststore
 #
-for i in zookeeper zookeeper-a zookeeper-b zookeeper-b kafkabroker kafkabroker-a kafkabroker-b kafkabroker-c schemaregistry clients restproxy connect controlcenter clientrestproxy ksqldb
+for i in zookeeper zookeeper-a zookeeper-b zookeeper-b hmaster hregion kafkabroker kafkabroker-a kafkabroker-b kafkabroker-c schemaregistry clients restproxy connect controlcenter clientrestproxy ksqldb
 do
     echo "------------------------------- $i -------------------------------"
 

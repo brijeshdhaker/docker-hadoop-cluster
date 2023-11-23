@@ -33,10 +33,12 @@
         <name>hive.async.log.enabled</name>
         <value>false</value>
     </property>
+    <!--
     <property>
         <name>hive.metastore.sasl.enabled</name>
         <value>true</value>
     </property>
+    -->
     <property>
         <name>hive.exec.post.hooks</name>
         <value>org.apache.hadoop.hive.ql.hooks.ATSHook</value>

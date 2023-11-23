@@ -75,7 +75,7 @@ export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
 #export KINIT_FAIL_THRESHOLD                    # (optional) How many times should kinit retry. The default value is 5.
 #export KERBEROS_REFRESH_INTERVAL               # (optional) The refresh interval for Kerberos ticket. The default value is 1d.
 export KRB5_CONFIG="/etc/kerberos/krb5.conf"
-export KRB5CCNAME="/tmp/krb5cc_zepplin"
+# export KRB5CCNAME="/tmp/krb5cc_zepplin"
 
 ## Use provided spark installation ##
 ## defining SPARK_HOME makes Zeppelin run spark interpreter process using spark-submit
