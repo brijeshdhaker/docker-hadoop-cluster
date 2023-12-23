@@ -176,13 +176,16 @@ add_entry -password -p root@SANDBOX.NET -k 1 -f
 wkt /etc/kerberos/keytabs/root.keytab  	-- password root
 
 add_entry -password -p HTTP/nginx.sandbox.net@SANDBOX.NET -k 1 -f
-wkt /etc/kerberos/keytabs/nginx.service.keytab   	-- password brijeshdhaker
+wkt /etc/kerberos/keytabs/nginx.service.keytab   	-- password kuser
 
 add_entry -password -p brijeshdhaker@SANDBOX.NET -k 1 -f
-wkt /etc/kerberos/keytabs/brijeshdhaker.keytab   	-- password brijeshdhaker
+wkt /etc/kerberos/users/brijeshdhaker.keytab   	-- password kuser
+
+add_entry -password -p hdfs@SANDBOX.NET -k 1 -f
+wkt /etc/kerberos/users/hdfs.keytab   	-- password kuser
 
 add_entry -password -p hive@SANDBOX.NET -k 1 -f
-wkt /etc/kerberos/keytabs/hive.keytab
+wkt /etc/kerberos/users/hive.keytab
 
 #
 kinit -k -t /etc/kerberos/keytabs/root.keytab root@SANDBOX.NET
