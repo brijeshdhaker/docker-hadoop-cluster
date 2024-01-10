@@ -166,7 +166,7 @@ services:
 
   # Kafka Broker
   kafkabroker:
-    image: confluentinc/cp-server:7.5.0
+    image: confluentinc/cp-kafka:7.5.0
     hostname: kafkabroker.sandbox.net
     container_name: kafkabroker
     # restart: on-failure
@@ -238,10 +238,10 @@ services:
       #
       ## SSL Additions
       KAFKA_SSL_KEYSTORE_FILENAME: kafkabroker.keystore.p12
-      KAFKA_SSL_KEYSTORE_CREDENTIALS: kafkabroker_keystore_creds
-      KAFKA_SSL_KEY_CREDENTIALS: kafkabroker_sslkey_creds
+      KAFKA_SSL_KEYSTORE_CREDENTIALS: kafkabroker-keystore-creds
+      KAFKA_SSL_KEY_CREDENTIALS: kafkabroker-sslkey-creds
       KAFKA_SSL_TRUSTSTORE_FILENAME: kafkabroker.truststore.jks
-      KAFKA_SSL_TRUSTSTORE_CREDENTIALS: kafkabroker_truststore_creds
+      KAFKA_SSL_TRUSTSTORE_CREDENTIALS: kafkabroker-truststore-creds
       # To enable the broker to authenticate clients (two-way authentication)
       KAFKA_SSL_CLIENT_AUTH: "required"
       # The endpoint identification algorithm used by clients to validate server host name.
@@ -269,7 +269,11 @@ services:
       KAFKA_LOG4J_ADDITIVITY_KAFKA_AUTHORIZER_LOGGER: "false"
       ##
       KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL: https://schemaregistry.sandbox.net:8081
+      #KAFKA_METRIC_REPORTERS: io.confluent.metrics.reporter.ConfluentMetricsReporter
       CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: kafkabroker.sandbox.net:19093
+      CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS: 1
+      CONFLUENT_METRICS_ENABLE: 'false'
+      CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
     extra_hosts:
       - "thinkpad.sandbox.net:172.18.0.1"
 
@@ -516,7 +520,7 @@ services:
     hostname: metastore.sandbox.net
     container_name: metastore
     healthcheck:
-      test: nc -vz metastore.sandbox.net 9083 || exit 1
+      test: netstat -lpn | grep 9083 || exit 1
       retries: 20
       interval: 10s
     env_file:
@@ -539,7 +543,7 @@ services:
     container_name: hiveserver
     hostname: hiveserver.sandbox.net
     healthcheck:
-      test: nc -vz hiveserver.sandbox.net 10000 || exit 1
+      test: nc -vz hiveserver.sandbox.net 10002 || exit 1
       retries: 20
       interval: 10s
     depends_on:
