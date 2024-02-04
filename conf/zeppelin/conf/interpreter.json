@@ -7,7 +7,7 @@
       "properties": {
         "default.url": {
           "name": "default.url",
-          "value": "jdbc:hive2://hive-server:10000",
+          "value": "jdbc:hive2://hiveserver:10000",
           "type": "string",
           "description": "The URL for JDBC."
         },
@@ -61,13 +61,13 @@
         },
         "zeppelin.jdbc.auth.type": {
           "name": "zeppelin.jdbc.auth.type",
-          "value": "",
+          "value": "KERBEROS",
           "type": "string",
           "description": "If auth type is needed, Example: KERBEROS"
         },
         "zeppelin.jdbc.auth.kerberos.proxy.enable": {
           "name": "zeppelin.jdbc.auth.kerberos.proxy.enable",
-          "value": "true",
+          "value": false,
           "type": "checkbox",
           "description": "When auth type is Kerberos, enable/disable Kerberos proxy with the login user to get the connection. Default value is true."
         },
@@ -85,13 +85,13 @@
         },
         "zeppelin.jdbc.keytab.location": {
           "name": "zeppelin.jdbc.keytab.location",
-          "value": "",
+          "value": "/etc/kerberos/users/brijeshdhaker.keytab",
           "type": "string",
           "description": "Kerberos keytab location"
         },
         "zeppelin.jdbc.principal": {
           "name": "zeppelin.jdbc.principal",
-          "value": "",
+          "value": "brijeshdhaker@SANDBOX.NET",
           "type": "string",
           "description": "Kerberos principal"
         },
