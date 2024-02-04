@@ -19,3 +19,26 @@ Note that > file 2>&1 is an older syntax which still works, &> file is neater, b
 0 means stdin
 1 means stdout(useful output)
 2 means stderr(error message output)
+
+
+
+declare -A services=(
+["apache2"]="/etc/init.d/apache2 status"
+["mysql"]="/etc/init.d/mysql status"
+["sshd"]="/etc/init.d/ssh status"
+)
+
+
+IFS=";" read -r -a arr <<< 'domain.de;de;https'
+site="${arr[0]}"
+lang="${arr[1]}"
+prot="${arr[2]}"
+echo "site : ${site}"
+echo "lang : ${lang}"
+echo "prot : ${prot}"
+echo
+
+## TCP Port Scan
+nc -z -v kdcserver.sandbox.net 749
+## UDP Port Scan
+netcat -u kdcserver.sandbox.net 88

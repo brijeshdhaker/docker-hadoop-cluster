@@ -2,39 +2,61 @@
 
 #
 #
+REALM=SANDBOX.NET
+DOMAIN_REALM=sandbox.net
 ROOT_ADMIN_PRINCIPAL=root/admin@SANDBOX.NET
 KADMIN_PRINCIPAL_FULL=kadmin/admin@SANDBOX.NET
 KADMIN_PASSWORD=kadmin
 KUSERS_PASSWORD=kuser
 
-# delete existing keytab files
-echo "Adding OS User Principal"
 echo ""
-OS_USERS=("kafka/kafkabroker.sandbox.net" "schemaregistry/schemaregistry.sandbox.net" "zkclient" "kafkaclient")
-for ou in "${OS_USERS[@]}"
+echo "Adding kafka cluster kerberos principals."
+echo ""
+
+declare -A KAFKA_USERS=(
+  [zookeeper]="zookeeper/zookeeper.sandbox.net"
+  [zookeeper-a]="zookeeper/zookeeper-a.sandbox.net"
+  [zookeeper-b]="zookeeper/zookeeper-b.sandbox.net"
+  [zookeeper-c]="zookeeper/zookeeper-c.sandbox.net"
+  [zkclient]="zkclient"
+  #
+  [kafkabroker]="kafka/kafkabroker.sandbox.net"
+  [kafkabroker-a]="kafka/kafkabroker-a.sandbox.net"
+  [kafkabroker-b]="kafka/kafkabroker-b.sandbox.net"
+  [kafkabroker-c]="kafka/kafkabroker-c.sandbox.net"
+  [schemaregistry]="schemaregistry/schemaregistry.sandbox.net"
+  #
+  [consumer]="consumer"
+  [producer]="producer"
+  [kafkaclient]="kafkaclient"
+)
+# for key in "${!KAFKA_USERS[@]}"; do echo "Key :- $key Value:- ${KAFKA_USERS[$key]}"; done
+for key in "${!KAFKA_USERS[@]}"
 do
-  rm -Rf /etc/kerberos/users/$ou.keytab
-  kadmin.local -q "delete_principal -force $ou@$REALM"
-  kadmin.local -q "addprinc -randkey $ou@$REALM"
-  ktmerge="change_password $ou@$REALM\n$KUSERS_PASSWORD\n$KUSERS_PASSWORD\n"
-  echo -e "$ktmerge" | kadmin.local
-  kadmin.local -q "xst -norandkey -k /etc/kerberos/users/$ou.keytab $ou@$REALM"
-  chmod 444 /etc/kerberos/users/$ou.keytab
+  # delete existing keytab files
+  rm -Rf /etc/kerberos/keytabs/$key.keytab
+  kadmin.local -q "delete_principal -force ${KAFKA_USERS[$key]}@$REALM"
+  kadmin.local -q "addprinc -randkey ${KAFKA_USERS[$key]}@$REALM"
+  kadmin.local -q "ktadd -k /etc/kerberos/keytabs/$key.keytab ${KAFKA_USERS[$key]}@$REALM"
+  chmod 444 /etc/kerberos/keytabs/$key.keytab
 done
 
-# Setup spnego.service.keytab
-rm -Rf /etc/kerberos/keytabs/host.service.keytab
-cp /etc/kerberos/keytabs/host.keytab /etc/kerberos/keytabs/host.service.keytab
-chmod 444 /etc/kerberos/keytabs/host.service.keytab
-
-rm -Rf /etc/kerberos/keytabs/HTTP.service.keytab
-cp /etc/kerberos/keytabs/HTTP.keytab /etc/kerberos/keytabs/HTTP.service.keytab
-chmod 444 /etc/kerberos/keytabs/HTTP.service.keytab
-
-rm -Rf /etc/kerberos/keytabs/spnego.service.keytab
-cp /etc/kerberos/keytabs/HTTP.keytab /etc/kerberos/keytabs/spnego.service.keytab
-chmod 444 /etc/kerberos/keytabs/spnego.service.keytab
+#
+echo ""
+echo "Kafka cluster kerberos principles successfully generated."
+echo ""
 
 #
-echo "Principles successfully generated."
+# Merge Keytab
+#
+rm -Rf /etc/kerberos/keytabs/kafka.keytab
+ktmerge=""
+ktmerge+="rkt /etc/kerberos/keytabs/zookeeper.keytab\n"
+ktmerge+="rkt /etc/kerberos/keytabs/zkclient.keytab\n"
+ktmerge+="rkt /etc/kerberos/keytabs/kafkabroker.keytab\n"
+ktmerge+="rkt /etc/kerberos/keytabs/schemaregistry.keytab\n"
+ktmerge+="rkt /etc/kerberos/keytabs/kafkaclient.keytab\n"
+ktmerge+="wkt /etc/kerberos/keytabs/kafka.keytab\nquit"
 echo ""
+echo -e "$ktmerge" | ktutil
+chmod 444 /etc/kerberos/keytabs/kafka.keytab

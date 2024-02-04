@@ -1,15 +1,18 @@
 To configure curl to access an URL protected by Kerberos HTTP SPNEGO:
 
 # Run curl -V:
-$ curl -V
-curl 7.19.7 (universal-apple-darwin10.0) libcurl/7.19.7 OpenSSL/0.9.8l
-zlib/1.2.3
-Protocols: tftp ftp telnet dict ldap http file https ftps
-Features: GSS-Negotiate IPv6 Largefile NTLM SSL libz
+zeppelin@zeppelin:~$ curl -V
+curl 7.81.0 (x86_64-conda-linux-gnu) libcurl/7.81.0 OpenSSL/3.0.0 zlib/1.2.11 libssh2/1.10.0 nghttp2/1.47.0
+Release-Date: 2022-01-05
+Protocols: dict file ftp ftps gopher gophers http https imap imaps mqtt pop3 pop3s rtsp scp sftp smb smbs smtp smtps telnet tftp
+Features: alt-svc AsynchDNS GSS-API HSTS HTTP2 HTTPS-proxy IPv6 Kerberos Largefile libz NTLM NTLM_WB SPNEGO SSL TLS-SRP UnixSockets
+
 
 # Login to the KDC using kinit.
-$ kinit
-Please enter the password for tucu@LOCALHOST:
+$ kinit -k -t /etc/kerberos/users/brijeshdhaker.keytab brijeshdhaker@SANDBOX.NET
+
+$kinit brijeshdhaker@SANDBOX.NET
+Please enter the password for brijeshdhaker@SANDBOX.NET:
 
 # Use curl to fetch the protected URL:
 ## -- Secure

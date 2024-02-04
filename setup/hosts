@@ -5,6 +5,9 @@
 127.0.0.1       localhost
 192.168.1.7     thinkpad.sandbox.net thinkpad
 
+# Kerberos
+127.0.0.1       kdcserver.sandbox.net kdcserver
+
 # elasticsearch
 127.0.0.1       elasticsearch.sandbox.net elasticsearch
 127.0.0.1       es01.sandbox.net es01
@@ -64,7 +67,6 @@
 127.0.0.1       graphiteexporter graphite-exporter.sandbox.net
 127.0.0.1       graphite graphite.sandbox.net
 
-
 #
 172.18.0.1      hostmaster.sandbox.net hostmaster
 
@@ -76,7 +78,6 @@
 # virtual box
 192.168.56.1	quickstart-hostmaster
 192.168.56.101  quickstart-bigdata
-
 
 # k8s cluster
 192.168.122.1   k8c1h0.sandbox.net k8c1h0

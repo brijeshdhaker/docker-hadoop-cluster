@@ -11,9 +11,10 @@ KUSERS_PASSWORD: kuser
 # 1. Add Principle
 
 bash-3.00$ kadmin -w kadmin -p kadmin/admin@SANDBOX.NET
-kadmin:
-list_principals *
-getprinc brijeshdhaker@SANDBOX.NET
+
+
+kadmin.local -q "list_principals *"
+kadmin.local -q "getprinc brijeshdhaker@SANDBOX.NET"
 
 delete_principal root@SANDBOX.NET
 delete_principal brijeshdhaker@SANDBOX.NET

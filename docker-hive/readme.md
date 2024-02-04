@@ -31,12 +31,12 @@ $SPARK_HOME/bin/spark-class org.apache.spark.deploy.worker.Worker --webui-port 8
 hive --hiveconf hive.root.logger=INFO,console --remote-host=hiveserver.sandbox.net:10000
 
 ### -- JDBC 
-jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET
+$HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET"
 
 ### -- Beeline
 $HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET" --silent=false
 
-$HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET" -e 'show tables' --hiveconf hive.root.logger=INFO,console
+$HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET" -e 'show tables' --hiveconf hive.server2.in.place.progress=true
 
 $HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET" -f queries.sql
 
