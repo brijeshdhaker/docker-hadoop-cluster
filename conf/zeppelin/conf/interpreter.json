@@ -903,7 +903,7 @@
         },
         "submarine.hadoop.krb5.conf": {
           "name": "submarine.hadoop.krb5.conf",
-          "value": "/etc/krb5.conf",
+          "value": "/etc/kerberos/krb5.conf",
           "type": "string",
           "description": "submarine user-defined hdfs/yarn kerberos authentication krb5.conf"
         },
@@ -1213,19 +1213,19 @@
         },
         "zeppelin.shell.auth.type": {
           "name": "zeppelin.shell.auth.type",
-          "value": "",
+          "value": "KERBEROS",
           "type": "string",
           "description": "If auth type is needed, Example: KERBEROS"
         },
         "zeppelin.shell.keytab.location": {
           "name": "zeppelin.shell.keytab.location",
-          "value": "",
+          "value": "/etc/kerberos/users/brijeshdhaker.keytab",
           "type": "string",
           "description": "Kerberos keytab location"
         },
         "zeppelin.shell.principal": {
           "name": "zeppelin.shell.principal",
-          "value": "",
+          "value": "brijeshdhaker@SANDBOX.NET",
           "type": "string",
           "description": "Kerberos principal"
         },
@@ -1272,6 +1272,8 @@
       "option": {
         "remote": true,
         "port": -1,
+        "perNote": "shared",
+        "perUser": "shared",
         "isExistingProcess": false,
         "setPermission": false,
         "owners": [],
@@ -1285,7 +1287,7 @@
       "properties": {
         "SPARK_HOME": {
           "name": "SPARK_HOME",
-          "value": "/opt/spark-3.1.2",
+          "value": "/opt/spark",
           "type": "string",
           "description": "Location of spark distribution"
         },
@@ -2325,7 +2327,7 @@
       "properties": {
         "FLINK_HOME": {
           "name": "FLINK_HOME",
-          "value": "",
+          "value": "/opt/flink",
           "type": "string",
           "description": "Location of flink distribution"
         }
@@ -2347,6 +2349,8 @@
       "option": {
         "remote": true,
         "port": -1,
+        "perNote": "shared",
+        "perUser": "shared",
         "isExistingProcess": false,
         "setPermission": false,
         "owners": [],
@@ -2396,19 +2400,19 @@
       "properties": {
         "FLINK_HOME": {
           "name": "FLINK_HOME",
-          "value": "",
+          "value": "/opt/flink",
           "type": "string",
           "description": "Location of flink distribution"
         },
         "HADOOP_CONF_DIR": {
           "name": "HADOOP_CONF_DIR",
-          "value": "",
+          "value": "/opt/hadoop/etc/hadoop",
           "type": "string",
           "description": "Location of hadoop conf (core-site.xml, hdfs-site.xml and etc.)"
         },
         "HIVE_CONF_DIR": {
           "name": "HIVE_CONF_DIR",
-          "value": "",
+          "value": "/opt/hive/conf",
           "type": "string",
           "description": "Location of hive conf (hive-site.xml)"
         },
@@ -2633,6 +2637,8 @@
       "option": {
         "remote": true,
         "port": -1,
+        "perNote": "shared",
+        "perUser": "shared",
         "isExistingProcess": false,
         "setPermission": false,
         "owners": [],

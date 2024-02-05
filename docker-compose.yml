@@ -720,10 +720,10 @@ services:
       - ./envs/docker_clients.env
     ports:
       - "9080:8080"
+      - "9081:8081"
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/kerberos:/etc/kerberos
-      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - /opt/zeppelin/conf:/opt/zeppelin/conf
       - sandbox_hadoop_321:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
@@ -733,6 +733,7 @@ services:
       - sandbox_hive_313:/opt/hive
       - ./conf/hive/client:/etc/hive/conf
       - sandbox_tez_092:/opt/tez
+      - /opt/flink-1.12.2:/opt/flink
       - sandbox_spark_312:/opt/spark
       - sandbox_zeppelin_notebook:/opt/notebook
   #

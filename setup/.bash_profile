@@ -54,4 +54,4 @@ fi
 # Kerberos
 #
 export KRB5_CONFIG="/etc/kerberos/krb5.conf"
-export KRB5CCNAME="FILE:$HOME/krb5cc"
+export KRB5CCNAME="FILE:$HOME/krb5cc_$(id -u)"

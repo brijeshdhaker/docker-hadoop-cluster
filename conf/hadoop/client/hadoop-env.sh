@@ -430,7 +430,7 @@ export HADOOP_SECURE_LOG=${HADOOP_LOG_DIR}
 # export HADOOP_REGISTRYDNS_SECURE_EXTRA_OPTS="-jvm server"
 #
 export KRB5_CONFIG="/etc/kerberos/krb5.conf"
-export KRB5CCNAME="FILE:$HOME/krb5cc"
+# export KRB5CCNAME="FILE:$HOME/krb5cc_$(id -u)"
 # export KINIT_KEYTAB=/etc/kerberos/keytab/hdfs.service.keytab
 # export KINIT_PRINCIPAL=hdfs/_HOST@SANDBOX.NET
 
