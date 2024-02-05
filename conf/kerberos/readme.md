@@ -16,6 +16,25 @@ bash-3.00$ kadmin -w kadmin -p kadmin/admin@SANDBOX.NET
 kadmin.local -q "list_principals *"
 kadmin.local -q "getprinc brijeshdhaker@SANDBOX.NET"
 
+# Add Principle & Passwordless Keytab
+
+kadmin.local -q "delete_principal brijeshdhaker@SANDBOX.NET"
+kadmin.local -q "addprinc -randkey brijeshdhaker@SANDBOX.NET"
+kadmin.local -q "ktadd -k /etc/kerberos/users/brijeshdhaker.keytab brijeshdhaker@SANDBOX.NET"
+kadmin.local -q "getprinc brijeshdhaker@SANDBOX.NET"
+klist -k -t /etc/kerberos/users/brijeshdhaker.keytab
+kinit -k -t /etc/kerberos/users/brijeshdhaker.keytab zeppelin@SANDBOX.NET
+kdestroy
+
+kadmin.local -q "delete_principal zeppelin@SANDBOX.NET"
+kadmin.local -q "addprinc -randkey zeppelin@SANDBOX.NET"
+kadmin.local -q "ktadd -k /etc/kerberos/users/zeppelin.keytab zeppelin@SANDBOX.NET"
+kadmin.local -q "getprinc zeppelin@SANDBOX.NET"
+klist -k -t /etc/kerberos/users/zeppelin.keytab
+kinit -k -t /etc/kerberos/users/zeppelin.keytab zeppelin@SANDBOX.NET
+kdestroy
+
+
 delete_principal root@SANDBOX.NET
 delete_principal brijeshdhaker@SANDBOX.NET
 delete_principal hdfs@SANDBOX.NET
@@ -72,7 +91,7 @@ wkt /etc/kerberos/users/hive.keytab
 #
 kinit -k -t /etc/kerberos/keytabs/root.keytab root@SANDBOX.NET
 kinit -k -t /etc/kerberos/users/brijeshdhaker.keytab brijeshdhaker@SANDBOX.NET
-kinit -k -t /etc/kerberos/users/zeppelin.keytab zeppelin@SANDBOX.NET
+
 
 kinit -k -t /etc/kerberos/keytabs/hdfs.service.keytab hdfs/thinkpad.sandbox.net@SANDBOX.NET
 kinit -k -t /etc/kerberos/keytabs/hive.service.keytab hive/hiveserver.sandbox.net@SANDBOX.NET
