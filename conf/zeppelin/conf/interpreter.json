@@ -7,19 +7,19 @@
       "properties": {
         "default.url": {
           "name": "default.url",
-          "value": "jdbc:hive2://hiveserver:10000",
+          "value": "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal\u003dhive/_HOST@SANDBOX.NET",
           "type": "string",
           "description": "The URL for JDBC."
         },
         "default.user": {
           "name": "default.user",
-          "value": "hive",
+          "value": "",
           "type": "string",
           "description": "The JDBC user name"
         },
         "default.password": {
           "name": "default.password",
-          "value": "hive",
+          "value": "",
           "type": "password",
           "description": "The JDBC user password"
         },
@@ -67,7 +67,7 @@
         },
         "zeppelin.jdbc.auth.kerberos.proxy.enable": {
           "name": "zeppelin.jdbc.auth.kerberos.proxy.enable",
-          "value": false,
+          "value": true,
           "type": "checkbox",
           "description": "When auth type is Kerberos, enable/disable Kerberos proxy with the login user to get the connection. Default value is true."
         },
@@ -97,7 +97,7 @@
         },
         "zeppelin.jdbc.interpolation": {
           "name": "zeppelin.jdbc.interpolation",
-          "value": false,
+          "value": true,
           "type": "checkbox",
           "description": "Enable ZeppelinContext variable interpolation into paragraph text"
         },
@@ -145,9 +145,8 @@
           "local": false
         },
         {
-          "groupArtifactVersion": "/opt/hadoop/share/hadoop/common/hadoop-common-3.2.1.jar",
-          "local": false,
-          "exclusions": []
+          "groupArtifactVersion": "/opt/hadoop/share/hadoop/common/hadoop-common-3.1.1.jar",
+          "local": false
         }
       ],
       "option": {
@@ -444,26 +443,6 @@
           "value": "1000",
           "type": "number",
           "description": "Query interval for hive statement"
-        },
-        "hive.driver": {
-          "name": "hive.driver",
-          "value": "org.apache.hive.jdbc.HiveDriver",
-          "type": "string"
-        },
-        "hive.url": {
-          "name": "hive.url",
-          "value": "jdbc:hive2://hive-server:10000",
-          "type": "string"
-        },
-        "hive.user": {
-          "name": "hive.user",
-          "value": "hive",
-          "type": "string"
-        },
-        "hive.password": {
-          "name": "hive.password",
-          "value": "hive",
-          "type": "string"
         }
       },
       "status": "READY",
@@ -479,17 +458,7 @@
           }
         }
       ],
-      "dependencies": [
-        {
-          "groupArtifactVersion": "/opt/hive/jdbc/hive-jdbc-3.1.3-standalone.jar",
-          "local": false
-        },
-        {
-          "groupArtifactVersion": "/opt/hadoop/share/hadoop/common/hadoop-common-3.2.1.jar",
-          "local": false,
-          "exclusions": []
-        }
-      ],
+      "dependencies": [],
       "option": {
         "remote": true,
         "port": -1,
@@ -903,7 +872,7 @@
         },
         "submarine.hadoop.krb5.conf": {
           "name": "submarine.hadoop.krb5.conf",
-          "value": "/etc/kerberos/krb5.conf",
+          "value": "/etc/krb5.conf",
           "type": "string",
           "description": "submarine user-defined hdfs/yarn kerberos authentication krb5.conf"
         },
@@ -1288,226 +1257,191 @@
         "SPARK_HOME": {
           "name": "SPARK_HOME",
           "value": "/opt/spark",
-          "type": "string",
-          "description": "Location of spark distribution"
+          "type": "string"
         },
         "spark.master": {
           "name": "spark.master",
           "value": "yarn",
-          "type": "string",
-          "description": "Spark master uri. local | yarn-client | yarn-cluster | spark master address of standalone mode, ex) spark://master_host:7077"
+          "type": "string"
         },
         "spark.submit.deployMode": {
           "name": "spark.submit.deployMode",
           "value": "cluster",
-          "type": "string",
-          "description": "The deploy mode of Spark driver program, either \"client\" or \"cluster\", Which means to launch driver program locally (\"client\") or remotely (\"cluster\") on one of the nodes inside the cluster."
+          "type": "string"
         },
         "spark.app.name": {
           "name": "spark.app.name",
           "value": "zeppelin-app",
-          "type": "string",
-          "description": "The name of spark application."
+          "type": "string"
         },
         "spark.driver.cores": {
           "name": "spark.driver.cores",
           "value": "1",
-          "type": "number",
-          "description": "Number of cores to use for the driver process, only in cluster mode."
+          "type": "number"
         },
         "spark.driver.memory": {
           "name": "spark.driver.memory",
           "value": "640m",
-          "type": "string",
-          "description": "Amount of memory to use for the driver process, i.e. where SparkContext is initialized, in the same format as JVM memory strings with a size unit suffix (\"k\", \"m\", \"g\" or \"t\") (e.g. 512m, 2g)."
+          "type": "string"
         },
         "spark.executor.cores": {
           "name": "spark.executor.cores",
           "value": "2",
-          "type": "number",
-          "description": "The number of cores to use on each executor"
+          "type": "number"
         },
         "spark.executor.memory": {
           "name": "spark.executor.memory",
           "value": "640m",
-          "type": "string",
-          "description": "Executor memory per worker instance. ex) 512m, 32g"
+          "type": "string"
         },
         "spark.executor.instances": {
           "name": "spark.executor.instances",
           "value": "2",
-          "type": "number",
-          "description": "The number of executors for static allocation."
+          "type": "number"
         },
         "spark.files": {
           "name": "spark.files",
           "value": "",
-          "type": "string",
-          "description": "Comma-separated list of files to be placed in the working directory of each executor. Globs are allowed."
+          "type": "string"
         },
         "spark.jars": {
           "name": "spark.jars",
           "value": "",
-          "type": "string",
-          "description": "Comma-separated list of jars to include on the driver and executor classpaths. Globs are allowed."
+          "type": "string"
         },
         "spark.jars.packages": {
           "name": "spark.jars.packages",
           "value": "io.delta:delta-core_2.12:1.0.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2",
-          "type": "string",
-          "description": "Comma-separated list of Maven coordinates of jars to include on the driver and executor classpaths. The coordinates should be groupId:artifactId:version. If spark.jars.ivySettings is given artifacts will be resolved according to the configuration in the file, otherwise artifacts will be searched for in the local maven repo, then maven central and finally any additional remote repositories given by the command-line option --repositories."
+          "type": "string"
         },
         "zeppelin.spark.useHiveContext": {
           "name": "zeppelin.spark.useHiveContext",
           "value": true,
-          "type": "checkbox",
-          "description": "Use HiveContext instead of SQLContext if it is true. Enable hive for SparkSession."
+          "type": "checkbox"
         },
         "zeppelin.spark.run.asLoginUser": {
           "name": "zeppelin.spark.run.asLoginUser",
           "value": true,
-          "type": "checkbox",
-          "description": "Whether run spark job as the zeppelin login user, it is only applied when running spark job in hadoop yarn cluster and shiro is enabled"
+          "type": "checkbox"
         },
         "zeppelin.spark.printREPLOutput": {
           "name": "zeppelin.spark.printREPLOutput",
           "value": true,
-          "type": "checkbox",
-          "description": "Print REPL output"
+          "type": "checkbox"
         },
         "zeppelin.spark.maxResult": {
           "name": "zeppelin.spark.maxResult",
           "value": "1000",
-          "type": "number",
-          "description": "Max number of result to display."
+          "type": "number"
         },
         "zeppelin.spark.enableSupportedVersionCheck": {
           "name": "zeppelin.spark.enableSupportedVersionCheck",
           "value": true,
-          "type": "checkbox",
-          "description": "Whether checking supported spark version. Developer only setting, not for production use"
+          "type": "checkbox"
         },
         "zeppelin.spark.uiWebUrl": {
           "name": "zeppelin.spark.uiWebUrl",
           "value": "",
-          "type": "string",
-          "description": "Override Spark UI default URL. In Kubernetes mode, value can be Jinja template string with 3 template variables \u0027PORT\u0027, \u0027SERVICE_NAME\u0027 and \u0027SERVICE_DOMAIN\u0027. (ex: http://{{PORT}}-{{SERVICE_NAME}}.{{SERVICE_DOMAIN}})"
+          "type": "string"
         },
         "zeppelin.spark.ui.hidden": {
           "name": "zeppelin.spark.ui.hidden",
           "value": false,
-          "type": "checkbox",
-          "description": "Whether hide spark ui in zeppelin ui"
+          "type": "checkbox"
         },
         "spark.webui.yarn.useProxy": {
           "name": "spark.webui.yarn.useProxy",
           "value": true,
-          "type": "checkbox",
-          "description": "whether use yarn proxy url as spark weburl, e.g. http://localhost:8088/proxy/application_1583396598068_0004"
+          "type": "checkbox"
         },
         "zeppelin.spark.scala.color": {
           "name": "zeppelin.spark.scala.color",
           "value": true,
-          "type": "checkbox",
-          "description": "Whether enable color output of spark scala interpreter"
+          "type": "checkbox"
         },
         "zeppelin.spark.deprecatedMsg.show": {
           "name": "zeppelin.spark.deprecatedMsg.show",
           "value": true,
-          "type": "checkbox",
-          "description": "Whether show the spark deprecated message, spark 2.2 and before are deprecated. Zeppelin will display warning message by default"
+          "type": "checkbox"
         },
         "zeppelin.spark.concurrentSQL": {
           "name": "zeppelin.spark.concurrentSQL",
           "value": true,
-          "type": "checkbox",
-          "description": "Execute multiple SQL concurrently if set true."
+          "type": "checkbox"
         },
         "zeppelin.spark.concurrentSQL.max": {
           "name": "zeppelin.spark.concurrentSQL.max",
           "value": "10",
-          "type": "number",
-          "description": "Max number of SQL concurrently executed"
+          "type": "number"
         },
         "zeppelin.spark.sql.stacktrace": {
           "name": "zeppelin.spark.sql.stacktrace",
           "value": true,
-          "type": "checkbox",
-          "description": "Show full exception stacktrace for SQL queries if set to true."
+          "type": "checkbox"
         },
         "zeppelin.spark.sql.interpolation": {
           "name": "zeppelin.spark.sql.interpolation",
           "value": true,
-          "type": "checkbox",
-          "description": "Enable ZeppelinContext variable interpolation into spark sql"
+          "type": "checkbox"
         },
         "PYSPARK_PYTHON": {
           "name": "PYSPARK_PYTHON",
           "value": "./environment/bin/python",
-          "type": "string",
-          "description": "Python binary executable to use for PySpark in both driver and workers (default is python2.7 if available, otherwise python). Property `spark.pyspark.python` take precedence if it is set"
+          "type": "string"
         },
         "PYSPARK_DRIVER_PYTHON": {
           "name": "PYSPARK_DRIVER_PYTHON",
           "value": "./environment/bin/python",
-          "type": "string",
-          "description": "Python binary executable to use for PySpark in driver only (default is `PYSPARK_PYTHON`). Property `spark.pyspark.driver.python` take precedence if it is set"
+          "type": "string"
         },
         "zeppelin.pyspark.useIPython": {
           "name": "zeppelin.pyspark.useIPython",
           "value": true,
-          "type": "checkbox",
-          "description": "Whether use IPython when it is available"
+          "type": "checkbox"
         },
         "zeppelin.R.knitr": {
           "name": "zeppelin.R.knitr",
           "value": true,
-          "type": "checkbox",
-          "description": "Whether use knitr or not"
+          "type": "checkbox"
         },
         "zeppelin.R.cmd": {
           "name": "zeppelin.R.cmd",
           "value": "R",
-          "type": "string",
-          "description": "R binary executable path"
+          "type": "string"
         },
         "zeppelin.R.image.width": {
           "name": "zeppelin.R.image.width",
           "value": "100%",
-          "type": "number",
-          "description": "Image width of R plotting"
+          "type": "number"
         },
         "zeppelin.R.render.options": {
           "name": "zeppelin.R.render.options",
           "value": "out.format \u003d \u0027html\u0027, comment \u003d NA, echo \u003d FALSE, results \u003d \u0027asis\u0027, message \u003d F, warning \u003d F, fig.retina \u003d 2",
-          "type": "textarea",
-          "description": ""
+          "type": "textarea"
         },
         "zeppelin.R.shiny.portRange": {
           "name": "zeppelin.R.shiny.portRange",
           "value": ":",
-          "type": "string",
-          "description": "Shiny app would launch a web app at some port, this property is to specify the portRange via format \u0027\u003cstart\u003e:\u003cend\u003e\u0027, e.g. \u00275000:5001\u0027. By default it is \u0027:\u0027 which means any port"
+          "type": "string"
         },
         "zeppelin.kotlin.shortenTypes": {
           "name": "zeppelin.kotlin.shortenTypes",
           "value": true,
-          "type": "checkbox",
-          "description": "Show short types instead of full, e.g. List\u003cString\u003e or kotlin.collections.List\u003ckotlin.String\u003e"
+          "type": "checkbox"
         },
         "spark.yarn.dist.archives": {
           "name": "spark.yarn.dist.archives",
-          "value": "hdfs://namenode:9000/archives/pyspark3.7-20221125.tar.gz#environment",
+          "value": "hdfs://namenode:9000/archives/pyspark/pyspark3.7-20221125.tar.gz#environment",
           "type": "string"
         },
         "spark.yarn.queue": {
           "name": "spark.yarn.queue",
-          "value": "root.default",
-          "type": "textarea"
+          "value": "engineering",
+          "type": "string"
         },
         "spark.yarn.archive": {
           "name": "spark.yarn.archive",
-          "value": "hdfs://namenode:9000/archives/spark-3.1.2.zip",
+          "value": "hdfs://namenode:9000/archives/spark/spark-3.1.2.zip",
           "type": "string"
         },
         "spark.eventLog.enabled": {
@@ -1517,7 +1451,7 @@
         },
         "spark.eventLog.dir": {
           "name": "spark.eventLog.dir",
-          "value": "hdfs://namenode:9000/tmp/spark/logs",
+          "value": "hdfs://namenode:9000/apps/var/log/spark",
           "type": "string"
         },
         "spark.yarn.historyServer.allowTracking": {
@@ -1533,6 +1467,16 @@
         "spark.sql.catalog.spark_catalog": {
           "name": "spark.sql.catalog.spark_catalog",
           "value": "org.apache.spark.sql.delta.catalog.DeltaCatalog",
+          "type": "string"
+        },
+        "spark.kerberos.principal": {
+          "name": "spark.kerberos.principal",
+          "value": "zeppelin@SANDBOX.NET",
+          "type": "string"
+        },
+        "spark.kerberos.keytab": {
+          "name": "spark.kerberos.keytab",
+          "value": "/etc/kerberos/users/zeppelin.keytab",
           "type": "string"
         }
       },
@@ -2418,7 +2362,7 @@
         },
         "flink.execution.mode": {
           "name": "flink.execution.mode",
-          "value": "local",
+          "value": "yarn",
           "type": "string",
           "description": "Execution mode, it could be local|remote|yarn"
         },
