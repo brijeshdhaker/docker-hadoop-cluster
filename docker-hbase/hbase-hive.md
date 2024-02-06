@@ -7,35 +7,35 @@
     
     -- For HDP Server
     export HIVE_HOME=/usr/hdp/current/hive-client
-    $HIVE_HOME/bin/hive --auxpath $HIVE_HOME/lib/hive-hbase-handler.jar,$HIVE_HOME/lib/hbase-hadoop2-compat-2.0.0.3.0.1.0-187.jar,$HIVE_HOME/lib/hbase-client-2.0.0.3.0.1.0-187.jar,$HIVE_HOME/lib/hbase-server-2.0.0.3.0.1.0-187.jar,$HIVE_HOME/lib/hbase-common-2.0.0.3.0.1.0-187.jar,$HIVE_HOME/lib/hbase-mapreduce-2.0.0.3.0.1.0-187.jar,$HIVE_HOME/lib/hive-exec-3.1.0.3.0.1.0-187.jar,$HIVE_HOME/lib/guava-19.0.jar,$HIVE_HOME/lib/zookeeper-3.4.6.3.0.1.0-187.jar --files /opt/hbase-3.0.0/conf/hbase-site.xml --hiveconf hbase.master=hbase-master:60000
+    $HIVE_HOME/bin/hive --auxpath $HIVE_HOME/lib/hive-hbase-handler.jar,$HIVE_HOME/lib/hbase-hadoop2-compat-2.0.0.3.0.1.0-187.jar,$HIVE_HOME/lib/hbase-client-2.0.0.3.0.1.0-187.jar,$HIVE_HOME/lib/hbase-server-2.0.0.3.0.1.0-187.jar,$HIVE_HOME/lib/hbase-common-2.0.0.3.0.1.0-187.jar,$HIVE_HOME/lib/hbase-mapreduce-2.0.0.3.0.1.0-187.jar,$HIVE_HOME/lib/hive-exec-3.1.0.3.0.1.0-187.jar,$HIVE_HOME/lib/guava-19.0.jar,$HIVE_HOME/lib/zookeeper-3.4.6.3.0.1.0-187.jar --files /opt/hbase-2.4.6/conf/hbase-site.xml --hiveconf hbase.master=hbase-master:60000
 
 ## 1. add following property in hive-site.xml
 
 <property>
 <name>hive.aux.jars.pathh</name>
 <value>
-	file:///opt/hbase-3.0.0/lib/commons-lang3-3.9.jar,
-	file:///opt/hbase-3.0.0/lib/hbase-zookeeper-2.4.9.jar,
-	file:///opt/hbase-3.0.0/lib/hbase-mapreduce-2.4.9.jar,
-	file:///opt/hbase-3.0.0/lib/jackson-annotations-2.10.1.jar,
-	file:///opt/hbase-3.0.0/lib/hbase-shaded-miscellaneous-3.5.1.jar,
-	file:///opt/hbase-3.0.0/lib/jackson-databind-2.10.1.jar,
-	file:///opt/hbase-3.0.0/lib/hbase-hadoop-compat-2.4.9.jar,
-	file:///opt/hbase-3.0.0/lib/hbase-metrics-2.4.9.jar,
-	file:///opt/hbase-3.0.0/lib/hbase-client-2.4.9.jar,
-	file:///opt/hbase-3.0.0/lib/hbase-protocol-shaded-2.4.9.jar,
-	file:///opt/hbase-3.0.0/lib/jackson-core-2.10.1.jar,
-	file:///opt/hbase-3.0.0/lib/protobuf-java-2.5.0.jar,
-	file:///opt/hbase-3.0.0/lib/hbase-shaded-netty-3.5.1.jar,
-	file:///opt/hbase-3.0.0/lib/metrics-core-3.2.6.jar,
-	file:///opt/hbase-3.0.0/lib/hbase-server-2.4.9.jar,
-	file:///opt/hbase-3.0.0/lib/hbase-hadoop2-compat-2.4.9.jar,
-	file:///opt/hbase-3.0.0/lib/hbase-metrics-api-2.4.9.jar,
-	file:///opt/hbase-3.0.0/lib/hbase-common-2.4.9.jar,
-	file:///opt/hbase-3.0.0/lib/hbase-protocol-2.4.9.jar,
-	file:///opt/hbase-3.0.0/lib/hbase-shaded-protobuf-3.5.1.jar,
-	file:///opt/hbase-3.0.0/lib/client-facing-thirdparty/htrace-core4-4.2.0-incubating.jar,
-	file:///opt/hbase-3.0.0/lib/zookeeper-3.5.7.jar
+	file:///opt/hbase-2.4.6/lib/commons-lang3-3.9.jar,
+	file:///opt/hbase-2.4.6/lib/hbase-zookeeper-2.4.9.jar,
+	file:///opt/hbase-2.4.6/lib/hbase-mapreduce-2.4.9.jar,
+	file:///opt/hbase-2.4.6/lib/jackson-annotations-2.10.1.jar,
+	file:///opt/hbase-2.4.6/lib/hbase-shaded-miscellaneous-3.5.1.jar,
+	file:///opt/hbase-2.4.6/lib/jackson-databind-2.10.1.jar,
+	file:///opt/hbase-2.4.6/lib/hbase-hadoop-compat-2.4.9.jar,
+	file:///opt/hbase-2.4.6/lib/hbase-metrics-2.4.9.jar,
+	file:///opt/hbase-2.4.6/lib/hbase-client-2.4.9.jar,
+	file:///opt/hbase-2.4.6/lib/hbase-protocol-shaded-2.4.9.jar,
+	file:///opt/hbase-2.4.6/lib/jackson-core-2.10.1.jar,
+	file:///opt/hbase-2.4.6/lib/protobuf-java-2.5.0.jar,
+	file:///opt/hbase-2.4.6/lib/hbase-shaded-netty-3.5.1.jar,
+	file:///opt/hbase-2.4.6/lib/metrics-core-3.2.6.jar,
+	file:///opt/hbase-2.4.6/lib/hbase-server-2.4.9.jar,
+	file:///opt/hbase-2.4.6/lib/hbase-hadoop2-compat-2.4.9.jar,
+	file:///opt/hbase-2.4.6/lib/hbase-metrics-api-2.4.9.jar,
+	file:///opt/hbase-2.4.6/lib/hbase-common-2.4.9.jar,
+	file:///opt/hbase-2.4.6/lib/hbase-protocol-2.4.9.jar,
+	file:///opt/hbase-2.4.6/lib/hbase-shaded-protobuf-3.5.1.jar,
+	file:///opt/hbase-2.4.6/lib/client-facing-thirdparty/htrace-core4-4.2.0-incubating.jar,
+	file:///opt/hbase-2.4.6/lib/zookeeper-3.5.7.jar
 </value>
 </property>
 
