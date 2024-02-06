@@ -36,7 +36,6 @@ kdestroy
 
 
 delete_principal root@SANDBOX.NET
-delete_principal brijeshdhaker@SANDBOX.NET
 delete_principal hdfs@SANDBOX.NET
 delete_principal yarn@SANDBOX.NET
 delete_principal mapred@SANDBOX.NET
@@ -45,7 +44,6 @@ delete_principal hive@SANDBOX.NET
 change_password brijeshdhaker@SANDBOX.NET
 
 add_principal root@SANDBOX.NET
-add_principal brijeshdhaker@SANDBOX.NET
 add_principal hdfs@SANDBOX.NET
 add_principal yarn@SANDBOX.NET
 add_principal mapred@SANDBOX.NET
@@ -87,14 +85,6 @@ wkt /etc/kerberos/users/hdfs.keytab   	-- password kuser
 
 add_entry -password -p hive@SANDBOX.NET -k 1 -f
 wkt /etc/kerberos/users/hive.keytab
-
-#
-kinit -k -t /etc/kerberos/keytabs/root.keytab root@SANDBOX.NET
-kinit -k -t /etc/kerberos/users/brijeshdhaker.keytab brijeshdhaker@SANDBOX.NET
-
-
-kinit -k -t /etc/kerberos/keytabs/hdfs.service.keytab hdfs/thinkpad.sandbox.net@SANDBOX.NET
-kinit -k -t /etc/kerberos/keytabs/hive.service.keytab hive/hiveserver.sandbox.net@SANDBOX.NET
 
 # OS Users
 klist -e -k -t /etc/kerberos/users/root.keytab

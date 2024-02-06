@@ -1,9 +1,9 @@
 #
-# docker build -t brijeshdhaker/hadoop-namenode:3.2.1 -f docker-hadoop/namenode/Dockerfile .
-# docker push brijeshdhaker/hadoop-namenode:3.2.1
+# docker build -t brijeshdhaker/hadoop-namenode:3.1.1 -f docker-hadoop/namenode/Dockerfile .
+# docker push brijeshdhaker/hadoop-namenode:3.1.1
 #
 
-FROM brijeshdhaker/hadoop-base:3.2.1
+FROM brijeshdhaker/hadoop-base:3.1.1
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 HEALTHCHECK CMD curl -f http://localhost:9870/ || exit 1

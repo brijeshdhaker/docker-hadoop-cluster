@@ -1,9 +1,9 @@
 #
-# docker build -t brijeshdhaker/hadoop-historyserver:3.2.1 -f docker-hadoop/historyserver/Dockerfile .
-# docker push brijeshdhaker/hadoop-historyserver:3.2.1
+# docker build -t brijeshdhaker/hadoop-historyserver:3.1.1 -f docker-hadoop/historyserver/Dockerfile .
+# docker push brijeshdhaker/hadoop-historyserver:3.1.1
 #
 
-FROM brijeshdhaker/hadoop-base:3.2.1
+FROM brijeshdhaker/hadoop-base:3.1.1
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 

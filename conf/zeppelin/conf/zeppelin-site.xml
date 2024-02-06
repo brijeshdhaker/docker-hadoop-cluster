@@ -21,7 +21,7 @@
 
 <property>
   <name>zeppelin.server.addr</name>
-  <value>127.0.0.1</value>
+  <value>0.0.0.0</value>
   <description>Server binding address</description>
 </property>
 

@@ -13,7 +13,7 @@ echo ""
 echo "Adding OS users kerberos principals."
 echo ""
 #
-OS_USERS=("root" "brijeshdhaker" "hdfs" "yarn" "mapred" "hive" "hbase" "spark" "zeppelin")
+OS_USERS=("sandbox" "brijeshdhaker" "hdfs" "yarn" "mapred" "hive" "hbase" "spark" "zeppelin")
 for ou in "${OS_USERS[@]}"
 do
   # delete existing keytab files

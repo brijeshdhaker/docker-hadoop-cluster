@@ -1,8 +1,8 @@
 #
-# docker build -t brijeshdhaker/tezui:0.9.2 -f docker-tezui/Dockerfile .
-# docker push brijeshdhaker/tezui:0.9.2
+# docker build -t brijeshdhaker/tezui:0.9.1 -f docker-tezui/Dockerfile .
+# docker push brijeshdhaker/tezui:0.9.1
 
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
@@ -20,7 +20,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
 
 # Add Drivers & Other Libs
 COPY resources/libs/jetty-runner-9.2.11.v20150529.jar $BASE_DIR/tez/
-COPY resources/tars/tez-ui-0.9.2.war $BASE_DIR/tez/
+COPY resources/tars/tez-ui-0.9.1.war $BASE_DIR/tez/
 RUN chmod +x $BASE_DIR/tez/*.*
 
 #
