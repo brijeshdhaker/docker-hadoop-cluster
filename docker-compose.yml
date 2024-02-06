@@ -712,7 +712,7 @@ services:
   # Zeppelin Notebook
   #
   zeppelin:
-    image: apache/zeppelin:0.8.2
+    image: apache/zeppelin:0.10.1
     container_name: zeppelin
     hostname: zeppelin.sandbox.net
     environment:
@@ -725,7 +725,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/kerberos:/etc/kerberos
-#      - /opt/zeppelin/conf:/opt/zeppelin/conf
+      - /opt/zeppelin/conf:/opt/zeppelin/conf
       - sandbox_hadoop_311:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - sandbox_hbase_246:/opt/hbase

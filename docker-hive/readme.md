@@ -105,6 +105,7 @@ set tez.queue.name = true;
 bin/hive --hiveconf tez.queue.name=engineering
 
 dfs -ls /warehouse/tablespace/managed/hive ;
+dfs -ls /warehouse/tablespace/external/hive ;
 
 #
 #
@@ -171,7 +172,10 @@ CREATE EXTERNAL TABLE e_students(
     gpa  DOUBLE
 ) 
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'STORED AS TEXTFILE 
-LOCATION '/user/brijeshdhaker/student';
+LOCATION '/warehouse/tablespace/managed/hive';
+
+dfs -ls /warehouse/tablespace/managed/hive ;
+
 
 CREATE EXTERNAL TABLE e_students(
     name STRING,
@@ -179,6 +183,8 @@ CREATE EXTERNAL TABLE e_students(
     gpa  DOUBLE
 )
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'STORED AS TEXTFILE;
+
+dfs -ls /warehouse/tablespace/external/hive/ ;
 
 #
 describe extended e_students;
@@ -367,16 +373,24 @@ DESCRIBE FORMATTED hive_partitioned_table;
 ## Parquet
 # 
 
-create external table nation_s3_parquet
-(N_NATIONKEY INT, N_NAME STRING, N_REGIONKEY INT, N_COMMENT STRING)
+create external table nation_s3_parquet (
+    N_NATIONKEY INT, 
+    N_NAME STRING, 
+    N_REGIONKEY INT, 
+    N_COMMENT STRING
+)
 STORED AS Parquet
 LOCATION  's3://qtest-qubole-com/datasets/presto/functional/nation_s3_orc'
 
 #
 ## ORC Tables : The Optimized Row Columnar (ORC) file format offers an efficient way for storing Hive data.
 #
-create external table nation_s3_orc
-(N_NATIONKEY INT, N_NAME STRING, N_REGIONKEY INT, N_COMMENT STRING)
+create external table nation_s3_orc(
+    N_NATIONKEY INT, 
+    N_NAME STRING, 
+    N_REGIONKEY INT, 
+    N_COMMENT STRING
+)
 STORED AS ORC
 LOCATION  's3://qtest-qubole-com/datasets/presto/functional/nation_s3_orc'
 TBLPROPERTIES ("orc.compress"="SNAPPY");

@@ -52,3 +52,8 @@ You can start experimenting with notebooks by opening the `wordcount-notebooks` 
 * Once in the zeppelin ui, choose any of the tutorials and start experimenting.
 * The custom tutorial notebook written for this repository are the ones under the `workcount-notebooks`
 
+
+docker run -u $(id -u) -p 8080:8080 --rm -v $PWD/logs:/logs -v $PWD/notebook:/notebook \
+-v /usr/lib/spark-2.4.7:/opt/spark -v /usr/lib/flink-1.12.2:/opt/flink \
+-e FLINK_HOME=/opt/flink -e SPARK_HOME=/opt/spark \
+-e ZEPPELIN_LOG_DIR='/logs' -e ZEPPELIN_NOTEBOOK_DIR='/notebook' --name zeppelin apache/zeppelin:0.10.1
