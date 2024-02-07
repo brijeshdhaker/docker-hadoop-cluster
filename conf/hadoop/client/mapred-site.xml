@@ -27,7 +27,7 @@
     </property>
     <property>
         <name>mapreduce.jobhistory.keytab</name>
-        <value>/etc/kerberos/keytabs/mapred.service.keytab</value>
+        <value>/apps/security/keytabs/services/mapred.service.keytab</value>
     </property>
     <property>
         <name>yarn.app.mapreduce.am.resource.cpu-vcores</name>

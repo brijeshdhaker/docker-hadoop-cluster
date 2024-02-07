@@ -35,7 +35,7 @@ producer = Producer({
     'sasl.mechanism': 'GSSAPI',
     'security.protocol': 'SASL_SSL',
     'sasl.kerberos.service.name': 'kafka',
-    'sasl.kerberos.keytab': '/etc/kerberos/keytabs/kafkaclient.keytab',
+    'sasl.kerberos.keytab': '/apps/security/keytabs/services/kafkaclient.keytab',
     'sasl.kerberos.principal': 'kafkaclient@SANDBOX.NET',
     'ssl.key.location': '/etc/kafka/secrets/clients.key',
     'ssl.key.password': 'confluent',

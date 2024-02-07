@@ -3,7 +3,7 @@
 
 ${SPARK_HOME}/bin/spark-submit \
 --class org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer \
---driver-java-options "-Dfile.encoding=UTF-8 -Dlog4j.configuration=log4j_yarn_cluster.properties -Djava.security.krb5.conf=/etc/kerberos/krb5.conf" \
+--driver-java-options "-Dfile.encoding=UTF-8 -Dlog4j.configuration=log4j_yarn_cluster.properties -Djava.security.krb5.conf=/etc/krb5.conf" \
 --conf spark.yarn.historyServer.allowTracking=true \
 --conf spark.yarn.dist.archives=hdfs://namenode:9000/archives/pyspark/pyspark3.7-20221125.tar.gz#environment \
 --conf spark.yarn.isPython=true \
@@ -25,7 +25,7 @@ ${SPARK_HOME}/bin/spark-submit \
 --conf spark.webui.yarn.useProxy=true \
 --conf spark.executor.instances=2 \
 --conf spark.app.name=zeppelin-app \
---conf spark.kerberos.keytab=/etc/kerberos/users/zeppelin.keytab \
+--conf spark.kerberos.keytab=/apps/security/keytabs/users/zeppelin.keytab \
 --conf spark.kerberos.principal=zeppelin@SANDBOX.NET \
 --conf spark.eventLog.dir=hdfs://namenode:9000/apps/var/log/spark \
 /opt/spark/examples/jars/spark-examples_2.12-3.1.2.jar 10
@@ -40,7 +40,7 @@ ${SPARK_HOME}/bin/spark-submit --class org.apache.spark.examples.SparkPi \
     --executor-memory 640m \
     --executor-cores 1 \
     --queue thequeue \
-    --keytab /etc/kerberos/users/zeppelin.keytab \
+    --keytab /apps/security/keytabs/users/zeppelin.keytab \
     --principal zeppelin@SANDBOX.NET \
     examples/jars/spark-examples*.jar 10
     
@@ -58,10 +58,10 @@ ${SPARK_HOME}/bin/spark-submit \
 --conf "spark.jars.packages=io.delta:delta-core_2.12:1.0.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2" \
 --conf "spark.security.credentials.hive.enabled=false" \
 --conf "spark.security.credentials.hbase.enabled=false" \
---conf "spark.kerberos.keytab=/etc/kerberos/users/zeppelin.keytab" \
+--conf "spark.kerberos.keytab=/apps/security/keytabs/users/zeppelin.keytab" \
 --conf "spark.kerberos.principal=zeppelin@SANDBOX.NET" \
---conf "spark.driver.extraJavaOptions='-Divy.cache.dir=/tmp -Divy.home=/tmp -Djava.security.krb5.conf=/etc/kerberos/krb5.conf'" \
---conf "spark.executor.extraJavaOptions='-Djava.security.krb5.conf=/etc/kerberos/krb5.conf'" \
+--conf "spark.driver.extraJavaOptions='-Divy.cache.dir=/tmp -Divy.home=/tmp -Djava.security.krb5.conf=/etc/krb5.conf'" \
+--conf "spark.executor.extraJavaOptions='-Djava.security.krb5.conf=/etc/krb5.conf'" \
 --conf "spark.eventLog.enabled=true" \
 --conf "spark.eventLog.dir=hdfs://namenode:9000/apps/var/log/spark" \
 --conf "spark.yarn.historyServer.allowTracking=true" \

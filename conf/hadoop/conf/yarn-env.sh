@@ -54,7 +54,7 @@
 # export YARN_RESOURCEMANAGER_OPTS="-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:${HADOOP_LOG_DIR}/gc-rm.log-$(date +'%Y%m%d%H%M')"
 #
 #
-export YARN_RESOURCEMANAGER_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
+export YARN_RESOURCEMANAGER_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
 
 ###
 # Node Manager specific parameters
@@ -73,7 +73,7 @@ export YARN_RESOURCEMANAGER_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.c
 #
 # See ResourceManager for some examples
 #
-export YARN_NODEMANAGER_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
+export YARN_NODEMANAGER_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
 
 ###
 # TimeLineServer specific parameters
@@ -92,7 +92,7 @@ export YARN_NODEMANAGER_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
 #
 # See ResourceManager for some examples
 #
-export YARN_TIMELINESERVER_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
+export YARN_TIMELINESERVER_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
 
 ###
 # TimeLineReader specific parameters
@@ -123,7 +123,7 @@ export YARN_TIMELINESERVER_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.co
 #
 # See ResourceManager for some examples
 #
-export YARN_PROXYSERVER_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
+export YARN_PROXYSERVER_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
 
 ###
 # Shared Cache Manager specific parameters

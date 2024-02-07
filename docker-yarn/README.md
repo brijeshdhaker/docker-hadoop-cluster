@@ -102,7 +102,7 @@ $SPARK_HOME/bin/spark-submit \
 --executor-memory 640M \
 --num-executors 2 \
 --principal brijeshdhaker@SANDBOX.NET \
---keytab /etc/kerberos/keytabs/brijeshdhaker.keytab \
+--keytab /apps/security/keytabs/services/brijeshdhaker.keytab \
 --conf "spark.yarn.archive=hdfs://namenode.sandbox.net:9000/archives/spark-3.1.2.zip" \
 --conf "spark.yarn.queue=engineering" \
 --conf "spark.eventLog.enabled=true" \

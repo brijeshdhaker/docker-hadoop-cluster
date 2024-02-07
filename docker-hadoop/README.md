@@ -104,7 +104,7 @@ $SPARK_HOME/bin/spark-submit \
 --executor-memory 640M \
 --num-executors 2 \
 --principal brijeshdhaker@SANDBOX.NET \
---keytab /etc/kerberos/users/brijeshdhaker.keytab \
+--keytab /apps/security/keytabs/users/brijeshdhaker.keytab \
 --conf "spark.yarn.archive=hdfs://namenode.sandbox.net:9000/archives/spark-3.1.2.zip" \
 --conf "spark.yarn.queue=engineering" \
 --conf "spark.eventLog.enabled=true" \
@@ -125,7 +125,7 @@ $SPARK_HOME/bin/spark-submit \
 --conf "spark.eventLog.enabled=true" \
 --conf "spark.eventLog.dir=hdfs://namenode.sandbox.net:9000/apps/var/log/spark" \
 --conf "hadoop.yarn.timeline-service.enabled=false" \
---conf "spark.kerberos.keytab=/etc/kerberos/users/brijeshdhaker.keytab" \
+--conf "spark.kerberos.keytab=/apps/security/keytabs/users/brijeshdhaker.keytab" \
 --conf "spark.kerberos.principal=brijeshdhaker@SANDBOX.NET" \
 $SPARK_HOME/examples/jars/spark-examples_*.jar 1000
 

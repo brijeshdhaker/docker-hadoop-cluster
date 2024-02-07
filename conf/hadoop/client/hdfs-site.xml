@@ -7,11 +7,11 @@
     </property>
     <property>
         <name>dfs.datanode.keytab.file</name>
-        <value>/etc/kerberos/keytabs/hdfs.service.keytab</value>
+        <value>/apps/security/keytabs/services/hdfs.service.keytab</value>
     </property>
     <property>
         <name>dfs.secondary.namenode.keytab.file</name>
-        <value>/etc/kerberos/keytab/hdfs.service.keytab</value>
+        <value>/apps/security/keytabs/services/hdfs.service.keytab</value>
     </property>
     <property>
         <name>dfs.replication</name>
@@ -39,11 +39,11 @@
     </property>
     <property>
         <name>dfs.namenode.keytab.file</name>
-        <value>/etc/kerberos/keytabs/hdfs.service.keytab</value>
+        <value>/apps/security/keytabs/services/hdfs.service.keytab</value>
     </property>
     <property>
         <name>dfs.web.authentication.kerberos.keytab</name>
-        <value>/etc/kerberos/keytabs/spnego.service.keytab</value>
+        <value>/apps/security/keytabs/services/spnego.service.keytab</value>
     </property>
     <property>
         <name>dfs.datanode.address</name>

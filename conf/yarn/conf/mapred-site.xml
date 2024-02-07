@@ -9,7 +9,7 @@
 	<property><name>mapred.child.java.opts</name><value>-Xmx4096m</value></property>
 	<property><name>mapreduce.framework.name</name><value>yarn</value></property>
 	<property><name>mapreduce.jobhistory.address</name><value>0.0.0.0:10020</value></property>
-	<property><name>mapreduce.jobhistory.keytab</name><value>/etc/kerberos/keytabs/mapred.service.keytab</value></property>
+	<property><name>mapreduce.jobhistory.keytab</name><value>/apps/security/keytabs/services/mapred.service.keytab</value></property>
 	<property><name>mapreduce.map.java.opts</name><value>-Djava.net.preferIPv4Stack=true -Xmx1536m</value></property>
 	<property><name>yarn.app.mapreduce.am.resource.cpu-vcores</name><value>1</value></property>
 	<property><name>mapreduce.jobhistory.webapp.address</name><value>0.0.0.0:19888</value></property>

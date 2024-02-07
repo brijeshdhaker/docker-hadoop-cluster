@@ -39,7 +39,7 @@
 
     <property>
         <name>hive.metastore.kerberos.keytab.file</name>
-        <value>/etc/kerberos/keytabs/hive.service.keytab</value>
+        <value>/apps/security/keytabs/services/hive.service.keytab</value>
     </property>
 
     <property>
@@ -109,7 +109,7 @@
     </property>
     <property>
         <name>hive.server2.authentication.kerberos.keytab</name>
-        <value>/etc/kerberos/keytabs/hive.service.keytab</value>
+        <value>/apps/security/keytabs/services/hive.service.keytab</value>
     </property>
     <property>
         <name>javax.jdo.option.ConnectionURL</name>

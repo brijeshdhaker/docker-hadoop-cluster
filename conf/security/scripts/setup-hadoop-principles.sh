@@ -15,13 +15,13 @@ echo ""
 OS_USERS=("brijeshdhaker" "hdfs" "yarn" "mapred" "hive" "spark" "hbase" "zookeeper" "zeppelin")
 for ou in "${OS_USERS[@]}"
 do
-  rm -Rf /etc/kerberos/users/$ou.keytab
+  rm -Rf /apps/security/keytabs/users/$ou.keytab
   kadmin.local -q "delete_principal -force $ou@$REALM"
   kadmin.local -q "addprinc -randkey $ou@$REALM"
   ktmerge="change_password $ou@$REALM\n$KUSERS_PASSWORD\n$KUSERS_PASSWORD\n"
   echo -e "$ktmerge" | kadmin.local
-  kadmin.local -q "xst -norandkey -k /etc/kerberos/users/$ou.keytab $ou@$REALM"
-  chmod 444 /etc/kerberos/users/$ou.keytab
+  kadmin.local -q "xst -norandkey -k /apps/security/keytabs/users/$ou.keytab $ou@$REALM"
+  chmod 444 /apps/security/keytabs/users/$ou.keytab
 done
 
 #
@@ -55,58 +55,58 @@ do
   do
       svc_principal=$svc/$node@$REALM
       keytab=$svc.service.$node.keytab
-      rm -Rf /etc/kerberos/keytabs/$keytab
+      rm -Rf /apps/security/keytabs/services/$keytab
       kadmin.local -q "delete_principal -force $svc_principal"
       kadmin.local -q "addprinc -randkey $svc_principal"
       ktmerge="change_password $svc_principal\n$KUSERS_PASSWORD\n$KUSERS_PASSWORD\n"
       echo -e "$ktmerge" | kadmin.local
-      kadmin.local -q "xst -norandkey -k /etc/kerberos/keytabs/$keytab $svc_principal"
-      chmod 444 /etc/kerberos/keytabs/$keytab
+      kadmin.local -q "xst -norandkey -k /apps/security/keytabs/services/$keytab $svc_principal"
+      chmod 444 /apps/security/keytabs/services/$keytab
   done
 done
 
 # Create unmerged keytab
 for svc in "${SERVICES[@]}"
 do
-  rm -Rf /etc/kerberos/keytabs/$svc.keytab
+  rm -Rf /apps/security/keytabs/services/$svc.keytab
   ktunmerged=""
   for node in "${SANDBOX_NODES[@]}"
   do
-      ktunmerged+="rkt /etc/kerberos/keytabs/$svc.service.$node.keytab\n"
+      ktunmerged+="rkt /apps/security/keytabs/services/$svc.service.$node.keytab\n"
   done
-  ktunmerged+="wkt /etc/kerberos/keytabs/$svc.keytab\nquit"
+  ktunmerged+="wkt /apps/security/keytabs/services/$svc.keytab\nquit"
   echo ""
   echo -e "$ktunmerged" | ktutil
-  chmod 444 /etc/kerberos/keytabs/$svc.keytab
+  chmod 444 /apps/security/keytabs/services/$svc.keytab
 done
 
 # Create merged keytab for services
 UNMERGED_SERVICES=("hdfs" "yarn" "mapred" "hive" "spark" "hbase" "zookeeper" "zeppelin")
 for usvc in "${UNMERGED_SERVICES[@]}"
 do
-  rm -Rf /etc/kerberos/keytabs/$usvc.service.keytab
+  rm -Rf /apps/security/keytabs/services/$usvc.service.keytab
   ktmerge=""
-  ktmerge+="rkt /etc/kerberos/keytabs/$usvc.keytab\n"
-  ktmerge+="rkt /etc/kerberos/keytabs/HTTP.keytab\n"
-  ktmerge+="rkt /etc/kerberos/keytabs/host.keytab\n"
-  ktmerge+="wkt /etc/kerberos/keytabs/$usvc.service.keytab\nquit"
+  ktmerge+="rkt /apps/security/keytabs/services/$usvc.keytab\n"
+  ktmerge+="rkt /apps/security/keytabs/services/HTTP.keytab\n"
+  ktmerge+="rkt /apps/security/keytabs/services/host.keytab\n"
+  ktmerge+="wkt /apps/security/keytabs/services/$usvc.service.keytab\nquit"
   echo ""
   echo -e "$ktmerge" | ktutil
-  chmod 444 /etc/kerberos/keytabs/$usvc.service.keytab
+  chmod 444 /apps/security/keytabs/services/$usvc.service.keytab
 done
 
 # Setup spnego.service.keytab
-rm -Rf /etc/kerberos/keytabs/host.service.keytab
-cp /etc/kerberos/keytabs/host.keytab /etc/kerberos/keytabs/host.service.keytab
-chmod 444 /etc/kerberos/keytabs/host.service.keytab
+rm -Rf /apps/security/keytabs/services/host.service.keytab
+cp /apps/security/keytabs/services/host.keytab /apps/security/keytabs/services/host.service.keytab
+chmod 444 /apps/security/keytabs/services/host.service.keytab
 
-rm -Rf /etc/kerberos/keytabs/HTTP.service.keytab
-cp /etc/kerberos/keytabs/HTTP.keytab /etc/kerberos/keytabs/HTTP.service.keytab
-chmod 444 /etc/kerberos/keytabs/HTTP.service.keytab
+rm -Rf /apps/security/keytabs/services/HTTP.service.keytab
+cp /apps/security/keytabs/services/HTTP.keytab /apps/security/keytabs/services/HTTP.service.keytab
+chmod 444 /apps/security/keytabs/services/HTTP.service.keytab
 
-rm -Rf /etc/kerberos/keytabs/spnego.service.keytab
-cp /etc/kerberos/keytabs/HTTP.keytab /etc/kerberos/keytabs/spnego.service.keytab
-chmod 444 /etc/kerberos/keytabs/spnego.service.keytab
+rm -Rf /apps/security/keytabs/services/spnego.service.keytab
+cp /apps/security/keytabs/services/HTTP.keytab /apps/security/keytabs/services/spnego.service.keytab
+chmod 444 /apps/security/keytabs/services/spnego.service.keytab
 
 #
 echo "Principles successfully generated."

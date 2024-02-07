@@ -60,8 +60,8 @@
 # - SPARK_DAEMON_CLASSPATH, to set the classpath for all daemons
 # - SPARK_PUBLIC_DNS, to set the public dns name of the master or workers
 
-export KRB5_CONFIG="/etc/kerberos/krb5.conf"
-export SPARK_HISTORY_OPTS="-Dspark.history.kerberos.enabled=true -Dspark.history.kerberos.principal=spark/sparkhistory.sandbox.net@SANDBOX.NET -Dspark.history.kerberos.keytab=/etc/kerberos/keytabs/spark.service.keytab"
+export KRB5_CONFIG="/etc/krb5.conf"
+export SPARK_HISTORY_OPTS="-Dspark.history.kerberos.enabled=true -Dspark.history.kerberos.principal=spark/sparkhistory.sandbox.net@SANDBOX.NET -Dspark.history.kerberos.keytab=/apps/security/keytabs/services/spark.service.keytab"
 
 # Options for launcher
 # - SPARK_LAUNCHER_OPTS, to set config properties and Java options for the launcher (e.g. "-Dx=y")

@@ -36,7 +36,7 @@ producer = Producer({
     'security.protocol': 'SASL_PLAINTEXT',
     'sasl.kerberos.service.name': 'kafka',
     'sasl.kerberos.principal': 'producer/kafkaclients.sandbox.net@SANDBOX.NET',
-    'sasl.kerberos.keytab': '/etc/kerberos/keytabs/producer.keytab'
+    'sasl.kerberos.keytab': '/apps/security/keytabs/services/producer.keytab'
 })
 
 #

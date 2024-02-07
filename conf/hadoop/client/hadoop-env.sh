@@ -100,7 +100,7 @@ export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true -Dsun.security.krb5.debug=fa
 # and clients (i.e., hdfs dfs -blah).  These get appended to HADOOP_OPTS for
 # such commands.  In most cases, # this should be left empty and
 # let users supply it on the command line.
-export HADOOP_CLIENT_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
+export HADOOP_CLIENT_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
 
 #
 # A note about classpaths.
@@ -429,7 +429,7 @@ export HADOOP_SECURE_LOG=${HADOOP_LOG_DIR}
 # server jvm.
 # export HADOOP_REGISTRYDNS_SECURE_EXTRA_OPTS="-jvm server"
 #
-export KRB5_CONFIG="/etc/kerberos/krb5.conf"
+export KRB5_CONFIG="/etc/krb5.conf"
 # export KRB5CCNAME="FILE:$HOME/krb5cc_$(id -u)"
 # export KINIT_KEYTAB=/etc/kerberos/keytab/hdfs.service.keytab
 # export KINIT_PRINCIPAL=hdfs/_HOST@SANDBOX.NET

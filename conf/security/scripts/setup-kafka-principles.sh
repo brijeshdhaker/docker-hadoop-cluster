@@ -34,11 +34,11 @@ declare -A KAFKA_USERS=(
 for key in "${!KAFKA_USERS[@]}"
 do
   # delete existing keytab files
-  rm -Rf /etc/kerberos/keytabs/$key.keytab
+  rm -Rf /apps/security/keytabs/services/$key.keytab
   kadmin.local -q "delete_principal -force ${KAFKA_USERS[$key]}@$REALM"
   kadmin.local -q "addprinc -randkey ${KAFKA_USERS[$key]}@$REALM"
-  kadmin.local -q "ktadd -k /etc/kerberos/keytabs/$key.keytab ${KAFKA_USERS[$key]}@$REALM"
-  chmod 444 /etc/kerberos/keytabs/$key.keytab
+  kadmin.local -q "ktadd -k /apps/security/keytabs/services/$key.keytab ${KAFKA_USERS[$key]}@$REALM"
+  chmod 444 /apps/security/keytabs/services/$key.keytab
 done
 
 #
@@ -49,14 +49,14 @@ echo ""
 #
 # Merge Keytab
 #
-rm -Rf /etc/kerberos/keytabs/kafka.keytab
+rm -Rf /apps/security/keytabs/services/kafka.keytab
 ktmerge=""
-ktmerge+="rkt /etc/kerberos/keytabs/zookeeper.keytab\n"
-ktmerge+="rkt /etc/kerberos/keytabs/zkclient.keytab\n"
-ktmerge+="rkt /etc/kerberos/keytabs/kafkabroker.keytab\n"
-ktmerge+="rkt /etc/kerberos/keytabs/schemaregistry.keytab\n"
-ktmerge+="rkt /etc/kerberos/keytabs/kafkaclient.keytab\n"
-ktmerge+="wkt /etc/kerberos/keytabs/kafka.keytab\nquit"
+ktmerge+="rkt /apps/security/keytabs/services/zookeeper.keytab\n"
+ktmerge+="rkt /apps/security/keytabs/services/zkclient.keytab\n"
+ktmerge+="rkt /apps/security/keytabs/services/kafkabroker.keytab\n"
+ktmerge+="rkt /apps/security/keytabs/services/schemaregistry.keytab\n"
+ktmerge+="rkt /apps/security/keytabs/services/kafkaclient.keytab\n"
+ktmerge+="wkt /apps/security/keytabs/services/kafka.keytab\nquit"
 echo ""
 echo -e "$ktmerge" | ktutil
-chmod 444 /etc/kerberos/keytabs/kafka.keytab
+chmod 444 /apps/security/keytabs/services/kafka.keytab

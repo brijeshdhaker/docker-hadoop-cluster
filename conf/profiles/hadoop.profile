@@ -36,16 +36,16 @@ export HADOOP_COMMON_HOME=/opt/hadoop
 #export HADOOP_HDFS_HOME=/opt/hadoop
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${HADOOP_HOME}/lib/native
 export PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin:${HADOOP_HDFS_HOME}/bin:${HADOOP_HDFS_HOME}/sbin:${YARN_HOME}/bin:${YARN_HOME}/sbin:${HADOOP_MAPRED_HOME}/bin:${HADOOP_MAPRED_HOME}/sbin
-export HADOOP_CLIENT_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
+export HADOOP_CLIENT_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
 
 #
 export YARN_HOME=/opt/hadoop
 export YARN_SITE_DIR=/opt/hadoop/etc/hadoop
-export YARN_OPTS="-Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
+export YARN_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
 
 # Kerberos
-export KRB5_CONFIG=/etc/kerberos/krb5.conf
+export KRB5_CONFIG=/etc/krb5.conf
 export KRB5CCNAME="FILE:$HOME/krb5cc_$(id -u)"
-kinit -k -t /etc/kerberos/users/$USER.keytab $USER@SANDBOX.NET
+kinit -k -t /apps/security/keytabs/users/$USER.keytab $USER@SANDBOX.NET
 
 

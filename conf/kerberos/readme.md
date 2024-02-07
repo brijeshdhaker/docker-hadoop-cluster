@@ -20,18 +20,18 @@ kadmin.local -q "getprinc brijeshdhaker@SANDBOX.NET"
 
 kadmin.local -q "delete_principal brijeshdhaker@SANDBOX.NET"
 kadmin.local -q "addprinc -randkey brijeshdhaker@SANDBOX.NET"
-kadmin.local -q "ktadd -k /etc/kerberos/users/brijeshdhaker.keytab brijeshdhaker@SANDBOX.NET"
+kadmin.local -q "ktadd -k /apps/security/keytabs/users/brijeshdhaker.keytab brijeshdhaker@SANDBOX.NET"
 kadmin.local -q "getprinc brijeshdhaker@SANDBOX.NET"
-klist -k -t /etc/kerberos/users/brijeshdhaker.keytab
-kinit -k -t /etc/kerberos/users/brijeshdhaker.keytab zeppelin@SANDBOX.NET
+klist -k -t /apps/security/keytabs/users/brijeshdhaker.keytab
+kinit -k -t /apps/security/keytabs/users/brijeshdhaker.keytab zeppelin@SANDBOX.NET
 kdestroy
 
 kadmin.local -q "delete_principal zeppelin@SANDBOX.NET"
 kadmin.local -q "addprinc -randkey zeppelin@SANDBOX.NET"
-kadmin.local -q "ktadd -k /etc/kerberos/users/zeppelin.keytab zeppelin@SANDBOX.NET"
+kadmin.local -q "ktadd -k /apps/security/keytabs/users/zeppelin.keytab zeppelin@SANDBOX.NET"
 kadmin.local -q "getprinc zeppelin@SANDBOX.NET"
-klist -k -t /etc/kerberos/users/zeppelin.keytab
-kinit -k -t /etc/kerberos/users/zeppelin.keytab zeppelin@SANDBOX.NET
+klist -k -t /apps/security/keytabs/users/zeppelin.keytab
+kinit -k -t /apps/security/keytabs/users/zeppelin.keytab zeppelin@SANDBOX.NET
 kdestroy
 
 
@@ -72,42 +72,42 @@ Password for brijeshdhaker@SANDBOX.NET:
 ktutil
 
 add_entry -password -p root@SANDBOX.NET -k 1 -f
-wkt /etc/kerberos/keytabs/root.keytab  	-- password root
+wkt /apps/security/keytabs/services/root.keytab  	-- password root
 
 add_entry -password -p HTTP/nginx.sandbox.net@SANDBOX.NET -k 1 -f
-wkt /etc/kerberos/keytabs/nginx.service.keytab   	-- password kuser
+wkt /apps/security/keytabs/services/nginx.service.keytab   	-- password kuser
 
 add_entry -password -p brijeshdhaker@SANDBOX.NET -k 1 -f
-wkt /etc/kerberos/users/brijeshdhaker.keytab   	-- password kuser
+wkt /apps/security/keytabs/users/brijeshdhaker.keytab   	-- password kuser
 
 add_entry -password -p hdfs@SANDBOX.NET -k 1 -f
-wkt /etc/kerberos/users/hdfs.keytab   	-- password kuser
+wkt /apps/security/keytabs/users/hdfs.keytab   	-- password kuser
 
 add_entry -password -p hive@SANDBOX.NET -k 1 -f
-wkt /etc/kerberos/users/hive.keytab
+wkt /apps/security/keytabs/users/hive.keytab
 
 # OS Users
-klist -e -k -t /etc/kerberos/users/root.keytab
-klist -e -k -t /etc/kerberos/users/brijeshdhaker.keytab
-klist -e -k -t /etc/kerberos/users/hdfs.keytab
-klist -e -k -t /etc/kerberos/users/hive.keytab
-klist -e -k -t /etc/kerberos/users/hbase.keytab
-klist -e -k -t /etc/kerberos/users/mapred.keytab
-klist -e -k -t /etc/kerberos/users/sandbox.keytab
-klist -e -k -t /etc/kerberos/users/spark.keytab
-klist -e -k -t /etc/kerberos/users/yarn.keytab
-klist -e -k -t /etc/kerberos/users/zookeeper.keytab
+klist -e -k -t /apps/security/keytabs/users/root.keytab
+klist -e -k -t /apps/security/keytabs/users/brijeshdhaker.keytab
+klist -e -k -t /apps/security/keytabs/users/hdfs.keytab
+klist -e -k -t /apps/security/keytabs/users/hive.keytab
+klist -e -k -t /apps/security/keytabs/users/hbase.keytab
+klist -e -k -t /apps/security/keytabs/users/mapred.keytab
+klist -e -k -t /apps/security/keytabs/users/sandbox.keytab
+klist -e -k -t /apps/security/keytabs/users/spark.keytab
+klist -e -k -t /apps/security/keytabs/users/yarn.keytab
+klist -e -k -t /apps/security/keytabs/users/zookeeper.keytab
 
 # Services
-klist -e -k -t /etc/kerberos/keytabs/hdfs.service.keytab
-klist -e -k -t /etc/kerberos/keytabs/yarn.service.keytab
-klist -e -k -t /etc/kerberos/keytabs/mapred.service.keytab
-klist -e -k -t /etc/kerberos/keytabs/hive.service.keytab
-klist -e -k -t /etc/kerberos/keytabs/host.service.keytab
-klist -e -k -t /etc/kerberos/keytabs/HTTP.service.keytab
+klist -e -k -t /apps/security/keytabs/services/hdfs.service.keytab
+klist -e -k -t /apps/security/keytabs/services/yarn.service.keytab
+klist -e -k -t /apps/security/keytabs/services/mapred.service.keytab
+klist -e -k -t /apps/security/keytabs/services/hive.service.keytab
+klist -e -k -t /apps/security/keytabs/services/host.service.keytab
+klist -e -k -t /apps/security/keytabs/services/HTTP.service.keytab
 
 # spnego
-klist -e -k -t /etc/kerberos/keytabs/spnego.service.keytab
+klist -e -k -t /apps/security/keytabs/services/spnego.service.keytab
 
 
 # Services
@@ -132,13 +132,13 @@ kadmin:  addprinc -randkey HTTP/sparkhistory.sandbox.net@SANDBOX.NET
 kadmin:  xst -norandkey -k hdfs.keytab hdfs/fully.qualified.domain.name HTTP/fully.qualified.domain.name
 
 or
-kadmin:  xst -k /etc/kerberos/keytabs/spark-unmerged.keytab spark/sparkhistory.sandbox.net
-kadmin:  xst -k /etc/kerberos/keytabs/HTTP.service.keytab HTTP/sparkhistory.sandbox.net
+kadmin:  xst -k /apps/security/keytabs/services/spark-unmerged.keytab spark/sparkhistory.sandbox.net
+kadmin:  xst -k /apps/security/keytabs/services/HTTP.service.keytab HTTP/sparkhistory.sandbox.net
 
 $ ktutil
-ktutil:  rkt /etc/kerberos/keytabs/spark-unmerged.keytab
-ktutil:  rkt /etc/kerberos/keytabs/HTTP.service.keytab
-ktutil:  wkt /etc/kerberos/keytabs/spark.service.keytab
+ktutil:  rkt /apps/security/keytabs/services/spark-unmerged.keytab
+ktutil:  rkt /apps/security/keytabs/services/HTTP.service.keytab
+ktutil:  wkt /apps/security/keytabs/services/spark.service.keytab
 ktutil:  clear
 ktutil:  rkt mapred-unmerged.keytab
 ktutil:  rkt http.keytab
@@ -153,7 +153,7 @@ ktutil:  q
 
 #
 #
-kadmin: ktadd -k /etc/kerberos/keytabs/brijesh-headless.keytab brijesh@SANDBOX.NET
+kadmin: ktadd -k /apps/security/keytabs/services/brijesh-headless.keytab brijesh@SANDBOX.NET
 
 $ kadmin: addprinc -randkey zookeeper/fqdn.example.com@YOUR-REALM
 
@@ -163,7 +163,7 @@ kadmin: addprinc -randkey zookeeper/zookeeper.sandbox.net@SANDBOX.NET
 # 2. Create a keytab file for the ZooKeeper server
 $ kadmin
 kadmin: xst -norandkey -k zookeeper.service.keytab zookeeper/zookeeper.sandbox.net@SANDBOX.NET
-kadmin: xst -norandkey -k /etc/kerberos/keytabs/appuser.keytab appuser/kafkabroker.sandbox.net@SANDBOX.NET
+kadmin: xst -norandkey -k /apps/security/keytabs/services/appuser.keytab appuser/kafkabroker.sandbox.net@SANDBOX.NET
 
 # 3. Create Keytab for kafka broker & registry 
 $ kadmin
@@ -183,13 +183,13 @@ kadmin: addprinc -randkey producer@SANDBOX.NET
 kadmin: addprinc -randkey kafkaclient@SANDBOX.NET
 kadmin: addprinc -randkey schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET
 
-kadmin: ktadd -k /etc/kerberos/keytabs/zookeeper.keytab zookeeper/zookeeper.sandbox.net@SANDBOX.NET
-kadmin: ktadd -k /etc/kerberos/keytabs/kafkabroker.keytab kafka/kafkabroker.sandbox.net@SANDBOX.NET
-kadmin: ktadd -k /etc/kerberos/keytabs/zkclient.keytab zkclient@SANDBOX.NET
-kadmin: ktadd -k /etc/kerberos/keytabs/consumer.keytab consumer@SANDBOX.NET
-kadmin: ktadd -k /etc/kerberos/keytabs/producer.keytab producer@SANDBOX.NET
-kadmin: ktadd -k /etc/kerberos/keytabs/kafkaclient.keytab kafkaclient@SANDBOX.NET
-kadmin: ktadd -k /etc/kerberos/keytabs/schemaregistry.keytab schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /apps/security/keytabs/services/zookeeper.keytab zookeeper/zookeeper.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /apps/security/keytabs/services/kafkabroker.keytab kafka/kafkabroker.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /apps/security/keytabs/services/zkclient.keytab zkclient@SANDBOX.NET
+kadmin: ktadd -k /apps/security/keytabs/services/consumer.keytab consumer@SANDBOX.NET
+kadmin: ktadd -k /apps/security/keytabs/services/producer.keytab producer@SANDBOX.NET
+kadmin: ktadd -k /apps/security/keytabs/services/kafkaclient.keytab kafkaclient@SANDBOX.NET
+kadmin: ktadd -k /apps/security/keytabs/services/schemaregistry.keytab schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET
 
 
 delete_principal zookeeper/zookeeper-a.sandbox.net@SANDBOX.NET
@@ -207,18 +207,18 @@ kadmin: addprinc -randkey kafka/kafkabroker-b.sandbox.net@SANDBOX.NET
 kadmin: addprinc -randkey kafka/kafkabroker-c.sandbox.net@SANDBOX.NET
 
 
-kadmin: ktadd -k /etc/kerberos/keytabs/zookeeper-a.keytab zookeeper/zookeeper-a.sandbox.net@SANDBOX.NET
-kadmin: ktadd -k /etc/kerberos/keytabs/zookeeper-b.keytab zookeeper/zookeeper-b.sandbox.net@SANDBOX.NET
-kadmin: ktadd -k /etc/kerberos/keytabs/zookeeper-c.keytab zookeeper/zookeeper-c.sandbox.net@SANDBOX.NET
-kadmin: ktadd -k /etc/kerberos/keytabs/kafkabroker-a.keytab kafka/kafkabroker-a.sandbox.net@SANDBOX.NET
-kadmin: ktadd -k /etc/kerberos/keytabs/kafkabroker-b.keytab kafka/kafkabroker-b.sandbox.net@SANDBOX.NET
-kadmin: ktadd -k /etc/kerberos/keytabs/kafkabroker-c.keytab kafka/kafkabroker-c.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /apps/security/keytabs/services/zookeeper-a.keytab zookeeper/zookeeper-a.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /apps/security/keytabs/services/zookeeper-b.keytab zookeeper/zookeeper-b.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /apps/security/keytabs/services/zookeeper-c.keytab zookeeper/zookeeper-c.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /apps/security/keytabs/services/kafkabroker-a.keytab kafka/kafkabroker-a.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /apps/security/keytabs/services/kafkabroker-b.keytab kafka/kafkabroker-b.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /apps/security/keytabs/services/kafkabroker-c.keytab kafka/kafkabroker-c.sandbox.net@SANDBOX.NET
 
 kadmin:  quit
 
 $ ktutil
-ktutil:  rkt /etc/kerberos/keytabs/kafkabroker.keytab
-ktutil:  rkt /etc/kerberos/keytabs/schemaregistry.keytab
-ktutil:  wkt /etc/kerberos/keytabs/kafka.keytab
+ktutil:  rkt /apps/security/keytabs/services/kafkabroker.keytab
+ktutil:  rkt /apps/security/keytabs/services/schemaregistry.keytab
+ktutil:  wkt /apps/security/keytabs/services/kafka.keytab
 ktutil:  clear
 ktutil:  quit

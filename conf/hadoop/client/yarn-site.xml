@@ -82,7 +82,7 @@
     </property>
     <property>
         <name>yarn.nodemanager.webapp.spnego-keytab-file</name>
-        <value>/etc/kerberos/keytabs/spnego.service.keytab</value>
+        <value>/apps/security/keytabs/services/spnego.service.keytab</value>
     </property>
     <property>
         <name>yarn.nodemanager.aux-services</name>
@@ -134,7 +134,7 @@
     </property>
     <property>
         <name>yarn.nodemanager.keytab</name>
-        <value>/etc/kerberos/keytabs/yarn.service.keytab</value>
+        <value>/apps/security/keytabs/services/yarn.service.keytab</value>
     </property>
     <property>
         <name>yarn.timeline-service.bind-host</name>
@@ -202,7 +202,7 @@
     </property>
     <property>
         <name>yarn.resourcemanager.webapp.spnego-keytab-file</name>
-        <value>/etc/kerberos/keytabs/spnego.service.keytab</value>
+        <value>/apps/security/keytabs/services/spnego.service.keytab</value>
     </property>
     <property>
         <name>yarn.webapp.ui2.enable</name>
@@ -262,7 +262,7 @@
     </property>
     <property>
         <name>yarn.web-proxy.keytab</name>
-        <value>/etc/kerberos/keytabs/yarn.service.keytab</value>
+        <value>/apps/security/keytabs/services/yarn.service.keytab</value>
     </property>
     <property>
         <name>yarn.resourcemanager.webapp.cross-origin.enabled</name>
@@ -270,11 +270,11 @@
     </property>
     <property>
         <name>yarn.timeline-service.keytab</name>
-        <value>/etc/kerberos/keytabs/yarn.service.keytab</value>
+        <value>/apps/security/keytabs/services/yarn.service.keytab</value>
     </property>
     <property>
         <name>yarn.resourcemanager.keytab</name>
-        <value>/etc/kerberos/keytabs/yarn.service.keytab</value>
+        <value>/apps/security/keytabs/services/yarn.service.keytab</value>
     </property>
     <property>
         <name>yarn.resourcemanager.recovery.enabled</name>

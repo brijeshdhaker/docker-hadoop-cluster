@@ -74,7 +74,7 @@ export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
 ##
 #export KINIT_FAIL_THRESHOLD                    # (optional) How many times should kinit retry. The default value is 5.
 #export KERBEROS_REFRESH_INTERVAL               # (optional) The refresh interval for Kerberos ticket. The default value is 1d.
-export KRB5_CONFIG="/etc/kerberos/krb5.conf"
+export KRB5_CONFIG="/etc/krb5.conf"
 # export KRB5CCNAME="FILE:$HOME/krb5cc_$(id -u)"
 
 ## Use provided spark installation ##

@@ -41,11 +41,11 @@
 # Default settings are applied according to the detected JVM version. Override these default
 # settings by specifying a value here. For more details on possible settings,
 # see http://hbase.apache.org/book.html#_jvm_tuning
-export HBASE_OPTS="$HBASE_OPTS -Dhbase.log.dir=/apps/var/log/hbase -Djava.security.auth.login.config=/opt/hbase/conf/zookeeper_jaas.conf -Djava.security.krb5.conf=/etc/kerberos/krb5.conf"
+export HBASE_OPTS="$HBASE_OPTS -Dhbase.log.dir=/apps/var/log/hbase -Djava.security.auth.login.config=/opt/hbase/conf/zookeeper-jaas.conf -Djava.security.krb5.conf=/etc/krb5.conf"
 # export HBASE_OPTS="-Dhbase.log.dir=/apps/var/log/hbase -Djava.security.auth.login.config=/opt/hbase/conf/zookeeper-jaas.conf -Dzookeeper.clientCnxnSocket=org.apache.zookeeper.ClientCnxnSocketNetty -Dzookeeper.client.secure=true"
 # export HBASE_MASTER_OPTS="-Dhbase.log.dir=/apps/var/log/hbase -Dzookeeper.ssl.keyStore.location=/apps/ssl/hmaster.keystore.p12 -Dzookeeper.ssl.keyStore.password=confluent -Dzookeeper.ssl.trustStore.location=/apps/ssl/hmaster.truststore.jks -Dzookeeper.ssl.trustStore.password=confluent"
 # export HBASE_REGIONSERVER_OPTS="-Dzookeeper.ssl.keyStore.location=/apps/ssl/hregion.keystore.p12 -Dzookeeper.ssl.keyStore.password=confluent -Dzookeeper.ssl.trustStore.location=/apps/ssl/hregion.truststore.jks -Dzookeeper.ssl.trustStore.password=confluent"
-export KRB5_CONFIG="/etc/kerberos/krb5.conf"
+export KRB5_CONFIG="/etc/krb5.conf"
 # Uncomment one of the below three options to enable java garbage collection logging for the server-side processes.
 
 # This enables basic gc logging to the .out file.

@@ -85,7 +85,7 @@
         },
         "zeppelin.jdbc.keytab.location": {
           "name": "zeppelin.jdbc.keytab.location",
-          "value": "/etc/kerberos/users/brijeshdhaker.keytab",
+          "value": "/apps/security/keytabs/users/brijeshdhaker.keytab",
           "type": "string",
           "description": "Kerberos keytab location"
         },
@@ -1188,7 +1188,7 @@
         },
         "zeppelin.shell.keytab.location": {
           "name": "zeppelin.shell.keytab.location",
-          "value": "/etc/kerberos/users/brijeshdhaker.keytab",
+          "value": "/apps/security/keytabs/users/brijeshdhaker.keytab",
           "type": "string",
           "description": "Kerberos keytab location"
         },
@@ -1476,7 +1476,7 @@
         },
         "spark.kerberos.keytab": {
           "name": "spark.kerberos.keytab",
-          "value": "/etc/kerberos/users/zeppelin.keytab",
+          "value": "/apps/security/keytabs/users/zeppelin.keytab",
           "type": "string"
         }
       },

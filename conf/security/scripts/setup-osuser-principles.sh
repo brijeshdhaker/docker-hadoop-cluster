@@ -17,16 +17,16 @@ OS_USERS=("sandbox" "brijeshdhaker" "hdfs" "yarn" "mapred" "hive" "hbase" "spark
 for ou in "${OS_USERS[@]}"
 do
   # delete existing keytab files
-  rm -Rf /etc/kerberos/users/$ou.keytab
+  rm -Rf /apps/security/keytabs/users/$ou.keytab
   kadmin.local -q "delete_principal -force $ou@$REALM"
   kadmin.local -q "addprinc -randkey $ou@$REALM"
-  kadmin.local -q "ktadd -k /etc/kerberos/users/$ou.keytab $ou@$REALM"
+  kadmin.local -q "ktadd -k /apps/security/keytabs/users/$ou.keytab $ou@$REALM"
   kadmin.local -q "getprinc $ou@$REALM"
 
-  klist -k -t /etc/kerberos/users/$ou.keytab
-  # kinit -k -t /etc/kerberos/users/$ou.keytab $ou@$REALM
+  klist -k -t /apps/security/keytabs/users/$ou.keytab
+  # kinit -k -t /apps/security/keytabs/users/$ou.keytab $ou@$REALM
 
-  chmod 744 /etc/kerberos/users/$key.keytab
+  chmod 744 /apps/security/keytabs/users/$key.keytab
 done
 
 echo ""

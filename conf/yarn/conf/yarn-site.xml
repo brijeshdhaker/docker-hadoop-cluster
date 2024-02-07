@@ -27,7 +27,7 @@
 	<property><name>mapred.map.output.compress.codec</name><value>org.apache.hadoop.io.compress.SnappyCodec</value></property>
 	<property><name>yarn.scheduler.maximum-allocation-mb</name><value>16384</value></property>
 	<property><name>yarn.resourcemanager.scheduler.address</name><value>resourcemanager.sandbox.net:8030</value></property>
-	<property><name>yarn.nodemanager.keytab</name><value>/etc/kerberos/keytabs/yarn.service.keytab</value></property>
+	<property><name>yarn.nodemanager.keytab</name><value>/apps/security/keytabs/services/yarn.service.keytab</value></property>
 	<property><name>yarn.timeline-service.http-authentication.proxyuser.hive_users</name><value>*</value></property>
 	<property><name>mapreduce.map.output.compress</name><value>true</value></property>
 	<property><name>yarn.timeline-service.http-authentication.type</name><value>simple</value></property>
@@ -51,8 +51,8 @@
 	<property><name>yarn.resourcemanager.store.class</name><value>org.apache.hadoop.yarn.server.resourcemanager.recovery.FileSystemRMStateStore</value></property>
 	<property><name>yarn.resourcemanager.resource_tracker.address</name><value>resourcemanager.sandbox.net:8031</value></property>
 	<property><name>yarn.timeline-service.delegation.token.max-lifetime</name><value>604800000</value></property>
-	<property><name>yarn.timeline-service.keytab</name><value>/etc/kerberos/keytabs/yarn.service.keytab</value></property>
-	<property><name>yarn.resourcemanager.keytab</name><value>/etc/kerberos/keytabs/yarn.service.keytab</value></property>
+	<property><name>yarn.timeline-service.keytab</name><value>/apps/security/keytabs/services/yarn.service.keytab</value></property>
+	<property><name>yarn.resourcemanager.keytab</name><value>/apps/security/keytabs/services/yarn.service.keytab</value></property>
 	<property><name>yarn.resourcemanager.recovery.enabled</name><value>false</value></property>
 	<property><name>yarn.nodemanager.linux-container-executor.group</name><value>hadoop</value></property>
 	<property><name>yarn.resourcemanager.bind-host</name><value>0.0.0.0</value></property>

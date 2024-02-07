@@ -17,6 +17,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
     mkdir -p /opt/tez && \
     rm -rf /var/lib/apt/lists/*
 
+#
+COPY conf/kerberos/krb5.conf /etc/krb5.conf
 
 # Add Drivers & Other Libs
 COPY resources/libs/jetty-runner-9.2.11.v20150529.jar $BASE_DIR/tez/

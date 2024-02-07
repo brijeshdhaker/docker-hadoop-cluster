@@ -304,7 +304,7 @@
 
 <property>
   <name>zeppelin.server.kerberos.keytab</name>
-  <value>/etc/kerberos/users/brijeshdhaker.keytab</value>
+  <value>/apps/security/keytabs/users/brijeshdhaker.keytab</value>
   <description>keytab for accessing kerberized hdfs</description>
 </property>
 
