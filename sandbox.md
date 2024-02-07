@@ -85,3 +85,12 @@ yarn logs -applicationId application_1707218631234_0019 > application_1707218631
 $HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET"
 
 ```
+
+#
+# Zookeeper
+#
+```shell
+
+zookeeper-shell zookeeper.sandbox.net:2182 -zk-tls-config-file /apps/sandbox/kafka/cnf/zookeeper-client.config ls /brokers/ids
+
+```

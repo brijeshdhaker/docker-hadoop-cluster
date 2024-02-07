@@ -16,9 +16,9 @@ E.g. to consume all messages from mytopic partition 2 and then exit:
 
 docker run -it --rm \
 --network sandbox.net \
---volume ./conf/kafka/secrets:/etc/kafka/secrets \
---volume ./conf/kerberos:/etc/kerberos \
---env KRB5_CONFIG=/etc/kerberos/krb5.conf \
+--volume /apps:/apps \
+--volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
+--env KRB5_CONFIG=/etc/krb5.conf \
 brijeshdhaker/kafka-clients:7.5.0 \
 kafkacat -b kafkabroker.sandbox.net:19092 -L -J \
 -X 'security.protocol=SASL_PLAINTEXT' \
@@ -29,28 +29,28 @@ kafkacat -b kafkabroker.sandbox.net:19092 -L -J \
 
 
 ## PLAINTEXT
-docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_plaintext.config -L"
-docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_plaintext.config -P -t test_topic -l /etc/kafka/secrets/data/messages.txt 2>/dev/null"
-docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_plaintext.config -C -t test_topic -o -10 -e"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_plaintext.config -L"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_plaintext.config -P -t test_topic -l /apps/sandbox/kafka/data/messages.txt 2>/dev/null"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_plaintext.config -C -t test_topic -o -10 -e"
 
 ## SASL_PLAINTEXT
-docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_sasl_paintext.config -L"
-docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_sasl_paintext.config -P -t test_topic -l /etc/kafka/secrets/data/messages.txt 2>/dev/null"
-docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_sasl_paintext.config -C -t test_topic -o -10 -e"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_paintext.config -L"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_paintext.config -P -t test_topic -l /apps/sandbox/kafka/data/messages.txt 2>/dev/null"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_paintext.config -C -t test_topic -o -10 -e"
 
 ## SASL_SSL
-docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_sasl_ssl.config -L"
-docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_sasl_ssl.config -P -t test_topic -l /etc/kafka/secrets/data/messages.txt 2>/dev/null"
-docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_sasl_ssl.config -C -t test_topic -o -10 -f '\nKey (%K bytes): %k\t\nValue (%S bytes): %s\nTimestamp: %T\tPartition: %p\tOffset: %o\n--\n' -e 2>/dev/null"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_ssl.config -L"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_ssl.config -P -t test_topic -l /apps/sandbox/kafka/data/messages.txt 2>/dev/null"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_ssl.config -C -t test_topic -o -10 -f '\nKey (%K bytes): %k\t\nValue (%S bytes): %s\nTimestamp: %T\tPartition: %p\tOffset: %o\n--\n' -e 2>/dev/null"
 
 ## SSL
-docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_ssl.config -L"
-docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_ssl.config -P -t test_topic -l /etc/kafka/secrets/data/messages.txt 2>/dev/null"
-docker compose exec kafkaclient sh -c "kafkacat -F /etc/kafka/secrets/cnf/librdkafka_ssl.config -C -t test_topic -o -10 -e"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_ssl.config -L"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_ssl.config -P -t test_topic -l /apps/sandbox/kafka/data/messages.txt 2>/dev/null"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_ssl.config -C -t test_topic -o -10 -e"
 
 
 ## From Host machine
-kafkacat -F conf/kafka/secrets/cnf/librdkafka_thinkpad_plaintext.config -L
-kafkacat -F conf/kafka/secrets/cnf/librdkafka_thinkpad_plaintext.config -C -t test_topic -o -10 -e
-kafkacat -F conf/kafka/secrets/cnf/librdkafka_thinkpad_sasl_ssl.config -C -t test_topic -o -10 -e
-kafkacat -F conf/kafka/secrets/cnf/librdkafka_thinkpad_ssl.config -C -t test_topic -o -10 -e
+kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_thinkpad_plaintext.config -L
+kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_thinkpad_plaintext.config -C -t test_topic -o -10 -e
+kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_thinkpad_sasl_ssl.config -C -t test_topic -o -10 -e
+kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_thinkpad_ssl.config -C -t test_topic -o -10 -e

@@ -130,7 +130,6 @@ services:
       - sandbox_apps_path:/apps
       - sandbox_zookeeper_data:/var/lib/zookeeper/data
       - sandbox_zookeeper_log:/var/lib/zookeeper/log
-      - ./conf/kafka/secrets:/etc/zookeeper/secrets
       - ./conf/kerberos:/etc/kerberos
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
@@ -140,10 +139,10 @@ services:
       # ALLOW_UNSIGNED: "true"
       #
       ZOOKEEPER_SERVER_CNXN_FACTORY: org.apache.zookeeper.server.NettyServerCnxnFactory
-      ZOOKEEPER_SSL_KEYSTORE_LOCATION: /etc/zookeeper/secrets/zookeeper.keystore.jks
+      ZOOKEEPER_SSL_KEYSTORE_LOCATION: /apps/security/ssl/zookeeper.keystore.jks
       ZOOKEEPER_SSL_KEYSTORE_PASSWORD: confluent
       ZOOKEEPER_SSL_KEYSTORE_TYPE: PKCS12
-      ZOOKEEPER_SSL_TRUSTSTORE_LOCATION: /etc/zookeeper/secrets/zookeeper.truststore.jks
+      ZOOKEEPER_SSL_TRUSTSTORE_LOCATION: /apps/security/ssl/zookeeper.truststore.jks
       ZOOKEEPER_SSL_TRUSTSTORE_PASSWORD: confluent
       ZOOKEEPER_SSL_TRUSTSTORE_TYPE: JKS
       ZOOKEEPER_SSL_CLIENT_AUTH: "need"
@@ -151,7 +150,7 @@ services:
       ZOOKEEPER_AUTH_PROVIDER_X509: org.apache.zookeeper.server.auth.X509AuthenticationProvider
       ZOOKEEPER_AUTH_PROVIDER_SASL: org.apache.zookeeper.server.auth.SASLAuthenticationProvider
       #
-      KAFKA_OPTS: -Djava.security.auth.login.config=/etc/zookeeper/secrets/jaas/zookeeper_jaas.conf
+      KAFKA_OPTS: -Djava.security.auth.login.config=/apps/security/jaas/zookeeper-jaas.conf
         -Djava.security.krb5.conf=/etc/kerberos/krb5.conf
         -Dsun.security.krb5.debug=false
         -Dkerberos.removeHostFromPrincipal=true
@@ -186,7 +185,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_kafka_data:/var/lib/kafka/data
-      - ./conf/kafka/secrets:/etc/kafka/secrets
+      - /apps/security/ssl:/etc/kafka/secrets
       - ./conf/kerberos:/etc/kerberos
     environment:
       KRB5_CONFIG: "/etc/kerberos/krb5.conf"
@@ -197,10 +196,10 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper.sandbox.net:2182'
       KAFKA_ZOOKEEPER_CLIENT_CNXN_SOCKET: org.apache.zookeeper.ClientCnxnSocketNetty
       KAFKA_ZOOKEEPER_SSL_CLIENT_ENABLE: 'true'
-      KAFKA_ZOOKEEPER_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafkabroker.keystore.jks
+      KAFKA_ZOOKEEPER_SSL_KEYSTORE_LOCATION: /apps/security/ssl/kafkabroker.keystore.jks
       KAFKA_ZOOKEEPER_SSL_KEYSTORE_PASSWORD: confluent
       KAFKA_ZOOKEEPER_SSL_KEYSTORE_TYPE: PKCS12
-      KAFKA_ZOOKEEPER_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafkabroker.truststore.jks
+      KAFKA_ZOOKEEPER_SSL_TRUSTSTORE_LOCATION: /apps/security/ssl/kafkabroker.truststore.jks
       KAFKA_ZOOKEEPER_SSL_TRUSTSTORE_PASSWORD: confluent
       KAFKA_ZOOKEEPER_SSL_TRUSTSTORE_TYPE: JKS
       KAFKA_ZOOKEEPER_SET_ACL: 'true'
@@ -259,9 +258,14 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
       KAFKA_OPTS:
-        -Djava.security.auth.login.config=/etc/kafka/secrets/jaas/kafkabroker_jaas.conf
+        -Djava.security.auth.login.config=/apps/security/jaas/kafkabroker-jaas.conf
         -Djava.security.krb5.conf=/etc/kerberos/krb5.conf 
         -Dsun.security.krb5.debug=false
+        -Dssl.keystore.location=/apps/security/ssl/kafkabroker.keystore.p12
+        -Dssl.keystore.password=confluent
+        -Dssl.key.password=confluent
+        -Dssl.truststore.location=/apps/security/ssl/kafkabroker.truststore.jks
+        -Dssl.truststore.password=confluent
       #
       ## Log4J
       KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,org.apache.kafka=INFO"
@@ -289,17 +293,15 @@ services:
       - "8081:8081"
     volumes:
       - sandbox_apps_path:/apps
-      - ./conf/kafka/secrets:/etc/schema-registry/secrets
-      - ./conf/kerberos:/etc/kerberos
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       KRB5_CONFIG: "/etc/krb5.conf"
       JAVA_OPTS: |
         -Djava.security.krb5.conf=/etc/krb5.conf 
         -Dsun.security.krb5.debug=false
-        -Djavax.net.ssl.keyStore=/etc/schema-registry/secrets/schemaregistry.keystore.jks
+        -Djavax.net.ssl.keyStore=/apps/security/ssl/schemaregistry.keystore.jks
         -Djavax.net.ssl.keyStorePassword=confluent
-        -Djavax.net.ssl.trustStore=/etc/schema-registry/secrets/schemaregistry.truststore.jks
+        -Djavax.net.ssl.trustStore=/apps/security/ssl/schemaregistry.truststore.jks
         -Djavax.net.ssl.trustStorePassword=confluent
       #
       SCHEMA_REGISTRY_OPTS: "-Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=false"
@@ -313,22 +315,22 @@ services:
         useKeyTab=true
         storeKey=true
         useTicketCache=false
-        keyTab="/etc/kerberos/keytabs/schemaregistry.keytab"
+        keyTab="/apps/security/keytabs/services/schemaregistry.keytab"
         principal="schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET";
       #
       SCHEMA_REGISTRY_LISTENERS: https://0.0.0.0:8081
       SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL: INFO
       #
-      SCHEMA_REGISTRY_KAFKASTORE_SSL_TRUSTSTORE_LOCATION: /etc/schema-registry/secrets/schemaregistry.truststore.jks
+      SCHEMA_REGISTRY_KAFKASTORE_SSL_TRUSTSTORE_LOCATION: /apps/security/ssl/schemaregistry.truststore.jks
       SCHEMA_REGISTRY_KAFKASTORE_SSL_TRUSTSTORE_PASSWORD: confluent
-      SCHEMA_REGISTRY_KAFKASTORE_SSL_KEYSTORE_LOCATION: /etc/schema-registry/secrets/schemaregistry.keystore.jks
+      SCHEMA_REGISTRY_KAFKASTORE_SSL_KEYSTORE_LOCATION: /apps/security/ssl/schemaregistry.keystore.jks
       SCHEMA_REGISTRY_KAFKASTORE_SSL_KEYSTORE_PASSWORD: confluent
       SCHEMA_REGISTRY_KAFKASTORE_SSL_KEY_PASSWORD: confluent
       SCHEMA_REGISTRY_KAFKASTORE_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: "HTTPS"
       #
-      SCHEMA_REGISTRY_SSL_TRUSTSTORE_LOCATION: /etc/schema-registry/secrets/schemaregistry.truststore.jks
+      SCHEMA_REGISTRY_SSL_TRUSTSTORE_LOCATION: /apps/security/ssl/schemaregistry.truststore.jks
       SCHEMA_REGISTRY_SSL_TRUSTSTORE_PASSWORD: confluent
-      SCHEMA_REGISTRY_SSL_KEYSTORE_LOCATION: /etc/schema-registry/secrets/schemaregistry.keystore.jks
+      SCHEMA_REGISTRY_SSL_KEYSTORE_LOCATION: /apps/security/ssl/schemaregistry.keystore.jks
       SCHEMA_REGISTRY_SSL_KEYSTORE_PASSWORD: confluent
       SCHEMA_REGISTRY_SSL_KEY_PASSWORD: confluent
       SCHEMA_REGISTRY_SSL_CLIENT_AUTH: "true"
@@ -345,10 +347,9 @@ services:
     command: sleep infinity
     volumes:
       - sandbox_apps_path:/apps
-      - ./conf/kafka/secrets:/etc/kafka/secrets
-      - ./conf/kerberos:/etc/kerberos
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
-      KRB5_CONFIG: "/etc/kerberos/krb5.conf"
+      KRB5_CONFIG: "/etc/krb5.conf"
     extra_hosts:
       - "thinkpad.sandbox.net:172.18.0.1"
 
@@ -614,7 +615,7 @@ services:
       - sandbox_hadoop_311:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - ./conf/kerberos:/etc/kerberos
-      - ./conf/hbase/zookeeper_jaas.conf:/opt/hbase/conf/zookeeper_jaas.conf
+      - ./conf/hbase/zookeeper-jaas.conf:/opt/hbase/conf/zookeeper-jaas.conf
 
   #
   hregion:
@@ -639,7 +640,7 @@ services:
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - ./conf/kerberos:/etc/kerberos
 #      - ./conf/hbase/hbase-env.sh:/opt/hbase/conf/hbase-env.sh
-      - ./conf/hbase/zookeeper_jaas.conf:/opt/hbase/conf/zookeeper_jaas.conf
+      - ./conf/hbase/zookeeper-jaas.conf:/opt/hbase/conf/zookeeper-jaas.conf
       - ./conf/hbase/hbase-site.xml:/opt/hbase/conf/hbase-site.xml
 
   #
