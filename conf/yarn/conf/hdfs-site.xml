@@ -21,7 +21,7 @@
     <property><name>dfs.webhdfs.enabled</name><value>true</value></property>
     <property><name>HADOOP_OPTS</name><value>-Djava.security.krb5.conf=/etc/krb5.conf</value></property>
     <property><name>dfs.datanode.keytab.file</name><value>/apps/security/keytabs/services/hdfs.service.keytab</value></property>
-    <property><name>dfs.secondary.namenode.keytab.file</name><value>/etc/kerberos/keytab/hdfs.service.keytab</value></property>
+    <property><name>dfs.secondary.namenode.keytab.file</name><value>/apps/security/keytabs/services/hdfs.service.keytab</value></property>
     <property><name>dfs.replication</name><value>1</value></property>
     <property><name>dfs.datanode.kerberos.principal</name><value>hdfs/_HOST@SANDBOX.NET</value></property>
     <property><name>dfs.namenode.checkpoint.dir</name><value>file:///hadoop/dfs/secondary</value></property>

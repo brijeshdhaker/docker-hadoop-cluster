@@ -39,10 +39,10 @@ ${SPARK_HOME}/bin/spark-submit --class org.apache.spark.examples.SparkPi \
     --driver-memory 640m \
     --executor-memory 640m \
     --executor-cores 1 \
-    --queue thequeue \
+    --queue engineering \
     --keytab /apps/security/keytabs/users/zeppelin.keytab \
     --principal zeppelin@SANDBOX.NET \
-    examples/jars/spark-examples*.jar 10
+    /opt/spark/examples/jars/spark-examples_2.12-3.1.2.jar 10
     
 ${SPARK_HOME}/bin/spark-submit \
 --class org.apache.spark.examples.SparkPi \

@@ -450,7 +450,7 @@ services:
     image: brijeshdhaker/hadoop-timelineserver:3.1.1
     build:
       context: .
-      dockerfile: docker-hadoop/historyserver/Dockerfile
+      dockerfile: docker-hadoop/timelineserver/Dockerfile
     container_name: timelineserver
     hostname: timelineserver.sandbox.net
     restart: no
@@ -712,7 +712,7 @@ services:
       - "9081:8081"
     volumes:
       - sandbox_apps_path:/apps
-      - ./conf/kerberos:/etc/kerberos
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - /opt/zeppelin/conf:/opt/zeppelin/conf
       - sandbox_hadoop_311:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
