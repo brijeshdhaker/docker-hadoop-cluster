@@ -28,6 +28,7 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
       ALLOW_UNSIGNED: "true"
 
+  #
   kafkabroker:
     image: confluentinc/cp-server:7.5.0
     hostname: kafkabroker
@@ -62,6 +63,7 @@ services:
       CONFLUENT_METRICS_ENABLE: 'true'
       CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
 
+  #
   schemaregistry:
     image: confluentinc/cp-schemaregistry:7.5.0
     hostname: schemaregistry
@@ -80,6 +82,7 @@ services:
       SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
       SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL: INFO
 
+  #
   connect:
     image: cnfldemos/cp-server-connect-datagen:0.5.3-7.1.0
     hostname: connect
@@ -110,6 +113,7 @@ services:
       CONNECT_PLUGIN_PATH: "/usr/share/java,/usr/share/confluent-hub-components"
       CONNECT_LOG4J_LOGGERS: org.apache.zookeeper=ERROR,org.I0Itec.zkclient=ERROR,org.reflections=ERROR
 
+  #
   control-center:
     image: confluentinc/cp-enterprise-control-center:7.5.0
     hostname: control-center
@@ -133,6 +137,7 @@ services:
       CONFLUENT_METRICS_TOPIC_REPLICATION: 1
       PORT: 9021
 
+  #
   ksqldb-server:
     image: confluentinc/cp-ksqldb-server:7.5.0
     hostname: ksqldb-server
@@ -156,6 +161,7 @@ services:
       KSQL_KSQL_LOGGING_PROCESSING_TOPIC_AUTO_CREATE: 'true'
       KSQL_KSQL_LOGGING_PROCESSING_STREAM_AUTO_CREATE: 'true'
 
+  #
   ksqldb-cli:
     image: confluentinc/cp-ksqldb-cli:7.5.0
     container_name: ksqldb-cli
@@ -166,6 +172,7 @@ services:
     entrypoint: /bin/sh
     tty: true
 
+  #
   ksql-datagen:
     image: confluentinc/ksqldb-examples:7.5.0
     hostname: ksql-datagen
@@ -188,6 +195,7 @@ services:
       STREAMS_SCHEMA_REGISTRY_HOST: schemaregistry
       STREAMS_SCHEMA_REGISTRY_PORT: 8081
 
+  #
   rest-proxy:
     image: confluentinc/cp-kafka-rest:7.5.0
     depends_on:
