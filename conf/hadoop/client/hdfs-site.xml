@@ -97,9 +97,12 @@
         <name>dfs.namenode.decommission.interval</name>
         <value>30</value>
     </property>
+    <!-- HBase not start with below configs-->
+    <!--
     <property>
         <name>dfs.client.datanode-restart.timeout</name>
-        <value>30</value>
+        <value>30s</value>
     </property>
+    -->
 </configuration>
 

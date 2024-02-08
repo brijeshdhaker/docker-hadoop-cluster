@@ -1,6 +1,8 @@
 
 ```shell
 
+${SPARK_HOME}/bin/spark-shell
+
 ${SPARK_HOME}/bin/spark-submit \
 --class org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer \
 --driver-java-options "-Dfile.encoding=UTF-8 -Dlog4j.configuration=log4j_yarn_cluster.properties -Djava.security.krb5.conf=/etc/krb5.conf" \
@@ -83,7 +85,8 @@ yarn logs -applicationId application_1707218631234_0019 > application_1707218631
 ```shell
 
 $HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET"
-
+$HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET" -e "show tables"
+$HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET" -f queries.sql
 ```
 
 #

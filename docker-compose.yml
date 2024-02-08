@@ -603,7 +603,6 @@ services:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_311:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-      - ./conf/hbase/zookeeper-jaas.conf:/opt/hbase/conf/zookeeper-jaas.conf
 
   #
   hregion:
@@ -626,10 +625,6 @@ services:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_311:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-      - ./conf/kerberos:/etc/kerberos
-#      - ./conf/hbase/hbase-env.sh:/opt/hbase/conf/hbase-env.sh
-      - ./conf/hbase/zookeeper-jaas.conf:/opt/hbase/conf/zookeeper-jaas.conf
-      - ./conf/hbase/hbase-site.xml:/opt/hbase/conf/hbase-site.xml
 
   #
   # Spark History Server
@@ -658,7 +653,6 @@ services:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_311:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-      - ./conf/kerberos:/etc/kerberos
       - ./conf/spark/spark-env.sh:/opt/spark/conf/spark-env.sh
       - ./conf/spark/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf
 
@@ -678,19 +672,18 @@ services:
       - "/usr/sbin/sshd -D"
     ports:
       - "2222:22"
+      - "4040:4040"
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_311:/opt/hadoop
-      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - sandbox_hbase_246:/opt/hbase
-      - ./conf/hbase:/opt/hbase/conf
       - sandbox_hive_313:/opt/hive
-      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
-      - sandbox_tez_091:/opt/tez
-      - ./conf/tez/tez-site.xml:/opt/tez/conf/tez-site.xml
       - sandbox_spark_312:/opt/spark
       - /opt/flink-1.12.2:/opt/flink
+      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+      - ./conf/hbase/client:/opt/hbase/conf
       - sandbox_maven_363:/opt/maven-3.6.3
+
     environment:
       ALLOW_ANONYMOUS_LOGIN: "yes"
     env_file:
@@ -712,19 +705,17 @@ services:
       - "9081:8081"
     volumes:
       - sandbox_apps_path:/apps
-      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
-      - /opt/zeppelin/conf:/opt/zeppelin/conf
-      - sandbox_hadoop_311:/opt/hadoop
-      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-      - sandbox_hbase_246:/opt/hbase
-      - sandbox_hbase_117:/opt/hbase-client
-      - ./conf/hbase:/opt/hbase/conf
-      - sandbox_hive_313:/opt/hive
-      - ./conf/hive/client:/etc/hive/conf
-      - sandbox_tez_091:/opt/tez
-      - /opt/flink-1.12.2:/opt/flink
       - sandbox_spark_312:/opt/spark
+      - sandbox_hadoop_311:/opt/hadoop
+      - sandbox_hive_313:/opt/hive
+      - sandbox_hbase_246:/opt/hbase
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
+      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+      - /opt/zeppelin/conf:/opt/zeppelin/conf
+      - ./conf/hbase/client:/opt/hbase/conf
+      - /opt/flink-1.12.2:/opt/flink
       - sandbox_zeppelin_notebook:/opt/notebook
+
   #
   # Apache NiFi
   #

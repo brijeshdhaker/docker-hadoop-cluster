@@ -23,7 +23,10 @@
   <!--name of the defaultResolver should always be 'downloadGrapes'. -->
   <settings defaultResolver="downloadGrapes"/>
   <!-- Only set maven.local.repository if not already set -->
+  <!--
   <property name="maven.local.repository" value="${user.home}/.m2/repository" override="false" />
+  -->
+  <property name="maven.local.repository" value="/apps/hostpath/.m2/repository" override="false" />
   <property name="m2-pattern"
             value="file:${maven.local.repository}/[organisation]/[module]/[revision]/[module]-[revision](-[classifier]).[ext]"
             override="false"/>
