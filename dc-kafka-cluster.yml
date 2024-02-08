@@ -468,7 +468,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - /apps/security/ssl:/etc/kafka/secrets
-      - ./conf/kerberos:/etc/kerberos
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       KRB5_CONFIG: "/etc/krb5.conf"
     extra_hosts:
