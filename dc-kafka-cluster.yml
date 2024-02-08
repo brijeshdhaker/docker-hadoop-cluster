@@ -4,11 +4,19 @@ version: '3.9'
 
 #
 services:
-  #
-  kerberos:
+  # Kerberos Server
+  kdcserver:
     image: brijeshdhaker/kdcserver:22.04
     container_name: kdcserver
     hostname: kdcserver.sandbox.net
+    healthcheck:
+      test: echo srvr || exit 1
+      retries: 20
+      interval: 10s
+    ports:
+      - "749:749"
+      - "750:750"
+      - "88:88/udp"
     volumes:
       - sandbox_apps_path:/apps
       - /dev/urandom:/dev/random      # This is needed otherwise there won't be enough entropy to generate a new kerberos realm
@@ -16,9 +24,6 @@ services:
       - sandbox_krb5_principal:/var/lib/krb5kdc/
       - ./conf/kerberos:/etc/kerberos
     environment:
-      BOOTSTRAP: 0
-      #MASTER_KEY_TYPE: des3-hmac-sha1
-      #SUPPORTED_ENCRYPTION_TYPES: rc4-hmac des-cbc-md5 des-cbc-crc des3-cbc-sha1 des3-hmac-sha1
       REALM: SANDBOX.NET
       DOMAIN_REALM: sandbox.net
       MASTER_KEY_TYPE: aes256-cts-hmac-sha1-96:normal
@@ -26,6 +31,8 @@ services:
       KADMIN_PRINCIPAL: kadmin/admin
       KADMIN_PASSWORD: kadmin
       KUSERS_PASSWORD: kuser
+    env_file:
+      - ./envs/docker_kerberos.env
     labels:
       - io.confluent.docker.testing=true
   #
@@ -41,8 +48,7 @@ services:
       - sandbox_apps_path:/apps
       - ./conf/cluster/zk-a/data:/var/lib/zookeeper/data
       - ./conf/cluster/zk-a/log:/var/lib/zookeeper/log
-      - ./conf/kafka/secrets:/etc/zookeeper/secrets
-      - ./conf/kerberos:/etc/kerberos
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       ZOOKEEPER_SERVER_ID: 1
       ZOOKEEPER_TICK_TIME: 2000
@@ -55,10 +61,10 @@ services:
       #ALLOW_UNSIGNED: "true"
       #
       ZOOKEEPER_SERVER_CNXN_FACTORY: org.apache.zookeeper.server.NettyServerCnxnFactory
-      ZOOKEEPER_SSL_KEYSTORE_LOCATION: /etc/zookeeper/secrets/zookeeper-a.keystore.jks
+      ZOOKEEPER_SSL_KEYSTORE_LOCATION: /apps/security/ssl/zookeeper-a.keystore.jks
       ZOOKEEPER_SSL_KEYSTORE_PASSWORD: confluent
       ZOOKEEPER_SSL_KEYSTORE_TYPE: PKCS12
-      ZOOKEEPER_SSL_TRUSTSTORE_LOCATION: /etc/zookeeper/secrets/zookeeper-a.truststore.jks
+      ZOOKEEPER_SSL_TRUSTSTORE_LOCATION: /apps/security/ssl/zookeeper-a.truststore.jks
       ZOOKEEPER_SSL_TRUSTSTORE_PASSWORD: confluent
       ZOOKEEPER_SSL_TRUSTSTORE_TYPE: JKS
       ZOOKEEPER_SSL_CLIENT_AUTH: "need"
@@ -68,7 +74,7 @@ services:
       zookeeper-aUTH_PROVIDER_X509: org.apache.zookeeper.server.auth.X509AuthenticationProvider
       zookeeper-aUTH_PROVIDER_SASL: org.apache.zookeeper.server.auth.SASLAuthenticationProvider
       #
-      KAFKA_OPTS: -Djava.security.auth.login.config=/etc/zookeeper/secrets/jaas/zookeeper-a-jaas.conf
+      KAFKA_OPTS: -Djava.security.auth.login.config=/apps/security/ssl/jaas/zookeeper-a-jaas.conf
         -Djava.security.krb5.conf=/etc/krb5.conf
         -Dsun.security.krb5.debug=false
     #        -Dzookeeper.requireClientAuthScheme=sasl
@@ -92,8 +98,7 @@ services:
       - sandbox_apps_path:/apps
       - ./conf/cluster/zk-b/data:/var/lib/zookeeper/data
       - ./conf/cluster/zk-b/log:/var/lib/zookeeper/log
-      - ./conf/kafka/secrets:/etc/zookeeper/secrets
-      - ./conf/kerberos:/etc/kerberos
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       ZOOKEEPER_SERVER_ID: 2
       ZOOKEEPER_TICK_TIME: 2000
@@ -105,10 +110,10 @@ services:
       KRB5_CONFIG: "/etc/krb5.conf"
       #
       ZOOKEEPER_SERVER_CNXN_FACTORY: org.apache.zookeeper.server.NettyServerCnxnFactory
-      ZOOKEEPER_SSL_KEYSTORE_LOCATION: /etc/zookeeper/secrets/zookeeper-b.keystore.jks
+      ZOOKEEPER_SSL_KEYSTORE_LOCATION: /apps/security/ssl/zookeeper-b.keystore.jks
       ZOOKEEPER_SSL_KEYSTORE_PASSWORD: confluent
       ZOOKEEPER_SSL_KEYSTORE_TYPE: PKCS12
-      ZOOKEEPER_SSL_TRUSTSTORE_LOCATION: /etc/zookeeper/secrets/zookeeper-b.truststore.jks
+      ZOOKEEPER_SSL_TRUSTSTORE_LOCATION: /apps/security/ssl/zookeeper-b.truststore.jks
       ZOOKEEPER_SSL_TRUSTSTORE_PASSWORD: confluent
       ZOOKEEPER_SSL_TRUSTSTORE_TYPE: JKS
       ZOOKEEPER_SSL_CLIENT_AUTH: "need"
@@ -118,7 +123,7 @@ services:
       zookeeper-aUTH_PROVIDER_X509: org.apache.zookeeper.server.auth.X509AuthenticationProvider
       zookeeper-aUTH_PROVIDER_SASL: org.apache.zookeeper.server.auth.SASLAuthenticationProvider
       #
-      KAFKA_OPTS: -Djava.security.auth.login.config=/etc/zookeeper/secrets/jaas/zookeeper-b-jaas.conf
+      KAFKA_OPTS: -Djava.security.auth.login.config=/apps/security/ssl/jaas/zookeeper-b-jaas.conf
         -Djava.security.krb5.conf=/etc/krb5.conf
         -Dsun.security.krb5.debug=false
     #        -Dzookeeper.requireClientAuthScheme=sasl
@@ -142,8 +147,7 @@ services:
       - sandbox_apps_path:/apps
       - ./conf/cluster/zk-c/data:/var/lib/zookeeper/data
       - ./conf/cluster/zk-c/log:/var/lib/zookeeper/log
-      - ./conf/kafka/secrets:/etc/zookeeper/secrets
-      - ./conf/kerberos:/etc/kerberos
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       ZOOKEEPER_SERVER_ID: 3
       ZOOKEEPER_TICK_TIME: 2000
@@ -155,10 +159,10 @@ services:
       KRB5_CONFIG: "/etc/krb5.conf"
       #
       ZOOKEEPER_SERVER_CNXN_FACTORY: org.apache.zookeeper.server.NettyServerCnxnFactory
-      ZOOKEEPER_SSL_KEYSTORE_LOCATION: /etc/zookeeper/secrets/zookeeper-c.keystore.jks
+      ZOOKEEPER_SSL_KEYSTORE_LOCATION: /apps/security/ssl/zookeeper-c.keystore.jks
       ZOOKEEPER_SSL_KEYSTORE_PASSWORD: confluent
       ZOOKEEPER_SSL_KEYSTORE_TYPE: PKCS12
-      ZOOKEEPER_SSL_TRUSTSTORE_LOCATION: /etc/zookeeper/secrets/zookeeper-c.truststore.jks
+      ZOOKEEPER_SSL_TRUSTSTORE_LOCATION: /apps/security/ssl/zookeeper-c.truststore.jks
       ZOOKEEPER_SSL_TRUSTSTORE_PASSWORD: confluent
       ZOOKEEPER_SSL_TRUSTSTORE_TYPE: JKS
       ZOOKEEPER_SSL_CLIENT_AUTH: "need"
@@ -168,7 +172,7 @@ services:
       zookeeper-aUTH_PROVIDER_X509: org.apache.zookeeper.server.auth.X509AuthenticationProvider
       zookeeper-aUTH_PROVIDER_SASL: org.apache.zookeeper.server.auth.SASLAuthenticationProvider
       #
-      KAFKA_OPTS: -Djava.security.auth.login.config=/etc/zookeeper/secrets/jaas/zookeeper-c-jaas.conf
+      KAFKA_OPTS: -Djava.security.auth.login.config=/apps/security/ssl/jaas/zookeeper-c-jaas.conf
         -Djava.security.krb5.conf=/etc/krb5.conf
         -Dsun.security.krb5.debug=false
     #        -Dzookeeper.requireClientAuthScheme=sasl
@@ -190,8 +194,8 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/cluster/kb-a/data:/var/lib/kafka/data
-      - ./conf/kafka/secrets:/etc/kafka/secrets
-      - ./conf/kerberos:/etc/kerberos
+      - /apps/security/ssl:/etc/kafka/secrets
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper-a.sandbox.net:2182,zookeeper-b.sandbox.net:2182,zookeeper-c.sandbox.net:2182
@@ -268,8 +272,8 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/cluster/kb-b/data:/var/lib/kafka/data
-      - ./conf/kafka/secrets:/etc/kafka/secrets
-      - ./conf/kerberos:/etc/kerberos
+      - /apps/security/ssl:/etc/kafka/secrets
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       KAFKA_BROKER_ID: 2
       KAFKA_ZOOKEEPER_CONNECT: zookeeper-a.sandbox.net:2181,zookeeper-b.sandbox.net:2181,zookeeper-c.sandbox.net:2181
@@ -335,8 +339,8 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/cluster/kb-c/data:/var/lib/kafka/data
-      - ./conf/kafka/secrets:/etc/kafka/secrets
-      - ./conf/kerberos:/etc/kerberos
+      - /apps/security/ssl:/etc/kafka/secrets
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       KAFKA_BROKER_ID: 3
       KAFKA_ZOOKEEPER_CONNECT: zookeeper-a.sandbox.net:2181,zookeeper-b.sandbox.net:2181,zookeeper-c.sandbox.net:2181
@@ -406,7 +410,7 @@ services:
       - "8081:8081"
     volumes:
       - sandbox_apps_path:/apps
-      - ./conf/kafka/secrets:/etc/schema-registry/secrets
+      - /apps/security/ssl:/etc/schema-registry/secrets
       - ./conf/kerberos:/etc/kerberos
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
@@ -463,7 +467,7 @@ services:
     command: sleep infinity
     volumes:
       - sandbox_apps_path:/apps
-      - ./conf/kafka/secrets:/etc/kafka/secrets
+      - /apps/security/ssl:/etc/kafka/secrets
       - ./conf/kerberos:/etc/kerberos
     environment:
       KRB5_CONFIG: "/etc/krb5.conf"
