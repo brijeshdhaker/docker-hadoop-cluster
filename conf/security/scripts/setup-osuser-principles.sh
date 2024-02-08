@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# /etc/kerberos/setup-osuser-principles.sh
+
 #
 #
 REALM=SANDBOX.NET
@@ -25,8 +27,9 @@ do
 
   klist -k -t /apps/security/keytabs/users/$ou.keytab
   # kinit -k -t /apps/security/keytabs/users/$ou.keytab $ou@$REALM
+  chown $ou:root /apps/security/keytabs/users/$ou.keytab
+  chmod 755 /apps/security/keytabs/users/$ou.keytab
 
-  chmod 744 /apps/security/keytabs/users/$key.keytab
 done
 
 echo ""

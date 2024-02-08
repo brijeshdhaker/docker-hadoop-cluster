@@ -6,7 +6,7 @@ KADMIN_PASSWORD=kadmin
 KUSERS_PASSWORD=kuser
 #
 #
-OS_USERS=("root" "brijeshdhaker" "hdfs" "yarn" "mapred" "hive" "spark")
+OS_USERS=("sandbox" "brijeshdhaker" "hdfs" "yarn" "mapred" "hive" "hbase" "spark" "zeppelin")
 # Change Passwords for OS Users
 for ou in "${OS_USERS[@]}"
 do
