@@ -16,9 +16,7 @@ services:
     ports:
       - "2181:2181"
     volumes:
-      - sandbox_host_path:/apps/hostpath
-      - sandbox_base_path:/apps/sandbox
-      - sandbox_zookeeper_secrets:/etc/zookeeper/secrets
+      - sandbox_apps_path:/apps
       - sandbox_zookeeper_data:/var/lib/zookeeper/data
       - sandbox_zookeeper_log:/var/lib/zookeeper/log
     environment:
@@ -31,7 +29,7 @@ services:
   #
   kafkabroker:
     image: confluentinc/cp-server:7.5.0
-    hostname: kafkabroker
+    hostname: kafkabroker.sandbox.net
     container_name: kafkabroker
     depends_on:
       - zookeeper
@@ -39,12 +37,12 @@ services:
       - "9092:9092"
       - "19092:19092"
     volumes:
-      - sandbox_host_path:/apps/hostpath
-      - sandbox_base_path:/apps/sandbox
-      - sandbox_kafka_secrets:/etc/kafka/secrets
+      - sandbox_apps_path:/apps
       - sandbox_kafka_data:/var/lib/kafka/data
+      - /apps/security/ssl:/etc/kafka/secrets
     environment:
-      KAFKA_BROKER_ID: 100
+      KAFKA_BROKER_ID: "1"
+      KAFKA_BROKER_RACK: "R1"
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
       KAFKA_ADVERTISED_HOST_NAME: localhost
       KAFKA_LISTENERS: INTERNAL://kafkabroker:19092,EXTERNAL://0.0.0.0:9092
@@ -58,7 +56,7 @@ services:
       KAFKA_CONFLUENT_BALANCER_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
-      KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL: http://schema-registry:8081
+      KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL: http://schemaregistry:8081
       CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: kafkabroker:19092
       CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS: 1
       CONFLUENT_METRICS_ENABLE: 'true'
@@ -77,9 +75,7 @@ services:
     ports:
       - "8081:8081"
     volumes:
-      - sandbox_host_path:/apps/hostpath
-      - sandbox_base_path:/apps/sandbox
-      - sandbox_kafka_secrets:/etc/schemaregistry/secrets
+      - sandbox_apps_path:/apps
     environment:
       SCHEMA_REGISTRY_HOST_NAME: schemaregistry
       SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'kafkabroker:19092'
@@ -88,16 +84,17 @@ services:
 
 #
 volumes:
-  sandbox_host_path:
+  #
+  sandbox_apps_path:
     external: true
-  sandbox_base_path:
-    external: true
+  #
   sandbox_zookeeper_secrets:
     external: true
   sandbox_zookeeper_data:
     external: true
   sandbox_zookeeper_log:
     external: true
+  #
   sandbox_kafka_secrets:
     external: true
   sandbox_kafka_data:

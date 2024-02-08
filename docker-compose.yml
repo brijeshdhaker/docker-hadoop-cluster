@@ -291,6 +291,10 @@ services:
       - kafkabroker
     ports:
       - "8081:8081"
+    healthcheck:
+      test: nc schemaregistry.sandbox.net 8081 || exit 1
+      retries: 20
+      interval: 10s
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
