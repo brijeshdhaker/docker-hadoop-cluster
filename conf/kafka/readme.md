@@ -239,8 +239,7 @@ kafkacat -b kafkabroker.sandbox.net:19092 -L -J | jq .
 
 docker run --tty --rm \
 --network sandbox.net \
---volume ./conf/kafka:/etc/kafka/secrets \
---volume ./conf/kerberos:/etc/kerberos \
+--volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
 --env KRB5_CONFIG=/etc/krb5.conf \
 brijeshdhaker/kafka-clients:7.5.0 \
 kafkacat -b kafkabroker.sandbox.net:9093 -d all -L \
@@ -256,8 +255,7 @@ kafkacat -b kafkabroker.sandbox.net:9093 -d all -L \
 #
 docker run -it --rm \
 --network sandbox.net \
---volume ./conf/kafka:/etc/kafka/secrets \
---volume ./conf/kerberos:/etc/kerberos \
+--volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
 --env KRB5_CONFIG=/etc/krb5.conf \
 brijeshdhaker/kafka-clients:7.5.0 \
 kafkacat -b kafkabroker.sandbox.net:9093 \
@@ -274,8 +272,7 @@ kafkacat -b kafkabroker.sandbox.net:9093 \
 #
 docker run -it --rm \
 --network sandbox.net \
---volume ./conf/kafka/secrets:/etc/kafka/secrets \
---volume ./conf/kerberos:/etc/kerberos \
+--volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
 --env KRB5_CONFIG=/etc/krb5.conf \
 brijeshdhaker/kafka-clients:7.5.0 \
 kafkacat -b kafkabroker.sandbox.net:19092 -C \
@@ -294,8 +291,7 @@ kafkacat -b kafkabroker.sandbox.net:19092 -C \
 #
 docker run -it --rm \
 --network sandbox.net \
---volume ./conf/kafka/secrets:/etc/kafka/secrets \
---volume ./conf/kerberos:/etc/kerberos \
+--volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
 --env KRB5_CONFIG=/etc/krb5.conf \
 brijeshdhaker/kafka-clients:7.5.0 \
 kafkacat -b kafkabroker.sandbox.net:19093 -L -J \
@@ -315,8 +311,7 @@ kafkacat -b kafkabroker.sandbox.net:19093 -L -J \
 docker run -it --rm \
 --hostname=clients.sandbox.net \
 --network sandbox.net \
---volume ./conf/kafka/secrets:/etc/kafka/secrets \
---volume ./conf/kerberos:/etc/kerberos \
+--volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
 --env KRB5_CONFIG=/etc/krb5.conf \
 brijeshdhaker/kafka-clients:7.5.0 \
 kafkacat -b kafkabroker.sandbox.net:19093 -P -t test_topic \
@@ -349,8 +344,7 @@ EOF
 docker run -it --rm \
 --hostname=clients.sandbox.net \
 --network sandbox.net \
---volume ./conf/kafka/secrets:/etc/kafka/secrets \
---volume ./conf/kerberos:/etc/kerberos \
+--volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
 --env KRB5_CONFIG=/etc/krb5.conf \
 brijeshdhaker/kafka-clients:7.5.0 \
 kafkacat -b kafkabroker.sandbox.net:19093 -C -t test_topic -o beginning \
@@ -369,9 +363,8 @@ kafkacat -b kafkabroker.sandbox.net:19093 -C -t test_topic -o beginning \
 docker run -it --rm \
 --hostname=clients.sandbox.net \
 --network sandbox.net \
---volume ./conf/kafka/secrets:/etc/kafka/secrets \
 --volume ./conf/kafka/data:/etc/kafka/data \
---volume ./conf/kerberos:/etc/kerberos \
+--volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
 --env KRB5_CONFIG=/etc/krb5.conf \
 brijeshdhaker/kafka-clients:7.5.0 \
 kafkacat -F /etc/kafka/secrets/cnf/librdkafka.config -C -t test_topic -o -10 \
@@ -381,22 +374,21 @@ kafkacat -F /etc/kafka/secrets/cnf/librdkafka.config -C -t test_topic -o -10 \
 docker run --rm \
 --hostname=clients.sandbox.net \
 --network sandbox.net \
---volume ./conf/kafka/secrets:/etc/kafka/secrets \
 --volume ./conf/kafka/data:/etc/kafka/data \
---volume ./conf/kerberos:/etc/kerberos \
+--volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
 --env KRB5_CONFIG=/etc/krb5.conf \
 --env KAFKA_OPTS="-Djava.security.auth.login.config=/etc/kafka/secrets/jaas/kafkaclients_jaas.conf -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=false" \
 confluentinc/cp-server:7.5.0 \
 sh -c "kafka-console-producer --topic kcat-test-topic \
 --broker-list kafkabroker.sandbox.net:19093 \
---producer.config /etc/kafka/secrets/cnf/client-ssl.properties \
+--producer.config /apps/sandbox/kafka/cnf/client-ssl.properties \
 --property parse.key=true \
 --property key.separator=, < /etc/kafka/secrets/data/kcat_messages.txt"
 
 
 docker compose exec kafkabroker sh -c "kafka-console-producer --topic kcat-test-topic \
 --broker-list kafkabroker.sandbox.net:19093 \
---producer.config /etc/kafka/secrets/cnf/client-ssl.properties \
+--producer.config /apps/sandbox/kafka/cnf/client-ssl.properties \
 --property parse.key=true \
 --property key.separator=, < /etc/kafka/secrets/kcat_messages.txt 2>/dev/null"
 

@@ -94,6 +94,8 @@ $HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;pri
 #
 ```shell
 
+zookeeper-shell zookeeper:2181 ls /
+
 zookeeper-shell zookeeper.sandbox.net:2182 -zk-tls-config-file /apps/sandbox/kafka/cnf/zookeeper-client.config ls /brokers/ids
 
 ```
