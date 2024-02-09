@@ -710,17 +710,17 @@ services:
       - "9080:8080"
       - "9081:8081"
     volumes:
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - sandbox_apps_path:/apps
+      - sandbox_zeppelin_conf:/opt/zeppelin/conf
+      - sandbox_zeppelin_notebook:/opt/notebook
       - sandbox_spark_312:/opt/spark
       - sandbox_hadoop_311:/opt/hadoop
+      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - sandbox_hive_313:/opt/hive
       - sandbox_hbase_246:/opt/hbase
-      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
-      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-      - /opt/zeppelin/conf:/opt/zeppelin/conf
       - ./conf/hbase/client:/opt/hbase/conf
-      - /opt/flink-1.12.2:/opt/flink
-      - sandbox_zeppelin_notebook:/opt/notebook
+      - sandbox_flink_112:/opt/flink
 
   #
   # Apache NiFi
@@ -777,7 +777,7 @@ volumes:
   sandbox_mysql_conf:
     external: true
   #
-  sandbox_zeppelin:
+  sandbox_zeppelin_conf:
     external: true
   sandbox_zeppelin_notebook:
     external: true
@@ -812,6 +812,9 @@ volumes:
     external: true
   #
   sandbox_spark_312:
+    external: true
+  #
+  sandbox_flink_112:
     external: true
   #
   sandbox_nifi_conf:
