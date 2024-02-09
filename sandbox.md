@@ -96,7 +96,7 @@ ${SPARK_HOME}/bin/spark-submit \
 ```shell
 
 yarn logs -applicationId application_1707218631234_0019 > application_1707218631234_0019.log 2>&1
-
+yarn app -list -appStates Finished
 ```
 #
 # Hive

@@ -80,55 +80,6 @@ hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar t
 hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar terasort teragen/input terasort/output
 
 
-
-##
-
-$SPARK_HOME/bin/spark-submit \
---class org.apache.spark.examples.SparkPi \
---master yarn \
---deploy-mode cluster \
---driver-memory 640M \
---executor-memory 640M \
---num-executors 2 \
---conf "spark.yarn.archive=hdfs://namenode:9000/archives/spark-3.1.2.zip" \
---conf "spark.yarn.queue=default" \
-$SPARK_HOME/examples/jars/spark-examples_*.jar 50000
-
-# --proxy-user
-
-$SPARK_HOME/bin/spark-submit \
---class org.apache.spark.examples.SparkPi \
---master yarn \
---deploy-mode cluster \
---driver-memory 640M \
---executor-memory 640M \
---num-executors 2 \
---principal brijeshdhaker@SANDBOX.NET \
---keytab /apps/security/keytabs/users/brijeshdhaker.keytab \
---conf "spark.yarn.archive=hdfs://namenode.sandbox.net:9000/archives/spark-3.1.2.zip" \
---conf "spark.yarn.queue=engineering" \
---conf "spark.eventLog.enabled=true" \
---conf "spark.eventLog.dir=hdfs://namenode.sandbox.net:9000/apps/var/log/spark" \
---conf "hadoop.yarn.timeline-service.enabled=false" \
-$SPARK_HOME/examples/jars/spark-examples_*.jar 10000
-
-
-$SPARK_HOME/bin/spark-submit \
---class org.apache.spark.examples.SparkPi \
---master yarn \
---deploy-mode cluster \
---driver-memory 640M \
---executor-memory 640M \
---num-executors 2 \
---conf "spark.yarn.archive=hdfs://namenode.sandbox.net:9000/archives/spark-3.1.2.zip" \
---conf "spark.yarn.queue=engineering" \
---conf "spark.eventLog.enabled=true" \
---conf "spark.eventLog.dir=hdfs://namenode.sandbox.net:9000/apps/var/log/spark" \
---conf "hadoop.yarn.timeline-service.enabled=false" \
---conf "spark.kerberos.keytab=/apps/security/keytabs/users/brijeshdhaker.keytab" \
---conf "spark.kerberos.principal=brijeshdhaker@SANDBOX.NET" \
-$SPARK_HOME/examples/jars/spark-examples_*.jar 1000
-
 #
 # Yarn
 #

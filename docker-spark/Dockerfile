@@ -7,8 +7,8 @@
 #
 
 #
-# docker build -t brijeshdhaker/spark:3.1.3 -f docker-spark/Dockerfile .
-# docker push docker.io/brijeshdhaker/spark:3.1.3
+# docker build -t brijeshdhaker/spark-standalon:3.1.2 -f docker-spark/Dockerfile .
+# docker push docker.io/brijeshdhaker/spark-standalon:3.1.2
 #
 
 FROM brijeshdhaker/ubuntu:22.04
