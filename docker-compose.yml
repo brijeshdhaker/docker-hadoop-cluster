@@ -681,13 +681,13 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_311:/opt/hadoop
+      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - sandbox_hbase_246:/opt/hbase
+      - ./conf/hbase/client:/opt/hbase/conf
       - sandbox_hive_313:/opt/hive
       - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
       - sandbox_spark_312:/opt/spark
       - /opt/flink-1.12.2:/opt/flink
-      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-      - ./conf/hbase/client:/opt/hbase/conf
       - sandbox_maven_363:/opt/maven-3.6.3
 
     environment:

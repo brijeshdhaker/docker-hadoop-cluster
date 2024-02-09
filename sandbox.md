@@ -6,21 +6,12 @@ ${SPARK_HOME}/bin/spark-shell \
 --keytab /apps/security/keytabs/users/zeppelin.keytab
 
 ${SPARK_HOME}/bin/spark-shell \
-  --principal zeppelin@SANDBOX.NET \
-  --keytab /apps/security/keytabs/users/zeppelin.keytab \
-  --jars /opt/spark/hive/* \
-  --keytab /apps/security/keytabs/users/zeppelin.keytab \
-  --conf spark.sql.catalogImplementation=hive \
-  --conf spark.hadoop.hive.metastore.uris=thrift://metastore.sandbox.net:9083 \
-  --conf spark.sql.hive.metastore.version=2.3.7 \
-  --conf spark.sql.hive.metastore.jars=/opt/spark/hive/* \
-  --conf spark.sql.warehouse.dir=hdfs://namenode:9000/user/hive/warehouse
+--master yarn \
+--principal zeppelin@SANDBOX.NET \
+--keytab /apps/security/keytabs/users/zeppelin.keytab \
+--conf "hadoop.yarn.timeline-service.enabled=false"
 
-$HIVE_HOME/lib/guava-14.0.1.jar \  
-SPARK_DIST_CLASSPATH
 spark.conf.get("spark.sql.catalogImplementation")
-
-spark.sql.catalogImplementation
 
 
 ${SPARK_HOME}/bin/spark-submit \
@@ -94,7 +85,6 @@ ${SPARK_HOME}/bin/spark-submit \
 # YARN
 #
 ```shell
-
 yarn logs -applicationId application_1707218631234_0019 > application_1707218631234_0019.log 2>&1
 yarn app -list -appStates Finished
 ```

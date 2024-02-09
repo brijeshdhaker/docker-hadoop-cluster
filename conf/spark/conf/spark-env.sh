@@ -84,6 +84,14 @@ export SPARK_HISTORY_OPTS="-Dspark.history.kerberos.enabled=true -Dspark.history
 # - SPARK_BEELINE_MEMORY, Memory for beeline (e.g. 1000M, 2G) (Default: 1G)
 
 #
+# export EXT_CLASSPATH=""
+# if [ -d ${HIVE_HOME} ]; then
+#   for f in ${HIVE_HOME}/lib/hive-*.jar; do
+#     EXT_CLASSPATH=${EXT_CLASSPATH}:$f;
+#   done
+# fi
+
+#
 #
 # Passing a Hadoop configuration directory
 export SPARK_DIST_CLASSPATH=$(${HADOOP_HOME}/bin/hadoop --config ${HADOOP_CONF_DIR} classpath)
