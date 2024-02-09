@@ -22,11 +22,12 @@
 # docker volume create --name sandbox_hadoop_311_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.1.1/yarn --opt o=bind
 # docker volume create --name sandbox_hadoop_311_mapred --opt type=none --opt device=/apps/sandbox/hadoop-3.1.1/mapred --opt o=bind
 #
+# docker volume create --name sandbox_spark_312 --opt type=none --opt device=/opt/spark-3.1.2 --opt o=bind
 # docker volume create --name sandbox_hive_313 --opt type=none --opt device=/opt/hive-3.1.3 --opt o=bind
 # docker volume create --name sandbox_tez_091 --opt type=none --opt device=/opt/tez-0.9.1 --opt o=bind
-#
 # docker volume create --name sandbox_hbase_246 --opt type=none --opt device=/opt/hbase-2.4.6 --opt o=bind
 # docker volume create --name sandbox_hbase_117 --opt type=none --opt device=/opt/hbase-1.1.7 --opt o=bind
+# docker volume create --name sandbox_flink_112 --opt type=none --opt device=/opt/flink-1.12.2 --opt o=bind
 #
 # docker volume create --name sandbox_nifi_conf --opt type=none --opt device=/apps/sandbox/nifi/conf --opt o=bind
 # docker volume create --name sandbox_nifi_content_repository --opt type=none --opt device=/apps/sandbox/nifi/content_repository --opt o=bind
@@ -682,6 +683,7 @@ services:
       - sandbox_hadoop_311:/opt/hadoop
       - sandbox_hbase_246:/opt/hbase
       - sandbox_hive_313:/opt/hive
+      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
       - sandbox_spark_312:/opt/spark
       - /opt/flink-1.12.2:/opt/flink
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop

@@ -42,3 +42,8 @@ echo
 nc -z -v kdcserver.sandbox.net 749
 ## UDP Port Scan
 netcat -u kdcserver.sandbox.net 88
+
+# Passphrase-less SSH
+$ ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa_hadoop
+$ cat ~/.ssh/id_rsa_hadoop.pub >> ~/.ssh/authorized_keys
+$ chmod 0600 ~/.ssh/authorized_keys

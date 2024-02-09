@@ -132,28 +132,27 @@ docker volume create --name sandbox_airflow_dags --opt type=none --opt device=/a
 docker volume create --name sandbox_airflow_logs --opt type=none --opt device=/apps/sandbox/airflow/logs --opt o=bind
 docker volume create --name sandbox_airflow_plugins --opt type=none --opt device=/apps/sandbox/airflow/plugins --opt o=bind
 
-docker volume create --name sandbox_hadoop_321 --opt type=none --opt device=/opt/hadoop-3.2.1 --opt o=bind
-docker volume create --name sandbox_hadoop_321_dfs --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/dfs --opt o=bind
-docker volume create --name sandbox_hadoop_321_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/yarn --opt o=bind
-docker volume create --name sandbox_hadoop_321_mapred --opt type=none --opt device=/apps/sandbox/hadoop-3.2.1/mapred --opt o=bind
+docker volume create --name sandbox_hadoop_311 --opt type=none --opt device=/opt/hadoop-3.1.1 --opt o=bind
+docker volume create --name sandbox_hadoop_311_dfs --opt type=none --opt device=/apps/sandbox/hadoop-3.1.1/dfs --opt o=bind
+docker volume create --name sandbox_hadoop_311_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.1.1/yarn --opt o=bind
+docker volume create --name sandbox_hadoop_311_mapred --opt type=none --opt device=/apps/sandbox/hadoop-3.1.1/mapred --opt o=bind
 
 docker volume create --name sandbox_spark_312 --opt type=none --opt device=/opt/spark-3.1.2 --opt o=bind
-
 docker volume create --name sandbox_hive_313 --opt type=none --opt device=/opt/hive-3.1.3 --opt o=bind
-docker volume create --name sandbox_tez_092 --opt type=none --opt device=/opt/tez-0.9.2 --opt o=bind
-
-docker volume create --name sandbox_hbase_300 --opt type=none --opt device=/opt/hbase-3.0.0 --opt o=bind
+docker volume create --name sandbox_tez_091 --opt type=none --opt device=/opt/tez-0.9.1 --opt o=bind
+docker volume create --name sandbox_hbase_246 --opt type=none --opt device=/opt/hbase-2.4.6 --opt o=bind
 docker volume create --name sandbox_hbase_117 --opt type=none --opt device=/opt/hbase-1.1.7 --opt o=bind
+docker volume create --name sandbox_flink_112 --opt type=none --opt device=/opt/flink-1.12.2 --opt o=bind
 
 #
 # Require Dirs
 #
-sudo mkdir -p /apps/{sandbox,hostpath,var/log}
+sudo mkdir -p /apps/{sandbox,hostpath,var/log,}
 sudo chown brijeshdhaker:root -R /apps
 sudo chmod 775 -R /apps
 
-sudo mkdir -p /opt/hadoop-3.2.1
-sudo tar --strip-components=1 -xvf hadoop-3.2.1.tar.gz -C /opt/hadoop-3.2.1
+sudo mkdir -p /opt/hadoop-3.1.1
+sudo tar --strip-components=1 -xvf hadoop-3.1.1.tar.gz -C /opt/hadoop-3.1.1
 
 sudo mkdir -p /opt/hive-3.1.3
 sudo tar --strip-components=1 -xvf apache-hive-3.1.3-bin.tar.gz -C /opt/hive-3.1.3
@@ -161,8 +160,8 @@ sudo tar --strip-components=1 -xvf apache-hive-3.1.3-bin.tar.gz -C /opt/hive-3.1
 sudo mkdir -p /opt/tez-0.9.2
 sudo tar --strip-components=1 -xvf apache-tez-0.9.2-bin.tar.gz -C /opt/tez-0.9.2
 
-sudo mkdir -p /opt/hbase-3.0.0
-sudo tar --strip-components=1 -xvf hbase-3.0.0-alpha-4-bin.tar.gz -C /opt/hbase-3.0.0
+sudo mkdir -p /opt/hbase-2.4.6
+sudo tar --strip-components=1 -xvf hbase-2.4.6-bin.tar.gz -C /opt/hbase-2.4.6
 
 sudo mkdir -p /opt/hbase-1.1.7
 sudo tar --strip-components=1 -xvf hbase-1.1.7-bin.tar.gz -C /opt/hbase-1.1.7
@@ -170,11 +169,9 @@ sudo tar --strip-components=1 -xvf hbase-1.1.7-bin.tar.gz -C /opt/hbase-1.1.7
 sudo mkdir -p /opt/spark-3.1.2
 sudo tar --strip-components=1 -xvf spark-3.1.2-bin-hadoop3.2.tgz -C /opt/spark-3.1.2
 
-sudo tar --strip-components=1 -xvf spark-3.4.0-bin-hadoop3.tgz -C /opt/spark-3.4.0
-
 sudo tar --strip-components=1 -xvf apache-zookeeper-3.7.1-bin.tar.gz -C /opt/zookeeper-3.7.1
 
 sudo unzip apache-maven-3.6.3-bin.zip -d /opt
 
 cd /opt
-sudo chown -R brijeshdhaker:root hadoop-3.2.1 hbase-1.1.7 hbase-3.0.0 hive-3.1.3 tez-0.9.2 maven-3.6.3 spark-3.4.0 zookeeper:3.7.1
+sudo chown -R brijeshdhaker:root hadoop-3.1.1 hbase-1.1.7 hbase-2.4.6 hive-3.1.3 tez-0.9.1 maven-3.6.3 spark-3.1.2 flink-1.12.2 zookeeper:3.7.1

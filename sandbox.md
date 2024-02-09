@@ -1,7 +1,27 @@
 
 ```shell
 
-${SPARK_HOME}/bin/spark-shell
+${SPARK_HOME}/bin/spark-shell \
+--principal zeppelin@SANDBOX.NET \
+--keytab /apps/security/keytabs/users/zeppelin.keytab
+
+${SPARK_HOME}/bin/spark-shell \
+  --principal zeppelin@SANDBOX.NET \
+  --keytab /apps/security/keytabs/users/zeppelin.keytab \
+  --jars /opt/spark/hive/* \
+  --keytab /apps/security/keytabs/users/zeppelin.keytab \
+  --conf spark.sql.catalogImplementation=hive \
+  --conf spark.hadoop.hive.metastore.uris=thrift://metastore.sandbox.net:9083 \
+  --conf spark.sql.hive.metastore.version=2.3.7 \
+  --conf spark.sql.hive.metastore.jars=/opt/spark/hive/* \
+  --conf spark.sql.warehouse.dir=hdfs://namenode:9000/user/hive/warehouse
+
+$HIVE_HOME/lib/guava-14.0.1.jar \  
+SPARK_DIST_CLASSPATH
+spark.conf.get("spark.sql.catalogImplementation")
+
+spark.sql.catalogImplementation
+
 
 ${SPARK_HOME}/bin/spark-submit \
 --class org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer \
@@ -32,18 +52,17 @@ ${SPARK_HOME}/bin/spark-submit \
 --conf spark.eventLog.dir=hdfs://namenode:9000/apps/var/log/spark \
 /opt/spark/examples/jars/spark-examples_2.12-3.1.2.jar 10
 
-
-
-
-${SPARK_HOME}/bin/spark-submit --class org.apache.spark.examples.SparkPi \
+${SPARK_HOME}/bin/spark-submit \
+    --keytab /apps/security/keytabs/users/zeppelin.keytab \
+    --principal zeppelin@SANDBOX.NET \
     --master yarn \
     --deploy-mode cluster \
     --driver-memory 640m \
     --executor-memory 640m \
     --executor-cores 1 \
     --queue engineering \
-    --keytab /apps/security/keytabs/users/zeppelin.keytab \
-    --principal zeppelin@SANDBOX.NET \
+    --name spark-app \
+    --class org.apache.spark.examples.SparkPi \
     /opt/spark/examples/jars/spark-examples_2.12-3.1.2.jar 10
     
 ${SPARK_HOME}/bin/spark-submit \
