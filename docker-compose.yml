@@ -129,8 +129,9 @@ services:
       - "28080:8080"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_zookeeper_data:/var/lib/zookeeper/data
-      - sandbox_zookeeper_log:/var/lib/zookeeper/log
+      - /apps/security/ssl:/etc/zookeeper/secrets
+      - /apps/sandbox/zookeeper/hadoop311/data:/var/lib/zookeeper/data
+      - /apps/sandbox/zookeeper/hadoop311/log:/var/lib/zookeeper/log
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
@@ -443,6 +444,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_311_yarn:/yarn
+#      - /opt/hadoop-3.1.1/share/hadoop/spark:/opt/hadoop/share/hadoop/spark
     environment:
       HADOOP_CONF_DIR: "/etc/yarn/conf"
       YARN_SITE_DIR: "/etc/yarn/conf"

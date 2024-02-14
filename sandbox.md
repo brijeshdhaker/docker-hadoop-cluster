@@ -9,8 +9,17 @@ ${SPARK_HOME}/bin/spark-shell \
 --master yarn \
 --principal zeppelin@SANDBOX.NET \
 --keytab /apps/security/keytabs/users/zeppelin.keytab \
---conf "hadoop.yarn.timeline-service.enabled=false"
+--conf spark.yarn.archive=hdfs://namenode:9000/archives/spark/spark-3.1.2.zip \
+--conf spark.yarn.dist.archives=hdfs://namenode:9000/archives/pyspark/pyspark3.7-20221125.tar.gz#environment \
+--conf spark.shuffle.service.enabled=true  \
+--conf spark.dynamicAllocation.enabled=true \
+--conf spark.dynamicAllocation.minExecutors=0 \
+--conf spark.dynamicAllocation.initialExecutors=1 \
+--conf spark.dynamicAllocation.maxExecutors=5 \
+--conf spark.security.credentials.hbase.enabled=false \
+--conf spark.security.credentials.hive.enabled=false \
 
+\
 spark.conf.get("spark.sql.catalogImplementation")
 
 
@@ -81,12 +90,44 @@ ${SPARK_HOME}/bin/spark-submit \
 /opt/spark/examples/jars/spark-examples_2.12-3.1.2.jar 10
 
 ```
+
+#
+# HDFS
+#
+```shell
+Options:
+
+-d: f the path is a directory, return 0.
+-e: if the path exists, return 0.
+-f: if the path is a file, return 0.
+-s: if the path is not empty, return 0.
+-z: if the file is zero length, return 0.
+
+CHECK_PATH=/user
+if $HADOOP_HOME/bin/hdfs dfs -test -e $CHECK_PATH; then
+    echo "[$CHECK_PATH] exists on HDFS"
+    hdfs dfs -ls $CHECK_PATH
+fi
+
+```
 #
 # YARN
 #
 ```shell
+
+yarn app -list
+# ALL, NEW, NEW_SAVING, SUBMITTED, ACCEPTED, RUNNING, FINISHED, FAILED, KILLED
+yarn app -list -appStates RUNNING
+yarn app -status application_1707705309527_0001
+yarn app -kill application_1707705309527_0001
+
 yarn logs -applicationId application_1707218631234_0019 > application_1707218631234_0019.log 2>&1
-yarn app -list -appStates Finished
+
+yarn node  -list
+yarn node  -list -all
+yarn node  -list -states running
+yarn node -status nodemanager.sandbox.net:41755
+
 ```
 #
 # Hive
@@ -95,7 +136,8 @@ yarn app -list -appStates Finished
 
 $HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET"
 $HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET" -e "show tables"
-$HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET" -f queries.sql
+$HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET" -f "/apps/sandbox/hive/hql/table.hql"
+
 ```
 
 #

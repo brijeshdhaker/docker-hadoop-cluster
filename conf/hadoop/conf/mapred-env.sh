@@ -39,7 +39,7 @@
 # These options will be appended to the options specified as HADOOP_OPTS
 # and therefore may override any similar flags set in HADOOP_OPTS
 export MAPRED_HISTORYSERVER_OPTS="-Djava.library.path=/opt/hadoop/lib/native -Djava.security.krb5.conf=/etc/krb5.conf -Djava.security.krb5.realm=SANDBOX.NET -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net"
-
+export HADOOP_JOB_HISTORYSERVER_OPTS="-Djava.library.path=/opt/hadoop/lib/native -Djava.security.krb5.conf=/etc/krb5.conf -Djava.security.krb5.realm=SANDBOX.NET -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net"
 # Specify the log4j settings for the JobHistoryServer
 # Java property: hadoop.root.logger
 #export HADOOP_JHS_LOGGER=INFO,RFA
