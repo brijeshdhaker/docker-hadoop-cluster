@@ -15,6 +15,8 @@ fi
 echo "remove lost+found from $namedir"
 #rm -r $namedir/lost+found
 
+/usr/bin/cp -Rf ${ETC_CONF_DIR}/*.xml ${HADOOP_HOME}/etc/hadoop/
+
 if [ ! -f /hadoop/dfs/.already_formatted ]; then
 
   echo "Formatting name node name directory: $namedir"
@@ -27,4 +29,4 @@ if [ ! -f /hadoop/dfs/.already_formatted ]; then
 
 fi
 
-$HADOOP_HOME/bin/hdfs --config $HADOOP_CONF_DIR namenode
+$HADOOP_HOME/bin/hdfs --config ${HADOOP_CONF_DIR} namenode

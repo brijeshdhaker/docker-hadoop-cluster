@@ -1,9 +1,9 @@
 #
-# docker build -t brijeshdhaker/hadoop-datanode:3.1.1 -f docker-hadoop/datanode/Dockerfile .
-# docker push brijeshdhaker/hadoop-datanode:3.1.1
+# docker build -t brijeshdhaker/hadoop-datanode:3.3.4 -f docker-hadoop/datanode/Dockerfile .
+# docker push brijeshdhaker/hadoop-datanode:3.3.4
 #
 
-FROM brijeshdhaker/hadoop-base:3.1.1
+FROM brijeshdhaker/hadoop-base:3.3.4
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
@@ -23,6 +23,6 @@ RUN chmod -Rf 755 /run.sh
 EXPOSE 9864
 
 # Specify the User that the actual main process will run as
-USER root:root
+USER root:hadoop
 
 CMD ["/run.sh"]
