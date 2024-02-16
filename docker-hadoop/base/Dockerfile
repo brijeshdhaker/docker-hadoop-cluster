@@ -11,8 +11,8 @@ MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 ENV HADOOP_VERSION=3.1.1
 ENV BASE_DIR=/opt
 ENV HADOOP_HOME=$BASE_DIR/hadoop
-ENV HADOOP_CONF_DIR=/etc/hadoop/conf
-ENV YARN_CONF_DIR=/etc/yarn/conf
+ENV HADOOP_CONF_DIR=$BASE_DIR/hadoop/etc/hadoop
+ENV HADOOP_ETC_CONF=/etc/conf/hadoop
 ENV PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin
 ENV HADOOP_LOG_DIR=${HADOOP_LOG_DIR:-"/apps/var/log/hadoop"}
 
@@ -24,9 +24,8 @@ COPY resources/tars/hadoop-${HADOOP_VERSION}.tar.gz ${BASE_DIR}/hadoop-${HADOOP_
 ADD docker-hadoop/base/entrypoint.sh /entrypoint.sh
 
 RUN set -x && \
-    mkdir -p  ${HADOOP_HOME} && tar --strip-components=1 -zxvf  ${BASE_DIR}/hadoop-${HADOOP_VERSION}.tar.gz -C ${HADOOP_HOME} && \
-    mkdir -p /etc/hadoop && ln -s ${HADOOP_HOME}/etc/hadoop $HADOOP_CONF_DIR && chmod -Rf 755 $HADOOP_CONF_DIR && \
-    mkdir -p /etc/yarn && ln -s ${HADOOP_HOME}/etc/hadoop $YARN_CONF_DIR && chmod -Rf 755 $YARN_CONF_DIR && \
+    mkdir -p  ${HADOOP_HOME} && mkdir -p  ${HADOOP_ETC_CONF} && \
+    tar --strip-components=1 -zxvf  ${BASE_DIR}/hadoop-${HADOOP_VERSION}.tar.gz -C ${HADOOP_HOME} && \
     chown -Rf hdfs:hadoop ${HADOOP_HOME} && chmod -Rf 775 ${HADOOP_HOME} && \
     mkdir -p $HADOOP_LOG_DIR && chmod -Rf 775 $HADOOP_LOG_DIR && chown -Rf hdfs:hadoop $HADOOP_LOG_DIR && \
     rm -f ${BASE_DIR}/hadoop-${HADOOP_VERSION}.tar.gz && \
@@ -34,7 +33,7 @@ RUN set -x && \
     echo "done...!!!"
 
 #Custom configuration goes here
-COPY conf/hadoop/conf/* ${HADOOP_HOME}/etc/hadoop
-RUN chmod -Rf 777 $HADOOP_CONF_DIR/*
+COPY conf/hadoop/conf/* ${HADOOP_ETC_CONF}/
+RUN chmod -Rf 777 ${HADOOP_ETC_CONF}
 
 ENTRYPOINT ["/entrypoint.sh"]

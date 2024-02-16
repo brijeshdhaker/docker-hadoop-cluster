@@ -1,5 +1,7 @@
 #!/bin/bash
 
+/usr/bin/cp -Rf ${HADOOP_ETC_CONF}/*.xml ${HADOOP_HOME}/etc/hadoop/
+
 timelinedir='/yarn/timeline'
 
 if [ ! -d $timelinedir ]; then

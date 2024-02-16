@@ -6,7 +6,7 @@
 FROM brijeshdhaker/hadoop-base:3.1.1
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
-HEALTHCHECK CMD curl -f http://localhost:9870/ || exit 1
+# HEALTHCHECK CMD curl -f http://localhost:9870/ || exit 1
 
 #
 ENV MULTIHOMED_NETWORK=0

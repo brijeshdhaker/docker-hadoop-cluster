@@ -23,6 +23,6 @@ RUN chmod -Rf 755 /run.sh
 EXPOSE 9864
 
 # Specify the User that the actual main process will run as
-USER root:root
+USER root:hadoop
 
 CMD ["/run.sh"]

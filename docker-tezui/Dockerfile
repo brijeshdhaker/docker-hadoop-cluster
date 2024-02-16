@@ -2,7 +2,7 @@
 # docker build -t brijeshdhaker/tezui:0.9.1 -f docker-tezui/Dockerfile .
 # docker push brijeshdhaker/tezui:0.9.1
 
-FROM ubuntu:22.04
+FROM brijeshdhaker/ubuntu:22.04
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
@@ -13,7 +13,7 @@ ENV PATH=$PATH:$JAVA_HOME/bin
 USER root
 
 #Install Hive and PostgreSQL JDBC
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends openjdk-8-jdk net-tools tar curl netcat gnupg libsnappy-dev vim && \
+RUN set -x && \
     mkdir -p /opt/tez && \
     rm -rf /var/lib/apt/lists/*
 

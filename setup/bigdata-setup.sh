@@ -147,9 +147,25 @@ docker volume create --name sandbox_flink_112 --opt type=none --opt device=/opt/
 #
 # Require Dirs
 #
+
+sudo cp -p
+
 sudo mkdir -p /apps/{sandbox,hostpath,var/log,}
 sudo chown brijeshdhaker:root -R /apps
 sudo chmod 775 -R /apps
+
+sudo mkdir -p /apps/sandbox/hadoop-3.1.1/{dfs/data,dfs/name,dfs/secondary}
+sudo chown -Rf 1002:1001 /apps/sandbox/hadoop-3.1.1/dfs
+
+sudo mkdir -p /apps/sandbox/hadoop-3.1.1/{yarn/container-logs,yarn/nm,yarn/timeline}
+sudo chown -Rf 1009:1001 /apps/sandbox/hadoop-3.1.1/yarn
+
+sudo mkdir -p /apps/sandbox/hadoop-3.1.1/{mapred/history}
+sudo chown -Rf 1003:1001 /apps/sandbox/hadoop-3.1.1/mapred
+
+sudo chown -Rf hdfs:hadoop /apps/sandbox/hadoop-3.1.1/dfs
+sudo chown -Rf yarn:hadoop /apps/sandbox/hadoop-3.1.1/yarn
+sudo chown -Rf mapred:hadoop /apps/sandbox/hadoop-3.1.1/mapred
 
 sudo mkdir -p /opt/hadoop-3.1.1
 sudo tar --strip-components=1 -xvf hadoop-3.1.1.tar.gz -C /opt/hadoop-3.1.1

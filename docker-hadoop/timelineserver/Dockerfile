@@ -11,9 +11,10 @@ HEALTHCHECK CMD curl -f http://localhost:8188/ || exit 1
 
 ADD docker-hadoop/timelineserver/run.sh /run.sh
 RUN mkdir -p /yarn/timeline && \
-    chmod -Rf 777 /yarn/timeline && \
+    chmod -Rf 775 /yarn/timeline && \
     chown -Rf yarn:hadoop /yarn/timeline && \
-    chown yarn:hadoop /run.sh && chmod 775 /run.sh
+    chown yarn:hadoop /run.sh && chmod 775 /run.sh && \
+    echo "done"
 
 EXPOSE 8188
 
