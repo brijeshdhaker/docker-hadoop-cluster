@@ -1,7 +1,16 @@
 #
+# docker volume create --name sandbox_host_path --opt type=none --opt device=/apps/hostpath --opt o=bind
+# docker volume create --name sandbox_base_path --opt type=none --opt device=/apps/sandbox --opt o=bind
 #
+# docker volume create --name sandbox_es_standalone_data --opt type=none --opt device=/apps/sandbox/elasticsearch/standalone/data --opt o=bind
 #
-version: '3.5'
+# docker volume create --name sandbox_es_es01_data --opt type=none --opt device=/apps/sandbox/elasticsearch/cluster/es01/data --opt o=bind
+# docker volume create --name sandbox_es_es02_data --opt type=none --opt device=/apps/sandbox/elasticsearch/cluster/es02/data --opt o=bind
+# docker volume create --name sandbox_es_es03_data --opt type=none --opt device=/apps/sandbox/elasticsearch/cluster/es03/data --opt o=bind
+#
+
+---
+version: '3.9'
 #
 services:
   #
@@ -10,74 +19,96 @@ services:
   es01:
     image: elasticsearch:7.16.2
     container_name: es01
+    hostname: es01
     environment:
       - node.name=es01
       - cluster.name=es-docker-cluster
       - discovery.seed_hosts=es02,es03
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx2048m"
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
-      - /apps/clusters/elasticsearch/es01:/usr/share/elasticsearch/data
+      - sandbox_es_es01_data:/usr/share/elasticsearch/data
+      - ./conf/kibana/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ports:
       - 9200:9200
+      - 9300:9300
+
 #
   es02:
     image: elasticsearch:7.16.2
     container_name: es02
+    hostname: es02
     environment:
       - node.name=es02
       - cluster.name=es-docker-cluster
       - discovery.seed_hosts=es01,es03
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx2048m"
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
-      - /apps/clusters/elasticsearch/es02:/usr/share/elasticsearch/data
+      - sandbox_es_es02_data:/usr/share/elasticsearch/data
+      - ./conf/kibana/kibana.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+      - 9201:9200
+      - 9301:9300
+
 #
   es03:
     image: elasticsearch:7.16.2
     container_name: es03
+    hostname: es03
     environment:
       - node.name=es03
       - cluster.name=es-docker-cluster
       - discovery.seed_hosts=es01,es02
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx2048m"
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
-      - /apps/clusters/elasticsearch/es03:/usr/share/elasticsearch/data
+      - sandbox_es_es03_data:/usr/share/elasticsearch/data
+      - ./conf/kibana/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+      - 9203:9200
+      - 9303:9300
 
   #
   kibana:
     image: kibana:7.8.1
+    container_name: kibana
+    hostname: kibana
     volumes:
-      - ./kibana.yml:/usr/share/kibana/config/kibana.yml
+      - ./conf/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
     ports:
       - 5601:5601
 
+#
 volumes:
-  data01:
-    driver: local
-  data02:
-    driver: local
-  data03:
-    driver: local
+  sandbox_host_path:
+    external: true
+  sandbox_base_path:
+    external: true
+  sandbox_es_es01_data:
+    external: true
+  sandbox_es_es02_data:
+    external: true
+  sandbox_es_es03_data:
+    external: true
 
 #
 networks:
   default:
     driver: bridge
-    name: sandbox-bigdata.net
+    name: sandbox.net

@@ -56,14 +56,22 @@ HUE_HOME=/opt/cloudera/parcels/CDH/lib/hue
 export PYSPARK_DRIVER_PYTHON="/usr/bin/python2"
 export PYSPARK_PYTHON="/usr/bin/python2"
 
+#
+#
+#
 ```commandline
-brijeshdhaker@thinkpad:/opt/cloudera/parcels/CDH/lib/hadoop-hdfs$ sudo useradd -M hadoop
-brijeshdhaker@thinkpad:/opt/cloudera/parcels/CDH/lib/hadoop-hdfs$ sudo useradd -M hive
-brijeshdhaker@thinkpad:/opt/cloudera/parcels/CDH/lib/hadoop-hdfs$ sudo useradd -M spark
-brijeshdhaker@thinkpad:/opt/cloudera/parcels/CDH/lib/hadoop-hdfs$ sudo useradd -M hdfs
-brijeshdhaker@thinkpad:/opt/cloudera/parcels/CDH/lib/hadoop-hdfs$ sudo useradd -M hue
-brijeshdhaker@thinkpad:/opt/cloudera/parcels/CDH/lib/hadoop-hdfs$ sudo useradd -M impala
-brijeshdhaker@thinkpad:/opt/cloudera/parcels/CDH/lib/hadoop-hdfs$ sudo useradd -M mapred
+brijeshdhaker@thinkpad:~$ sudo useradd -M hadoop
+brijeshdhaker@thinkpad:~$ sudo useradd -M hive
+brijeshdhaker@thinkpad:~$ sudo useradd -M spark
+brijeshdhaker@thinkpad:~$ sudo useradd -M hdfs
+brijeshdhaker@thinkpad:~$ sudo useradd -M hue
+brijeshdhaker@thinkpad:~$ sudo useradd -M impala
+brijeshdhaker@thinkpad:~$ sudo useradd -M mapred
+
+useradd --system --no-create-home hive
+useradd --system --no-create-home hdfs
+useradd --system --no-create-home spark
+useradd --system [--no-create-home] <account name>
 ```
 #
 # HDFS Web Access
@@ -217,3 +225,45 @@ mysql> commit;
 /opt/hortonworks-registry-0.5.0/bin/registry-server-start.sh /opt/hortonworks-registry-0.5.0/conf/registry-mysql.yaml
 
 http://sandbox-hdp.hortonworks.com:7788/api/v1
+
+
+Cloudera QuickStart VM 6.3.2
+=======================================
+CentOS 7 + GNOME Based
+Java Eclipse & Scala Eclipse IDE Included
+MySql With 'retail_db' Installed  
+Minimum System Requirement - 2/4 Cores + 16GB RAM
+  
+---------------------------
+CentOS GUI Login 'Base User' Password - BaseUser@123
+'root'  Password - BaseUser@123
+  ---------------------------
+sudo user - osboxes
+sudo password - BaseUser@123
+  ---------------------------
+MySql user - root
+MySql password - bigdata
+  ---------------------------
+Cloudera Manager user - admin
+Cloudera Manager password - admin
+  ---------------------------  
+
+Steps To Run
+
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+	Download https://www.peazip.org/
+	Install Peazip to join & extract .001 .002 & .003 files (7z)
+	CDH_6.3.2_CentOS7.7z.001 => Right Click => PeaZip => Extract here
+	
+		CDH_6.3.2_CentOS7.7z.001
+		CDH_6.3.2_CentOS7.7z.002
+		CDH_6.3.2_CentOS7.7z.003	
+
+  	Download http://bit.ly/GetVMPlayer
+
+	Open CentOS7.vmx in CDH_6.3.2_CentOS7 folder with VMPlayer
+	
+	Watch this video for more info - https://bit.ly/CDH_6_3_2_CentOS7
+	
+  -----------------------------------------------------------

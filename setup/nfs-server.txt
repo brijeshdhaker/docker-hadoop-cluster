@@ -1,0 +1,173 @@
+#--------------------------------------------
+# Step 1 : Make shared NFS directory
+#--------------------------------------------
+
+sudo apt install -y nfs-kernel-server
+
+#--------------------------------------------
+#Step 1 : Make shared NFS directory
+#--------------------------------------------
+
+sudo mkdir -p /mnt/nfs-share
+
+--------------------------------------------
+Step 2 : Set directory permissions
+--------------------------------------------
+
+sudo chown -R nobody:nogroup /mnt/nfs-share/
+
+--------------------------------------------
+Step 3: Set file permissions
+--------------------------------------------
+
+sudo chmod 777 /mnt/nfs-share/
+
+--------------------------------------------
+Step 4: Grant NFS access
+--------------------------------------------
+
+sudo vi /etc/exports
+
+/mnt/nfs-share 192.168.122.0/24(rw,sync,no_subtree_check)
+/mnt/nfs-share localhost(rw,sync,no_subtree_check)
+
+--------------------------------------------
+Step 5: Exporting NFS directory
+--------------------------------------------
+
+sudo exportfs -a
+
+--------------------------------------------
+Step 6: Restart NFS server
+--------------------------------------------
+
+sudo systemctl restart nfs-kernel-server
+
+Step 7: Grant Firewall access
+
+$ sudo ufw allow from 192.168.122.0/24 to any port nfs
+
+
+Step 8: Enable Firewall
+
+$ sudo ufw enable
+
+Step 9: Check Firewall status
+
+$ sudo ufw status
+
+
+############################################
+
+Installing NFS client on Ubuntu 22.04
+
+############################################
+
+$ sudo apt install nfs-common
+
+$ sudo mkdir -p /mnt/nfs-share
+
+$ sudo mount 192.168.122.1:/mnt/nfs-share /mnt/nfs-share
+
+
+
+############################################
+# Installing NFS Server on Fedora - 37
+############################################
+
+[root@thinkpad ~]# dnf -y install nfs-utils libnfsidmap
+[root@thinkpad ~]# systemctl enable rpcbind
+[root@thinkpad ~]# systemctl enable nfs-server
+[root@thinkpad ~]# systemctl start rpcbind
+[root@thinkpad ~]# systemctl start nfs-server
+[root@thinkpad ~]# systemctl start rpc-statd
+[root@thinkpad ~]# systemctl start nfs-idmapd
+[root@thinkpad ~]# mkdir /mnt/nfs-share
+
+[root@thinkpad ~]# vi /etc/idmapd.conf
+# line 5 : uncomment and change to your domain name
+
+Domain = sandbox.net
+
+[root@thinkpad ~]# vi /etc/exports
+# create new
+# for example, set [/mnt/nfs-share] as NFS share
+/mnt/nfs-share 192.168.122.0/24(rw,sync,no_root_squash)
+
+
+[root@thinkpad ~]# systemctl enable --now rpcbind nfs-server
+[root@thinkpad ~]# exportfs -r
+
+[root@thinkpad ~]# firewall-cmd --add-service=nfs --permanent
+[root@dlp ~]# firewall-cmd --add-service={nfs3,mountd,rpc-bind} --permanent
+[root@dlp ~]# firewall-cmd --reload
+
+############################################
+# Installing NFS client on Fedora - 37
+############################################
+
+$ dnf -y install nfs-utils libnfsidmap
+$ systemctl enable rpcbind
+$ systemctl start rpcbind
+
+$ vi /etc/idmapd.conf
+# line 5 : uncomment and change to your domain name
+Domain = sandbox.net
+
+$ mount -t nfs 192.168.122.1:/mnt/nfs-share /mnt/nfs-share
+
+$ df -hT
+Filesystem                     Type      Size  Used Avail Use% Mounted on
+devtmpfs                       devtmpfs  4.0M     0  4.0M   0% /dev
+tmpfs                          tmpfs     2.0G     0  2.0G   0% /dev/shm
+tmpfs                          tmpfs     784M  956K  783M   1% /run
+/dev/mapper/fedora_fedora-root xfs        15G  1.7G   14G  11% /
+tmpfs                          tmpfs     2.0G     0  2.0G   0% /tmp
+/dev/vda1                      xfs      1014M  196M  819M  20% /boot
+tmpfs                          tmpfs     392M     0  392M   0% /run/user/0
+192.168.122.1:/home/nfs-share   nfs4       15G  1.7G   14G  11% /mnt
+# NFS share is mounted
+
+
+# if mount with NFSv3, add [-o vers=3] option
+
+$ mount -t nfs -o vers=3 192.168.122.1:/mnt/nfs-share /mnt/nfs-share
+
+$ df -hT /mnt
+Filesystem                   Type  Size  Used Avail Use% Mounted on
+192.168.122.1:/home/nfs-share nfs    15G  1.5G   14G  10% /mnt
+
+
+
+[2]	To mount automatically when System starts, Configure setting in [/etc/fstab].
+
+[root@node01 ~]# vi /etc/fstab
+/dev/mapper/fedora_fedora-root /                       xfs     defaults        0 0
+UUID=7f281272-4da1-443f-ba6a-b5b42ce9c26b /boot        xfs     defaults        0 0
+# add to the end : set NFS share
+192.168.122.1:/mnt/nfs-share              /mnt/nfs-share         nfs     defaults        0 0
+
+
+[3]	To mount dynamically when anyone access to NFS Share, Configure AutoFS.
+
+[root@node01 ~]# dnf -y install autofs
+[root@node01 ~]# vi /etc/auto.master
+# add to the end
+/-    /etc/auto.mount
+
+[root@node01 ~]# vi /etc/auto.mount
+# create new : [mount point] [option] [location]
+/mnt   -fstype=nfs,rw  192.168.122.1:/mnt/nfs-share
+
+[root@node01 ~]# systemctl enable --now autofs
+# move to the mount point to verify mounting
+
+[root@node01 ~]# cd /mnt
+[root@node01 mnt]# df -h /mnt
+Filesystem                    Size  Used Avail Use% Mounted on
+192.168.122.1:/home/nfs-share   15G  1.7G   14G  11% /mnt
+
+[root@node01 mnt]# grep /mnt /proc/mounts
+/etc/auto.mount /mnt autofs rw,relatime,fd=17,pgrp=1037,timeout=300,minproto=5,maxproto=5,direct,pipe_ino=26815 0 0
+192.168.122.1:/home/nfs-share /mnt nfs4 rw,relatime,vers=4.2,rsize=524288,wsize=524288,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=10.0.0.51,local_lock=none,addr=10.0.0.30 0 0
+

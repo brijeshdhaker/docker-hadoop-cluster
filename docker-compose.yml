@@ -1,0 +1,609 @@
+#
+
+#
+# docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
+#
+# docker volume create --name sandbox_krb5_stash --opt type=none --opt device=/apps/sandbox/kerberos/stash --opt o=bind
+# docker volume create --name sandbox_krb5_principal --opt type=none --opt device=/apps/sandbox/kerberos/principal --opt o=bind
+#
+# docker volume create --name sandbox_zookeeper_secrets --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop3/secrets --opt o=bind
+# docker volume create --name sandbox_zookeeper_data --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop3/data --opt o=bind
+# docker volume create --name sandbox_zookeeper_log --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop3/log --opt o=bind
+#
+# docker volume create --name sandbox_kafka_secrets --opt type=none --opt device=/apps/sandbox/kafka/hadoop3/secrets --opt o=bind
+# docker volume create --name sandbox_kafka_data --opt type=none --opt device=/apps/sandbox/kafka/hadoop3/data --opt o=bind
+# docker volume create --name sandbox_kafka_log --opt type=none --opt device=/apps/sandbox/kafka/hadoop3/log --opt o=bind
+#
+# docker volume create --name sandbox_cassandra_data --opt type=none --opt device=/apps/sandbox/cassandra/data --opt o=bind
+# docker volume create --name sandbox_cassandra_conf --opt type=none --opt device=/apps/sandbox/cassandra/conf --opt o=bind
+#
+# docker volume create --name sandbox_hadoop_311 --opt type=none --opt device=/opt/hadoop-3.1.1 --opt o=bind
+# docker volume create --name sandbox_hadoop_311_dfs --opt type=none --opt device=/apps/sandbox/hadoop-3.1.1/dfs --opt o=bind
+# docker volume create --name sandbox_hadoop_311_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.1.1/yarn --opt o=bind
+# docker volume create --name sandbox_hadoop_311_mapred --opt type=none --opt device=/apps/sandbox/hadoop-3.1.1/mapred --opt o=bind
+#
+# docker volume create --name sandbox_spark_312 --opt type=none --opt device=/opt/spark-3.1.2 --opt o=bind
+# docker volume create --name sandbox_hive_313 --opt type=none --opt device=/opt/hive-3.1.3 --opt o=bind
+# docker volume create --name sandbox_tez_091 --opt type=none --opt device=/opt/tez-0.9.1 --opt o=bind
+# docker volume create --name sandbox_hbase_246 --opt type=none --opt device=/opt/hbase-2.4.6 --opt o=bind
+# docker volume create --name sandbox_hbase_117 --opt type=none --opt device=/opt/hbase-1.1.7 --opt o=bind
+# docker volume create --name sandbox_flink_112 --opt type=none --opt device=/opt/flink-1.12.2 --opt o=bind
+#
+# docker volume create --name sandbox_nifi_conf --opt type=none --opt device=/apps/sandbox/nifi/conf --opt o=bind
+# docker volume create --name sandbox_nifi_content_repository --opt type=none --opt device=/apps/sandbox/nifi/content_repository --opt o=bind
+# docker volume create --name sandbox_nifi_database_repository --opt type=none --opt device=/apps/sandbox/nifi/database_repository --opt o=bind
+# docker volume create --name sandbox_nifi_flowfile_repository --opt type=none --opt device=/apps/sandbox/nifi/flowfile_repository --opt o=bind
+# docker volume create --name sandbox_nifi_provenance_repository --opt type=none --opt device=/apps/sandbox/nifi/provenance_repository --opt o=bind
+# docker volume create --name sandbox_nifi_log --opt type=none --opt device=/apps/sandbox/nifi/logs --opt o=bind
+# docker volume create --name sandbox_nifi_state --opt type=none --opt device=/apps/sandbox/nifi/state --opt o=bind
+#
+# docker volume create --name sandbox_airflow_sources --opt type=none --opt device=/apps/sandbox/airflow --opt o=bind
+# docker volume create --name sandbox_airflow_dags --opt type=none --opt device=/apps/sandbox/airflow/dags --opt o=bind
+# docker volume create --name sandbox_airflow_logs --opt type=none --opt device=/apps/sandbox/airflow/logs --opt o=bind
+# docker volume create --name sandbox_airflow_plugins --opt type=none --opt device=/apps/sandbox/airflow/plugins --opt o=bind
+#
+---
+version: "3.9"
+
+services:
+  # Kerberos Server
+  kdcserver:
+    image: brijeshdhaker/kdcserver:22.04
+    container_name: kdcserver
+    hostname: kdcserver.sandbox.net
+    healthcheck:
+      test: echo srvr || exit 1
+      retries: 20
+      interval: 10s
+    ports:
+      - "749:749"
+      - "750:750"
+      - "88:88/udp"
+    volumes:
+      - sandbox_apps_path:/apps
+      - /dev/urandom:/dev/random      # This is needed otherwise there won't be enough entropy to generate a new kerberos realm
+      - sandbox_krb5_stash:/etc/krb5kdc
+      - sandbox_krb5_principal:/var/lib/krb5kdc/
+      - ./conf/kerberos:/etc/kerberos
+    environment:
+      REALM: SANDBOX.NET
+      DOMAIN_REALM: sandbox.net
+      MASTER_KEY_TYPE: aes256-cts-hmac-sha1-96:normal
+      SUPPORTED_ENCRYPTION_TYPES: aes256-cts-hmac-sha1-96:normal aes128-cts-hmac-sha1-96:normal
+      KADMIN_PRINCIPAL: kadmin/admin
+      KADMIN_PASSWORD: kadmin
+      KUSERS_PASSWORD: kuser
+    env_file:
+      - ./envs/docker_kerberos.env
+
+  # Zookeeper Server
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    hostname: zookeeper.sandbox.net
+    container_name: zookeeper
+    healthcheck:
+      test: curl -f http://zookeeper.sandbox.net:8080/commands || exit 1
+      retries: 20
+      interval: 10s
+    ports:
+      - "2181:2181"
+      - "2182:2182"
+      - "28080:8080"
+    volumes:
+      - sandbox_apps_path:/apps
+      - /apps/security/ssl:/etc/zookeeper/secrets
+      - /apps/sandbox/zookeeper/hadoop311/data:/var/lib/zookeeper/data
+      - /apps/sandbox/zookeeper/hadoop311/log:/var/lib/zookeeper/log
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_SECURE_CLIENT_PORT: 2182
+      ZOOKEEPER_TICK_TIME: 2000
+      KRB5_CONFIG: "/etc/krb5.conf"
+      # ALLOW_UNSIGNED: "true"
+      #
+      ZOOKEEPER_SERVER_CNXN_FACTORY: org.apache.zookeeper.server.NettyServerCnxnFactory
+      ZOOKEEPER_SSL_KEYSTORE_LOCATION: /apps/security/ssl/zookeeper.keystore.jks
+      ZOOKEEPER_SSL_KEYSTORE_PASSWORD: confluent
+      ZOOKEEPER_SSL_KEYSTORE_TYPE: PKCS12
+      ZOOKEEPER_SSL_TRUSTSTORE_LOCATION: /apps/security/ssl/zookeeper.truststore.jks
+      ZOOKEEPER_SSL_TRUSTSTORE_PASSWORD: confluent
+      ZOOKEEPER_SSL_TRUSTSTORE_TYPE: JKS
+      ZOOKEEPER_SSL_CLIENT_AUTH: "need"
+      #
+      ZOOKEEPER_AUTH_PROVIDER_X509: org.apache.zookeeper.server.auth.X509AuthenticationProvider
+      ZOOKEEPER_AUTH_PROVIDER_SASL: org.apache.zookeeper.server.auth.SASLAuthenticationProvider
+      #
+      KAFKA_OPTS: -Djava.security.auth.login.config=/apps/security/jaas/zookeeper-jaas.conf
+        -Djava.security.krb5.conf=/etc/krb5.conf
+        -Dsun.security.krb5.debug=false
+        -Dkerberos.removeHostFromPrincipal=true
+        -Dkerberos.removeRealmFromPrincipal=true
+        -Dzookeeper.skipACL=true
+        #-Dzookeeper.requireClientAuthScheme=sasl
+      #-Dzookeeper.allowSaslFailedClients=false
+      #-Dzookeeper.authProvider.1=org.apache.zookeeper.server.auth.SASLAuthenticationProvider
+    labels:
+      - io.confluent.docker.testing=true
+    extra_hosts:
+      - "thinkpad.sandbox.net:172.18.0.1"
+
+  #
+  # HDFS Cluster
+  #
+  namenode:
+    image: brijeshdhaker/hadoop-namenode:3.1.1
+    build:
+      context: .
+      dockerfile: docker-hadoop/namenode/Dockerfile
+    container_name: namenode
+    hostname: namenode.sandbox.net
+    restart: no
+    healthcheck:
+      test: nc -vz namenode.sandbox.net 9870 || exit 1
+      retries: 20
+      interval: 10s
+    ports:
+      - "9870:9870"   # http
+      - "9871:9871"   # https
+      - "9000:9000"   # hdfs
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_hadoop_311_dfs:/hadoop/dfs
+    environment:
+      CLUSTER_NAME: "docker-sandbox"
+      MULTIHOMED_NETWORK: 2
+    env_file:
+      - envs/docker_hadoop.env
+
+  #
+  datanode:
+    image: brijeshdhaker/hadoop-datanode:3.1.1
+    build:
+      context: .
+      dockerfile: docker-hadoop/datanode/Dockerfile
+    container_name: datanode
+    hostname: datanode.sandbox.net
+    ports:
+      - "9864:9864"   # http
+      - "9865:9865"   # https
+      - "9866:9866"
+    restart: no
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_hadoop_311_dfs:/hadoop/dfs
+    environment:
+      CLUSTER_NAME: "docker-sandbox"
+      SERVICE_PRECONDITION: "namenode.sandbox.net:9000"
+    env_file:
+      - envs/docker_hadoop.env
+
+  #
+  # YARN Cluster
+  #
+  resourcemanager:
+    image: brijeshdhaker/hadoop-resourcemanager:3.1.1
+    build:
+      context: .
+      dockerfile: docker-hadoop/resourcemanager/Dockerfile
+    container_name: resourcemanager
+    hostname: resourcemanager.sandbox.net
+    healthcheck:
+      test: curl -f http://resourcemanager.sandbox.net:8088 || exit 1
+      retries: 20
+      interval: 10s
+    restart: no
+    ports:
+      - "8088:8088"
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_hadoop_311_yarn:/yarn
+    environment:
+      SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
+    env_file:
+      - envs/docker_hadoop.env
+
+  #
+  nodemanager:
+    image: brijeshdhaker/hadoop-nodemanager:3.1.1
+    build:
+      context: .
+      dockerfile: docker-hadoop/nodemanager/Dockerfile
+    container_name: nodemanager
+    hostname: nodemanager.sandbox.net
+    restart: no
+    ports:
+      - "8042:8042"
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_hadoop_311_yarn:/yarn
+    environment:
+      HADOOP_CONF_DIR: "/opt/hadoop/etc/hadoop"
+      YARN_CONF_DIR: "/opt/hadoop/etc/hadoop"
+      SERVICE_PRECONDITION: "resourcemanager.sandbox.net:8088"
+    env_file:
+      - envs/docker_hadoop.env
+
+  # YARN Timeline Server
+  timelineserver:
+    image: brijeshdhaker/hadoop-timelineserver:3.1.1
+    build:
+      context: .
+      dockerfile: docker-hadoop/timelineserver/Dockerfile
+    container_name: timelineserver
+    hostname: timelineserver.sandbox.net
+    restart: no
+    ports:
+      - "8188:8188"
+    environment:
+      SERVICE_PRECONDITION: "namenode.sandbox.net:9000"
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_hadoop_311_yarn:/yarn
+    env_file:
+      - envs/docker_hadoop.env
+
+  # MR History Server
+  historyserver:
+    image: brijeshdhaker/hadoop-historyserver:3.1.1
+    build:
+      context: .
+      dockerfile: docker-hadoop/historyserver/Dockerfile
+    container_name: historyserver
+    hostname: historyserver.sandbox.net
+    restart: no
+    ports:
+      - "19888:19888"
+    environment:
+      SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_hadoop_311_mapred:/mapred
+    env_file:
+      - envs/docker_hadoop.env
+
+  #
+  # Mysql Server
+  #
+  mysqlserver:
+    image: mysql/mysql-server:8.0.28
+    container_name: mysqlserver
+    hostname: mysqlserver.sandbox.net
+    restart: always
+    ports:
+      - "3306:3306"
+    command: "mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci"
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_mysql_data:/var/lib/mysql
+      - ./conf/mysql:/etc/mysql/conf.d
+    env_file:
+      - ./envs/docker_mysql.env
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=p@SSW0rd --execute \"SHOW DATABASES;\""
+      # test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
+
+  #
+  # Hive Metastore
+  #
+  metastore:
+    image: brijeshdhaker/hive:3.1.3
+    hostname: metastore.sandbox.net
+    container_name: metastore
+    healthcheck:
+      test: netstat -lpn | grep 9083 || exit 1
+      retries: 20
+      interval: 10s
+    env_file:
+      - ./envs/docker_hive.env
+      - ./envs/docker_clients.env
+    command: /opt/hive/bin/hive --service metastore
+    environment:
+      SERVICE_PRECONDITION: "mysqlserver.sandbox.net:3306"
+    ports:
+      - "9083:9083"
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_hadoop_311:/opt/hadoop
+      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+
+  # Hive Server
+  hiveserver:
+    image: brijeshdhaker/hive:3.1.3
+    container_name: hiveserver
+    hostname: hiveserver.sandbox.net
+    healthcheck:
+      test: nc -vz hiveserver.sandbox.net 10002 || exit 1
+      retries: 20
+      interval: 10s
+    depends_on:
+      metastore:
+        condition: service_healthy
+    env_file:
+      - ./envs/docker_hive.env
+      - ./envs/docker_clients.env
+    environment:
+      SERVICE_PRECONDITION: "namenode.sandbox.net:9000 metastore.sandbox.net:9083"
+    ports:
+      - "10000:10000"
+      - "10002:10002"
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_hadoop_311:/opt/hadoop
+      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+      - /opt/tez-0.9.1:/opt/tez
+      - ./conf/tez/tez-site.xml:/opt/tez/conf/tez-site.xml
+
+  # Hive Tez UI
+  hivetezui:
+    image: brijeshdhaker/tezui:0.9.1
+    container_name: hivetezui
+    hostname: hivetezui.sandbox.net
+    healthcheck:
+      test: nc -vz hivetezui.sandbox.net 9999 || exit 1
+      retries: 20
+      interval: 10s
+    depends_on:
+      timelineserver:
+        condition: service_healthy
+    environment:
+      KRB5_CONFIG: "/etc/krb5.conf"
+      SERVICE_PRECONDITION: "timelineserver.sandbox.net:8188"
+    ports:
+      - "9999:9999"
+    volumes:
+      - sandbox_apps_path:/apps
+
+  #
+  # Hbase Cluster
+  #
+  hmaster:
+    image: brijeshdhaker/hbase-master:2.4.6
+    hostname: hmaster.sandbox.net
+    container_name: hmaster
+    healthcheck:
+      test: curl -f http://hmaster.sandbox.net:16010 || exit 1
+      retries: 20
+      interval: 10s
+    depends_on:
+      zookeeper:
+        condition: service_healthy
+    environment:
+      SERVICE_PRECONDITION: "namenode.sandbox.net:9870 zookeeper.sandbox.net:2181"
+    env_file:
+      - envs/docker_hbase.env
+      - envs/docker_clients.env
+    ports:
+      - "16000:16000"
+      - "16010:16010"
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_hadoop_311:/opt/hadoop
+      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+
+  #
+  hregion:
+    image: brijeshdhaker/hbase-regionserver:2.4.6
+    hostname: hregion.sandbox.net
+    container_name: hregion
+    healthcheck:
+      test: curl -f http://hregion.sandbox.net:16030 || exit 1
+      retries: 20
+      interval: 10s
+    env_file:
+      - envs/docker_hbase.env
+      - envs/docker_clients.env
+    environment:
+      SERVICE_PRECONDITION: "namenode.sandbox.net:9870 zookeeper.sandbox.net:2181 hmaster.sandbox.net:16010"
+    ports:
+      - "16020:16020"
+      - "16030:16030"
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_hadoop_311:/opt/hadoop
+      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+
+  #
+  # Spark History Server
+  #
+  sparkhistory:
+    image: brijeshdhaker/spark-standalon:3.1.2
+    container_name: sparkhistory
+    hostname: sparkhistory.sandbox.net
+    healthcheck:
+      test: curl -f http://sparkhistory.sandbox.net:18080 || exit 1
+      retries: 20
+      interval: 10s
+    environment:
+      SPARK_WORKLOAD: HistoryServer
+      SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
+    depends_on:
+      namenode:
+        condition: service_healthy
+      datanode:
+        condition: service_healthy
+    ports:
+      - "18080:18080"
+    env_file:
+      - ./envs/docker_clients.env
+    volumes:
+      - sandbox_apps_path:/apps
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
+      - sandbox_hadoop_311:/opt/hadoop
+      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+      - ./conf/spark/conf:/opt/spark/conf
+
+  #
+  # Gateway Node
+  #
+  gateway:
+    image: brijeshdhaker/ubuntu:22.04
+    container_name: gateway
+    hostname: gateway.sandbox.net
+    healthcheck:
+      test: nc -vz gateway.sandbox.net 22 || exit 1
+      retries: 20
+      interval: 10s
+    restart: always
+    command:
+      - "/usr/sbin/sshd -D"
+    ports:
+      - "2222:22"
+      - "4040:4040"
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_hadoop_311:/opt/hadoop
+      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+      - sandbox_hbase_246:/opt/hbase
+      - ./conf/hbase/client:/opt/hbase/conf
+      - sandbox_hive_313:/opt/hive
+      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
+      - sandbox_spark_312:/opt/spark
+      - /opt/flink-1.12.2:/opt/flink
+      - sandbox_maven_363:/opt/maven-3.6.3
+
+    environment:
+      ALLOW_ANONYMOUS_LOGIN: "yes"
+    env_file:
+      - ./envs/docker_clients.env
+
+  #
+  # Zeppelin Notebook
+  #
+  zeppelin:
+    image: apache/zeppelin:0.10.1
+    container_name: zeppelin
+    hostname: zeppelin.sandbox.net
+    environment:
+      ALLOW_ANONYMOUS_LOGIN: "yes"
+    env_file:
+      - ./envs/docker_clients.env
+    ports:
+      - "9080:8080"
+      - "9081:8081"
+    volumes:
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
+      - sandbox_apps_path:/apps
+      - sandbox_zeppelin_conf:/opt/zeppelin/conf
+      - sandbox_zeppelin_notebook:/opt/notebook
+      - sandbox_spark_312:/opt/spark
+      - sandbox_hadoop_311:/opt/hadoop
+      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+      - sandbox_hive_313:/opt/hive
+      - sandbox_hbase_246:/opt/hbase
+      - ./conf/hbase/client:/opt/hbase/conf
+      - sandbox_flink_112:/opt/flink
+
+  #
+  # Apache NiFi
+  #
+  nififlow:
+    image: hortonworks/nifi:latest
+    container_name: nififlow
+    hostname: nififlow
+    restart: always
+    ports:
+      - "19090:8080"
+      - "19443:8443"
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_nifi_conf:/opt/nifi/nifi-current/conf
+      - sandbox_nifi_content_repository:/opt/nifi/nifi-current/content_repository
+      - sandbox_nifi_database_repository:/opt/nifi/nifi-current/database_repository
+      - sandbox_nifi_flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
+      - sandbox_nifi_provenance_repository:/opt/nifi/nifi-current/provenance_repository
+      - sandbox_nifi_log:/opt/nifi/nifi-current/logs
+      - sandbox_nifi_state:/opt/nifi/nifi-current/state
+
+#
+#
+#
+volumes:
+  #
+  sandbox_apps_path:
+    external: true
+  #
+  sandbox_krb5_stash:
+    external: true
+  sandbox_krb5_principal:
+    external: true
+  #
+  sandbox_maven_363:
+    external: true
+  sandbox_m2:
+    external: true
+  sandbox_ivy2:
+    external: true
+  #
+  sandbox_hadoop_311:
+    external: true
+  sandbox_hadoop_311_dfs:
+    external: true
+  sandbox_hadoop_311_mapred:
+    external: true
+  sandbox_hadoop_311_yarn:
+    external: true
+  #
+  sandbox_mysql_data:
+    external: true
+  sandbox_mysql_conf:
+    external: true
+  #
+  sandbox_zeppelin_conf:
+    external: true
+  sandbox_zeppelin_notebook:
+    external: true
+  #
+  sandbox_cassandra_data:
+    external: true
+  sandbox_cassandra_conf:
+    external: true
+  #
+  sandbox_hbase_246:
+    external: true
+  sandbox_hbase_117:
+    external: true
+  #
+  sandbox_hive_313:
+    external: true
+  sandbox_tez_091:
+    external: true
+  #
+  sandbox_spark_312:
+    external: true
+  #
+  sandbox_flink_112:
+    external: true
+  #
+  sandbox_nifi_conf:
+    external: true
+  sandbox_nifi_content_repository:
+    external: true
+  sandbox_nifi_database_repository:
+    external: true
+  sandbox_nifi_flowfile_repository:
+    external: true
+  sandbox_nifi_provenance_repository:
+    external: true
+  sandbox_nifi_log:
+    external: true
+  sandbox_nifi_state:
+    external: true
+  #
+  sandbox_airflow_sources:
+    external: true
+  sandbox_airflow_dags:
+    external: true
+  sandbox_airflow_logs:
+    external: true
+  sandbox_airflow_plugins:
+    external: true
+
+#
+networks:
+  default:
+    external: true
+    driver: bridge
+    name: sandbox.net

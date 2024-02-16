@@ -1,15 +1,15 @@
 %spark.conf
 # This will point to the path we installed spark on the zeppelin docker image
-SPARK_HOME /opt/zeppelin/spark/
+SPARK_HOME /opt/spark/
 
 # Will set the application name in the spark UI
 spark.app.name Zeppelin
 
-# set driver memory to 8g
-spark.driver.memory 8g
+# set driver memory to 1g
+spark.driver.memory 1g
 
-# set executor memory 4g
-spark.executor.memory  4g
+# set executor memory 1g
+spark.executor.memory  1g
 spark.executor.cores 4
 
 # set execution mode

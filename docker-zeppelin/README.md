@@ -20,7 +20,7 @@ This is a "sandbox" repository for learning about setting up basic spark sandbox
 **What's happening?**
 * Once done, you can open [localhost:8080](http://localhost:8080/) to view the spark master UI.
 * You should see the following UI and a single worker node connected to it:
-![SparkUI](imgs/spark-ui-initial.png "Spark UI")
+![SparkUI](../../imgs/spark-ui-initial.png "Spark UI")
 * We've also started a minio instance running a local minio service which we'll use a s3 mock
   * This local "s3" has a single bucket `word-count` with a few csv files that contain information regarding airlines and airports across the world.
   * You can read more about this open source project at [https://github.com/jpatokal/openflights](https://github.com/jpatokal/openflights)
@@ -28,7 +28,7 @@ This is a "sandbox" repository for learning about setting up basic spark sandbox
     * User: `abc`
     * Password: `xyzxyzxyz`
   * See that we've already pushed a sample data set there
-![minioUI](../docker-minio/Minio.png "Spark UI")  
+![minioUI](../../imgs/Minio.png "Spark UI")  
   * Download and "peek" at the data:
     You should see an output similar to:
 ```
@@ -43,12 +43,17 @@ Now that we have our [standalone spark cluster](http://spark.apache.org/docs/lat
 we can launch our zeppelin notebook and get to work.
 * Run `docker-compose -f docker-compose-zeppelin.yml up` to start a local zeppelin notebook.
 * You can access the notebook UI at [localhost:9090](localhost:9090)
-![zeppelin](imgs/zeppelin-splash.png "Zeppelin notebook")  
+![zeppelin](../../imgs/zeppelin-splash.png "Zeppelin notebook")  
 
 You can start experimenting with notebooks by opening the `wordcount-notebooks` notebooks:
-![zeppelin-notebook](imgs/zeppelin-notebook.png "Zeppelin notebook example")
+![zeppelin-notebook](../../imgs/zeppelin-notebook.png "Zeppelin notebook example")
 
 ## What's next?
 * Once in the zeppelin ui, choose any of the tutorials and start experimenting.
 * The custom tutorial notebook written for this repository are the ones under the `workcount-notebooks`
 
+
+docker run -u $(id -u) -p 8080:8080 --rm -v $PWD/logs:/logs -v $PWD/notebook:/notebook \
+-v /usr/lib/spark-2.4.7:/opt/spark -v /usr/lib/flink-1.12.2:/opt/flink \
+-e FLINK_HOME=/opt/flink -e SPARK_HOME=/opt/spark \
+-e ZEPPELIN_LOG_DIR='/logs' -e ZEPPELIN_NOTEBOOK_DIR='/notebook' --name zeppelin apache/zeppelin:0.10.1
