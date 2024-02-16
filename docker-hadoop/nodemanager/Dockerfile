@@ -1,16 +1,15 @@
 #
-# docker build -t brijeshdhaker/hadoop-nodemanager:3.3.4 -f docker-hadoop/nodemanager/Dockerfile .
-# docker push brijeshdhaker/hadoop-nodemanager:3.3.4
+# docker build -t brijeshdhaker/hadoop-nodemanager:3.1.1 -f docker-hadoop/nodemanager/Dockerfile .
+# docker push brijeshdhaker/hadoop-nodemanager:3.1.1
 #
 
-FROM brijeshdhaker/hadoop-base:3.3.4
+FROM brijeshdhaker/hadoop-base:3.1.1
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
 HEALTHCHECK CMD curl -f http://localhost:8042/ || exit 1
 
 ENV HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
-ENV YARN_CONF_DIR=${HADOOP_HOME}/etc/hadoop
 
 ADD docker-hadoop/nodemanager/container-executor.cfg ${HADOOP_CONF_DIR}/container-executor.cfg
 ADD docker-hadoop/nodemanager/conf/* ${HADOOP_CONF_DIR}/

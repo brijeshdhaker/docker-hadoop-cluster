@@ -24,6 +24,4 @@
     <property><name>hbase.regionserver.port</name><value>16020</value></property>
     <property><name>hbase.regionserver.kerberos.principal</name><value>hbase/_HOST@SANDBOX.NET</value></property>
     <property><name>hbase.coprocessor.regionserver.classes</name><value>org.apache.hadoop.hbase.security.access.AccessController</value></property>
-    <property><name>dfs.namenode.decommission.interval</name><value>30</value></property>
-    <property><name>dfs.client.datanode-restart.timeout</name><value>30</value></property>
 </configuration>

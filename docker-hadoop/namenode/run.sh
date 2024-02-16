@@ -1,5 +1,7 @@
 #!/bin/bash
 
+/usr/bin/cp -Rf ${HADOOP_ETC_CONF}/*.xml ${HADOOP_HOME}/etc/hadoop/
+
 namedir=`echo $HDFS_SITE_dfs_namenode_name_dir | perl -pe 's#file://##'`
 
 if [ ! -d $namedir ]; then
@@ -14,8 +16,6 @@ fi
 
 echo "remove lost+found from $namedir"
 #rm -r $namedir/lost+found
-
-/usr/bin/cp -Rf ${ETC_CONF_DIR}/*.xml ${HADOOP_HOME}/etc/hadoop/
 
 if [ ! -f /hadoop/dfs/.already_formatted ]; then
 

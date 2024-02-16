@@ -1,6 +1,6 @@
 #!/bin/bash
 
-/usr/bin/cp -Rf ${ETC_CONF_DIR}/*.xml ${HADOOP_HOME}/etc/hadoop/
+/usr/bin/cp -Rf ${HADOOP_ETC_CONF}/*.xml ${HADOOP_HOME}/etc/hadoop/
 
 timelinedir='/yarn/timeline'
 

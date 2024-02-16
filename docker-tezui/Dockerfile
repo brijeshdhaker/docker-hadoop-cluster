@@ -1,8 +1,8 @@
 #
-# docker build -t brijeshdhaker/tezui:0.10.2 -f docker-tezui/Dockerfile .
-# docker push brijeshdhaker/tezui:0.10.2
+# docker build -t brijeshdhaker/tezui:0.9.1 -f docker-tezui/Dockerfile .
+# docker push brijeshdhaker/tezui:0.9.1
 
-FROM ubuntu:22.04
+FROM brijeshdhaker/ubuntu:22.04
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
@@ -13,7 +13,7 @@ ENV PATH=$PATH:$JAVA_HOME/bin
 USER root
 
 #Install Hive and PostgreSQL JDBC
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends openjdk-8-jdk net-tools tar curl netcat gnupg libsnappy-dev vim && \
+RUN set -x && \
     mkdir -p /opt/tez && \
     rm -rf /var/lib/apt/lists/*
 
@@ -22,7 +22,7 @@ COPY conf/kerberos/krb5.conf /etc/krb5.conf
 
 # Add Drivers & Other Libs
 COPY resources/libs/jetty-runner-9.2.11.v20150529.jar $BASE_DIR/tez/
-COPY resources/tars/tez-ui-0.10.2.war $BASE_DIR/tez/
+COPY resources/tars/tez-ui-0.9.1.war $BASE_DIR/tez/
 RUN chmod +x $BASE_DIR/tez/*.*
 
 #
