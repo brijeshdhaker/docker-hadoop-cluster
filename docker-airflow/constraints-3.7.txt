@@ -10,7 +10,7 @@
 #
 Authlib==1.2.0
 Babel==2.12.1
-ConfigUpdater==3.1.1
+ConfigUpdater==3.3.4
 Deprecated==1.2.13
 Flask-AppBuilder==4.1.4
 Flask-Babel==2.0.0
@@ -60,7 +60,7 @@ apache-airflow-providers-airbyte==3.2.0
 apache-airflow-providers-alibaba==2.2.0
 apache-airflow-providers-amazon==7.3.0
 apache-airflow-providers-apache-beam==4.3.0
-apache-airflow-providers-apache-cassandra==3.1.1
+apache-airflow-providers-apache-cassandra==3.3.4
 apache-airflow-providers-apache-drill==2.3.1
 apache-airflow-providers-apache-druid==3.3.1
 apache-airflow-providers-apache-hdfs==3.2.0
@@ -70,7 +70,7 @@ apache-airflow-providers-apache-livy==3.3.0
 apache-airflow-providers-apache-pig==4.0.0
 apache-airflow-providers-apache-pinot==4.0.1
 apache-airflow-providers-apache-spark==4.0.0
-apache-airflow-providers-apache-sqoop==3.1.1
+apache-airflow-providers-apache-sqoop==3.3.4
 apache-airflow-providers-arangodb==2.1.1
 apache-airflow-providers-asana==2.1.0
 apache-airflow-providers-atlassian-jira==2.0.1
@@ -93,15 +93,15 @@ apache-airflow-providers-google==8.11.0
 apache-airflow-providers-grpc==3.1.0
 apache-airflow-providers-hashicorp==3.3.0
 apache-airflow-providers-http==4.2.0
-apache-airflow-providers-imap==3.1.1
+apache-airflow-providers-imap==3.3.4
 apache-airflow-providers-influxdb==2.1.0
 apache-airflow-providers-jdbc==3.3.0
 apache-airflow-providers-jenkins==3.2.0
 apache-airflow-providers-microsoft-azure==5.2.1
 apache-airflow-providers-microsoft-mssql==3.3.2
 apache-airflow-providers-microsoft-psrp==2.2.0
-apache-airflow-providers-microsoft-winrm==3.1.1
-apache-airflow-providers-mongo==3.1.1
+apache-airflow-providers-microsoft-winrm==3.3.4
+apache-airflow-providers-mongo==3.3.4
 apache-airflow-providers-mysql==4.0.2
 apache-airflow-providers-neo4j==3.2.1
 apache-airflow-providers-odbc==3.2.1
@@ -109,7 +109,7 @@ apache-airflow-providers-openfaas==3.1.0
 apache-airflow-providers-opsgenie==5.0.0
 apache-airflow-providers-oracle==3.6.0
 apache-airflow-providers-pagerduty==3.1.0
-apache-airflow-providers-papermill==3.1.1
+apache-airflow-providers-papermill==3.3.4
 apache-airflow-providers-plexus==3.1.0
 apache-airflow-providers-postgres==5.4.0
 apache-airflow-providers-presto==4.2.2
@@ -221,7 +221,7 @@ datadog==0.45.0
 db-dtypes==1.1.0
 decorator==5.1.1
 defusedxml==0.7.1
-dill==0.3.1.1
+dill==0.3.3.4
 distlib==0.3.6
 distributed==2022.2.0
 dnspython==2.3.0
@@ -457,7 +457,7 @@ ptyprocess==0.7.0
 pure-sasl==0.6.2
 py-partiql-parser==0.1.0
 py4j==0.10.9.5
-pyOpenSSL==23.1.1
+pyOpenSSL==23.3.4
 pyarrow==9.0.0
 pyasn1-modules==0.2.8
 pyasn1==0.4.8

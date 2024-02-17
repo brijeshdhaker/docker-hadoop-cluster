@@ -62,8 +62,8 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - /apps/security/ssl:/etc/zookeeper/secrets
-      - /apps/sandbox/zookeeper/hadoop311/data:/var/lib/zookeeper/data
-      - /apps/sandbox/zookeeper/hadoop311/log:/var/lib/zookeeper/log
+      - /apps/sandbox/zookeeper/hadoop334/data:/var/lib/zookeeper/data
+      - /apps/sandbox/zookeeper/hadoop334/log:/var/lib/zookeeper/log
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181

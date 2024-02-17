@@ -145,7 +145,7 @@
           "local": false
         },
         {
-          "groupArtifactVersion": "/opt/hadoop/share/hadoop/common/hadoop-common-3.1.1.jar",
+          "groupArtifactVersion": "/opt/hadoop/share/hadoop/common/hadoop-common-3.3.4.jar",
           "local": false
         }
       ],
