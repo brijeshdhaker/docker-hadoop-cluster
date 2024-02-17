@@ -1,9 +1,9 @@
 #
-# docker build -t brijeshdhaker/hadoop-timelineserver:3.1.1 -f docker-hadoop/timelineserver/Dockerfile .
-# docker push brijeshdhaker/hadoop-timelineserver:3.1.1
+# docker build -t brijeshdhaker/hadoop-timelineserver:3.3.4 -f docker-hadoop/timelineserver/Dockerfile .
+# docker push brijeshdhaker/hadoop-timelineserver:3.3.4
 #
 
-FROM brijeshdhaker/hadoop-base:3.1.1
+FROM brijeshdhaker/hadoop-base:3.3.4
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 

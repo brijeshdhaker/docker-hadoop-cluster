@@ -12,7 +12,7 @@ fi
 version=$(docker images | grep $name  | awk '{print $2}');
 image="hortonworks/sandbox-hdp-security:3.0"
 # image="hortonworks/sandbox-hdp:3.0.1"
-# image="sandbox-hdp-311:latest"
+# image="sandbox-hdp-334:latest"
 # Create cda docker network
 # docker network create cda
 
