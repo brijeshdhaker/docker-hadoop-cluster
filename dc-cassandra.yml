@@ -30,8 +30,12 @@ services:
 
 #
 volumes:
+  #
   sandbox_apps_path:
     external: true
+  sandbox_security_secrets:
+    external: true
+  #
   sandbox_cassandra_data:
     external: true
 
