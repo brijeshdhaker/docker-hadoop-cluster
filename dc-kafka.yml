@@ -192,6 +192,7 @@ services:
       interval: 10s
     volumes:
       - sandbox_apps_path:/apps
+      - sandbox_security_secrets:/etc/schema-registry/secrets
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       KRB5_CONFIG: "/etc/krb5.conf"

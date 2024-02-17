@@ -1,3 +1,8 @@
+#
+# docker volume create --name sandbox_security_secrets --opt type=none --opt device=/apps/security/ssl --opt o=bind
+# docker volume create --name sandbox_kafka_data --opt type=none --opt device=/apps/sandbox/kafka-broker/data --opt o=bind
+# docker volume create --name sandbox_kafka_log --opt type=none --opt device=/apps/sandbox/kafka-broker/log --opt o=bind
+#
 ---
 version: '3.9'
 #
@@ -46,6 +51,7 @@ services:
       interval: 10s
     volumes:
       - sandbox_apps_path:/apps
+      - sandbox_security_secrets:/etc/zookeeper/secrets
       - ./conf/cluster/zk-a/data:/var/lib/zookeeper/data
       - ./conf/cluster/zk-a/log:/var/lib/zookeeper/log
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
@@ -96,6 +102,7 @@ services:
       interval: 10s
     volumes:
       - sandbox_apps_path:/apps
+      - sandbox_security_secrets:/etc/zookeeper/secrets
       - ./conf/cluster/zk-b/data:/var/lib/zookeeper/data
       - ./conf/cluster/zk-b/log:/var/lib/zookeeper/log
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
@@ -145,6 +152,7 @@ services:
       interval: 10s
     volumes:
       - sandbox_apps_path:/apps
+      - sandbox_security_secrets:/etc/zookeeper/secrets
       - ./conf/cluster/zk-c/data:/var/lib/zookeeper/data
       - ./conf/cluster/zk-c/log:/var/lib/zookeeper/log
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
@@ -193,8 +201,8 @@ services:
     container_name: kafkabroker-a
     volumes:
       - sandbox_apps_path:/apps
+      - sandbox_security_secrets:/etc/kafka/secrets
       - ./conf/cluster/kb-a/data:/var/lib/kafka/data
-      - /apps/security/ssl:/etc/kafka/secrets
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       KAFKA_BROKER_ID: 1
@@ -271,8 +279,8 @@ services:
     container_name: kafkabroker-b
     volumes:
       - sandbox_apps_path:/apps
+      - sandbox_security_secrets:/etc/kafka/secrets
       - ./conf/cluster/kb-b/data:/var/lib/kafka/data
-      - /apps/security/ssl:/etc/kafka/secrets
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       KAFKA_BROKER_ID: 2
@@ -338,8 +346,8 @@ services:
     container_name: kafkabroker-c
     volumes:
       - sandbox_apps_path:/apps
+      - sandbox_security_secrets:/etc/kafka/secrets
       - ./conf/cluster/kb-c/data:/var/lib/kafka/data
-      - /apps/security/ssl:/etc/kafka/secrets
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       KAFKA_BROKER_ID: 3
@@ -410,8 +418,7 @@ services:
       - "8081:8081"
     volumes:
       - sandbox_apps_path:/apps
-      - /apps/security/ssl:/etc/schema-registry/secrets
-      - ./conf/kerberos:/etc/kerberos
+      - sandbox_security_secrets:/etc/schema-registry/secrets
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       KRB5_CONFIG: "/etc/krb5.conf"
@@ -467,7 +474,7 @@ services:
     command: sleep infinity
     volumes:
       - sandbox_apps_path:/apps
-      - /apps/security/ssl:/etc/kafka/secrets
+      - sandbox_security_secrets:/etc/kafka/secrets
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       KRB5_CONFIG: "/etc/krb5.conf"
@@ -481,26 +488,19 @@ volumes:
   #
   sandbox_apps_path:
     external: true
+  sandbox_security_secrets:
+    external: true
   #
   sandbox_krb5_stash:
     external: true
   sandbox_krb5_principal:
     external: true
   #
-  sandbox_mysql_data:
-    external: true
-  sandbox_mysql_conf:
-    external: true
-  #
-  sandbox_zookeeper_secrets:
-    external: true
   sandbox_zookeeper_data:
     external: true
   sandbox_zookeeper_log:
     external: true
   #
-  sandbox_kafka_secrets:
-    external: true
   sandbox_kafka_data:
     external: true
   sandbox_kafka_log:
