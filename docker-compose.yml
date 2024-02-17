@@ -496,7 +496,7 @@ services:
       - sandbox_hive_313:/opt/hive
       - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
       - sandbox_spark_312:/opt/spark
-      - /opt/flink-1.12.2:/opt/flink
+      - sandbox_flink_112:/opt/flink
       - sandbox_maven_363:/opt/maven-3.6.3
 
     environment:
