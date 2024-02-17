@@ -559,6 +559,8 @@ volumes:
   #
   sandbox_apps_path:
     external: true
+  sandbox_security_secrets:
+    external: true
   #
   sandbox_krb5_stash:
     external: true
