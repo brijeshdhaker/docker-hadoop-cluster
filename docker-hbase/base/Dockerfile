@@ -1,13 +1,13 @@
 #
-# docker build -t brijeshdhaker/hbase-base:2.4.9 -f docker-hbase/base/Dockerfile .
-# docker push brijeshdhaker/hbase-base:2.4.9
+# docker build -t brijeshdhaker/hbase-base:2.4.6 -f docker-hbase/base/Dockerfile .
+# docker push brijeshdhaker/hbase-base:2.4.6
 #
 FROM brijeshdhaker/ubuntu:22.04
 
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
 #
-ENV HBASE_VERSION=${HBASE_VERSION:-"2.4.9"}
+ENV HBASE_VERSION=${HBASE_VERSION:-"2.4.6"}
 ENV HBASE_LOG_DIR=${HBASE_LOG_DIR:-"/apps/var/log/hbase"}
 ENV BASE_DIR=/opt
 ENV HBASE_HOME=$BASE_DIR/hbase

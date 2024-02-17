@@ -1,5 +1,5 @@
 #
-# docker volume create --name sandbox_kafka_secrets --opt type=none --opt device=/apps/sandbox/kafka-broker/secrets --opt o=bind
+# docker volume create --name sandbox_security_secrets --opt type=none --opt device=/apps/security/ssl --opt o=bind
 # docker volume create --name sandbox_kafka_data --opt type=none --opt device=/apps/sandbox/kafka-broker/data --opt o=bind
 # docker volume create --name sandbox_kafka_log --opt type=none --opt device=/apps/sandbox/kafka-broker/log --opt o=bind
 #
@@ -7,45 +7,6 @@
 version: "3.9"
 
 services:
-
-  #
-  nginx:
-    image: brijeshdhaker/nginx:1.15.1
-    container_name: nginx
-    hostname: nginx.sandbox.net
-    #map ports you will need
-    ports:
-      - 80:80
-      - 5010:5010
-      - 443:443
-      - 8001:8001
-    #add volume with the keytab file
-    volumes:
-      - sandbox_apps_path:/apps
-      - ./conf/kerberos:/etc/kerberos
-      - ./conf/nginx/nginx.conf:/etc/nginx/nginx.conf
-    environment:
-      KRB5_CONFIG: "/etc/krb5.conf"
-  #      KRB5_KTNAME: "/apps/security/keytabs/services/spnego.service.keytab"
-
-  # Cassandra Server
-  cassandra:
-    image: cassandra:4.1
-    hostname: cassandra
-    container_name: cassandra
-    restart: always
-    ports:
-      - "7000:7000"
-      - "7001:7001"  #
-      - "7199:7199"  # JMX
-      - "9042:9042"  # Native Transport
-      - "9160:9160"  # Thrift Clients
-    volumes:
-      - sandbox_apps_path:/apps
-      - sandbox_cassandra_data:/var/lib/cassandra
-    environment:
-      - ALLOW_ANONYMOUS_LOGIN=yes
-
   # Zookeeper Server
   zookeeper:
     image: confluentinc/cp-zookeeper:7.5.0
@@ -62,8 +23,8 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_security_secrets:/etc/zookeeper/secrets
-      - /apps/sandbox/zookeeper/hadoop334/data:/var/lib/zookeeper/data
-      - /apps/sandbox/zookeeper/hadoop334/log:/var/lib/zookeeper/log
+      - /apps/sandbox/zookeeper/hadoop311/data:/var/lib/zookeeper/data
+      - /apps/sandbox/zookeeper/hadoop311/log:/var/lib/zookeeper/log
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181

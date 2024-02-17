@@ -27,7 +27,7 @@ elif [ "X${sandboxStack}" = "Xhdf" ]; then
    sandboxName=$(docker ps | awk ' { print $NF }' | grep sandbox-hdf)
    [ -z "$sandboxName" ] && sandboxName="sandbox-hdf"
    sandboxVersion=$(docker ps | grep $sandboxName | awk -F" " ' { print $2 }' | cut -d":" -f2)
-   [ -z "$sandboxVersion" ] && sandboxVersion="3.3.4"
+   [ -z "$sandboxVersion" ] && sandboxVersion="3.1.1"
    docker rm -f $sandboxName
    [ $? -eq 0 ] && echo "Deleted container $sandboxName ..."
    docker run --privileged --name $sandboxName -h $hostname --network=cda --network-alias=$hostname -d "$registry/$sandboxName:$sandboxVersion"

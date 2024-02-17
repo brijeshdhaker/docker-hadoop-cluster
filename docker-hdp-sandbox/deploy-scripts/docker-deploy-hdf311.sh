@@ -5,7 +5,7 @@ set -x
 # CAN edit these values
 registry="hortonworks"
 name="sandbox-hdf"
-version="3.3.4"
+version="3.1.1"
 flavor="hdf"
 proxyName="sandbox-proxy"
 proxyVersion="1.0"

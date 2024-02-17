@@ -145,7 +145,7 @@
           "local": false
         },
         {
-          "groupArtifactVersion": "/opt/hadoop/share/hadoop/common/hadoop-common-3.3.4.jar",
+          "groupArtifactVersion": "/opt/hadoop/share/hadoop/common/hadoop-common-3.1.1.jar",
           "local": false
         }
       ],
@@ -287,7 +287,7 @@
         },
         "geode.locator.port": {
           "name": "geode.locator.port",
-          "value": "10334",
+          "value": "10311",
           "type": "number",
           "description": "The Geode Locator Port."
         },
