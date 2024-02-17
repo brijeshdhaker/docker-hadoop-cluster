@@ -2,17 +2,16 @@
 
 #
 # docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
+# docker volume create --name sandbox_security_secrets --opt type=none --opt device=/apps/security/ssl --opt o=bind
 #
 # docker volume create --name sandbox_krb5_stash --opt type=none --opt device=/apps/sandbox/kerberos/stash --opt o=bind
 # docker volume create --name sandbox_krb5_principal --opt type=none --opt device=/apps/sandbox/kerberos/principal --opt o=bind
 #
-# docker volume create --name sandbox_zookeeper_secrets --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop334/secrets --opt o=bind
 # docker volume create --name sandbox_zookeeper_data --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop334/data --opt o=bind
 # docker volume create --name sandbox_zookeeper_log --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop334/log --opt o=bind
 #
-# docker volume create --name sandbox_kafka_secrets --opt type=none --opt device=/apps/sandbox/kafka/hadoop3/secrets --opt o=bind
-# docker volume create --name sandbox_kafka_data --opt type=none --opt device=/apps/sandbox/kafka/hadoop3/data --opt o=bind
-# docker volume create --name sandbox_kafka_log --opt type=none --opt device=/apps/sandbox/kafka/hadoop3/log --opt o=bind
+# docker volume create --name sandbox_kafka_data --opt type=none --opt device=/apps/sandbox/kafka/hadoop334/data --opt o=bind
+# docker volume create --name sandbox_kafka_log --opt type=none --opt device=/apps/sandbox/kafka/hadoop334/log --opt o=bind
 #
 # docker volume create --name sandbox_cassandra_data --opt type=none --opt device=/apps/sandbox/cassandra/data --opt o=bind
 # docker volume create --name sandbox_cassandra_conf --opt type=none --opt device=/apps/sandbox/cassandra/conf --opt o=bind
@@ -94,7 +93,7 @@ services:
       - "28080:8080"
     volumes:
       - sandbox_apps_path:/apps
-      - /apps/security/ssl:/etc/zookeeper/secrets
+      - sandbox_security_secrets:/etc/zookeeper/secrets
       - /apps/sandbox/zookeeper/hadoop334/data:/var/lib/zookeeper/data
       - /apps/sandbox/zookeeper/hadoop334/log:/var/lib/zookeeper/log
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
