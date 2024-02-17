@@ -15,13 +15,13 @@ ENV HBASE_CONF_DIR=$HBASE_HOME/conf
 ENV PATH=$HBASE_HOME/bin:$HBASE_HOME/bin/:$PATH
 
 #
-COPY resources/tars/hbase-2.4.6-bin.tar.gz $BASE_DIR/hbase-2.4.6-bin.tar.gz
+COPY resources/tars/hbase-${HBASE_VERSION}-bin.tar.gz $BASE_DIR/hbase-${HBASE_VERSION}-bin.tar.gz
 
 
 RUN set -x && \
-    mkdir -p  ${HBASE_HOME} && tar --strip-components=1 -zxvf  /opt/hbase-2.4.6-bin.tar.gz -C ${HBASE_HOME} && \
+    mkdir -p  ${HBASE_HOME} && tar --strip-components=1 -zxvf  /opt/hbase-${HBASE_VERSION}-bin.tar.gz -C ${HBASE_HOME} && \
     mkdir -p $HBASE_LOG_DIR && chmod -Rf 777 $HBASE_LOG_DIR && chown -Rf hbase:hbase $HBASE_LOG_DIR && \
-    rm -f /opt/hbase-2.4.6-bin.tar.gz && \
+    rm -f /opt/hbase-${HBASE_VERSION}-bin.tar.gz && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir -p /etc/hbase && ln -s $HBASE_HOME/conf /etc/hbase/conf && chmod -Rf 777 /etc/hbase/conf && \
     echo "done."

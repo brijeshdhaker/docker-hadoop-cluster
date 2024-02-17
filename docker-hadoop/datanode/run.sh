@@ -1,7 +1,5 @@
 #!/bin/bash
 
-/usr/bin/cp -Rf ${HADOOP_ETC_CONF}/*.xml ${HADOOP_HOME}/etc/hadoop/
-
 datadir=`echo $HDFS_SITE_dfs_datanode_data_dir | perl -pe 's#file://##'`
 
 if [ ! -d $datadir ]; then

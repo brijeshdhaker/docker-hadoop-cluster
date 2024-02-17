@@ -42,7 +42,7 @@
 #
 # Examples for a Sun/Oracle JDK:
 # a) override the appsummary log file:
-# export YARN_RESOURCEMANAGER_OPTS="-Dyarn.server.resourcemanager.appsummary.log.file=rm-appsummary.log -Dyarn.server.resourcemanager.appsummary.logger=INFO,RMSUMMARY"
+export YARN_RESOURCEMANAGER_OPTS="-Dhadoop.log.dir=/apps/var/log/yarn -Dhadoop.log.file=yarn-rm.log -Dyarn.server.resourcemanager.appsummary.log.file=rm-appsummary.log -Dyarn.server.resourcemanager.appsummary.logger=INFO,RMSUMMARY"
 #
 # b) Set JMX options
 # export YARN_RESOURCEMANAGER_OPTS="-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=1026"
@@ -54,7 +54,7 @@
 # export YARN_RESOURCEMANAGER_OPTS="-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:${HADOOP_LOG_DIR}/gc-rm.log-$(date +'%Y%m%d%H%M')"
 #
 #
-export YARN_RESOURCEMANAGER_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
+# export YARN_RESOURCEMANAGER_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
 
 ###
 # Node Manager specific parameters
@@ -73,7 +73,7 @@ export YARN_RESOURCEMANAGER_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
 #
 # See ResourceManager for some examples
 #
-export YARN_NODEMANAGER_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
+export YARN_NODEMANAGER_OPTS="-Dhadoop.log.dir=/apps/var/log/yarn -Dhadoop.log.file=yarn-nm.log"
 
 ###
 # TimeLineServer specific parameters
@@ -92,7 +92,7 @@ export YARN_NODEMANAGER_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
 #
 # See ResourceManager for some examples
 #
-export YARN_TIMELINESERVER_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
+export YARN_TIMELINESERVER_OPTS="-Dhadoop.log.dir=/apps/var/log/yarn -Dhadoop.log.file=yarn-timeline.log"
 
 ###
 # TimeLineReader specific parameters
@@ -123,7 +123,7 @@ export YARN_TIMELINESERVER_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
 #
 # See ResourceManager for some examples
 #
-export YARN_PROXYSERVER_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
+export YARN_PROXYSERVER_OPTS="-Dhadoop.log.dir=/apps/var/log/yarn -Dhadoop.log.file=yarn-proxy.log"
 
 ###
 # Shared Cache Manager specific parameters
@@ -167,3 +167,5 @@ export YARN_PROXYSERVER_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
 # Directory containing service examples
 # export YARN_SERVICE_EXAMPLES_DIR = $HADOOP_YARN_HOME/share/hadoop/yarn/yarn-service-examples
 # export YARN_CONTAINER_RUNTIME_DOCKER_RUN_OVERRIDE_DISABLE=true
+#
+export KRB5_CONFIG="/etc/krb5.conf"

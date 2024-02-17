@@ -1,0 +1,41 @@
+#
+# docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
+#
+---
+version: "3.9"
+
+services:
+
+  #
+  nginx:
+    image: brijeshdhaker/nginx:1.15.1
+    container_name: nginx
+    hostname: nginx.sandbox.net
+    #map ports you will need
+    ports:
+      - 80:80
+      - 5010:5010
+      - 443:443
+      - 8001:8001
+    #add volume with the keytab file
+    volumes:
+      - sandbox_apps_path:/apps
+      - ./conf/kerberos:/etc/kerberos
+      - ./conf/nginx/nginx.conf:/etc/nginx/nginx.conf
+    environment:
+      KRB5_CONFIG: "/etc/krb5.conf"
+
+#
+volumes:
+  #
+  sandbox_apps_path:
+    external: true
+  sandbox_security_secrets:
+    external: true
+
+#
+networks:
+  default:
+    external: true
+    driver: bridge
+    name: sandbox.net

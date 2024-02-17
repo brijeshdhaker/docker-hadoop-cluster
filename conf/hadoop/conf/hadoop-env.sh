@@ -89,7 +89,7 @@ export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
 # IPv6 yet/still, so by default the preference is set to IPv4.
 # export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true"
 # For Kerberos debugging, an extended option set logs more information
-export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true -Dsun.security.krb5.debug=false -Dsun.security.spnego.debug"
+export HADOOP_OPTS="-Djava.library.path=/opt/hadoop/lib/native -Djava.net.preferIPv4Stack=true -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=false -Dsun.security.spnego.debug -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.krb5.kdc=kdcserver.sandbox.net -Dhadoop.log.dir=/apps/var/log/hadoop -Dhadoop.root.logger=INFO,console,DRFA"
 
 # Some parts of the shell code may do special things dependent upon
 # the operating system.  We have to set this here. See the next
@@ -100,7 +100,7 @@ export HADOOP_OS_TYPE=${HADOOP_OS_TYPE:-$(uname -s)}
 # and clients (i.e., hdfs dfs -blah).  These get appended to HADOOP_OPTS for
 # such commands.  In most cases, # this should be left empty and
 # let users supply it on the command line.
-export HADOOP_CLIENT_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
+export HADOOP_CLIENT_OPTS=${HADOOP_OPTS}
 
 #
 # A note about classpaths.
@@ -204,7 +204,7 @@ export HADOOP_ROOT_LOGGER=INFO,console
 # Default log4j setting for daemons spawned explicitly by
 # --daemon option of hadoop, hdfs, mapred and yarn command.
 # Java property: hadoop.root.logger
-export HADOOP_DAEMON_ROOT_LOGGER=INFO,RFA
+export HADOOP_DAEMON_ROOT_LOGGER=INFO,console,RFA
 
 # Default log level and output location for security-related messages.
 # You will almost certainly want to change this on a per-daemon basis via
@@ -287,7 +287,7 @@ export HADOOP_SECURE_LOG=${HADOOP_LOG_DIR}
 # export HDFS_NAMENODE_OPTS="-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:${HADOOP_LOG_DIR}/gc-rm.log-$(date +'%Y%m%d%H%M')"
 
 # this is the default:
-# export HDFS_NAMENODE_OPTS="-Dhadoop.security.logger=INFO,RFAS"
+export HDFS_NAMENODE_OPTS="-Dhadoop.log.file=hadoop-namenode.log -Dhadoop.security.logger=INFO,RFAS"
 
 ###
 # SecondaryNameNode specific parameters
@@ -307,7 +307,7 @@ export HADOOP_SECURE_LOG=${HADOOP_LOG_DIR}
 # and therefore may override any similar flags set in HADOOP_OPTS
 #
 # This is the default:
-export HDFS_DATANODE_OPTS="-Dhadoop.security.logger=ERROR,RFAS"
+export HDFS_DATANODE_OPTS="-Dhadoop.log.file=hadoop-datanode.log -Dhadoop.security.logger=ERROR,RFAS"
 
 # On secure datanodes, user to run the datanode as after dropping privileges.
 # This **MUST** be uncommented to enable secure HDFS if using privileged ports
@@ -320,7 +320,7 @@ export HDFS_DATANODE_SECURE_USER=hdfs
 # Supplemental options for secure datanodes
 # By default, Hadoop uses jsvc which needs to know to launch a
 # server jvm.
-export HDFS_DATANODE_SECURE_EXTRA_OPTS="-jvm server"
+export HDFS_DATANODE_SECURE_EXTRA_OPTS="-jvm server -Dhadoop.log.file=hadoop-secure-datanode.log"
 
 ###
 # NFS3 Gateway specific parameters
@@ -427,7 +427,7 @@ export HDFS_DATANODE_SECURE_EXTRA_OPTS="-jvm server"
 # Supplemental options for privileged registry DNS
 # By default, Hadoop uses jsvc which needs to know to launch a
 # server jvm.
-export HADOOP_REGISTRYDNS_SECURE_EXTRA_OPTS="-jvm server"
+export HADOOP_REGISTRYDNS_SECURE_EXTRA_OPTS="-jvm server -Dhadoop.log.file=hadoop-registry-dns.log"
 #
 export KRB5_CONFIG="/etc/krb5.conf"
 export KINIT_KEYTAB=/etc/kerberos/keytab/hdfs.service.keytab
