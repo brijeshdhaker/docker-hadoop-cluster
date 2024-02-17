@@ -1,8 +1,8 @@
 #
 # Use postgres/example user/password credentials
+#
 
-# docker volume create --name sandbox_host_path --opt type=none --opt device=/apps/hostpath --opt o=bind
-# docker volume create --name sandbox_base_path --opt type=none --opt device=/apps/sandbox --opt o=bind
+# docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
 # docker volume create --name sandbox_postgres_data --opt type=none --opt device=/apps/sandbox/postgres/data --opt o=bind
 # docker volume create --name sandbox_postgres_conf --opt type=none --opt device=/apps/sandbox/postgres/conf --opt o=bind
 # docker volume create --name sandbox_postgres_init --opt type=none --opt device=/apps/sandbox/postgres/init.d --opt o=bind

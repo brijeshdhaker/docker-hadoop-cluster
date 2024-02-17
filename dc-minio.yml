@@ -1,8 +1,8 @@
 #
+# docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
 #
-#
-
-version: '3.5'
+---
+version: '3.9'
 services:
 #
   minio:
@@ -17,8 +17,9 @@ services:
       - "40000:40000"
     command: server /apps/hostpath/minio --console-address 0.0.0.0:40000
     volumes:
+      - sandbox_apps_path:/apps
       - /apps/hostpath/minio/data:/data
-      - /apps/hostpath:/apps/hostpath
+
 
 
 #
@@ -34,6 +35,14 @@ services:
     env_file:
       - docker-minio/minio.env
     entrypoint: /setup.sh
+
+#
+volumes:
+  #
+  sandbox_apps_path:
+    external: true
+  sandbox_security_secrets:
+    external: true
 
 #
 networks:

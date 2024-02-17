@@ -173,8 +173,8 @@ sudo tar --strip-components=1 -xvf hadoop-3.1.1.tar.gz -C /opt/hadoop-3.1.1
 sudo mkdir -p /opt/hive-3.1.3
 sudo tar --strip-components=1 -xvf apache-hive-3.1.3-bin.tar.gz -C /opt/hive-3.1.3
 
-sudo mkdir -p /opt/tez-0.9.2
-sudo tar --strip-components=1 -xvf apache-tez-0.9.2-bin.tar.gz -C /opt/tez-0.9.2
+sudo mkdir -p /opt/tez-0.9.1
+sudo tar --strip-components=1 -xvf apache-tez-0.9.2-bin.tar.gz -C /opt/tez-0.9.1
 
 sudo mkdir -p /opt/hbase-2.4.6
 sudo tar --strip-components=1 -xvf hbase-2.4.6-bin.tar.gz -C /opt/hbase-2.4.6
@@ -184,8 +184,6 @@ sudo tar --strip-components=1 -xvf hbase-1.1.7-bin.tar.gz -C /opt/hbase-1.1.7
 
 sudo mkdir -p /opt/spark-3.1.2
 sudo tar --strip-components=1 -xvf spark-3.1.2-bin-hadoop3.2.tgz -C /opt/spark-3.1.2
-
-sudo tar --strip-components=1 -xvf apache-zookeeper-3.7.1-bin.tar.gz -C /opt/zookeeper-3.7.1
 
 sudo unzip apache-maven-3.6.3-bin.zip -d /opt
 

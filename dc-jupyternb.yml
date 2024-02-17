@@ -1,7 +1,7 @@
 #
 # docker-compose -H tcp://raspberry:2375 -f dc-jupyternb.yml up -d
 #
-version: '3.5'
+version: '3.9'
 #
 services:
 #
@@ -17,11 +17,19 @@ services:
       - "7777:7777"
       - "2222:2222"
     volumes:
-      - /apps/hostpath/python/notebook:/home/notebook
-      - /apps/hostpath:/apps/hostpath
+      - sandbox_apps_path:/apps
+      - /apps/sandbox/jupyternb/notebook:/home/notebook
     environment:
       KUBECONFIG: /home/notebook/.kube/config
 #
+
+#
+volumes:
+  #
+  sandbox_apps_path:
+    external: true
+  sandbox_security_secrets:
+    external: true
 
 #
 networks:
