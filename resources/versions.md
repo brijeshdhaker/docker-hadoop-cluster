@@ -1,3 +1,6 @@
+#
+#
+#
 Component	            Version
 Apache Arrow	    0.8.0
 Apache Atlas	    2.2.0
@@ -25,3 +28,22 @@ Apache Sqoop	    1.4.7
 Apache Tez	        0.9.1
 Apache Zeppelin	    0.8.2
 Apache ZooKeeper	3.5.5
+
+#
+#
+#
+Filesystem	Path						                                User:Group	  Permissions
+local		dfs.namenode.name.dir				                        hdfs:hadoop	    drwx------
+local		dfs.datanode.data.dir				                        hdfs:hadoop	    drwx------
+local		$HADOOP_LOG_DIR					                            hdfs:hadoop	    drwxrwxr-x
+local		$YARN_LOG_DIR					                            yarn:hadoop	    drwxrwxr-x
+local		yarn.nodemanager.local-dirs (/yarn/nm)		                yarn:hadoop	    drwxr-xr-x
+local		yarn.nodemanager.log-dirs (/yarn/container-logs)			yarn:hadoop	    drwxr-xr-x
+local		container-executor				                            root:hadoop	    --Sr-s--* (6050)
+local		conf/container-executor.cfg			                        root:hadoop	    r-------* (0400)
+hdfs		/						                                    hdfs:hadoop	    drwxr-xr-x
+hdfs		/tmp						                                hdfs:hadoop	    drwxrwxrwxt
+hdfs		/user						                                hdfs:hadoop	    drwxr-xr-x
+hdfs		yarn.nodemanager.remote-app-log-dir		                    yarn:hadoop	    drwxrwxrwxt
+hdfs		mapreduce.jobhistory.intermediate-done-dir	                mapred:hadoop	drwxrwxrwxt
+hdfs		mapreduce.jobhistory.done-dir			                    mapred:hadoop	drwxr-x---

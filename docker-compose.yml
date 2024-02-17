@@ -6,9 +6,9 @@
 # docker volume create --name sandbox_krb5_stash --opt type=none --opt device=/apps/sandbox/kerberos/stash --opt o=bind
 # docker volume create --name sandbox_krb5_principal --opt type=none --opt device=/apps/sandbox/kerberos/principal --opt o=bind
 #
-# docker volume create --name sandbox_zookeeper_secrets --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop3/secrets --opt o=bind
-# docker volume create --name sandbox_zookeeper_data --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop3/data --opt o=bind
-# docker volume create --name sandbox_zookeeper_log --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop3/log --opt o=bind
+# docker volume create --name sandbox_zookeeper_secrets --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop334/secrets --opt o=bind
+# docker volume create --name sandbox_zookeeper_data --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop334/data --opt o=bind
+# docker volume create --name sandbox_zookeeper_log --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop334/log --opt o=bind
 #
 # docker volume create --name sandbox_kafka_secrets --opt type=none --opt device=/apps/sandbox/kafka/hadoop3/secrets --opt o=bind
 # docker volume create --name sandbox_kafka_data --opt type=none --opt device=/apps/sandbox/kafka/hadoop3/data --opt o=bind
@@ -24,7 +24,7 @@
 #
 # docker volume create --name sandbox_spark_312 --opt type=none --opt device=/opt/spark-3.1.2 --opt o=bind
 # docker volume create --name sandbox_hive_313 --opt type=none --opt device=/opt/hive-3.1.3 --opt o=bind
-# docker volume create --name sandbox_tez_091 --opt type=none --opt device=/opt/tez-0.9.1 --opt o=bind
+# docker volume create --name sandbox_tez_0102 --opt type=none --opt device=/opt/tez-0.10.2 --opt o=bind
 # docker volume create --name sandbox_hbase_246 --opt type=none --opt device=/opt/hbase-2.4.6 --opt o=bind
 # docker volume create --name sandbox_hbase_117 --opt type=none --opt device=/opt/hbase-1.1.7 --opt o=bind
 # docker volume create --name sandbox_flink_112 --opt type=none --opt device=/opt/flink-1.12.2 --opt o=bind
@@ -85,6 +85,9 @@ services:
       test: curl -f http://zookeeper.sandbox.net:8080/commands || exit 1
       retries: 20
       interval: 10s
+    depends_on:
+      kdcserver:
+        condition: service_healthy
     ports:
       - "2181:2181"
       - "2182:2182"
@@ -143,6 +146,9 @@ services:
       test: nc -vz namenode.sandbox.net 9870 || exit 1
       retries: 20
       interval: 10s
+    depends_on:
+      kdcserver:
+        condition: service_healthy
     ports:
       - "9870:9870"   # http
       - "9871:9871"   # https
@@ -164,6 +170,13 @@ services:
       dockerfile: docker-hadoop/datanode/Dockerfile
     container_name: datanode
     hostname: datanode.sandbox.net
+    healthcheck:
+      test: nc -vz datanode.sandbox.net 1006 || exit 1
+      retries: 20
+      interval: 10s
+    depends_on:
+      namenode:
+        condition: service_healthy
     ports:
       - "9864:9864"   # http
       - "9865:9865"   # https
@@ -240,6 +253,13 @@ services:
     container_name: timelineserver
     hostname: timelineserver.sandbox.net
     restart: no
+    healthcheck:
+      test: nc -vz timelineserver.sandbox.net 8188 || exit 1
+      retries: 20
+      interval: 10s
+    depends_on:
+      resourcemanager:
+        condition: service_healthy
     ports:
       - "8188:8188"
     environment:
@@ -259,6 +279,13 @@ services:
     container_name: historyserver
     hostname: historyserver.sandbox.net
     restart: no
+    healthcheck:
+      test: nc -vz historyserver.sandbox.net 19888 || exit 1
+      retries: 20
+      interval: 10s
+    depends_on:
+      resourcemanager:
+        condition: service_healthy
     ports:
       - "19888:19888"
     environment:
@@ -341,9 +368,9 @@ services:
       - "10002:10002"
     volumes:
       - sandbox_apps_path:/apps
+      - sandbox_tez_0102:/opt/tez
       - sandbox_hadoop_334:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-      - /opt/tez-0.10.2:/opt/tez
       - ./conf/tez/tez-site.xml:/opt/tez/conf/tez-site.xml
 
   # Hive Tez UI
@@ -440,7 +467,6 @@ services:
       - ./envs/docker_clients.env
     volumes:
       - sandbox_apps_path:/apps
-      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - sandbox_hadoop_334:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - ./conf/spark/conf:/opt/spark/conf
@@ -578,7 +604,7 @@ volumes:
   #
   sandbox_hive_313:
     external: true
-  sandbox_tez_091:
+  sandbox_tez_0102:
     external: true
   #
   sandbox_spark_312:
