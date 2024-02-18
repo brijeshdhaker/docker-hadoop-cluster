@@ -98,11 +98,11 @@
         <value>30</value>
     </property>
     <!-- HBase not start with below configs-->
-    <!-- Tez require these properties
+    <!-- Tez require these properties -->
     <property>
         <name>dfs.client.datanode-restart.timeout</name>
         <value>30</value>
     </property>
-    -->
+
 </configuration>
 
