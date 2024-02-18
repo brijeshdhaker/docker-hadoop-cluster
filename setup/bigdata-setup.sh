@@ -174,7 +174,7 @@ sudo mkdir -p /opt/hive-3.1.3
 sudo tar --strip-components=1 -xvf apache-hive-3.1.3-bin.tar.gz -C /opt/hive-3.1.3
 
 sudo mkdir -p /opt/tez-0.9.1
-sudo tar --strip-components=1 -xvf apache-tez-0.9.2-bin.tar.gz -C /opt/tez-0.9.1
+sudo tar --strip-components=1 -xvf apache-tez-0.9.1-bin.tar.gz -C /opt/tez-0.9.1
 
 sudo mkdir -p /opt/hbase-2.4.6
 sudo tar --strip-components=1 -xvf hbase-2.4.6-bin.tar.gz -C /opt/hbase-2.4.6
@@ -185,7 +185,10 @@ sudo tar --strip-components=1 -xvf hbase-1.1.7-bin.tar.gz -C /opt/hbase-1.1.7
 sudo mkdir -p /opt/spark-3.1.2
 sudo tar --strip-components=1 -xvf spark-3.1.2-bin-hadoop3.2.tgz -C /opt/spark-3.1.2
 
+sudo mkdir -p /opt/flink-1.12.2
+sudo tar --strip-components=1 -xvf flink-1.12.2-bin-scala_2.12.tgz -C /opt/flink-1.12.2
+
 sudo unzip apache-maven-3.6.3-bin.zip -d /opt
 
 cd /opt
-sudo chown -R brijeshdhaker:root hadoop-3.1.1 hbase-1.1.7 hbase-2.4.6 hive-3.1.3 tez-0.9.1 maven-3.6.3 spark-3.1.2 flink-1.12.2 zookeeper:3.7.1
+sudo chown -Rf brijeshdhaker:root hadoop-3.1.1 hbase-1.1.7 hbase-2.4.6 hive-3.1.3 tez-0.9.1 maven-3.6.3 spark-3.1.2 flink-1.12.2
