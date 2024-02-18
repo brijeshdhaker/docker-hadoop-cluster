@@ -1,7 +1,9 @@
 #
 # docker volume create --name sandbox_security_secrets --opt type=none --opt device=/apps/security/ssl --opt o=bind
-# docker volume create --name sandbox_kafka_data --opt type=none --opt device=/apps/sandbox/kafka-broker/data --opt o=bind
-# docker volume create --name sandbox_kafka_log --opt type=none --opt device=/apps/sandbox/kafka-broker/log --opt o=bind
+# docker volume create --name sandbox_zookeeper311_data --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop311/data --opt o=bind
+# docker volume create --name sandbox_zookeeper311_log --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop311/log --opt o=bind
+# docker volume create --name sandbox_kafka311_data --opt type=none --opt device=/apps/sandbox/kafka/hadoop311/data --opt o=bind
+# docker volume create --name sandbox_kafka311_log --opt type=none --opt device=/apps/sandbox/kafka/hadoop311/log --opt o=bind
 #
 ---
 version: "3.9"
@@ -23,8 +25,8 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_security_secrets:/etc/zookeeper/secrets
-      - /apps/sandbox/zookeeper/hadoop311/data:/var/lib/zookeeper/data
-      - /apps/sandbox/zookeeper/hadoop311/log:/var/lib/zookeeper/log
+      - sandbox_zookeeper311_data:/var/lib/zookeeper/data
+      - sandbox_zookeeper311_log:/var/lib/zookeeper/log
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
@@ -79,7 +81,8 @@ services:
       - 19094:19094
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_kafka_data:/var/lib/kafka/data
+      - sandbox_kafka311_data:/var/lib/kafka/data
+      - sandbox_kafka311_log:/var/lib/kafka/log
       - sandbox_security_secrets:/etc/kafka/secrets
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
@@ -261,14 +264,14 @@ volumes:
   sandbox_security_secrets:
     external: true
   #
-  sandbox_zookeeper_data:
+  sandbox_zookeeper311_data:
     external: true
-  sandbox_zookeeper_log:
+  sandbox_zookeeper311_log:
     external: true
   #
-  sandbox_kafka_data:
+  sandbox_kafka311_data:
     external: true
-  sandbox_kafka_log:
+  sandbox_kafka311_log:
     external: true
 
 #

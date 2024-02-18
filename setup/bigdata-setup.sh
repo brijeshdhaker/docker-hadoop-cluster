@@ -86,6 +86,10 @@ docker network create -d bridge sandbox.net
 #
 
 docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
+docker volume create --name sandbox_security_secrets --opt type=none --opt device=/apps/security/ssl --opt o=bind
+
+docker volume create --name sandbox_krb5_stash --opt type=none --opt device=/apps/sandbox/kerberos/stash --opt o=bind
+docker volume create --name sandbox_krb5_principal --opt type=none --opt device=/apps/sandbox/kerberos/principal --opt o=bind
 
 docker volume create --name sandbox_maven_363 --opt type=none --opt device=/opt/maven-3.6.3 --opt o=bind
 docker volume create --name sandbox_m2 --opt type=none --opt device=/apps/hostpath/.m2 --opt o=bind
@@ -93,15 +97,10 @@ docker volume create --name sandbox_ivy2 --opt type=none --opt device=/apps/host
 
 docker volume create --name sandbox_zookeeper_371 --opt type=none --opt device=/apps/sandbox/zookeeper-3.7.1 --opt o=bind
 
-docker volume create --name sandbox_zookeeper_secrets --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop3/secrets --opt o=bind
-docker volume create --name sandbox_zookeeper_data --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop3/data --opt o=bind
-docker volume create --name sandbox_zookeeper_log --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop3/log --opt o=bind
-
-docker volume create --name sandbox_kafka_secrets --opt type=none --opt device=/apps/sandbox/kafka/hadoop3/secrets --opt o=bind
-docker volume create --name sandbox_kafka_data --opt type=none --opt device=/apps/sandbox/kafka/hadoop3/data --opt o=bind
-docker volume create --name sandbox_kafka_log --opt type=none --opt device=/apps/sandbox/kafka/hadoop3/log --opt o=bind
-
-docker volume create --name sandbox_schema_registry_secrets --opt type=none --opt device=/apps/sandbox/schema-registry/secrets --opt o=bind
+docker volume create --name sandbox_zookeeper311_data --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop311/data --opt o=bind
+docker volume create --name sandbox_zookeeper311_log --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop311/log --opt o=bind
+docker volume create --name sandbox_kafka311_data --opt type=none --opt device=/apps/sandbox/kafka/hadoop311/data --opt o=bind
+docker volume create --name sandbox_kafka311_log --opt type=none --opt device=/apps/sandbox/kafka/hadoop311/log --opt o=bind
 docker volume create --name sandbox_schema_registry_data --opt type=none --opt device=/apps/sandbox/schema-registry/data --opt o=bind
 docker volume create --name sandbox_schema_registry_log --opt type=none --opt device=/apps/sandbox/schema-registry/log --opt o=bind
 
@@ -148,7 +147,7 @@ docker volume create --name sandbox_flink_112 --opt type=none --opt device=/opt/
 # Require Dirs
 #
 
-sudo cp -p
+sudo cp -p /apps /apps
 
 sudo mkdir -p /apps/{sandbox,hostpath,var/log,}
 sudo chown brijeshdhaker:root -R /apps
@@ -166,6 +165,9 @@ sudo chown -Rf 1003:1001 /apps/sandbox/hadoop-3.1.1/mapred
 sudo chown -Rf hdfs:hadoop /apps/sandbox/hadoop-3.1.1/dfs
 sudo chown -Rf yarn:hadoop /apps/sandbox/hadoop-3.1.1/yarn
 sudo chown -Rf mapred:hadoop /apps/sandbox/hadoop-3.1.1/mapred
+
+sudo chown -Rf 27:27 /apps/sandbox/mysql/data
+sudo chmod -Rf 775 /apps/sandbox/mysql/data
 
 sudo mkdir -p /opt/hadoop-3.1.1
 sudo tar --strip-components=1 -xvf hadoop-3.1.1.tar.gz -C /opt/hadoop-3.1.1

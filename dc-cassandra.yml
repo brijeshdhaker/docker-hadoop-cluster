@@ -38,6 +38,8 @@ volumes:
   #
   sandbox_cassandra_data:
     external: true
+  sandbox_cassandra_conf:
+    external: true
 
 #
 networks:
