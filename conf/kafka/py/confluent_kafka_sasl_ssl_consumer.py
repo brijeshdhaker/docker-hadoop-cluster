@@ -118,7 +118,7 @@ def asynchronous_commits_consume_loop(consumer, topics):
 #
 #
 #
-TOPIC = "kcat-test-topic"
+TOPIC = "kafka-simple-topic"
 
 #
 #     'enable.auto.commit': False,
@@ -134,7 +134,7 @@ consumer = Consumer({
     'ssl.key.password': 'confluent',
     'ssl.certificate.location': '/etc/kafka/secrets/clients-signed.crt',
     'ssl.ca.location': '/etc/kafka/secrets/sandbox-ca.pem',
-    'group.id': 'confluent_kafka_sasl_ssl_cg',
+    'group.id': 'kafka-simple-cg',
     'on_commit': commit_completed
 })
 

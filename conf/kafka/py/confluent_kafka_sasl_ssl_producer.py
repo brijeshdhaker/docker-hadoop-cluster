@@ -27,7 +27,7 @@ import random
 #
 #
 #
-TOPIC = "kcat-test-topic"
+TOPIC = "kafka-simple-topic"
 
 # Create Producer instance
 producer = Producer({
