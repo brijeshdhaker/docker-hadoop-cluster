@@ -1,3 +1,4 @@
+
 #
 #### Install Conda
 #
@@ -24,29 +25,30 @@ PYSPARK_DRIVER_PYTHON=/opt/conda/envs/pyspark3.7/bin/python
 #
 #### Create Conda Virtual Env : Python 3.7
 #
-
+conda env create -f mr-delta.yml
 mamba env update -f venv_pyspark3.7.yml --prune
-conda create -y -n pyspark3.7 -c conda-forge pyarrow pandas conda-pack
+conda create -y -n pyspark3.7 -c conda-forge python=3.7 pyarrow pandas conda-pack
 conda activate pyspark3.7
-conda init bash
-conda pack -f -o pyspark3.7-20221125.tar.gz
+conda pack -f -o /apps/hostpath/python/pyspark3.7-20221125.tar.gz
 
 # The python conda tar should be public accessible, so need to change permission here.
-hdfs dfs –put pyspark3.7-20221125.tar.gz /archives/pyspark/
-hdfs dfs -copyFromLocal ./pyspark3.7-20221125.tar.gz /archives/pyspark/
+hdfs dfs –put /apps/hostpath/python/pyspark3.7-20221125.tar.gz /archives/pyspark/
+hdfs dfs -copyFromLocal /apps/hostpath/python/pyspark3.7-20221125.tar.gz /archives/pyspark/pyspark3.7-20221125.tar.gz
+hadoop fs -chmod 775 /archives/pyspark/pyspark3.7-20221125.tar.gz
 
 #
 #### Create Conda Virtual Env : Python 3.8
 #
 conda create -y -n pyspark3.8 -c conda-forge pyarrow pandas conda-pack
 conda activate pyspark3.8
-conda pack -f -o pyspark3.8.tar.gz
+conda pack -f -o /apps/hostpath/python/pyspark3.8.tar.gz
 
 #
 #### Install Package in Virtual Environment
 #
 
 conda install -c conda-forge grpcio protobuf pycodestyle numpy pandas scipy pandasql panel pyyaml seaborn plotnine hvplot intake intake-parquet intake-xarray altair vega_datasets pyarrow
+conda install pyspark==3.1.2
 
 #
 ####  
@@ -67,6 +69,7 @@ pip install intake-parquet intake-xarray altair vega_datasets pyarrow pytest
 # List Conda Virtual Environments
 #
 conda env list
+conda info --envs
 
 #
 # List Conda Virtual Environments Libraries
@@ -89,31 +92,24 @@ pip install jupyter_client nb_conda panel pyyaml seaborn plotnine hvplot intake
 pip install intake-parquet intake-xarray altair vega_datasets pyarrow pytest
 
 #
+# Update Virtual Env
 #
-#
-conda env update --file local.yml --prune
+conda env update --file venv_pyspark3.7.yml --prune --prune
+conda env update --name pyspark3.7 --file venv_pyspark3.7.yml --prune
 
-conda env update --name pyspark3.7 --file local.yml --prune
 #
 #### Export Virtual Env
 #
-conda pack -n pyspark3.7 -o pyspark3.7.tar.gz
-
-conda pack -n pyspark3.8 -o pyspark3.8.tar.gz
-
-conda pack -f -o pyspark_conda_env.tar.gz
-
-#
-#
-#
-
-hadoop fs -rmr /archives/mr-delta.tar.gz
-
-hadoop fs -put mr-delta.tar.gz /archives
-
+conda pack -n pyspark3.7 -o /apps/hostpath/python/pyspark3.7-$(date "+%Y%m%d").tar.gz
+hdfs dfs -copyFromLocal /apps/hostpath/python/pyspark3.7-$(date "+%Y%m%d").tar.gz /archives/pyspark/
 # The python conda tar should be public accessible, so need to change permission here.
-hadoop fs -chmod 644 /tmp/pyspark_env.tar.gz
+hadoop fs -chmod 775 /archives/pyspark/pyspark3.7-20221125.tar.gz
 
+#
+#### Deactivate Cond Env
+#
+
+conda deactivate
 
 #
 ####
@@ -122,10 +118,5 @@ conda install anaconda-clean
 
 #
 #### Remove all Anaconda-related files and directories with a confirmation prompt before deleting each one:
-#
-anaconda-clean
-
-#
-#### remove all Anaconda-related files and directories without being prompted to delete each one:
 #
 anaconda-clean --yes

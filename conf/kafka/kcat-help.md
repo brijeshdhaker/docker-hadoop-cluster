@@ -1,12 +1,13 @@
 E.g. to consume all messages from mytopic partition 2 and then exit:
 
 ## Arguments Details 
-* -L
+* -L  List Topics
+* -C  Consumer Mode
+* * -K delimiter
+* 
+* -P  Producer Mode
+* * -K delimiter
 * -J  for JSON Format
-* -C
-* * -K delimiter
-* -P
-* * -K delimiter
 * 
 * -t  for topic name
 * -p  for partition
@@ -30,27 +31,30 @@ kafkacat -b kafkabroker.sandbox.net:19092 -L -J \
 
 ## PLAINTEXT
 docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_plaintext.config -L"
-docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_plaintext.config -P -t test_topic -l /apps/sandbox/kafka/data/messages.txt 2>/dev/null"
-docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_plaintext.config -C -t test_topic -o -10 -e"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_plaintext.config -P -t kafka-simple-topic -l /apps/sandbox/kafka/data/messages.txt 2>/dev/null"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_plaintext.config -C -t kafka-simple-topic -o -10 -e"
 
 ## SASL_PLAINTEXT
 docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_paintext.config -L"
-docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_paintext.config -P -t test_topic -l /apps/sandbox/kafka/data/messages.txt 2>/dev/null"
-docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_paintext.config -C -t test_topic -o -10 -e"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_paintext.config -P -t kafka-simple-topic -l /apps/sandbox/kafka/data/messages.txt 2>/dev/null"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_paintext.config -C -t kafka-simple-topic -o -10 -e"
 
 ## SASL_SSL
 docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_ssl.config -L"
-docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_ssl.config -P -t test_topic -l /apps/sandbox/kafka/data/messages.txt 2>/dev/null"
-docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_ssl.config -C -t test_topic -o -10 -f '\nKey (%K bytes): %k\t\nValue (%S bytes): %s\nTimestamp: %T\tPartition: %p\tOffset: %o\n--\n' -e 2>/dev/null"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_ssl.config -P -t kafka-simple-topic -l /apps/sandbox/kafka/data/messages.txt 2>/dev/null"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_ssl.config -C -t kafka-simple-topic -o -10 -f '\nKey (%K bytes): %k\t\nValue (%S bytes): %s\nTimestamp: %T\tPartition: %p\tOffset: %o\n--\n' -e 2>/dev/null"
 
 ## SSL
 docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_ssl.config -L"
-docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_ssl.config -P -t test_topic -l /apps/sandbox/kafka/data/messages.txt 2>/dev/null"
-docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_ssl.config -C -t test_topic -o -10 -e"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_ssl.config -P -t kafka-simple-topic -l /apps/sandbox/kafka/data/messages.txt 2>/dev/null"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_ssl.config -C -t kafka-simple-topic -o -10 -e"
 
 
 ## From Host machine
-kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_thinkpad_plaintext.config -L
-kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_thinkpad_plaintext.config -C -t test_topic -o -10 -e
-kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_thinkpad_sasl_ssl.config -C -t test_topic -o -10 -e
-kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_thinkpad_ssl.config -C -t test_topic -o -10 -e
+kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_plaintext.config -L
+kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_thinkpad_sasl_ssl.config -L
+kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_thinkpad_ssl.config -L
+
+kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_plaintext.config -C -t kafka-simple-topic -o -10 -e
+kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_thinkpad_sasl_ssl.config -C -t kafka-simple-topic -o -10 -e
+kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_thinkpad_ssl.config -C -t kafka-simple-topic -o -10 -e

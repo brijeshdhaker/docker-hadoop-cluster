@@ -9,6 +9,38 @@
 version: "3.9"
 
 services:
+  # Kerberos Server
+  kdcserver:
+    image: brijeshdhaker/kdcserver:22.04
+    container_name: kdcserver
+    hostname: kdcserver.sandbox.net
+    healthcheck:
+      test: echo srvr || exit 1
+      retries: 20
+      interval: 10s
+    ports:
+      - "749:749"
+      - "750:750"
+      - "88:88/udp"
+    volumes:
+      - sandbox_apps_path:/apps
+      - /dev/urandom:/dev/random      # This is needed otherwise there won't be enough entropy to generate a new kerberos realm
+      - sandbox_krb5_stash:/etc/krb5kdc
+      - sandbox_krb5_principal:/var/lib/krb5kdc/
+      - ./conf/kerberos:/etc/kerberos
+    environment:
+      REALM: SANDBOX.NET
+      DOMAIN_REALM: sandbox.net
+      MASTER_KEY_TYPE: aes256-cts-hmac-sha1-96:normal
+      SUPPORTED_ENCRYPTION_TYPES: aes256-cts-hmac-sha1-96:normal aes128-cts-hmac-sha1-96:normal
+      KADMIN_PRINCIPAL: kadmin/admin
+      KADMIN_PASSWORD: kadmin
+      KUSERS_PASSWORD: kuser
+    env_file:
+      - ./envs/docker_kerberos.env
+    labels:
+      - io.confluent.docker.testing=true
+
   # Zookeeper Server
   zookeeper:
     image: confluentinc/cp-zookeeper:7.5.0
@@ -68,14 +100,14 @@ services:
     container_name: kafkabroker
     # restart: on-failure
     healthcheck:
-      test: nc kafkabroker.sandbox.net 19091 || exit 1
+      test: nc kafkabroker.sandbox.net 9092 || exit 1
       retries: 20
       interval: 10s
     depends_on:
       zookeeper:
         condition: service_healthy
     ports:
-      - 19091:19091
+      - 9092:9092
       - 19092:19092
       - 19093:19093
       - 19094:19094
@@ -104,10 +136,10 @@ services:
 
       # KAFKA_ZOOKEEPER_SSL_CLIENT_ENABLE: 'true'
       # https://docs.confluent.io/platform/current/kafka/multi-node.html#configure-multi-node-environment
-      # KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:19092, SASL_SSL://0.0.0.0:19093, EXTERNAL_PLAIN://0.0.0.0:9092, EXTERNAL_SASL://0.0.0.0:9093
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,INTERNAL:SASL_PLAINTEXT,EXTERNAL:SASL_SSL,SSL:SSL
-      KAFKA_INTER_BROKER_LISTENER_NAME: EXTERNAL
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafkabroker.sandbox.net:19091,INTERNAL://kafkabroker.sandbox.net:19092,EXTERNAL://kafkabroker.sandbox.net:19093,SSL://kafkabroker.sandbox.net:19094
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092, SASL_PLAINTEXT://0.0.0.0:19092, SASL_SSL://0.0.0.0:19093, SSL://0.0.0.0:19094
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL,SSL:SSL
+      KAFKA_INTER_BROKER_LISTENER_NAME: SASL_SSL
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafkabroker.sandbox.net:9092,SASL_PLAINTEXT://kafkabroker.sandbox.net:19092,SASL_SSL://kafkabroker.sandbox.net:19093,SSL://kafkabroker.sandbox.net:19094
       #KAFKA_SECURITY_INTER_BROKER_PROTOCOL: SSL
       #
       ## Kerberos / GSSAPI Authentication mechanism
@@ -116,8 +148,8 @@ services:
       KAFKA_SASL_MECHANISM_INTER_BROKER_PROTOCOL: GSSAPI
       #
       ## Listener INTERNAL Configuration
-      KAFKA_LISTENER_NAME_INTERNAL_SASL_ENABLED_MECHANISMS: PLAIN
-      KAFKA_LISTENER_NAME_INTERNAL_PLAIN_SASL_JAAS_CONFIG: |
+      KAFKA_LISTENER_NAME_SASL__PLAINTEXT_SASL_ENABLED_MECHANISMS: PLAIN
+      KAFKA_LISTENER_NAME_SASL__PLAINTEXT_PLAIN_SASL_JAAS_CONFIG: |
         org.apache.kafka.common.security.plain.PlainLoginModule required \
         username="admin" \
         password="admin-secret" \
@@ -125,8 +157,8 @@ services:
         user_mds="mds-secret";
       #
       ## Listener TOKEN Configuration
-      KAFKA_LISTENER_NAME_EXTERNAL_SASL_ENABLED_MECHANISMS: GSSAPI
-      KAFKA_LISTENER_NAME_EXTERNAL_GSSAPI_SASL_JAAS_CONFIG: |
+      KAFKA_LISTENER_NAME_SASL__SSL_SASL_ENABLED_MECHANISMS: GSSAPI
+      KAFKA_LISTENER_NAME_SASL__SSL_GSSAPI_SASL_JAAS_CONFIG: |
         com.sun.security.auth.module.Krb5LoginModule required \
         debug=true \
         useKeyTab=true \
@@ -145,7 +177,7 @@ services:
       # The endpoint identification algorithm used by clients to validate server host name.
       KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: " "
       #
-      KAFKA_LISTENER_NAME_EXTERNAL_SSL_PRINCIPAL_MAPPING_RULES: RULE:^CN=([a-zA-Z0-9.]*).*$$/$$1/ , DEFAULT
+      KAFKA_LISTENER_NAME_SASL_SSL_SSL_PRINCIPAL_MAPPING_RULES: RULE:^CN=([a-zA-Z0-9.]*).*$$/$$1/ , DEFAULT
       KAFKA_LISTENER_NAME_SSL_SSL_PRINCIPAL_MAPPING_RULES: RULE:^CN=([a-zA-Z0-9.]*).*$$/$$1/ , DEFAULT
       ##
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
@@ -262,6 +294,11 @@ volumes:
   sandbox_apps_path:
     external: true
   sandbox_security_secrets:
+    external: true
+  #
+  sandbox_krb5_stash:
+    external: true
+  sandbox_krb5_principal:
     external: true
   #
   sandbox_zookeeper311_data:
