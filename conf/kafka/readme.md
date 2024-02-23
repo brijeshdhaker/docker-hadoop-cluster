@@ -161,6 +161,8 @@ kafka-configs --zookeeper zookeeper.sandbox.net:2181 --alter --entity-type topic
 #
 docker compose -f dc-kafka.yml exec schemaregistry /bin/bash
 
+```shell
+
 
 kafka-avro-console-producer --topic users-topic-avro \
 --bootstrap-server kafkabroker.sandbox.net:9092 \
@@ -241,7 +243,7 @@ http://schemaregistry:8081/schemas/ids/1
 
 http://schemaregistry:8081/subjects?deleted=true
 
-
+```
 
 docker-compose exec connect sh -c "curl -L -O -H 'Accept: application/vnd.github.v3.raw' https://api.github.com/repos/confluentinc/kafka-connect-datagen/contents/config/connector_pageviews_cos.config"
 docker-compose exec connect sh -c "curl -X POST -H 'Content-Type: application/json' --data @connector_pageviews_cos.config http://localhost:8083/connectors"
@@ -382,6 +384,9 @@ EOF
 #
 # Consumer Using SASL_SSL
 #
+
+```shell
+
 docker run -it --rm \
 --hostname=clients.sandbox.net \
 --network sandbox.net \
@@ -403,6 +408,7 @@ kafkacat -C -b kafkabroker.sandbox.net:19093 -t kafka-simple-topic -o beginning 
 -X 'ssl.ca.location=/apps/security/ssl/sandbox-ca.pem'
 
 
+
 docker run -it --rm \
 --hostname=clients.sandbox.net \
 --network sandbox.net \
@@ -412,44 +418,33 @@ docker run -it --rm \
 brijeshdhaker/kafka-clients:7.5.0 \
 kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_ssl.config -C -t kafka-simple-topic -o beginning \
 -K '\t' \
--f '\nKey (%K bytes): %k\nValue (%S bytes): %s\nTimestamp: %T \nPartition: %p \nOffset: %o \n\n--\n' -e \
+-f '\nKey (%K bytes): %k\nValue (%S bytes): %s\nTimestamp: %T \nPartition: %p \nOffset: %o \n\n--\n' -e
+```
 
 
-docker run --rm \
---hostname=clients.sandbox.net \
---network sandbox.net \
---volume /apps:/apps \
---volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
---env KRB5_CONFIG=/etc/krb5.conf \
---env KAFKA_OPTS="-Djava.security.auth.login.config=/apps/security/jaas/kafkaclients_jaas.conf -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=false" \
-confluentinc/cp-server:7.5.0 \
-sh -c "kafka-console-producer --topic kafka-simple-topic \
+```shell
+# Produce Message \t is default key seperator
+docker compose exec kafkabroker sh -c "kafka-console-producer \
+--topic kafka-simple-topic \
 --broker-list kafkabroker.sandbox.net:19093 \
---producer.config /apps/sandbox/kafka/cnf/client-ssl.properties \
+--producer.config /apps/sandbox/kafka/cnf/client-sals-ssl.properties \
 --property parse.key=true \
---property key.separator='\t' < /apps/sandbox/kafka/json_messages.txt"
-
-
-docker compose exec kafkabroker sh -c "kafka-console-producer --topic kafka-simple-topic \
---broker-list kafkabroker.sandbox.net:19093 \
---producer.config /apps/sandbox/kafka/cnf/client-ssl.properties \
---property parse.key=true \
---property key.separator='\t' < /apps/sandbox/kafka/json_messages.txt 2>/dev/null"
-
+< /apps/sandbox/kafka/json_messages.txt \
+2>/dev/null"
 
 # Consume messages
-```shell
 echo -e "\n# Consume messages from $topic_name"
 
 docker compose exec kafkabroker sh -c "kafka-console-consumer \
 --topic kafka-simple-topic \
 --bootstrap-server kafkabroker.sandbox.net:19093 \
---consumer.config /etc/kafka/secrets/cnf/client-ssl.properties \
+--consumer.config /apps/sandbox/kafka/cnf/client-sals-ssl.properties \
 --from-beginning \
 --property print.key=true \
---property key.separator=\",\" \
+#--property key.separator=  \
 --timeout-ms 5000 2>/dev/null"
 ```
+
 
 docker run --rm \
 confluentinc/cp-server:7.5.0 sh -c "/bin/kafka-storage random-uuid"
