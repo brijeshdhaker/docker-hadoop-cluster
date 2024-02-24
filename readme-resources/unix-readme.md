@@ -40,6 +40,7 @@ echo
 
 ## TCP Port Scan
 nc -z -v kdcserver.sandbox.net 749
+
 ## UDP Port Scan
 netcat -u kdcserver.sandbox.net 88
 
