@@ -6,6 +6,9 @@
 ---
 version: "3.9"
 
+include:
+  - dc-zookeeper.yaml
+
 services:
 
   #
