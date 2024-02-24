@@ -1,0 +1,58 @@
+#
+#
+#
+version: "3.9"
+
+services:
+  #
+  # Mysql Database Server
+  #
+  mysqlserver:
+    image: mysql/mysql-server:8.0.28
+    container_name: mysqlserver
+    hostname: mysqlserver
+    restart: always
+    ports:
+      - "3306:3306"
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    volumes:
+      - sandbox_host_path:/apps/hostpath
+      - sandbox_base_path:/apps/sandbox
+      - sandbox_mysql_conf:/etc/mysql/conf.d
+      - sandbox_mysql_data:/var/lib/mysql
+    env_file:
+      - envs/docker_mysql.env
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=p@SSW0rd --execute \"SHOW DATABASES;\""
+      # test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
+
+  #
+  #
+  #
+  adminer:
+    image: adminer
+    restart: always
+    hostname: adminer
+    container_name: adminer
+    ports:
+      - 8080:8080
+
+#
+volumes:
+  sandbox_host_path:
+    external: true
+  sandbox_base_path:
+    external: true
+  sandbox_mysql_data:
+    external: true
+  sandbox_mysql_conf:
+    external: true
+
+#
+networks:
+  default:
+    external: true
+    driver: bridge
+    name: sandbox.net

@@ -22,13 +22,9 @@ target
 *.srl
 *.pem
 *.der
-conf/kafka/secrets/cacerts
 *-creds
 *.extfile
 /data/postgresql/*
 /data/mysql/*
 /data/cassandra/*
-/conf/kafka/data/
-/conf/cluster/*/data/*
-/conf/cluster/*/log/*
-/conf/cluster/*/secrets/*
+bd-hadoop-sandbox/conf/cluster/*/*
