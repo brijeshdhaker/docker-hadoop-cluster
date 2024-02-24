@@ -20,8 +20,8 @@ conda init --reverse --all
 #
 
 export PATH=/opt/conda/bin:$PATH
-PYSPARK_PYTHON=/opt/conda/envs/pyspark3.7/bin/python
-PYSPARK_DRIVER_PYTHON=/opt/conda/envs/pyspark3.7/bin/python
+PYSPARK_PYTHON=/opt/conda/envs/pyspark37/bin/python
+PYSPARK_DRIVER_PYTHON=/opt/conda/envs/pyspark37/bin/python
 
 #
 #### Create Conda Virtual Env : Python 3.7
