@@ -5,10 +5,13 @@
     <groupId>org.examples.hadoop</groupId>
     <artifactId>docker-hadoop-cluster</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>docker-hadoop-cluster</name>
     <url>http://maven.apache.org</url>
+    <modules>
+        <module>bd-java-module</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -123,7 +126,7 @@
                         </goals>
                         <configuration>
                             <descriptors>
-                                <descriptor>${project.basedir}/src/main/resources/assembly/hadoop-mr.xml</descriptor>
+                                <descriptor>docker-java-module/src/main/resources/assembly/hadoop-mr.xml</descriptor>
                             </descriptors>
                             <archive>
                                 <manifest>
