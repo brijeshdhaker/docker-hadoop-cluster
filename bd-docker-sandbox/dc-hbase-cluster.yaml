@@ -62,12 +62,9 @@ volumes:
   sandbox_security_secrets:
     external: true
   #
-  sandbox_zookeeper_data:
-    external: true
-  sandbox_zookeeper_log:
-    external: true
   sandbox_hadoop_311:
     external: true
+
 #
 networks:
   default:
