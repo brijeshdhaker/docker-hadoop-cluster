@@ -158,6 +158,9 @@ services:
 volumes:
   sandbox_apps_path:
     external: true
+  #
+  sandbox_hadoop_311:
+    external: true
   sandbox_hadoop_311_dfs:
     external: true
   sandbox_hadoop_311_yarn:

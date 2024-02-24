@@ -26,38 +26,9 @@
 version: "3.9"
 
 include:
-  - dc-hadoop-cluster.yml
+  - dc-hive-cluster.yml
 
 services:
-  #
-  # Spark History Server
-  #
-  sparkhistory:
-    image: brijeshdhaker/spark-standalon:3.1.2
-    container_name: sparkhistory
-    hostname: sparkhistory.sandbox.net
-    healthcheck:
-      test: curl -f http://sparkhistory.sandbox.net:18080 || exit 1
-      retries: 20
-      interval: 10s
-    environment:
-      SPARK_WORKLOAD: HistoryServer
-      SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
-    depends_on:
-      namenode:
-        condition: service_healthy
-      datanode:
-        condition: service_healthy
-    ports:
-      - "18080:18080"
-    env_file:
-      - ./envs/docker_clients.env
-    volumes:
-      - sandbox_apps_path:/apps
-      - sandbox_hadoop_311:/opt/hadoop
-      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-      - ./conf/spark/conf:/opt/spark/conf
-
   #
   # Gateway Node
   #
@@ -86,7 +57,6 @@ services:
       - sandbox_spark_312:/opt/spark
       - sandbox_flink_112:/opt/flink
       - sandbox_maven_363:/opt/maven-3.6.3
-
     environment:
       ALLOW_ANONYMOUS_LOGIN: "yes"
     env_file:
@@ -103,13 +73,18 @@ services:
       ALLOW_ANONYMOUS_LOGIN: "yes"
     env_file:
       - ./envs/docker_clients.env
+    healthcheck:
+      test: echo $HOSTNAME || exit 1
+      retries: 20
+      interval: 10s
+    restart: always
     ports:
       - "9080:8080"
       - "9081:8081"
     volumes:
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - sandbox_apps_path:/apps
-      - /apps/sandbox/zeppelin:/opt/zeppelin/conf
+      - sandbox_zeppelin_conf:/opt/zeppelin/conf
       - sandbox_zeppelin_notebook:/opt/notebook
       - sandbox_spark_312:/opt/spark
       - sandbox_hadoop_311:/opt/hadoop
@@ -126,45 +101,11 @@ services:
 #
 volumes:
   #
-  sandbox_apps_path:
-    external: true
-  sandbox_security_secrets:
-    external: true
-  #
-  sandbox_krb5_stash:
-    external: true
-  sandbox_krb5_principal:
-    external: true
-  #
-  sandbox_zookeeper311_data:
-    external: true
-  sandbox_zookeeper311_log:
-    external: true
-  #
   sandbox_maven_363:
     external: true
   sandbox_m2:
     external: true
   sandbox_ivy2:
-    external: true
-  #
-  sandbox_hadoop_311:
-    external: true
-  sandbox_hadoop_311_dfs:
-    external: true
-  sandbox_hadoop_311_mapred:
-    external: true
-  sandbox_hadoop_311_yarn:
-    external: true
-  #
-  sandbox_mysql_data:
-    external: true
-  sandbox_mysql_conf:
-    external: true
-  #
-  sandbox_zeppelin_conf:
-    external: true
-  sandbox_zeppelin_notebook:
     external: true
   #
   sandbox_hbase_246:
@@ -182,7 +123,11 @@ volumes:
   #
   sandbox_flink_112:
     external: true
-
+  #
+  sandbox_zeppelin_conf:
+    external: true
+  sandbox_zeppelin_notebook:
+    external: true
 
 #
 networks:

@@ -45,7 +45,9 @@
 127.0.0.1	    hivetezui.sandbox.net hivetezui
 
 # spark
-127.0.0.1       sparkmaster.sandbox.net sparkmaster
+127.0.0.1       spark-master.sandbox.net spark-master
+127.0.0.1       spark-worker-a.sandbox.net spark-worker-a
+127.0.0.1       spark-worker-b.sandbox.net spark-worker-b
 127.0.0.1       sparkhistory.sandbox.net sparkhistory
 
 # zeppelin
