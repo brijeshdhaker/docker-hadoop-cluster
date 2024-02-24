@@ -12,6 +12,7 @@ import hashlib
 from time import sleep
 
 from kafka import KafkaProducer
+from com.example.models.Transaction import Transaction
 
 def key_partitioner(key, all_partitions, available):
 
@@ -70,7 +71,7 @@ value_serializer = lambda v: json.dumps(v).encode('utf-8')
 # Create Producer instance
 producer = KafkaProducer(
     bootstrap_servers='kafkabroker.sandbox.net:9092',
-    client_id='python-kafka-client',
+    client_id='kafka_partitioned_producer',
     key_serializer=key_serializer,
     value_serializer=value_serializer,
     partitioner=hash_partitioner,
@@ -107,9 +108,11 @@ if __name__ == '__main__':
     delivered_records = 0
     while True:
         delivered_records += 1
-        COUNTRIES = ["IN", "USA", "UK", "JP"]
-        record_key = random.choice(COUNTRIES)
-        record_value = json.dumps({'key': record_key, 'index': delivered_records})
+
+        transaction = Transaction.random()
+        record_key = str(transaction.uuid)
+        record_value = transaction.to_json()
+
         produce_message({"key": record_key, "value": record_value})
         #
         sleep(1)
