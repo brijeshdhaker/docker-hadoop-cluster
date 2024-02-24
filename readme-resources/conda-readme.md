@@ -27,7 +27,7 @@ PYSPARK_DRIVER_PYTHON=/opt/conda/envs/pyspark3.7/bin/python
 #### Create Conda Virtual Env : Python 3.7
 #
 conda env create -f mr-delta.yml
-mamba env update -f venv_pyspark37.yml --prune
+mamba env update -f bd-python-module/venv_pyspark37.yml --prune
 conda create -y -n pyspark37 -c conda-forge python=3.7 pyarrow pandas conda-pack
 conda activate pyspark37
 conda pack -f -o /apps/hostpath/python/pyspark37-20221125.tar.gz

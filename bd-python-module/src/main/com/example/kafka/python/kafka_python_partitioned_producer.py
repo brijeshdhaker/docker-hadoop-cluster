@@ -63,7 +63,7 @@ def hash_partitioner(key, all_partitions, available):
 #
 #
 #
-TOPIC = "kafka-python-partitioned-topic"
+TOPIC = "kafka-partitioned-topic"
 key_serializer = lambda k: k.encode('utf-8')
 value_serializer = lambda v: json.dumps(v).encode('utf-8')
 

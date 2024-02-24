@@ -27,8 +27,8 @@ export CLUSTER_TYPE=SANDBOX3
 if [ "$CLUSTER_TYPE" == "SANDBOX3"  ]
 then
     #
-    export PYSPARK_PYTHON=/opt/conda/envs/pyspark3.7/bin/python
-    export PYSPARK_DRIVER_PYTHON=/opt/conda/envs/pyspark3.7/bin/python
+    export PYSPARK_PYTHON=/opt/conda/envs/pyspark37/bin/python
+    export PYSPARK_DRIVER_PYTHON=/opt/conda/envs/pyspark37/bin/python
     #
     export SPARK_HOME=/opt/spark-3.1.2
     export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin

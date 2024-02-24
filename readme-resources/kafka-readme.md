@@ -158,7 +158,7 @@ docker system prune -a --volumes --filter "label=io.confluent.docker"
 docker-compose -f  docker-sandbox/dc-kafka-cluster.yaml up -d
 
 docker-compose exec kafkabroker kafka-topics --create \
---topic users-topic-avro \
+--topic kafka-avro-topic \
 --bootstrap-server kafkabroker.sandbox.net:9092 \
 --partitions 1 \
 --replication-factor 1
@@ -168,13 +168,13 @@ docker-compose exec kafkabroker kafka-topics --create \
 # To check the end offset set parameter time to value -1
 kafka-run-class kafka.tools.GetOffsetShell \
 --broker-list localhost:9092 \
---topic users-topic-avro \
+--topic kafka-avro-topic \
 --time -1
 
 # To check the start offset, use --time -2
 kafka-run-class kafka.tools.GetOffsetShell \
 --broker-list localhost:9092 \
---topic users-topic-avro \
+--topic kafka-avro-topic \
 --time -2
 
 
@@ -216,7 +216,7 @@ kafka-configs --zookeeper zookeeper.sandbox.net:2181 --alter --entity-type topic
 #
 ```shell
 
-docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-avro-console-producer --topic users-topic-avro \
+docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-avro-console-producer --topic kafka-avro-topic \
 --bootstrap-server kafkabroker.sandbox.net:9092 \
 --property value.schema='$(< /opt/app/schema/user.avsc)'"
 

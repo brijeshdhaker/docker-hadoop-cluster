@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/bd-docker-sandbox/bd-docker-sandbox.iml" filepath="$PROJECT_DIR$/bd-docker-sandbox/bd-docker-sandbox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bd-hadoop-sandbox/bd-hadoop-sandbox.iml" filepath="$PROJECT_DIR$/bd-hadoop-sandbox/bd-hadoop-sandbox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bd-python-module/bd-python-module.iml" filepath="$PROJECT_DIR$/bd-python-module/bd-python-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bd-setup-module/bd-setup-module.iml" filepath="$PROJECT_DIR$/bd-setup-module/bd-setup-module.iml" />
+    </modules>
+  </component>
+</project>

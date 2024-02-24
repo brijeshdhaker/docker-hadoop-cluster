@@ -53,7 +53,7 @@ class SaveOffsetsRebalanceListener(ConsumerRebalanceListener):
 #
 """
 MIN_COMMIT_COUNT = 100
-TOPIC = "kafka-python-partitioned-topic"
+TOPIC = "kafka-partitioned-topic"
 key_deserializer = lambda k: k.decode("utf-8")
 value_deserializer = lambda v: json.loads(v.decode("utf-8"))
 

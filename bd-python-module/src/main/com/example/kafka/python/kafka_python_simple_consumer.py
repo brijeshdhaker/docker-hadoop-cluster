@@ -11,7 +11,7 @@ offset which may not be the latest message that was successfully processed.
 """
 
 RUNNING = True
-TOPIC = "kafka-python-simple-topic"
+TOPIC = "kafka-simple-topic"
 MIN_COMMIT_COUNT = 10
 key_deserializer = lambda k: k.decode("utf-8")
 value_deserializer = lambda v: v.decode("utf-8")

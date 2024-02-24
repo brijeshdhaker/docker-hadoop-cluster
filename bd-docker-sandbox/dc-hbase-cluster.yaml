@@ -3,30 +3,10 @@
 #
 version: "3.9"
 
-services:
-  #
-  # Zookeeper Server
-  #
-  zookeeper:
-    image: confluentinc/cp-zookeeper:7.5.0
-    hostname: zookeeper
-    container_name: zookeeper
-    healthcheck:
-      test: curl -f http://zookeeper.sandbox.net:8080/commands || exit 1
-      retries: 20
-      interval: 10s
-    ports:
-      - "2181:2181"
-    volumes:
-      - sandbox_apps_path:/apps
-      - sandbox_security_secrets:/etc/zookeeper/secrets
-      - /apps/sandbox/zookeeper/hadoop311/data:/var/lib/zookeeper/data
-      - /apps/sandbox/zookeeper/hadoop311/log:/var/lib/zookeeper/log
-    environment:
-      ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
-      ALLOW_UNSIGNED: "true"
+include:
+  - dc-zookeeper.yaml
 
+services:
   #
   # Hbase Cluster
   #
@@ -82,12 +62,9 @@ volumes:
   sandbox_security_secrets:
     external: true
   #
-  sandbox_zookeeper_data:
-    external: true
-  sandbox_zookeeper_log:
-    external: true
   sandbox_hadoop_311:
     external: true
+
 #
 networks:
   default:

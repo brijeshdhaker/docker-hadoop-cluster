@@ -11,7 +11,7 @@
 #
 #
 
-name: pyspark3.7
+name: pyspark37
 channels:
   - conda-forge
   - defaults
@@ -21,6 +21,15 @@ dependencies:
   - pandas
   - conda-pack
   - ipykernel
+#  - r-base=3
+#  - r-data.table
+#  - r-evaluate
+#  - r-base64enc
+#  - r-knitr
+#  - r-ggplot2
+#  - r-irkernel
+#  - r-shiny
+#  - r-googlevis
 #  - nb_conda
 #  - jupyterlab
 #  - jupyterlab_code_formatter

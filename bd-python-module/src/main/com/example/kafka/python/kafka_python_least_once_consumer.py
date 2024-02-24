@@ -7,12 +7,12 @@ import json
 An at-least-once consumer commits the offsets to kafka only after finishing storing all of results of processing the 
 message. This will result in occasional reprocessing of the same messages.
 
-docker-compose -f dc-kafka-cluster.yaml exec kafkabroker.sandbox.net kafka-console-consumer --bootstrap-server kafkabroker.sandbox.net:9092 --topic test-topic --from-beginning --max-messages 100
+docker-compose -f dc-kafka-cluster.yaml exec kafkabroker.sandbox.net kafka-console-consumer --bootstrap-server kafkabroker.sandbox.net:9092 --topic kafka-simple-topic --from-beginning --max-messages 100
 
 """
 
 RUNNING = True
-TOPIC = "kafka-python-json-topic"
+TOPIC = "kafka-json-topic"
 MIN_COMMIT_COUNT = 10
 key_deserializer = lambda k: k.decode("utf-8")
 value_deserializer = lambda v: json.loads(v.decode("utf-8"))

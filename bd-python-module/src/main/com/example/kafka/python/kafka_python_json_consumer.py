@@ -52,7 +52,7 @@ class SaveOffsetsRebalanceListener(ConsumerRebalanceListener):
 #
 #
 """
-TOPIC = "kafka-python-json-topic"
+TOPIC = "kafka-json-topic"
 key_deserializer = lambda k: k.decode("utf-8")
 value_deserializer = lambda v: json.loads(v.decode("utf-8"))
 
