@@ -1,7 +1,7 @@
 #
-# docker volume create --name sandbox_kafka_secrets --opt type=none --opt device=/apps/sandbox/kafkabroker/secrets --opt o=bind
-# docker volume create --name sandbox_kafka_data --opt type=none --opt device=/apps/sandbox/kafkabroker/data --opt o=bind
-# docker volume create --name sandbox_kafka_log --opt type=none --opt device=/apps/sandbox/kafkabroker/log --opt o=bind
+# docker volume create --name sandbox_zookeeper_secrets --opt type=none --opt device=/apps/sandbox/zookeeper/secrets --opt o=bind
+# docker volume create --name sandbox_zookeeper_data --opt type=none --opt device=/apps/sandbox/zookeeper/data --opt o=bind
+# docker volume create --name sandbox_zookeeper_log --opt type=none --opt device=/apps/sandbox/zookeeper/log --opt o=bind
 #
 ---
 version: "3.9"
@@ -23,13 +23,21 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_security_secrets:/etc/zookeeper/secrets
-      - /apps/sandbox/zookeeper/data:/var/lib/zookeeper/data
-      - /apps/sandbox/zookeeper/log:/var/lib/zookeeper/log
+      - sandbox_zookeeper_data:/var/lib/zookeeper/data
+      - sandbox_zookeeper_log:/var/lib/zookeeper/log
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
       ALLOW_UNSIGNED: "true"
+
+#
+volumes:
+  #
+  sandbox_zookeeper_data:
+    external: true
+  sandbox_zookeeper_log:
+    external: true
 
 #
 networks:

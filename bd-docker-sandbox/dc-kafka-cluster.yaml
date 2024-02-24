@@ -1,7 +1,7 @@
 #
-# docker volume create --name sandbox_kafka_secrets --opt type=none --opt device=/apps/sandbox/kafkabroker/secrets --opt o=bind
-# docker volume create --name sandbox_kafka_data --opt type=none --opt device=/apps/sandbox/kafkabroker/data --opt o=bind
-# docker volume create --name sandbox_kafka_log --opt type=none --opt device=/apps/sandbox/kafkabroker/log --opt o=bind
+# docker volume create --name sandbox_kafka_secrets --opt type=none --opt device=/apps/sandbox/kafka/secrets --opt o=bind
+# docker volume create --name sandbox_kafka_data --opt type=none --opt device=/apps/sandbox/kafka/data --opt o=bind
+# docker volume create --name sandbox_kafka_log --opt type=none --opt device=/apps/sandbox/kafka/log --opt o=bind
 #
 ---
 version: "3.9"
@@ -10,31 +10,6 @@ include:
   - dc-zookeeper.yaml
 
 services:
-
-  #
-  # Zookeeper Server
-  #
-  zookeeper:
-    image: confluentinc/cp-zookeeper:7.5.0
-    hostname: zookeeper.sandbox.net
-    container_name: zookeeper
-    healthcheck:
-      test: curl -f http://zookeeper.sandbox.net:8080/commands || exit 1
-      retries: 20
-      interval: 10s
-    ports:
-      - "2181:2181"
-    volumes:
-      - sandbox_apps_path:/apps
-      - sandbox_security_secrets:/etc/zookeeper/secrets
-      - /apps/sandbox/zookeeper/data:/var/lib/zookeeper/data
-      - /apps/sandbox/zookeeper/log:/var/lib/zookeeper/log
-      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
-    environment:
-      ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
-      ALLOW_UNSIGNED: "true"
-
   #
   # Apache Kafka Server
   #
@@ -54,8 +29,8 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_security_secrets:/etc/kafka/secrets
-      - /apps/sandbox/kafka/data:/var/lib/kafka/data
-      - /apps/sandbox/kafka/log:/var/lib/kafka/log
+      - sandbox_kafka_data:/var/lib/kafka/data
+      - sandbox_kafka_log:/var/lib/kafka/log
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       KRB5_CONFIG: "/etc/krb5.conf"
@@ -126,14 +101,9 @@ volumes:
   sandbox_security_secrets:
     external: true
   #
-  sandbox_zookeeper311_data:
+  sandbox_kafka_data:
     external: true
-  sandbox_zookeeper311_log:
-    external: true
-  #
-  sandbox_kafka311_data:
-    external: true
-  sandbox_kafka311_log:
+  sandbox_kafka_log:
     external: true
 
 #
