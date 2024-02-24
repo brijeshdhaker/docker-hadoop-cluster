@@ -54,6 +54,9 @@ services:
       test: nc -vz datanode.sandbox.net 9864 || exit 1
       retries: 20
       interval: 10s
+    depends_on:
+      namenode:
+        condition: service_healthy
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_311_dfs:/hadoop/dfs

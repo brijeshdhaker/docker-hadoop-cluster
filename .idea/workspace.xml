@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-02-24 Merge Docker Projects.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-hbase-cluster.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-hbase-cluster.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-hadoop-cluster.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-hadoop-cluster.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -378,7 +378,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708778768889</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708778946891</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1708778946891</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="UnknownFeatures">

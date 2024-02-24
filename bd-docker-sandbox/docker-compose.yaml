@@ -37,7 +37,6 @@ services:
       - sandbox_spark_312:/opt/spark
       - sandbox_flink_112:/opt/flink
       - sandbox_maven_363:/opt/maven-3.6.3
-
     environment:
       ALLOW_ANONYMOUS_LOGIN: "yes"
     env_file:
@@ -57,6 +56,9 @@ services:
     ports:
       - "9080:8080"
       - "9081:8081"
+    depends_on:
+      datanode:
+        condition: service_healthy
     healthcheck:
       test: echo $HOSTNAME || exit 1
       retries: 20
