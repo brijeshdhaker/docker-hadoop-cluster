@@ -19,30 +19,55 @@ ARG spark_gid=1008
 ARG yarn_gid=1009
 ARG httpfs_gid=1010
 
+# Install conda to manage python and R packages
+ARG miniconda_version="py37_4.9.2"
+# Hashes via https://docs.conda.io/en/latest/miniconda_hashes.html
+ARG miniconda_sha256="79510c6e7bd9e012856e25dcb21b3e093aa4ac8113d9aa7e82a86987eabe1c31"
+
 #
 ENV MULTIHOMED_NETWORK=2
 ENV USER=root
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
-ENV PATH=$PATH:${JAVA_HOME}/bin
+ENV LANG=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
+
+COPY docker-ubuntu/env_pyspark37.yml /env_pyspark37.yml
+COPY conf/kerberos/krb5.conf /etc/krb5.conf
 
 RUN set -x && \
     echo "deb http://security.ubuntu.com/ubuntu focal-security main" | tee /etc/apt/sources.list.d/focal-security.list && \
     apt-get update && DEBIAN_FRONTEND=noninteractive && \
-    apt-get install -y --no-install-recommends sudo vim curl wget unzip tar grep sed gnupg net-tools netcat libsnappy-dev kafkacat && \
+    apt-get install -y --no-install-recommends sudo vim curl wget unzip tar grep sed gnupg net-tools netcat libsnappy-dev libsasl2-modules-gssapi-mit kafkacat && \
     apt-get install -y gcc libc6 glibc-source && \
-    apt-get install -y libssl1.1 && \
-    dpkg -L libssl1.1 && \
+    apt-get install -y libssl1.1 && dpkg -L libssl1.1 && \
     apt-get install -y openjdk-8-jdk && \
     apt-get install -y openssh-server && \
     apt-get install -y apt-transport-https locales krb5-user ldap-utils && \
-    apt-get install -y python3 python3-pip && \
-    pip3 install --upgrade pip setuptools && \
+    # apt-get install -y python3 python3-pip && pip3 install --upgrade pip setuptools && \
+    locale-gen "en_US.UTF-8" && echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
     rm -rf /var/lib/apt/lists/* && \
     rm -r /root/.cache && rm -rf /var/cache/apt/*
 
-#
-RUN locale-gen "en_US.UTF-8"
-RUN echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale
+# Install python and R packages via conda
+RUN set -ex && \
+    wget -nv https://repo.anaconda.com/miniconda/Miniconda3-${miniconda_version}-Linux-x86_64.sh -O miniconda.sh && \
+    echo "${miniconda_sha256} miniconda.sh" > anaconda.sha256 && \
+    sha256sum --strict -c anaconda.sha256 && \
+    bash miniconda.sh -b -p /opt/conda && \
+    chmod -R ug+rwX /opt/conda && \
+    export PATH=/opt/conda/bin:$PATH && \
+    conda config --set always_yes yes --set changeps1 no && \
+    conda info -a && \
+    conda install mamba -c conda-forge && \
+    mamba env update -f /env_pyspark37.yml --prune && \
+    # Cleanup
+    rm -v miniconda.sh anaconda.sha256  && \
+    find /opt/conda/ -follow -type f -name '*.a' -delete && \
+    find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
+    mamba clean -ay && \
+    echo "python miniconda setup complete."
+
+ENV PATH ${JAVA_HOME}/bin:/opt/conda/envs/pyspark37/bin:/opt/conda/bin:$PATH
 
 #
 RUN set -x && \
@@ -70,10 +95,6 @@ RUN set -x && \
     useradd -m -s /bin/bash -g ${zeppelin_gid} -u ${zeppelin_gid} -G zeppelin zeppelin && \
     echo "Users added successfully. "
 
-
-#
-COPY conf/kerberos/krb5.conf /etc/krb5.conf
-
 # Copy the ssh public key in the authorized_keys file.
 # The idkey.pub below is a public key file you get from ssh-keygen. They are under ~/.ssh directory by default.
 ADD docker-ubuntu/user-keys /home/brijeshdhaker/.ssh/
@@ -88,7 +109,7 @@ RUN set -x && \
     rm -rf /var/lib/apt/lists/* && \
     echo "SSH Server added successfully. "
 
-
+#
 RUN service ssh start
 EXPOSE 22
 

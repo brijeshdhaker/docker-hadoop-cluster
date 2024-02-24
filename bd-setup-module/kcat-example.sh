@@ -20,7 +20,7 @@ docker run --rm \
 --hostname=producer.sandbox.net \
 --network sandbox.net \
 --volume /apps:/apps \
---volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
+--volume ../bd-hadoop-sandbox/conf/kerberos/krb5.conf:/etc/krb5.conf \
 --env KRB5_CONFIG=/etc/krb5.conf \
 brijeshdhaker/kafka-clients:7.5.0 \
 kafkacat -F /apps/sandbox/kafka/cnf/$P_CONFIG_FILE -P -K '\t' -t $topic_name -l /apps/sandbox/kafka/json_messages.txt

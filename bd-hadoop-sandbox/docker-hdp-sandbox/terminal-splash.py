@@ -6,7 +6,7 @@ import sys
 
 f = open('/sandbox-flavor','r');
 version = f.read();
-print version;
+print(version);
 version = version.strip();
 f.close();
 

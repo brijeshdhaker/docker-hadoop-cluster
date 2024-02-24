@@ -1,18 +1,13 @@
 
 # Kafka - Broker Validations
 ```shell
-
 docker compose -f docker-sandbox/dc-kafka-cluster.yaml exec kafkaclient sh -c "kafkacat -V"
 
 docker compose -f docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker /bin/bash
-
 ```
 
-#
 ### Topic - Actions :
-#
 ```shell
-
 docker compose -f docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker /bin/bash
 
 kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic kafka-simple-topic --if-not-exists
@@ -51,11 +46,28 @@ docker compose -f  docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "
 ### Setup Default  7 days (168 hours , retention.ms= 604800000)
 ```
 
-#
 ### Producer :
-#
-
 ```shell
+docker run -it --rm \
+--hostname=clients.sandbox.net \
+--network sandbox.net \
+--volume /apps:/apps \
+--volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
+--env KRB5_CONFIG=/etc/krb5.conf \
+brijeshdhaker/kafka-clients:7.5.0 \
+kafkacat -P -b kafkabroker.sandbox.net:19093 -t kafka-simple-topic \
+-X 'security.protocol=SASL_SSL' \
+-X 'sasl.mechanisms=GSSAPI' \
+-X 'sasl.kerberos.service.name=kafka' \
+-X 'sasl.kerberos.keytab=/apps/security/keytabs/services/kafkaclient.keytab' \
+-X 'sasl.kerberos.principal=kafkaclient@SANDBOX.NET' \
+-X 'ssl.key.location=/apps/security/ssl/clients.key' \
+-X 'ssl.key.password=confluent' \
+-X 'ssl.certificate.location=/apps/security/ssl/clients-signed.crt' \
+-X 'ssl.ca.location=/apps/security/ssl/sandbox-ca.pem' \
+-K '\t' \
+-l /apps/sandbox/kafka/json_messages.txt
+
 
 docker compose -f docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-console-producer \
 --topic kafka-simple-topic \
@@ -78,6 +90,39 @@ docker compose -f docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "k
 ### Consumer :
 #
 ```shell
+
+docker run -it --rm \
+--hostname=clients.sandbox.net \
+--network sandbox.net \
+--volume /apps:/apps \
+--volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
+--env KRB5_CONFIG=/etc/krb5.conf \
+brijeshdhaker/kafka-clients:7.5.0 \
+kafkacat -C -b kafkabroker.sandbox.net:19093 -t kafka-simple-topic -o beginning \
+-K '\t' \
+-f '\nKey (%K bytes): %k\nValue (%S bytes): %s\nTimestamp: %T \nPartition: %p \nOffset: %o \n\n--\n' -e \
+-X 'security.protocol=SASL_SSL' \
+-X 'sasl.mechanisms=GSSAPI' \
+-X 'sasl.kerberos.service.name=kafka' \
+-X 'sasl.kerberos.keytab=/apps/security/keytabs/services/kafkaclient.keytab' \
+-X 'sasl.kerberos.principal=kafkaclient@SANDBOX.NET' \
+-X 'ssl.key.location=/apps/security/ssl/clients.key' \
+-X 'ssl.key.password=confluent' \
+-X 'ssl.certificate.location=/apps/security/ssl/clients-signed.crt' \
+-X 'ssl.ca.location=/apps/security/ssl/sandbox-ca.pem'
+
+
+
+docker run -it --rm \
+--hostname=clients.sandbox.net \
+--network sandbox.net \
+--volume /apps:/apps \
+--volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
+--env KRB5_CONFIG=/etc/krb5.conf \
+brijeshdhaker/kafka-clients:7.5.0 \
+kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_ssl.config -C -t kafka-simple-topic -o beginning \
+-K '\t' \
+-f '\nKey (%K bytes): %k\nValue (%S bytes): %s\nTimestamp: %T \nPartition: %p \nOffset: %o \n\n--\n' -e
 
 docker compose -f  docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-console-consumer \
 --topic kafka-simple-topic \
@@ -167,14 +212,31 @@ kafka-configs --zookeeper zookeeper.sandbox.net:2181 --alter --entity-type topic
 ```
 
 #
+# Avro Producer & Consumer
+#
+```shell
+
+docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-avro-console-producer --topic users-topic-avro \
+--bootstrap-server kafkabroker.sandbox.net:9092 \
+--property value.schema='$(< /opt/app/schema/user.avsc)'"
+
+docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-avro-console-consumer 
+--topic users \
+--bootstrap-server kafkabroker.sandbox.net:9092 "
+
+docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-avro-console-consumer \
+--topic users \
+--bootstrap-server kafkabroker.sandbox.net:9092 \
+--from-beginning \
+--property schema.registry.url=http://schemaregistry:8081 "
+
+```
+
+#
 ##  schemaregistry
 #
+```shell
 docker compose -f docker-sandbox/dc-kafka-cluster.yaml exec schemaregistry /bin/bash
-
-
-kafka-avro-console-producer --topic users-topic-avro \
---bootstrap-server kafkabroker.sandbox.net:9092 \
---property value.schema="$(< /opt/app/schema/user.avsc)"
 
 # Register a new version of a schema under the subject "Kafka-key"
 $ curl -X POST -i -H "Content-Type: application/vnd.schemaregistry.v1+json" \
@@ -230,16 +292,9 @@ $ curl -X PUT -i -H "Content-Type: application/vnd.schemaregistry.v1+json" \
 --data '{"compatibility": "BACKWARD"}' \
 http://schemaregistry:8081/config
 
-#
-# Avro Producer & Consumer
-#
-kafka-avro-console-consumer --topic users \
---bootstrap-server kafkabroker.sandbox.net:9092
+```
 
-kafka-avro-console-consumer --topic users \
---bootstrap-server kafkabroker.sandbox.net:9092 \
---property schema.registry.url=http://schemaregistry:8081 \
---from-beginning
+
 
 http://schemaregistry:8081/subjects
 ["users-value","order-updated-value","order-created-value"]
@@ -264,3 +319,5 @@ docker container stop $(docker container ls -a -q -f "label=io.confluent.docker"
 
 
 
+docker run --rm confluentinc/cp-server:7.5.0 sh -c "/bin/kafka-storage random-uuid"
+zookeeper-shell zookeeper:2181 ls /

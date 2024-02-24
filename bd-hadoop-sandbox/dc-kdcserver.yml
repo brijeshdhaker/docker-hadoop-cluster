@@ -7,17 +7,29 @@
 #
 
 version: "3.9"
+
 services:
+  #
+  #
   #
   kdcserver:
     image: brijeshdhaker/kdcserver:22.04
-    hostname: 'kdcserver'
     container_name: kdcserver
+    hostname: kdcserver.sandbox.net
+    healthcheck:
+      test: echo srvr || exit 1
+      retries: 20
+      interval: 10s
+    ports:
+      - "749:749"
+      - "750:750"
+      - "88:88/udp"
     volumes:
       - sandbox_apps_path:/apps
       - /dev/urandom:/dev/random      # This is needed otherwise there won't be enough entropy to generate a new kerberos realm
       - sandbox_krb5_stash:/etc/krb5kdc
       - sandbox_krb5_principal:/var/lib/krb5kdc/
+      - ./conf/kerberos:/etc/kerberos
     environment:
       REALM: SANDBOX.NET
       DOMAIN_REALM: sandbox.net
@@ -28,15 +40,15 @@ services:
       KUSERS_PASSWORD: kuser
     env_file:
       - ./envs/docker_kerberos.env
-    ports:
-      - "749:749"
-      - "88:88/udp"
 
 #
 volumes:
   #
   sandbox_apps_path:
     external: true
+  sandbox_security_secrets:
+    external: true
+  #
   sandbox_krb5_stash:
     external: true
   sandbox_krb5_principal:

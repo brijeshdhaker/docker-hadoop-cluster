@@ -47,3 +47,8 @@ netcat -u kdcserver.sandbox.net 88
 $ ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa_hadoop
 $ cat ~/.ssh/id_rsa_hadoop.pub >> ~/.ssh/authorized_keys
 $ chmod 0600 ~/.ssh/authorized_keys
+
+###
+ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsacat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keyschmod 0600 ~/.ssh/authorized_keysssh localhost
+
+yarn logs -applicationId your_application_id > your_application_id.log 2>&1

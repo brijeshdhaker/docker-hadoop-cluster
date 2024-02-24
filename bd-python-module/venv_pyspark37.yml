@@ -1,4 +1,4 @@
-name: pyspark3.7
+name: pyspark37
 channels:
   - conda-forge
   - defaults

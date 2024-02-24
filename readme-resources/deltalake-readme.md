@@ -1,8 +1,7 @@
 
 ## Delta Lake Architecture
 
-![deltalake_architecture.png](../src/main/py/com/example/deltalake/deltalake_architecture.png)
-
+![deltalake_architecture.png](images%2Fdeltalake_architecture.png)
 ## Advantages of Delta Lake
 
 It's important for us to understand the benefits of Delta Lake before we deep dive into the details of Delta Lake. For example, why do we need Delta Lake?

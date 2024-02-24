@@ -41,7 +41,7 @@ RUN set -ex && \
     conda config --set always_yes yes --set changeps1 no && \
     conda info -a && \
     conda install mamba -c conda-forge && \
-    mamba env update -f /env_python_3_with_R.yml --prune && \
+    mamba env update -f /env_pyspark37.yml --prune && \
     # Cleanup
     rm -v miniconda.sh anaconda.sha256  && \
     # Cleanup based on https://github.com/ContinuumIO/docker-images/commit/cac3352bf21a26fa0b97925b578fb24a0fe8c383

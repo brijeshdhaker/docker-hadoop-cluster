@@ -1,0 +1,25 @@
+name: pyspark37
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7
+  - pycodestyle
+  - scipy
+  - numpy=1.19.5
+  - grpcio
+  - protobuf
+  - pandasql
+  - ipython
+  - ipykernel
+  - jupyter_client
+  - hvplot
+  - plotnine
+  - seaborn
+  - intake
+  - intake-parquet
+  - intake-xarray
+  - altair
+  - vega_datasets
+  - plotly
+  - pip

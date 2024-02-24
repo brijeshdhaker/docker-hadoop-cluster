@@ -1,5 +1,10 @@
+### -- Beeline
 
-$HIVE_HOME/bin/beeline -u jdbc:hive2://hiveserver:10000/default;user=scott;password=tiger
+$HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver:10000/default;user=scott;password=tiger"
+
+$HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET" --silent=false
+$HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET" -e 'show tables' --hiveconf hive.server2.in.place.progress=true
+$HIVE_HOME/bin/beeline -u "jdbc:hive2://hiveserver.sandbox.net:10000/default;principal=hive/_HOST@SANDBOX.NET" -f queries.sql
 
 #### 1. At the command line, copy the Hue sample_07 and sample_08 CSV files to HDFS
 ```commandline

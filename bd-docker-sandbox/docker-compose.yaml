@@ -142,32 +142,6 @@ services:
     env_file:
       - envs/docker_hadoop.env
 
-  # MR History Server
-  historyserver:
-    image: brijeshdhaker/hadoop-historyserver:3.1.1
-    build:
-      context: .
-      dockerfile: docker-hadoop/historyserver/Dockerfile
-    container_name: historyserver
-    hostname: historyserver.sandbox.net
-    restart: no
-    healthcheck:
-      test: nc -vz historyserver.sandbox.net 19888 || exit 1
-      retries: 20
-      interval: 10s
-    depends_on:
-      resourcemanager:
-        condition: service_healthy
-    ports:
-      - "19888:19888"
-    environment:
-      SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
-    volumes:
-      - sandbox_apps_path:/apps
-      - sandbox_hadoop_311_mapred:/mapred
-    env_file:
-      - envs/docker_hadoop.env
-
   #
   # Mysql Server
   #
@@ -264,35 +238,6 @@ services:
       - "9999:9999"
     volumes:
       - sandbox_apps_path:/apps
-
-  #
-  # Spark History Server
-  #
-  sparkhistory:
-    image: brijeshdhaker/spark-standalon:3.1.2
-    container_name: sparkhistory
-    hostname: sparkhistory.sandbox.net
-    healthcheck:
-      test: curl -f http://sparkhistory.sandbox.net:18080 || exit 1
-      retries: 20
-      interval: 10s
-    environment:
-      SPARK_WORKLOAD: HistoryServer
-      SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
-    depends_on:
-      namenode:
-        condition: service_healthy
-      datanode:
-        condition: service_healthy
-    ports:
-      - "18080:18080"
-    env_file:
-      - ./envs/docker_clients.env
-    volumes:
-      - sandbox_apps_path:/apps
-      - sandbox_hadoop_311:/opt/hadoop
-      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-      - ./conf/spark/conf:/opt/spark/conf
 
   #
   # Gateway Node

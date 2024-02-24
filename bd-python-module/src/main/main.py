@@ -14,11 +14,15 @@ def list_mean(p):
     mean = total / len(p)
     return mean
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# main directly
+print ("Always executed")
 
+# Press the green button in the gutter to run the script.
+if __name__ == "__main__":
+    print ("Executed when invoked directly")
+    print_hi("Brijesh D.")
+
+else:
+    print ("Executed when imported")
     a = [1, 2, 3, 4]
     print(list_mean(a))
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
