@@ -44,9 +44,9 @@ RUN set -x && \
     apt-get install -y openssh-server && \
     apt-get install -y apt-transport-https locales krb5-user ldap-utils && \
     # apt-get install -y python3 python3-pip && pip3 install --upgrade pip setuptools && \
-    locale-gen "en_US.UTF-8" && echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm -r /root/.cache && rm -rf /var/cache/apt/*
+    # locale-gen "en_US.UTF-8" && echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
+    rm -rf /var/lib/apt/lists/* && rm -rf /var/cache/apt/* && \
+    echo "package installation done."
 
 # Install python and R packages via conda
 RUN set -ex && \

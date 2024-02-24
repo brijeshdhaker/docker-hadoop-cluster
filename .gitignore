@@ -9,7 +9,6 @@ target
 *.keytab
 .classpath
 .project
-.idea
 *.pub
 *_key
 *_rsa
