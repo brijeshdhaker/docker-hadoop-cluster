@@ -6,8 +6,8 @@ from kafka.consumer.fetcher import ConsumerRecord
 
 
 def msg_process(msg):
-    m_value = msg.value
-    print('Received message: {}'.format(m_value))
+    print('Key     : {}'.format(msg.key))
+    print('Message : {}'.format(msg.value))
 
 
 def commit_completed(err, partitions):
@@ -54,18 +54,26 @@ class SaveOffsetsRebalanceListener(ConsumerRebalanceListener):
 """
 MIN_COMMIT_COUNT = 100
 TOPIC = "kafka-partitioned-topic"
+
+def val_deserializer(str):
+    if(str):
+        mval = str.decode('utf-8')
+    else:
+        mval = ""
+    return mval
+
 key_deserializer = lambda k: k.decode("utf-8")
 value_deserializer = lambda v: json.loads(v.decode("utf-8"))
 
 consumer = KafkaConsumer(
     bootstrap_servers='kafkabroker.sandbox.net:9092',
-    client_id='kafka-python-partitioned-client',
-    group_id='kafka-python-partitioned-cg',
+    client_id='kafka_partitioned_consumer',
+    group_id='kafka_partitioned_cg',
     auto_offset_reset='earliest',
-    enable_auto_commit=False,
+    enable_auto_commit=True,
     default_offset_commit_callback=default_offset_commit_callback,
-    key_deserializer=key_deserializer,
-    value_deserializer=value_deserializer
+    key_deserializer=val_deserializer,
+    value_deserializer=val_deserializer
 )
 
 consumer.subscribe([TOPIC])
@@ -83,10 +91,13 @@ try:
         else:
             # application-specific processing
             for messages in results.values():
-                for message in messages:
-                    print("topic=%s | partition=%d | offset=%d | key=%s | value=%s" % (
-                    message.topic, message.partition, message.offset, message.key, message.value))
-                    # msg_process(msg)
+                for m in messages:
+
+                    print("----------------------")
+                    print("Topic : %s \nPartition: %d  \nOffset : %d" % (m.topic, m.partition, m.offset))
+                    msg_process(m)
+                    print("----------------------")
+                    print("")
                     msg_count += 1
                     if msg_count % MIN_COMMIT_COUNT == 0:
                         a = 0

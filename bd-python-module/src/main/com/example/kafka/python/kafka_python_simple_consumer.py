@@ -13,17 +13,25 @@ offset which may not be the latest message that was successfully processed.
 RUNNING = True
 TOPIC = "kafka-simple-topic"
 MIN_COMMIT_COUNT = 10
+
+def str_deserializer(str):
+    if(str):
+        mval = str.decode('utf-8')
+    else:
+        mval = ""
+    return mval
+
 key_deserializer = lambda k: k.decode("utf-8")
 value_deserializer = lambda v: v.decode("utf-8")
 
 consumer = KafkaConsumer(
     bootstrap_servers='kafkabroker.sandbox.net:9092',
-    client_id='kafka_python_simple_consumer-client',
-    group_id='kafka_python_simple_consumer-cg',
-    key_deserializer=key_deserializer,
-    value_deserializer=value_deserializer,
+    client_id='kafka_simple_consumer',
+    group_id='kafka_simple_cg',
+    key_deserializer=str_deserializer,
+    value_deserializer=str_deserializer,
     auto_offset_reset='earliest',
-    enable_auto_commit=False
+    enable_auto_commit=True
 )
 """ 
 Partitions will be dynamically assigned via a group coordinator. 
@@ -35,15 +43,18 @@ def shutdown():
     RUNNING = False
 
 def msg_process(msg):
-    m_value = msg.value
-    print('Received message: {}'.format(m_value))
+    print('Key     : {}'.format(msg.key))
+    print('Message : {}'.format(msg.value))
 
 def consume_messages():
     for m in consumer:
         # message value and key are raw bytes -- decode if necessary!
         # e.g., for unicode: `message.value.decode('utf-8')`
-        print ("%s:%d:%d: key=%s value=%s" % (m.topic, m.partition, m.offset, m.key, m.value))
+        print("----------------------")
+        print("Topic : %s \nPartition: %d  \nOffset : %d" % (m.topic, m.partition, m.offset))
         msg_process(m)
+        print("----------------------")
+        print("")
 
 if __name__ == '__main__':
     consume_messages()

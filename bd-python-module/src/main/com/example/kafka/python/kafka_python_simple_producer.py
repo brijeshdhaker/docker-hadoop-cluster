@@ -8,7 +8,7 @@
 import random
 from time import sleep
 from kafka import KafkaProducer
-
+from com.example.models.Transaction import Transaction
 
 #
 #
@@ -23,7 +23,7 @@ value_serializer = lambda v: v.encode('utf-8')
 
 producer = KafkaProducer(
     bootstrap_servers='kafkabroker.sandbox.net:9092',
-    client_id='kafka_python_simple_producer',
+    client_id='kafka_simple_producer',
     key_serializer=key_serializer,
     value_serializer=value_serializer,
     acks=1
@@ -63,9 +63,13 @@ if __name__ == '__main__':
         #
         produced_records += 1
         #
-        KEYS = ["A", "B", "C", "D"]
-        record_key = random.choice(KEYS)
-        record_value = "This is test event {} of type {}".format(produced_records, record_key)
+        # KEYS = ["A", "B", "C", "D"]
+        # record_key = random.choice(KEYS)
+        # record_value = "This is test event {} of type {}".format(produced_records, record_key)
+        transaction = Transaction.random()
+        record_key = str(transaction.uuid)
+        record_value = str(transaction.to_dict())
+
         produce_message({"key": record_key, "value": record_value})
         sleep(1)
 
