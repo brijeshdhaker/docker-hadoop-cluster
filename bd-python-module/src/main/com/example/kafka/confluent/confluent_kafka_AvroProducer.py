@@ -35,7 +35,7 @@ if __name__ == '__main__':
     # args = kfu.parse_args()
 
     # Read arguments and configurations and initialize
-    topic = "users-topic-avro"
+    topic = "kafka-avro-topic"
 
     # Report malformed record, discard results, continue polling
     FILE_PATH = os.path.join(expanduser("~"), "IdeaProjects", "spark-python-examples", "resources", "avro", "user-record.avsc")

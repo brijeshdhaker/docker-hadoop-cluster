@@ -27,23 +27,23 @@ commit;
 
 truncate table SANDBOXDB.kafka_topic_offsets;
 
-insert into kafka_topic_offsets values('kafka-python-partitioned-topic', 0, 0);
-insert into kafka_topic_offsets values('kafka-python-partitioned-topic', 1, 0);
-insert into kafka_topic_offsets values('kafka-python-partitioned-topic', 2, 0);
-insert into kafka_topic_offsets values('kafka-python-partitioned-topic', 3, 0);
-insert into kafka_topic_offsets values('kafka-python-partitioned-topic', 4, 0);
+insert into kafka_topic_offsets values('kafka-partitioned-topic', 0, 0);
+insert into kafka_topic_offsets values('kafka-partitioned-topic', 1, 0);
+insert into kafka_topic_offsets values('kafka-partitioned-topic', 2, 0);
+insert into kafka_topic_offsets values('kafka-partitioned-topic', 3, 0);
+insert into kafka_topic_offsets values('kafka-partitioned-topic', 4, 0);
 
 commit;
 
-update kafka_topic_offsets set offset=0 where topic_name='kafka-python-partitioned-topic';
+update kafka_topic_offsets set offset=0 where topic_name='kafka-partitioned-topic';
 
-update kafka_topic_offsets set offset=0 where topic_name='kafka-python-partitioned-topic' and `partition`=0;
-update kafka_topic_offsets set offset=0 where topic_name='kafka-python-partitioned-topic' and `partition`=1;
-update kafka_topic_offsets set offset=0 where topic_name='kafka-python-partitioned-topic' and `partition`=2;
-update kafka_topic_offsets set offset=0 where topic_name='kafka-python-partitioned-topic' and `partition`=3;
-update kafka_topic_offsets set offset=0 where topic_name='kafka-python-partitioned-topic' and `partition`=4;
+update kafka_topic_offsets set offset=0 where topic_name='kafka-partitioned-topic' and `partition`=0;
+update kafka_topic_offsets set offset=0 where topic_name='kafka-partitioned-topic' and `partition`=1;
+update kafka_topic_offsets set offset=0 where topic_name='kafka-partitioned-topic' and `partition`=2;
+update kafka_topic_offsets set offset=0 where topic_name='kafka-partitioned-topic' and `partition`=3;
+update kafka_topic_offsets set offset=0 where topic_name='kafka-partitioned-topic' and `partition`=4;
 
-update kafka_topic_offsets set topic_name='kafka-python-partitioned-topic';
+update kafka_topic_offsets set topic_name='kafka-partitioned-topic';
 
 commit;
 

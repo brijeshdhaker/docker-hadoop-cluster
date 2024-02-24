@@ -6,7 +6,7 @@ P_CONFIG_FILE=librdkafka_producer.config
 C_CONFIG_FILE=librdkafka_consumer.config
 
 # Set topic name
-topic_name=kcat-test-topic
+topic_name=kcat-kafka-simple-topic
 
 
 # Produce messages

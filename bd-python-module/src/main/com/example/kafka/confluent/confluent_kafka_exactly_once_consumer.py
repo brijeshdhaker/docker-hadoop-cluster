@@ -14,12 +14,12 @@ process them. This will ensure that messages are never processed more than once.
 unexpectedly exits after comitting but before finishing processing every message in a batch, the unprocessed messages 
 will be lost.
 
-docker-compose -f dc-kafka-cluster.yaml exec kafkabroker.sandbox.net kafka-console-consumer --bootstrap-server kafkabroker.sandbox.net:9092 --topic test-topic --from-beginning --max-messages 100
+docker-compose -f dc-kafka-cluster.yaml exec kafkabroker.sandbox.net kafka-console-consumer --bootstrap-server kafkabroker.sandbox.net:9092 --topic kafka-simple-topic --from-beginning --max-messages 100
 
 """
 
 RUNNING = True
-TOPIC = "kafka-python-partitioned-topic"
+TOPIC = "kafka-partitioned-topic"
 MIN_COMMIT_COUNT = 10
 key_deserializer = lambda k: k.decode("utf-8")
 value_deserializer = lambda v: json.loads(v.decode("utf-8"))

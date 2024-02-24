@@ -9,7 +9,7 @@ c = AvroConsumer({
     'auto.offset.reset': 'earliest'
 })
 
-c.subscribe(['users-topic-avro'])
+c.subscribe(['kafka-avro-topic'])
 
 while True:
     try:

@@ -118,7 +118,7 @@ def asynchronous_commits_consume_loop(consumer, topics):
 #
 #
 #
-TOPIC = "test-topic"
+TOPIC = "kafka-simple-topic"
 
 #
 #     'enable.auto.commit': False,

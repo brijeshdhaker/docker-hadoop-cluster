@@ -14,7 +14,7 @@ from kafka import KafkaProducer
 #
 #
 #
-TOPIC = "kafka-python-json-topic"
+TOPIC = "kafka-json-topic"
 key_serializer = lambda k: k.encode('utf-8')
 value_serializer = lambda v: v.encode('utf-8')
 
