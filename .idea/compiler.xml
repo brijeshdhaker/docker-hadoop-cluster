@@ -9,5 +9,8 @@
         <module name="bd-java-module" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="docker-python-module" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

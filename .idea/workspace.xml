@@ -5,9 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-02-24 Merge Docker Projects.">
+      <change afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/airflow/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/airflow/dags/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-ubuntu/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-ubuntu/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/conda-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/conda-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-java-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-java-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/airflow/dags/airflow_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/airflow/dags/airflow_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/airflow/dags/bash_ssh.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/airflow/dags/bash_ssh.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/airflow/dags/delta_lag_dag.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/airflow/dags/delta_lag_dag.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/airflow/dags/flight_search_dag.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/airflow/dags/flight_search_dag.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/airflow/dags/spark_yarn_test_dag.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/airflow/dags/spark_yarn_test_dag.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/bd-python-module.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/bd-python-module.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/distro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/distro.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/requirements-py2.pip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/requirements-py3.pip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/requirements.pip" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/requirements.pip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/venv_zeppelin.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/setup-and-cluster-submit.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/setup-and-cluster-submit.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/test-kafka.sh" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/openssl-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +51,16 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="$MAVEN_REPOSITORY$" />
+        <option name="mavenHome" value="/opt/maven-3.6.3" />
+        <option name="useMavenConfig" value="false" />
+        <option name="userSettingsFile" value="$USER_HOME$/.m2/settings.xml" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -97,6 +127,7 @@
     "Docker.docker-compose.yml.sparkhistory: Compose Deployment.executor": "Run",
     "Docker.docker-compose.yml.timelineserver: Compose Deployment.executor": "Run",
     "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
+    "Maven.bd-python-module [package].executor": "Run",
     "Python.app.executor": "Run",
     "Python.hello-spark.executor": "Run",
     "Python.kafka_python_partitioned_consumer.executor": "Run",
@@ -111,12 +142,12 @@
     "git-widget-placeholder": "docker-hadoop311-cluster",
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-docker-sandbox",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-python-module",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.31724137",
-    "settings.editor.selected.configurable": "terminal"
+    "settings.editor.selected.configurable": "build.tools"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -129,10 +160,10 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/readme-resources" />
+      <recent name="$PROJECT_DIR$/bd-python-module" />
+      <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example" />
       <recent name="$PROJECT_DIR$/bd-setup-module" />
       <recent name="$PROJECT_DIR$/readme-resources/images" />
-      <recent name="$PROJECT_DIR$/bd-python-module/src/main" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager" selected="Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment">
@@ -425,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708791406817</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708806465497</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1708806465497</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="UnknownFeatures">
