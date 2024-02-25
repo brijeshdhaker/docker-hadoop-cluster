@@ -77,3 +77,17 @@ docker exec spark-master /usr/local/spark/bin/spark-submit \
 #    --archives "venv.zip#venv" \
 #    --py-files "application.zip" \
 #    py-hello.py
+
+#
+python /apps/hostpath/python/bd-python-module-distro.zip#pie.py
+
+PYTHONPATH=/apps/hostpath/python/bd-python-module-distro.zip python -m main.py [args]
+
+python /apps/hostpath/python/bd-python-module-distro.zip/main.py
+
+#
+pyspark --archives /apps/hostpath/python/bd-python-module-distro.zip#
+from com.example.models.Transaction import Transaction
+from main import print_hi
+
+#

@@ -5,22 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-02-25 Change Project Packaging.">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-python-module/src/main/__main__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/bd-docker-sandbox.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/bd-hadoop-sandbox.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/kerberos/change-osuser-passwd.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/scripts/change-osuser-passwd.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/kerberos/change-principal-passwd.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/scripts/change-principal-passwd.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/kerberos/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/kerberos-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/kerberos/setup-hadoop-principles.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/scripts/setup-hadoop-principles.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/kerberos/setup-kafka-principles.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/scripts/setup-kafka-principles.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/kerberos/setup-osuser-principles.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/scripts/setup-osuser-principles.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/bd-python-module.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-ubuntu/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-ubuntu/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-ubuntu/env_pyspark37.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-ubuntu/env_pyspark37.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-python-module/setup-and-cluster-submit.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/setup-and-cluster-submit.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/docker-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/bd-setup-module.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/openssl-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/openssl-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/venv_pyspark37.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/env_pyspark37.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/conda-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/conda-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/docker-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/docker-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/kcat-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/kcat-help.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +66,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Docker.Docker Image.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment.executor": "Run",
@@ -120,6 +115,7 @@
     "Docker.docker-compose.yml.sparkhistory: Compose Deployment.executor": "Run",
     "Docker.docker-compose.yml.timelineserver: Compose Deployment.executor": "Run",
     "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
+    "Docker.ubuntu.executor": "Run",
     "Maven.bd-python-module [package].executor": "Run",
     "Python.app.executor": "Run",
     "Python.hello-spark.executor": "Run",
@@ -160,7 +156,7 @@
       <recent name="$PROJECT_DIR$/bd-python-module" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.pie">
+  <component name="RunManager" selected="Docker.bd-hadoop-sandbox.gateway: Compose Deployment">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -227,31 +223,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <method v="2" />
     </configuration>
+    <configuration name="Docker Image" type="docker-deploy" factoryName="docker-image" temporary="true" server-name="Docker">
+      <deployment type="docker-image">
+        <settings>
+          <option name="imageTag" value="sha256:b29b200b71baec1bf1e5cb23277e6f7c3e32ecaef2794696d859ca5e2532bc98" />
+          <option name="containerName" value="" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="mysqlserver" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-mysqlserver.yaml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="bd-docker-sandbox/docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yaml" />
-        </settings>
-      </deployment>
+    <configuration default="true" type="docker-deploy" factoryName="docker-image" temporary="true">
+      <deployment type="docker-image" />
       <method v="2" />
     </configuration>
     <configuration name="bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
@@ -280,13 +268,23 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="ubuntu" type="docker-deploy" factoryName="docker-image" temporary="true" server-name="Docker">
+      <deployment type="docker-image">
+        <settings>
+          <option name="imageTag" value="brijeshdhaker/ubuntu:22.04" />
+          <option name="command" value="/usr/sbin/sshd -D" />
+          <option name="containerName" value="" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.pie" />
-        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment" />
         <item itemvalue="Docker.bd-hadoop-sandbox.gateway: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment" />
+        <item itemvalue="Docker.ubuntu" />
+        <item itemvalue="Docker.ubuntu" />
+        <item itemvalue="Docker.Docker Image" />
+        <item itemvalue="Python.pie" />
       </list>
     </recent_temporary>
   </component>
@@ -474,7 +472,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708834131543</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="2024-02-25 Change Project Packaging.">
+      <option name="closed" value="true" />
+      <created>1708844951370</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1708844951370</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -506,6 +512,11 @@
           <url>file://$PROJECT_DIR$/bd-java-module/src/main/java/org/examples/hadoop/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_simple_consumer.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

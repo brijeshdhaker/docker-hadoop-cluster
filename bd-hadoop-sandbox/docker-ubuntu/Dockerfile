@@ -54,7 +54,7 @@ RUN set -ex && \
     echo "${miniconda_sha256} miniconda.sh" > anaconda.sha256 && \
     sha256sum --strict -c anaconda.sha256 && \
     bash miniconda.sh -b -p /opt/conda && \
-    chmod -R 777 /opt/conda && \
+    chmod -Rf 777 /opt/conda && \
     export PATH=/opt/conda/bin:$PATH && \
     conda config --set always_yes yes --set changeps1 no && \
     conda info -a && \
@@ -68,6 +68,7 @@ ENV PATH ${JAVA_HOME}/bin:/opt/conda/envs/pyspark37/bin:/opt/conda/bin:$PATH
 
 #
 RUN set -x && \
+    conda update -n base -c defaults conda && \
     # conda install mamba -c conda-forge && \
     # mamba env update -f /env_pyspark37.yml --prune && \
     # mamba clean -ay && \

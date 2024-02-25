@@ -7,7 +7,6 @@ dependencies:
   - conda-pack
   - nb_conda
   - kafka-python
-  - fastavro=1.4.9
   - pycodestyle
   - pandas
   - pandasql
