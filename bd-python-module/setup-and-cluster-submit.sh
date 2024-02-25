@@ -68,6 +68,7 @@ docker exec spark-master /usr/local/spark/bin/spark-submit \
 #     replicate any environment variables you need using
 #     `--conf "spark.yarn.appMasterEnv..."` and any local files you
 #     depend on using `--files`.
+
 #spark-submit \
 #    --name "Sample Spark Application" \
 #    --master local[*] \
