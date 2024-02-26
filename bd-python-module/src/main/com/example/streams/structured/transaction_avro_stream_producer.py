@@ -39,7 +39,7 @@ if __name__ == '__main__':
                      "transaction-record.avsc")
     key_schema, value_schema = load_avro_schema_as_schema(AVRO_PATH)
 
-    schema_registry_conf = {'url': 'http://schema-registry:8081'}
+    schema_registry_conf = {'url': 'http://schemaregistry:8081'}
     schema_registry_client = SchemaRegistryClient(schema_registry_conf)
     avro_serializer = AvroSerializer(schema_registry_client, str(value_schema), txn_to_dict)
 

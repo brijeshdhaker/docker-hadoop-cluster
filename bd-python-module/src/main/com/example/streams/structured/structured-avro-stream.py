@@ -44,7 +44,7 @@ structureStreamDf.printSchema()
 # Confluent Schema Registry
 #
 schema_registry_conf = {
-    'url': 'http://schema-registry:8081',
+    'url': 'http://schemaregistry:8081',
     'basic.auth.user.info': '{}:{}'.format('userid', 'password')
 }
 schema_registry_client = SchemaRegistryClient(schema_registry_conf)

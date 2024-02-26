@@ -23,7 +23,9 @@
 # =============================================================================
 from time import sleep
 from confluent_kafka import Producer, KafkaError
+from confluent_kafka_usecase import synchronous_produce
 import random
+import socket
 #
 #
 #
@@ -31,7 +33,8 @@ TOPIC = "kafka-simple-topic"
 
 # Create Producer instance
 producer = Producer({
-    'bootstrap.servers': 'kafkabroker.sandbox.net:9092'
+    'bootstrap.servers': 'kafkabroker.sandbox.net:9092',
+    'client.id': socket.gethostname()
 })
 
 #
@@ -47,18 +50,6 @@ def acked(err, msg):
         print("Produced record to topic {} partition [{}] @ offset {}"
               .format(msg.topic(), msg.partition(), msg.offset()))
 
-#
-#
-#
-def produce_message(event):
-    #
-    producer.produce(TOPIC, key=event["key"], value=event["value"], on_delivery=acked)
-    # from previous produce() calls.
-    producer.poll(0)
-    # flush the message buffer to force message delivery to broker on each iteration
-    producer.flush()
-
-
 if __name__ == '__main__':
     produced_records = 0
     while True:
@@ -69,7 +60,8 @@ if __name__ == '__main__':
         record_key = random.choice(KEYS)
         # record_value = json.dumps({'key': record_key, 'index': produced_records})
         record_value = "This is test event {} of type {}".format(produced_records, record_key)
-        produce_message({"key": record_key, "value": record_value})
+        synchronous_produce(producer,TOPIC,{"key": record_key, "value": record_value})
+        # produce_message({"key": record_key, "value": record_value})
         sleep(1)
 
     print("{} messages were produced to topic {}!".format(delivered_records, topic))

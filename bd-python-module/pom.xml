@@ -21,7 +21,7 @@
     </dependencies>
     
     <build>
-        <finalName>bd-python-module</finalName>
+        <finalName>pyspark-module</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -57,9 +57,9 @@
                             <outputDirectory>${project.build.directory}</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${basedir}/src</directory>
+                                    <directory>${basedir}/resources</directory>
                                     <includes>
-                                        <include>${project.build.finalName}*.zip</include>
+                                        <include>**/*</include>
                                     </includes>
                                 </resource>
                             </resources>

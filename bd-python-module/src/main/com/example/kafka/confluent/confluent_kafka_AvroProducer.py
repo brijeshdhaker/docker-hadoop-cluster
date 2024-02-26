@@ -74,7 +74,7 @@ if __name__ == '__main__':
         avroProducer = AvroProducer({
             'bootstrap.servers': 'kafkabroker.sandbox.net:9092',
             'on_delivery': delivery_report,
-            'schema.registry.url': 'http://schema-registry:8081'
+            'schema.registry.url': 'http://schemaregistry:8081'
         }, default_key_schema=key_schema, default_value_schema=value_schema)
 
         u_names = ["Brijesh K", "Neeta K", "Keshvi K", "Tejas K"]
