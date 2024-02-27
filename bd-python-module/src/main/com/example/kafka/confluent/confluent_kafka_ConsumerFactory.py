@@ -32,6 +32,12 @@ class ConsumerFactory(object):
     #
     @staticmethod
     def simple(consumer_config):
+        string_deserializer = StringDeserializer('utf_8')
+        consumer_config.update({
+            'key.deserializer': string_deserializer,
+            'value.deserializer': string_deserializer,
+            'group.id': 'kafka_simple_cg'
+        })
         consumer = Consumer(consumer_config)
         return consumer
 
@@ -40,10 +46,10 @@ class ConsumerFactory(object):
     #
     @staticmethod
     def avro(consumer_config):
-
         consumer_config.update({
             'schema.registry.url': 'http://schemaregistry:8081',
-            'auto.offset.reset': "earliest"
+            'auto.offset.reset': "earliest",
+            'group.id': 'kafka_avro_cg'
         })
         consumer = AvroConsumer(consumer_config)
         return consumer
@@ -59,7 +65,8 @@ class ConsumerFactory(object):
         consumer_config.update({
             'key.deserializer': string_deserializer,
             'value.deserializer': json_deserializer,
-            'auto.offset.reset': "earliest"
+            'auto.offset.reset': "earliest",
+            'group.id': 'kafka_json_cg'
         })
         consumer = DeserializingConsumer(consumer_config)
         return consumer

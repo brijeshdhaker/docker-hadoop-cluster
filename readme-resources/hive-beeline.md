@@ -23,12 +23,15 @@
 #
 COMMAND	DESCRIPTION	BEELINE COMMAND LINE OPTION	INSIDE BEELINE SHELL
 Ctrl + r	Search on history of commands		
+
 Autocomplete	Press Tab key
 Display all 436 possibilities? (y or n)
 If you enter y, you’ll get a long list of all the keywords		
 Navigation Keystrokes	Use the up↑ and down↓ arrow keys to scroll through previous commands
+
 Ctrl+A goes to the beginning of the line
 Ctrl+E goes to the end of the line
+
 Delete key will delete the character to the left of the cursor		
 set system:user.name; (or)
 set system:user.name=yourusername;	System Namespace (provides read-write access to Java system properties)
@@ -39,6 +42,7 @@ set env:HOME; env Namespace (provides read-only access to environment variables)
 Comments in Hive Scripts.		
 beeline -e < Hive query >	Run query	beeline -e " show databases"
 beeline -f < Hive query >	Run query from file	beeline -f /user/dummy_local_user/myquery1.sql
+
 --hiveconf property=value
 (or)
 SET property=value;	Use value for the given configuration property. Properties that are listed in hive.conf.restricted.list cannot be reset with hiveconf	beeline --hiveconf hive.auto.convert.join=false;

@@ -1,7 +1,7 @@
 import json
 from confluent_kafka import avro
 
-def load_avro_schema_as_str(schema_file):
+def load_avro_str(schema_file):
     #
     key_schema_string = """
     {"type": "string"}
@@ -12,7 +12,7 @@ def load_avro_schema_as_str(schema_file):
 
     return key_schema_string, str(value_schema_string)
 
-def load_avro_schema_as_json(schema_file):
+def load_avro_json(schema_file):
     #
     key_schema_string = """
     {"type": "string"}
@@ -24,7 +24,7 @@ def load_avro_schema_as_json(schema_file):
     return json.loads(key_schema_string), json.loads(value_schema_string)
 
 
-def load_avro_schema_as_schema(schema_file):
+def load_avro_schema(schema_file):
     key_schema_string = """
     {"type": "string"}
     """

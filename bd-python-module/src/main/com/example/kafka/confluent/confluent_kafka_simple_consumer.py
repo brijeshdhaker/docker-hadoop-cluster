@@ -2,8 +2,8 @@ import sys
 
 from confluent_kafka import Consumer, KafkaException, KafkaError
 from confluent_kafka_usecase import msg_process
-from confluent_kafka_consumer_factory import ConsumerFactory
-from confluent_kafka_config_factory import KafkaConfigFactory
+from confluent_kafka_ConsumerFactory import ConsumerFactory
+from confluent_kafka_ConfigFactory import KafkaConfigFactory
 
 #
 #
@@ -13,7 +13,7 @@ TOPIC = "kafka-simple-topic"
 #
 #     'enable.auto.commit': False,
 #
-consumer_config = KafkaConfigFactory.setup('PLAINTEXT')
+consumer_config = KafkaConfigFactory.consumer('PLAINTEXT')
 consumer = ConsumerFactory.simple(consumer_config)
 consumer.subscribe([TOPIC])
 MIN_COMMIT_COUNT = 10

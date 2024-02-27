@@ -1,6 +1,10 @@
 #
 # Docker Commands
 #
+## Stop
+docker container stop $(docker container ls -a -q -f "label=io.confluent.docker")
+docker container stop $(docker container ls -a -q -f "label=io.confluent.docker") && docker system prune -a -f --volumes
+
 ## Delete 
 docker system prune -a --volumes --filter "label=io.confluent.docker"
 

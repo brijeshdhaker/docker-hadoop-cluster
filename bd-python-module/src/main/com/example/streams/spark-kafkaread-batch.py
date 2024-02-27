@@ -56,7 +56,7 @@ if __name__ == "__main__":
     clickstreamTestDf = (
         spark.readStream
             .format("kafka")
-            .option("kafka.bootstrap.servers", "localhost:9092")
+            .option("kafka.bootstrap.servers", "kafkabroker.sandbox.net:9092")
             .option("subscribe", "users-topic")
             .option("startingOffsets", "earliest")
             .option("failOnDataLoss", "false")

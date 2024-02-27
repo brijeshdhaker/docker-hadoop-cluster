@@ -7,16 +7,22 @@ from confluent_kafka import KafkaException, KafkaError
 #
 #
 running = True
-MIN_COMMIT_COUNT = 10
+MIN_COMMIT_COUNT  = 10
+delivered_records = { }
+
 
 #
 #
 #
-def acked(err, msg):
+def delivery_report(err, msg):
+    global delivered_records
     """Delivery report handler called on successful or failed delivery of message """
     if err is not None:
         print("Failed to deliver message: {}".format(err))
     else:
+        delivered_messages = delivered_records.get(str(msg.topic()), 0)
+        delivered_messages = delivered_messages+1
+        delivered_records.update({ str(msg.topic()) : delivered_messages })
         print("Produced record to topic {} partition [{}] @ offset {}"
               .format(msg.topic(), msg.partition(), msg.offset()))
 
@@ -24,7 +30,7 @@ def acked(err, msg):
 #
 #
 def asynchronous_produce(producer, topic, event):
-    producer.produce(topic, key=event["key"], value=event["value"], callback=acked)
+    producer.produce(topic, key=event["key"], value=event["value"], callback=delivery_report)
     # Wait up to 1 second for events. Callbacks will be invoked during
     # this method call if the message is acknowledged.
     producer.poll(1)
@@ -36,7 +42,6 @@ def synchronous_produce(producer, topic, event):
     producer.produce(topic, key=event["key"], value=event["value"])
     producer.flush()
 
-
 #
 #
 #
@@ -46,7 +51,6 @@ def msg_process(msg):
         print('Key     : {}'.format(msg.key))
         print('Message : {}'.format(msg.value))
         #print('Received message: {}'.format(msg.value().decode('utf-8')))
-
 
 #
 #
@@ -102,11 +106,13 @@ def synchronous_commit_loop(consumer, topics):
 
 #
 #
-#
+# delivery_guarantees_consume_loop
 def at_most_once_consume(consumer, topics):
     try:
+        #
         consumer.subscribe(topics)
 
+        #
         while running:
             msg = consumer.poll(timeout=1.0)
             if msg is None: continue
@@ -122,9 +128,12 @@ def at_most_once_consume(consumer, topics):
                 consumer.commit(asynchronous=False)
                 msg_process(msg)
 
+    except:
+        #
+        print("Something went wrong")
     finally:
-        # Close down consumer to commit final offsets.
-        consumer.close()
+        #
+        print("Finally Actions")
 
 #
 #

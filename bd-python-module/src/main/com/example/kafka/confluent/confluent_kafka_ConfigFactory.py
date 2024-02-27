@@ -8,10 +8,10 @@ from confluent_kafka.avro import AvroConsumer
 from confluent_kafka.avro.serializer import SerializerError
 from confluent_kafka.schema_registry.avro import AvroDeserializer
 from confluent_kafka.serialization import StringDeserializer
-from confluent_kafka_usecase import commit_completed
+from confluent_kafka_usecase import commit_completed, delivery_report
 
 import json
-
+import socket
 #
 class KafkaConfigFactory(object):
     # Class Variable
@@ -20,8 +20,7 @@ class KafkaConfigFactory(object):
     def __init__(self) :
         self.kafka_config = {
             'bootstrap.servers': 'kafkabroker.sandbox.net:9092',
-            'group.id': 'kafka_simple_cg',
-            'on_commit': commit_completed
+            'group.id': 'kafka_simple_cg'
         }
 
 
@@ -34,11 +33,29 @@ class KafkaConfigFactory(object):
 
 
     @staticmethod
-    def setup(connection_type):
-        kafka_config = {
-            'group.id': 'kafka_simple_cg',
+    def producer(connection_type):
+        kafka_config = KafkaConfigFactory.__setup(connection_type)
+        kafka_config.update({
+            'on_delivery': delivery_report
+        })
+        return kafka_config
+
+
+    @staticmethod
+    def consumer(connection_type):
+        kafka_config = KafkaConfigFactory.__setup(connection_type)
+        kafka_config.update({
+            'enable.auto.commit': False,
             'on_commit': commit_completed
+        })
+        return kafka_config
+
+    @staticmethod
+    def __setup(connection_type):
+        kafka_config = {
+            'client.id': socket.gethostname(),
         }
+
         if(connection_type=="PLAINTEXT"):
             kafka_config.update({
                 'bootstrap.servers': 'kafkabroker.sandbox.net:9092',

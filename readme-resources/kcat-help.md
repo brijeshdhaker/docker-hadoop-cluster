@@ -14,32 +14,21 @@ E.g. to consume all messages from mytopic partition 2 and then exit:
 * -l  data file path
 * 
 
+```shell
 docker run -it --rm \
 --network sandbox.net \
 --volume /apps:/apps \
---volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
+--volume ./bd-docker-sandbox/conf/kerberos/krb5.conf:/etc/krb5.conf \
 --env KRB5_CONFIG=/etc/krb5.conf \
 brijeshdhaker/kafka-clients:7.5.0 \
 kafkacat -V
 
+kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_thinkpad_plaintext.config  -L -J | jq .
 
-docker run -it --rm \
---network sandbox.net \
---volume /apps:/apps \
---volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
---env KRB5_CONFIG=/etc/krb5.conf \
-brijeshdhaker/kafka-clients:7.5.0 \
-kafkacat -b kafkabroker.sandbox.net:19092 -L -J \
--X 'security.protocol=SASL_PLAINTEXT' \
--X 'sasl.mechanisms=PLAIN' \
--X 'sasl.username=admin' \
--X 'sasl.password=admin-secret' \
-| jq .
-
-kcat -F /home/brijeshdhaker/IdeaProjects/spark-python-examples/resources/kafka_consumer.properties  -L
+```
 
 ##
-docker compose -f  docker-sandbox/docker-compose.yaml exec kafkaclient sh -c "kafkacat -V"
+docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkaclient sh -c "kafkacat -V"
 
 # Producing messages inline from a script
 docker run --interactive \
@@ -73,18 +62,17 @@ echo "aea284e3-24c6-4969-a85f-fff8e34fb41c	{'uuid': 'aea284e3-24c6-4969-a85f-fff
 kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_paintext.config -C -t kafka-simple-topic -f '\nKey (%K bytes): %k\nValue (%S bytes): %s\nTimestamp: %T \nPartition: %p \nOffset: %o \n\n--\n' -e
 
 ## with consumer group
-kcat -b kafkabroker.sandbox.net:9092 -G kafka-simple-cg kafka-simple-topic -o 600 -e
-
-docker compose -f  docker-sandbox/docker-compose.yaml exec kafkaclient sh -c "kafkacat -b kafkabroker.sandbox.net:19092 -C -G kafka-simple-cg -t kafka-simple-topic -f '\nKey (%K bytes): %k\nValue (%S bytes): %s\nTimestamp: %T \nPartition: %p \nOffset: %o \n\n--\n' "
-docker compose -f  docker-sandbox/docker-compose.yaml exec kafkabroker sh -c "kafka-console-consumer --bootstrap-server kafkabroker.sandbox.net:19092 --topic kafka-simple-topic --from-beginning"
+kafkacat -b kafkabroker.sandbox.net:9092 -G kafka-simple-cg kafka-simple-topic -o 600 -e
+docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkaclient sh -c "kafkacat -b kafkabroker.sandbox.net:19092 -C -G kafka-simple-cg -t kafka-simple-topic -f '\nKey (%K bytes): %k\nValue (%S bytes): %s\nTimestamp: %T \nPartition: %p \nOffset: %o \n\n--\n' "
+docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-console-consumer --bootstrap-server kafkabroker.sandbox.net:19092 --topic kafka-simple-topic --from-beginning"
 
 ```
 
 ## PLAINTEXT
 ```shell
-docker compose -f  docker-sandbox/docker-compose.yaml exec kafkaclient sh -c "kafkacat -b kafkabroker.sandbox.net:19092 -L"
-docker compose -f  docker-sandbox/docker-compose.yaml exec kafkaclient sh -c "kafkacat -b kafkabroker.sandbox.net:19092 -P -t kafka-simple-topic -l /apps/sandbox/kafka/json_messages.txt 2>/dev/null"
-docker compose -f  docker-sandbox/docker-compose.yaml exec kafkaclient sh -c "kafkacat -b kafkabroker.sandbox.net:19092 -C -t kafka-simple-topic -o -10 -e"
+docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkaclient sh -c "kafkacat -b kafkabroker.sandbox.net:19092 -L"
+docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkaclient sh -c "kafkacat -b kafkabroker.sandbox.net:19092 -P -t kafka-simple-topic -l /apps/sandbox/kafka/json_messages.txt 2>/dev/null"
+docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkaclient sh -c "kafkacat -b kafkabroker.sandbox.net:19092 -C -t kafka-simple-topic -o -10 -e"
 ```
 ## SASL_PLAINTEXT
 ```shell

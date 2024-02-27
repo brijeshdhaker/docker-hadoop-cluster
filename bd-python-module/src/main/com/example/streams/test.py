@@ -15,7 +15,7 @@ from random import randint
 from time import sleep
 from com.example.models.Transaction import Transaction
 
-from com.example.utils.load_avro_schema_from_file import load_avro_schema_as_schema, load_avro_schema_as_str
+from com.example.utils.AvroUtils import load_avro_schema, load_avro_str
 import random
 import json
 import hashlib

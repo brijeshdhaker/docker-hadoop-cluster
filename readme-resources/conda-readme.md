@@ -84,8 +84,12 @@ conda list
 #
 conda env remove --name pyspark37
 
+#
+#
+#
 conda rename -n base  pyspark37
 conda rename -p /opt/conda base
+
 #
 #### Activate Virtual Env
 #
@@ -94,7 +98,7 @@ conda activate pyspark37
 #
 # Update Virtual Env
 #
-conda env update --file venv_pyspark37.yml --prune --prune
+conda env update --file venv_pyspark37.yml --prune
 conda env update --name pyspark37 --file venv_pyspark37.yml --prune
 
 #

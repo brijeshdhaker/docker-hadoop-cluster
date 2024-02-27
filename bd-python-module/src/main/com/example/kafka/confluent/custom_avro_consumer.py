@@ -28,14 +28,14 @@ from avro.io import DatumReader, BinaryDecoder
 from confluent_kafka import Consumer
 from confluent_kafka.avro import SerializerError
 
-from com.example.utils.load_avro_schema_from_file import load_avro_schema_as_schema
+from com.example.utils.AvroUtils import load_avro_schema
 
 if __name__ == '__main__':
 
     # Read arguments and configurations and initialize
     topic = "kafka-avro-topic"
     BASE_DIR = "/home/brijeshdhaker/IdeaProjects/spark-bigdata-examples/"
-    key_schema, value_schema = load_avro_schema_as_schema(BASE_DIR + 'resources/avro/user-record.avsc')
+    key_schema, value_schema = load_avro_schema(BASE_DIR + 'resources/avro/user-record.avsc')
 
     reader = DatumReader(value_schema)
     def decode(msg_value):

@@ -8,37 +8,17 @@
 from time import sleep
 from confluent_kafka import Producer, KafkaError
 import random
+from confluent_kafka_ConfigFactory import KafkaConfigFactory
+from confluent_kafka_ProducerFactory import ProducerFactory
+from confluent_kafka_usecase import asynchronous_produce, delivered_records
 #
 #
 #
 TOPIC = "kafka-simple-topic"
 
 # Create Producer instance
-producer = Producer({
-    'bootstrap.servers': 'kafkabroker.sandbox.net:19093',
-    'sasl.mechanism': 'GSSAPI',
-    'security.protocol': 'SASL_SSL',
-    'sasl.kerberos.service.name': 'kafka',
-    'sasl.kerberos.keytab': '/apps/security/keytabs/services/kafkaclient.keytab',
-    'sasl.kerberos.principal': 'kafkaclient@SANDBOX.NET',
-    'ssl.key.location': '/apps/security/ssl/clients.key',
-    'ssl.key.password': 'confluent',
-    'ssl.certificate.location': '/apps/security/ssl/clients-signed.crt',
-    'ssl.ca.location': '/apps/security/ssl/sandbox-ca.pem'
-})
-
-#
-#
-#
-def acked(err, msg):
-    delivered_records = 0
-    """Delivery report handler called on successful or failed delivery of message """
-    if err is not None:
-        print("Failed to deliver message: {}".format(err))
-    else:
-        delivered_records += 1
-        print("Produced record to topic {} partition [{}] @ offset {}"
-              .format(msg.topic(), msg.partition(), msg.offset()))
+producer_config = KafkaConfigFactory.producer('SASL_SSL')
+producer = ProducerFactory.simple(producer_config)
 
 #
 #
@@ -54,7 +34,7 @@ def produce_message(event):
 
 if __name__ == '__main__':
     produced_records = 0
-    while True:
+    while produced_records <= 10 :
         #
         produced_records += 1
         #
@@ -62,8 +42,9 @@ if __name__ == '__main__':
         record_key = random.choice(KEYS)
         # record_value = json.dumps({'key': record_key, 'index': produced_records})
         record_value = "This is test event {} of type {}".format(produced_records, record_key)
-        produce_message({"key": record_key, "value": record_value})
+        event = {"key": record_key, "value": record_value}
+        asynchronous_produce(producer, TOPIC, event)
         sleep(1)
 
-    print("{} messages were produced to topic {}!".format(delivered_records, topic))
+    print("{} messages ere produced to topic {}!".format(delivered_records.get(str(TOPIC), 0), TOPIC))
 

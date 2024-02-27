@@ -20,12 +20,9 @@ $HIVE_HOME/bin/hiveserver2
 
 $HIVE_HOME/bin/beeline -u jdbc:hive2://hiveserver:10000/default;user=scott;password=tiger
 $HIVE_HOME/bin/beeline -u jdbc:hive2:// -n scott -p tiger
-
 $HIVE_HOME/bin/beeline -u jdbc:hive2://hiveserver:10000 scott tiger
-$HIVE_HOME/bin/beeline -u jdbc:hive2://hiveserver:10000 scott tiger
-
-bin/beeline -u jdbc:hive2:// scott tiger
-bin/beeline -u jdbc:hive2:// -n scott -p tiger
+$HIVE_HOME/bin/beeline -u jdbc:hive2:// scott tiger
+$HIVE_HOME/bin/beeline -u jdbc:hive2:// -n scott -p tiger
 
 $HIVE_HOME/bin/beeline
 beeline>!connect jdbc:hive2://hiveserver:10000 -n scott -p tiger

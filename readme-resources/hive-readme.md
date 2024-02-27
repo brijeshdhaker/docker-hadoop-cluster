@@ -115,9 +115,6 @@ $HIVE_HOME/bin/beeline -u jdbc:hive2://hiveserver.sandbox.net:10000 scott tiger
 
 #### 10. In Beeline, show the Hive tables:
 ```commandline
-$beeline -u jdbc:hive2://hiveserver:10000 scott tiger
-
-$beeline -u jdbc:hive2://hiveserver:10000 -n hive -p hive
 
 [0: jdbc:hive2://hiveserver:> show tables;
 +------------+--+
@@ -155,8 +152,8 @@ if __name__ == "__main__":
 #
 
 ```commandline
-$beeline -u jdbc:hive2://hiveserver:10000 scott tiger
 0: jdbc:hive2://hiveserver:10000> drop table sample_09;
+
 ```
 
 #
@@ -164,8 +161,9 @@ $beeline -u jdbc:hive2://hiveserver:10000 scott tiger
 #
 
 ```commandline
-export PYSPARK_DRIVER_PYTHON=/opt/sandbox/conda/envs/pyspark3.7/bin/python
-export PYSPARK_PYTHON=/opt/sandbox/conda/envs/pyspark3.7/bin/python
+
+export PYSPARK_DRIVER_PYTHON=/opt/conda/envs/pyspark37/bin/python
+export PYSPARK_PYTHON=/opt/conda/envs/pyspark37/bin/python
 $SPARK_HOME/bin/spark-submit \
     --name "PySpark HiveContext" \
     --master local[*] \
@@ -176,8 +174,8 @@ $SPARK_HOME/bin/spark-submit \
 ###
 
 ```commandline
-export PYSPARK_DRIVER_PYTHON=/opt/sandbox/conda/envs/pyspark3.7/bin/python
-export PYSPARK_PYTHON=/opt/sandbox/conda/envs/pyspark3.7/bin/python
+export PYSPARK_DRIVER_PYTHON=/opt/conda/envs/pyspark37/bin/python
+export PYSPARK_PYTHON=/opt/conda/envs/pyspark37/bin/python
 #
 $SPARK_HOME/bin/spark-submit \
     --name "PySpark Hive Session" \
