@@ -29,69 +29,50 @@ from confluent_kafka import DeserializingConsumer
 from confluent_kafka.schema_registry import SchemaRegistryClient
 from confluent_kafka.schema_registry.avro import AvroDeserializer
 from confluent_kafka.serialization import StringDeserializer
-
+from confluent_kafka_ConfigFactory import KafkaConfigFactory
+from confluent_kafka_ConsumerFactory import ConsumerFactory
 
 class User(object):
-    """
-    User record
-    Args:
-        name (str): User's name
-        favorite_number (int): User's favorite number
-        favorite_color (str): User's favorite color
-    """
-    def __init__(self, name=None, favorite_number=None, favorite_color=None):
+
+    def __init__(self, id, uuid, name, emailAddr, age, dob, height, roles, status, addTs, updTs):
+        self.id = id
+        self.uuid = uuid
         self.name = name
-        self.favorite_number = favorite_number
-        self.favorite_color = favorite_color
+        self.emailAddr = emailAddr
+        self.age = age
+        self.dob = dob
+        self.height = height
+        self.roles = roles
+        self.status = status
+        self.addTs = addTs
+        self.updTs = updTs
 
 
 def dict_to_user(obj, ctx):
-    """
-    Converts object literal(dict) to a User instance.
-    Args:
-        obj (dict): Object literal(dict)
-        ctx (SerializationContext): Metadata pertaining to the serialization
-            operation.
-    """
     if obj is None:
         return None
 
-    return User(name=obj['name'],
-                favorite_number=obj['favorite_number'],
-                favorite_color=obj['favorite_color'])
+    return User(
+        id=obj['id'],
+        uuid=obj['uuid'],
+        name=obj['name'],
+        emailAddr=obj['emailAddr'],
+        age=obj['age'],
+        dob=obj['dob'],
+        height=obj['height'],
+        roles=obj['roles'],
+        status=obj['status'],
+        addTs=obj['addTs'],
+        updTs=obj['updTs']
+    )
 
 
 def main(args):
-    topic = args.topic
 
-    schema_str = """
-    {
-        "namespace": "confluent.io.examples.serialization.avro",
-        "name": "User",
-        "type": "record",
-        "fields": [
-            {"name": "name", "type": "string"},
-            {"name": "favorite_number", "type": "int"},
-            {"name": "favorite_color", "type": "string"}
-        ]
-    }
-    """
+    topic = "kafka-avro-topic"
+    consumer_conf = KafkaConfigFactory.consumer('PLAINTEXT')
+    consumer = ConsumerFactory.serializer(consumer_conf,"resources/avro/user-record.avsc", dict_to_user)
 
-    sr_conf = {'url': args.schema_registry}
-    schema_registry_client = SchemaRegistryClient(sr_conf)
-
-    avro_deserializer = AvroDeserializer(schema_registry_client,
-                                         schema_str,
-                                         dict_to_user)
-    string_deserializer = StringDeserializer('utf_8')
-
-    consumer_conf = {'bootstrap.servers': args.bootstrap_servers,
-                     'key.deserializer': string_deserializer,
-                     'value.deserializer': avro_deserializer,
-                     'group.id': args.group,
-                     'auto.offset.reset': "earliest"}
-
-    consumer = DeserializingConsumer(consumer_conf)
     consumer.subscribe([topic])
 
     while True:
@@ -101,14 +82,11 @@ def main(args):
             if msg is None:
                 continue
 
+            key = msg.key()
             user = msg.value()
             if user is not None:
-                print("User record {}: name: {}\n"
-                      "\tfavorite_number: {}\n"
-                      "\tfavorite_color: {}\n"
-                      .format(msg.key(), user.name,
-                              user.favorite_color,
-                              user.favorite_number))
+                print("Key : {} User : {} ".format(msg.key(), user.name))
+
         except KeyboardInterrupt:
             break
 
@@ -116,10 +94,10 @@ def main(args):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Consumer Example client with serialization capabilities")
-    parser.add_argument('-b', dest="bootstrap_servers", required=True, help="Bootstrap broker(s) (host[:port])")
-    parser.add_argument('-s', dest="schema_registry", required=True, help="Schema Registry (http(s)://host[:port]")
-    parser.add_argument('-t', dest="topic", default="example_serde_avro", help="Topic name")
-    parser.add_argument('-g', dest="group", default="example_serde_avro", help="Consumer group")
-
-    main(parser.parse_args())
+    # parser = argparse.ArgumentParser(description="Consumer Example client with serialization capabilities")
+    # parser.add_argument('-b', dest="bootstrap_servers", required=True, help="Bootstrap broker(s) (host[:port])")
+    # parser.add_argument('-s', dest="schema_registry", required=True, help="Schema Registry (http(s)://host[:port]")
+    # parser.add_argument('-t', dest="topic", default="example_serde_avro", help="Topic name")
+    # parser.add_argument('-g', dest="group", default="example_serde_avro", help="Consumer group")
+    # parser.parse_args()
+    main({})

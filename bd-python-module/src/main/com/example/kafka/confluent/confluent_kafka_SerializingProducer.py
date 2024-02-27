@@ -94,31 +94,11 @@ def delivery_report(err, msg):
 def main(args):
 
     topic = "kafka-avro-topic"
-    schema_str = """
-    {
-        "namespace": "confluent.io.examples.serialization.avro",
-        "name": "User",
-        "type": "record",
-        "fields": [
-            {"name": "name", "type": "string"},
-            {"name": "favorite_number", "type": "int"},
-            {"name": "favorite_color", "type": "string"}
-        ]
-    }
-    """
-    # schema_registry_conf = {'url': 'http://schemaregistry:8081'}
-    # schema_registry_client = SchemaRegistryClient(schema_registry_conf)
-    # avro_serializer = AvroSerializer(schema_registry_client, schema_str, user_to_dict)
 
     producer_conf = KafkaConfigFactory.producer('PLAINTEXT')
     producer = ProducerFactory.serializer(producer_conf,"resources/avro/user-record.avsc", user_to_dict)
 
-    # producer_conf = {'bootstrap.servers': args.bootstrap_servers,
-    #                  'key.serializer': StringSerializer('utf_8'),
-    #                  'value.serializer': avro_serializer}
     #
-    # producer = SerializingProducer(producer_conf)
-
     print("Producing user records to topic {}. ^C to exit.".format(topic))
     while True:
         # Serve on_delivery callbacks from previous calls to produce()
@@ -129,21 +109,22 @@ def main(args):
             # int(time.timestamp() * 1000)
             event_datetime = datetime.now().timestamp()
             # d_in_ms = int(event_datetime.strftime("%S"))
-            user = {
-                'id': random.randint(1000, 5000),
-                'uuid': str(uuid4()),
-                'name': random.choice(u_names),
-                'emailAddr': "abc@gmail.com",
-                'age': random.randint(18, 70),
-                'dob': random.randint(18, 70),
-                'height': round(random.uniform(5.0, 7.0)),
-                'roles': ['admin', 'Technology'],
-                'status': 'Active',
-                'addTs': int(event_datetime),
-                'updTs': int(event_datetime)
-            }
-            key = user['uuid']
-            producer.produce(topic=topic, key=user['uuid'], value=user)
+            user = User(
+                id=random.randint(1000, 5000),
+                uuid=str(uuid4()),
+                name=random.choice(u_names),
+                emailAddr="abc@gmail.com",
+                age=random.randint(18, 99),
+                dob=random.randint(18, 70),
+                height=round(random.uniform(5.0, 7.0)),
+                roles=['Admin', 'Technology'],
+                status='Active',
+                addTs=int(event_datetime),
+                updTs=int(event_datetime)
+            )
+            key = user.uuid
+            producer.produce(topic=topic, key=key, value=user)
+            sleep(1)
         except KeyboardInterrupt:
             break
         except ValueError:

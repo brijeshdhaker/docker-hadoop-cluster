@@ -9,7 +9,7 @@ from confluent_kafka.avro.serializer import SerializerError
 from confluent_kafka.schema_registry.avro import AvroDeserializer
 from confluent_kafka.serialization import StringDeserializer
 from confluent_kafka_usecase import commit_completed
-
+from com.example.utils.AvroUtils import load_avro_schema, load_avro_str
 import json
 
 #
@@ -68,6 +68,23 @@ class ConsumerFactory(object):
             'auto.offset.reset': "earliest",
             'group.id': 'kafka_json_cg'
         })
+        consumer = DeserializingConsumer(consumer_config)
+        return consumer
+
+
+    @staticmethod
+    def serializer(consumer_config, schema_file, deserializer_ctx):
+        #
+        key_str, schema_str = load_avro_str(schema_file)
+        schema_registry_client = SchemaRegistryClient({'url': 'http://schemaregistry:8081'})
+        custom_deserializer = AvroDeserializer(schema_registry_client, schema_str, deserializer_ctx)
+        string_deserializer = StringDeserializer('utf_8')
+        consumer_config.update({
+            'key.deserializer': string_deserializer,
+            'value.deserializer': custom_deserializer,
+            'group.id': 'kafka_avro_cg'
+        })
+
         consumer = DeserializingConsumer(consumer_config)
         return consumer
 
