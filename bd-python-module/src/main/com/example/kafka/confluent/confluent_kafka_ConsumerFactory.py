@@ -8,7 +8,7 @@ from confluent_kafka.avro import AvroConsumer
 from confluent_kafka.avro.serializer import SerializerError
 from confluent_kafka.schema_registry.avro import AvroDeserializer
 from confluent_kafka.serialization import StringDeserializer
-from confluent_kafka_usecase import commit_completed
+from confluent_kafka_usecase import commit_report
 from com.example.utils.AvroUtils import load_avro_schema, load_avro_str
 import json
 

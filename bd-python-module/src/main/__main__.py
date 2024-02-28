@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import argparse
+
 # This is a sample Python script.
 
 # Press Shift+F10 to execute it or replace it with your code.
@@ -19,8 +24,14 @@ print ("Always executed")
 
 # Press the green button in the gutter to run the script.
 if __name__ == "__main__":
+
     print ("Executed when invoked directly")
-    print_hi("Brijesh D.")
+    parser = argparse.ArgumentParser(description="Consumer Example client with serialization capabilities")
+    parser.add_argument('-h', dest="host", default="localhost", required=True, help="hostname")
+    parser.add_argument('-n', dest="appname", required=True, help="App Name")
+    args = parser.parse_args()
+
+    print_hi(args['host'])
 
 else:
     print ("Executed when imported")

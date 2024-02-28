@@ -165,7 +165,7 @@ def asynchronous_commit_loop(consumer, topics):
 #
 #
 #
-def commit_completed(err, partitions):
+def commit_report(err, partitions):
     if err:
         print(str(err))
     else:

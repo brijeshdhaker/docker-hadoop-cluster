@@ -8,7 +8,7 @@ from confluent_kafka.avro import AvroConsumer
 from confluent_kafka.avro.serializer import SerializerError
 from confluent_kafka.schema_registry.avro import AvroDeserializer
 from confluent_kafka.serialization import StringDeserializer
-from confluent_kafka_usecase import commit_completed, delivery_report
+from confluent_kafka_usecase import commit_report, delivery_report
 
 import json
 import socket
@@ -46,12 +46,13 @@ class KafkaConfigFactory(object):
         kafka_config = KafkaConfigFactory.__setup(connection_type)
         kafka_config.update({
             'enable.auto.commit': False,
-            'on_commit': commit_completed
+            'on_commit': commit_report
         })
         return kafka_config
 
     @staticmethod
     def __setup(connection_type):
+
         kafka_config = {
             'client.id': socket.gethostname(),
         }

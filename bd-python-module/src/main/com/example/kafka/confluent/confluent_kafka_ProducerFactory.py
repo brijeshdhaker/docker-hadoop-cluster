@@ -19,7 +19,7 @@ class ProducerFactory(object):
 
     def switch(self, producer_type):
         switch={
-            "simple": "",
+            "simple": "simple",
             "deserializer": "deserializer",
         }
         return switch.get(producer_type, "Invalid input")
@@ -29,8 +29,7 @@ class ProducerFactory(object):
     #
     @staticmethod
     def simple(producer_config):
-        producer = Producer(producer_config)
-        return producer
+        return Producer(producer_config)
 
     #
     #
@@ -40,17 +39,11 @@ class ProducerFactory(object):
 
         key_schema, value_schema = load_avro_schema(schema_file)
         #
-        schema_str = load_avro_str(schema_file)
-
-        # schema_registry_client = SchemaRegistryClient({'url': 'http://schemaregistry:8081'})
-        # avro_serializer = AvroSerializer(schema_registry_client, schema_str, user_to_dict)
         producer_config.update({
             'schema.registry.url': 'http://schemaregistry:8081',
             'auto.offset.reset': "earliest"
         })
-
-        producer = AvroProducer(producer_config, default_key_schema=key_schema, default_value_schema=value_schema)
-        return producer
+        return AvroProducer(producer_config, default_key_schema=key_schema, default_value_schema=value_schema)
 
 
     @staticmethod
@@ -65,9 +58,7 @@ class ProducerFactory(object):
             'value.serializer': custom_serializer,
             'auto.offset.reset': "earliest"
         })
-
-        producer = SerializingProducer(producer_config)
-        return producer
+        return SerializingProducer(producer_config)
 
     #
     #
@@ -80,8 +71,7 @@ class ProducerFactory(object):
             'value.serializer': string_serializer,
             'auto.offset.reset': "earliest"
         })
-        consumer = SerializingProducer(producer_config)
-        return consumer
+        return SerializingProducer(producer_config)
 
     #
     #
