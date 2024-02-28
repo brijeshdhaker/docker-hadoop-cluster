@@ -4,40 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-02-26 Update Confluent Kafka Consumers.">
-      <change afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_ProducerFactory.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/utils/FileUtils.py" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-02-28 Update Confluent Kafka Consumers.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_AvroConsumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_AvroConsumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_AvroProducer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_AvroProducer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_SerializingProducer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_SerializingProducer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_config_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_ConfigFactory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_consumer_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_ConsumerFactory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_sasl_ssl_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_sasl_ssl_consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_sasl_ssl_producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_sasl_ssl_producer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_simple_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_simple_consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_simple_producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_simple_producer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_usecase.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_usecase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/custom_avro_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/custom_avro_consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/test" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_avro_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_avro_consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_avro_producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_avro_producer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_confluent_avro_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_confluent_avro_consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/kafka-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/kafka-stream.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/spark-kafkaread-batch.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/spark-kafkaread-batch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/KafkaStreamDemo.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/KafkaStreamDemo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/transaction_avro_stream_producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/transaction_avro_stream_producer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/utils/load_avro_schema_from_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/utils/AvroUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/conda-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/conda-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/docker-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/docker-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/hive-beeline.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/hive-beeline.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/hive-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/hive-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/hive-setup.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/hive-setup.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/kafka-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/kafka-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/kcat-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/kcat-help.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/kcat-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/kcat-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_airflow.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_airflow.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_clients.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_clients.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_spark.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_spark312.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_zeppelin.env" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,9 +115,12 @@
     "Docker.ubuntu.executor": "Run",
     "Maven.bd-python-module [package].executor": "Run",
     "Python.FileUtils.executor": "Run",
+    "Python.User.executor": "Run",
     "Python.app.executor": "Run",
     "Python.confluent_kafka_AvroConsumer.executor": "Run",
     "Python.confluent_kafka_AvroProducer.executor": "Run",
+    "Python.confluent_kafka_ConsumerFactory.executor": "Run",
+    "Python.confluent_kafka_DeserializingConsumer.executor": "Debug",
     "Python.confluent_kafka_ProducerFactory.executor": "Run",
     "Python.confluent_kafka_SerializingProducer.executor": "Debug",
     "Python.confluent_kafka_simple_consumer.executor": "Run",
@@ -167,6 +143,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.31724137",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "build.tools"
   }
 }]]></component>
@@ -186,7 +163,7 @@
       <recent name="$PROJECT_DIR$/bd-python-module" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.confluent_kafka_SerializingProducer">
+  <component name="RunManager" selected="Python.confluent_kafka_DeserializingConsumer">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -198,7 +175,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FileUtils" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="User" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="bd-python-module" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -207,11 +184,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-python-module/src/main/com/example/utils" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-python-module/src/main/com/example/models" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-python-module/src/main/com/example/utils/FileUtils.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-python-module/src/main/com/example/models/User.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -242,7 +219,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="confluent_kafka_AvroConsumer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="confluent_kafka_ConsumerFactory" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="bd-python-module" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -255,7 +232,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_AvroConsumer.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_ConsumerFactory.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -264,7 +241,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="confluent_kafka_AvroProducer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="confluent_kafka_DeserializingConsumer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="bd-python-module" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -277,29 +254,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_AvroProducer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="confluent_kafka_ProducerFactory" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="bd-python-module" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_ProducerFactory.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_DeserializingConsumer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -353,20 +308,28 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-kafka-cluster.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.confluent_kafka_AvroConsumer" />
-      <item itemvalue="Python.confluent_kafka_ProducerFactory" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment" />
+      <item itemvalue="Python.User" />
+      <item itemvalue="Python.confluent_kafka_ConsumerFactory" />
+      <item itemvalue="Python.confluent_kafka_DeserializingConsumer" />
       <item itemvalue="Python.confluent_kafka_SerializingProducer" />
-      <item itemvalue="Python.confluent_kafka_AvroProducer" />
-      <item itemvalue="Python.FileUtils" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.confluent_kafka_DeserializingConsumer" />
+        <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment" />
         <item itemvalue="Python.confluent_kafka_SerializingProducer" />
-        <item itemvalue="Python.confluent_kafka_AvroProducer" />
-        <item itemvalue="Python.confluent_kafka_ProducerFactory" />
-        <item itemvalue="Python.confluent_kafka_AvroConsumer" />
-        <item itemvalue="Python.FileUtils" />
+        <item itemvalue="Python.confluent_kafka_ConsumerFactory" />
+        <item itemvalue="Python.User" />
       </list>
     </recent_temporary>
   </component>
@@ -578,7 +541,31 @@
       <option name="project" value="LOCAL" />
       <updated>1708923231301</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="2024-02-27 Update Confluent Kafka Consumers.">
+      <option name="closed" value="true" />
+      <created>1709012432253</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1709012432253</updated>
+    </task>
+    <task id="LOCAL-00026" summary="2024-02-27 Update Confluent Kafka Consumers.">
+      <option name="closed" value="true" />
+      <created>1709051415128</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1709051415128</updated>
+    </task>
+    <task id="LOCAL-00027" summary="2024-02-28 Update Confluent Kafka Consumers.">
+      <option name="closed" value="true" />
+      <created>1709089956280</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1709089956280</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -602,7 +589,9 @@
     <MESSAGE value="2024-02-24 Merge Docker Projects." />
     <MESSAGE value="2024-02-25 Change Project Packaging." />
     <MESSAGE value="2024-02-26 Update Confluent Kafka Consumers." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-02-26 Update Confluent Kafka Consumers." />
+    <MESSAGE value="2024-02-27 Update Confluent Kafka Consumers." />
+    <MESSAGE value="2024-02-28 Update Confluent Kafka Consumers." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-02-28 Update Confluent Kafka Consumers." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -622,9 +611,9 @@
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_SerializingProducer.py</url>
-          <line>113</line>
-          <option name="timeStamp" value="12" />
+          <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_DeserializingConsumer.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
