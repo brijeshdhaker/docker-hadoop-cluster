@@ -60,7 +60,7 @@ if __name__ == '__main__':
         #
         print("Avro Record: {}\t{} at time {}".format(user['uuid'], user['name'], user['addTs']))
         avroProducer.produce(topic=topic, key=key, value=user)
-        sleep(5)
+        sleep(1)
 
     avroProducer.flush()
     print("{} messages were produced to topic {}!".format(delivered_records, topic))

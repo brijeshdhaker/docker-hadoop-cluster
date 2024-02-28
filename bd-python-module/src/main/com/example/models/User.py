@@ -59,7 +59,6 @@ class User(object):
     def to_obj(d, ctx=None):
         if d is None:
             return None
-
         u = User()
         u.id = d['id']
         u.uuid = d['uuid']
@@ -71,7 +70,7 @@ class User(object):
         u.roles = d['roles']
         u.status = d['status']
         u.addTs = d['addTs']
-        u.updTs=d['updTs']
+        u.updTs= d['updTs']
         return u
 
     #
@@ -81,7 +80,8 @@ class User(object):
     def to_dict(obj, ctx=None):
         if obj is None:
             return None
-
+        # _udicti  =  obj.__dict__
+        # _udictv  =  vars(obj)
         return dict(
             id=obj.id,
             uuid=obj.uuid,
@@ -91,6 +91,8 @@ class User(object):
             dob=obj.dob,
             height=obj.height,
             roles=obj.roles,
-            status=obj.status
+            status=obj.status,
+            addTs=obj.addTs,
+            updTs=obj.updTs
         )
 

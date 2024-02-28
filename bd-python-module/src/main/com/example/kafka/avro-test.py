@@ -4,7 +4,7 @@ from avro.io import DatumWriter, DatumReader
 import avro.io
 
 # Path to user.avsc avro schema
-schema_path= "confluent/user.avsc"
+schema_path= "resources/avro/test_schema.avsc"
 schema = avro.schema.parse(open(schema_path).read())
 
 
