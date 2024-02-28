@@ -4,6 +4,7 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$/bd-python-module">
       <sourceFolder url="file://$MODULE_DIR$/bd-python-module/src/main" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/bd-python-module/src/test" isTestSource="true" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.7 (pyspark37)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
