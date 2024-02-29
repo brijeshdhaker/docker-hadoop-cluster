@@ -43,30 +43,30 @@
                 </executions>
             </plugin>
 
-<!--            <plugin>-->
-<!--                <artifactId>maven-resources-plugin</artifactId>-->
-<!--                <version>3.0.2</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>copy-artifact</id>-->
-<!--                        <phase>package</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>copy-resources</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <outputDirectory>${project.build.directory}</outputDirectory>-->
-<!--                            <resources>-->
-<!--                                <resource>-->
-<!--                                    <directory>${basedir}/resources</directory>-->
-<!--                                    <includes>-->
-<!--                                        <include>**/*</include>-->
-<!--                                    </includes>-->
-<!--                                </resource>-->
-<!--                            </resources>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                    <execution>
+                        <id>copy-artifact</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>/apps/hostpath/python/</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}/</directory>
+                                    <includes>
+                                        <include>*-distro.zip</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
         </plugins>
     </build>

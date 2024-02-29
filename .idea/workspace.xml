@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-02-29 Update Confluent Kafka Consumers.">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-delimiter-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-delimiter-txn-stream.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-json-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-json-txn-stream.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-kafka-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-kafka-txn-stream.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +116,11 @@
     "Docker.docker-compose.yml.timelineserver: Compose Deployment.executor": "Run",
     "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
     "Docker.ubuntu.executor": "Run",
+    "Maven.bd-python-module [clean].executor": "Run",
+    "Maven.bd-python-module [install].executor": "Run",
+    "Maven.bd-python-module [org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy].executor": "Run",
     "Maven.bd-python-module [package].executor": "Run",
+    "Maven.bd-python-module [verify].executor": "Run",
     "Python tests.Python tests for test_User.test_random.executor": "Debug",
     "Python tests.Python tests for test_User.test_to_dict.executor": "Debug",
     "Python tests.Python tests for test_User.test_to_obj.executor": "Run",
@@ -178,7 +182,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.confluent_transaction_producer">
+  <component name="RunManager" selected="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -303,8 +307,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.confluent_transaction_producer" />
         <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
+        <item itemvalue="Python.confluent_transaction_producer" />
         <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment" />
         <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment" />
         <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment" />
@@ -575,7 +579,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709168318304</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="2024-02-29 Update Confluent Kafka Consumers.">
+      <option name="closed" value="true" />
+      <created>1709175896444</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1709175896444</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="UnknownFeatures">

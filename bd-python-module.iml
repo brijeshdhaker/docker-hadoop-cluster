@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="PYTHON_MODULE" version="4">
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
-    <exclude-output />
-    <content url="file://$MODULE_DIR$/bd-python-module">
+  <component name="AdditionalModuleElements">
+    <content url="file://$MODULE_DIR$/bd-python-module" dumb="true">
       <sourceFolder url="file://$MODULE_DIR$/bd-python-module/src/main" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bd-python-module/src/test" isTestSource="true" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.7 (pyspark37)" jdkType="Python SDK" />
-    <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

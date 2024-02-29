@@ -10,11 +10,6 @@
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
-    <option name="ignoredFiles">
-      <set>
-        <option value="$PROJECT_DIR$/bd-python-module/pom.xml" />
-      </set>
-    </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="Python 3.12" project-jdk-type="Python SDK" />
   <component name="PythonCompatibilityInspectionAdvertiser">
