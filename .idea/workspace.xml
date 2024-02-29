@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-02-29 Update Confluent Kafka Consumers.">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme-resources/iceburg-help.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/hive-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/hive-site.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hive/client/hive-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hive/client/hive-site.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +65,8 @@
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment.executor": "Run",
@@ -182,7 +184,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment">
+  <component name="RunManager" selected="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -216,28 +218,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="confluent_transaction_producer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="bd-python-module" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_transaction_producer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="Tox" factoryName="Tox">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -261,18 +241,28 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
+          <option name="services">
+            <list>
+              <option value="hiveserver" />
+            </list>
+          </option>
           <option name="sourceFilePath" value="bd-docker-sandbox/dc-hive-cluster.yaml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-kafka-cluster.yaml" />
+          <option name="services">
+            <list>
+              <option value="metastore" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hive-cluster.yaml" />
         </settings>
       </deployment>
       <method v="2" />
@@ -280,6 +270,19 @@
     <configuration name="bd-docker-sandbox/docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
+          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="gateway" />
+            </list>
+          </option>
           <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yaml" />
         </settings>
       </deployment>
@@ -299,19 +302,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment" />
       <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
       <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment" />
-      <item itemvalue="Python.confluent_transaction_producer" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
-        <item itemvalue="Python.confluent_transaction_producer" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment" />
         <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -587,7 +590,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709175896444</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="2024-02-29 Update Confluent Kafka Consumers.">
+      <option name="closed" value="true" />
+      <created>1709179015706</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1709179015706</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="UnknownFeatures">
