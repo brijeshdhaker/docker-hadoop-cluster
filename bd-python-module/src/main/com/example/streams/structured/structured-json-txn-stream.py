@@ -62,7 +62,7 @@ recordsDFWithWatermark.writeStream \
     .format("console") \
     .option("maxRows", 50) \
     .option("truncate", False) \
-    .trigger(processingTime="5 seconds")\
+    .trigger(processingTime="15 seconds")\
     .start() \
     .awaitTermination()
 

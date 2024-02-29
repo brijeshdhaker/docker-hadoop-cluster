@@ -4,23 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-02-28 Update Confluent Kafka Consumers.">
-      <change afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/azure/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/parquet/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme-resources/cassandra-help.md" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-02-29 Update Confluent Kafka Consumers.">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/azure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/azure/spark-azure-storage.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/azure/spark-azure-storage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/data/sampledata.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/data/sampledata.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/hive/pyspark-hive-context.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/hive/pyspark-hive-context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/hive/pyspark-hive-session.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/hive/pyspark-hive-session.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/schemas/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/schemas/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/parquet/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/schemas/schema-merge.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/parquet/schema-merge.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/sql/sql-s3a-read.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws/sql-s3a-read.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/spark-kafkaread-batch.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-kafka-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-kafka-stream.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/test/test_partitioner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-delimiter-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-delimiter-txn-stream.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-json-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-json-txn-stream.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-kafka-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-kafka-txn-stream.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +65,7 @@
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment.executor": "Run",
@@ -87,6 +77,7 @@
     "Docker.bd-docker-sandbox/docker-compose.yaml.hiveserver: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/docker-compose.yaml.metastore: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/docker-compose.yaml.mysqlserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox.gateway: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment.executor": "Run",
@@ -144,7 +135,7 @@
     "Python.confluent_kafka_ProducerFactory.executor": "Run",
     "Python.confluent_kafka_SerializingProducer.executor": "Run",
     "Python.confluent_kafka_simple_consumer.executor": "Run",
-    "Python.confluent_transaction_producer.executor": "Debug",
+    "Python.confluent_transaction_producer.executor": "Run",
     "Python.hello-spark.executor": "Run",
     "Python.kafka_python_partitioned_consumer.executor": "Run",
     "Python.kafka_python_partitioned_producer.executor": "Run",
@@ -187,7 +178,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment">
+  <component name="RunManager" selected="Python.confluent_transaction_producer">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -221,28 +212,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="confluent_kafka_AvroProducer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="bd-python-module" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-python-module" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_AvroProducer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="confluent_transaction_producer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="bd-python-module" />
       <option name="ENV_FILES" value="" />
@@ -257,28 +226,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_transaction_producer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test_partitioner" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="bd-python-module" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-python-module/src/test/test_partitioner.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -310,15 +257,18 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
-          <option name="services">
-            <list>
-              <option value="datanode" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hadoop-cluster.yaml" />
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hive-cluster.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-kafka-cluster.yaml" />
         </settings>
       </deployment>
       <method v="2" />
@@ -331,20 +281,33 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="zeppelin" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <list>
+      <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
       <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment" />
-      <item itemvalue="Python.test_partitioner" />
       <item itemvalue="Python.confluent_transaction_producer" />
-      <item itemvalue="Python.confluent_kafka_AvroProducer" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment" />
-        <item itemvalue="Python.test_partitioner" />
         <item itemvalue="Python.confluent_transaction_producer" />
-        <item itemvalue="Python.confluent_kafka_AvroProducer" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -604,7 +567,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709140414437</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="2024-02-29 Update Confluent Kafka Consumers.">
+      <option name="closed" value="true" />
+      <created>1709168318304</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1709168318304</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -630,7 +601,8 @@
     <MESSAGE value="2024-02-26 Update Confluent Kafka Consumers." />
     <MESSAGE value="2024-02-27 Update Confluent Kafka Consumers." />
     <MESSAGE value="2024-02-28 Update Confluent Kafka Consumers." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-02-28 Update Confluent Kafka Consumers." />
+    <MESSAGE value="2024-02-29 Update Confluent Kafka Consumers." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-02-29 Update Confluent Kafka Consumers." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

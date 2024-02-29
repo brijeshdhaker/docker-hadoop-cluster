@@ -4,7 +4,7 @@ $SPARK_HOME/bin/spark-submit \
 --name "spark-structured-avro-stream" \
 --master local[4] \
 --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 \
-/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-python-module/src/main/com/example/streams/structured/structured-kafka-stream.py
+/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-python-module/src/main/com/example/streams/structured/structured-kafka-txn-stream.py
 
 """
 
@@ -78,7 +78,7 @@ def process_txn_stream(args):
 
 
     #
-    # spark.conf.set("spark.sql.streaming.checkpointLocation", "/apps/var/checkpoints/spark-structured-txn-stream")
+    spark.conf.set("spark.sql.streaming.checkpointLocation", "/apps/var/checkpoints/spark-structured-txn-stream")
     spark.conf.set("spark.sql.shuffle.partitions", "1")
     spark.conf.set("spark.sql.hive.convertMetastoreParquet", "false")
     spark.sparkContext.setLogLevel('ERROR')
@@ -103,7 +103,7 @@ def process_txn_stream(args):
     # Subscribe to 1 topic
     structureStreamDf = spark.readStream.format("kafka") \
         .option("kafka.bootstrap.servers", "kafkabroker.sandbox.net:9092") \
-        .option("subscribe", "txn-text-stream-topic") \
+        .option("subscribe", args['topic']) \
         .option("startingOffsets", "earliest") \
         .option("failOnDataLoss", "false") \
         .load() \
@@ -181,18 +181,21 @@ def process_txn_stream(args):
             .outputMode("complete") \
             .trigger(processingTime="15 seconds") \
             .start()
-        spark.sql("select * from tableName").show()   # interactively query in-memory table
+
+        # spark.sql("select * from tableName").show()   # interactively query in-memory table
 
     #
     if args['sink_format'] == "file" :
         # Writing to File sink can be "parquet" "orc", "json", "csv", etc.
+        print("Stream write activated in parquet file ")
         hiveWarehouseDF.writeStream \
             .format("parquet") \
             .option("path", "hdfs://namenode.sandbox.net:9000/warehouse/tablespace/external/hive/transaction_details/") \
             .option("checkpointLocation", "hdfs://namenode.sandbox.net:9000/apps/var/checkpoints/transaction_details/") \
             .partitionBy("txn_receive_date") \
             .trigger(processingTime="15 seconds") \
-            .start()
+            .start() \
+            .awaitTermination()
 
     if args['sink_format'] == "console" :
         # Writing to console sink (for debugging)
@@ -217,7 +220,7 @@ else:
         'topic': "spark-text-txn-topic",
         'auth_type': "PLAINTEXT",
         'run_mode': "local",
-        'sink_format': 'console'
+        'sink_format': 'file'
     }
     process_txn_stream(args)
 
