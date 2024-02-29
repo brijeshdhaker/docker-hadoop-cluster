@@ -1,3 +1,14 @@
+"""
+
+$SPARK_HOME/bin/spark-submit \
+--name "spark-structured-avro-stream" \
+--master local[4] \
+--packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 \
+/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-python-module/src/main/com/example/streams/structured/structured-kafka-stream.py
+
+"""
+
+
 #
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import *
@@ -137,38 +148,50 @@ def process_txn_stream(args):
         # Writing to Kafka
         structureStreamDf.writeStream \
             .format("kafka") \
-            .option("kafka.bootstrap.servers", "localhost:19092") \
+            .option("kafka.bootstrap.servers", "kafkabroker.sandbox.net:9092") \
             .option("topic", "structured-stream-sink") \
+            .trigger(processingTime="15 seconds") \
             .start()
+
+    if args['sink_format'] == "jdbc" :
+        structureStreamDf.write.format('jdbc') \
+            .option("url", "jdbc:mysql://mysqlserver:3306/USER") \
+            .option("driver", "com.mysql.jdbc.Driver") \
+            .option("dbtable", "USER") \
+            .option("user", "root") \
+            .option("password", "p@SSW0rd") \
+            .mode('append') \
+            .trigger(processingTime="15 seconds") \
+            .save()
 
     if args['sink_format'] == "batch" :
         # ForeachBatch Sink
         hiveWarehouseDF.writeStream \
             .foreachBatch(writeToHiveWarehouse) \
             .start() \
+            .trigger(processingTime="15 seconds") \
             .awaitTermination()
 
 
-    if args['sink_format'] == "file" :
+    if args['sink_format'] == "memory" :
         # Writing to Memory sink (for debugging)
         structureStreamDf.writeStream\
             .format("memory")\
             .queryName("tableName") \
             .outputMode("complete") \
+            .trigger(processingTime="15 seconds") \
             .start()
         spark.sql("select * from tableName").show()   # interactively query in-memory table
 
-
-
-
+    #
     if args['sink_format'] == "file" :
         # Writing to File sink can be "parquet" "orc", "json", "csv", etc.
         hiveWarehouseDF.writeStream \
             .format("parquet") \
-            .option("path", "hdfs://namenode:9000/transaction_details/") \
-            .option("checkpointLocation", "hdfs://namenode:9000/checkpoints/transaction_details/") \
+            .option("path", "hdfs://namenode.sandbox.net:9000/warehouse/tablespace/external/hive/transaction_details/") \
+            .option("checkpointLocation", "hdfs://namenode.sandbox.net:9000/apps/var/checkpoints/transaction_details/") \
             .partitionBy("txn_receive_date") \
-            .trigger(processingTime="20 seconds") \
+            .trigger(processingTime="15 seconds") \
             .start()
 
     if args['sink_format'] == "console" :
@@ -176,7 +199,7 @@ def process_txn_stream(args):
         windowAggregationDF.writeStream \
             .outputMode("update") \
             .format("console") \
-            .trigger(processingTime="10 seconds") \
+            .trigger(processingTime="15 seconds") \
             .start() \
             .awaitTermination()
 

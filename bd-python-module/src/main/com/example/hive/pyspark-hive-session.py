@@ -9,7 +9,7 @@ if __name__ == "__main__":
         .builder \
         .appName("Hive Session Data Frame Join") \
         .enableHiveSupport() \
-        .config("spark.sql.warehouse.dir", "hdfs://namenode:9000/user/hive/warehouse") \
+        .config("spark.sql.warehouse.dir", "hdfs://namenode:9000/warehouse/tablespace/external/hive/") \
         .getOrCreate()
 
     print(spark.sparkContext.appName)

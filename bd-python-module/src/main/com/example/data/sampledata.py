@@ -120,7 +120,7 @@ product_revenue = [
 #
 #
 CITIES = {
-    "IN":["Delhi", "Chennei", "Pune", "Mumbai", "Banglore"],
+    "IN": ["Delhi", "Chennei", "Pune", "Mumbai", "Banglore"],
     "USA": ["New York", "Los Angeles", "Miami"],
     "UK": ["London", "Manchester", "Liverpool", "Oxford"],
     "JP": ["Tokyo", "Osaka", "Yokohama", "Hiroshima"]

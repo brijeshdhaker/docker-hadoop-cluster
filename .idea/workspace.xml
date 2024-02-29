@@ -5,25 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-02-28 Update Confluent Kafka Consumers.">
-      <change afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/models/Order.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-python-module/src/test/run_tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-python-module/src/test/test_User.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-python-module/src/test/test_static.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-python-module/src/test/test_util.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/azure/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/parquet/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme-resources/cassandra-help.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/avro-test.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/avro-test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_AvroProducer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_AvroProducer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/models/User.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/models/User.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/fake_transaction_stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_transaction_producer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-avro-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-avro-stream.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/azure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/azure/spark-azure-storage.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/azure/spark-azure-storage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/data/sampledata.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/data/sampledata.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/hive/pyspark-hive-context.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/hive/pyspark-hive-context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/hive/pyspark-hive-session.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/hive/pyspark-hive-session.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/schemas/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/schemas/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/parquet/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/schemas/schema-merge.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/parquet/schema-merge.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/sql/sql-s3a-read.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws/sql-s3a-read.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/spark-kafkaread-batch.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-kafka-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-kafka-stream.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/transaction_avro_stream_producer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/transaction_delimiter_stream_producer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/transaction_json_stream_producer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/transaction_text_stream_producer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/utils/DateUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/utils/DateUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/utils/TimeUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/utils/TimeUtils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/test/test_partitioner.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,6 +155,7 @@
     "Python.pyspark-pandas.executor": "Run",
     "Python.run_tests.executor": "Run",
     "Python.structured-avro-stream.executor": "Debug",
+    "Python.test.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -182,14 +180,14 @@
       <recent name="$PROJECT_DIR$/bd-setup-module" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent" />
+      <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws" />
       <recent name="$PROJECT_DIR$/bd-python-module/src/test" />
+      <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/envs" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/readme-resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.confluent_transaction_producer">
+  <component name="RunManager" selected="Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -267,7 +265,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="structured-avro-stream" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="test_partitioner" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="bd-python-module" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -276,11 +274,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-avro-stream.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-python-module/src/test/test_partitioner.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -325,33 +323,28 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
-          <option name="services">
-            <list>
-              <option value="namenode" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hadoop-cluster.yaml" />
+          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yaml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment" />
       <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment" />
+      <item itemvalue="Python.test_partitioner" />
       <item itemvalue="Python.confluent_transaction_producer" />
       <item itemvalue="Python.confluent_kafka_AvroProducer" />
-      <item itemvalue="Python.structured-avro-stream" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment" />
+        <item itemvalue="Python.test_partitioner" />
         <item itemvalue="Python.confluent_transaction_producer" />
         <item itemvalue="Python.confluent_kafka_AvroProducer" />
         <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment" />
-        <item itemvalue="Python.structured-avro-stream" />
       </list>
     </recent_temporary>
   </component>
@@ -595,7 +588,23 @@
       <option name="project" value="LOCAL" />
       <updated>1709090852195</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="2024-02-28 Update Confluent Kafka Consumers.">
+      <option name="closed" value="true" />
+      <created>1709140376589</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1709140376589</updated>
+    </task>
+    <task id="LOCAL-00030" summary="2024-02-28 Update Confluent Kafka Consumers.">
+      <option name="closed" value="true" />
+      <created>1709140414437</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1709140414437</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="UnknownFeatures">

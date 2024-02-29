@@ -7,7 +7,7 @@ if __name__ == "__main__":
 
     # create Spark context with Spark configuration
     conf = SparkConf().setAppName("Hive Context Data Frame Join")
-    conf.set("spark.sql.warehouse.dir", "hdfs://namenode:9000/user/hive/warehouse")
+    conf.set("spark.sql.warehouse.dir", "hdfs://namenode:9000/warehouse/tablespace/external/hive/")
 
     #
     sc = SparkContext(conf=conf)
