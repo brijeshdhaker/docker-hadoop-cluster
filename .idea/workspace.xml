@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-02-29 Update Confluent Kafka Consumers.">
-      <change afterPath="$PROJECT_DIR$/readme-resources/iceburg-help.md" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-03-01 Update PyTest Cases for utils.">
+      <change afterPath="$PROJECT_DIR$/readme-resources/spark-help.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/hive-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/hive-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hive/client/hive-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hive/client/hive-site.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/iceburg-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/iceberg-help.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,10 +122,14 @@
     "Maven.bd-python-module [org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy].executor": "Run",
     "Maven.bd-python-module [package].executor": "Run",
     "Maven.bd-python-module [verify].executor": "Run",
+    "Python tests.Python tests for test_Commons.test_print_separator.executor": "Run",
+    "Python tests.Python tests for test_Commons.test_split_csv.executor": "Run",
+    "Python tests.Python tests for test_Commons.test_split_csv_line.executor": "Debug",
     "Python tests.Python tests for test_User.test_random.executor": "Debug",
     "Python tests.Python tests for test_User.test_to_dict.executor": "Debug",
     "Python tests.Python tests for test_User.test_to_obj.executor": "Run",
     "Python tests.Python tests for test_static.test_flake8.executor": "Debug",
+    "Python tests.Python tests in test_Commons.py.executor": "Debug",
     "Python tests.Python tests in test_User.py.executor": "Run",
     "Python.FileUtils.executor": "Run",
     "Python.Order.executor": "Run",
@@ -184,7 +187,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment">
+  <component name="RunManager" selected="Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -241,36 +244,10 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
-          <option name="services">
-            <list>
-              <option value="hiveserver" />
-            </list>
-          </option>
           <option name="sourceFilePath" value="bd-docker-sandbox/dc-hive-cluster.yaml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="metastore" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hive-cluster.yaml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="bd-docker-sandbox/docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yaml" />
         </settings>
       </deployment>
       <method v="2" />
@@ -288,33 +265,65 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="zeppelin" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yaml" />
-        </settings>
-      </deployment>
+    <configuration name="Python tests for test_Commons.test_split_csv" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="bd-python-module" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-python-module/src/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_Commons.test_split_csv&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_Commons.test_split_csv_line" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="bd-python-module" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-python-module/src/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_Commons.test_split_csv_line&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests in test_Commons.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="bd-python-module" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-python-module/src/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/bd-python-module/src/test/test_Commons.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment" />
       <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment" />
+      <item itemvalue="Python tests.Python tests for test_Commons.test_split_csv" />
+      <item itemvalue="Python tests.Python tests for test_Commons.test_split_csv_line" />
+      <item itemvalue="Python tests.Python tests in test_Commons.py" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment" />
         <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment" />
+        <item itemvalue="Python tests.Python tests for test_Commons.test_split_csv_line" />
+        <item itemvalue="Python tests.Python tests in test_Commons.py" />
+        <item itemvalue="Python tests.Python tests for test_Commons.test_split_csv" />
       </list>
     </recent_temporary>
   </component>
@@ -598,7 +607,23 @@
       <option name="project" value="LOCAL" />
       <updated>1709179015706</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="2024-02-29 Update Confluent Kafka Consumers.">
+      <option name="closed" value="true" />
+      <created>1709225198413</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1709225198413</updated>
+    </task>
+    <task id="LOCAL-00035" summary="2024-03-01 Update PyTest Cases for utils.">
+      <option name="closed" value="true" />
+      <created>1709262904292</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1709262904293</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -625,7 +650,8 @@
     <MESSAGE value="2024-02-27 Update Confluent Kafka Consumers." />
     <MESSAGE value="2024-02-28 Update Confluent Kafka Consumers." />
     <MESSAGE value="2024-02-29 Update Confluent Kafka Consumers." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-02-29 Update Confluent Kafka Consumers." />
+    <MESSAGE value="2024-03-01 Update PyTest Cases for utils." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-03-01 Update PyTest Cases for utils." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -673,11 +699,6 @@
           <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/avro-test.py</url>
           <line>23</line>
           <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-avro-stream.py</url>
-          <line>38</line>
-          <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
