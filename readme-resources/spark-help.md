@@ -41,12 +41,42 @@ $SPARK_HOME/bin/spark-shell \
 # AWS S3 Integration
 ```shell
 $SPARK_HOME/bin/spark-shell \
---packages "org.apache.spark:spark-hadoop-cloud_2.12:3.1.2" \
+--packages "org.apache.spark:spark-hadoop-cloud_2.12:3.5.0" \
 --conf spark.jars.ivy=/apps/hostpath/.ivy2 \
---conf spark.hadoop.fs.s3a.endpoint=http://localhost:9000 \
---conf spark.hadoop.fs.s3a.access.key=abc \
---conf spark.hadoop.fs.s3a.secret.key=xyzxyzxyz \
---conf spark.hadoop.fs.s3a.path.style.access=True) \
+--conf spark.hadoop.fs.s3a.endpoint=http://minio.sandbox.net:9010 \
+--conf spark.hadoop.fs.s3a.access.key=ffaJ6a2MOj8mZ5lI3P6h \
+--conf spark.hadoop.fs.s3a.secret.key=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs \
+--conf spark.hadoop.fs.s3a.path.style.access=true \
+--conf spark.hadoop.fs.s3a.aws.credentials.provider=org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider \
+--conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem
+
+$SPARK_HOME/bin/pyspark \
+--packages "org.apache.spark:spark-hadoop-cloud_2.12:3.5.0" \
+--conf spark.jars.ivy=/apps/hostpath/.ivy2 \
+--conf spark.hadoop.fs.s3a.endpoint=http://minio.sandbox.net:9010 \
+--conf spark.hadoop.fs.s3a.access.key=ffaJ6a2MOj8mZ5lI3P6h \
+--conf spark.hadoop.fs.s3a.secret.key=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs \
+--conf spark.hadoop.fs.s3a.path.style.access=true \
+--conf spark.hadoop.fs.s3a.aws.credentials.provider=org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider \
 --conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem
 
 ```
+
+#
+# Spark SQL CLI
+#
+
+set hive.cli.print.header=false;
+set hive.cli.print.footer=false;
+set hive.cli.print.current.db=true;
+
+spark-sql \
+--hiveconf hive.cli.print.header=true \
+--hiveconf hive.cli.print.current.db=true \
+-e "show tables"
+
+spark-sql --hiveconf hive.cli.print.header=true --hiveconf hive.cli.print.current.db=true -e "dfs -ls /user" | awk "/zeppelin {print $1}"
+
+spark-sql --hiveconf hive.cli.print.header=true --hiveconf hive.cli.print.current.db=true -e "select * from transaction_details" | awk '/VISA/ {print(NR, "\t", $2, "\t", $5)}'
+
+

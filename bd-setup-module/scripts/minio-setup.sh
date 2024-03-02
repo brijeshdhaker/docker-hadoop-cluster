@@ -25,7 +25,7 @@ setup_minio_for_wordcount() {
 }
 
 echo "Creating s3 creds 'warehouse' bucket on minio ${S3_ENDPOINT}"
-mc alias set s3 "${S3_ENDPOINT}" "${MINIO_ACCESS_KEY}" "${MINIO_SECRET_KEY}" --api S3v4
+mc alias set s3 "${AWS_S3_ENDPOINT}" "${MINIO_ACCESS_KEY}" "${MINIO_SECRET_KEY}" --api S3v4
 
 # This allows us to create an "empty" MinIO if we want
 case "$1" in

@@ -1,5 +1,4 @@
-import src.utils.commons as commons
-from pyspark import SparkConf, SparkContext
+from pyspark import SparkConf
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType
 
@@ -8,10 +7,11 @@ conf = (
         .setAppName("Spark minIO Test")
         .set("spark.eventLog.enabled", "true")
         .set("spark.eventLog.dir", "file:///apps/hostpath/spark/logs/")
-        .set("spark.hadoop.fs.s3a.endpoint", "http://localhost:9000")
-        .set("spark.hadoop.fs.s3a.access.key", "abc")
-        .set("spark.hadoop.fs.s3a.secret.key", "xyzxyzxyz")
-        .set("spark.hadoop.fs.s3a.path.style.access", True)
+        .set("spark.hadoop.fs.s3a.endpoint", "http://minio.sandbox.net:9010")
+        .set("spark.hadoop.fs.s3a.access.key", "ffaJ6a2MOj8mZ5lI3P6h")
+        .set("spark.hadoop.fs.s3a.secret.key", "9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs")
+        .set("spark.hadoop.fs.s3a.path.style.access", "true")
+        .set("spark.hadoop.fs.s3a.aws.credentials.provider", "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider")
         .set("spark.hadoop.fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem")
 )
 
@@ -34,9 +34,10 @@ airlinesWithSchema = spark.read.format("csv") \
     .option("header", False) \
     .option("delimiter", ',') \
     .schema(airlineSchema)\
-    .load("s3a://word-count/flights-data/airlines.csv")
+    .load("s3a://warehouse/airlines.csv")
 
 airlinesWithSchema.printSchema()
-airlinesWithSchema.show()
+airlinesWithSchema.show(truncate=False)
+airlinesWithSchema.filter("country='India'").show(truncate=False)
 
-#print(sc.wholeTextFiles('s3a://word-count/flights-data/airlines.csv').collect())
+#print(sc.wholeTextFiles('s3a://warehouse/airlines.csv').collect())

@@ -21,6 +21,9 @@
 # cassandra
 127.0.0.1       cassandra.sandbox.net cassandra
 
+# minio
+127.0.0.1       minio.sandbox.net minio
+
 # mysqlserver
 127.0.0.1       mysqlserver.sandbox.net mysqlserver
 
