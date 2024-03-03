@@ -1,4 +1,48 @@
+
+#
+
+![iceberg-logo](https://www.apache.org/logos/res/iceberg/iceberg.png)
+
+### Spark Session catalog : This configures Spark to use Iceberg's SparkSessionCatalog as a wrapper around that session catalog. 
+### When a table is not an Iceberg table, the built-in catalog will be used to load it instead.
+```
+spark.sql.catalog.spark_catalog = org.apache.iceberg.spark.SparkSessionCatalog
+spark.sql.catalog.spark_catalog.type = hive
+```
+### This creates an Iceberg catalog named hive_prod that loads tables from a Hive metastore:
+```
+spark.sql.catalog.hive_prod = org.apache.iceberg.spark.SparkCatalog
+spark.sql.catalog.hive_prod.type = hive
+spark.sql.catalog.hive_prod.uri = thrift://metastore-host:port
+##### omit uri to use the same URI as Spark: hive.metastore.uris in hive-site.xml
+```
+
+### This creates an Iceberg REST catalog named rest_prod that loads tables from REST URL http://localhost:8080:
+```
+spark.sql.catalog.rest_prod = org.apache.iceberg.spark.SparkCatalog
+spark.sql.catalog.rest_prod.type = rest
+spark.sql.catalog.rest_prod.uri = http://localhost:8080
+```
+### This creates an Iceberg catalog in HDFS that can be configured using type=hadoop
+```
+spark.sql.catalog.hadoop_prod = org.apache.iceberg.spark.SparkCatalog
+spark.sql.catalog.hadoop_prod.type = hadoop
+spark.sql.catalog.hadoop_prod.warehouse = hdfs://namenode.sandbox.net:9000/warehouse/tablespace/external/spark
+```
+
+### Start Spark Shell
+
 ```shell
+$SPARK_HOME/bin/spark-shell \
+--conf spark.jars.ivy=/apps/hostpath/.ivy2 \
+--properties-file $SPARK_HOME/conf/spark-iceburg.conf
+
+--packages org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.4.3 \
+
+$SPARK_HOME/bin/spark-sql \
+--packages org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.4.3 \
+--conf spark.jars.ivy=/apps/hostpath/.ivy2 \
+--properties-file $SPARK_HOME/conf/spark-iceburg.conf
 
 $SPARK_HOME/bin/spark-sql --packages org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.4.3 \
 --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions \
@@ -17,7 +61,7 @@ $SPARK_HOME/bin/spark-sql \
 --conf spark.sql.catalog.hadoop_catalog.type=hadoop \
 --conf spark.sql.catalog.hadoop_catalog.warehouse=/warehouse/tablespace/external/spark \
 --conf spark.sql.defaultCatalog=hadoop_catalog \
---conf "spark.hadoop.hive.cli.print.header=true"
+--conf spark.hadoop.hive.cli.print.header=true
 
 $SPARK_HOME/bin/spark-shell \
 --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions \
@@ -30,7 +74,15 @@ $SPARK_HOME/bin/spark-shell \
 
 ```
 
+# Use Default Spark Catalog
 ```scala
+spark.sql("USE spark_catalog.default").show()
+spark.sql("show tables").show()
+spark.sql("SELECT * FROM spark_catalog.default.m_students").show()
+```
+
+```scala
+
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.Row
 
@@ -41,6 +93,7 @@ val schema = StructType( Array(
     StructField("fare_amount", DoubleType,true),
     StructField("store_and_fwd_flag", StringType,true)
 ))
+
 val df = spark.createDataFrame(spark.sparkContext.emptyRDD[Row],schema)
 df.writeTo("hadoop_catalog.nyc.taxis").create()
 

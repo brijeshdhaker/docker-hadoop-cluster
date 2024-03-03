@@ -94,4 +94,4 @@ export SPARK_HISTORY_OPTS="-Dspark.history.kerberos.enabled=true -Dspark.history
 #
 #
 # Passing a Hadoop configuration directory
-export SPARK_DIST_CLASSPATH=$(${HADOOP_HOME}/bin/hadoop --config ${HADOOP_CONF_DIR} classpath)
+# export SPARK_DIST_CLASSPATH=$(${HADOOP_HOME}/bin/hadoop --config ${HADOOP_CONF_DIR} classpath)

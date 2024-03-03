@@ -1,22 +1,25 @@
 version: "3.9"
 
+include:
+  - dc-minio.yml
+
 services:
   #
   spark-iceberg:
     image: tabulario/spark-iceberg
     container_name: spark-iceberg
-    build: spark/
     networks:
-      iceberg_net:
+      default:
     depends_on:
-      - rest
+      - iceberg-rest
       - minio
     volumes:
-      - /apps/warehouse:/home/iceberg/warehouse
-      - /apps/notebooks:/home/iceberg/notebooks/notebooks
+      - /apps/hostpath/warehouse:/home/iceberg/warehouse
+      - /apps/hostpath/notebooks:/home/iceberg/notebooks/notebooks
+      - ./conf/spark/conf/spark-iceburg.conf:/opt/spark/conf/spark-defaults.conf
     environment:
-      - AWS_ACCESS_KEY_ID=admin
-      - AWS_SECRET_ACCESS_KEY=password
+      - AWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h
+      - AWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
       - AWS_REGION=us-east-1
     ports:
       - 8888:8888
@@ -25,59 +28,21 @@ services:
       - 10001:10001
 
   #
-  rest:
+  iceberg-rest:
     image: tabulario/iceberg-rest
+    hostname: iceberg-rest.sandbox.net
     container_name: iceberg-rest
     networks:
-      iceberg_net:
+      default:
     ports:
       - 8181:8181
     environment:
-      - AWS_ACCESS_KEY_ID=admin
-      - AWS_SECRET_ACCESS_KEY=password
+      - AWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h
+      - AWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
       - AWS_REGION=us-east-1
       - CATALOG_WAREHOUSE=s3://warehouse/
       - CATALOG_IO__IMPL=org.apache.iceberg.aws.s3.S3FileIO
-      - CATALOG_S3_ENDPOINT=http://minio:9000
-
-  #
-  minio:
-    image: minio/minio
-    container_name: minio
-    environment:
-      - MINIO_ROOT_USER=admin
-      - MINIO_ROOT_PASSWORD=password
-      - MINIO_DOMAIN=minio
-    networks:
-      iceberg_net:
-        aliases:
-          - warehouse.minio
-    ports:
-      - 9001:9001
-      - 9000:9000
-    command: ["server", "/data", "--console-address", ":9001"]
-
-  #
-  mc:
-    depends_on:
-      - minio
-    image: minio/mc
-    container_name: mc
-    networks:
-      iceberg_net:
-    environment:
-      - AWS_ACCESS_KEY_ID=admin
-      - AWS_SECRET_ACCESS_KEY=password
-      - AWS_REGION=us-east-1
-    entrypoint: >
-      /bin/sh -c "
-      until (/usr/bin/mc config host add minio http://minio:9000 admin password) do echo '...waiting...' && sleep 1; done;
-      /usr/bin/mc rm -r --force minio/warehouse;
-      /usr/bin/mc mb minio/warehouse;
-      /usr/bin/mc policy set public minio/warehouse;
-      tail -f /dev/null
-      "
-
+      - CATALOG_S3_ENDPOINT=http://minio.sandbox.net:9010
 
 #
 #
@@ -98,4 +63,4 @@ networks:
     driver: bridge
     name: sandbox.net
   #
-  iceberg_net:
+#  iceberg_net:

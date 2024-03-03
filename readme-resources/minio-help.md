@@ -8,8 +8,8 @@
 
 echo "Creating Credentials for 'minio/warehouse' bucket "
 export AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
-export AWS_ACCESS_KEY=ffaJ6a2MOj8mZ5lI3P6h
-export AWS_ACCESS_SECRET=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
+export AWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h
+export AWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
 export AWS_REGION=us-east-1
 
  
@@ -19,7 +19,7 @@ export AWS_REGION=us-east-1
 
 /usr/bin/mc policy set public minio/warehouse;
 
-/usr/bin/mc alias set warehouse "${AWS_S3_ENDPOINT}" "${AWS_ACCESS_KEY}" "${AWS_ACCESS_SECRET}" --api S3v4
+/usr/bin/mc alias set warehouse "${AWS_S3_ENDPOINT}" "${AWS_ACCESS_KEY_ID}" "${AWS_SECRET_ACCESS_KEY}" --api S3v4
 
 /usr/bin/mc admin info warehouse
 

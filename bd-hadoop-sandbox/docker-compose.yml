@@ -55,6 +55,7 @@ services:
       - sandbox_hive_313:/opt/hive
       - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
       - sandbox_spark_312:/opt/spark
+      - ./conf/spark/conf:/opt/spark/conf
       - sandbox_flink_112:/opt/flink
       - sandbox_maven_363:/opt/maven-3.6.3
     environment:
@@ -87,6 +88,7 @@ services:
       - sandbox_zeppelin_conf:/opt/zeppelin/conf
       - sandbox_zeppelin_notebook:/opt/notebook
       - sandbox_spark_312:/opt/spark
+      - ./conf/spark/conf:/opt/spark/conf
       - sandbox_hadoop_311:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - sandbox_hive_313:/opt/hive

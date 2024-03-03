@@ -5,8 +5,7 @@ from pyspark.sql.types import StructType, StructField, StringType, IntegerType
 conf = (
     SparkConf()
         .setAppName("Spark minIO Test")
-        .set("spark.eventLog.enabled", "true")
-        .set("spark.eventLog.dir", "file:///apps/hostpath/spark/logs/")
+        .setMaster("local[*]")
         .set("spark.hadoop.fs.s3a.endpoint", "http://minio.sandbox.net:9010")
         .set("spark.hadoop.fs.s3a.access.key", "ffaJ6a2MOj8mZ5lI3P6h")
         .set("spark.hadoop.fs.s3a.secret.key", "9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs")
