@@ -116,3 +116,28 @@ product_revenue = [
     ("Pro",        "tablet",     4500),
     ("Pro2",       "tablet",     6500)
 ]
+
+#
+#
+CITIES = {
+    "IN": ["Delhi", "Chennei", "Pune", "Mumbai", "Banglore"],
+    "USA": ["New York", "Los Angeles", "Miami"],
+    "UK": ["London", "Manchester", "Liverpool", "Oxford"],
+    "JP": ["Tokyo", "Osaka", "Yokohama", "Hiroshima"]
+}
+
+#
+#
+PRODUCTS = ["Mobile", "Tablet", "Computer", "Laptop", "RAM", "TV", "Speaker", "Mouse", "Keyboard", "LDC", "Monitor", "Printer"]
+
+#
+#
+COUNTRIES = ["IN", "USA", "UK", "JP"]
+
+#
+#
+CCTYPES = ["VISA", "Master", "Amex", "RuPay"]
+
+#
+#
+SITES = ["Amazon", "Flipkart", "SnapDeal", "Myntra", "Ebay"]

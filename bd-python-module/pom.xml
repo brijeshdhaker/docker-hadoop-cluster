@@ -2,14 +2,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.examples.python</groupId>
-    <artifactId>docker-python-module</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <name>docker-python-module</name>
-    <url>http://maven.apache.org</url>
+    <parent>
+        <groupId>org.examples.hadoop</groupId>
+        <artifactId>docker-hadoop-cluster</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>bd-python-module</artifactId>
 
     <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -18,7 +21,7 @@
     </dependencies>
     
     <build>
-        <finalName>bd-python-module</finalName>
+        <finalName>pyspark-module</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -51,12 +54,12 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <outputDirectory>/apps/hostpath/python/</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${basedir}/src</directory>
+                                    <directory>${project.build.directory}/</directory>
                                     <includes>
-                                        <include>${project.build.finalName}*.zip</include>
+                                        <include>*-distro.zip</include>
                                     </includes>
                                 </resource>
                             </resources>

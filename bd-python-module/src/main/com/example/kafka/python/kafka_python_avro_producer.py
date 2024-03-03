@@ -11,7 +11,7 @@ from os.path import expanduser
 from pathlib import Path
 from time import sleep
 from kafka import KafkaProducer
-from com.example.utils.load_avro_schema_from_file import load_avro_schema_as_json
+from com.example.utils.AvroUtils import load_avro_json
 from fastavro import schemaless_writer, schemaless_reader, parse_schema
 from io import BytesIO
 from com.example.models.Transaction import Transaction
@@ -20,7 +20,7 @@ from com.example.models.Transaction import Transaction
 
 AVRO_PATH = Path(expanduser("~"), "IdeaProjects", "spark-python-examples", "resources", "avro",
                  "transaction-record.avsc")
-key_schema, value_schema = load_avro_schema_as_json(AVRO_PATH)
+key_schema, value_schema = load_avro_json(AVRO_PATH)
 #
 #
 #

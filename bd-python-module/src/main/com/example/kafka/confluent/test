@@ -31,15 +31,15 @@ from avro.io import DatumReader, BinaryDecoder
 from confluent_kafka import Consumer
 from confluent_kafka.avro import SerializerError
 
-from com.example.utils.load_avro_schema_from_file import load_avro_schema_as_schema, load_avro_schema_as_str
+from com.example.utils.AvroUtils import load_avro_schema, load_avro_str
 
 if __name__ == '__main__':
 
     # Read arguments and configurations and initialize
     topic = "users-topic"
     BASE_DIR = "/home/brijeshdhaker/PycharmProjects/spark-python-examples/"
-    key_schema, value_schema = load_avro_schema_as_schema(BASE_DIR + 'resources/avro/user-record.avsc')
-    key_schema_str, value_schema_str = load_avro_schema_as_str(BASE_DIR + 'resources/avro/user-record.avsc')
+    key_schema, value_schema = load_avro_schema(BASE_DIR + 'resources/avro/user-record.avsc')
+    key_schema_str, value_schema_str = load_avro_str(BASE_DIR + 'resources/avro/user-record.avsc')
 
     schema = avro.schema.parse(open(BASE_DIR + 'resources/avro/user-record.avsc').read())
 

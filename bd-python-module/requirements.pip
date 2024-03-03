@@ -1,14 +1,30 @@
-flake8
-pytest
-requests
+#
+kafka-python
+confluent-kafka[avro]==1.8.2
+avro==1.11.0
+fastavro==1.4.12
 certifi
-confluent-kafka
 jellyfish
-numpy
-vertica-python
 matplotlib
+numpy
+pytz
+fastapi
+pydantic
+uvicorn
+six
+pyrsistent;python_version>"3.0"
+jsonschema
+requests
+faker
 mysql-connector-python
+
 #postgres connector
 psycopg2
+
 # Required for PySpark
 psutil
+
+#
+delta-spark==1.0.0
+quinn
+chispa

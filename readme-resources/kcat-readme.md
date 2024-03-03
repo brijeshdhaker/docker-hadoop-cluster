@@ -65,12 +65,12 @@ Version 1.5.0-5-ge98256 (JSON, librdkafka 1.3.0 builtin.features=gzip,snappy,ssl
 ```
 Test it:
 ```shell
-➜ kafkacat -b localhost:9092 -L
-Metadata for all topics (from broker 3: localhost:9092/3):
+➜ kafkacat -b kafkabroker.sandbox.net:9092 -L
+Metadata for all topics (from broker 3: kafkabroker.sandbox.net:9092/3):
 3 brokers:
-broker 2 at localhost:19092
-broker 3 at localhost:9092 (controller)
-broker 1 at localhost:9092
+broker 2 at kafkabroker.sandbox.net:19092
+broker 3 at kafkabroker.sandbox.net:9092 (controller)
+broker 1 at kafkabroker.sandbox.net:9092
 ```
 Note
 kafkacat is now known as kcat (ref). When invoking the command you will need to use kcat in place of kafkacat.
@@ -84,15 +84,15 @@ kafkacat -V
 You just need to make sure you wrap your head around Docker networking if you do this, because localhost to a Docker container is not the same (by default) as localhost on your host machine:
 
 ➜ docker run --rm edenhill/kafkacat:1.5.0 \
-kafkacat -b localhost:9092 -L
+kafkacat -b kafkabroker.sandbox.net:9092 -L
 % ERROR: Failed to acquire metadata: Local: Broker transport failure
 If you add --network=host then it will use the network as if executing locally:
 
 ➜ docker run --rm --network=host edenhill/kafkacat:1.5.0 \
-kafkacat -b localhost:9092 -L
+kafkacat -b kafkabroker.sandbox.net:9092 -L
 
-Metadata for all topics (from broker 3: localhost:9092/3):
+Metadata for all topics (from broker 3: kafkabroker.sandbox.net:9092/3):
 3 brokers:
-broker 2 at localhost:19092
-broker 3 at localhost:9092 (controller)
-broker 1 at localhost:9092
+broker 2 at kafkabroker.sandbox.net:19092
+broker 3 at kafkabroker.sandbox.net:9092 (controller)
+broker 1 at kafkabroker.sandbox.net:9092

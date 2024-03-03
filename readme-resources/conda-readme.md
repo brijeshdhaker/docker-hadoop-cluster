@@ -20,14 +20,14 @@ conda init --reverse --all
 #
 
 export PATH=/opt/conda/bin:$PATH
-PYSPARK_PYTHON=/opt/conda/envs/pyspark3.7/bin/python
-PYSPARK_DRIVER_PYTHON=/opt/conda/envs/pyspark3.7/bin/python
+PYSPARK_PYTHON=/opt/conda/envs/pyspark37/bin/python
+PYSPARK_DRIVER_PYTHON=/opt/conda/envs/pyspark37/bin/python
 
 #
 #### Create Conda Virtual Env : Python 3.7
 #
 conda env create -f mr-delta.yml
-mamba env update -f bd-python-module/venv_pyspark37.yml --prune
+mamba env update -f /venv_pyspark37.yml --prune
 conda create -y -n pyspark37 -c conda-forge python=3.7 pyarrow pandas conda-pack
 conda activate pyspark37
 conda pack -f -o /apps/hostpath/python/pyspark37-20221125.tar.gz
@@ -49,7 +49,9 @@ conda pack -f -o /apps/hostpath/python/pyspark3.8.tar.gz
 #
 
 conda install -c conda-forge grpcio protobuf pycodestyle numpy pandas scipy pandasql panel pyyaml seaborn plotnine hvplot intake intake-parquet intake-xarray altair vega_datasets pyarrow
-conda install pyspark==3.1.2
+conda install -c conda-forge pyspark=3.1.2
+
+conda remove pyspark==3.1.2
 
 #
 ####  
@@ -61,8 +63,8 @@ sudo -E /opt/conda/bin/conda update -n base -c defaults conda
 conda env create -f mr-delta.yml
 
 conda activate mr-delta
-pip install confluent-kafka[avro]==1.8.2 avro-python3 fastavro==1.4.9 pycodestyle
-pip install numpy pandas scipy grpcio protobuf pandasql ipython ipykernel
+pip install confluent-kafka[avro]==1.8.2 faker mysql-connector-python avro-python3 pycodestyle
+pip install numpy pandas scipy grpcio pandasql ipython ipykernel
 pip install jupyter_client nb_conda panel pyyaml seaborn plotnine hvplot intake
 pip install intake-parquet intake-xarray altair vega_datasets pyarrow pytest
 
@@ -82,22 +84,21 @@ conda list
 #
 conda env remove --name pyspark37
 
+#
+#
+#
 conda rename -n base  pyspark37
 conda rename -p /opt/conda base
+
 #
 #### Activate Virtual Env
 #
 conda activate pyspark37
 
-pip install confluent-kafka avro-python3 fastavro==1.4.9 pycodestyle
-pip install numpy pandas scipy grpcio protobuf pandasql ipython ipykernel
-pip install jupyter_client nb_conda panel pyyaml seaborn plotnine hvplot intake
-pip install intake-parquet intake-xarray altair vega_datasets pyarrow pytest
-
 #
 # Update Virtual Env
 #
-conda env update --file venv_pyspark37.yml --prune --prune
+conda env update --file venv_pyspark37.yml --prune
 conda env update --name pyspark37 --file venv_pyspark37.yml --prune
 
 #

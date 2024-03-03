@@ -1,19 +1,15 @@
-from confluent_kafka.avro import AvroConsumer
 from confluent_kafka.avro.serializer import SerializerError
+from confluent_kafka_ConsumerFactory import ConsumerFactory
+from confluent_kafka_ConfigFactory import KafkaConfigFactory
 
 
-c = AvroConsumer({
-    'bootstrap.servers': 'kafkabroker.sandbox.net:9092',
-    'group.id': 'python-avro-cg',
-    'schema.registry.url': 'http://schema-registry:8081',
-    'auto.offset.reset': 'earliest'
-})
-
-c.subscribe(['kafka-avro-topic'])
+consumer_config = KafkaConfigFactory.consumer('PLAINTEXT')
+consumer = ConsumerFactory.avro(consumer_config)
+consumer.subscribe(['kafka-avro-topic'])
 
 while True:
     try:
-        msg = c.poll(10)
+        msg = consumer.poll(10)
 
     except SerializerError as e:
         print("Message deserialization failed for {}: {}".format(msg, e))
@@ -26,6 +22,10 @@ while True:
         print("AvroConsumer error: {}".format(msg.error()))
         continue
 
+    # application-specific processing
+    print("----------------------")
     print(msg.value())
+    print("----------------------")
+    print("")
 
-c.close()
+consumer.close()

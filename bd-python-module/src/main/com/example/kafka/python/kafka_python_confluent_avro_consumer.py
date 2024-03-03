@@ -5,7 +5,7 @@ from confluent_kafka.avro import SerializerError
 from fastavro.io.binary_decoder import BinaryDecoder
 from kafka import KafkaConsumer
 import json
-from com.example.utils.load_avro_schema_from_file import load_avro_schema_as_json
+from com.example.utils.AvroUtils import load_avro_json
 from fastavro import schemaless_writer, schemaless_reader, parse_schema
 from io import BytesIO
 from os.path import expanduser
@@ -19,7 +19,7 @@ offset which may not be the latest message that was successfully processed.
 """
 AVRO_PATH = Path(expanduser("~"), "IdeaProjects", "spark-python-examples", "resources", "avro",
                  "transaction-record.avsc")
-key_schema, value_schema = load_avro_schema_as_json(AVRO_PATH)
+key_schema, value_schema = load_avro_json(AVRO_PATH)
 
 key_deserializer = lambda k: k.decode("utf-8")
 

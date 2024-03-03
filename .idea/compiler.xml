@@ -6,8 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="bd-python-module" />
         <module name="bd-java-module" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="docker-python-module" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
