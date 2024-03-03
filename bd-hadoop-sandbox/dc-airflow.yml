@@ -57,13 +57,13 @@ x-airflow-common:
     - sandbox_airflow_dags:/opt/airflow/dags
     - sandbox_airflow_logs:/opt/airflow/logs
     - sandbox_airflow_plugins:/opt/airflow/plugins
-    - sandbox_host_path:/apps/hostpath
+    - sandbox_apps_path:/apps/hostpath
     - sandbox_base_path:/apps/sandbox
-    - sandbox_hadoop_311:/opt/hadoop
+    - sandbox_hadoop_334:/opt/hadoop
     - sandbox_hbase_246:/opt/hbase
     - sandbox_hbase_117:/opt/hbase-client
     - sandbox_hive_313:/opt/hive
-    - sandbox_spark_312:/opt/spark
+    - sandbox_spark_350:/opt/spark
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
@@ -335,10 +335,10 @@ volumes:
   sandbox_hive_313:
     external: true
   #
-  sandbox_spark_312:
+  sandbox_spark_350:
     external: true
   #
-  sandbox_hadoop_311:
+  sandbox_hadoop_334:
     external: true
 
 #

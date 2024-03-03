@@ -113,7 +113,7 @@
     </property>
     <property>
         <name>javax.jdo.option.ConnectionURL</name>
-        <value>jdbc:mysql://mysqlserver.sandbox.net/HMS311?createDatabaseIfNotExist=true</value>
+        <value>jdbc:mysql://mysqlserver.sandbox.net/HMS334?createDatabaseIfNotExist=true</value>
     </property>
     <property>
         <name>hive.metastore.warehouse.dir</name>

@@ -145,7 +145,7 @@
           "local": false
         },
         {
-          "groupArtifactVersion": "/opt/hadoop/share/hadoop/common/hadoop-common-3.1.1.jar",
+          "groupArtifactVersion": "/opt/hadoop/share/hadoop/common/hadoop-common-3.3.4.jar",
           "local": false
         }
       ],
@@ -287,7 +287,7 @@
         },
         "geode.locator.port": {
           "name": "geode.locator.port",
-          "value": "10311",
+          "value": "10334",
           "type": "number",
           "description": "The Geode Locator Port."
         },
@@ -1322,7 +1322,7 @@
         },
         "spark.jars.packages": {
           "name": "spark.jars.packages",
-          "value": "io.delta:delta-core_2.12:1.0.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2",
+          "value": "io.delta:delta-core_2.12:1.0.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0",
           "type": "string",
           "description": "Comma-separated list of Maven coordinates of jars to include on the driver and executor classpaths. The coordinates should be groupId:artifactId:version. If spark.jars.ivySettings is given artifacts will be resolved according to the configuration in the file, otherwise artifacts will be searched for in the local maven repo, then maven central and finally any additional remote repositories given by the command-line option --repositories."
         },
@@ -1476,7 +1476,7 @@
         },
         "spark.yarn.archive": {
           "name": "spark.yarn.archive",
-          "value": "hdfs://namenode:9000/archives/spark/spark-3.1.2.zip",
+          "value": "hdfs://namenode:9000/archives/spark/spark-3.5.0.zip",
           "type": "string"
         },
         "spark.eventLog.enabled": {

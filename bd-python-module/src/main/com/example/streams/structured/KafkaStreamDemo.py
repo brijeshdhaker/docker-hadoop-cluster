@@ -9,7 +9,7 @@ from lib.logger import Log4j
 spark-submit \
 --name "structured-kafka-stream" \
 --master local[4] \
---packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 \
+--packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 \
 /home/brijeshdhaker/IdeaProjects/spark-python-examples/src/main/py/com/example/streams/structured/KafkaStreamDemo.py
 
 """

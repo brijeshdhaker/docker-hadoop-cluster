@@ -30,7 +30,7 @@ services:
       - "16010:16010"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_311:/opt/hadoop
+      - sandbox_hadoop_334:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
 
   #
@@ -51,7 +51,7 @@ services:
       - "16030:16030"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_311:/opt/hadoop
+      - sandbox_hadoop_334:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
 
 #
@@ -62,7 +62,7 @@ volumes:
   sandbox_security_secrets:
     external: true
   #
-  sandbox_hadoop_311:
+  sandbox_hadoop_334:
     external: true
 
 #

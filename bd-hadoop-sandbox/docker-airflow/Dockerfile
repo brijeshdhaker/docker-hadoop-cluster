@@ -23,6 +23,6 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 # RUN pip install --no-cache-dir lxml
 # RUN pip install --no-cache-dir apache-airflow-providers-apache-spark==2.1.3
 # RUN pip install --no-cache-dir apache-airflow-providers-cncf-kubernetes
-RUN pip install pyspark==3.1.2 apache-airflow[apache.spark]==2.5.3 apache-airflow-providers-apache-cassandra==3.1.1 #--constraint constraints-3.7.txt
+RUN pip install pyspark==3.5.0 apache-airflow[apache.spark]==2.5.3 apache-airflow-providers-apache-cassandra==3.1.1 #--constraint constraints-3.7.txt
 # RUN pip install --no-cache-dir apache-airflow-providers-apache-spark==2.1.3
 #

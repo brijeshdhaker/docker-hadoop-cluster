@@ -12,7 +12,7 @@ services:
   #
   #
   spark-master:
-    image: docker.io/brijeshdhaker/spark-standalon:3.1.2
+    image: docker.io/brijeshdhaker/spark-standalon:3.5.0
     container_name: spark-master
     hostname: spark-master.sandbox.net
     ports:
@@ -27,7 +27,7 @@ services:
       interval: 10s
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_311:/opt/hadoop
+      - sandbox_hadoop_334:/opt/hadoop
       - sandbox_hive_313:/opt/hive
     environment:
       - SPARK_MASTER_LOG=/apps/var/log/spark/spark-master.out
@@ -42,7 +42,7 @@ services:
   #
   #
   spark-worker-a:
-    image: docker.io/brijeshdhaker/spark-standalon:3.1.2
+    image: docker.io/brijeshdhaker/spark-standalon:3.5.0
     container_name: spark-worker-a
     hostname: spark-worker-a.sandbox.net
     ports:
@@ -65,7 +65,7 @@ services:
       - SPARK_WORKER_LOG=/apps/var/log/spark/spark-worker-a.out
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_311:/opt/hadoop
+      - sandbox_hadoop_334:/opt/hadoop
       - sandbox_hive_313:/opt/hive
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
@@ -76,7 +76,7 @@ services:
   #
   #
   spark-worker-b:
-    image: docker.io/brijeshdhaker/spark-standalon:3.1.2
+    image: docker.io/brijeshdhaker/spark-standalon:3.5.0
     container_name: spark-worker-b
     hostname: spark-worker-b.sandbox.net
     ports:
@@ -101,7 +101,7 @@ services:
       - ./envs/docker_clients.env
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_311:/opt/hadoop
+      - sandbox_hadoop_334:/opt/hadoop
       - sandbox_hive_313:/opt/hive
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
@@ -114,7 +114,7 @@ services:
   # Spark History Server
   #
   sparkhistory:
-    image: brijeshdhaker/spark-standalon:3.1.2
+    image: brijeshdhaker/spark-standalon:3.5.0
     container_name: sparkhistory
     hostname: sparkhistory.sandbox.net
     healthcheck:
@@ -129,7 +129,7 @@ services:
       - ./envs/docker_clients.env
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_311:/opt/hadoop
+      - sandbox_hadoop_334:/opt/hadoop
       - sandbox_hive_313:/opt/hive
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop

@@ -4,7 +4,7 @@
 $SPARK_HOME/bin/spark-submit \
 --name "spark-structured-avro-stream" \
 --master local[*] \
---packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 \
+--packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 \
 --conf spark.jars.ivy=/apps/hostpath/.ivy2 
 ```
 

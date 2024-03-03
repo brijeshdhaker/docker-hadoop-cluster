@@ -4,24 +4,77 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-03-02 Update PyTest Cases for utils.">
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-iceburg.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-history.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-iceburg.conf" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-03-03 Update iceburg catalogs settings.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-defaults.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-defaults.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-env.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/spark-defaults.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-history.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/hive-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/hive-site.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hive/client/hive-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hive/client/hive-site.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/zeppelin/conf/interpreter.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/zeppelin/conf/interpreter.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/zeppelin/conf/zeppelin-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/zeppelin/conf/zeppelin-site.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-hadoop-cluster.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-hadoop-cluster.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-hbase-cluster.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-hbase-cluster.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-hive-cluster.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-hive-cluster.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-spark-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-spark-cluster.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_clients.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_clients.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-defaults.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-defaults.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-iceburg.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-iceburg.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_hadoop.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_hadoop.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_hive.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_hive.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/client/hive-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/client/hive-site.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hive/client/hive-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hive/client/hive-site.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/zeppelin/conf/interpreter.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/zeppelin/conf/interpreter.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/zeppelin/conf/zeppelin-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/zeppelin/conf/zeppelin-site.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-airflow.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-airflow.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hadoop-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hadoop-cluster.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hbase-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hbase-cluster.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hive-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hive-cluster.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-kafka-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-kafka-cluster.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-kafka.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-kafka.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-spark-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-spark-cluster.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-zookeeper.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-zookeeper.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-airflow/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-airflow/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/base/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/base/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/datanode/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/datanode/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/historyserver/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/historyserver/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/namenode/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/namenode/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/unsecure/hive-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/unsecure/hive-site.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/resourcemanager/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/resourcemanager/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/timelineserver/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/timelineserver/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/deploy-scripts/docker-deploy-hdf311.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/deploy-scripts/docker-deploy-hdf311.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/deploy-scripts/sandbox-reset.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/deploy-scripts/sandbox-reset.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/sandbox-deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/sandbox-deploy.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hive/hive-mysql.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hive/hive-mysql.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hive/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hive/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-jupyternb/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-jupyternb/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-jupyternb/requirements.pip" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-jupyternb/requirements.pip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-minio/minio.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-minio/minio.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-spark/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-spark/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-spark/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-spark/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-ubuntu/env_pyspark37.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-ubuntu/env_pyspark37.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_airflow.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_airflow.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_clients.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_clients.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws/sql-s3a-read.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws/sql-s3a-read.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/iceberg-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/iceberg-help.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/minio-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/minio-help.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_hadoop.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_hadoop.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_hive.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_hive.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/tars/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/tars/readme.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-java-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-java-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/env_pyspark37.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/env_pyspark37.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/mr-delta.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/mr-delta.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/airflow/dags/spark_yarn_test_dag.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/airflow/dags/spark_yarn_test_dag.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/hello-spark.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/hello-spark.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/pipeline/sstreaming-spark-final.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/pipeline/sstreaming-spark-final.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/KafkaStreamDemo.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/KafkaStreamDemo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-avro-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-avro-stream.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-kafka-txn-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-kafka-txn-stream.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/.bash_profile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/.bash_profile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/bigdata-setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/scripts/bigdata-setup.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/conda-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/conda-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/deltalake-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/deltalake-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/hbase-spark.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/hbase-spark.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/mysql-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/mysql-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/sandbox.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/sandbox.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/spark-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/spark-help.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +91,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="docker-hadoop311-cluster" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -180,7 +233,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "docker-hadoop311-cluster",
+    "git-widget-placeholder": "develop/docker-hadoop334-cluster",
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-hadoop-sandbox/conf/spark/conf",
@@ -265,25 +318,20 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hadoop-cluster.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <configuration name="bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
               <option value="datanode" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hadoop-cluster.yaml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="namenode" />
             </list>
           </option>
           <option name="sourceFilePath" value="bd-docker-sandbox/dc-hadoop-cluster.yaml" />
@@ -317,33 +365,28 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
-          <option name="services">
-            <list>
-              <option value="gateway" />
-            </list>
-          </option>
           <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yaml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment" />
       <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment" />
       <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment" />
       <item itemvalue="Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment" />
         <item itemvalue="Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment" />
         <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -667,7 +710,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709402286740</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="2024-03-03 Update iceburg catalogs settings.">
+      <option name="closed" value="true" />
+      <created>1709452729750</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1709452729750</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -698,7 +749,8 @@
     <MESSAGE value="2024-02-29 Update Confluent Kafka Consumers." />
     <MESSAGE value="2024-03-01 Update PyTest Cases for utils." />
     <MESSAGE value="2024-03-02 Update PyTest Cases for utils." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-03-02 Update PyTest Cases for utils." />
+    <MESSAGE value="2024-03-03 Update iceburg catalogs settings." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-03-03 Update iceburg catalogs settings." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

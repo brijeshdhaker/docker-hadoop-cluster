@@ -1,9 +1,9 @@
 #
 # docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
-# docker volume create --name sandbox_hadoop_311 --opt type=none --opt device=/opt/hadoop-3.1.1 --opt o=bind
+# docker volume create --name sandbox_hadoop_334 --opt type=none --opt device=/opt/hadoop-3.3.4 --opt o=bind
 #
-# docker volume create --name sandbox_hadoop_311_dfs --opt type=none --opt device=/apps/sandbox/hadoop-3.1.1/dfs --opt o=bind
-# docker volume create --name sandbox_hadoop_311_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.1.1/yarn --opt o=bind
+# docker volume create --name sandbox_hadoop_334_dfs --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/dfs --opt o=bind
+# docker volume create --name sandbox_hadoop_334_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/yarn --opt o=bind
 #
 
 version: "3.9"
@@ -16,7 +16,7 @@ services:
   # HDFS Cluster
   #
   namenode:
-    image: brijeshdhaker/hadoop-namenode:3.1.1
+    image: brijeshdhaker/hadoop-namenode:3.3.4
     build:
       context: .
       dockerfile: docker-hadoop/namenode/Dockerfile
@@ -36,7 +36,7 @@ services:
       - "9000:9000"   # hdfs
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_311_dfs:/hadoop/dfs
+      - sandbox_hadoop_334_dfs:/hadoop/dfs
     environment:
       CLUSTER_NAME: "docker-sandbox"
       MULTIHOMED_NETWORK: 2
@@ -45,7 +45,7 @@ services:
 
   #
   datanode:
-    image: brijeshdhaker/hadoop-datanode:3.1.1
+    image: brijeshdhaker/hadoop-datanode:3.3.4
     build:
       context: .
       dockerfile: docker-hadoop/datanode/Dockerfile
@@ -65,7 +65,7 @@ services:
     restart: no
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_311_dfs:/hadoop/dfs
+      - sandbox_hadoop_334_dfs:/hadoop/dfs
     environment:
       CLUSTER_NAME: "docker-sandbox"
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000"
@@ -76,7 +76,7 @@ services:
   # YARN Cluster
   #
   resourcemanager:
-    image: brijeshdhaker/hadoop-resourcemanager:3.1.1
+    image: brijeshdhaker/hadoop-resourcemanager:3.3.4
     build:
       context: .
       dockerfile: docker-hadoop/resourcemanager/Dockerfile
@@ -91,7 +91,7 @@ services:
       - "8088:8088"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_311_yarn:/yarn
+      - sandbox_hadoop_334_yarn:/yarn
     environment:
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
     env_file:
@@ -99,7 +99,7 @@ services:
 
   #
   nodemanager:
-    image: brijeshdhaker/hadoop-nodemanager:3.1.1
+    image: brijeshdhaker/hadoop-nodemanager:3.3.4
     build:
       context: .
       dockerfile: docker-hadoop/nodemanager/Dockerfile
@@ -117,7 +117,7 @@ services:
       - "8042:8042"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_311_yarn:/yarn
+      - sandbox_hadoop_334_yarn:/yarn
     environment:
       HADOOP_CONF_DIR: "/opt/hadoop/etc/hadoop"
       YARN_CONF_DIR: "/opt/hadoop/etc/hadoop"
@@ -127,7 +127,7 @@ services:
 
   # YARN Timeline Server
   timelineserver:
-    image: brijeshdhaker/hadoop-timelineserver:3.1.1
+    image: brijeshdhaker/hadoop-timelineserver:3.3.4
     build:
       context: .
       dockerfile: docker-hadoop/timelineserver/Dockerfile
@@ -147,13 +147,13 @@ services:
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_311_yarn:/yarn
+      - sandbox_hadoop_334_yarn:/yarn
     env_file:
       - envs/docker_hadoop.env
 
   # MR History Server
   historyserver:
-    image: brijeshdhaker/hadoop-historyserver:3.1.1
+    image: brijeshdhaker/hadoop-historyserver:3.3.4
     build:
       context: .
       dockerfile: docker-hadoop/historyserver/Dockerfile
@@ -173,7 +173,7 @@ services:
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_311_mapred:/mapred
+      - sandbox_hadoop_334_mapred:/mapred
     env_file:
       - envs/docker_hadoop.env
 
@@ -190,13 +190,13 @@ volumes:
   sandbox_krb5_principal:
     external: true
   #
-  sandbox_hadoop_311:
+  sandbox_hadoop_334:
     external: true
-  sandbox_hadoop_311_dfs:
+  sandbox_hadoop_334_dfs:
     external: true
-  sandbox_hadoop_311_yarn:
+  sandbox_hadoop_334_yarn:
     external: true
-  sandbox_hadoop_311_mapred:
+  sandbox_hadoop_334_mapred:
     external: true
 
 #

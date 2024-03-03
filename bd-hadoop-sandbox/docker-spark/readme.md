@@ -4,7 +4,7 @@
 
 export SPARK_HOME=/apps/spark
 cd $SPARK_HOME
-./bin/docker-image-tool.sh -t 3.1.2 -p ./kubernetes/dockerfiles/spark/bindings/python/Dockerfile build
+./bin/docker-image-tool.sh -t 3.5.0 -p ./kubernetes/dockerfiles/spark/bindings/python/Dockerfile build
 
 #
 # 2. Create Base images from Spark Distribution
@@ -16,12 +16,12 @@ cd $SPARK_HOME
 #
 $SPARK_HOME/bin/spark-shell \
 --jars \
-$HIVE_HOME/lib/hive-metastore-3.1.2.jar,\
-$HIVE_HOME/lib/hive-exec-3.1.2.jar,\
-$HIVE_HOME/lib/hive-common-3.1.2.jar,\
-$HIVE_HOME/lib/hive-serde-3.1.2.jar,\
+$HIVE_HOME/lib/hive-metastore-3.5.0.jar,\
+$HIVE_HOME/lib/hive-exec-3.5.0.jar,\
+$HIVE_HOME/lib/hive-common-3.5.0.jar,\
+$HIVE_HOME/lib/hive-serde-3.5.0.jar,\
 $HIVE_HOME/lib/guava-27.0-jre.jar \
---conf spark.sql.hive.metastore.version=3.1.2 \
+--conf spark.sql.hive.metastore.version=3.5.0 \
 --conf spark.sql.hive.metastore.jars=$HIVE_HOME"/lib/*" \
 --conf spark.sql.warehouse.dir=hdfs://localhost:9000/user/hive/warehouse
 
@@ -43,7 +43,7 @@ scala> spark.table("demo_sales").show
 #
 # Linux
 #
-export SPARK_HOME=/apps/spark-3.1.2
+export SPARK_HOME=/apps/spark-3.5.0
 $SPARK_HOME/bin/beeline -u jdbc:hive2://192.168.0.100:10000 scott tiger
 
 DROP DATABASE IF EXISTS SPARK_APPS CASCADE;

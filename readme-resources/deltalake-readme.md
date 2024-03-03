@@ -15,7 +15,7 @@ Time travel. We can read older versions of data via time travel feature since th
 
 # Install delta-spark Python package
 ```shell
-conda install pyspark==3.1.2
+conda install pyspark==3.5.0
 
 pip install -i https://test.pypi.org/simple/ delta-spark==1.0.1
 pip install importlib-metadata

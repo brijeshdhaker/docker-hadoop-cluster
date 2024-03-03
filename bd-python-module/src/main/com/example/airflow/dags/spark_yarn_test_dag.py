@@ -35,8 +35,8 @@ flight_search_ingestion = SparkSubmitOperator(task_id='flight_search_ingestion',
                                               execution_timeout=timedelta(minutes=10),
                                               conf={
                                                   "spark.submit.deployMode": "cluster",
-                                                  "spark.yarn.archive": "hdfs://namenode:9000/archives/spark-3.1.2.zip",
-                                                  "spark.yarn.dist.archives": "hdfs://namenode:9000/archives/pyspark3.7-20221125.tar.gz#environment",
+                                                  "spark.yarn.archive": "hdfs://namenode:9000/archives/spark-3.5.0.zip",
+                                                  "spark.yarn.dist.archives": "hdfs://namenode:9000/archives/pyspark37-20221125.tar.gz#environment",
                                                   "spark.sql.extensions": "io.delta.sql.DeltaSparkSessionExtension",
                                                   "spark.sql.catalog.spark_catalog": "io.delta:delta-core_2.12:1.0.0"
                                               },
@@ -55,7 +55,7 @@ flight_search_waiting_time = SparkSubmitOperator(task_id='flight_search_waiting_
                                                  execution_timeout=timedelta(minutes=10),
                                                  conf={
                                                      "spark.submit.deployMode": "cluster",
-                                                     "spark.yarn.archive": "hdfs://namenode:9000/archives/spark-3.1.2.zip",
+                                                     "spark.yarn.archive": "hdfs://namenode:9000/archives/spark-3.5.0.zip",
                                                      "spark.yarn.dist.archives": "hdfs://namenode:9000/archives/pyspark3.7-20221125.tar.gz#environment",
                                                      "spark.sql.extensions": "io.delta.sql.DeltaSparkSessionExtension",
                                                      "spark.sql.catalog.spark_catalog": "io.delta:delta-core_2.12:1.0.0"
@@ -75,8 +75,8 @@ flight_nb_search = SparkSubmitOperator(task_id='flight_nb_search',
                                        execution_timeout=timedelta(minutes=10),
                                        conf={
                                            "spark.submit.deployMode": "cluster",
-                                           "spark.yarn.archive": "hdfs://namenode:9000/archives/spark-3.1.2.zip",
-                                           "spark.yarn.dist.archives": "hdfs://namenode:9000/archives/pyspark3.7-20221125.tar.gz#environment",
+                                           "spark.yarn.archive": "hdfs://namenode:9000/archives/spark-3.5.0.zip",
+                                           "spark.yarn.dist.archives": "hdfs://namenode:9000/archives/pyspark37-20221125.tar.gz#environment",
                                            "spark.sql.extensions": "io.delta.sql.DeltaSparkSessionExtension",
                                            "spark.sql.catalog.spark_catalog": "io.delta:delta-core_2.12:1.0.0"
                                        },

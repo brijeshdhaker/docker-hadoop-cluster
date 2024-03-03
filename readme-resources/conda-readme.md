@@ -49,9 +49,9 @@ conda pack -f -o /apps/hostpath/python/pyspark3.8.tar.gz
 #
 
 conda install -c conda-forge grpcio protobuf pycodestyle numpy pandas scipy pandasql panel pyyaml seaborn plotnine hvplot intake intake-parquet intake-xarray altair vega_datasets pyarrow
-conda install -c conda-forge pyspark=3.1.2
+conda install -c conda-forge pyspark=3.5.0
 
-conda remove pyspark==3.1.2
+conda remove pyspark==3.5.0
 
 #
 ####  

@@ -1,6 +1,6 @@
 #
-# docker build -t brijeshdhaker/hadoop-base:3.1.1 -f docker-hadoop/base/Dockerfile .
-# docker push brijeshdhaker/hadoop-base:3.1.1
+# docker build -t brijeshdhaker/hadoop-base:3.3.4 -f docker-hadoop/base/Dockerfile .
+# docker push brijeshdhaker/hadoop-base:3.3.4
 #
 
 FROM brijeshdhaker/ubuntu:22.04
@@ -8,7 +8,7 @@ FROM brijeshdhaker/ubuntu:22.04
 MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
 #
-ENV HADOOP_VERSION=3.1.1
+ENV HADOOP_VERSION=3.3.4
 ENV BASE_DIR=/opt
 ENV HADOOP_HOME=$BASE_DIR/hadoop
 ENV HADOOP_CONF_DIR=$BASE_DIR/hadoop/etc/hadoop

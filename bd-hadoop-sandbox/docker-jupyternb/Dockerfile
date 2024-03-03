@@ -6,12 +6,12 @@
 #
 
 ARG spark_uid=185
-FROM spark-py:3.1.2
+FROM spark-py:3.5.0
 
 # Specify the User that the actual main process will run as
 USER ${spark_uid}
 
-ENV SPARK_VERSION   3.1.2
+ENV SPARK_VERSION   3.5.0
 ENV SPARK_HOME      /opt/spark
 
 COPY docker-jupyternb/requirements.pip /tmp/requirements.pip

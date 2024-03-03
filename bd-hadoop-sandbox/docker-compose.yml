@@ -1,4 +1,7 @@
 #
+# docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d
+# docker compose -f bd-hadoop-sandbox/docker-compose.yml down
+#
 
 #
 # docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
@@ -7,15 +10,15 @@
 # docker volume create --name sandbox_krb5_stash --opt type=none --opt device=/apps/sandbox/kerberos/stash --opt o=bind
 # docker volume create --name sandbox_krb5_principal --opt type=none --opt device=/apps/sandbox/kerberos/principal --opt o=bind
 #
-# docker volume create --name sandbox_zookeeper311_data --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop311/data --opt o=bind
-# docker volume create --name sandbox_zookeeper311_log --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop311/log --opt o=bind
+# docker volume create --name sandbox_zookeeper334_data --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop334/data --opt o=bind
+# docker volume create --name sandbox_zookeeper334_log --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop334/log --opt o=bind
 #
-# docker volume create --name sandbox_hadoop_311 --opt type=none --opt device=/opt/hadoop-3.1.1 --opt o=bind
-# docker volume create --name sandbox_hadoop_311_dfs --opt type=none --opt device=/apps/sandbox/hadoop-3.1.1/dfs --opt o=bind
-# docker volume create --name sandbox_hadoop_311_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.1.1/yarn --opt o=bind
-# docker volume create --name sandbox_hadoop_311_mapred --opt type=none --opt device=/apps/sandbox/hadoop-3.1.1/mapred --opt o=bind
+# docker volume create --name sandbox_hadoop_334 --opt type=none --opt device=/opt/hadoop-3.3.4 --opt o=bind
+# docker volume create --name sandbox_hadoop_334_dfs --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/dfs --opt o=bind
+# docker volume create --name sandbox_hadoop_334_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/yarn --opt o=bind
+# docker volume create --name sandbox_hadoop_334_mapred --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/mapred --opt o=bind
 #
-# docker volume create --name sandbox_spark_312 --opt type=none --opt device=/opt/spark-3.1.2 --opt o=bind
+# docker volume create --name sandbox_spark_350 --opt type=none --opt device=/opt/spark-3.5.0 --opt o=bind
 # docker volume create --name sandbox_hive_313 --opt type=none --opt device=/opt/hive-3.1.3 --opt o=bind
 # docker volume create --name sandbox_tez_091 --opt type=none --opt device=/opt/tez-0.10.2 --opt o=bind
 # docker volume create --name sandbox_hbase_246 --opt type=none --opt device=/opt/hbase-2.4.6 --opt o=bind
@@ -48,13 +51,13 @@ services:
       - "4040:4040"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_311:/opt/hadoop
+      - sandbox_hadoop_334:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - sandbox_hbase_246:/opt/hbase
       - ./conf/hbase/client:/opt/hbase/conf
       - sandbox_hive_313:/opt/hive
       - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
-      - sandbox_spark_312:/opt/spark
+      - sandbox_spark_350:/opt/spark
       - ./conf/spark/conf:/opt/spark/conf
       - sandbox_flink_112:/opt/flink
       - sandbox_maven_363:/opt/maven-3.6.3
@@ -87,9 +90,9 @@ services:
       - sandbox_apps_path:/apps
       - sandbox_zeppelin_conf:/opt/zeppelin/conf
       - sandbox_zeppelin_notebook:/opt/notebook
-      - sandbox_spark_312:/opt/spark
+      - sandbox_spark_350:/opt/spark
       - ./conf/spark/conf:/opt/spark/conf
-      - sandbox_hadoop_311:/opt/hadoop
+      - sandbox_hadoop_334:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - sandbox_hive_313:/opt/hive
       - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
@@ -120,7 +123,7 @@ volumes:
   sandbox_tez_091:
     external: true
   #
-  sandbox_spark_312:
+  sandbox_spark_350:
     external: true
   #
   sandbox_flink_112:

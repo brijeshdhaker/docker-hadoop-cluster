@@ -1,9 +1,9 @@
 #
 # docker volume create --name sandbox_security_secrets --opt type=none --opt device=/apps/security/ssl --opt o=bind
-# docker volume create --name sandbox_zookeeper311_data --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop311/data --opt o=bind
-# docker volume create --name sandbox_zookeeper311_log --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop311/log --opt o=bind
-# docker volume create --name sandbox_kafka311_data --opt type=none --opt device=/apps/sandbox/kafka/hadoop311/data --opt o=bind
-# docker volume create --name sandbox_kafka311_log --opt type=none --opt device=/apps/sandbox/kafka/hadoop311/log --opt o=bind
+# docker volume create --name sandbox_zookeeper334_data --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop334/data --opt o=bind
+# docker volume create --name sandbox_zookeeper334_log --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop334/log --opt o=bind
+# docker volume create --name sandbox_kafka334_data --opt type=none --opt device=/apps/sandbox/kafka/hadoop334/data --opt o=bind
+# docker volume create --name sandbox_kafka334_log --opt type=none --opt device=/apps/sandbox/kafka/hadoop334/log --opt o=bind
 #
 ---
 version: "3.9"
@@ -30,8 +30,8 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_security_secrets:/etc/zookeeper/secrets
-      - sandbox_zookeeper311_data:/var/lib/zookeeper/data
-      - sandbox_zookeeper311_log:/var/lib/zookeeper/log
+      - sandbox_zookeeper334_data:/var/lib/zookeeper/data
+      - sandbox_zookeeper334_log:/var/lib/zookeeper/log
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
@@ -69,9 +69,9 @@ services:
 #
 volumes:
   #
-  sandbox_zookeeper311_data:
+  sandbox_zookeeper334_data:
     external: true
-  sandbox_zookeeper311_log:
+  sandbox_zookeeper334_log:
     external: true
 
 #
