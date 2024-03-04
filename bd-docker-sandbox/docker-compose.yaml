@@ -47,7 +47,7 @@ services:
   # Zeppelin Notebook
   #
   zeppelin:
-    image: apache/zeppelin:0.10.1
+    image: apache/zeppelin:0.11.0
     container_name: zeppelin
     hostname: zeppelin.sandbox.net
     environment:
@@ -67,8 +67,10 @@ services:
     volumes:
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - sandbox_apps_path:/apps
-      - /apps/sandbox/zeppelin/conf:/opt/zeppelin/conf
+      - sandbox_zeppelin_conf:/opt/zeppelin/conf
       - sandbox_zeppelin_notebook:/opt/notebook
+      - /apps/var/log/zeppelin:/logs
+      - /apps/sandbox/zeppelin/local-repo:/opt/zeppelin/local-repo
       - sandbox_spark_350:/opt/spark
       - ./conf/spark/conf:/opt/spark/conf
       - sandbox_hadoop_334:/opt/hadoop
@@ -77,7 +79,7 @@ services:
       - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
       - sandbox_hbase_246:/opt/hbase
       - ./conf/hbase/client:/opt/hbase/conf
-      - sandbox_flink_112:/opt/flink
+      - /opt/flink-1.12.2:/opt/flink
 
 
 #
@@ -109,7 +111,7 @@ volumes:
   #
   sandbox_hive_313:
     external: true
-  sandbox_tez_091:
+  sandbox_tez_102:
     external: true
   #
   sandbox_spark_350:

@@ -5,10 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-03-03 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch.">
+      <change afterPath="$PROJECT_DIR$/bd-python-module/setup-and-local-submit.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme-resources/FLIGHT_DATA_HIVE.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/hdfs-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/hdfs-site.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/tez/tez-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/tez/tez-site.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-hadoop-cluster.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-hadoop-cluster.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-hive-cluster.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-hive-cluster.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_clients.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_clients.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-airflow.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-airflow.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/tez/tez-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/tez/tez-site.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hbase-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hbase-cluster.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hive-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hive-cluster.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-tezui/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-tezui/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-tezui/startup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-tezui/startup.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_clients.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_clients.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/versions.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/versions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/bigdata-setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/scripts/bigdata-setup.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/spark-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/spark-help.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +79,7 @@
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hivetezui: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment.executor": "Run",
@@ -170,7 +185,7 @@
     "git-widget-placeholder": "develop/docker-hadoop334-cluster",
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-hadoop-sandbox/conf/spark/conf",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-hadoop-sandbox/resources/libs",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -181,18 +196,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs" />
+      <recent name="$PROJECT_DIR$/readme-resources" />
+      <recent name="$PROJECT_DIR$/bd-python-module" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf" />
       <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf" />
-      <recent name="$PROJECT_DIR$/bd-setup-module/scripts" />
-      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/envs" />
-      <recent name="$PROJECT_DIR$/bd-python-module/src/test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs" />
+      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/resources/tars" />
+      <recent name="$PROJECT_DIR$/readme-resources/pdf" />
       <recent name="$PROJECT_DIR$/readme-resources/images" />
       <recent name="$PROJECT_DIR$/readme-resources" />
-      <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws" />
-      <recent name="$PROJECT_DIR$/bd-python-module/src/test" />
-      <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent" />
     </key>
   </component>
   <component name="RunManager" selected="Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment">
@@ -252,10 +267,28 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hadoop-cluster.yaml" />
+          <option name="services">
+            <list>
+              <option value="hiveserver" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hive-cluster.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="bd-docker-sandbox/dc-hive-cluster.yaml.hivetezui: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="hivetezui" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hive-cluster.yaml" />
         </settings>
       </deployment>
       <method v="2" />
@@ -273,22 +306,14 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
-              <option value="mysqlserver" />
+              <option value="zeppelin" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-mysqlserver.yaml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="bd-docker-sandbox/docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
           <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yaml" />
         </settings>
       </deployment>
@@ -308,19 +333,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hivetezui: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
       <item itemvalue="Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment" />
       <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hivetezui: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment" />
         <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -660,7 +685,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709465896169</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="2024-03-03 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch.">
+      <option name="closed" value="true" />
+      <created>1709467170334</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1709467170334</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="UnknownFeatures">

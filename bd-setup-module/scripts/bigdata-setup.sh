@@ -138,7 +138,7 @@ docker volume create --name sandbox_hadoop_334_mapred --opt type=none --opt devi
 
 docker volume create --name sandbox_spark_350 --opt type=none --opt device=/opt/spark-3.5.0 --opt o=bind
 docker volume create --name sandbox_hive_313 --opt type=none --opt device=/opt/hive-3.1.3 --opt o=bind
-docker volume create --name sandbox_tez_091 --opt type=none --opt device=/opt/tez-0.9.1 --opt o=bind
+docker volume create --name sandbox_tez_102 --opt type=none --opt device=/opt/tez-0.10.2 --opt o=bind
 docker volume create --name sandbox_hbase_246 --opt type=none --opt device=/opt/hbase-2.4.6 --opt o=bind
 docker volume create --name sandbox_hbase_117 --opt type=none --opt device=/opt/hbase-1.1.7 --opt o=bind
 docker volume create --name sandbox_flink_112 --opt type=none --opt device=/opt/flink-1.12.2 --opt o=bind
@@ -175,8 +175,8 @@ sudo tar --strip-components=1 -xvf hadoop-3.3.4.tar.gz -C /opt/hadoop-3.3.4
 sudo mkdir -p /opt/hive-3.1.3
 sudo tar --strip-components=1 -xvf apache-hive-3.1.3-bin.tar.gz -C /opt/hive-3.1.3
 
-sudo mkdir -p /opt/tez-0.9.1
-sudo tar --strip-components=1 -xvf apache-tez-0.9.1-bin.tar.gz -C /opt/tez-0.9.1
+sudo mkdir -p /opt/tez-0.10.2
+sudo tar --strip-components=1 -xvf apache-tez-0.10.2.tar.gz -C /opt/tez-0.10.2
 
 sudo mkdir -p /opt/hbase-2.4.6
 sudo tar --strip-components=1 -xvf hbase-2.4.6-bin.tar.gz -C /opt/hbase-2.4.6
@@ -193,4 +193,5 @@ sudo tar --strip-components=1 -xvf flink-1.12.2-bin-scala_2.12.tgz -C /opt/flink
 sudo unzip apache-maven-3.6.3-bin.zip -d /opt
 
 cd /opt
-sudo chown -Rf brijeshdhaker:root hadoop-3.3.4 hbase-1.1.7 hbase-2.4.6 hive-3.1.3 tez-0.9.1 maven-3.6.3 spark-3.5.0 flink-1.12.2
+sudo chmod -Rf 775 hadoop-3.3.4 hbase-1.1.7 hbase-2.4.6 hive-3.1.3 tez-0.10.2 maven-3.6.3 spark-3.5.0 flink-1.12.2
+sudo chown -Rf root:brijeshdhaker hadoop-3.3.4 hbase-1.1.7 hbase-2.4.6 hive-3.1.3 tez-0.10.2 maven-3.6.3 spark-3.5.0 flink-1.12.2

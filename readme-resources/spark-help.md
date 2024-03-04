@@ -2,7 +2,7 @@
 # Structured kafka Streaming
 ```shell
 $SPARK_HOME/bin/spark-submit \
---name "spark-structured-avro-stream" \
+--name "structured-stream" \
 --master local[*] \
 --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 \
 --conf spark.jars.ivy=/apps/hostpath/.ivy2 
@@ -15,17 +15,18 @@ $SPARK_HOME/bin/spark-submit \
 --master local[*] \
 --conf "spark.driver.extraJavaOptions='-Divy.cache.dir=/apps/hostpath/.ivy2/cache -Divy.home=/apps/hostpath/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf'" \
 --conf "spark.executor.extraJavaOptions='-Divy.cache.dir=/apps/hostpath/.ivy2/cache -Divy.home=/apps/hostpath/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf'" \
---conf "spark.kerberos.keytab=/apps/security/keytabs/users/zeppelin.keytab" \
---conf "spark.kerberos.principal=zeppelin@SANDBOX.NET" \
+--conf "spark.kerberos.keytab=/apps/security/keytabs/users/spark.keytab" \
+--conf "spark.kerberos.principal=spark@SANDBOX.NET" \
 ```
 
 # Apache IceBerg 
 ```shell
 $SPARK_HOME/bin/spark-shell \
---packages "org.apache.iceberg:iceberg-spark-runtime-3.1_2.12:0.13.1" \
+--packages "org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.4.3,org.apache.iceberg:iceberg-aws:1.4.3" \
+--conf "spark.jars.ivy=/apps/hostpath/.ivy2" \
 --conf "spark.driver.extraJavaOptions=-Divy.cache.dir=/apps/hostpath/.ivy2/cache -Divy.home=/apps/hostpath/.ivy2" \
 --conf "spark.executor.extraJavaOptions=-Divy.cache.dir=/apps/hostpath/.ivy2/cache -Divy.home=/apps/hostpath/.ivy2" \
---conf "spark.jars.ivy=/apps/hostpath/.ivy2" \
+ \
 ```
 
 # Delta Lake

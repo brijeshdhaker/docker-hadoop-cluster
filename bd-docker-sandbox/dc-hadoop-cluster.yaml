@@ -147,6 +147,13 @@ services:
     container_name: historyserver
     hostname: historyserver.sandbox.net
     restart: no
+    healthcheck:
+      test: nc -vz historyserver.sandbox.net 19888 || exit 1
+      retries: 20
+      interval: 10s
+    depends_on:
+      resourcemanager:
+        condition: service_healthy
     ports:
       - "19888:19888"
     environment:

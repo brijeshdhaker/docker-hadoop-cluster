@@ -62,14 +62,14 @@ services:
       - "10002:10002"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_tez_091:/opt/tez
+      - sandbox_tez_102:/opt/tez
       - sandbox_hadoop_334:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - ./conf/tez/tez-site.xml:/opt/tez/conf/tez-site.xml
 
   # Hive Tez UI
   hivetezui:
-    image: brijeshdhaker/tezui:0.9.1
+    image: brijeshdhaker/tezui:0.10.2
     container_name: hivetezui
     hostname: hivetezui.sandbox.net
     healthcheck:
@@ -99,7 +99,7 @@ volumes:
   #
   sandbox_hive_313:
     external: true
-  sandbox_tez_091:
+  sandbox_tez_102:
     external: true
 
 #

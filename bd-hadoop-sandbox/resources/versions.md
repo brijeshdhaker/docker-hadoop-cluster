@@ -25,7 +25,7 @@ Apache Solr	        8.4.1
 Apache Spark 2.x	2.4.8
 Apache Spark 3.x	CDS
 Apache Sqoop	    1.4.7
-Apache Tez	        0.9.1
+Apache Tez	        0.10.2
 Apache Zeppelin	    0.8.2
 Apache ZooKeeper	3.5.5
 

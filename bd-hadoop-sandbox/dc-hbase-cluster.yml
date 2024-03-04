@@ -17,7 +17,7 @@
 #
 # docker volume create --name sandbox_spark_350 --opt type=none --opt device=/opt/spark-3.5.0 --opt o=bind
 # docker volume create --name sandbox_hive_313 --opt type=none --opt device=/opt/hive-3.1.3 --opt o=bind
-# docker volume create --name sandbox_tez_091 --opt type=none --opt device=/opt/tez-0.10.2 --opt o=bind
+# docker volume create --name sandbox_tez_102 --opt type=none --opt device=/opt/tez-0.10.2 --opt o=bind
 # docker volume create --name sandbox_hbase_246 --opt type=none --opt device=/opt/hbase-2.4.6 --opt o=bind
 # docker volume create --name sandbox_hbase_117 --opt type=none --opt device=/opt/hbase-1.1.7 --opt o=bind
 # docker volume create --name sandbox_flink_112 --opt type=none --opt device=/opt/flink-1.12.2 --opt o=bind
