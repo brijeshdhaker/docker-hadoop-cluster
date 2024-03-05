@@ -65,6 +65,8 @@ services:
       ALLOW_ANONYMOUS_LOGIN: "yes"
     env_file:
       - ./envs/docker_clients.env
+    extra_hosts:
+      - "thinkpad.sandbox.net:172.18.0.1"
 
   #
   # Zeppelin Notebook

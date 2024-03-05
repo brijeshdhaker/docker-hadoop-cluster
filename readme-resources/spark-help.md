@@ -38,6 +38,18 @@ $SPARK_HOME/bin/spark-shell \
 --conf spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog \
 ```
 
+# Azure Blob Integration
+```shell
+$SPARK_HOME/bin/spark-shell \
+--packages "org.apache.hadoop:hadoop-azure:3.3.1" \
+--conf spark.jars.ivy=/apps/hostpath/.ivy2 \
+--conf "spark.hadoop.fs.defaultFS=wasb://warehouse@devstoreaccount1" \
+--conf "spark.hadoop.fs.azure.account.key.devstoreaccount1.blob.core.windows.net=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==" \
+--conf "spark.hadoop.fs.azure.storage.emulator.account.name=devstoreaccount1"
+```
+
+val df = spark.read.format("csv").option("header","true").load("/flight_data/airports.csv")
+
 
 # AWS S3 Integration
 ```shell
@@ -50,6 +62,7 @@ $SPARK_HOME/bin/spark-shell \
 --conf spark.hadoop.fs.s3a.path.style.access=true \
 --conf spark.hadoop.fs.s3a.aws.credentials.provider=org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider \
 --conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem
+
 
 $SPARK_HOME/bin/pyspark \
 --packages "org.apache.spark:spark-hadoop-cloud_2.12:3.5.0" \

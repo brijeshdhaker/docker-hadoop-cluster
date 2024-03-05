@@ -1,0 +1,41 @@
+#
+# docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
+#
+---
+version: '3.9'
+services:
+#
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite
+    hostname: azurite.sandbox.net
+    container_name: azurite
+    healthcheck:
+      test: echo $HOSTNAME || exit 1
+      retries: 20
+      interval: 10s
+    environment:
+      - AZURE_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h
+      - AZURE_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
+      - AZURE_REGION=us-east-1
+    ports:
+      - "10000:10000"
+      - "10001:10001"
+      - "10002:10002"
+    volumes:
+      - sandbox_apps_path:/apps
+      - /apps/hostpath/azurite:/data
+
+#
+volumes:
+  #
+  sandbox_apps_path:
+    external: true
+  sandbox_security_secrets:
+    external: true
+
+#
+networks:
+  default:
+    external: true
+    driver: bridge
+    name: sandbox.net
