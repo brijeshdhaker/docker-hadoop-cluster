@@ -50,6 +50,7 @@ services:
   #
   zeppelin:
     image: apache/zeppelin:0.11.0
+    pull_policy: missing
     container_name: zeppelin
     hostname: zeppelin.sandbox.net
     environment:
@@ -70,7 +71,7 @@ services:
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - sandbox_apps_path:/apps
       - sandbox_zeppelin_conf:/opt/zeppelin/conf
-      - sandbox_zeppelin_notebook:/opt/notebook
+      - sandbox_zeppelin_notebook:/notebook
       - /apps/var/log/zeppelin:/logs
       - /apps/sandbox/zeppelin/local-repo:/opt/zeppelin/local-repo
       - sandbox_spark_350:/opt/spark
