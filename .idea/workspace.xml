@@ -5,6 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-03-05 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch.">
+      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2021-06.parquet" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2021-07.parquet" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2021-08.parquet" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2021-09.parquet" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2021-10.parquet" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2021-11.parquet" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2021-12.parquet" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2022-01.parquet" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2022-02.parquet" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2022-03.parquet" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2022-04.parquet" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme-resources/iceberg-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/iceberg-help.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -176,7 +188,7 @@
     "git-widget-placeholder": "develop/docker-hadoop334-cluster",
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-hadoop-sandbox",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/readme-resources",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -187,9 +199,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/readme-resources" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs" />
-      <recent name="$PROJECT_DIR$/readme-resources" />
       <recent name="$PROJECT_DIR$/bd-python-module" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf" />
     </key>
@@ -714,7 +726,23 @@
       <option name="project" value="LOCAL" />
       <updated>1709701113850</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="2024-03-05 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch.">
+      <option name="closed" value="true" />
+      <created>1709701189053</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1709701189053</updated>
+    </task>
+    <task id="LOCAL-00048" summary="2024-03-05 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch.">
+      <option name="closed" value="true" />
+      <created>1709701285437</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1709701285437</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="UnknownFeatures">

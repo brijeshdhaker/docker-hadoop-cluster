@@ -116,10 +116,15 @@ spark.sql("").show()
 # Schema Evolution
 
 spark.sql("ALTER TABLE nyc.taxis RENAME COLUMN fare_amount TO fare").show()
+
 spark.sql("ALTER TABLE nyc.taxis RENAME COLUMN trip_distance TO distance").show()
+
 spark.sql("ALTER TABLE nyc.taxis ALTER COLUMN distance COMMENT 'The elapsed trip distance in miles reported by the taximeter.'").show()
+
 spark.sql("ALTER TABLE nyc.taxis ALTER COLUMN distance TYPE double;").show()
+
 spark.sql("ALTER TABLE nyc.taxis ALTER COLUMN distance AFTER fare;").show()
+
 spark.sql("ALTER TABLE nyc.taxis ADD COLUMN fare_per_distance_unit float AFTER distance").show()
 
 spark.sql("UPDATE nyc.taxis SET fare_per_distance_unit = fare/distance").show()
@@ -134,11 +139,83 @@ VendorID
 ,fare_per_distance_unit
 FROM nyc.taxis
 """).show()
-spark.sql("").show()
-spark.sql("").show()
-spark.sql("").show()
+
+# Expressive SQL for Row Level Changes
+spark.sql("""
+DELETE FROM nyc.taxis
+WHERE fare_per_distance_unit > 4.0 OR distance > 2.0
+""").show()
+
+spark.sql("""
+DELETE FROM nyc.taxis
+WHERE fare_per_distance_unit is null
+""").show()
+
+spark.sql("""
+SELECT
+VendorID
+,tpep_pickup_datetime
+,tpep_dropoff_datetime
+,fare
+,distance
+,fare_per_distance_unit
+FROM nyc.taxis
+""").show()
+
+spark.sql("""
+SELECT COUNT(*) as cnt
+FROM nyc.taxis
+""").show()
+
+# Partitioning
+spark.sql("""
+ALTER TABLE nyc.taxis
+ADD PARTITION FIELD VendorID
+""").show()
+
+# Metadata Tables
+spark.sql("""
+SELECT snapshot_id, manifest_list
+FROM nyc.taxis.snapshots
+""").show()
+
+spark.sql("""
+SELECT file_path, file_format, record_count, null_value_counts, lower_bounds, upper_bounds
+FROM nyc.taxis.files
+""").show()
+
+#
+val df = spark.sql("""
+SELECT *
+FROM nyc.taxis.history
+""")
+
+val original_snapshot = df.head()(1)
+
+spark.sql("CALL system.rollback_to_snapshot('nyc.taxis', %s)".format(original_snapshot))
+original_snapshot
 
 
+
+spark.sql("""
+SELECT
+VendorID
+,tpep_pickup_datetime
+,tpep_dropoff_datetime
+,fare
+,distance
+,fare_per_distance_unit
+FROM nyc.taxis
+""").show()
+
+spark.sql("""
+SELECT *
+FROM nyc.taxis.history
+""").show()
+
+
+spark.sql("").show()
+spark.sql("").show()
 
 
 
