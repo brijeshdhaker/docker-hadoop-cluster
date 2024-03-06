@@ -81,7 +81,7 @@ docker exec spark-master /usr/local/spark/bin/spark-submit \
 #
 python /apps/hostpath/python/bd-python-module-distro.zip#pie.py
 
-PYTHONPATH=/apps/hostpath/python/bd-python-module-distro.zip python -m main.py [args]
+PYTHONPATH=/apps/hostpath/python/python-module-distro.zip python -m hello.py [args]
 
 python /apps/hostpath/python/bd-python-module-distro.zip/main.py
 

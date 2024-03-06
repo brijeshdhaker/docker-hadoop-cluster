@@ -16,7 +16,7 @@ services:
     networks:
       default:
         aliases:
-          - warehouse.minio
+          - openlake.minio
     environment:
       - MINIO_ROOT_USER=admin
       - MINIO_ROOT_PASSWORD=password

@@ -1466,7 +1466,7 @@
         },
         "spark.yarn.dist.archives": {
           "name": "spark.yarn.dist.archives",
-          "value": "hdfs://namenode:9000/archives/pyspark/pyspark3.7-20221125.tar.gz#environment",
+          "value": "hdfs://namenode:9000/archives/pyspark/pyspark37-20221125.tar.gz#environment",
           "type": "string"
         },
         "spark.yarn.queue": {

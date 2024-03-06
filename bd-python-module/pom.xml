@@ -21,7 +21,7 @@
     </dependencies>
     
     <build>
-        <finalName>pyspark-module</finalName>
+        <finalName>bd-python-module</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -42,7 +42,7 @@
                     </execution>
                 </executions>
             </plugin>
-
+            <!--
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.0.2</version>
@@ -67,7 +67,7 @@
                     </execution>
                 </executions>
             </plugin>
-
+            -->
         </plugins>
     </build>
 

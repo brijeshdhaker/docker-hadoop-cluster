@@ -9,8 +9,9 @@ ${SPARK_HOME}/bin/spark-shell \
 --master yarn \
 --principal zeppelin@SANDBOX.NET \
 --keytab /apps/security/keytabs/users/zeppelin.keytab \
+--conf spark.yarn.jars=/opt/spark/jars/*.jar \
 --conf spark.yarn.archive=hdfs://namenode:9000/archives/spark/spark-3.5.0.zip \
---conf spark.yarn.dist.archives=hdfs://namenode:9000/archives/pyspark/pyspark3.7-20221125.tar.gz#environment \
+--conf spark.yarn.dist.archives=hdfs://namenode:9000/archives/pyspark/pyspark37-20221125.tar.gz#environment \
 --conf spark.shuffle.service.enabled=true  \
 --conf spark.dynamicAllocation.enabled=true \
 --conf spark.dynamicAllocation.minExecutors=0 \
@@ -27,7 +28,7 @@ ${SPARK_HOME}/bin/spark-submit \
 --class org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer \
 --driver-java-options "-Dfile.encoding=UTF-8 -Dlog4j.configuration=log4j_yarn_cluster.properties -Djava.security.krb5.conf=/etc/krb5.conf" \
 --conf spark.yarn.historyServer.allowTracking=true \
---conf spark.yarn.dist.archives=hdfs://namenode:9000/archives/pyspark/pyspark3.7-20221125.tar.gz#environment \
+--conf spark.yarn.dist.archives=hdfs://namenode:9000/archives/pyspark/pyspark37-20221125.tar.gz#environment \
 --conf spark.yarn.isPython=true \
 --conf spark.jars=/opt/spark/examples/jars/scopt_2.12-3.7.1.jar \
 --conf spark.submit.deployMode=cluster \

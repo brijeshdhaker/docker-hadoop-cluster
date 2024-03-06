@@ -76,6 +76,54 @@ $SPARK_HOME/bin/pyspark \
 
 ```
 
+```shell
+
+--conf spark.yarn.jars=file:///opt/spark/jars/*.jar \
+--packages org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.4.3 \
+--properties-file $SPARK_HOME/conf/spark-iceburg.conf \
+
+${SPARK_HOME}/bin/spark-shell \
+--master yarn \
+--principal zeppelin@SANDBOX.NET \
+--keytab /apps/security/keytabs/users/zeppelin.keytab \
+--packages org.apache.spark:spark-hadoop-cloud_2.12:3.5.0 \
+--conf spark.jars=/opt/spark/jars/iceberg-aws-bundle-1.4.3.jar,/opt/spark/jars/iceberg-spark-runtime-3.5_2.12-1.4.3.jar \
+--conf spark.jars.ivy=/apps/hostpath/.ivy2 \
+--conf spark.yarn.queue=engineering \
+--conf spark.yarn.archive=hdfs://namenode:9000/archives/spark/spark-3.5.0.zip \
+--conf spark.yarn.dist.archives=hdfs://namenode:9000/archives/pyspark/pyspark37-20221125.tar.gz#environment \
+--conf spark.yarn.dist.files=/opt/spark/conf/log4j.properties \
+--conf spark.security.credentials.hive.enabled=false \
+--conf spark.security.credentials.hbase.enabled=false \
+--conf spark.eventLog.enabled=true \
+--conf spark.eventLog.dir=/apps/var/log/spark \
+--conf spark.yarn.historyServer.allowTracking=true \
+--conf spark.webui.yarn.useProxy=true \
+--conf spark.yarn.am.extraJavaOptions='-Divy.home=/apps/hostpath/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf -DAWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h -DAWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs' \
+--conf spark.driver.extraJavaOptions='-Divy.home=/apps/hostpath/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf -DAWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h -DAWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs' \
+--conf spark.executor.extraJavaOptions='-Divy.home=/apps/hostpath/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf -DAWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h -DAWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs' \
+--conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions \
+--conf spark.sql.catalog.demo=org.apache.iceberg.spark.SparkCatalog \
+--conf spark.sql.catalog.demo.type=hadoop \
+--conf spark.sql.catalog.demo.warehouse=s3a://openlake/warehouse/ \
+--conf spark.sql.catalog.demo.s3.endpoint=http://minio.sandbox.net:9010 \
+--conf spark.sql.defaultCatalog=demo \
+--conf spark.hadoop.fs.s3a.endpoint=http://minio.sandbox.net:9010 \
+--conf spark.hadoop.fs.s3a.access.key=ffaJ6a2MOj8mZ5lI3P6h \
+--conf spark.hadoop.fs.s3a.secret.key=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs \
+--conf spark.hadoop.fs.s3a.path.style.access=true \
+--conf spark.hadoop.fs.s3a.aws.credentials.provider=org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider \
+--conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem \
+
+#--conf spark.sql.catalog.demo.io-impl=org.apache.iceberg.aws.s3.S3FileIO \
+```
+
+```scala
+# Read CSV file from MinIO
+val df = spark.read.option("header", "true").csv("s3a://openlake/warehouse/airlines.csv")
+df.show()
+```
+
 #
 # Spark SQL CLI
 #

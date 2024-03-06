@@ -86,6 +86,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_334_yarn:/yarn
+      - sandbox_spark_350:/opt/spark
     environment:
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
     env_file:
@@ -112,6 +113,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_334_yarn:/yarn
+      - sandbox_spark_350:/opt/spark
     environment:
       HADOOP_CONF_DIR: "/etc/conf/yarn"
       YARN_CONF_DIR: "/etc/conf/yarn"
@@ -177,6 +179,10 @@ volumes:
     external: true
   sandbox_hadoop_334_mapred:
     external: true
+  #
+  sandbox_spark_350:
+    external: true
+
 
 #
 networks:

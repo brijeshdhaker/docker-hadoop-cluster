@@ -81,6 +81,178 @@ spark.sql("show tables").show()
 spark.sql("SELECT * FROM spark_catalog.default.m_students").show()
 ```
 
+```python
+import logging
+import os
+from pyspark import SparkConf
+from pyspark import SparkContext
+from pyspark.sql import SparkSession
+from pyspark.sql.types import StructType, StructField, LongType, DoubleType, StringType
+
+# adding iceberg configs
+conf = (
+    SparkConf()
+    .set("spark.sql.extensions",
+         "org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions") # Use Iceberg with Spark
+    .set("spark.sql.catalog.demo", "org.apache.iceberg.spark.SparkCatalog")
+    .set("spark.sql.catalog.demo.io-impl", "org.apache.iceberg.aws.s3.S3FileIO")
+    .set("spark.sql.catalog.demo.warehouse", "s3a://openlake/warehouse/")
+    .set("spark.sql.catalog.demo.s3.endpoint", "https://play.min.io:50000")
+    .set("spark.sql.defaultCatalog", "demo") # Name of the Iceberg catalog
+    .set("spark.sql.catalogImplementation", "in-memory")
+    .set("spark.sql.catalog.demo.type", "hadoop") # Iceberg catalog type
+    .set("spark.executor.heartbeatInterval", "300000")
+    .set("spark.network.timeout", "400000")
+)
+
+val df = spark.read.parquet("s3a://openlake/taxi-data/yellow_tripdata_2021-04.parquet")
+df.write.saveAsTable("nyc.taxis")
+
+spark.sql("DESCRIBE EXTENDED nyc.taxis").show()
+
+spark.sql("SELECT COUNT(*) as cnt FROM nyc.taxis").show()
+spark.sql("").show()
+
+# Schema Evolution
+
+spark.sql("ALTER TABLE nyc.taxis RENAME COLUMN fare_amount TO fare").show()
+spark.sql("ALTER TABLE nyc.taxis RENAME COLUMN trip_distance TO distance").show()
+spark.sql("ALTER TABLE nyc.taxis ALTER COLUMN distance COMMENT 'The elapsed trip distance in miles reported by the taximeter.'").show()
+spark.sql("ALTER TABLE nyc.taxis ALTER COLUMN distance TYPE double;").show()
+spark.sql("ALTER TABLE nyc.taxis ALTER COLUMN distance AFTER fare;").show()
+spark.sql("ALTER TABLE nyc.taxis ADD COLUMN fare_per_distance_unit float AFTER distance").show()
+
+spark.sql("UPDATE nyc.taxis SET fare_per_distance_unit = fare/distance").show()
+
+spark.sql("").show()
+spark.sql("").show()
+spark.sql("").show()
+spark.sql("").show()
+
+
+
+
+
+spark = SparkSession.builder.config(conf=conf).getOrCreate()
+
+# Read CSV file from MinIO
+df = spark.read.option("header", "true").csv("s3a://openlake/warehouse/airlines.csv")
+df.show()
+
+# Create Iceberg table "hadoop_catalog.flightdb.airlines" from RDD
+df.write.mode("overwrite").saveAsTable("hadoop_catalog.flightdb.airlines")
+
+# Query table row count
+spark.sql("SELECT COUNT(*) AS cnt FROM hadoop_catalog.flightdb.airlines").show()
+
+# Rename column "fare_amount" in nyc.taxis_large to "fare"
+spark.sql("ALTER TABLE hadoop_catalog.flightdb.airlines RENAME COLUMN Code TO ID")
+
+# Rename column "trip_distance" in nyc.taxis_large to "distance"
+spark.sql("ALTER TABLE hadoop_catalog.flightdb.airlines RENAME COLUMN Description TO NAME")
+
+# Add description to the new column "distance"
+spark.sql("ALTER TABLE hadoop_catalog.flightdb.airlines ALTER COLUMN NAME COMMENT 'The Name of Flight.'")
+
+# Move "distance" next to "fare" column
+spark.sql("ALTER TABLE hadoop_catalog.flightdb.airlines ALTER COLUMN distance AFTER fare")
+
+# Add new column "fare_per_distance" of type float
+spark.sql("ALTER TABLE hadoop_catalog.flightdb.airlines ADD COLUMN fare_per_distance FLOAT AFTER distance")
+
+# Check the snapshots available
+snap_df = spark.sql("SELECT * FROM hadoop_catalog.flightdb.airlines.snapshots")
+snap_df.show()  # prints all the available snapshots (1 till now)
+
+# Populate the new column "fare_per_distance"
+logger.info("Populating fare_per_distance column...")
+spark.sql("UPDATE nyc.taxis_large SET fare_per_distance = fare/distance")
+
+# Check the snapshots available
+logger.info("Checking snapshots...")
+snap_df = spark.sql("SELECT * FROM nyc.taxis_large.snapshots")
+snap_df.show()  # prints all the available snapshots (2 now) since previous operation will create a new snapshot
+
+# Qurey the table to see the results
+res_df = spark.sql("""SELECT VendorID
+,tpep_pickup_datetime
+,tpep_dropoff_datetime
+,fare
+,distance
+,fare_per_distance
+FROM nyc.taxis_large LIMIT 15""")
+res_df.show()
+
+# Delete rows from "fare_per_distance" based on criteria
+logger.info("Deleting rows from fare_per_distance column...")
+spark.sql("DELETE FROM nyc.taxis_large WHERE fare_per_distance > 4.0 OR distance > 2.0")
+spark.sql("DELETE FROM nyc.taxis_large WHERE fare_per_distance IS NULL")
+
+# Check the snapshots available
+logger.info("Checking snapshots...")
+snap_df = spark.sql("SELECT * FROM nyc.taxis_large.snapshots")
+snap_df.show()  # prints all the available snapshots (4 now) since previous operations will create 2 new snapshots
+
+# Query table row count
+count_df = spark.sql("SELECT COUNT(*) AS cnt FROM nyc.taxis_large")
+total_rows_count = count_df.first().cnt
+logger.info(f"Total Rows for NYC Taxi Data after delete operations: {total_rows_count}")
+
+# Partition table based on "VendorID" column
+logger.info("Partitioning table based on VendorID column...")
+spark.sql("ALTER TABLE nyc.taxis_large ADD PARTITION FIELD VendorID")
+
+# Query Metadata tables like snapshot, files, history
+logger.info("Querying Snapshot table...")
+snapshots_df = spark.sql("SELECT * FROM nyc.taxis_large.snapshots ORDER BY committed_at")
+snapshots_df.show()  # shows all the snapshots in ascending order of committed_at column
+
+logger.info("Querying Files table...")
+files_count_df = spark.sql("SELECT COUNT(*) AS cnt FROM nyc.taxis_large.files")
+total_files_count = files_count_df.first().cnt
+logger.info(f"Total Data Files for NYC Taxi Data: {total_files_count}")
+
+spark.sql("""SELECT file_path,
+file_format,
+record_count,
+null_value_counts,
+lower_bounds,
+upper_bounds
+FROM nyc.taxis_large.files LIMIT 1""").show()
+
+# Query history table
+logger.info("Querying History table...")
+hist_df = spark.sql("SELECT * FROM nyc.taxis_large.history")
+hist_df.show()
+
+# Time travel to initial snapshot
+logger.info("Time Travel to initial snapshot...")
+snap_df = spark.sql("SELECT snapshot_id FROM nyc.taxis_large.history LIMIT 1")
+spark.sql(f"CALL demo.system.rollback_to_snapshot('nyc.taxis_large', {snap_df.first().snapshot_id})")
+
+# Qurey the table to see the results
+res_df = spark.sql("""SELECT VendorID
+,tpep_pickup_datetime
+,tpep_dropoff_datetime
+,fare
+,distance
+,fare_per_distance
+FROM nyc.taxis_large LIMIT 15""")
+res_df.show()
+
+# Query history table
+logger.info("Querying History table...")
+hist_df = spark.sql("SELECT * FROM nyc.taxis_large.history")
+hist_df.show()  # 1 new row
+
+# Query table row count
+count_df = spark.sql("SELECT COUNT(*) AS cnt FROM nyc.taxis_large")
+total_rows_count = count_df.first().cnt
+logger.info(f"Total Rows for NYC Taxi Data after time travel: {total_rows_count}")
+
+
+```
+
 ```scala
 
 import org.apache.spark.sql.types._

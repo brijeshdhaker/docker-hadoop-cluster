@@ -5,17 +5,20 @@ include:
 
 services:
   #
-  spark-iceberg:
+  iceberg-spark:
     image: tabulario/spark-iceberg
-    container_name: spark-iceberg
+    hostname: iceberg-spark.sandbox.net
+    container_name: iceberg-spark
     networks:
       default:
     depends_on:
       - iceberg-rest
       - minio
     volumes:
+      - sandbox_apps_path:/apps
       - /apps/hostpath/warehouse:/home/iceberg/warehouse
       - /apps/hostpath/notebooks:/home/iceberg/notebooks/notebooks
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - ./conf/spark/conf/spark-iceburg.conf:/opt/spark/conf/spark-defaults.conf
     environment:
       - AWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h
@@ -24,8 +27,8 @@ services:
     ports:
       - 8888:8888
       - 8080:8080
-      - 10000:10000
-      - 10001:10001
+#      - 10000:10000
+#      - 10001:10001
 
   #
   iceberg-rest:
@@ -40,7 +43,7 @@ services:
       - AWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h
       - AWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
       - AWS_REGION=us-east-1
-      - CATALOG_WAREHOUSE=s3://warehouse/
+      - CATALOG_WAREHOUSE=s3://openlake/warehouse/
       - CATALOG_IO__IMPL=org.apache.iceberg.aws.s3.S3FileIO
       - CATALOG_S3_ENDPOINT=http://minio.sandbox.net:9010
 
