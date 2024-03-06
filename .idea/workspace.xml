@@ -5,21 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-03-05 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/zeppelin/conf/interpreter.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/zeppelin/conf/interpreter.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-hadoop-cluster.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-hadoop-cluster.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-iceburg.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-iceburg.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/zeppelin/conf/interpreter.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/zeppelin/conf/interpreter.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-iceburg.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-iceburg.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/setup-and-cluster-submit.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/setup-and-cluster-submit.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/__main__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/airflow/dags/spark_yarn_test_dag.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/airflow/dags/spark_yarn_test_dag.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/hello.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/hello.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme-resources/iceberg-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/iceberg-help.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/sandbox.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/sandbox.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/spark-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/spark-help.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -720,7 +706,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709609082653</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="2024-03-05 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch.">
+      <option name="closed" value="true" />
+      <created>1709701113850</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1709701113850</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="UnknownFeatures">

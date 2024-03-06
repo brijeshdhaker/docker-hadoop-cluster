@@ -124,7 +124,16 @@ spark.sql("ALTER TABLE nyc.taxis ADD COLUMN fare_per_distance_unit float AFTER d
 
 spark.sql("UPDATE nyc.taxis SET fare_per_distance_unit = fare/distance").show()
 
-spark.sql("").show()
+spark.sql("""
+SELECT
+VendorID
+,tpep_pickup_datetime
+,tpep_dropoff_datetime
+,fare
+,distance
+,fare_per_distance_unit
+FROM nyc.taxis
+""").show()
 spark.sql("").show()
 spark.sql("").show()
 spark.sql("").show()
