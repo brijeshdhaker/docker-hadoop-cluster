@@ -6,10 +6,7 @@ version: '3.9'
 services:
 #
   jupyternb:
-    image: brijeshdhaker/jupyternb:3.2.1
-    build:
-      context: .
-      dockerfile: docker-jupyternb/Dockerfile
+    image: jupyter/pyspark-notebook:latest
     container_name: jupyternb
     hostname: jupyternb
     ports:
@@ -18,7 +15,7 @@ services:
       - "2222:2222"
     volumes:
       - sandbox_apps_path:/apps
-      - /apps/sandbox/jupyternb/notebook:/home/notebook
+      - /apps/sandbox/jupyternb/notebook:/home/jovyan/work
     environment:
       KUBECONFIG: /home/notebook/.kube/config
 #

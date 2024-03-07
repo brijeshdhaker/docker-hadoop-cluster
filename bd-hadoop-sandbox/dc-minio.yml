@@ -35,35 +35,32 @@ services:
       - sandbox_apps_path:/apps
       - /apps/hostpath/minio:/data
 
-
-
-#
-  #
-  mc:
-    image: minio/mc:latest
-    hostname: mc.sandbox.net
-    container_name: mc
-    healthcheck:
-      test: curl -f http://minio.sandbox.net:9000 || exit 1
-      retries: 20
-      interval: 10s
-    depends_on:
-      minio:
-        condition: service_healthy
-    environment:
-      - AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
-      - AWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h
-      - AWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
-      - AWS_REGION=us-east-1
-    entrypoint: >
-      /bin/sh -c "
-      until (/usr/bin/mc config host add minio http://minio.sandbox.net:9010 admin password) do echo '...waiting...' && sleep 1; done;
-      # /usr/bin/mc rm -r --force minio/warehouse ;
-      /usr/bin/mc config host add minio http://minio.sandbox.net:9010 admin password
-      /usr/bin/mc mb minio/warehouse --ignore-existing ;
-      /usr/bin/mc policy set public minio/warehouse ;
-      tail -f /dev/null
-      "
+   ##
+#  mc:
+#    image: minio/mc:latest
+#    hostname: mc.sandbox.net
+#    container_name: mc
+#    healthcheck:
+#      test: curl -f http://minio.sandbox.net:9000 || exit 1
+#      retries: 20
+#      interval: 10s
+#    depends_on:
+#      minio:
+#        condition: service_healthy
+#    environment:
+#      - AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
+#      - AWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h
+#      - AWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
+#      - AWS_REGION=us-east-1
+#    entrypoint: >
+#      /bin/sh -c "
+#      until (/usr/bin/mc config host add minio http://minio.sandbox.net:9010 admin password) do echo '...waiting...' && sleep 1; done;
+#      # /usr/bin/mc rm -r --force minio/warehouse ;
+#      /usr/bin/mc config host add minio http://minio.sandbox.net:9010 admin password
+#      /usr/bin/mc mb minio/warehouse --ignore-existing ;
+#      /usr/bin/mc policy set public minio/warehouse ;
+#      tail -f /dev/null
+#      "
 
 #
 volumes:

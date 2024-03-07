@@ -1,9 +1,9 @@
 #
-# ./bin/docker-image-tool.sh -t 3.2.1 -p ./kubernetes/dockerfiles/spark/bindings/python/Dockerfile build
-# docker build -t brijeshdhaker/jupyternb:3.2.1 -f Dockerfile .
+# ./bin/docker-image-tool.sh -t 3.5.0 -p ./kubernetes/dockerfiles/spark/bindings/python/Dockerfile build
+# docker build -t brijeshdhaker/jupyternb:3.5.0 -f docker-jupyternb/Dockerfile .
 # docker tag spark-py-notebook:latest brijeshdhaker/spark-py-notebook:latest
-#
-#
+# jupyter/pyspark-notebook
+# jupyter/all-spark-notebook:spark-3.5.0
 
 ARG spark_uid=185
 FROM spark-py:3.5.0
@@ -16,7 +16,7 @@ ENV SPARK_HOME      /opt/spark
 
 COPY docker-jupyternb/requirements.pip /tmp/requirements.pip
 RUN pip install -U -r /tmp/requirements.pip \
-    && rm ${SPARK_HOME}/jars/guava*.jar
+    && echo "Setup done."
 
 # install extension to monitor spark
 RUN jupyter nbextension install sparkmonitor --py --user --symlink
@@ -29,11 +29,11 @@ RUN ln -s /usr/local/lib/python3.8/site-packages/sparkmonitor/listener_2.12.jar 
 
 #
 # COPY docker-spark/base/scripts /
-COPY docker-spark/base/conf $SPARK_HOME/conf/
-COPY resources/libs/guava-27.0-jre.jar $SPARK_HOME/jars/
-COPY resources/libs/aws-java-sdk-bundle-1.11.888.jar $SPARK_HOME/jars/
-COPY resources/libs/hadoop-aws-3.2.0.jar $SPARK_HOME/jars/
-COPY resources/libs/postgresql-42.2.23.jar $SPARK_HOME/jars/
+#COPY docker-spark/base/conf $SPARK_HOME/conf/
+#COPY resources/libs/guava-27.0-jre.jar $SPARK_HOME/jars/
+#COPY resources/libs/aws-java-sdk-bundle-1.11.888.jar $SPARK_HOME/jars/
+#COPY resources/libs/hadoop-aws-3.2.0.jar $SPARK_HOME/jars/
+#COPY resources/libs/postgresql-42.2.23.jar $SPARK_HOME/jars/
 
 #
 VOLUME /home/notebook/

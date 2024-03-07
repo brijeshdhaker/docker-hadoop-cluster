@@ -1,9 +1,9 @@
 #
-notebook==6.2.0
-ipynb==0.5.1
+notebook
+ipynb
 
 #
-sparkmonitor==1.1.1
+sparkmonitor
 pyspark==3.5.0
 
 # Data Analysis

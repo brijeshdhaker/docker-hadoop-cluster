@@ -5,19 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-03-05 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch.">
-      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2021-06.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2021-07.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2021-08.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2021-09.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2021-10.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2021-11.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2021-12.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2022-01.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2022-02.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2022-03.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme-resources/taxi-data/yellow_tripdata_2022-04.parquet" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-yarn.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-iceburg.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-iceburg.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-jupyternb.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-jupyternb.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-jupyternb/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-jupyternb/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-jupyternb/requirements.pip" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-jupyternb/requirements.pip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme-resources/iceberg-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/iceberg-help.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/spark-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/spark-help.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,6 +101,7 @@
     "Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-jupyternb.yml.jupyternb: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-kafka.yml.kafkabroker: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-kafka.yml.kdcserver: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-kafka.yml.zookeeper: Compose Deployment.executor": "Run",
@@ -213,7 +211,7 @@
       <recent name="$PROJECT_DIR$/readme-resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-spark: Compose Deployment">
+  <component name="RunManager" selected="Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -270,49 +268,36 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-hadoop-cluster.yaml.nodemanager: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
-          <option name="services">
-            <list>
-              <option value="nodemanager" />
-            </list>
-          </option>
           <option name="sourceFilePath" value="bd-docker-sandbox/dc-hadoop-cluster.yaml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-hadoop-cluster.yaml.resourcemanager: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
-              <option value="resourcemanager" />
+              <option value="zeppelin" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hadoop-cluster.yaml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="bd-docker-sandbox/docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
           <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yaml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-hadoop-sandbox/dc-iceburg.yml.iceberg-spark: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-hadoop-sandbox/dc-jupyternb.yml.jupyternb: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
-              <option value="iceberg-spark" />
+              <option value="jupyternb" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-iceburg.yml" />
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-jupyternb.yml" />
         </settings>
       </deployment>
       <method v="2" />
@@ -325,20 +310,33 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="minio" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-minio.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.nodemanager: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.resourcemanager: Compose Deployment" />
-      <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-spark: Compose Deployment" />
+      <item itemvalue="Docker.bd-hadoop-sandbox/dc-jupyternb.yml.jupyternb: Compose Deployment" />
+      <item itemvalue="Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
       <item itemvalue="Docker.bd-hadoop-sandbox/dc-kdcserver.yml: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-spark: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.nodemanager: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.resourcemanager: Compose Deployment" />
+        <item itemvalue="Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" />
+        <item itemvalue="Docker.bd-hadoop-sandbox/dc-jupyternb.yml.jupyternb: Compose Deployment" />
         <item itemvalue="Docker.bd-hadoop-sandbox/dc-kdcserver.yml: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -742,7 +740,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709701285437</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="2024-03-05 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch.">
+      <option name="closed" value="true" />
+      <created>1709704210733</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1709704210733</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="UnknownFeatures">

@@ -76,8 +76,8 @@ $SPARK_HOME/bin/spark-shell \
 
 # Use Default Spark Catalog
 ```scala
-spark.sql("USE spark_catalog.default").show()
 spark.sql("show tables").show()
+spark.sql("USE spark_catalog.default").show()
 spark.sql("SELECT * FROM spark_catalog.default.m_students").show()
 ```
 
@@ -105,10 +105,21 @@ conf = (
     .set("spark.network.timeout", "400000")
 )
 
+spark.sql("CREATE DATABASE IF NOT EXISTS nyc").show(false)
+spark.sql("DESCRIBE DATABASE nyc").show(false)
+spark.sql("DESCRIBE DATABASE EXTENDED nyc").show(false)
+
+spark.sql("SHOW TBLPROPERTIES nyc.taxis ;").show(false)
+spark.sql("SHOW TBLPROPERTIES nyc.taxis ('current-snapshot-id');").show(false)
+
 val df = spark.read.parquet("s3a://openlake/taxi-data/yellow_tripdata_2021-04.parquet")
 df.write.saveAsTable("nyc.taxis")
 
-spark.sql("DESCRIBE EXTENDED nyc.taxis").show()
+spark.sql("CREATE TABLE IF NOT EXISTS nyc.taxis").show(false)
+spark.sql("DESCRIBE EXTENDED nyc.taxis").show(false)
+spark.sql("DESCRIBE FORMATTED nyc.taxis").show(false)
+
+spark.sql("SHOW CREATE TABLE nyc.taxis").show(false)
 
 spark.sql("SELECT COUNT(*) as cnt FROM nyc.taxis").show()
 spark.sql("").show()
@@ -177,7 +188,7 @@ ADD PARTITION FIELD VendorID
 spark.sql("""
 SELECT snapshot_id, manifest_list
 FROM nyc.taxis.snapshots
-""").show()
+""").show(false)
 
 spark.sql("""
 SELECT file_path, file_format, record_count, null_value_counts, lower_bounds, upper_bounds
@@ -396,10 +407,10 @@ spark.sql("SELECT * FROM hadoop_catalog.nyc.taxis.refs").show(false)
 spark.read.format("iceberg").load("nyc.taxis.files")
 
 // Hadoop path table
-spark.read.format("iceberg").load("hdfs://namenode.sandbox.net:9000/warehouse/tablespace/external/spark/nyc/taxis#files").show()
+spark.read.format("iceberg").load("s3a://openlake/warehouse/nyc/taxis#files").show()
 
 // Hadoop path table
-spark.read.format("iceberg").load("hdfs://namenode.sandbox.net:9000/warehouse/tablespace/external/spark/nyc/taxis#snapshots").show()
+spark.read.format("iceberg").load("s3a://openlake/warehouse/nyc/taxis#snapshots").show()
 
 ```
 
@@ -407,32 +418,32 @@ spark.read.format("iceberg").load("hdfs://namenode.sandbox.net:9000/warehouse/ta
 
 ```scala
 // get the table's file manifests at timestamp Sep 20, 2021 08:00:00
-spark.sql("SELECT * FROM hadoop_catalog.nyc.taxis.manifests TIMESTAMP AS OF '2021-09-20 08:00:00'")
+spark.sql("SELECT * FROM iceberg.nyc.taxis.manifests TIMESTAMP AS OF '2021-09-20 08:00:00'")
 
 // get the table's partitions with snapshot id 10963874102873L
-spark.sql("SELECT * FROM hadoop_catalog.nyc.taxis.partitions VERSION AS OF 10963874102873;")
+spark.sql("SELECT * FROM iceberg.nyc.taxis.partitions VERSION AS OF 10963874102873;")
 
 -- time travel to October 26, 1986 at 01:21:00
-SELECT * FROM hadoop_catalog.nyc.taxis TIMESTAMP AS OF '1986-10-26 01:21:00';
+SELECT * FROM iceberg.nyc.taxis TIMESTAMP AS OF '1986-10-26 01:21:00';
 
 -- time travel to snapshot with id 10963874102873L
-SELECT * FROM hadoop_catalog.nyc.taxis VERSION AS OF 10963874102873;
+SELECT * FROM iceberg.nyc.taxis VERSION AS OF 10963874102873;
 
 -- time travel to the head snapshot of audit-branch
-SELECT * FROM hadoop_catalog.nyc.taxis VERSION AS OF 'audit-branch';
+SELECT * FROM iceberg.nyc.taxis VERSION AS OF 'audit-branch';
 
 -- time travel to the snapshot referenced by the tag historical-snapshot
-SELECT * FROM hadoop_catalog.nyc.taxis VERSION AS OF 'historical-snapshot';
+SELECT * FROM iceberg.nyc.taxis VERSION AS OF 'historical-snapshot';
 
 
-SELECT * FROM hadoop_catalog.nyc.taxis FOR SYSTEM_TIME AS OF '1986-10-26 01:21:00';
-SELECT * FROM hadoop_catalog.nyc.taxis FOR SYSTEM_VERSION AS OF 10963874102873;
-SELECT * FROM hadoop_catalog.nyc.taxis FOR SYSTEM_VERSION AS OF 'audit-branch';
-SELECT * FROM hadoop_catalog.nyc.taxis FOR SYSTEM_VERSION AS OF 'historical-snapshot';
+SELECT * FROM iceberg.nyc.taxis FOR SYSTEM_TIME AS OF '1986-10-26 01:21:00';
+SELECT * FROM iceberg.nyc.taxis FOR SYSTEM_VERSION AS OF 10963874102873;
+SELECT * FROM iceberg.nyc.taxis FOR SYSTEM_VERSION AS OF 'audit-branch';
+SELECT * FROM iceberg.nyc.taxis FOR SYSTEM_VERSION AS OF 'historical-snapshot';
 
 -- timestamp in seconds
-  SELECT * FROM hadoop_catalog.nyc.taxis TIMESTAMP AS OF 499162860;
-  SELECT * FROM hadoop_catalog.nyc.taxis FOR SYSTEM_TIME AS OF 499162860;
+  SELECT * FROM iceberg.nyc.taxis TIMESTAMP AS OF 499162860;
+  SELECT * FROM iceberg.nyc.taxis FOR SYSTEM_TIME AS OF 499162860;
 
 // load the table's file metadata at snapshot-id 10963874102873 as DataFrame
 spark.read.format("iceberg").option("snapshot-id", 10963874102873L).load("db.table.files")
