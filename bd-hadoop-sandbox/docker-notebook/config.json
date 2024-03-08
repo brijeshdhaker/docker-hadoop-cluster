@@ -1,0 +1,14 @@
+{
+  "hive":{
+    "cluster_name": {
+      "host": <hostname>,
+      "port": <port_number>,
+      "auth": "plain/gssapi",
+    }
+    "cluster_name_1": {
+      "host": "<hostname">,
+      "port": <port_number>,
+      "auth": "plain/gssapi",
+    }
+  }
+}

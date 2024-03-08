@@ -1,0 +1,35 @@
+#
+notebook==7.1.1
+#
+#jupyterlab
+#jupyter_contrib_nbextensions
+#jupyter_nbextensions_configurator
+
+#
+jupysql
+#
+matplotlib
+scipy
+
+# scala
+spylon-kernel
+toree
+
+#
+# ppextensions
+
+# sparkmonitor
+sparkmonitor
+
+#
+pyspark==3.5.0
+
+# Data Analysis
+pandas
+numpy
+arrow
+pyarrow
+flake8
+protobuf
+grpcio
+grpcio-status
