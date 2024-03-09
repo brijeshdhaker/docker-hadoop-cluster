@@ -61,7 +61,7 @@ parser.add_argument("--var", help="Variable name to hold the dataframe", type=st
 def sql(line, cell=None):
     """Spark SQL magic """
     from pyspark.sql import SparkSession
-    spark = SparkSession.builder.appName("Jupyter").getOrCreate()
+    spark = SparkSession.builder.getOrCreate()
     if cell is None:
         return _to_table(spark.sql(line))
     elif line:

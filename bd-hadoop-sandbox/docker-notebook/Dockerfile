@@ -5,16 +5,9 @@
 # jupyter/pyspark-notebook
 # jupyter/all-spark-notebook:spark-3.5.0
 
-ARG spark_uid=185
-FROM spark-py:3.5.0
+FROM jupyter/all-spark-notebook:latest
 
-# Specify the User that the actual main process will run as
-USER ${spark_uid}
-
-ENV SPARK_HOME=/opt/spark
-ENV SPARK_VERSION=3.5.0
-ENV SPARK_MAJOR_VERSION=3.5
-ENV JAVA_HOME=/opt/java/openjdk
+USER root
 #
 RUN set -x &&  \
     apt-get update && \
@@ -23,12 +16,30 @@ RUN set -x &&  \
     rm -rf /var/lib/apt/lists/* && \
     echo "basic installation done."
 
+#
 # Install Jupyter and other python deps
 COPY docker-notebook/requirements.pip /tmp/requirements.pip
-RUN set -x && /usr/local/bin/pip3 install -U -r /tmp/requirements.pip
+RUN set -x && pip3 install -U -r /tmp/requirements.pip && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
 
+COPY docker-notebook/listener_2.12.jar /opt/conda/lib/python3.11/site-packages/sparkmonitor/listener.jar
 # Add scala kernel via spylon-kernel
-RUN set -x && /usr/bin/python3 -m spylon_kernel install
+RUN set -x && \
+    # ipython profile create && \
+    echo "c.InteractiveShellApp.extensions.append('sparkmonitor.kernelextension')" >>  $(ipython profile locate default)/ipython_kernel_config.py && \
+    echo "c.InteractiveShellApp.extensions.append('sparkmonitor.kernelextension')" >>  $(ipython profile locate default)/ipython_config.py && \
+    ln -s /opt/conda/lib/python3.11/site-packages/sparkmonitor/listener.jar /usr/local/spark/jars/listener.jar && \
+    python3 -m spylon_kernel install && \
+    jupyter toree install --spark_home=/usr/local/spark && \
+    echo "Setup done."
+
+#
+#RUN set -x && \
+#    conda install --yes jupysql && \
+#    conda clean --all -f -y && \
+#    fix-permissions "${CONDA_DIR}" && \
+#    fix-permissions "/home/${NB_USER}"
 
 # Download and install IJava jupyter kernel
 RUN set -x && \
@@ -37,6 +48,8 @@ RUN set -x && \
     python3 install.py --sys-prefix && \
     rm ijava-1.3.0.zip
 
+# Add iceberg spark runtime jar to IJava classpath
+ENV IJAVA_CLASSPATH=/usr/local/spark/jars/*
 
 # Install AWS CLI
 RUN set -x && \
@@ -47,43 +60,10 @@ RUN set -x && \
     rm -rf aws/ && \
     echo "AWS Client installation done."
 
-ENV PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.9.7-src.zip:$PYTHONPATH
-ENV PATH="$SPARK_HOME/sbin:$SPARK_HOME/bin:${JAVA_HOME}/bin:${PATH}"
+#
+RUN set -x && mkdir -p /root/.ipython/profile_default/startup
+COPY docker-notebook/startup/00-prettytables.py /home/${NB_USER}/.ipython/profile_default/startup
+COPY docker-notebook/startup/README /home/${NB_USER}/.ipython/profile_default/startup
 
 #
-RUN mkdir -p /root/.ipython/profile_default/startup
-COPY docker-notebook/startup/00-prettytables.py /root/.ipython/profile_default/startup
-COPY docker-notebook/startup/README /root/.ipython/profile_default/startup
-
-#
-RUN set -x && \
-    ipython profile create && \
-    echo "c.InteractiveShellApp.extensions.append('sparkmonitor.kernelextension')" >>  $(ipython profile locate default)/ipython_kernel_config.py && \
-    echo "c.InteractiveShellApp.extensions.append('sparkmonitor.kernelextension')" >>  $(ipython profile locate default)/ipython_config.py && \
-    ln -s /usr/local/lib/python3.10/dist-packages/sparkmonitor/listener_2.12.jar $SPARK_HOME/jars/listener_2.12.jar && \
-    jupyter toree install --spark_home=/opt/spark && \
-    echo "Setup done."
-
-# Add a notebook command
-#RUN set -x \
-# && echo '#! /bin/sh' >> /bin/notebook \
-# && echo 'export PYSPARK_DRIVER_PYTHON=jupyter-notebook' >> /bin/notebook \
-# && echo "export PYSPARK_DRIVER_PYTHON_OPTS=\"--notebook-dir=/home/notebooks --ip='*' --NotebookApp.token='' --NotebookApp.password='' --port=8888 --no-browser --allow-root\"" >> /bin/notebook \
-# && echo "pyspark" >> /bin/notebook \
-# && chmod u+x /bin/notebook
-
-
-#
-VOLUME /home/notebooks/
-
-COPY docker-notebook/entrypoint.sh /entrypoint.sh
-RUN chown -f root:root /entrypoint.sh && \
-    chmod -Rf 775 /entrypoint.sh
-
-#
-ENTRYPOINT ["/entrypoint.sh"]
-
-#
-CMD ["jupyter notebook --port=8888 --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token='' --notebook-dir=/home/notebooks/"]
-#CMD ["notebook"]
-#
+USER ${NB_UID}
