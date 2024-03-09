@@ -18,7 +18,7 @@ ENV JAVA_HOME=/opt/java/openjdk
 #
 RUN set -x &&  \
     apt-get update && \
-    apt-get install -y --no-install-recommends sudo curl vim unzip build-essential software-properties-common ssh && \
+    apt-get install -y --no-install-recommends sudo curl vim unzip openjdk-17-jdk build-essential software-properties-common ssh && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     echo "basic installation done."

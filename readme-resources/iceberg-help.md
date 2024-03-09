@@ -92,8 +92,7 @@ from pyspark.sql.types import StructType, StructField, LongType, DoubleType, Str
 # adding iceberg configs
 conf = (
     SparkConf()
-    .set("spark.sql.extensions",
-         "org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions") # Use Iceberg with Spark
+    .set("spark.sql.extensions","org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions") # Use Iceberg with Spark
     .set("spark.sql.catalog.demo", "org.apache.iceberg.spark.SparkCatalog")
     .set("spark.sql.catalog.demo.io-impl", "org.apache.iceberg.aws.s3.S3FileIO")
     .set("spark.sql.catalog.demo.warehouse", "s3a://openlake/warehouse/")

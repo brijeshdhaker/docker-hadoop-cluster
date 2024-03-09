@@ -152,30 +152,30 @@ services:
       - envs/docker_hadoop.env
 
   # MR History Server
-  historyserver:
-    image: brijeshdhaker/hadoop-historyserver:3.3.4
-    build:
-      context: .
-      dockerfile: docker-hadoop/historyserver/Dockerfile
-    container_name: historyserver
-    hostname: historyserver.sandbox.net
-    restart: no
-    healthcheck:
-      test: nc -vz historyserver.sandbox.net 19888 || exit 1
-      retries: 20
-      interval: 10s
-    depends_on:
-      resourcemanager:
-        condition: service_healthy
-    ports:
-      - "19888:19888"
-    environment:
-      SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
-    volumes:
-      - sandbox_apps_path:/apps
-      - sandbox_hadoop_334_mapred:/mapred
-    env_file:
-      - envs/docker_hadoop.env
+#  historyserver:
+#    image: brijeshdhaker/hadoop-historyserver:3.3.4
+#    build:
+#      context: .
+#      dockerfile: docker-hadoop/historyserver/Dockerfile
+#    container_name: historyserver
+#    hostname: historyserver.sandbox.net
+#    restart: no
+#    healthcheck:
+#      test: nc -vz historyserver.sandbox.net 19888 || exit 1
+#      retries: 20
+#      interval: 10s
+#    depends_on:
+#      resourcemanager:
+#        condition: service_healthy
+#    ports:
+#      - "19888:19888"
+#    environment:
+#      SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
+#    volumes:
+#      - sandbox_apps_path:/apps
+#      - sandbox_hadoop_334_mapred:/mapred
+#    env_file:
+#      - envs/docker_hadoop.env
 
 #
 volumes:

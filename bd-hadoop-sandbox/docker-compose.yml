@@ -70,6 +70,30 @@ services:
       - "thinkpad.sandbox.net:172.18.0.1"
 
   #
+  notebook:
+    image: brijeshdhaker/notebook:3.5.0
+    container_name: notebook
+    hostname: notebook.sandbox.net
+    ports:
+      - "8888:8888"
+      - "4040:4040"
+#    command:
+#      - "jupyter lab --port=8888 --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token='' --notebook-dir=/home/notebooks/"
+    volumes:
+      - sandbox_apps_path:/apps
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
+      - /apps/sandbox/notebooks:/home/notebooks
+      - sandbox_hadoop_334:/opt/hadoop
+      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+      - sandbox_hive_313:/opt/hive
+      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
+      - ./conf/spark/conf:/opt/spark/conf
+    environment:
+      KUBECONFIG: /home/notebook/.kube/config
+    env_file:
+      - ./envs/docker_clients.env
+
+  #
   # Zeppelin Notebook
   #
   zeppelin:
