@@ -9,14 +9,20 @@ services:
     image: brijeshdhaker/notebook:3.5.0
     container_name: notebook
     hostname: notebook.sandbox.net
+    command:
+      - "jupyter lab --port=8888 --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token='' --notebook-dir=/home/notebooks/"
     ports:
       - "8888:8888"
       - "4040:4040"
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
-      - ./conf/spark/conf:/usr/local/spark/conf
-      - /apps/sandbox/notebooks:/home/jovyan/notebooks
+      - ./conf/spark/conf:/opt/spark/conf
+      - sandbox_hadoop_334:/opt/hadoop
+      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+      - sandbox_hive_313:/opt/hive
+      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
+      - /apps/sandbox/notebooks:/home/notebooks
     environment:
       KUBECONFIG: /home/notebook/.kube/config
 #
