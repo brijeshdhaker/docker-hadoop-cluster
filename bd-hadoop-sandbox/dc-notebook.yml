@@ -1,6 +1,7 @@
 #
 # docker-compose -H tcp://raspberry:2375 -f dc-notebook.yml up -d
 # /home/jovyan/work
+# brijeshdhaker/notebook:3.5.0
 version: '3.9'
 #
 services:
@@ -18,9 +19,12 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
+      - /opt/spark-3.5.0:/usr/local/spark
       - ./conf/spark/conf:/usr/local/spark/conf
       - sandbox_hadoop_334:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+      - /opt/maven-3.6.3:/opt/maven-3.6.3
+      - .conf/maven/settings.xml:/home/jovyan/.m2/settings.xml
       - sandbox_hive_313:/opt/hive
       - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
       - /apps/sandbox/notebooks:/home/jovyan/work/notebooks
