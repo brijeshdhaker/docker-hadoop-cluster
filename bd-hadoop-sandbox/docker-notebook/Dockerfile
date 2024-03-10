@@ -4,6 +4,7 @@
 # docker tag spark-py-notebook:latest brijeshdhaker/spark-py-notebook:latest
 # jupyter/pyspark-notebook
 # jupyter/all-spark-notebook:spark-3.5.0
+# spark-py:3.5.0
 
 ARG spark_uid=185
 FROM spark-py:3.5.0
@@ -29,7 +30,9 @@ COPY docker-notebook/requirements.pip /tmp/requirements.pip
 RUN set -x && pip install -U -r /tmp/requirements.pip
 
 # Add scala kernel via spylon-kernel
-RUN set -x && python3 -m spylon_kernel install
+RUN set -x && \
+    python3 -m spylon_kernel install && \
+    python3 -m toree install
 
 # Download and install IJava jupyter kernel
 RUN set -x && \
@@ -57,13 +60,12 @@ COPY docker-notebook/startup/00-prettytables.py /root/.ipython/profile_default/s
 COPY docker-notebook/startup/README /root/.ipython/profile_default/startup
 
 #
-RUN set -x && \
-    ipython profile create && \
-    echo "c.InteractiveShellApp.extensions.append('sparkmonitor.kernelextension')" >>  $(ipython profile locate default)/ipython_kernel_config.py && \
-    echo "c.InteractiveShellApp.extensions.append('sparkmonitor.kernelextension')" >>  $(ipython profile locate default)/ipython_config.py && \
-    ln -s /usr/local/lib/python3.10/dist-packages/sparkmonitor/listener_2.12.jar $SPARK_HOME/jars/listener_2.12.jar && \
-    jupyter toree install --spark_home=/opt/spark && \
-    echo "Setup done."
+#RUN set -x && \
+#    ipython profile create && \
+#    echo "c.InteractiveShellApp.extensions.append('sparkmonitor.kernelextension')" >>  $(ipython profile locate default)/ipython_kernel_config.py && \
+#    echo "c.InteractiveShellApp.extensions.append('sparkmonitor.kernelextension')" >>  $(ipython profile locate default)/ipython_config.py && \
+#    ln -s /usr/local/lib/python3.10/dist-packages/sparkmonitor/listener.jar $SPARK_HOME/jars/listener.jar && \
+#    echo "Setup done."
 
 # Add a notebook command
 #RUN set -x \
@@ -85,6 +87,6 @@ RUN chown -f root:root /entrypoint.sh && \
 ENTRYPOINT ["/entrypoint.sh"]
 
 #
-CMD ["jupyter notebook --port=8888 --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token='' --notebook-dir=/home/notebooks/"]
+CMD ["jupyter lab --port=8888 --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token='' --notebook-dir=/home/notebooks/"]
 #CMD ["notebook"]
 #

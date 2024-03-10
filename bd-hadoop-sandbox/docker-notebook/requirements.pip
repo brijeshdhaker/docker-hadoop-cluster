@@ -1,7 +1,7 @@
 #
-# notebook==6.2.0
 # ipynb==0.5.1
-jupyter==1.0.0
+jupyterlab>=4.0.4
+notebook>=7.0.2
 spylon-kernel==0.4.1
 toree
 
@@ -9,9 +9,8 @@ toree
 jupysql
 
 #
-jupyterlab-sparkmonitor
+# jupyterlab-sparkmonitor
 # sparkmonitor
-
 # pyspark==3.5.0
 
 # Data Analysis

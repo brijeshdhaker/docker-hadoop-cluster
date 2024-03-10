@@ -1,6 +1,6 @@
 #
 # docker-compose -H tcp://raspberry:2375 -f dc-notebook.yml up -d
-#
+# /home/jovyan/work
 version: '3.9'
 #
 services:
@@ -9,8 +9,9 @@ services:
     image: brijeshdhaker/notebook:3.5.0
     container_name: notebook
     hostname: notebook.sandbox.net
-    command:
-      - "jupyter lab --port=8888 --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token='' --notebook-dir=/home/notebooks/"
+    user: root
+#    command:
+#      - "jupyter lab --port=8888 --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token='' --notebook-dir=/home/notebooks/"
     ports:
       - "8888:8888"
       - "4040:4040"
@@ -24,7 +25,10 @@ services:
       - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
       - /apps/sandbox/notebooks:/home/notebooks
     environment:
+      GRANT_SUDO: yes
       KUBECONFIG: /home/notebook/.kube/config
+    env_file:
+      - ./envs/docker_clients.env
 #
 
 #
