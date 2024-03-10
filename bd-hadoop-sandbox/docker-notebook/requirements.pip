@@ -1,41 +1,12 @@
 #
-# ipynb==0.5.1
-jupyterlab>=4.0.4
-notebook>=7.0.2
-spylon-kernel==0.4.1
-toree
+# spylon-kernel
+# toree
 
 #
 jupysql
 
-#
-# jupyterlab-sparkmonitor
-# sparkmonitor
-# pyspark==3.5.0
-
 # Data Analysis
-pandas
-numpy
-matplotlib
-pyarrow
-flake8
-protobuf
-grpcio
+# protobuf
+# grpcio
+mysqlclient
 grpcio-status
-
-# Python Testing
-#pytest
-#requests
-#certifi
-#jellyfish
-#vertica-python
-
-# Streaming
-#confluent-kafka
-#venv-pack
-
-# Machine Learning
-#seaborn
-#keras
-#tensorflow
-#sklearn

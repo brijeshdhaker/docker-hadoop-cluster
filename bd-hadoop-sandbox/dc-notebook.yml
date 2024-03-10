@@ -18,15 +18,16 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
-      - ./conf/spark/conf:/opt/spark/conf
+      - ./conf/spark/conf:/usr/local/spark/conf
       - sandbox_hadoop_334:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - sandbox_hive_313:/opt/hive
       - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
-      - /apps/sandbox/notebooks:/home/notebooks
+      - /apps/sandbox/notebooks:/home/jovyan/work/notebooks
     environment:
       GRANT_SUDO: yes
       KUBECONFIG: /home/notebook/.kube/config
+      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
     env_file:
       - ./envs/docker_clients.env
 #
