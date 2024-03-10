@@ -20,15 +20,24 @@ RUN set -x &&  \
 
 # Install Jupyter and other python deps
 COPY docker-notebook/requirements.pip /tmp/requirements.pip
-# RUN set -x && pip install -U -r /tmp/requirements.pip
+#RUN set -x && pip install -U -r /tmp/requirements.pip
+
+#
 RUN set -x && mamba install --yes --file /tmp/requirements.pip && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
+#
+RUN set -x && conda install  -c conda-forge --yes spylon-kernel && \
+    conda clean --all -f -y && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
+
+
 # Add scala kernel via spylon-kernel
 RUN set -x && \
-    # python3 -m spylon_kernel install && \
+    python3 -m spylon_kernel install && \
     # python3 -m toree install && \
     echo "basic installation done."
 
@@ -88,6 +97,14 @@ RUN set -x && \
 
 #
 # ENTRYPOINT ["/entrypoint.sh"]
+RUN set -x && \
+    curl -fLo coursier https://git.io/coursier-cli-"$(uname | tr LD ld)"  && \
+    chmod +x coursier && \
+    ./coursier launch --fork almond --scala 2.12 -- --install --force && \
+    rm -f coursier && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}" && \
+    echo "scala setup done"
 
 #
 # CMD ["jupyter lab --port=8888 --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token='' --notebook-dir=/home/notebooks/"]
