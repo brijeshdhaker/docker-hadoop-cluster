@@ -5,8 +5,11 @@
 #
 jupysql
 
+# plotting
+plotly
+
 # Data Analysis
-# protobuf
-# grpcio
+protobuf
+grpcio
 mysqlclient
 grpcio-status

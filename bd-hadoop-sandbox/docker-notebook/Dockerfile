@@ -61,9 +61,6 @@ RUN set -x && \
     fix-permissions "/home/${NB_USER}" && \
     echo "AWS Client installation done."
 
-# ENV PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.9.7-src.zip:$PYTHONPATH
-# ENV PATH="$SPARK_HOME/sbin:$SPARK_HOME/bin:${JAVA_HOME}/bin:${PATH}"
-
 #
 RUN mkdir -p /home/${NB_USER}/.ipython/profile_default/startup
 COPY docker-notebook/startup/00-prettytables.py /home/${NB_USER}/.ipython/profile_default/startup
@@ -71,43 +68,9 @@ COPY docker-notebook/startup/README /home/${NB_USER}/.ipython/profile_default/st
 
 #
 RUN set -x && \
-#    ipython profile create && \
-#    echo "c.InteractiveShellApp.extensions.append('sparkmonitor.kernelextension')" >>  $(ipython profile locate default)/ipython_kernel_config.py && \
-#    echo "c.InteractiveShellApp.extensions.append('sparkmonitor.kernelextension')" >>  $(ipython profile locate default)/ipython_config.py && \
-#    ln -s /usr/local/lib/python3.10/dist-packages/sparkmonitor/listener.jar $SPARK_HOME/jars/listener.jar && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}" && \
     echo "Setup done."
 
-# Add a notebook command
-#RUN set -x \
-# && echo '#! /bin/sh' >> /bin/notebook \
-# && echo 'export PYSPARK_DRIVER_PYTHON=jupyter-notebook' >> /bin/notebook \
-# && echo "export PYSPARK_DRIVER_PYTHON_OPTS=\"--notebook-dir=/home/notebooks --ip='*' --NotebookApp.token='' --NotebookApp.password='' --port=8888 --no-browser --allow-root\"" >> /bin/notebook \
-# && echo "pyspark" >> /bin/notebook \
-# && chmod u+x /bin/notebook
-
-
-#
-# VOLUME /home/notebooks/
-
-# COPY docker-notebook/entrypoint.sh /entrypoint.sh
-# RUN chown -f root:root /entrypoint.sh && \
-#     chmod -Rf 775 /entrypoint.sh
-
-#
-# ENTRYPOINT ["/entrypoint.sh"]
-RUN set -x && \
-    curl -fLo coursier https://git.io/coursier-cli-"$(uname | tr LD ld)"  && \
-    chmod +x coursier && \
-    ./coursier launch --fork almond --scala 2.12 -- --install --force && \
-    rm -f coursier && \
-    fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}" && \
-    echo "scala setup done"
-
-#
-# CMD ["jupyter lab --port=8888 --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token='' --notebook-dir=/home/notebooks/"]
-#CMD ["notebook"]
 #
 USER ${NB_USER}

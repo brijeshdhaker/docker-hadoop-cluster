@@ -19,12 +19,11 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
-      - /opt/spark-3.5.0:/usr/local/spark
       - ./conf/spark/conf:/usr/local/spark/conf
       - sandbox_hadoop_334:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - /opt/maven-3.6.3:/opt/maven-3.6.3
-      - .conf/maven/settings.xml:/home/jovyan/.m2/settings.xml
+      - ./conf/maven/settings.xml:/home/jovyan/.m2/settings.xml
       - sandbox_hive_313:/opt/hive
       - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
       - /apps/sandbox/notebooks:/home/jovyan/work/notebooks
@@ -32,8 +31,14 @@ services:
       GRANT_SUDO: yes
       KUBECONFIG: /home/notebook/.kube/config
       JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
-    env_file:
-      - ./envs/docker_clients.env
+      SPARK_HOME: /usr/local/spark
+      HADOOP_HOME: /opt/hadoop
+      HADOOP_CONF_DIR: /opt/hadoop/etc/hadoop
+      HIVE_HOME: /opt/hive
+      HIVE_CONF_DIR: /opt/hive/conf
+      PYARROW_IGNORE_TIMEZONE: 1
+#    env_file:
+#      - ./envs/docker_clients.env
 #
 
 #
