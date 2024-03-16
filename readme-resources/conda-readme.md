@@ -8,6 +8,8 @@ sudo bash /apps/hostpath/python/Miniconda3-py37_4.9.2-Linux-x86_64.sh -b -p /opt
 sudo chmod -Rf 775 /opt/conda
 sudo chown -Rf root:brijeshdhaker /opt/conda
 
+conda config --set auto_activate_base false
+
 export PATH=/opt/conda/bin:$PATH
 conda config --set always_yes yes --set changeps1 no
 conda info -a

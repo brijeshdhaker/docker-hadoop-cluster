@@ -4,6 +4,8 @@
 
 #
 jupysql
+duckdb
+duckdb-engine
 
 # plotting
 plotly
@@ -11,5 +13,5 @@ plotly
 # Data Analysis
 protobuf
 grpcio
-mysqlclient
 grpcio-status
+mysqlclient

@@ -8,10 +8,37 @@
 
 version: "3.9"
 
-include:
-  - dc-kdcserver.yml
-
 services:
+  ##
+  kdcserver:
+    image: brijeshdhaker/kdcserver:22.04
+    container_name: kdcserver
+    hostname: kdcserver.sandbox.net
+    healthcheck:
+      test: echo srvr || exit 1
+      retries: 20
+      interval: 10s
+    ports:
+      - "749:749"
+      - "750:750"
+      - "88:88/udp"
+    volumes:
+      - sandbox_apps_path:/apps
+      - /dev/urandom:/dev/random      # This is needed otherwise there won't be enough entropy to generate a new kerberos realm
+      - sandbox_krb5_stash:/etc/krb5kdc
+      - sandbox_krb5_principal:/var/lib/krb5kdc/
+      - ./conf/kerberos:/etc/kerberos
+    environment:
+      REALM: SANDBOX.NET
+      DOMAIN_REALM: sandbox.net
+      MASTER_KEY_TYPE: aes256-cts-hmac-sha1-96:normal
+      SUPPORTED_ENCRYPTION_TYPES: aes256-cts-hmac-sha1-96:normal aes128-cts-hmac-sha1-96:normal
+      KADMIN_PRINCIPAL: kadmin/admin
+      KADMIN_PASSWORD: kadmin
+      KUSERS_PASSWORD: kuser
+    env_file:
+      - ./envs/docker_kerberos.env
+
   #
   # HDFS Cluster
   #
@@ -41,7 +68,7 @@ services:
       CLUSTER_NAME: "docker-sandbox"
       MULTIHOMED_NETWORK: 2
     env_file:
-      - envs/docker_hadoop.env
+      - ./envs/docker_hadoop.env
 
   #
   datanode:
@@ -70,7 +97,7 @@ services:
       CLUSTER_NAME: "docker-sandbox"
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000"
     env_file:
-      - envs/docker_hadoop.env
+      - ./envs/docker_hadoop.env
 
   #
   # YARN Cluster
@@ -95,7 +122,7 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
     env_file:
-      - envs/docker_hadoop.env
+      - ./envs/docker_hadoop.env
 
   #
   nodemanager:
@@ -123,7 +150,7 @@ services:
       YARN_CONF_DIR: "/opt/hadoop/etc/hadoop"
       SERVICE_PRECONDITION: "resourcemanager.sandbox.net:8088"
     env_file:
-      - envs/docker_hadoop.env
+      - ./envs/docker_hadoop.env
 
   # YARN Timeline Server
   timelineserver:
@@ -149,7 +176,7 @@ services:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_334_yarn:/yarn
     env_file:
-      - envs/docker_hadoop.env
+      - ./envs/docker_hadoop.env
 
   # MR History Server
 #  historyserver:

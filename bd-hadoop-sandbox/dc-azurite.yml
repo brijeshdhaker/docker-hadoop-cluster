@@ -17,6 +17,10 @@ services:
       - AZURE_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h
       - AZURE_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
       - AZURE_REGION=us-east-1
+    networks:
+      default:
+        aliases:
+          - devstoreaccount1.blob.core.windows.net
     ports:
       - "10000:10000"
       - "10001:10001"

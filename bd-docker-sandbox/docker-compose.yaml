@@ -5,10 +5,66 @@
 ---
 version: "3.9"
 
-include:
-  - dc-hive-cluster.yaml
-
 services:
+  ##
+  minio:
+    image: minio/minio:latest
+    hostname: minio.sandbox.net
+    container_name: minio
+    healthcheck:
+      test: echo $HOSTNAME || exit 1
+      retries: 20
+      interval: 10s
+    networks:
+      default:
+        aliases:
+          - openlake.minio
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=password
+      - MINIO_DOMAIN=minio
+      - MINIO_ADDRESS=0.0.0.0:9010
+      - MINIO_CONSOLE_ADDRESS=0.0.0.0:9011
+      - AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
+      - AWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h
+      - AWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
+      - AWS_REGION=us-east-1
+    ports:
+      - "9010:9010"
+      - "9011:9011"
+    command: [ "server", "/data", "--console-address", ":9011" ]
+    volumes:
+      - sandbox_apps_path:/apps
+      - /apps/hostpath/minio:/data
+
+  ##
+  notebook:
+    image: brijeshdhaker/notebook:3.5.0
+    container_name: notebook
+    hostname: notebook.sandbox.net
+    ports:
+      - "8888:8888"
+    volumes:
+      - sandbox_apps_path:/apps
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
+      - ./conf/spark/conf:/usr/local/spark/conf
+      - sandbox_hadoop_334:/opt/hadoop
+      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+      - /opt/maven-3.6.3:/opt/maven-3.6.3
+      - ./conf/maven/settings.xml:/home/jovyan/.m2/settings.xml
+      - sandbox_hive_313:/opt/hive
+      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
+      - /apps/sandbox/notebooks:/home/jovyan/work/notebooks
+    environment:
+      GRANT_SUDO: yes
+      KUBECONFIG: /home/notebook/.kube/config
+      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
+      M2_HOME: /opt/maven-3.6.3
+      SPARK_HOME: /usr/local/spark
+      PYARROW_IGNORE_TIMEZONE: 1
+  #    env_file:
+  #      - ./envs/docker_clients.env
+
   #
   # Gateway Node
   #
@@ -25,10 +81,9 @@ services:
       - "/usr/sbin/sshd -D"
     ports:
       - "2222:22"
-      - "4040:4040"
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_334:/opt/hadoop
+#      - sandbox_hadoop_334:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - sandbox_hbase_246:/opt/hbase
       - ./conf/hbase/client:/opt/hbase/conf
@@ -48,43 +103,43 @@ services:
   #
   # Zeppelin Notebook
   #
-  zeppelin:
-    image: apache/zeppelin:0.11.0
-    pull_policy: missing
-    container_name: zeppelin
-    hostname: zeppelin.sandbox.net
-    environment:
-      ALLOW_ANONYMOUS_LOGIN: "yes"
-    env_file:
-      - ./envs/docker_clients.env
-    ports:
-      - "9080:8080"
-      - "9081:8081"
-    depends_on:
-      datanode:
-        condition: service_healthy
-    healthcheck:
-      test: echo $HOSTNAME || exit 1
-      retries: 20
-      interval: 10s
-    volumes:
-      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
-      - sandbox_apps_path:/apps
-      - sandbox_zeppelin_conf:/opt/zeppelin/conf
-      - sandbox_zeppelin_notebook:/notebook
-      - /apps/var/log/zeppelin:/logs
-      - /apps/sandbox/zeppelin/local-repo:/opt/zeppelin/local-repo
-      - sandbox_spark_350:/opt/spark
-      - ./conf/spark/conf:/opt/spark/conf
-      - sandbox_hadoop_334:/opt/hadoop
-      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-      - sandbox_hive_313:/opt/hive
-      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
-      - sandbox_hbase_246:/opt/hbase
-      - ./conf/hbase/client:/opt/hbase/conf
-      - /opt/flink-1.12.2:/opt/flink
-    extra_hosts:
-      - "thinkpad.sandbox.net:172.18.0.1"
+#  zeppelin:
+#    image: apache/zeppelin:0.11.0
+#    pull_policy: missing
+#    container_name: zeppelin
+#    hostname: zeppelin.sandbox.net
+#    environment:
+#      ALLOW_ANONYMOUS_LOGIN: "yes"
+#    env_file:
+#      - ./envs/docker_clients.env
+#    ports:
+#      - "9080:8080"
+#      - "9081:8081"
+#    depends_on:
+#      datanode:
+#        condition: service_healthy
+#    healthcheck:
+#      test: echo $HOSTNAME || exit 1
+#      retries: 20
+#      interval: 10s
+#    volumes:
+#      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
+#      - sandbox_apps_path:/apps
+#      - sandbox_zeppelin_conf:/opt/zeppelin/conf
+#      - sandbox_zeppelin_notebook:/notebook
+#      - /apps/var/log/zeppelin:/logs
+#      - /apps/sandbox/zeppelin/local-repo:/opt/zeppelin/local-repo
+#      - sandbox_spark_350:/opt/spark
+#      - ./conf/spark/conf:/opt/spark/conf
+#      - sandbox_hadoop_334:/opt/hadoop
+#      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+#      - sandbox_hive_313:/opt/hive
+#      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
+#      - sandbox_hbase_246:/opt/hbase
+#      - ./conf/hbase/client:/opt/hbase/conf
+#      - /opt/flink-1.12.2:/opt/flink
+#    extra_hosts:
+#      - "thinkpad.sandbox.net:172.18.0.1"
 
 #
 #
@@ -106,6 +161,9 @@ volumes:
   sandbox_zeppelin_conf:
     external: true
   sandbox_zeppelin_notebook:
+    external: true
+  #
+  sandbox_hadoop_334:
     external: true
   #
   sandbox_hbase_246:

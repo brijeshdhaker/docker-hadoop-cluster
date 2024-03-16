@@ -5,11 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-03-10 working jupyter notebook with scala &amp; python.">
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-gateway.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-zeppelin.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme-resources/notebook.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-hive-cluster.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-hive-cluster.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_clients.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_clients.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-defaults.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-defaults.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-env.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-azurite.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-azurite.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hadoop-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hadoop-cluster.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hive-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hive-cluster.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-notebook.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-notebook.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/requirements.pip" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/requirements.pip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-ubuntu/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-ubuntu/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/azure/spark-azure-storage.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/azure/spark-azure-storage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/.bash_profile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/.bash_profile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/azure-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/azure-help.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/conda-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/conda-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +54,9 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
+        <option name="customMavenHome" value="/opt/maven-3.6.3" />
         <option name="localRepository" value="$MAVEN_REPOSITORY$" />
-        <option name="mavenHome" value="/opt/maven-3.6.3" />
+        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
         <option name="useMavenConfig" value="false" />
         <option name="userSettingsFile" value="$USER_HOME$/.m2/settings.xml" />
       </MavenGeneralSettings>
@@ -83,13 +101,17 @@
     "Docker.bd-docker-sandbox/docker-compose.yaml.hiveserver: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/docker-compose.yaml.metastore: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/docker-compose.yaml.mysqlserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.notebook: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox.gateway: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox.minio: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox.notebook: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-azurite.yml.azurite: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yml.kdcserver: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yml: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-hive-cluster.yml.hiveserver: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-hive-cluster.yml: Compose Deployment.executor": "Run",
@@ -110,6 +132,7 @@
     "Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-notebook.yml.notebook: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-zeppelin.yml: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox: Compose Deployment.executor": "Run",
     "Docker.dc-iceburg.yml.mc: Compose Deployment.executor": "Run",
     "Docker.dc-iceburg.yml.minio: Compose Deployment.executor": "Run",
@@ -186,32 +209,32 @@
     "git-widget-placeholder": "develop/docker-hadoop334-cluster",
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-hadoop-sandbox/docker-notebook",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-hadoop-sandbox/docker-ubuntu",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.31724137",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "advanced.settings"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/docker-ubuntu" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook" />
       <recent name="$PROJECT_DIR$/readme-resources" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs" />
-      <recent name="$PROJECT_DIR$/bd-python-module" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/docker-jupyternb" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/resources/tars" />
       <recent name="$PROJECT_DIR$/readme-resources/pdf" />
-      <recent name="$PROJECT_DIR$/readme-resources/images" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment">
+  <component name="RunManager" selected="Docker.bd-hadoop-sandbox/dc-hive-cluster.yml: Compose Deployment">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -260,6 +283,7 @@
       <deployment type="docker-compose.yml">
         <settings>
           <option name="envFilePath" value="" />
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/docker-compose.yml" />
         </settings>
       </deployment>
       <method v="2" />
@@ -281,7 +305,25 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-hadoop-sandbox/dc-kdcserver.yml.kdcserver: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="envFilePath" value="" />
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hive-cluster.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="bd-hadoop-sandbox/dc-hadoop-cluster.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="envFilePath" value="" />
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-hadoop-cluster.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="bd-hadoop-sandbox/dc-hadoop-cluster.yml.kdcserver: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="envFilePath" value="" />
@@ -290,26 +332,21 @@
               <option value="kdcserver" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-kdcserver.yml" />
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-hadoop-cluster.yml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-hadoop-sandbox/dc-hive-cluster.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="envFilePath" value="" />
-          <option name="services">
-            <list>
-              <option value="minio" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-minio.yml" />
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-hive-cluster.yml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-hadoop-sandbox/dc-notebook.yml.notebook: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-hadoop-sandbox.notebook: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="envFilePath" value="" />
@@ -318,56 +355,18 @@
               <option value="notebook" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-notebook.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="bd-hadoop-sandbox.zeppelin: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="envFilePath" value="" />
-          <option name="services">
-            <list>
-              <option value="zeppelin" />
-            </list>
-          </option>
           <option name="sourceFilePath" value="bd-hadoop-sandbox/docker-compose.yml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="spark-moniter" type="docker-deploy" factoryName="docker-image" temporary="true" server-name="Docker">
-      <deployment type="docker-image">
-        <settings>
-          <option name="imageTag" value="itsjafer/sparkmonitor:latest" />
-          <option name="containerName" value="" />
-          <option name="portBindings">
-            <list>
-              <DockerPortBindingImpl>
-                <option name="containerPort" value="8888" />
-                <option name="hostPort" value="8888" />
-              </DockerPortBindingImpl>
-            </list>
-          </option>
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment" />
-      <item itemvalue="Docker.spark-moniter" />
-      <item itemvalue="Docker.bd-hadoop-sandbox/dc-kdcserver.yml.kdcserver: Compose Deployment" />
-      <item itemvalue="Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" />
-      <item itemvalue="Docker.bd-hadoop-sandbox/dc-notebook.yml.notebook: Compose Deployment" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" />
-        <item itemvalue="Docker.bd-hadoop-sandbox/dc-notebook.yml.notebook: Compose Deployment" />
-        <item itemvalue="Docker.bd-hadoop-sandbox/dc-kdcserver.yml.kdcserver: Compose Deployment" />
-        <item itemvalue="Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment" />
-        <item itemvalue="Docker.spark-moniter" />
+        <item itemvalue="Docker.bd-hadoop-sandbox/dc-hive-cluster.yml: Compose Deployment" />
+        <item itemvalue="Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yml: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment" />
+        <item itemvalue="Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yml.kdcserver: Compose Deployment" />
+        <item itemvalue="Docker.bd-hadoop-sandbox.notebook: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -379,14 +378,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00011" summary="2024-02-24 Merge Docker Projects.">
-      <option name="closed" value="true" />
-      <created>1708768719300</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1708768719300</updated>
     </task>
     <task id="LOCAL-00012" summary="2024-02-24 Merge Docker Projects.">
       <option name="closed" value="true" />
@@ -772,7 +763,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710048763861</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="2024-03-10 working jupyter notebook with scala &amp; python.">
+      <option name="closed" value="true" />
+      <created>1710127657804</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1710127657804</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="UnknownFeatures">

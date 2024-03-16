@@ -23,21 +23,33 @@ sc._jsc.hadoopConfiguration().set("fs.wasbs.impl","org.apache.hadoop.fs.azure.Na
 sc._jsc.hadoopConfiguration().set("fs.AbstractFileSystem.wasbs.impl", "org.apache.hadoop.fs.azure.Wasbs")
 sc._jsc.hadoopConfiguration().set("spark.hadoop.fs.adl.impl", "org.apache.hadoop.fs.adl.AdlFileSystem")
 
+fs.azure.account.key.devstoreaccount1.blob.core.windows.net=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+val df = spark.read.parquet("wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/<directory-name>")
 #
 #
 #
 
-config.set("fs.azure", "org.apache.hadoop.fs.azure.NativeAzureFileSystem");
-config.set("fs.azure.account.key.csg100320025a786393.blob.core.windows.net", "QjhwrUQ1gcQhebsYoIPmQONO8s2vD/rJy4NNxwMfI4zz9ENeGusZNbZFIshgxEaCJ4QRJ3VqAShD+AStXMEfrw==");
+config.set("spark.hadoop.fs.azure", "org.apache.hadoop.fs.azure.NativeAzureFileSystem");
+config.set("spark.hadoop.fs.azure.account.key.devstoreaccount1.blob.core.windows.net", "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==");
 
+// wasbs://warehouse@devstoreaccount1.blob.core.windows.net/flight_data/airlines.csv
 
 spark_df = spark.read.format('csv').\
 option('header', True).\
-load("wasbs://container001@csg100320025a786393.blob.core.windows.net/flight_weather.csv")
+load(" http://azurite:10000/devstoreaccount1/warehouse/flight_data/airlines.csv")
 print(spark_df.show())
 
+df=spark.read.format("csv").option("header",True).load("wasb://warehouse@devstoreaccount1.blob.core.windows.net/flight_data/airlines.csv")
 
 pyspark --jars /path/to/hadoop-azure-3.2.1.jar,/path/to/azure-storage-8.6.4.jar
+
+pyspark \
+--packages org.apache.hadoop:hadoop-azure:3.3.4,com.microsoft.azure:azure-storage:7.0.1 \
+--conf "spark.jars.ivy=/apps/hostpath/.ivy2" \
+--conf "spark.hadoop.fs.azure=org.apache.hadoop.fs.azure.NativeAzureFileSystem" \
+--conf "spark.hadoop.fs.defaultFS=wasb://warehouse@devstoreaccount1.blob.core.windows.net" \
+--conf "spark.hadoop.fs.azure.account.key.devstoreaccount1.blob.core.windows.net=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==" \
+--conf "spark.hadoop.fs.azure.storage.emulator.account.name=devstoreaccount1"
 
 #
 # In Case Of Blob Store
@@ -46,8 +58,11 @@ pyspark --jars /path/to/hadoop-azure-3.2.1.jar,/path/to/azure-storage-8.6.4.jar
 ```shell
 
 $SPARK_HOME/bin/pyspark \
-  --conf spark.hadoop.fs.azure.account.key.csg100320025a786393.blob.core.windows.net="QjhwrUQ1gcQhebsYoIPmQONO8s2vD/rJy4NNxwMfI4zz9ENeGusZNbZFIshgxEaCJ4QRJ3VqAShD+AStXMEfrw==" \
-  --packages org.apache.hadoop:hadoop-azure:3.3.4,com.microsoft.azure:azure-storage:7.0.1
+  --packages org.apache.hadoop:hadoop-azure:3.3.4,com.microsoft.azure:azure-storage:7.0.1 \
+  --conf spark.jars.ivy=/apps/hostpath/.ivy2 \
+  --conf spark.hadoop.fs.azure=org.apache.hadoop.fs.azure.NativeAzureFileSystem \
+  --conf spark.hadoop.fs.azure.account.key.devstoreaccount1.blob.core.windows.net="Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==" \
+  
 
 ```
   
@@ -58,7 +73,7 @@ $SPARK_HOME/bin/pyspark \
 ```bash
  
 $SPARK_HOME/bin/pyspark \
-  --conf spark.hadoop.fs.azure.account.key.csg100320025a786393.dfs.core.windows.net="QjhwrUQ1gcQhebsYoIPmQONO8s2vD/rJy4NNxwMfI4zz9ENeGusZNbZFIshgxEaCJ4QRJ3VqAShD+AStXMEfrw=="  \
+  --conf spark.hadoop.fs.azure.account.key.devstoreaccount1.dfs.core.windows.net="Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw=="  \
   --packages org.apache.hadoop:hadoop-azure:3.3.4,org.apache.hadoop:hadoop-azure-datalake:3.3.4
 
 ```
@@ -85,7 +100,7 @@ $SPARK_HOME/bin/spark-submit \
   --conf spark.executor.instances=2 \
   --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
   --conf spark.kubernetes.container.image=sptest.azurecr.io/spark-py:v1 \
-  --conf spark.hadoop.fs.azure.account.key.csg100320025a786393.blob.core.windows.net="QjhwrUQ1gcQhebsYoIPmQONO8s2vD/rJy4NNxwMfI4zz9ENeGusZNbZFIshgxEaCJ4QRJ3VqAShD+AStXMEfrw==" \
+  --conf spark.hadoop.fs.azure.account.key.csg100320025a786393.blob.core.windows.net="Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==" \
   --conf spark.kubernetes.container.image.pullSecrets=my-secret \
   --packages org.apache.hadoop:hadoop-azure:3.3.4,org.apache.hadoop:hadoop-azure-datalake:3.3.4,com.microsoft.azure:azure-storage:7.0.1 \
   --conf spark.driver.extraJavaOptions="-Divy.cache.dir=/tmp -Divy.home=/tmp" \

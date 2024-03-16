@@ -1,12 +1,12 @@
 #
 # ./bin/docker-image-tool.sh -t 3.5.0 -p ./kubernetes/dockerfiles/spark/bindings/python/Dockerfile build
-# docker build -t brijeshdhaker/notebook:3.5.0 -f docker-notebook/Dockerfile .
+# docker build -t brijeshdhaker/notebook:3.5.1 -f docker-notebook/Dockerfile .
 # docker tag spark-py-notebook:latest brijeshdhaker/spark-py-notebook:latest
 # jupyter/pyspark-notebook
 # jupyter/all-spark-notebook:spark-3.5.0
 # spark-py:3.5.0
 
-FROM jupyter/all-spark-notebook:spark-3.5.0
+FROM quay.io/jupyter/all-spark-notebook:spark-3.5.1
 
 USER root
 #
@@ -70,7 +70,7 @@ COPY docker-notebook/startup/README /home/${NB_USER}/.ipython/profile_default/st
 RUN set -x && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}" && \
-    echo "Setup done."
+    echo "Permission update complete."
 
 #
 USER ${NB_USER}

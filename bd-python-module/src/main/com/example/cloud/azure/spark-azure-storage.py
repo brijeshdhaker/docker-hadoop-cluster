@@ -13,7 +13,7 @@ if __name__ == "__main__":
     # Load data from Azure Storage
     #
     df = spark.read.csv(
-        "wasbs://container001@csg100320025a786393.blob.core.windows.net/flight_weather.csv",
+        "http://devstoreaccount1.blob.core.windows.net/warehouse/flight_weather.csv",
         header=True,
         nullValue="NA",
         inferSchema=True

@@ -43,36 +43,11 @@ RUN set -x && \
     apt-get install -y openjdk-8-jdk && \
     apt-get install -y openssh-server && \
     apt-get install -y apt-transport-https locales krb5-user ldap-utils && \
-    # apt-get install -y python3 python3-pip && pip3 install --upgrade pip setuptools && \
+    apt-get install -y python3 python3-pip && pip3 install --upgrade pip setuptools && \
     locale-gen "en_US.UTF-8" && echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
     rm -rf /var/lib/apt/lists/* && rm -rf /var/cache/apt/* && \
     echo "package installation done."
 
-# Install python and R packages via conda
-RUN set -ex && \
-    wget -nv https://repo.anaconda.com/miniconda/Miniconda3-${miniconda_version}-Linux-x86_64.sh -O miniconda.sh && \
-    echo "${miniconda_sha256} miniconda.sh" > anaconda.sha256 && \
-    sha256sum --strict -c anaconda.sha256 && \
-    bash miniconda.sh -b -p /opt/conda && \
-    chmod -Rf 777 /opt/conda && \
-    export PATH=/opt/conda/bin:$PATH && \
-    conda config --set always_yes yes --set changeps1 no && \
-    conda info -a && \
-    conda create -y -n pyspark37 -c conda-forge python=3.7 pyarrow pandas conda-pack && \
-    rm -v miniconda.sh anaconda.sha256  && \
-    find /opt/conda/ -follow -type f -name '*.a' -delete && \
-    find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
-    echo "python miniconda setup complete."
-
-ENV PATH ${JAVA_HOME}/bin:/opt/conda/envs/pyspark37/bin:/opt/conda/bin:$PATH
-
-#
-RUN set -x && \
-    conda update -n base -c defaults conda && \
-    # conda install mamba -c conda-forge && \
-    # mamba env update -f /env_pyspark37.yml --prune && \
-    # mamba clean -ay && \
-    echo "mamba setup complete."
 #
 RUN set -x && \
     echo 'root:Accoo7@k47' | chpasswd && \
