@@ -28,41 +28,11 @@
 ---
 version: "3.9"
 
-#include:
+include:
 #  - path: dc-hive-cluster.yml
+  - path: dc-minio.yml
 
 services:
-  ##
-  minio:
-    image: minio/minio:latest
-    hostname: minio.sandbox.net
-    container_name: minio
-    healthcheck:
-      test: echo $HOSTNAME || exit 1
-      retries: 20
-      interval: 10s
-    networks:
-      default:
-        aliases:
-          - openlake.minio
-    environment:
-      - MINIO_ROOT_USER=admin
-      - MINIO_ROOT_PASSWORD=password
-      - MINIO_DOMAIN=minio
-      - MINIO_ADDRESS=0.0.0.0:9010
-      - MINIO_CONSOLE_ADDRESS=0.0.0.0:9011
-      - AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
-      - AWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h
-      - AWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
-      - AWS_REGION=us-east-1
-    ports:
-      - "9010:9010"
-      - "9011:9011"
-    command: [ "server", "/data", "--console-address", ":9011" ]
-    volumes:
-      - sandbox_apps_path:/apps
-      - /apps/hostpath/minio:/data
-
   ##
   notebook:
     image: brijeshdhaker/notebook:3.5.1
@@ -74,7 +44,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
-      - /apps/sandbox/notebooks:/home/jovyan/work/notebooks
+      - /apps/sandbox/notebooks:/home/jovyan/notebooks
       - sandbox_hadoop_334:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - sandbox_hive_313:/opt/hive
