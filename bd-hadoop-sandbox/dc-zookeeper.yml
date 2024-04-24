@@ -9,7 +9,7 @@
 version: "3.9"
 
 include:
-  - dc-kdcserver.yml
+  - path: ../bd-hadoop-sandbox/dc-kdcserver.yml
 
 services:
   #
@@ -23,6 +23,9 @@ services:
       test: curl -f http://zookeeper.sandbox.net:8080/commands || exit 1
       retries: 20
       interval: 10s
+    depends_on:
+      kdcserver:
+        condition: service_healthy
     ports:
       - "2181:2181"
       - "2182:2182"
@@ -65,18 +68,3 @@ services:
       - io.confluent.docker.testing=true
     extra_hosts:
       - "thinkpad.sandbox.net:172.18.0.1"
-
-#
-volumes:
-  #
-  sandbox_zookeeper334_data:
-    external: true
-  sandbox_zookeeper334_log:
-    external: true
-
-#
-networks:
-  default:
-    external: true
-    driver: bridge
-    name: sandbox.net

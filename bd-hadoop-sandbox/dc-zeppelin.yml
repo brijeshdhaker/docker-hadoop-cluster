@@ -1,6 +1,6 @@
 #
-# docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d
-# docker compose -f bd-hadoop-sandbox/docker-compose.yml down
+# docker compose -f bd-hadoop-sandbox/dc-flink-cluster.yml up -d
+# docker compose -f bd-hadoop-sandbox/dc-flink-cluster.yml down
 #
 
 #
@@ -30,7 +30,7 @@ version: "3.9"
 
 include:
   - dc-minio.yml
-  - dc-hive-cluster.yml
+#  - dc-hive-cluster.yml
 
 services:
   #
@@ -59,7 +59,7 @@ services:
       - sandbox_zeppelin_notebook:/notebook
       - /apps/var/log/zeppelin:/logs
       - /apps/sandbox/zeppelin/local-repo:/opt/zeppelin/local-repo
-      - sandbox_spark_350:/opt/spark
+      - /opt/spark-3.1.2:/opt/spark
       - ./conf/spark/conf:/opt/spark/conf
       - sandbox_hadoop_334:/opt/hadoop
       - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
@@ -80,6 +80,9 @@ volumes:
   sandbox_m2:
     external: true
   sandbox_ivy2:
+    external: true
+  #
+  sandbox_hadoop_334:
     external: true
   #
   sandbox_hbase_246:

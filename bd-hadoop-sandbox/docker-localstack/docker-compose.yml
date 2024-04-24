@@ -1,5 +1,5 @@
 # 
-#  docker-compose -H tcp://192.168.0.103:2375 -f docker-compose.yml up -d
+#  docker-compose -H tcp://192.168.0.103:2375 -f dc-flink-cluster.yml up -d
 #  
 #  aws configure --profile localstack
 #  aws --endpoint-url=http://localhost:4566 s3 mb s3://my-bucket

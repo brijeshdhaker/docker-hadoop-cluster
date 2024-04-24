@@ -18,6 +18,7 @@ ARG zeppelin_gid=1007
 ARG spark_gid=1008
 ARG yarn_gid=1009
 ARG httpfs_gid=1010
+ARG flink_gid=1011
 
 # Install conda to manage python and R packages
 ARG miniconda_version="py37_4.9.2"

@@ -1,6 +1,6 @@
 #
-# docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d
-# docker compose -f bd-hadoop-sandbox/docker-compose.yml down
+# docker compose -f bd-hadoop-sandbox/dc-flink-cluster.yml up -d
+# docker compose -f bd-hadoop-sandbox/dc-flink-cluster.yml down
 #
 
 #

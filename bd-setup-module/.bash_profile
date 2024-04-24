@@ -43,6 +43,6 @@ export HADOOP_MAPRED_HOME=/opt/hadoop-3.3.4
 export HADOOP_COMMON_HOME=/opt/hadoop-3.3.4
 export YARN_HOME=/opt/hadoop-3.3.4
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${HADOOP_HOME}/lib/native
-export PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin:${HADOOP_HDFS_HOME}/bin:${HADOOP_HDFS_HOME}/sbin:${YARN_HOME}/bin:${YARN_HOME}/sbin:${HADOOP_MAPRED_HOME}/bin:${HADOOP_MAPRED_HOME}/sbin
+export PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin:${YARN_HOME}/bin:${YARN_HOME}/sbin:${HADOOP_MAPRED_HOME}/bin:${HADOOP_MAPRED_HOME}/sbin
 
 

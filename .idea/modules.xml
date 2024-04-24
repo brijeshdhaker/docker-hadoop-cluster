@@ -4,7 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/bd-docker-sandbox.iml" filepath="$PROJECT_DIR$/bd-docker-sandbox.iml" />
       <module fileurl="file://$PROJECT_DIR$/bd-hadoop-sandbox.iml" filepath="$PROJECT_DIR$/bd-hadoop-sandbox.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bd-python-module.iml" filepath="$PROJECT_DIR$/bd-python-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bd-pyflink-module/bd-pyflink-module.iml" filepath="$PROJECT_DIR$/bd-pyflink-module/bd-pyflink-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bd-pyspark-module.iml" filepath="$PROJECT_DIR$/bd-pyspark-module.iml" />
       <module fileurl="file://$PROJECT_DIR$/bd-setup-module.iml" filepath="$PROJECT_DIR$/bd-setup-module.iml" />
     </modules>
   </component>

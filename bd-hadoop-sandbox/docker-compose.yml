@@ -1,6 +1,6 @@
 #
-# docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d
-# docker compose -f bd-hadoop-sandbox/docker-compose.yml down
+# docker compose -f bd-hadoop-sandbox/dc-flink-cluster.yml up -d
+# docker compose -f bd-hadoop-sandbox/dc-flink-cluster.yml down
 #
 
 #
@@ -28,16 +28,20 @@
 ---
 version: "3.9"
 
+#
 include:
-#  - path: dc-hive-cluster.yml
-  - path: dc-minio.yml
+  - path: ../bd-hadoop-sandbox/dc-minio.yml
 
+#
 services:
   ##
   notebook:
     image: brijeshdhaker/notebook:3.5.1
     container_name: notebook
     hostname: notebook.sandbox.net
+    depends_on:
+      minio:
+        condition: service_healthy
     ports:
       - "8888:8888"
       - "4040:4040"
@@ -60,6 +64,10 @@ services:
       SPARK_HOME: /usr/local/spark
       PYARROW_IGNORE_TIMEZONE: 1
       DOCKER_STACKS_JUPYTER_CMD: lab   # lab notebook nbclassic
+      AWS_ENDPOINT_URL_S3: http://minio.sandbox.net:9010
+      AWS_ACCESS_KEY_ID: ffaJ6a2MOj8mZ5lI3P6h
+      AWS_SECRET_ACCESS_KEY: 9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
+      AWS_DEFAULT_REGION: us-east-1
 
   #
   # Gateway Node

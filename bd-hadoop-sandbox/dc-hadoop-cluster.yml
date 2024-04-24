@@ -1,4 +1,9 @@
 #
+# docker compose -f bd-hadoop-sandbox/dc-hadoop-cluster.yml up -d
+# docker compose -f bd-hadoop-sandbox/dc-hadoop-cluster.yml down
+#
+
+#
 # docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
 # docker volume create --name sandbox_hadoop_334 --opt type=none --opt device=/opt/hadoop-3.3.4 --opt o=bind
 #
@@ -8,37 +13,10 @@
 
 version: "3.9"
 
-services:
-  ##
-  kdcserver:
-    image: brijeshdhaker/kdcserver:22.04
-    container_name: kdcserver
-    hostname: kdcserver.sandbox.net
-    healthcheck:
-      test: echo srvr || exit 1
-      retries: 20
-      interval: 10s
-    ports:
-      - "749:749"
-      - "750:750"
-      - "88:88/udp"
-    volumes:
-      - sandbox_apps_path:/apps
-      - /dev/urandom:/dev/random      # This is needed otherwise there won't be enough entropy to generate a new kerberos realm
-      - sandbox_krb5_stash:/etc/krb5kdc
-      - sandbox_krb5_principal:/var/lib/krb5kdc/
-      - ./conf/kerberos:/etc/kerberos
-    environment:
-      REALM: SANDBOX.NET
-      DOMAIN_REALM: sandbox.net
-      MASTER_KEY_TYPE: aes256-cts-hmac-sha1-96:normal
-      SUPPORTED_ENCRYPTION_TYPES: aes256-cts-hmac-sha1-96:normal aes128-cts-hmac-sha1-96:normal
-      KADMIN_PRINCIPAL: kadmin/admin
-      KADMIN_PASSWORD: kadmin
-      KUSERS_PASSWORD: kuser
-    env_file:
-      - ./envs/docker_kerberos.env
+include:
+  - path: ../bd-hadoop-sandbox/dc-kdcserver.yml
 
+services:
   #
   # HDFS Cluster
   #
@@ -204,18 +182,9 @@ services:
 #    env_file:
 #      - envs/docker_hadoop.env
 
+
 #
 volumes:
-  #
-  sandbox_apps_path:
-    external: true
-  sandbox_security_secrets:
-    external: true
-  #
-  sandbox_krb5_stash:
-    external: true
-  sandbox_krb5_principal:
-    external: true
   #
   sandbox_hadoop_334:
     external: true
@@ -225,10 +194,3 @@ volumes:
     external: true
   sandbox_hadoop_334_mapred:
     external: true
-
-#
-networks:
-  default:
-    external: true
-    driver: bridge
-    name: sandbox.net

@@ -103,43 +103,43 @@ services:
   #
   # Zeppelin Notebook
   #
-#  zeppelin:
-#    image: apache/zeppelin:0.11.0
-#    pull_policy: missing
-#    container_name: zeppelin
-#    hostname: zeppelin.sandbox.net
-#    environment:
-#      ALLOW_ANONYMOUS_LOGIN: "yes"
-#    env_file:
-#      - ./envs/docker_clients.env
-#    ports:
-#      - "9080:8080"
-#      - "9081:8081"
+  zeppelin:
+    image: apache/zeppelin:0.10.1
+    pull_policy: missing
+    container_name: zeppelin
+    hostname: zeppelin.sandbox.net
+    environment:
+      ALLOW_ANONYMOUS_LOGIN: "yes"
+    env_file:
+      - ./envs/docker_clients.env
+    ports:
+      - "9080:8080"
+      - "9081:8081"
 #    depends_on:
 #      datanode:
 #        condition: service_healthy
-#    healthcheck:
-#      test: echo $HOSTNAME || exit 1
-#      retries: 20
-#      interval: 10s
-#    volumes:
-#      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
-#      - sandbox_apps_path:/apps
-#      - sandbox_zeppelin_conf:/opt/zeppelin/conf
-#      - sandbox_zeppelin_notebook:/notebook
-#      - /apps/var/log/zeppelin:/logs
-#      - /apps/sandbox/zeppelin/local-repo:/opt/zeppelin/local-repo
-#      - sandbox_spark_350:/opt/spark
-#      - ./conf/spark/conf:/opt/spark/conf
-#      - sandbox_hadoop_334:/opt/hadoop
-#      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-#      - sandbox_hive_313:/opt/hive
-#      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
-#      - sandbox_hbase_246:/opt/hbase
-#      - ./conf/hbase/client:/opt/hbase/conf
-#      - /opt/flink-1.12.2:/opt/flink
-#    extra_hosts:
-#      - "thinkpad.sandbox.net:172.18.0.1"
+    healthcheck:
+      test: echo $HOSTNAME || exit 1
+      retries: 20
+      interval: 10s
+    volumes:
+      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
+      - sandbox_apps_path:/apps
+      - sandbox_zeppelin_conf:/opt/zeppelin/conf
+      - sandbox_zeppelin_notebook:/notebook
+      - /apps/var/log/zeppelin:/logs
+      - /apps/sandbox/zeppelin/local-repo:/opt/zeppelin/local-repo
+      - /opt/spark-3.1.2:/opt/spark
+      - ./conf/spark/conf:/opt/spark/conf
+      - sandbox_hadoop_334:/opt/hadoop
+      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+      - sandbox_hive_313:/opt/hive
+      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
+      - sandbox_hbase_246:/opt/hbase
+      - ./conf/hbase/client:/opt/hbase/conf
+      - /opt/flink-1.12.2:/opt/flink
+    extra_hosts:
+      - "thinkpad.sandbox.net:172.18.0.1"
 
 #
 #

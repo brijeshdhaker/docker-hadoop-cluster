@@ -33,9 +33,8 @@ export HADOOP_HOME=/opt/hadoop
 export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
 export HADOOP_MAPRED_HOME=/opt/hadoop
 export HADOOP_COMMON_HOME=/opt/hadoop
-#export HADOOP_HDFS_HOME=/opt/hadoop
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${HADOOP_HOME}/lib/native
-export PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin:${HADOOP_HDFS_HOME}/bin:${HADOOP_HDFS_HOME}/sbin:${YARN_HOME}/bin:${YARN_HOME}/sbin:${HADOOP_MAPRED_HOME}/bin:${HADOOP_MAPRED_HOME}/sbin
+export PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin
 export HADOOP_CLIENT_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
 
 #

@@ -15,7 +15,7 @@ echo ""
 echo "Adding OS users kerberos principals."
 echo ""
 #
-OS_USERS=("sandbox" "brijeshdhaker" "hdfs" "yarn" "mapred" "hive" "hbase" "spark" "zeppelin")
+OS_USERS=("sandbox" "brijeshdhaker" "hdfs" "yarn" "mapred" "hive" "hbase" "spark" "zeppelin" "flink")
 for ou in "${OS_USERS[@]}"
 do
   # delete existing keytab files
@@ -27,8 +27,8 @@ do
 
   klist -k -t /apps/security/keytabs/users/$ou.keytab
   # kinit -k -t /apps/security/keytabs/users/$ou.keytab $ou@$REALM
-  chown $ou:root /apps/security/keytabs/users/$ou.keytab
-  chmod 755 /apps/security/keytabs/users/$ou.keytab
+  chown 1000:root /apps/security/keytabs/users/$ou.keytab
+  chmod 775 /apps/security/keytabs/users/$ou.keytab
 
 done
 

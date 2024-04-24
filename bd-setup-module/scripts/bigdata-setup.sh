@@ -136,6 +136,8 @@ docker volume create --name sandbox_hadoop_334_dfs --opt type=none --opt device=
 docker volume create --name sandbox_hadoop_334_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/yarn --opt o=bind
 docker volume create --name sandbox_hadoop_334_mapred --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/mapred --opt o=bind
 
+docker volume create --name sandbox_flink_data --opt type=none --opt device=/apps/sandbox/flink/data --opt o=bind
+
 docker volume create --name sandbox_spark_350 --opt type=none --opt device=/opt/spark-3.5.0 --opt o=bind
 docker volume create --name sandbox_hive_313 --opt type=none --opt device=/opt/hive-3.1.3 --opt o=bind
 docker volume create --name sandbox_tez_102 --opt type=none --opt device=/opt/tez-0.10.2 --opt o=bind
@@ -187,8 +189,8 @@ sudo tar --strip-components=1 -xvf hbase-1.1.7-bin.tar.gz -C /opt/hbase-1.1.7
 sudo mkdir -p /opt/spark-3.5.0
 sudo tar --strip-components=1 -xvf spark-3.5.0-bin-hadoop3.tgz -C /opt/spark-3.5.0
 
-sudo mkdir -p /opt/flink-1.12.2
-sudo tar --strip-components=1 -xvf flink-1.12.2-bin-scala_2.12.tgz -C /opt/flink-1.12.2
+sudo mkdir -p /opt/flink-1.17.2
+sudo tar --strip-components=1 -xvf flink-1.17.2-bin-scala_2.12.tgz -C /opt/flink-1.17.2
 
 sudo unzip apache-maven-3.6.3-bin.zip -d /opt
 

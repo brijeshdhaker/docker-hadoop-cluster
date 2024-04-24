@@ -1,0 +1,38 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="StreamingJob" type="Application" factoryName="Application" nameIsGenerated="true">
+
+    <classpathModifications>
+      <entry path="/apps/sandbox/hadoop-3.3.4/client/secure" />
+      <entry path="/opt/hadoop-3.3.4/share/hadoop/common/lib/*" />
+      <entry path="/opt/hadoop-3.3.4/share/hadoop/common/*" />
+      <entry path="/opt/hadoop-3.3.4/share/hadoop/hdfs" />
+      <entry path="/opt/hadoop-3.3.4/share/hadoop/hdfs/lib/*" />
+      <entry path="/opt/hadoop-3.3.4/share/hadoop/hdfs/*" />
+      <entry path="/opt/hadoop-3.3.4/share/hadoop/mapreduce/*" />
+      <entry path="/opt/hadoop-3.3.4/share/hadoop/yarn" />
+      <entry path="/opt/hadoop-3.3.4/share/hadoop/yarn/lib/*" />
+      <entry path="/opt/hadoop-3.3.4/share/hadoop/yarn/*" />
+    </classpathModifications>
+
+    <envs>
+      <env name="MY_ENV_VAR" value="BRIJESH K DHAKER" />
+      <env name="AWS_ACCESS_KEY" value="ffaJ6a2MOj8mZ5lI3P6h" />
+      <env name="AWS_SECRET_ACCESS_KEY" value="9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs" />
+      <env name="AWS_S3_ENDPOINT" value="http://minio.sandbox.net:9010" />
+      <env name="AWS_REGION" value="us-east-1" />
+    </envs>
+    <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+    <option name="MAIN_CLASS_NAME" value="com.org.examples.flink.StreamingJob" />
+    <module name="flink-playground" />
+    <option name="VM_PARAMETERS" value="-Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.org.examples.flink.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

@@ -1,4 +1,9 @@
 #
+# docker compose -f bd-docker-sandbox/dc-hadoop-cluster.yaml up -d
+# docker compose -f bd-docker-sandbox/dc-hadoop-cluster.yaml down
+#
+
+#
 # docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
 # docker volume create --name sandbox_hadoop_334 --opt type=none --opt device=/opt/hadoop-3.3.4 --opt o=bind
 #

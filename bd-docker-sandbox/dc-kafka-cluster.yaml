@@ -1,4 +1,9 @@
 #
+# docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml up -d
+# docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml down
+#
+
+#
 # docker volume create --name sandbox_kafka_secrets --opt type=none --opt device=/apps/sandbox/kafka/secrets --opt o=bind
 # docker volume create --name sandbox_kafka_data --opt type=none --opt device=/apps/sandbox/kafka/data --opt o=bind
 # docker volume create --name sandbox_kafka_log --opt type=none --opt device=/apps/sandbox/kafka/log --opt o=bind
@@ -7,7 +12,7 @@
 version: "3.9"
 
 include:
-  - dc-zookeeper.yaml
+  - ../bd-docker-sandbox/dc-zookeeper.yaml
 
 services:
   #
@@ -49,6 +54,8 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
       KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL: http://schemaregistry.sandbox.net:8081
+      KAFKA_CREATE_TOPICS: "kafka:1:1"
+      # HOSTNAME_COMMAND: "route -n | awk '/UG[ \t]/{print $$2}'"
 
   #
   #

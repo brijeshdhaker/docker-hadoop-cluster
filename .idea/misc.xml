@@ -8,10 +8,14 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/bd-flink-spend-report/pom.xml" />
+        <option value="$PROJECT_DIR$/bd-flink-operations/pom.xml" />
+        <option value="$PROJECT_DIR$/bd-data-generator/pom.xml" />
+        <option value="$PROJECT_DIR$/flink-playground/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="Python 3.12" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="temurin-11" project-jdk-type="JavaSDK" />
   <component name="PythonCompatibilityInspectionAdvertiser">
     <option name="version" value="3" />
   </component>

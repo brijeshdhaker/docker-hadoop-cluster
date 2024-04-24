@@ -8,10 +8,22 @@ duckdb
 duckdb-engine
 
 # plotting
+ggplot
 plotly
+plotnine
+bokeh
+holoviews
+hvplot
+altair
+vega_datasets
 
 # Data Analysis
 protobuf
 grpcio
 grpcio-status
 mysqlclient
+
+#
+ scikit-learn
+ scipy
+ seaborn

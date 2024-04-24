@@ -8,11 +8,14 @@
 ---
 version: "3.9"
 
+#
 include:
-  - dc-zookeeper.yml
+  - path: ../bd-hadoop-sandbox/dc-zookeeper.yml
 
+#
 services:
-  # Kafka Broker
+
+  ## Kafka Broker
   kafkabroker:
     image: confluentinc/cp-kafka:7.5.0
     hostname: kafkabroker.sandbox.net
@@ -23,6 +26,8 @@ services:
       retries: 20
       interval: 10s
     depends_on:
+      kdcserver:
+        condition: service_healthy
       zookeeper:
         condition: service_healthy
     ports:
@@ -207,22 +212,3 @@ services:
     extra_hosts:
       - "thinkpad.sandbox.net:172.18.0.1"
 
-#
-volumes:
-  #
-  sandbox_zookeeper334_data:
-    external: true
-  sandbox_zookeeper334_log:
-    external: true
-  #
-  sandbox_kafka334_data:
-    external: true
-  sandbox_kafka334_log:
-    external: true
-
-#
-networks:
-  default:
-    external: true
-    driver: bridge
-    name: sandbox.net

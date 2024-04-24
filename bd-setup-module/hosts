@@ -1,6 +1,7 @@
 # The following lines are desirable for IPv6 capable hosts
 # sed -i 's/sandbox-bigdata/sandbox/g' /etc/hosts
 # sed -i 's/127.0.0.1/172.18.0.1/' /etc/hosts
+# sed -i 's/172.18.0.1/127.0.0.1/' /etc/hosts
 
 ###
 127.0.0.1           localhost
@@ -59,6 +60,7 @@
 
 # zeppelin
 172.18.0.1          zeppelin.sandbox.net zeppelin
+127.0.0.1	        notebook.sandbox.net notebook
 172.18.0.1          nififlow.sandbox.net nififlow
 
 # kafka

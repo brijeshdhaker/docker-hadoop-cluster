@@ -1,0 +1,129 @@
+#
+# docker compose -f bd-flink-operations/docker-compose.yaml up -d
+# docker compose -f bd-flink-operations/docker-compose.yaml down
+#
+
+#
+# docker compose -f bd-flink-operations/docker-compose.yaml up -d minio
+# docker compose -f bd-flink-operations/docker-compose.yaml kill minio
+# docker compose -f bd-flink-operations/docker-compose.yaml rm -f -s minio
+#
+
+#
+# docker compose -f bd-flink-operations/docker-compose.yaml up -d zookeeper kafkabroker
+# docker compose -f bd-flink-operations/docker-compose.yaml kill zookeeper kafkabroker
+# docker compose -f bd-flink-operations/docker-compose.yaml rm -f -s zookeeper kafkabroker
+
+#
+# docker compose -f bd-flink-operations/docker-compose.yaml up -d namenode datanode
+# docker compose -f bd-flink-operations/docker-compose.yaml kill namenode datanode
+# docker compose -f bd-flink-operations/docker-compose.yaml rm -f -s namenode datanode
+#
+
+#
+# docker compose -f bd-flink-operations/docker-compose.yaml up -d flink-jobmanager flink-taskmanager 2>/dev/null
+# docker compose -f bd-flink-operations/docker-compose.yaml kill flink-jobmanager flink-taskmanager
+# docker compose -f bd-flink-operations/docker-compose.yaml rm -f -s flink-jobmanager flink-taskmanager
+#
+
+#
+# docker compose -f bd-flink-operations/docker-compose.yaml exec -it flink-jobmanager /bin/bash
+# docker compose -f bd-flink-operations/docker-compose.yaml exec -it flink-taskmanager /bin/bash
+#
+
+#
+# docker compose -f bd-flink-operations/docker-compose.yaml exec kafkabroker kafka-console-consumer --bootstrap-server kafkabroker.sandbox.net:9092 --topic input
+# docker compose -f bd-flink-operations/docker-compose.yaml exec kafkabroker kafka-console-consumer --bootstrap-server kafkabroker.sandbox.net:9092 --topic output
+#
+
+# docker compose -f bd-flink-operations/docker-compose.yaml kill flink-taskmanager
+# docker compose -f bd-flink-operations/docker-compose.yaml up -d flink-taskmanager
+
+## List Jobs
+# curl flink-taskmanager:8081/jobs
+# docker compose -f bd-flink-operations/docker-compose.yaml run --no-deps flink-operations-client flink list
+
+## Stop Flink Job
+# docker compose -f bd-flink-operations/docker-compose.yaml run --rm --no-deps flink-operations-client flink stop 14419e68643e72ae7eeed90ebc5598f8
+
+## Starting a Flink Job from a Savepoint
+# docker compose -f bd-flink-operations/docker-compose.yaml run --no-deps flink-operations-client flink run -s file:///apps/sandbox/flink/savepoints -d /opt/bd-flink-operations.jar --bootstrap.servers kafkabroker.sandbox.net:19093 --checkpointing --event-time
+
+## Cancel a Flink Job
+# docker compose -f bd-flink-operations/docker-compose.yaml run --rm --no-deps flink-operations-client flink cancel 14419e68643e72ae7eeed90ebc5598f8
+
+##
+# docker compose -f bd-flink-operations/docker-compose.yaml scale taskmanager=2
+
+#
+# curl "flink-jobmanager:8081/jobs/14419e68643e72ae7eeed90ebc5598f8/metrics?get=lastCheckpointSize"
+#
+# find the vertex-id of the vertex of interest
+# curl flink-jobmanager:8081/jobs/14419e68643e72ae7eeed90ebc5598f8
+
+#
+# docker volume create --name sandbox_flink_data --opt type=none --opt device=/apps/sandbox/flink/data --opt o=bind
+# version: "2.1"
+
+include:
+  - path: ../bd-hadoop-sandbox/dc-minio.yml
+  - path: ../bd-hadoop-sandbox/dc-hdfs-cluster.yml
+  - path: ../bd-hadoop-sandbox/dc-flink-cluster.yml
+
+services:
+
+  ##
+  clickevent-generator:
+    image: flink/bd-flink-operations:1.17.2
+    container_name: clickevent-generator
+    command: "java -classpath /opt/bd-flink-operations.jar:/opt/flink/lib/* -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf -Djava.security.krb5.conf=/etc/krb5.conf org.apache.flink.playgrounds.ops.clickcount.ClickEventGenerator --bootstrap.servers kafkabroker.sandbox.net:19093 --topic input"
+    volumes:
+      - sandbox_apps_path:/apps
+      - /apps/sandbox/flink/tmp:/tmp
+      - ../bd-hadoop-sandbox/conf/kerberos/krb5.conf:/etc/krb5.conf
+      - ../bd-hadoop-sandbox/conf/flink/config.yaml:/opt/flink/conf/config.yaml
+    environment:
+      KRB5_CONFIG: "/etc/krb5.conf"
+    depends_on:
+      kafkabroker:
+        condition: service_healthy
+
+  ##
+  flink-operations-client:
+    build: .
+    image: flink/bd-flink-operations:1.19.0
+    container_name: flink-operations-client
+    command: "flink run -d /opt/bd-flink-operations.jar --bootstrap.servers kafkabroker.sandbox.net:19093 --checkpointing --event-time"
+    depends_on:
+      flink-jobmanager:
+        condition: service_healthy
+      flink-taskmanager:
+        condition: service_healthy
+      kafkabroker:
+        condition: service_healthy
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_hadoop_334:/opt/hadoop
+      - ../bd-hadoop-sandbox/conf/hadoop/client:/opt/hadoop/etc/hadoop
+      - ../bd-hadoop-sandbox/conf/kerberos/krb5.conf:/etc/krb5.conf
+      - ../bd-hadoop-sandbox/conf/flink/config.yaml:/opt/flink/conf/config.yaml
+    environment:
+      KRB5_CONFIG: "/etc/krb5.conf"
+      JOB_MANAGER_RPC_ADDRESS: flink-jobmanager
+
+#
+volumes:
+  sandbox_apps_path:
+    external: true
+  sandbox_security_secrets:
+    external: true
+  #
+  sandbox_flink_data:
+    external: true
+
+#
+networks:
+  default:
+    external: true
+    driver: bridge
+    name: sandbox.net
