@@ -12,7 +12,7 @@ version: '3.9'
 services:
   #
   zookeeper:
-    image: confluentinc/cp-zookeeper:7.5.0
+    image: confluentinc/cp-zookeeper:7.5.2
     hostname: zookeeper
     container_name: zookeeper
     ports:
@@ -29,7 +29,7 @@ services:
 
   #
   kafkabroker:
-    image: confluentinc/cp-server:7.5.0
+    image: confluentinc/cp-server:7.5.2
     hostname: kafkabroker
     container_name: kafkabroker
     depends_on:
@@ -64,7 +64,7 @@ services:
 
   #
   schemaregistry:
-    image: confluentinc/cp-schemaregistry:7.5.0
+    image: confluentinc/cp-schemaregistry:7.5.2
     hostname: schemaregistry
     container_name: schemaregistry
     depends_on:
@@ -106,7 +106,7 @@ services:
       CONNECT_VALUE_CONVERTER: io.confluent.connect.avro.AvroConverter
       CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: http://schemaregistry:8081
       # CLASSPATH required due to CC-2422
-      CLASSPATH: /usr/share/java/monitoring-interceptors/monitoring-interceptors-7.5.0.jar
+      CLASSPATH: /usr/share/java/monitoring-interceptors/monitoring-interceptors-7.5.2.jar
       CONNECT_PRODUCER_INTERCEPTOR_CLASSES: "io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor"
       CONNECT_CONSUMER_INTERCEPTOR_CLASSES: "io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor"
       CONNECT_PLUGIN_PATH: "/usr/share/java,/usr/share/confluent-hub-components"
@@ -114,7 +114,7 @@ services:
 
   #
   control-center:
-    image: confluentinc/cp-enterprise-control-center:7.5.0
+    image: confluentinc/cp-enterprise-control-center:7.5.2
     hostname: control-center
     container_name: control-center
     depends_on:
@@ -138,7 +138,7 @@ services:
 
   #
   ksqldb-server:
-    image: confluentinc/cp-ksqldb-server:7.5.0
+    image: confluentinc/cp-ksqldb-server:7.5.2
     hostname: ksqldb-server
     container_name: ksqldb-server
     depends_on:
@@ -162,7 +162,7 @@ services:
 
   #
   ksqldb-cli:
-    image: confluentinc/cp-ksqldb-cli:7.5.0
+    image: confluentinc/cp-ksqldb-cli:7.5.2
     container_name: ksqldb-cli
     depends_on:
       - kafkabroker
@@ -173,7 +173,7 @@ services:
 
   #
   ksql-datagen:
-    image: confluentinc/ksqldb-examples:7.5.0
+    image: confluentinc/ksqldb-examples:7.5.2
     hostname: ksql-datagen
     container_name: ksql-datagen
     depends_on:
@@ -196,7 +196,7 @@ services:
 
   #
   rest-proxy:
-    image: confluentinc/cp-kafka-rest:7.5.0
+    image: confluentinc/cp-kafka-rest:7.5.2
     depends_on:
       - kafkabroker
       - schemaregistry

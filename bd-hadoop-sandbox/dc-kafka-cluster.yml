@@ -44,7 +44,7 @@ services:
       - io.confluent.docker.testing=true
   #
   zookeeper-a:
-    image: confluentinc/cp-zookeeper:7.5.0
+    image: confluentinc/cp-zookeeper:7.5.2
     hostname: zookeeper-a.sandbox.net
     container_name: zookeeper-a
     healthcheck:
@@ -95,7 +95,7 @@ services:
       - io.confluent.docker.testing=true
 
   zookeeper-b:
-    image: confluentinc/cp-zookeeper:7.5.0
+    image: confluentinc/cp-zookeeper:7.5.2
     hostname: zookeeper-b.sandbox.net
     container_name: zookeeper-b
     healthcheck:
@@ -145,7 +145,7 @@ services:
       - io.confluent.docker.testing=true
 
   zookeeper-c:
-    image: confluentinc/cp-zookeeper:7.5.0
+    image: confluentinc/cp-zookeeper:7.5.2
     hostname: zookeeper-c.sandbox.net
     container_name: zookeeper-c
     healthcheck:
@@ -198,7 +198,7 @@ services:
   #
   #
   kafkabroker-a:
-    image: confluentinc/cp-kafka:7.5.0
+    image: confluentinc/cp-kafka:7.5.2
     hostname: kafkabroker-a.sandbox.net
     container_name: kafkabroker-a
     volumes:
@@ -276,7 +276,7 @@ services:
       - io.confluent.docker.testing=true
 
   kafkabroker-b:
-    image: confluentinc/cp-kafka:7.5.0
+    image: confluentinc/cp-kafka:7.5.2
     hostname: kafkabroker-b.sandbox.net
     container_name: kafkabroker-b
     volumes:
@@ -343,7 +343,7 @@ services:
       - io.confluent.docker.testing=true
 
   kafkabroker-c:
-    image: confluentinc/cp-kafka:7.5.0
+    image: confluentinc/cp-kafka:7.5.2
     hostname: kafkabroker-c.sandbox.net
     container_name: kafkabroker-c
     volumes:
@@ -409,7 +409,7 @@ services:
 
   #
   schemaregistry:
-    image: confluentinc/cp-schema-registry:7.5.0
+    image: confluentinc/cp-schema-registry:7.5.2
     hostname: schemaregistry.sandbox.net
     container_name: schemaregistry
     depends_on:
