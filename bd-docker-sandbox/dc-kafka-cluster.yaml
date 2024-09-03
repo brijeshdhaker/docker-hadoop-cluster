@@ -4,9 +4,13 @@
 #
 
 #
-# docker volume create --name sandbox_kafka_secrets --opt type=none --opt device=/apps/sandbox/kafka/secrets --opt o=bind
+# docker volume create --name sandbox_security_secrets --opt type=none --opt device=/apps/security/ssl --opt o=bind
+#
 # docker volume create --name sandbox_kafka_data --opt type=none --opt device=/apps/sandbox/kafka/data --opt o=bind
 # docker volume create --name sandbox_kafka_log --opt type=none --opt device=/apps/sandbox/kafka/log --opt o=bind
+#
+# docker volume create --name sandbox_schema_registry_data --opt type=none --opt device=/apps/sandbox/schema-registry/data --opt o=bind
+# docker volume create --name sandbox_schema_registry_log --opt type=none --opt device=/apps/sandbox/schema-registry/log --opt o=bind
 #
 ---
 version: "3.9"
@@ -19,14 +23,13 @@ services:
   # Apache Kafka Server
   #
   kafkabroker:
-    image: confluentinc/cp-kafka:7.5.0
+    image: confluentinc/cp-kafka:7.5.2
     hostname: kafkabroker.sandbox.net
     container_name: kafkabroker
     depends_on:
       - zookeeper
     ports:
       - "9092:9092"
-      - "19092:19092"
     healthcheck:
       test: nc -vz kafkabroker.sandbox.net 19092 || exit 1
       retries: 20
@@ -61,7 +64,7 @@ services:
   #
   #
   schemaregistry:
-    image: confluentinc/cp-schema-registry:7.5.0
+    image: confluentinc/cp-schema-registry:7.5.2
     hostname: schemaregistry.sandbox.net
     container_name: schemaregistry
     depends_on:
@@ -76,8 +79,8 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_security_secrets:/etc/schema-registry/secrets
-      - /apps/sandbox/schema-registry/data:/var/lib/schema-registry/data
-      - /apps/sandbox/schema-registry/log:/var/lib/schema-registry/log
+      - sandbox_schema_registry_data:/var/lib/schema-registry/data
+      - sandbox_schema_registry_log:/var/lib/schema-registry/log
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       SCHEMA_REGISTRY_HOST_NAME: schemaregistry
@@ -112,7 +115,11 @@ volumes:
     external: true
   sandbox_kafka_log:
     external: true
-
+  #
+  sandbox_schema_registry_data:
+    external: true
+  sandbox_schema_registry_log:
+    external: true
 #
 networks:
   default:
