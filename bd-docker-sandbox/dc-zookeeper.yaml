@@ -1,5 +1,10 @@
 #
-# docker volume create --name sandbox_zookeeper_secrets --opt type=none --opt device=/apps/sandbox/zookeeper/secrets --opt o=bind
+# docker compose -f bd-docker-sandbox/dc-zookeeper.yaml up -d
+# docker compose -f bd-docker-sandbox/dc-zookeeper.yaml down
+#
+#
+# docker volume create --name sandbox_security_secrets --opt type=none --opt device=/apps/security/ssl --opt o=bind
+#
 # docker volume create --name sandbox_zookeeper_data --opt type=none --opt device=/apps/sandbox/zookeeper/data --opt o=bind
 # docker volume create --name sandbox_zookeeper_log --opt type=none --opt device=/apps/sandbox/zookeeper/log --opt o=bind
 #
@@ -11,7 +16,7 @@ services:
   # Zookeeper Server
   #
   zookeeper:
-    image: confluentinc/cp-zookeeper:7.5.0
+    image: confluentinc/cp-zookeeper:7.5.2
     hostname: zookeeper.sandbox.net
     container_name: zookeeper
     healthcheck:
@@ -34,6 +39,10 @@ services:
 #
 volumes:
   #
+  sandbox_apps_path:
+    external: true
+  sandbox_security_secrets:
+    external: true
   sandbox_zookeeper_data:
     external: true
   sandbox_zookeeper_log:
