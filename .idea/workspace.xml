@@ -4,378 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-04-8 Update Flink Host Details.">
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/docker-entrypoint.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/DataGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/Producer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/Throttler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/model/Transaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/model/TransactionSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/model/TransactionSupplier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/flink-conf-org.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/flink-conf.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/flink-jobmanager-conf.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/flink-taskmanager-conf.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/log4j-cli.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/log4j-console.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/mysql/initdb/create-table.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/secure/hadoop/client/capacity-scheduler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/secure/hadoop/client/core-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/secure/hadoop/client/hadoop-env.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/secure/hadoop/client/hbase-env.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/secure/hadoop/client/hbase-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/secure/hadoop/client/hdfs-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/secure/hadoop/client/hive-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/secure/hadoop/client/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/secure/hadoop/client/mapred-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/secure/hadoop/client/yarn-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-flink-cluster.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-operations/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-operations/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-operations/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-operations/docker-compose.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-operations/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/ClickEventCount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/ClickEventGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/HiveReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/functions/BackpressureMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/functions/ClickEventStatisticsCollector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/functions/CountingAggregator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/records/ClickEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/records/ClickEventDeserializationSchema.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/records/ClickEventSerializationSchema.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/records/ClickEventStatistics.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/records/ClickEventStatisticsSerializationSchema.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-operations/src/main/resources/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-spend-report/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-spend-report/docker-compose.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-spend-report/grafana/dashboard.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-spend-report/grafana/grafana.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-spend-report/grafana/provisioning/dashboards/dashboards.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-spend-report/grafana/provisioning/datasources/datasource.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-spend-report/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-spend-report/src/main/java/org/apache/flink/playgrounds/spendreport/SpendReport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-spend-report/src/main/java/org/apache/flink/playgrounds/spendreport/UnimplementedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-spend-report/src/main/java/org/apache/flink/playgrounds/spendreport/functions/MyFloor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-spend-report/src/main/resources/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-spend-report/src/test/java/org/apache/flink/playgrounds/spendreport/SpendReportTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-spend-report/src/test/resources/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/backup/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/backup/flink-conf.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/backup/flink-jobmanager-conf.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/backup/flink-taskmanager-conf.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/flink-conf.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/flink-jobmanager-conf.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/flink-taskmanager-conf.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/jobmanager-conf.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/unsecure-client/core-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/unsecure-client/hbase-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/unsecure-client/hdfs-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/unsecure-client/hive-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/unsecure-client/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/unsecure-client/mapred-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/unsecure-client/yarn-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-base.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-flink-cluster.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hdfs-cluster.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-yarn-cluster.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/entrypoint.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/execute-step.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/finish-step.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/libs/readme.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/masters" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/slaves" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/tars/readme.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/wait-for-step.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/build.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/jobmanager/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/jobmanager/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/jobmanager/master.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/submit/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/submit/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/submit/submit.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/taskmanager/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/taskmanager/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/taskmanager/worker.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/template/maven/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/template/maven/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/template/maven/template.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/template/sbt/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/template/sbt/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/template/sbt/template.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/build.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hbase/build.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyflink-module/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyflink-module/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyflink-module/bd-pyflink-module.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyflink-module/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyflink-module/generator/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyflink-module/generator/generate_source_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyflink-module/kibana/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyflink-module/kibana/export.ndjson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyflink-module/kibana/load_ndjson.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyflink-module/payment_msg_proccessing.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyflink-module/pic/cancel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyflink-module/pic/chart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyflink-module/pic/dash_board.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyflink-module/pic/detail.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyflink-module/pic/submitted.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/ss/in-reducer-secondary-sort-compute.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/ss/in-reducer-secondary-sort-print.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/ss/in-shuffle-secondary-sort-compute.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/ss/in-shuffle-secondary-sort-print.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/BatchJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/IncrementMapFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/RandomLongSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/StreamingJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/WindowWordCount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/eventtime/BoundedOutOfOrdernessStrategyJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/eventtime/CustomStrategyJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/eventtime/RandomSensorSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/eventtime/SensorData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/eventtime/SensorDataState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/eventtime/StreamWatermarkDebugFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/eventtime/TimeoutFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flink-playground/src/test/java/com/org/examples/flink/StreamingJobTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flink-playground/src/test/java/com/org/examples/flink/eventtime/StreamingJobTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flink-playground/src/test/java/com/org/examples/flink/utils/ParallelCollectionSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flink-playground/src/test/java/com/org/examples/flink/utils/SinkCollectingSensorData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme-resources/flink-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-02 Update kafka control panel configuration.">
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-hadoop-cluster.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-hadoop-cluster.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-kafka-cluster.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-kafka-cluster.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/client/core-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/client/core-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/profiles/brijeshdhaker.profile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/profiles/brijeshdhaker.profile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/profiles/hadoop.profile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/profiles/hadoop.profile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/profiles/sandbox.profile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/profiles/sandbox.profile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/profiles/zeppelin.profile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/profiles/zeppelin.profile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-gateway.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-gateway.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hadoop-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hadoop-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hive-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hive-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-iceburg.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-iceburg.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-kafka.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-kafka.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-kdcserver.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-kdcserver.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-zeppelin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-zeppelin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-zookeeper.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-zookeeper.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-localstack/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-localstack/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/requirements.pip" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/requirements.pip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-ubuntu/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-ubuntu/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_clients.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_clients.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-java-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-java-module/src/main/java/org/examples/hadoop/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-module/src/main/java/org/examples/hadoop/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-java-module/src/main/java/org/examples/hadoop/WordCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-module/src/main/java/org/examples/hadoop/WordCounter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-java-module/src/main/resources/assembly/hadoop-mr.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-module/src/main/resources/assembly/hadoop-mr.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-java-module/src/test/java/org/examples/hadoop/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-module/src/test/java/org/examples/hadoop/AppTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-java-module/src/test/java/org/examples/hadoop/WordCounterIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-module/src/test/java/org/examples/hadoop/WordCounterIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-java-module/src/test/resources/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-module/src/test/resources/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-java-module/src/test/resources/run_test.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-module/src/test/resources/run_test.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-java-module/src/test/resources/settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-module/src/test/resources/settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-java-module/src/test/resources/text_for_word_count.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-module/src/test/resources/text_for_word_count.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/distro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/distro.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/env_pyspark37.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/env_pyspark37.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/mr-delta.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/mr-delta.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/requirements.pip" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/requirements.pip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/resources/avro/test_schema.avsc" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/resources/avro/test_schema.avsc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/resources/avro/transaction-record.avsc" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/resources/avro/transaction-record.avsc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/resources/avro/user-record.avsc" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/resources/avro/user-record.avsc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/resources/kafka_consumer.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/resources/kafka_consumer.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/resources/kafka_producer.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/resources/kafka_producer.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/setup-and-cluster-submit.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/setup-and-cluster-submit.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/setup-and-local-submit.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/setup-and-local-submit.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/__main__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/airflow/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/airflow/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/airflow/dags/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/airflow/dags/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/airflow/dags/airflow_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/airflow/dags/airflow_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/airflow/dags/bash_ssh.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/airflow/dags/bash_ssh.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/airflow/dags/delta_lag_dag.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/airflow/dags/delta_lag_dag.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/airflow/dags/flight_search_dag.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/airflow/dags/flight_search_dag.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/airflow/dags/spark_yarn_test_dag.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/airflow/dags/spark_yarn_test_dag.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/cloud/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/cloud/aws/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws/sql-s3a-read.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/cloud/aws/sql-s3a-read.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/azure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/cloud/azure/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/azure/spark-azure-storage.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/cloud/azure/spark-azure-storage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/accumulator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/accumulator/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/accumulator/accumulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/accumulator/accumulator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/broadcast/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/broadcast/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/broadcast/broadcast.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/broadcast/broadcast.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/pairrdd/CardTransactionAnalysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/pairrdd/CardTransactionAnalysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/pairrdd/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/pairrdd/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/pairrdd/aggregate-by-key.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/pairrdd/aggregate-by-key.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/pairrdd/group-by-key.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/pairrdd/group-by-key.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/pairrdd/reduce-by-key.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/pairrdd/reduce-by-key.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/pairrdd/sort-by-key.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/pairrdd/sort-by-key.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/rdd/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/rdd/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/rdd/coalesce.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/rdd/coalesce.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/rdd/distinct.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/rdd/distinct.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/rdd/file-rdd.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/rdd/file-rdd.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/rdd/filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/rdd/filter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/rdd/flat-map-partitions.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/rdd/flat-map-partitions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/rdd/flat-map.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/rdd/flat-map.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/rdd/map-partitions-with-index.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/rdd/map-partitions-with-index.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/rdd/map-partitions.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/rdd/map-partitions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/rdd/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/rdd/map.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/rdd/pyspark-test.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/rdd/pyspark-test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/rdd/re-partition.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/rdd/re-partition.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/rdd/repartition-sort-within-partitions.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/rdd/repartition-sort-within-partitions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/rdd/sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/rdd/sample.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/core/rdd/union.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/core/rdd/union.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/data/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/data/sampledata.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/data/sampledata.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/deltalake/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/deltalake/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/deltalake/deltalake_create.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/deltalake/deltalake_create.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/deltalake/deltalake_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/deltalake/deltalake_delete.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/deltalake/deltalake_merge.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/deltalake/deltalake_merge.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/deltalake/deltalake_overwrite.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/deltalake/deltalake_overwrite.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/deltalake/deltalake_timetravel.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/deltalake/deltalake_timetravel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/deltalake/deltalake_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/deltalake/deltalake_update.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/elasticsearch/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/elasticsearch/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/elasticsearch/esreadwrite.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/elasticsearch/esreadwrite.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/hbase/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/hbase/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/hbase/pyspark-hive-hbase.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/hbase/pyspark-hive-hbase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/hbase/pyspark-shc-hbase.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/hbase/pyspark-shc-hbase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/hbase/pyspark-spark-hbase.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/hbase/pyspark-spark-hbase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/hello-spark.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/hello-spark.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/hive/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/hive/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/hive/pyspark-hive-context.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/hive/pyspark-hive-context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/hive/pyspark-hive-session.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/hive/pyspark-hive-session.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/hive/pyspark-window-functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/hive/pyspark-window-functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/avro-test.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/avro-test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_AvroConsumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/confluent_kafka_AvroConsumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_AvroProducer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/confluent_kafka_AvroProducer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_ConfigFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/confluent_kafka_ConfigFactory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_ConsumerFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/confluent_kafka_ConsumerFactory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_DeserializingConsumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/confluent_kafka_DeserializingConsumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_ProducerFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/confluent_kafka_ProducerFactory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_SerializingProducer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/confluent_kafka_SerializingProducer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_exactly_once_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/confluent_kafka_exactly_once_consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_sasl_ssl_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/confluent_kafka_sasl_ssl_consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_sasl_ssl_producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/confluent_kafka_sasl_ssl_producer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_simple_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/confluent_kafka_simple_consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_simple_producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/confluent_kafka_simple_producer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_usecase.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/confluent_kafka_usecase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_transaction_producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/confluent_transaction_producer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/custom_avro_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/custom_avro_consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/kafka_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/kafka_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/test" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/user.avsc" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/user.avsc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/fastavro-test.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/fastavro-test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/partitioners.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/partitioners.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/python/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka-topic.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/python/kafka-topic.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_avro_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/python/kafka_python_avro_consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_avro_producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/python/kafka_python_avro_producer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_batch_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/python/kafka_python_batch_consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_confluent_avro_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/python/kafka_python_confluent_avro_consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_exactly_once_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/python/kafka_python_exactly_once_consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_json_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/python/kafka_python_json_consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_json_producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/python/kafka_python_json_producer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_least_once_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/python/kafka_python_least_once_consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_most_once_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/python/kafka_python_most_once_consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_partitioned_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/python/kafka_python_partitioned_consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_partitioned_producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/python/kafka_python_partitioned_producer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_simple_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/python/kafka_python_simple_consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_simple_producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/python/kafka_python_simple_producer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/murmurv3.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/python/murmurv3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/matplot/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/matplot/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/matplot/pie.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/matplot/pie.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/models/Order.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/models/Order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/models/Transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/models/Transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/models/User.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/models/User.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/models/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/models/fack-data.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/models/fack-data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/mysql/DB.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/mysql/DB.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/mysql/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/mysql/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/parquet/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/parquet/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/parquet/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/parquet/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/parquet/schema-merge.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/parquet/schema-merge.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/pipelines/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/pipelines/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/pipelines/fake_tweet_stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/pipelines/fake_tweet_stream.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/pipelines/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/pipelines/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/pipelines/stream-cassandra-transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/pipelines/stream-cassandra-transformer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/pipelines/stream-hbase-transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/pipelines/stream-hbase-transformer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/pipelines/stream-hive-transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/pipelines/stream-hive-transformer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/postgres/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/postgres/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/postgres/postgres-quries.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/postgres/postgres-quries.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/postgres/postgres-test.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/postgres/postgres-test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/pyspark-pandas.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/pyspark-pandas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/sql/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/sql/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/sql/sql-bucketing.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/sql/sql-bucketing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/sql/sql-column.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/sql/sql-column.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/sql/sql-dataframe.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/sql/sql-dataframe.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/sql/sql-row.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/sql/sql-row.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/sql/sql-udf.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/sql/sql-udf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/sql/struct-types.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/sql/struct-types.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/sql/window-functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/sql/window-functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/sql/window_analytic_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/sql/window_analytic_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/discretized/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/discretized/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/discretized/fake_tweet_stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/discretized/fake_tweet_stream.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/discretized/stream-cassandra-transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/discretized/stream-cassandra-transformer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/discretized/stream-hbase-transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/discretized/stream-hbase-transformer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/discretized/stream-hive-transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/discretized/stream-hive-transformer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/joins/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/joins/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/joins/stream-stream-join.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/joins/stream-stream-join.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/kafka-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/kafka-stream.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/pipeline/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/pipeline/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/pipeline/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/pipeline/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/pipeline/sstreaming-spark-final.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/pipeline/sstreaming-spark-final.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/KafkaStreamDemo.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/structured/KafkaStreamDemo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/structured/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/lib/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/structured/lib/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/lib/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/structured/lib/logger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/structured/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-avro-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/structured/structured-avro-stream.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-delimiter-txn-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/structured/structured-delimiter-txn-stream.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-json-txn-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/structured/structured-json-txn-stream.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured-kafka-txn-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/structured/structured-kafka-txn-stream.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/streams/structured/structured_kafka_wordcount.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/streams/structured/structured_kafka_wordcount.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/utils/AvroUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/utils/AvroUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/utils/Commons.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/utils/Commons.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/utils/DateUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/utils/DateUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/utils/FileUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/utils/FileUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/utils/SparkUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/utils/SparkUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/utils/TimeUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/utils/TimeUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/utils/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/hello.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/hello.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/test/run_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/run_tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/test/test_Commons.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/test_Commons.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/test/test_User.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/test_User.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/test/test_partitioner.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/test_partitioner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/test/test_static.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/test_static.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/test/test_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/test_util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/.bash_profile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/.bash_profile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/hosts" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/hosts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/bigdata-setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/scripts/bigdata-setup.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/setup-osuser-principles.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/scripts/setup-osuser-principles.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-notebook.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-notebook.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/minio-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/minio-help.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/notebook.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/notebook.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -386,29 +22,35 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
-        <option value="Dockerfile" />
-        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="docker-hadoop311-cluster" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/bd-docker-sandbox/conf/flink/flink-conf.yaml" root0="FORCE_HIGHLIGHTING" />
-  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "brijeshdhaker"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/brijeshdhaker/docker-hadoop-cluster.git",
+    "accountId": "82147ccd-9338-4463-bcd6-9a8a5ab4942f"
+  }
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="alwaysUpdateSnapshots" value="true" />
         <option name="customMavenHome" value="/opt/maven-3.6.3" />
         <option name="localRepository" value="$MAVEN_REPOSITORY$" />
         <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
@@ -432,222 +74,149 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.ClickEventGenerator.executor&quot;: &quot;Run&quot;,
-    &quot;Application.HiveReader.executor&quot;: &quot;Run&quot;,
-    &quot;Application.StreamingJob.executor&quot;: &quot;Run&quot;,
-    &quot;Application.WindowWordCount.executor&quot;: &quot;Debug&quot;,
-    &quot;Docker.Docker Image (1).executor&quot;: &quot;Run&quot;,
-    &quot;Docker.Docker Image.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-data-generator/Dockerfile.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-flink-cluster.yaml.flink-jobmanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-flink-cluster.yaml.flink-taskmanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-flink-cluster.yaml.jobmanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-flink-cluster.yaml.taskmanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-flink-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.nodemanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.resourcemanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hivetezui: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.metastore: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.mysqlserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.notebook: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-flink-operations/Dockerfile.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-flink-operations/docker-compose.yaml.clickevent-generator: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-flink-operations/docker-compose.yaml.flink-operations-client: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-flink-operations/docker-compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-flink-spend-report.data-generator: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-flink-spend-report/Dockerfile.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-flink-spend-report/docker-compose.yaml.data-generator: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-flink-spend-report/docker-compose.yaml.flink-spend-client: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox.gateway: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox.notebook: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-azurite.yml.azurite: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-jobmanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-master: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-taskmanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-worker: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-flink-cluster.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-gateway.yml.gateway: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-hdfs-cluster.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-hive-cluster.yml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-hive-cluster.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-rest: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-spark: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.mc: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-jupyternb.yml.jupyternb: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml.kafkabroker: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml.zookeeper: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kdcserver.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kdcserver.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-minio.yml.mc: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-notebook.yml.notebook: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-zeppelin.yml.zeppelin: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-zeppelin.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-zookeeper.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.build-flink-image.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-iceburg.yml.mc: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-iceburg.yml.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-iceburg.yml.rest: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-iceburg.yml.spark-iceberg: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml.kafkabroker: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml.kafkaclient: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml.zookeeper: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.datanode: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.gateway: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.historyserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.hivetezui: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.hmaster: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.hregion: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.metastore: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.mysqlserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.namenode: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.nodemanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.resourcemanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.sparkhistory: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.timelineserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-flink/Dockerfile.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.spark-moniter.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.ubuntu.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in flink-playground.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SpendReportTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SpendReportTest.testReport.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.StreamingJobTest (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.StreamingJobTest.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-data-generator [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-data-generator [verify].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-flink-module [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-flink-operations [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-flink-operations [verify].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-flink-spend-report [verify].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [verify].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.flink-playground [verify].executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_Commons.test_print_separator.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_Commons.test_split_csv.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_Commons.test_split_csv_line.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_User.test_random.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_User.test_to_dict.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_User.test_to_obj.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_static.test_flake8.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests in test_Commons.py.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests in test_User.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python.FileUtils.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Order.executor&quot;: &quot;Run&quot;,
-    &quot;Python.TimeUtils.executor&quot;: &quot;Run&quot;,
-    &quot;Python.User.executor&quot;: &quot;Run&quot;,
-    &quot;Python.__main__.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.aggregate-by-key.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.avro-test.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.confluent_kafka_AvroConsumer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_AvroProducer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_ConsumerFactory.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_DeserializingConsumer.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.confluent_kafka_ProducerFactory.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_SerializingProducer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_simple_consumer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_transaction_producer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.hello-spark.executor&quot;: &quot;Run&quot;,
-    &quot;Python.hello.executor&quot;: &quot;Run&quot;,
-    &quot;Python.kafka_python_partitioned_consumer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.kafka_python_partitioned_producer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.kafka_python_simple_consumer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.kafka_python_simple_producer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pie.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pyspark-pandas.executor&quot;: &quot;Run&quot;,
-    &quot;Python.run_tests.executor&quot;: &quot;Run&quot;,
-    &quot;Python.sql-s3a-read.executor&quot;: &quot;Run&quot;,
-    &quot;Python.structured-avro-stream.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop/docker-hadoop334-cluster&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;temurin-11&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/opt/hadoop-3.3.4/share/hadoop/common/lib&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-data-generator/src/main/java/org/example/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.31724137&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Docker.Docker Image.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.control-center: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.kafkabroker: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.schemaregistry: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.metastore: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.minio: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.mysqlserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.notebook: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox.gateway: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-hive-cluster.yml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-rest: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.mc: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka.yml.kafkabroker: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka.yml.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka.yml.zookeeper: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka.yml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kdcserver.yml.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-minio.yml.mc: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox: Compose Deployment.executor": "Run",
+    "Docker.dc-iceburg.yml.mc: Compose Deployment.executor": "Run",
+    "Docker.dc-iceburg.yml.minio: Compose Deployment.executor": "Run",
+    "Docker.dc-iceburg.yml.rest: Compose Deployment.executor": "Run",
+    "Docker.dc-iceburg.yml.spark-iceberg: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml.kafkabroker: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml.kafkaclient: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml.zookeeper: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.datanode: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.gateway: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.historyserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.hivetezui: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.hmaster: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.hregion: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.metastore: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.mysqlserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.namenode: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.nodemanager: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.resourcemanager: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.sparkhistory: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.timelineserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
+    "Docker.ubuntu.executor": "Run",
+    "Maven.bd-python-module [clean].executor": "Run",
+    "Maven.bd-python-module [install].executor": "Run",
+    "Maven.bd-python-module [org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy].executor": "Run",
+    "Maven.bd-python-module [package].executor": "Run",
+    "Maven.bd-python-module [verify].executor": "Run",
+    "Python tests.Python tests for test_Commons.test_print_separator.executor": "Run",
+    "Python tests.Python tests for test_Commons.test_split_csv.executor": "Run",
+    "Python tests.Python tests for test_Commons.test_split_csv_line.executor": "Debug",
+    "Python tests.Python tests for test_User.test_random.executor": "Debug",
+    "Python tests.Python tests for test_User.test_to_dict.executor": "Debug",
+    "Python tests.Python tests for test_User.test_to_obj.executor": "Run",
+    "Python tests.Python tests for test_static.test_flake8.executor": "Debug",
+    "Python tests.Python tests in test_Commons.py.executor": "Debug",
+    "Python tests.Python tests in test_User.py.executor": "Run",
+    "Python.FileUtils.executor": "Run",
+    "Python.Order.executor": "Run",
+    "Python.TimeUtils.executor": "Run",
+    "Python.User.executor": "Run",
+    "Python.app.executor": "Run",
+    "Python.avro-test.executor": "Debug",
+    "Python.confluent_kafka_AvroConsumer.executor": "Run",
+    "Python.confluent_kafka_AvroProducer.executor": "Run",
+    "Python.confluent_kafka_ConsumerFactory.executor": "Run",
+    "Python.confluent_kafka_DeserializingConsumer.executor": "Debug",
+    "Python.confluent_kafka_ProducerFactory.executor": "Run",
+    "Python.confluent_kafka_SerializingProducer.executor": "Run",
+    "Python.confluent_kafka_simple_consumer.executor": "Run",
+    "Python.confluent_transaction_producer.executor": "Run",
+    "Python.hello-spark.executor": "Run",
+    "Python.kafka_python_partitioned_consumer.executor": "Run",
+    "Python.kafka_python_partitioned_producer.executor": "Run",
+    "Python.kafka_python_simple_consumer.executor": "Run",
+    "Python.kafka_python_simple_producer.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.pie.executor": "Run",
+    "Python.pyspark-pandas.executor": "Run",
+    "Python.run_tests.executor": "Run",
+    "Python.sql-s3a-read.executor": "Run",
+    "Python.structured-avro-stream.executor": "Debug",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "develop/docker-hadoop334-cluster",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-hadoop-sandbox/conf/spark/conf",
+    "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.31724137",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/flink-playground/src/main/resources" />
-      <recent name="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink" />
-      <recent name="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/eventtime" />
-      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/backup" />
-      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink" />
+      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf" />
+      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf" />
+      <recent name="$PROJECT_DIR$/bd-setup-module/scripts" />
+      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/envs" />
+      <recent name="$PROJECT_DIR$/bd-python-module/src/test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/flink-playground/src/main/resources" />
-      <recent name="$PROJECT_DIR$/flink-playground/src/test/java" />
-      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs" />
-      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/resources/tars" />
-      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/tars" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="org.apache.flink.playground.datagen" />
+      <recent name="$PROJECT_DIR$/readme-resources/images" />
+      <recent name="$PROJECT_DIR$/readme-resources" />
+      <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws" />
+      <recent name="$PROJECT_DIR$/bd-python-module/src/test" />
+      <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.StreamingJob">
-    <configuration name="WindowWordCount" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.org.examples.flink.WindowWordCount" />
-      <module name="flink-playground" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.org.examples.flink.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Docker.bd-docker-sandbox/docker-compose.yaml.minio: Compose Deployment">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -694,58 +263,64 @@
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
-        <settings>
-          <option name="envFilePath" value="" />
-          <option name="sourceFilePath" value="bd-hadoop-sandbox/docker-compose.yml" />
-        </settings>
+        <settings />
       </deployment>
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-image" temporary="true">
       <deployment type="docker-image">
-        <settings>
-          <option name="containerName" value="" />
-        </settings>
+        <settings />
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile">
-        <settings>
-          <option name="buildOnly" value="true" />
-          <option name="sourceFilePath" value="bd-hadoop-sandbox/docker-airflow/Dockerfile" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="bd-hadoop-sandbox/dc-gateway.yml.gateway: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/dc-kafka-cluster.yaml.control-center: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
-          <option name="envFilePath" value="" />
           <option name="services">
             <list>
-              <option value="gateway" />
+              <option value="control-center" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-gateway.yml" />
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-kafka-cluster.yaml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-hadoop-sandbox/dc-hdfs-cluster.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/dc-kafka-cluster.yaml.schemaregistry: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
-          <option name="envFilePath" value="" />
-          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-hdfs-cluster.yml" />
+          <option name="services">
+            <list>
+              <option value="schemaregistry" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-kafka-cluster.yaml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-hadoop-sandbox/dc-kdcserver.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/docker-compose.yaml.minio: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
-          <option name="envFilePath" value="" />
-          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-kdcserver.yml" />
+          <option name="services">
+            <list>
+              <option value="minio" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="bd-docker-sandbox/docker-compose.yaml.notebook: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="notebook" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yaml" />
         </settings>
       </deployment>
       <method v="2" />
@@ -753,7 +328,6 @@
     <configuration name="bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
-          <option name="envFilePath" value="" />
           <option name="services">
             <list>
               <option value="minio" />
@@ -766,29 +340,21 @@
     </configuration>
     <list>
       <item itemvalue="Application.StreamingJob" />
-      <item itemvalue="Application.WindowWordCount" />
-      <item itemvalue="Docker.bd-hadoop-sandbox/dc-gateway.yml.gateway: Compose Deployment" />
-      <item itemvalue="Docker.bd-hadoop-sandbox/dc-hdfs-cluster.yml: Compose Deployment" />
-      <item itemvalue="Docker.bd-hadoop-sandbox/dc-kdcserver.yml: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.minio: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.notebook: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.control-center: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.schemaregistry: Compose Deployment" />
       <item itemvalue="Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.minio: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.notebook: Compose Deployment" />
         <item itemvalue="Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" />
-        <item itemvalue="Docker.bd-hadoop-sandbox/dc-kdcserver.yml: Compose Deployment" />
-        <item itemvalue="Docker.bd-hadoop-sandbox/dc-hdfs-cluster.yml: Compose Deployment" />
-        <item itemvalue="Docker.bd-hadoop-sandbox/dc-gateway.yml.gateway: Compose Deployment" />
-        <item itemvalue="Application.WindowWordCount" />
+        <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.control-center: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.schemaregistry: Compose Deployment" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-11.0.22-temurin-11.0.22-f644763e9732-a45f757b" />
-        <option value="jdk-17.0.10-temurin-17.0.10-f644763e9732-3893620f" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -798,6 +364,118 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
+    </task>
+    <task id="LOCAL-00001" summary="2024-02-18 Update Setup Script.">
+      <option name="closed" value="true" />
+      <created>1708256635960</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1708256635960</updated>
+    </task>
+    <task id="LOCAL-00002" summary="2024-02-18 Update Setup Script.">
+      <option name="closed" value="true" />
+      <created>1708262787101</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1708262787101</updated>
+    </task>
+    <task id="LOCAL-00003" summary="2024-02-18 Update Setup Script.">
+      <option name="closed" value="true" />
+      <created>1708279460213</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1708279460213</updated>
+    </task>
+    <task id="LOCAL-00004" summary="2024-02-18 Update Setup Script.">
+      <option name="closed" value="true" />
+      <created>1708617870809</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1708617870809</updated>
+    </task>
+    <task id="LOCAL-00005" summary="2024-02-18 Update Setup Script.">
+      <option name="closed" value="true" />
+      <created>1708619495842</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1708619495842</updated>
+    </task>
+    <task id="LOCAL-00006" summary="2024-02-23 Update kafka config &amp; validation.">
+      <option name="closed" value="true" />
+      <created>1708651067068</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1708651067068</updated>
+    </task>
+    <task id="LOCAL-00007" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708743039684</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1708743039684</updated>
+    </task>
+    <task id="LOCAL-00008" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708762479910</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1708762479910</updated>
+    </task>
+    <task id="LOCAL-00009" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708764418653</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1708764418653</updated>
+    </task>
+    <task id="LOCAL-00010" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708768699007</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1708768699007</updated>
+    </task>
+    <task id="LOCAL-00011" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708768719300</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1708768719300</updated>
+    </task>
+    <task id="LOCAL-00012" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708769489576</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1708769489576</updated>
+    </task>
+    <task id="LOCAL-00013" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708777785312</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1708777785312</updated>
+    </task>
+    <task id="LOCAL-00014" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708778768889</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1708778768889</updated>
     </task>
     <task id="LOCAL-00015" summary="2024-02-24 Merge Docker Projects.">
       <option name="closed" value="true" />
@@ -991,207 +669,55 @@
       <option name="project" value="LOCAL" />
       <updated>1709402286740</updated>
     </task>
-    <task id="LOCAL-00039" summary="2024-03-03 Update iceburg catalogs settings.">
+    <task id="LOCAL-00039" summary="2024-09-02 Update Zookeeper configuration.">
       <option name="closed" value="true" />
-      <created>1709452729750</created>
+      <created>1725336445805</created>
       <option name="number" value="00039" />
       <option name="presentableId" value="LOCAL-00039" />
       <option name="project" value="LOCAL" />
-      <updated>1709452729750</updated>
+      <updated>1725336445807</updated>
     </task>
-    <task id="LOCAL-00040" summary="2024-03-03 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch.">
+    <task id="LOCAL-00040" summary="2024-09-02 Update Zookeeper configuration.">
       <option name="closed" value="true" />
-      <created>1709465896169</created>
+      <created>1725336857061</created>
       <option name="number" value="00040" />
       <option name="presentableId" value="LOCAL-00040" />
       <option name="project" value="LOCAL" />
-      <updated>1709465896169</updated>
+      <updated>1725336857061</updated>
     </task>
-    <task id="LOCAL-00041" summary="2024-03-03 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch.">
+    <task id="LOCAL-00041" summary="2024-09-02 Update kafka control panel configuration.">
       <option name="closed" value="true" />
-      <created>1709467170334</created>
+      <created>1725337402385</created>
       <option name="number" value="00041" />
       <option name="presentableId" value="LOCAL-00041" />
       <option name="project" value="LOCAL" />
-      <updated>1709467170334</updated>
+      <updated>1725337402385</updated>
     </task>
-    <task id="LOCAL-00042" summary="2024-03-04 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch.">
+    <task id="LOCAL-00042" summary="2024-09-02 Update kafka control panel configuration.">
       <option name="closed" value="true" />
-      <created>1709527564883</created>
+      <created>1725337418026</created>
       <option name="number" value="00042" />
       <option name="presentableId" value="LOCAL-00042" />
       <option name="project" value="LOCAL" />
-      <updated>1709527564883</updated>
+      <updated>1725337418026</updated>
     </task>
-    <task id="LOCAL-00043" summary="2024-03-04 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch.">
+    <task id="LOCAL-00043" summary="2024-09-02 Update kafka control panel configuration.">
       <option name="closed" value="true" />
-      <created>1709565886777</created>
+      <created>1725337990516</created>
       <option name="number" value="00043" />
       <option name="presentableId" value="LOCAL-00043" />
       <option name="project" value="LOCAL" />
-      <updated>1709565886777</updated>
+      <updated>1725337990516</updated>
     </task>
-    <task id="LOCAL-00044" summary="2024-03-05 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch.">
+    <task id="LOCAL-00044" summary="2024-09-02 Update kafka control panel configuration.">
       <option name="closed" value="true" />
-      <created>1709604906740</created>
+      <created>1725338606262</created>
       <option name="number" value="00044" />
       <option name="presentableId" value="LOCAL-00044" />
       <option name="project" value="LOCAL" />
-      <updated>1709604906740</updated>
+      <updated>1725338606262</updated>
     </task>
-    <task id="LOCAL-00045" summary="2024-03-05 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch.">
-      <option name="closed" value="true" />
-      <created>1709609082653</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1709609082653</updated>
-    </task>
-    <task id="LOCAL-00046" summary="2024-03-05 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch.">
-      <option name="closed" value="true" />
-      <created>1709701113850</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1709701113850</updated>
-    </task>
-    <task id="LOCAL-00047" summary="2024-03-05 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch.">
-      <option name="closed" value="true" />
-      <created>1709701189053</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1709701189053</updated>
-    </task>
-    <task id="LOCAL-00048" summary="2024-03-05 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch.">
-      <option name="closed" value="true" />
-      <created>1709701285437</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1709701285437</updated>
-    </task>
-    <task id="LOCAL-00049" summary="2024-03-05 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch.">
-      <option name="closed" value="true" />
-      <created>1709704210733</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1709704210733</updated>
-    </task>
-    <task id="LOCAL-00050" summary="2024-03-07 Update Spark Configs.">
-      <option name="closed" value="true" />
-      <created>1709789131673</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1709789131674</updated>
-    </task>
-    <task id="LOCAL-00051" summary="2024-03-08 add notebook docker.">
-      <option name="closed" value="true" />
-      <created>1709914622359</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1709914622359</updated>
-    </task>
-    <task id="LOCAL-00052" summary="2024-03-09 add notebook docker.">
-      <option name="closed" value="true" />
-      <created>1709959627105</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1709959627106</updated>
-    </task>
-    <task id="LOCAL-00053" summary="2024-03-09 add notebook docker.">
-      <option name="closed" value="true" />
-      <created>1709975001011</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1709975001011</updated>
-    </task>
-    <task id="LOCAL-00054" summary="2024-03-09 working notebook.">
-      <option name="closed" value="true" />
-      <created>1709999975755</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1709999975755</updated>
-    </task>
-    <task id="LOCAL-00055" summary="2024-03-10 working notebook.">
-      <option name="closed" value="true" />
-      <created>1710033491880</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1710033491880</updated>
-    </task>
-    <task id="LOCAL-00056" summary="2024-03-10 working jupyter notebook.">
-      <option name="closed" value="true" />
-      <created>1710038686764</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1710038686764</updated>
-    </task>
-    <task id="LOCAL-00057" summary="2024-03-10 working jupyter notebook.">
-      <option name="closed" value="true" />
-      <created>1710038731598</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1710038731598</updated>
-    </task>
-    <task id="LOCAL-00058" summary="2024-03-10 working jupyter notebook with scala &amp; python.">
-      <option name="closed" value="true" />
-      <created>1710048757930</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1710048757931</updated>
-    </task>
-    <task id="LOCAL-00059" summary="2024-03-10 working jupyter notebook with scala &amp; python.">
-      <option name="closed" value="true" />
-      <created>1710048763861</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1710048763861</updated>
-    </task>
-    <task id="LOCAL-00060" summary="2024-03-10 working jupyter notebook with scala &amp; python.">
-      <option name="closed" value="true" />
-      <created>1710127657804</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1710127657804</updated>
-    </task>
-    <task id="LOCAL-00061" summary="2024-03-15 working jupyter notebook with scala &amp; python.">
-      <option name="closed" value="true" />
-      <created>1710564565401</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1710564565401</updated>
-    </task>
-    <task id="LOCAL-00062" summary="2024-03-18 working jupyter notebook with scala &amp; python.">
-      <option name="closed" value="true" />
-      <created>1710726928089</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1710726928089</updated>
-    </task>
-    <task id="LOCAL-00063" summary="2024-04-8 Update Flink Host Details.">
-      <option name="closed" value="true" />
-      <created>1712540602626</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1712540602626</updated>
-    </task>
-    <option name="localTasksCounter" value="64" />
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -1200,53 +726,12 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.conf" />
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.profile" />
   </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ID_ORDER">
-      <list>
-        <option value="Default.Root" />
-        <option value="Default.Author" />
-        <option value="Default.Date" />
-        <option value="Default.Subject" />
-        <option value="Space.CommitStatus" />
-      </list>
-    </option>
-  </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="OPEN_GENERIC_TABS">
-      <map>
-        <entry key="a8b62d45-717b-41fd-8518-697283cae7e6" value="TOOL_WINDOW" />
-      </map>
-    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
             <State />
-          </value>
-        </entry>
-        <entry key="a8b62d45-717b-41fd-8518-697283cae7e6">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="HEAD" />
-                      </list>
-                    </value>
-                  </entry>
-                  <entry key="structure">
-                    <value>
-                      <list>
-                        <option value="dir:/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-hadoop-sandbox/docker-notebook" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
-            </State>
           </value>
         </entry>
       </map>
@@ -1263,96 +748,54 @@
     <MESSAGE value="2024-02-29 Update Confluent Kafka Consumers." />
     <MESSAGE value="2024-03-01 Update PyTest Cases for utils." />
     <MESSAGE value="2024-03-02 Update PyTest Cases for utils." />
-    <MESSAGE value="2024-03-03 Update iceburg catalogs settings." />
-    <MESSAGE value="2024-03-03 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch." />
-    <MESSAGE value="2024-03-04 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch." />
-    <MESSAGE value="2024-03-05 Hadoop 3.3.4 &amp; Spark 3.5.0 Switch." />
-    <MESSAGE value="2024-03-07 Update Spark Configs." />
-    <MESSAGE value="2024-03-08 add notebook docker." />
-    <MESSAGE value="2024-03-09 add notebook docker." />
-    <MESSAGE value="2024-03-09 working notebook." />
-    <MESSAGE value="2024-03-10 working notebook." />
-    <MESSAGE value="2024-03-10 working jupyter notebook." />
-    <MESSAGE value="2024-03-10 working jupyter notebook with scala &amp; python." />
-    <MESSAGE value="2024-03-15 working jupyter notebook with scala &amp; python." />
-    <MESSAGE value="2024-03-18 working jupyter notebook with scala &amp; python." />
-    <MESSAGE value="2024-04-8 Update Flink Host Details." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-04-8 Update Flink Host Details." />
+    <MESSAGE value="2024-09-02 Update Zookeeper configuration." />
+    <MESSAGE value="2024-09-02 Update kafka control panel configuration." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-09-02 Update kafka control panel configuration." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/bd-hadoop-module/src/main/java/org/examples/hadoop/Main.java</url>
+          <url>file://$PROJECT_DIR$/bd-java-module/src/main/java/org/examples/hadoop/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/bd-grafana-modules/src/main/java/org/examples/hadoop/Main.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/bd-flink-spend-report/src/main/java/org/example/Main.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/bd-flink-operations/src/main/java/org/example/Main.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/bd-data-generator/src/main/java/org/example/Main.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/WindowWordCount.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/WindowWordCount.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/python/kafka_python_simple_consumer.py</url>
+          <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_simple_consumer.py</url>
           <line>1</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/confluent_kafka_simple_consumer.py</url>
+          <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_simple_consumer.py</url>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/confluent/confluent_kafka_DeserializingConsumer.py</url>
+          <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_DeserializingConsumer.py</url>
           <line>15</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/models/User.py</url>
+          <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/models/User.py</url>
           <line>84</line>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bd-pyspark-module/src/test/test_User.py</url>
+          <url>file://$PROJECT_DIR$/bd-python-module/src/test/test_User.py</url>
           <line>16</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bd-pyspark-module/src/test/test_User.py</url>
+          <url>file://$PROJECT_DIR$/bd-python-module/src/test/test_User.py</url>
           <line>15</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bd-pyspark-module/src/test/test_static.py</url>
+          <url>file://$PROJECT_DIR$/bd-python-module/src/test/test_static.py</url>
           <line>11</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bd-pyspark-module/src/main/com/example/kafka/avro-test.py</url>
+          <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/avro-test.py</url>
           <line>23</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>

@@ -20,48 +20,71 @@ services:
         aliases:
           - openlake.minio
     environment:
-      - MINIO_ROOT_USER=admin
-      - MINIO_ROOT_PASSWORD=password
+#      - MINIO_ROOT_USER=admin
+#      - MINIO_ROOT_PASSWORD=password
       - MINIO_DOMAIN=minio
       - MINIO_ADDRESS=0.0.0.0:9010
       - MINIO_CONSOLE_ADDRESS=0.0.0.0:9011
-      - AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
-      - AWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h
-      - AWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
-      - AWS_REGION=us-east-1
+      - MINIO_ACCESS_KEY_FILE=/apps/security/keys/minio_access_key
+      - MINIO_SECRET_KEY_FILE=/apps/security/keys/minio_secret_key
+      - MINIO_ROOT_USER_FILE=/apps/security/keys/minio_root_user
+      - MINIO_ROOT_PASSWORD_FILE=/apps/security/keys/minio_root_password
+#      - AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
+#      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
+#      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+#      - AWS_REGION=us-east-1
     ports:
       - "9010:9010"
       - "9011:9011"
     command: [ "server", "/data", "--console-address", ":9011" ]
     volumes:
       - sandbox_apps_path:/apps
-      - /apps/hostpath/minio:/data
+      - sandbox_minio_data:/data
 
-  ##
+  #
+  #
   notebook:
-    image: brijeshdhaker/notebook:3.5.0
+    image: quay.io/jupyter/all-spark-notebook:spark-3.5.2
     container_name: notebook
     hostname: notebook.sandbox.net
+    #user: root
     ports:
       - "8888:8888"
+      - "4040:4040"
     volumes:
       - sandbox_apps_path:/apps
-      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
-      - ./conf/spark/conf:/usr/local/spark/conf
-      - sandbox_hadoop_334:/opt/hadoop
-      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-      - /opt/maven-3.6.3:/opt/maven-3.6.3
-      - ./conf/maven/settings.xml:/home/jovyan/.m2/settings.xml
-      - sandbox_hive_313:/opt/hive
-      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
       - /apps/sandbox/notebooks:/home/jovyan/work/notebooks
     environment:
       GRANT_SUDO: yes
-      KUBECONFIG: /home/notebook/.kube/config
-      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
-      M2_HOME: /opt/maven-3.6.3
-      SPARK_HOME: /usr/local/spark
       PYARROW_IGNORE_TIMEZONE: 1
+  #    env_file:
+  #      - ./envs/docker_clients.env
+
+  ##
+#  notebook:
+#    image: brijeshdhaker/notebook:3.5.0
+#    container_name: notebook
+#    hostname: notebook.sandbox.net
+#    ports:
+#      - "8888:8888"
+#    volumes:
+#      - sandbox_apps_path:/apps
+#      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
+#      - ./conf/spark/conf:/usr/local/spark/conf
+#      - sandbox_hadoop_334:/opt/hadoop
+#      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+#      - /opt/maven-3.6.3:/opt/maven-3.6.3
+#      - ./conf/maven/settings.xml:/home/jovyan/.m2/settings.xml
+#      - sandbox_hive_313:/opt/hive
+#      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
+#      - /apps/sandbox/notebooks:/home/jovyan/work/notebooks
+#    environment:
+#      GRANT_SUDO: yes
+#      KUBECONFIG: /home/notebook/.kube/config
+#      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
+#      M2_HOME: /opt/maven-3.6.3
+#      SPARK_HOME: /usr/local/spark
+#      PYARROW_IGNORE_TIMEZONE: 1
   #    env_file:
   #      - ./envs/docker_clients.env
 
@@ -104,7 +127,7 @@ services:
   # Zeppelin Notebook
   #
   zeppelin:
-    image: apache/zeppelin:0.10.1
+    image: apache/zeppelin:0.11.1
     pull_policy: missing
     container_name: zeppelin
     hostname: zeppelin.sandbox.net
@@ -147,6 +170,8 @@ services:
 volumes:
   #
   sandbox_apps_path:
+    external: true
+  sandbox_minio_data:
     external: true
   sandbox_security_secrets:
     external: true

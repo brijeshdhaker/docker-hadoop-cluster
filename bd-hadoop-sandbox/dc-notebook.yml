@@ -7,7 +7,7 @@ version: '3.9'
 services:
 # /usr/local/spark
   notebook:
-    image: quay.io/jupyter/all-spark-notebook:spark-3.5.1
+    image: quay.io/jupyter/all-spark-notebook:spark-3.5.2
     container_name: notebook
     hostname: notebook.sandbox.net
     user: root
