@@ -1,5 +1,5 @@
 #
-# docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
+# docker volume create --name sandbox_minio_data --opt type=none --opt device=/apps/sandbox/minio --opt o=bind
 #
 ---
 version: '3.9'
@@ -33,7 +33,7 @@ services:
     command: ["server", "/data", "--console-address", ":9011"]
     volumes:
       - sandbox_apps_path:/apps
-      - /apps/hostpath/minio:/data
+      - sandbox_minio_data:/data
 
    ##
 #  mc:
@@ -66,6 +66,8 @@ services:
 volumes:
   #
   sandbox_apps_path:
+    external: true
+  sandbox_minio_data:
     external: true
   sandbox_security_secrets:
     external: true
