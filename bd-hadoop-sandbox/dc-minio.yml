@@ -41,7 +41,7 @@ services:
     hostname: mc.sandbox.net
     container_name: mc
     healthcheck:
-      test: curl -f http://minio.sandbox.net:9000 || exit 1
+      test: curl -f http://minio.sandbox.net:9010 || exit 1
       retries: 20
       interval: 10s
     depends_on:

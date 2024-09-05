@@ -14,7 +14,25 @@ docker run -it --rm \
 --network sandbox.net \
 tabulario/iceberg-rest /bin/bash
 
+http://localhost:8181/v1/config
+http://localhost:8181/v1/namespaces/
+https://github.com/apache/iceberg/blob/main/open-api/rest-catalog-open-api.yaml
+- GET /v1/{prefix}/namespaces
 
+          - POST /v1/{prefix}/namespaces
+          - GET /v1/{prefix}/namespaces/{namespace}
+          - DELETE /v1/{prefix}/namespaces/{namespace}
+          - POST /v1/{prefix}/namespaces/{namespace}/properties
+          - GET /v1/{prefix}/namespaces/{namespace}/tables
+          - POST /v1/{prefix}/namespaces/{namespace}/tables
+          - GET /v1/{prefix}/namespaces/{namespace}/tables/{table}
+          - POST /v1/{prefix}/namespaces/{namespace}/tables/{table}
+          - DELETE /v1/{prefix}/namespaces/{namespace}/tables/{table}
+          - POST /v1/{prefix}/namespaces/{namespace}/register
+          - POST /v1/{prefix}/namespaces/{namespace}/tables/{table}/metrics
+          - POST /v1/{prefix}/tables/rename
+          - POST /v1/{prefix}/transactions/commit
+- 
 export  AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
 export  AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
 export  AWS_REGION=us-east-1
@@ -85,9 +103,9 @@ spark.sql.catalog.hadoop_prod.warehouse = hdfs://namenode.sandbox.net:9000/wareh
 #
 #
 docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg /bin/bash
-docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg pyspark --conf spark.jars.ivy=/apps/.ivy2
-docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg spark-shell --conf spark.jars.ivy=/apps/.ivy2
-docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg spark-sql --conf spark.jars.ivy=/apps/.ivy2
+docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg pyspark 
+docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg spark-shell 
+docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg spark-sql
 
 ### Start Spark Shell
 
@@ -297,7 +315,7 @@ spark.sql("").show()
 spark = SparkSession.builder.config(conf=conf).getOrCreate()
 
 # Read CSV file from MinIO
-df = spark.read.option("header", "true").csv("s3a://openlake/warehouse/airlines.csv")
+df = spark.read.option("header", "true").csv("s3a://warehouse-raw/flight-data/airlines.dat")
 df.show()
 
 # Create Iceberg table "hadoop_catalog.flightdb.airlines" from RDD

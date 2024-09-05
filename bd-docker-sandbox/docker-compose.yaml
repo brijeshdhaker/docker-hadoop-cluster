@@ -5,48 +5,18 @@
 ---
 version: "3.9"
 
-services:
-  ##
-  minio:
-    image: minio/minio:latest
-    hostname: minio.sandbox.net
-    container_name: minio
-    healthcheck:
-      test: echo $HOSTNAME || exit 1
-      retries: 20
-      interval: 10s
-    networks:
-      default:
-        aliases:
-          - openlake.minio
-    environment:
-#      - MINIO_ROOT_USER=admin
-#      - MINIO_ROOT_PASSWORD=password
-      - MINIO_DOMAIN=minio
-      - MINIO_ADDRESS=0.0.0.0:9010
-      - MINIO_CONSOLE_ADDRESS=0.0.0.0:9011
-      - MINIO_ACCESS_KEY_FILE=/apps/security/keys/minio_access_key
-      - MINIO_SECRET_KEY_FILE=/apps/security/keys/minio_secret_key
-      - MINIO_ROOT_USER_FILE=/apps/security/keys/minio_root_user
-      - MINIO_ROOT_PASSWORD_FILE=/apps/security/keys/minio_root_password
-#      - AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
-#      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
-#      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
-#      - AWS_REGION=us-east-1
-    ports:
-      - "9010:9010"
-      - "9011:9011"
-    command: [ "server", "/data", "--console-address", ":9011" ]
-    volumes:
-      - sandbox_apps_path:/apps
-      - sandbox_minio_data:/data
+include:
+  - path: ../bd-hadoop-sandbox/dc-minio.yml
 
-  #
+#
+services:
   #
   notebook:
     image: quay.io/jupyter/all-spark-notebook:spark-3.5.2
     container_name: notebook
     hostname: notebook.sandbox.net
+    depends_on:
+      - minio
     #user: root
     ports:
       - "8888:8888"

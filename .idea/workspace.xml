@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-05 Update sqllite configuration.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-iceburg.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-iceburg.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-iceburg.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-iceburg.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme-resources/iceberg-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/iceberg-help.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -272,22 +274,22 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-iceburg.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="bd-hadoop-sandbox/dc-iceburg.yml.minio: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/docker-compose.yaml.notebook: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
-              <option value="minio" />
+              <option value="notebook" />
             </list>
           </option>
+          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
           <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-iceburg.yml" />
         </settings>
       </deployment>
@@ -334,7 +336,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.StreamingJob" />
-      <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml.minio: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.notebook: Compose Deployment" />
       <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment" />
       <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment" />
       <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment" />
@@ -343,10 +345,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment" />
+        <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.notebook: Compose Deployment" />
         <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment" />
         <item itemvalue="Docker.bd-hadoop-sandbox/dc-mysqlserver.yml.mysqlserver: Compose Deployment" />
-        <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment" />
-        <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml.minio: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -735,7 +737,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725508025002</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="2024-09-05 Update sqllite configuration.">
+      <option name="closed" value="true" />
+      <created>1725512398161</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1725512398161</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="UnknownFeatures">
