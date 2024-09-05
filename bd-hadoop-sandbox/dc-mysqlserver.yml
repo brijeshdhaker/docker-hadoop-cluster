@@ -13,7 +13,7 @@ services:
   # Mysql Server
   #
   mysqlserver:
-    image: mysql/mysql-server:8.0.28
+    image: mysql:8.0.33
     container_name: mysqlserver
     hostname: mysqlserver.sandbox.net
     restart: always

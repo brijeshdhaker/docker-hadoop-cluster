@@ -1,5 +1,51 @@
-
 #
+
+
+export CATALOG_CATALOG__IMPL=org.apache.iceberg.aws.glue.GlueCatalog
+
+docker run -it --rm \
+-v /apps/drivers/libs/mysql-connector-java-8.0.23.jar:/usr/lib/iceberg-rest/mysql-connector-java-8.0.23.jar \
+-v ./bd-hadoop-sandbox/conf/sqlline:/usr/lib/iceberg-rest/sqlline \
+--network sandbox.net \
+tabulario/iceberg-rest /bin/bash
+
+
+export  AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
+export  AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+export  AWS_REGION=us-east-1
+export  CATALOG_WAREHOUSE=s3://warehouse-rest/
+export  CATALOG_IO__IMPL=org.apache.iceberg.aws.s3.S3FileIO
+export  CATALOG_CATALOG__IMPL=org.apache.iceberg.jdbc.JdbcCatalog
+export  CATALOG_S3_ENDPOINT=http://minio:9010
+export  CATALOG_URI=jdbc:mysql://mysqlserver.sandbox.net:3306/ICEBERG_REST_CATALOG
+export  CATALOG_JDBC_USER=mysqladmin
+export  CATALOG_JDBC_PASSWORD=mysqladmin
+export  CATALOG_JDBC_SCHEMA__VERSION=V1
+export  CATALOG_JDBC__INITIALIZE=true
+export  CATALOG_JDBC__DRIVER=com.mysql.cj.jdbc.Driver
+
+java -cp /usr/lib/iceberg-rest/mysql-connector-java-8.0.23.jar -jar ./iceberg-rest-image-all.jar
+
+com.mysql.cj.jdbc.Driver
+com.mysql.jdbc.Driver
+{
+    s3.endpoint=http://minio:9010, 
+    io-impl=org.apache.iceberg.aws.s3.S3FileIO, 
+    catalog-impl=org.apache.iceberg.jdbc.JdbcCatalog,
+    jdbc.user=mysqladmin,
+    jdbc.password=mysqladmin,
+    jdbc.schema-version=V1,
+    jdbc.verifyServerCertificate=false,
+    jdbc.useSSL=false,
+    jdbc-driver=com.mysql.jdbc.Driver,
+    jdbc-initialize=true,
+    warehouse=s3://warehouse-rest/, 
+    uri=jdbc:sqlite:file:/tmp/iceberg_rest_mode=memory
+}
+
+java -cp sqlline/jline-1.0.jar:sqlline/sqlline.jar:/usr/lib/iceberg-rest/mysql-connector-java-8.0.23.jar sqlline.SqlLine
+
+!connect jdbc:mysql://mysqlserver.sandbox.net:3306/ICEBERG_REST_CATALOG mysqladmin mysqladmin
 
 ![iceberg-logo](https://www.apache.org/logos/res/iceberg/iceberg.png)
 
@@ -34,17 +80,17 @@ spark.sql.catalog.hadoop_prod.warehouse = hdfs://namenode.sandbox.net:9000/wareh
 
 ```shell
 $SPARK_HOME/bin/spark-shell \
---conf spark.jars.ivy=/apps/hostpath/.ivy2 \
+--conf spark.jars.ivy=/apps/.ivy2 \
 --properties-file $SPARK_HOME/conf/spark-iceburg.conf
 
---packages org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.4.3 \
+--packages org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.6.1 \
 
 $SPARK_HOME/bin/spark-sql \
---packages org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.4.3 \
---conf spark.jars.ivy=/apps/hostpath/.ivy2 \
+--packages org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.6.1 \
+--conf spark.jars.ivy=/apps/.ivy2 \
 --properties-file $SPARK_HOME/conf/spark-iceburg.conf
 
-$SPARK_HOME/bin/spark-sql --packages org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.4.3 \
+$SPARK_HOME/bin/spark-sql --packages org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.6.1 \
 --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions \
 --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog \
 --conf spark.sql.catalog.spark_catalog.type=hive \
@@ -110,6 +156,8 @@ spark.sql("DESCRIBE DATABASE EXTENDED nyc").show(false)
 
 spark.sql("SHOW TBLPROPERTIES nyc.taxis ;").show(false)
 spark.sql("SHOW TBLPROPERTIES nyc.taxis ('current-snapshot-id');").show(false)
+
+val df = spark.read.parquet("s3a://warehouse/taxi-data/yellow_tripdata_2021-04.parquet")
 
 val df = spark.read.parquet("s3a://openlake/taxi-data/yellow_tripdata_2021-04.parquet")
 df.write.saveAsTable("nyc.taxis")

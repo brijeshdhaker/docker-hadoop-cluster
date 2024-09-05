@@ -4,13 +4,130 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-02 Update kafka control panel configuration.">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-02 Update minio secret configuration.">
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/JDBC_Cli_test_with_steps.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/examples/jline/example/Example.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/examples/jline/example/PasswordReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/assembly/assembly.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/ANSIBuffer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/ArgumentCompletor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/CandidateCycleCompletionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/CandidateListCompletionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/ClassNameCompletor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/CompletionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/Completor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/ConsoleOperations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/ConsoleReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/ConsoleReaderInputStream.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/ConsoleRunner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/CursorBuffer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/FileNameCompletor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/History.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/MultiCompletor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/NullCompletor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/SimpleCompletor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/Terminal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/UnixTerminal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/UnsupportedTerminal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/WindowsTerminal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/java/jline/package.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/native/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/native/jline_WindowsTerminal.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/native/jline_WindowsTerminal.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/resources/jline/CandidateListCompletionHandler.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/resources/jline/jline32.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/resources/jline/jline64.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/resources/jline/keybindings-mac.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/resources/jline/keybindings.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/main/resources/jline/windowsbindings.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/site/apt/building.apt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/site/apt/downloads.apt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/site/docbook/index.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/site/fml/faq.fml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/site/resources/css/site.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/site/resources/images/collapsed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/site/resources/images/dotted.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/site/resources/images/expanded.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/site/resources/images/external.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/site/resources/images/ico_file_pdf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/site/resources/images/logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/site/resources/images/newwindow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/site/site.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/test/java/jline/ConsoleReaderTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/test/java/jline/JLineTestCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/test/java/jline/TestCompletion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/test/java/jline/TestEditLine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/test/java/jline/TestHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/test/java/jline/example/Example.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/src/src/test/java/jline/example/PasswordReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/JDBC_Cli_test_with_steps.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/examples/jline/example/Example.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/examples/jline/example/PasswordReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/assembly/assembly.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/ANSIBuffer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/ArgumentCompletor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/CandidateCycleCompletionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/CandidateListCompletionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/ClassNameCompletor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/CompletionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/Completor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/ConsoleOperations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/ConsoleReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/ConsoleReaderInputStream.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/ConsoleRunner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/CursorBuffer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/FileNameCompletor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/History.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/MultiCompletor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/NullCompletor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/SimpleCompletor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/Terminal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/UnixTerminal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/UnsupportedTerminal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/WindowsTerminal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/java/jline/package.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/native/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/native/jline_WindowsTerminal.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/native/jline_WindowsTerminal.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/resources/jline/CandidateListCompletionHandler.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/resources/jline/jline32.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/resources/jline/jline64.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/resources/jline/keybindings-mac.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/resources/jline/keybindings.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/main/resources/jline/windowsbindings.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/site/apt/building.apt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/site/apt/downloads.apt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/site/docbook/index.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/site/fml/faq.fml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/site/resources/css/site.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/site/resources/images/collapsed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/site/resources/images/dotted.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/site/resources/images/expanded.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/site/resources/images/external.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/site/resources/images/ico_file_pdf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/site/resources/images/logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/site/resources/images/newwindow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/site/site.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/test/java/jline/ConsoleReaderTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/test/java/jline/JLineTestCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/test/java/jline/TestCompletion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/test/java/jline/TestEditLine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/test/java/jline/TestHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/test/java/jline/example/Example.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline/src/src/test/java/jline/example/PasswordReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-iceburg.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-iceburg.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-iceburg.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-iceburg.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-notebook.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-notebook.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-mysqlserver.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-mysqlserver.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/iceberg-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/iceberg-help.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme-resources/minio-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/minio-help.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/mysql-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/mysql-readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme-resources/notebook.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/notebook.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,18 +150,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "brijeshdhaker"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;brijeshdhaker&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/brijeshdhaker/docker-hadoop-cluster.git",
-    "accountId": "82147ccd-9338-4463-bcd6-9a8a5ab4942f"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/brijeshdhaker/docker-hadoop-cluster.git&quot;,
+    &quot;accountId&quot;: &quot;82147ccd-9338-4463-bcd6-9a8a5ab4942f&quot;
   }
-}]]></component>
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -106,7 +223,9 @@
     "Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-hive-cluster.yml.hiveserver: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-rest: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-spark: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-iceburg.yml.mc: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.minio: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment.executor": "Run",
@@ -117,6 +236,7 @@
     "Docker.bd-hadoop-sandbox/dc-kdcserver.yml.kdcserver: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-minio.yml.mc: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-mysqlserver.yml.mysqlserver: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox: Compose Deployment.executor": "Run",
     "Docker.dc-iceburg.yml.mc: Compose Deployment.executor": "Run",
@@ -191,7 +311,7 @@
     "git-widget-placeholder": "develop/docker-hadoop334-cluster",
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-hadoop-sandbox/conf/spark/conf",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-hadoop-sandbox/conf",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -202,11 +322,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf" />
+      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline" />
+      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf" />
       <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf" />
-      <recent name="$PROJECT_DIR$/bd-setup-module/scripts" />
-      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/envs" />
-      <recent name="$PROJECT_DIR$/bd-python-module/src/test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/readme-resources/images" />
@@ -216,7 +336,7 @@
       <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.bd-docker-sandbox/docker-compose.yaml.minio: Compose Deployment">
+  <component name="RunManager" selected="Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -273,33 +393,15 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-kafka-cluster.yaml.control-center: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
-          <option name="services">
-            <list>
-              <option value="control-center" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-kafka-cluster.yaml" />
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-iceburg.yml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-kafka-cluster.yaml.schemaregistry: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="schemaregistry" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-kafka-cluster.yaml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="bd-docker-sandbox/docker-compose.yaml.minio: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-hadoop-sandbox/dc-iceburg.yml.minio: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
@@ -307,52 +409,65 @@
               <option value="minio" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yaml" />
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-iceburg.yml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/docker-compose.yaml.notebook: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
-              <option value="notebook" />
+              <option value="rest" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yaml" />
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-iceburg.yml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
-              <option value="minio" />
+              <option value="spark-iceberg" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-minio.yml" />
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-iceburg.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="bd-hadoop-sandbox/dc-mysqlserver.yml.mysqlserver: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="mysqlserver" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-mysqlserver.yml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Application.StreamingJob" />
-      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.minio: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.notebook: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.control-center: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.schemaregistry: Compose Deployment" />
-      <item itemvalue="Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" />
+      <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml.minio: Compose Deployment" />
+      <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment" />
+      <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment" />
+      <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment" />
+      <item itemvalue="Docker.bd-hadoop-sandbox/dc-mysqlserver.yml.mysqlserver: Compose Deployment" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.minio: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.notebook: Compose Deployment" />
-        <item itemvalue="Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.control-center: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.schemaregistry: Compose Deployment" />
+        <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment" />
+        <item itemvalue="Docker.bd-hadoop-sandbox/dc-mysqlserver.yml.mysqlserver: Compose Deployment" />
+        <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment" />
+        <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment" />
+        <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml.minio: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -717,7 +832,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725338606262</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="2024-09-02 Update minio secret configuration.">
+      <option name="closed" value="true" />
+      <created>1725372672054</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1725372672054</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -750,7 +873,8 @@
     <MESSAGE value="2024-03-02 Update PyTest Cases for utils." />
     <MESSAGE value="2024-09-02 Update Zookeeper configuration." />
     <MESSAGE value="2024-09-02 Update kafka control panel configuration." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-09-02 Update kafka control panel configuration." />
+    <MESSAGE value="2024-09-02 Update minio secret configuration." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-09-02 Update minio secret configuration." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

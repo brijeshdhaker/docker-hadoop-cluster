@@ -19,7 +19,7 @@ export AWS_REGION=us-east-1
  
 /usr/bin/mc rm -r --force minio/warehouse;
 
-/usr/bin/mc mb minio/warehouse;
+/usr/bin/mc mb minio/warehouse --ignore-existing;
 
 /usr/bin/mc policy set public minio/warehouse;
 

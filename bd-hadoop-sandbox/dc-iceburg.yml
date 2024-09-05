@@ -1,52 +1,113 @@
+
 version: "3.9"
 
 include:
-  - dc-minio.yml
+  - path: ../bd-hadoop-sandbox/dc-minio.yml
 
 services:
   #
-  iceberg-spark:
+  spark-iceberg:
     image: tabulario/spark-iceberg
-    hostname: iceberg-spark.sandbox.net
-    container_name: iceberg-spark
-    networks:
-      default:
+    hostname: spark-iceberg.sandbox.net
+    container_name: spark-iceberg
     depends_on:
-      - iceberg-rest
+      - rest
       - minio
     volumes:
-      - sandbox_apps_path:/apps
-      - /apps/hostpath/warehouse:/home/iceberg/warehouse
-      - /apps/hostpath/notebooks:/home/iceberg/notebooks/notebooks
-      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
+      - /apps/sandbox/warehouse:/home/iceberg/warehouse
+      - /apps/sandbox/notebooks:/home/iceberg/notebooks/notebooks
       - ./conf/spark/conf/spark-iceburg.conf:/opt/spark/conf/spark-defaults.conf
+      - /apps/drivers/libs/mysql-connector-java-8.0.23.jar:/opt/spark/jars/mysql-connector-java-8.0.23.jar
     environment:
-      AWS_ENDPOINT_URL_S3: http://minio.sandbox.net:9010
-      AWS_ACCESS_KEY_ID: ffaJ6a2MOj8mZ5lI3P6h
-      AWS_SECRET_ACCESS_KEY: 9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
-      AWS_DEFAULT_REGION: us-east-1
-    #ports:
-      # - 8888:8888
-      # - 8080:8080
-#      - 10000:10000
-#      - 10001:10001
+      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
+      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+      - AWS_REGION=us-east-1
+    ports:
+      - 4040:4040
+      - 8888:8888
+      - 8080:8080
+      - 18080:18080
+      - 10000:10000
+      - 10001:10001
 
   #
-  iceberg-rest:
+  rest:
     image: tabulario/iceberg-rest
-    hostname: iceberg-rest.sandbox.net
-    container_name: iceberg-rest
+    hostname: rest.sandbox.net
+    container_name: rest
+    healthcheck:
+      test: echo $HOSTNAME || exit 1
+      retries: 20
+      interval: 10s
     networks:
       default:
     ports:
       - 8181:8181
+#    command: ["java", "-cp", "mysql-connector-java-8.0.23.jar", "-jar", "iceberg-rest-image-all.jar"]
+    volumes:
+      - /apps/drivers/libs/mysql-connector-java-8.0.23.jar:/usr/lib/iceberg-rest/mysql-connector-java-8.0.23.jar
     environment:
-      - AWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h
-      - AWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
+      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
+      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
       - AWS_REGION=us-east-1
-      - CATALOG_WAREHOUSE=s3://openlake/warehouse/
+      - CATALOG_WAREHOUSE=s3://warehouse-rest/
       - CATALOG_IO__IMPL=org.apache.iceberg.aws.s3.S3FileIO
-      - CATALOG_S3_ENDPOINT=http://minio.sandbox.net:9010
+      - CATALOG_S3_ENDPOINT=http://minio:9010
+#      - CATALOG_CATALOG__IMPL=org.apache.iceberg.jdbc.JdbcCatalog
+#      - CATALOG_URI=jdbc:mysql://mysqlserver.sandbox.net:3306/ICEBERG_REST_CATALOG
+#      - CATALOG_JDBC_USER=mysqladmin
+#      - CATALOG_JDBC_PASSWORD=mysqladmin
+#      - CATALOG_JDBC_DRIVER=com.mysql.cj.jdbc.Driver
+
+#  #
+#  minio:
+#    image: minio/minio
+#    hostname: minio.sandbox.net
+#    container_name: minio
+#    healthcheck:
+#      test: echo $HOSTNAME || exit 1
+#      retries: 20
+#      interval: 10s
+#    environment:
+#      - MINIO_ROOT_USER=admin
+#      - MINIO_ROOT_PASSWORD=password
+#      - MINIO_DOMAIN=minio
+#      - MINIO_ADDRESS=0.0.0.0:9010
+#      - MINIO_CONSOLE_ADDRESS=0.0.0.0:9011
+#      - MINIO_ACCESS_KEY_FILE=/apps/security/keys/minio_access_key
+#      - MINIO_SECRET_KEY_FILE=/apps/security/keys/minio_secret_key
+#      - MINIO_ROOT_USER_FILE=/apps/security/keys/minio_root_user
+#      - MINIO_ROOT_PASSWORD_FILE=/apps/security/keys/minio_root_password
+#    networks:
+#      default:
+#        aliases:
+#          - warehouse-rest.minio
+#    ports:
+#      - 9010:9010
+#      - 9011:9011
+#    command: ["server", "/data", "--console-address", ":9011"]
+#    volumes:
+#      - sandbox_apps_path:/apps
+#      - sandbox_minio_data:/data
+  #
+#  mc:
+#    image: minio/mc
+#    hostname: mc.sandbox.net
+#    container_name: mc
+#    depends_on:
+#      - minio
+#    environment:
+#      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
+#      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+#      - AWS_REGION=us-east-1
+#    entrypoint: >
+#      /bin/sh -c "
+#      until (/usr/bin/mc config host add minio http://minio:9010 admin password) do echo '...waiting...' && sleep 1; done;
+#      /usr/bin/mc rm -r --force minio/warehouse-rest;
+#      /usr/bin/mc mb minio/warehouse-rest;
+#      /usr/bin/mc policy set public minio/warehouse-rest;
+#      tail -f /dev/null
+#      "
 
 #
 #
@@ -54,6 +115,8 @@ services:
 volumes:
   #
   sandbox_apps_path:
+    external: true
+  sandbox_minio_data:
     external: true
   sandbox_security_secrets:
     external: true
@@ -66,5 +129,3 @@ networks:
     external: true
     driver: bridge
     name: sandbox.net
-  #
-#  iceberg_net:

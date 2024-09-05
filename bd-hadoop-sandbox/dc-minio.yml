@@ -16,10 +16,10 @@ services:
     networks:
       default:
         aliases:
-          - openlake.minio
+          - warehouse-rest.minio
     environment:
-#      - MINIO_ROOT_USER=admin
-#      - MINIO_ROOT_PASSWORD=password
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=password
       - MINIO_DOMAIN=minio
       - MINIO_ADDRESS=0.0.0.0:9010
       - MINIO_CONSOLE_ADDRESS=0.0.0.0:9011
@@ -27,10 +27,6 @@ services:
       - MINIO_SECRET_KEY_FILE=/apps/security/keys/minio_secret_key
       - MINIO_ROOT_USER_FILE=/apps/security/keys/minio_root_user
       - MINIO_ROOT_PASSWORD_FILE=/apps/security/keys/minio_root_password
-#      - AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
-#      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
-#      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
-#      - AWS_REGION=us-east-1
     ports:
       - "9010:9010"
       - "9011:9011"
@@ -40,31 +36,30 @@ services:
       - sandbox_minio_data:/data
 
    ##
-#  mc:
-#    image: minio/mc:latest
-#    hostname: mc.sandbox.net
-#    container_name: mc
-#    healthcheck:
-#      test: curl -f http://minio.sandbox.net:9000 || exit 1
-#      retries: 20
-#      interval: 10s
-#    depends_on:
-#      minio:
-#        condition: service_healthy
-#    environment:
-#      - AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
-#      - AWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h
-#      - AWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
-#      - AWS_REGION=us-east-1
-#    entrypoint: >
-#      /bin/sh -c "
-#      until (/usr/bin/mc config host add minio http://minio.sandbox.net:9010 admin password) do echo '...waiting...' && sleep 1; done;
-#      # /usr/bin/mc rm -r --force minio/warehouse ;
-#      /usr/bin/mc config host add minio http://minio.sandbox.net:9010 admin password
-#      /usr/bin/mc mb minio/warehouse --ignore-existing ;
-#      /usr/bin/mc policy set public minio/warehouse ;
-#      tail -f /dev/null
-#      "
+  mc:
+    image: minio/mc:latest
+    hostname: mc.sandbox.net
+    container_name: mc
+    healthcheck:
+      test: curl -f http://minio.sandbox.net:9000 || exit 1
+      retries: 20
+      interval: 10s
+    depends_on:
+      minio:
+        condition: service_healthy
+    environment:
+      - AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
+      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
+      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+      - AWS_REGION=us-east-1
+    entrypoint: >
+      /bin/sh -c "
+      until (/usr/bin/mc config host add minio http://minio.sandbox.net:9010 admin password) do echo '...waiting...' && sleep 1; done;
+      # /usr/bin/mc rm -r --force minio/warehouse-rest ;
+      /usr/bin/mc mb minio/warehouse-rest --ignore-existing ;
+      /usr/bin/mc policy set public minio/warehouse-rest ;
+      tail -f /dev/null
+      "
 
 #
 volumes:

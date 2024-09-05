@@ -24,6 +24,26 @@ GRANT ALL PRIVILEGES ON HMS334.* TO 'hiveadmin'@'%';
 FLUSH PRIVILEGES;
 
 ```
+#
+# Setup ICEBERG Catalog Database
+#
+```shell
+CREATE DATABASE ICEBERG_CATALOG;
+USE ICEBERG_CATALOG;
+
+CREATE DATABASE ICEBERG_REST_CATALOG;
+USE ICEBERG_REST_CATALOG;
+
+CREATE USER 'mysqladmin'@'%' IDENTIFIED BY 'mysqladmin';
+GRANT ALL PRIVILEGES ON *.* TO 'mysqladmin'@'%';
+
+CREATE USER 'mysqladmin'@'localhost' IDENTIFIED BY 'mysqladmin';
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'mysqladmin'@'localhost';
+GRANT ALL PRIVILEGES ON ICEBERG_CATALOG.* TO 'mysqladmin'@'localhost';
+GRANT ALL PRIVILEGES ON ICEBERG_REST_CATALOG.* TO 'mysqladmin'@'localhost';
+
+FLUSH PRIVILEGES;
+```
 
 ## Clone Schema 
 ```shell
