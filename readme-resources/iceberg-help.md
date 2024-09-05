@@ -3,6 +3,11 @@
 
 export CATALOG_CATALOG__IMPL=org.apache.iceberg.aws.glue.GlueCatalog
 
+#
+# 
+#
+docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec rest /bin/bash
+
 docker run -it --rm \
 -v /apps/drivers/libs/mysql-connector-java-8.0.23.jar:/usr/lib/iceberg-rest/mysql-connector-java-8.0.23.jar \
 -v ./bd-hadoop-sandbox/conf/sqlline:/usr/lib/iceberg-rest/sqlline \
@@ -76,37 +81,48 @@ spark.sql.catalog.hadoop_prod.type = hadoop
 spark.sql.catalog.hadoop_prod.warehouse = hdfs://namenode.sandbox.net:9000/warehouse/tablespace/external/spark
 ```
 
+#
+#
+#
+docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg /bin/bash
+docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg pyspark --conf spark.jars.ivy=/apps/.ivy2
+docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg spark-shell --conf spark.jars.ivy=/apps/.ivy2
+docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg spark-sql --conf spark.jars.ivy=/apps/.ivy2
+
 ### Start Spark Shell
 
 ```shell
+
 $SPARK_HOME/bin/spark-shell \
 --conf spark.jars.ivy=/apps/.ivy2 \
---properties-file $SPARK_HOME/conf/spark-iceburg.conf
-
 --packages org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.6.1 \
+--properties-file $SPARK_HOME/conf/spark-defaults.conf \
+--conf spark.hadoop.hive.cli.print.header=true
 
 $SPARK_HOME/bin/spark-sql \
 --packages org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.6.1 \
 --conf spark.jars.ivy=/apps/.ivy2 \
---properties-file $SPARK_HOME/conf/spark-iceburg.conf
+--properties-file $SPARK_HOME/conf/spark-defaults.conf
 
-$SPARK_HOME/bin/spark-sql --packages org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.6.1 \
+$SPARK_HOME/bin/spark-sql \
+--packages org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.6.1 \
 --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions \
 --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog \
 --conf spark.sql.catalog.spark_catalog.type=hive \
---conf spark.sql.catalog.hadoop_catalog=org.apache.iceberg.spark.SparkCatalog \
---conf spark.sql.catalog.hadoop_catalog.type=hadoop \
---conf spark.sql.catalog.hadoop_catalog.warehouse=/warehouse/tablespace/external/spark \
---conf spark.sql.defaultCatalog=hadoop_catalog
+--conf spark.sql.catalog.hadoop_prod=org.apache.iceberg.spark.SparkCatalog \
+--conf spark.sql.catalog.hadoop_prod.type=hadoop \
+--conf spark.sql.catalog.hadoop_prod.warehouse=s3a://warehouse-hadoop/ \
+--conf spark.sql.defaultCatalog=hadoop_prod \
+--conf spark.hadoop.hive.cli.print.header=true
 
 $SPARK_HOME/bin/spark-sql \
 --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions \
 --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog \
 --conf spark.sql.catalog.spark_catalog.type=hive \
---conf spark.sql.catalog.hadoop_catalog=org.apache.iceberg.spark.SparkCatalog \
---conf spark.sql.catalog.hadoop_catalog.type=hadoop \
---conf spark.sql.catalog.hadoop_catalog.warehouse=/warehouse/tablespace/external/spark \
---conf spark.sql.defaultCatalog=hadoop_catalog \
+--conf spark.sql.catalog.hadoop_prod=org.apache.iceberg.spark.SparkCatalog \
+--conf spark.sql.catalog.hadoop_prod.type=hadoop \
+--conf spark.sql.catalog.hadoop_prod.warehouse=s3a://warehouse-hadoop/ \
+--conf spark.sql.defaultCatalog=hadoop_prod \
 --conf spark.hadoop.hive.cli.print.header=true
 
 $SPARK_HOME/bin/spark-shell \
@@ -139,27 +155,27 @@ from pyspark.sql.types import StructType, StructField, LongType, DoubleType, Str
 conf = (
     SparkConf()
     .set("spark.sql.extensions","org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions") # Use Iceberg with Spark
-    .set("spark.sql.catalog.demo", "org.apache.iceberg.spark.SparkCatalog")
-    .set("spark.sql.catalog.demo.io-impl", "org.apache.iceberg.aws.s3.S3FileIO")
-    .set("spark.sql.catalog.demo.warehouse", "s3a://openlake/warehouse/")
-    .set("spark.sql.catalog.demo.s3.endpoint", "https://play.min.io:50000")
-    .set("spark.sql.defaultCatalog", "demo") # Name of the Iceberg catalog
+    .set("spark.sql.catalog.rest_prod", "org.apache.iceberg.spark.SparkCatalog")
+    .set("spark.sql.catalog.rest_prod.io-impl", "org.apache.iceberg.aws.s3.S3FileIO")
+    .set("spark.sql.catalog.rest_prod.warehouse", "s3a://openlake/warehouse/")
+    .set("spark.sql.catalog.rest_prod.s3.endpoint", "https://play.min.io:50000")
+    .set("spark.sql.defaultCatalog", "rest_prod") # Name of the Iceberg catalog
     .set("spark.sql.catalogImplementation", "in-memory")
-    .set("spark.sql.catalog.demo.type", "hadoop") # Iceberg catalog type
+    .set("spark.sql.catalog.rest_prod.type", "hadoop") # Iceberg catalog type
     .set("spark.executor.heartbeatInterval", "300000")
     .set("spark.network.timeout", "400000")
 )
 
-spark.sql("CREATE DATABASE IF NOT EXISTS nyc").show(false)
-spark.sql("DESCRIBE DATABASE nyc").show(false)
-spark.sql("DESCRIBE DATABASE EXTENDED nyc").show(false)
+spark.sql("CREATE DATABASE IF NOT EXISTS nyc;").show(false)
+spark.sql("DESCRIBE DATABASE nyc;").show(false)
+spark.sql("DESCRIBE DATABASE EXTENDED nyc;").show(false)
 
 spark.sql("SHOW TBLPROPERTIES nyc.taxis ;").show(false)
 spark.sql("SHOW TBLPROPERTIES nyc.taxis ('current-snapshot-id');").show(false)
 
 val df = spark.read.parquet("s3a://warehouse/taxi-data/yellow_tripdata_2021-04.parquet")
 
-val df = spark.read.parquet("s3a://openlake/taxi-data/yellow_tripdata_2021-04.parquet")
+val df = spark.read.parquet("file:/home/iceberg/data/yellow_tripdata_2021-04.parquet")
 df.write.saveAsTable("nyc.taxis")
 
 spark.sql("CREATE TABLE IF NOT EXISTS nyc.taxis").show(false)
@@ -171,8 +187,9 @@ spark.sql("SHOW CREATE TABLE nyc.taxis").show(false)
 spark.sql("SELECT COUNT(*) as cnt FROM nyc.taxis").show()
 spark.sql("").show()
 
+#
 # Schema Evolution
-
+#
 spark.sql("ALTER TABLE nyc.taxis RENAME COLUMN fare_amount TO fare").show()
 
 spark.sql("ALTER TABLE nyc.taxis RENAME COLUMN trip_distance TO distance").show()
@@ -234,12 +251,12 @@ ADD PARTITION FIELD VendorID
 # Metadata Tables
 spark.sql("""
 SELECT snapshot_id, manifest_list
-FROM nyc.taxis.snapshots
+FROM nyc.taxis.snapshots ;
 """).show(false)
 
 spark.sql("""
 SELECT file_path, file_format, record_count, null_value_counts, lower_bounds, upper_bounds
-FROM nyc.taxis.files
+FROM nyc.taxis.files ;
 """).show()
 
 #
