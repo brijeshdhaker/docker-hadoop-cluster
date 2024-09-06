@@ -17,6 +17,7 @@ services:
       default:
         aliases:
           - warehouse-rest.minio
+          - warehouse-data.minio
     environment:
       - MINIO_ROOT_USER=admin
       - MINIO_ROOT_PASSWORD=password

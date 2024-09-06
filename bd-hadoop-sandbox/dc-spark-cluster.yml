@@ -150,6 +150,17 @@ services:
       - 4040:4040
       - 8888:8888
 
+  #
+  postgres:
+    image: postgres:13.4-bullseye
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=demo_catalog
+    volumes:
+      - /apps/sandbox/postgres/data:/var/lib/postgresql/data
+
 #
 volumes:
   sandbox_apps_path:

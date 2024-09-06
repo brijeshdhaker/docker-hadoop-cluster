@@ -34,14 +34,22 @@ USE ICEBERG_CATALOG;
 CREATE DATABASE ICEBERG_REST_CATALOG;
 USE ICEBERG_REST_CATALOG;
 
+CREATE DATABASE demo_catalog;
+USE demo_catalog;
+
 CREATE USER 'mysqladmin'@'%' IDENTIFIED BY 'mysqladmin';
 GRANT ALL PRIVILEGES ON *.* TO 'mysqladmin'@'%';
+
+CREATE USER 'admin'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%';
 
 CREATE USER 'mysqladmin'@'localhost' IDENTIFIED BY 'mysqladmin';
 REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'mysqladmin'@'localhost';
 GRANT ALL PRIVILEGES ON ICEBERG_CATALOG.* TO 'mysqladmin'@'localhost';
 GRANT ALL PRIVILEGES ON ICEBERG_REST_CATALOG.* TO 'mysqladmin'@'localhost';
 
+GRANT ALL PRIVILEGES ON demo_catalog.* TO 'admin'@'%';
+GRANT ALL PRIVILEGES ON demo_catalog.* TO 'mysqladmin'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
@@ -50,3 +58,5 @@ FLUSH PRIVILEGES;
 CREATE DATABASE HMS334;
 mysqldump -u root --password=$MYSQL_PASSWORD metastore | mysql -u root --password=$MYSQL_PASSWORD HMS334
 ```
+
+mysqldump -u root --password=p@SSW0rd ICEBERG_CATALOG >> /apps/ICEBERG_CATALOG.sql 
