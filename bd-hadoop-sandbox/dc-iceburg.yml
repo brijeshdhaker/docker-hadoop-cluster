@@ -20,8 +20,8 @@ services:
       - /apps/sandbox/notebooks:/home/iceberg/notebooks/notebooks
       - ./conf/spark/conf/spark-iceburg.conf:/opt/spark/conf/spark-defaults.conf
       - /apps/drivers/libs/mysql-connector-java-8.0.23.jar:/opt/spark/jars/mysql-connector-java-8.0.23.jar
-      - /apps/drivers/AWS/com.amazonaws_aws-java-sdk-bundle-1.11.199.jar:/opt/spark/jars/com.amazonaws_aws-java-sdk-bundle-1.11.199.jar
-      - /apps/drivers/AWS/org.apache.hadoop_hadoop-aws-3.0.0.jar:/opt/spark/jars/org.apache.hadoop_hadoop-aws-3.0.0.jar
+      - /apps/drivers/AWS/aws-java-sdk-bundle-1.11.199.jar:/opt/spark/jars/aws-java-sdk-bundle-1.11.199.jar
+      - /apps/drivers/AWS/hadoop-aws-3.0.0.jar:/opt/spark/jars/hadoop-aws-3.0.0.jar
     environment:
       - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
       - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG

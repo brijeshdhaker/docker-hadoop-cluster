@@ -48,7 +48,7 @@ WORKDIR ${SPARK_HOME}
 
 #
 COPY docker-spark/*.sh /opt/
-COPY resources/libs/*.jar $SPARK_HOME/conf/jars/
+COPY resources/libs/*.jar $SPARK_HOME/jars/
 RUN cd / && chown -Rf spark:spark /opt/*.sh && chmod -Rf 755 /opt/*.sh
 
 ENTRYPOINT ["/opt/entrypoint.sh"]
