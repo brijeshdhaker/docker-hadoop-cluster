@@ -18,6 +18,7 @@ services:
         aliases:
           - warehouse-rest.minio
           - warehouse-data.minio
+          - warehouse-demo.minio
     environment:
       - MINIO_ROOT_USER=admin
       - MINIO_ROOT_PASSWORD=password
@@ -59,6 +60,10 @@ services:
       # /usr/bin/mc rm -r --force minio/warehouse-rest ;
       /usr/bin/mc mb minio/warehouse-rest --ignore-existing ;
       /usr/bin/mc policy set public minio/warehouse-rest ;
+      /usr/bin/mc mb minio/warehouse-data --ignore-existing ;
+      /usr/bin/mc policy set public minio/warehouse-data ;
+      /usr/bin/mc mb minio/warehouse-demo --ignore-existing ;
+      /usr/bin/mc policy set public minio/warehouse-demo ;
       tail -f /dev/null
       "
 

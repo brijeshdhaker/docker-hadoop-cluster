@@ -12,7 +12,7 @@ include:
 services:
   #
   notebook:
-    image: quay.io/jupyter/all-spark-notebook:spark-3.5.2
+    image: brijeshdhaker/notebook:3.5.2
     container_name: notebook
     hostname: notebook.sandbox.net
     depends_on:
@@ -24,37 +24,10 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - /apps/sandbox/notebooks:/home/jovyan/work/notebooks
+      - ./conf/spark/conf:/usr/local/spark/conf
     environment:
       GRANT_SUDO: yes
       PYARROW_IGNORE_TIMEZONE: 1
-  #    env_file:
-  #      - ./envs/docker_clients.env
-
-  ##
-#  notebook:
-#    image: brijeshdhaker/notebook:3.5.0
-#    container_name: notebook
-#    hostname: notebook.sandbox.net
-#    ports:
-#      - "8888:8888"
-#    volumes:
-#      - sandbox_apps_path:/apps
-#      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
-#      - ./conf/spark/conf:/usr/local/spark/conf
-#      - sandbox_hadoop_334:/opt/hadoop
-#      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-#      - /opt/maven-3.6.3:/opt/maven-3.6.3
-#      - ./conf/maven/settings.xml:/home/jovyan/.m2/settings.xml
-#      - sandbox_hive_313:/opt/hive
-#      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
-#      - /apps/sandbox/notebooks:/home/jovyan/work/notebooks
-#    environment:
-#      GRANT_SUDO: yes
-#      KUBECONFIG: /home/notebook/.kube/config
-#      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
-#      M2_HOME: /opt/maven-3.6.3
-#      SPARK_HOME: /usr/local/spark
-#      PYARROW_IGNORE_TIMEZONE: 1
   #    env_file:
   #      - ./envs/docker_clients.env
 

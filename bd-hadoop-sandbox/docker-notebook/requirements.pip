@@ -1,21 +1,17 @@
 #
-# spylon-kernel
-# toree
-
-#
 jupysql
 duckdb
 duckdb-engine
 
-# plotting
-ggplot
-plotly
-plotnine
-bokeh
-holoviews
-hvplot
-altair
-vega_datasets
+## plotting
+# ggplot
+# plotly
+# plotnine
+# bokeh
+# holoviews
+# hvplot
+# altair
+# vega_datasets
 
 # Data Analysis
 protobuf
@@ -24,6 +20,6 @@ grpcio-status
 mysqlclient
 
 #
- scikit-learn
- scipy
- seaborn
+scikit-learn
+scipy
+seaborn

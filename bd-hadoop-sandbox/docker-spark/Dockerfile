@@ -7,7 +7,7 @@
 #
 
 #
-# docker build -t brijeshdhaker/spark-standalon:3.5.1 -f docker-spark/Dockerfile .
+# docker build -t brijeshdhaker/spark-standalon:3.5.2 -f docker-spark/Dockerfile .
 # docker push docker.io/brijeshdhaker/spark-standalon:3.5.1
 #
 
@@ -15,7 +15,7 @@ FROM brijeshdhaker/ubuntu:22.04
 
 # Note: this is needed when you use Python 3.3 or greater
 ENV PYTHONHASHSEED=1
-ENV SPARK_VERSION=3.5.1-bin-hadoop3
+ENV SPARK_VERSION=3.5.2-bin-hadoop3
 ENV BASE_DIR=/opt
 ENV SPARK_HOME=$BASE_DIR/spark
 ENV SPARK_CONF_DIR=$SPARK_HOME/conf

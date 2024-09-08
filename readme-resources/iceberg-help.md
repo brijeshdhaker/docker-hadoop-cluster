@@ -99,6 +99,18 @@ spark.sql.catalog.hadoop_prod.type = hadoop
 spark.sql.catalog.hadoop_prod.warehouse = hdfs://namenode.sandbox.net:9000/warehouse/tablespace/external/spark
 ```
 
+docker run -it --rm \
+-v /apps/drivers/libs/mysql-connector-java-8.0.23.jar:/usr/lib/iceberg-rest/mysql-connector-java-8.0.23.jar \
+-v ./bd-hadoop-sandbox/conf/sqlline:/usr/lib/iceberg-rest/sqlline \
+--network sandbox.net \
+brijeshdhaker/spark-notebook:3.5.1 spark-class org.apache.spark.deploy.master.Master --ip localhost --port 7077 --webui-port 8080
+
+start-master.sh -p 7077
+start-master.sh -p 7077
+start-worker.sh spark://spark-iceberg:7077
+start-history-server.sh
+start-thriftserver.sh  --driver-java-options "-Dderby.system.home=/tmp/derby"
+
 #
 #
 #
@@ -106,6 +118,7 @@ docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg /bin/bash
 docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg pyspark 
 docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg spark-shell 
 docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg spark-sql
+
 
 ### Start Spark Shell
 

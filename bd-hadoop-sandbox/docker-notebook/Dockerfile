@@ -1,6 +1,6 @@
 #
 # ./bin/docker-image-tool.sh -t 3.5.0 -p ./kubernetes/dockerfiles/spark/bindings/python/Dockerfile build
-# docker build -t brijeshdhaker/notebook:3.5.1 -f docker-notebook/Dockerfile .
+# docker build -t brijeshdhaker/notebook:3.5.2 -f docker-notebook/Dockerfile .
 # docker tag spark-py-notebook:latest brijeshdhaker/spark-py-notebook:latest
 # jupyter/pyspark-notebook
 # jupyter/all-spark-notebook:spark-3.5.0
@@ -12,7 +12,7 @@ USER root
 #
 RUN set -x &&  \
     apt-get update && \
-    apt-get install -y --no-install-recommends openjdk-17-jdk curl vim unzip ssh && \
+    apt-get install -y --no-install-recommends curl vim unzip ssh && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     echo "basic installation done."
@@ -24,15 +24,11 @@ COPY docker-notebook/requirements.pip /tmp/requirements.pip
 
 #
 RUN set -x && mamba install --yes --file /tmp/requirements.pip && \
-    mamba clean --all -f -y && \
-    fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}"
+    mamba clean --all -f -y
 
 #
 RUN set -x && conda install  -c conda-forge --yes spylon-kernel && \
-    conda clean --all -f -y && \
-    fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}"
+    conda clean --all -f -y
 
 
 # Add scala kernel via spylon-kernel
@@ -57,14 +53,13 @@ RUN set -x && \
     sudo ./aws/install && \
     rm awscliv2.zip && \
     rm -rf aws/ && \
-    fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}" && \
     echo "AWS Client installation done."
 
 #
 RUN mkdir -p /home/${NB_USER}/.ipython/profile_default/startup
 COPY docker-notebook/startup/00-prettytables.py /home/${NB_USER}/.ipython/profile_default/startup
 COPY docker-notebook/startup/README /home/${NB_USER}/.ipython/profile_default/startup
+COPY resources/libs/*.jar /usr/local/spark/jars/
 
 #
 RUN set -x && \
