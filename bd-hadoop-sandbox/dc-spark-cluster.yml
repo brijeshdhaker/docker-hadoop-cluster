@@ -39,36 +39,6 @@ services:
       - 8080:8080
 
   #
-#  spark-master:
-#    image: docker.io/brijeshdhaker/spark-standalon:3.5.2
-#    container_name: spark-master
-#    hostname: spark-master.sandbox.net
-#    ports:
-#      - "7077:7077"
-#      - "8080:8080"
-#    healthcheck:
-#      test: nc -vz spark-master.sandbox.net 7077 || exit 1
-#      retries: 20
-#      interval: 10s
-#    depends_on:
-#      minio:
-#        condition: service_healthy
-#    volumes:
-#      - sandbox_apps_path:/apps
-#      - ./conf/spark/conf:/opt/spark/conf
-#    environment:
-#      - SPARK_WORKLOAD=master
-#      - SPARK_MASTER_LOG=/apps/var/logs/spark/spark-master
-#      - SPARK_MASTER_PORT=7077
-#      - SPARK_MASTER_WEBUI_PORT=8080
-#      - SPARK_DRIVER_CORES=4
-#      - SPARK_DRIVER_MEMORY=6G
-#      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
-#      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
-#      - AWS_REGION=us-east-1
-
-#
-  #
   spark-worker-a:
     image: brijeshdhaker/spark-notebook:3.5.1
     hostname: spark-worker-a.sandbox.net
@@ -94,39 +64,6 @@ services:
       - 8081:8081
 
   #
-  #
-  #
-#  spark-worker-a:
-#    image: docker.io/brijeshdhaker/spark-standalon:3.5.1
-#    container_name: spark-worker-a
-#    hostname: spark-worker-a.sandbox.net
-#    ports:
-#      - "8081:8081"
-#    healthcheck:
-#      test: nc -vz spark-worker-a.sandbox.net 8081 || exit 1
-#      retries: 20
-#      interval: 10s
-#    depends_on:
-#      spark-master:
-#        condition: service_healthy
-#    environment:
-#      - SPARK_WORKLOAD=worker
-#      - SPARK_MASTER=spark://spark-master.sandbox.net:7077
-#      - SPARK_WORKER_CORES=4
-#      - SPARK_WORKER_MEMORY=6G
-#      - SPARK_EXECUTOR_MEMORY=2G
-#      - SPARK_LOCAL_IP=spark-worker-a
-#      - SPARK_WORKER_WEBUI_PORT=8081
-#      - SPARK_WORKER_LOG=/apps/var/logs/spark/spark-worker-a
-#      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
-#      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
-#      - AWS_REGION=us-east-1
-#    volumes:
-#      - sandbox_apps_path:/apps
-#      - ./conf/spark/conf:/opt/spark/conf
-
-#
-  #
   spark-worker-b:
     image: brijeshdhaker/spark-notebook:3.5.1
     hostname: spark-worker-b.sandbox.net
@@ -150,37 +87,6 @@ services:
       - SPARK_LOG_DIR=/apps/var/logs/spark/
     ports:
       - 8082:8082
-  #
-  #
-  #
-#  spark-worker-b:
-#    image: docker.io/brijeshdhaker/spark-standalon:3.5.1
-#    container_name: spark-worker-b
-#    hostname: spark-worker-b.sandbox.net
-#    ports:
-#      - "8082:8082"
-#    healthcheck:
-#      test: nc -vz spark-worker-b.sandbox.net 8082 || exit 1
-#      retries: 20
-#      interval: 10s
-#    depends_on:
-#      spark-master:
-#        condition: service_healthy
-#    environment:
-#      - SPARK_WORKLOAD=worker
-#      - SPARK_MASTER=spark://spark-master.sandbox.net:7077
-#      - SPARK_WORKER_CORES=4
-#      - SPARK_WORKER_MEMORY=6G
-#      - SPARK_EXECUTOR_MEMORY=2G
-#      - SPARK_LOCAL_IP=spark-worker-b
-#      - SPARK_WORKER_WEBUI_PORT=8082
-#      - SPARK_WORKER_LOG=/apps/var/logs/spark/spark-worker-b
-#      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
-#      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
-#      - AWS_REGION=us-east-1
-#    volumes:
-#      - sandbox_apps_path:/apps
-#      - ./conf/spark/conf:/opt/spark/conf
 
   #
   spark-history:
@@ -206,27 +112,6 @@ services:
       - SPARK_LOG_DIR=/apps/var/logs/spark/
     ports:
       - 18080:18080
-
-  #
-  # Spark History Server
-  #
-#  spark-history:
-#    image: brijeshdhaker/spark-standalon:3.5.1
-#    container_name: spark-history
-#    hostname: spark-history.sandbox.net
-#    healthcheck:
-#      test: curl -f http://spark-history.sandbox.net:18080 || exit 1
-#      retries: 20
-#      interval: 10s
-#    environment:
-#      - SPARK_WORKLOAD=HistoryServer
-#      - SPARK_HS_LOG=/apps/var/logs/spark/spark-history
-#      - SPARK_HISTORY_CONF_FILE=/opt/spark/conf/spark-history.conf
-#    ports:
-#      - "18080:18080"
-#    volumes:
-#      - sandbox_apps_path:/apps
-#      - ./conf/spark/conf:/opt/spark/conf
 
   #
   spark-notebook:

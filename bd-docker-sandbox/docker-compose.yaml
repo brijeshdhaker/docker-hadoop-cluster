@@ -76,8 +76,8 @@ services:
     hostname: zeppelin.sandbox.net
     environment:
       ALLOW_ANONYMOUS_LOGIN: "yes"
-    env_file:
-      - ./envs/docker_clients.env
+#    env_file:
+#      - ./envs/docker_clients.env
     ports:
       - "9080:8080"
       - "9081:8081"
@@ -89,21 +89,21 @@ services:
       retries: 20
       interval: 10s
     volumes:
-      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
+#      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - sandbox_apps_path:/apps
-      - sandbox_zeppelin_conf:/opt/zeppelin/conf
-      - sandbox_zeppelin_notebook:/notebook
-      - /apps/var/log/zeppelin:/logs
-      - /apps/sandbox/zeppelin/local-repo:/opt/zeppelin/local-repo
-      - /opt/spark-3.1.2:/opt/spark
-      - ./conf/spark/conf:/opt/spark/conf
-      - sandbox_hadoop_334:/opt/hadoop
-      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-      - sandbox_hive_313:/opt/hive
-      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
-      - sandbox_hbase_246:/opt/hbase
-      - ./conf/hbase/client:/opt/hbase/conf
-      - /opt/flink-1.12.2:/opt/flink
+#      - sandbox_zeppelin_conf:/opt/zeppelin/conf
+      - /apps/sandbox/zeppelin/notebooks:/opt/zeppelin/notebook
+      - /apps/var/logs/zeppelin:/opt/zeppelin/logs
+#      - /apps/sandbox/zeppelin/local-repo:/opt/zeppelin/local-repo
+      - /opt/spark-3.5.1:/opt/spark
+#      - ./conf/spark/conf:/opt/spark/conf
+#      - sandbox_hadoop_334:/opt/hadoop
+#      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+#      - sandbox_hive_313:/opt/hive
+#      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
+#      - sandbox_hbase_246:/opt/hbase
+#      - ./conf/hbase/client:/opt/hbase/conf
+#      - /opt/flink-1.12.2:/opt/flink
     extra_hosts:
       - "thinkpad.sandbox.net:172.18.0.1"
 

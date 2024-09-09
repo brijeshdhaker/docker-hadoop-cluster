@@ -189,8 +189,8 @@ sudo tar --strip-components=1 -xvf hbase-2.4.6-bin.tar.gz -C /opt/hbase-2.4.6
 sudo mkdir -p /opt/hbase-1.1.7
 sudo tar --strip-components=1 -xvf hbase-1.1.7-bin.tar.gz -C /opt/hbase-1.1.7
 
-sudo mkdir -p /opt/spark-3.5.0
-sudo tar --strip-components=1 -xvf spark-3.5.0-bin-hadoop3.tgz -C /opt/spark-3.5.0
+sudo mkdir -p /opt/spark-3.5.1
+sudo tar --strip-components=1 -xvf spark-3.5.1-bin-hadoop3.tgz -C /opt/spark-3.5.1
 
 sudo mkdir -p /opt/flink-1.17.2
 sudo tar --strip-components=1 -xvf flink-1.17.2-bin-scala_2.12.tgz -C /opt/flink-1.17.2

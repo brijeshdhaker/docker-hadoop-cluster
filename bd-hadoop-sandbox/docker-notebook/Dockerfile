@@ -1,6 +1,6 @@
 #
 # ./bin/docker-image-tool.sh -t 3.5.0 -p ./kubernetes/dockerfiles/spark/bindings/python/Dockerfile build
-# docker build -t brijeshdhaker/notebook:3.5.2 -f docker-notebook/Dockerfile .
+# docker build -t brijeshdhaker/notebook:3.5.1 -f docker-notebook/Dockerfile .
 # docker tag spark-py-notebook:latest brijeshdhaker/spark-py-notebook:latest
 # jupyter/pyspark-notebook
 # jupyter/all-spark-notebook:spark-3.5.0

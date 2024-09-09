@@ -4,19 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-06 Update spark configuration.">
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-08 Update spark configuration.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-defaults.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-defaults.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-spark-cluster.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-defaults.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-defaults.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-iceburg.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-iceburg.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-iceburg.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-iceburg.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-spark-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-spark-cluster.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/requirements.pip" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/requirements.pip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-spark/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-spark/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/iceberg-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/iceberg-help.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/bigdata-setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/scripts/bigdata-setup.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,7 +228,7 @@
       <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment">
+  <component name="RunManager" selected="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-notebook: Compose Deployment">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -290,20 +285,25 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-iceburg.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="bd-hadoop-sandbox/dc-spark-cluster.yml.spark-history: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
-              <option value="spark-history" />
+              <option value="zeppelin" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="bd-hadoop-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="spark-master" />
             </list>
           </option>
           <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-spark-cluster.yml" />
@@ -352,19 +352,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.StreamingJob" />
-      <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment" />
-      <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-history: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
+      <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment" />
       <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment" />
       <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment" />
       <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-notebook: Compose Deployment" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment" />
         <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-notebook: Compose Deployment" />
-        <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-history: Compose Deployment" />
         <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment" />
         <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment" />
+        <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -376,14 +376,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00004" summary="2024-02-18 Update Setup Script.">
-      <option name="closed" value="true" />
-      <created>1708617870809</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1708617870809</updated>
     </task>
     <task id="LOCAL-00005" summary="2024-02-18 Update Setup Script.">
       <option name="closed" value="true" />
@@ -769,7 +761,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725617614578</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="2024-09-08 Update spark configuration.">
+      <option name="closed" value="true" />
+      <created>1725802628934</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1725802628936</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -806,7 +806,8 @@
     <MESSAGE value="2024-09-05 Update sqllite configuration." />
     <MESSAGE value="2024-09-05 Update spark configuration." />
     <MESSAGE value="2024-09-06 Update spark configuration." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-09-06 Update spark configuration." />
+    <MESSAGE value="2024-09-08 Update spark configuration." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-09-08 Update spark configuration." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
