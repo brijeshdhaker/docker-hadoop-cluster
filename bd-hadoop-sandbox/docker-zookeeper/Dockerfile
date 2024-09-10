@@ -12,7 +12,7 @@ ARG ZOO_VERSION
 
 #
 ENV ZOO_VERSION=${ZOO_VERSION:-3.7.1}
-ENV ZOO_LOG_DIR=${ZOO_LOG_DIR:-"/apps/var/log/zookeeper"}
+ENV ZOO_LOG_DIR=${ZOO_LOG_DIR:-"/apps/var/logs/zookeeper"}
 ENV ZOO_DATA_DIR=${ZOO_DATA_DIR:-"/zookeeper/data"}
 ENV ZOO_DATA_LOG_DIR=${ZOO_DATA_LOG_DIR:-"/zookeeper/log"}
 ENV BASE_DIR=/opt

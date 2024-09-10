@@ -42,7 +42,7 @@
 #
 # Examples for a Sun/Oracle JDK:
 # a) override the appsummary log file:
-export YARN_RESOURCEMANAGER_OPTS="-Dhadoop.log.dir=/apps/var/log/yarn -Dhadoop.log.file=yarn-rm.log -Dyarn.server.resourcemanager.appsummary.log.file=rm-appsummary.log -Dyarn.server.resourcemanager.appsummary.logger=INFO,RMSUMMARY"
+export YARN_RESOURCEMANAGER_OPTS="-Dhadoop.log.dir=/apps/var/logs/yarn -Dhadoop.log.file=yarn-rm.log -Dyarn.server.resourcemanager.appsummary.log.file=rm-appsummary.log -Dyarn.server.resourcemanager.appsummary.logger=INFO,RMSUMMARY"
 #
 # b) Set JMX options
 # export YARN_RESOURCEMANAGER_OPTS="-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=1026"
@@ -73,7 +73,7 @@ export YARN_RESOURCEMANAGER_OPTS="-Dhadoop.log.dir=/apps/var/log/yarn -Dhadoop.l
 #
 # See ResourceManager for some examples
 #
-export YARN_NODEMANAGER_OPTS="-Dhadoop.log.dir=/apps/var/log/yarn -Dhadoop.log.file=yarn-nm.log"
+export YARN_NODEMANAGER_OPTS="-Dhadoop.log.dir=/apps/var/logs/yarn -Dhadoop.log.file=yarn-nm.log"
 
 ###
 # TimeLineServer specific parameters
@@ -92,7 +92,7 @@ export YARN_NODEMANAGER_OPTS="-Dhadoop.log.dir=/apps/var/log/yarn -Dhadoop.log.f
 #
 # See ResourceManager for some examples
 #
-export YARN_TIMELINESERVER_OPTS="-Dhadoop.log.dir=/apps/var/log/yarn -Dhadoop.log.file=yarn-timeline.log"
+export YARN_TIMELINESERVER_OPTS="-Dhadoop.log.dir=/apps/var/logs/yarn -Dhadoop.log.file=yarn-timeline.log"
 
 ###
 # TimeLineReader specific parameters
@@ -123,7 +123,7 @@ export YARN_TIMELINESERVER_OPTS="-Dhadoop.log.dir=/apps/var/log/yarn -Dhadoop.lo
 #
 # See ResourceManager for some examples
 #
-export YARN_PROXYSERVER_OPTS="-Dhadoop.log.dir=/apps/var/log/yarn -Dhadoop.log.file=yarn-proxy.log"
+export YARN_PROXYSERVER_OPTS="-Dhadoop.log.dir=/apps/var/logs/yarn -Dhadoop.log.file=yarn-proxy.log"
 
 ###
 # Shared Cache Manager specific parameters

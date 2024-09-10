@@ -8,7 +8,7 @@ MAINTAINER "Brijesh K Dhaker <brijeshdhaker@gmail.com>"
 
 #
 ENV HBASE_VERSION=${HBASE_VERSION:-"2.4.6"}
-ENV HBASE_LOG_DIR=${HBASE_LOG_DIR:-"/apps/var/log/hbase"}
+ENV HBASE_LOG_DIR=${HBASE_LOG_DIR:-"/apps/var/logs/hbase"}
 ENV BASE_DIR=/opt
 ENV HBASE_HOME=$BASE_DIR/hbase
 ENV HBASE_CONF_DIR=$HBASE_HOME/conf

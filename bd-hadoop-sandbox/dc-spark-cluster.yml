@@ -33,7 +33,8 @@ services:
       - AWS_REGION=us-east-1
       - GRANT_SUDO=yes
       - PYARROW_IGNORE_TIMEZONE=1
-      - SPARK_LOG_DIR=/apps/var/logs/spark/
+      - SPARK_LOG_DIR=/apps/var/logs/spark-master
+      - SPARK_LOG_FILE=spark-master
     ports:
       - 7077:7077
       - 8080:8080
@@ -59,7 +60,8 @@ services:
       - AWS_REGION=us-east-1
       - GRANT_SUDO=yes
       - PYARROW_IGNORE_TIMEZONE=1
-      - SPARK_LOG_DIR=/apps/var/logs/spark/
+      - SPARK_LOG_DIR=/apps/var/logs/spark-worker-a
+      - SPARK_LOG_FILE=spark-worker-a
     ports:
       - 8081:8081
 
@@ -84,7 +86,8 @@ services:
       - AWS_REGION=us-east-1
       - GRANT_SUDO=yes
       - PYARROW_IGNORE_TIMEZONE=1
-      - SPARK_LOG_DIR=/apps/var/logs/spark/
+      - SPARK_LOG_DIR=/apps/var/logs/spark-worker-b
+      - SPARK_LOG_FILE=spark-worker-b
     ports:
       - 8082:8082
 
@@ -109,9 +112,39 @@ services:
       - AWS_REGION=us-east-1
       - GRANT_SUDO=yes
       - PYARROW_IGNORE_TIMEZONE=1
-      - SPARK_LOG_DIR=/apps/var/logs/spark/
+      - SPARK_LOG_DIR=/apps/var/logs/spark-history/
+      - SPARK_LOG_FILE=spark-history
     ports:
       - 18080:18080
+
+  #
+  iceberg-rest:
+    image: tabulario/iceberg-rest
+    hostname: iceberg-rest.sandbox.net
+    container_name: iceberg-rest
+    healthcheck:
+      test: echo $HOSTNAME || exit 1
+      retries: 20
+      interval: 10s
+    networks:
+      default:
+    ports:
+      - 8181:8181
+    #    command: ["java", "-cp", "mysql-connector-java-8.0.23.jar", "-jar", "iceberg-rest-image-all.jar"]
+    volumes:
+      - /apps/drivers/libs/mysql-connector-java-8.0.23.jar:/usr/lib/iceberg-rest/mysql-connector-java-8.0.23.jar
+    environment:
+      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
+      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+      - AWS_REGION=us-east-1
+      - CATALOG_WAREHOUSE=s3://warehouse-rest/
+      - CATALOG_IO__IMPL=org.apache.iceberg.aws.s3.S3FileIO
+      - CATALOG_S3_ENDPOINT=http://minio:9010
+#      - CATALOG_CATALOG__IMPL=org.apache.iceberg.jdbc.JdbcCatalog
+#      - CATALOG_URI=jdbc:mysql://mysqlserver.sandbox.net:3306/ICEBERG_REST_CATALOG
+#      - CATALOG_JDBC_USER=mysqladmin
+#      - CATALOG_JDBC_PASSWORD=mysqladmin
+#      - CATALOG_JDBC_DRIVER=com.mysql.cj.jdbc.Driver
 
   #
   spark-notebook:
@@ -135,6 +168,8 @@ services:
       - AWS_REGION=us-east-1
       - GRANT_SUDO=yes
       - PYARROW_IGNORE_TIMEZONE=1
+      - SPARK_LOG_DIR=/apps/var/logs/spark-notebook
+      - SPARK_LOG_FILE=spark-notebook
     ports:
       - 4040:4040
       - 8888:8888

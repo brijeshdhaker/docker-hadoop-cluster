@@ -38,8 +38,8 @@
 # Specify the JVM options to be used when starting the HistoryServer.
 # These options will be appended to the options specified as HADOOP_OPTS
 # and therefore may override any similar flags set in HADOOP_OPTS
-export MAPRED_HISTORYSERVER_OPTS="-Dhadoop.log.dir=/apps/var/log/mapred -Dhadoop.log.file=mapred-history.log"
-export HADOOP_JOB_HISTORYSERVER_OPTS="-Dhadoop.log.dir=/apps/var/log/mapred -Dhadoop.log.file=mapred-jobhistory.log"
+export MAPRED_HISTORYSERVER_OPTS="-Dhadoop.log.dir=/apps/var/logs/mapred -Dhadoop.log.file=mapred-history.log"
+export HADOOP_JOB_HISTORYSERVER_OPTS="-Dhadoop.log.dir=/apps/var/logs/mapred -Dhadoop.log.file=mapred-jobhistory.log"
 
 # Specify the log4j settings for the JobHistoryServer
 # Java property: hadoop.root.logger

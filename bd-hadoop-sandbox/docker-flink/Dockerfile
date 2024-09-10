@@ -14,7 +14,7 @@ ENV HADOOP_HOME=/opt/hadoop
 ENV HIVE_HOME=/opt/hive
 ENV HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
 ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$HIVE_HOME/bin
-ENV HADOOP_LOG_DIR=${HADOOP_LOG_DIR:-"/apps/var/log/hadoop"}
+ENV HADOOP_LOG_DIR=${HADOOP_LOG_DIR:-"/apps/var/logs/hadoop"}
 
 # Download connector libraries
 RUN set -x && \

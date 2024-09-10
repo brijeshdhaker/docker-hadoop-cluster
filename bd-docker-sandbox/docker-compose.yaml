@@ -70,7 +70,7 @@ services:
   # Zeppelin Notebook
   #
   zeppelin:
-    image: apache/zeppelin:0.11.1
+    image: brijeshdhaker/zeppelin:0.11.1
     pull_policy: missing
     container_name: zeppelin
     hostname: zeppelin.sandbox.net
@@ -96,7 +96,7 @@ services:
       - /apps/var/logs/zeppelin:/opt/zeppelin/logs
 #      - /apps/sandbox/zeppelin/local-repo:/opt/zeppelin/local-repo
       - /opt/spark-3.5.1:/opt/spark
-#      - ./conf/spark/conf:/opt/spark/conf
+      - ./conf/spark/conf:/opt/spark/conf
 #      - sandbox_hadoop_334:/opt/hadoop
 #      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
 #      - sandbox_hive_313:/opt/hive

@@ -38,34 +38,34 @@ services:
       - sandbox_minio_data:/data
 
    ##
-  mc:
-    image: minio/mc:latest
-    hostname: mc.sandbox.net
-    container_name: mc
-    healthcheck:
-      test: curl -f http://minio.sandbox.net:9010 || exit 1
-      retries: 20
-      interval: 10s
-    depends_on:
-      minio:
-        condition: service_healthy
-    environment:
-      - AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
-      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
-      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
-      - AWS_REGION=us-east-1
-    entrypoint: >
-      /bin/sh -c "
-      until (/usr/bin/mc config host add minio http://minio.sandbox.net:9010 admin password) do echo '...waiting...' && sleep 1; done;
-      # /usr/bin/mc rm -r --force minio/warehouse-rest ;
-      /usr/bin/mc mb minio/warehouse-rest --ignore-existing ;
-      /usr/bin/mc policy set public minio/warehouse-rest ;
-      /usr/bin/mc mb minio/warehouse-data --ignore-existing ;
-      /usr/bin/mc policy set public minio/warehouse-data ;
-      /usr/bin/mc mb minio/warehouse-demo --ignore-existing ;
-      /usr/bin/mc policy set public minio/warehouse-demo ;
-      tail -f /dev/null
-      "
+#  mc:
+#    image: minio/mc:latest
+#    hostname: mc.sandbox.net
+#    container_name: mc
+#    healthcheck:
+#      test: curl -f http://minio.sandbox.net:9010 || exit 1
+#      retries: 20
+#      interval: 10s
+#    depends_on:
+#      minio:
+#        condition: service_healthy
+#    environment:
+#      - AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
+#      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
+#      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+#      - AWS_REGION=us-east-1
+#    entrypoint: >
+#      /bin/sh -c "
+#      until (/usr/bin/mc config host add minio http://minio.sandbox.net:9010 admin password) do echo '...waiting...' && sleep 1; done;
+#      # /usr/bin/mc rm -r --force minio/warehouse-rest ;
+#      /usr/bin/mc mb minio/warehouse-rest --ignore-existing ;
+#      /usr/bin/mc policy set public minio/warehouse-rest ;
+#      /usr/bin/mc mb minio/warehouse-data --ignore-existing ;
+#      /usr/bin/mc policy set public minio/warehouse-data ;
+#      /usr/bin/mc mb minio/warehouse-demo --ignore-existing ;
+#      /usr/bin/mc policy set public minio/warehouse-demo ;
+#      tail -f /dev/null
+#      "
 
 #
 volumes:

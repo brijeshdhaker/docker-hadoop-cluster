@@ -89,7 +89,7 @@ export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
 # IPv6 yet/still, so by default the preference is set to IPv4.
 # export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true"
 # For Kerberos debugging, an extended option set logs more information
-export HADOOP_OPTS="-Djava.library.path=/opt/hadoop/lib/native -Djava.net.preferIPv4Stack=true -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=false -Dsun.security.spnego.debug -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.krb5.kdc=kdcserver.sandbox.net -Dhadoop.log.dir=/apps/var/log/hadoop -Dhadoop.root.logger=INFO,console,DRFA"
+export HADOOP_OPTS="-Djava.library.path=/opt/hadoop/lib/native -Djava.net.preferIPv4Stack=true -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=false -Dsun.security.spnego.debug -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.krb5.kdc=kdcserver.sandbox.net -Dhadoop.log.dir=/apps/var/logs/hadoop -Dhadoop.root.logger=INFO,console,DRFA"
 
 # Some parts of the shell code may do special things dependent upon
 # the operating system.  We have to set this here. See the next
@@ -184,7 +184,7 @@ export HADOOP_CLIENT_OPTS=${HADOOP_OPTS}
 # Where (primarily) daemon log files are stored.
 # ${HADOOP_HOME}/logs by default.
 # Java property: hadoop.log.dir
-export HADOOP_LOG_DIR=/apps/var/log/hadoop
+export HADOOP_LOG_DIR=/apps/var/logs/hadoop
 
 # A string representing this instance of hadoop. $USER by default.
 # This is used in writing log and pid files, so keep that in mind!

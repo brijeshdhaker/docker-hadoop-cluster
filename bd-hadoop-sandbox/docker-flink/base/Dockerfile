@@ -12,7 +12,7 @@ ENV BASE_DIR=/opt
 ENV HADOOP_HOME=$BASE_DIR/hadoop
 ENV HADOOP_CONF_DIR=$BASE_DIR/hadoop/etc/hadoop
 ENV PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin
-ENV HADOOP_LOG_DIR=${HADOOP_LOG_DIR:-"/apps/var/log/hadoop"}
+ENV HADOOP_LOG_DIR=${HADOOP_LOG_DIR:-"/apps/var/logs/hadoop"}
 
 #
 ENV FLINK_VERSION=1.17.2

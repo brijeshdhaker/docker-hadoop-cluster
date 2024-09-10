@@ -4,14 +4,53 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-08 Update spark configuration.">
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-09 Update spark configuration.">
+      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/log4j2.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/log4j2.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme-resources/zeppelin.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/log4j.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-defaults.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-defaults.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/client/hadoop-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/client/hadoop-env.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/client/hbase-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/client/hbase-env.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/client/yarn-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/client/yarn-site.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/hadoop-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/hadoop-env.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/log4j.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/mapred-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/mapred-env.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/yarn-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/yarn-env.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/unsecure-client/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/unsecure-client/log4j.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/unsecure-client/yarn-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/unsecure-client/yarn-site.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hbase/client/hbase-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hbase/client/hbase-env.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hbase/client/log4j2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hbase/client/log4j2.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hbase/conf/hbase-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hbase/conf/hbase-env.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hbase/conf/log4j2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hbase/conf/log4j2.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hive/conf/hive-log4j2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hive/conf/hive-log4j2.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/log4j.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-defaults.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-defaults.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-history.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-history.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-iceburg.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-iceburg.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-yarn.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-yarn.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/zeppelin/conf/interpreter.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/zeppelin/conf/interpreter.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-iceburg.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-spark-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-spark-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/bigdata-setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/scripts/bigdata-setup.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-zeppelin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-zeppelin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/base/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/base/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/secure/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/secure/log4j.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/secure/yarn-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/secure/yarn-site.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/unsecure/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/unsecure/log4j.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/unsecure/yarn-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/unsecure/yarn-site.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hbase/base/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hbase/base/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hive/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hive/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-zookeeper/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-zookeeper/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_clients.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_clients.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_hadoop.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_hadoop.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_hbase.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_hbase.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/deltalake-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/deltalake-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/unix-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/unix-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,6 +160,7 @@
     &quot;Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
     &quot;Docker.bd-hadoop-sandbox/dc-minio.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
     &quot;Docker.bd-hadoop-sandbox/dc-mysqlserver.yml.mysqlserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.iceberg-rest: Compose Deployment.executor&quot;: &quot;Run&quot;,
     &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.postgres: Compose Deployment.executor&quot;: &quot;Run&quot;,
     &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-history: Compose Deployment.executor&quot;: &quot;Run&quot;,
     &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-iceberg: Compose Deployment.executor&quot;: &quot;Run&quot;,
@@ -130,6 +170,7 @@
     &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment.executor&quot;: &quot;Run&quot;,
     &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor&quot;: &quot;Run&quot;,
     &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox/dc-zeppelin.yml.zeppelin: Compose Deployment.executor&quot;: &quot;Run&quot;,
     &quot;Docker.bd-hadoop-sandbox: Compose Deployment.executor&quot;: &quot;Run&quot;,
     &quot;Docker.dc-iceburg.yml.mc: Compose Deployment.executor&quot;: &quot;Run&quot;,
     &quot;Docker.dc-iceburg.yml.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
@@ -215,10 +256,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf" />
+      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/docker-iceberge" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf" />
-      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/sqlline" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs" />
@@ -228,7 +269,7 @@
       <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-notebook: Compose Deployment">
+  <component name="RunManager" selected="Docker.bd-hadoop-sandbox/dc-zeppelin.yml.zeppelin: Compose Deployment">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -311,19 +352,6 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-hadoop-sandbox/dc-spark-cluster.yml.spark-notebook: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="spark-notebook" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-spark-cluster.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <configuration name="bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -350,17 +378,30 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="bd-hadoop-sandbox/dc-zeppelin.yml.zeppelin: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="zeppelin" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-zeppelin.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.StreamingJob" />
       <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
+      <item itemvalue="Docker.bd-hadoop-sandbox/dc-zeppelin.yml.zeppelin: Compose Deployment" />
       <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment" />
       <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment" />
       <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment" />
-      <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-notebook: Compose Deployment" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-notebook: Compose Deployment" />
+        <item itemvalue="Docker.bd-hadoop-sandbox/dc-zeppelin.yml.zeppelin: Compose Deployment" />
         <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment" />
         <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment" />
         <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment" />
@@ -376,14 +417,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00005" summary="2024-02-18 Update Setup Script.">
-      <option name="closed" value="true" />
-      <created>1708619495842</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1708619495842</updated>
     </task>
     <task id="LOCAL-00006" summary="2024-02-23 Update kafka config &amp; validation.">
       <option name="closed" value="true" />
@@ -769,7 +802,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725802628936</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="2024-09-09 Update spark configuration.">
+      <option name="closed" value="true" />
+      <created>1725852557147</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1725852557148</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -807,7 +848,8 @@
     <MESSAGE value="2024-09-05 Update spark configuration." />
     <MESSAGE value="2024-09-06 Update spark configuration." />
     <MESSAGE value="2024-09-08 Update spark configuration." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-09-08 Update spark configuration." />
+    <MESSAGE value="2024-09-09 Update spark configuration." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-09-09 Update spark configuration." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

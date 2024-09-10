@@ -53,3 +53,14 @@ $ chmod 0600 ~/.ssh/authorized_keys
 ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsacat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keyschmod 0600 ~/.ssh/authorized_keysssh localhost
 
 yarn logs -applicationId your_application_id > your_application_id.log 2>&1
+
+## Find Hidden Files Using Find Command
+```shell
+find . -name ".*" -type f 
+for i in $(find . -name ".*" -type f)
+do
+  #echo "output: $i"
+  rm -Rf $i
+done
+
+```

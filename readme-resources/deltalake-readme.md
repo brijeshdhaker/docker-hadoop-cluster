@@ -27,4 +27,19 @@ hadoop fs -ls -R /deltalake/test_table
 
 ```
 
-* Delta Lake doesn't rely on Hive or Hive metastore as the metadata information is stored in file system directly via log files. 
+* Delta Lake doesn't rely on Hive or Hive metastore as the metadata information is stored in file system directly via log files.
+
+#
+#
+#
+bin/spark-sql --packages io.delta:delta-spark_2.12:3.2.0 --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension" --conf "spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog"
+
+#
+#
+#
+pyspark --packages io.delta:delta-spark_2.12:3.2.0 --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension" --conf "spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog"
+
+#
+#
+#
+bin/spark-shell --packages io.delta:delta-spark_2.12:3.2.0 --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension" --conf "spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog"

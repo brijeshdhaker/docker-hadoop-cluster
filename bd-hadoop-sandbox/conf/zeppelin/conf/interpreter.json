@@ -1486,7 +1486,7 @@
         },
         "spark.eventLog.dir": {
           "name": "spark.eventLog.dir",
-          "value": "hdfs://namenode:9000/apps/var/log/spark",
+          "value": "hdfs://namenode:9000/apps/var/logs/spark",
           "type": "string"
         },
         "spark.yarn.historyServer.allowTracking": {
