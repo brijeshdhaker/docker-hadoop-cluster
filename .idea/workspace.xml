@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-10 Update zeppelin configuration.">
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-11 Update zeppelin configuration.">
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_3_24,_9_15 AM_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_3_24__9_15AM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -383,14 +383,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00007" summary="2024-02-24 Merge Docker Projects.">
-      <option name="closed" value="true" />
-      <created>1708743039684</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1708743039684</updated>
     </task>
     <task id="LOCAL-00008" summary="2024-02-24 Merge Docker Projects.">
       <option name="closed" value="true" />
@@ -776,7 +768,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726018016799</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="2024-09-11 Update zeppelin configuration.">
+      <option name="closed" value="true" />
+      <created>1726025499118</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1726025499118</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -826,7 +826,8 @@
     <MESSAGE value="2024-09-08 Update spark configuration." />
     <MESSAGE value="2024-09-09 Update spark configuration." />
     <MESSAGE value="2024-09-10 Update zeppelin configuration." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-09-10 Update zeppelin configuration." />
+    <MESSAGE value="2024-09-11 Update zeppelin configuration." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-09-11 Update zeppelin configuration." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
