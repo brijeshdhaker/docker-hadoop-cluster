@@ -3,7 +3,6 @@
 #
 # docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
 # docker volume create --name sandbox_mysql_data --opt type=none --opt device=/apps/sandbox/mysql/data --opt o=bind
-# docker volume create --name sandbox_mysql_conf --opt type=none --opt device=/apps/sandbox/mysql/conf --opt o=bind
 #
 ---
 version: '3.9'
@@ -49,8 +48,6 @@ volumes:
   sandbox_apps_path:
     external: true
   sandbox_mysql_data:
-    external: true
-  sandbox_mysql_conf:
     external: true
 
 #
