@@ -74,8 +74,6 @@ volumes:
     external: true
   sandbox_minio_data:
     external: true
-  sandbox_security_secrets:
-    external: true
 
 #
 networks:
