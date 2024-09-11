@@ -92,7 +92,7 @@ services:
 #      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - sandbox_apps_path:/apps
 #      - sandbox_zeppelin_conf:/opt/zeppelin/conf
-#      - /apps/sandbox/zeppelin/notebooks:/opt/zeppelin/notebook
+      - /apps/sandbox/zeppelin/notebooks:/opt/zeppelin/notebook
 #      - /apps/var/logs/zeppelin:/opt/zeppelin/logs
 #      - /apps/sandbox/zeppelin/local-repo:/opt/zeppelin/local-repo
       - /opt/spark-3.4.1:/opt/spark
