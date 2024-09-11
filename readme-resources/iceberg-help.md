@@ -9,6 +9,9 @@ export CATALOG_CATALOG__IMPL=org.apache.iceberg.aws.glue.GlueCatalog
 docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec rest /bin/bash
 
 docker run -it --rm \
+tabulario/spark-iceberg:3.4.1_1.4.1 /bin/bash
+
+docker run -it --rm \
 -v /apps/drivers/libs/mysql-connector-java-8.0.23.jar:/usr/lib/iceberg-rest/mysql-connector-java-8.0.23.jar \
 -v ./bd-hadoop-sandbox/conf/sqlline:/usr/lib/iceberg-rest/sqlline \
 --network sandbox.net \
@@ -126,7 +129,7 @@ docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg spark-sql
 
 $SPARK_HOME/bin/spark-shell \
 --conf spark.jars.ivy=/apps/.ivy2 \
---packages org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.6.1 \
+--packages org.apache.iceberg:iceberg-spark-runtime-3.4_2.12:1.4.1 \
 --properties-file $SPARK_HOME/conf/spark-defaults.conf \
 --conf spark.hadoop.hive.cli.print.header=true
 

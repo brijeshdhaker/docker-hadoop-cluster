@@ -1,9 +1,9 @@
 #
-# docker build -t brijeshdhaker/spark-notebook:3.5.1 -f docker-iceberg/Dockerfile .
-# docker push docker.io/brijeshdhaker/spark-notebook:3.5.1
+# docker build -t brijeshdhaker/spark-notebook:3.4.1 -f docker-iceberg/Dockerfile .
+# docker push docker.io/brijeshdhaker/spark-notebook:3.4.1
 #
 
-FROM tabulario/spark-iceberg:latest
+FROM tabulario/spark-iceberg:3.4.1_1.4.1
 
 #
 COPY resources/libs/*.jar /opt/spark/jars/

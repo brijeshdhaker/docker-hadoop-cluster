@@ -15,6 +15,9 @@ sudo apt-get -y install libfontconfig
 sudo apt-get -y install r-base-dev
 sudo apt-get -y install r-cran-evaluate
 
+#
+npm config set registry "http://registry.npmjs.org/"
+npm config set strict-ssl false
 
 # build with spark-3.3, spark-scala-2.12
 ./mvnw clean package -Pspark-3.4 -Pspark-scala-2.12 -Phadoop3 -Pbuild-distr -DskipTests -Dspark.version=3.4.1 -Dhadoop.version=3.3.4

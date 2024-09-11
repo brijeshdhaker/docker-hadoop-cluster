@@ -13,7 +13,7 @@ include:
 services:
   #
   spark-master:
-    image: brijeshdhaker/spark-notebook:3.5.1
+    image: brijeshdhaker/spark-notebook:3.4.1
     hostname: spark-master.sandbox.net
     container_name: spark-master
     command: [ spark-class org.apache.spark.deploy.master.Master --ip spark-master.sandbox.net --port 7077 --webui-port 8080 ]
@@ -41,7 +41,7 @@ services:
 
   #
   spark-worker-a:
-    image: brijeshdhaker/spark-notebook:3.5.1
+    image: brijeshdhaker/spark-notebook:3.4.1
     hostname: spark-worker-a.sandbox.net
     container_name: spark-worker-a
     command: [ spark-class org.apache.spark.deploy.worker.Worker --host localhost --webui-port 8081 --cores 4 --memory 6G spark://spark-master:7077 ]
@@ -67,7 +67,7 @@ services:
 
   #
   spark-worker-b:
-    image: brijeshdhaker/spark-notebook:3.5.1
+    image: brijeshdhaker/spark-notebook:3.4.1
     hostname: spark-worker-b.sandbox.net
     container_name: spark-worker-b
     command: [ spark-class org.apache.spark.deploy.worker.Worker --host localhost --webui-port 8082 --cores 4 --memory 6G spark://spark-master:7077 ]
@@ -148,7 +148,7 @@ services:
 
   #
   spark-notebook:
-    image: brijeshdhaker/spark-notebook:3.5.1
+    image: brijeshdhaker/spark-notebook:3.4.1
     hostname: spark-notebook.sandbox.net
     container_name: spark-notebook
     depends_on:
@@ -160,7 +160,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - /apps/sandbox/warehouse:/home/iceberg/warehouse
-      - /apps/sandbox/notebooks:/home/iceberg/notebooks/notebooks
+      - /apps/sandbox/notebooks:/home/iceberg/notebooks
       - ./conf/spark/conf:/opt/spark/conf
     environment:
       - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO

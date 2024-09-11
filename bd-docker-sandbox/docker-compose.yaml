@@ -70,7 +70,7 @@ services:
   # Zeppelin Notebook
   #
   zeppelin:
-    image: brijeshdhaker/zeppelin:0.11.1
+    image: brijeshdhaker/zeppelin:0.12.1_spark_3.5.1
     pull_policy: missing
     container_name: zeppelin
     hostname: zeppelin.sandbox.net
@@ -80,7 +80,7 @@ services:
 #      - ./envs/docker_clients.env
     ports:
       - "9080:8080"
-      - "9081:8081"
+      - "4040:4040"
 #    depends_on:
 #      datanode:
 #        condition: service_healthy
@@ -92,10 +92,10 @@ services:
 #      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - sandbox_apps_path:/apps
 #      - sandbox_zeppelin_conf:/opt/zeppelin/conf
-      - /apps/sandbox/zeppelin/notebooks:/opt/zeppelin/notebook
-      - /apps/var/logs/zeppelin:/opt/zeppelin/logs
+#      - /apps/sandbox/zeppelin/notebooks:/opt/zeppelin/notebook
+#      - /apps/var/logs/zeppelin:/opt/zeppelin/logs
 #      - /apps/sandbox/zeppelin/local-repo:/opt/zeppelin/local-repo
-      - /opt/spark-3.5.1:/opt/spark
+      - /opt/spark-3.4.1:/opt/spark
       - ./conf/spark/conf:/opt/spark/conf
 #      - sandbox_hadoop_334:/opt/hadoop
 #      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop

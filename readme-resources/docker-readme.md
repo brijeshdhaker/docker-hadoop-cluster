@@ -1,4 +1,9 @@
 #
+# docker login
+#
+docker login --username brijeshdhaker@gmail.com --password Accoo7@k47
+
+#
 # Docker Commands
 #
 ## Stop
