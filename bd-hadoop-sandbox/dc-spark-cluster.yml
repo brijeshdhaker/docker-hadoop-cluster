@@ -93,7 +93,7 @@ services:
 
   #
   spark-history:
-    image: brijeshdhaker/spark-notebook:3.5.1
+    image: brijeshdhaker/spark-notebook:3.4.1
     hostname: spark-history.sandbox.net
     container_name: spark-history
     command: [ spark-class org.apache.spark.deploy.history.HistoryServer --properties-file /opt/spark/conf/spark-history.conf ]
@@ -161,7 +161,7 @@ services:
       - sandbox_apps_path:/apps
       - /apps/sandbox/warehouse:/home/iceberg/warehouse
       - /apps/sandbox/notebooks:/home/iceberg/notebooks
-      - ./conf/spark/conf:/opt/spark/conf
+      - ./conf/spark/conf/spark-notebook.conf:/opt/spark/conf/spark-defaults.conf
     environment:
       - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
       - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG

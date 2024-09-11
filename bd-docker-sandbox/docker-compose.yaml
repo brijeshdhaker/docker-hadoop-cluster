@@ -70,7 +70,7 @@ services:
   # Zeppelin Notebook
   #
   zeppelin:
-    image: brijeshdhaker/zeppelin:0.12.1_spark_3.5.1
+    image: brijeshdhaker/zeppelin:0.12.0_spark_3.4.1
     pull_policy: missing
     container_name: zeppelin
     hostname: zeppelin.sandbox.net

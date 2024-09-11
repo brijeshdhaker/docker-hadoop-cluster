@@ -4,19 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-11 Update zeppelin configuration.">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_3_24,_9_15 AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_3_24__9_15AM__Changes_.xml" beforeDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-11 Update mysql configuration.">
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-notebook.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-defaults.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-defaults.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-iceburg.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-iceburg.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-defaults.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-defaults.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-spark-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-spark-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-iceberg/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-iceberg/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/docker-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/docker-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/iceberg-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/iceberg-help.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/zeppelin.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/zeppelin.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,7 +202,7 @@
     "git-widget-placeholder": "develop/docker-hadoop334-cluster",
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-hadoop-sandbox/resources/libs",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-hadoop-sandbox/conf/spark/conf",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -221,9 +213,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs" />
       <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf" />
-      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/docker-iceberge" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf" />
     </key>
@@ -235,7 +227,7 @@
       <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment">
+  <component name="RunManager" selected="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-notebook: Compose Deployment">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -305,19 +297,6 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="minio" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-minio.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <configuration name="bd-hadoop-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -357,9 +336,22 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="spark-worker-b" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-spark-cluster.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.StreamingJob" />
-      <item itemvalue="Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" />
+      <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment" />
       <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-notebook: Compose Deployment" />
       <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
       <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment" />
@@ -367,10 +359,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
-        <item itemvalue="Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" />
-        <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment" />
         <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-notebook: Compose Deployment" />
+        <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment" />
+        <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
         <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment" />
       </list>
     </recent_temporary>
@@ -383,22 +375,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00008" summary="2024-02-24 Merge Docker Projects.">
-      <option name="closed" value="true" />
-      <created>1708762479910</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1708762479910</updated>
-    </task>
-    <task id="LOCAL-00009" summary="2024-02-24 Merge Docker Projects.">
-      <option name="closed" value="true" />
-      <created>1708764418653</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1708764418653</updated>
     </task>
     <task id="LOCAL-00010" summary="2024-02-24 Merge Docker Projects.">
       <option name="closed" value="true" />
@@ -776,7 +752,23 @@
       <option name="project" value="LOCAL" />
       <updated>1726025499118</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="2024-09-11 Update zeppelin configuration.">
+      <option name="closed" value="true" />
+      <created>1726028513854</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1726028513856</updated>
+    </task>
+    <task id="LOCAL-00058" summary="2024-09-11 Update mysql configuration.">
+      <option name="closed" value="true" />
+      <created>1726028697283</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1726028697283</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -827,7 +819,8 @@
     <MESSAGE value="2024-09-09 Update spark configuration." />
     <MESSAGE value="2024-09-10 Update zeppelin configuration." />
     <MESSAGE value="2024-09-11 Update zeppelin configuration." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-09-11 Update zeppelin configuration." />
+    <MESSAGE value="2024-09-11 Update mysql configuration." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-09-11 Update mysql configuration." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
