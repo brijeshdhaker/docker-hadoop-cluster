@@ -50,7 +50,7 @@ ${SPARK_HOME}/bin/spark-submit \
 --conf spark.app.name=zeppelin-app \
 --conf spark.kerberos.keytab=/apps/security/keytabs/users/zeppelin.keytab \
 --conf spark.kerberos.principal=zeppelin@SANDBOX.NET \
---conf spark.eventLog.dir=hdfs://namenode:9000/apps/var/log/spark \
+--conf spark.eventLog.dir=hdfs://namenode:9000/apps/var/logs/spark \
 /opt/spark/examples/jars/spark-examples_2.12-3.5.0.jar 10
 
 ${SPARK_HOME}/bin/spark-submit \
@@ -85,7 +85,7 @@ ${SPARK_HOME}/bin/spark-submit \
 --conf "spark.driver.extraJavaOptions='-Divy.cache.dir=/tmp -Divy.home=/tmp -Djava.security.krb5.conf=/etc/krb5.conf'" \
 --conf "spark.executor.extraJavaOptions='-Djava.security.krb5.conf=/etc/krb5.conf'" \
 --conf "spark.eventLog.enabled=true" \
---conf "spark.eventLog.dir=hdfs://namenode:9000/apps/var/log/spark" \
+--conf "spark.eventLog.dir=hdfs://namenode:9000/apps/var/logs/spark" \
 --conf "spark.yarn.historyServer.allowTracking=true" \
 --conf "spark.webui.yarn.useProxy=true" \
 /opt/spark/examples/jars/spark-examples_2.12-3.5.0.jar 10

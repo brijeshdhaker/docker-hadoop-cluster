@@ -40,7 +40,7 @@
     <property><name>yarn.nodemanager.log-dirs</name><value>/yarn/container-logs</value></property>
     <property><name>yarn.timeline-service.version</name><value>1.0f</value></property>
     <property><name>spark.shuffle.service.port</name><value>10000</value></property>
-    <property><name>yarn.nodemanager.remote-app-log-dir</name><value>/apps/var/log/yarn</value></property>
+    <property><name>yarn.nodemanager.remote-app-log-dir</name><value>/apps/var/logs/yarn</value></property>
     <property><name>yarn.nodemanager.keytab</name><value>/apps/security/keytabs/services/yarn.service.keytab</value></property>
     <property><name>yarn.log.server.url</name><value>http://timelineserver.sandbox.net:8188/applicationhistory/logs/</value></property>
     <property><name>yarn.nodemanager.pmem-check-enabled</name><value>false</value></property>

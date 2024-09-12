@@ -107,7 +107,7 @@ ${SPARK_HOME}/bin/spark-shell \
 --conf spark.yarn.historyServer.allowTracking=true \
 --conf spark.yarn.am.extraJavaOptions='-Divy.home=/apps/hostpath/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf -DAWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h -DAWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs' \
 --conf spark.eventLog.enabled=true \
---conf spark.eventLog.dir=/apps/var/log/spark \
+--conf spark.eventLog.dir=/apps/var/logs/spark \
 --conf spark.webui.yarn.useProxy=true \
 --conf spark.driver.extraJavaOptions='-Divy.home=/apps/hostpath/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf -DAWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h -DAWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs' \
 --conf spark.executor.extraJavaOptions='-Divy.home=/apps/hostpath/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf -DAWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h -DAWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs' \

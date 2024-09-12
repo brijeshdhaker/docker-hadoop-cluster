@@ -184,7 +184,7 @@ export HADOOP_CLIENT_OPTS="-Djava.security.krb5.conf=/etc/krb5.conf"
 # Where (primarily) daemon log files are stored.
 # ${HADOOP_HOME}/logs by default.
 # Java property: hadoop.log.dir
-export HADOOP_LOG_DIR=/apps/var/log/hadoop
+export HADOOP_LOG_DIR=/apps/var/logs/hadoop
 
 # A string representing this instance of hadoop. $USER by default.
 # This is used in writing log and pid files, so keep that in mind!

@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-12 Update Setup configuration.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-hbase-cluster.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-hbase-cluster.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-kafka-cluster.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-kafka-cluster.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-zookeeper.yaml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,146 +68,147 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Docker.Docker Image.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.control-center: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.kafkabroker: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.schemaregistry: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.metastore: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.mysqlserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.notebook: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox.gateway: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-hive-cluster.yml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-rest: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-spark: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.mc: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml.kafkabroker: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml.zookeeper: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kdcserver.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-minio.yml.mc: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-minio.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-mysqlserver.yml.mysqlserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.iceberg-rest: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.postgres: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-history: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-iceberg: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-notebook: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-zeppelin.yml.zeppelin: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-iceburg.yml.mc: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-iceburg.yml.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-iceburg.yml.rest: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-iceburg.yml.spark-iceberg: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml.kafkabroker: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml.kafkaclient: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml.zookeeper: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.datanode: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.gateway: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.historyserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.hivetezui: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.hmaster: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.hregion: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.metastore: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.mysqlserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.namenode: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.nodemanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.resourcemanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.sparkhistory: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.timelineserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.ubuntu.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [verify].executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_Commons.test_print_separator.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_Commons.test_split_csv.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_Commons.test_split_csv_line.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_User.test_random.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_User.test_to_dict.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_User.test_to_obj.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_static.test_flake8.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests in test_Commons.py.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests in test_User.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python.FileUtils.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Order.executor&quot;: &quot;Run&quot;,
-    &quot;Python.TimeUtils.executor&quot;: &quot;Run&quot;,
-    &quot;Python.User.executor&quot;: &quot;Run&quot;,
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.avro-test.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.confluent_kafka_AvroConsumer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_AvroProducer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_ConsumerFactory.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_DeserializingConsumer.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.confluent_kafka_ProducerFactory.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_SerializingProducer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_simple_consumer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_transaction_producer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.hello-spark.executor&quot;: &quot;Run&quot;,
-    &quot;Python.kafka_python_partitioned_consumer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.kafka_python_partitioned_producer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.kafka_python_simple_consumer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.kafka_python_simple_producer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pie.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pyspark-pandas.executor&quot;: &quot;Run&quot;,
-    &quot;Python.run_tests.executor&quot;: &quot;Run&quot;,
-    &quot;Python.sql-s3a-read.executor&quot;: &quot;Run&quot;,
-    &quot;Python.structured-avro-stream.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop/docker-hadoop334-cluster&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-hadoop-sandbox/conf/spark/conf&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.31724137&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Docker.Docker Image.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.control-center: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.kafkabroker: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.kafkaclient: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.schemaregistry: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.metastore: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.minio: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.mysqlserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.notebook: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox.gateway: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-hive-cluster.yml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-rest: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-spark: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.mc: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.minio: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka.yml.kafkabroker: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka.yml.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka.yml.zookeeper: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka.yml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kdcserver.yml.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-minio.yml.mc: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-minio.yml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-mysqlserver.yml.mysqlserver: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.iceberg-rest: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.postgres: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-history: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-iceberg: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-notebook: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-zeppelin.yml.zeppelin: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox: Compose Deployment.executor": "Run",
+    "Docker.dc-iceburg.yml.mc: Compose Deployment.executor": "Run",
+    "Docker.dc-iceburg.yml.minio: Compose Deployment.executor": "Run",
+    "Docker.dc-iceburg.yml.rest: Compose Deployment.executor": "Run",
+    "Docker.dc-iceburg.yml.spark-iceberg: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml.kafkabroker: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml.kafkaclient: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml.zookeeper: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.datanode: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.gateway: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.historyserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.hivetezui: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.hmaster: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.hregion: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.metastore: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.mysqlserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.namenode: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.nodemanager: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.resourcemanager: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.sparkhistory: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.timelineserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
+    "Docker.ubuntu.executor": "Run",
+    "Maven.bd-python-module [clean].executor": "Run",
+    "Maven.bd-python-module [install].executor": "Run",
+    "Maven.bd-python-module [org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy].executor": "Run",
+    "Maven.bd-python-module [package].executor": "Run",
+    "Maven.bd-python-module [verify].executor": "Run",
+    "Python tests.Python tests for test_Commons.test_print_separator.executor": "Run",
+    "Python tests.Python tests for test_Commons.test_split_csv.executor": "Run",
+    "Python tests.Python tests for test_Commons.test_split_csv_line.executor": "Debug",
+    "Python tests.Python tests for test_User.test_random.executor": "Debug",
+    "Python tests.Python tests for test_User.test_to_dict.executor": "Debug",
+    "Python tests.Python tests for test_User.test_to_obj.executor": "Run",
+    "Python tests.Python tests for test_static.test_flake8.executor": "Debug",
+    "Python tests.Python tests in test_Commons.py.executor": "Debug",
+    "Python tests.Python tests in test_User.py.executor": "Run",
+    "Python.FileUtils.executor": "Run",
+    "Python.Order.executor": "Run",
+    "Python.TimeUtils.executor": "Run",
+    "Python.User.executor": "Run",
+    "Python.app.executor": "Run",
+    "Python.avro-test.executor": "Debug",
+    "Python.confluent_kafka_AvroConsumer.executor": "Run",
+    "Python.confluent_kafka_AvroProducer.executor": "Run",
+    "Python.confluent_kafka_ConsumerFactory.executor": "Run",
+    "Python.confluent_kafka_DeserializingConsumer.executor": "Debug",
+    "Python.confluent_kafka_ProducerFactory.executor": "Run",
+    "Python.confluent_kafka_SerializingProducer.executor": "Run",
+    "Python.confluent_kafka_simple_consumer.executor": "Run",
+    "Python.confluent_transaction_producer.executor": "Run",
+    "Python.hello-spark.executor": "Run",
+    "Python.kafka_python_partitioned_consumer.executor": "Run",
+    "Python.kafka_python_partitioned_producer.executor": "Run",
+    "Python.kafka_python_simple_consumer.executor": "Run",
+    "Python.kafka_python_simple_producer.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.pie.executor": "Run",
+    "Python.pyspark-pandas.executor": "Run",
+    "Python.run_tests.executor": "Run",
+    "Python.sql-s3a-read.executor": "Run",
+    "Python.structured-avro-stream.executor": "Debug",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "develop/docker-hadoop334-cluster",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-hadoop-sandbox/conf/spark/conf",
+    "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.31724137",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf" />
@@ -227,7 +225,7 @@
       <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment">
+  <component name="RunManager" selected="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.kafkaclient: Compose Deployment">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -292,15 +290,15 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/dc-kafka-cluster.yaml.kafkaclient: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
-              <option value="zeppelin" />
+              <option value="kafkaclient" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yaml" />
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-kafka-cluster.yaml" />
         </settings>
       </deployment>
       <method v="2" />
@@ -346,19 +344,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.StreamingJob" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.kafkaclient: Compose Deployment" />
       <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment" />
       <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-notebook: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
       <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment" />
       <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.kafkaclient: Compose Deployment" />
         <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment" />
         <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment" />
         <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment" />
         <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-notebook: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -370,22 +368,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00015" summary="2024-02-24 Merge Docker Projects.">
-      <option name="closed" value="true" />
-      <created>1708778946891</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1708778946891</updated>
-    </task>
-    <task id="LOCAL-00016" summary="2024-02-24 Merge Docker Projects.">
-      <option name="closed" value="true" />
-      <created>1708779422145</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1708779422145</updated>
     </task>
     <task id="LOCAL-00017" summary="2024-02-24 Merge Docker Projects.">
       <option name="closed" value="true" />
@@ -763,7 +745,23 @@
       <option name="project" value="LOCAL" />
       <updated>1726111770403</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="2024-09-12 Update Setup configuration.">
+      <option name="closed" value="true" />
+      <created>1726112670303</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1726112670305</updated>
+    </task>
+    <task id="LOCAL-00065" summary="2024-09-12 Update Setup configuration.">
+      <option name="closed" value="true" />
+      <created>1726112847353</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1726112847353</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="UnknownFeatures">
