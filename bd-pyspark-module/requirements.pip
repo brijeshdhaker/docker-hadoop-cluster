@@ -1,5 +1,5 @@
 #
-kafka-python
+kafka-python==2.0.2
 confluent-kafka[avro]==1.8.2
 avro==1.11.0
 fastavro==1.4.12
