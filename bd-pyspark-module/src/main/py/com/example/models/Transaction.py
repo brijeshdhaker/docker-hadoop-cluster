@@ -14,18 +14,25 @@ class Transaction(object):
     # Class Variable
     ecommerce_website_name = None
     CITIES = {
-        "IN":["Delhi", "Chennei", "Pune", "Mumbai", "Banglore"],
+        "IN": ["Delhi", "Chennai", "Pune", "Mumbai", "Bengaluru"],
         "USA": ["New York", "Los Angeles", "Miami"],
         "UK": ["London", "Manchester", "Liverpool", "Oxford"],
         "JP": ["Tokyo", "Osaka", "Yokohama", "Hiroshima"]
     }
     PRODUCTS = ["Mobile", "Tablet", "Computer", "Laptop", "RAM", "TV", "Speaker", "Mouse", "Keyboard", "LDC", "Monitor", "Printer"]
     COUNTRIES = ["IN", "USA", "UK", "JP"]
-    CCTYPES = ["VISA", "Master", "Amex", "RuPay"]
+    CCTYPES = ["VISA", "Master", "Amex", "RuPay", "Discover"]
     SITES = ["Amazon", "Flipkart", "SnapDeal", "Myntra", "Ebay"]
+    URLS = {
+        "Amazon": "https://www.amazon.in",
+        "Flipkart": "https://www.flipkart.com/",
+        "SnapDeal": "https://www.snapdeal.com/",
+        "Myntra":"https://www.myntra.com/",
+        "Ebay": "https://www.ebay.com/"
+    }
 
     # Use __slots__ to explicitly declare all data members.
-    __slots__ = ["id", "uuid", "cardType", "website",  "product", "amount", "city", "country", "addts"]
+    __slots__ = ["id", "uuid", "cardtype", "website",  "product", "amount", "city", "country", "addts"]
 
     # The init method or constructor
     def __init__(self, uuid=None):
@@ -37,11 +44,11 @@ class Transaction(object):
         else:
             self.uuid = uuid
 
-    def setCardType(self, cardType):
-        self.cardType = cardType
+    def setCardType(self, cardtype):
+        self.cardtype = cardtype
 
     def getCardType(self):
-        return self.cardType
+        return self.cardtype
 
     def setWebsite(self, website):
         self.website = website
@@ -75,20 +82,28 @@ class Transaction(object):
 
     @staticmethod
     def random():
+
         t = Transaction()
         fake = Faker()
+
         t.id = random.randint(1000, 5000)
         t.setCardType(random.choice(Transaction.CCTYPES))
-        random.choice(Transaction.SITES)
-        t.setWebsite(fake.url())
+        site = random.choice(Transaction.SITES)
+
+        #fake.url()
+        t.setWebsite(Transaction.URLS[site])
+
         t.setProduct(random.choice(Transaction.PRODUCTS))
+
         t.setAmount(round(random.uniform(500.99, 25000.99), 2))
 
-        c = random.choice(Transaction.COUNTRIES)
-        random.choice(Transaction.CITIES[c])
+        country = random.choice(Transaction.COUNTRIES)
+        # fake.country_code()
+        t.setCountry(country)
 
-        t.setCountry(fake.country_code())
-        t.setCity(fake.city())
+        # fake.city()
+        city = random.choice(Transaction.CITIES[country])
+        t.setCity(city)
         return t
 
     @staticmethod
@@ -103,7 +118,7 @@ class Transaction(object):
         return dict(
             id=self.id,
             uuid=self.uuid,
-            cardtype=self.cardType,
+            cardtype=self.cardtype,
             website=self.website,
             product=self.product,
             amount=self.amount,

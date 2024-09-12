@@ -10,7 +10,7 @@ import random
 from datetime import datetime
 from time import sleep
 from uuid import uuid4
-
+from com.example.models.Transaction import Transaction
 from confluent_kafka_ConfigFactory import KafkaConfigFactory
 from confluent_kafka_ProducerFactory import ProducerFactory
 
@@ -28,9 +28,9 @@ def unix_time_millis(dt):
 if __name__ == '__main__':
 
     # Read arguments and configurations and initialize
-    topic = "kafka-avro-topic"
+    topic = "transaction-avro-topic"
     producer_config = KafkaConfigFactory.producer('PLAINTEXT')
-    avroProducer = ProducerFactory.avro(producer_config,"resources/avro/user-record.avsc")
+    avroProducer = ProducerFactory.avro(producer_config,"resources/avro/transaction-record.avsc")
 
     u_names = ["Brijesh K", "Neeta K", "Keshvi K", "Tejas K"]
 
@@ -39,7 +39,12 @@ if __name__ == '__main__':
         # int(time.timestamp() * 1000)
         event_datetime = datetime.now().timestamp()
         # d_in_ms = int(event_datetime.strftime("%S"))
-        user = {
+
+        transaction = Transaction.random()
+        record_key = str(transaction.uuid)
+        record_value = transaction.to_dict()
+        """
+        record_value = {
             'id': random.randint(1000, 5000),
             'uuid': str(uuid4()),
             'name': random.choice(u_names),
@@ -52,12 +57,14 @@ if __name__ == '__main__':
             'addTs': int(event_datetime),
             'updTs': int(event_datetime)
         }
-        key = user['uuid']
+        record_key = user['uuid']
+        """
+
         # Serve on_delivery callbacks from previous calls to produce()
         avroProducer.poll(0.0)
         #
-        print("Avro Record: {}\t{} at time {}".format(user['uuid'], user['name'], user['addTs']))
-        avroProducer.produce(topic=topic, key=key, value=user)
+        print("Avro Record: {}\t{} at time {}".format(record_value['uuid'], record_value['id'], record_value['addts']))
+        avroProducer.produce(topic=topic, key=record_key, value=record_value)
         sleep(1)
 
     avroProducer.flush()

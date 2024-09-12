@@ -3,10 +3,10 @@
 #### Install Conda
 #
 
-wget -nv https://repo.anaconda.com/miniconda/Miniconda3-py37_4.9.2-Linux-x86_64.sh -O /apps/hostpath/python/Miniconda3-py37_4.9.2-Linux-x86_64.sh
-sudo bash /apps/hostpath/python/Miniconda3-py37_4.9.2-Linux-x86_64.sh -b -p /opt/conda
+wget -nv wget -nv https://repo.anaconda.com/miniconda/Miniconda3-py39_24.1.2-0-Linux-x86_64.sh -O /apps/python/Miniconda3-py39_24.1.2-0-Linux-x86_64.sh
+sudo bash /apps/python/Miniconda3-py37_4.9.2-Linux-x86_64.sh -b -p /opt/conda
 sudo chmod -Rf 775 /opt/conda
-sudo chown -Rf root:brijeshdhaker /opt/conda
+sudo chown -Rf brijeshdhaker:root /opt/conda
 
 conda config --set auto_activate_base false
 
@@ -66,6 +66,7 @@ conda env create -f mr-delta.yml
 
 conda activate mr-delta
 pip install confluent-kafka[avro]==1.8.2 faker mysql-connector-python avro-python3 pycodestyle
+pip install confluent-kafka[avro]==2.5.3 faker mysql-connector-python avro-python3 pycodestyle
 pip install numpy pandas scipy grpcio pandasql ipython ipykernel
 pip install jupyter_client nb_conda panel pyyaml seaborn plotnine hvplot intake
 pip install intake-parquet intake-xarray altair vega_datasets pyarrow pytest
@@ -89,27 +90,27 @@ conda env remove --name pyspark37
 #
 #
 #
-conda rename -n base  pyspark37
+conda rename -n base  env_python_39
 conda rename -p /opt/conda base
 
 #
 #### Activate Virtual Env
 #
-conda activate pyspark37
+conda activate env_python_39
 
 #
 # Update Virtual Env
 #
-conda env update --file venv_pyspark37.yml --prune
-conda env update --name pyspark37 --file venv_pyspark37.yml --prune
+conda env update --file env_python_39.yml --prune
+conda env update --name env_python_39 --file env_python_39.yml --prune
 
 #
 #### Export Virtual Env
 #
-conda pack -n pyspark37 -o /apps/hostpath/python/pyspark37-$(date "+%Y%m%d").tar.gz
-hdfs dfs -copyFromLocal /apps/hostpath/python/pyspark37-$(date "+%Y%m%d").tar.gz /archives/pyspark/
+conda pack -n env_python_39 -o /apps/hostpath/python/pyspark39-$(date "+%Y%m%d").tar.gz
+hdfs dfs -copyFromLocal /apps/hostpath/python/pyspark39-$(date "+%Y%m%d").tar.gz /archives/pyspark/
 # The python conda tar should be public accessible, so need to change permission here.
-hadoop fs -chmod 775 /archives/pyspark/pyspark37-20221125.tar.gz
+hadoop fs -chmod 775 /archives/pyspark/pyspark39-20221125.tar.gz
 
 #
 #### Deactivate Cond Env

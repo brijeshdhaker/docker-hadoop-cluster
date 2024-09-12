@@ -21,9 +21,9 @@ kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitio
 kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic kafka-avro-topic --if-not-exists
 kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic kafka-json-topic --if-not-exists
 
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-text-topic --if-not-exists
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-json-topic --if-not-exists
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-avro-topic --if-not-exists
+kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic transaction-text-topic --if-not-exists
+kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic transaction-json-topic --if-not-exists
+kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic transaction-avro-topic --if-not-exists
 
 # Topic - List
 kafka-topics --list --bootstrap-server kafkabroker.sandbox.net:9092
@@ -46,7 +46,7 @@ docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c
 docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-configs --bootstrap-server kafkabroker.sandbox.net:9092 --entity-type topics --entity-default --alter --add-config delete.retention.ms=172800000 "
 
 ### Change Kafka Retention Time
-docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-topics --bootstrap-server kafkabroker.sandbox.net:9092 --alter --topic kafka-avro-topic --config retention.ms=1000 "
+docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-topics --bootstrap-server kafkabroker.sandbox.net:9092 --alter --topic transaction-avro-topic --config retention.ms=1000 "
 docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-topics --bootstrap-server kafkabroker.sandbox.net:9092 --topic kafka-simple-topic --create --partitions 3 --replication-factor 1 "
 
 ### Setup Default  7 days (168 hours , retention.ms= 604800000)
@@ -165,13 +165,13 @@ docker system prune -a --volumes --filter "label=io.confluent.docker"
 # To check the end offset set parameter time to value -1
 kafka-run-class kafka.tools.GetOffsetShell \
 --broker-list kafkabroker.sandbox.net:9092 \
---topic kafka-avro-topic \
+--topic transaction-avro-topic \
 --time -1
 
 # To check the start offset, use --time -2
 kafka-run-class kafka.tools.GetOffsetShell \
 --broker-list kafkabroker.sandbox.net:9092 \
---topic kafka-avro-topic \
+--topic transaction-avro-topic \
 --time -2
 
 
@@ -214,16 +214,16 @@ kafka-configs --zookeeper zookeeper.sandbox.net:2181 --alter --entity-type topic
 ```shell
 
 docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-avro-console-producer \
---topic kafka-avro-topic \
+--topic transaction-avro-topic \
 --bootstrap-server kafkabroker.sandbox.net:9092 \
 --property value.schema='$(< /opt/app/schema/user.avsc)'"
 
 docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-avro-console-consumer 
---topic kafka-avro-topic \
+--topic transaction-avro-topic \
 --bootstrap-server kafkabroker.sandbox.net:9092 "
 
 docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-avro-console-consumer \
---topic kafka-avro-topic \
+--topic transaction-avro-topic \
 --bootstrap-server kafkabroker.sandbox.net:9092 \
 --from-beginning \
 --property schema.registry.url=http://schemaregistry:8081 "
@@ -239,56 +239,56 @@ docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec schemaregistry /b
 # Register a new version of a schema under the subject "Kafka-key"
 $ curl -X POST -i -H "Content-Type: application/vnd.schemaregistry.v1+json" \
 --data '{"schema": "{\"type\": \"string\"}"}' \
-http://schemaregistry:8081/subjects/kafka-avro-topic-value/versions
+http://schemaregistry.sandbox.net:8081/subjects/transaction-avro-topic-value/versions
 
 # Register a new version of a schema under the subject "Kafka-value"
 $ curl -X POST -i -H "Content-Type: application/vnd.schemaregistry.v1+json" \
 --data '{"schema": "{\"type\": \"string\"}"}' \
-http://schemaregistry:8081/subjects/kafka-avro-topic-value/versions
+http://schemaregistry.sandbox.net:8081/subjects/transaction-avro-topic-value/versions
 
 # List all subjects
 $ curl -X GET -i -H "Content-Type: application/vnd.schemaregistry.v1+json" \
-http://schemaregistry:8081/subjects
+http://schemaregistry.sandbox.net:8081/subjects
 
 # List all schema versions registered under the subject "Kafka-value"
 $ curl -X GET -i -H "Content-Type: application/vnd.schemaregistry.v1+json" \
-http://schemaregistry:8081/subjects/kafka-avro-topic-value/versions
+http://schemaregistry.sandbox.net:8081/subjects/transaction-avro-topic-value/versions
 
 # Fetch a schema by globally unique id 1
 $ curl -X GET -i -H "Content-Type: application/vnd.schemaregistry.v1+json" \
-http://schemaregistry:8081/schemas/ids/1
+http://schemaregistry.sandbox.net:8081/schemas/ids/1
 
 # Fetch version 1 of the schema registered under subject "Kafka-value"
 $ curl -X GET -i -H "Content-Type: application/vnd.schemaregistry.v1+json" \
-http://schemaregistry:8081/subjects/kafka-avro-topic-value/versions/1
+http://schemaregistry.sandbox.net:8081/subjects/transaction-avro-topic-value/versions/1
 
 # Fetch the most recently registered schema under subject "Kafka-value"
 $ curl -X GET -i -H "Content-Type: application/vnd.schemaregistry.v1+json" \
-http://schemaregistry:8081/subjects/kafka-avro-topic-value/versions/latest
+http://schemaregistry.sandbox.net:8081/subjects/transaction-avro-topic-value/versions/latest
 
 # Check whether a schema has been registered under subject "Kafka-key"
 $ curl -X POST -i -H "Content-Type: application/vnd.schemaregistry.v1+json" \
 --data '{"schema": "{\"type\": \"string\"}"}' \
-http://schemaregistry:8081/subjects/kafka-avro-topic-key
+http://schemaregistry.sandbox.net:8081/subjects/transaction-avro-topic-key
 
 # Test compatibility of a schema with the latest schema under subject "Kafka-value"
 $ curl -X POST -i -H "Content-Type: application/vnd.schemaregistry.v1+json" \
 --data '{"schema": "{\"type\": \"string\"}"}' \
-http://schemaregistry:8081/compatibility/subjects/kafka-avro-topic-value/versions/latest
+http://schemaregistry.sandbox.net:8081/compatibility/subjects/transaction-avro-topic-value/versions/latest
 
 # Get top level config
 $ curl -X GET -i -H "Content-Type: application/vnd.schemaregistry.v1+json" \
-http://schemaregistry:8081/config
+http://schemaregistry.sandbox.net:8081/config
 
 # Update compatibility requirements globally
 $ curl -X PUT -i -H "Content-Type: application/vnd.schemaregistry.v1+json" \
 --data '{"compatibility": "NONE"}' \
-http://schemaregistry:8081/config
+http://schemaregistry.sandbox.net:8081/config
 
 # Update compatibility requirements under the subject "Kafka-value"
 $ curl -X PUT -i -H "Content-Type: application/vnd.schemaregistry.v1+json" \
 --data '{"compatibility": "BACKWARD"}' \
-http://schemaregistry:8081/config
+http://schemaregistry.sandbox.net:8081/config
 
 ```
 

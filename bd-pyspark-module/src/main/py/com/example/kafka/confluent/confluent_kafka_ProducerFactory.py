@@ -40,8 +40,7 @@ class ProducerFactory(object):
         key_schema, value_schema = load_avro_schema(schema_file)
         #
         producer_config.update({
-            'schema.registry.url': 'http://schemaregistry:8081',
-            'auto.offset.reset': "earliest"
+            'schema.registry.url': 'http://schemaregistry.sandbox.net:8081'
         })
         return AvroProducer(producer_config, default_key_schema=key_schema, default_value_schema=value_schema)
 
@@ -50,13 +49,12 @@ class ProducerFactory(object):
     def serializer(producer_config, schema_file, serializer_ctx):
         #
         key_str, schema_str = load_avro_str(schema_file)
-        schema_registry_client = SchemaRegistryClient({'url': 'http://schemaregistry:8081'})
+        schema_registry_client = SchemaRegistryClient({'url': 'http://schemaregistry.sandbox.net:8081'})
         custom_serializer = AvroSerializer(schema_registry_client, schema_str, serializer_ctx)
         string_serializer = StringSerializer('utf_8')
         producer_config.update({
             'key.serializer': string_serializer,
-            'value.serializer': custom_serializer,
-            'auto.offset.reset': "earliest"
+            'value.serializer': custom_serializer
         })
         return SerializingProducer(producer_config)
 
@@ -68,8 +66,7 @@ class ProducerFactory(object):
         string_serializer = StringSerializer('utf_8')
         producer_config.update({
             'key.serializer': string_serializer,
-            'value.serializer': string_serializer,
-            'auto.offset.reset': "earliest"
+            'value.serializer': string_serializer
         })
         return SerializingProducer(producer_config)
 

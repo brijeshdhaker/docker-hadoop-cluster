@@ -5,7 +5,7 @@ from confluent_kafka_ConsumerFactory import ConsumerFactory
 
 consumer_config = KafkaConfigFactory.consumer('PLAINTEXT')
 consumer = ConsumerFactory.avro(consumer_config)
-consumer.subscribe(['kafka-avro-topic'])
+consumer.subscribe(['transaction-avro-topic'])
 
 while True:
     try:

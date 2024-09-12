@@ -38,6 +38,8 @@ dependencies:
   - pip
   - pyspark=3.4.1
   - fastavro=1.9.7
+  - urllib3=2.2.2
+  - requests=2.32.3
   - pip:
       - delta-spark==1.0.1
       - quinn

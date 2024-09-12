@@ -36,9 +36,6 @@ services:
   #
   # Zeppelin Notebook
   #
-  #
-  # Zeppelin Notebook
-  #
   zeppelin:
     image: brijeshdhaker/zeppelin:0.12.0_spark_3.4.1
     pull_policy: missing

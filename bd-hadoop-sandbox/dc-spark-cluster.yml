@@ -162,8 +162,9 @@ services:
       - sandbox_apps_path:/apps
       - /apps/sandbox/warehouse:/home/iceberg/warehouse
       - /apps/sandbox/notebooks:/home/iceberg/notebooks
-      - ./conf/spark/conf/log4j2.properties:/opt/spark/conf/log4j2.properties
-      - ./conf/spark/conf/spark-notebook.conf:/opt/spark/conf/spark-defaults.conf
+      - ./conf/spark/conf:/opt/spark/conf
+#      - ./conf/spark/conf/log4j2.properties:/opt/spark/conf/log4j2.properties
+#      - ./conf/spark/conf/spark-notebook.conf:/opt/spark/conf/spark-defaults.conf
     environment:
       - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
       - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG

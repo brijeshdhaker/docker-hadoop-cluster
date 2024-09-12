@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module type="PYTHON_MODULE" version="4">
-  <component name="AdditionalModuleElements">
-    <content url="file://$MODULE_DIR$/bd-pyspark-module" dumb="true">
-      <sourceFolder url="file://$MODULE_DIR$/bd-pyspark-module/src/main" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/bd-pyspark-module/src/test" isTestSource="true" />
-    </content>
-  </component>
-</module>

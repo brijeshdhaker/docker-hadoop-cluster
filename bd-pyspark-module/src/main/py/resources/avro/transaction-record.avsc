@@ -75,7 +75,7 @@
     }
   ],
   "name": "Transaction",
-  "namespace": "sample.multimodule.dto.avro",
+  "namespace": "com.example.models",
   "type": "record",
   "version": "1"
 }
