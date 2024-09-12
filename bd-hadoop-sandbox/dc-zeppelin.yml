@@ -48,7 +48,8 @@ services:
       ALLOW_ANONYMOUS_LOGIN: "yes"
       SPARK_HOME: /opt/spark
       ZEPPELIN_LOG_DIR: /opt/zeppelin/logs
-      SPARK_LOG_DIR: /opt/zeppelin/logs
+      SPARK_LOG_DIR: /apps/var/logs/spark-zeppelin/
+      SPARK_LOG_FILE: spark-zeppelin
     #    env_file:
     #      - ./envs/docker_clients.env
     ports:
