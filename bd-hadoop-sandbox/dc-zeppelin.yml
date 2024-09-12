@@ -40,18 +40,20 @@ services:
   # Zeppelin Notebook
   #
   zeppelin:
-    image: brijeshdhaker/zeppelin:0.11.1
+    image: brijeshdhaker/zeppelin:0.12.0_spark_3.4.1
     pull_policy: missing
     container_name: zeppelin
     hostname: zeppelin.sandbox.net
     environment:
       ALLOW_ANONYMOUS_LOGIN: "yes"
       SPARK_HOME: /opt/spark
+      ZEPPELIN_LOG_DIR: /opt/zeppelin/logs
+      SPARK_LOG_DIR: /opt/zeppelin/logs
     #    env_file:
     #      - ./envs/docker_clients.env
     ports:
       - "9080:8080"
-      - "9081:8081"
+      - "4040:4040"
     #    depends_on:
     #      datanode:
     #        condition: service_healthy
@@ -62,19 +64,19 @@ services:
     volumes:
       #      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - sandbox_apps_path:/apps
-      #      - sandbox_zeppelin_conf:/opt/zeppelin/conf
+      - /apps/sandbox/zeppelin/conf:/opt/zeppelin/conf
       - /apps/sandbox/zeppelin/notebooks:/opt/zeppelin/notebook
       - /apps/var/logs/zeppelin:/opt/zeppelin/logs
-      #      - /apps/sandbox/zeppelin/local-repo:/opt/zeppelin/local-repo
-      - /opt/spark-3.5.1:/opt/spark
+#      - /apps/sandbox/zeppelin/local-repo:/opt/zeppelin/local-repo
+      - /opt/spark-3.4.1:/opt/spark
       - ./conf/spark/conf:/opt/spark/conf
-    #      - sandbox_hadoop_334:/opt/hadoop
-    #      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-    #      - sandbox_hive_313:/opt/hive
-    #      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
-    #      - sandbox_hbase_246:/opt/hbase
-    #      - ./conf/hbase/client:/opt/hbase/conf
-    #      - /opt/flink-1.12.2:/opt/flink
+#      - sandbox_hadoop_334:/opt/hadoop
+#      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+#      - sandbox_hive_313:/opt/hive
+#      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
+#      - sandbox_hbase_246:/opt/hbase
+#      - ./conf/hbase/client:/opt/hbase/conf
+#      - /opt/flink-1.12.2:/opt/flink
     extra_hosts:
       - "thinkpad.sandbox.net:172.18.0.1"
 
@@ -84,36 +86,9 @@ services:
 #
 volumes:
   #
-  sandbox_maven_363:
+  sandbox_apps_path:
     external: true
-  sandbox_m2:
-    external: true
-  sandbox_ivy2:
-    external: true
-  #
-  sandbox_hadoop_334:
-    external: true
-  #
-  sandbox_hbase_246:
-    external: true
-  sandbox_hbase_117:
-    external: true
-  #
-  sandbox_hive_313:
-    external: true
-  sandbox_tez_102:
-    external: true
-  #
-  sandbox_spark_350:
-    external: true
-  #
-  sandbox_flink_112:
-    external: true
-  #
-  sandbox_zeppelin_conf:
-    external: true
-  sandbox_zeppelin_notebook:
-    external: true
+
 
 #
 networks:

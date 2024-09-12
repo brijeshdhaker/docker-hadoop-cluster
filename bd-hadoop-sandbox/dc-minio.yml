@@ -16,6 +16,7 @@ services:
     networks:
       default:
         aliases:
+          - warehouse-hadoop.minio
           - warehouse-rest.minio
           - warehouse-data.minio
           - warehouse-demo.minio

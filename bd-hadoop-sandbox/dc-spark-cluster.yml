@@ -36,7 +36,6 @@ services:
       - SPARK_LOG_DIR=/apps/var/logs/spark-master
       - SPARK_LOG_FILE=spark-master
     ports:
-      - 7077:7077
       - 8080:8080
 
   #
@@ -132,7 +131,7 @@ services:
       - 8181:8181
     #    command: ["java", "-cp", "mysql-connector-java-8.0.23.jar", "-jar", "iceberg-rest-image-all.jar"]
     volumes:
-      - /apps/drivers/libs/mysql-connector-java-8.0.23.jar:/usr/lib/iceberg-rest/mysql-connector-java-8.0.23.jar
+      - /apps/libs/drivers/mysql-connector-java-8.0.23.jar:/usr/lib/iceberg-rest/mysql-connector-java-8.0.23.jar
     environment:
       - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
       - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG

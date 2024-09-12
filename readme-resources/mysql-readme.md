@@ -3,6 +3,16 @@
 mysql --user=root --password=p@SSW0rd
 ```
 
+```shell
+
+CREATE USER 'root'@'%' IDENTIFIED BY 'p@SSW0rd';
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'root'@'%';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
+
+FLUSH PRIVILEGES;
+
+````
+
 # Setup Hive Database
 ```shell
 CREATE DATABASE HMS334;
