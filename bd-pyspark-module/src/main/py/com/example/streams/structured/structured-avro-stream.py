@@ -1,10 +1,11 @@
 """
 
 $SPARK_HOME/bin/spark-submit \
---name "spark-structured-avro-stream" \
+--name "transaction-avro-stream" \
 --master local[4] \
---packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 \
-/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-python-module/src/main/com/example/streams/structured/structured-avro-stream.py
+--packages org.apache.spark:spark-avro_2.12:3.4.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 \
+--conf spark.jars.ivy=/apps/.ivy2 \
+bd-pyspark-module/src/main/py/com/example/streams/structured/structured-avro-stream.py
 
 """
 
@@ -55,11 +56,11 @@ def process_avro_stream(args):
     # Confluent Schema Registry
     #
     schema_registry_conf = {
-        'url': 'http://schemaregistry:8081',
+        'url': 'http://schemaregistry.sandbox.net:8081',
         'basic.auth.user.info': '{}:{}'.format('userid', 'password')
     }
     schema_registry_client = SchemaRegistryClient(schema_registry_conf)
-    txn_schema_response = schema_registry_client.get_latest_version("kafka-avro-topic-value").schema
+    txn_schema_response = schema_registry_client.get_latest_version(args['topic']+"-value").schema
     txn_schema = txn_schema_response.schema_str
 
 
@@ -89,8 +90,8 @@ if __name__ != '__main__':
     pass
 else:
     args = {
-        'app_name': "spark-structured-avro-stream",
-        'topic': "kafka-avro-topic",
+        'app_name': "transaction-avro-stream",
+        'topic': "transaction-avro-topic",
         'auth_type': "PLAINTEXT",
         'run_mode': "local"
     }

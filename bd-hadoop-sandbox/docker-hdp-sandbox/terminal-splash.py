@@ -1,8 +1,6 @@
 #!/usr/bin/python
 
 import curses
-import subprocess
-import sys
 
 f = open('/sandbox-flavor','r');
 version = f.read();

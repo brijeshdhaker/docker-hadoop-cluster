@@ -18,8 +18,6 @@
 
 package org.apache.flink.playground.datagen;
 
-import java.time.ZoneOffset;
-import java.util.Properties;
 import org.apache.flink.playground.datagen.model.Transaction;
 import org.apache.flink.playground.datagen.model.TransactionSerializer;
 import org.apache.flink.playground.datagen.model.TransactionSupplier;
@@ -27,6 +25,9 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.LongSerializer;
+
+import java.time.ZoneOffset;
+import java.util.Properties;
 
 /** Generates CSV transaction records at a rate */
 public class Producer implements Runnable, AutoCloseable {

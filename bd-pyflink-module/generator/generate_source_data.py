@@ -16,12 +16,13 @@
 # limitations under the License.
 ################################################################################
 
+import calendar
 import random
-import time, calendar
-from random import randint
-from kafka import KafkaProducer
-from kafka import errors 
+import time
 from json import dumps
+from kafka import KafkaProducer
+from kafka import errors
+from random import randint
 from time import sleep
 
 

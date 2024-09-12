@@ -1,6 +1,6 @@
 
-from pyflink.datastream import StreamExecutionEnvironment, TimeCharacteristic
-from pyflink.table import StreamTableEnvironment, DataTypes, EnvironmentSettings
+from pyflink.datastream import StreamExecutionEnvironment
+from pyflink.table import StreamTableEnvironment, DataTypes
 from pyflink.table.expressions import call, col
 from pyflink.table.udf import udf
 

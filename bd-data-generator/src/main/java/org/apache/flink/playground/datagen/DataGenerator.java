@@ -18,9 +18,10 @@
 
 package org.apache.flink.playground.datagen;
 
-import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Optional;
 
 /** A basic data generator for continuously writing data into a kafka topic. */
 public class DataGenerator {

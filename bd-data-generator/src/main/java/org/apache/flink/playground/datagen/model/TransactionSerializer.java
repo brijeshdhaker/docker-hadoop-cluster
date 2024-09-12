@@ -18,9 +18,10 @@
 
 package org.apache.flink.playground.datagen.model;
 
+import org.apache.kafka.common.serialization.Serializer;
+
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
-import org.apache.kafka.common.serialization.Serializer;
 
 /** Serializes a {@link Transaction} into a CSV record. */
 public class TransactionSerializer implements Serializer<Transaction> {

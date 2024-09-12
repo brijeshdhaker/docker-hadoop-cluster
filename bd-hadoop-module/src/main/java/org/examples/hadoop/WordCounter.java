@@ -5,10 +5,6 @@ import com.mongodb.hadoop.io.BSONWritable;
 import com.mongodb.hadoop.io.MongoUpdateWritable;
 import com.mongodb.hadoop.util.MongoConfigUtil;
 import com.mongodb.hadoop.util.MongoTool;
-import java.io.IOException;
-import java.net.UnknownHostException;
-import java.util.Date;
-import java.util.StringTokenizer;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
@@ -24,6 +20,11 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.ToolRunner;
 import org.bson.BasicBSONObject;
+
+import java.io.IOException;
+import java.net.UnknownHostException;
+import java.util.Date;
+import java.util.StringTokenizer;
 
 /**
  *

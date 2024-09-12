@@ -3,13 +3,14 @@ package org.examples.hadoop;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCursor;
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
 import org.bson.Document;
 import org.junit.Before;
 import org.junit.Test;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
+
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
 
 /**
  *

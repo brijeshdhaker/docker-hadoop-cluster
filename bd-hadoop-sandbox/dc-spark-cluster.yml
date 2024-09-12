@@ -61,8 +61,8 @@ services:
       - PYARROW_IGNORE_TIMEZONE=1
       - SPARK_LOG_DIR=/apps/var/logs/spark-worker-a
       - SPARK_LOG_FILE=spark-worker-a
-    ports:
-      - 8081:8081
+#    ports:
+#      - 8081:8081
 
   #
   spark-worker-b:
@@ -87,8 +87,8 @@ services:
       - PYARROW_IGNORE_TIMEZONE=1
       - SPARK_LOG_DIR=/apps/var/logs/spark-worker-b
       - SPARK_LOG_FILE=spark-worker-b
-    ports:
-      - 8082:8082
+#    ports:
+#      - 8082:8082
 
   #
   spark-history:

@@ -16,8 +16,9 @@
 # specific language governing permissions and limitations
 # under the License.
 
-from prettytable import PrettyTable
 from IPython.core.magic import register_line_cell_magic
+from prettytable import PrettyTable
+
 
 class DFTable(PrettyTable):
     def __repr__(self):
