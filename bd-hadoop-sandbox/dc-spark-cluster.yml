@@ -152,6 +152,8 @@ services:
     container_name: spark-notebook
     depends_on:
       - spark-master
+      - spark-worker-a
+      - spark-worker-b
     healthcheck:
       test: curl -f http://spark-notebook.sandbox.net:8888 || exit 1
       retries: 20
@@ -160,6 +162,7 @@ services:
       - sandbox_apps_path:/apps
       - /apps/sandbox/warehouse:/home/iceberg/warehouse
       - /apps/sandbox/notebooks:/home/iceberg/notebooks
+      - ./conf/spark/conf/log4j2.properties:/opt/spark/conf/log4j2.properties
       - ./conf/spark/conf/spark-notebook.conf:/opt/spark/conf/spark-defaults.conf
     environment:
       - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
