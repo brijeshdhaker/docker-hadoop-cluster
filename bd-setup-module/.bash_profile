@@ -5,11 +5,11 @@ export TERM=xterm-color
 export PATH=/opt/conda/bin:$PATH
 
 # JAVA_HOME for Fedora
-export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
+# export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk
 
 # JAVA_HOME for Ubuntu
-# export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
-# export PATH=$PATH:$JAVA_HOME/bin
+export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
+export PATH=$PATH:$JAVA_HOME/bin
 
 # Kerberos
 export KRB5_CONFIG=/etc/krb5.conf
@@ -23,10 +23,10 @@ export PATH=$M2_HOME/bin:$PATH
 export CLUSTER_TYPE=SANDBOX3
 
 #
-export PYSPARK_PYTHON=/opt/conda/envs/pyspark37/bin/python
-export PYSPARK_DRIVER_PYTHON=/opt/conda/envs/pyspark37/bin/python
+export PYSPARK_PYTHON=/opt/conda/envs/env_python_39/bin/python
+export PYSPARK_DRIVER_PYTHON=/opt/conda/envs/env_python_39/bin/python
 #
-export SPARK_HOME=/opt/spark-3.5.0
+export SPARK_HOME=/opt/spark-3.4.1
 export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
 export PYTHONPATH=$(ZIPS=("$SPARK_HOME"/python/lib/*.zip); IFS=:; echo "${ZIPS[*]}"):$PYTHONPATH
 
