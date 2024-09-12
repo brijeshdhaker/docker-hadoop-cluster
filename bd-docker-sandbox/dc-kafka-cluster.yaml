@@ -145,6 +145,10 @@ services:
     container_name: kafkaclient
     restart: on-failure
     command: sleep infinity
+    healthcheck:
+      test: echo $HOSTNAME || exit 1
+      retries: 20
+      interval: 10s
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
