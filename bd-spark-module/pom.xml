@@ -14,8 +14,8 @@
     <artifactId>bd-spark-module</artifactId>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <encoding>UTF-8</encoding>
         <scala.version>2.12.17</scala.version>
         <spark.scala>2.12</spark.scala>
@@ -24,6 +24,7 @@
         <classifier>local</classifier>
         <runclass>com.spark.SparkPi</runclass>
         <params>10</params>
+        <confluent.version>7.5.2</confluent.version>
     </properties>
 
     <build>
@@ -317,6 +318,21 @@
 
         <dependency>
             <groupId>org.apache.spark</groupId>
+            <artifactId>spark-avro_${spark.scala}</artifactId>
+            <version>${spark.version}</version>
+            <!--
+             <exclusions>
+                <exclusion>
+                    <groupId>com.twitter</groupId>
+                    <artifactId>chill_2</artifactId>
+                </exclusion>
+            </exclusions>
+            -->
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
             <artifactId>spark-hive_${spark.scala}</artifactId>
             <version>${spark.version}</version>
         </dependency>
@@ -349,6 +365,25 @@
             <version>${spark.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-avro-serializer</artifactId>
+            <version>${confluent.version}</version>
+            <exclusions>
+                <!-- Conflicts with Spark's version -->
+                <exclusion>
+                    <groupId>org.apache.kafka</groupId>
+                    <artifactId>kafka-clients</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-schema-registry</artifactId>
+            <version>${confluent.version}</version>
+        </dependency>
+
         <!--
         <dependency>
             <groupId>org.apache.spark</groupId>
@@ -364,4 +399,22 @@
         </dependency>
 
     </dependencies>
+
+
+<!--    <repositories>
+        <repository>
+            <id>confluent</id>
+            <name>Confluent</name>
+            <url>https://packages.confluent.io/maven/</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+          <id>confluent</id>
+          <url>https://packages.confluent.io/maven/</url>
+        </pluginRepository>
+  </pluginRepositories>-->
+
+
 </project>

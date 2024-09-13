@@ -5,26 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-13 Update Setup configuration.">
-      <change afterPath="$PROJECT_DIR$/.idea/scala_compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/scala/org/examples/spark/SparkPi.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/scala/org/examples/spark/streaming/structure/KafkaStructuredStream.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/core-site.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/scala/org/examples/spark/streaming/structure/AvroDeserializer.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/scala/org/examples/spark/streaming/structure/TransactionAvroStream.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/scala/org/examples/spark/utils/HdfsUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/scala/org/examples/spark/utils/Utils.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/zeppelin/conf/interpreter.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/zeppelin/conf/interpreter.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-yarn.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-yarn.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/zeppelin/conf/interpreter.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/zeppelin/conf/interpreter.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/pipeline/sstreaming-spark-final.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/pipeline/sstreaming-spark-final.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/KafkaStreamDemo.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/KafkaStreamDemo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured-kafka-txn-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured-kafka-txn-stream.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/bigdata-setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/scripts/bigdata-setup.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/azure-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/azure-help.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/sandbox.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/sandbox.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/spark-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/spark-help.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +25,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="Package Object" />
       </list>
     </option>
   </component>
@@ -89,6 +80,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.SparkPi.executor": "Run",
+    "Application.TransactionAvroStream.executor": "Debug",
     "Docker.Docker Image.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor": "Run",
@@ -220,12 +212,11 @@
     "Python.test.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "develop/docker-hadoop334-cluster",
     "jdk.selected.JAVA_MODULE": "11",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spark-module/src/main/scala/org/examples/spark",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-hadoop-sandbox",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-docker-sandbox/conf/hadoop/conf",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
@@ -236,11 +227,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf" />
       <recent name="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
       <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs" />
-      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs" />
@@ -252,11 +243,21 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.examples.spark" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.examples.spark.streaming.structure" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.StreamingJob">
-    <configuration name="SparkPi" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="SparkPi" />
+  <component name="RunManager" selected="Application.TransactionAvroStream">
+    <configuration name="TransactionAvroStream" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="org.examples.spark.streaming.structure.TransactionAvroStream" />
       <module name="bd-spark-module" />
+      <option name="PROGRAM_PARAMETERS" value="-m local[*] -b kafkabroker.sandbox.net:9092 -t transaction-avro-topic -s http://schemaregistry.sandbox.net:8081" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.examples.spark.streaming.structure.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -286,28 +287,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="" />
       <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="confluent_kafka_AvroProducer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="bd-pyspark-module" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/main/py" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_AvroProducer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -378,21 +357,34 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="spark-worker-a" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-spark-cluster.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.StreamingJob" />
-      <item itemvalue="Application.SparkPi" />
+      <item itemvalue="Application.TransactionAvroStream" />
       <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.kafkabroker: Compose Deployment" />
       <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.schemaregistry: Compose Deployment" />
       <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.zookeeper: Compose Deployment" />
-      <item itemvalue="Python.confluent_kafka_AvroProducer" />
+      <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SparkPi" />
-        <item itemvalue="Python.confluent_kafka_AvroProducer" />
+        <item itemvalue="Application.TransactionAvroStream" />
         <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.schemaregistry: Compose Deployment" />
         <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.kafkabroker: Compose Deployment" />
         <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.zookeeper: Compose Deployment" />
+        <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -404,14 +396,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00022" summary="2024-02-25 Change Project Packaging.">
-      <option name="closed" value="true" />
-      <created>1708844951370</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1708844951370</updated>
     </task>
     <task id="LOCAL-00023" summary="2024-02-25 Change Project Packaging.">
       <option name="closed" value="true" />
@@ -797,7 +781,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726184998325</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="2024-09-13 Update Setup configuration.">
+      <option name="closed" value="true" />
+      <created>1726189238065</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1726189238066</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -865,6 +857,16 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_static.py</url>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="scala-line">
+          <url>file://$PROJECT_DIR$/bd-spark-module/src/main/scala/org/examples/spark/streaming/structure/TransactionAvroStream.scala</url>
+          <line>116</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="scala-line">
+          <url>file://$PROJECT_DIR$/bd-spark-module/src/main/scala/org/examples/spark/streaming/structure/TransactionAvroStream.scala</url>
+          <line>136</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -7,6 +7,7 @@ version: "3.9"
 
 include:
   - path: ../bd-hadoop-sandbox/dc-minio.yml
+  - path: ../bd-hadoop-sandbox/dc-mysqlserver.yml
 
 #
 services:
@@ -17,6 +18,7 @@ services:
     hostname: notebook.sandbox.net
     depends_on:
       - minio
+      - mysqlserver
     #user: root
     ports:
       - "8888:8888"
@@ -55,10 +57,10 @@ services:
       - ./conf/hbase/client:/opt/hbase/conf
       - sandbox_hive_313:/opt/hive
       - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
-      - sandbox_spark_350:/opt/spark
+      - /opt/spark-3.4.1:/opt/spark
       - ./conf/spark/conf:/opt/spark/conf
       - sandbox_flink_112:/opt/flink
-      - sandbox_maven_363:/opt/maven-3.6.3
+      - /opt/maven-3.6.3:/opt/maven-3.6.3
     environment:
       ALLOW_ANONYMOUS_LOGIN: "yes"
     env_file:
