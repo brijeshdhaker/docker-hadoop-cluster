@@ -45,7 +45,7 @@ pyspark --jars /path/to/hadoop-azure-3.2.1.jar,/path/to/azure-storage-8.6.4.jar
 
 pyspark \
 --packages org.apache.hadoop:hadoop-azure:3.3.4,com.microsoft.azure:azure-storage:7.0.1 \
---conf "spark.jars.ivy=/apps/hostpath/.ivy2" \
+--conf "spark.jars.ivy=/apps/.ivy2" \
 --conf "spark.hadoop.fs.azure=org.apache.hadoop.fs.azure.NativeAzureFileSystem" \
 --conf "spark.hadoop.fs.defaultFS=wasb://warehouse@devstoreaccount1.blob.core.windows.net" \
 --conf "spark.hadoop.fs.azure.account.key.devstoreaccount1.blob.core.windows.net=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==" \
@@ -59,7 +59,7 @@ pyspark \
 
 $SPARK_HOME/bin/pyspark \
   --packages org.apache.hadoop:hadoop-azure:3.3.4,com.microsoft.azure:azure-storage:7.0.1 \
-  --conf spark.jars.ivy=/apps/hostpath/.ivy2 \
+  --conf spark.jars.ivy=/apps/.ivy2 \
   --conf spark.hadoop.fs.azure=org.apache.hadoop.fs.azure.NativeAzureFileSystem \
   --conf spark.hadoop.fs.azure.account.key.devstoreaccount1.blob.core.windows.net="Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==" \
   

@@ -4,8 +4,8 @@
 $SPARK_HOME/bin/spark-submit \
 --name "structured-stream" \
 --master local[*] \
---packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 \
---conf spark.jars.ivy=/apps/hostpath/.ivy2 
+--packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 \
+--conf spark.jars.ivy=/apps/.ivy2 
 ```
 
 # Kerberos
@@ -13,8 +13,8 @@ $SPARK_HOME/bin/spark-submit \
 $SPARK_HOME/bin/spark-submit \
 --name "structured-stream" \
 --master local[*] \
---conf "spark.driver.extraJavaOptions='-Divy.cache.dir=/apps/hostpath/.ivy2/cache -Divy.home=/apps/hostpath/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf'" \
---conf "spark.executor.extraJavaOptions='-Divy.cache.dir=/apps/hostpath/.ivy2/cache -Divy.home=/apps/hostpath/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf'" \
+--conf "spark.driver.extraJavaOptions='-Divy.cache.dir=/apps/.ivy2/cache -Divy.home=/apps/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf'" \
+--conf "spark.executor.extraJavaOptions='-Divy.cache.dir=/apps/.ivy2/cache -Divy.home=/apps/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf'" \
 --conf "spark.kerberos.keytab=/apps/security/keytabs/users/spark.keytab" \
 --conf "spark.kerberos.principal=spark@SANDBOX.NET" \
 ```
@@ -23,9 +23,9 @@ $SPARK_HOME/bin/spark-submit \
 ```shell
 $SPARK_HOME/bin/spark-shell \
 --packages "org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.4.3,org.apache.iceberg:iceberg-aws:1.4.3" \
---conf "spark.jars.ivy=/apps/hostpath/.ivy2" \
---conf "spark.driver.extraJavaOptions=-Divy.cache.dir=/apps/hostpath/.ivy2/cache -Divy.home=/apps/hostpath/.ivy2" \
---conf "spark.executor.extraJavaOptions=-Divy.cache.dir=/apps/hostpath/.ivy2/cache -Divy.home=/apps/hostpath/.ivy2" \
+--conf "spark.jars.ivy=/apps/.ivy2" \
+--conf "spark.driver.extraJavaOptions=-Divy.cache.dir=/apps/.ivy2/cache -Divy.home=/apps/.ivy2" \
+--conf "spark.executor.extraJavaOptions=-Divy.cache.dir=/apps/.ivy2/cache -Divy.home=/apps/.ivy2" \
  \
 ```
 
@@ -33,7 +33,7 @@ $SPARK_HOME/bin/spark-shell \
 ```shell
 $SPARK_HOME/bin/spark-shell \
 --packages io.delta:delta-core_2.12:1.0.0 \
---conf spark.jars.ivy=/apps/hostpath/.ivy2 \
+--conf spark.jars.ivy=/apps/.ivy2 \
 --conf spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension \
 --conf spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog \
 ```
@@ -42,7 +42,7 @@ $SPARK_HOME/bin/spark-shell \
 ```shell
 $SPARK_HOME/bin/spark-shell \
 --packages "org.apache.hadoop:hadoop-azure:3.3.1" \
---conf spark.jars.ivy=/apps/hostpath/.ivy2 \
+--conf spark.jars.ivy=/apps/.ivy2 \
 --conf "spark.hadoop.fs.defaultFS=wasb://warehouse@devstoreaccount1" \
 --conf "spark.hadoop.fs.azure.account.key.devstoreaccount1.blob.core.windows.net=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==" \
 --conf "spark.hadoop.fs.azure.storage.emulator.account.name=devstoreaccount1"
@@ -55,7 +55,7 @@ val df = spark.read.format("csv").option("header","true").load("/flight_data/air
 ```shell
 $SPARK_HOME/bin/spark-shell \
 --packages "org.apache.spark:spark-hadoop-cloud_2.12:3.5.0" \
---conf spark.jars.ivy=/apps/hostpath/.ivy2 \
+--conf spark.jars.ivy=/apps/.ivy2 \
 --conf spark.hadoop.fs.s3a.endpoint=http://minio.sandbox.net:9010 \
 --conf spark.hadoop.fs.s3a.access.key=ffaJ6a2MOj8mZ5lI3P6h \
 --conf spark.hadoop.fs.s3a.secret.key=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs \
@@ -94,7 +94,7 @@ ${SPARK_HOME}/bin/spark-shell \
 
 ${SPARK_HOME}/bin/spark-shell \
 --master yarn \
---conf spark.jars.ivy=/apps/hostpath/.ivy2 \
+--conf spark.jars.ivy=/apps/.ivy2 \
 --conf spark.kerberos.keytab=/apps/security/keytabs/users/zeppelin.keytab \
 --conf spark.kerberos.principal=zeppelin@SANDBOX.NET \
 --conf spark.security.credentials.hive.enabled=false \
@@ -105,12 +105,12 @@ ${SPARK_HOME}/bin/spark-shell \
 --conf spark.yarn.dist.files=/opt/spark/conf/log4j.properties \
 --conf spark.yarn.jars=${SPARK_HOME}/jars/iceberg-spark-runtime-3.5_2.12-1.4.3.jar \
 --conf spark.yarn.historyServer.allowTracking=true \
---conf spark.yarn.am.extraJavaOptions='-Divy.home=/apps/hostpath/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf -DAWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h -DAWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs' \
+--conf spark.yarn.am.extraJavaOptions='-Divy.home=/apps/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf -DAWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h -DAWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs' \
 --conf spark.eventLog.enabled=true \
 --conf spark.eventLog.dir=/apps/var/logs/spark \
 --conf spark.webui.yarn.useProxy=true \
---conf spark.driver.extraJavaOptions='-Divy.home=/apps/hostpath/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf -DAWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h -DAWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs' \
---conf spark.executor.extraJavaOptions='-Divy.home=/apps/hostpath/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf -DAWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h -DAWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs' \
+--conf spark.driver.extraJavaOptions='-Divy.home=/apps/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf -DAWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h -DAWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs' \
+--conf spark.executor.extraJavaOptions='-Divy.home=/apps/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf -DAWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h -DAWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs' \
 --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions \
 --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog \
 --conf spark.sql.catalog.spark_catalog.type=hive \

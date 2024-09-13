@@ -3,7 +3,7 @@
 $SPARK_HOME/bin/spark-submit \
 --name "spark-structured-avro-stream" \
 --master local[4] \
---packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 \
+--packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 \
 /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-python-module/src/main/com/example/streams/structured/structured-kafka-txn-stream.py
 
 """

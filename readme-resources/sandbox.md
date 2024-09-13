@@ -37,7 +37,7 @@ ${SPARK_HOME}/bin/spark-submit \
 --conf spark.yarn.queue=engineering \
 --conf spark.yarn.archive=hdfs://namenode:9000/archives/spark/spark-3.5.0.zip \
 --conf spark.yarn.submit.waitAppCompletion=false \
---conf spark.jars.packages=io.delta:delta-core_2.12:1.0.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 \
+--conf spark.jars.packages=io.delta:delta-core_2.12:1.0.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 \
 --conf spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension \
 --conf spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog \
 --conf spark.master=yarn \
@@ -77,7 +77,7 @@ ${SPARK_HOME}/bin/spark-submit \
 --conf "spark.executor.memory=640m" \
 --conf "spark.executor.cores=2" \
 --conf "spark.yarn.archive=hdfs://namenode:9000/archives/spark/spark-3.5.0.zip" \
---conf "spark.jars.packages=io.delta:delta-core_2.12:1.0.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0" \
+--conf "spark.jars.packages=io.delta:delta-core_2.12:1.0.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1" \
 --conf "spark.security.credentials.hive.enabled=false" \
 --conf "spark.security.credentials.hbase.enabled=false" \
 --conf "spark.kerberos.keytab=/apps/security/keytabs/users/zeppelin.keytab" \

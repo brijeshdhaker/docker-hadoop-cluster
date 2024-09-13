@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.examples.hadoop</groupId>
+        <artifactId>docker-hadoop-cluster</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>org.examples.spark</groupId>
+    <artifactId>bd-spark-module</artifactId>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <encoding>UTF-8</encoding>
+        <scala.version>2.12.17</scala.version>
+        <spark.scala>2.12</spark.scala>
+        <spark.version>3.4.1</spark.version>
+        <hbase.client.version>2.4.9</hbase.client.version>
+        <classifier>local</classifier>
+        <runclass>com.spark.SparkPi</runclass>
+        <params>10</params>
+    </properties>
+
+    <build>
+        <!--
+        <finalName>bd-spark-module</finalName>
+        -->
+        <sourceDirectory>src/main/scala</sourceDirectory>
+        <testSourceDirectory>src/test/scala</testSourceDirectory>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </testResource>
+        </testResources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>src/main/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>add-test-source</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>add-test-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>src/test/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.scala-tools</groupId>
+                <artifactId>maven-scala-plugin</artifactId>
+                <version>2.15.2</version>
+                <configuration>
+                    <excludes>META-INF/*.SF</excludes>
+                    <excludes>META-INF/*.DSA</excludes>
+                    <excludes>META-INF/*.RSA</excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                    <execution>
+                        <id>copy-artifact</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.basedir}/dist</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.basedir}/target</directory>
+                                    <includes>
+                                        <include>${project.build.finalName}.${project.packaging}</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <id>run-local</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <environmentVariables>
+                                <HADOOP_CONF_DIR>/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-docker-sandbox/conf/hadoop/conf</HADOOP_CONF_DIR>
+                                <YARN_CONF_DIR>/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-docker-sandbox/conf/hadoop/conf</YARN_CONF_DIR>
+                            </environmentVariables>
+                            <executable>spark-submit</executable>
+                            <arguments>
+                                <argument>--master</argument>
+                                <argument>local[4]</argument>
+                                <argument>--packages</argument>
+                                <argument>org.apache.spark:spark-streaming-kafka-0-10_2.12:${spark.version},org.apache.spark:spark-sql-kafka-0-10_2.12:${spark.version}</argument>
+                                <argument>--class</argument>
+                                <argument>${runclass}</argument>
+                                <argument>${project.build.directory}/${project.artifactId}-${project.version}.jar</argument>
+                                <argument>${params}</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>yarn-client</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <environmentVariables>
+                                <HADOOP_CONF_DIR>/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-docker-sandbox/conf/hadoop/conf</HADOOP_CONF_DIR>
+                                <YARN_CONF_DIR>/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-docker-sandbox/conf/hadoop/conf</YARN_CONF_DIR>
+                            </environmentVariables>
+                            <executable>spark-submit</executable>
+                            <arguments>
+                                <argument>--name</argument>
+                                <argument>spark-scala-example</argument>
+                                <argument>--master</argument>
+                                <argument>yarn</argument>
+                                <argument>--deploy-mode</argument>
+                                <argument>client</argument>
+                                <!-- -->
+                                <argument>--driver-memory</argument>
+                                <argument>640M</argument>
+                                <argument>--driver-cores</argument>
+                                <argument>1</argument>
+                                <argument>--num-executors</argument>
+                                <argument>2</argument>
+                                <argument>--executor-memory</argument>
+                                <argument>640M</argument>
+                                <argument>--executor-cores</argument>
+                                <argument>2</argument>
+                                <!-- -->
+                                <argument>--conf</argument>
+                                <argument>spark.yarn.queue=spark.client</argument>
+                                <argument>--conf</argument>
+                                <argument>spark.yarn.archive=hdfs://namenode:9000/archives/spark-${spark.version}.zip</argument>
+                                <!-- -->
+                                <argument>--packages</argument>
+                                <argument>org.apache.spark:spark-streaming-kafka-0-10_2.12:${spark.version},org.apache.spark:spark-sql-kafka-0-10_2.12:${spark.version}</argument>
+                                <argument>--class</argument>
+                                <argument>${runclass}</argument>
+                                <argument>${project.build.directory}/${project.artifactId}-${project.version}.jar</argument>
+                                <argument>${params}</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>yarn-cluster</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <environmentVariables>
+                                <HADOOP_CONF_DIR>/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-docker-sandbox/conf/hadoop/conf</HADOOP_CONF_DIR>
+                                <YARN_CONF_DIR>/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-docker-sandbox/conf/hadoop/conf</YARN_CONF_DIR>
+                            </environmentVariables>
+                            <executable>spark-submit</executable>
+                            <arguments>
+                                <argument>--name</argument>
+                                <argument>spark-scala-example</argument>
+                                <argument>--master</argument>
+                                <argument>yarn</argument>
+                                <argument>--deploy-mode</argument>
+                                <argument>cluster</argument>
+                                <!-- -->
+                                <argument>--driver-memory</argument>
+                                <argument>640M</argument>
+                                <argument>--driver-cores</argument>
+                                <argument>1</argument>
+                                <argument>--num-executors</argument>
+                                <argument>2</argument>
+                                <argument>--executor-memory</argument>
+                                <argument>640M</argument>
+                                <argument>--executor-cores</argument>
+                                <argument>2</argument>
+                                <!-- -->
+                                <argument>--conf</argument>
+                                <argument>spark.yarn.queue=spark.cluster</argument>
+                                <argument>--conf</argument>
+                                <argument>spark.yarn.archive=hdfs://namenode:9000/archives/spark-${spark.version}.zip</argument>
+                                <!-- -->
+                                <argument>--packages</argument>
+                                <argument>org.apache.spark:spark-streaming-kafka-0-10_${spark.scala}:${spark.version},org.apache.spark:spark-sql-kafka-0-10_${spark.scala}:${spark.version}</argument>
+                                <argument>--class</argument>
+                                <argument>${runclass}</argument>
+                                <argument>${project.build.directory}/${project.artifactId}-${project.version}.jar</argument>
+                                <argument>${params}</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Use the shade plugin to remove all the provided artifacts (such as spark itself) from the jar -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+                    <!-- Remove signed keys to prevent security exceptions on uber jar -->
+                    <!-- See https://stackoverflow.com/a/6743609/7245239 -->
+                    <filters>
+                        <filter>
+                            <artifact>*:*</artifact>
+                            <excludes>
+                                <exclude>META-INF/*.SF</exclude>
+                                <exclude>META-INF/*.DSA</exclude>
+                                <exclude>META-INF/*.RSA</exclude>
+                            </excludes>
+                        </filter>
+                    </filters>
+                    <transformers>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                            <mainClass>net.martinprobson.spark.SparkTest</mainClass>
+                        </transformer>
+                    </transformers>
+                    <artifactSet>
+                        <excludes>
+                            <exclude>javax.servlet:*</exclude>
+                            <exclude>org.apache.hadoop:*</exclude>
+                            <exclude>org.apache.maven.plugins:*</exclude>
+                            <exclude>org.apache.spark:*</exclude>
+                            <exclude>org.apache.avro:*</exclude>
+                            <exclude>org.apache.parquet:*</exclude>
+                            <exclude>org.scala-lang:*</exclude>
+                        </excludes>
+                    </artifactSet>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.scala-lang/scala-library -->
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_${spark.scala}</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_${spark.scala}</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-hive_${spark.scala}</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+
+        <!--
+        <dependency>
+             <groupId>org.apache.spark</groupId>
+             <artifactId>spark-yarn_${spark.scala}</artifactId>
+             <version>${spark.version}</version>
+         </dependency>
+         -->
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming_${spark.scala}</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+
+        <!-- org.apache.spark:spark-streaming-kafka-0-10_2.12:3.4.1 -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming-kafka-0-10_${spark.scala}</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+
+        <!-- org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql-kafka-0-10_${spark.scala}</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+
+        <!--
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-mllib_${spark.scala}</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        -->
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.23</version>
+        </dependency>
+
+    </dependencies>
+</project>

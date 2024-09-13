@@ -93,7 +93,7 @@ docker volume create --name sandbox_krb5_principal --opt type=none --opt device=
 
 docker volume create --name sandbox_maven_363 --opt type=none --opt device=/opt/maven-3.6.3 --opt o=bind
 docker volume create --name sandbox_m2 --opt type=none --opt device=/apps/hostpath/.m2 --opt o=bind
-docker volume create --name sandbox_ivy2 --opt type=none --opt device=/apps/hostpath/.ivy2 --opt o=bind
+docker volume create --name sandbox_ivy2 --opt type=none --opt device=/apps/.ivy2 --opt o=bind
 
 docker volume create --name sandbox_zookeeper_371 --opt type=none --opt device=/apps/sandbox/zookeeper-3.7.1 --opt o=bind
 

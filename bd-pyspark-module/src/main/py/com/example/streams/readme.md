@@ -118,31 +118,31 @@ spark-submit \
 spark-submit \
 --name "structured-kafka-stream" \
 --master local[4] \
---packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 \
+--packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 \
 /home/brijeshdhaker/IdeaProjects/spark-python-examples/src/main/py/com/example/streams/structured/KafkaStreamDemo.py
 
 spark-submit \
 --name "structured-kafka-stream" \
 --master local[4] \
---packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 \
+--packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 \
 /home/brijeshdhaker/IdeaProjects/pyspark-examples/src/main/py/com/example/streams/structured/structured-kafka-stream.py
 
 spark-submit \
 --name "structured-kafka-stream" \
 --master yarn \
---packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 \
+--packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 \
 /home/brijeshdhaker/IdeaProjects/pyspark-examples/src/main/py/com/example/streams/structured/structured-kafka-stream.py
 
 
 spark-submit ^
 --name "structured-kafka-stream" ^
 --master local[4] ^
---packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 ^
+--packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 ^
 C:\Users\brije\IdeaProjects\spark-python-examples\src\main\py\com\example\streams\structured\structured-kafka-stream.py
 
 
-spark-submit --name "structured-kafka-stream" --master local[4] --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 structured-kafka-stream.py
-spark-submit --name "structured-delimiter-stream" --master local[4] --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 src/main/py/com/example/streams/structured/structured-delimiter-stream.py
+spark-submit --name "structured-kafka-stream" --master local[4] --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 structured-kafka-stream.py
+spark-submit --name "structured-delimiter-stream" --master local[4] --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 src/main/py/com/example/streams/structured/structured-delimiter-stream.py
 
 
 spark-submit \
