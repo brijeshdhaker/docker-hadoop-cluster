@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/bd-docker-sandbox/bd-docker-sandbox.iml" filepath="$PROJECT_DIR$/bd-docker-sandbox/bd-docker-sandbox.iml" />
       <module fileurl="file://$PROJECT_DIR$/bd-hadoop-sandbox/bd-hadoop-sandbox.iml" filepath="$PROJECT_DIR$/bd-hadoop-sandbox/bd-hadoop-sandbox.iml" />
       <module fileurl="file://$PROJECT_DIR$/bd-pyspark-module/bd-pyspark-module.iml" filepath="$PROJECT_DIR$/bd-pyspark-module/bd-pyspark-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bd-setup-module/bd-setup-module.iml" filepath="$PROJECT_DIR$/bd-setup-module/bd-setup-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/readme-resources/readme-resources.iml" filepath="$PROJECT_DIR$/readme-resources/readme-resources.iml" />
     </modules>
   </component>
 </project>
