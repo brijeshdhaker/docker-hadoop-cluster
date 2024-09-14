@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/bd-flink-operations/pom.xml" />
         <option value="$PROJECT_DIR$/bd-data-generator/pom.xml" />
         <option value="$PROJECT_DIR$/flink-playground/pom.xml" />
+        <option value="$PROJECT_DIR$/bd-spark-module/pom.xml" />
       </list>
     </option>
   </component>
