@@ -1,0 +1,1221 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.conf\n\n#\nspark.app.name kafka-streaming-example\n\n#\nspark.jars.packages io.delta:delta-core_2.12:1.0.0,org.apache.spark:spark-streaming-kafka-0-10_2.12:3.1.2\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 15:52:50.937",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669862027817_958609251",
+      "id": "paragraph_1669862027817_958609251",
+      "dateCreated": "2022-12-01 02:33:47.817",
+      "dateStarted": "2022-12-01 15:52:50.946",
+      "dateFinished": "2022-12-01 15:52:50.958",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n\n# Topic - Creation\nkafka-topics --create --bootstrap-server kafka-broker:9092 --partitions 1 --replication-factor 1 --topic tweeter-tweets --if-not-exists",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 08:46:30.299",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eTopic - Creation\u003c/h1\u003e\n\u003cp\u003ekafka-topics \u0026ndash;create \u0026ndash;bootstrap-server kafka-broker:9092 \u0026ndash;partitions 1 \u0026ndash;replication-factor 1 \u0026ndash;topic tweeter-tweets \u0026ndash;if-not-exists\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669871136690_1708362457",
+      "id": "paragraph_1669871136690_1708362457",
+      "dateCreated": "2022-12-01 05:05:36.690",
+      "dateStarted": "2022-12-01 08:46:30.299",
+      "dateFinished": "2022-12-01 08:46:30.312",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n\n`In general, you should store data in a MANAGED table:`\n\n    When you wish to use Spark as a database to perform ad hoc or interactive queries to explore and visualize data sets → for instance, you could devise an ETL pipeline in Spark that eventually stores data in a managed table and then use a JDBC-ODBC connector to query this table via Looker, Tableau, Power BI and other BI Tools.\n    When you are working on a project and wish to temporarily save data in Spark for additional manipulation or testing, before writing it to the final location → for instance, managed tables could be handy while building, training and evaluating machine learning models in Spark, as they remove the need for an external storage to save partial iterations.\n    When you wish for Spark to take care of the complete lifecycle of the table data including its deletion or are concerned about security in the external file system → if data does not need to be shared with other clients immediately or there are security concerns, then saving data in the Spark warehouse could be a valid temporary solution.\n    When you are not worried about data reproducibility → if data can easily be retrieved from other sources or the computational effort that takes to transform it is not too extensive, then the risk of erroneously drop a managed table is more contained.\n\n`You should instead store data in an EXTERNAL table:`\n\n    When you cannot create a table based on an existing DataFrame or view already available in your SparkSession, that comes with an inferred schema → in this case you must provide a preferred location and specify the correct field types.\n    When Spark is mainly employed to process large data sets in parallel, by distributing them across a cluster, or to implement end-to-end data pipelines through batches or streams→ in this case Spark is generally used for the computational heavy lifting, but data is eventually stored into an external data-lake or written to the final cloud data warehouse.\n    When data needs to remain in the specified external location even after deleting the unmanaged table in Spark→ this is often the case when there are multiple tables or schemas that are built on the top of the same data and you don’t wish to jeopardize their integrity.\n    When Spark should not own data lifecycle, like controlling settings, directories and schemas → for example you might already have another solution in place to cover these tasks.",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 16:53:24.246",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003ccode\u003eIn general, you should store data in a MANAGED table:\u003c/code\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eWhen you wish to use Spark as a database to perform ad hoc or interactive queries to explore and visualize data sets → for instance, you could devise an ETL pipeline in Spark that eventually stores data in a managed table and then use a JDBC-ODBC connector to query this table via Looker, Tableau, Power BI and other BI Tools.\nWhen you are working on a project and wish to temporarily save data in Spark for additional manipulation or testing, before writing it to the final location → for instance, managed tables could be handy while building, training and evaluating machine learning models in Spark, as they remove the need for an external storage to save partial iterations.\nWhen you wish for Spark to take care of the complete lifecycle of the table data including its deletion or are concerned about security in the external file system → if data does not need to be shared with other clients immediately or there are security concerns, then saving data in the Spark warehouse could be a valid temporary solution.\nWhen you are not worried about data reproducibility → if data can easily be retrieved from other sources or the computational effort that takes to transform it is not too extensive, then the risk of erroneously drop a managed table is more contained.\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003ccode\u003eYou should instead store data in an EXTERNAL table:\u003c/code\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eWhen you cannot create a table based on an existing DataFrame or view already available in your SparkSession, that comes with an inferred schema → in this case you must provide a preferred location and specify the correct field types.\nWhen Spark is mainly employed to process large data sets in parallel, by distributing them across a cluster, or to implement end-to-end data pipelines through batches or streams→ in this case Spark is generally used for the computational heavy lifting, but data is eventually stored into an external data-lake or written to the final cloud data warehouse.\nWhen data needs to remain in the specified external location even after deleting the unmanaged table in Spark→ this is often the case when there are multiple tables or schemas that are built on the top of the same data and you don’t wish to jeopardize their integrity.\nWhen Spark should not own data lifecycle, like controlling settings, directories and schemas → for example you might already have another solution in place to cover these tasks.\n\u003c/code\u003e\u003c/pre\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669913580497_1224389537",
+      "id": "paragraph_1669913580497_1224389537",
+      "dateCreated": "2022-12-01 16:53:00.497",
+      "dateStarted": "2022-12-01 16:53:24.246",
+      "dateFinished": "2022-12-01 16:53:26.171",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\ndrop table IF EXISTS tweeter_tweets;\n\nCREATE TABLE if not exists tweeter_tweets (\n    uuid STRING,\n    text STRING, \n    words INT, \n    length INT,\n    `timestamp` BIGINT\n)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:15:13.184",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669887389525_233143257",
+      "id": "paragraph_1669887389525_233143257",
+      "dateCreated": "2022-12-01 09:36:29.525",
+      "dateStarted": "2022-12-01 17:11:02.002",
+      "dateFinished": "2022-12-01 17:11:02.101",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nspark.sql(\"desc formatted default.tweeter_tweets\").show(Integer.MAX_VALUE, truncate \u003d false)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:20:24.140",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------------------------+-------------------------------------------------------+-------+\n|col_name                    |data_type                                              |comment|\n+----------------------------+-------------------------------------------------------+-------+\n|uuid                        |string                                                 |null   |\n|text                        |string                                                 |null   |\n|words                       |int                                                    |null   |\n|length                      |int                                                    |null   |\n|timestamp                   |int                                                    |null   |\n|                            |                                                       |       |\n|# Detailed Table Information|                                                       |       |\n|Database                    |default                                                |       |\n|Table                       |tweeter_tweets                                         |       |\n|Owner                       |zeppelin                                               |       |\n|Created Time                |Thu Dec 01 17:17:50 UTC 2022                           |       |\n|Last Access                 |UNKNOWN                                                |       |\n|Created By                  |Spark 3.1.2                                            |       |\n|Type                        |MANAGED                                                |       |\n|Provider                    |hive                                                   |       |\n|Table Properties            |[transient_lastDdlTime\u003d1669915113]                     |       |\n|Statistics                  |2420 bytes                                             |       |\n|Location                    |hdfs://namenode:9000/user/hive/warehouse/tweeter_tweets|       |\n|Serde Library               |org.apache.hadoop.hive.ql.io.orc.OrcSerde              |       |\n|InputFormat                 |org.apache.hadoop.hive.ql.io.orc.OrcInputFormat        |       |\n|OutputFormat                |org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat       |       |\n|Storage Properties          |[serialization.format\u003d1]                               |       |\n|Partition Provider          |Catalog                                                |       |\n+----------------------------+-------------------------------------------------------+-------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669915217794_1424624890",
+      "id": "paragraph_1669915217794_1424624890",
+      "dateCreated": "2022-12-01 17:20:17.794",
+      "dateStarted": "2022-12-01 17:20:24.142",
+      "dateFinished": "2022-12-01 17:20:24.274",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\ndrop table IF EXISTS tweeter_tweets;\n\ncreate table tweeter_tweets (\n    uuid STRING, \n    text STRING, \n    words INT, \n    length INT, \n    `timestamp` BIGINT\n)\nSTORED AS ORC\nLOCATION  \u0027hdfs://namenode:9000/user/hive/warehouse/tweeter_tweets\u0027\nTBLPROPERTIES (\n\t\"hive.exec.dynamic.partition\"\u003d\"true\",\n\t\"hive.exec.dynamic.partition.mode\"\u003d\"nonstrict\",\n\t\"orc.compress\"\u003d\"SNAPPY\"\n);\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:15:36.833",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669910700030_522658676",
+      "id": "paragraph_1669910700030_522658676",
+      "dateCreated": "2022-12-01 16:05:00.030",
+      "dateStarted": "2022-12-01 17:14:18.604",
+      "dateFinished": "2022-12-01 17:14:18.673",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nspark.sql(\"desc formatted default.tweeter_tweets\").show(Integer.MAX_VALUE, truncate \u003d false)",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:20:36.170",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------------------------+-------------------------------------------------------+-------+\n|col_name                    |data_type                                              |comment|\n+----------------------------+-------------------------------------------------------+-------+\n|uuid                        |string                                                 |null   |\n|text                        |string                                                 |null   |\n|words                       |int                                                    |null   |\n|length                      |int                                                    |null   |\n|timestamp                   |int                                                    |null   |\n|                            |                                                       |       |\n|# Detailed Table Information|                                                       |       |\n|Database                    |default                                                |       |\n|Table                       |tweeter_tweets                                         |       |\n|Owner                       |zeppelin                                               |       |\n|Created Time                |Thu Dec 01 17:17:50 UTC 2022                           |       |\n|Last Access                 |UNKNOWN                                                |       |\n|Created By                  |Spark 3.1.2                                            |       |\n|Type                        |MANAGED                                                |       |\n|Provider                    |hive                                                   |       |\n|Table Properties            |[transient_lastDdlTime\u003d1669915113]                     |       |\n|Statistics                  |2420 bytes                                             |       |\n|Location                    |hdfs://namenode:9000/user/hive/warehouse/tweeter_tweets|       |\n|Serde Library               |org.apache.hadoop.hive.ql.io.orc.OrcSerde              |       |\n|InputFormat                 |org.apache.hadoop.hive.ql.io.orc.OrcInputFormat        |       |\n|OutputFormat                |org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat       |       |\n|Storage Properties          |[serialization.format\u003d1]                               |       |\n|Partition Provider          |Catalog                                                |       |\n+----------------------------+-------------------------------------------------------+-------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669915229544_1617838405",
+      "id": "paragraph_1669915229544_1617838405",
+      "dateCreated": "2022-12-01 17:20:29.544",
+      "dateStarted": "2022-12-01 17:20:36.172",
+      "dateFinished": "2022-12-01 17:20:36.338",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n\ndrop table IF EXISTS tweeter_tweets;\n\nCREATE TABLE tweeter_tweets(\n    uuid STRING,\n    text STRING, \n    words INT, \n    length INT,\n    `timestamp` BIGINT\n) \nUSING hive OPTIONS(fileFormat \u0027orc\u0027)",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:16:43.389",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669887996171_1145247406",
+      "id": "paragraph_1669887996171_1145247406",
+      "dateCreated": "2022-12-01 09:46:36.171",
+      "dateStarted": "2022-12-01 17:16:43.392",
+      "dateFinished": "2022-12-01 17:16:43.700",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nspark.sql(\"desc formatted default.tweeter_tweets\").show(Integer.MAX_VALUE, truncate \u003d false)",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:21:02.816",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669915253991_89345537",
+      "id": "paragraph_1669915253991_89345537",
+      "dateCreated": "2022-12-01 17:20:53.992",
+      "status": "READY"
+    },
+    {
+      "text": "%spark.sql\n\ndrop table IF EXISTS tweeter_tweets;\n\nCREATE TABLE tweeter_tweets (\n    uuid STRING,\n    text STRING, \n    words INT, \n    length INT,\n    `timestamp` int\n)\nSTORED AS ORC;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:17:49.963",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669913857316_1360019449",
+      "id": "paragraph_1669913857316_1360019449",
+      "dateCreated": "2022-12-01 16:57:37.316",
+      "dateStarted": "2022-12-01 17:17:49.965",
+      "dateFinished": "2022-12-01 17:17:50.253",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nspark.sql(\"desc formatted default.tweeter_tweets\").show(Integer.MAX_VALUE, truncate \u003d false)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:21:12.169",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669915262988_1443442660",
+      "id": "paragraph_1669915262988_1443442660",
+      "dateCreated": "2022-12-01 17:21:02.988",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\n\nspark.sql(\"desc formatted default.tweeter_tweets\").show(Integer.MAX_VALUE, truncate \u003d false)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:20:07.002",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------------------------+-------------------------------------------------------+-------+\n|col_name                    |data_type                                              |comment|\n+----------------------------+-------------------------------------------------------+-------+\n|uuid                        |string                                                 |null   |\n|text                        |string                                                 |null   |\n|words                       |int                                                    |null   |\n|length                      |int                                                    |null   |\n|timestamp                   |int                                                    |null   |\n|                            |                                                       |       |\n|# Detailed Table Information|                                                       |       |\n|Database                    |default                                                |       |\n|Table                       |tweeter_tweets                                         |       |\n|Owner                       |zeppelin                                               |       |\n|Created Time                |Thu Dec 01 17:17:50 UTC 2022                           |       |\n|Last Access                 |UNKNOWN                                                |       |\n|Created By                  |Spark 3.1.2                                            |       |\n|Type                        |MANAGED                                                |       |\n|Provider                    |hive                                                   |       |\n|Table Properties            |[transient_lastDdlTime\u003d1669915113]                     |       |\n|Statistics                  |2420 bytes                                             |       |\n|Location                    |hdfs://namenode:9000/user/hive/warehouse/tweeter_tweets|       |\n|Serde Library               |org.apache.hadoop.hive.ql.io.orc.OrcSerde              |       |\n|InputFormat                 |org.apache.hadoop.hive.ql.io.orc.OrcInputFormat        |       |\n|OutputFormat                |org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat       |       |\n|Storage Properties          |[serialization.format\u003d1]                               |       |\n|Partition Provider          |Catalog                                                |       |\n+----------------------------+-------------------------------------------------------+-------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669910342802_1850326470",
+      "id": "paragraph_1669910342802_1850326470",
+      "dateCreated": "2022-12-01 15:59:02.802",
+      "dateStarted": "2022-12-01 17:20:07.004",
+      "dateFinished": "2022-12-01 17:20:07.145",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nimport org.apache.spark.sql.types.{IntegerType, StringType, LongType, StructField, StructType}\nimport org.apache.spark.sql.{Row, SaveMode, SparkSession}\n\n// create DataFrame from scala Seq. It can infer schema for you.\nval df \u003d spark.createDataFrame(Seq(\n    (\"cd56bef5-997b-47c1-8edc-6657c806bbf7\", \"Hello world\", 2, 10, 1669888540), \n    (\"c719729d-34f4-4306-a646-f495d7edbb58\", \"Brijesh Kumar Dhaker\", 3, 16, 1669888545), \n    (\"c719729d-34f4-4306-a646-f495d7edbb59\", \"james\", 1, 5, 1669888550)\n)).toDF(\"uuid\", \"text\", \"words\", \"length\", \"timestamp\")\n\ndf.printSchema\ndf.show()\n\n// Turn on flag for Hive Dynamic Partitioning\nspark.conf.set(\"hive.exec.dynamic.partition\", \"true\")\nspark.conf.set(\"hive.exec.dynamic.partition.mode\", \"nonstrict\")\ndf.write.format(\"hive\").mode(SaveMode.Append).saveAsTable(\"default.tweeter_tweets\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 18:11:40.193",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- uuid: string (nullable \u003d true)\n |-- text: string (nullable \u003d true)\n |-- words: integer (nullable \u003d false)\n |-- length: integer (nullable \u003d false)\n |-- timestamp: integer (nullable \u003d false)\n\n+--------------------+--------------------+-----+------+----------+\n|                uuid|                text|words|length| timestamp|\n+--------------------+--------------------+-----+------+----------+\n|cd56bef5-997b-47c...|         Hello world|    2|    10|1669888540|\n|c719729d-34f4-430...|Brijesh Kumar Dhaker|    3|    16|1669888545|\n|c719729d-34f4-430...|               james|    1|     5|1669888550|\n+--------------------+--------------------+-----+------+----------+\n\nimport org.apache.spark.sql.types.{IntegerType, StringType, LongType, StructField, StructType}\nimport org.apache.spark.sql.{Row, SaveMode, SparkSession}\n\u001b[1m\u001b[34mdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [uuid: string, text: string ... 3 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669908656623_0001//jobs/job?id\u003d8"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669909548879_122967006",
+      "id": "paragraph_1669909548879_122967006",
+      "dateCreated": "2022-12-01 15:45:48.879",
+      "dateStarted": "2022-12-01 17:18:32.840",
+      "dateFinished": "2022-12-01 17:18:33.494",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\n--\nselect * from tweeter_tweets;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:18:36.439",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "uuid": "string",
+                      "text": "string",
+                      "words": "string",
+                      "length": "string",
+                      "timestamp": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "uuid\ttext\twords\tlength\ttimestamp\ncd56bef5-997b-47c1-8edc-6657c806bbf7\tHello world\t2\t10\t1669888540\nc719729d-34f4-4306-a646-f495d7edbb58\tBrijesh Kumar Dhaker\t3\t16\t1669888545\nc719729d-34f4-4306-a646-f495d7edbb59\tjames\t1\t5\t1669888550\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669887513507_2053136798",
+      "id": "paragraph_1669887513507_2053136798",
+      "dateCreated": "2022-12-01 09:38:33.507",
+      "dateStarted": "2022-12-01 17:18:36.440",
+      "dateFinished": "2022-12-01 17:18:36.544",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Write To Hive Table",
+      "text": "%spark\n\nimport org.apache.kafka.common.serialization.StringDeserializer\nimport org.apache.spark.rdd.RDD\nimport org.apache.spark.sql.types.{IntegerType, StringType, LongType, StructField, StructType}\nimport org.apache.spark.sql.{Row, SaveMode, SparkSession}\nimport org.apache.spark.streaming.kafka010.ConsumerStrategies.Subscribe\nimport org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent\nimport org.apache.spark.streaming.kafka010._\nimport org.apache.spark.streaming.{Durations, StreamingContext}\nimport org.apache.spark.{SparkConf, SparkContext}\n//\nimport java.util.UUID\nimport java.time.Instant\n\n//\nsc.setLogLevel(\"ERROR\")\n\nval ssc \u003d new StreamingContext(sc, Durations.seconds(10))\n\nval kafkaParams \u003d Map[String, Object](\n    \"bootstrap.servers\" -\u003e \"kafka-broker:19092\",\n    \"key.deserializer\" -\u003e classOf[StringDeserializer],\n    \"value.deserializer\" -\u003e classOf[StringDeserializer],\n    \"group.id\" -\u003e \"hive-dstream-cg\",\n    \"auto.offset.reset\" -\u003e \"latest\",\n    \"enable.auto.commit\" -\u003e (false: java.lang.Boolean)\n)\n\n//\nval topics \u003d Array(\"tweeter-tweets\")\n\n//\nval stream \u003d KafkaUtils.createDirectStream[String, String](ssc, PreferConsistent, Subscribe[String, String](topics, kafkaParams))\n\n//\nval lines \u003d stream.map(record \u003d\u003e (record.key, record.value))\n\ndef processRecord(rdd: RDD[(String,String)]): Unit \u003d{\n\n    // 1 - Create a SchemaRDD object from the rdd and specify the schema\n    val recordsRDD \u003d rdd.map(x \u003d\u003e (Row(\n        UUID.randomUUID().toString, \n        x._2, \n        x._2.split(\" \").size, \n        x._2.size, \n        Instant.now.getEpochSecond\n    )))\n\n    //\n    val schema \u003d StructType( Array(\n      StructField(\"uuid\", StringType, true),\n      StructField(\"text\", StringType, true),\n      StructField(\"words\", IntegerType, true),\n      StructField(\"length\", IntegerType, true),\n      StructField(\"timestamp\", LongType, true)\n    ))\n    \n    //    \n    val recordsDF \u003d spark.createDataFrame(recordsRDD, schema)\n    recordsDF.show()\n    \n    // Turn on flag for Hive Dynamic Partitioning\n    spark.conf.set(\"hive.exec.dynamic.partition\", \"true\")\n    spark.conf.set(\"hive.exec.dynamic.partition.mode\", \"nonstrict\")\n    recordsDF.write.format(\"hive\").mode(SaveMode.Append).saveAsTable(\"default.tweeter_tweets\")\n\n    \n}\n  \n//\nlines.foreachRDD(rdd \u003d\u003e processRecord(rdd))\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:54:08.755",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.apache.kafka.common.serialization.StringDeserializer\nimport org.apache.spark.rdd.RDD\nimport org.apache.spark.sql.types.{IntegerType, StringType, LongType, StructField, StructType}\nimport org.apache.spark.sql.{Row, SaveMode, SparkSession}\nimport org.apache.spark.streaming.kafka010.ConsumerStrategies.Subscribe\nimport org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent\nimport org.apache.spark.streaming.kafka010._\nimport org.apache.spark.streaming.{Durations, StreamingContext}\nimport org.apache.spark.{SparkConf, SparkContext}\nimport java.util.UUID\nimport java.time.Instant\n\u001b[1m\u001b[34mssc\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.streaming.StreamingContext\u001b[0m \u003d org.apache.spark.streaming.StreamingContext@705539a\n\u001b[1m\u001b[34mkafkaParams\u001b[0m: \u001b[1m\u001b[32mscala.collection.immutable....\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669882814671_354394378",
+      "id": "paragraph_1669882814671_354394378",
+      "dateCreated": "2022-12-01 08:20:14.671",
+      "dateStarted": "2022-12-01 17:54:08.759",
+      "dateFinished": "2022-12-01 17:54:09.264",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\n// Run the streaming job\nssc.start()\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 18:12:27.279",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "java.lang.RuntimeException\n\tat org.apache.zeppelin.interpreter.remote.PooledRemoteClient.callRemoteFunction(PooledRemoteClient.java:119)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterProcess.callRemoteFunction(RemoteInterpreterProcess.java:100)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreter.interpret(RemoteInterpreter.java:208)\n\tat org.apache.zeppelin.notebook.Paragraph.jobRun(Paragraph.java:484)\n\tat org.apache.zeppelin.notebook.Paragraph.jobRun(Paragraph.java:69)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:172)\n\tat org.apache.zeppelin.scheduler.AbstractScheduler.runJob(AbstractScheduler.java:132)\n\tat org.apache.zeppelin.scheduler.RemoteScheduler$JobRunner.run(RemoteScheduler.java:182)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\tat java.lang.Thread.run(Thread.java:748)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669882961505_817264922",
+      "id": "paragraph_1669882961505_817264922",
+      "dateCreated": "2022-12-01 08:22:41.505",
+      "dateStarted": "2022-12-01 17:54:19.895",
+      "dateFinished": "2022-12-01 18:00:48.807",
+      "status": "ABORT"
+    },
+    {
+      "text": "%spark\n\n// Wait for Stop Signal\nssc.awaitTermination()\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 18:14:59.452",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true,
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669918347457_1791409367",
+      "id": "paragraph_1669918347457_1791409367",
+      "dateCreated": "2022-12-01 18:12:27.457",
+      "status": "READY"
+    },
+    {
+      "text": "%spark.sql\n\nshow tables;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:56:13.276",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "database": "string",
+                      "tableName": "string",
+                      "isTemporary": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "database\ttableName\tisTemporary\ndefault\tglobal_external_table\tfalse\ndefault\tglobal_managed_table\tfalse\ndefault\toptrans_tbl\tfalse\ndefault\tpermanent_view\tfalse\ndefault\tproduct_revenue\tfalse\ndefault\tsales_delta_managed\tfalse\ndefault\ttransact_tbl\tfalse\ndefault\ttransaction_detail_hive_tbl\tfalse\ndefault\ttransaction_details\tfalse\ndefault\ttransaction_details_orc\tfalse\ndefault\ttransaction_details_parquet\tfalse\ndefault\ttweeter_tweets\tfalse\n\tmy_local_view\ttrue\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669879145965_226257797",
+      "id": "paragraph_1669879145965_226257797",
+      "dateCreated": "2022-12-01 07:19:05.965",
+      "dateStarted": "2022-12-01 17:56:13.280",
+      "dateFinished": "2022-12-01 17:56:13.369",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n\nSELECT uuid, `text`, words, length, `timestamp`\nFROM `tweeter_tweets`  \n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:56:24.693",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "uuid": "string",
+                      "text": "string",
+                      "words": "string",
+                      "length": "string",
+                      "timestamp": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "uuid\ttext\twords\tlength\ttimestamp\nf4f251db-b79d-4d10-b78a-26e4199529bb\tmax\u0027s reenlisted anchor smoke\u0027s vireos \t5\t39\t1669917330\nb402f72a-c0f6-41c3-b382-57d1a4908c18\tfiction\u0027s mortifying \t2\t21\t1669917330\n48667155-99b0-4b8f-96af-57dace6759f3\tpersuaded tags prescriptive Mabel\u0027s \t4\t36\t1669917330\na375cdd6-4858-451a-8ba8-aa2ed0f07868\tBrest\u0027s detective Harold opus\u0027s citations attenuate \t6\t52\t1669917330\nc967c97b-d5fe-4291-9195-84ba296dcca9\tborrowed predictably ideology\u0027s Kane blazes \t5\t44\t1669917330\n99f2c227-5782-44d6-90a5-c7a228d43add\tunworthiness trolly tinkle nematode hangovers grids ifs \t7\t56\t1669917330\n53a665ba-b4b3-4763-8a07-58a49318209f\tHereford underexpose ROTC Orinoco cologne\u0027s annuls Hormuz\u0027s \t7\t60\t1669917310\n4f31ca65-acfa-46fa-993b-ea2f6490b1e5\tjazz\u0027s encroaches Yahtzee \t3\t26\t1669917310\n61688715-ed5f-416e-b993-4c14d6fd01f7\tprofundities disconsolately Rolvaag\u0027s sandlot\u0027s fluorite\u0027s vertiginous \t6\t71\t1669917310\n3856467d-e040-4036-bcb6-e3f89fbf9060\tPhrygia\u0027s relevancy\u0027s \t2\t22\t1669917310\n8c54b00e-60e6-4dc6-92da-e21f36b0e647\tmisunderstand wrestlers spelled including Cameron\u0027s babysat \t6\t60\t1669917360\n0ccf70cc-c04c-4a6f-9544-ea095346ba83\tHippocrates stymies departed\u0027s buttonholes daft \t5\t48\t1669917360\ne5de8dde-0ab6-43c0-aa7a-3de635be51e0\tCal envoy\u0027s ascertains engagingly whipcord\u0027s undergraduate\u0027s canard\u0027s \t7\t70\t1669917360\n293276fb-a9bd-422d-a654-fdf05016f4e8\tCardenas\u0027s pomading scandalized upcountry\u0027s divination \t5\t55\t1669917280\n94771305-5055-4c35-98bc-a4b418ba06eb\tGiannini canonize partook torte\u0027s unprepared earners \t6\t53\t1669917280\n2d5f3ff8-65ff-48da-a41b-1ad8a9194742\tfairness cranberry\u0027s assault\u0027s vogue\u0027s leverage \t5\t48\t1669917280\nf0e4a288-3228-4aa0-a2f6-38abe028619f\tchassis\u0027s subtitle\u0027s motorcade\u0027s \t3\t33\t1669917280\ne7d2d0c8-aee7-484e-b1c2-edea1cdad15d\twarrantied Chapman\u0027s I\u0027d centralized phoneme\u0027s \t5\t47\t1669917320\n58059ab6-9b07-4705-ada3-9310b8bb2e88\tgangrenes snuff\u0027s grotesque\u0027s occidentals mortarboard nudes redoing \t7\t68\t1669917320\n4615a9a6-8634-492a-ae20-83b98f16c076\tCrimea bandwagon vignette\u0027s Meg\u0027s \t4\t34\t1669917320\n936d24b0-13bb-49ff-97e8-4cb2ba8c1b5c\thoods keenness \t2\t15\t1669917320\nc096c40d-59fe-4452-902c-bf5ff07cdbd6\tporno\u0027s broadsiding damsons \t3\t28\t1669917320\n7087e3a1-57b3-4d66-af25-c7bbf00e35d7\tIrwin\u0027s fieriness\u0027s velveteen\u0027s millrace legatos syphon dogtrot \t7\t64\t1669917380\n3437ddc0-a386-48a8-9854-eaba808ee92e\tglobal shoos opportunist Bulgarians intelligently affair \t6\t57\t1669917380\n721086d7-529c-42e7-997f-ed13054a3749\troseate milking Bunker\u0027s varlet\u0027s duality\u0027s \t5\t44\t1669917380\ndfaff2a7-fe8a-463b-8b86-c0d0af8f007b\tBudapest\u0027s chins \t2\t17\t1669917340\ne21e53cf-54ab-49fe-b36f-ee83aab2e175\tcreationism\u0027s liveries jeer\u0027s yukking Acts \t5\t43\t1669917340\nebd79ddb-4cc7-4899-8f51-2bd56db02377\tbeggarly burlier shellfish\u0027s slummer Marianne philatelists Missourian\u0027s \t7\t72\t1669917340\n05a07785-8604-4166-b30e-c52da46c8dea\tdecathlons endeared Hinduism\u0027s conditioning Beryl\u0027s \t5\t52\t1669917340\nb39d0d65-1ece-4442-a231-d5807f0e3dcb\tjagged knee\u0027s never pilothouse dodgy \t5\t37\t1669917340\n48f8c64a-2b01-4e9a-a26d-83f8efc80c65\tresponsible flyleaves Nannie\u0027s emphasis \t4\t40\t1669917370\n30edcc2b-add5-4ebe-bfa1-757ee176792a\tbriefing\u0027s lowland\u0027s Izmir offensiveness\u0027s desists trivia\u0027s \t6\t60\t1669917370\n4d35111f-d1c6-4aa0-80d2-861fd8bb9bac\tcartoonist Chinatown tonsure \t3\t29\t1669917370\n78b2a9a6-0f22-48ef-ba06-bd3718791213\tresubmitting Rabat Franz \t3\t25\t1669917370\n5cd95b44-b662-4b3a-adef-4e406ff3386a\tmissionary\u0027s Buchenwald\u0027s \t2\t26\t1669917271\n86972fff-1eb1-4a21-b3be-60da59461545\thandled waterproofed Descartes Woodhull \t4\t40\t1669917271\ndaf8a99b-afec-4266-8b79-6c3750348bf5\tmirthless repatriation \t2\t23\t1669917271\n938e966f-59f6-4e66-9343-17427d893cb7\tmatchless Marses formulates sepals \t4\t35\t1669917271\nae0cff91-1d20-4935-bc2b-938d787018a6\thighboy nonabrasive Parsons\u0027s Mimosa\u0027s hymen\u0027s Moon \t6\t52\t1669917350\n448f454e-caed-4466-9b49-adab9a9a3fe4\tcayenne\u0027s tyros \t2\t16\t1669917350\nb2eabf56-53b4-47f9-919b-102870dac2bb\tdispute roomfuls trimming barrener antipersonnel iambic\u0027s hypothetical \t7\t71\t1669917350\n5cb62600-70f9-446b-9524-7e4842151257\tvideotex Perry\u0027s hurt\u0027s \t3\t24\t1669917300\nb192048f-cf65-43f0-b50c-9b3e3b3b8a55\tEucharists turf concomitant\u0027s \t3\t30\t1669917300\n9d05dfef-ba12-4bb0-9497-5755f48d4276\tsalary nameless displacing doleful Pissaro \t5\t43\t1669917300\nf8c2abc7-4ab1-4aec-8473-3fbd14dbaa99\thyperlink\u0027s cruises \t2\t20\t1669917290\n916373c4-502d-4f84-af7d-fbeac37008a4\tedema\u0027s workhouses \t2\t19\t1669917290\n53a4895c-d453-4e6a-aa84-b1c07eeef53a\tmince kowtow Dorset\u0027s inoperable \t4\t33\t1669917290\nc719729d-34f4-4306-a646-f495d7edbb58\tBrijesh Kumar Dhaker\t3\t16\t1669888545\ncd56bef5-997b-47c1-8edc-6657c806bbf7\tHello world\t2\t10\t1669888540\nc719729d-34f4-4306-a646-f495d7edbb59\tjames\t1\t5\t1669888550\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669908656623_0001//jobs/job?id\u003d71"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669908656623_0001//jobs/job?id\u003d72"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669877470584_1287123658",
+      "id": "paragraph_1669877470584_1287123658",
+      "dateCreated": "2022-12-01 06:51:10.584",
+      "dateStarted": "2022-12-01 17:56:24.697",
+      "dateFinished": "2022-12-01 17:56:24.933",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%sql\n\nSELECT words, sum(length) AS wordcount\nFROM `tweeter_tweets`\nGROUP BY words\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 18:01:08.056",
+      "progress": 12,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "words": "string",
+                      "wordcount": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "words",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "wordcount",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "words\twordcount\n1\t5\n6\t1350\n3\t690\n5\t1317\n4\t835\n7\t1467\n2\t422\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669908656623_0002//jobs/job?id\u003d0"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669908656623_0002//jobs/job?id\u003d1"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669908656623_0002//jobs/job?id\u003d2"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669908656623_0002//jobs/job?id\u003d3"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669908656623_0002//jobs/job?id\u003d4"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669886555869_1436732892",
+      "id": "paragraph_1669886555869_1436732892",
+      "dateCreated": "2022-12-01 09:22:35.869",
+      "dateStarted": "2022-12-01 18:01:08.061",
+      "dateFinished": "2022-12-01 18:01:38.589",
+      "status": "ABORT"
+    },
+    {
+      "text": "%sql\n\nSELECT `timestamp` AS TS, sum(words) AS wordcount\nFROM `tweeter_tweets`\nGROUP BY `timestamp`\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 18:12:05.521",
+      "progress": 48,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "editorHide": false,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "pieChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "TS": "string",
+                      "wordcount": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": false
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [],
+              "groups": [
+                {
+                  "name": "TS",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "values": [
+                {
+                  "name": "wordcount",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "TS\twordcount\n1669888545\t3\n1669917400\t12\n1669917420\t16\n1669917280\t19\n1669917380\t18\n1669917410\t14\n1669917360\t18\n1669917350\t15\n1669917290\t8\n1669917440\t14\n1669917271\t12\n1669917390\t23\n1669917370\t16\n1669917310\t18\n1669888540\t2\n1669917320\t21\n1669917340\t24\n1669917300\t11\n1669888550\t1\n1669917330\t29\n1669917430\t19\n1669917450\t22\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669908656623_0001//jobs/job?id\u003d97"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669908656623_0001//jobs/job?id\u003d98"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669908656623_0001//jobs/job?id\u003d99"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669908656623_0001//jobs/job?id\u003d100"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669908656623_0001//jobs/job?id\u003d101"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669886941813_814356862",
+      "id": "paragraph_1669886941813_814356862",
+      "dateCreated": "2022-12-01 09:29:01.813",
+      "dateStarted": "2022-12-01 17:57:35.882",
+      "dateFinished": "2022-12-01 17:57:36.570",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Gracefully Stop Streaming Context",
+      "text": "%spark\n\n//\nssc.stop(stopSparkContext\u003dfalse, stopGracefully\u003dtrue)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 18:15:09.703",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669877921440_1961155633",
+      "id": "paragraph_1669877921440_1961155633",
+      "dateCreated": "2022-12-01 06:58:41.440",
+      "dateStarted": "2022-12-01 17:58:21.088",
+      "dateFinished": "2022-12-01 17:59:35.413",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nssc.stop()",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 18:00:34.871",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669917571181_1787701935",
+      "id": "paragraph_1669917571181_1787701935",
+      "dateCreated": "2022-12-01 17:59:31.182",
+      "dateStarted": "2022-12-01 18:00:08.375",
+      "dateFinished": "2022-12-01 18:00:20.483",
+      "status": "ABORT"
+    },
+    {
+      "text": "%spark\n\n// Start the computation\nssc.start()\n\n// Start the computation\nssc.stop(stopSparkContext\u003dfalse, stopGracefully\u003dtrue)\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 09:14:29.693",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669871727260_690699675",
+      "id": "paragraph_1669871727260_690699675",
+      "dateCreated": "2022-12-01 05:15:27.260",
+      "status": "READY"
+    }
+  ],
+  "name": "kafka-streaming-example",
+  "id": "2HKZHZPA8",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}

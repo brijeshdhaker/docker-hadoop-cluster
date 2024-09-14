@@ -1,0 +1,122 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.conf\n\nset driver memory to 8g\nspark.driver.memory 640m\nspark.driver.cores 1\n\n# set executor number to be \n# spark.executor.instances  2\n# spark.executor.memory  640m\n# spark.executor.cores 2\n\n# spark.jars.packages                                         org.apache.spark:spark-hadoop-cloud_2.12:3.5.0,org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.4.3\n# spark.jars.ivy2                                             /apps/hostpath/.ivy2\n\n#\n# AWS S3 Storage\n#\n# spark.hadoop.fs.defaultFS                                s3a://openlake\nspark.hadoop.fs.s3a.endpoint                               http://minio.sandbox.net:9010\nspark.hadoop.fs.s3a.access.key                             ffaJ6a2MOj8mZ5lI3P6h\nspark.hadoop.fs.s3a.secret.key                             9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs\nspark.hadoop.fs.s3a.path.style.access                      true\nspark.hadoop.fs.s3a.connection.ssl.enabled                 false       \nspark.hadoop.fs.s3a.aws.credentials.provider               org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider\nspark.hadoop.fs.s3a.impl                                   org.apache.hadoop.fs.s3a.S3AFileSystem\nspark.hadoop.fs.s3a.connection.establish.timeout           5000\nspark.hadoop.fs.s3a.connection.timeout                     10000\n\n#\n# Iceberg Spark Catalog\n#\nspark.sql.extensions                                       org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions\nspark.sql.catalog.hadoop_catalog                           org.apache.iceberg.spark.SparkCatalog\nspark.sql.catalog.hadoop_catalog.type                      hadoop\nspark.sql.catalog.hadoop_catalog.warehouse                 s3a://openlake/warehouse/\n# spark.sql.catalog.hadoop_catalog.io-impl                 org.apache.iceberg.aws.s3.S3FileIO\nspark.sql.catalog.hadoop_catalog.s3.endpoint               http://minio.sandbox.net:9010\nspark.sql.defaultCatalog                                   hadoop_catalog\n\n\n#\nspark.kerberos.principal                                   zeppelin@SANDBOX.NET\nspark.kerberos.keytab                                      /apps/security/keytabs/users/zeppelin.keytab\nspark.yarn.am.extraJavaOptions                             -Djava.security.krb5.conf\u003d/etc/krb5.conf\nspark.driver.extraJavaOptions                              -Djava.security.krb5.conf\u003d/etc/krb5.conf\nspark.executor.extraJavaOptions                            -Djava.security.krb5.conf\u003d/etc/krb5.conf\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-06 01:40:44.892",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1709684133769_1324797460",
+      "id": "paragraph_1709684133769_1324797460",
+      "dateCreated": "2024-03-06 00:15:33.769",
+      "dateStarted": "2024-03-06 01:40:44.898",
+      "dateFinished": "2024-03-06 01:40:44.909",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-06 01:40:49.035",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "org.apache.zeppelin.interpreter.InterpreterException: java.lang.NoSuchMethodError: scala.tools.nsc.Settings.usejavacp()Lscala/tools/nsc/settings/AbsSettings$AbsSetting;\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.open(LazyOpenInterpreter.java:76)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:833)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:741)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:172)\n\tat org.apache.zeppelin.scheduler.AbstractScheduler.runJob(AbstractScheduler.java:132)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler.lambda$runJobInScheduler$0(FIFOScheduler.java:42)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\tat java.lang.Thread.run(Thread.java:750)\nCaused by: java.lang.NoSuchMethodError: scala.tools.nsc.Settings.usejavacp()Lscala/tools/nsc/settings/AbsSettings$AbsSetting;\n\tat org.apache.zeppelin.spark.SparkScala212Interpreter.open(SparkScala212Interpreter.scala:66)\n\tat org.apache.zeppelin.spark.SparkInterpreter.open(SparkInterpreter.java:121)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.open(LazyOpenInterpreter.java:70)\n\t... 8 more\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1709685364944_371914167",
+      "id": "paragraph_1709685364944_371914167",
+      "dateCreated": "2024-03-06 00:36:04.944",
+      "dateStarted": "2024-03-06 01:40:49.037",
+      "dateFinished": "2024-03-06 01:41:40.623",
+      "status": "ERROR"
+    },
+    {
+      "text": "%spark\n\n# Disable below line to see INFO logs\nspark.sparkContext.setLogLevel(\"ERROR\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-06 00:43:46.810",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1709685384287_1667581926",
+      "id": "paragraph_1709685384287_1667581926",
+      "dateCreated": "2024-03-06 00:36:24.287",
+      "status": "READY"
+    }
+  ],
+  "name": "iceberg_tables",
+  "id": "2JSPJME8F",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

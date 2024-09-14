@@ -1,0 +1,569 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\n### The syntax for Map Join in Hive.\nIf we want to perform a join query using map-join then we have to specify a keyword “/*+ MAPJOIN(b) */” in the statement as below:\n\n```\nSELECT /*+ MAPJOIN(c) */ * FROM tablename1 t1 JOIN tablename2 t2 ON (t1.emp_id \u003d t2.emp_id);\n```\n\n### Advantages\n* Map join reduces the time taken for sort and merge processes in the shuffle and reduces stages, thus minimizing the cost.\n* It increases the performance efficiency of the task.\n\n### Limitations\n* The same table/ alias is not allowed to join different columns in the same query.\n* Map join query cannot convert Full outer joins into the map side joins.\n* Map join can be performed only when one of the tables is small enough so that it can be fit to the memory. Hence it cannot be performed where the table data is huge.\n* A left join is possible to be done to a map join only when the right table size is small.\n* A right join can be done to a map join only when the left table size is small.\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-02-02 05:28:39.886",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eThe syntax for Map Join in Hive.\u003c/h3\u003e\n\u003cp\u003eIf we want to perform a join query using map-join then we have to specify a keyword “/*+ MAPJOIN(b) */” in the statement as below:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eSELECT /*+ MAPJOIN(c) */ * FROM tablename1 t1 JOIN tablename2 t2 ON (t1.emp_id \u003d t2.emp_id);\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3\u003eAdvantages\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003eMap join reduces the time taken for sort and merge processes in the shuffle and reduces stages, thus minimizing the cost.\u003c/li\u003e\n\u003cli\u003eIt increases the performance efficiency of the task.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eLimitations\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003eThe same table/ alias is not allowed to join different columns in the same query.\u003c/li\u003e\n\u003cli\u003eMap join query cannot convert Full outer joins into the map side joins.\u003c/li\u003e\n\u003cli\u003eMap join can be performed only when one of the tables is small enough so that it can be fit to the memory. Hence it cannot be performed where the table data is huge.\u003c/li\u003e\n\u003cli\u003eA left join is possible to be done to a map join only when the right table size is small.\u003c/li\u003e\n\u003cli\u003eA right join can be done to a map join only when the left table size is small.\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643778397290_558000356",
+      "id": "paragraph_1643778397290_558000356",
+      "dateCreated": "2022-02-02 05:06:37.290",
+      "dateStarted": "2022-02-02 05:28:39.887",
+      "dateFinished": "2022-02-02 05:28:39.906",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\n-- Before running the query, we have to set the below property to true:\n-- When this parameter set to true, Hive will automatically check if the smaller table file size is bigger than the value specified by hive.mapjoin.smalltable.filesize, if it\u0027s larger than this value then query execute through common join. Once auto convert join is enabled, there is no need to provide the map join hints in the query.\n\nset hive.auto.convert.join\u003dtrue\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-02-03 06:39:41.765",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643778370531_452146236",
+      "id": "paragraph_1643778370531_452146236",
+      "dateCreated": "2022-02-02 05:06:10.532",
+      "dateStarted": "2022-02-03 06:38:17.270",
+      "dateFinished": "2022-02-03 06:38:19.299",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n-- empId,empName,job,manager,hiredate,salary,comm,deptno\nDROP Table IF EXISTS EMPLOYEE;\n\nCREATE TABLE IF NOT EXISTS EMPLOYEE ( \n    emp_id          int, \n    emp_name        String, \n    emp_role        String, \n    emp_manager     String, \n    emp_hiredate    Date,\n    emp_salary      int,\n    emp_comm        int,\n    dept_id         int\n) \nrow format delimited fields terminated BY \u0027,\u0027 \ntblproperties(\"skip.header.line.count\"\u003d\"1\");\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-07 03:49:17.125",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643778537059_1438485372",
+      "id": "paragraph_1643778537059_1438485372",
+      "dateCreated": "2022-02-02 05:08:57.059",
+      "dateStarted": "2023-06-07 03:49:17.128",
+      "dateFinished": "2023-06-07 03:49:17.261",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nload data local inpath \u0027/apps/hostpath/datasets/Employee.txt\u0027 into table EMPLOYEE;\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-07 03:49:24.204",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643778658684_834972763",
+      "id": "paragraph_1643778658684_834972763",
+      "dateCreated": "2022-02-02 05:10:58.684",
+      "dateStarted": "2023-06-07 03:49:24.206",
+      "dateFinished": "2023-06-07 03:49:24.445",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nselect * from EMPLOYEE;",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-07 03:49:27.526",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "emp_id": "string",
+                      "emp_name": "string",
+                      "emp_role": "string",
+                      "emp_manager": "string",
+                      "emp_hiredate": "string",
+                      "emp_salary": "string",
+                      "emp_comm": "string",
+                      "dept_id": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "emp_id\temp_name\temp_role\temp_manager\temp_hiredate\temp_salary\temp_comm\tdept_id\n7839\tKING\tPRESIDENT\tnull\tnull\t5000\tnull\t10\n7698\tBLAKE\tMANAGER\t7839\tnull\t2850\tnull\t30\n7782\tCLARK\tMANAGER\t7839\tnull\t2450\tnull\t10\n7566\tJONES\tMANAGER\t7839\tnull\t2975\tnull\t20\n7788\tSCOTT\tANALYST\t7566\tnull\t3000\tnull\t20\n7902\tFORD\tANALYST\t7566\tnull\t3000\tnull\t20\n7369\tSMITH\tCLERK\t7902\tnull\t800\tnull\t20\n7499\tALLEN\tSALESMAN\t7698\tnull\t1600\t300\t30\n7521\tWARD\tSALESMAN\t7698\tnull\t1250\t500\t30\n7654\tMARTIN\tSALESMAN\t7698\tnull\t1250\t1400\t30\n7844\tTURNER\tSALESMAN\t7698\tnull\t1500\t0\t30\n7876\tADAMS\tCLERK\t7788\tnull\t1100\tnull\t20\n7900\tJAMES\tCLERK\t7698\tnull\t950\tnull\t30\n7934\tMILLER\tCLERK\t7782\tnull\t1300\tnull\t10\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643847739153_507110878",
+      "id": "paragraph_1643847739153_507110878",
+      "dateCreated": "2022-02-03 00:22:19.153",
+      "dateStarted": "2023-06-07 03:49:27.528",
+      "dateFinished": "2023-06-07 03:49:27.710",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n-- deptno,dname,loc\nDROP Table IF EXISTS DEPARTMENT;\n\nCREATE TABLE IF NOT EXISTS DEPARTMENT ( \n    dept_id int, \n    dept_name String,\n    dept_location String\n) \n\nrow format delimited fields terminated BY \u0027,\u0027 \ntblproperties(\"skip.header.line.count\"\u003d\"1\");\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-07 03:47:36.786",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643778617608_173249616",
+      "id": "paragraph_1643778617608_173249616",
+      "dateCreated": "2022-02-02 05:10:17.609",
+      "dateStarted": "2023-06-07 03:47:36.788",
+      "dateFinished": "2023-06-07 03:47:37.920",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nload data local inpath \u0027/apps/hostpath/datasets/departments.txt\u0027 into table DEPARTMENT;",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-07 03:47:45.388",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643847714272_334268593",
+      "id": "paragraph_1643847714272_334268593",
+      "dateCreated": "2022-02-03 00:21:54.272",
+      "dateStarted": "2023-06-07 03:47:45.392",
+      "dateFinished": "2023-06-07 03:47:45.726",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nselect * from DEPARTMENT;\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-07 03:47:49.318",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "dept_id": "string",
+                      "dept_name": "string",
+                      "dept_location": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "dept_id\tdept_name\tdept_location\n10\tACCOUNTING\tNEW YORK\n20\tRESEARCH\tBOSTON\n30\tSALES\tCHICAGO\n40\tOPERATIONS\tBOSTON\n50\tADMIN\tCHICAGO\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643848420478_1933225595",
+      "id": "paragraph_1643848420478_1933225595",
+      "dateCreated": "2022-02-03 00:33:40.478",
+      "dateStarted": "2023-06-07 03:47:49.320",
+      "dateFinished": "2023-06-07 03:47:49.496",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nSELECT /*+ MAPJOIN(DEPARTMENT) */ \n    EMPLOYEE.emp_id, \n    EMPLOYEE.emp_name, \n    DEPARTMENT.dept_id, \n    DEPARTMENT.dept_name \nFROM EMPLOYEE \nJOIN DEPARTMENT ON EMPLOYEE.dept_id \u003d DEPARTMENT.dept_id;\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-07 04:12:29.448",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "emp_id": "string",
+                      "emp_name": "string",
+                      "dept_id": "string",
+                      "dept_name": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "emp_id": "string",
+                      "emp_name": "string",
+                      "dept_id": "string",
+                      "dept_name": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "emp_id\temp_name\tdept_id\tdept_name\n7698\tBLAKE\t30\tSALES\n7499\tALLEN\t30\tSALES\n7521\tWARD\t30\tSALES\n7654\tMARTIN\t30\tSALES\n7844\tTURNER\t30\tSALES\n7900\tJAMES\t30\tSALES\n7566\tJONES\t20\tRESEARCH\n7788\tSCOTT\t20\tRESEARCH\n7902\tFORD\t20\tRESEARCH\n7369\tSMITH\t20\tRESEARCH\n7876\tADAMS\t20\tRESEARCH\n7839\tKING\t10\tACCOUNTING\n7782\tCLARK\t10\tACCOUNTING\n7934\tMILLER\t10\tACCOUNTING\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643778691095_1313960538",
+      "id": "paragraph_1643778691095_1313960538",
+      "dateCreated": "2022-02-02 05:11:31.095",
+      "dateStarted": "2023-06-07 04:12:29.466",
+      "dateFinished": "2023-06-07 04:12:43.916",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%file\n\nls /user/hive/warehouse\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-07 03:51:39.135",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/undefined",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "department\nemployee\nstudents\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643778839638_1368369033",
+      "id": "paragraph_1643778839638_1368369033",
+      "dateCreated": "2022-02-02 05:13:59.638",
+      "dateStarted": "2023-06-07 03:51:39.137",
+      "dateFinished": "2023-06-07 03:51:41.071",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-02-02 05:29:30.700",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643779770700_2125977771",
+      "id": "paragraph_1643779770700_2125977771",
+      "dateCreated": "2022-02-02 05:29:30.700",
+      "status": "READY"
+    }
+  ],
+  "name": "hive-map-join",
+  "id": "2GVGXFWN1",
+  "defaultInterpreterGroup": "hive",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

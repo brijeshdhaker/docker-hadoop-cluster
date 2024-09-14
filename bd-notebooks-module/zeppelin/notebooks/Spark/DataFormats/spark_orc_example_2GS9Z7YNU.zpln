@@ -1,0 +1,291 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\n### ORC :\nORC stands of Optimized Row Columnar which provides a highly efficient way to store the data in a self-describing, type-aware column-oriented format for the Hadoop ecosystem. This is similar to other columnar storage formats Hadoop supports such as RCFile, parquet.\n\nORC file format heavily used as a storage for Apache Hive due to its highly efficient way of storing data which enables high-speed processing and ORC also used or natively supported by many frameworks like Hadoop MapReduce, Apache Spark, Pig, Nifi, and many more.\n\n\n#### ORC Advantages\nCompression: ORC stores data as columns and in compressed format hence it takes way less disk storage than other formats.\nReduces I/O: ORC reads only columns that are mentioned in a query for processing hence it takes reduces I/O.\nFast reads: ORC is used for high-speed processing as it by default creates built-in index and has some default aggregates like min/max values for numeric data.\n\n#### ORC Compression\nSpark supports the following compression options for ORC data source. By default, it uses SNAPPY when not specified.\nSNAPPY\nZLIB\nLZO\nNONE\n\n\nIn summary, ORC is a high efficient, compressed columnar format that is capable to store petabytes of data without compromising fast reads. Spark natively supports ORC data source to read and write an ORC files using orc() method on DataFrameReader and DataFrameWrite.",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-13 01:38:59.342",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eORC :\u003c/h3\u003e\n\u003cp\u003eORC stands of Optimized Row Columnar which provides a highly efficient way to store the data in a self-describing, type-aware column-oriented format for the Hadoop ecosystem. This is similar to other columnar storage formats Hadoop supports such as RCFile, parquet.\u003c/p\u003e\n\u003cp\u003eORC file format heavily used as a storage for Apache Hive due to its highly efficient way of storing data which enables high-speed processing and ORC also used or natively supported by many frameworks like Hadoop MapReduce, Apache Spark, Pig, Nifi, and many more.\u003c/p\u003e\n\u003ch4\u003eORC Advantages\u003c/h4\u003e\n\u003cp\u003eCompression: ORC stores data as columns and in compressed format hence it takes way less disk storage than other formats.\u003cbr /\u003e\nReduces I/O: ORC reads only columns that are mentioned in a query for processing hence it takes reduces I/O.\u003cbr /\u003e\nFast reads: ORC is used for high-speed processing as it by default creates built-in index and has some default aggregates like min/max values for numeric data.\u003c/p\u003e\n\u003ch4\u003eORC Compression\u003c/h4\u003e\n\u003cp\u003eSpark supports the following compression options for ORC data source. By default, it uses SNAPPY when not specified.\u003cbr /\u003e\nSNAPPY\u003cbr /\u003e\nZLIB\u003cbr /\u003e\nLZO\u003cbr /\u003e\nNONE\u003c/p\u003e\n\u003cp\u003eIn summary, ORC is a high efficient, compressed columnar format that is capable to store petabytes of data without compromising fast reads. Spark natively supports ORC data source to read and write an ORC files using orc() method on DataFrameReader and DataFrameWrite.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642037273097_1019817933",
+      "id": "paragraph_1642036589967_610314532",
+      "dateCreated": "2022-01-13 01:27:53.097",
+      "dateStarted": "2022-01-13 01:38:59.342",
+      "dateFinished": "2022-01-13 01:38:59.358",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.conf\n\nSPARK_HOME /opt/spark-3.1.2\nmaster local[4]\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-13 01:27:53.098",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642037273098_1389443991",
+      "id": "paragraph_1642036656412_1973996682",
+      "dateCreated": "2022-01-13 01:27:53.098",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\n\nval data \u003dSeq((\"James \",\"\",\"Smith\",\"36636\",\"M\",3000),\n  (\"Michael \",\"Rose\",\"\",\"40288\",\"M\",4000),\n  (\"Robert \",\"\",\"Williams\",\"42114\",\"M\",4000),\n  (\"Maria \",\"Anne\",\"Jones\",\"39192\",\"F\",4000),\n  (\"Jen\",\"Mary\",\"Brown\",\"\",\"F\",-1))\n  \nval columns\u003dSeq(\"firstname\",\"middlename\",\"lastname\",\"dob\",\"gender\",\"salary\")\nval df\u003dspark.createDataFrame(data).toDF(columns:_*)\n\ndf.printSchema()\ndf.show(false)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-13 01:30:37.471",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- firstname: string (nullable \u003d true)\n |-- middlename: string (nullable \u003d true)\n |-- lastname: string (nullable \u003d true)\n |-- dob: string (nullable \u003d true)\n |-- gender: string (nullable \u003d true)\n |-- salary: integer (nullable \u003d false)\n\n+---------+----------+--------+-----+------+------+\n|firstname|middlename|lastname|dob  |gender|salary|\n+---------+----------+--------+-----+------+------+\n|James    |          |Smith   |36636|M     |3000  |\n|Michael  |Rose      |        |40288|M     |4000  |\n|Robert   |          |Williams|42114|M     |4000  |\n|Maria    |Anne      |Jones   |39192|F     |4000  |\n|Jen      |Mary      |Brown   |     |F     |-1    |\n+---------+----------+--------+-----+------+------+\n\n\u001b[1m\u001b[34mdata\u001b[0m: \u001b[1m\u001b[32mSeq[(String, String, String, String, String, Int)]\u001b[0m \u003d List((\"James \",\"\",Smith,36636,M,3000), (\"Michael \",Rose,\"\",40288,M,4000), (\"Robert \",\"\",Williams,42114,M,4000), (\"Maria \",Anne,Jones,39192,F,4000), (Jen,Mary,Brown,\"\",F,-1))\n\u001b[1m\u001b[34mcolumns\u001b[0m: \u001b[1m\u001b[32mSeq[String]\u001b[0m \u003d List(firstname, middlename, lastname, dob, gender, salary)\n\u001b[1m\u001b[34mdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [firstname: string, middlename: string ... 4 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642037273098_970323411",
+      "id": "paragraph_1642036704786_1098508492",
+      "dateCreated": "2022-01-13 01:27:53.098",
+      "dateStarted": "2022-01-13 01:30:37.473",
+      "dateFinished": "2022-01-13 01:30:38.708",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\ndf.write.orc(\"/transaction_details_orc/transaction_details.orc\")\n\n//or\n\ndf.write.format(\"orc\").option(\"compression\",\"zlib\").save(\"/tmp/orc/data.orc\")\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-13 01:32:47.886",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----+--------------------+--------+--------+--------+--------+----------+-------+----------+----------------+\n|  id|                uuid|cardtype| website| product|  amount|      city|country|     addts|txn_receive_date|\n+----+--------------------+--------+--------+--------+--------+----------+-------+----------+----------------+\n|3080|57dfdd76-165c-438...|    VISA|  Amazon|  Laptop| 1481.12|     Tokyo|     JP|1642036320|      2022-01-13|\n|4908|77c1d3de-3cb8-454...|   RuPay|Flipkart|  Mobile|20637.32|  New York|    USA|1642036320|      2022-01-13|\n|4458|67796ab6-1229-42b...|    VISA|  Amazon|  Laptop|13408.66|     Delhi|     IN|1642036320|      2022-01-13|\n|2961|615b798f-82fe-439...|    VISA|  Myntra|Computer|  645.43|     Osaka|     JP|1642036320|      2022-01-13|\n|4699|6f06cf9f-4a7f-494...|    Amex|Flipkart|  Mobile| 9017.03|    Oxford|     UK|1642036320|      2022-01-13|\n|3078|a016d379-23a6-49b...|   RuPay|Flipkart|Computer|16965.54|Manchester|     UK|1642036320|      2022-01-13|\n|2302|81218712-0b96-43a...|    VISA|  Amazon|  Tablet| 2995.54|     Miami|    USA|1642036320|      2022-01-13|\n|1759|731df159-06f8-438...|   RuPay|  Myntra|Computer|21187.45|    Mumbai|     IN|1642036320|      2022-01-13|\n|3730|14cc2a6e-e0c5-43d...|    VISA|  Amazon|Computer| 12085.2|  New York|    USA|1642036320|      2022-01-13|\n|4547|3084edd7-90d0-43f...|    VISA|  Amazon|  Mobile|12612.55|     Delhi|     IN|1642036320|      2022-01-13|\n|4310|d7a5bec9-6581-489...|    Amex|Flipkart|  Tablet|20729.48|     Osaka|     JP|1642036321|      2022-01-13|\n|2742|a319c358-3c28-49f...|   RuPay|  Amazon|  Mobile|  546.26|     Osaka|     JP|1642036321|      2022-01-13|\n|2220|aa6a71ca-cdab-4fd...|    VISA|Flipkart|  Laptop| 4864.33|     Tokyo|     JP|1642036321|      2022-01-13|\n|1783|70d52c25-1bb6-43b...|  Master|SnapDeal|Computer| 3844.82|     Tokyo|     JP|1642036321|      2022-01-13|\n|4580|0d320713-9685-400...|   RuPay|SnapDeal|Computer| 3878.19|  Yokohama|     JP|1642036321|      2022-01-13|\n|2984|fb7df6f3-de71-4dd...|  Master|SnapDeal|  Mobile|  2214.6|     Miami|    USA|1642036321|      2022-01-13|\n|2637|2cb0b64c-c458-440...|    VISA|  Amazon|  Laptop|21059.83|      Pune|     IN|1642036321|      2022-01-13|\n|2309|973e2857-377f-426...|  Master|Flipkart|  Mobile|24386.25|    Oxford|     UK|1642036321|      2022-01-13|\n|3061|a440b13f-0ecc-4ab...|    Amex|Flipkart|  Tablet| 8292.23|  New York|    USA|1642036321|      2022-01-13|\n|1152|491f002f-3d6f-431...|    Amex|Flipkart|Computer|13336.49|     Osaka|     JP|1642036321|      2022-01-13|\n+----+--------------------+--------+--------+--------+--------+----------+-------+----------+----------------+\nonly showing top 20 rows\n\nroot\n |-- id: integer (nullable \u003d true)\n |-- uuid: string (nullable \u003d true)\n |-- cardtype: string (nullable \u003d true)\n |-- website: string (nullable \u003d true)\n |-- product: string (nullable \u003d true)\n |-- amount: double (nullable \u003d true)\n |-- city: string (nullable \u003d true)\n |-- country: string (nullable \u003d true)\n |-- addts: long (nullable \u003d true)\n |-- txn_receive_date: date (nullable \u003d true)\n\n\u001b[1m\u001b[34mparkSQL\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: int, uuid: string ... 8 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642037273098_1896382255",
+      "id": "paragraph_1642036729518_584809496",
+      "dateCreated": "2022-01-13 01:27:53.098",
+      "status": "READY"
+    },
+    {
+      "title": "Creating a table on ORC file",
+      "text": "%spark\n\nspark.sql(\"CREATE TEMPORARY VIEW PERSON USING orc OPTIONS (path \\\"/tmp/orc/data.orc\\\")\")\nspark.sql(\"SELECT * FROM PERSON\").show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-13 01:33:50.966",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642037610040_1987297546",
+      "id": "paragraph_1642037610040_1987297546",
+      "dateCreated": "2022-01-13 01:33:30.040",
+      "status": "READY"
+    },
+    {
+      "title": "Using Partition",
+      "text": "%spark\n\ndf.write.partitionBy(\"gender\",\"salary\")\n    .mode(\"overwrite\")\n    .orc(\"/tmp/orc/data.orc\")\n    \n    ",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-13 01:34:39.845",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642037642580_493264584",
+      "id": "paragraph_1642037642580_493264584",
+      "dateCreated": "2022-01-13 01:34:02.580",
+      "status": "READY"
+    },
+    {
+      "title": "Spark Read a specific Parquet partition",
+      "text": "%spark\n\nval parDF\u003dspark.read.orc(\"/tmp/orc/data.orc/gender\u003dM\")\nparDF.show(false)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-13 01:35:00.575",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----+------------------------------------+--------+--------+--------+--------+----------+-------+----------+\n|id  |uuid                                |cardtype|website |product |amount  |city      |country|addts     |\n+----+------------------------------------+--------+--------+--------+--------+----------+-------+----------+\n|3080|57dfdd76-165c-4382-8178-96c3b8b8db9a|VISA    |Amazon  |Laptop  |1481.12 |Tokyo     |JP     |1642036320|\n|4908|77c1d3de-3cb8-4541-b6ab-3ddbdcf34d12|RuPay   |Flipkart|Mobile  |20637.32|New York  |USA    |1642036320|\n|4458|67796ab6-1229-42b4-98a8-45f252f7d3ac|VISA    |Amazon  |Laptop  |13408.66|Delhi     |IN     |1642036320|\n|2961|615b798f-82fe-4397-8977-8f8ab49d73a5|VISA    |Myntra  |Computer|645.43  |Osaka     |JP     |1642036320|\n|4699|6f06cf9f-4a7f-4942-86ec-cfd075131c76|Amex    |Flipkart|Mobile  |9017.03 |Oxford    |UK     |1642036320|\n|3078|a016d379-23a6-49b8-bb2e-a60cdcea68da|RuPay   |Flipkart|Computer|16965.54|Manchester|UK     |1642036320|\n|2302|81218712-0b96-43af-8dc5-a43ca8973c5b|VISA    |Amazon  |Tablet  |2995.54 |Miami     |USA    |1642036320|\n|1759|731df159-06f8-4388-b088-684c7b282241|RuPay   |Myntra  |Computer|21187.45|Mumbai    |IN     |1642036320|\n|3730|14cc2a6e-e0c5-43dd-a657-d2ab5c03279c|VISA    |Amazon  |Computer|12085.2 |New York  |USA    |1642036320|\n|4547|3084edd7-90d0-43f9-9978-e9f4cce87e7c|VISA    |Amazon  |Mobile  |12612.55|Delhi     |IN     |1642036320|\n|4310|d7a5bec9-6581-489b-bedf-2f7970e1f2e8|Amex    |Flipkart|Tablet  |20729.48|Osaka     |JP     |1642036321|\n|2742|a319c358-3c28-49f2-ac0d-ba26ba422b57|RuPay   |Amazon  |Mobile  |546.26  |Osaka     |JP     |1642036321|\n|2220|aa6a71ca-cdab-4fd2-8f2f-0ece388f7d9d|VISA    |Flipkart|Laptop  |4864.33 |Tokyo     |JP     |1642036321|\n|1783|70d52c25-1bb6-43b5-9423-d990b09447b3|Master  |SnapDeal|Computer|3844.82 |Tokyo     |JP     |1642036321|\n|4580|0d320713-9685-4006-bd81-afcd63a5661f|RuPay   |SnapDeal|Computer|3878.19 |Yokohama  |JP     |1642036321|\n|2984|fb7df6f3-de71-4dd9-aeb3-9bd637de4c18|Master  |SnapDeal|Mobile  |2214.6  |Miami     |USA    |1642036321|\n|2637|2cb0b64c-c458-4401-a474-8859d46aca6d|VISA    |Amazon  |Laptop  |21059.83|Pune      |IN     |1642036321|\n|2309|973e2857-377f-4267-a44b-c55eb9159943|Master  |Flipkart|Mobile  |24386.25|Oxford    |UK     |1642036321|\n|3061|a440b13f-0ecc-4ab2-b5a0-8eedbfc543b0|Amex    |Flipkart|Tablet  |8292.23 |New York  |USA    |1642036321|\n|1152|491f002f-3d6f-431b-a9f8-0480bf117be6|Amex    |Flipkart|Computer|13336.49|Osaka     |JP     |1642036321|\n+----+------------------------------------+--------+--------+--------+--------+----------+-------+----------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34mspecificParqDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: int, uuid: string ... 7 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642037273098_2082153642",
+      "id": "paragraph_1642036766289_1373106926",
+      "dateCreated": "2022-01-13 01:27:53.098",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-13 01:27:53.098",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642037273098_1737101894",
+      "id": "paragraph_1642036965522_1498888877",
+      "dateCreated": "2022-01-13 01:27:53.098",
+      "status": "READY"
+    }
+  ],
+  "name": "spark_orc_example",
+  "id": "2GS9Z7YNU",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

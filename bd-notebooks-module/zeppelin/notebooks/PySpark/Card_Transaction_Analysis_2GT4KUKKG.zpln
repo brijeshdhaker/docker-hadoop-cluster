@@ -1,0 +1,626 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\n1. Read the file from storage (__/datasets/card_transactions.json__)\n2. File has json records\n3. Each record has fields:\n     * user_id\n     * card_num\n     * merchant\n     * category\n     * amount\n     * ts",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-30 02:04:17.124",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003col\u003e\n\u003cli\u003eRead the file from storage (\u003cstrong\u003e/datasets/card_transactions.json\u003c/strong\u003e)\u003c/li\u003e\n\u003cli\u003eFile has json records\u003c/li\u003e\n\u003cli\u003eEach record has fields:\n\u003cul\u003e\n\u003cli\u003euser_id\u003c/li\u003e\n\u003cli\u003ecard_num\u003c/li\u003e\n\u003cli\u003emerchant\u003c/li\u003e\n\u003cli\u003ecategory\u003c/li\u003e\n\u003cli\u003eamount\u003c/li\u003e\n\u003cli\u003ets\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ol\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642143355113_364002411",
+      "id": "paragraph_1642143355113_364002411",
+      "dateCreated": "2022-01-14 06:55:55.113",
+      "dateStarted": "2022-11-30 02:04:17.124",
+      "dateFinished": "2022-11-30 02:04:19.051",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n# Read JSON file into dataframe\ndf \u003d spark.read.json(\"/datasets/card_transactions.json\")\ndf.printSchema()\ndf.show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:31:02.503",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- amount: long (nullable \u003d true)\n |-- card_num: string (nullable \u003d true)\n |-- category: string (nullable \u003d true)\n |-- merchant: string (nullable \u003d true)\n |-- ts: long (nullable \u003d true)\n |-- user_id: string (nullable \u003d true)\n\n+------+--------+-------------+--------+----------+-------+\n|amount|card_num|     category|merchant|        ts|user_id|\n+------+--------+-------------+--------+----------+-------+\n|   243|   C_108|         food|   M_102|1579532902|  U_104|\n|   699|   C_106|    cosmetics|   M_103|1581759040|  U_103|\n|   228|   C_104|     children|   M_110|1584161986|  U_103|\n|   795|   C_107|    groceries|   M_110|1584180442|  U_104|\n|   722|   C_106|         food|   M_106|1579077866|  U_103|\n|   999|   C_101|entertainment|   M_101|1580077316|  U_101|\n|   855|   C_101|         food|   M_102|1581758143|  U_101|\n|    87|   C_107|    groceries|   M_102|1580819768|  U_104|\n|   146|   C_101|    cosmetics|   M_110|1584179530|  U_101|\n|  1000|   C_101|entertainment|   M_100|1580163399|  U_101|\n|   576|   C_107|entertainment|   M_104|1581191831|  U_104|\n|   752|   C_105|entertainment|   M_100|1584121835|  U_103|\n|   240|   C_105|    groceries|   M_102|1580860277|  U_103|\n|   496|   C_101|         food|   M_102|1582393902|  U_101|\n|   980|   C_103|     children|   M_102|1580687268|  U_102|\n|   325|   C_106|    cosmetics|   M_103|1579288386|  U_103|\n|   326|   C_101|    groceries|   M_105|1583414905|  U_101|\n|   622|   C_103|    groceries|   M_107|1582757359|  U_102|\n|   810|   C_104|entertainment|   M_103|1582368402|  U_103|\n|   294|   C_107|    groceries|   M_110|1583034793|  U_104|\n+------+--------+-------------+--------+----------+-------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d24"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d25"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642247644820_528754606",
+      "id": "paragraph_1642247644820_528754606",
+      "dateCreated": "2022-01-15 11:54:04.820",
+      "dateStarted": "2023-02-10 02:31:02.507",
+      "dateFinished": "2023-02-10 02:31:03.051",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nrdd \u003d df.rdd\nfor record in rdd.take(3): print(record)\nfor e in rdd.take(3): print(e[\"user_id\"])\nfor e in rdd.take(3): print(e.user_id)\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:31:08.346",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Row(amount\u003d243, card_num\u003d\u0027C_108\u0027, category\u003d\u0027food\u0027, merchant\u003d\u0027M_102\u0027, ts\u003d1579532902, user_id\u003d\u0027U_104\u0027)\nRow(amount\u003d699, card_num\u003d\u0027C_106\u0027, category\u003d\u0027cosmetics\u0027, merchant\u003d\u0027M_103\u0027, ts\u003d1581759040, user_id\u003d\u0027U_103\u0027)\nRow(amount\u003d228, card_num\u003d\u0027C_104\u0027, category\u003d\u0027children\u0027, merchant\u003d\u0027M_110\u0027, ts\u003d1584161986, user_id\u003d\u0027U_103\u0027)\nU_104\nU_103\nU_103\nU_104\nU_103\nU_103\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d26"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d27"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d28"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642247729898_442213787",
+      "id": "paragraph_1642247729898_442213787",
+      "dateCreated": "2022-01-15 11:55:29.898",
+      "dateStarted": "2023-02-10 02:31:08.350",
+      "dateFinished": "2023-02-10 02:31:08.687",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Analysis Datasource",
+      "text": "%pyspark\n\nimport json\n\n\nraw_rdd \u003d spark.sparkContext.textFile(\"/datasets/card_transactions.json\")\ninput_rdd \u003d raw_rdd.map(lambda x: json.loads(x)).filter(lambda x: 1580515200 \u003c\u003d x.get(\"ts\") \u003c 1583020800).cache()\nfor e in input_rdd.take(3): print(e)\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:31:14.264",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "{\u0027merchant\u0027: \u0027M_103\u0027, \u0027category\u0027: \u0027cosmetics\u0027, \u0027card_num\u0027: \u0027C_106\u0027, \u0027user_id\u0027: \u0027U_103\u0027, \u0027ts\u0027: 1581759040, \u0027amount\u0027: 699}\n{\u0027merchant\u0027: \u0027M_102\u0027, \u0027category\u0027: \u0027food\u0027, \u0027card_num\u0027: \u0027C_101\u0027, \u0027user_id\u0027: \u0027U_101\u0027, \u0027ts\u0027: 1581758143, \u0027amount\u0027: 855}\n{\u0027merchant\u0027: \u0027M_102\u0027, \u0027category\u0027: \u0027groceries\u0027, \u0027card_num\u0027: \u0027C_107\u0027, \u0027user_id\u0027: \u0027U_104\u0027, \u0027ts\u0027: 1580819768, \u0027amount\u0027: 87}\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d29"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642153608487_1679093617",
+      "id": "paragraph_1642153608487_1679093617",
+      "dateCreated": "2022-01-14 09:46:48.487",
+      "dateStarted": "2023-02-10 02:31:14.267",
+      "dateFinished": "2023-02-10 02:31:14.434",
+      "status": "FINISHED"
+    },
+    {
+      "title": "# Total amount spent by each user",
+      "text": "%pyspark\n\nuser_expense_rdd \u003d input_rdd.map(lambda x: (x.get(\u0027user_id\u0027), x.get(\u0027amount\u0027)))\nresult_rdd \u003d user_expense_rdd.reduceByKey(lambda x, y: x + y)\nfor e in result_rdd.take(3): print(e)\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:31:17.190",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(\u0027U_101\u0027, 59313)\n(\u0027U_102\u0027, 66147)\n(\u0027U_103\u0027, 66805)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d30"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d31"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642143338607_768206391",
+      "id": "paragraph_1642143338607_768206391",
+      "dateCreated": "2022-01-14 06:55:38.607",
+      "dateStarted": "2023-02-10 02:31:17.194",
+      "dateFinished": "2023-02-10 02:31:21.099",
+      "status": "FINISHED"
+    },
+    {
+      "title": "# Total amount spent by each user for each of their cards",
+      "text": "%pyspark\n\nuser_expense_rdd \u003d input_rdd.map(lambda x: ((x.get(\u0027user_id\u0027), x.get(\u0027card_num\u0027)), x.get(\u0027amount\u0027)))\nresult_rdd \u003d user_expense_rdd.reduceByKey(lambda x, y: x + y)\nfor e in result_rdd.take(3): print(e)\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:31:24.937",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "((\u0027U_103\u0027, \u0027C_106\u0027), 21885)\n((\u0027U_103\u0027, \u0027C_105\u0027), 22150)\n((\u0027U_104\u0027, \u0027C_108\u0027), 25528)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d32"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642245088627_1302564438",
+      "id": "paragraph_1642245088627_1302564438",
+      "dateCreated": "2022-01-15 11:11:28.627",
+      "dateStarted": "2023-02-10 02:31:24.940",
+      "dateFinished": "2023-02-10 02:31:25.103",
+      "status": "FINISHED"
+    },
+    {
+      "title": "# Total amount spend by each user for each of their cards on each category",
+      "text": "%pyspark\n\nuser_expense_rdd \u003d input_rdd.map(lambda x: ((x.get(\u0027user_id\u0027), x.get(\u0027card_num\u0027), x.get(\u0027category\u0027)), x.get(\u0027amount\u0027)))\nresult_rdd \u003d user_expense_rdd.reduceByKey(lambda x, y: x + y)\nfor e in result_rdd.take(3): print(e)\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:31:41.248",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "((\u0027U_103\u0027, \u0027C_106\u0027, \u0027cosmetics\u0027), 3828)\n((\u0027U_103\u0027, \u0027C_105\u0027, \u0027groceries\u0027), 3902)\n((\u0027U_103\u0027, \u0027C_105\u0027, \u0027cosmetics\u0027), 5870)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d34"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642245320980_1018818511",
+      "id": "paragraph_1642245320980_1018818511",
+      "dateCreated": "2022-01-15 11:15:20.980",
+      "dateStarted": "2023-02-10 02:31:41.249",
+      "dateFinished": "2023-02-10 02:31:41.434",
+      "status": "FINISHED"
+    },
+    {
+      "title": "# Distinct list of categories in which the user has made expenditure",
+      "text": "%pyspark\n\ndef initialize(value):\n  return set([value])\n\ndef add(agg, value):\n  agg.add(value)\n  return agg\n\ndef merge(agg1, agg2):\n  agg1.update(agg2)\n  return agg1\n\n\nuser_category_rdd \u003d input_rdd.map(lambda x: (x.get(\u0027user_id\u0027), x.get(\u0027category\u0027)))\n\n\nresult_rdd \u003d user_category_rdd.combineByKey(initialize, add, merge)\n\nfor e in result_rdd.take(3): print(e)\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:32:02.536",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(\u0027U_101\u0027, {\u0027children\u0027, \u0027groceries\u0027, \u0027cosmetics\u0027, \u0027entertainment\u0027, \u0027food\u0027})\n(\u0027U_102\u0027, {\u0027children\u0027, \u0027groceries\u0027, \u0027cosmetics\u0027, \u0027entertainment\u0027, \u0027food\u0027})\n(\u0027U_103\u0027, {\u0027children\u0027, \u0027groceries\u0027, \u0027cosmetics\u0027, \u0027entertainment\u0027, \u0027food\u0027})\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d35"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d36"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642245436958_1216157312",
+      "id": "paragraph_1642245436958_1216157312",
+      "dateCreated": "2022-01-15 11:17:16.958",
+      "dateStarted": "2023-02-10 02:32:02.539",
+      "dateFinished": "2023-02-10 02:32:02.808",
+      "status": "FINISHED"
+    },
+    {
+      "title": "# Category in which the user has made the maximum expenditure",
+      "text": "%pyspark\n\n# [((userid, catogory), amount)] --\u003e \n\nuser_expense_rdd \u003d input_rdd.map(lambda x: ((x.get(\u0027user_id\u0027), x.get(\u0027category\u0027)), x.get(\u0027amount\u0027)))\n\nuser_category_expense_rdd \u003d user_expense_rdd.map(lambda x: (x[0][0], (x[0][1], x[1])))\n\ndef get_max_amount(category_amount_tuple_1, category_amount_tuple_2):\n  if category_amount_tuple_1[1] \u003e category_amount_tuple_2[1]:\n    return category_amount_tuple_1\n  else:\n    return category_amount_tuple_2\n\nresult_rdd \u003d user_category_expense_rdd.reduceByKey(lambda x, y: get_max_amount(x, y))\n\nfor e in result_rdd.take(3): print(e)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-16 11:29:46.354",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(\u0027U_101\u0027, (\u0027children\u0027, 992))\n(\u0027U_102\u0027, (\u0027groceries\u0027, 997))\n(\u0027U_103\u0027, (\u0027food\u0027, 977))\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:46205/jobs/job?id\u003d13"
+            },
+            {
+              "jobUrl": "http://nodemanager:46205/jobs/job?id\u003d14"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642245757458_1788428465",
+      "id": "paragraph_1642245757458_1788428465",
+      "dateCreated": "2022-01-15 11:22:37.458",
+      "dateStarted": "2022-01-15 11:34:27.832",
+      "dateFinished": "2022-01-15 11:34:31.315",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\ndef display(rdd):\n    if not rdd.isEmpty():\n        global spark, catalog\n        df \u003d rdd.toDF()\n        z.show(df)\n\ndisplay(result_rdd)",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:32:08.760",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "_1": "string",
+                      "_2": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Fail to execute line 9: display(result_rdd)\nTraceback (most recent call last):\n  File \"/tmp/hadoop-root/nm-local-dir/usercache/zeppelin/appcache/application_1675994320382_0001/container_1675994320382_0001_01_000001/pyspark.zip/pyspark/sql/types.py\", line 1039, in _infer_type\n    return _infer_schema(obj)\n  File \"/tmp/hadoop-root/nm-local-dir/usercache/zeppelin/appcache/application_1675994320382_0001/container_1675994320382_0001_01_000001/pyspark.zip/pyspark/sql/types.py\", line 1065, in _infer_schema\n    raise TypeError(\"Can not infer schema for type: %s\" % type(row))\nTypeError: Can not infer schema for type: \u003cclass \u0027set\u0027\u003e\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/hadoop-root/nm-local-dir/usercache/zeppelin/appcache/application_1675994320382_0001/container_1675994320382_0001_01_000001/pyspark.zip/pyspark/sql/types.py\", line 1070, in _infer_schema\n    fields.append(StructField(k, _infer_type(v), True))\n  File \"/tmp/hadoop-root/nm-local-dir/usercache/zeppelin/appcache/application_1675994320382_0001/container_1675994320382_0001_01_000001/pyspark.zip/pyspark/sql/types.py\", line 1041, in _infer_type\n    raise TypeError(\"not supported type: %s\" % type(obj))\nTypeError: not supported type: \u003cclass \u0027set\u0027\u003e\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/tmp/hadoop-root/nm-local-dir/usercache/zeppelin/appcache/application_1675994320382_0001/container_1675994320382_0001_01_000001/tmp/python1841845097151603256/zeppelin_python.py\", line 167, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 9, in \u003cmodule\u003e\n  File \"\u003cstdin\u003e\", line 6, in display\n  File \"/tmp/hadoop-root/nm-local-dir/usercache/zeppelin/appcache/application_1675994320382_0001/container_1675994320382_0001_01_000001/pyspark.zip/pyspark/sql/session.py\", line 66, in toDF\n    return sparkSession.createDataFrame(self, schema, sampleRatio)\n  File \"/tmp/hadoop-root/nm-local-dir/usercache/zeppelin/appcache/application_1675994320382_0001/container_1675994320382_0001_01_000001/pyspark.zip/pyspark/sql/session.py\", line 675, in createDataFrame\n    return self._create_dataframe(data, schema, samplingRatio, verifySchema)\n  File \"/tmp/hadoop-root/nm-local-dir/usercache/zeppelin/appcache/application_1675994320382_0001/container_1675994320382_0001_01_000001/pyspark.zip/pyspark/sql/session.py\", line 698, in _create_dataframe\n    rdd, schema \u003d self._createFromRDD(data.map(prepare), schema, samplingRatio)\n  File \"/tmp/hadoop-root/nm-local-dir/usercache/zeppelin/appcache/application_1675994320382_0001/container_1675994320382_0001_01_000001/pyspark.zip/pyspark/sql/session.py\", line 486, in _createFromRDD\n    struct \u003d self._inferSchema(rdd, samplingRatio, names\u003dschema)\n  File \"/tmp/hadoop-root/nm-local-dir/usercache/zeppelin/appcache/application_1675994320382_0001/container_1675994320382_0001_01_000001/pyspark.zip/pyspark/sql/session.py\", line 466, in _inferSchema\n    schema \u003d _infer_schema(first, names\u003dnames)\n  File \"/tmp/hadoop-root/nm-local-dir/usercache/zeppelin/appcache/application_1675994320382_0001/container_1675994320382_0001_01_000001/pyspark.zip/pyspark/sql/types.py\", line 1072, in _infer_schema\n    raise TypeError(\"Unable to infer the type of the field {}.\".format(k)) from e\nTypeError: Unable to infer the type of the field _2.\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d37"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d38"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642246023412_768814740",
+      "id": "paragraph_1642246023412_768814740",
+      "dateCreated": "2022-01-15 11:27:03.413",
+      "dateStarted": "2023-02-10 02:32:08.764",
+      "dateFinished": "2023-02-10 02:32:09.441",
+      "status": "ERROR"
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-15 11:35:52.804",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642246552804_1919026435",
+      "id": "paragraph_1642246552804_1919026435",
+      "dateCreated": "2022-01-15 11:35:52.804",
+      "status": "READY"
+    }
+  ],
+  "name": "Card_Transaction_Analysis",
+  "id": "2GT4KUKKG",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

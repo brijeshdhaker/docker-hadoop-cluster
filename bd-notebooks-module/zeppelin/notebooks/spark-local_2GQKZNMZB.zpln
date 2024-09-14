@@ -1,0 +1,163 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.conf\n\n#\n# /opt/cloudera/parcels/CDH/lib/spark/\n#\n# SPARK_HOME /opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/lib/spark\n\nSPARK_HOME \t/opt/spark\n\n#\n# \n# set spark execution mode\n# Please dont set deployment in interpreter settings.\n#\n\nmaster local[*]\n\n\n\n#\n# spark.jars can be used for adding any local jar files into spark interpreter\n#\n\n# spark.jars  file:///opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/lib/hive/lib/hive-hbase-handler-2.1.1-cdh6.3.2.jar\n# spark.executor.extraClassPath file:///opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/lib/hive/lib/hive-hbase-handler-2.1.1-cdh6.3.2.jar\n# spark.executor.extraLibrary file:///opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/lib/hive/lib/hive-hbase-handler-2.1.1-cdh6.3.2.jar\n\n\n#\n# set driver memory to 640M\n#\nspark.driver.memory 640M\n\n#\n# set executor number to be 2\n#\nspark.executor.instances  2\n\n#\n# set executor memory 640M\n#\nspark.executor.memory  640M",
+      "user": "anonymous",
+      "dateUpdated": "2024-04-05 06:00:21.161",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1638439432008_394136546",
+      "id": "paragraph_1638439432008_394136546",
+      "dateCreated": "2021-12-02 15:33:52.008",
+      "dateStarted": "2024-04-05 06:00:21.182",
+      "dateFinished": "2024-04-05 06:00:21.200",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\n\nspark",
+      "user": "anonymous",
+      "dateUpdated": "2024-04-05 06:00:25.120",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres1\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.SparkSession\u001b[0m \u003d org.apache.spark.sql.SparkSession@ceba0af\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1712292398330_1446997396",
+      "id": "paragraph_1712292398330_1446997396",
+      "dateCreated": "2024-04-05 04:46:38.330",
+      "dateStarted": "2024-04-05 06:00:25.125",
+      "dateFinished": "2024-04-05 06:00:35.946",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\na \u003d spark.sparkContext.appName\nm \u003d spark.sparkContext.master\ne \u003d spark.sparkContext.environment\n\n\nprint(a)\nprint(m)\nprint(e)",
+      "user": "anonymous",
+      "dateUpdated": "2024-04-05 06:00:56.555",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "zeppelin-notebooks\nlocal[*]\n{\u0027PYTHONHASHSEED\u0027: \u00270\u0027}\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1638440185623_41423979",
+      "id": "paragraph_1638440185623_41423979",
+      "dateCreated": "2021-12-02 15:46:25.623",
+      "dateStarted": "2024-04-05 06:00:56.558",
+      "dateFinished": "2024-04-05 06:00:57.810",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-21 02:46:34.248",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1638440302410_2060859008",
+      "id": "paragraph_1638440302410_2060859008",
+      "dateCreated": "2021-12-02 15:48:22.410",
+      "status": "READY"
+    }
+  ],
+  "name": "spark-local",
+  "id": "2GQKZNMZB",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

@@ -1,0 +1,1988 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\nSpark has **six core** data sources and hundreds of external data sources\n\n* CSV\n* JSON\n* Parquet\n* ORC\n* JDBC/ODBC connections\n* Plain-text files\n\nThe ability to read and write from all different kinds of data sources and for the community to create its own contributions is arguably one of Spark’s greatest strengths.",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.554",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eSpark has \u003cstrong\u003esix core\u003c/strong\u003e data sources and hundreds of external data sources\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eCSV\u003c/li\u003e\n  \u003cli\u003eJSON\u003c/li\u003e\n  \u003cli\u003eParquet\u003c/li\u003e\n  \u003cli\u003eORC\u003c/li\u003e\n  \u003cli\u003eJDBC/ODBC connections\u003c/li\u003e\n  \u003cli\u003ePlain-text files\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eThe ability to read and write from all different kinds of data sources and for the community to create its own contributions is arguably one of Spark’s greatest strengths.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763554_689554230",
+      "id": "20220919-164243_1651233824",
+      "dateCreated": "2022-09-19 16:42:43.554",
+      "status": "READY"
+    },
+    {
+      "text": "%python\nspark.read.",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.554",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763554_804833812",
+      "id": "20220919-164243_2058530622",
+      "dateCreated": "2022-09-19 16:42:43.554",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n###### The Structure of the Data Sources API:\n\n**Read API structure:**\nThe core structure for reading data is as follows\n\nDataFrameReader.format(...).option(\"key\",\"value\").schema(...).load()\n\n**format** is optional because by default Spark will use the Parquet format.\n\n**option** allows you to set key-value configurations to parameterize how you will read data.\n\n**schema** is optional if the data source provides a schema/ if you intend to use schema inference.",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.554",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch6\u003eThe Structure of the Data Sources API:\u003c/h6\u003e\n\u003cp\u003e\u003cstrong\u003eRead API structure:\u003c/strong\u003e\u003cbr/\u003eThe core structure for reading data is as follows\u003c/p\u003e\n\u003cp\u003eDataFrameReader.format(\u0026hellip;).option(\u0026ldquo;key\u0026rdquo;,\u0026ldquo;value\u0026rdquo;).schema(\u0026hellip;).load()\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eformat\u003c/strong\u003e is optional because by default Spark will use the Parquet format.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eoption\u003c/strong\u003e allows you to set key-value configurations to parameterize how you will read data.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eschema\u003c/strong\u003e is optional if the data source provides a schema/ if you intend to use schema inference.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763554_1163811310",
+      "id": "20220919-164243_1323885256",
+      "dateCreated": "2022-09-19 16:42:43.554",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**Basics of Reading Data:**\n\nThe foundation for reading data in Spark is the **DataFrameReader**. We access this through the SparkSession via the read attribute:\n \n spark.read\n \nAfter we have a DataFrame reader, we specify several values:\n\n* The format\n* The schema\n* The read mode\n* A series of options\n\nExample:\n              \n              spark.read.format(\"csv\")\\\n              \n              .option(\"mode\", \"FAILFAST\")\\\n              \n              .option(\"inferSchema\", \"true\")\\\n              \n              .option(\"path\", \"path/to/file(s)\")\\\n              \n              .schema(someSchema)\\\n              \n              .load()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.554",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003eBasics of Reading Data:\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eThe foundation for reading data in Spark is the \u003cstrong\u003eDataFrameReader\u003c/strong\u003e. We access this through the SparkSession via the read attribute:\u003c/p\u003e\n\u003cp\u003espark.read\u003c/p\u003e\n\u003cp\u003eAfter we have a DataFrame reader, we specify several values:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe format\u003c/li\u003e\n  \u003cli\u003eThe schema\u003c/li\u003e\n  \u003cli\u003eThe read mode\u003c/li\u003e\n  \u003cli\u003eA series of options\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eExample:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e          spark.read.format(\u0026quot;csv\u0026quot;)\\\n\n          .option(\u0026quot;mode\u0026quot;, \u0026quot;FAILFAST\u0026quot;)\\\n\n          .option(\u0026quot;inferSchema\u0026quot;, \u0026quot;true\u0026quot;)\\\n\n          .option(\u0026quot;path\u0026quot;, \u0026quot;path/to/file(s)\u0026quot;)\\\n\n          .schema(someSchema)\\\n\n          .load()\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763554_1758024196",
+      "id": "20220919-164243_912769898",
+      "dateCreated": "2022-09-19 16:42:43.554",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**Read Modes:**\n\nReading data from an external source naturally entails encountering malformed data, especially when working with only semi-structured data sources.\n\n* Permissive - Sets all fields to null when it encounters a corrupted record and places all corrupted records in a string column called _corrupt_record\n* dropMalformed - Drops the row that contains malformed records\n* failFast - Fails immediately upon encountering malformed records",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.554",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003eRead Modes:\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eReading data from an external source naturally entails encountering malformed data, especially when working with only semi-structured data sources.\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003ePermissive - Sets all fields to null when it encounters a corrupted record and places all corrupted records in a string column called _corrupt_record\n\u003c/li\u003e\n  \u003cli\u003edropMalformed - Drops the row that contains malformed records\u003c/li\u003e\n  \u003cli\u003efailFast - Fails immediately upon encountering malformed records\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763554_582301916",
+      "id": "20220919-164243_1643615480",
+      "dateCreated": "2022-09-19 16:42:43.554",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**Write API Structure:**\n\nDataFrameWriter.format(...).option(...).partitionBy(...).bucketBy(...).sortBy(...).save()\n\n**format** is optional because by default,Spark will use the parquet format.\n\n**option**, again, allows us to configure how to write out our given data. \n\n**PartitionBy, bucketBy, and sortBy** work only for file-based data sources",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.554",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003eWrite API Structure:\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eDataFrameWriter.format(\u0026hellip;).option(\u0026hellip;).partitionBy(\u0026hellip;).bucketBy(\u0026hellip;).sortBy(\u0026hellip;).save()\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eformat\u003c/strong\u003e is optional because by default,Spark will use the parquet format.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eoption\u003c/strong\u003e, again, allows us to configure how to write out our given data. \u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePartitionBy, bucketBy, and sortBy\u003c/strong\u003e work only for file-based data sources\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763554_792658783",
+      "id": "20220919-164243_1645064403",
+      "dateCreated": "2022-09-19 16:42:43.554",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**Basics of Writing Data:**\n\nDataFrameWriter on a per-DataFrame basis via the write attribute\n\n        dataframe.write.format(\"csv\")\n        .option(\"mode\", \"OVERWRITE\")\n        .option(\"dateFormat\", \"yyyy-MM-dd\")\n        .option(\"path\", \"path/to/file(s)\")\n        .save()\n\nSpark’s save modes\n\n* append - Appends the output files to the list of files that already exist at that location\n* overwrite - Will completely overwrite any data that already exists there\n* errorIfExists - Throws an error and fails the write if data or files already exist at the specified location\n* ignore - If data or files exist at the location, do nothing with the current DataFrame\n\ndefault is errorIfExists",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.554",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003eBasics of Writing Data:\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eDataFrameWriter on a per-DataFrame basis via the write attribute\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e    dataframe.write.format(\u0026quot;csv\u0026quot;)\n    .option(\u0026quot;mode\u0026quot;, \u0026quot;OVERWRITE\u0026quot;)\n    .option(\u0026quot;dateFormat\u0026quot;, \u0026quot;yyyy-MM-dd\u0026quot;)\n    .option(\u0026quot;path\u0026quot;, \u0026quot;path/to/file(s)\u0026quot;)\n    .save()\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eSpark’s save modes\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eappend - Appends the output files to the list of files that already exist at that location\u003c/li\u003e\n  \u003cli\u003eoverwrite - Will completely overwrite any data that already exists there\u003c/li\u003e\n  \u003cli\u003eerrorIfExists - Throws an error and fails the write if data or files already exist at the specified location\u003c/li\u003e\n  \u003cli\u003eignore - If data or files exist at the location, do nothing with the current DataFrame\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003edefault is errorIfExists\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763554_1148827048",
+      "id": "20220919-164243_1989716889",
+      "dateCreated": "2022-09-19 16:42:43.554",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n###### CSV files:\n\nCSV files, while seeming well structured, are actually one of the trickiest file formats you will encounter because not many assumptions can be made in production scenarios about what they contain or how they are structured. For this reason, the CSV reader has a large number of options\n\nEx: \n\n* commas inside of columns when the file is also comma-delimited or\n* null values labeled in an unconventional way.",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.554",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch6\u003eCSV files:\u003c/h6\u003e\n\u003cp\u003eCSV files, while seeming well structured, are actually one of the trickiest file formats you will encounter because not many assumptions can be made in production scenarios about what they contain or how they are structured. For this reason, the CSV reader has a large number of options\u003c/p\u003e\n\u003cp\u003eEx: \u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003ecommas inside of columns when the file is also comma-delimited or\u003c/li\u003e\n  \u003cli\u003enull values labeled in an unconventional way.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763554_657195479",
+      "id": "20220919-164243_908035634",
+      "dateCreated": "2022-09-19 16:42:43.554",
+      "status": "READY"
+    },
+    {
+      "text": "%python\nfrom pyspark.sql.types import StructField, StructType, LongType, StringType\n\nmyManualSchema \u003d StructType([\n  StructField(\"DEST_COUNTRY_NAME\", StringType(), True),\n  StructField(\"ORIGIN_COUNTRY_NAME\", StringType(), True),\n  StructField(\"count\", LongType(), False)])\n\nspark.read.format(\"csv\")\\\n.option(\"header\",\"true\")\\\n.option(\"mode\",\"FAILFAST\")\\\n.schema(myManualSchema)\\\n.load(\"/FileStore/tables/FileStore/tables/2015_summary-ebaee.csv\")\\\n.show(5)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.554",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+-----------------+-------------------+-----+\nDEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|\n+-----------------+-------------------+-----+\n    United States|            Romania|   15|\n    United States|            Croatia|    1|\n    United States|            Ireland|  344|\n            Egypt|      United States|   15|\n    United States|              India|   62|\n+-----------------+-------------------+-----+\nonly showing top 5 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763554_196771121",
+      "id": "20220919-164243_370706533",
+      "dateCreated": "2022-09-19 16:42:43.554",
+      "status": "READY"
+    },
+    {
+      "text": "%md\nThings get tricky when we don’t expect our data to be in a certain format, but it comes in that way.\n\nEg: let’s take our current schema and change all column types to **LongType**. This will fail when SPARK job reads the Data",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.554",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eThings get tricky when we don’t expect our data to be in a certain format, but it comes in that way.\u003c/p\u003e\n\u003cp\u003eEg: let’s take our current schema and change all column types to \u003cstrong\u003eLongType\u003c/strong\u003e. This will fail when SPARK job reads the Data\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763554_1935795357",
+      "id": "20220919-164243_421280093",
+      "dateCreated": "2022-09-19 16:42:43.554",
+      "status": "READY"
+    },
+    {
+      "text": "%python\nmyManualSchema \u003d StructType([\n  StructField(\"DEST_COUNTRY_NAME\", LongType(), True),\n  StructField(\"ORIGIN_COUNTRY_NAME\", LongType(), True),\n  StructField(\"count\", LongType(), False)])\n\nspark.read.format(\"csv\")\\\n.option(\"header\", \"true\")\\\n.option(\"mode\", \"FAILFAST\")\\\n.schema(myManualSchema)\\\n.load(\"/FileStore/tables/FileStore/tables/2015_summary-ebaee.csv\")\\\n.take(5)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.554",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e\u003c/div\u003e"
+          },
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e\u003cspan class\u003d\"ansi-red-fg\"\u003e---------------------------------------------------------------------------\u003c/span\u003e\n\u003cspan class\u003d\"ansi-red-fg\"\u003ePy4JJavaError\u003c/span\u003e                             Traceback (most recent call last)\n\u003cspan class\u003d\"ansi-green-fg\"\u003e\u0026lt;command-2589565801229210\u0026gt;\u003c/span\u003e in \u003cspan class\u003d\"ansi-cyan-fg\"\u003e\u0026lt;module\u0026gt;\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e      9\u003c/span\u003e \u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003eschema\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003emyManualSchema\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\u003cspan class\u003d\"ansi-red-fg\"\u003e\\\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e     10\u003c/span\u003e \u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003eload\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e\u0026#34;/FileStore/tables/FileStore/tables/2015_summary-ebaee.csv\u0026#34;\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\u003cspan class\u003d\"ansi-red-fg\"\u003e\\\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-fg\"\u003e---\u0026gt; 11\u003c/span\u003e\u003cspan class\u003d\"ansi-red-fg\"\u003e \u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003etake\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003e\u003cspan class\u003d\"ansi-cyan-fg\"\u003e5\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\n\n\u003cspan class\u003d\"ansi-green-fg\"\u003e/databricks/spark/python/pyspark/sql/dataframe.py\u003c/span\u003e in \u003cspan class\u003d\"ansi-cyan-fg\"\u003etake\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e(self, num)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e    594\u003c/span\u003e         \u003cspan class\u003d\"ansi-blue-fg\"\u003e[\u003c/span\u003eRow\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003eage\u003cspan class\u003d\"ansi-blue-fg\"\u003e\u003d\u003c/span\u003e\u003cspan class\u003d\"ansi-cyan-fg\"\u003e2\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e,\u003c/span\u003e name\u003cspan class\u003d\"ansi-blue-fg\"\u003e\u003d\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003eu\u0026#39;Alice\u0026#39;\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e,\u003c/span\u003e Row\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003eage\u003cspan class\u003d\"ansi-blue-fg\"\u003e\u003d\u003c/span\u003e\u003cspan class\u003d\"ansi-cyan-fg\"\u003e5\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e,\u003c/span\u003e name\u003cspan class\u003d\"ansi-blue-fg\"\u003e\u003d\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003eu\u0026#39;Bob\u0026#39;\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e]\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e    595\u003c/span\u003e         \u0026#34;\u0026#34;\u0026#34;\n\u003cspan class\u003d\"ansi-green-fg\"\u003e--\u0026gt; 596\u003c/span\u003e\u003cspan class\u003d\"ansi-red-fg\"\u003e         \u003c/span\u003e\u003cspan class\u003d\"ansi-green-fg\"\u003ereturn\u003c/span\u003e self\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003elimit\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003enum\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003ecollect\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e    597\u003c/span\u003e \n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e    598\u003c/span\u003e     \u003cspan class\u003d\"ansi-blue-fg\"\u003e@\u003c/span\u003esince\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003e\u003cspan class\u003d\"ansi-cyan-fg\"\u003e1.3\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\n\n\u003cspan class\u003d\"ansi-green-fg\"\u003e/databricks/spark/python/pyspark/sql/dataframe.py\u003c/span\u003e in \u003cspan class\u003d\"ansi-cyan-fg\"\u003ecollect\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e(self)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e    552\u003c/span\u003e         \u003cspan class\u003d\"ansi-red-fg\"\u003e# Default path used in OSS Spark / for non-DF-ACL clusters:\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e    553\u003c/span\u003e         \u003cspan class\u003d\"ansi-green-fg\"\u003ewith\u003c/span\u003e SCCallSiteSync\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003eself\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003e_sc\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e \u003cspan class\u003d\"ansi-green-fg\"\u003eas\u003c/span\u003e css\u003cspan class\u003d\"ansi-blue-fg\"\u003e:\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-fg\"\u003e--\u0026gt; 554\u003c/span\u003e\u003cspan class\u003d\"ansi-red-fg\"\u003e             \u003c/span\u003esock_info \u003cspan class\u003d\"ansi-blue-fg\"\u003e\u003d\u003c/span\u003e self\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003e_jdf\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003ecollectToPython\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e    555\u003c/span\u003e         \u003cspan class\u003d\"ansi-green-fg\"\u003ereturn\u003c/span\u003e list\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003e_load_from_socket\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003esock_info\u003cspan class\u003d\"ansi-blue-fg\"\u003e,\u003c/span\u003e BatchedSerializer\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003ePickleSerializer\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e    556\u003c/span\u003e \n\n\u003cspan class\u003d\"ansi-green-fg\"\u003e/databricks/spark/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py\u003c/span\u003e in \u003cspan class\u003d\"ansi-cyan-fg\"\u003e__call__\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e(self, *args)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e   1255\u003c/span\u003e         answer \u003cspan class\u003d\"ansi-blue-fg\"\u003e\u003d\u003c/span\u003e self\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003egateway_client\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003esend_command\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003ecommand\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e   1256\u003c/span\u003e         return_value \u003d get_return_value(\n\u003cspan class\u003d\"ansi-green-fg\"\u003e-\u0026gt; 1257\u003c/span\u003e\u003cspan class\u003d\"ansi-red-fg\"\u003e             answer, self.gateway_client, self.target_id, self.name)\n\u003c/span\u003e\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e   1258\u003c/span\u003e \n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e   1259\u003c/span\u003e         \u003cspan class\u003d\"ansi-green-fg\"\u003efor\u003c/span\u003e temp_arg \u003cspan class\u003d\"ansi-green-fg\"\u003ein\u003c/span\u003e temp_args\u003cspan class\u003d\"ansi-blue-fg\"\u003e:\u003c/span\u003e\n\n\u003cspan class\u003d\"ansi-green-fg\"\u003e/databricks/spark/python/pyspark/sql/utils.py\u003c/span\u003e in \u003cspan class\u003d\"ansi-cyan-fg\"\u003edeco\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e(*a, **kw)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e     61\u003c/span\u003e     \u003cspan class\u003d\"ansi-green-fg\"\u003edef\u003c/span\u003e deco\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e*\u003c/span\u003ea\u003cspan class\u003d\"ansi-blue-fg\"\u003e,\u003c/span\u003e \u003cspan class\u003d\"ansi-blue-fg\"\u003e**\u003c/span\u003ekw\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e:\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e     62\u003c/span\u003e         \u003cspan class\u003d\"ansi-green-fg\"\u003etry\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e:\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-fg\"\u003e---\u0026gt; 63\u003c/span\u003e\u003cspan class\u003d\"ansi-red-fg\"\u003e             \u003c/span\u003e\u003cspan class\u003d\"ansi-green-fg\"\u003ereturn\u003c/span\u003e f\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e*\u003c/span\u003ea\u003cspan class\u003d\"ansi-blue-fg\"\u003e,\u003c/span\u003e \u003cspan class\u003d\"ansi-blue-fg\"\u003e**\u003c/span\u003ekw\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e     64\u003c/span\u003e         \u003cspan class\u003d\"ansi-green-fg\"\u003eexcept\u003c/span\u003e py4j\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003eprotocol\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003ePy4JJavaError \u003cspan class\u003d\"ansi-green-fg\"\u003eas\u003c/span\u003e e\u003cspan class\u003d\"ansi-blue-fg\"\u003e:\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e     65\u003c/span\u003e             s \u003cspan class\u003d\"ansi-blue-fg\"\u003e\u003d\u003c/span\u003e e\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003ejava_exception\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003etoString\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\n\n\u003cspan class\u003d\"ansi-green-fg\"\u003e/databricks/spark/python/lib/py4j-0.10.7-src.zip/py4j/protocol.py\u003c/span\u003e in \u003cspan class\u003d\"ansi-cyan-fg\"\u003eget_return_value\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e(answer, gateway_client, target_id, name)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e    326\u003c/span\u003e                 raise Py4JJavaError(\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e    327\u003c/span\u003e                     \u003cspan class\u003d\"ansi-blue-fg\"\u003e\u0026#34;An error occurred while calling {0}{1}{2}.\\n\u0026#34;\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-fg\"\u003e--\u0026gt; 328\u003c/span\u003e\u003cspan class\u003d\"ansi-red-fg\"\u003e                     format(target_id, \u0026#34;.\u0026#34;, name), value)\n\u003c/span\u003e\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e    329\u003c/span\u003e             \u003cspan class\u003d\"ansi-green-fg\"\u003eelse\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e:\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e    330\u003c/span\u003e                 raise Py4JError(\n\n\u003cspan class\u003d\"ansi-red-fg\"\u003ePy4JJavaError\u003c/span\u003e: An error occurred while calling o379.collectToPython.\n: org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 311.0 failed 1 times, most recent failure: Lost task 0.0 in stage 311.0 (TID 8591, localhost, executor driver): com.databricks.sql.io.FileReadException: Error while reading file dbfs:/FileStore/tables/FileStore/tables/2015_summary-ebaee.csv.\n\tat org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1$$anon$2.logFileNameAndThrow(FileScanRDD.scala:331)\n\tat org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1$$anon$2.getNext(FileScanRDD.scala:310)\n\tat org.apache.spark.util.NextIterator.hasNext(NextIterator.scala:73)\n\tat org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.nextIterator(FileScanRDD.scala:397)\n\tat org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:250)\n\tat org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.processNext(Unknown Source)\n\tat org.apache.spark.sql.execution.BufferedRowIterator.hasNext(BufferedRowIterator.java:43)\n\tat org.apache.spark.sql.execution.WholeStageCodegenExec$$anonfun$13$$anon$1.hasNext(WholeStageCodegenExec.scala:640)\n\tat org.apache.spark.sql.execution.collect.UnsafeRowBatchUtils$.encodeUnsafeRows(UnsafeRowBatchUtils.scala:62)\n\tat org.apache.spark.sql.execution.collect.Collector$$anonfun$2.apply(Collector.scala:159)\n\tat org.apache.spark.sql.execution.collect.Collector$$anonfun$2.apply(Collector.scala:158)\n\tat org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)\n\tat org.apache.spark.scheduler.Task.doRunTask(Task.scala:140)\n\tat org.apache.spark.scheduler.Task.run(Task.scala:113)\n\tat org.apache.spark.executor.Executor$TaskRunner$$anonfun$13.apply(Executor.scala:537)\n\tat org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1541)\n\tat org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:543)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\tat java.lang.Thread.run(Thread.java:748)\nCaused by: org.apache.spark.SparkException: Malformed records are detected in record parsing. Parse Mode: FAILFAST.\n\tat org.apache.spark.sql.execution.datasources.FailureSafeParser.parse(FailureSafeParser.scala:75)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser$$anonfun$parseIterator$2.apply(UnivocityParser.scala:388)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser$$anonfun$parseIterator$2.apply(UnivocityParser.scala:388)\n\tat scala.collection.Iterator$$anon$12.nextCur(Iterator.scala:435)\n\tat scala.collection.Iterator$$anon$12.hasNext(Iterator.scala:441)\n\tat org.apache.spark.util.CompletionIterator.hasNext(CompletionIterator.scala:31)\n\tat scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:409)\n\tat org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1$$anon$2.getNext(FileScanRDD.scala:283)\n\t... 18 more\nCaused by: java.lang.NumberFormatException: For input string: \u0026#34;United States\u0026#34;\n\tat java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)\n\tat java.lang.Long.parseLong(Long.java:589)\n\tat java.lang.Long.parseLong(Long.java:631)\n\tat scala.collection.immutable.StringLike$class.toLong(StringLike.scala:277)\n\tat scala.collection.immutable.StringOps.toLong(StringOps.scala:29)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser$$anonfun$makeConverter$4$$anonfun$apply$8.apply(UnivocityParser.scala:142)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser$$anonfun$makeConverter$4$$anonfun$apply$8.apply(UnivocityParser.scala:142)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser.org$apache$spark$sql$execution$datasources$csv$UnivocityParser$$nullSafeDatum(UnivocityParser.scala:211)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser$$anonfun$makeConverter$4.apply(UnivocityParser.scala:142)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser$$anonfun$makeConverter$4.apply(UnivocityParser.scala:141)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser.org$apache$spark$sql$execution$datasources$csv$UnivocityParser$$convert(UnivocityParser.scala:272)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser$$anonfun$5.apply(UnivocityParser.scala:221)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser$$anonfun$5.apply(UnivocityParser.scala:221)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser.parse(UnivocityParser.scala:228)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser$$anonfun$9.apply(UnivocityParser.scala:381)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser$$anonfun$9.apply(UnivocityParser.scala:381)\n\tat org.apache.spark.sql.execution.datasources.FailureSafeParser.parse(FailureSafeParser.scala:64)\n\t... 25 more\n\nDriver stacktrace:\n\tat org.apache.spark.scheduler.DAGScheduler.org$apache$spark$scheduler$DAGScheduler$$failJobAndIndependentStages(DAGScheduler.scala:2362)\n\tat org.apache.spark.scheduler.DAGScheduler$$anonfun$abortStage$1.apply(DAGScheduler.scala:2350)\n\tat org.apache.spark.scheduler.DAGScheduler$$anonfun$abortStage$1.apply(DAGScheduler.scala:2349)\n\tat scala.collection.mutable.ResizableArray$class.foreach(ResizableArray.scala:59)\n\tat scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:48)\n\tat org.apache.spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:2349)\n\tat org.apache.spark.scheduler.DAGScheduler$$anonfun$handleTaskSetFailed$1.apply(DAGScheduler.scala:1102)\n\tat org.apache.spark.scheduler.DAGScheduler$$anonfun$handleTaskSetFailed$1.apply(DAGScheduler.scala:1102)\n\tat scala.Option.foreach(Option.scala:257)\n\tat org.apache.spark.scheduler.DAGScheduler.handleTaskSetFailed(DAGScheduler.scala:1102)\n\tat org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:2582)\n\tat org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2529)\n\tat org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2517)\n\tat org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:49)\n\tat org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:897)\n\tat org.apache.spark.SparkContext.runJob(SparkContext.scala:2280)\n\tat org.apache.spark.sql.execution.collect.Collector.runSparkJobs(Collector.scala:270)\n\tat org.apache.spark.sql.execution.collect.Collector.collect(Collector.scala:280)\n\tat org.apache.spark.sql.execution.collect.Collector$.collect(Collector.scala:80)\n\tat org.apache.spark.sql.execution.collect.Collector$.collect(Collector.scala:86)\n\tat org.apache.spark.sql.execution.ResultCacheManager.getOrComputeResult(ResultCacheManager.scala:508)\n\tat org.apache.spark.sql.execution.CollectLimitExec.executeCollectResult(limit.scala:57)\n\tat org.apache.spark.sql.Dataset$$anonfun$50.apply(Dataset.scala:3367)\n\tat org.apache.spark.sql.Dataset$$anonfun$50.apply(Dataset.scala:3366)\n\tat org.apache.spark.sql.Dataset$$anonfun$54.apply(Dataset.scala:3501)\n\tat org.apache.spark.sql.Dataset$$anonfun$54.apply(Dataset.scala:3496)\n\tat org.apache.spark.sql.execution.SQLExecution$$anonfun$withCustomExecutionEnv$1$$anonfun$apply$1.apply(SQLExecution.scala:112)\n\tat org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:217)\n\tat org.apache.spark.sql.execution.SQLExecution$$anonfun$withCustomExecutionEnv$1.apply(SQLExecution.scala:98)\n\tat org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:835)\n\tat org.apache.spark.sql.execution.SQLExecution$.withCustomExecutionEnv(SQLExecution.scala:74)\n\tat org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:169)\n\tat org.apache.spark.sql.Dataset.org$apache$spark$sql$Dataset$$withAction(Dataset.scala:3496)\n\tat org.apache.spark.sql.Dataset.collectToPython(Dataset.scala:3366)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)\n\tat py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:380)\n\tat py4j.Gateway.invoke(Gateway.java:295)\n\tat py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)\n\tat py4j.commands.CallCommand.execute(CallCommand.java:79)\n\tat py4j.GatewayConnection.run(GatewayConnection.java:251)\n\tat java.lang.Thread.run(Thread.java:748)\nCaused by: com.databricks.sql.io.FileReadException: Error while reading file dbfs:/FileStore/tables/FileStore/tables/2015_summary-ebaee.csv.\n\tat org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1$$anon$2.logFileNameAndThrow(FileScanRDD.scala:331)\n\tat org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1$$anon$2.getNext(FileScanRDD.scala:310)\n\tat org.apache.spark.util.NextIterator.hasNext(NextIterator.scala:73)\n\tat org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.nextIterator(FileScanRDD.scala:397)\n\tat org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:250)\n\tat org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.processNext(Unknown Source)\n\tat org.apache.spark.sql.execution.BufferedRowIterator.hasNext(BufferedRowIterator.java:43)\n\tat org.apache.spark.sql.execution.WholeStageCodegenExec$$anonfun$13$$anon$1.hasNext(WholeStageCodegenExec.scala:640)\n\tat org.apache.spark.sql.execution.collect.UnsafeRowBatchUtils$.encodeUnsafeRows(UnsafeRowBatchUtils.scala:62)\n\tat org.apache.spark.sql.execution.collect.Collector$$anonfun$2.apply(Collector.scala:159)\n\tat org.apache.spark.sql.execution.collect.Collector$$anonfun$2.apply(Collector.scala:158)\n\tat org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)\n\tat org.apache.spark.scheduler.Task.doRunTask(Task.scala:140)\n\tat org.apache.spark.scheduler.Task.run(Task.scala:113)\n\tat org.apache.spark.executor.Executor$TaskRunner$$anonfun$13.apply(Executor.scala:537)\n\tat org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1541)\n\tat org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:543)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\t... 1 more\nCaused by: org.apache.spark.SparkException: Malformed records are detected in record parsing. Parse Mode: FAILFAST.\n\tat org.apache.spark.sql.execution.datasources.FailureSafeParser.parse(FailureSafeParser.scala:75)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser$$anonfun$parseIterator$2.apply(UnivocityParser.scala:388)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser$$anonfun$parseIterator$2.apply(UnivocityParser.scala:388)\n\tat scala.collection.Iterator$$anon$12.nextCur(Iterator.scala:435)\n\tat scala.collection.Iterator$$anon$12.hasNext(Iterator.scala:441)\n\tat org.apache.spark.util.CompletionIterator.hasNext(CompletionIterator.scala:31)\n\tat scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:409)\n\tat org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1$$anon$2.getNext(FileScanRDD.scala:283)\n\t... 18 more\nCaused by: java.lang.NumberFormatException: For input string: \u0026#34;United States\u0026#34;\n\tat java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)\n\tat java.lang.Long.parseLong(Long.java:589)\n\tat java.lang.Long.parseLong(Long.java:631)\n\tat scala.collection.immutable.StringLike$class.toLong(StringLike.scala:277)\n\tat scala.collection.immutable.StringOps.toLong(StringOps.scala:29)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser$$anonfun$makeConverter$4$$anonfun$apply$8.apply(UnivocityParser.scala:142)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser$$anonfun$makeConverter$4$$anonfun$apply$8.apply(UnivocityParser.scala:142)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser.org$apache$spark$sql$execution$datasources$csv$UnivocityParser$$nullSafeDatum(UnivocityParser.scala:211)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser$$anonfun$makeConverter$4.apply(UnivocityParser.scala:142)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser$$anonfun$makeConverter$4.apply(UnivocityParser.scala:141)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser.org$apache$spark$sql$execution$datasources$csv$UnivocityParser$$convert(UnivocityParser.scala:272)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser$$anonfun$5.apply(UnivocityParser.scala:221)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser$$anonfun$5.apply(UnivocityParser.scala:221)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser.parse(UnivocityParser.scala:228)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser$$anonfun$9.apply(UnivocityParser.scala:381)\n\tat org.apache.spark.sql.execution.datasources.csv.UnivocityParser$$anonfun$9.apply(UnivocityParser.scala:381)\n\tat org.apache.spark.sql.execution.datasources.FailureSafeParser.parse(FailureSafeParser.scala:64)\n\t... 25 more\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763554_1278068554",
+      "id": "20220919-164243_711695748",
+      "dateCreated": "2022-09-19 16:42:43.554",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**Writing CSV Files:**\n* Just as with reading data, there are a variety of **options** for writing data when we write CSV files. \n* This is a subset of the reading options because many do not apply when writing data (like maxColumns and inferSchema).\n\nFor instance, we can take our CSV file and write it out as a TSV file quite easily",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003eWriting CSV Files:\u003c/strong\u003e\u003cbr/\u003e* Just as with reading data, there are a variety of \u003cstrong\u003eoptions\u003c/strong\u003e for writing data when we write CSV files.\u003cbr/\u003e* This is a subset of the reading options because many do not apply when writing data (like maxColumns and inferSchema).\u003c/p\u003e\n\u003cp\u003eFor instance, we can take our CSV file and write it out as a TSV file quite easily\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_229569014",
+      "id": "20220919-164243_1620029677",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%python\ncsvFile \u003d spark.read.format(\"csv\")\\\n          .option(\"header\",True)\\\n          .option(\"inferSchema\",True)\\\n          .option(\"mode\",\"FAILFAST\")\\\n          .load(\"/FileStore/tables/FileStore/tables/2015_summary-ebaee.csv\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_2119564178",
+      "id": "20220919-164243_847660857",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%python\ncsvFile.write.format(\"csv\")\\\n             .mode(\"overwrite\")\\\n             .option(\"sep\",\"\\t\")\\\n             .save(\"/tmp/my-tsv-file.tsv\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_1236325968",
+      "id": "20220919-164243_1252542181",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%md\nWhen you list the destination directory, you can see that my-tsv-file is actually a folder with numerous files within it.\n\nThis actually reflects the number of partitions in our DataFrame at the time we write it out. If we were to repartition our data before then, we would end up with a different number of files.",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eWhen you list the destination directory, you can see that my-tsv-file is actually a folder with numerous files within it.\u003c/p\u003e\n\u003cp\u003eThis actually reflects the number of partitions in our DataFrame at the time we write it out. If we were to repartition our data before then, we would end up with a different number of files.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_1852110290",
+      "id": "20220919-164243_1020880265",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n%fs\nls /tmp/my-tsv-file.tsv",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .table-result-container {\n    max-height: 300px;\n    overflow: auto;\n  }\n  table, th, td {\n    border: 1px solid black;\n    border-collapse: collapse;\n  }\n  th, td {\n    padding: 5px;\n  }\n  th {\n    text-align: left;\n  }\n\u003c/style\u003e\u003cdiv class\u003d\u0027table-result-container\u0027\u003e\u003ctable class\u003d\u0027table-result\u0027\u003e\u003cthead style\u003d\u0027background-color: white\u0027\u003e\u003ctr\u003e\u003cth\u003epath\u003c/th\u003e\u003cth\u003ename\u003c/th\u003e\u003cth\u003esize\u003c/th\u003e\u003c/tr\u003e\u003c/thead\u003e\u003ctbody\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-tsv-file.tsv/_committed_1052242386159539625\u003c/td\u003e\u003ctd\u003e_committed_1052242386159539625\u003c/td\u003e\u003ctd\u003e195\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-tsv-file.tsv/_committed_45606838288090940\u003c/td\u003e\u003ctd\u003e_committed_45606838288090940\u003c/td\u003e\u003ctd\u003e206\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-tsv-file.tsv/_committed_6146190876480250560\u003c/td\u003e\u003ctd\u003e_committed_6146190876480250560\u003c/td\u003e\u003ctd\u003e200\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-tsv-file.tsv/_committed_7158563425288245554\u003c/td\u003e\u003ctd\u003e_committed_7158563425288245554\u003c/td\u003e\u003ctd\u003e197\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-tsv-file.tsv/_committed_vacuum1671928282241659679\u003c/td\u003e\u003ctd\u003e_committed_vacuum1671928282241659679\u003c/td\u003e\u003ctd\u003e160\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-tsv-file.tsv/_started_6146190876480250560\u003c/td\u003e\u003ctd\u003e_started_6146190876480250560\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-tsv-file.tsv/part-00000-tid-6146190876480250560-7172689d-72b3-466a-b773-068e21dd2198-8595-1-c000.csv\u003c/td\u003e\u003ctd\u003epart-00000-tid-6146190876480250560-7172689d-72b3-466a-b773-068e21dd2198-8595-1-c000.csv\u003c/td\u003e\u003ctd\u003e7032\u003c/td\u003e\u003c/tr\u003e\u003c/tbody\u003e\u003c/table\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_215031165",
+      "id": "20220919-164243_845449313",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**JSON Files:**\n* In Spark, when we refer to JSON files, we refer to **line-delimited** JSON files. \n* This contrasts with files that have a large JSON object or array per file.\n* The line-delimited versus multiline trade-off is controlled by a single **option: multiLine.**\n* When you set this option to true, you can read an entire file as one json object and Spark will go through the work of parsing that into a DataFrame.\n* Line-delimited JSON is actually a much more stable format because\n  * it allows you to append to a file with a new record (rather than having to read in an entire file and then write it out)\n  * JSON objects have structure, and JavaScript (on which JSON is based) has at least basic types. This makes it easier to work with because Spark can make more assumptions on our behalf about the data.\n  \nthere are significantly less options than importing CSV files",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003eJSON Files:\u003c/strong\u003e\u003cbr/\u003e* In Spark, when we refer to JSON files, we refer to \u003cstrong\u003eline-delimited\u003c/strong\u003e JSON files.\u003cbr/\u003e* This contrasts with files that have a large JSON object or array per file.\u003cbr/\u003e* The line-delimited versus multiline trade-off is controlled by a single \u003cstrong\u003eoption: multiLine.\u003c/strong\u003e\u003cbr/\u003e* When you set this option to true, you can read an entire file as one json object and Spark will go through the work of parsing that into a DataFrame.\u003cbr/\u003e* Line-delimited JSON is actually a much more stable format because\u003cbr/\u003e * it allows you to append to a file with a new record (rather than having to read in an entire file and then write it out)\u003cbr/\u003e * JSON objects have structure, and JavaScript (on which JSON is based) has at least basic types. This makes it easier to work with because Spark can make more assumptions on our behalf about the data.\u003c/p\u003e\n\u003cp\u003ethere are significantly less options than importing CSV files\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_659561570",
+      "id": "20220919-164243_1454962934",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%python\njsonFile \u003d spark.read.format(\"json\")\\\n          .option(\"mode\",\"FAILFAST\")\\\n          .option(\"inferSchema\",\"true\")\\\n          .load(\"/FileStore/tables/2010_summary-506d8.json\")\njsonFile.show(5)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+-----------------+-------------------+-----+\nDEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|\n+-----------------+-------------------+-----+\n    United States|            Romania|    1|\n    United States|            Ireland|  264|\n    United States|              India|   69|\n            Egypt|      United States|   24|\nEquatorial Guinea|      United States|    1|\n+-----------------+-------------------+-----+\nonly showing top 5 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_1311125777",
+      "id": "20220919-164243_2090506639",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n###### Writing JSON file:",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch6\u003eWriting JSON file:\u003c/h6\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_1815784916",
+      "id": "20220919-164243_123573962",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%python\njsonFile.write.format(\"json\").mode(\"overWrite\").save(\"/tmp/my-json-file.json\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_1051866639",
+      "id": "20220919-164243_292303296",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n%fs\nls /tmp/my-json-file.json/",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .table-result-container {\n    max-height: 300px;\n    overflow: auto;\n  }\n  table, th, td {\n    border: 1px solid black;\n    border-collapse: collapse;\n  }\n  th, td {\n    padding: 5px;\n  }\n  th {\n    text-align: left;\n  }\n\u003c/style\u003e\u003cdiv class\u003d\u0027table-result-container\u0027\u003e\u003ctable class\u003d\u0027table-result\u0027\u003e\u003cthead style\u003d\u0027background-color: white\u0027\u003e\u003ctr\u003e\u003cth\u003epath\u003c/th\u003e\u003cth\u003ename\u003c/th\u003e\u003cth\u003esize\u003c/th\u003e\u003c/tr\u003e\u003c/thead\u003e\u003ctbody\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-json-file.json/_committed_3564551278880974825\u003c/td\u003e\u003ctd\u003e_committed_3564551278880974825\u003c/td\u003e\u003ctd\u003e203\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-json-file.json/_committed_4279400682678292078\u003c/td\u003e\u003ctd\u003e_committed_4279400682678292078\u003c/td\u003e\u003ctd\u003e201\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-json-file.json/_committed_4726210635142241060\u003c/td\u003e\u003ctd\u003e_committed_4726210635142241060\u003c/td\u003e\u003ctd\u003e212\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-json-file.json/_committed_5265798511711083028\u003c/td\u003e\u003ctd\u003e_committed_5265798511711083028\u003c/td\u003e\u003ctd\u003e201\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-json-file.json/_committed_vacuum4149695519666934274\u003c/td\u003e\u003ctd\u003e_committed_vacuum4149695519666934274\u003c/td\u003e\u003ctd\u003e162\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-json-file.json/_started_3564551278880974825\u003c/td\u003e\u003ctd\u003e_started_3564551278880974825\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-json-file.json/part-00000-tid-3564551278880974825-6bf1b642-d1da-4db0-9f17-cbee7b514b9b-8599-1-c000.json\u003c/td\u003e\u003ctd\u003epart-00000-tid-3564551278880974825-6bf1b642-d1da-4db0-9f17-cbee7b514b9b-8599-1-c000.json\u003c/td\u003e\u003ctd\u003e21353\u003c/td\u003e\u003c/tr\u003e\u003c/tbody\u003e\u003c/table\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_1442825263",
+      "id": "20220919-164243_8520787",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**Parquet Files:**\n* This is an open source column-oriented data store that provides variety of storage optimizations, especially for analytical workloads.\n* It provides columnar compression, which saves storage space and allows for reading individual columns instead of entire files.\n* It is the default format for Apache SPARK.\n* Reading data will be so efficient  when we store data in Parquet format compared to CSV and JSON format.\n* If the column is complex type(array, struct or Map), we can still be able to read and write using Parquet format.",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003eParquet Files:\u003c/strong\u003e\u003cbr/\u003e* This is an open source column-oriented data store that provides variety of storage optimizations, especially for analytical workloads.\u003cbr/\u003e* It provides columnar compression, which saves storage space and allows for reading individual columns instead of entire files.\u003cbr/\u003e* It is the default format for Apache SPARK.\u003cbr/\u003e* Reading data will be so efficient when we store data in Parquet format compared to CSV and JSON format.\u003cbr/\u003e* If the column is complex type(array, struct or Map), we can still be able to read and write using Parquet format.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_1741836568",
+      "id": "20220919-164243_679256877",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%python\nspark.read.format(\"parquet\")\\\n     .load(\"/FileStore/tables/2010_summary-506d8.parquet\").show(5)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+-----------------+-------------------+-----+\nDEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|\n+-----------------+-------------------+-----+\n    United States|            Romania|    1|\n    United States|            Ireland|  264|\n    United States|              India|   69|\n            Egypt|      United States|   24|\nEquatorial Guinea|      United States|    1|\n+-----------------+-------------------+-----+\nonly showing top 5 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_532047715",
+      "id": "20220919-164243_1132235566",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%python\nspark.read.orc",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_796808830",
+      "id": "20220919-164243_871252144",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**Parquet Options:**\n\nParquet has only 2 options, because it has well defined specification that aligns closely with the concepts of SPARK.\n\n* Write - (\n           KEY - compression or codec\\\n           POTENTIAL VALUES - None, uncompressed, bzip2, deflate, gzip, lz4, or snappy\\\n           DEFAULT - None\\\n           DESCRIPTION - Declares what compression codec Spark should use to read and write the file)\n           \n* Read - (\n          KEY - mergeSchema\\\n          POTENTIAL VALUES - true,false\\\n          DEFAULT - Value of the configuration spark.sql.parquet.mergeSchema\\\n          DESCRIPTION - You can incrementally add columns to newly written Parquet files in the same table/folder. use this option to\\\n          enable/disable this feature)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003eParquet Options:\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eParquet has only 2 options, because it has well defined specification that aligns closely with the concepts of SPARK.\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\n  \u003cp\u003eWrite - (\u003cbr/\u003e KEY - compression or codec\\\u003cbr/\u003e POTENTIAL VALUES - None, uncompressed, bzip2, deflate, gzip, lz4, or snappy\\\u003cbr/\u003e DEFAULT - None\\\u003cbr/\u003e DESCRIPTION - Declares what compression codec Spark should use to read and write the file)\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eRead - (\u003cbr/\u003e KEY - mergeSchema\\\u003cbr/\u003e POTENTIAL VALUES - true,false\\\u003cbr/\u003e DEFAULT - Value of the configuration spark.sql.parquet.mergeSchema\\\u003cbr/\u003e DESCRIPTION - You can incrementally add columns to newly written Parquet files in the same table/folder. use this option to\\\u003cbr/\u003e enable/disable this feature)\u003c/p\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_1879956533",
+      "id": "20220919-164243_601778690",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**Writing Parquet Files:**",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003eWriting Parquet Files:\u003c/strong\u003e\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_1656826623",
+      "id": "20220919-164243_290972537",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%python\njsonFile.write.format(\"parquet\")\\\n        .mode(\"overWrite\")\\\n        .save(\"/tmp/my-parquet-file.parquet\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_2068634684",
+      "id": "20220919-164243_2122618438",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n%fs\nls /tmp/my-parquet-file.parquet",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .table-result-container {\n    max-height: 300px;\n    overflow: auto;\n  }\n  table, th, td {\n    border: 1px solid black;\n    border-collapse: collapse;\n  }\n  th, td {\n    padding: 5px;\n  }\n  th {\n    text-align: left;\n  }\n\u003c/style\u003e\u003cdiv class\u003d\u0027table-result-container\u0027\u003e\u003ctable class\u003d\u0027table-result\u0027\u003e\u003cthead style\u003d\u0027background-color: white\u0027\u003e\u003ctr\u003e\u003cth\u003epath\u003c/th\u003e\u003cth\u003ename\u003c/th\u003e\u003cth\u003esize\u003c/th\u003e\u003c/tr\u003e\u003c/thead\u003e\u003ctbody\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-parquet-file.parquet/_SUCCESS\u003c/td\u003e\u003ctd\u003e_SUCCESS\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-parquet-file.parquet/_committed_2694429533665994459\u003c/td\u003e\u003ctd\u003e_committed_2694429533665994459\u003c/td\u003e\u003ctd\u003e123\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-parquet-file.parquet/_committed_5544502557907219618\u003c/td\u003e\u003ctd\u003e_committed_5544502557907219618\u003c/td\u003e\u003ctd\u003e232\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-parquet-file.parquet/_started_2694429533665994459\u003c/td\u003e\u003ctd\u003e_started_2694429533665994459\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-parquet-file.parquet/_started_5544502557907219618\u003c/td\u003e\u003ctd\u003e_started_5544502557907219618\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-parquet-file.parquet/part-00000-tid-5544502557907219618-a62a710e-6b3c-48c9-8b6b-4846a520355d-21-1-c000.snappy.parquet\u003c/td\u003e\u003ctd\u003epart-00000-tid-5544502557907219618-a62a710e-6b3c-48c9-8b6b-4846a520355d-21-1-c000.snappy.parquet\u003c/td\u003e\u003ctd\u003e5254\u003c/td\u003e\u003c/tr\u003e\u003c/tbody\u003e\u003c/table\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_431335313",
+      "id": "20220919-164243_1346187956",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**ORC(Optimized Row Columnar) Files:**\n\n* ORC is a self-describing, type aware columnar file format designed for Hadoop workloads.\n* It is optimized for large streaming reads, but with integrated support for finding required rows quickly.\n* ORC doesnt have any options to read data, because SPARK understands the file format quite well.\n* Mostly Parquet and ORC are similar but the fundamental difference is Parquet is further optimized for SPARK and ORC is optimized for HIVE.",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003eORC(Optimized Row Columnar) Files:\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eORC is a self-describing, type aware columnar file format designed for Hadoop workloads.\u003c/li\u003e\n  \u003cli\u003eIt is optimized for large streaming reads, but with integrated support for finding required rows quickly.\u003c/li\u003e\n  \u003cli\u003eORC doesnt have any options to read data, because SPARK understands the file format quite well.\u003c/li\u003e\n  \u003cli\u003eMostly Parquet and ORC are similar but the fundamental difference is Parquet is further optimized for SPARK and ORC is optimized for HIVE.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_163666456",
+      "id": "20220919-164243_38355335",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%python\nspark.read.format(\"orc\")\\\n  .load(\"/FileStore/tables/2010_summary-506d8.orc\").show(3)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+-----------------+-------------------+-----+\nDEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|\n+-----------------+-------------------+-----+\n    United States|            Romania|    1|\n    United States|            Ireland|  264|\n    United States|              India|   69|\n+-----------------+-------------------+-----+\nonly showing top 3 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_824998544",
+      "id": "20220919-164243_573277625",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%python\ncsvFile.write.format(\"orc\").mode(\"overWrite\").save(\"/tmp/my-json-file.orc\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_492348931",
+      "id": "20220919-164243_1639472283",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n%fs\nls /tmp/my-json-file.orc",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .table-result-container {\n    max-height: 300px;\n    overflow: auto;\n  }\n  table, th, td {\n    border: 1px solid black;\n    border-collapse: collapse;\n  }\n  th, td {\n    padding: 5px;\n  }\n  th {\n    text-align: left;\n  }\n\u003c/style\u003e\u003cdiv class\u003d\u0027table-result-container\u0027\u003e\u003ctable class\u003d\u0027table-result\u0027\u003e\u003cthead style\u003d\u0027background-color: white\u0027\u003e\u003ctr\u003e\u003cth\u003epath\u003c/th\u003e\u003cth\u003ename\u003c/th\u003e\u003cth\u003esize\u003c/th\u003e\u003c/tr\u003e\u003c/thead\u003e\u003ctbody\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-json-file.orc/_SUCCESS\u003c/td\u003e\u003ctd\u003e_SUCCESS\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-json-file.orc/_committed_603560362657702583\u003c/td\u003e\u003ctd\u003e_committed_603560362657702583\u003c/td\u003e\u003ctd\u003e118\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-json-file.orc/_started_603560362657702583\u003c/td\u003e\u003ctd\u003e_started_603560362657702583\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-json-file.orc/part-00000-tid-603560362657702583-1c6a9f4a-af47-4f93-9994-8ba7dff5fc7c-23-1-c000.snappy.orc\u003c/td\u003e\u003ctd\u003epart-00000-tid-603560362657702583-1c6a9f4a-af47-4f93-9994-8ba7dff5fc7c-23-1-c000.snappy.orc\u003c/td\u003e\u003ctd\u003e3817\u003c/td\u003e\u003c/tr\u003e\u003c/tbody\u003e\u003c/table\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_387420747",
+      "id": "20220919-164243_1251949723",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**SQL DataBases:**",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003eSQL DataBases:\u003c/strong\u003e\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_1615346998",
+      "id": "20220919-164243_1832258220",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%python\ndriver \u003d \"org.sqlite.JDBC\"\npath \u003d \"/FileStore/tables/my_sqlite-e9c7d.db\"\nurl \u003d \"jdbc:sqlite:\" + path\ntablename \u003d \"flight_info\"\n\ndbDataFrame \u003d spark.read.format(\"jdbc\").option(\"url\", url).option(\"dbtable\", tablename).option(\"driver\", driver)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_1655054224",
+      "id": "20220919-164243_323898622",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%python\ndbDataFrame.load()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e\u003c/div\u003e"
+          },
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e\u003cspan class\u003d\"ansi-red-fg\"\u003e---------------------------------------------------------------------------\u003c/span\u003e\n\u003cspan class\u003d\"ansi-red-fg\"\u003ePy4JJavaError\u003c/span\u003e                             Traceback (most recent call last)\n\u003cspan class\u003d\"ansi-green-fg\"\u003e/databricks/spark/python/pyspark/sql/utils.py\u003c/span\u003e in \u003cspan class\u003d\"ansi-cyan-fg\"\u003edeco\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e(*a, **kw)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e     62\u003c/span\u003e         \u003cspan class\u003d\"ansi-green-fg\"\u003etry\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e:\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-fg\"\u003e---\u0026gt; 63\u003c/span\u003e\u003cspan class\u003d\"ansi-red-fg\"\u003e             \u003c/span\u003e\u003cspan class\u003d\"ansi-green-fg\"\u003ereturn\u003c/span\u003e f\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e*\u003c/span\u003ea\u003cspan class\u003d\"ansi-blue-fg\"\u003e,\u003c/span\u003e \u003cspan class\u003d\"ansi-blue-fg\"\u003e**\u003c/span\u003ekw\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e     64\u003c/span\u003e         \u003cspan class\u003d\"ansi-green-fg\"\u003eexcept\u003c/span\u003e py4j\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003eprotocol\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003ePy4JJavaError \u003cspan class\u003d\"ansi-green-fg\"\u003eas\u003c/span\u003e e\u003cspan class\u003d\"ansi-blue-fg\"\u003e:\u003c/span\u003e\n\n\u003cspan class\u003d\"ansi-green-fg\"\u003e/databricks/spark/python/lib/py4j-0.10.7-src.zip/py4j/protocol.py\u003c/span\u003e in \u003cspan class\u003d\"ansi-cyan-fg\"\u003eget_return_value\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e(answer, gateway_client, target_id, name)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e    327\u003c/span\u003e                     \u003cspan class\u003d\"ansi-blue-fg\"\u003e\u0026#34;An error occurred while calling {0}{1}{2}.\\n\u0026#34;\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-fg\"\u003e--\u0026gt; 328\u003c/span\u003e\u003cspan class\u003d\"ansi-red-fg\"\u003e                     format(target_id, \u0026#34;.\u0026#34;, name), value)\n\u003c/span\u003e\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e    329\u003c/span\u003e             \u003cspan class\u003d\"ansi-green-fg\"\u003eelse\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e:\u003c/span\u003e\n\n\u003cspan class\u003d\"ansi-red-fg\"\u003ePy4JJavaError\u003c/span\u003e: An error occurred while calling o268.load.\n: java.lang.IllegalArgumentException: requirement failed: The driver could not open a JDBC connection. Check the URL: /FileStore/tables/my_sqlite-e9c7d.db\n\tat scala.Predef$.require(Predef.scala:224)\n\tat org.apache.spark.sql.execution.datasources.jdbc.JdbcUtils$$anonfun$createConnectionFactory$1.apply(JdbcUtils.scala:65)\n\tat org.apache.spark.sql.execution.datasources.jdbc.JdbcUtils$$anonfun$createConnectionFactory$1.apply(JdbcUtils.scala:55)\n\tat org.apache.spark.sql.execution.datasources.jdbc.JDBCRDD$.resolveTable(JDBCRDD.scala:56)\n\tat org.apache.spark.sql.execution.datasources.jdbc.JDBCRelation$.getSchema(JDBCRelation.scala:210)\n\tat org.apache.spark.sql.execution.datasources.jdbc.JdbcRelationProvider.createRelation(JdbcRelationProvider.scala:35)\n\tat org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:347)\n\tat org.apache.spark.sql.DataFrameReader.loadV1Source(DataFrameReader.scala:307)\n\tat org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:293)\n\tat org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:203)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)\n\tat py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:380)\n\tat py4j.Gateway.invoke(Gateway.java:295)\n\tat py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)\n\tat py4j.commands.CallCommand.execute(CallCommand.java:79)\n\tat py4j.GatewayConnection.run(GatewayConnection.java:251)\n\tat java.lang.Thread.run(Thread.java:748)\n\n\nDuring handling of the above exception, another exception occurred:\n\n\u003cspan class\u003d\"ansi-red-fg\"\u003eIllegalArgumentException\u003c/span\u003e                  Traceback (most recent call last)\n\u003cspan class\u003d\"ansi-green-fg\"\u003e\u0026lt;command-2210363521018290\u0026gt;\u003c/span\u003e in \u003cspan class\u003d\"ansi-cyan-fg\"\u003e\u0026lt;module\u0026gt;\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-fg\"\u003e----\u0026gt; 1\u003c/span\u003e\u003cspan class\u003d\"ansi-red-fg\"\u003e \u003c/span\u003edbDataFrame\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003eload\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\n\n\u003cspan class\u003d\"ansi-green-fg\"\u003e/databricks/spark/python/pyspark/sql/readwriter.py\u003c/span\u003e in \u003cspan class\u003d\"ansi-cyan-fg\"\u003eload\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e(self, path, format, schema, **options)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e    170\u003c/span\u003e             \u003cspan class\u003d\"ansi-green-fg\"\u003ereturn\u003c/span\u003e self\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003e_df\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003eself\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003e_jreader\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003eload\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003eself\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003e_spark\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003e_sc\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003e_jvm\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003ePythonUtils\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003etoSeq\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003epath\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e    171\u003c/span\u003e         \u003cspan class\u003d\"ansi-green-fg\"\u003eelse\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e:\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-fg\"\u003e--\u0026gt; 172\u003c/span\u003e\u003cspan class\u003d\"ansi-red-fg\"\u003e             \u003c/span\u003e\u003cspan class\u003d\"ansi-green-fg\"\u003ereturn\u003c/span\u003e self\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003e_df\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003eself\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003e_jreader\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003eload\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e    173\u003c/span\u003e \n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e    174\u003c/span\u003e     \u003cspan class\u003d\"ansi-blue-fg\"\u003e@\u003c/span\u003esince\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003e\u003cspan class\u003d\"ansi-cyan-fg\"\u003e1.4\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\n\n\u003cspan class\u003d\"ansi-green-fg\"\u003e/databricks/spark/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py\u003c/span\u003e in \u003cspan class\u003d\"ansi-cyan-fg\"\u003e__call__\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e(self, *args)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e   1255\u003c/span\u003e         answer \u003cspan class\u003d\"ansi-blue-fg\"\u003e\u003d\u003c/span\u003e self\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003egateway_client\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003esend_command\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003ecommand\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e   1256\u003c/span\u003e         return_value \u003d get_return_value(\n\u003cspan class\u003d\"ansi-green-fg\"\u003e-\u0026gt; 1257\u003c/span\u003e\u003cspan class\u003d\"ansi-red-fg\"\u003e             answer, self.gateway_client, self.target_id, self.name)\n\u003c/span\u003e\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e   1258\u003c/span\u003e \n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e   1259\u003c/span\u003e         \u003cspan class\u003d\"ansi-green-fg\"\u003efor\u003c/span\u003e temp_arg \u003cspan class\u003d\"ansi-green-fg\"\u003ein\u003c/span\u003e temp_args\u003cspan class\u003d\"ansi-blue-fg\"\u003e:\u003c/span\u003e\n\n\u003cspan class\u003d\"ansi-green-fg\"\u003e/databricks/spark/python/pyspark/sql/utils.py\u003c/span\u003e in \u003cspan class\u003d\"ansi-cyan-fg\"\u003edeco\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e(*a, **kw)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e     77\u003c/span\u003e                 \u003cspan class\u003d\"ansi-green-fg\"\u003eraise\u003c/span\u003e QueryExecutionException\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003es\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003esplit\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e\u0026#39;: \u0026#39;\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e,\u003c/span\u003e \u003cspan class\u003d\"ansi-cyan-fg\"\u003e1\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e[\u003c/span\u003e\u003cspan class\u003d\"ansi-cyan-fg\"\u003e1\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e]\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e,\u003c/span\u003e stackTrace\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e     78\u003c/span\u003e             \u003cspan class\u003d\"ansi-green-fg\"\u003eif\u003c/span\u003e s\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003estartswith\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e\u0026#39;java.lang.IllegalArgumentException: \u0026#39;\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e:\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-fg\"\u003e---\u0026gt; 79\u003c/span\u003e\u003cspan class\u003d\"ansi-red-fg\"\u003e                 \u003c/span\u003e\u003cspan class\u003d\"ansi-green-fg\"\u003eraise\u003c/span\u003e IllegalArgumentException\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003es\u003cspan class\u003d\"ansi-blue-fg\"\u003e.\u003c/span\u003esplit\u003cspan class\u003d\"ansi-blue-fg\"\u003e(\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e\u0026#39;: \u0026#39;\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e,\u003c/span\u003e \u003cspan class\u003d\"ansi-cyan-fg\"\u003e1\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e[\u003c/span\u003e\u003cspan class\u003d\"ansi-cyan-fg\"\u003e1\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e]\u003c/span\u003e\u003cspan class\u003d\"ansi-blue-fg\"\u003e,\u003c/span\u003e stackTrace\u003cspan class\u003d\"ansi-blue-fg\"\u003e)\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e     80\u003c/span\u003e             \u003cspan class\u003d\"ansi-green-fg\"\u003eraise\u003c/span\u003e\n\u003cspan class\u003d\"ansi-green-intense-fg ansi-bold\"\u003e     81\u003c/span\u003e     \u003cspan class\u003d\"ansi-green-fg\"\u003ereturn\u003c/span\u003e deco\n\n\u003cspan class\u003d\"ansi-red-fg\"\u003eIllegalArgumentException\u003c/span\u003e: \u0026#39;requirement failed: The driver could not open a JDBC connection. Check the URL: /FileStore/tables/my_sqlite-e9c7d.db\u0026#39;\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_1207152596",
+      "id": "20220919-164243_816944776",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**Query Pushdown:**\n\n* If we specify a filter on DataFrame, Spark will push that filter down into the database. When we run below code it specifies the push down filter\n\ndbDataFrame.filter(\"DEST_COUNTRY_NAME in (\u0027Anguilla\u0027, \u0027Sweden\u0027)\").explain()\n\u003d\u003d Physical Plan \u003d\u003d\n*Scan JDBCRel... PushedFilters: [*In(DEST_COUNTRY_NAME, [Anguilla,Sweden])],\n\n\n\n\n* specify a SQL query instead of specifying a table name.\n\npushdownQuery \u003d \"\"\"(SELECT DISTINCT(DEST_COUNTRY_NAME) FROM flight_info)\nAS flight_info\"\"\"\ndbDataFrame \u003d spark.read.format(\"jdbc\")\\\n.option(\"url\", url).option(\"dbtable\", pushdownQuery).option(\"driver\", driver)\\\n.load()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003eQuery Pushdown:\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eIf we specify a filter on DataFrame, Spark will push that filter down into the database. When we run below code it specifies the push down filter\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003edbDataFrame.filter(\u0026ldquo;DEST_COUNTRY_NAME in (\u0026lsquo;Anguilla\u0026rsquo;, \u0026lsquo;Sweden\u0026rsquo;)\u0026rdquo;).explain()\u003cbr/\u003e\u003d\u003d Physical Plan \u003d\u003d\u003cbr/\u003e*Scan JDBCRel\u0026hellip; PushedFilters: [*In(DEST_COUNTRY_NAME, [Anguilla,Sweden])],\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003especify a SQL query instead of specifying a table name.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003epushdownQuery \u003d \u0026quot;\u0026quot;\u0026ldquo;(SELECT DISTINCT(DEST_COUNTRY_NAME) FROM flight_info)\u003cbr/\u003eAS flight_info\u0026rdquo;\u0026quot;\u0026ldquo;\u003cbr/\u003edbDataFrame \u003d spark.read.format(\u0026rdquo;jdbc\u0026ldquo;)\\\u003cbr/\u003e.option(\u0026rdquo;url\u0026ldquo;, url).option(\u0026rdquo;dbtable\u0026ldquo;, pushdownQuery).option(\u0026rdquo;driver\u0026quot;, driver)\\\u003cbr/\u003e.load()\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_1128214642",
+      "id": "20220919-164243_58269665",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n** Reading from databases in parallel:**\n\n* Spark has an underlying algorithm that can read multiple files into one partition, or conversely, read multiple partitions out of one file, depending on the file size and the “splitability” of the file type and compression.\n* this splitability exists with SQL as well but we need to configure it manually.\n* It is the ability to specify a maximum number of partitions to allow you to limit how much you are reading and writing in parallel.\n\n\ndbDataFrame \u003d spark.read.format(\"jdbc\")\\\n.option(\"url\", url).option(\"dbtable\", tablename).option(\"driver\", driver)\\\n.option(\"numPartitions\", 10).load()\n\ndbDataFrame.select(\"DEST_COUNTRY_NAME\").distinct().show()\n\n* We can explicitly push predicates down into SQL databases through the connection itself. This optimization allows you to control the physical location of certain data in certain partitions by specifying predicates.\n\nEg: We need data related Anguilla and Sweden countries. We could filter these down and have them pushed into the database, \n    but we can also go further by having them arrive in their own partitions in Spark. \n    \n    We do that by specifying a list of predicates when we create the data source\n    \n    # in Python\n    props \u003d {\"driver\":\"org.sqlite.JDBC\"}\n    predicates \u003d [\n                  \"DEST_COUNTRY_NAME \u003d \u0027Sweden\u0027 OR ORIGIN_COUNTRY_NAME \u003d \u0027Sweden\u0027\",\n                  \"DEST_COUNTRY_NAME \u003d \u0027Anguilla\u0027 OR ORIGIN_COUNTRY_NAME \u003d \u0027Anguilla\u0027\"]\n\n    spark.read.jdbc(url, tablename, predicates\u003dpredicates, properties\u003dprops).show()\n    \n    spark.read.jdbc(url,tablename,predicates\u003dpredicates,properties\u003dprops).rdd.getNumPartitions()\n    \nIf you specify predicates that are not disjoint, you can end up with lots of duplicate rows. an example set of predicates that will result in duplicate rows\n\n    # in Python\n    props \u003d {\"driver\":\"org.sqlite.JDBC\"}\n    \n    predicates \u003d [\n                  \"DEST_COUNTRY_NAME !\u003d \u0027Sweden\u0027 OR ORIGIN_COUNTRY_NAME !\u003d \u0027Sweden\u0027\",\n                  \"DEST_COUNTRY_NAME !\u003d \u0027Anguilla\u0027 OR ORIGIN_COUNTRY_NAME !\u003d \u0027Anguilla\u0027\"]\n                  \n    spark.read.jdbc(url, tablename, predicates\u003dpredicates, properties\u003dprops).count()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e** Reading from databases in parallel:**\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eSpark has an underlying algorithm that can read multiple files into one partition, or conversely, read multiple partitions out of one file, depending on the file size and the “splitability” of the file type and compression.\u003c/li\u003e\n  \u003cli\u003ethis splitability exists with SQL as well but we need to configure it manually.\u003c/li\u003e\n  \u003cli\u003eIt is the ability to specify a maximum number of partitions to allow you to limit how much you are reading and writing in parallel.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003edbDataFrame \u003d spark.read.format(\u0026ldquo;jdbc\u0026rdquo;)\\\u003cbr/\u003e.option(\u0026ldquo;url\u0026rdquo;, url).option(\u0026ldquo;dbtable\u0026rdquo;, tablename).option(\u0026ldquo;driver\u0026rdquo;, driver)\\\u003cbr/\u003e.option(\u0026ldquo;numPartitions\u0026rdquo;, 10).load()\u003c/p\u003e\n\u003cp\u003edbDataFrame.select(\u0026ldquo;DEST_COUNTRY_NAME\u0026rdquo;).distinct().show()\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eWe can explicitly push predicates down into SQL databases through the connection itself. This optimization allows you to control the physical location of certain data in certain partitions by specifying predicates.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eEg: We need data related Anguilla and Sweden countries. We could filter these down and have them pushed into the database,\u003cbr/\u003e but we can also go further by having them arrive in their own partitions in Spark. \u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eWe do that by specifying a list of predicates when we create the data source\n\n# in Python\nprops \u003d {\u0026quot;driver\u0026quot;:\u0026quot;org.sqlite.JDBC\u0026quot;}\npredicates \u003d [\n              \u0026quot;DEST_COUNTRY_NAME \u003d \u0026#39;Sweden\u0026#39; OR ORIGIN_COUNTRY_NAME \u003d \u0026#39;Sweden\u0026#39;\u0026quot;,\n              \u0026quot;DEST_COUNTRY_NAME \u003d \u0026#39;Anguilla\u0026#39; OR ORIGIN_COUNTRY_NAME \u003d \u0026#39;Anguilla\u0026#39;\u0026quot;]\n\nspark.read.jdbc(url, tablename, predicates\u003dpredicates, properties\u003dprops).show()\n\nspark.read.jdbc(url,tablename,predicates\u003dpredicates,properties\u003dprops).rdd.getNumPartitions()\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eIf you specify predicates that are not disjoint, you can end up with lots of duplicate rows. an example set of predicates that will result in duplicate rows\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e# in Python\nprops \u003d {\u0026quot;driver\u0026quot;:\u0026quot;org.sqlite.JDBC\u0026quot;}\n\npredicates \u003d [\n              \u0026quot;DEST_COUNTRY_NAME !\u003d \u0026#39;Sweden\u0026#39; OR ORIGIN_COUNTRY_NAME !\u003d \u0026#39;Sweden\u0026#39;\u0026quot;,\n              \u0026quot;DEST_COUNTRY_NAME !\u003d \u0026#39;Anguilla\u0026#39; OR ORIGIN_COUNTRY_NAME !\u003d \u0026#39;Anguilla\u0026#39;\u0026quot;]\n\nspark.read.jdbc(url, tablename, predicates\u003dpredicates, properties\u003dprops).count()\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_627089992",
+      "id": "20220919-164243_1399825384",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**Partitioning based on a sliding window:**\n\n* we can partition based on predicates.\n* We will partition based on the \"COUNT\" column which is numerictype.\n* specify a minimum and a maximum for both the first partition and last partition. Anything outside of these bounds will be in the first partition or final partition.\n* Then, we set the number of partitions we would like total (this is the level of parallelism).\n* Spark then queries our database in parallel and returns numPartitions partitions.\n*  We simply modify the upper and lower bounds in order to place certain values in certain partitions.\n* No filtering is taking place like we saw in the previous example\n\n      colName \u003d \"count\"\n      lowerBound \u003d 0L\n      upperBound \u003d 348113L # this is the max count in our database\n      numPartitions \u003d 10\n      \nThis will distribute the intervals equally from low to high:\n    \n      spark.read.jdbc(url, tablename, column\u003dcolName, properties\u003dprops,\n      lowerBound\u003dlowerBound, upperBound\u003dupperBound,\n      numPartitions\u003dnumPartitions).count() # 255",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003ePartitioning based on a sliding window:\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003ewe can partition based on predicates.\u003c/li\u003e\n  \u003cli\u003eWe will partition based on the \u0026ldquo;COUNT\u0026rdquo; column which is numerictype.\u003c/li\u003e\n  \u003cli\u003especify a minimum and a maximum for both the first partition and last partition. Anything outside of these bounds will be in the first partition or final partition.\u003c/li\u003e\n  \u003cli\u003eThen, we set the number of partitions we would like total (this is the level of parallelism).\u003c/li\u003e\n  \u003cli\u003eSpark then queries our database in parallel and returns numPartitions partitions.\u003c/li\u003e\n  \u003cli\u003eWe simply modify the upper and lower bounds in order to place certain values in certain partitions.\u003c/li\u003e\n  \u003cli\u003eNo filtering is taking place like we saw in the previous example\n    \u003cp\u003ecolName \u003d \u0026ldquo;count\u0026rdquo;\u003cbr/\u003e lowerBound \u003d 0L\u003cbr/\u003e upperBound \u003d 348113L # this is the max count in our database\u003cbr/\u003e numPartitions \u003d 10\u003c/p\u003e\n  \u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eThis will distribute the intervals equally from low to high:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e  spark.read.jdbc(url, tablename, column\u003dcolName, properties\u003dprops,\n  lowerBound\u003dlowerBound, upperBound\u003dupperBound,\n  numPartitions\u003dnumPartitions).count() # 255\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_1552571558",
+      "id": "20220919-164243_1121288954",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**Writing to SQL Databases:**\n\nspecify the URI and write out the data according to the specified write mode that you want.",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.555",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003eWriting to SQL Databases:\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003especify the URI and write out the data according to the specified write mode that you want.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763555_1700847810",
+      "id": "20220919-164243_1634150974",
+      "dateCreated": "2022-09-19 16:42:43.555",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n# in Python\nnewPath \u003d \"jdbc:sqlite://tmp/my-sqlite.db\"\nprops \u003d {\"driver\":\"org.sqlite.JDBC\"}\ncsvFile.write.jdbc(newPath, tablename, mode\u003d\"overwrite\", properties\u003dprops)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_1284888951",
+      "id": "20220919-164243_760610483",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n# Let’s look at the results:\nspark.read.jdbc(newPath, tablename, properties\u003dprops).count()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003eOut[11]: 256\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_734747648",
+      "id": "20220919-164243_1725234040",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n#we can append to the table this new table and see the increase in the count:\ncsvFile.write.jdbc(newPath, tablename, mode\u003d\"append\", properties\u003dprops)\nspark.read.jdbc(newPath, tablename, properties\u003dprops).count()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003eOut[13]: 768\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_265751319",
+      "id": "20220919-164243_384760720",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**Text Files:**\n* Each line in the file becomes a record in the DataFrame.\n* With **textFile**, partitioned directory names are ignored.\n* To read and write text files according to partitions, we should use **text**, which respects partitioning on reading and writing",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003eText Files:\u003c/strong\u003e\u003cbr/\u003e* Each line in the file becomes a record in the DataFrame.\u003cbr/\u003e* With \u003cstrong\u003etextFile\u003c/strong\u003e, partitioned directory names are ignored.\u003cbr/\u003e* To read and write text files according to partitions, we should use \u003cstrong\u003etext\u003c/strong\u003e, which respects partitioning on reading and writing\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_404522874",
+      "id": "20220919-164243_1308624297",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%python\nspark.read.text(\"/FileStore/tables/FileStore/tables/2015_summary-ebaee.csv\")\\\n.selectExpr(\"split(value, \u0027,\u0027) as rows\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+--------------------+\n                rows|\n+--------------------+\n[DEST_COUNTRY_NAM...|\n[United States, R...|\n[United States, C...|\n[United States, I...|\n[Egypt, United St...|\n[United States, I...|\n[United States, S...|\n[United States, G...|\n[Costa Rica, Unit...|\n[Senegal, United ...|\n[Moldova, United ...|\n[United States, S...|\n[United States, M...|\n[Guyana, United S...|\n[Malta, United St...|\n[Anguilla, United...|\n[Bolivia, United ...|\n[United States, P...|\n[Algeria, United ...|\n[Turks and Caicos...|\n+--------------------+\nonly showing top 20 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_1755798036",
+      "id": "20220919-164243_1285737148",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**Writing Text Files:**",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003eWriting Text Files:\u003c/strong\u003e\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_1886588029",
+      "id": "20220919-164243_225245035",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%python\ncsvFile.select(\"DEST_COUNTRY_NAME\").write.mode(\"overWrite\").text(\"/tmp/simple-text-file.txt\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_1415135771",
+      "id": "20220919-164243_1824501549",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n%fs\nls /tmp/",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .table-result-container {\n    max-height: 300px;\n    overflow: auto;\n  }\n  table, th, td {\n    border: 1px solid black;\n    border-collapse: collapse;\n  }\n  th, td {\n    padding: 5px;\n  }\n  th {\n    text-align: left;\n  }\n\u003c/style\u003e\u003cdiv class\u003d\u0027table-result-container\u0027\u003e\u003ctable class\u003d\u0027table-result\u0027\u003e\u003cthead style\u003d\u0027background-color: white\u0027\u003e\u003ctr\u003e\u003cth\u003epath\u003c/th\u003e\u003cth\u003ename\u003c/th\u003e\u003cth\u003esize\u003c/th\u003e\u003c/tr\u003e\u003c/thead\u003e\u003ctbody\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/hive/\u003c/td\u003e\u003ctd\u003ehive/\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-json-file.json/\u003c/td\u003e\u003ctd\u003emy-json-file.json/\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-json-file.orc/\u003c/td\u003e\u003ctd\u003emy-json-file.orc/\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-parquet-file.parquet/\u003c/td\u003e\u003ctd\u003emy-parquet-file.parquet/\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/my-tsv-file.tsv/\u003c/td\u003e\u003ctd\u003emy-tsv-file.tsv/\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/newPanda1.json/\u003c/td\u003e\u003ctd\u003enewPanda1.json/\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/newPanda2.json/\u003c/td\u003e\u003ctd\u003enewPanda2.json/\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/simple-text-file.txt/\u003c/td\u003e\u003ctd\u003esimple-text-file.txt/\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003c/tbody\u003e\u003c/table\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_594929276",
+      "id": "20220919-164243_584893022",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n* If you perform some partitioning when performing write you can write more columns. \n* However, those columns will manifest as directories in the folder to which you’re writing out to, instead of columns on every single file",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cul\u003e\n  \u003cli\u003eIf you perform some partitioning when performing write you can write more columns.\u003c/li\u003e\n  \u003cli\u003eHowever, those columns will manifest as directories in the folder to which you’re writing out to, instead of columns on every single file\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_1209150847",
+      "id": "20220919-164243_2020678547",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%python\ncsvFile.limit(10).select(\"DEST_COUNTRY_NAME\", \"count\")\\\n.write.partitionBy(\"count\").text(\"/tmp/five-csv-files2py.csv\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_1964225218",
+      "id": "20220919-164243_1036447652",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**Advanced I/O concepts:**\n* we can control the parallelism of files that we write by controlling the partitions prior to writing.\n* We can also control specific data layout by controlling two things\n    * Bucketing\n    * Partitioning\n    \nSplittable File Types and Compression:\n* File splitting can improve speed because it avoids SPARK to read entire file and access parts of the file necessary to satisfy your query.\n* If a file is on HDFS, splitting a file can provide further optimization if that file spans multiple blocks.\n* Recommendation is Parquet with gzip compression.\n\nReading Data in Parallel:\n* when you read from a folder with multiple files in it, each one of those files will become a partition in your DataFrame and be read in by available executors in parallel (with the remaining queueing up behind the others)\n\nWriting Data in Parallel:\n* The number of files or data written is dependent on the number of partitions the DataFrame has at the time you write out the data.\n* By default, one file is written per partition of the data.\n* This means that although we specify a “file,” it’s actually \n    * a number of files within a folder, \n    * with the name of the specified file, \n    * with one file per each partition that is written.",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003eAdvanced I/O concepts:\u003c/strong\u003e\u003cbr/\u003e* we can control the parallelism of files that we write by controlling the partitions prior to writing.\u003cbr/\u003e* We can also control specific data layout by controlling two things\u003cbr/\u003e * Bucketing\u003cbr/\u003e * Partitioning\u003c/p\u003e\n\u003cp\u003eSplittable File Types and Compression:\u003cbr/\u003e* File splitting can improve speed because it avoids SPARK to read entire file and access parts of the file necessary to satisfy your query.\u003cbr/\u003e* If a file is on HDFS, splitting a file can provide further optimization if that file spans multiple blocks.\u003cbr/\u003e* Recommendation is Parquet with gzip compression.\u003c/p\u003e\n\u003cp\u003eReading Data in Parallel:\u003cbr/\u003e* when you read from a folder with multiple files in it, each one of those files will become a partition in your DataFrame and be read in by available executors in parallel (with the remaining queueing up behind the others)\u003c/p\u003e\n\u003cp\u003eWriting Data in Parallel:\u003cbr/\u003e* The number of files or data written is dependent on the number of partitions the DataFrame has at the time you write out the data.\u003cbr/\u003e* By default, one file is written per partition of the data.\u003cbr/\u003e* This means that although we specify a “file,” it’s actually\u003cbr/\u003e * a number of files within a folder,\u003cbr/\u003e * with the name of the specified file,\u003cbr/\u003e * with one file per each partition that is written.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_957502310",
+      "id": "20220919-164243_978309687",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%python\ncsvFile.repartition(5).write.format(\"csv\").save(\"/tmp/multiple.csv\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_1503410087",
+      "id": "20220919-164243_1496562074",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n%fs\nls /tmp/multiple.csv",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .table-result-container {\n    max-height: 300px;\n    overflow: auto;\n  }\n  table, th, td {\n    border: 1px solid black;\n    border-collapse: collapse;\n  }\n  th, td {\n    padding: 5px;\n  }\n  th {\n    text-align: left;\n  }\n\u003c/style\u003e\u003cdiv class\u003d\u0027table-result-container\u0027\u003e\u003ctable class\u003d\u0027table-result\u0027\u003e\u003cthead style\u003d\u0027background-color: white\u0027\u003e\u003ctr\u003e\u003cth\u003epath\u003c/th\u003e\u003cth\u003ename\u003c/th\u003e\u003cth\u003esize\u003c/th\u003e\u003c/tr\u003e\u003c/thead\u003e\u003ctbody\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/multiple.csv/_SUCCESS\u003c/td\u003e\u003ctd\u003e_SUCCESS\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/multiple.csv/_committed_4739256045613643602\u003c/td\u003e\u003ctd\u003e_committed_4739256045613643602\u003c/td\u003e\u003ctd\u003e459\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/multiple.csv/_started_4739256045613643602\u003c/td\u003e\u003ctd\u003e_started_4739256045613643602\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/multiple.csv/part-00000-tid-4739256045613643602-5cd6a866-1fd2-4219-b670-f13647d58467-5-1-c000.csv\u003c/td\u003e\u003ctd\u003epart-00000-tid-4739256045613643602-5cd6a866-1fd2-4219-b670-f13647d58467-5-1-c000.csv\u003c/td\u003e\u003ctd\u003e1406\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/multiple.csv/part-00001-tid-4739256045613643602-5cd6a866-1fd2-4219-b670-f13647d58467-6-1-c000.csv\u003c/td\u003e\u003ctd\u003epart-00001-tid-4739256045613643602-5cd6a866-1fd2-4219-b670-f13647d58467-6-1-c000.csv\u003c/td\u003e\u003ctd\u003e1403\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/multiple.csv/part-00002-tid-4739256045613643602-5cd6a866-1fd2-4219-b670-f13647d58467-7-1-c000.csv\u003c/td\u003e\u003ctd\u003epart-00002-tid-4739256045613643602-5cd6a866-1fd2-4219-b670-f13647d58467-7-1-c000.csv\u003c/td\u003e\u003ctd\u003e1389\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/multiple.csv/part-00003-tid-4739256045613643602-5cd6a866-1fd2-4219-b670-f13647d58467-8-1-c000.csv\u003c/td\u003e\u003ctd\u003epart-00003-tid-4739256045613643602-5cd6a866-1fd2-4219-b670-f13647d58467-8-1-c000.csv\u003c/td\u003e\u003ctd\u003e1433\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/multiple.csv/part-00004-tid-4739256045613643602-5cd6a866-1fd2-4219-b670-f13647d58467-9-1-c000.csv\u003c/td\u003e\u003ctd\u003epart-00004-tid-4739256045613643602-5cd6a866-1fd2-4219-b670-f13647d58467-9-1-c000.csv\u003c/td\u003e\u003ctd\u003e1405\u003c/td\u003e\u003c/tr\u003e\u003c/tbody\u003e\u003c/table\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_857347799",
+      "id": "20220919-164243_1008373073",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**Partitioning:**\n\n* Partitioning is a tool that allows you to control what data is stored (and where) as you write it.\n* When you write a file to a partitioned directory (or table), you basically encode a column as a folder.\n* this allows you to do is skip lots of data when you go to read it in later, allowing you to read in only the data relevant to your problem instead of having to scan the complete dataset.\n* These are supported for all file-based data sources.",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003ePartitioning:\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003ePartitioning is a tool that allows you to control what data is stored (and where) as you write it.\u003c/li\u003e\n  \u003cli\u003eWhen you write a file to a partitioned directory (or table), you basically encode a column as a folder.\u003c/li\u003e\n  \u003cli\u003ethis allows you to do is skip lots of data when you go to read it in later, allowing you to read in only the data relevant to your problem instead of having to scan the complete dataset.\u003c/li\u003e\n  \u003cli\u003eThese are supported for all file-based data sources.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_284625981",
+      "id": "20220919-164243_1338007717",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%python\ncsvFile.limit(10).write.mode(\"overWrite\").partitionBy(\"DEST_COUNTRY_NAME\")\\\n       .save(\"/tmp/partitioned-files.parquet\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_63133197",
+      "id": "20220919-164243_596400806",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n%fs\nls /tmp/partitioned-files.parquet",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .table-result-container {\n    max-height: 300px;\n    overflow: auto;\n  }\n  table, th, td {\n    border: 1px solid black;\n    border-collapse: collapse;\n  }\n  th, td {\n    padding: 5px;\n  }\n  th {\n    text-align: left;\n  }\n\u003c/style\u003e\u003cdiv class\u003d\u0027table-result-container\u0027\u003e\u003ctable class\u003d\u0027table-result\u0027\u003e\u003cthead style\u003d\u0027background-color: white\u0027\u003e\u003ctr\u003e\u003cth\u003epath\u003c/th\u003e\u003cth\u003ename\u003c/th\u003e\u003cth\u003esize\u003c/th\u003e\u003c/tr\u003e\u003c/thead\u003e\u003ctbody\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/partitioned-files.parquet/DEST_COUNTRY_NAME\u003dCosta Rica/\u003c/td\u003e\u003ctd\u003eDEST_COUNTRY_NAME\u003dCosta Rica/\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/partitioned-files.parquet/DEST_COUNTRY_NAME\u003dEgypt/\u003c/td\u003e\u003ctd\u003eDEST_COUNTRY_NAME\u003dEgypt/\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/partitioned-files.parquet/DEST_COUNTRY_NAME\u003dMoldova/\u003c/td\u003e\u003ctd\u003eDEST_COUNTRY_NAME\u003dMoldova/\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/partitioned-files.parquet/DEST_COUNTRY_NAME\u003dSenegal/\u003c/td\u003e\u003ctd\u003eDEST_COUNTRY_NAME\u003dSenegal/\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/partitioned-files.parquet/DEST_COUNTRY_NAME\u003dUnited States/\u003c/td\u003e\u003ctd\u003eDEST_COUNTRY_NAME\u003dUnited States/\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/partitioned-files.parquet/_SUCCESS\u003c/td\u003e\u003ctd\u003e_SUCCESS\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003c/tbody\u003e\u003c/table\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_1020025486",
+      "id": "20220919-164243_992329871",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%md\nEach of these will contain Parquet files that contain that data where the previous predicate was true:",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eEach of these will contain Parquet files that contain that data where the previous predicate was true:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_1495465439",
+      "id": "20220919-164243_1947975472",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n%fs\nls /tmp/partitioned-files.parquet/DEST_COUNTRY_NAME\u003dSenegal/",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .table-result-container {\n    max-height: 300px;\n    overflow: auto;\n  }\n  table, th, td {\n    border: 1px solid black;\n    border-collapse: collapse;\n  }\n  th, td {\n    padding: 5px;\n  }\n  th {\n    text-align: left;\n  }\n\u003c/style\u003e\u003cdiv class\u003d\u0027table-result-container\u0027\u003e\u003ctable class\u003d\u0027table-result\u0027\u003e\u003cthead style\u003d\u0027background-color: white\u0027\u003e\u003ctr\u003e\u003cth\u003epath\u003c/th\u003e\u003cth\u003ename\u003c/th\u003e\u003cth\u003esize\u003c/th\u003e\u003c/tr\u003e\u003c/thead\u003e\u003ctbody\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/partitioned-files.parquet/DEST_COUNTRY_NAME\u003dSenegal/_SUCCESS\u003c/td\u003e\u003ctd\u003e_SUCCESS\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/partitioned-files.parquet/DEST_COUNTRY_NAME\u003dSenegal/_committed_515762676837499034\u003c/td\u003e\u003ctd\u003e_committed_515762676837499034\u003c/td\u003e\u003ctd\u003e122\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/partitioned-files.parquet/DEST_COUNTRY_NAME\u003dSenegal/_started_515762676837499034\u003c/td\u003e\u003ctd\u003e_started_515762676837499034\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edbfs:/tmp/partitioned-files.parquet/DEST_COUNTRY_NAME\u003dSenegal/part-00000-tid-515762676837499034-3e1471a4-5673-47ba-bd80-1dd16162f68b-11-4.c000.snappy.parquet\u003c/td\u003e\u003ctd\u003epart-00000-tid-515762676837499034-3e1471a4-5673-47ba-bd80-1dd16162f68b-11-4.c000.snappy.parquet\u003c/td\u003e\u003ctd\u003e765\u003c/td\u003e\u003c/tr\u003e\u003c/tbody\u003e\u003c/table\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_674217618",
+      "id": "20220919-164243_175533539",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%md\nThis is the lowest hanging optimization that you can use when you have a table that readers frequently filter by before manipulating.\nEg: \n* Partition by Date is if we want to look at previous week\u0027s data(Instead of scanning entire list of records). This provides massive speedup for readers.",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eThis is the lowest hanging optimization that you can use when you have a table that readers frequently filter by before manipulating.\u003cbr/\u003eEg:\u003cbr/\u003e* Partition by Date is if we want to look at previous week\u0026rsquo;s data(Instead of scanning entire list of records). This provides massive speedup for readers.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_1693963186",
+      "id": "20220919-164243_1273913185",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**Bucketing:**\n* one organization approach that helps control the data that is specifically written to each file.\n* This helps t0 avoid **shuffles** later when we read the data because data with the same bucket ID will all be grouped together into one physical partition.\n* This means that the data is prepartitioned according to how you expect to use that data later on.\n* Avoids expensive shuffles when joining and aggregating.\n\nRather than partitioning on a specific column (which might write out a ton of directories), it’s probably worthwhile to explore bucketing the data instead. This will create a certain number of files and organize our data into those “buckets”",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003eBucketing:\u003c/strong\u003e\u003cbr/\u003e* one organization approach that helps control the data that is specifically written to each file.\u003cbr/\u003e* This helps t0 avoid \u003cstrong\u003eshuffles\u003c/strong\u003e later when we read the data because data with the same bucket ID will all be grouped together into one physical partition.\u003cbr/\u003e* This means that the data is prepartitioned according to how you expect to use that data later on.\u003cbr/\u003e* Avoids expensive shuffles when joining and aggregating.\u003c/p\u003e\n\u003cp\u003eRather than partitioning on a specific column (which might write out a ton of directories), it’s probably worthwhile to explore bucketing the data instead. This will create a certain number of files and organize our data into those “buckets”\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_575940922",
+      "id": "20220919-164243_1591402283",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%python\nnumberBuckets \u003d 10\ncolumnToBucketBy \u003d \"count\"\n\ncsvFile.write.format(\"parquet\").mode(\"overwrite\")\\\n.bucketBy(numberBuckets, columnToBucketBy).saveAsTable(\"bucketedFiles\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_774588306",
+      "id": "20220919-164243_1997609471",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**Managing File Size:**\n\n* \"small file problem\" - When we’re writing lots of small files, there’s a significant metadata overhead that you incur managing all of those files.\n* opposite is also true- we don’t want files that are too large either, because it becomes inefficient to have to read entire blocks of data when you need only a few rows.\n* Instead of having the number of files based on the number of partition at the time of writing, SPARK 2.2 introduces a new method to limit output file sizes.\n* **maxRecordsPerFile** allows you to better control file sizes by controlling the number of records that are written to each file.\n  \n  df.write.option(\"maxRecordsPerFile\", 5000) - Spark will ensure that files will contain at most 5,000 records.",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003eManaging File Size:\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u0026ldquo;small file problem\u0026rdquo; - When we’re writing lots of small files, there’s a significant metadata overhead that you incur managing all of those files.\u003c/li\u003e\n  \u003cli\u003eopposite is also true- we don’t want files that are too large either, because it becomes inefficient to have to read entire blocks of data when you need only a few rows.\u003c/li\u003e\n  \u003cli\u003eInstead of having the number of files based on the number of partition at the time of writing, SPARK 2.2 introduces a new method to limit output file sizes.\u003c/li\u003e\n  \u003cli\u003e\u003cstrong\u003emaxRecordsPerFile\u003c/strong\u003e allows you to better control file sizes by controlling the number of records that are written to each file.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003edf.write.option(\u0026ldquo;maxRecordsPerFile\u0026rdquo;, 5000) - Spark will ensure that files will contain at most 5,000 records.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_928148120",
+      "id": "20220919-164243_1320250251",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:42:43.556",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605763556_1977478148",
+      "id": "20220919-164243_1207314618",
+      "dateCreated": "2022-09-19 16:42:43.556",
+      "status": "READY"
+    }
+  ],
+  "name": "Chap 09 - Data Sources",
+  "id": "2HDVVPS9E",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

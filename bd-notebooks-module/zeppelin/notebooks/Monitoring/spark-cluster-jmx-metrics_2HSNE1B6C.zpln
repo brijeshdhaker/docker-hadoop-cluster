@@ -1,0 +1,201 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.conf\n\nSPARK_HOME /opt/spark-3.1.2\nmaster yarn\nspark.submit.deployMode cluster\n\n\nspark.driver.memory 640m\nspark.driver.cores 1\n\nspark.executor.instances  2\nspark.executor.memory  640m\nspark.executor.cores 2\n\n\n#\n# spark.jars can be used for adding any local jar files into spark interpreter\n# \n\n# spark.jars\n\nspark.jars.packages io.delta:delta-core_2.12:1.0.0,com.databricks:spark-avro_2.11:4.0.0\n\nspark.yarn.dist.files hdfs://namenode:9000/configs/jmx.metrics.properties#metrics.properties,hdfs://namenode:9000/configs/jmx-spark-3-0.yml#configs/jmx-spark-3-0.yml,hdfs://namenode:9000/common-libs/jmx/jmx_prometheus_javaagent-0.11.0.jar#extralibs/jmx_prometheus_javaagent-0.11.0.jar\n\nspark.yarn.dist.archives hdfs://namenode:9000/archives/pyspark3.7-20221125.tar.gz#environment\n\n#\n# Spark Metrics Configuration\n#\n# \"-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port\u003d9091 -Dcom.sun.management.jmxremote.rmi.port\u003d9092 -Dcom.sun.management.jmxremote.authenticate\u003dfalse -Dcom.sun.management.jmxremote.ssl\u003dfalse -Djava.rmi.server.hostname\u003dnodemanager\"\n# http://nodemanager:9081/  \n# service:jmx:rmi:///jndi/rmi://nodemanager:9091/jmxrmi \n# \n\nspark.metrics.conf metrics.properties\nspark.metrics.staticSources.enabled true\nspark.metrics.appStatusSource.enabled true\nspark.metrics.executorMetricsSource.enabled true\nspark.executor.processTreeMetrics.enabled true\nspark.executor.metrics.fileSystemSchemes hdfs\nspark.driver.extraJavaOptions \"-javaagent:extralibs/jmx_prometheus_javaagent-0.11.0.jar\u003d9081:configs/jmx-spark-3-0.yml\"\n\n#\n# spark.metrics.namespace spark\n# spark.yarn.metrics.namespace spark\nspark.yarn.shuffle.service.metrics.namespace sparkShuffleService\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-13 02:23:21.370",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1675793729203_1023900310",
+      "id": "paragraph_1638439801256_1921713656",
+      "dateCreated": "2023-02-07 18:15:29.203",
+      "dateStarted": "2023-02-13 02:23:21.375",
+      "dateFinished": "2023-02-13 02:23:21.380",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nspark.sparkContext.master\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-13 02:23:25.483",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres1\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m \u003d yarn\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1675793729203_1537183904",
+      "id": "paragraph_1638440008618_2040289727",
+      "dateCreated": "2023-02-07 18:15:29.203",
+      "dateStarted": "2023-02-13 02:23:25.487",
+      "dateFinished": "2023-02-13 02:24:25.842",
+      "status": "ABORT"
+    },
+    {
+      "text": "%spark\n\nval employee \u003d Seq(\n      (101,\"Chloe\",-1,\"2018\",8,\"M\",3000),\n      (102,\"Paul\",101,\"2010\",3,\"M\",4000),\n      (103,\"John\",101,\"2010\",1,\"M\",1000),\n      (104,\"Lisa\",102,\"2005\",2,\"F\",2000),\n      (105,\"Evan\",102,\"2010\",7,\"\",-1),\n      (106,\"Amy\",102,\"2010\",9,\"\",-1)\n    )\nval empColumns \u003d Seq(\"id\",\"name\",\"superior_emp_id\",\"year_joined\",\"deptno\",\"gender\",\"salary\")\n\nval department \u003d Seq(\n      (\"Marketing\",1),\n      (\"Sales\",2),\n      (\"Engineering\",3),\n      (\"Finance\",4),\n      (\"IT\",5),\n      (\"HR\",6)\n    )\nval deptColumns \u003d Seq(\"dept_name\",\"deptno\")\n\nimport spark.sqlContext.implicits._\n\nspark.conf.set(\"spark.sql.crossJoin.enabled\",true);\n\nval employeeDF \u003d employee.toDF(empColumns:_*)\nemployeeDF.show(false)\n\nval departmentDF \u003d department.toDF(deptColumns:_*)\ndepartmentDF.show(false)\n\nprintln(\"1. Inner Join Using Expression : join(right: Dataset[_]): DataFrame\")\nemployeeDF.join(departmentDF).show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-12 02:23:08.250",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+-----+---------------+-----------+------+------+------+\n|id |name |superior_emp_id|year_joined|deptno|gender|salary|\n+---+-----+---------------+-----------+------+------+------+\n|101|Chloe|-1             |2018       |8     |M     |3000  |\n|102|Paul |101            |2010       |3     |M     |4000  |\n|103|John |101            |2010       |1     |M     |1000  |\n|104|Lisa |102            |2005       |2     |F     |2000  |\n|105|Evan |102            |2010       |7     |      |-1    |\n|106|Amy  |102            |2010       |9     |      |-1    |\n+---+-----+---------------+-----------+------+------+------+\n\n+-----------+------+\n|dept_name  |deptno|\n+-----------+------+\n|Marketing  |1     |\n|Sales      |2     |\n|Engineering|3     |\n|Finance    |4     |\n|IT         |5     |\n|HR         |6     |\n+-----------+------+\n\n1. Inner Join Using Expression : join(right: Dataset[_]): DataFrame\n+---+-----+---------------+-----------+------+------+------+-----------+------+\n| id| name|superior_emp_id|year_joined|deptno|gender|salary|  dept_name|deptno|\n+---+-----+---------------+-----------+------+------+------+-----------+------+\n|101|Chloe|             -1|       2018|     8|     M|  3000|  Marketing|     1|\n|101|Chloe|             -1|       2018|     8|     M|  3000|      Sales|     2|\n|101|Chloe|             -1|       2018|     8|     M|  3000|Engineering|     3|\n|101|Chloe|             -1|       2018|     8|     M|  3000|    Finance|     4|\n|101|Chloe|             -1|       2018|     8|     M|  3000|         IT|     5|\n|101|Chloe|             -1|       2018|     8|     M|  3000|         HR|     6|\n|102| Paul|            101|       2010|     3|     M|  4000|  Marketing|     1|\n|102| Paul|            101|       2010|     3|     M|  4000|      Sales|     2|\n|102| Paul|            101|       2010|     3|     M|  4000|Engineering|     3|\n|102| Paul|            101|       2010|     3|     M|  4000|    Finance|     4|\n|102| Paul|            101|       2010|     3|     M|  4000|         IT|     5|\n|102| Paul|            101|       2010|     3|     M|  4000|         HR|     6|\n|103| John|            101|       2010|     1|     M|  1000|  Marketing|     1|\n|103| John|            101|       2010|     1|     M|  1000|      Sales|     2|\n|103| John|            101|       2010|     1|     M|  1000|Engineering|     3|\n|103| John|            101|       2010|     1|     M|  1000|    Finance|     4|\n|103| John|            101|       2010|     1|     M|  1000|         IT|     5|\n|103| John|            101|       2010|     1|     M|  1000|         HR|     6|\n|104| Lisa|            102|       2005|     2|     F|  2000|  Marketing|     1|\n|104| Lisa|            102|       2005|     2|     F|  2000|      Sales|     2|\n+---+-----+---------------+-----------+------+------+------+-----------+------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34memployee\u001b[0m: \u001b[1m\u001b[32mSeq[(Int, String, Int, String, Int, String, Int)]\u001b[0m \u003d List((101,Chloe,-1,2018,8,M,3000), (102,Paul,101,2010,3,M,4000), (103,John,101,2010,1,M,1000), (104,Lisa,102,2005,2,F,2000), (105,Evan,102,2010,7,\"\",-1), (106,Amy,102,2010,9,\"\",-1))\n\u001b[1m\u001b[34mempColumns\u001b[0m: \u001b[1m\u001b[32mSeq[String]\u001b[0m \u003d List(id, name, superior_emp_id, year_joined, deptno, gender, salary)\n\u001b[1m\u001b[34mdepartment\u001b[0m: \u001b[1m\u001b[32mSeq[(String, Int)]\u001b[0m \u003d List((Marketing,1), (Sales,2), (Engineering,3), (Finance,4), (IT,5), (HR,6))\n\u001b[1m\u001b[34mdeptColumns\u001b[0m: \u001b[1m\u001b[32mSeq[String]\u001b[0m \u003d List(dept_name, deptno)\nimport spark.sqlContext.implicits._\n\u001b[1m\u001b[34memployeeDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: int, name: string ... 5 more fields]\n\u001b[1m\u001b[34mdepartmentDF\u001b[0m: \u001b[1m\u001b[32morg.apac...\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676167193718_0005//jobs/job?id\u003d1"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676167193718_0005//jobs/job?id\u003d2"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1675793729204_1608078918",
+      "id": "paragraph_1638442347634_2006643863",
+      "dateCreated": "2023-02-07 18:15:29.204",
+      "dateStarted": "2023-02-12 02:23:08.252",
+      "dateFinished": "2023-02-12 02:23:12.959",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nspark.sparkContext.stop()\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-07 18:15:29.204",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1675793729204_539328720",
+      "id": "paragraph_1640794966503_1048083866",
+      "dateCreated": "2023-02-07 18:15:29.204",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-07 18:15:29.204",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1675793729204_1534793446",
+      "id": "paragraph_1640834145345_1976143351",
+      "dateCreated": "2023-02-07 18:15:29.204",
+      "status": "READY"
+    }
+  ],
+  "name": "spark-cluster-jmx-metrics",
+  "id": "2HSNE1B6C",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

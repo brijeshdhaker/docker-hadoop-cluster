@@ -1,0 +1,306 @@
+{
+  "paragraphs": [
+    {
+      "text": "%hive\n\nCREATE TABLE transact_tbl(connections STRING);\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-22 03:03:49.634",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669086195524_753365058",
+      "id": "paragraph_1669086195524_753365058",
+      "dateCreated": "2022-11-22 03:03:15.524",
+      "dateStarted": "2022-11-22 03:03:49.635",
+      "dateFinished": "2022-11-22 03:03:49.736",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nINSERT INTO TABLE transact_tbl VALUES(\u0027PSTP,POST,FRDE\u0027), \n(\u0027LEFD,HSYT,YDTH\u0027), \n(\u0027AQSV,NESA,LRAJ\u0027), \n(\u0027KSAI,SJAA,PSOA\u0027),\n(\u0027SHAG,JSGS,AGAQ\u0027), \n(\u0027AQDS,KAHY,AGQG\u0027),\n(\u0027BAGW,AHQG,HAFY\u0027);",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-22 03:04:08.463",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "INFO  : Compiling command(queryId\u003droot_20221122030408_0cc26888-9c4e-42dc-9020-b6d11915d273): \n\nINSERT INTO TABLE transact_tbl VALUES(\u0027PSTP,POST,FRDE\u0027), \n(\u0027LEFD,HSYT,YDTH\u0027), \n(\u0027AQSV,NESA,LRAJ\u0027), \n(\u0027KSAI,SJAA,PSOA\u0027),\n(\u0027SHAG,JSGS,AGAQ\u0027), \n(\u0027AQDS,KAHY,AGQG\u0027),\n(\u0027BAGW,AHQG,HAFY\u0027)\nINFO  : Concurrency mode is disabled, not creating a lock manager\nINFO  : Semantic Analysis Completed (retrial \u003d false)\nINFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:col1, type:string, comment:null)], properties:null)\nINFO  : EXPLAIN output for queryid root_20221122030408_0cc26888-9c4e-42dc-9020-b6d11915d273 : STAGE DEPENDENCIES:\n  Stage-1 is a root stage [MAPRED]\n  Stage-7 depends on stages: Stage-1 , consists of Stage-4, Stage-3, Stage-5 [CONDITIONAL]\n  Stage-4 [MOVE]\n  Stage-0 depends on stages: Stage-4, Stage-3, Stage-6 [MOVE]\n  Stage-2 depends on stages: Stage-0 [STATS]\n  Stage-3 [MAPRED]\n  Stage-5 [MAPRED]\n  Stage-6 depends on stages: Stage-5 [MOVE]\n\nSTAGE PLANS:\n  Stage: Stage-1\n    Map Reduce\n      Map Operator Tree:\n          TableScan\n            alias: _dummy_table\n            Row Limit Per Split: 1\n            GatherStats: false\n            Select Operator\n              expressions: array(const struct(\u0027PSTP,POST,FRDE\u0027),const struct(\u0027LEFD,HSYT,YDTH\u0027),const struct(\u0027AQSV,NESA,LRAJ\u0027),const struct(\u0027KSAI,SJAA,PSOA\u0027),const struct(\u0027SHAG,JSGS,AGAQ\u0027),const struct(\u0027AQDS,KAHY,AGQG\u0027),const struct(\u0027BAGW,AHQG,HAFY\u0027)) (type: array\u003cstruct\u003ccol1:string\u003e\u003e)\n              outputColumnNames: _col0\n              UDTF Operator\n                function name: inline\n                Select Operator\n                  expressions: col1 (type: string)\n                  outputColumnNames: _col0\n                  File Output Operator\n                    compressed: false\n                    GlobalTableId: 1\n                    directory: hdfs://namenode:9000/user/hive/warehouse/transact_tbl/.hive-staging_hive_2022-11-22_03-04-08_485_3166939964207243691-1/-ext-10002\n                    NumFilesPerFileSink: 1\n                    Stats Publishing Key Prefix: hdfs://namenode:9000/user/hive/warehouse/transact_tbl/.hive-staging_hive_2022-11-22_03-04-08_485_3166939964207243691-1/-ext-10000/\n                    table:\n                        input format: org.apache.hadoop.mapred.TextInputFormat\n                        output format: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n                        properties:\n                          COLUMN_STATS_ACCURATE {\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"connections\":\"true\"}}\n                          bucket_count -1\n                          bucketing_version 2\n                          column.name.delimiter ,\n                          columns connections\n                          columns.comments \n                          columns.types string\n                          file.inputformat org.apache.hadoop.mapred.TextInputFormat\n                          file.outputformat org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n                          location hdfs://namenode:9000/user/hive/warehouse/transact_tbl\n                          name default.transact_tbl\n                          numFiles 0\n                          numRows 0\n                          rawDataSize 0\n                          serialization.ddl struct transact_tbl { string connections}\n                          serialization.format 1\n                          serialization.lib org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                          totalSize 0\n                          transient_lastDdlTime 1669086229\n                        serde: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                        name: default.transact_tbl\n                    TotalFiles: 1\n                    GatherStats: true\n                    MultiFileSpray: false\n                  Select Operator\n                    expressions: _col0 (type: string)\n                    outputColumnNames: connections\n                    Group By Operator\n                      aggregations: compute_stats(connections, \u0027hll\u0027)\n                      mode: hash\n                      outputColumnNames: _col0\n                      Reduce Output Operator\n                        null sort order: \n                        sort order: \n                        tag: -1\n                        value expressions: _col0 (type: struct\u003ccolumntype:string,maxlength:bigint,sumlength:bigint,count:bigint,countnulls:bigint,bitvector:binary\u003e)\n                        auto parallelism: false\n      Path -\u003e Alias:\n        hdfs://namenode:9000/tmp/hive/hive/4279e518-9abb-4b99-9e4a-9419180a45f0/hive_2022-11-22_03-04-08_485_3166939964207243691-1/dummy_path [$hdt$_0:_dummy_table]\n      Path -\u003e Partition:\n        hdfs://namenode:9000/tmp/hive/hive/4279e518-9abb-4b99-9e4a-9419180a45f0/hive_2022-11-22_03-04-08_485_3166939964207243691-1/dummy_path \n          Partition\n            base file name: dummy_path\n            input format: org.apache.hadoop.hive.ql.io.NullRowsInputFormat\n            output format: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n            properties:\n              bucket_count -1\n              bucketing_version 2\n              column.name.delimiter ,\n              columns \n              columns.comments \n              columns.types \n              file.inputformat org.apache.hadoop.hive.ql.io.NullRowsInputFormat\n              file.outputformat org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n              location hdfs://namenode:9000/tmp/hive/hive/4279e518-9abb-4b99-9e4a-9419180a45f0/hive_2022-11-22_03-04-08_485_3166939964207243691-1/dummy_path\n              name _dummy_database._dummy_table\n              serialization.ddl struct _dummy_table { }\n              serialization.format 1\n              serialization.lib org.apache.hadoop.hive.serde2.NullStructSerDe\n            serde: org.apache.hadoop.hive.serde2.NullStructSerDe\n          \n              input format: org.apache.hadoop.hive.ql.io.NullRowsInputFormat\n              output format: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n              properties:\n                bucket_count -1\n                bucketing_version 2\n                column.name.delimiter ,\n                columns \n                columns.comments \n                columns.types \n                file.inputformat org.apache.hadoop.hive.ql.io.NullRowsInputFormat\n                file.outputformat org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n                location hdfs://namenode:9000/tmp/hive/hive/4279e518-9abb-4b99-9e4a-9419180a45f0/hive_2022-11-22_03-04-08_485_3166939964207243691-1/dummy_path\n                name _dummy_database._dummy_table\n                serialization.ddl struct _dummy_table { }\n                serialization.format 1\n                serialization.lib org.apache.hadoop.hive.serde2.NullStructSerDe\n              serde: org.apache.hadoop.hive.serde2.NullStructSerDe\n              name: _dummy_database._dummy_table\n            name: _dummy_database._dummy_table\n      Truncated Path -\u003e Alias:\n        hdfs://namenode:9000/tmp/hive/hive/4279e518-9abb-4b99-9e4a-9419180a45f0/hive_2022-11-22_03-04-08_485_3166939964207243691-1/dummy_path [$hdt$_0:_dummy_table]\n      Needs Tagging: false\n      Reduce Operator Tree:\n        Group By Operator\n          aggregations: compute_stats(VALUE._col0)\n          mode: mergepartial\n          outputColumnNames: _col0\n          File Output Operator\n            compressed: false\n            GlobalTableId: 0\n            directory: hdfs://namenode:9000/tmp/hive/hive/4279e518-9abb-4b99-9e4a-9419180a45f0/hive_2022-11-22_03-04-08_995_8426117260499157100-1/-mr-10000/.hive-staging_hive_2022-11-22_03-04-08_995_8426117260499157100-1/-ext-10001\n            NumFilesPerFileSink: 1\n            Stats Publishing Key Prefix: hdfs://namenode:9000/tmp/hive/hive/4279e518-9abb-4b99-9e4a-9419180a45f0/hive_2022-11-22_03-04-08_995_8426117260499157100-1/-mr-10000/.hive-staging_hive_2022-11-22_03-04-08_995_8426117260499157100-1/-ext-10001/\n            table:\n                input format: org.apache.hadoop.mapred.SequenceFileInputFormat\n                output format: org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat\n                properties:\n                  columns _col0\n                  columns.types struct\u003ccolumntype:string,maxlength:bigint,avglength:double,countnulls:bigint,numdistinctvalues:bigint,ndvbitvector:binary\u003e\n                  escape.delim \\\n                  hive.serialization.extend.additional.nesting.levels true\n                  serialization.escape.crlf true\n                  serialization.format 1\n                  serialization.lib org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                serde: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n            TotalFiles: 1\n            GatherStats: false\n            MultiFileSpray: false\n\n  Stage: Stage-7\n    Conditional Operator\n\n  Stage: Stage-4\n    Move Operator\n      files:\n          hdfs directory: true\n          source: hdfs://namenode:9000/user/hive/warehouse/transact_tbl/.hive-staging_hive_2022-11-22_03-04-08_485_3166939964207243691-1/-ext-10002\n          destination: hdfs://namenode:9000/user/hive/warehouse/transact_tbl/.hive-staging_hive_2022-11-22_03-04-08_485_3166939964207243691-1/-ext-10000\n\n  Stage: Stage-0\n    Move Operator\n      tables:\n          replace: false\n          source: hdfs://namenode:9000/user/hive/warehouse/transact_tbl/.hive-staging_hive_2022-11-22_03-04-08_485_3166939964207243691-1/-ext-10000\n          table:\n              input format: org.apache.hadoop.mapred.TextInputFormat\n              output format: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n              properties:\n                COLUMN_STATS_ACCURATE {\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"connections\":\"true\"}}\n                bucket_count -1\n                bucketing_version 2\n                column.name.delimiter ,\n                columns connections\n                columns.comments \n                columns.types string\n                file.inputformat org.apache.hadoop.mapred.TextInputFormat\n                file.outputformat org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n                location hdfs://namenode:9000/user/hive/warehouse/transact_tbl\n                name default.transact_tbl\n                numFiles 0\n                numRows 0\n                rawDataSize 0\n                serialization.ddl struct transact_tbl { string connections}\n                serialization.format 1\n                serialization.lib org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                totalSize 0\n                transient_lastDdlTime 1669086229\n              serde: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n              name: default.transact_tbl\n\n  Stage: Stage-2\n    Stats Work\n      Basic Stats Work:\n          Stats Aggregation Key Prefix: hdfs://namenode:9000/user/hive/warehouse/transact_tbl/.hive-staging_hive_2022-11-22_03-04-08_485_3166939964207243691-1/-ext-10000/\n      Column Stats Desc:\n          Columns: connections\n          Column Types: string\n          Table: default.transact_tbl\n          Is Table Level Stats: true\n\n  Stage: Stage-3\n    Map Reduce\n      Map Operator Tree:\n          TableScan\n            GatherStats: false\n            File Output Operator\n              compressed: false\n              GlobalTableId: 0\n              directory: hdfs://namenode:9000/user/hive/warehouse/transact_tbl/.hive-staging_hive_2022-11-22_03-04-08_485_3166939964207243691-1/-ext-10000\n              NumFilesPerFileSink: 1\n              table:\n                  input format: org.apache.hadoop.mapred.TextInputFormat\n                  output format: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n                  properties:\n                    COLUMN_STATS_ACCURATE {\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"connections\":\"true\"}}\n                    bucket_count -1\n                    bucketing_version 2\n                    column.name.delimiter ,\n                    columns connections\n                    columns.comments \n                    columns.types string\n                    file.inputformat org.apache.hadoop.mapred.TextInputFormat\n                    file.outputformat org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n                    location hdfs://namenode:9000/user/hive/warehouse/transact_tbl\n                    name default.transact_tbl\n                    numFiles 0\n                    numRows 0\n                    rawDataSize 0\n                    serialization.ddl struct transact_tbl { string connections}\n                    serialization.format 1\n                    serialization.lib org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                    totalSize 0\n                    transient_lastDdlTime 1669086229\n                  serde: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                  name: default.transact_tbl\n              TotalFiles: 1\n              GatherStats: false\n              MultiFileSpray: false\n      Path -\u003e Alias:\n        hdfs://namenode:9000/user/hive/warehouse/transact_tbl/.hive-staging_hive_2022-11-22_03-04-08_485_3166939964207243691-1/-ext-10002 [hdfs://namenode:9000/user/hive/warehouse/transact_tbl/.hive-staging_hive_2022-11-22_03-04-08_485_3166939964207243691-1/-ext-10002]\n      Path -\u003e Partition:\n        hdfs://namenode:9000/user/hive/warehouse/transact_tbl/.hive-staging_hive_2022-11-22_03-04-08_485_3166939964207243691-1/-ext-10002 \n          Partition\n            base file name: -ext-10002\n            input format: org.apache.hadoop.mapred.TextInputFormat\n            output format: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n            properties:\n              COLUMN_STATS_ACCURATE {\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"connections\":\"true\"}}\n              bucket_count -1\n              bucketing_version 2\n              column.name.delimiter ,\n              columns connections\n              columns.comments \n              columns.types string\n              file.inputformat org.apache.hadoop.mapred.TextInputFormat\n              file.outputformat org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n              location hdfs://namenode:9000/user/hive/warehouse/transact_tbl\n              name default.transact_tbl\n              numFiles 0\n              numRows 0\n              rawDataSize 0\n              serialization.ddl struct transact_tbl { string connections}\n              serialization.format 1\n              serialization.lib org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n              totalSize 0\n              transient_lastDdlTime 1669086229\n            serde: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n          \n              input format: org.apache.hadoop.mapred.TextInputFormat\n              output format: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n              properties:\n                COLUMN_STATS_ACCURATE {\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"connections\":\"true\"}}\n                bucket_count -1\n                bucketing_version 2\n                column.name.delimiter ,\n                columns connections\n                columns.comments \n                columns.types string\n                file.inputformat org.apache.hadoop.mapred.TextInputFormat\n                file.outputformat org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n                location hdfs://namenode:9000/user/hive/warehouse/transact_tbl\n                name default.transact_tbl\n                numFiles 0\n                numRows 0\n                rawDataSize 0\n                serialization.ddl struct transact_tbl { string connections}\n                serialization.format 1\n                serialization.lib org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                totalSize 0\n                transient_lastDdlTime 1669086229\n              serde: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n              name: default.transact_tbl\n            name: default.transact_tbl\n      Truncated Path -\u003e Alias:\n        /transact_tbl/.hive-staging_hive_2022-11-22_03-04-08_485_3166939964207243691-1/-ext-10002 [hdfs://namenode:9000/user/hive/warehouse/transact_tbl/.hive-staging_hive_2022-11-22_03-04-08_485_3166939964207243691-1/-ext-10002]\n\n  Stage: Stage-5\n    Map Reduce\n      Map Operator Tree:\n          TableScan\n            GatherStats: false\n            File Output Operator\n              compressed: false\n              GlobalTableId: 0\n              directory: hdfs://namenode:9000/user/hive/warehouse/transact_tbl/.hive-staging_hive_2022-11-22_03-04-08_485_3166939964207243691-1/-ext-10000\n              NumFilesPerFileSink: 1\n              table:\n                  input format: org.apache.hadoop.mapred.TextInputFormat\n                  output format: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n                  properties:\n                    COLUMN_STATS_ACCURATE {\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"connections\":\"true\"}}\n                    bucket_count -1\n                    bucketing_version 2\n                    column.name.delimiter ,\n                    columns connections\n                    columns.comments \n                    columns.types string\n                    file.inputformat org.apache.hadoop.mapred.TextInputFormat\n                    file.outputformat org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n                    location hdfs://namenode:9000/user/hive/warehouse/transact_tbl\n                    name default.transact_tbl\n                    numFiles 0\n                    numRows 0\n                    rawDataSize 0\n                    serialization.ddl struct transact_tbl { string connections}\n                    serialization.format 1\n                    serialization.lib org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                    totalSize 0\n                    transient_lastDdlTime 1669086229\n                  serde: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                  name: default.transact_tbl\n              TotalFiles: 1\n              GatherStats: false\n              MultiFileSpray: false\n      Path -\u003e Alias:\n        hdfs://namenode:9000/user/hive/warehouse/transact_tbl/.hive-staging_hive_2022-11-22_03-04-08_485_3166939964207243691-1/-ext-10002 [hdfs://namenode:9000/user/hive/warehouse/transact_tbl/.hive-staging_hive_2022-11-22_03-04-08_485_3166939964207243691-1/-ext-10002]\n      Path -\u003e Partition:\n        hdfs://namenode:9000/user/hive/warehouse/transact_tbl/.hive-staging_hive_2022-11-22_03-04-08_485_3166939964207243691-1/-ext-10002 \n          Partition\n            base file name: -ext-10002\n            input format: org.apache.hadoop.mapred.TextInputFormat\n            output format: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n            properties:\n              COLUMN_STATS_ACCURATE {\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"connections\":\"true\"}}\n              bucket_count -1\n              bucketing_version 2\n              column.name.delimiter ,\n              columns connections\n              columns.comments \n              columns.types string\n              file.inputformat org.apache.hadoop.mapred.TextInputFormat\n              file.outputformat org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n              location hdfs://namenode:9000/user/hive/warehouse/transact_tbl\n              name default.transact_tbl\n              numFiles 0\n              numRows 0\n              rawDataSize 0\n              serialization.ddl struct transact_tbl { string connections}\n              serialization.format 1\n              serialization.lib org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n              totalSize 0\n              transient_lastDdlTime 1669086229\n            serde: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n          \n              input format: org.apache.hadoop.mapred.TextInputFormat\n              output format: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n              properties:\n                COLUMN_STATS_ACCURATE {\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"connections\":\"true\"}}\n                bucket_count -1\n                bucketing_version 2\n                column.name.delimiter ,\n                columns connections\n                columns.comments \n                columns.types string\n                file.inputformat org.apache.hadoop.mapred.TextInputFormat\n                file.outputformat org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n                location hdfs://namenode:9000/user/hive/warehouse/transact_tbl\n                name default.transact_tbl\n                numFiles 0\n                numRows 0\n                rawDataSize 0\n                serialization.ddl struct transact_tbl { string connections}\n                serialization.format 1\n                serialization.lib org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                totalSize 0\n                transient_lastDdlTime 1669086229\n              serde: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n              name: default.transact_tbl\n            name: default.transact_tbl\n      Truncated Path -\u003e Alias:\n        /transact_tbl/.hive-staging_hive_2022-11-22_03-04-08_485_3166939964207243691-1/-ext-10002 [hdfs://namenode:9000/user/hive/warehouse/transact_tbl/.hive-staging_hive_2022-11-22_03-04-08_485_3166939964207243691-1/-ext-10002]\n\n  Stage: Stage-6\n    Move Operator\n      files:\n          hdfs directory: true\n          source: hdfs://namenode:9000/user/hive/warehouse/transact_tbl/.hive-staging_hive_2022-11-22_03-04-08_485_3166939964207243691-1/-ext-10002\n          destination: hdfs://namenode:9000/user/hive/warehouse/transact_tbl/.hive-staging_hive_2022-11-22_03-04-08_485_3166939964207243691-1/-ext-10000\n\n\nINFO  : Completed compiling command(queryId\u003droot_20221122030408_0cc26888-9c4e-42dc-9020-b6d11915d273); Time taken: 0.598 seconds\nINFO  : Concurrency mode is disabled, not creating a lock manager\nINFO  : Executing command(queryId\u003droot_20221122030408_0cc26888-9c4e-42dc-9020-b6d11915d273): \n\nINSERT INTO TABLE transact_tbl VALUES(\u0027PSTP,POST,FRDE\u0027), \n(\u0027LEFD,HSYT,YDTH\u0027), \n(\u0027AQSV,NESA,LRAJ\u0027), \n(\u0027KSAI,SJAA,PSOA\u0027),\n(\u0027SHAG,JSGS,AGAQ\u0027), \n(\u0027AQDS,KAHY,AGQG\u0027),\n(\u0027BAGW,AHQG,HAFY\u0027)\nWARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.\nINFO  : Query ID \u003d root_20221122030408_0cc26888-9c4e-42dc-9020-b6d11915d273\nINFO  : Total jobs \u003d 3\nINFO  : Launching Job 1 out of 3\nINFO  : Starting task [Stage-1:MAPRED] in serial mode\nINFO  : Number of reduce tasks determined at compile time: 1\nINFO  : In order to change the average load for a reducer (in bytes):\nINFO  :   set hive.exec.reducers.bytes.per.reducer\u003d\u003cnumber\u003e\nINFO  : In order to limit the maximum number of reducers:\nINFO  :   set hive.exec.reducers.max\u003d\u003cnumber\u003e\nINFO  : In order to set a constant number of reducers:\nINFO  :   set mapreduce.job.reduces\u003d\u003cnumber\u003e\n\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669086229635_642693408",
+      "id": "paragraph_1669086229635_642693408",
+      "dateCreated": "2022-11-22 03:03:49.635",
+      "dateStarted": "2022-11-22 03:04:08.466",
+      "dateFinished": "2022-11-22 03:04:25.536",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nSELECT connections FROM transact_tbl;\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-22 03:04:39.604",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "connections": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "connections\nPSTP,POST,FRDE\nLEFD,HSYT,YDTH\nAQSV,NESA,LRAJ\nKSAI,SJAA,PSOA\nSHAG,JSGS,AGAQ\nAQDS,KAHY,AGQG\nBAGW,AHQG,HAFY\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669086248465_908085296",
+      "id": "paragraph_1669086248465_908085296",
+      "dateCreated": "2022-11-22 03:04:08.465",
+      "dateStarted": "2022-11-22 03:04:39.336",
+      "dateFinished": "2022-11-22 03:04:39.443",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nCREATE TABLE optrans_tbl(con1 STRING,con2 STRING,con3 STRING);\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-22 03:05:42.599",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669086279336_930698941",
+      "id": "paragraph_1669086279336_930698941",
+      "dateCreated": "2022-11-22 03:04:39.336",
+      "dateStarted": "2022-11-22 03:05:42.602",
+      "dateFinished": "2022-11-22 03:05:42.678",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\n\nSELECT \n    CONCTNS.splitted_cnctns[0] AS con1, \n    CONCTNS.splitted_cnctns[1] AS con2, \n    CONCTNS.splitted_cnctns[2] AS con3 \nFROM (\n    SELECT split(connections,\u0027,\u0027) AS splitted_cnctns \n    FROM transact_tbl\n) CONCTNS;\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-22 04:39:36.526",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "con1": "string",
+                      "con2": "string",
+                      "con3": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "con1\tcon2\tcon3\nPSTP\tPOST\tFRDE\nLEFD\tHSYT\tYDTH\nAQSV\tNESA\tLRAJ\nKSAI\tSJAA\tPSOA\nSHAG\tJSGS\tAGAQ\nAQDS\tKAHY\tAGQG\nBAGW\tAHQG\tHAFY\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669091921225_662165271",
+      "id": "paragraph_1669091921225_662165271",
+      "dateCreated": "2022-11-22 04:38:41.225",
+      "dateStarted": "2022-11-22 04:39:36.239",
+      "dateFinished": "2022-11-22 04:39:36.362",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nINSERT INTO TABLE optrans_tbl \nSELECT CONCTNS.splitted_cnctns[0] AS con1, \nCONCTNS.splitted_cnctns[1] AS con2, \nCONCTNS.splitted_cnctns[2] AS con3 \nFROM (SELECT split(connections,\u0027,\u0027) AS splitted_cnctns \nFROM transact_tbl) CONCTNS;\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-22 04:38:36.083",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669086342601_539790077",
+      "id": "paragraph_1669086342601_539790077",
+      "dateCreated": "2022-11-22 03:05:42.601",
+      "status": "READY"
+    }
+  ],
+  "name": "hive-split-column",
+  "id": "2HK26F2JD",
+  "defaultInterpreterGroup": "hive",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

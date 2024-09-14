@@ -1,0 +1,3887 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n## Chapter 6. Working with Different Types of Data\n\nThis chapter covers building expressions, which are the bread and butter of Spark’s structured operations.\n\nAll SQL and DataFrame functions are found at \"https://spark.apache.org/docs/latest/api/python/pyspark.sql.html\"",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.268",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eChapter 6. Working with Different Types of Data\u003c/h2\u003e\n\u003cp\u003eThis chapter covers building expressions, which are the bread and butter of Spark’s structured operations.\u003c/p\u003e\n\u003cp\u003eAll SQL and DataFrame functions are found at \u0026ldquo;\u003ca href\u003d\"https://spark.apache.org/docs/latest/api/python/pyspark.sql.html\"\u003ehttps://spark.apache.org/docs/latest/api/python/pyspark.sql.html\u003c/a\u003e\u0026rdquo;\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657268_1402590973",
+      "id": "20220919-164057_359639409",
+      "dateCreated": "2022-09-19 16:40:57.268",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\ndf \u003d spark.read.format(\"csv\")\\\n     .option(\"header\",\"true\")\\\n     .option(\"inferSchema\",\"true\")\\\n     .load(\"/FileStore/tables/retail-data/by-day/2010-12-01.csv\")\n\ndf.printSchema()\ndf.createOrReplaceTempView(\"dftable\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-21 00:38:32.356",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- InvoiceNo: string (nullable \u003d true)\n |-- StockCode: string (nullable \u003d true)\n |-- Description: string (nullable \u003d true)\n |-- Quantity: integer (nullable \u003d true)\n |-- InvoiceDate: string (nullable \u003d true)\n |-- UnitPrice: double (nullable \u003d true)\n |-- CustomerID: double (nullable \u003d true)\n |-- Country: string (nullable \u003d true)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:34283/jobs/job?id\u003d0"
+            },
+            {
+              "jobUrl": "http://nodemanager:34283/jobs/job?id\u003d1"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657268_659502848",
+      "id": "20220919-164057_630323614",
+      "dateCreated": "2022-09-19 16:40:57.268",
+      "dateStarted": "2022-09-21 00:38:32.414",
+      "dateFinished": "2022-09-21 00:40:24.384",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\nConverting native types to SPARK types",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-21 00:41:10.640",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eConverting native types to SPARK types\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657268_960256787",
+      "id": "20220919-164057_242097157",
+      "dateCreated": "2022-09-19 16:40:57.268",
+      "dateStarted": "2022-09-21 00:41:10.641",
+      "dateFinished": "2022-09-21 00:41:15.768",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import lit\n\ndf.select(lit(5), lit(\"five\"), lit(5.0))\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-21 00:41:33.402",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "DataFrame[5: int, five: string, 5.0: double]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657268_1343853669",
+      "id": "20220919-164057_1706846195",
+      "dateCreated": "2022-09-19 16:40:57.268",
+      "dateStarted": "2022-09-21 00:41:33.450",
+      "dateFinished": "2022-09-21 00:41:33.548",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%sql\n\nselect 5, \"five\", 5.0\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-21 00:42:02.194",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/sql",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "5": "string",
+                      "five": "string",
+                      "5.0": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "5\tfive\t5.0\n5\tfive\t5.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:34283/jobs/job?id\u003d2"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657268_254069097",
+      "id": "20220919-164057_1384068738",
+      "dateCreated": "2022-09-19 16:40:57.268",
+      "dateStarted": "2022-09-21 00:42:02.240",
+      "dateFinished": "2022-09-21 00:42:02.636",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.268",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657268_231126344",
+      "id": "20220919-164057_2013816922",
+      "dateCreated": "2022-09-19 16:40:57.268",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n###### working with Booleans\n* Boolean statements consist of four elements: and, or, true, and false. We use these simple structures to build logical statements that evaluate to either true or false.\n* We can specify Boolean expressions with multiple parts when you use **and** or **or** . \n* In spark we should always chain together **and** filters as a sequential filter. The reason for this is that even if Boolean statements are expressed serially (one after the other),Spark will flatten all of these filters into one statement and perform the filter at the same time, creating the and statement for us.\n* **or** statements need to be specified in the same statement",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.268",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch6\u003eworking with Booleans\u003c/h6\u003e\n\u003cul\u003e\n  \u003cli\u003eBoolean statements consist of four elements: and, or, true, and false. We use these simple structures to build logical statements that evaluate to either true or false.\u003c/li\u003e\n  \u003cli\u003eWe can specify Boolean expressions with multiple parts when you use \u003cstrong\u003eand\u003c/strong\u003e or \u003cstrong\u003eor\u003c/strong\u003e .\u003c/li\u003e\n  \u003cli\u003eIn spark we should always chain together \u003cstrong\u003eand\u003c/strong\u003e filters as a sequential filter. The reason for this is that even if Boolean statements are expressed serially (one after the other),Spark will flatten all of these filters into one statement and perform the filter at the same time, creating the and statement for us.\u003c/li\u003e\n  \u003cli\u003e\u003cstrong\u003eor\u003c/strong\u003e statements need to be specified in the same statement\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657268_1095448489",
+      "id": "20220919-164057_116972906",
+      "dateCreated": "2022-09-19 16:40:57.268",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import col, instr\n\npriceFilter \u003d col(\"UnitPrice\") \u003e 600\ndescripFIlter \u003d col(\"Description\").contains(\"POSTAGE\")\n\ndf.where(df.StockCode.isin(\"DOT\")).where(priceFilter | descripFIlter).show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-21 01:54:08.817",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "java.lang.RuntimeException\n\tat org.apache.zeppelin.interpreter.remote.PooledRemoteClient.callRemoteFunction(PooledRemoteClient.java:119)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterProcess.callRemoteFunction(RemoteInterpreterProcess.java:100)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreter.interpret(RemoteInterpreter.java:208)\n\tat org.apache.zeppelin.notebook.Paragraph.jobRun(Paragraph.java:484)\n\tat org.apache.zeppelin.notebook.Paragraph.jobRun(Paragraph.java:69)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:172)\n\tat org.apache.zeppelin.scheduler.AbstractScheduler.runJob(AbstractScheduler.java:132)\n\tat org.apache.zeppelin.scheduler.RemoteScheduler$JobRunner.run(RemoteScheduler.java:182)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\tat java.lang.Thread.run(Thread.java:748)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657268_1997880234",
+      "id": "20220919-164057_740593216",
+      "dateCreated": "2022-09-19 16:40:57.268",
+      "dateStarted": "2022-09-21 01:54:08.867",
+      "dateFinished": "2022-09-21 01:54:08.877",
+      "status": "ERROR"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import instr\n\npriceFilter \u003d col(\"UnitPrice\") \u003e 600\n\ndescripFilter \u003d instr(df.Description, \"POSTAGE\") \u003e\u003d 1\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-21 00:44:28.392",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657268_176853224",
+      "id": "20220919-164057_1824770097",
+      "dateCreated": "2022-09-19 16:40:57.268",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\ndf.filter(col(\u0027StockCode\u0027).isin(\u0027DOT\u0027)).filter(priceFilter | descripFilter).show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.268",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+---------+---------+--------------+--------+-------------------+---------+----------+--------------+\nInvoiceNo|StockCode|   Description|Quantity|        InvoiceDate|UnitPrice|CustomerID|       Country|\n+---------+---------+--------------+--------+-------------------+---------+----------+--------------+\n   536544|      DOT|DOTCOM POSTAGE|       1|2010-12-01 14:32:00|   569.77|      null|United Kingdom|\n   536592|      DOT|DOTCOM POSTAGE|       1|2010-12-01 17:06:00|   607.49|      null|United Kingdom|\n+---------+---------+--------------+--------+-------------------+---------+----------+--------------+\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657268_977799146",
+      "id": "20220919-164057_2032923110",
+      "dateCreated": "2022-09-19 16:40:57.268",
+      "status": "READY"
+    },
+    {
+      "text": "%sql\n\nSELECT * \nFROM dftable \nWHERE StockCode in (\"DOT\")\nAND (UnitPrice \u003e 660 OR instr(Description,\"POSTAGE\") \u003e\u003d 1)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:02:43.432",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/sql",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "InvoiceNo": "string",
+                      "StockCode": "string",
+                      "Description": "string",
+                      "Quantity": "string",
+                      "InvoiceDate": "string",
+                      "UnitPrice": "string",
+                      "CustomerID": "string",
+                      "Country": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "InvoiceNo\tStockCode\tDescription\tQuantity\tInvoiceDate\tUnitPrice\tCustomerID\tCountry\n536544\tDOT\tDOTCOM POSTAGE\t1\t2010-12-01 14:32:00\t569.77\tnull\tUnited Kingdom\n536592\tDOT\tDOTCOM POSTAGE\t1\t2010-12-01 17:06:00\t607.49\tnull\tUnited Kingdom\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d4"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657268_1750441179",
+      "id": "20220919-164057_401919538",
+      "dateCreated": "2022-09-19 16:40:57.268",
+      "dateStarted": "2022-09-19 17:02:42.195",
+      "dateFinished": "2022-09-19 17:02:42.852",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\nTo filter a DataFrame, you can also just specify a Boolean column. Here is code to",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.268",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eTo filter a DataFrame, you can also just specify a Boolean column. Here is code to\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657268_516901336",
+      "id": "20220919-164057_531239938",
+      "dateCreated": "2022-09-19 16:40:57.268",
+      "status": "READY"
+    },
+    {
+      "text": "%sql\n\nSELECT UnitPrice, (StockCode \u003d \u0027DOT\u0027 AND\n(UnitPrice \u003e 600 OR instr(Description, \"POSTAGE\") \u003e\u003d 1)) as isExpensive\nFROM dfTable\nWHERE (StockCode \u003d \u0027DOT\u0027 AND\n(UnitPrice \u003e 600 OR instr(Description, \"POSTAGE\") \u003e\u003d 1))\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:03:12.190",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/sql",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "UnitPrice": "string",
+                      "isExpensive": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "UnitPrice\tisExpensive\n569.77\ttrue\n607.49\ttrue\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d5"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657268_1835576786",
+      "id": "20220919-164057_1843058054",
+      "dateCreated": "2022-09-19 16:40:57.268",
+      "dateStarted": "2022-09-19 17:03:11.140",
+      "dateFinished": "2022-09-19 17:03:11.614",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nDOTCodeFilter \u003d col(\"StockCode\") \u003d\u003d \"DOT\"\npriceFilter \u003d col(\"UnitPrice\") \u003e 600\ndescripFilter \u003d instr(col(\"Description\"), \"POSTAGE\") \u003e\u003d 1\n\ndf.withColumn(\"isExpensive\",DOTCodeFilter \u0026 (priceFilter | descripFilter))\\\n  .where(\"isExpensive\")\\\n  .select(\"unitPrice\",\"isExpensive\").show(5)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:03:25.413",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------+-----------+\n|unitPrice|isExpensive|\n+---------+-----------+\n|   569.77|       true|\n|   607.49|       true|\n+---------+-----------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d6"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657268_1199235440",
+      "id": "20220919-164057_1264102682",
+      "dateCreated": "2022-09-19 16:40:57.268",
+      "dateStarted": "2022-09-19 17:03:25.499",
+      "dateFinished": "2022-09-19 17:03:25.874",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import expr\ndf.withColumn(\"isExpensive\",expr(\"NOT UnitPrice \u003c\u003d 250\"))\\\n  .filter(\"isExpensive\")\\\n  .select(\"Description\",\"UnitPrice\").show(5)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-21 00:55:09.275",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------+---------+\n|   Description|UnitPrice|\n+--------------+---------+\n|DOTCOM POSTAGE|   569.77|\n|DOTCOM POSTAGE|   607.49|\n+--------------+---------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d7"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657268_1518787167",
+      "id": "20220919-164057_2053926685",
+      "dateCreated": "2022-09-19 16:40:57.268",
+      "dateStarted": "2022-09-19 17:03:36.885",
+      "dateFinished": "2022-09-19 17:03:37.283",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nimport pyspark.sql.functions as F",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:03:45.563",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657268_1235941825",
+      "id": "20220919-164057_891907670",
+      "dateCreated": "2022-09-19 16:40:57.268",
+      "dateStarted": "2022-09-19 17:03:45.647",
+      "dateFinished": "2022-09-19 17:03:45.664",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n###### Working with Numbers",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.268",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch6\u003eWorking with Numbers\u003c/h6\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657268_419322065",
+      "id": "20220919-164057_241499024",
+      "dateCreated": "2022-09-19 16:40:57.268",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import expr, pow\nfabricatedQuantity \u003d pow(col(\"Quantity\") * col(\"UnitPrice\"),2)+5\ndf.select(expr(\"CustomerId\"), fabricatedQuantity.alias(\"realQuantity\")).show(2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:03:53.290",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------+------------------+\n|CustomerId|      realQuantity|\n+----------+------------------+\n|   17850.0|239.08999999999997|\n|   17850.0|          418.7156|\n+----------+------------------+\nonly showing top 2 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d8"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657268_1439082486",
+      "id": "20220919-164057_5945147",
+      "dateCreated": "2022-09-19 16:40:57.268",
+      "dateStarted": "2022-09-19 17:03:53.357",
+      "dateFinished": "2022-09-19 17:03:53.619",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\ndf.selectExpr(\n\"CustomerId\",\n\"(POWER((Quantity * UnitPrice), 2.0) + 5) as realQuantity\").show(2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:04:04.631",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------+------------------+\n|CustomerId|      realQuantity|\n+----------+------------------+\n|   17850.0|239.08999999999997|\n|   17850.0|          418.7156|\n+----------+------------------+\nonly showing top 2 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d9"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_1452704580",
+      "id": "20220919-164057_425141418",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "dateStarted": "2022-09-19 17:04:04.708",
+      "dateFinished": "2022-09-19 17:04:04.942",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n#round to a whole number\nfrom pyspark.sql.functions import round,bround\ndf.select(round(col(\"UnitPrice\"),1).alias(\"rounded\"),col(\"UnitPrice\")).show(5)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:04:13.118",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+---------+\n|rounded|UnitPrice|\n+-------+---------+\n|    2.6|     2.55|\n|    3.4|     3.39|\n|    2.8|     2.75|\n|    3.4|     3.39|\n|    3.4|     3.39|\n+-------+---------+\nonly showing top 5 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d10"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_1127065319",
+      "id": "20220919-164057_1735565832",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "dateStarted": "2022-09-19 17:04:13.188",
+      "dateFinished": "2022-09-19 17:04:13.484",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\ndf.select(round(F.lit(\"2.5\")), bround(F.lit(\"2.5\"))).show(2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:04:19.761",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------+--------------+\n|round(2.5, 0)|bround(2.5, 0)|\n+-------------+--------------+\n|          3.0|           2.0|\n|          3.0|           2.0|\n+-------------+--------------+\nonly showing top 2 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d11"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_1113206805",
+      "id": "20220919-164057_1323527437",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "dateStarted": "2022-09-19 17:04:19.832",
+      "dateFinished": "2022-09-19 17:04:20.092",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\ncorrelation of two columns",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.270",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003ecorrelation of two columns\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_412210528",
+      "id": "20220919-164057_467003525",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import corr\ndf.stat.corr(\"Quantity\", \"UnitPrice\")\ndf.select(corr(\"Quantity\", \"UnitPrice\")).show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:04:27.077",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------------------+\n|corr(Quantity, UnitPrice)|\n+-------------------------+\n|     -0.04112314436835551|\n+-------------------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d12"
+            },
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d13"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_1598638148",
+      "id": "20220919-164057_990379297",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "dateStarted": "2022-09-19 17:04:27.149",
+      "dateFinished": "2022-09-19 17:04:28.165",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\nTo compute summary statistics for a column or set of columns we can use **describe()** function. This will take all numeric columns and\ncalculate the count, mean, standard deviation, min, and max.",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.270",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eTo compute summary statistics for a column or set of columns we can use \u003cstrong\u003edescribe()\u003c/strong\u003e function. This will take all numeric columns and\u003cbr/\u003ecalculate the count, mean, standard deviation, min, and max.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_225251029",
+      "id": "20220919-164057_1234664107",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\ndf.describe().show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:04:40.418",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+-----------------+------------------+--------------------+------------------+-------------------+------------------+------------------+--------------+\n|summary|        InvoiceNo|         StockCode|         Description|          Quantity|        InvoiceDate|         UnitPrice|        CustomerID|       Country|\n+-------+-----------------+------------------+--------------------+------------------+-------------------+------------------+------------------+--------------+\n|  count|             3108|              3108|                3098|              3108|               3108|              3108|              1968|          3108|\n|   mean| 536516.684944841|27834.304044117645|                null| 8.627413127413128|               null| 4.151946589446603|15661.388719512195|          null|\n| stddev|72.89447869788873|17407.897548583845|                null|26.371821677029203|               null|15.638659854603892|1854.4496996893627|          null|\n|    min|           536365|             10002| 4 PURPLE FLOCK D...|               -24|2010-12-01 08:26:00|               0.0|           12431.0|     Australia|\n|    max|          C536548|              POST|ZINC WILLIE WINKI...|               600|2010-12-01 17:35:00|            607.49|           18229.0|United Kingdom|\n+-------+-----------------+------------------+--------------------+------------------+-------------------+------------------+------------------+--------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d14"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_962764601",
+      "id": "20220919-164057_474606993",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "dateStarted": "2022-09-19 17:04:40.499",
+      "dateFinished": "2022-09-19 17:04:42.296",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import monotonically_increasing_id",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:04:57.356",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_2001319847",
+      "id": "20220919-164057_686600029",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\ndf.select(F.monotonically_increasing_id()).show(2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:05:08.426",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----------------------------+\n|monotonically_increasing_id()|\n+-----------------------------+\n|                            0|\n|                            1|\n+-----------------------------+\nonly showing top 2 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d15"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_353831241",
+      "id": "20220919-164057_738632084",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "dateStarted": "2022-09-19 17:05:08.524",
+      "dateFinished": "2022-09-19 17:05:08.771",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n###### Working with Strings\n\n* **initcap** function will capitalize every word in a given string when that word is separated from another by a space.",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.270",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch6\u003eWorking with Strings\u003c/h6\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cstrong\u003einitcap\u003c/strong\u003e function will capitalize every word in a given string when that word is separated from another by a space.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_538456757",
+      "id": "20220919-164057_1580651677",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import initcap,lower,upper\n\ndf.select(initcap(col(\"Description\"))).show(2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:05:29.266",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+--------------------+\ninitcap(Description)|\n+--------------------+\nWhite Hanging Hea...|\n White Metal Lantern|\n+--------------------+\nonly showing top 2 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_577257580",
+      "id": "20220919-164057_230723503",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\ndf.select(col(\"Description\").alias(\"DESC\"),\n          lower(col(\"Description\")).alias(\"LOWER DESC\"),\n          upper(col(\"Description\")).alias(\"UPPER DESC\")).show(2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:05:50.582",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+--------------------+--------------------+--------------------+\n                DESC|          LOWER DESC|          UPPER DESC|\n+--------------------+--------------------+--------------------+\nWHITE HANGING HEA...|white hanging hea...|WHITE HANGING HEA...|\n WHITE METAL LANTERN| white metal lantern| WHITE METAL LANTERN|\n+--------------------+--------------------+--------------------+\nonly showing top 2 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_1915640808",
+      "id": "20220919-164057_1083924237",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import lit, ltrim, rtrim, rpad, lpad, trim\ndf.select(ltrim(lit(\" HELLO \")).alias(\"ltrim\"),\n          rtrim(lit(\" HELLO \")).alias(\"rtrim\"),\n          trim(lit(\" HELLO \")).alias(\"trim\"),\n          lpad(lit(\"HELLO\"), 3, \" \").alias(\"lp\"),\n          rpad(lit(\"HELLO\"), 10, \" \").alias(\"rp\")).show(2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:05:43.855",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+------+------+-----+---+----------+\n ltrim| rtrim| trim| lp|        rp|\n+------+------+-----+---+----------+\nHELLO | HELLO|HELLO|HEL|HELLO     |\nHELLO | HELLO|HELLO|HEL|HELLO     |\n+------+------+-----+---+----------+\nonly showing top 2 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_1843876165",
+      "id": "20220919-164057_1493716107",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n###### Regular Expression\nThere are two key functions in Spark to perform regular expression tasks\n* **regexp_extract** functions extract values\n* **regexp_replace** replace values",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.270",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch6\u003eRegular Expression\u003c/h6\u003e\n\u003cp\u003eThere are two key functions in Spark to perform regular expression tasks\u003cbr/\u003e* \u003cstrong\u003eregexp_extract\u003c/strong\u003e functions extract values\u003cbr/\u003e* \u003cstrong\u003eregexp_replace\u003c/strong\u003e replace values\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_1469429916",
+      "id": "20220919-164057_838002955",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import regexp_replace\nregex_string \u003d \"BLACK|WHITE|RED|GREEN|BLUE\"\ndf.select(regexp_replace(df.Description,regex_string,\u0027COLOR\u0027).alias(\"color_clean\"),col(\"Description\")).show(2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:18:37.855",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+--------------------+--------------------+\n         color_clean|         Description|\n+--------------------+--------------------+\nCOLOR HANGING HEA...|WHITE HANGING HEA...|\n COLOR METAL LANTERN| WHITE METAL LANTERN|\n+--------------------+--------------------+\nonly showing top 2 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_1383276337",
+      "id": "20220919-164057_944153965",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import regexp_extract\nextract_string \u003d \"(BLACK|WHITE|RED|GREEN|BLUE)\"\n\ndf.select(regexp_extract(df.Description,extract_string,1).alias(\"color_clean\"),col(\"Description\")).show(2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:18:45.777",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+-----------+--------------------+\ncolor_clean|         Description|\n+-----------+--------------------+\n      WHITE|WHITE HANGING HEA...|\n      WHITE| WHITE METAL LANTERN|\n+-----------+--------------------+\nonly showing top 2 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_1538494718",
+      "id": "20220919-164057_574617183",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%md\nWhen we want to check if the string exists in the column, use **Contains()c** function. This will returns a Boolean declaring whether the value you specify is in the column\u0027s string",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.270",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eWhen we want to check if the string exists in the column, use \u003cstrong\u003eContains()c\u003c/strong\u003e function. This will returns a Boolean declaring whether the value you specify is in the column\u0026rsquo;s string\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_279386793",
+      "id": "20220919-164057_961055367",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\ncontainsBlack \u003d df.Description.contains(\"BLACK\")\ncontainsWhite \u003d instr(col(\"Description\"),\"WHITE\") \u003e\u003d 1\n\ndf.withColumn(\"hasBlackNWhite\", containsBlack | containsWhite).where(\"hasBlackNWhite\").select(\"Description\").show(3)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:18:52.478",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+--------------------+\n         Description|\n+--------------------+\nWHITE HANGING HEA...|\n WHITE METAL LANTERN|\nRED WOOLLY HOTTIE...|\n+--------------------+\nonly showing top 3 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_721291287",
+      "id": "20220919-164057_1255678113",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%sql\n\nSELECT Description from dftable\nWHERE instr(Description, \u0027BLACK\u0027) \u003e\u003d 1 OR instr(Description, \u0027WHITE\u0027) \u003e\u003d 1\nLIMIT 3",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:19:10.258",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/sql",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Description": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "Description\nWHITE HANGING HEART T-LIGHT HOLDER\nWHITE METAL LANTERN\nRED WOOLLY HOTTIE WHITE HEART.\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d16"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_2007768795",
+      "id": "20220919-164057_291904335",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "dateStarted": "2022-09-19 17:19:09.478",
+      "dateFinished": "2022-09-19 17:19:09.687",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\nWhen we convert a list of values into a set of arguments and pass them into a function, we use a language feature called **varargs**. Using this feature, we can effectively unravel an array of arbitrary length and pass it as arguments to a function. \n\n**locate** that returns the integer location\n\nLocate the position of the first occurrence of substr in a string column, after position pos.\n\n**Note** The position is not zero based, but 1 based index. Returns 0 if substr could not be found in str.\nParameters:\nsubstr – a string\nstr – a Column of pyspark.sql.types.StringType\npos – start position (zero based)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.270",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eWhen we convert a list of values into a set of arguments and pass them into a function, we use a language feature called \u003cstrong\u003evarargs\u003c/strong\u003e. Using this feature, we can effectively unravel an array of arbitrary length and pass it as arguments to a function. \u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003elocate\u003c/strong\u003e that returns the integer location\u003c/p\u003e\n\u003cp\u003eLocate the position of the first occurrence of substr in a string column, after position pos.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eNote\u003c/strong\u003e The position is not zero based, but 1 based index. Returns 0 if substr could not be found in str.\u003cbr/\u003eParameters:\u003cbr/\u003esubstr – a string\u003cbr/\u003estr – a Column of pyspark.sql.types.StringType\u003cbr/\u003epos – start position (zero based)\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_1481581457",
+      "id": "20220919-164057_335124924",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import expr, locate\n\nsimpleColors \u003d [\"black\", \"white\", \"red\", \"green\", \"blue\"]\n\ndef color_locator(column, color_string):\n  return locate(color_string.upper(), column).cast(\"boolean\").alias(\"is_\" + color_string)\n\nselectColumns \u003d [color_locator(df.Description, c) for c in simpleColors]\nselectColumns.append(expr(\"*\")) # has to a be Column type\n\ndf.select(*selectColumns).where(expr(\"is_white OR is_red\")).select(\"Description\").show(3, False)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:19:26.950",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------------------------------+\n|Description                       |\n+----------------------------------+\n|WHITE HANGING HEART T-LIGHT HOLDER|\n|WHITE METAL LANTERN               |\n|RED WOOLLY HOTTIE WHITE HEART.    |\n+----------------------------------+\nonly showing top 3 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d17"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_694225985",
+      "id": "20220919-164057_952518592",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "dateStarted": "2022-09-19 17:19:26.980",
+      "dateFinished": "2022-09-19 17:19:27.248",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\nIf you use **col()** and want to perform transformations on that column, you must perform those on that column reference. \nWhen using an expression, the **expr** function can actually **parse transformations** and **column references** from a string and can subsequently be passed into further transformations.\nKey-Points\n\n* Columns are just expressions.\n* Columns and transformations of those columns compile to the same logical plan as parsed expressions.",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.270",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eIf you use \u003cstrong\u003ecol()\u003c/strong\u003e and want to perform transformations on that column, you must perform those on that column reference.\u003cbr/\u003eWhen using an expression, the \u003cstrong\u003eexpr\u003c/strong\u003e function can actually \u003cstrong\u003eparse transformations\u003c/strong\u003e and \u003cstrong\u003ecolumn references\u003c/strong\u003e from a string and can subsequently be passed into further transformations.\u003cbr/\u003eKey-Points\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eColumns are just expressions.\u003c/li\u003e\n  \u003cli\u003eColumns and transformations of those columns compile to the same logical plan as parsed expressions.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_478592631",
+      "id": "20220919-164057_1345296757",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n###### Working with Dates and Timestamps\n\nYou can set a session local timezone if necessary by **setting spark.conf.sessionLocalTimeZone** in the SQL configurations.",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.270",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch6\u003eWorking with Dates and Timestamps\u003c/h6\u003e\n\u003cp\u003eYou can set a session local timezone if necessary by \u003cstrong\u003esetting spark.conf.sessionLocalTimeZone\u003c/strong\u003e in the SQL configurations.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_1968957110",
+      "id": "20220919-164057_1294199633",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import current_date, current_timestamp\n\ndateDf \u003d spark.range(10)\\\n     .withColumn(\"TodayDate\",current_date())\\\n     .withColumn(\"Now\",current_timestamp())\n\ndateDf.createOrReplaceTempView(\"dateTable\")\ndateDf.printSchema()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:19:50.335",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- id: long (nullable \u003d false)\n |-- TodayDate: date (nullable \u003d false)\n |-- Now: timestamp (nullable \u003d false)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_1371486049",
+      "id": "20220919-164057_217758431",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "dateStarted": "2022-09-19 17:19:44.346",
+      "dateFinished": "2022-09-19 17:19:44.405",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n#To add or substract five days from today\nfrom pyspark.sql.functions import date_add, date_sub\n\ndateDf.select(date_add(\"TodayDate\",5),date_sub(\"TodayDate\",5)).show(1)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:21:03.420",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------------------+----------------------+\n|date_add(TodayDate, 5)|date_sub(TodayDate, 5)|\n+----------------------+----------------------+\n|            2022-09-24|            2022-09-14|\n+----------------------+----------------------+\nonly showing top 1 row\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d19"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_860449752",
+      "id": "20220919-164057_109581511",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "dateStarted": "2022-09-19 17:21:03.460",
+      "dateFinished": "2022-09-19 17:21:03.595",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%sql\n\nSELECT date_add(TodayDate,5),date_sub(TodayDate,5)\nFROM dateTable\nLIMIT 1",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:21:20.478",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/sql",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "date_add(TodayDate, 5)": "string",
+                      "date_sub(TodayDate, 5)": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "date_add(TodayDate, 5)\tdate_sub(TodayDate, 5)\n2022-09-24\t2022-09-14\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d18"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_491221871",
+      "id": "20220919-164057_717275474",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "dateStarted": "2022-09-19 17:20:52.999",
+      "dateFinished": "2022-09-19 17:20:53.258",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import datediff, months_between, to_date, col, lit\n\ndateDf.withColumn(\"week_ago\", date_sub(col(\"TodayDate\"),7))\\\n      .select(datediff(col(\"week_ago\"),col(\"TodayDate\"))).show(1)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:21:36.102",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----------------------------+\n|datediff(week_ago, TodayDate)|\n+-----------------------------+\n|                           -7|\n+-----------------------------+\nonly showing top 1 row\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d20"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_910883108",
+      "id": "20220919-164057_2020331064",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "dateStarted": "2022-09-19 17:21:36.129",
+      "dateFinished": "2022-09-19 17:21:36.269",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\ndateDf.select(\nto_date(lit(\"2019-06-23\")).alias(\"start\"),\n  to_date(lit(\"2019-11-23\")).alias(\"end\")\n).select(months_between(col(\"start\"),col(\"end\"))).show(1)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:22:09.852",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------------------+\n|months_between(start, end, true)|\n+--------------------------------+\n|                            -5.0|\n+--------------------------------+\nonly showing top 1 row\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d21"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_568749950",
+      "id": "20220919-164057_555659176",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "dateStarted": "2022-09-19 17:22:09.869",
+      "dateFinished": "2022-09-19 17:22:10.014",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\nSpark will not throw an error if it cannot parse the date; rather, it will just return **null.**\n\nExample:",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:22:33.565",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eSpark will not throw an error if it cannot parse the date; rather, it will just return \u003cstrong\u003enull.\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eExample:\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_1401484948",
+      "id": "20220919-164057_1735829856",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "dateStarted": "2022-09-19 17:22:33.566",
+      "dateFinished": "2022-09-19 17:22:40.109",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\ndateDf.select(to_date(lit(\"2016-20-12\")),to_date(lit(\"2017-12-11\"))).show(1)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:22:35.272",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------------+-------------------+\n|to_date(2016-20-12)|to_date(2017-12-11)|\n+-------------------+-------------------+\n|               null|         2017-12-11|\n+-------------------+-------------------+\nonly showing top 1 row\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d22"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_702398649",
+      "id": "20220919-164057_1259355789",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "dateStarted": "2022-09-19 17:22:35.301",
+      "dateFinished": "2022-09-19 17:22:35.453",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\nnotice how the second date appears as Decembers 11th instead of the correct day, November 12th. Spark doesn’t throw an\nerror because it cannot know whether the days are mixed up or that specific row is incorrect. To fix this we use **to_date** and **to_timestamp**",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.270",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003enotice how the second date appears as Decembers 11th instead of the correct day, November 12th. Spark doesn’t throw an\u003cbr/\u003eerror because it cannot know whether the days are mixed up or that specific row is incorrect. To fix this we use \u003cstrong\u003eto_date\u003c/strong\u003e and \u003cstrong\u003eto_timestamp\u003c/strong\u003e\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_1908870526",
+      "id": "20220919-164057_1831613401",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\ndateFormat \u003d \"YYYY-dd-MM\"\n\ncleanDF \u003d spark.range(1).select(\n          to_date(lit(\"2017-12-11\"),dateFormat).alias(\"date\"),\n          to_date(lit(\"2017-20-12\"),dateFormat).alias(\"date2\"))\n\ncleanDF.createOrReplaceTempView(\"dataTable2\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:23:39.730",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_191398284",
+      "id": "20220919-164057_966500923",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "dateStarted": "2022-09-19 17:22:48.493",
+      "dateFinished": "2022-09-19 17:22:48.553",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import to_timestamp\n\n#\nspark.conf.set(\"spark.sql.legacy.timeParserPolicy\", \"LEGACY\")\n\ncleanDF.select(to_timestamp(col(\"date\"),dateFormat)).show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:24:09.495",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------------------------------+\n|to_timestamp(date, YYYY-dd-MM)|\n+------------------------------+\n|           2017-01-01 00:00:00|\n+------------------------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d23"
+            },
+            {
+              "jobUrl": "http://nodemanager:41675/jobs/job?id\u003d24"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_672205074",
+      "id": "20220919-164057_1802777025",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "dateStarted": "2022-09-19 17:23:49.870",
+      "dateFinished": "2022-09-19 17:23:50.212",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n###### Working with Nulls in Data\nSpark can optimize working with null values more than it can if you use empty strings or other values. \n* use .na subpackage on a DataFrame\n* **Spark includes a function to allow you to select the first non-null value from a set of columns by using the coalesce function.**",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.270",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch6\u003eWorking with Nulls in Data\u003c/h6\u003e\n\u003cp\u003eSpark can optimize working with null values more than it can if you use empty strings or other values.\u003cbr/\u003e* use .na subpackage on a DataFrame\u003cbr/\u003e* \u003cstrong\u003eSpark includes a function to allow you to select the first non-null value from a set of columns by using the coalesce function.\u003c/strong\u003e\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_1491243276",
+      "id": "20220919-164057_567975540",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import coalesce\ndf.select(coalesce(col(\"Description\"), col(\"CustomerId\"))).show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:24:12.533",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+---------------------------------+\ncoalesce(Description, CustomerId)|\n+---------------------------------+\n             WHITE HANGING HEA...|\n              WHITE METAL LANTERN|\n             CREAM CUPID HEART...|\n             KNITTED UNION FLA...|\n             RED WOOLLY HOTTIE...|\n             SET 7 BABUSHKA NE...|\n             GLASS STAR FROSTE...|\n             HAND WARMER UNION...|\n             HAND WARMER RED P...|\n             ASSORTED COLOUR B...|\n             POPPY\u0026#39;S PLAYHOUSE...|\n             POPPY\u0026#39;S PLAYHOUSE...|\n             FELTCRAFT PRINCES...|\n             IVORY KNITTED MUG...|\n             BOX OF 6 ASSORTED...|\n             BOX OF VINTAGE JI...|\n             BOX OF VINTAGE AL...|\n             HOME BUILDING BLO...|\n             LOVE BUILDING BLO...|\n             RECIPE BOX WITH M...|\n+---------------------------------+\nonly showing top 20 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_1549838411",
+      "id": "20220919-164057_769966957",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%md\nThe simplest function is drop, which removes rows that contain nulls. The default is to drop any row in which any value is null:\n* df.na.drop() / df.na.drop(\"any\") - drops a row if any of the values are null.\n* df.na.drop(\"all\") - drops the row only if all values are null or NaN for that row",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.270",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eThe simplest function is drop, which removes rows that contain nulls. The default is to drop any row in which any value is null:\u003cbr/\u003e* df.na.drop() / df.na.drop(\u0026ldquo;any\u0026rdquo;) - drops a row if any of the values are null.\u003cbr/\u003e* df.na.drop(\u0026ldquo;all\u0026rdquo;) - drops the row only if all values are null or NaN for that row\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_1903355934",
+      "id": "20220919-164057_1233794704",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n**fill:**\n\nUsing the fill function, you can fill one or more columns with a set of values. This can be done by specifying a map—that is a particular value and a set of columns.",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.270",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003efill:\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eUsing the fill function, you can fill one or more columns with a set of values. This can be done by specifying a map—that is a particular value and a set of columns.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_261995884",
+      "id": "20220919-164057_54193241",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\ndf.na.fill(\"all\", subset\u003d[\"StockCode\", \"InvoiceNo\"])",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:25:03.845",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003eOut[18]: DataFrame[InvoiceNo: string, StockCode: string, Description: string, Quantity: int, InvoiceDate: timestamp, UnitPrice: double, CustomerID: double, Country: string]\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_44546646",
+      "id": "20220919-164057_1986456436",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%md\nWe can also do this with with a Scala Map, where the key is the column name and the value is the\nvalue we would like to use to fill null values",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.270",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eWe can also do this with with a Scala Map, where the key is the column name and the value is the\u003cbr/\u003evalue we would like to use to fill null values\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_660054754",
+      "id": "20220919-164057_2106761598",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\nfill_cols_vals \u003d {\"StockCode\": 5, \"Description\" : \"No Value\"}\ndf.na.fill(fill_cols_vals)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:24:56.151",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003eOut[23]: DataFrame[InvoiceNo: string, StockCode: string, Description: string, Quantity: int, InvoiceDate: timestamp, UnitPrice: double, CustomerID: double, Country: string]\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_398809263",
+      "id": "20220919-164057_1697920746",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n###### replace\nTo replace all values in a certain column according to their current value. The only requirement is that this value be the same type as the original value",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.270",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch6\u003ereplace\u003c/h6\u003e\n\u003cp\u003eTo replace all values in a certain column according to their current value. The only requirement is that this value be the same type as the original value\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_174865939",
+      "id": "20220919-164057_825771569",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\ndf.na.replace([\"\"], [\"UNKNOWN\"], \"Description\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:24:53.392",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e\u003cspan class\u003d\"ansired\"\u003eOut[\u003c/span\u003e\u003cspan class\u003d\"ansired\"\u003e27\u003c/span\u003e\u003cspan class\u003d\"ansired\"\u003e]: \u003c/span\u003eDataFrame[InvoiceNo: string, StockCode: string, Description: string, Quantity: int, InvoiceDate: timestamp, UnitPrice: double, CustomerID: double, Country: string]\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_2078113668",
+      "id": "20220919-164057_1891907113",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n###### Working with Complex Types\nthree kinds of complex types: **structs, arrays,\u0026 maps.**\n\n**structs:** You can think of structs as DataFrames within DataFrames.",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.270",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch6\u003eWorking with Complex Types\u003c/h6\u003e\n\u003cp\u003ethree kinds of complex types: \u003cstrong\u003estructs, arrays,\u0026amp; maps.\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003estructs:\u003c/strong\u003e You can think of structs as DataFrames within DataFrames.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_170129257",
+      "id": "20220919-164057_406183966",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\ndf.selectExpr(\"(Description, InvoiceNo) as complex\", \"*\")\ndf.selectExpr(\"struct(Description, InvoiceNo) as complex\", \"*\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:24:50.471",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003eOut[24]: DataFrame[complex: struct\u0026lt;Description:string,InvoiceNo:string\u0026gt;, InvoiceNo: string, StockCode: string, Description: string, Quantity: int, InvoiceDate: timestamp, UnitPrice: double, CustomerID: double, Country: string]\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_1579859826",
+      "id": "20220919-164057_384263478",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import struct\ncomplexDF \u003d df.select(struct(\"Description\", \"InvoiceNo\").alias(\"complex\"))\ncomplexDF.createOrReplaceTempView(\"complexDF\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:25:07.298",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_1384048310",
+      "id": "20220919-164057_1167669158",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%md\nWe now have a DataFrame with a column complex. We can query it just as we might another DataFrame, the only difference is that we use a dot syntax to do so, or the column method **getField**",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.270",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eWe now have a DataFrame with a column complex. We can query it just as we might another DataFrame, the only difference is that we use a dot syntax to do so, or the column method \u003cstrong\u003egetField\u003c/strong\u003e\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_879167563",
+      "id": "20220919-164057_256873637",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\ncomplexDF.select(\"complex.InvoiceNo\").show(2)\ncomplexDF.select(col(\"complex\").getField(\"Description\"))",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:25:15.250",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+---------+\nInvoiceNo|\n+---------+\n   536365|\n   536365|\n+---------+\nonly showing top 2 rows\n\nOut[32]: DataFrame[complex.Description: string]\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_1054641282",
+      "id": "20220919-164057_96159257",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\n#We can also query all values in the struct by using *. This brings up all the columns to the toplevel DataFrame\ncomplexDF.select(\"complex.*\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:25:26.132",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003eOut[33]: DataFrame[Description: string, InvoiceNo: string]\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_330810097",
+      "id": "20220919-164057_1203308444",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n###### Arrays\nto explain it in more details lets take every single word in our Description column and convert that into a row in our DataFrame. In this we use \n* **split** function and specify the delimiter\n* **Array Length** to query its size\n* **array_contains** to check whether the given array contains the specified value\n* **explode function** takes a column that consists of arrays and creates one row (with the rest of the values duplicated) per value in the array.",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.270",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch6\u003eArrays\u003c/h6\u003e\n\u003cp\u003eto explain it in more details lets take every single word in our Description column and convert that into a row in our DataFrame. In this we use\u003cbr/\u003e* \u003cstrong\u003esplit\u003c/strong\u003e function and specify the delimiter\u003cbr/\u003e* \u003cstrong\u003eArray Length\u003c/strong\u003e to query its size\u003cbr/\u003e* \u003cstrong\u003earray_contains\u003c/strong\u003e to check whether the given array contains the specified value\u003cbr/\u003e* \u003cstrong\u003eexplode function\u003c/strong\u003e takes a column that consists of arrays and creates one row (with the rest of the values duplicated) per value in the array.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657270_705757532",
+      "id": "20220919-164057_1543212593",
+      "dateCreated": "2022-09-19 16:40:57.270",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import split\n\ndf.select(split(col(\"Description\"), \" \")).show(1)\n\ndf.select(split(col(\"Description\"), \" \").alias(\"array_col\")).selectExpr(\"array_col[0]\").show(1)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:15:32.947",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+---------------------+\nsplit(Description,  )|\n+---------------------+\n [WHITE, HANGING, ...|\n+---------------------+\nonly showing top 1 row\n\n+------------+\narray_col[0]|\n+------------+\n       WHITE|\n+------------+\nonly showing top 1 row\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_2112237313",
+      "id": "20220919-164057_241123323",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import size\n\ndf.select(size(split(col(\"Description\"), \" \"))).show(2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:15:18.835",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+---------------------------+\nsize(split(Description,  ))|\n+---------------------------+\n                          5|\n                          3|\n+---------------------------+\nonly showing top 2 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_1036145082",
+      "id": "20220919-164057_1368075175",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import array_contains\n\ndf.select(array_contains(split(col(\"Description\"),\" \"),\u0027WHITE\u0027)).show(2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:15:07.155",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+--------------------------------------------+\narray_contains(split(Description,  ), WHITE)|\n+--------------------------------------------+\n                                        true|\n                                        true|\n+--------------------------------------------+\nonly showing top 2 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_2137830139",
+      "id": "20220919-164057_1585533933",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\n# To convert a complex type into a set of rows (one per value in our array), we need to use the explode function.\nfrom pyspark.sql.functions import explode\n\ndf.withColumn(\"splitted\",split(col(\"Description\"),\" \"))\\\n  .withColumn(\"exploded\",explode(\"splitted\"))\\\n  .select(\"Description\",\"InvoiceNo\",\"exploded\").show(3)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:14:56.981",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+--------------------+---------+--------+\n         Description|InvoiceNo|exploded|\n+--------------------+---------+--------+\nWHITE HANGING HEA...|   536365|   WHITE|\nWHITE HANGING HEA...|   536365| HANGING|\nWHITE HANGING HEA...|   536365|   HEART|\n+--------------------+---------+--------+\nonly showing top 3 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_757851256",
+      "id": "20220919-164057_1502401546",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n###### Maps:\nMaps are created by using the map function and key-value pairs of columns. You then can select them just like you might select from an array",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.271",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch6\u003eMaps:\u003c/h6\u003e\n\u003cp\u003eMaps are created by using the map function and key-value pairs of columns. You then can select them just like you might select from an array\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_145816631",
+      "id": "20220919-164057_777750567",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import create_map\n\ndf.select(create_map(col(\"Description\"),col(\"InvoiceNo\")).alias(\"complex_map\")).show(2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:14:46.704",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+--------------------+\n         complex_map|\n+--------------------+\n[WHITE HANGING HE...|\n[WHITE METAL LANT...|\n+--------------------+\nonly showing top 2 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_61173107",
+      "id": "20220919-164057_637884504",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%md\nYou can query them by using the proper key. A missing key returns **null**",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.271",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eYou can query them by using the proper key. A missing key returns \u003cstrong\u003enull\u003c/strong\u003e\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_1447813104",
+      "id": "20220919-164057_1917811022",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\ndf.select(create_map(col(\"Description\"), col(\"InvoiceNo\")).alias(\"complex_map\"))\\\n.selectExpr(\"complex_map[\u0027WHITE METAL LANTERN\u0027]\").show(2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:14:36.712",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+--------------------------------+\ncomplex_map[WHITE METAL LANTERN]|\n+--------------------------------+\n                            null|\n                          536365|\n+--------------------------------+\nonly showing top 2 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_1107667743",
+      "id": "20220919-164057_1306320777",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%md\nWe can use **explode** function on map which will turn them in to columns",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.271",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eWe can use \u003cstrong\u003eexplode\u003c/strong\u003e function on map which will turn them in to columns\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_1073000984",
+      "id": "20220919-164057_1068788901",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\ndf.select(create_map(col(\"Description\"), col(\"InvoiceNo\")).alias(\"complex_map\"))\\\n.selectExpr(\"explode(complex_map)\").show(2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:14:25.947",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+--------------------+------+\n                 key| value|\n+--------------------+------+\nWHITE HANGING HEA...|536365|\n WHITE METAL LANTERN|536365|\n+--------------------+------+\nonly showing top 2 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_683081538",
+      "id": "20220919-164057_863970451",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n###### Working with JSON\nWe can operate directly on strings of JSON in Spark and parse from JSON or extract JSON objects. We can use\n* **get_json_object** to inline query a JSON object, be it a dictionary or array.\n* **json_tuple** if this object has only one level of nesting.",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.271",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch6\u003eWorking with JSON\u003c/h6\u003e\n\u003cp\u003eWe can operate directly on strings of JSON in Spark and parse from JSON or extract JSON objects. We can use\u003cbr/\u003e* \u003cstrong\u003eget_json_object\u003c/strong\u003e to inline query a JSON object, be it a dictionary or array.\u003cbr/\u003e* \u003cstrong\u003ejson_tuple\u003c/strong\u003e if this object has only one level of nesting.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_1781794188",
+      "id": "20220919-164057_989052603",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\njsonDF \u003d spark.range(1).selectExpr(\"\"\" \u0027{\"myJSONKey\" : {\"myJSONValue\" : [1, 2, 3]}}\u0027 as jsonString \"\"\")\njsonDF.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:14:16.062",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+--------------------+\n          jsonString|\n+--------------------+\n{\u0026#34;myJSONKey\u0026#34; : {\u0026#34;...|\n+--------------------+\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_504498103",
+      "id": "20220919-164057_301473531",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import get_json_object, json_tuple,col\n\njsonDF.select(\\\n              get_json_object(col(\"jsonString\"), \"$.myJSONKey.myJSONValue[1]\"),\n              json_tuple(col(\"jsonString\"), \"myJSONKey\").alias(\"ex_jsonString\")\n             ).show(2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:14:05.276",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+-------------------------------------------------------+--------------------+\nget_json_object(jsonString, $.myJSONKey.myJSONValue[1])|       ex_jsonString|\n+-------------------------------------------------------+--------------------+\n                                                      2|{\u0026#34;myJSONValue\u0026#34;:[1...|\n+-------------------------------------------------------+--------------------+\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_1454048638",
+      "id": "20220919-164057_221616421",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n* we can also turn a StructType into a JSON string by using the **to_json** function. This function also accepts a dictionary (map) of parameters that are the same as the JSON data source.\n\n* use **from_json** function to parse this (or other JSON data) back in. This naturally requires you to specify a schema, and optionally you can specify a map of options",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.271",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cul\u003e\n  \u003cli\u003e\n  \u003cp\u003ewe can also turn a StructType into a JSON string by using the \u003cstrong\u003eto_json\u003c/strong\u003e function. This function also accepts a dictionary (map) of parameters that are the same as the JSON data source.\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003euse \u003cstrong\u003efrom_json\u003c/strong\u003e function to parse this (or other JSON data) back in. This naturally requires you to specify a schema, and optionally you can specify a map of options\u003c/p\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_301086106",
+      "id": "20220919-164057_1193570220",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import to_json, from_json\n\ndf.selectExpr(\"(InvoiceNo, Description) as myStruct\"\n             ).select(to_json(col(\"myStruct\"))).show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:13:55.565",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+-----------------------+\nstructstojson(myStruct)|\n+-----------------------+\n   {\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n   {\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n   {\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n   {\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n   {\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n   {\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n   {\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n   {\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n   {\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n   {\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n   {\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n   {\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n   {\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n   {\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n   {\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n   {\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n   {\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n   {\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n   {\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n   {\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n+-----------------------+\nonly showing top 20 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_1599465025",
+      "id": "20220919-164057_1196805811",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import to_json, from_json\nfrom pyspark.sql.types import *\n\nSchema \u003d StructType((\n                    StructField(\"InvoiceNo\",StringType(),True),\n                    StructField(\"Description\",StringType(),True)))\ndf.selectExpr(\"(InvoiceNo, Description) as myStruct\")\\\n  .select(to_json(col(\"myStruct\")).alias(\"newJSON\"))\\\n  .select(from_json(col(\"newJSON\"),Schema),col(\"newJSON\")).show(2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:13:46.554",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+----------------------+--------------------+\njsontostructs(newJSON)|             newJSON|\n+----------------------+--------------------+\n  [536365, WHITE HA...|{\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n  [536365, WHITE ME...|{\u0026#34;InvoiceNo\u0026#34;:\u0026#34;536...|\n+----------------------+--------------------+\nonly showing top 2 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_1529234782",
+      "id": "20220919-164057_1291108449",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n###### User-Defined Functions - define your own functions\n\n* UDFs can take and return one or more columns as input.\n* you can write them in several different programming languages; you do not need to create them in an esoteric format or domain-specific language.\n* By default, these functions are registered as temporary functions to be used in that specific SparkSession or Context\n\n**performance considerations:**\n* If the function is written in Scala or Java, you can use it within the Java Virtual Machine (JVM). This means that there will be little performance penalty aside from the fact that you can’t take advantage of code generation capabilities that Spark has for built-in functions.\n\n* If the function is written in Python, SPARK \n  * strats a Python process on the worker\n  * serializes all of the data to a format that Python can understand\n  * executes the function row by row on that data in the Python process, and then finally \n  * returns the results of the row operations to the JVM and Spark\n  \nStarting this Python process is expensive, but the real cost is in serializing the data to Python.it is an expensive computation, but also, after the data enters Python, Spark cannot manage the memory of the worker. This means that it could potentially cause a worker to fail\nif it becomes resource constrained (because both the JVM and Python are competing for memory on the same machine).\n\nIt is recommended to write your UDFs in Scala or Java—the small amount of time it should take you to write the function in Scala will always yield significant speed ups, and we can still use the function from Python!",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.271",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch6\u003eUser-Defined Functions - define your own functions\u003c/h6\u003e\n\u003cul\u003e\n  \u003cli\u003eUDFs can take and return one or more columns as input.\u003c/li\u003e\n  \u003cli\u003eyou can write them in several different programming languages; you do not need to create them in an esoteric format or domain-specific language.\u003c/li\u003e\n  \u003cli\u003eBy default, these functions are registered as temporary functions to be used in that specific SparkSession or Context\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u003cstrong\u003eperformance considerations:\u003c/strong\u003e\u003cbr/\u003e* If the function is written in Scala or Java, you can use it within the Java Virtual Machine (JVM). This means that there will be little performance penalty aside from the fact that you can’t take advantage of code generation capabilities that Spark has for built-in functions.\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eIf the function is written in Python, SPARK\u003c/li\u003e\n  \u003cli\u003estrats a Python process on the worker\u003c/li\u003e\n  \u003cli\u003eserializes all of the data to a format that Python can understand\u003c/li\u003e\n  \u003cli\u003eexecutes the function row by row on that data in the Python process, and then finally\u003c/li\u003e\n  \u003cli\u003ereturns the results of the row operations to the JVM and Spark\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eStarting this Python process is expensive, but the real cost is in serializing the data to Python.it is an expensive computation, but also, after the data enters Python, Spark cannot manage the memory of the worker. This means that it could potentially cause a worker to fail\u003cbr/\u003eif it becomes resource constrained (because both the JVM and Python are competing for memory on the same machine).\u003c/p\u003e\n\u003cp\u003eIt is recommended to write your UDFs in Scala or Java—the small amount of time it should take you to write the function in Scala will always yield significant speed ups, and we can still use the function from Python!\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_2082549554",
+      "id": "20220919-164057_319693221",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\n#create UDF function to calculate power3 \n\nudfExampleDF \u003d spark.range(5).toDF(\"num\")\ndef power3(double_value):\n  return double_value **3\n\npower3(2.0)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:13:39.219",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003eOut[9]: 8.0\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_2075873944",
+      "id": "20220919-164057_1748506644",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\n# register them with Spark so that we can use them on all of our worker machines. Spark will serialize the function on the driver and transfer it over the network to all executor processes. This happens regardless of language\n\nfrom pyspark.sql.functions import udf\n\npower3udf \u003d udf(power3)\nudfExampleDF.select(power3udf(col(\"num\"))).show(2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:13:08.392",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+-----------+\npower3(num)|\n+-----------+\n          0|\n          1|\n+-----------+\nonly showing top 2 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_2070894742",
+      "id": "20220919-164057_1721907254",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%md\nwe can use this only as a DataFrame function. We can’t use it within a **string expression, only on an expression.**\n\n* Spark SQL function or expression is valid to use as an expression when working with DataFrames.\n\n\nLet’s register the function in Scala and use it in python",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.271",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003ewe can use this only as a DataFrame function. We can’t use it within a \u003cstrong\u003estring expression, only on an expression.\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eSpark SQL function or expression is valid to use as an expression when working with DataFrames.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eLet’s register the function in Scala and use it in python\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_1144279337",
+      "id": "20220919-164057_730044333",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n%scala\n\nval udfExampleDF \u003d spark.range(5).toDF(\"num\")\ndef power3scala(number:Double):Double \u003d number * number * number\n\nspark.udf.register(\"power3Scala\", power3scala(_:Double):Double)\nudfExampleDF.selectExpr(\"power3Scala(num)\").show(2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:13:02.722",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+------------------------------------+\nUDF:power3Scala(cast(num as double))|\n+------------------------------------+\n                                 0.0|\n                                 1.0|\n+------------------------------------+\nonly showing top 2 rows\n\nudfExampleDF: org.apache.spark.sql.DataFrame \u003d [num: bigint]\npower3scala: (number: Double)Double\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_1518070596",
+      "id": "20220919-164057_154213718",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\n#using the power3Scala function in python\nudfExampleDF.selectExpr(\"power3Scala(num)\").show(2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:12:32.276",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+------------------------------------+\nUDF:power3Scala(cast(num as double))|\n+------------------------------------+\n                                 0.0|\n                                 1.0|\n+------------------------------------+\nonly showing top 2 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_354334527",
+      "id": "20220919-164057_568413404",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n* It’s a best practice to define the return type for your function when you define it. FUnction works fine if it doesn\u0027t have a return type.\n\n* If you specify the type that doesn’t align with the actual type returned by the function, Spark will not throw an error but will just return **null** to designate a failure",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.271",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cul\u003e\n  \u003cli\u003e\n  \u003cp\u003eIt’s a best practice to define the return type for your function when you define it. FUnction works fine if it doesn\u0026rsquo;t have a return type.\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eIf you specify the type that doesn’t align with the actual type returned by the function, Spark will not throw an error but will just return \u003cstrong\u003enull\u003c/strong\u003e to designate a failure\u003c/p\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_1217746239",
+      "id": "20220919-164057_1458942814",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.types import IntegerType, DoubleType\n\nspark.udf.register(\"power3py\",power3,DoubleType())\nudfExampleDF.selectExpr(\"power3py(num)\").show(2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:12:22.863",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003e+-------------+\npower3py(num)|\n+-------------+\n         null|\n         null|\n+-------------+\nonly showing top 2 rows\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_1814182652",
+      "id": "20220919-164057_1454352261",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 17:12:07.392",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cstyle scoped\u003e\n  .ansiout {\n    display: block;\n    unicode-bidi: embed;\n    white-space: pre-wrap;\n    word-wrap: break-word;\n    word-break: break-all;\n    font-family: \"Source Code Pro\", \"Menlo\", monospace;;\n    font-size: 13px;\n    color: #555;\n    margin-left: 4px;\n    line-height: 19px;\n  }\n\u003c/style\u003e\n\u003cdiv class\u003d\"ansiout\"\u003eOut[13]: \u0026lt;bound method RuntimeConfig.get of \u0026lt;pyspark.sql.conf.RuntimeConfig object at 0x7f3278088d30\u0026gt;\u0026gt;\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_1771430018",
+      "id": "20220919-164057_2008063892",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    },
+    {
+      "text": "%md\n*** End of the chapter ***",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-19 16:40:57.271",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e*** End of the chapter ***\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663605657271_1274923492",
+      "id": "20220919-164057_187633470",
+      "dateCreated": "2022-09-19 16:40:57.271",
+      "status": "READY"
+    }
+  ],
+  "name": "Chap 06 - Working with Different Types of Data",
+  "id": "2HCXQNXQD",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

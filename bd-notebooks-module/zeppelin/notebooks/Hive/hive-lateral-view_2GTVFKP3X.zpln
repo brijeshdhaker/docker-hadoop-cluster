@@ -1,0 +1,563 @@
+{
+  "paragraphs": [
+    {
+      "text": "%hive\n\nshow tables;",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-12 07:53:57.814",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "tab_name": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "taFOb _ n:a mCeo": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "tab_name\ntweeter_tweets\nv1\nv2\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641971227998_987252654",
+      "id": "paragraph_1641971227998_987252654",
+      "dateCreated": "2022-01-12 07:07:07.998",
+      "dateStarted": "2022-01-12 07:53:57.818",
+      "dateFinished": "2022-01-12 07:53:57.870",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nselect * from tweeter_tweets;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-12 07:09:13.456",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "uuid": "string",
+                      "text": "string",
+                      "words": "string",
+                      "length": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "uuid\ttext\twords\tlength\n839b7629-74ab-49ad-aee0-3feaa612f8d4\tphilhellenic homeotic phippe cocky-leeky \t4\t41\n9cfea398-abdc-4693-b913-b9f9d090cf8d\tPretoria treys lavalier \t3\t24\ndcdb36db-f9a9-4143-9f7f-7bd10dcb0ffc\tunpick bicondylar \t2\t18\n90070601-1de4-4f3b-bd25-f3c3de563543\trotenones stepgrandchild oophorectomized tar-brush pillory foliously \t6\t69\n1e6d25b8-3b46-4854-9395-9082eea6445b\tkingdomship Kola preundertaken notices \t4\t39\nf53dbb3d-a671-4c35-8f96-3164a18d1589\tAllayne threw \t2\t14\n7ebc0025-4a42-434a-9ff2-8ba953847e89\tdrain Eproboscidea \t2\t19\n21ba573a-611c-4081-9b40-e7153de933da\tgrowers blaasop weedage \t3\t24\ne5330580-071d-4a95-bb2b-65759648f681\tstygiophobia Perlman strumulose shatterer Robinsonville ZGS \t6\t60\n6301a074-79c4-41ce-8eec-0dff648e2f7d\toxim imbarks Triplicist woosh \t4\t30\nd5ad1e12-5be2-4e0c-b3d4-05d963e64967\tMillan outturned fiberous gasworker tusker dextrotropic hypnogenetically \t7\t73\n4f49dfb6-dfb5-4de2-b08f-d1c584ba55e5\tDogger gateman \t2\t15\n211d7cbe-085d-4c36-86c2-33a7d74761d1\tglobosely nonrepudiation unracking jack-boy Bellotto \t5\t53\nfe3567ac-4b8b-4861-bdb7-c300fd5a5d83\tasparagic murasakite nonevents sexivalency \t4\t43\nee1ddf11-f21e-4b56-aa22-325191f9e2de\tocellary calvary \t2\t17\n921a9564-521f-4aa9-8040-74b466aa1be3\tsilicic oculospinal nodulus Rikari hexangularly \t5\t48\nc9fb4f65-ee89-4a59-b9c4-aede9a7c8f6b\tperithoracic dansk \t2\t19\nca55233b-a5bd-468b-aedb-f2adf44b121a\tprotogelatose curdler audiometries \t3\t35\n099ad971-69c0-48a4-8a17-a62322febba8\tDelphinus conch- unended pelvimetric \t4\t37\nf5e11012-30fa-4e4c-9b73-5080d7daef7e\tjarsful duopsony unswatheable \t3\t30\n555a3b7c-0ea1-4af1-b396-c180b277b7ec\tselenate unexpressive syren alcade hypertelic \t5\t46\nd756a32d-4bc5-4a38-b526-f51420807e7f\tbumpsy subtotally paedogenetic Chiles \t4\t38\n9066da30-7c72-4f8a-8cd3-62271415cefc\tstomate esonarthex euroclydon \t3\t30\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641971252357_1775256671",
+      "id": "paragraph_1641971252357_1775256671",
+      "dateCreated": "2022-01-12 07:07:32.357",
+      "dateStarted": "2022-01-12 07:09:10.993",
+      "dateFinished": "2022-01-12 07:09:13.206",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\n-- Let us break down the tweet column into array of sentences by converting all tweets to lower case and then pass it to sentences function\n\nselect uuid, text, sentences(lower(`text`)) as sentence from tweeter_tweets ;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-12 07:11:26.753",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "uuid": "string",
+                      "text": "string",
+                      "sentence": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "uuid\ttext\tsentence\n839b7629-74ab-49ad-aee0-3feaa612f8d4\tphilhellenic homeotic phippe cocky-leeky \t[[\"philhellenic\",\"homeotic\",\"phippe\",\"cocky-leeky\"]]\n9cfea398-abdc-4693-b913-b9f9d090cf8d\tPretoria treys lavalier \t[[\"pretoria\",\"treys\",\"lavalier\"]]\ndcdb36db-f9a9-4143-9f7f-7bd10dcb0ffc\tunpick bicondylar \t[[\"unpick\",\"bicondylar\"]]\n90070601-1de4-4f3b-bd25-f3c3de563543\trotenones stepgrandchild oophorectomized tar-brush pillory foliously \t[[\"rotenones\",\"stepgrandchild\",\"oophorectomized\",\"tar-brush\",\"pillory\",\"foliously\"]]\n1e6d25b8-3b46-4854-9395-9082eea6445b\tkingdomship Kola preundertaken notices \t[[\"kingdomship\",\"kola\",\"preundertaken\",\"notices\"]]\nf53dbb3d-a671-4c35-8f96-3164a18d1589\tAllayne threw \t[[\"allayne\",\"threw\"]]\n7ebc0025-4a42-434a-9ff2-8ba953847e89\tdrain Eproboscidea \t[[\"drain\",\"eproboscidea\"]]\n21ba573a-611c-4081-9b40-e7153de933da\tgrowers blaasop weedage \t[[\"growers\",\"blaasop\",\"weedage\"]]\ne5330580-071d-4a95-bb2b-65759648f681\tstygiophobia Perlman strumulose shatterer Robinsonville ZGS \t[[\"stygiophobia\",\"perlman\",\"strumulose\",\"shatterer\",\"robinsonville\",\"zgs\"]]\n6301a074-79c4-41ce-8eec-0dff648e2f7d\toxim imbarks Triplicist woosh \t[[\"oxim\",\"imbarks\",\"triplicist\",\"woosh\"]]\nd5ad1e12-5be2-4e0c-b3d4-05d963e64967\tMillan outturned fiberous gasworker tusker dextrotropic hypnogenetically \t[[\"millan\",\"outturned\",\"fiberous\",\"gasworker\",\"tusker\",\"dextrotropic\",\"hypnogenetically\"]]\n4f49dfb6-dfb5-4de2-b08f-d1c584ba55e5\tDogger gateman \t[[\"dogger\",\"gateman\"]]\n211d7cbe-085d-4c36-86c2-33a7d74761d1\tglobosely nonrepudiation unracking jack-boy Bellotto \t[[\"globosely\",\"nonrepudiation\",\"unracking\",\"jack-boy\",\"bellotto\"]]\nfe3567ac-4b8b-4861-bdb7-c300fd5a5d83\tasparagic murasakite nonevents sexivalency \t[[\"asparagic\",\"murasakite\",\"nonevents\",\"sexivalency\"]]\nee1ddf11-f21e-4b56-aa22-325191f9e2de\tocellary calvary \t[[\"ocellary\",\"calvary\"]]\n921a9564-521f-4aa9-8040-74b466aa1be3\tsilicic oculospinal nodulus Rikari hexangularly \t[[\"silicic\",\"oculospinal\",\"nodulus\",\"rikari\",\"hexangularly\"]]\nc9fb4f65-ee89-4a59-b9c4-aede9a7c8f6b\tperithoracic dansk \t[[\"perithoracic\",\"dansk\"]]\nca55233b-a5bd-468b-aedb-f2adf44b121a\tprotogelatose curdler audiometries \t[[\"protogelatose\",\"curdler\",\"audiometries\"]]\n099ad971-69c0-48a4-8a17-a62322febba8\tDelphinus conch- unended pelvimetric \t[[\"delphinus\",\"conch\",\"unended\",\"pelvimetric\"]]\nf5e11012-30fa-4e4c-9b73-5080d7daef7e\tjarsful duopsony unswatheable \t[[\"jarsful\",\"duopsony\",\"unswatheable\"]]\n555a3b7c-0ea1-4af1-b396-c180b277b7ec\tselenate unexpressive syren alcade hypertelic \t[[\"selenate\",\"unexpressive\",\"syren\",\"alcade\",\"hypertelic\"]]\nd756a32d-4bc5-4a38-b526-f51420807e7f\tbumpsy subtotally paedogenetic Chiles \t[[\"bumpsy\",\"subtotally\",\"paedogenetic\",\"chiles\"]]\n9066da30-7c72-4f8a-8cd3-62271415cefc\tstomate esonarthex euroclydon \t[[\"stomate\",\"esonarthex\",\"euroclydon\"]]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641971307016_1730153467",
+      "id": "paragraph_1641971307016_1730153467",
+      "dateCreated": "2022-01-12 07:08:27.017",
+      "dateStarted": "2022-01-12 07:11:26.068",
+      "dateFinished": "2022-01-12 07:11:26.516",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\n-- Now, we will apply explode function, which takes each tweet as input ,flattens the array of sentences and outputs the elements of the array as separate rows\n\n\n-- select uuid, text, explode(sentences(lower(`text`))) as sentence from tweeter_tweets ;\n-- Error while compiling statement: FAILED: SemanticException [Error 10081]: UDTF\u0027s are not supported outside the SELECT clause, nor nested in expressions\n\nselect explode(sentences(lower(`text`))) as sentence from tweeter_tweets;",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-12 07:16:27.173",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "sentence": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "sentence\n[\"philhellenic\",\"homeotic\",\"phippe\",\"cocky-leeky\"]\n[\"pretoria\",\"treys\",\"lavalier\"]\n[\"unpick\",\"bicondylar\"]\n[\"rotenones\",\"stepgrandchild\",\"oophorectomized\",\"tar-brush\",\"pillory\",\"foliously\"]\n[\"kingdomship\",\"kola\",\"preundertaken\",\"notices\"]\n[\"allayne\",\"threw\"]\n[\"drain\",\"eproboscidea\"]\n[\"growers\",\"blaasop\",\"weedage\"]\n[\"stygiophobia\",\"perlman\",\"strumulose\",\"shatterer\",\"robinsonville\",\"zgs\"]\n[\"oxim\",\"imbarks\",\"triplicist\",\"woosh\"]\n[\"millan\",\"outturned\",\"fiberous\",\"gasworker\",\"tusker\",\"dextrotropic\",\"hypnogenetically\"]\n[\"dogger\",\"gateman\"]\n[\"globosely\",\"nonrepudiation\",\"unracking\",\"jack-boy\",\"bellotto\"]\n[\"asparagic\",\"murasakite\",\"nonevents\",\"sexivalency\"]\n[\"ocellary\",\"calvary\"]\n[\"silicic\",\"oculospinal\",\"nodulus\",\"rikari\",\"hexangularly\"]\n[\"perithoracic\",\"dansk\"]\n[\"protogelatose\",\"curdler\",\"audiometries\"]\n[\"delphinus\",\"conch\",\"unended\",\"pelvimetric\"]\n[\"jarsful\",\"duopsony\",\"unswatheable\"]\n[\"selenate\",\"unexpressive\",\"syren\",\"alcade\",\"hypertelic\"]\n[\"bumpsy\",\"subtotally\",\"paedogenetic\",\"chiles\"]\n[\"stomate\",\"esonarthex\",\"euroclydon\"]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641971486068_1661115756",
+      "id": "paragraph_1641971486068_1661115756",
+      "dateCreated": "2022-01-12 07:11:26.068",
+      "dateStarted": "2022-01-12 07:16:27.176",
+      "dateFinished": "2022-01-12 07:16:27.396",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Lateral View",
+      "text": "%hive\n\nselect * from tweeter_tweets lateral view explode(sentences(lower(`text`))) dummy_lateral_view as words ;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-12 07:18:09.972",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "uuid": "string",
+                      "text": "string",
+                      "words": "string",
+                      "length": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "uuid\ttext\twords\tlength\twords\n839b7629-74ab-49ad-aee0-3feaa612f8d4\tphilhellenic homeotic phippe cocky-leeky \t4\t41\t[\"philhellenic\",\"homeotic\",\"phippe\",\"cocky-leeky\"]\n9cfea398-abdc-4693-b913-b9f9d090cf8d\tPretoria treys lavalier \t3\t24\t[\"pretoria\",\"treys\",\"lavalier\"]\ndcdb36db-f9a9-4143-9f7f-7bd10dcb0ffc\tunpick bicondylar \t2\t18\t[\"unpick\",\"bicondylar\"]\n90070601-1de4-4f3b-bd25-f3c3de563543\trotenones stepgrandchild oophorectomized tar-brush pillory foliously \t6\t69\t[\"rotenones\",\"stepgrandchild\",\"oophorectomized\",\"tar-brush\",\"pillory\",\"foliously\"]\n1e6d25b8-3b46-4854-9395-9082eea6445b\tkingdomship Kola preundertaken notices \t4\t39\t[\"kingdomship\",\"kola\",\"preundertaken\",\"notices\"]\nf53dbb3d-a671-4c35-8f96-3164a18d1589\tAllayne threw \t2\t14\t[\"allayne\",\"threw\"]\n7ebc0025-4a42-434a-9ff2-8ba953847e89\tdrain Eproboscidea \t2\t19\t[\"drain\",\"eproboscidea\"]\n21ba573a-611c-4081-9b40-e7153de933da\tgrowers blaasop weedage \t3\t24\t[\"growers\",\"blaasop\",\"weedage\"]\ne5330580-071d-4a95-bb2b-65759648f681\tstygiophobia Perlman strumulose shatterer Robinsonville ZGS \t6\t60\t[\"stygiophobia\",\"perlman\",\"strumulose\",\"shatterer\",\"robinsonville\",\"zgs\"]\n6301a074-79c4-41ce-8eec-0dff648e2f7d\toxim imbarks Triplicist woosh \t4\t30\t[\"oxim\",\"imbarks\",\"triplicist\",\"woosh\"]\nd5ad1e12-5be2-4e0c-b3d4-05d963e64967\tMillan outturned fiberous gasworker tusker dextrotropic hypnogenetically \t7\t73\t[\"millan\",\"outturned\",\"fiberous\",\"gasworker\",\"tusker\",\"dextrotropic\",\"hypnogenetically\"]\n4f49dfb6-dfb5-4de2-b08f-d1c584ba55e5\tDogger gateman \t2\t15\t[\"dogger\",\"gateman\"]\n211d7cbe-085d-4c36-86c2-33a7d74761d1\tglobosely nonrepudiation unracking jack-boy Bellotto \t5\t53\t[\"globosely\",\"nonrepudiation\",\"unracking\",\"jack-boy\",\"bellotto\"]\nfe3567ac-4b8b-4861-bdb7-c300fd5a5d83\tasparagic murasakite nonevents sexivalency \t4\t43\t[\"asparagic\",\"murasakite\",\"nonevents\",\"sexivalency\"]\nee1ddf11-f21e-4b56-aa22-325191f9e2de\tocellary calvary \t2\t17\t[\"ocellary\",\"calvary\"]\n921a9564-521f-4aa9-8040-74b466aa1be3\tsilicic oculospinal nodulus Rikari hexangularly \t5\t48\t[\"silicic\",\"oculospinal\",\"nodulus\",\"rikari\",\"hexangularly\"]\nc9fb4f65-ee89-4a59-b9c4-aede9a7c8f6b\tperithoracic dansk \t2\t19\t[\"perithoracic\",\"dansk\"]\nca55233b-a5bd-468b-aedb-f2adf44b121a\tprotogelatose curdler audiometries \t3\t35\t[\"protogelatose\",\"curdler\",\"audiometries\"]\n099ad971-69c0-48a4-8a17-a62322febba8\tDelphinus conch- unended pelvimetric \t4\t37\t[\"delphinus\",\"conch\",\"unended\",\"pelvimetric\"]\nf5e11012-30fa-4e4c-9b73-5080d7daef7e\tjarsful duopsony unswatheable \t3\t30\t[\"jarsful\",\"duopsony\",\"unswatheable\"]\n555a3b7c-0ea1-4af1-b396-c180b277b7ec\tselenate unexpressive syren alcade hypertelic \t5\t46\t[\"selenate\",\"unexpressive\",\"syren\",\"alcade\",\"hypertelic\"]\nd756a32d-4bc5-4a38-b526-f51420807e7f\tbumpsy subtotally paedogenetic Chiles \t4\t38\t[\"bumpsy\",\"subtotally\",\"paedogenetic\",\"chiles\"]\n9066da30-7c72-4f8a-8cd3-62271415cefc\tstomate esonarthex euroclydon \t3\t30\t[\"stomate\",\"esonarthex\",\"euroclydon\"]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641971605601_1721643410",
+      "id": "paragraph_1641971605601_1721643410",
+      "dateCreated": "2022-01-12 07:13:25.601",
+      "dateStarted": "2022-01-12 07:18:09.498",
+      "dateFinished": "2022-01-12 07:18:09.649",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\n-- First we need to create a view(v1) for our previous task\n\ncreate view v1 as select * from tweeter_tweets lateral view explode(sentences(lower(`text`))) dummy_lateral_view as lwords ;",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-12 07:35:50.862",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641971889497_1653675295",
+      "id": "paragraph_1641971889497_1653675295",
+      "dateCreated": "2022-01-12 07:18:09.497",
+      "dateStarted": "2022-01-12 07:35:50.866",
+      "dateFinished": "2022-01-12 07:35:51.076",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\ncreate view v2 as select * from v1 lateral view explode(lwords) dummy_lateral_view as lword;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-12 07:36:52.058",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641972910459_1265479484",
+      "id": "paragraph_1641972910459_1265479484",
+      "dateCreated": "2022-01-12 07:35:10.459",
+      "dateStarted": "2022-01-12 07:36:52.060",
+      "dateFinished": "2022-01-12 07:36:52.163",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nselect * from v2;",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-12 07:37:10.052",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "uuid": "string",
+                      "text": "string",
+                      "words": "string",
+                      "length": "string",
+                      "lwords": "string",
+                      "lword": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "uuid\ttext\twords\tlength\tlwords\tlword\n839b7629-74ab-49ad-aee0-3feaa612f8d4\tphilhellenic homeotic phippe cocky-leeky \t4\t41\t[\"philhellenic\",\"homeotic\",\"phippe\",\"cocky-leeky\"]\tphilhellenic\n839b7629-74ab-49ad-aee0-3feaa612f8d4\tphilhellenic homeotic phippe cocky-leeky \t4\t41\t[\"philhellenic\",\"homeotic\",\"phippe\",\"cocky-leeky\"]\thomeotic\n839b7629-74ab-49ad-aee0-3feaa612f8d4\tphilhellenic homeotic phippe cocky-leeky \t4\t41\t[\"philhellenic\",\"homeotic\",\"phippe\",\"cocky-leeky\"]\tphippe\n839b7629-74ab-49ad-aee0-3feaa612f8d4\tphilhellenic homeotic phippe cocky-leeky \t4\t41\t[\"philhellenic\",\"homeotic\",\"phippe\",\"cocky-leeky\"]\tcocky-leeky\n9cfea398-abdc-4693-b913-b9f9d090cf8d\tPretoria treys lavalier \t3\t24\t[\"pretoria\",\"treys\",\"lavalier\"]\tpretoria\n9cfea398-abdc-4693-b913-b9f9d090cf8d\tPretoria treys lavalier \t3\t24\t[\"pretoria\",\"treys\",\"lavalier\"]\ttreys\n9cfea398-abdc-4693-b913-b9f9d090cf8d\tPretoria treys lavalier \t3\t24\t[\"pretoria\",\"treys\",\"lavalier\"]\tlavalier\ndcdb36db-f9a9-4143-9f7f-7bd10dcb0ffc\tunpick bicondylar \t2\t18\t[\"unpick\",\"bicondylar\"]\tunpick\ndcdb36db-f9a9-4143-9f7f-7bd10dcb0ffc\tunpick bicondylar \t2\t18\t[\"unpick\",\"bicondylar\"]\tbicondylar\n90070601-1de4-4f3b-bd25-f3c3de563543\trotenones stepgrandchild oophorectomized tar-brush pillory foliously \t6\t69\t[\"rotenones\",\"stepgrandchild\",\"oophorectomized\",\"tar-brush\",\"pillory\",\"foliously\"]\trotenones\n90070601-1de4-4f3b-bd25-f3c3de563543\trotenones stepgrandchild oophorectomized tar-brush pillory foliously \t6\t69\t[\"rotenones\",\"stepgrandchild\",\"oophorectomized\",\"tar-brush\",\"pillory\",\"foliously\"]\tstepgrandchild\n90070601-1de4-4f3b-bd25-f3c3de563543\trotenones stepgrandchild oophorectomized tar-brush pillory foliously \t6\t69\t[\"rotenones\",\"stepgrandchild\",\"oophorectomized\",\"tar-brush\",\"pillory\",\"foliously\"]\toophorectomized\n90070601-1de4-4f3b-bd25-f3c3de563543\trotenones stepgrandchild oophorectomized tar-brush pillory foliously \t6\t69\t[\"rotenones\",\"stepgrandchild\",\"oophorectomized\",\"tar-brush\",\"pillory\",\"foliously\"]\ttar-brush\n90070601-1de4-4f3b-bd25-f3c3de563543\trotenones stepgrandchild oophorectomized tar-brush pillory foliously \t6\t69\t[\"rotenones\",\"stepgrandchild\",\"oophorectomized\",\"tar-brush\",\"pillory\",\"foliously\"]\tpillory\n90070601-1de4-4f3b-bd25-f3c3de563543\trotenones stepgrandchild oophorectomized tar-brush pillory foliously \t6\t69\t[\"rotenones\",\"stepgrandchild\",\"oophorectomized\",\"tar-brush\",\"pillory\",\"foliously\"]\tfoliously\n1e6d25b8-3b46-4854-9395-9082eea6445b\tkingdomship Kola preundertaken notices \t4\t39\t[\"kingdomship\",\"kola\",\"preundertaken\",\"notices\"]\tkingdomship\n1e6d25b8-3b46-4854-9395-9082eea6445b\tkingdomship Kola preundertaken notices \t4\t39\t[\"kingdomship\",\"kola\",\"preundertaken\",\"notices\"]\tkola\n1e6d25b8-3b46-4854-9395-9082eea6445b\tkingdomship Kola preundertaken notices \t4\t39\t[\"kingdomship\",\"kola\",\"preundertaken\",\"notices\"]\tpreundertaken\n1e6d25b8-3b46-4854-9395-9082eea6445b\tkingdomship Kola preundertaken notices \t4\t39\t[\"kingdomship\",\"kola\",\"preundertaken\",\"notices\"]\tnotices\nf53dbb3d-a671-4c35-8f96-3164a18d1589\tAllayne threw \t2\t14\t[\"allayne\",\"threw\"]\tallayne\nf53dbb3d-a671-4c35-8f96-3164a18d1589\tAllayne threw \t2\t14\t[\"allayne\",\"threw\"]\tthrew\n7ebc0025-4a42-434a-9ff2-8ba953847e89\tdrain Eproboscidea \t2\t19\t[\"drain\",\"eproboscidea\"]\tdrain\n7ebc0025-4a42-434a-9ff2-8ba953847e89\tdrain Eproboscidea \t2\t19\t[\"drain\",\"eproboscidea\"]\teproboscidea\n21ba573a-611c-4081-9b40-e7153de933da\tgrowers blaasop weedage \t3\t24\t[\"growers\",\"blaasop\",\"weedage\"]\tgrowers\n21ba573a-611c-4081-9b40-e7153de933da\tgrowers blaasop weedage \t3\t24\t[\"growers\",\"blaasop\",\"weedage\"]\tblaasop\n21ba573a-611c-4081-9b40-e7153de933da\tgrowers blaasop weedage \t3\t24\t[\"growers\",\"blaasop\",\"weedage\"]\tweedage\ne5330580-071d-4a95-bb2b-65759648f681\tstygiophobia Perlman strumulose shatterer Robinsonville ZGS \t6\t60\t[\"stygiophobia\",\"perlman\",\"strumulose\",\"shatterer\",\"robinsonville\",\"zgs\"]\tstygiophobia\ne5330580-071d-4a95-bb2b-65759648f681\tstygiophobia Perlman strumulose shatterer Robinsonville ZGS \t6\t60\t[\"stygiophobia\",\"perlman\",\"strumulose\",\"shatterer\",\"robinsonville\",\"zgs\"]\tperlman\ne5330580-071d-4a95-bb2b-65759648f681\tstygiophobia Perlman strumulose shatterer Robinsonville ZGS \t6\t60\t[\"stygiophobia\",\"perlman\",\"strumulose\",\"shatterer\",\"robinsonville\",\"zgs\"]\tstrumulose\ne5330580-071d-4a95-bb2b-65759648f681\tstygiophobia Perlman strumulose shatterer Robinsonville ZGS \t6\t60\t[\"stygiophobia\",\"perlman\",\"strumulose\",\"shatterer\",\"robinsonville\",\"zgs\"]\tshatterer\ne5330580-071d-4a95-bb2b-65759648f681\tstygiophobia Perlman strumulose shatterer Robinsonville ZGS \t6\t60\t[\"stygiophobia\",\"perlman\",\"strumulose\",\"shatterer\",\"robinsonville\",\"zgs\"]\trobinsonville\ne5330580-071d-4a95-bb2b-65759648f681\tstygiophobia Perlman strumulose shatterer Robinsonville ZGS \t6\t60\t[\"stygiophobia\",\"perlman\",\"strumulose\",\"shatterer\",\"robinsonville\",\"zgs\"]\tzgs\n6301a074-79c4-41ce-8eec-0dff648e2f7d\toxim imbarks Triplicist woosh \t4\t30\t[\"oxim\",\"imbarks\",\"triplicist\",\"woosh\"]\toxim\n6301a074-79c4-41ce-8eec-0dff648e2f7d\toxim imbarks Triplicist woosh \t4\t30\t[\"oxim\",\"imbarks\",\"triplicist\",\"woosh\"]\timbarks\n6301a074-79c4-41ce-8eec-0dff648e2f7d\toxim imbarks Triplicist woosh \t4\t30\t[\"oxim\",\"imbarks\",\"triplicist\",\"woosh\"]\ttriplicist\n6301a074-79c4-41ce-8eec-0dff648e2f7d\toxim imbarks Triplicist woosh \t4\t30\t[\"oxim\",\"imbarks\",\"triplicist\",\"woosh\"]\twoosh\nd5ad1e12-5be2-4e0c-b3d4-05d963e64967\tMillan outturned fiberous gasworker tusker dextrotropic hypnogenetically \t7\t73\t[\"millan\",\"outturned\",\"fiberous\",\"gasworker\",\"tusker\",\"dextrotropic\",\"hypnogenetically\"]\tmillan\nd5ad1e12-5be2-4e0c-b3d4-05d963e64967\tMillan outturned fiberous gasworker tusker dextrotropic hypnogenetically \t7\t73\t[\"millan\",\"outturned\",\"fiberous\",\"gasworker\",\"tusker\",\"dextrotropic\",\"hypnogenetically\"]\toutturned\nd5ad1e12-5be2-4e0c-b3d4-05d963e64967\tMillan outturned fiberous gasworker tusker dextrotropic hypnogenetically \t7\t73\t[\"millan\",\"outturned\",\"fiberous\",\"gasworker\",\"tusker\",\"dextrotropic\",\"hypnogenetically\"]\tfiberous\nd5ad1e12-5be2-4e0c-b3d4-05d963e64967\tMillan outturned fiberous gasworker tusker dextrotropic hypnogenetically \t7\t73\t[\"millan\",\"outturned\",\"fiberous\",\"gasworker\",\"tusker\",\"dextrotropic\",\"hypnogenetically\"]\tgasworker\nd5ad1e12-5be2-4e0c-b3d4-05d963e64967\tMillan outturned fiberous gasworker tusker dextrotropic hypnogenetically \t7\t73\t[\"millan\",\"outturned\",\"fiberous\",\"gasworker\",\"tusker\",\"dextrotropic\",\"hypnogenetically\"]\ttusker\nd5ad1e12-5be2-4e0c-b3d4-05d963e64967\tMillan outturned fiberous gasworker tusker dextrotropic hypnogenetically \t7\t73\t[\"millan\",\"outturned\",\"fiberous\",\"gasworker\",\"tusker\",\"dextrotropic\",\"hypnogenetically\"]\tdextrotropic\nd5ad1e12-5be2-4e0c-b3d4-05d963e64967\tMillan outturned fiberous gasworker tusker dextrotropic hypnogenetically \t7\t73\t[\"millan\",\"outturned\",\"fiberous\",\"gasworker\",\"tusker\",\"dextrotropic\",\"hypnogenetically\"]\thypnogenetically\n4f49dfb6-dfb5-4de2-b08f-d1c584ba55e5\tDogger gateman \t2\t15\t[\"dogger\",\"gateman\"]\tdogger\n4f49dfb6-dfb5-4de2-b08f-d1c584ba55e5\tDogger gateman \t2\t15\t[\"dogger\",\"gateman\"]\tgateman\n211d7cbe-085d-4c36-86c2-33a7d74761d1\tglobosely nonrepudiation unracking jack-boy Bellotto \t5\t53\t[\"globosely\",\"nonrepudiation\",\"unracking\",\"jack-boy\",\"bellotto\"]\tglobosely\n211d7cbe-085d-4c36-86c2-33a7d74761d1\tglobosely nonrepudiation unracking jack-boy Bellotto \t5\t53\t[\"globosely\",\"nonrepudiation\",\"unracking\",\"jack-boy\",\"bellotto\"]\tnonrepudiation\n211d7cbe-085d-4c36-86c2-33a7d74761d1\tglobosely nonrepudiation unracking jack-boy Bellotto \t5\t53\t[\"globosely\",\"nonrepudiation\",\"unracking\",\"jack-boy\",\"bellotto\"]\tunracking\n211d7cbe-085d-4c36-86c2-33a7d74761d1\tglobosely nonrepudiation unracking jack-boy Bellotto \t5\t53\t[\"globosely\",\"nonrepudiation\",\"unracking\",\"jack-boy\",\"bellotto\"]\tjack-boy\n211d7cbe-085d-4c36-86c2-33a7d74761d1\tglobosely nonrepudiation unracking jack-boy Bellotto \t5\t53\t[\"globosely\",\"nonrepudiation\",\"unracking\",\"jack-boy\",\"bellotto\"]\tbellotto\nfe3567ac-4b8b-4861-bdb7-c300fd5a5d83\tasparagic murasakite nonevents sexivalency \t4\t43\t[\"asparagic\",\"murasakite\",\"nonevents\",\"sexivalency\"]\tasparagic\nfe3567ac-4b8b-4861-bdb7-c300fd5a5d83\tasparagic murasakite nonevents sexivalency \t4\t43\t[\"asparagic\",\"murasakite\",\"nonevents\",\"sexivalency\"]\tmurasakite\nfe3567ac-4b8b-4861-bdb7-c300fd5a5d83\tasparagic murasakite nonevents sexivalency \t4\t43\t[\"asparagic\",\"murasakite\",\"nonevents\",\"sexivalency\"]\tnonevents\nfe3567ac-4b8b-4861-bdb7-c300fd5a5d83\tasparagic murasakite nonevents sexivalency \t4\t43\t[\"asparagic\",\"murasakite\",\"nonevents\",\"sexivalency\"]\tsexivalency\nee1ddf11-f21e-4b56-aa22-325191f9e2de\tocellary calvary \t2\t17\t[\"ocellary\",\"calvary\"]\tocellary\nee1ddf11-f21e-4b56-aa22-325191f9e2de\tocellary calvary \t2\t17\t[\"ocellary\",\"calvary\"]\tcalvary\n921a9564-521f-4aa9-8040-74b466aa1be3\tsilicic oculospinal nodulus Rikari hexangularly \t5\t48\t[\"silicic\",\"oculospinal\",\"nodulus\",\"rikari\",\"hexangularly\"]\tsilicic\n921a9564-521f-4aa9-8040-74b466aa1be3\tsilicic oculospinal nodulus Rikari hexangularly \t5\t48\t[\"silicic\",\"oculospinal\",\"nodulus\",\"rikari\",\"hexangularly\"]\toculospinal\n921a9564-521f-4aa9-8040-74b466aa1be3\tsilicic oculospinal nodulus Rikari hexangularly \t5\t48\t[\"silicic\",\"oculospinal\",\"nodulus\",\"rikari\",\"hexangularly\"]\tnodulus\n921a9564-521f-4aa9-8040-74b466aa1be3\tsilicic oculospinal nodulus Rikari hexangularly \t5\t48\t[\"silicic\",\"oculospinal\",\"nodulus\",\"rikari\",\"hexangularly\"]\trikari\n921a9564-521f-4aa9-8040-74b466aa1be3\tsilicic oculospinal nodulus Rikari hexangularly \t5\t48\t[\"silicic\",\"oculospinal\",\"nodulus\",\"rikari\",\"hexangularly\"]\thexangularly\nc9fb4f65-ee89-4a59-b9c4-aede9a7c8f6b\tperithoracic dansk \t2\t19\t[\"perithoracic\",\"dansk\"]\tperithoracic\nc9fb4f65-ee89-4a59-b9c4-aede9a7c8f6b\tperithoracic dansk \t2\t19\t[\"perithoracic\",\"dansk\"]\tdansk\nca55233b-a5bd-468b-aedb-f2adf44b121a\tprotogelatose curdler audiometries \t3\t35\t[\"protogelatose\",\"curdler\",\"audiometries\"]\tprotogelatose\nca55233b-a5bd-468b-aedb-f2adf44b121a\tprotogelatose curdler audiometries \t3\t35\t[\"protogelatose\",\"curdler\",\"audiometries\"]\tcurdler\nca55233b-a5bd-468b-aedb-f2adf44b121a\tprotogelatose curdler audiometries \t3\t35\t[\"protogelatose\",\"curdler\",\"audiometries\"]\taudiometries\n099ad971-69c0-48a4-8a17-a62322febba8\tDelphinus conch- unended pelvimetric \t4\t37\t[\"delphinus\",\"conch\",\"unended\",\"pelvimetric\"]\tdelphinus\n099ad971-69c0-48a4-8a17-a62322febba8\tDelphinus conch- unended pelvimetric \t4\t37\t[\"delphinus\",\"conch\",\"unended\",\"pelvimetric\"]\tconch\n099ad971-69c0-48a4-8a17-a62322febba8\tDelphinus conch- unended pelvimetric \t4\t37\t[\"delphinus\",\"conch\",\"unended\",\"pelvimetric\"]\tunended\n099ad971-69c0-48a4-8a17-a62322febba8\tDelphinus conch- unended pelvimetric \t4\t37\t[\"delphinus\",\"conch\",\"unended\",\"pelvimetric\"]\tpelvimetric\nf5e11012-30fa-4e4c-9b73-5080d7daef7e\tjarsful duopsony unswatheable \t3\t30\t[\"jarsful\",\"duopsony\",\"unswatheable\"]\tjarsful\nf5e11012-30fa-4e4c-9b73-5080d7daef7e\tjarsful duopsony unswatheable \t3\t30\t[\"jarsful\",\"duopsony\",\"unswatheable\"]\tduopsony\nf5e11012-30fa-4e4c-9b73-5080d7daef7e\tjarsful duopsony unswatheable \t3\t30\t[\"jarsful\",\"duopsony\",\"unswatheable\"]\tunswatheable\n555a3b7c-0ea1-4af1-b396-c180b277b7ec\tselenate unexpressive syren alcade hypertelic \t5\t46\t[\"selenate\",\"unexpressive\",\"syren\",\"alcade\",\"hypertelic\"]\tselenate\n555a3b7c-0ea1-4af1-b396-c180b277b7ec\tselenate unexpressive syren alcade hypertelic \t5\t46\t[\"selenate\",\"unexpressive\",\"syren\",\"alcade\",\"hypertelic\"]\tunexpressive\n555a3b7c-0ea1-4af1-b396-c180b277b7ec\tselenate unexpressive syren alcade hypertelic \t5\t46\t[\"selenate\",\"unexpressive\",\"syren\",\"alcade\",\"hypertelic\"]\tsyren\n555a3b7c-0ea1-4af1-b396-c180b277b7ec\tselenate unexpressive syren alcade hypertelic \t5\t46\t[\"selenate\",\"unexpressive\",\"syren\",\"alcade\",\"hypertelic\"]\talcade\n555a3b7c-0ea1-4af1-b396-c180b277b7ec\tselenate unexpressive syren alcade hypertelic \t5\t46\t[\"selenate\",\"unexpressive\",\"syren\",\"alcade\",\"hypertelic\"]\thypertelic\nd756a32d-4bc5-4a38-b526-f51420807e7f\tbumpsy subtotally paedogenetic Chiles \t4\t38\t[\"bumpsy\",\"subtotally\",\"paedogenetic\",\"chiles\"]\tbumpsy\nd756a32d-4bc5-4a38-b526-f51420807e7f\tbumpsy subtotally paedogenetic Chiles \t4\t38\t[\"bumpsy\",\"subtotally\",\"paedogenetic\",\"chiles\"]\tsubtotally\nd756a32d-4bc5-4a38-b526-f51420807e7f\tbumpsy subtotally paedogenetic Chiles \t4\t38\t[\"bumpsy\",\"subtotally\",\"paedogenetic\",\"chiles\"]\tpaedogenetic\nd756a32d-4bc5-4a38-b526-f51420807e7f\tbumpsy subtotally paedogenetic Chiles \t4\t38\t[\"bumpsy\",\"subtotally\",\"paedogenetic\",\"chiles\"]\tchiles\n9066da30-7c72-4f8a-8cd3-62271415cefc\tstomate esonarthex euroclydon \t3\t30\t[\"stomate\",\"esonarthex\",\"euroclydon\"]\tstomate\n9066da30-7c72-4f8a-8cd3-62271415cefc\tstomate esonarthex euroclydon \t3\t30\t[\"stomate\",\"esonarthex\",\"euroclydon\"]\tesonarthex\n9066da30-7c72-4f8a-8cd3-62271415cefc\tstomate esonarthex euroclydon \t3\t30\t[\"stomate\",\"esonarthex\",\"euroclydon\"]\teuroclydon\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641973012059_1444153715",
+      "id": "paragraph_1641973012059_1444153715",
+      "dateCreated": "2022-01-12 07:36:52.059",
+      "dateStarted": "2022-01-12 07:37:09.458",
+      "dateFinished": "2022-01-12 07:37:09.626",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-12 07:37:09.458",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641973029458_400707223",
+      "id": "paragraph_1641973029458_400707223",
+      "dateCreated": "2022-01-12 07:37:09.458",
+      "status": "READY"
+    }
+  ],
+  "name": "hive-lateral-view",
+  "id": "2GTVFKP3X",
+  "defaultInterpreterGroup": "hive",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

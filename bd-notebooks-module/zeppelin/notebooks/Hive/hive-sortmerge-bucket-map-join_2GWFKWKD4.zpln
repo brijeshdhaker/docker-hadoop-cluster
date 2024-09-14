@@ -1,0 +1,218 @@
+{
+  "paragraphs": [
+    {
+      "text": "%hive\n\nset hive.input.format \u003d org.apache.hadoop.hive.ql.io.BucketizedHiveInputFormat;\n\nset hive.optimize.bucketmapjoin \u003d true;\n\nset hive.optimize.bucketmapjoin.sortedmerge \u003d true;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-02-02 05:23:56.371",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643779387914_1740841269",
+      "id": "paragraph_1643779387914_1740841269",
+      "dateCreated": "2022-02-02 05:23:07.915",
+      "status": "READY"
+    },
+    {
+      "text": "%hive\n\ninsert overwrite table table1_buk select * from table1 sort by emp_name;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-02-02 05:26:42.952",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643779455781_1831720743",
+      "id": "paragraph_1643779455781_1831720743",
+      "dateCreated": "2022-02-02 05:24:15.782",
+      "status": "READY"
+    },
+    {
+      "text": "%hive\n\ninsert overwrite table table2_buk select * from table2 sort by emp_name;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-02-02 05:26:38.796",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643779459391_2062624580",
+      "id": "paragraph_1643779459391_2062624580",
+      "dateCreated": "2022-02-02 05:24:19.391",
+      "status": "READY"
+    },
+    {
+      "text": "%hive\n\n\nSELECT /*+ MAPJOIN(table2_buk) */ table1_buk.emp_name,table1_buk.emp_id, table2_buk.emp_id FROM table1_buk JOIN table2_buk ON table1_buk.emp_name \u003d table2_buk.emp_name ;\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-02-02 05:26:32.133",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643779496031_45288153",
+      "id": "paragraph_1643779496031_45288153",
+      "dateCreated": "2022-02-02 05:24:56.031",
+      "status": "READY"
+    },
+    {
+      "text": "%hive\n\nCREATE TABLE IF NOT EXISTS table2_buk1 (emp_id int,emp_name String) clustered by(emp_name) into 4 buckets row format delimited fields terminated BY \u0027,\u0027 ;\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-02-02 05:26:26.994",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643779499886_1564305723",
+      "id": "paragraph_1643779499886_1564305723",
+      "dateCreated": "2022-02-02 05:24:59.886",
+      "status": "READY"
+    },
+    {
+      "text": "%hive\n\ninsert overwrite table table2_buk1 select * from table2 sort by emp_name;",
+      "user": "anonymous",
+      "dateUpdated": "2022-02-02 05:26:22.634",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643779529527_2139326382",
+      "id": "paragraph_1643779529527_2139326382",
+      "dateCreated": "2022-02-02 05:25:29.527",
+      "status": "READY"
+    },
+    {
+      "text": "%hive\n\nSELECT /*+ MAPJOIN(table2_buk1) */ table1_buk.emp_name, table1_buk.emp_id, table2_buk1.emp_id FROM table1_buk JOIN table2_buk1 ON table1_buk.emp_name \u003d table2_buk1.emp_name ;",
+      "user": "anonymous",
+      "dateUpdated": "2022-02-02 05:26:18.451",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643779544903_1198376576",
+      "id": "paragraph_1643779544903_1198376576",
+      "dateCreated": "2022-02-02 05:25:44.903",
+      "status": "READY"
+    }
+  ],
+  "name": "hive-sortmerge-bucket-map-join",
+  "id": "2GWFKWKD4",
+  "defaultInterpreterGroup": "hive",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

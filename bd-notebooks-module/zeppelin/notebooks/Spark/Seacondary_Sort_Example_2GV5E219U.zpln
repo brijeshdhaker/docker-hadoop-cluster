@@ -1,0 +1,320 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\n\n![image](https://technology.finra.org/assets/img/articles/spark-mapreduce-mappartitions.png)\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-24 04:46:42.462",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cimg src\u003d\"https://technology.finra.org/assets/img/articles/spark-mapreduce-mappartitions.png\" alt\u003d\"image\" /\u003e\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642999540377_162688845",
+      "id": "paragraph_1642999540377_162688845",
+      "dateCreated": "2022-01-24 04:45:40.377",
+      "dateStarted": "2022-01-24 04:46:42.462",
+      "dateFinished": "2022-01-24 04:46:42.470",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nval dataRDD \u003d sc.parallelize(Seq(\n    (\"KEY_001\", (\"SECONDARY\", \"V1\", 1)),\n    (\"KEY_001\", (\"PRIMARY\", \"V2\", 2)),\n    (\"KEY_001\", (\"SECONDARY\", \"V3\", 3)),\n    (\"KEY_002\", (\"PRIMARY\", \"V4\", 4)),\n    (\"KEY_002\", (\"SECONDARY\", \"V5\", 5)),\n    (\"KEY_003\", (\"SECONDARY\", \"V6\", 6)),\n    (\"KEY_003\", (\"PRIMARY\", \"V7\", 7)),\n    (\"KEY_004\", (\"SECONDARY\", \"V8\", 8)),\n    (\"KEY_004\", (\"PRIMARY\", \"V9\", 9))\n))",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-24 03:54:07.644",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdataRDD\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[(String, (String, String, Int))]\u001b[0m \u003d ParallelCollectionRDD[28] at parallelize at \u003cconsole\u003e:27\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642995796446_63326589",
+      "id": "paragraph_1642995796446_63326589",
+      "dateCreated": "2022-01-24 03:43:16.446",
+      "dateStarted": "2022-01-24 03:54:07.648",
+      "dateFinished": "2022-01-24 03:54:08.054",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\ndef mapFunction(x:(String, (String, String, Int)) )  : (String, (String, String, Int)) \u003d {\n    \n    val keyPart \u003d if(x._2._1 \u003d\u003d \"PRIMARY\") \"A\" else \"B\"\n    val key \u003d x._1 + \"|\" + keyPart\n    //val value \u003d x._2.productIterator.mkString(\",\")\n    (key,  x._2)\n}\n\nval mapDataRDD \u003d dataRDD.map(mapFunction)\nmapDataRDD.collect().foreach(println)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-24 04:56:36.725",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(KEY_001|B,(SECONDARY,V1,1))\n(KEY_001|A,(PRIMARY,V2,2))\n(KEY_001|B,(SECONDARY,V3,3))\n(KEY_002|A,(PRIMARY,V4,4))\n(KEY_002|B,(SECONDARY,V5,5))\n(KEY_003|B,(SECONDARY,V6,6))\n(KEY_003|A,(PRIMARY,V7,7))\n(KEY_004|B,(SECONDARY,V8,8))\n(KEY_004|A,(PRIMARY,V9,9))\n\u001b[1m\u001b[34mmapFunction\u001b[0m: \u001b[1m\u001b[32m(x: (String, (String, String, Int)))(String, (String, String, Int))\u001b[0m\n\u001b[1m\u001b[34mmapDataRDD\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[(String, (String, String, Int))]\u001b[0m \u003d MapPartitionsRDD[38] at map at \u003cconsole\u003e:44\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d11"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642996208079_1203231508",
+      "id": "paragraph_1642996208079_1203231508",
+      "dateCreated": "2022-01-24 03:50:08.079",
+      "dateStarted": "2022-01-24 04:56:36.727",
+      "dateFinished": "2022-01-24 04:56:36.892",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nimport org.apache.spark.Partitioner\nimport org.apache.commons.lang3.StringUtils\n\nclass KeyBasePartitioner(partitions: Int) extends Partitioner {\n\n    override def numPartitions: Int \u003d partitions\n\n    override def getPartition(key: Any): Int \u003d {\n      var k \u003d key.asInstanceOf[String]\n      var col \u003d StringUtils.splitPreserveAllTokens(k, \"|\")\n      Math.abs(col(0).hashCode() % numPartitions)\n    }\n}\n\n  \n  \n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-24 04:56:45.888",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark.Partitioner\nimport org.apache.commons.lang3.StringUtils\ndefined class KeyBasePartitioner\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642998034176_581425487",
+      "id": "paragraph_1642998034176_581425487",
+      "dateCreated": "2022-01-24 04:20:34.176",
+      "dateStarted": "2022-01-24 04:56:45.892",
+      "dateFinished": "2022-01-24 04:56:45.992",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nval partitionedRDD \u003d mapDataRDD.repartitionAndSortWithinPartitions(new KeyBasePartitioner(100))\npartitionedRDD.collect().foreach(println)",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-24 04:56:49.319",
+      "progress": 34,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(KEY_004|A,(PRIMARY,V9,9))\n(KEY_004|B,(SECONDARY,V8,8))\n(KEY_003|A,(PRIMARY,V7,7))\n(KEY_003|B,(SECONDARY,V6,6))\n(KEY_002|A,(PRIMARY,V4,4))\n(KEY_002|B,(SECONDARY,V5,5))\n(KEY_001|A,(PRIMARY,V2,2))\n(KEY_001|B,(SECONDARY,V1,1))\n(KEY_001|B,(SECONDARY,V3,3))\n\u001b[1m\u001b[34mpartitionedRDD\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[(String, (String, String, Int))]\u001b[0m \u003d ShuffledRDD[39] at repartitionAndSortWithinPartitions at \u003cconsole\u003e:39\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d12"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642998280314_1090003919",
+      "id": "paragraph_1642998280314_1090003919",
+      "dateCreated": "2022-01-24 04:24:40.314",
+      "dateStarted": "2022-01-24 04:56:49.330",
+      "dateFinished": "2022-01-24 04:56:49.808",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nimport scala.collection.mutable.{ListBuffer, Set}\n\nval outputRDD \u003d partitionedRDD.mapPartitions(v \u003d\u003e {\n\n      var outList \u003d new ListBuffer[(String, String)]\n      var lastKeyBase \u003d null: String\n      var attr \u003d null: String\n      var counter \u003d 0\n      \n      while (v.hasNext) {\n        var record \u003d v.next\n        // Parse key\n        var key \u003d record._1.split(\"\\\\|\")\n        var keyBase \u003d key(0)\n        var keyFlag \u003d key(1)\n\n        // Parse value\n        var value \u003d record._2\n        var inAttr \u003d value._3.toString\n\n        if (lastKeyBase !\u003d null \u0026\u0026 !lastKeyBase.equals(keyBase)) {\n          // Reset group attribute\n          attr \u003d null\n          lastKeyBase \u003d keyBase\n        }\n\n        if (keyFlag.equals(\"A\") \u0026\u0026 attr \u003d\u003d null) {\n          attr \u003d inAttr\n          counter +\u003d 1\n        }\n\n        var outRecord \u003d (keyBase, value._1 + \",\" + value._2 + \",\" + value._3 + \",\" + (if (attr !\u003d null) attr else inAttr))\n        outList.+\u003d(outRecord)\n      }\n\n      outList.iterator\n  })\n\noutputRDD.collect().foreach(println)",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-24 04:57:37.005",
+      "progress": 40,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(KEY_004,PRIMARY,V9,9,9)\n(KEY_004,SECONDARY,V8,8,9)\n(KEY_003,PRIMARY,V7,7,7)\n(KEY_003,SECONDARY,V6,6,7)\n(KEY_002,PRIMARY,V4,4,4)\n(KEY_002,SECONDARY,V5,5,4)\n(KEY_001,PRIMARY,V2,2,2)\n(KEY_001,SECONDARY,V1,1,2)\n(KEY_001,SECONDARY,V3,3,2)\nimport scala.collection.mutable.{ListBuffer, Set}\n\u001b[1m\u001b[34moutputRDD\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[(String, String)]\u001b[0m \u003d MapPartitionsRDD[40] at mapPartitions at \u003cconsole\u003e:40\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d13"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642998615123_1062018531",
+      "id": "paragraph_1642998615123_1062018531",
+      "dateCreated": "2022-01-24 04:30:15.123",
+      "dateStarted": "2022-01-24 04:57:37.008",
+      "dateFinished": "2022-01-24 04:57:37.431",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-24 04:35:15.378",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642998915378_1788346473",
+      "id": "paragraph_1642998915378_1788346473",
+      "dateCreated": "2022-01-24 04:35:15.378",
+      "status": "READY"
+    }
+  ],
+  "name": "Seacondary_Sort_Example",
+  "id": "2GV5E219U",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

@@ -1,0 +1,522 @@
+{
+  "paragraphs": [
+    {
+      "text": "%pyspark\n\n# Create Data Frame From Hive table\ndataset \u003d [\n    (\"Thin\",       \"cell phone\", 6000),\n    (\"Normal\",     \"tablet\",     1500),\n    (\"Mini\",       \"tablet\",     5500),\n    (\"Ultra thin\", \"cell phone\", 5000),\n    (\"Very thin\",  \"cell phone\", 6000),\n    (\"Big\",        \"tablet\",     2500),\n    (\"Bendable\",   \"cell phone\", 3000),\n    (\"Foldable\",   \"cell phone\", 3000),\n    (\"Pro\",        \"tablet\",     4500),\n    (\"Pro2\",       \"tablet\",     6500)\n]\n\ndataFrame \u003d spark.createDataFrame(dataset, [\"category\", \"product\",  \"revenue\"])\ndataFrame.show()",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-29 03:22:07.992",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------+----------+-------+\n|  category|   product|revenue|\n+----------+----------+-------+\n|      Thin|cell phone|   6000|\n|    Normal|    tablet|   1500|\n|      Mini|    tablet|   5500|\n|Ultra thin|cell phone|   5000|\n| Very thin|cell phone|   6000|\n|       Big|    tablet|   2500|\n|  Bendable|cell phone|   3000|\n|  Foldable|cell phone|   3000|\n|       Pro|    tablet|   4500|\n|      Pro2|    tablet|   6500|\n+----------+----------+-------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d2"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d3"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1648602168563_540395953",
+      "id": "paragraph_1648602168563_540395953",
+      "dateCreated": "2022-03-30 01:02:48.563",
+      "dateStarted": "2024-02-29 03:22:08.001",
+      "dateFinished": "2024-02-29 03:22:12.126",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.window import Window\nfrom pyspark.sql.functions import *\n\nwindowSpec \u003d Window.partitionBy(dataFrame[\u0027category\u0027]).orderBy(dataFrame[\u0027revenue\u0027].desc())\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-29 03:22:18.521",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1648602226295_20254511",
+      "id": "paragraph_1648602226295_20254511",
+      "dateCreated": "2022-03-30 01:03:46.295",
+      "dateStarted": "2024-02-29 03:22:18.523",
+      "dateFinished": "2024-02-29 03:22:18.559",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\ndataFrame.withColumn(\"revenue_diff\", max(col(\"revenue\")).over(windowSpec) - dataFrame[\u0027revenue\u0027]).show(truncate\u003dFalse)\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-29 03:22:25.532",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------+----------+-------+------------+\n|category  |product   |revenue|revenue_diff|\n+----------+----------+-------+------------+\n|Mini      |tablet    |5500   |0           |\n|Pro       |tablet    |4500   |0           |\n|Foldable  |cell phone|3000   |0           |\n|Ultra thin|cell phone|5000   |0           |\n|Big       |tablet    |2500   |0           |\n|Very thin |cell phone|6000   |0           |\n|Bendable  |cell phone|3000   |0           |\n|Pro2      |tablet    |6500   |0           |\n|Thin      |cell phone|6000   |0           |\n|Normal    |tablet    |1500   |0           |\n+----------+----------+-------+------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d4"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d5"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d6"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d7"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d8"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1648602353946_118297432",
+      "id": "paragraph_1648602353946_118297432",
+      "dateCreated": "2022-03-30 01:05:53.946",
+      "dateStarted": "2024-02-29 03:22:25.533",
+      "dateFinished": "2024-02-29 03:22:29.912",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n# ROW_NUMBER\ndataFrame.withColumn(\"row_number\", row_number().over(windowSpec)) \\\n    .show(truncate\u003dFalse)",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-29 03:22:34.363",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------+----------+-------+----------+\n|category  |product   |revenue|row_number|\n+----------+----------+-------+----------+\n|Mini      |tablet    |5500   |1         |\n|Pro       |tablet    |4500   |1         |\n|Foldable  |cell phone|3000   |1         |\n|Ultra thin|cell phone|5000   |1         |\n|Big       |tablet    |2500   |1         |\n|Very thin |cell phone|6000   |1         |\n|Bendable  |cell phone|3000   |1         |\n|Pro2      |tablet    |6500   |1         |\n|Thin      |cell phone|6000   |1         |\n|Normal    |tablet    |1500   |1         |\n+----------+----------+-------+----------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d9"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d10"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d11"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d12"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d13"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1648602381815_1980091516",
+      "id": "paragraph_1648602381815_1980091516",
+      "dateCreated": "2022-03-30 01:06:21.815",
+      "dateStarted": "2024-02-29 03:22:34.365",
+      "dateFinished": "2024-02-29 03:22:35.529",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n# RANK\ndataFrame.withColumn(\"rank\", rank().over(windowSpec)) \\\n    .show(truncate\u003dFalse)\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-29 03:22:38.832",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------+----------+-------+----+\n|category  |product   |revenue|rank|\n+----------+----------+-------+----+\n|Mini      |tablet    |5500   |1   |\n|Pro       |tablet    |4500   |1   |\n|Foldable  |cell phone|3000   |1   |\n|Ultra thin|cell phone|5000   |1   |\n|Big       |tablet    |2500   |1   |\n|Very thin |cell phone|6000   |1   |\n|Bendable  |cell phone|3000   |1   |\n|Pro2      |tablet    |6500   |1   |\n|Thin      |cell phone|6000   |1   |\n|Normal    |tablet    |1500   |1   |\n+----------+----------+-------+----+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d14"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d15"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d16"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d17"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d18"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1648602419997_837500559",
+      "id": "paragraph_1648602419997_837500559",
+      "dateCreated": "2022-03-30 01:06:59.997",
+      "dateStarted": "2024-02-29 03:22:38.833",
+      "dateFinished": "2024-02-29 03:22:39.940",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n\"\"\"dens_rank\"\"\"\ndataFrame.withColumn(\"dense_rank\", dense_rank().over(windowSpec)) \\\n    .show()",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-29 03:22:45.234",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------+----------+-------+----------+\n|  category|   product|revenue|dense_rank|\n+----------+----------+-------+----------+\n|      Mini|    tablet|   5500|         1|\n|       Pro|    tablet|   4500|         1|\n|  Foldable|cell phone|   3000|         1|\n|Ultra thin|cell phone|   5000|         1|\n|       Big|    tablet|   2500|         1|\n| Very thin|cell phone|   6000|         1|\n|  Bendable|cell phone|   3000|         1|\n|      Pro2|    tablet|   6500|         1|\n|      Thin|cell phone|   6000|         1|\n|    Normal|    tablet|   1500|         1|\n+----------+----------+-------+----------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d19"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d20"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d21"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d22"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d23"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1648602442799_1368964278",
+      "id": "paragraph_1648602442799_1368964278",
+      "dateCreated": "2022-03-30 01:07:22.799",
+      "dateStarted": "2024-02-29 03:22:45.237",
+      "dateFinished": "2024-02-29 03:22:46.235",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n\"\"\" percent_rank \"\"\"\ndataFrame.withColumn(\"percent_rank\", percent_rank().over(windowSpec)) \\\n    .show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-29 03:22:52.309",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------+----------+-------+------------+\n|  category|   product|revenue|percent_rank|\n+----------+----------+-------+------------+\n|      Mini|    tablet|   5500|         0.0|\n|       Pro|    tablet|   4500|         0.0|\n|  Foldable|cell phone|   3000|         0.0|\n|Ultra thin|cell phone|   5000|         0.0|\n|       Big|    tablet|   2500|         0.0|\n| Very thin|cell phone|   6000|         0.0|\n|  Bendable|cell phone|   3000|         0.0|\n|      Pro2|    tablet|   6500|         0.0|\n|      Thin|cell phone|   6000|         0.0|\n|    Normal|    tablet|   1500|         0.0|\n+----------+----------+-------+------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d24"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d25"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d26"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d27"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d28"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1648602460422_96521964",
+      "id": "paragraph_1648602460422_96521964",
+      "dateCreated": "2022-03-30 01:07:40.422",
+      "dateStarted": "2024-02-29 03:22:52.311",
+      "dateFinished": "2024-02-29 03:22:53.604",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n\n\"\"\" Aggregate Functions \"\"\"\ndataFrame.withColumn(\"row\", row_number().over(windowSpec)) \\\n    .withColumn(\"avg\", avg(col(\"revenue\")).over(windowSpec)) \\\n    .withColumn(\"sum\", sum(col(\"revenue\")).over(windowSpec)) \\\n    .withColumn(\"min\", min(col(\"revenue\")).over(windowSpec)) \\\n    .withColumn(\"max\", max(col(\"revenue\")).over(windowSpec)) \\\n    .where(col(\"row\") \u003d\u003d 1).select(\"category\", \"avg\", \"sum\", \"min\", \"max\") \\\n    .show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-29 03:22:59.211",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------+------+----+----+----+\n|  category|   avg| sum| min| max|\n+----------+------+----+----+----+\n|      Mini|5500.0|5500|5500|5500|\n|       Pro|4500.0|4500|4500|4500|\n|  Foldable|3000.0|3000|3000|3000|\n|Ultra thin|5000.0|5000|5000|5000|\n|       Big|2500.0|2500|2500|2500|\n| Very thin|6000.0|6000|6000|6000|\n|  Bendable|3000.0|3000|3000|3000|\n|      Pro2|6500.0|6500|6500|6500|\n|      Thin|6000.0|6000|6000|6000|\n|    Normal|1500.0|1500|1500|1500|\n+----------+------+----+----+----+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d29"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d30"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d31"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d32"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709172183372_0006//jobs/job?id\u003d33"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1648602476054_319914913",
+      "id": "paragraph_1648602476054_319914913",
+      "dateCreated": "2022-03-30 01:07:56.054",
+      "dateStarted": "2024-02-29 03:22:59.212",
+      "dateFinished": "2024-02-29 03:23:01.261",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-03-30 01:08:50.799",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1648602530799_1529791423",
+      "id": "paragraph_1648602530799_1529791423",
+      "dateCreated": "2022-03-30 01:08:50.799",
+      "status": "READY"
+    }
+  ],
+  "name": "WindowsFunctions",
+  "id": "2H29Q41HK",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

@@ -1,0 +1,87 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark\n\nval accum \u003d sc.longAccumulator(\"My Accumulator\")\nsc.parallelize(Array(1, 2, 3, 4,5,6,7,8,9,10), 4).foreach(x \u003d\u003e accum.add(x))\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-30 05:55:27.541",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34maccum\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.util.LongAccumulator\u001b[0m \u003d LongAccumulator(id: 679, name: Some(My Accumulator), value: 55)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669767427234_0001//jobs/job?id\u003d20"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669787611129_257313782",
+      "id": "paragraph_1669787611129_257313782",
+      "dateCreated": "2022-11-30 05:53:31.130",
+      "dateStarted": "2022-11-30 05:55:27.545",
+      "dateFinished": "2022-11-30 05:55:28.784",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-30 05:55:27.543",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669787727543_866176917",
+      "id": "paragraph_1669787727543_866176917",
+      "dateCreated": "2022-11-30 05:55:27.543",
+      "status": "READY"
+    }
+  ],
+  "name": "accumulators",
+  "id": "2HNRGMPME",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

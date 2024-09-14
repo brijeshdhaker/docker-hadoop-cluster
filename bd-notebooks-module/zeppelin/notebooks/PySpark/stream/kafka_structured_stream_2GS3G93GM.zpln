@@ -1,0 +1,588 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.conf\n\n#\nspark.app.name kafka_structured_stream\n\n# \nspark.jars.packages io.delta:delta-core_2.12:1.0.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2\n#",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-06 14:11:58.738",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true,
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670090200491_1754080521",
+      "id": "paragraph_1670090200491_1754080521",
+      "dateCreated": "2022-12-03 17:56:40.491",
+      "dateStarted": "2022-12-06 13:42:59.236",
+      "dateFinished": "2022-12-06 13:42:59.245",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n\n```\nkafka-topics --create --bootstrap-server kafka-broker:9092 --partitions 1 --replication-factor 1 --topic txn-text-stream-topic --if-not-exists\n```\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-06 14:12:12.568",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cpre\u003e\u003ccode\u003ekafka-topics --create --bootstrap-server kafka-broker:9092 --partitions 1 --replication-factor 1 --topic txn-text-stream-topic --if-not-exists\n\u003c/code\u003e\u003c/pre\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670091109108_168126965",
+      "id": "paragraph_1670091109108_168126965",
+      "dateCreated": "2022-12-03 18:11:49.108",
+      "dateStarted": "2022-12-06 14:12:12.569",
+      "dateFinished": "2022-12-06 14:12:14.408",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Setup Kafka Stream",
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import *\nfrom pyspark.sql.types import *\n\n#\n# Using a struct\nschema \u003d StructType() \\\n    .add(\"id\", IntegerType()) \\\n    .add(\"uuid\", StringType()) \\\n    .add(\"cardtype\", StringType()) \\\n    .add(\"website\", StringType()) \\\n    .add(\"product\", StringType()) \\\n    .add(\"amount\", DoubleType()) \\\n    .add(\"city\", StringType()) \\\n    .add(\"country\", StringType())\\\n    .add(\"addts\", LongType())\n\n\n# Subscribe to 1 topic defaults to the earliest and latest offsets\nstructureStreamDf \u003d spark \\\n    .readStream \\\n    .format(\"kafka\") \\\n    .option(\"kafka.bootstrap.servers\", \"kafka-broker:19092\") \\\n    .option(\"subscribe\", \"structured-stream-topic\") \\\n    .option(\"startingOffsets\", \"earliest\") \\\n    .option(\"failOnDataLoss\", \"false\") \\\n    .load() \\\n    .withColumn(\u0027key\u0027, col(\"key\").cast(StringType()))\\\n    .withColumn(\u0027value\u0027, from_json(col(\"value\").cast(StringType()), schema)) \\\n    .withColumn(\"txn_receive_date\", date_format(current_date(), \"yyyy-MM-dd\"))\n\n\n# Returns True for DataFrames that have streaming sources\nprint(\"structureStreamDf.isStreaming : \" + str(structureStreamDf.isStreaming))\nprint(\"Schema for structureStreamDf  : \")\nstructureStreamDf.printSchema()\n\n\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-06 14:11:58.741",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true,
+        "title": true,
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670090092412_100139624",
+      "id": "paragraph_1670090092412_100139624",
+      "dateCreated": "2022-12-03 17:54:52.412",
+      "dateStarted": "2022-12-06 13:43:01.513",
+      "dateFinished": "2022-12-06 13:43:24.782",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Process Data",
+      "text": "%pyspark\n\n#\n#\n#\ntxn_details\u003dstructureStreamDf.selectExpr(\"value.*\", \"date_format(timestamp, \u0027yyyy-MM-dd\u0027) AS txn_receive_date\")\nprint(\"Schema for txn_details  : \")\ntxn_details.printSchema()\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-06 14:11:58.742",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true,
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670097125524_71821280",
+      "id": "paragraph_1670097125524_71821280",
+      "dateCreated": "2022-12-03 19:52:05.524",
+      "dateStarted": "2022-12-06 13:43:30.354",
+      "dateFinished": "2022-12-06 13:43:30.524",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Write Data To File Sink",
+      "text": "%pyspark\n\n# Writing to File sink can be \"parquet\" \"orc\", \"json\", \"csv\", etc.\n\ntxn_query \u003d txn_details.writeStream \\\n    .queryName(\u0027txn_query\u0027) \\\n    .format(\"parquet\") \\\n    .option(\"path\", \"hdfs://namenode:9000/transaction_details/\") \\\n    .option(\"checkpointLocation\", \"hdfs://namenode:9000/checkpoints/kafka_structured_stream/\") \\\n    .partitionBy(\"txn_receive_date\") \\\n    .trigger(processingTime\u003d\"10 seconds\") \\\n    .start()\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-06 14:11:58.743",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true,
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670094211834_724608643",
+      "id": "paragraph_1670094211834_724608643",
+      "dateCreated": "2022-12-03 19:03:31.834",
+      "dateStarted": "2022-12-06 13:47:53.712",
+      "dateFinished": "2022-12-06 13:47:53.744",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\ntxn_query.stop()\n# txn_query.awaitTermination()",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-06 14:13:13.431",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670332767054_66220170",
+      "id": "paragraph_1670332767054_66220170",
+      "dateCreated": "2022-12-06 13:19:27.054",
+      "dateStarted": "2022-12-06 14:13:13.433",
+      "dateFinished": "2022-12-06 14:13:13.453",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nMSCK REPAIR TABLE transaction_details;",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-06 14:11:58.745",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670332820577_1555678990",
+      "id": "paragraph_1670332820577_1555678990",
+      "dateCreated": "2022-12-06 13:20:20.577",
+      "dateStarted": "2022-12-06 14:01:59.837",
+      "dateFinished": "2022-12-06 14:01:59.917",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\n\nSHOW PARTITIONS `default`.`transaction_details`;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-06 14:11:58.745",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "partition": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true,
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670096668652_1138206392",
+      "id": "paragraph_1670096668652_1138206392",
+      "dateCreated": "2022-12-03 19:44:28.652",
+      "dateStarted": "2022-12-06 13:55:19.440",
+      "dateFinished": "2022-12-06 13:55:19.542",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nselect * from transaction_details where txn_receive_date\u003d\u00272022-12-06\u0027\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-06 14:11:58.749",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "editorHide": false,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "id": "string",
+                      "uuid": "string",
+                      "cardtype": "string",
+                      "website": "string",
+                      "product": "string",
+                      "amount": "string",
+                      "city": "string",
+                      "country": "string",
+                      "addts": "string",
+                      "txn_receive_date": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "website",
+                  "index": 3.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "amount",
+                  "index": 5.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670335529802_1315101646",
+      "id": "paragraph_1670335529802_1315101646",
+      "dateCreated": "2022-12-06 14:05:29.803",
+      "dateStarted": "2022-12-06 14:06:07.235",
+      "dateFinished": "2022-12-06 14:06:07.734",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\ndf1\u003dspark.sql(\"select * from transaction_details where txn_receive_date\u003d\u00272022-12-06\u0027 limit 15\")\ndf1.show(truncate\u003dFalse)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-06 14:11:58.748",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "editorHide": false,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "id": "string",
+                      "uuid": "string",
+                      "cardtype": "string",
+                      "website": "string",
+                      "product": "string",
+                      "amount": "string",
+                      "city": "string",
+                      "country": "string",
+                      "addts": "string",
+                      "txn_receive_date": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "id",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "uuid",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1670331107952_0004//jobs/job?id\u003d52"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670335155095_756376486",
+      "id": "paragraph_1670335155095_756376486",
+      "dateCreated": "2022-12-06 13:59:15.095",
+      "dateStarted": "2022-12-06 14:05:17.462",
+      "dateFinished": "2022-12-06 14:05:18.310",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nALTER TABLE `default`.`transaction_details` DROP IF EXISTS PARTITION (txn_receive_date\u003d\u00271670095331\u0027) PURGE;",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-06 14:11:58.746",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true,
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670096804553_1349554726",
+      "id": "paragraph_1670096804553_1349554726",
+      "dateCreated": "2022-12-03 19:46:44.553",
+      "dateStarted": "2022-12-03 19:47:21.105",
+      "dateFinished": "2022-12-03 19:47:21.560",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-06 14:11:58.747",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670094478438_188430347",
+      "id": "paragraph_1670094478438_188430347",
+      "dateCreated": "2022-12-03 19:07:58.438",
+      "status": "READY"
+    }
+  ],
+  "name": "kafka_structured_stream",
+  "id": "2GS3G93GM",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

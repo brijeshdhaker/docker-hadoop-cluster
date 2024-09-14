@@ -1,0 +1,954 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.conf\n\n#\n# Must set SPARK_HOME for this example, because it won\u0027t work for Zeppelin\u0027s embedded spark mode. The embedded spark mode doesn\u0027t \n# use spark-submit to launch spark interpreter, so spark.jars and spark.jars.packages won\u0027t take affect. \n\nspark.app.name pyspark-delta-table\n#\n#\n#\n\nSPARK_HOME /opt/spark-3.1.2\n\n#\n# set execution mode\n#\n\nmaster yarn\n\n#\n# set driver memory to 8g\n#\n\nspark.driver.memory 640m\nspark.driver.cores 1\n\n#\n# set executor number to be \n#\n\nspark.executor.instances  2\nspark.executor.memory  640m\nspark.executor.cores 4\n\n#\n#\n#\n\nspark.submit.deployMode cluster\n\n\n\n#\n# spark.jars can be used for adding any local jar files into spark interpreter\n# \n\n# spark.jars  file:///opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/lib/hive/lib/hive-hbase-handler-2.1.1-cdh6.3.2.jar\n\n#\n# spark.driver.extraClassPath file:///opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/lib/hive/lib/hive-hbase-handler-2.1.1-cdh6.3.2.jar\n\n#\n# spark.executor.extraClassPath file:///opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/lib/hive/lib/hive-hbase-handler-2.1.1-cdh6.3.2.jar\n# spark.executor.extraLibrary file:///opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/lib/hive/lib/hive-hbase-handler-2.1.1-cdh6.3.2.jar\n\n#\n#\n#\n\nspark.yarn.archive hdfs://namenode:9000/archives/spark-3.1.2.zip\n\nspark.yarn.dist.archives hdfs://namenode:9000/archives/pyspark3.7-20221125.tar.gz#environment\n\n#\nzeppelin.interpreter.conda.env.name environment\n\n#\n# spark.jars.packages can be used for adding packages into spark interpreter\n# The following is to add avro into your spark interpreter\n#\n\n# spark.jars.packages io.delta:delta-core_2.12:2.1.1,com.databricks:spark-avro_2.11:4.0.0\n\nspark.jars.packages io.delta:delta-core_2.12:1.0.0\n\n\n#\n#\n#\nspark.sql.extensions io.delta.sql.DeltaSparkSessionExtension\nspark.sql.catalog.spark_catalog org.apache.spark.sql.delta.catalog.DeltaCatalog\n\n#\n#\n#\nspark.sql.warehouse.dir /user/spark/warehouse\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-07 04:10:22.036",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668659726754_295974511",
+      "id": "paragraph_1668659726754_295974511",
+      "dateCreated": "2022-11-17 04:35:26.754",
+      "dateStarted": "2022-11-18 19:26:36.132",
+      "dateFinished": "2022-11-18 19:26:36.163",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n\n# Create Spark Session with Delta JARS and conf\n\nfrom pyspark.sql import SparkSession\n\nspark \u003d SparkSession \\\n    .builder \\\n    .appName(\"pyspark-delta-table\") \\\n    .config(\u0027spark.jars.packages\u0027, \u0027io.delta:delta-core_2.12:2.1.1\u0027) \\\n    .config(\"spark.sql.extensions\", \"io.delta.sql.DeltaSparkSessionExtension\") \\\n    .config(\"spark.sql.catalog.spark_catalog\", \"org.apache.spark.sql.delta.catalog.DeltaCatalog\") \\\n    .config(\"spark.sql.warehouse.dir\", \"/user/spark/warehouse\") \\\n    .master(\"local[*]\") \\\n    .enableHiveSupport() \\\n    .getOrCreate()\n\nspark",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-18 01:28:02.782",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653422841_1958146079",
+      "id": "paragraph_1668653422841_1958146079",
+      "dateCreated": "2022-11-17 02:50:22.841",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\n\nspark.sparkContext.master",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-29 15:47:06.414",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres3\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m \u003d yarn\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653523716_1199423131",
+      "id": "paragraph_1668653523716_1199423131",
+      "dateCreated": "2022-11-17 02:52:03.717",
+      "dateStarted": "2022-11-29 15:47:06.419",
+      "dateFinished": "2022-11-29 15:47:06.817",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark import SparkConf\n\nSparkConf().getAll()\n\n# spark.conf.set(\"spark.sql.warehouse.dir\", \"/user/spark/warehouse\");\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-29 15:47:16.428",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "[(\u0027spark.yarn.app.id\u0027, \u0027application_1669735984375_0001\u0027), (\u0027spark.eventLog.enabled\u0027, \u0027true\u0027), (\u0027spark.org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter.param.PROXY_URI_BASES\u0027, \u0027http://resourcemanager:8088/proxy/application_1669735984375_0001\u0027), (\u0027spark.submit.deployMode\u0027, \u0027cluster\u0027), (\u0027spark.yarn.submit.waitAppCompletion\u0027, \u0027false\u0027), (\u0027spark.webui.yarn.useProxy\u0027, \u0027true\u0027), (\u0027spark.yarn.queue\u0027, \u0027root.default\u0027), (\u0027spark.serializer\u0027, \u0027org.apache.spark.serializer.KryoSerializer\u0027), (\u0027spark.org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter.param.PROXY_HOSTS\u0027, \u0027resourcemanager\u0027), (\u0027spark.yarn.maxAppAttempts\u0027, \u00271\u0027), (\u0027spark.executor.instances\u0027, \u00272\u0027), (\u0027spark.yarn.dist.archives\u0027, \u0027hdfs://namenode:9000/archives/pyspark3.7-20221125.tar.gz#environment\u0027), (\u0027spark.eventLog.dir\u0027, \u0027hdfs://namenode:9000/tmp/spark/logs\u0027), (\u0027spark.ui.filters\u0027, \u0027org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter\u0027), (\u0027spark.jars.packages\u0027, \u0027io.delta:delta-core_2.12:1.0.0\u0027), (\u0027spark.driver.cores\u0027, \u00271\u0027), (\u0027spark.yarn.dist.files\u0027, \u0027file:///opt/zeppelin/conf/log4j_yarn_cluster.properties\u0027), (\u0027spark.executor.memory\u0027, \u0027640m\u0027), (\u0027spark.driver.extraJavaOptions\u0027, \u0027-Dfile.encoding\u003dUTF-8 -Dlog4j.configuration\u003dlog4j_yarn_cluster.properties -Dzeppelin.log.file\u003d/apps/sandbox/zeppelin/logs/zeppelin-interpreter-spark-shared_process--zeppelin.log\u0027), (\u0027spark.yarn.historyServer.allowTracking\u0027, \u0027true\u0027), (\u0027spark.yarn.app.container.log.dir\u0027, \u0027/opt/hadoop-3.3.4/logs/userlogs/application_1669735984375_0001/container_1669735984375_0001_01_000001\u0027), (\u0027spark.executorEnv.PYTHONPATH\u0027, \u0027/opt/spark-3.3.1/python/lib/py4j-0.10.9-src.zip:/opt/spark-3.3.1/python/:\u003cCPS\u003e{{PWD}}/pyspark.zip\u003cCPS\u003e{{PWD}}/py4j-0.10.9-src.zip\u0027), (\u0027spark.executor.cores\u0027, \u00272\u0027), (\u0027spark.master\u0027, \u0027yarn\u0027), (\u0027spark.ui.port\u0027, \u00270\u0027), (\u0027spark.sql.extensions\u0027, \u0027io.delta.sql.DeltaSparkSessionExtension\u0027), (\u0027spark.driver.memory\u0027, \u0027640m\u0027), (\u0027spark.yarn.dist.jars\u0027, \u0027file:///opt/zeppelin/interpreter/spark/scala-2.12/spark-scala-2.12-0.10.1.jar,file:///opt/zeppelin/interpreter/zeppelin-interpreter-shaded-0.10.1.jar,file:///opt/zeppelin/.ivy2/jars/io.delta_delta-core_2.12-1.0.0.jar,file:///opt/zeppelin/.ivy2/jars/org.antlr_antlr4-4.7.jar,file:///opt/zeppelin/.ivy2/jars/org.antlr_antlr4-runtime-4.7.jar,file:///opt/zeppelin/.ivy2/jars/org.antlr_antlr-runtime-3.5.2.jar,file:///opt/zeppelin/.ivy2/jars/org.antlr_ST4-4.0.8.jar,file:///opt/zeppelin/.ivy2/jars/org.abego.treelayout_org.abego.treelayout.core-1.0.3.jar,file:///opt/zeppelin/.ivy2/jars/org.glassfish_javax.json-1.0.4.jar,file:///opt/zeppelin/.ivy2/jars/com.ibm.icu_icu4j-58.2.jar\u0027), (\u0027spark.yarn.secondary.jars\u0027, \u0027spark-scala-2.12-0.10.1.jar,zeppelin-interpreter-shaded-0.10.1.jar,io.delta_delta-core_2.12-1.0.0.jar,org.antlr_antlr4-4.7.jar,org.antlr_antlr4-runtime-4.7.jar,org.antlr_antlr-runtime-3.5.2.jar,org.antlr_ST4-4.0.8.jar,org.abego.treelayout_org.abego.treelayout.core-1.0.3.jar,org.glassfish_javax.json-1.0.4.jar,com.ibm.icu_icu4j-58.2.jar\u0027), (\u0027spark.submit.pyFiles\u0027, \u0027\u0027), (\u0027spark.yarn.isPython\u0027, \u0027true\u0027), (\u0027spark.app.name\u0027, \u0027zeppelin-app\u0027), (\u0027spark.sql.catalog.spark_catalog\u0027, \u0027org.apache.spark.sql.delta.catalog.DeltaCatalog\u0027)]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668738093784_1115693043",
+      "id": "paragraph_1668738093784_1115693043",
+      "dateCreated": "2022-11-18 02:21:33.784",
+      "dateStarted": "2022-11-29 15:47:16.432",
+      "dateFinished": "2022-11-29 15:47:16.483",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.pyspark\n\n\ndata \u003d spark.range(0, 5)\ndata.write.format(\"delta\").save(\"/tmp/delta-table\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-17 05:08:04.166",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Py4JJavaError: An error occurred while calling o91.range.\n: java.lang.IncompatibleClassChangeError: Implementing class\n\tat java.lang.ClassLoader.defineClass1(Native Method)\n\tat java.lang.ClassLoader.defineClass(ClassLoader.java:756)\n\tat java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)\n\tat java.net.URLClassLoader.defineClass(URLClassLoader.java:473)\n\tat java.net.URLClassLoader.access$100(URLClassLoader.java:74)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:369)\n\tat java.net.URLClassLoader$1.run(URLClassLoader.java:363)\n\tat java.security.AccessController.doPrivileged(Native Method)\n\tat java.net.URLClassLoader.findClass(URLClassLoader.java:362)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:418)\n\tat java.lang.ClassLoader.loadClass(ClassLoader.java:351)\n\tat io.delta.sql.parser.DeltaSqlParser.\u003cinit\u003e(DeltaSqlParser.scala:72)\n\tat io.delta.sql.DeltaSparkSessionExtension.$anonfun$apply$1(DeltaSparkSessionExtension.scala:78)\n\tat org.apache.spark.sql.SparkSessionExtensions.$anonfun$buildParser$1(SparkSessionExtensions.scala:239)\n\tat scala.collection.IndexedSeqOptimized.foldLeft(IndexedSeqOptimized.scala:60)\n\tat scala.collection.IndexedSeqOptimized.foldLeft$(IndexedSeqOptimized.scala:68)\n\tat scala.collection.mutable.ArrayBuffer.foldLeft(ArrayBuffer.scala:49)\n\tat org.apache.spark.sql.SparkSessionExtensions.buildParser(SparkSessionExtensions.scala:238)\n\tat org.apache.spark.sql.internal.BaseSessionStateBuilder.sqlParser$lzycompute(BaseSessionStateBuilder.scala:124)\n\tat org.apache.spark.sql.internal.BaseSessionStateBuilder.sqlParser(BaseSessionStateBuilder.scala:123)\n\tat org.apache.spark.sql.internal.BaseSessionStateBuilder.build(BaseSessionStateBuilder.scala:341)\n\tat org.apache.spark.sql.SparkSession$.org$apache$spark$sql$SparkSession$$instantiateSessionState(SparkSession.scala:1145)\n\tat org.apache.spark.sql.SparkSession.$anonfun$sessionState$2(SparkSession.scala:159)\n\tat scala.Option.getOrElse(Option.scala:189)\n\tat org.apache.spark.sql.SparkSession.sessionState$lzycompute(SparkSession.scala:155)\n\tat org.apache.spark.sql.SparkSession.sessionState(SparkSession.scala:152)\n\tat org.apache.spark.sql.Dataset.\u003cinit\u003e(Dataset.scala:216)\n\tat org.apache.spark.sql.SparkSession.range(SparkSession.scala:550)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)\n\tat py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)\n\tat py4j.Gateway.invoke(Gateway.java:282)\n\tat py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)\n\tat py4j.commands.CallCommand.execute(CallCommand.java:79)\n\tat py4j.GatewayConnection.run(GatewayConnection.java:238)\n\tat java.lang.Thread.run(Thread.java:748)\n\n(\u003cclass \u0027py4j.protocol.Py4JJavaError\u0027\u003e, Py4JJavaError(\u0027An error occurred while calling o91.range.\\n\u0027, JavaObject id\u003do99), \u003ctraceback object at 0x7fd05fe4dd70\u003e)"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668661609875_1213911944",
+      "id": "paragraph_1668661609875_1213911944",
+      "dateCreated": "2022-11-17 05:06:49.875",
+      "dateStarted": "2022-11-17 05:08:04.170",
+      "dateFinished": "2022-11-17 05:08:05.453",
+      "status": "ERROR"
+    },
+    {
+      "text": "%spark.sql\n\n-- show tables\n\nshow tables in default;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-29 16:00:07.535",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "database": "string",
+                      "tableName": "string",
+                      "isTemporary": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "database\ttableName\tisTemporary\ndefault\toptrans_tbl\tfalse\ndefault\tproduct_revenue\tfalse\ndefault\tsales_delta_managed\tfalse\ndefault\ttransact_tbl\tfalse\ndefault\ttransaction_detail_hive_tbl\tfalse\ndefault\ttransaction_details\tfalse\ndefault\ttransaction_details_orc\tfalse\ndefault\ttransaction_details_parquet\tfalse\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668660602832_452952327",
+      "id": "paragraph_1668660602832_452952327",
+      "dateCreated": "2022-11-17 04:50:02.832",
+      "dateStarted": "2022-11-29 16:00:07.537",
+      "dateFinished": "2022-11-29 16:00:08.434",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\ntables \u003d spark.sql(\"show tables\").show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-18 19:49:43.397",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------+-------------------+-----------+\n|database|          tableName|isTemporary|\n+--------+-------------------+-----------+\n| default|sales_delta_managed|      false|\n| default|transaction_details|      false|\n+--------+-------------------+-----------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668738846555_976857886",
+      "id": "paragraph_1668738846555_976857886",
+      "dateCreated": "2022-11-18 02:34:06.555",
+      "dateStarted": "2022-11-18 19:49:43.401",
+      "dateFinished": "2022-11-18 19:49:43.453",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\ndf_txn_details\u003dspark.sql(\"select * from transaction_details limit 20\")\ndf_txn_details.printSchema()\ndf_txn_details.show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-18 19:49:56.006",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- id: integer (nullable \u003d true)\n |-- uuid: string (nullable \u003d true)\n |-- cardtype: string (nullable \u003d true)\n |-- website: string (nullable \u003d true)\n |-- product: string (nullable \u003d true)\n |-- amount: double (nullable \u003d true)\n |-- city: string (nullable \u003d true)\n |-- country: string (nullable \u003d true)\n |-- addts: long (nullable \u003d true)\n |-- txn_receive_date: string (nullable \u003d true)\n\n+----+--------------------+--------+--------+--------+--------+-----------+-------+----------+----------------+\n|  id|                uuid|cardtype| website| product|  amount|       city|country|     addts|txn_receive_date|\n+----+--------------------+--------+--------+--------+--------+-----------+-------+----------+----------------+\n|3949|c08f1e8a-8e9f-43e...|    VISA|  Amazon|  Tablet|14949.11|     Oxford|     UK|1663203040|      2022-09-15|\n|4143|319e34f2-1e00-45b...|  Master|Flipkart|Computer| 8618.17|   Banglore|     IN|1663203045|      2022-09-15|\n|4547|b7bae4f2-420e-4dd...|  Master|  Amazon|  Laptop|24347.02|   New York|    USA|1663203050|      2022-09-15|\n|3196|2d89dc1c-9d86-45f...|   RuPay|  Amazon|  Tablet|18717.18|Los Angeles|    USA|1663203055|      2022-09-15|\n|2724|de443eb3-38bf-464...|    VISA|  Myntra|  Laptop| 1665.79|      Miami|    USA|1663203060|      2022-09-15|\n|3136|24e6c80a-6318-436...|  Master|  Amazon|Computer|17264.66|   Yokohama|     JP|1663203065|      2022-09-15|\n|4485|84f78629-c611-478...|    Amex|  Myntra|  Laptop|  511.53|      Miami|    USA|1663203070|      2022-09-15|\n|2716|fa66b416-e2be-4d8...|    Amex|  Myntra|  Mobile| 16965.5| Manchester|     UK|1663203075|      2022-09-15|\n|1914|192a7c5d-3c19-411...|  Master|  Myntra|  Laptop|16801.61|     Mumbai|     IN|1663203080|      2022-09-15|\n|4351|c3eca654-2602-406...|   RuPay|Flipkart|  Laptop| 4060.14| Manchester|     UK|1663203085|      2022-09-15|\n|1458|c886b787-5cb7-447...|   RuPay|Flipkart|  Mobile| 1750.67|     London|     UK|1663203090|      2022-09-15|\n|4964|f70be51e-a2d3-420...|    Amex|SnapDeal|Computer| 4401.56|       Pune|     IN|1663203095|      2022-09-15|\n|2572|ae8ba45f-e18b-48e...|    VISA|  Amazon|  Tablet| 4903.23|      Tokyo|     JP|1663203100|      2022-09-15|\n|3909|c0ad06fd-ac44-427...|    VISA|SnapDeal|  Mobile| 15298.2|      Tokyo|     JP|1663203105|      2022-09-15|\n|1314|697cb724-ae18-473...|  Master|  Amazon|  Laptop| 5114.79|      Miami|    USA|1663203110|      2022-09-15|\n|4820|cac70670-42b5-4c3...|  Master|SnapDeal|  Mobile| 10613.9|   Banglore|     IN|1663203115|      2022-09-15|\n|1184|2435c3d4-5944-489...|   RuPay|SnapDeal|  Mobile| 3139.05|      Tokyo|     JP|1663203120|      2022-09-15|\n|3566|e2c655d6-f7c6-493...|    VISA|SnapDeal|  Tablet| 5523.02|  Liverpool|     UK|1663203125|      2022-09-15|\n|3844|486af773-f766-412...|  Master|Flipkart|  Mobile|20678.19|Los Angeles|    USA|1663203130|      2022-09-15|\n|1404|20af6d2e-31d8-4b6...|    Amex|Flipkart|  Laptop|22013.31|       Pune|     IN|1663203135|      2022-09-15|\n+----+--------------------+--------+--------+--------+--------+-----------+-------+----------+----------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:40913/jobs/job?id\u003d19"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668738886650_1305597021",
+      "id": "paragraph_1668738886650_1305597021",
+      "dateCreated": "2022-11-18 02:34:46.650",
+      "dateStarted": "2022-11-18 19:49:56.010",
+      "dateFinished": "2022-11-18 19:49:56.447",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n\n# Lets create a sales managed delta table\nfrom pyspark.sql.functions import to_timestamp, expr\n\ndf_formatted \u003d (\n                    df_txn_details\n                    .withColumn(\"transacted_at\", to_timestamp(\"addts\"))\n                    .withColumn(\"amount\", expr(\"CAST(amount as decimal(14,2))\"))\n               )\n    \n\ndf_formatted.show()\n\ndf_formatted.write \\\n    .format(\"delta\") \\\n    .saveAsTable(\"sales_delta_managed\")\n    \n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-18 02:41:48.898",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----+--------------------+--------+--------+--------+--------+-----------+-------+----------+----------------+-------------------+\n|  id|                uuid|cardtype| website| product|  amount|       city|country|     addts|txn_receive_date|      transacted_at|\n+----+--------------------+--------+--------+--------+--------+-----------+-------+----------+----------------+-------------------+\n|3949|c08f1e8a-8e9f-43e...|    VISA|  Amazon|  Tablet|14949.11|     Oxford|     UK|1663203040|      2022-09-15|2022-09-15 00:50:40|\n|4143|319e34f2-1e00-45b...|  Master|Flipkart|Computer| 8618.17|   Banglore|     IN|1663203045|      2022-09-15|2022-09-15 00:50:45|\n|4547|b7bae4f2-420e-4dd...|  Master|  Amazon|  Laptop|24347.02|   New York|    USA|1663203050|      2022-09-15|2022-09-15 00:50:50|\n|3196|2d89dc1c-9d86-45f...|   RuPay|  Amazon|  Tablet|18717.18|Los Angeles|    USA|1663203055|      2022-09-15|2022-09-15 00:50:55|\n|2724|de443eb3-38bf-464...|    VISA|  Myntra|  Laptop| 1665.79|      Miami|    USA|1663203060|      2022-09-15|2022-09-15 00:51:00|\n|3136|24e6c80a-6318-436...|  Master|  Amazon|Computer|17264.66|   Yokohama|     JP|1663203065|      2022-09-15|2022-09-15 00:51:05|\n|4485|84f78629-c611-478...|    Amex|  Myntra|  Laptop|  511.53|      Miami|    USA|1663203070|      2022-09-15|2022-09-15 00:51:10|\n|2716|fa66b416-e2be-4d8...|    Amex|  Myntra|  Mobile|16965.50| Manchester|     UK|1663203075|      2022-09-15|2022-09-15 00:51:15|\n|1914|192a7c5d-3c19-411...|  Master|  Myntra|  Laptop|16801.61|     Mumbai|     IN|1663203080|      2022-09-15|2022-09-15 00:51:20|\n|4351|c3eca654-2602-406...|   RuPay|Flipkart|  Laptop| 4060.14| Manchester|     UK|1663203085|      2022-09-15|2022-09-15 00:51:25|\n|1458|c886b787-5cb7-447...|   RuPay|Flipkart|  Mobile| 1750.67|     London|     UK|1663203090|      2022-09-15|2022-09-15 00:51:30|\n|4964|f70be51e-a2d3-420...|    Amex|SnapDeal|Computer| 4401.56|       Pune|     IN|1663203095|      2022-09-15|2022-09-15 00:51:35|\n|2572|ae8ba45f-e18b-48e...|    VISA|  Amazon|  Tablet| 4903.23|      Tokyo|     JP|1663203100|      2022-09-15|2022-09-15 00:51:40|\n|3909|c0ad06fd-ac44-427...|    VISA|SnapDeal|  Mobile|15298.20|      Tokyo|     JP|1663203105|      2022-09-15|2022-09-15 00:51:45|\n|1314|697cb724-ae18-473...|  Master|  Amazon|  Laptop| 5114.79|      Miami|    USA|1663203110|      2022-09-15|2022-09-15 00:51:50|\n|4820|cac70670-42b5-4c3...|  Master|SnapDeal|  Mobile|10613.90|   Banglore|     IN|1663203115|      2022-09-15|2022-09-15 00:51:55|\n|1184|2435c3d4-5944-489...|   RuPay|SnapDeal|  Mobile| 3139.05|      Tokyo|     JP|1663203120|      2022-09-15|2022-09-15 00:52:00|\n|3566|e2c655d6-f7c6-493...|    VISA|SnapDeal|  Tablet| 5523.02|  Liverpool|     UK|1663203125|      2022-09-15|2022-09-15 00:52:05|\n|3844|486af773-f766-412...|  Master|Flipkart|  Mobile|20678.19|Los Angeles|    USA|1663203130|      2022-09-15|2022-09-15 00:52:10|\n|1404|20af6d2e-31d8-4b6...|    Amex|Flipkart|  Laptop|22013.31|       Pune|     IN|1663203135|      2022-09-15|2022-09-15 00:52:15|\n+----+--------------------+--------+--------+--------+--------+-----------+-------+----------+----------------+-------------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:39991/jobs/job?id\u003d3"
+            },
+            {
+              "jobUrl": "http://nodemanager:39991/jobs/job?id\u003d4"
+            },
+            {
+              "jobUrl": "http://nodemanager:39991/jobs/job?id\u003d5"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668739083989_354326840",
+      "id": "paragraph_1668739083989_354326840",
+      "dateCreated": "2022-11-18 02:38:03.989",
+      "dateStarted": "2022-11-18 02:41:48.901",
+      "dateFinished": "2022-11-18 02:41:57.267",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n\n\ndescribe extended default.sales_delta_managed;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-29 16:00:19.098",
+      "progress": 87,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "col_name": "string",
+                      "data_type": "string",
+                      "comment": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "col_name\tdata_type\tcomment\nid\tint\t\nuuid\tstring\t\ncardtype\tstring\t\nwebsite\tstring\t\nproduct\tstring\t\namount\tdecimal(14,2)\t\ncity\tstring\t\ncountry\tstring\t\naddts\tbigint\t\ntxn_receive_date\tstring\t\ntransacted_at\ttimestamp\t\n\t\t\n# Partitioning\t\t\nNot partitioned\t\t\n\t\t\n# Detailed Table Information\t\t\nName\tdefault.sales_delta_managed\t\nLocation\thdfs://namenode:9000/user/hive/warehouse/sales_delta_managed\t\nProvider\tdelta\t\nTable Properties\t[Type\u003dMANAGED,delta.minReaderVersion\u003d1,delta.minWriterVersion\u003d2]\t\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669735984375_0001//jobs/job?id\u003d10"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668739370152_1177249447",
+      "id": "paragraph_1668739370152_1177249447",
+      "dateCreated": "2022-11-18 02:42:50.152",
+      "dateStarted": "2022-11-29 16:00:19.100",
+      "dateFinished": "2022-11-29 16:00:30.022",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n\nselect * from default.sales_delta_managed limit 10;",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-29 16:00:39.862",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "id": "string",
+                      "uuid": "string",
+                      "cardtype": "string",
+                      "website": "string",
+                      "product": "string",
+                      "amount": "string",
+                      "city": "string",
+                      "country": "string",
+                      "addts": "string",
+                      "txn_receive_date": "string",
+                      "transacted_at": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "id\tuuid\tcardtype\twebsite\tproduct\tamount\tcity\tcountry\taddts\ttxn_receive_date\ttransacted_at\n3949\tc08f1e8a-8e9f-43e7-bcf9-f15fde730a7d\tVISA\tAmazon\tTablet\t15000.00\tOxford\tUK\t1663203040\t2022-09-15\t2022-09-15 00:50:40.0\n4143\t319e34f2-1e00-45b3-b8d6-c628ccfbfac2\tMaster\tFlipkart\tComputer\t8618.17\tBanglore\tIN\t1663203045\t2022-09-15\t2022-09-15 00:50:45.0\n4547\tb7bae4f2-420e-4dd6-8f4a-5d9207a7957f\tMaster\tAmazon\tLaptop\t24347.02\tNew York\tUSA\t1663203050\t2022-09-15\t2022-09-15 00:50:50.0\n3196\t2d89dc1c-9d86-45f8-bfc7-d8663276b739\tRuPay\tAmazon\tTablet\t18717.18\tLos Angeles\tUSA\t1663203055\t2022-09-15\t2022-09-15 00:50:55.0\n2724\tde443eb3-38bf-4648-bf3e-31295062d25a\tVISA\tMyntra\tLaptop\t1665.79\tMiami\tUSA\t1663203060\t2022-09-15\t2022-09-15 00:51:00.0\n3136\t24e6c80a-6318-4368-be50-f2073157cd39\tMaster\tAmazon\tComputer\t17264.66\tYokohama\tJP\t1663203065\t2022-09-15\t2022-09-15 00:51:05.0\n4485\t84f78629-c611-4782-9692-396bdc84b3ea\tAmex\tMyntra\tLaptop\t511.53\tMiami\tUSA\t1663203070\t2022-09-15\t2022-09-15 00:51:10.0\n2716\tfa66b416-e2be-4d8f-b4ef-dd4c46ed2a53\tAmex\tMyntra\tMobile\t16965.50\tManchester\tUK\t1663203075\t2022-09-15\t2022-09-15 00:51:15.0\n1914\t192a7c5d-3c19-411e-b612-1036ecb0b984\tMaster\tMyntra\tLaptop\t16801.61\tMumbai\tIN\t1663203080\t2022-09-15\t2022-09-15 00:51:20.0\n4351\tc3eca654-2602-4067-a0a8-21b82b7bbfbb\tRuPay\tFlipkart\tLaptop\t4060.14\tManchester\tUK\t1663203085\t2022-09-15\t2022-09-15 00:51:25.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669735984375_0001//jobs/job?id\u003d11"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669735984375_0001//jobs/job?id\u003d12"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668739451637_705506706",
+      "id": "paragraph_1668739451637_705506706",
+      "dateCreated": "2022-11-18 02:44:11.637",
+      "dateStarted": "2022-11-29 16:00:39.864",
+      "dateFinished": "2022-11-29 16:00:42.410",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n\n# Lets check the current version of the table\n\nfrom delta import DeltaTable\n\ndt \u003d DeltaTable.forName(spark, \"sales_delta_managed\")\ndt.history().select(\"version\", \"timestamp\").show(truncate\u003dFalse)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-29 16:00:53.616",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+-----------------------+\n|version|timestamp              |\n+-------+-----------------------+\n|4      |2022-11-25 01:47:53.986|\n|3      |2022-11-18 19:33:25.879|\n|2      |2022-11-18 19:33:04.573|\n|1      |2022-11-18 19:32:38.246|\n|0      |2022-11-18 02:41:50.67 |\n+-------+-----------------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669735984375_0001//jobs/job?id\u003d13"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668739526362_546071316",
+      "id": "paragraph_1668739526362_546071316",
+      "dateCreated": "2022-11-18 02:45:26.362",
+      "dateStarted": "2022-11-29 16:00:53.617",
+      "dateFinished": "2022-11-29 16:00:55.183",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n\nupdate default.sales_delta_managed set amount \u003d 15000.00 where id \u003d 3949;\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-29 15:48:52.369",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "org.apache.hadoop.hive.ql.metadata.HiveException: java.lang.RuntimeException: Unable to instantiate org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668799837695_1049710910",
+      "id": "paragraph_1668799837695_1049710910",
+      "dateCreated": "2022-11-18 19:30:37.695",
+      "dateStarted": "2022-11-29 15:48:52.373",
+      "dateFinished": "2022-11-29 15:48:56.990",
+      "status": "ERROR"
+    },
+    {
+      "text": "%pyspark\n\n# Lets check the current version of the table\n\ndt.history().select(\"version\", \"timestamp\").show(truncate\u003dFalse)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-29 16:01:11.214",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+-----------------------+\n|version|timestamp              |\n+-------+-----------------------+\n|4      |2022-11-25 01:47:53.986|\n|3      |2022-11-18 19:33:25.879|\n|2      |2022-11-18 19:33:04.573|\n|1      |2022-11-18 19:32:38.246|\n|0      |2022-11-18 02:41:50.67 |\n+-------+-----------------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669735984375_0001//jobs/job?id\u003d14"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668800024490_547923331",
+      "id": "paragraph_1668800024490_547923331",
+      "dateCreated": "2022-11-18 19:33:44.490",
+      "dateStarted": "2022-11-29 16:01:11.216",
+      "dateFinished": "2022-11-29 16:01:11.662",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n\nselect * from default.sales_delta_managed limit 10;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-25 01:48:14.227",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "id": "string",
+                      "uuid": "string",
+                      "cardtype": "string",
+                      "website": "string",
+                      "product": "string",
+                      "amount": "string",
+                      "city": "string",
+                      "country": "string",
+                      "addts": "string",
+                      "txn_receive_date": "string",
+                      "transacted_at": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "id\tuuid\tcardtype\twebsite\tproduct\tamount\tcity\tcountry\taddts\ttxn_receive_date\ttransacted_at\n3949\tc08f1e8a-8e9f-43e7-bcf9-f15fde730a7d\tVISA\tAmazon\tTablet\t15000.00\tOxford\tUK\t1663203040\t2022-09-15\t2022-09-15 00:50:40.0\n4143\t319e34f2-1e00-45b3-b8d6-c628ccfbfac2\tMaster\tFlipkart\tComputer\t8618.17\tBanglore\tIN\t1663203045\t2022-09-15\t2022-09-15 00:50:45.0\n4547\tb7bae4f2-420e-4dd6-8f4a-5d9207a7957f\tMaster\tAmazon\tLaptop\t24347.02\tNew York\tUSA\t1663203050\t2022-09-15\t2022-09-15 00:50:50.0\n3196\t2d89dc1c-9d86-45f8-bfc7-d8663276b739\tRuPay\tAmazon\tTablet\t18717.18\tLos Angeles\tUSA\t1663203055\t2022-09-15\t2022-09-15 00:50:55.0\n2724\tde443eb3-38bf-4648-bf3e-31295062d25a\tVISA\tMyntra\tLaptop\t1665.79\tMiami\tUSA\t1663203060\t2022-09-15\t2022-09-15 00:51:00.0\n3136\t24e6c80a-6318-4368-be50-f2073157cd39\tMaster\tAmazon\tComputer\t17264.66\tYokohama\tJP\t1663203065\t2022-09-15\t2022-09-15 00:51:05.0\n4485\t84f78629-c611-4782-9692-396bdc84b3ea\tAmex\tMyntra\tLaptop\t511.53\tMiami\tUSA\t1663203070\t2022-09-15\t2022-09-15 00:51:10.0\n2716\tfa66b416-e2be-4d8f-b4ef-dd4c46ed2a53\tAmex\tMyntra\tMobile\t16965.50\tManchester\tUK\t1663203075\t2022-09-15\t2022-09-15 00:51:15.0\n1914\t192a7c5d-3c19-411e-b612-1036ecb0b984\tMaster\tMyntra\tLaptop\t16801.61\tMumbai\tIN\t1663203080\t2022-09-15\t2022-09-15 00:51:20.0\n4351\tc3eca654-2602-4067-a0a8-21b82b7bbfbb\tRuPay\tFlipkart\tLaptop\t4060.14\tManchester\tUK\t1663203085\t2022-09-15\t2022-09-15 00:51:25.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://nodemanager:44139/jobs/job?id\u003d9"
+            },
+            {
+              "jobUrl": "http://nodemanager:44139/jobs/job?id\u003d10"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668800074836_1070256155",
+      "id": "paragraph_1668800074836_1070256155",
+      "dateCreated": "2022-11-18 19:34:34.836",
+      "dateStarted": "2022-11-25 01:48:14.232",
+      "dateFinished": "2022-11-25 01:48:14.692",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n\n# Verify if a given table is Delta\n\nprint(DeltaTable.isDeltaTable(spark, \"/user/hive/warehouse/transaction_details\"))\nprint(DeltaTable.isDeltaTable(spark, \"/user/hive/warehouse/sales_delta_managed\"))\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-29 16:01:16.947",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "False\nTrue\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668800130131_1841510933",
+      "id": "paragraph_1668800130131_1841510933",
+      "dateCreated": "2022-11-18 19:35:30.131",
+      "dateStarted": "2022-11-29 16:01:16.949",
+      "dateFinished": "2022-11-29 16:01:17.035",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n# Shortcut to create a Parquet location to delta table\n# We will convert the sales_managed table to delta\n\nDeltaTable.convertToDelta(spark, \"parquet.`spark-warehouse/sales_managed`\")\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-18 19:37:35.911",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668800244448_1397372304",
+      "id": "paragraph_1668800244448_1397372304",
+      "dateCreated": "2022-11-18 19:37:24.448",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\n# Lets read our Sales dataset\n\ndf_sales \u003d spark.read.parquet(\"dataset/sales.parquet/*parquet\")\ndf_sales.printSchema()\ndf_sales.show(10, False)\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-18 19:29:46.334",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668660733136_1609917675",
+      "id": "paragraph_1668660733136_1609917675",
+      "dateCreated": "2022-11-17 04:52:13.136",
+      "status": "READY"
+    }
+  ],
+  "name": "pyspark-delta-table",
+  "id": "2HK4A8YWE",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

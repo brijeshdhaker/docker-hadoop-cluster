@@ -1,0 +1,1004 @@
+{
+  "paragraphs": [
+    {
+      "text": "%hive\n\nshow tables;\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-17 11:31:35.272",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "tab_name": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "tab_name\ne_students\nm_students\ntransaction_details\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640833590815_334493713",
+      "id": "paragraph_1640833590815_334493713",
+      "dateCreated": "2021-12-30 03:06:30.815",
+      "dateStarted": "2024-02-17 11:31:35.276",
+      "dateFinished": "2024-02-17 11:31:35.448",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\ndrop table IF EXISTS customers;\ndrop table IF EXISTS orders;\ndrop table IF EXISTS transaction_detail_hive_tbl;\ndrop table IF EXISTS transaction_details;\ndrop table IF EXISTS zipcodes;\ndrop table IF EXISTSzipcodes_tmp;",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-17 11:33:13.621",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "QINFO  : Cuoemrpyi leixnegc uctoemdm asnudc(cqeusesrfyuIldl\u003dyr.o oAtf_f2e0c2t2e0d1 1r1o0w5s5 4:3 4-_1\n43e32135-d0a3-43c3-9d09-81d43867fb74): \n\ndrop table customers\nINFO  : Concurrency mode is disabled, not creating a lock manager\nINFO  : Semantic Analysis Completed (retrial \u003d false)\nINFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)\nINFO  : EXPLAIN output for queryid root_20220111055434_43e32135-d0a3-43c3-9d09-81d43867fb74 : STAGE DEPENDENCIES:\n  Stage-0 is a root stage [DDL]\n\nSTAGE PLANS:\n  Stage: Stage-0\n      Drop Table Operator:\n        Drop Table\n          table: customers\n\n\nINFO  : Completed compiling command(queryId\u003droot_20220111055434_43e32135-d0a3-43c3-9d09-81d43867fb74); Time taken: 0.112 seconds\nINFO  : Concurrency mode is disabled, not creating a lock manager\nINFO  : Executing command(queryId\u003droot_20220111055434_43e32135-d0a3-43c3-9d09-81d43867fb74): \n\ndrop table customers\nINFO  : Starting task [Stage-0:DDL] in serial mode\nINFO  : Completed executing command(queryId\u003droot_20220111055434_43e32135-d0a3-43c3-9d09-81d43867fb74); Time taken: 0.918 seconds\nINFO  : OK\nINFO  : Concurrency mode is disabled, not creating a lock manager\n\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641880384211_759874321",
+      "id": "paragraph_1641880384211_759874321",
+      "dateCreated": "2022-01-11 05:53:04.211",
+      "dateStarted": "2022-01-11 05:54:34.104",
+      "dateFinished": "2022-01-11 05:54:36.238",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nCREATE TABLE IF NOT EXISTS CUSTOMERS(\n    ID INT,\n    NAME String,\n    AGE INT,\n    ADDRESS String,\n    SALARY float\n)\nCOMMENT \u0027Custormer Table\u0027\nROW FORMAT DELIMITED\nFIELDS TERMINATED BY \u0027,\u0027; ",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-17 11:34:42.664",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639303251007_109740909",
+      "id": "paragraph_1639303251007_109740909",
+      "dateCreated": "2021-12-12 15:30:51.008",
+      "dateStarted": "2024-02-17 11:34:42.668",
+      "dateFinished": "2024-02-17 11:34:43.893",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%sh\n\nls -lart /apps/hostpath/datasets/customer.csv\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-17 11:33:53.458",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false,
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sh",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "-rwxr-xr-x 1 zeppelin 1000 188 Dec 21 12:12 /apps/hostpath/datasets/customer.csv\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708169615848_745678737",
+      "id": "paragraph_1708169615848_745678737",
+      "dateCreated": "2024-02-17 11:33:35.848",
+      "dateStarted": "2024-02-17 11:33:53.460",
+      "dateFinished": "2024-02-17 11:33:55.196",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nLOAD DATA LOCAL INPATH \u0027/apps/hostpath/datasets/customer.csv\u0027 OVERWRITE INTO TABLE CUSTOMERS;\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-17 11:34:59.585",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639304179094_711119477",
+      "id": "paragraph_1639304179094_711119477",
+      "dateCreated": "2021-12-12 15:46:19.095",
+      "dateStarted": "2024-02-17 11:34:59.587",
+      "dateFinished": "2024-02-17 11:35:00.529",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nselect * from CUSTOMERS;\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-17 11:35:12.805",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "editorHide": false,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 394.0,
+              "optionOpen": true,
+              "setting": {
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": false
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "forceY": false,
+                  "lineWithFocus": false,
+                  "isDateFormat": false,
+                  "dateFormat": ""
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "style": "stack"
+                },
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "id": "string",
+                      "name": "string",
+                      "age": "string",
+                      "address": "string",
+                      "salary": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "keys": [
+                {
+                  "name": "id",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "name",
+                  "index": 1.0,
+                  "aggr": "count"
+                },
+                {
+                  "name": "salary",
+                  "index": 4.0,
+                  "aggr": "sum"
+                }
+              ],
+              "commonSetting": {}
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "id\tname\tage\taddress\tsalary\n1\tRamesh\t32\tAhmedabad\t2000.0\n2\tKhilan\t25\tDelhi\t1500.0\n3\tkaushik\t23\tKota\t2000.0\n4\tChaitali\t25\tMumbai\t6500.0\n5\tHardik\t27\tBhopal\t8500.0\n6\tKomal\t22\tMP\t4500.0\n7\tMuffy\t24\tIndore\t10000.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639304315774_436701800",
+      "id": "paragraph_1639304315774_436701800",
+      "dateCreated": "2021-12-12 15:48:35.774",
+      "dateStarted": "2024-02-17 11:35:12.807",
+      "dateFinished": "2024-02-17 11:35:14.150",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nCREATE TABLE IF NOT EXISTS ORDERS(\n    OID INT,\n    `DATE` TIMESTAMP,\n    CUSTOMER_ID INT,\n    AMOUNT float\n)\nCOMMENT \u0027Order Table\u0027\nROW FORMAT DELIMITED\nFIELDS TERMINATED BY \u0027,\u0027; \n\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-17 11:35:31.712",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639303500158_1035549352",
+      "id": "paragraph_1639303500158_1035549352",
+      "dateCreated": "2021-12-12 15:35:00.158",
+      "dateStarted": "2024-02-17 11:35:31.714",
+      "dateFinished": "2024-02-17 11:35:31.899",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nLOAD DATA LOCAL INPATH \u0027/apps/hostpath/datasets/orders.csv\u0027 OVERWRITE INTO TABLE ORDERS;\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-17 11:35:43.292",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639303869720_1229328237",
+      "id": "paragraph_1639303869720_1229328237",
+      "dateCreated": "2021-12-12 15:41:09.721",
+      "dateStarted": "2024-02-17 11:35:43.293",
+      "dateFinished": "2024-02-17 11:35:43.951",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nselect * from ORDERS;\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-17 11:35:56.162",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "oid": "string",
+                      "date": "string",
+                      "customer_id": "string",
+                      "amount": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "keys": [],
+              "groups": [],
+              "values": [],
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "oid\tdate\tcustomer_id\tamount\n102\t2009-10-08 00:00:00.0\t3\t3000.0\n100\t2009-10-08 00:00:00.0\t3\t1500.25\n101\t2009-11-20 00:00:00.0\t2\t1560.0\n103\t2008-05-20 00:00:00.0\t4\t2060.5\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639304635150_1363102826",
+      "id": "paragraph_1639304635150_1363102826",
+      "dateCreated": "2021-12-12 15:53:55.150",
+      "dateStarted": "2024-02-17 11:35:56.164",
+      "dateFinished": "2024-02-17 11:35:56.406",
+      "status": "FINISHED"
+    },
+    {
+      "title": "JOIN  OR OUTER JOIN",
+      "text": "%hive\n\nSELECT c.ID, c.NAME, c.AGE, o.AMOUNT \nFROM CUSTOMERS c JOIN ORDERS o \nON (c.ID \u003d o.CUSTOMER_ID);\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-17 11:36:25.510",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "id": "string",
+                      "name": "string",
+                      "age": "string",
+                      "amount": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          },
+          "1": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": true,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "id": "string",
+                      "name": "string",
+                      "age": "string",
+                      "amount": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "name",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "amount",
+                  "index": 3.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "id\tname\tage\tamount\n4\tChaitali\t25\t2060.5\n3\tkaushik\t23\t3000.0\n3\tkaushik\t23\t1500.25\n2\tKhilan\t25\t1560.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639304662863_1939099136",
+      "id": "paragraph_1639304662863_1939099136",
+      "dateCreated": "2021-12-12 15:54:22.864",
+      "dateStarted": "2024-02-17 11:36:10.551",
+      "dateFinished": "2024-02-17 11:36:25.154",
+      "status": "FINISHED"
+    },
+    {
+      "title": "LEFT OUTER JOIN",
+      "text": "%hive\n\nSELECT c.ID, c.NAME, o.AMOUNT, o.`DATE` \nFROM CUSTOMERS c \nLEFT OUTER JOIN ORDERS o \nON (c.ID \u003d o.CUSTOMER_ID);\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-17 11:38:12.088",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "id": "string",
+                      "name": "string",
+                      "amount": "string",
+                      "date": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "id": "string",
+                      "name": "string",
+                      "amount": "string",
+                      "date": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "id\tname\tamount\tdate\n1\tRamesh\tnull\tnull\n4\tChaitali\t2060.5\t2008-05-20 00:00:00.0\n5\tHardik\tnull\tnull\n6\tKomal\tnull\tnull\n7\tMuffy\tnull\tnull\n2\tKhilan\t1560.0\t2009-11-20 00:00:00.0\n3\tkaushik\t3000.0\t2009-10-08 00:00:00.0\n3\tkaushik\t1500.25\t2009-10-08 00:00:00.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639304756193_111140168",
+      "id": "paragraph_1639304756193_111140168",
+      "dateCreated": "2021-12-12 15:55:56.193",
+      "dateStarted": "2024-02-17 11:37:59.252",
+      "dateFinished": "2024-02-17 11:38:11.709",
+      "status": "FINISHED"
+    },
+    {
+      "title": "RIGHT OUTER JOIN",
+      "text": "%hive\n\n\nSELECT c.ID, c.NAME, o.AMOUNT, o.`DATE` FROM CUSTOMERS c \nRIGHT OUTER JOIN ORDERS o ON (c.ID \u003d o.CUSTOMER_ID);\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-17 11:44:59.725",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "id": "string",
+                      "name": "string",
+                      "amount": "string",
+                      "date": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "id": "string",
+                      "name": "string",
+                      "amount": "string",
+                      "date": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "id\tname\tamount\tdate\n4\tChaitali\t2060.5\t2008-05-20 00:00:00.0\n3\tkaushik\t3000.0\t2009-10-08 00:00:00.0\n3\tkaushik\t1500.25\t2009-10-08 00:00:00.0\n2\tKhilan\t1560.0\t2009-11-20 00:00:00.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639304889373_2038739616",
+      "id": "paragraph_1639304889373_2038739616",
+      "dateCreated": "2021-12-12 15:58:09.373",
+      "dateStarted": "2024-02-17 11:44:59.727",
+      "dateFinished": "2024-02-17 11:45:10.402",
+      "status": "FINISHED"
+    },
+    {
+      "title": "FULL OUTER JOIN",
+      "text": "%hive\n\nSELECT c.ID, c.NAME, o.AMOUNT, o.`DATE`\nFROM CUSTOMERS c \nFULL OUTER JOIN ORDERS o \nON (c.ID \u003d o.CUSTOMER_ID);\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-17 11:53:24.046",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "id": "string",
+                      "name": "string",
+                      "amount": "string",
+                      "date": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "id": "string",
+                      "name": "string",
+                      "amount": "string",
+                      "date": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "id\tname\tamount\tdate\n1\tRamesh\tnull\tnull\n2\tKhilan\t1560.0\t2009-11-20 00:00:00.0\n3\tkaushik\t3000.0\t2009-10-08 00:00:00.0\n3\tkaushik\t1500.25\t2009-10-08 00:00:00.0\n4\tChaitali\t2060.5\t2008-05-20 00:00:00.0\n5\tHardik\tnull\tnull\n6\tKomal\tnull\tnull\n7\tMuffy\tnull\tnull\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639305058814_1717047917",
+      "id": "paragraph_1639305058814_1717047917",
+      "dateCreated": "2021-12-12 16:00:58.814",
+      "dateStarted": "2024-02-17 11:53:24.047",
+      "dateFinished": "2024-02-17 11:53:37.931",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-17 11:38:17.195",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639305168180_901626606",
+      "id": "paragraph_1639305168180_901626606",
+      "dateCreated": "2021-12-12 16:02:48.181",
+      "status": "READY"
+    }
+  ],
+  "name": "hive-joins-types",
+  "id": "2GQEU54D9",
+  "defaultInterpreterGroup": "jdbc",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

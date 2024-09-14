@@ -1,0 +1,375 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.conf\n\n#\nspark.app.name  spark-hbase-connector\n\nspark.jars    hdfs://namenode:9000/libs/hbase-connector/hbase-spark-1.0.1_spark_3.1.2_hadoop_3.3.4_hbase_2.4.9.jar,hdfs://namenode:9000/libs/hbase-connector/hbase-spark-protocol-shaded-1.0.1_spark_3.1.2_hadoop_3.3.4_hbase_2.4.9.jar,/opt/hive-3.1.2/lib/hive-hbase-handler-3.1.2.jar,/opt/hbase-2.4.9/lib/hbase-*.jar,/opt/hbase-2.4.9/lib/shaded-clients/hbase-shaded-mapreduce-2.4.9.jar,/apps/hostpath/drivers/3.1.2/hbase-spark-protocol-1.0.1_s3.1.2-h2.4.9.jar\n\n#\n#spark.jars.packages io.delta:delta-core_2.12:1.0.0,org.apache.hbase:hbase-shaded-mapreduce:2.4.9\n#\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-08 15:46:38.217",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640795692298_1493563315",
+      "id": "paragraph_1640795692298_1493563315",
+      "dateCreated": "2021-12-29 16:34:52.298",
+      "dateStarted": "2022-12-08 15:46:38.223",
+      "dateFinished": "2022-12-08 15:46:38.234",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Read Hbase Table Using Mapping",
+      "text": "%spark\n\nimport org.apache.hadoop.hbase.spark.HBaseContext\nimport org.apache.hadoop.hbase.HBaseConfiguration\n\nval SPARK_HOME \u003d System.getenv(\"SPARK_HOME\")\n\nval conf \u003d HBaseConfiguration.create()\nconf.set(\"hbase.zookeeper.quorum\", \"zookeeper:2181\")\nconf.set(\"hbase.zookeeper.property.clientPort\",\"2181\")\nconf.set(\"hbase.spark.config.location\", \"file:///opt/spark/conf/hbase-site.xml\")\n\n// Create HBase context \nnew HBaseContext(spark.sparkContext, conf)\n\n// Create DataFram for Book Table\nval bookDF \u003d spark.read.format(\"org.apache.hadoop.hbase.spark\")\n.option(\"hbase.columns.mapping\", \"id STRING :key, uuid STRING txn_data:uuid, cardtype STRING txn_data:cardtype, website STRING txn_data:website, product STRING txn_data:product, amount STRING txn_data:amount, city STRING cust_data:city, country STRING cust_data:country, addts STRING txn_data:addts, txn_receive_date STRING txn_data:txn_receive_date\")\n.option(\"hbase.table\", \"transaction_detail_hbase_tbl\")\n.option(\"hbase.use.hbase.context\", false)\n.option(\"hbase-push.down.column.filter\", false)\n.option(\"hbase.config.resources\", \"file:/opt/spark/conf/hbase-site.xml\") \n.load()\n\n\n\n// bookDF.printSchema()\n// bookDF.show(false)\n// bookDF.count()\n\n//Applying Filters\nbookDF.filter($\"country\" \u003d\u003d\u003d \"IN\" \u0026\u0026 $\"product\" \u003d\u003d\u003d \"Laptop\")\n  .select(\"id\", \"product\", \"country\", \"amount\")\n  .show()\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-08 03:05:34.863",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "id STRING :key, uuid STRING txn_data:uuid, cardtype STRING txn_data:cardtype, website STRING txn_data:website, product STRING txn_data:product, amount STRING txn_data:amount, city STRING cust_data:city, country STRING cust_data:country, addts STRING txn_data:addts, txn_receive_date STRING txn_data:txn_receive_date\n+----+-------+-------+--------+\n|  id|product|country|  amount|\n+----+-------+-------+--------+\n|1000| Laptop|     IN|19529.79|\n|1015| Laptop|     IN| 3174.39|\n|1030| Laptop|     IN| 2878.61|\n|1054| Laptop|     IN|21261.02|\n|1061| Laptop|     IN| 7862.74|\n|1089| Laptop|     IN| 5372.25|\n|1095| Laptop|     IN| 18670.6|\n|1099| Laptop|     IN| 1332.52|\n|1158| Laptop|     IN| 18767.2|\n|1165| Laptop|     IN|11387.06|\n|1401| Laptop|     IN| 24955.6|\n|1464| Laptop|     IN|24216.54|\n|1479| Laptop|     IN|14535.81|\n|1515| Laptop|     IN|10107.23|\n|1533| Laptop|     IN| 6791.66|\n|1582| Laptop|     IN|23027.41|\n|1665| Laptop|     IN| 2991.25|\n|1678| Laptop|     IN|23332.66|\n|1715| Laptop|     IN| 21443.1|\n|1747| Laptop|     IN|  928.28|\n+----+-------+-------+--------+\nonly showing top 20 rows\n\nimport org.apache.hadoop.hbase.spark.HBaseContext\nimport org.apache.hadoop.hbase.HBaseConfiguration\n\u001b[1m\u001b[34mSPARK_HOME\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m \u003d null\n\u001b[1m\u001b[34mconf\u001b[0m: \u001b[1m\u001b[32morg.apache.hadoop.conf.Configuration\u001b[0m \u003d Configuration: core-default.xml, core-site.xml, yarn-default.xml, yarn-site.xml, mapred-default.xml, mapred-site.xml, hdfs-default.xml, hdfs-site.xml, hbase-default.xml, hbase-site.xml\n\u001b[1m\u001b[34mbookDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [addts: string, city: string ... 8 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1670476387319_0002//jobs/job?id\u003d0"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640795934142_1423522912",
+      "id": "paragraph_1640795934142_1423522912",
+      "dateCreated": "2021-12-29 16:38:54.142",
+      "dateStarted": "2022-12-08 15:50:00.549",
+      "dateFinished": "2022-12-08 15:51:08.277",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\ndef uuid \u003d java.util.UUID.randomUUID.toString\nprintln(uuid)",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-30 03:21:05.789",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "ef8099c8-1fa9-4960-bf94-64f4f7876983\n\u001b[1m\u001b[34muuid\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640796047221_1817204418",
+      "id": "paragraph_1640796047221_1817204418",
+      "dateCreated": "2021-12-29 16:40:47.221",
+      "dateStarted": "2021-12-30 03:21:05.793",
+      "dateFinished": "2021-12-30 03:21:05.931",
+      "status": "ABORT"
+    },
+    {
+      "text": "%spark\n\ncase class Transaction(\n    id: String, \n    uuid: String, \n    cardtype: String,\n    website:String, \n    product:String, \n    amount:String,\n    city:String,\n    country:String, \n    addts:String,\n    txn_receive_date:String\n)\n\ndef catalog \u003d\n      s\"\"\"{\n         |\"table\":{\"namespace\":\"default\", \"name\":\"transaction_detail_hbase_tbl\"},\n         |\"rowkey\":\"key\",\n         |\"columns\":{\n         |\"id\":{\"cf\":\"rowkey\", \"col\":\"key\", \"type\":\"string\"},\n         |\"uuid\":{\"cf\":\"txn_data\", \"col\":\"uuid\", \"type\":\"string\"},\n         |\"cardtype\":{\"cf\":\"txn_data\", \"col\":\"cardtype\", \"type\":\"string\"},\n         |\"website\":{\"cf\":\"txn_data\", \"col\":\"website\", \"type\":\"string\"},\n         |\"product\":{\"cf\":\"txn_data\", \"col\":\"product\", \"type\":\"string\"},\n         |\"amount\":{\"cf\":\"txn_data\", \"col\":\"amount\", \"type\":\"string\"},\n         |\"city\":{\"cf\":\"cust_data\", \"col\":\"city\", \"type\":\"string\"},\n         |\"country\":{\"cf\":\"cust_data\", \"col\":\"country\", \"type\":\"string\"}\n         |\"addts\":{\"cf\":\"txn_data\", \"col\":\"addts\", \"type\":\"string\"}\n         |\"txn_receive_date\":{\"cf\":\"txn_data\", \"col\":\"txn_receive_date\", \"type\":\"string\"}\n         |}\n         |}\"\"\".stripMargin\n         ",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-08 15:46:51.799",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "defined class Transaction\n\u001b[1m\u001b[34mcatalog\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640797080209_2013828793",
+      "id": "paragraph_1640797080209_2013828793",
+      "dateCreated": "2021-12-29 16:58:00.209",
+      "dateStarted": "2022-12-08 15:46:51.803",
+      "dateFinished": "2022-12-08 15:47:13.765",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nimport org.apache.hadoop.hbase.spark.datasources._\n\nvar hbaseDF \u003d spark.read.format(\"org.apache.hadoop.hbase.spark\").option(\"catalog\",catalog).load()\nhbaseDF.show()\n   ",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-08 15:51:16.657",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "java.util.NoSuchElementException: None.get\n  at scala.None$.get(Option.scala:529)\n  at scala.None$.get(Option.scala:527)\n  at org.apache.hadoop.hbase.spark.datasources.HBaseTableCatalog$.apply(HBaseTableCatalog.scala:246)\n  at org.apache.hadoop.hbase.spark.HBaseRelation.\u003cinit\u003e(DefaultSource.scala:105)\n  at org.apache.hadoop.hbase.spark.DefaultSource.createRelation(DefaultSource.scala:69)\n  at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:355)\n  at org.apache.spark.sql.DataFrameReader.loadV1Source(DataFrameReader.scala:325)\n  at org.apache.spark.sql.DataFrameReader.$anonfun$load$3(DataFrameReader.scala:307)\n  at scala.Option.getOrElse(Option.scala:189)\n  at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:307)\n  at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:225)\n  ... 44 elided\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670514038577_654593768",
+      "id": "paragraph_1670514038577_654593768",
+      "dateCreated": "2022-12-08 15:40:38.577",
+      "dateStarted": "2022-12-08 15:51:16.662",
+      "dateFinished": "2022-12-08 15:51:16.933",
+      "status": "ABORT"
+    },
+    {
+      "title": "Read Hbase Table Using Catalog",
+      "text": "%spark\n\nimport spark.implicits._\nimport org.apache.hadoop.hbase.spark.datasources._\n\n// Reading from HBase to DataFrame\nval hbaseDF \u003d spark.read\n    .format(\"org.apache.hadoop.hbase.spark\")\n    .options(Map(HBaseTableCatalog.tableCatalog -\u003e catalog))\n    .option(\"hbase.spark.use.hbasecontext\", true)\n    .load()\n\n//Display Schema from DataFrame\nhbaseDF.printSchema()\n\n//Collect and show Data from DataFrame\nhbaseDF.show(false)\n\n//Applying Filters\nhbaseDF.filter($\"country\" \u003d\u003d\u003d \"IN\" \u0026\u0026 $\"product\" \u003d\u003d\u003d \"Laptop\")\n  .select(\"id\", \"product\", \"country\", \"amount\")\n  .show()\n  \n//\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-08 15:53:08.310",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "java.util.NoSuchElementException: None.get\n  at scala.None$.get(Option.scala:529)\n  at scala.None$.get(Option.scala:527)\n  at org.apache.hadoop.hbase.spark.datasources.HBaseTableCatalog$.apply(HBaseTableCatalog.scala:246)\n  at org.apache.hadoop.hbase.spark.HBaseRelation.\u003cinit\u003e(DefaultSource.scala:105)\n  at org.apache.hadoop.hbase.spark.DefaultSource.createRelation(DefaultSource.scala:69)\n  at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:355)\n  at org.apache.spark.sql.DataFrameReader.loadV1Source(DataFrameReader.scala:325)\n  at org.apache.spark.sql.DataFrameReader.$anonfun$load$3(DataFrameReader.scala:307)\n  at scala.Option.getOrElse(Option.scala:189)\n  at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:307)\n  at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:225)\n  ... 44 elided\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640798476978_174538416",
+      "id": "paragraph_1640798476978_174538416",
+      "dateCreated": "2021-12-29 17:21:16.978",
+      "dateStarted": "2022-12-08 15:51:29.178",
+      "dateFinished": "2022-12-08 15:51:29.474",
+      "status": "ABORT"
+    },
+    {
+      "text": "%spark\nimport spark.sqlContext.implicits._\n\nval data \u003d Seq(\n    (\"1\", \"Abby\", \"Smith\", \"K\", \"3456 main\", \"Orlando\", \"FL\", \"45235\"),\n    (\"2\", \"Amaya\", \"Williams\", \"L\", \"123 Orange\", \"Newark\", \"NJ\", \"27656\"),\n    (\"3\", \"Alchemy\", \"Davis\", \"P\", \"Warners\", \"Sanjose\", \"CA\", \"34789\")\n)\nval dataDF \u003d data.toDF(Seq(\"key\",\"fName\",\"lName\",\"mName\", \"addressLine\", \"city\", \"state\", \"zipCode\"):_*)",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-07 09:29:54.756",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import spark.sqlContext.implicits._\n\u001b[1m\u001b[34mdata\u001b[0m: \u001b[1m\u001b[32mSeq[(String, String, String, String, String, String, String, String)]\u001b[0m \u003d List((1,Abby,Smith,K,3456 main,Orlando,FL,45235), (2,Amaya,Williams,L,123 Orange,Newark,NJ,27656), (3,Alchemy,Davis,P,Warners,Sanjose,CA,34789))\n\u001b[1m\u001b[34mdataDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [key: string, fName: string ... 6 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640797222899_90835071",
+      "id": "paragraph_1640797222899_90835071",
+      "dateCreated": "2021-12-29 17:00:22.899",
+      "dateStarted": "2022-01-11 01:24:02.146",
+      "dateFinished": "2022-01-11 01:24:04.483",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Write To Hbase Table",
+      "text": "%spark\n\nimport org.apache.hadoop.hbase.spark.datasources._\n\ndataDF.write.option(\"hbase.config.resources\", \"file://$SPARK_HOME/conf/hbase-site.xml\")\n.option(\"hbase.spark.config.location\", \"$SPARK_HOME/conf\")\n.options(Map(HBaseTableCatalog.tableCatalog -\u003e catalog, HBaseTableCatalog.newTable -\u003e \"4\"))\n.format(\"org.apache.hadoop.hbase.spark\")\n.save()\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-08 15:37:26.893",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u003cconsole\u003e:31: \u001b[31merror: \u001b[0mnot found: value dataDF\n       dataDF.write.option(\"hbase.config.resources\", \"file://$SPARK_HOME/conf/hbase-site.xml\")\n       ^\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640797304465_1102188110",
+      "id": "paragraph_1640797304465_1102188110",
+      "dateCreated": "2021-12-29 17:01:44.465",
+      "dateStarted": "2022-12-08 15:37:26.896",
+      "dateFinished": "2022-12-08 15:37:26.979",
+      "status": "ERROR"
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-11 01:44:04.546",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641865444545_86912147",
+      "id": "paragraph_1641865444545_86912147",
+      "dateCreated": "2022-01-11 01:44:04.546",
+      "status": "READY"
+    }
+  ],
+  "name": "spark-hbase-connector",
+  "id": "2GRH9CDWB",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

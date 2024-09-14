@@ -1,0 +1,442 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.conf\n\n#\nspark.app.name spark-kafka-batch\n\n# \n# spark.jars.packages io.delta:delta-core_2.12:1.0.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2\n#",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-04 03:40:53.290",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670090200491_1754080521",
+      "id": "paragraph_1670090200491_1754080521",
+      "dateCreated": "2022-12-03 17:56:40.491",
+      "dateStarted": "2022-12-03 18:42:12.354",
+      "dateFinished": "2022-12-03 18:42:12.405",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n\n```\nkafka-topics --create --bootstrap-server kafka-broker:9092 --partitions 1 --replication-factor 1 --topic txn-text-stream-topic --if-not-exists\n```\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-03 19:53:00.598",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cpre\u003e\u003ccode\u003ekafka-topics --create --bootstrap-server kafka-broker:9092 --partitions 1 --replication-factor 1 --topic txn-text-stream-topic --if-not-exists\n\u003c/code\u003e\u003c/pre\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670091109108_168126965",
+      "id": "paragraph_1670091109108_168126965",
+      "dateCreated": "2022-12-03 18:11:49.108",
+      "dateStarted": "2022-12-03 19:53:00.605",
+      "dateFinished": "2022-12-03 19:53:00.826",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import *\nfrom pyspark.sql.types import *\n\n\n# Subscribe to 1 topic defaults to the earliest and latest offsets\nkafkadf \u003d spark \\\n  .read \\\n  .format(\"kafka\") \\\n  .option(\"kafka.bootstrap.servers\", \"kafka-broker:19092\") \\\n  .option(\"subscribe\", \"structured-stream-topic\") \\\n  .option(\"startingOffsets\", \"earliest\")\\\n  .option(\"failOnDataLoss\", \"false\") \\\n  .load()\n\n#  \nresultdf \u003d kafkadf.selectExpr(\u0027topic\u0027, \u0027partition\u0027, \u0027offset\u0027, \u0027timestamp\u0027, \u0027timestampType\u0027, \"CAST(key AS STRING)\", \"CAST(value AS STRING)\")\nresultdf.show(truncate\u003dFalse)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-04 10:34:43.629",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------------------+---------+------+-----------------------+-------------+------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\n|topic                |partition|offset|timestamp              |timestampType|key                                 |value                                                                                                                                                                                                        |\n+---------------------+---------+------+-----------------------+-------------+------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\n|txn-text-stream-topic|0        |0     |2022-12-03 18:26:05.243|0            |f5933a1b-7e40-46ec-a512-b69f3355a3bc|{\u0027id\u0027: 2384, \u0027uuid\u0027: \u0027f5933a1b-7e40-46ec-a512-b69f3355a3bc\u0027, \u0027cardtype\u0027: \u0027VISA\u0027, \u0027website\u0027: \u0027Flipkart\u0027, \u0027product\u0027: \u0027Computer\u0027, \u0027amount\u0027: 2063.05, \u0027city\u0027: \u0027Banglore\u0027, \u0027country\u0027: \u0027IN\u0027, \u0027addts\u0027: 1670091965}  |\n|txn-text-stream-topic|0        |1     |2022-12-03 18:26:10.245|0            |d8bc8036-dd5a-4866-a7c0-25b01aa466b1|{\u0027id\u0027: 1578, \u0027uuid\u0027: \u0027d8bc8036-dd5a-4866-a7c0-25b01aa466b1\u0027, \u0027cardtype\u0027: \u0027Master\u0027, \u0027website\u0027: \u0027SnapDeal\u0027, \u0027product\u0027: \u0027Tablet\u0027, \u0027amount\u0027: 14983.49, \u0027city\u0027: \u0027Osaka\u0027, \u0027country\u0027: \u0027JP\u0027, \u0027addts\u0027: 1670091970}    |\n|txn-text-stream-topic|0        |2     |2022-12-03 18:26:15.249|0            |8fa465b4-90ed-4729-b4c3-f1991257d00c|{\u0027id\u0027: 2263, \u0027uuid\u0027: \u00278fa465b4-90ed-4729-b4c3-f1991257d00c\u0027, \u0027cardtype\u0027: \u0027VISA\u0027, \u0027website\u0027: \u0027Myntra\u0027, \u0027product\u0027: \u0027Mobile\u0027, \u0027amount\u0027: 19861.74, \u0027city\u0027: \u0027Manchester\u0027, \u0027country\u0027: \u0027UK\u0027, \u0027addts\u0027: 1670091975}   |\n|txn-text-stream-topic|0        |3     |2022-12-03 18:26:20.253|0            |55bd7efe-2396-44d9-a132-6b707f1839a7|{\u0027id\u0027: 4860, \u0027uuid\u0027: \u002755bd7efe-2396-44d9-a132-6b707f1839a7\u0027, \u0027cardtype\u0027: \u0027RuPay\u0027, \u0027website\u0027: \u0027Flipkart\u0027, \u0027product\u0027: \u0027Mobile\u0027, \u0027amount\u0027: 602.14, \u0027city\u0027: \u0027Miami\u0027, \u0027country\u0027: \u0027USA\u0027, \u0027addts\u0027: 1670091980}      |\n|txn-text-stream-topic|0        |4     |2022-12-03 18:26:25.257|0            |65ff481a-fdb3-4135-9cfc-bede42984252|{\u0027id\u0027: 4875, \u0027uuid\u0027: \u002765ff481a-fdb3-4135-9cfc-bede42984252\u0027, \u0027cardtype\u0027: \u0027RuPay\u0027, \u0027website\u0027: \u0027Myntra\u0027, \u0027product\u0027: \u0027Laptop\u0027, \u0027amount\u0027: 10756.32, \u0027city\u0027: \u0027Manchester\u0027, \u0027country\u0027: \u0027UK\u0027, \u0027addts\u0027: 1670091985}  |\n|txn-text-stream-topic|0        |5     |2022-12-03 18:26:30.261|0            |67c11efd-a168-4e67-848f-b407061f4c74|{\u0027id\u0027: 4503, \u0027uuid\u0027: \u002767c11efd-a168-4e67-848f-b407061f4c74\u0027, \u0027cardtype\u0027: \u0027VISA\u0027, \u0027website\u0027: \u0027Amazon\u0027, \u0027product\u0027: \u0027Tablet\u0027, \u0027amount\u0027: 22579.02, \u0027city\u0027: \u0027Miami\u0027, \u0027country\u0027: \u0027USA\u0027, \u0027addts\u0027: 1670091990}       |\n|txn-text-stream-topic|0        |6     |2022-12-03 18:26:35.265|0            |2f3d4d8f-5eae-444e-9b55-ae97ba8a83ef|{\u0027id\u0027: 3158, \u0027uuid\u0027: \u00272f3d4d8f-5eae-444e-9b55-ae97ba8a83ef\u0027, \u0027cardtype\u0027: \u0027RuPay\u0027, \u0027website\u0027: \u0027Amazon\u0027, \u0027product\u0027: \u0027Tablet\u0027, \u0027amount\u0027: 23931.48, \u0027city\u0027: \u0027Los Angeles\u0027, \u0027country\u0027: \u0027USA\u0027, \u0027addts\u0027: 1670091995}|\n|txn-text-stream-topic|0        |7     |2022-12-03 18:26:40.268|0            |af670a37-73d3-4516-8933-4ecff799f3f3|{\u0027id\u0027: 4328, \u0027uuid\u0027: \u0027af670a37-73d3-4516-8933-4ecff799f3f3\u0027, \u0027cardtype\u0027: \u0027VISA\u0027, \u0027website\u0027: \u0027SnapDeal\u0027, \u0027product\u0027: \u0027Mobile\u0027, \u0027amount\u0027: 17015.44, \u0027city\u0027: \u0027New York\u0027, \u0027country\u0027: \u0027USA\u0027, \u0027addts\u0027: 1670092000}  |\n|txn-text-stream-topic|0        |8     |2022-12-03 18:26:45.273|0            |ef5ac267-4e1e-4e13-b2d7-07376b7849b1|{\u0027id\u0027: 2241, \u0027uuid\u0027: \u0027ef5ac267-4e1e-4e13-b2d7-07376b7849b1\u0027, \u0027cardtype\u0027: \u0027RuPay\u0027, \u0027website\u0027: \u0027Myntra\u0027, \u0027product\u0027: \u0027Mobile\u0027, \u0027amount\u0027: 17466.07, \u0027city\u0027: \u0027Tokyo\u0027, \u0027country\u0027: \u0027JP\u0027, \u0027addts\u0027: 1670092005}       |\n|txn-text-stream-topic|0        |9     |2022-12-03 18:26:50.277|0            |4c4a5531-71a5-4e4c-b0a1-bb1d554325ca|{\u0027id\u0027: 1133, \u0027uuid\u0027: \u00274c4a5531-71a5-4e4c-b0a1-bb1d554325ca\u0027, \u0027cardtype\u0027: \u0027VISA\u0027, \u0027website\u0027: \u0027Myntra\u0027, \u0027product\u0027: \u0027Computer\u0027, \u0027amount\u0027: 20511.61, \u0027city\u0027: \u0027Hiroshima\u0027, \u0027country\u0027: \u0027JP\u0027, \u0027addts\u0027: 1670092010}  |\n|txn-text-stream-topic|0        |10    |2022-12-03 18:26:55.282|0            |8c37ea81-1aa9-4162-a405-fb1a4cc64fa4|{\u0027id\u0027: 1665, \u0027uuid\u0027: \u00278c37ea81-1aa9-4162-a405-fb1a4cc64fa4\u0027, \u0027cardtype\u0027: \u0027RuPay\u0027, \u0027website\u0027: \u0027Myntra\u0027, \u0027product\u0027: \u0027Mobile\u0027, \u0027amount\u0027: 17428.22, \u0027city\u0027: \u0027Tokyo\u0027, \u0027country\u0027: \u0027JP\u0027, \u0027addts\u0027: 1670092015}       |\n|txn-text-stream-topic|0        |11    |2022-12-03 18:27:00.285|0            |88fc405d-980f-4487-9cb6-b6969c7f86ad|{\u0027id\u0027: 4372, \u0027uuid\u0027: \u002788fc405d-980f-4487-9cb6-b6969c7f86ad\u0027, \u0027cardtype\u0027: \u0027RuPay\u0027, \u0027website\u0027: \u0027Myntra\u0027, \u0027product\u0027: \u0027Laptop\u0027, \u0027amount\u0027: 12217.09, \u0027city\u0027: \u0027Osaka\u0027, \u0027country\u0027: \u0027JP\u0027, \u0027addts\u0027: 1670092020}       |\n|txn-text-stream-topic|0        |12    |2022-12-03 18:27:05.289|0            |f91ec2e3-bad7-412a-b768-1393bb3e0716|{\u0027id\u0027: 2915, \u0027uuid\u0027: \u0027f91ec2e3-bad7-412a-b768-1393bb3e0716\u0027, \u0027cardtype\u0027: \u0027Master\u0027, \u0027website\u0027: \u0027Myntra\u0027, \u0027product\u0027: \u0027Laptop\u0027, \u0027amount\u0027: 17863.81, \u0027city\u0027: \u0027Chennei\u0027, \u0027country\u0027: \u0027IN\u0027, \u0027addts\u0027: 1670092025}    |\n|txn-text-stream-topic|0        |13    |2022-12-03 18:27:10.293|0            |0b29b437-8134-46be-94c6-267811c57352|{\u0027id\u0027: 1933, \u0027uuid\u0027: \u00270b29b437-8134-46be-94c6-267811c57352\u0027, \u0027cardtype\u0027: \u0027Master\u0027, \u0027website\u0027: \u0027SnapDeal\u0027, \u0027product\u0027: \u0027Tablet\u0027, \u0027amount\u0027: 12110.63, \u0027city\u0027: \u0027Tokyo\u0027, \u0027country\u0027: \u0027JP\u0027, \u0027addts\u0027: 1670092030}    |\n|txn-text-stream-topic|0        |14    |2022-12-03 18:27:15.297|0            |812850fb-eada-4a6b-8b30-3e73fd5666e0|{\u0027id\u0027: 4489, \u0027uuid\u0027: \u0027812850fb-eada-4a6b-8b30-3e73fd5666e0\u0027, \u0027cardtype\u0027: \u0027VISA\u0027, \u0027website\u0027: \u0027Flipkart\u0027, \u0027product\u0027: \u0027Mobile\u0027, \u0027amount\u0027: 12300.78, \u0027city\u0027: \u0027Miami\u0027, \u0027country\u0027: \u0027USA\u0027, \u0027addts\u0027: 1670092035}     |\n|txn-text-stream-topic|0        |15    |2022-12-03 18:27:20.302|0            |8cf0f5f4-593a-42f0-96a4-76378065bd04|{\u0027id\u0027: 2490, \u0027uuid\u0027: \u00278cf0f5f4-593a-42f0-96a4-76378065bd04\u0027, \u0027cardtype\u0027: \u0027Master\u0027, \u0027website\u0027: \u0027SnapDeal\u0027, \u0027product\u0027: \u0027Laptop\u0027, \u0027amount\u0027: 8506.18, \u0027city\u0027: \u0027Tokyo\u0027, \u0027country\u0027: \u0027JP\u0027, \u0027addts\u0027: 1670092040}     |\n|txn-text-stream-topic|0        |16    |2022-12-03 18:27:25.305|0            |738944b0-7a61-49bc-a607-b8d75ccf1c84|{\u0027id\u0027: 2179, \u0027uuid\u0027: \u0027738944b0-7a61-49bc-a607-b8d75ccf1c84\u0027, \u0027cardtype\u0027: \u0027RuPay\u0027, \u0027website\u0027: \u0027Myntra\u0027, \u0027product\u0027: \u0027Mobile\u0027, \u0027amount\u0027: 9614.46, \u0027city\u0027: \u0027Mumbai\u0027, \u0027country\u0027: \u0027IN\u0027, \u0027addts\u0027: 1670092045}       |\n|txn-text-stream-topic|0        |17    |2022-12-03 18:27:30.309|0            |07898a08-556f-40e2-a626-9ea9597fef23|{\u0027id\u0027: 2833, \u0027uuid\u0027: \u002707898a08-556f-40e2-a626-9ea9597fef23\u0027, \u0027cardtype\u0027: \u0027Amex\u0027, \u0027website\u0027: \u0027Amazon\u0027, \u0027product\u0027: \u0027Tablet\u0027, \u0027amount\u0027: 5724.46, \u0027city\u0027: \u0027Yokohama\u0027, \u0027country\u0027: \u0027JP\u0027, \u0027addts\u0027: 1670092050}      |\n|txn-text-stream-topic|0        |18    |2022-12-03 18:27:35.313|0            |c167813a-8c7c-4793-a580-b62d140eceed|{\u0027id\u0027: 4832, \u0027uuid\u0027: \u0027c167813a-8c7c-4793-a580-b62d140eceed\u0027, \u0027cardtype\u0027: \u0027VISA\u0027, \u0027website\u0027: \u0027Myntra\u0027, \u0027product\u0027: \u0027Computer\u0027, \u0027amount\u0027: 10165.43, \u0027city\u0027: \u0027Chennei\u0027, \u0027country\u0027: \u0027IN\u0027, \u0027addts\u0027: 1670092055}    |\n|txn-text-stream-topic|0        |19    |2022-12-03 18:27:40.317|0            |27ead86b-b078-48f0-a623-5b33241f4e68|{\u0027id\u0027: 2452, \u0027uuid\u0027: \u002727ead86b-b078-48f0-a623-5b33241f4e68\u0027, \u0027cardtype\u0027: \u0027RuPay\u0027, \u0027website\u0027: \u0027Flipkart\u0027, \u0027product\u0027: \u0027Laptop\u0027, \u0027amount\u0027: 21055.86, \u0027city\u0027: \u0027Mumbai\u0027, \u0027country\u0027: \u0027IN\u0027, \u0027addts\u0027: 1670092060}    |\n+---------------------+---------+------+-----------------------+-------------+------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1670123287377_0003//jobs/job?id\u003d1"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670090092412_100139624",
+      "id": "paragraph_1670090092412_100139624",
+      "dateCreated": "2022-12-03 17:54:52.412",
+      "dateStarted": "2022-12-04 03:43:33.882",
+      "dateFinished": "2022-12-04 03:43:39.653",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n#\nschema \u003d StructType() \\\n    .add(\"id\", IntegerType()) \\\n    .add(\"uuid\", StringType()) \\\n    .add(\"cardtype\", StringType()) \\\n    .add(\"website\", StringType()) \\\n    .add(\"product\", StringType()) \\\n    .add(\"amount\", DoubleType()) \\\n    .add(\"city\", StringType()) \\\n    .add(\"country\", StringType())\\\n    .add(\"addts\", LongType())\n\nsqldf \u003d resultdf.withColumn(\u0027value\u0027, from_json(col(\"value\").cast(StringType()), schema)).withColumn(\"txn_receive_at\", unix_timestamp(col(\"timestamp\")))\nsqldf.show(truncate\u003dFalse)\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-04 03:44:00.085",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------------------+---------+------+-----------------------+-------------+------------------------------------+-----------------------------------------------------------------------------------------------------------+--------------+\n|topic                |partition|offset|timestamp              |timestampType|key                                 |value                                                                                                      |txn_receive_at|\n+---------------------+---------+------+-----------------------+-------------+------------------------------------+-----------------------------------------------------------------------------------------------------------+--------------+\n|txn-text-stream-topic|0        |0     |2022-12-03 18:26:05.243|0            |f5933a1b-7e40-46ec-a512-b69f3355a3bc|{2384, f5933a1b-7e40-46ec-a512-b69f3355a3bc, VISA, Flipkart, Computer, 2063.05, Banglore, IN, 1670091965}  |1670091965    |\n|txn-text-stream-topic|0        |1     |2022-12-03 18:26:10.245|0            |d8bc8036-dd5a-4866-a7c0-25b01aa466b1|{1578, d8bc8036-dd5a-4866-a7c0-25b01aa466b1, Master, SnapDeal, Tablet, 14983.49, Osaka, JP, 1670091970}    |1670091970    |\n|txn-text-stream-topic|0        |2     |2022-12-03 18:26:15.249|0            |8fa465b4-90ed-4729-b4c3-f1991257d00c|{2263, 8fa465b4-90ed-4729-b4c3-f1991257d00c, VISA, Myntra, Mobile, 19861.74, Manchester, UK, 1670091975}   |1670091975    |\n|txn-text-stream-topic|0        |3     |2022-12-03 18:26:20.253|0            |55bd7efe-2396-44d9-a132-6b707f1839a7|{4860, 55bd7efe-2396-44d9-a132-6b707f1839a7, RuPay, Flipkart, Mobile, 602.14, Miami, USA, 1670091980}      |1670091980    |\n|txn-text-stream-topic|0        |4     |2022-12-03 18:26:25.257|0            |65ff481a-fdb3-4135-9cfc-bede42984252|{4875, 65ff481a-fdb3-4135-9cfc-bede42984252, RuPay, Myntra, Laptop, 10756.32, Manchester, UK, 1670091985}  |1670091985    |\n|txn-text-stream-topic|0        |5     |2022-12-03 18:26:30.261|0            |67c11efd-a168-4e67-848f-b407061f4c74|{4503, 67c11efd-a168-4e67-848f-b407061f4c74, VISA, Amazon, Tablet, 22579.02, Miami, USA, 1670091990}       |1670091990    |\n|txn-text-stream-topic|0        |6     |2022-12-03 18:26:35.265|0            |2f3d4d8f-5eae-444e-9b55-ae97ba8a83ef|{3158, 2f3d4d8f-5eae-444e-9b55-ae97ba8a83ef, RuPay, Amazon, Tablet, 23931.48, Los Angeles, USA, 1670091995}|1670091995    |\n|txn-text-stream-topic|0        |7     |2022-12-03 18:26:40.268|0            |af670a37-73d3-4516-8933-4ecff799f3f3|{4328, af670a37-73d3-4516-8933-4ecff799f3f3, VISA, SnapDeal, Mobile, 17015.44, New York, USA, 1670092000}  |1670092000    |\n|txn-text-stream-topic|0        |8     |2022-12-03 18:26:45.273|0            |ef5ac267-4e1e-4e13-b2d7-07376b7849b1|{2241, ef5ac267-4e1e-4e13-b2d7-07376b7849b1, RuPay, Myntra, Mobile, 17466.07, Tokyo, JP, 1670092005}       |1670092005    |\n|txn-text-stream-topic|0        |9     |2022-12-03 18:26:50.277|0            |4c4a5531-71a5-4e4c-b0a1-bb1d554325ca|{1133, 4c4a5531-71a5-4e4c-b0a1-bb1d554325ca, VISA, Myntra, Computer, 20511.61, Hiroshima, JP, 1670092010}  |1670092010    |\n|txn-text-stream-topic|0        |10    |2022-12-03 18:26:55.282|0            |8c37ea81-1aa9-4162-a405-fb1a4cc64fa4|{1665, 8c37ea81-1aa9-4162-a405-fb1a4cc64fa4, RuPay, Myntra, Mobile, 17428.22, Tokyo, JP, 1670092015}       |1670092015    |\n|txn-text-stream-topic|0        |11    |2022-12-03 18:27:00.285|0            |88fc405d-980f-4487-9cb6-b6969c7f86ad|{4372, 88fc405d-980f-4487-9cb6-b6969c7f86ad, RuPay, Myntra, Laptop, 12217.09, Osaka, JP, 1670092020}       |1670092020    |\n|txn-text-stream-topic|0        |12    |2022-12-03 18:27:05.289|0            |f91ec2e3-bad7-412a-b768-1393bb3e0716|{2915, f91ec2e3-bad7-412a-b768-1393bb3e0716, Master, Myntra, Laptop, 17863.81, Chennei, IN, 1670092025}    |1670092025    |\n|txn-text-stream-topic|0        |13    |2022-12-03 18:27:10.293|0            |0b29b437-8134-46be-94c6-267811c57352|{1933, 0b29b437-8134-46be-94c6-267811c57352, Master, SnapDeal, Tablet, 12110.63, Tokyo, JP, 1670092030}    |1670092030    |\n|txn-text-stream-topic|0        |14    |2022-12-03 18:27:15.297|0            |812850fb-eada-4a6b-8b30-3e73fd5666e0|{4489, 812850fb-eada-4a6b-8b30-3e73fd5666e0, VISA, Flipkart, Mobile, 12300.78, Miami, USA, 1670092035}     |1670092035    |\n|txn-text-stream-topic|0        |15    |2022-12-03 18:27:20.302|0            |8cf0f5f4-593a-42f0-96a4-76378065bd04|{2490, 8cf0f5f4-593a-42f0-96a4-76378065bd04, Master, SnapDeal, Laptop, 8506.18, Tokyo, JP, 1670092040}     |1670092040    |\n|txn-text-stream-topic|0        |16    |2022-12-03 18:27:25.305|0            |738944b0-7a61-49bc-a607-b8d75ccf1c84|{2179, 738944b0-7a61-49bc-a607-b8d75ccf1c84, RuPay, Myntra, Mobile, 9614.46, Mumbai, IN, 1670092045}       |1670092045    |\n|txn-text-stream-topic|0        |17    |2022-12-03 18:27:30.309|0            |07898a08-556f-40e2-a626-9ea9597fef23|{2833, 07898a08-556f-40e2-a626-9ea9597fef23, Amex, Amazon, Tablet, 5724.46, Yokohama, JP, 1670092050}      |1670092050    |\n|txn-text-stream-topic|0        |18    |2022-12-03 18:27:35.313|0            |c167813a-8c7c-4793-a580-b62d140eceed|{4832, c167813a-8c7c-4793-a580-b62d140eceed, VISA, Myntra, Computer, 10165.43, Chennei, IN, 1670092055}    |1670092055    |\n|txn-text-stream-topic|0        |19    |2022-12-03 18:27:40.317|0            |27ead86b-b078-48f0-a623-5b33241f4e68|{2452, 27ead86b-b078-48f0-a623-5b33241f4e68, RuPay, Flipkart, Laptop, 21055.86, Mumbai, IN, 1670092060}    |1670092060    |\n+---------------------+---------+------+-----------------------+-------------+------------------------------------+-----------------------------------------------------------------------------------------------------------+--------------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1670123287377_0003//jobs/job?id\u003d2"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670092004962_912212076",
+      "id": "paragraph_1670092004962_912212076",
+      "dateCreated": "2022-12-03 18:26:44.962",
+      "dateStarted": "2022-12-04 03:44:00.089",
+      "dateFinished": "2022-12-04 03:44:00.771",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Process Data",
+      "text": "%pyspark\n\n## date_format(current_date(), \"yyyy-MM-dd\")\n# transaction_details\u003dsqldf.select(\"value.*\", \"timestamp\").withColumn(\"txn_receive_date\", date_format(col(\"timestamp\"), \"yyyy-MM-dd\"))\ntransaction_details\u003dsqldf.selectExpr(\"value.*\", \"date_format(timestamp, \u0027yyyy-MM-dd\u0027) AS txn_receive_date\")\ntransaction_details.show(truncate\u003dFalse)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-04 03:44:11.651",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----+------------------------------------+--------+--------+--------+--------+-----------+-------+----------+----------------+\n|id  |uuid                                |cardtype|website |product |amount  |city       |country|addts     |txn_receive_date|\n+----+------------------------------------+--------+--------+--------+--------+-----------+-------+----------+----------------+\n|2384|f5933a1b-7e40-46ec-a512-b69f3355a3bc|VISA    |Flipkart|Computer|2063.05 |Banglore   |IN     |1670091965|2022-12-03      |\n|1578|d8bc8036-dd5a-4866-a7c0-25b01aa466b1|Master  |SnapDeal|Tablet  |14983.49|Osaka      |JP     |1670091970|2022-12-03      |\n|2263|8fa465b4-90ed-4729-b4c3-f1991257d00c|VISA    |Myntra  |Mobile  |19861.74|Manchester |UK     |1670091975|2022-12-03      |\n|4860|55bd7efe-2396-44d9-a132-6b707f1839a7|RuPay   |Flipkart|Mobile  |602.14  |Miami      |USA    |1670091980|2022-12-03      |\n|4875|65ff481a-fdb3-4135-9cfc-bede42984252|RuPay   |Myntra  |Laptop  |10756.32|Manchester |UK     |1670091985|2022-12-03      |\n|4503|67c11efd-a168-4e67-848f-b407061f4c74|VISA    |Amazon  |Tablet  |22579.02|Miami      |USA    |1670091990|2022-12-03      |\n|3158|2f3d4d8f-5eae-444e-9b55-ae97ba8a83ef|RuPay   |Amazon  |Tablet  |23931.48|Los Angeles|USA    |1670091995|2022-12-03      |\n|4328|af670a37-73d3-4516-8933-4ecff799f3f3|VISA    |SnapDeal|Mobile  |17015.44|New York   |USA    |1670092000|2022-12-03      |\n|2241|ef5ac267-4e1e-4e13-b2d7-07376b7849b1|RuPay   |Myntra  |Mobile  |17466.07|Tokyo      |JP     |1670092005|2022-12-03      |\n|1133|4c4a5531-71a5-4e4c-b0a1-bb1d554325ca|VISA    |Myntra  |Computer|20511.61|Hiroshima  |JP     |1670092010|2022-12-03      |\n|1665|8c37ea81-1aa9-4162-a405-fb1a4cc64fa4|RuPay   |Myntra  |Mobile  |17428.22|Tokyo      |JP     |1670092015|2022-12-03      |\n|4372|88fc405d-980f-4487-9cb6-b6969c7f86ad|RuPay   |Myntra  |Laptop  |12217.09|Osaka      |JP     |1670092020|2022-12-03      |\n|2915|f91ec2e3-bad7-412a-b768-1393bb3e0716|Master  |Myntra  |Laptop  |17863.81|Chennei    |IN     |1670092025|2022-12-03      |\n|1933|0b29b437-8134-46be-94c6-267811c57352|Master  |SnapDeal|Tablet  |12110.63|Tokyo      |JP     |1670092030|2022-12-03      |\n|4489|812850fb-eada-4a6b-8b30-3e73fd5666e0|VISA    |Flipkart|Mobile  |12300.78|Miami      |USA    |1670092035|2022-12-03      |\n|2490|8cf0f5f4-593a-42f0-96a4-76378065bd04|Master  |SnapDeal|Laptop  |8506.18 |Tokyo      |JP     |1670092040|2022-12-03      |\n|2179|738944b0-7a61-49bc-a607-b8d75ccf1c84|RuPay   |Myntra  |Mobile  |9614.46 |Mumbai     |IN     |1670092045|2022-12-03      |\n|2833|07898a08-556f-40e2-a626-9ea9597fef23|Amex    |Amazon  |Tablet  |5724.46 |Yokohama   |JP     |1670092050|2022-12-03      |\n|4832|c167813a-8c7c-4793-a580-b62d140eceed|VISA    |Myntra  |Computer|10165.43|Chennei    |IN     |1670092055|2022-12-03      |\n|2452|27ead86b-b078-48f0-a623-5b33241f4e68|RuPay   |Flipkart|Laptop  |21055.86|Mumbai     |IN     |1670092060|2022-12-03      |\n+----+------------------------------------+--------+--------+--------+--------+-----------+-------+----------+----------------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1670123287377_0003//jobs/job?id\u003d3"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670097125524_71821280",
+      "id": "paragraph_1670097125524_71821280",
+      "dateCreated": "2022-12-03 19:52:05.524",
+      "dateStarted": "2022-12-04 03:44:11.661",
+      "dateFinished": "2022-12-04 03:44:14.712",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Write Data To Hive Table",
+      "text": "%pyspark\n\n# Turn on flag for Hive Dynamic Partitioning\n\n#\nspark.conf.set(\"hive.exec.dynamic.partition\", \"true\")\nspark.conf.set(\"hive.exec.dynamic.partition.mode\", \"nonstrict\")\n\ntransaction_details.printSchema()\ntransaction_details.write.saveAsTable(name\u003d\u0027default.transaction_details\u0027, partitionBy\u003d\u0027txn_receive_date\u0027, format\u003d\u0027hive\u0027, mode\u003d\u0027append\u0027)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-04 03:46:23.601",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- id: integer (nullable \u003d true)\n |-- uuid: string (nullable \u003d true)\n |-- cardtype: string (nullable \u003d true)\n |-- website: string (nullable \u003d true)\n |-- product: string (nullable \u003d true)\n |-- amount: double (nullable \u003d true)\n |-- city: string (nullable \u003d true)\n |-- country: string (nullable \u003d true)\n |-- addts: long (nullable \u003d true)\n |-- txn_receive_date: string (nullable \u003d true)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1670123287377_0003//jobs/job?id\u003d4"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670094211834_724608643",
+      "id": "paragraph_1670094211834_724608643",
+      "dateCreated": "2022-12-03 19:03:31.834",
+      "dateStarted": "2022-12-04 03:46:23.612",
+      "dateFinished": "2022-12-04 03:46:26.797",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\n\nSHOW PARTITIONS `default`.`transaction_details`;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-04 03:46:40.717",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "partition": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "partition\ntxn_receive_date\u003d2022-12-03\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670096668652_1138206392",
+      "id": "paragraph_1670096668652_1138206392",
+      "dateCreated": "2022-12-03 19:44:28.652",
+      "dateStarted": "2022-12-04 03:46:40.728",
+      "dateFinished": "2022-12-04 03:46:40.815",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nALTER TABLE `default`.`transaction_details` DROP IF EXISTS PARTITION (txn_receive_date\u003d\u00271670095331\u0027) PURGE;",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-03 19:48:17.157",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670096804553_1349554726",
+      "id": "paragraph_1670096804553_1349554726",
+      "dateCreated": "2022-12-03 19:46:44.553",
+      "dateStarted": "2022-12-03 19:47:21.105",
+      "dateFinished": "2022-12-03 19:47:21.560",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-03 19:07:58.438",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670094478438_188430347",
+      "id": "paragraph_1670094478438_188430347",
+      "dateCreated": "2022-12-03 19:07:58.438",
+      "status": "READY"
+    }
+  ],
+  "name": "kafka_structured_batch",
+  "id": "2HKUFJTM6",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}
