@@ -5,7 +5,7 @@ channels:
 dependencies:
   - python=3.9.18
   - conda-pack
-  - nb_conda
+#  - nb_conda
   - kafka-python=2.0.2
 #  - pycodestyle
 #  - pandas
@@ -42,7 +42,7 @@ dependencies:
   - pip:
       - mysql-connector-python==9.0.0
       - delta-spark==1.0.1
-      - quinn
-      - chispa
+#      - quinn
+#      - chispa
       - confluent-kafka[avro]==2.5.3
       - avro==1.12.0

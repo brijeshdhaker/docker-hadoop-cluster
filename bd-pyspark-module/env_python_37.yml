@@ -1,5 +1,5 @@
 #
-# conda env create -f mr-delta.yml
+# conda env create -f env_python_37.yml
 #
 # conda activate mr-delta
 # pip install confluent-kafka avro-python3 fastavro==1.4.9 pycodestyle
@@ -11,7 +11,7 @@
 #
 #
 
-name: pyspark37
+name: env_python_37
 channels:
   - conda-forge
   - defaults

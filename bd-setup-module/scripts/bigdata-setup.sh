@@ -75,6 +75,17 @@ useradd -M -r -s /bin/bash -g ${spark_gid} -u ${spark_gid} -G spark spark && \
 useradd -M -r -s /bin/bash -g ${zookeeper_gid} -u ${zookeeper_gid} -G zookeeper zookeeper && \
 useradd -M -r -s /bin/bash -g ${zeppelin_gid} -u ${zeppelin_gid} -G zeppelin zeppelin
 
+#
+# Require Dirs
+#
+
+sudo cp -p /apps /apps
+
+sudo mkdir -p /apps/{.m2,.ivy2,python,var/logs,security/ssl}
+sudo mkdir -p /apps/{sandbox/minio,sandbox/mysql/data,sandbox/zookeeper/data,sandbox/zookeeper/log,sandbox/kafka/data,sandbox/kafka/log,sandbox/schema-registry/data,sandbox/schema-registry/log,var/logs,security/ssl,sandbox/notebooks}
+
+sudo chown brijeshdhaker:root -R /apps
+sudo chmod 775 -R /apps
 
 #
 # Docker network
@@ -92,17 +103,20 @@ docker volume create --name sandbox_krb5_stash --opt type=none --opt device=/app
 docker volume create --name sandbox_krb5_principal --opt type=none --opt device=/apps/sandbox/kerberos/principal --opt o=bind
 
 docker volume create --name sandbox_maven_363 --opt type=none --opt device=/opt/maven-3.6.3 --opt o=bind
-docker volume create --name sandbox_m2 --opt type=none --opt device=/apps/hostpath/.m2 --opt o=bind
+docker volume create --name sandbox_m2 --opt type=none --opt device=/apps/.m2 --opt o=bind
 docker volume create --name sandbox_ivy2 --opt type=none --opt device=/apps/.ivy2 --opt o=bind
 
 docker volume create --name sandbox_zookeeper_371 --opt type=none --opt device=/apps/sandbox/zookeeper-3.7.1 --opt o=bind
 
-docker volume create --name sandbox_zookeeper334_data --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop334/data --opt o=bind
-docker volume create --name sandbox_zookeeper334_log --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop334/log --opt o=bind
-docker volume create --name sandbox_kafka334_data --opt type=none --opt device=/apps/sandbox/kafka/hadoop334/data --opt o=bind
-docker volume create --name sandbox_kafka334_log --opt type=none --opt device=/apps/sandbox/kafka/hadoop334/log --opt o=bind
+#
+docker volume create --name sandbox_security_secrets --opt type=none --opt device=/apps/security/ssl --opt o=bind
+docker volume create --name sandbox_zookeeper_data --opt type=none --opt device=/apps/sandbox/zookeeper/data --opt o=bind
+docker volume create --name sandbox_zookeeper_log --opt type=none --opt device=/apps/sandbox/zookeeper/log --opt o=bind
+docker volume create --name sandbox_kafka_data --opt type=none --opt device=/apps/sandbox/kafka/data --opt o=bind
+docker volume create --name sandbox_kafka_log --opt type=none --opt device=/apps/sandbox/kafka/log --opt o=bind
 docker volume create --name sandbox_schema_registry_data --opt type=none --opt device=/apps/sandbox/schema-registry/data --opt o=bind
 docker volume create --name sandbox_schema_registry_log --opt type=none --opt device=/apps/sandbox/schema-registry/log --opt o=bind
+
 
 docker volume create --name sandbox_cassandra_data --opt type=none --opt device=/apps/sandbox/cassandra/data --opt o=bind
 docker volume create --name sandbox_cassandra_conf --opt type=none --opt device=/apps/sandbox/cassandra/conf --opt o=bind
@@ -148,15 +162,7 @@ docker volume create --name sandbox_flink_112 --opt type=none --opt device=/opt/
 
 
 
-#
-# Require Dirs
-#
 
-sudo cp -p /apps /apps
-
-sudo mkdir -p /apps/{sandbox,hostpath,var/log,}
-sudo chown brijeshdhaker:root -R /apps
-sudo chmod 775 -R /apps
 
 sudo mkdir -p /apps/sandbox/hadoop-3.3.4/{dfs/data,dfs/name,dfs/secondary}
 sudo chown -Rf 1002:1001 /apps/sandbox/hadoop-3.3.4/dfs

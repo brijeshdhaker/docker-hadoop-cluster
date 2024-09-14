@@ -3,8 +3,8 @@
 #### Install Conda
 #
 
-wget -nv wget -nv https://repo.anaconda.com/miniconda/Miniconda3-py39_24.1.2-0-Linux-x86_64.sh -O /apps/python/Miniconda3-py39_24.1.2-0-Linux-x86_64.sh
-sudo bash /apps/python/Miniconda3-py37_4.9.2-Linux-x86_64.sh -b -p /opt/conda
+wget -nv https://repo.anaconda.com/miniconda/Miniconda3-py39_24.1.2-0-Linux-x86_64.sh -O /apps/python/Miniconda3-py39_24.1.2-0-Linux-x86_64.sh
+sudo bash /apps/python/Miniconda3-py39_24.1.2-0-Linux-x86_64.sh -b -p /opt/conda
 sudo chmod -Rf 775 /opt/conda
 sudo chown -Rf brijeshdhaker:root /opt/conda
 
@@ -28,16 +28,10 @@ PYSPARK_DRIVER_PYTHON=/opt/conda/envs/pyspark37/bin/python
 #
 #### Create Conda Virtual Env : Python 3.7
 #
-conda env create -f mr-delta.yml
-mamba env update -f /venv_pyspark37.yml --prune
-conda create -y -n pyspark37 -c conda-forge python=3.7 pyarrow pandas conda-pack
-conda activate pyspark37
-conda pack -f -o /apps/hostpath/python/pyspark37-20221125.tar.gz
-
-# The python conda tar should be public accessible, so need to change permission here.
-hdfs dfs –put /apps/hostpath/python/pyspark37-20221125.tar.gz /archives/pyspark/
-hdfs dfs -copyFromLocal /apps/hostpath/python/pyspark37-20221125.tar.gz /archives/pyspark/pyspark37-20221125.tar.gz
-hadoop fs -chmod 775 /archives/pyspark/pyspark37-20221125.tar.gz
+conda env create -f bd-pyspark-module/env_python_37.yml
+mamba env update -f bd-pyspark-module/env_python_37.yml --prune
+conda activate env_python_37
+conda pack -f -o /apps/python/env_python_37-20221125.tar.gz
 
 #
 #### Create Conda Virtual Env : Python 3.8
@@ -47,22 +41,37 @@ conda activate pyspark3.8
 conda pack -f -o /apps/hostpath/python/pyspark3.8.tar.gz
 
 #
+#### Create Conda Virtual Env : Python 3.9
+#
+conda create -y -n env_python_39 -c conda-forge python=3.9.18 pyarrow pandas conda-pack
+mamba env update -f bd-pyspark-module/env_python_39.yml --prune
+conda activate env_python_39
+conda update -n base -c defaults conda
+conda pack -f -o /apps/python/env_python_39-20221125.tar.gz
+
+
+# The python conda tar should be public accessible, so need to change permission here.
+hdfs dfs –put /apps/python/env_python_37-20221125.tar.gz /archives/pyspark/
+hdfs dfs -copyFromLocal /apps/python/env_python_37-20221125.tar.gz /archives/pyspark/env_python_37-20221125.tar.gz
+hadoop fs -chmod 775 /archives/pyspark/env_python_37-20221125.tar.gz
+
+#
 #### Install Package in Virtual Environment
 #
 
 conda install -c conda-forge grpcio protobuf pycodestyle numpy pandas scipy pandasql panel pyyaml seaborn plotnine hvplot intake intake-parquet intake-xarray altair vega_datasets pyarrow
-conda install -c conda-forge pyspark=3.5.0
+conda install -c conda-forge pyspark=3.4.1
 
 conda remove pyspark==3.5.0
 
 #
 ####  
 # 
-conda env create -f venv_pyspark37.yml
-sudo -E /opt/conda/bin/conda env create -f venv_pyspark37.yml
+conda env create -f bd-pyspark-module/env_python_39.yml
+sudo -E /opt/conda/bin/conda env create -f bd-pyspark-module/env_python_39.yml
 sudo -E /opt/conda/bin/conda update -n base -c defaults conda
 
-conda env create -f mr-delta.yml
+
 
 conda activate mr-delta
 pip install confluent-kafka[avro]==1.8.2 faker mysql-connector-python avro-python3 pycodestyle

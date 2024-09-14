@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-13 Update Setup configuration.">
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/core-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/scala/org/examples/spark/streaming/structure/AvroDeserializer.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/scala/org/examples/spark/streaming/structure/TransactionAvroStream.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/scala/org/examples/spark/utils/HdfsUtils.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/scala/org/examples/spark/utils/Utils.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-03-02 Update PyTest Cases for utils.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/bd-hadoop-sandbox.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/bd-hadoop-sandbox.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/env_python_39.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/env_python_39.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/mr-delta.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/env_python_37.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/hosts" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/hosts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/bigdata-setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/scripts/bigdata-setup.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/conda-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/conda-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +22,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
-        <option value="Package Object" />
       </list>
     </option>
   </component>
@@ -46,7 +42,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/brijeshdhaker/docker-hadoop-cluster.git&quot;,
-    &quot;accountId&quot;: &quot;cbaebf5a-9c19-48b2-a46d-540dbf368464&quot;
+    &quot;accountId&quot;: &quot;95107e20-1155-4435-9405-1e037b209791&quot;
   }
 }</component>
   <component name="MarkdownSettingsMigration">
@@ -55,9 +51,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="customMavenHome" value="/opt/maven-3.6.3" />
-        <option name="localRepository" value="$MAVEN_REPOSITORY$" />
-        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
+        <option name="useMavenConfig" value="false" />
         <option name="userSettingsFile" value="$USER_HOME$/.m2/settings.xml" />
       </MavenGeneralSettings>
     </option>
@@ -79,8 +73,6 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.SparkPi.executor": "Run",
-    "Application.TransactionAvroStream.executor": "Debug",
     "Docker.Docker Image.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor": "Run",
@@ -88,11 +80,6 @@
     "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.control-center: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.kafkabroker: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.kafkaclient: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.schemaregistry: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.zookeeper: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment.executor": "Run",
@@ -103,9 +90,7 @@
     "Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/docker-compose.yaml.hiveserver: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/docker-compose.yaml.metastore: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/docker-compose.yaml.minio: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/docker-compose.yaml.mysqlserver: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/docker-compose.yaml.notebook: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox.gateway: Compose Deployment.executor": "Run",
@@ -113,9 +98,7 @@
     "Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-hive-cluster.yml.hiveserver: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-rest: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-spark: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-iceburg.yml.mc: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.minio: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment.executor": "Run",
@@ -126,19 +109,7 @@
     "Docker.bd-hadoop-sandbox/dc-kdcserver.yml.kdcserver: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-minio.yml.mc: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-minio.yml: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-mysqlserver.yml.mysqlserver: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.iceberg-rest: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.postgres: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-history: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-iceberg: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-notebook: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-zeppelin.yml.zeppelin: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox: Compose Deployment.executor": "Run",
     "Docker.dc-iceburg.yml.mc: Compose Deployment.executor": "Run",
     "Docker.dc-iceburg.yml.minio: Compose Deployment.executor": "Run",
@@ -171,7 +142,6 @@
     "Maven.bd-python-module [org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy].executor": "Run",
     "Maven.bd-python-module [package].executor": "Run",
     "Maven.bd-python-module [verify].executor": "Run",
-    "Maven.bd-spark-module [clean].executor": "Run",
     "Maven.bd-spark-module [package].executor": "Run",
     "Python tests.Python tests for test_Commons.test_print_separator.executor": "Run",
     "Python tests.Python tests for test_Commons.test_split_csv.executor": "Run",
@@ -196,8 +166,6 @@
     "Python.confluent_kafka_SerializingProducer.executor": "Run",
     "Python.confluent_kafka_simple_consumer.executor": "Run",
     "Python.confluent_transaction_producer.executor": "Run",
-    "Python.fack-data.executor": "Run",
-    "Python.fastavro-test.executor": "Run",
     "Python.hello-spark.executor": "Run",
     "Python.kafka_python_partitioned_consumer.executor": "Run",
     "Python.kafka_python_partitioned_producer.executor": "Run",
@@ -212,11 +180,11 @@
     "Python.test.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "develop/docker-hadoop334-cluster",
-    "jdk.selected.JAVA_MODULE": "11",
+    "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
-    "last_directory_selection": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spark-module/src/main/scala/org/examples/spark",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-docker-sandbox/conf/hadoop/conf",
+    "last_opened_file_path": "/opt/conda/bin/conda",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
@@ -227,41 +195,21 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf" />
-      <recent name="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
-      <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf" />
-      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs" />
+      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf" />
+      <recent name="$PROJECT_DIR$/bd-setup-module/scripts" />
+      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/envs" />
+      <recent name="$PROJECT_DIR$/bd-python-module/src/test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs" />
-      <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main/py" />
-      <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main" />
-      <recent name="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
-      <recent name="$PROJECT_DIR$/bd-setup-module" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="org.examples.spark" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="org.examples.spark.streaming.structure" />
+      <recent name="$PROJECT_DIR$/readme-resources/images" />
+      <recent name="$PROJECT_DIR$/readme-resources" />
+      <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws" />
+      <recent name="$PROJECT_DIR$/bd-python-module/src/test" />
+      <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TransactionAvroStream">
-    <configuration name="TransactionAvroStream" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="org.examples.spark.streaming.structure.TransactionAvroStream" />
-      <module name="bd-spark-module" />
-      <option name="PROGRAM_PARAMETERS" value="-m local[*] -b kafkabroker.sandbox.net:9092 -t transaction-avro-topic -s http://schemaregistry.sandbox.net:8081" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.examples.spark.streaming.structure.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -318,73 +266,86 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-kafka-cluster.yaml.kafkabroker: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
-              <option value="kafkabroker" />
+              <option value="datanode" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-kafka-cluster.yaml" />
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hadoop-cluster.yaml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-kafka-cluster.yaml.schemaregistry: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
-              <option value="schemaregistry" />
+              <option value="namenode" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-kafka-cluster.yaml" />
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hadoop-cluster.yaml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-kafka-cluster.yaml.zookeeper: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
-              <option value="zookeeper" />
+              <option value="metastore" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-kafka-cluster.yaml" />
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hive-cluster.yaml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
-              <option value="spark-worker-a" />
+              <option value="mysqlserver" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-spark-cluster.yml" />
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-mysqlserver.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="gateway" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yaml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Application.StreamingJob" />
-      <item itemvalue="Application.TransactionAvroStream" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.kafkabroker: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.schemaregistry: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.zookeeper: Compose Deployment" />
-      <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TransactionAvroStream" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.schemaregistry: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.kafkabroker: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.zookeeper: Compose Deployment" />
-        <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -396,6 +357,182 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
+    </task>
+    <task id="LOCAL-00001" summary="2024-02-18 Update Setup Script.">
+      <option name="closed" value="true" />
+      <created>1708256635960</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1708256635960</updated>
+    </task>
+    <task id="LOCAL-00002" summary="2024-02-18 Update Setup Script.">
+      <option name="closed" value="true" />
+      <created>1708262787101</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1708262787101</updated>
+    </task>
+    <task id="LOCAL-00003" summary="2024-02-18 Update Setup Script.">
+      <option name="closed" value="true" />
+      <created>1708279460213</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1708279460213</updated>
+    </task>
+    <task id="LOCAL-00004" summary="2024-02-18 Update Setup Script.">
+      <option name="closed" value="true" />
+      <created>1708617870809</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1708617870809</updated>
+    </task>
+    <task id="LOCAL-00005" summary="2024-02-18 Update Setup Script.">
+      <option name="closed" value="true" />
+      <created>1708619495842</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1708619495842</updated>
+    </task>
+    <task id="LOCAL-00006" summary="2024-02-23 Update kafka config &amp; validation.">
+      <option name="closed" value="true" />
+      <created>1708651067068</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1708651067068</updated>
+    </task>
+    <task id="LOCAL-00007" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708743039684</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1708743039684</updated>
+    </task>
+    <task id="LOCAL-00008" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708762479910</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1708762479910</updated>
+    </task>
+    <task id="LOCAL-00009" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708764418653</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1708764418653</updated>
+    </task>
+    <task id="LOCAL-00010" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708768699007</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1708768699007</updated>
+    </task>
+    <task id="LOCAL-00011" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708768719300</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1708768719300</updated>
+    </task>
+    <task id="LOCAL-00012" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708769489576</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1708769489576</updated>
+    </task>
+    <task id="LOCAL-00013" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708777785312</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1708777785312</updated>
+    </task>
+    <task id="LOCAL-00014" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708778768889</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1708778768889</updated>
+    </task>
+    <task id="LOCAL-00015" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708778946891</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1708778946891</updated>
+    </task>
+    <task id="LOCAL-00016" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708779422145</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1708779422145</updated>
+    </task>
+    <task id="LOCAL-00017" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708787198522</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1708787198522</updated>
+    </task>
+    <task id="LOCAL-00018" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708791406817</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1708791406817</updated>
+    </task>
+    <task id="LOCAL-00019" summary="2024-02-24 Merge Docker Projects.">
+      <option name="closed" value="true" />
+      <created>1708806465497</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1708806465497</updated>
+    </task>
+    <task id="LOCAL-00020" summary="2024-02-25 Change Project Packaging.">
+      <option name="closed" value="true" />
+      <created>1708831118381</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1708831118381</updated>
+    </task>
+    <task id="LOCAL-00021" summary="2024-02-25 Change Project Packaging.">
+      <option name="closed" value="true" />
+      <created>1708834131543</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1708834131543</updated>
+    </task>
+    <task id="LOCAL-00022" summary="2024-02-25 Change Project Packaging.">
+      <option name="closed" value="true" />
+      <created>1708844951370</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1708844951370</updated>
     </task>
     <task id="LOCAL-00023" summary="2024-02-25 Change Project Packaging.">
       <option name="closed" value="true" />
@@ -525,271 +662,7 @@
       <option name="project" value="LOCAL" />
       <updated>1709402286740</updated>
     </task>
-    <task id="LOCAL-00039" summary="2024-09-02 Update Zookeeper configuration.">
-      <option name="closed" value="true" />
-      <created>1725336445805</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1725336445807</updated>
-    </task>
-    <task id="LOCAL-00040" summary="2024-09-02 Update Zookeeper configuration.">
-      <option name="closed" value="true" />
-      <created>1725336857061</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1725336857061</updated>
-    </task>
-    <task id="LOCAL-00041" summary="2024-09-02 Update kafka control panel configuration.">
-      <option name="closed" value="true" />
-      <created>1725337402385</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1725337402385</updated>
-    </task>
-    <task id="LOCAL-00042" summary="2024-09-02 Update kafka control panel configuration.">
-      <option name="closed" value="true" />
-      <created>1725337418026</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1725337418026</updated>
-    </task>
-    <task id="LOCAL-00043" summary="2024-09-02 Update kafka control panel configuration.">
-      <option name="closed" value="true" />
-      <created>1725337990516</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1725337990516</updated>
-    </task>
-    <task id="LOCAL-00044" summary="2024-09-02 Update kafka control panel configuration.">
-      <option name="closed" value="true" />
-      <created>1725338606262</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1725338606262</updated>
-    </task>
-    <task id="LOCAL-00045" summary="2024-09-02 Update minio secret configuration.">
-      <option name="closed" value="true" />
-      <created>1725372672054</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1725372672054</updated>
-    </task>
-    <task id="LOCAL-00046" summary="2024-09-05 Update sqllite configuration.">
-      <option name="closed" value="true" />
-      <created>1725507965588</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1725507965588</updated>
-    </task>
-    <task id="LOCAL-00047" summary="2024-09-05 Update sqllite configuration.">
-      <option name="closed" value="true" />
-      <created>1725508025002</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1725508025002</updated>
-    </task>
-    <task id="LOCAL-00048" summary="2024-09-05 Update sqllite configuration.">
-      <option name="closed" value="true" />
-      <created>1725512398161</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1725512398161</updated>
-    </task>
-    <task id="LOCAL-00049" summary="2024-09-05 Update sqllite configuration.">
-      <option name="closed" value="true" />
-      <created>1725519020616</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1725519020616</updated>
-    </task>
-    <task id="LOCAL-00050" summary="2024-09-05 Update spark configuration.">
-      <option name="closed" value="true" />
-      <created>1725541272085</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1725541272085</updated>
-    </task>
-    <task id="LOCAL-00051" summary="2024-09-06 Update spark configuration.">
-      <option name="closed" value="true" />
-      <created>1725588532149</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1725588532149</updated>
-    </task>
-    <task id="LOCAL-00052" summary="2024-09-06 Update spark configuration.">
-      <option name="closed" value="true" />
-      <created>1725617614577</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1725617614578</updated>
-    </task>
-    <task id="LOCAL-00053" summary="2024-09-08 Update spark configuration.">
-      <option name="closed" value="true" />
-      <created>1725802628934</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1725802628936</updated>
-    </task>
-    <task id="LOCAL-00054" summary="2024-09-09 Update spark configuration.">
-      <option name="closed" value="true" />
-      <created>1725852557147</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1725852557148</updated>
-    </task>
-    <task id="LOCAL-00055" summary="2024-09-10 Update zeppelin configuration.">
-      <option name="closed" value="true" />
-      <created>1726018016796</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1726018016799</updated>
-    </task>
-    <task id="LOCAL-00056" summary="2024-09-11 Update zeppelin configuration.">
-      <option name="closed" value="true" />
-      <created>1726025499118</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1726025499118</updated>
-    </task>
-    <task id="LOCAL-00057" summary="2024-09-11 Update zeppelin configuration.">
-      <option name="closed" value="true" />
-      <created>1726028513854</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1726028513856</updated>
-    </task>
-    <task id="LOCAL-00058" summary="2024-09-11 Update mysql configuration.">
-      <option name="closed" value="true" />
-      <created>1726028697283</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1726028697283</updated>
-    </task>
-    <task id="LOCAL-00059" summary="2024-09-11 Update mysql configuration.">
-      <option name="closed" value="true" />
-      <created>1726030809183</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1726030809184</updated>
-    </task>
-    <task id="LOCAL-00060" summary="2024-09-11 Update setup configuration.">
-      <option name="closed" value="true" />
-      <created>1726072498201</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1726072498202</updated>
-    </task>
-    <task id="LOCAL-00061" summary="2024-09-12 Update Setup configuration.">
-      <option name="closed" value="true" />
-      <created>1726107730826</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1726107730827</updated>
-    </task>
-    <task id="LOCAL-00062" summary="2024-09-12 Update Setup configuration.">
-      <option name="closed" value="true" />
-      <created>1726110897217</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1726110897217</updated>
-    </task>
-    <task id="LOCAL-00063" summary="2024-09-12 Update Setup configuration.">
-      <option name="closed" value="true" />
-      <created>1726111770403</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1726111770403</updated>
-    </task>
-    <task id="LOCAL-00064" summary="2024-09-12 Update Setup configuration.">
-      <option name="closed" value="true" />
-      <created>1726112670303</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1726112670305</updated>
-    </task>
-    <task id="LOCAL-00065" summary="2024-09-12 Update Setup configuration.">
-      <option name="closed" value="true" />
-      <created>1726112847353</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1726112847353</updated>
-    </task>
-    <task id="LOCAL-00066" summary="2024-09-12 Update Setup configuration.">
-      <option name="closed" value="true" />
-      <created>1726115248629</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1726115248630</updated>
-    </task>
-    <task id="LOCAL-00067" summary="2024-09-12 Update Setup configuration.">
-      <option name="closed" value="true" />
-      <created>1726145676024</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1726145676026</updated>
-    </task>
-    <task id="LOCAL-00068" summary="2024-09-12 Update Setup configuration.">
-      <option name="closed" value="true" />
-      <created>1726150736310</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1726150736310</updated>
-    </task>
-    <task id="LOCAL-00069" summary="2024-09-12 Update Setup configuration.">
-      <option name="closed" value="true" />
-      <created>1726150755697</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1726150755697</updated>
-    </task>
-    <task id="LOCAL-00070" summary="2024-09-13 Update Setup configuration.">
-      <option name="closed" value="true" />
-      <created>1726184998325</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1726184998325</updated>
-    </task>
-    <task id="LOCAL-00071" summary="2024-09-13 Update Setup configuration.">
-      <option name="closed" value="true" />
-      <created>1726189238065</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1726189238066</updated>
-    </task>
-    <option name="localTasksCounter" value="72" />
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -797,16 +670,6 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.env" />
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.conf" />
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.profile" />
-  </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ID_ORDER">
-      <list>
-        <option value="Default.Root" />
-        <option value="Default.Author" />
-        <option value="Default.Date" />
-        <option value="Default.Subject" />
-      </list>
-    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -830,21 +693,7 @@
     <MESSAGE value="2024-02-29 Update Confluent Kafka Consumers." />
     <MESSAGE value="2024-03-01 Update PyTest Cases for utils." />
     <MESSAGE value="2024-03-02 Update PyTest Cases for utils." />
-    <MESSAGE value="2024-09-02 Update Zookeeper configuration." />
-    <MESSAGE value="2024-09-02 Update kafka control panel configuration." />
-    <MESSAGE value="2024-09-02 Update minio secret configuration." />
-    <MESSAGE value="2024-09-05 Update sqllite configuration." />
-    <MESSAGE value="2024-09-05 Update spark configuration." />
-    <MESSAGE value="2024-09-06 Update spark configuration." />
-    <MESSAGE value="2024-09-08 Update spark configuration." />
-    <MESSAGE value="2024-09-09 Update spark configuration." />
-    <MESSAGE value="2024-09-10 Update zeppelin configuration." />
-    <MESSAGE value="2024-09-11 Update zeppelin configuration." />
-    <MESSAGE value="2024-09-11 Update mysql configuration." />
-    <MESSAGE value="2024-09-11 Update setup configuration." />
-    <MESSAGE value="2024-09-12 Update Setup configuration." />
-    <MESSAGE value="2024-09-13 Update Setup configuration." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-09-13 Update Setup configuration." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-03-02 Update PyTest Cases for utils." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -855,18 +704,43 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_static.py</url>
+          <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_simple_consumer.py</url>
+          <line>1</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="scala-line">
-          <url>file://$PROJECT_DIR$/bd-spark-module/src/main/scala/org/examples/spark/streaming/structure/TransactionAvroStream.scala</url>
-          <line>116</line>
-          <option name="timeStamp" value="4" />
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_simple_consumer.py</url>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="scala-line">
-          <url>file://$PROJECT_DIR$/bd-spark-module/src/main/scala/org/examples/spark/streaming/structure/TransactionAvroStream.scala</url>
-          <line>136</line>
-          <option name="timeStamp" value="5" />
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent/confluent_kafka_DeserializingConsumer.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/models/User.py</url>
+          <line>84</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bd-python-module/src/test/test_User.py</url>
+          <line>16</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bd-python-module/src/test/test_User.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bd-python-module/src/test/test_static.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/avro-test.py</url>
+          <line>23</line>
+          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -5,10 +5,10 @@
 
 ###
 127.0.0.1           localhost
-192.168.122.21      hostmaster.sandbox.net hostmaster
+172.18.0.1          hostmaster.sandbox.net hostmaster
 
 # Sandbox
-192.168.122.1       thinkpad.sandbox.net thinkpad
+192.168.56.1        thinkpad.sandbox.net thinkpad
 
 # Kerberos
 127.0.0.1           kdcserver.sandbox.net kdcserver
