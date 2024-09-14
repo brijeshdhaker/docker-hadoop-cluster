@@ -401,8 +401,15 @@
         <!-- org.apache.spark:spark-hadoop-cloud_2.12:3.4.1 -->
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-hadoop-cloud_2.12</artifactId>
+            <artifactId>spark-hadoop-cloud_${spark.scala}</artifactId>
             <version>3.4.1</version>
+        </dependency>
+
+        <!-- io.delta:delta-core_2.12:2.4.0 -->
+        <dependency>
+            <groupId>io.delta</groupId>
+            <artifactId>delta-core_${spark.scala}</artifactId>
+            <version>2.4.0</version>
         </dependency>
 
     </dependencies>

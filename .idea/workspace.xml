@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-14 Update Project Configuration.">
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/capacity-scheduler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/hdfs-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/hive-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/mapred-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/yarn-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/core-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/hive-site.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/core-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/core-site.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spark-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/scala/org/examples/spark/SparkPi.scala" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/scala/org/examples/spark/SparkPi.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/iceberg-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/iceberg-help.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/deltalake-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/deltalake-readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme-resources/spark-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/spark-help.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -695,7 +686,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726284694294</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="2024-09-14 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1726290251973</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1726290251973</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="UnknownFeatures">

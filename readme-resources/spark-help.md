@@ -10,15 +10,16 @@ $SPARK_HOME/bin/spark-submit \
 
 # Kerberos
 ```shell
-$SPARK_HOME/bin/spark-submit \
+$SPARK_HOME/bin/spark-shell \
 --name "structured-stream" \
 --master local[*] \
 --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1,org.apache.spark:spark-hadoop-cloud_2.12:3.4.1 \
---conf spark.jars.ivy=/apps/.ivy2 
+--conf spark.jars.ivy=/apps/.ivy2 \
 --conf "spark.driver.extraJavaOptions='-Divy.cache.dir=/apps/.ivy2/cache -Divy.home=/apps/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf'" \
 --conf "spark.executor.extraJavaOptions='-Divy.cache.dir=/apps/.ivy2/cache -Divy.home=/apps/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf'" \
 --conf "spark.kerberos.keytab=/apps/security/keytabs/users/spark.keytab" \
---conf "spark.kerberos.principal=spark@SANDBOX.NET" \
+--conf "spark.kerberos.principal=spark@SANDBOX.NET"
+
 ```
 
 # Apache IceBerg 
@@ -31,13 +32,15 @@ $SPARK_HOME/bin/spark-shell \
 
 ```
 
-# Delta Lake
+# Delta Lake With Spark 3.4.1
+
 ```shell
 $SPARK_HOME/bin/spark-shell \
---packages io.delta:delta-core_2.12:1.0.0,org.apache.spark:spark-hadoop-cloud_2.12:3.4.1 \
+--packages io.delta:delta-core_2.12:2.4.0,org.apache.spark:spark-hadoop-cloud_2.12:3.4.1 \
 --conf spark.jars.ivy=/apps/.ivy2 \
 --conf spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension \
---conf spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog \
+--conf spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog
+
 ```
 
 # Azure Blob Integration
