@@ -130,16 +130,16 @@ docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg spark-sql
 $SPARK_HOME/bin/spark-shell \
 --conf spark.jars.ivy=/apps/.ivy2 \
 --packages org.apache.iceberg:iceberg-spark-runtime-3.4_2.12:1.4.1 \
---properties-file $SPARK_HOME/conf/spark-defaults.conf \
+--properties-file $SPARK_HOME/conf/spark-iceburg.conf \
 --conf spark.hadoop.hive.cli.print.header=true
 
 $SPARK_HOME/bin/spark-sql \
---packages org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.6.1 \
+--packages org.apache.iceberg:iceberg-spark-runtime-3.4_2.12:1.4.1 \
 --conf spark.jars.ivy=/apps/.ivy2 \
---properties-file $SPARK_HOME/conf/spark-defaults.conf
+--properties-file $SPARK_HOME/conf/spark-iceburg.conf
 
 $SPARK_HOME/bin/spark-sql \
---packages org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.6.1 \
+--packages org.apache.iceberg:iceberg-spark-runtime-3.4_2.12:1.4.1 \
 --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions \
 --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog \
 --conf spark.sql.catalog.spark_catalog.type=hive \

@@ -14,6 +14,7 @@ bd-spark-module/dist/bd-spark-module-1.0-SNAPSHOT.jar
 
 
 package org.examples.spark
+import org.apache.hadoop.fs.{FileSystem, Path}
 import org.apache.spark.{SparkConf, SparkContext}
 
 import scala.math.random
@@ -37,7 +38,8 @@ object SparkPi {
     println("Pi is roughly " + 4.0 * count / n)
 
 
-    //FileSystem.get(spark.hadoopConfiguration).listStatus(new Path("/user")).foreach( x => println(x.getPath))
+    val fs = FileSystem.get(spark.hadoopConfiguration)
+    fs.listStatus(new Path("/")).foreach(x => println(x.getPath))
 
     //FileSystem.get(spark.hadoopConfiguration).append()
   }

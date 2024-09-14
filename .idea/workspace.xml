@@ -5,7 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-14 Update Project Configuration.">
+      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/capacity-scheduler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/hdfs-site.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/hive-site.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/mapred-site.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/yarn-site.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/core-site.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/hive-site.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/core-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/core-site.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/scala/org/examples/spark/SparkPi.scala" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/scala/org/examples/spark/SparkPi.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/iceberg-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/iceberg-help.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/spark-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/spark-help.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +79,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.SparkPi.executor": "Run",
     "Docker.Docker Image.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor": "Run",
@@ -74,6 +87,9 @@
     "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.kafkabroker: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.schemaregistry: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.zookeeper: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment.executor": "Run",
@@ -174,13 +190,12 @@
     "Python.test.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "develop/docker-hadoop334-cluster",
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/opt/conda/bin/conda",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spark-module/src/main/resources",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.31724137",
     "run.code.analysis.last.selected.profile": "pProject Default",
@@ -189,11 +204,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-spark-module/src/main/resources" />
+      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client" />
+      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf" />
       <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf" />
-      <recent name="$PROJECT_DIR$/bd-setup-module/scripts" />
-      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/envs" />
-      <recent name="$PROJECT_DIR$/bd-python-module/src/test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/readme-resources/images" />
@@ -203,7 +218,20 @@
       <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment">
+  <component name="RunManager" selected="Application.SparkPi">
+    <configuration name="SparkPi" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="org.examples.spark.SparkPi" />
+      <module name="bd-spark-module" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.examples.spark.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -260,86 +288,73 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/dc-kafka-cluster.yaml.kafkabroker: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
-              <option value="datanode" />
+              <option value="kafkabroker" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hadoop-cluster.yaml" />
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-kafka-cluster.yaml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/dc-kafka-cluster.yaml.schemaregistry: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
-              <option value="namenode" />
+              <option value="schemaregistry" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hadoop-cluster.yaml" />
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-kafka-cluster.yaml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-docker-sandbox/dc-kafka-cluster.yaml.zookeeper: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
-              <option value="metastore" />
+              <option value="zookeeper" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hive-cluster.yaml" />
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-kafka-cluster.yaml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
-              <option value="mysqlserver" />
+              <option value="minio" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-mysqlserver.yaml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="gateway" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yaml" />
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-minio.yml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Application.StreamingJob" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment" />
+      <item itemvalue="Application.SparkPi" />
+      <item itemvalue="Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.kafkabroker: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.schemaregistry: Compose Deployment" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.zookeeper: Compose Deployment" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment" />
+        <item itemvalue="Application.SparkPi" />
+        <item itemvalue="Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.schemaregistry: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.kafkabroker: Compose Deployment" />
+        <item itemvalue="Docker.bd-docker-sandbox/dc-kafka-cluster.yaml.zookeeper: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -664,7 +679,23 @@
       <option name="project" value="LOCAL" />
       <updated>1726283371157</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="2024-09-14 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1726284667054</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1726284667054</updated>
+    </task>
+    <task id="LOCAL-00041" summary="2024-09-14 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1726284694294</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1726284694294</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="UnknownFeatures">
