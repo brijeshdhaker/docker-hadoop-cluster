@@ -5,158 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-14 Update Project Configuration.">
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/bd-notebooks-module.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/.ipynb_checkpoints/hello-noteboot-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/hello-noteboot.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/.ipynb_checkpoints/Iceberg - Getting Started-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/.ipynb_checkpoints/MinIOTest-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/.ipynb_checkpoints/iceberg-jdbc-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/.ipynb_checkpoints/spark-java-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/.ipynb_checkpoints/spark-python-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/.ipynb_checkpoints/spark-scala-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/Iceberg - Getting Started.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/MinIOTest.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/iceberg-jdbc.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/spark-java.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/spark-python.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/spark-scala.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Flink Tutorial/1. Flink Basics_2F2YS7PCE.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Flink Tutorial/2. Three Essential Steps for Building Flink Job_2F7SKEHPA.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Flink Tutorial/3. Flink Job Control Tutorial_2F5RKHCDV.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Flink Tutorial/4. Streaming ETL_2EYD56B9B.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Flink Tutorial/5. Streaming Data Analytics_2EYT7Q6R8.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Flink Tutorial/6. Batch ETL_2EW19CSPA.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Flink Tutorial/7. Batch Data Analytics_2EZ9G3JJU.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Flink Tutorial/8. Logistic Regression (Alink)_2F4HJNWVN.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hadoop/hadoop-commands_2HKVQKV3U.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hadoop/hdfs-commands_2HNX4CQUP.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hadoop/test-file_2GRN2Y6FJ.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hbase/hbase-test_2GRB7W8PH.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hbase/hortonworks-shc-connector_2GSAZR9BQ.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hbase/spark-hbase-connector_2GRH9CDWB.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hive/hive-bucket-map-join_2GU6EBT4X.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hive/hive-bucketed-tables_2GR8HW4Z6.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hive/hive-datatypes_2GSNF1KSC.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hive/hive-dstream-table_2GTVB8B4U.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hive/hive-eliminate-duplicates_2GU88EVG7.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hive/hive-hbase-external-tables_2GSP2W6RS.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hive/hive-joins-types_2GQEU54D9.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hive/hive-lateral-view_2GTVFKP3X.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hive/hive-map-join_2GVGXFWN1.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hive/hive-partition-tables_2GSAUWYDK.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hive/hive-practice_2GS8BEJJX.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hive/hive-sortmerge-bucket-map-join_2GWFKWKD4.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hive/hive-split-column_2HK26F2JD.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hive/hive-table-orc_2HKKT2KVK.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hive/hive-table-parquet_2HJ48CVNN.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hive/hive-transaction-data-pipeline_2GS1ZX4SG.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hive/hive-window-functions_2HHQWQ4CE.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Hive/hive_flight_data_2JSY2DGQ2.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Iceberg/iceberg_tables_2JSPJME8F.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Miscellaneous Tutorial/Using Mahout_2BYEZ5EVK.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Miscellaneous Tutorial/Using Pig for querying data_2C57UKYWR.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Monitoring/spark-cluster-graphite-metrics_2HQV3V6XH.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Monitoring/spark-cluster-jmx-metrics_2HSNE1B6C.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Monitoring/spark-cluster-prometheus-metrics_2HSWTDXY7.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Monitoring/spark-cluster-statsd-metrics_2HR615J5B.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Mysql/mysql-test_2HM338ASK.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/Car_Loan_Data_Analysis_2GUX3Z4HM.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/Card_Transaction_Analysis_2GT4KUKKG.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/Transforming Complex Data Types in Spark SQL_2GUCGJQUE.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/azure_2HM62FCUG.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/joins/bucketed-sort-merge-join_2GQ2QU2U9.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/joins/sort_merge_join_2HPC5QCXZ.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/logical_physical_plans_2GSB9H2KW.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/pyspark-data-frames_2GP9RXBET.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/pyspark-delta-table_2HK4A8YWE.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/pyspark-df-distinct_2GR1FZHBM.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/pyspark-df-groupby_2GSH6FF7F.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/pyspark-hash-partitioner_2GQ7X5UAN.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/pyspark-hive-hbase_2GRHRBP3V.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/pyspark-hive-tables_2HF6UJS5M.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/pyspark-large-tables_2GR1BU96F.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/pyspark-matplotlib_2HN1XXMZT.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/pyspark-secondary-sort(car-data)_2GTMZQEGC.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/pyspark-secondary-sort(in-reducer)_2HM1623AT.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/pyspark-secondary-sort(in-shuffle)_2HMEHDPT5.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/pyspark-sort-merge-join_2GRDH7B9W.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/pyspark-table-types_2HMAW1Q7V.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/pyspark_zero_value_in_aggregatebykey_2H8FH47UV.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/rdd/pyspark-local-rdd-actions_2GSCYK9TW.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/rdd/pyspark-paired-rdd-transformations_2GSKPE7D5.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/rdd/pyspark-rdd-mapvalue_2HJ4FXFUV.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/rdd/rdd-actions_2HK5PXGEK.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/spark_session_catalog_2HMCG3GW8.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/stream/kafka_structured_batch_2HKUFJTM6.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/stream/kafka_structured_stream_2GS3G93GM.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/PySpark/stream/rate_structured_stream_2HK8JVHW2.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Python 3 (ipykernel)_2HN1YYPCS.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Python 3_2GSNWVBEW.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Python Tutorial/1. IPython Basic_2EYDJKFFY.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Python Tutorial/2. IPython Visualization Tutorial_2F1S9ZY8Z.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Python Tutorial/3. Keras Binary Classification (IMDB)_2F2AVWJ77.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Python Tutorial/4. Matplotlib (Python, PySpark)_2C2AUG798.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Python/hash-lib-example_2H4YP6GKM.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Python/python-dates_2HNSUM9KF.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Python/python-test_2GRJMVUFZ.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/R Tutorial/1. R Basics_2BWJFTXKJ.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/R Tutorial/2. Shiny App_2EZ66TM57.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/R Tutorial/3. R Conda Env in Yarn Mode_2GB9HRSH9.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/SPARK Certification Guide/Chap 01 to 05 -SPARK and AzureDB basics_2GTBCSAFZ.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/SPARK Certification Guide/Chap 06 - Working with Different Types of Data_2HCXQNXQD.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/SPARK Certification Guide/Chap 07 - Aggregations_2HFNBRUEQ.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/SPARK Certification Guide/Chap 08- Joins_2HD81RW9D.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/SPARK Certification Guide/Chap 09 - Data Sources_2HDVVPS9E.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/SPARK Certification Guide/Chap 10- Spark SQL_2HF4RY2P4.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark Streaming_2HK44BKKJ.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark Tutorial/1. Spark Interpreter Introduction_2F8KN6TKK.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark Tutorial/2. Spark Basic Features_2A94M5J1Z.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark Tutorial/3. Spark SQL (PySpark)_2EWM84JXA.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark Tutorial/3. Spark SQL (Scala)_2EYUV26VR.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark Tutorial/4. Spark MlLib_2EZFM3GJA.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark Tutorial/5. SparkR Basics_2BWJFTXKM.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark Tutorial/6. SparkR Shiny App_2F1CHQ4TT.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark Tutorial/7. Spark Delta Lake Tutorial_2F8VDBMMT.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark Tutorial/8. PySpark Conda Env in Yarn Mode_2GE79Y5FV.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/ByKeyOperations_2GRM1Q447.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/CombineByKeyOperation_2GT17UUHP.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/DataFormats/spark_orc_example_2GS9Z7YNU.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/DataFormats/spark_parquet_example_2GTV67G8V.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/Datasources/avro-data-frames_2GRU1SC85.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/Datasources/pyspark-parquet_2GT7FHX41.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/Partitioners/Hash-Partitioner_2GR9WHD4V.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/Seacondary_Sort_Example_2GV5E219U.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/Stream/kafka-streaming-example_2HKZHZPA8.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/WindowsFunctions_2H29Q41HK.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/accumulators_2HNRGMPME.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/broadcast-hash-join_2GRZN5DS9.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/broadcast_nestedloop_join_2GQDFN3RM.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/cache_and_persist_2GSQSK2QB.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/cartesian-join_2GS9X2UCC.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/cost_based_optimization_2GT743VVU.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/elastic-search_2GQNA92JB.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/randam-dataframes_2GTE5PYAP.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/shuffel-sort-merge-join_2GRFYSSBQ.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/shuffle-hash-join_2GRFYA2BN.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/spark-join-hints_2GS65GYQ5.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Spark/string-functions_2GTM6Q93U.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/cassandra/spark-connection_2HSMCN7HV.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/cassandra/test-cassandra_2GRXY2AC7.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/elasticsearch/test-elastic-search_2GR3TPK3J.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/images/hadoop-hdfs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/spark-local_2GQKZNMZB.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/spark-yarn-client_2GN1VCU82.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/spark-yarn-cluster_2GP4KFVM4.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/test-shell_2GTZDXJT9.zpln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/spark/SparkAppWorkflow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/test/resources/core-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/test/resources/hive-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-minio.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/log4j2.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-defaults.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-defaults.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-iceburg.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-iceburg.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-notebook.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-notebook.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/zeppelin/conf/interpreter.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/zeppelin/conf/interpreter.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-spark-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-spark-cluster.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-zeppelin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-zeppelin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/spark/SparkAppWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/spark/SparkAppWorkflow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/spark-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/spark-help.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,6 +120,7 @@
     "Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-notebook: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-zeppelin.yml.zeppelin: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox: Compose Deployment.executor": "Run",
     "Docker.dc-iceburg.yml.mc: Compose Deployment.executor": "Run",
     "Docker.dc-iceburg.yml.minio: Compose Deployment.executor": "Run",
@@ -335,7 +195,7 @@
     "git-widget-placeholder": "develop/docker-hadoop334-cluster",
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-notebooks-module",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spark-module/src/main/resources",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
@@ -346,11 +206,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-spark-module/src/main/resources" />
+      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf" />
       <recent name="$PROJECT_DIR$/bd-notebooks-module" />
       <recent name="$PROJECT_DIR$/bd-spark-module/src/test/resources" />
-      <recent name="$PROJECT_DIR$/bd-spark-module/src/main/resources" />
       <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client" />
-      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks" />
@@ -360,8 +220,12 @@
       <recent name="$PROJECT_DIR$/readme-resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-notebook: Compose Deployment">
+  <component name="RunManager" selected="Application.SparkAppWorkflow">
     <configuration name="SparkAppWorkflow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="SPARK_LOG_DIR" value="/apps/var/logs/spark-apps" />
+        <env name="SPARK_LOG_FILE" value="SparkAppWorkflow" />
+      </envs>
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.SparkAppWorkflow" />
       <module name="bd-spark-module" />
       <extension name="coverage">
@@ -456,19 +320,6 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="minio" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-minio.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <configuration name="bd-hadoop-sandbox/dc-spark-cluster.yml.spark-notebook: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -482,21 +333,34 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="bd-hadoop-sandbox/dc-zeppelin.yml.zeppelin: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="zeppelin" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-zeppelin.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.StreamingJob" />
       <item itemvalue="Application.SparkAppWorkflow" />
       <item itemvalue="Application.SparkPi" />
+      <item itemvalue="Docker.bd-hadoop-sandbox/dc-zeppelin.yml.zeppelin: Compose Deployment" />
       <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
       <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-notebook: Compose Deployment" />
-      <item itemvalue="Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SparkAppWorkflow" />
+        <item itemvalue="Docker.bd-hadoop-sandbox/dc-zeppelin.yml.zeppelin: Compose Deployment" />
         <item itemvalue="Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.spark-notebook: Compose Deployment" />
         <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment" />
-        <item itemvalue="Application.SparkAppWorkflow" />
         <item itemvalue="Application.SparkPi" />
-        <item itemvalue="Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>

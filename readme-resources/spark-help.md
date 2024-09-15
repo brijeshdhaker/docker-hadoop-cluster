@@ -78,7 +78,7 @@ $SPARK_HOME/bin/pyspark \
 ```shell
 
 --conf spark.yarn.jars=file:///opt/spark/jars/*.jar \
---packages org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.4.3,org.apache.spark:spark-hadoop-cloud_2.12:3.4.1 \
+--packages org.apache.iceberg:iceberg-spark-runtime-3.4_2.12:1.4.1,org.apache.iceberg:iceberg-aws:1.4.3,org.apache.spark:spark-hadoop-cloud_2.12:3.4.1 \
 --properties-file $SPARK_HOME/conf/spark-iceburg.conf \
 
 

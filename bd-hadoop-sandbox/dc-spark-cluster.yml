@@ -161,7 +161,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - /apps/sandbox/warehouse:/home/iceberg/warehouse
-      - /apps/sandbox/notebooks:/home/iceberg/notebooks
+      - ../bd-notebooks-module/jupyter/notebooks:/home/iceberg/notebooks
       - ./conf/spark/conf:/opt/spark/conf
 #      - ./conf/spark/conf/log4j2.properties:/opt/spark/conf/log4j2.properties
 #      - ./conf/spark/conf/spark-notebook.conf:/opt/spark/conf/spark-defaults.conf

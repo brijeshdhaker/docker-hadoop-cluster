@@ -126,7 +126,8 @@
           "description": "Query interval for hive statement"
         }
       },
-      "status": "READY",
+      "status": "ERROR",
+      "errorReason": "Source \u0027/opt/hadoop/share/hadoop/common/hadoop-common-3.3.4.jar\u0027 does not exist",
       "interpreterGroup": [
         {
           "name": "sql",
@@ -2042,7 +2043,8 @@
           "description": "Disable checks for unit and manual tests"
         }
       },
-      "status": "READY",
+      "status": "ERROR",
+      "errorReason": "Source \u0027/opt/hbase-client/lib/hbase-client-1.1.7.jar\u0027 does not exist",
       "interpreterGroup": [
         {
           "name": "hbase",
