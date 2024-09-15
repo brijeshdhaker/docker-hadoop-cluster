@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-15 Update Project Configuration.">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-kafka-cluster.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-mysqlserver.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-mysqlserver.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-spark-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-spark-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-zeppelin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-zeppelin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/config/AbstractAppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/config/AbstractAppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Mysql/mysql-test_2HM338ASK.zpln" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Mysql/mysql-test_2HM338ASK.zpln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,6 +139,7 @@
     "Docker.docker-compose.yml.sparkhistory: Compose Deployment.executor": "Run",
     "Docker.docker-compose.yml.timelineserver: Compose Deployment.executor": "Run",
     "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
+    "Docker.mysqlserver.executor": "Run",
     "Docker.ubuntu.executor": "Run",
     "Docker.zeppelin.executor": "Run",
     "Maven.bd-python-module [clean].executor": "Run",
@@ -220,7 +214,7 @@
       <recent name="$PROJECT_DIR$/readme-resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.zeppelin">
+  <component name="RunManager" selected="Docker.mysqlserver">
     <configuration name="SparkAppWorkflow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <envs>
         <env name="SPARK_LOG_DIR" value="/apps/var/logs/spark-apps" />
@@ -310,12 +304,27 @@
     <configuration name="bd-hadoop-sandbox/dc-zeppelin.yml.zeppelin: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
+          <option name="envFilePath" value="" />
           <option name="services">
             <list>
               <option value="zeppelin" />
             </list>
           </option>
           <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-zeppelin.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="mysqlserver" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="envFilePath" value="" />
+          <option name="services">
+            <list>
+              <option value="mysqlserver" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/docker-compose.yml" />
         </settings>
       </deployment>
       <method v="2" />
@@ -338,6 +347,7 @@
       <item itemvalue="Application.StreamingJob" />
       <item itemvalue="Application.SparkAppWorkflow" />
       <item itemvalue="Application.SparkPi" />
+      <item itemvalue="Docker.mysqlserver" />
       <item itemvalue="Docker.bd-hadoop-sandbox/dc-zeppelin.yml.zeppelin: Compose Deployment" />
       <item itemvalue="Docker.zeppelin" />
     </list>
@@ -712,7 +722,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726370586863</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="2024-09-15 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1726399679593</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1726399679593</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="UnknownFeatures">
