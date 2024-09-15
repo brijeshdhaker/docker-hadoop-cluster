@@ -5,9 +5,9 @@
 version: '3.5'
 
 #
-include:
-  - path: ../bd-hadoop-sandbox/dc-minio.yml
-  - path: ../bd-hadoop-sandbox/dc-mysqlserver.yml
+# include:
+#   - path: ../bd-hadoop-sandbox/dc-minio.yml
+#   - path: ../bd-hadoop-sandbox/dc-mysqlserver.yml
 
 #
 services:

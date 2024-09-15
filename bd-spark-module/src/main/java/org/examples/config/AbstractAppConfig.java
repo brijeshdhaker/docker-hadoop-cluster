@@ -1,4 +1,11 @@
 package org.examples.config;
 
-public class AbstractAppConfig {
+public abstract class AbstractAppConfig {
+
+    private Boolean isVerbose;
+    private Boolean isEmbedded;
+
+    public AbstractAppConfig() throws Exception {
+
+    }
 }

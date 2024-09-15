@@ -28,9 +28,9 @@
 ---
 version: "3.9"
 
-include:
-  - dc-minio.yml
-#  - dc-hive-cluster.yml
+# include:
+#   - dc-minio.yml
+# #  - dc-hive-cluster.yml
 
 services:
   #
@@ -78,19 +78,3 @@ services:
     extra_hosts:
       - "thinkpad.sandbox.net:172.18.0.1"
 
-
-#
-#
-#
-volumes:
-  #
-  sandbox_apps_path:
-    external: true
-
-
-#
-networks:
-  default:
-    external: true
-    driver: bridge
-    name: sandbox.net
