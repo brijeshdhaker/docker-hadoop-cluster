@@ -2,7 +2,7 @@
 # docker volume create --name sandbox_minio_data --opt type=none --opt device=/apps/sandbox/minio --opt o=bind
 #
 ---
-version: '3.9'
+
 services:
 #
   minio:

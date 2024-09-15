@@ -1,7 +1,11 @@
 #
-# docker compose -f bd-hadoop-sandbox/dc-flink-cluster.yml up -d
-# docker compose -f bd-hadoop-sandbox/dc-flink-cluster.yml down
+# docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d
+# docker compose -f bd-hadoop-sandbox/docker-compose.yml down
 #
+
+#
+# docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d zeppelin
+# docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d mysqlserver
 
 #
 # docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
@@ -32,6 +36,7 @@ version: "3.9"
 include:
   - path: ../bd-hadoop-sandbox/dc-minio.yml
   - path: ../bd-hadoop-sandbox/dc-mysqlserver.yml
+  - path: ../bd-hadoop-sandbox/dc-kafka-cluster-7.5.2.yml
   - path: ../bd-hadoop-sandbox/dc-spark-cluster.yml
   - path: ../bd-hadoop-sandbox/dc-zeppelin.yml
   #
