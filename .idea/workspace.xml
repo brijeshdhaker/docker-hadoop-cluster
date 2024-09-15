@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-15 Update Project Configuration.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Mysql/mysql-test_2HM338ASK.zpln" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Mysql/mysql-test_2HM338ASK.zpln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +214,7 @@
       <recent name="$PROJECT_DIR$/readme-resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.mysqlserver">
+  <component name="RunManager" selected="Docker.minio">
     <configuration name="SparkAppWorkflow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <envs>
         <env name="SPARK_LOG_DIR" value="/apps/var/logs/spark-apps" />
@@ -315,6 +315,20 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="minio" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="envFilePath" value="" />
+          <option name="services">
+            <list>
+              <option value="minio" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <configuration name="mysqlserver" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -322,6 +336,22 @@
           <option name="services">
             <list>
               <option value="mysqlserver" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="spark-master" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="envFilePath" value="" />
+          <option name="services">
+            <list>
+              <option value="spark-master" />
+              <option value="spark-worker-a" />
+              <option value="spark-worker-b" />
             </list>
           </option>
           <option name="sourceFilePath" value="bd-hadoop-sandbox/docker-compose.yml" />
@@ -348,6 +378,8 @@
       <item itemvalue="Application.SparkAppWorkflow" />
       <item itemvalue="Application.SparkPi" />
       <item itemvalue="Docker.mysqlserver" />
+      <item itemvalue="Docker.minio" />
+      <item itemvalue="Docker.spark-master" />
       <item itemvalue="Docker.bd-hadoop-sandbox/dc-zeppelin.yml.zeppelin: Compose Deployment" />
       <item itemvalue="Docker.zeppelin" />
     </list>
@@ -730,7 +762,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726399679593</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="2024-09-15 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1726413601125</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1726413601125</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="UnknownFeatures">
