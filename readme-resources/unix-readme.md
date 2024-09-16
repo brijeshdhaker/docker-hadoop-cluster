@@ -64,3 +64,5 @@ do
 done
 
 ```
+
+update-alternatives --config java
