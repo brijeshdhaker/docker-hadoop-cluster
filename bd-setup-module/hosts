@@ -5,7 +5,7 @@
 
 ###
 127.0.0.1           localhost
-172.18.0.1          hostmaster.sandbox.net hostmaster
+10.0.2.15          hostmaster.sandbox.net hostmaster
 
 # Sandbox
 192.168.56.1        thinkpad.sandbox.net thinkpad

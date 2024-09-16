@@ -11,10 +11,7 @@
 #
 # docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d zeppelin
 # docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d spark-notebook
-
-
-
-
+#
 #
 # docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
 # docker volume create --name sandbox_security_secrets --opt type=none --opt device=/apps/security/ssl --opt o=bind

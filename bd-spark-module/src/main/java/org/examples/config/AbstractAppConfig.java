@@ -9,13 +9,8 @@ public abstract class AbstractAppConfig {
     private Map<String,String> params;
 
     public AbstractAppConfig(Map<String,String> params) throws Exception {
+
         this.params = params;
-
-
-
-
-
-
         
     }
 }

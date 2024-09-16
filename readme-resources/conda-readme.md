@@ -118,6 +118,7 @@ conda env update --name env_python_39 --file env_python_39.yml --prune
 #
 conda pack -n env_python_39 -o /apps/hostpath/python/pyspark39-$(date "+%Y%m%d").tar.gz
 hdfs dfs -copyFromLocal /apps/hostpath/python/pyspark39-$(date "+%Y%m%d").tar.gz /archives/pyspark/
+
 # The python conda tar should be public accessible, so need to change permission here.
 hadoop fs -chmod 775 /archives/pyspark/pyspark39-20221125.tar.gz
 

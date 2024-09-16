@@ -7,7 +7,7 @@ public interface StreamJobProcessor <Key, Value, RddEntity> {
 
     JavaRDD<RddEntity> process();
 
-    default String path(SparkConf sparkkConf){
+    default String path(SparkConf sparkConf){
 
     }
 }
