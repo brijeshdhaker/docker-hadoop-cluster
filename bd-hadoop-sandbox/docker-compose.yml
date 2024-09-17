@@ -6,8 +6,9 @@
 #
 # # docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d mysqlserver
 #
-# docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d spark-master,spark-worker-a,spark-worker-b
+# docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d spark-master, spark-worker-a, spark-worker-b
 #
+# docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d zookeeper, kafkabroker, schemaregistry
 #
 # docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d zeppelin
 # docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d spark-notebook
