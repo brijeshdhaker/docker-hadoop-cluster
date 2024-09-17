@@ -6,8 +6,12 @@ $SPARK_HOME/bin/spark-submit \
 --class org.examples.spark.SparkPi \
 --name "SparkPi" \
 --master local[4] \
---packages org.apache.spark:spark-avro_2.12:3.4.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 \
+--packages org.apache.spark:spark-avro_2.12:3.4.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1,org.apache.spark:spark-hadoop-cloud_2.12:3.4.1 \
 --conf spark.jars.ivy=/apps/.ivy2 \
+--conf "spark.driver.extraJavaOptions='-Divy.cache.dir=/apps/.ivy2/cache -Divy.home=/apps/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf'" \
+--conf "spark.executor.extraJavaOptions='-Divy.cache.dir=/apps/.ivy2/cache -Divy.home=/apps/.ivy2 -Djava.security.krb5.conf=/etc/krb5.conf'" \
+--conf spark.executorEnv.SPARK_LOG_DIR=/apps/var/logs \
+--conf spark.executorEnv.SPARK_LOG_FILE=SparkPi \
 bd-spark-module/dist/bd-spark-module-1.0-SNAPSHOT.jar
 
 */

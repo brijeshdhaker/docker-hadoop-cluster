@@ -25,4 +25,4 @@ def delete(file_path):
 
 if __name__ == "__main__":
     print("Executed when invoked directly")
-    readFile("resources/avro/user-record.avsc")
+    read("resources/avro/user-record.avsc")

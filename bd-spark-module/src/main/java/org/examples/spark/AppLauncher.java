@@ -12,7 +12,7 @@ import scala.remote;
 
 public class AppLauncher {
 
-    private static CommandLine parseArgs(String[] args) throws ParseException {
+    private static Options parseArgs(String[] args) throws ParseException {
 
         Options options = new Options();
 
@@ -32,35 +32,46 @@ public class AppLauncher {
         schemaRegOption.setRequired(true);
         options.addOption(schemaRegOption);
     
-        CommandLineParser parser = new BasicParser();
-        CommandLine cmd = parser.parse(options, args);
+        options.addOption("help", false, "print help");
 
-        return cmd;
+        return options;
     }
 
 
     public static void main(String[] args) {
+        
         if(args.length > 0){
-
+            
             
             HelpFormatter helper = new HelpFormatter();
+            CommandLineParser parser = new BasicParser();
             CommandLine cmd = null;
+            Options options = null;
             try {
-
-                cmd = parseArgs(args);
+                
+                options = parseArgs(args);
+                cmd = parser.parse(options, args);
+                
+                if (args.length <= 0 || cmd.hasOption("help")) {
+                    String opt_config = cmd.getOptionValue("config");
+                    System.out.println("Config set to " + opt_config);
+                }
+                
                 if(cmd.hasOption("a")) {
-                System.out.println("Alpha activated");
+                    System.out.println("Alpha activated");
                 }
             
                 if (cmd.hasOption("c")) {
-                String opt_config = cmd.getOptionValue("config");
-                System.out.println("Config set to " + opt_config);
+                    String opt_config = cmd.getOptionValue("config");
+                    System.out.println("Config set to " + opt_config);
                 }
+                
+                
 
             } catch (ParseException e) {
 
                 System.out.println(e.getMessage());
-                helper.printHelp("Usage:", options);
+                helper.printHelp("Usage : ", options);
                 System.exit(0);
                 
             }

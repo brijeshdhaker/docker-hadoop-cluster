@@ -17,7 +17,7 @@ dependencies:
 #  - jupyterlab_code_formatter
 #  - panel
 #  - jellyfish
-#  - matplotlib
+  - matplotlib
 #  - seaborn
 #  - plotnine
 #  - hvplot

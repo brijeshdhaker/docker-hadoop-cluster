@@ -8,6 +8,6 @@ public interface StreamJobProcessor <Key, Value, RddEntity> {
     JavaRDD<RddEntity> process();
 
     default String path(SparkConf sparkConf){
-
+        return "";
     }
 }

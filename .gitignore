@@ -30,3 +30,8 @@ bd-hadoop-sandbox/conf/cluster/*/*
 .idea/shelf/Uncommitted_changes_before_Checkout_at_14_09_24__7_18am__Changes_.xml
 .idea/shelf/Uncommitted_changes_before_Checkout_at_14_09_24,_7_18 am_\[Changes]/shelved.patch
 bd-spark-module/dependency-reduced-pom.xml
+bd-pyspark-module/nbproject/
+bd-pyspark-module/.ropeproject/
+bd-hadoop-sandbox/bd-hadoop-sandbox/nbproject/private/
+bd-hadoop-sandbox/nbproject/private/
+bd-notebooks-module/zeppelin/notebooks/.git
