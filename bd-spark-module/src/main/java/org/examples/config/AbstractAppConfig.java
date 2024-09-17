@@ -6,7 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scala.Tuple2;
 
+import java.util.Comparator;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public abstract class AbstractAppConfig {
 
@@ -24,6 +27,37 @@ public abstract class AbstractAppConfig {
 
     protected void init() throws Exception {
 
+        isVerbose = Boolean.valueOf(params.get("verbose"));
+        isEmbedded = Boolean.valueOf(params.get("embedded"));
+
+        if(!params.isEmpty()){
+            String workflowConfigPath = params.get("property-file");
+            String workflowMarkerPath = params.get("marker-file");
+
+            if(isVerbose){
+                System.out.println("Workflow property-file : " + workflowConfigPath);
+                System.out.println("Workflow marker-file   : " + workflowMarkerPath);
+            }
+
+            this.sparkConf = isEmbedded ? embedded() : new SparkConf();
+
+            if(workflowConfigPath != null && !workflowConfigPath.isEmpty()){
+                loadWorkflowConfig(workflowConfigPath);
+            }
+
+            if(workflowMarkerPath != null && !workflowMarkerPath.isEmpty()){
+               this.sparkConf.set("workflow.marker.file", workflowMarkerPath);
+            }
+
+            String summary = Stream.of(sparkConf.getAll())
+                    .sorted(Comparator.comparing(Tuple2::_1))
+                    .map(AbstractAppConfig::maskIfRequired)
+                    .collect(Collectors.joining(System.lineSeparator()));
+
+
+            logger.info("Sprak configuration summary : {}", summary);
+
+        }
     }
 
     protected void loadWorkflowConfig(String path) throws Exception {
@@ -31,6 +65,10 @@ public abstract class AbstractAppConfig {
         if(workflowParams != null && !workflowParams.isEmpty()){
             workflowParams.forEach(this.sparkConf::set);
         }
+    }
+
+    public SparkConf sparkConf(){
+        return sparkConf;
     }
 
     protected SparkConf embedded() throws Exception {
@@ -55,7 +93,7 @@ public abstract class AbstractAppConfig {
     }
 
 
-    private static String maskIfRequired(Tuple2<String, String> tuple) throws Exception {
+    private static String maskIfRequired(Tuple2<String, String> tuple) {
         if(tuple._1().matches("(?i),*password.*|.*pwd.*|.*secret.*|.*authkey.*")){
             return tuple._1() + " : ***** ";
         }
