@@ -31,14 +31,14 @@ PYSPARK_DRIVER_PYTHON=/opt/conda/envs/pyspark37/bin/python
 conda env create -f bd-pyspark-module/env_python_37.yml
 mamba env update -f bd-pyspark-module/env_python_37.yml --prune
 conda activate env_python_37
-conda pack -f -o /apps/python/env_python_37-20221125.tar.gz
+conda pack -f -o /apps/python/env_python_37_20221125.tar.gz
 
 #
 #### Create Conda Virtual Env : Python 3.8
 #
 conda create -y -n pyspark3.8 -c conda-forge pyarrow pandas conda-pack
-conda activate pyspark3.8
-conda pack -f -o /apps/hostpath/python/pyspark3.8.tar.gz
+conda activate env_python_38
+conda pack -f -o /apps/hostpath/python/env_python_38_20221125.tar.gz
 
 #
 #### Create Conda Virtual Env : Python 3.9
@@ -47,13 +47,13 @@ conda create -y -n env_python_39 -c conda-forge python=3.9.18 pyarrow pandas con
 mamba env update -f bd-pyspark-module/env_python_39.yml --prune
 conda activate env_python_39
 conda update -n base -c defaults conda
-conda pack -f -o /apps/python/env_python_39-20221125.tar.gz
+conda pack -f -o /apps/python/env_python_39_20221125.tar.gz
 
 
 # The python conda tar should be public accessible, so need to change permission here.
-hdfs dfs –put /apps/python/env_python_37-20221125.tar.gz /archives/pyspark/
-hdfs dfs -copyFromLocal /apps/python/env_python_37-20221125.tar.gz /archives/pyspark/env_python_37-20221125.tar.gz
-hadoop fs -chmod 775 /archives/pyspark/env_python_37-20221125.tar.gz
+hdfs dfs –put /apps/python/env_python_39_20221125.tar.gz /archives/pyspark/
+hdfs dfs -copyFromLocal /apps/python/env_python_39_20221125.tar.gz /archives/pyspark/env_python_39_20221125.tar.gz
+hadoop fs -chmod 775 /archives/pyspark/env_python_39_20221125.tar.gz
 
 #
 #### Install Package in Virtual Environment
