@@ -28,8 +28,13 @@ public class LinkedProperties extends Properties {
     }
 
     @Override
+    public synchronized void clear() {
+        linkedHashMap.clear();
+    }
+
+    @Override
     public Enumeration<Object> elements() {
-        return super.elements();
+        throw new UnsupportedOperationException("Not Supported, Please use keySet() or entrySet instead");
     }
 
     @Override

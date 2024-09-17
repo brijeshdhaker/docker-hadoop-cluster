@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-03-02 Update PyTest Cases for utils.">
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/LinkedProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/PropertyFileReader.java" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-17 Update Project Configuration.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/LinkedProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/LinkedProperties.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -656,7 +654,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709402286740</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="2024-09-17 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1726560700124</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1726560700124</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -690,7 +696,8 @@
     <MESSAGE value="2024-02-29 Update Confluent Kafka Consumers." />
     <MESSAGE value="2024-03-01 Update PyTest Cases for utils." />
     <MESSAGE value="2024-03-02 Update PyTest Cases for utils." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-03-02 Update PyTest Cases for utils." />
+    <MESSAGE value="2024-09-17 Update Project Configuration." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-09-17 Update Project Configuration." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
