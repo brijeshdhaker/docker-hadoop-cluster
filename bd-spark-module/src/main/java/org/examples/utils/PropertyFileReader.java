@@ -41,7 +41,7 @@ public class PropertyFileReader {
         return allProperties;
     }
 
-    public static Map<String, String> loadFromFile(String path, FileSystem fs){
+    public static Map<String, String> loadFromFile(String path){
         Properties properties = new LinkedProperties();
         if(path != null && !path.isEmpty()){
             System.out.println("Reading Workflow Properties from file " + path);

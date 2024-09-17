@@ -139,16 +139,20 @@
                             <goal>exec</goal>
                         </goals>
                         <configuration>
+                            <!--
                             <environmentVariables>
                                 <HADOOP_CONF_DIR>/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-docker-sandbox/conf/hadoop/conf</HADOOP_CONF_DIR>
                                 <YARN_CONF_DIR>/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-docker-sandbox/conf/hadoop/conf</YARN_CONF_DIR>
                             </environmentVariables>
+                            -->
                             <executable>spark-submit</executable>
                             <arguments>
                                 <argument>--master</argument>
                                 <argument>local[4]</argument>
                                 <argument>--packages</argument>
-                                <argument>org.apache.spark:spark-streaming-kafka-0-10_2.12:${spark.version},org.apache.spark:spark-sql-kafka-0-10_2.12:${spark.version}</argument>
+                                <argument>org.apache.spark:spark-avro_2.12:${spark.version},org.apache.spark:spark-sql-kafka-0-10_2.12:${spark.version},org.apache.spark:spark-hadoop-cloud_2.12:${spark.version}</argument>
+                                <argument>--conf</argument>
+                                <argument>spark.jars.ivy=/apps/.ivy2</argument>
                                 <argument>--class</argument>
                                 <argument>${runclass}</argument>
                                 <argument>${project.build.directory}/${project.artifactId}-${project.version}.jar</argument>
@@ -187,6 +191,8 @@
                                 <argument>--executor-cores</argument>
                                 <argument>2</argument>
                                 <!-- -->
+                                <argument>--conf</argument>
+                                <argument>spark.jars.ivy=/apps/.ivy2</argument>
                                 <argument>--conf</argument>
                                 <argument>spark.yarn.queue=spark.client</argument>
                                 <argument>--conf</argument>
@@ -232,6 +238,8 @@
                                 <argument>--executor-cores</argument>
                                 <argument>2</argument>
                                 <!-- -->
+                                <argument>--conf</argument>
+                                <argument>spark.jars.ivy=/apps/.ivy2</argument>
                                 <argument>--conf</argument>
                                 <argument>spark.yarn.queue=spark.cluster</argument>
                                 <argument>--conf</argument>

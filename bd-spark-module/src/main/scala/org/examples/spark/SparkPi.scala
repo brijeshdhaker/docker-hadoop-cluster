@@ -1,6 +1,6 @@
 /*
 
-mvn exec:exec@run-local -Drunclass=com.spark.streaming.structure.KafkaStructuredStream -Dparams="50"
+mvn exec:exec@run-local -Drunclass=org.examples.spark.SparkPi -Dparams="50"
 
 $SPARK_HOME/bin/spark-submit \
 --class org.examples.spark.SparkPi \

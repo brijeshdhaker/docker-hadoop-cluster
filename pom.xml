@@ -9,6 +9,7 @@
 
     <name>docker-hadoop-cluster</name>
     <url>http://maven.apache.org</url>
+
     <modules>
         <module>bd-hadoop-module</module>
         <module>bd-spark-module</module>
