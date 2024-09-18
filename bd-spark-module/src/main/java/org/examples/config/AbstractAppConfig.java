@@ -123,7 +123,7 @@ public abstract class AbstractAppConfig {
 
     private static String maskIfRequired(Tuple2<String, String> tuple) {
         
-        if(tuple._1().matches("(?i),*password.*|.*pwd.*|.*secret.*|.*authkey.*")){
+        if(tuple._1().matches("(?i),*password.*|.*pwd.*|.*secret.*|.*access.key|.*authkey.*")){
             return tuple._1() + " : ***** ";
         }
         return tuple._1() + " : " + tuple._2();

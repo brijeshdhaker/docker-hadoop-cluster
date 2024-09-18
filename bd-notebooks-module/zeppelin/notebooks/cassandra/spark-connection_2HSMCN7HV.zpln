@@ -23,6 +23,30 @@
       "id": "paragraph_1673916797741_1723358245",
       "dateCreated": "2023-01-17 00:53:17.742",
       "status": "READY"
+    },
+    {
+      "text": "import com.datastax.spark.connector._\n\nval conf \u003d new SparkConf(true).set(\"spark.cassandra.connection.host\", \"127.0.0.1\")\nval sc \u003d new SparkContext(\"dse://127.0.0.1:7077\", \"test\", conf)\nval rdd \u003d sc.cassandraTable(\"my_keyspace\", \"my_table\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-09-18 03:21:11.696",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 10.0,
+        "results": {},
+        "enabled": true,
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1726629634779_1567708178",
+      "id": "paragraph_1726629634779_1567708178",
+      "dateCreated": "2024-09-18 03:20:34.780",
+      "status": "READY"
     }
   ],
   "name": "spark-connection",
