@@ -23,26 +23,15 @@ public class AppLauncher {
 
         Options options = new Options();
 
-        Option masterOption = new Option("m", "master", true, "Spark master");
-        masterOption.setRequired(false);
-        options.addOption(masterOption);
-
-        Option bootstrapOption = new Option("b", "bootstrap-server", true, "Bootstrap servers");
-        bootstrapOption.setRequired(true);
-        options.addOption(bootstrapOption);
-
         Option workflowOption = new Option("w", "workflow-type", true, "Workflow Type");
         workflowOption.setRequired(true);
         options.addOption(workflowOption);
-    
-        Option topicOption = new Option("t", "topic", true, "Kafka topic");
-        topicOption.setRequired(false);
-        options.addOption(topicOption);
-    
-        Option schemaRegOption = new Option("s", "schema-registry", true, "Schema Registry URL");
-        schemaRegOption.setRequired(false);
-        options.addOption(schemaRegOption);
 
+        Option storageOption = new Option("s", "storage", true, "Storage Type");
+        storageOption.setRequired(false);
+        options.addOption(storageOption);
+
+    
         Option helpOption = new Option("h", "help", false, "Print Help");
         helpOption.setRequired(false);
         options.addOption(helpOption);
@@ -55,6 +44,14 @@ public class AppLauncher {
         embeddedOption.setRequired(false);
         options.addOption(embeddedOption);
 
+        Option propertyOption = new Option("p", "property-file", true, "Embedded");
+        propertyOption.setRequired(true);
+        options.addOption(propertyOption);
+        
+        Option markerOption = new Option("m", "marker-file", true, "Embedded");
+        markerOption.setRequired(false);
+        options.addOption(markerOption);
+        
         //options.addOption("help", false, "Print Help");
 
         return options;
@@ -68,43 +65,57 @@ public class AppLauncher {
             
             HelpFormatter helper = new HelpFormatter();
             CommandLineParser parser = new BasicParser();
-            CommandLine cmd = null;
-            Options options = null;
+            Options options = parseArgs(args);;
+             
             try {
                 
-                options = parseArgs(args);
-                cmd = parser.parse(options, args);
-
+                
+                CommandLine cli = parser.parse(options, args);
                 Map<String, String> params = new HashMap<>();
-                for(Option a : cmd.getOptions()){
+                for(Option a : cli.getOptions()){
                     params.put(a.getLongOpt(), a.getValue());
                     params.put(a.getOpt(), a.getValue());
                 }
-
+                
+                if(cli.hasOption("embedded")){
+                    params.put("embedded", "true");
+                    params.put("e", "true");
+                }
+                
+                if(cli.hasOption("verbose")){
+                    params.put("verbose", "true");
+                    params.put("v", "true");
+                }
+                
+                
                 WorkflowConfig workflowConfig = new WorkflowConfig(params);
 
-                if (args.length <= 0 || cmd.hasOption("help")) {
+                if (args.length <= 0 || cli.hasOption("help")) {
 
-                    String opt_config = cmd.getOptionValue("config");
-                    System.out.println("Config set to " + opt_config);
+                    String workflow_type = cli.getOptionValue("workflow-type");
+                    helper.printHelp("Usage : ", options);
 
                 }
                 
-                if(cmd.hasOption("workflow-type") && cmd.getOptionValue("workflow-type").equalsIgnoreCase("batch")) {
+                if(cli.hasOption("workflow-type") && cli.getOptionValue("workflow-type").equalsIgnoreCase("batch")) {
 
                     System.out.println("Spark Workflow Type :: Batch ");
                     BatchWorkflow flow = new BatchWorkflow(workflowConfig);
 
                 }
             
-                if (cmd.hasOption("workflow-type") && cmd.getOptionValue("workflow-type").equalsIgnoreCase("dstream")) {
+                if (cli.hasOption("workflow-type") && cli.getOptionValue("workflow-type").equalsIgnoreCase("dstream")) {
+                    
                     System.out.println("Spark Workflow Type :: Discretized Stream ");
                     DiscretizedStreamWorkflow dstream = new DiscretizedStreamWorkflow(workflowConfig);
+                    
                 }
 
-                if (cmd.hasOption("workflow-type") && cmd.getOptionValue("workflow-type").equalsIgnoreCase("stream")) {
+                if (cli.hasOption("workflow-type") && cli.getOptionValue("workflow-type").equalsIgnoreCase("stream")) {
+                    
                     System.out.println("Spark Workflow Type :: Structured Stream ");
                     StructuredStreamWorkflow streamWorkflow = new StructuredStreamWorkflow(workflowConfig);
+                    
                 }
 
             } catch (ParseException e) {
