@@ -216,7 +216,7 @@
       <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AppLauncher">
+  <component name="RunManager" selected="Docker.spark-cluster">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -332,7 +332,7 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="spark-master" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+    <configuration name="spark-cluster" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="envFilePath" value="" />
@@ -366,7 +366,7 @@
       <item itemvalue="Application.StreamingJob" />
       <item itemvalue="Application.AppLauncher" />
       <item itemvalue="Application.SparkPi" />
-      <item itemvalue="Docker.spark-master" />
+      <item itemvalue="Docker.spark-cluster" />
       <item itemvalue="Docker.kafka-cluster" />
       <item itemvalue="Docker.mysqlserver" />
       <item itemvalue="Docker.zeppelin" />
