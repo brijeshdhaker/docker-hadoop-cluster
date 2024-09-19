@@ -31,8 +31,8 @@
         <!--
         <finalName>bd-spark-module</finalName>
         -->
-        <sourceDirectory>src/main/scala</sourceDirectory>
-        <testSourceDirectory>src/test/scala</testSourceDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -102,7 +102,7 @@
                     </execution>
                 </executions>
             </plugin>
-
+            <!--
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.0.2</version>
@@ -127,11 +127,11 @@
                     </execution>
                 </executions>
             </plugin>
-
+            -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
+                <version>3.1.0</version>
                 <executions>
                     <execution>
                         <id>run-local</id>
@@ -399,6 +399,12 @@
             <version>${spark.version}</version>
         </dependency>
         -->
+
+        <dependency>
+            <groupId>org.codejargon</groupId>
+            <artifactId>fluentjdbc</artifactId>
+            <version>1.8.6</version>
+        </dependency>
 
         <dependency>
             <groupId>mysql</groupId>

@@ -6,18 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="flink-playground" />
-        <module name="bd-flink-spend-report" />
         <module name="bd-spark-module" />
-        <module name="bd-flink-operations" />
-        <module name="bd-hadoop-module" />
-        <module name="bd-data-generator" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="bd-data-generator" target="11" />
+      <module name="bd-flink-operations" target="11" />
+      <module name="bd-flink-spend-report" target="11" />
       <module name="bd-grafana-modules" target="11" />
+      <module name="bd-hadoop-module" target="11" />
       <module name="bd-pyspark-module" target="1.8" />
       <module name="docker-python-module" target="1.8" />
+      <module name="flink-playground" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

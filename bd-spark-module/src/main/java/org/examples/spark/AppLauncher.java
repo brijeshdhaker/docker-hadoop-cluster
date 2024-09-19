@@ -12,7 +12,6 @@ import org.examples.config.WorkflowConfig;
 import org.examples.workflows.BatchWorkflow;
 import org.examples.workflows.DiscretizedStreamWorkflow;
 import org.examples.workflows.StructuredStreamWorkflow;
-import scala.remote;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -58,6 +57,7 @@ public class AppLauncher {
     }
 
 
+
     public static void main(String[] args) throws Exception {
         
         if(args.length > 0){
@@ -101,6 +101,7 @@ public class AppLauncher {
 
                     System.out.println("Spark Workflow Type :: Batch ");
                     BatchWorkflow flow = new BatchWorkflow(workflowConfig);
+                    flow.startWorkflow();
 
                 }
             
@@ -115,7 +116,8 @@ public class AppLauncher {
                     
                     System.out.println("Spark Workflow Type :: Structured Stream ");
                     StructuredStreamWorkflow streamWorkflow = new StructuredStreamWorkflow(workflowConfig);
-                    
+                    streamWorkflow.startWorkflow();
+
                 }
 
             } catch (ParseException e) {

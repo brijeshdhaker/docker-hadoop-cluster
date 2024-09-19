@@ -35,3 +35,4 @@ bd-pyspark-module/.ropeproject/
 bd-hadoop-sandbox/bd-hadoop-sandbox/nbproject/private/
 bd-hadoop-sandbox/nbproject/private/
 bd-notebooks-module/zeppelin/notebooks/.git
+/bd-hadoop-sandbox/nbproject/
