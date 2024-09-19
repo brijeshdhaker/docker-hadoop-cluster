@@ -4,122 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-18 Update Project Configuration.">
-      <change afterPath="$PROJECT_DIR$/bd-setup-module/scripts/setup-dirs.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-setup-module/scripts/setup-docker.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/nbactions.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/datasource/DataMappers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/datasource/DatasourceBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/enums/MessageSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/enums/MessageType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/models/KafkaOffset.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/models/TopicInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/AvroJobProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/KafkaJobProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/CopyUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/DataWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/ParquitWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/test/java/org/examples/utils/LinkedPropertiesTest.java" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-19 Update Project Configuration.">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-generator/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-generator/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-generator/dependency-reduced-pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-generator/docker-entrypoint.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-generator/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/DataGenerator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/Producer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/Throttler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/model/Transaction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/model/TransactionSerializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/model/TransactionSupplier.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-operations/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-operations/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-operations/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-operations/dependency-reduced-pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-operations/docker-compose.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-operations/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/ClickEventCount.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/ClickEventGenerator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/HiveReader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/functions/BackpressureMap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/functions/ClickEventStatisticsCollector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/functions/CountingAggregator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/records/ClickEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/records/ClickEventDeserializationSchema.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/records/ClickEventSerializationSchema.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/records/ClickEventStatistics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-operations/src/main/java/org/apache/flink/playgrounds/ops/clickcount/records/ClickEventStatisticsSerializationSchema.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-operations/src/main/resources/log4j.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-spend-report/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-spend-report/docker-compose.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-spend-report/grafana/dashboard.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-spend-report/grafana/grafana.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-spend-report/grafana/provisioning/dashboards/dashboards.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-spend-report/grafana/provisioning/datasources/datasource.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-spend-report/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-spend-report/src/main/java/org/apache/flink/playgrounds/spendreport/SpendReport.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-spend-report/src/main/java/org/apache/flink/playgrounds/spendreport/UnimplementedException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-spend-report/src/main/java/org/apache/flink/playgrounds/spendreport/functions/MyFloor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-spend-report/src/main/resources/log4j.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-spend-report/src/test/java/org/apache/flink/playgrounds/spendreport/SpendReportTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-spend-report/src/test/resources/log4j.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-module/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-module/src/main/java/org/examples/hadoop/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-module/src/main/java/org/examples/hadoop/WordCounter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-module/src/main/resources/assembly/hadoop-mr.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-module/src/test/java/org/examples/hadoop/AppTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-module/src/test/java/org/examples/hadoop/WordCounterIT.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-module/src/test/resources/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-module/src/test/resources/run_test.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-module/src/test/resources/settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-module/src/test/resources/text_for_word_count.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyflink-module/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyflink-module/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyflink-module/bd-pyflink-module.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyflink-module/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyflink-module/generator/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyflink-module/generator/generate_source_data.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyflink-module/kibana/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyflink-module/kibana/export.ndjson" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyflink-module/kibana/load_ndjson.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyflink-module/payment_msg_proccessing.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyflink-module/pic/cancel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyflink-module/pic/chart.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyflink-module/pic/dash_board.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyflink-module/pic/detail.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyflink-module/pic/submitted.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/bd-pyspark-module.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/bd-pyspark-module.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka-topic.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka-topic.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/StreamJobProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/StreamJobProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/spark/AppLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/spark/AppLauncher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/AbstractStreamWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/AbstractStreamWorkflow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/BatchWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/BatchWorkflow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/DiscretizedStreamWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/DiscretizedStreamWorkflow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/StructuredStreamWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/StructuredStreamWorkflow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flink-playground/dependency-reduced-pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flink-playground/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/BatchJob.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/IncrementMapFunction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/RandomLongSource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/StreamingJob.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/WindowWordCount.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/eventtime/BoundedOutOfOrdernessStrategyJob.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/eventtime/CustomStrategyJob.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/eventtime/RandomSensorSource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/eventtime/SensorData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/eventtime/SensorDataState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/eventtime/StreamWatermarkDebugFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flink-playground/src/main/java/com/org/examples/flink/eventtime/TimeoutFunction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flink-playground/src/main/resources/log4j2.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flink-playground/src/test/java/com/org/examples/flink/StreamingJobTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flink-playground/src/test/java/com/org/examples/flink/eventtime/StreamingJobTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flink-playground/src/test/java/com/org/examples/flink/utils/ParallelCollectionSource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flink-playground/src/test/java/com/org/examples/flink/utils/SinkCollectingSensorData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -883,7 +770,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726629979168</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="2024-09-19 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1726728122253</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1726728122253</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -919,7 +814,8 @@
     <MESSAGE value="2024-03-02 Update PyTest Cases for utils." />
     <MESSAGE value="2024-09-17 Update Project Configuration." />
     <MESSAGE value="2024-09-18 Update Project Configuration." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-09-18 Update Project Configuration." />
+    <MESSAGE value="2024-09-19 Update Project Configuration." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-09-19 Update Project Configuration." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
