@@ -41,9 +41,9 @@ public class ServiceProvider {
         }
 
         DataSource dataSource = DatasourceBuilder.as()
-                .url("")
-                .user("")
-                .password("")
+                .url(sparkConf.get("workflow.database.url"))
+                .user(sparkConf.get("workflow.database.user"))
+                .password(sparkConf.get("workflow.database.password"))
                 .build();
 
         query = new FluentJdbcBuilder().connectionProvider(dataSource)

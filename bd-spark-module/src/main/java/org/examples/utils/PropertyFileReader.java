@@ -35,7 +35,8 @@ public class PropertyFileReader {
         }
 
         Map<String, String> allProperties = new LinkedHashMap<>();
-        properties.forEach((key, value) -> properties.put(key.toString(), value.toString()));
+        properties.forEach((key, value) -> allProperties.put(key.toString(), value.toString()));
+        LOGGER.info("Read {} properties ", allProperties.size());
 
         allProperties.forEach((k, v) -> System.out.println("***** Property " + k + " set to ****** " + v));
         return allProperties;
@@ -57,7 +58,8 @@ public class PropertyFileReader {
         }
 
         Map<String, String> allProperties = new LinkedHashMap<>();
-        properties.forEach((key, value) -> properties.put(key.toString(), value.toString()));
+        properties.forEach((key, value) -> allProperties.put(key.toString(), value.toString()));
+        LOGGER.info("Read {} properties ", allProperties.size());
 
         allProperties.forEach((k, v) -> System.out.println("***** Property " + k + " set to ****** " + v));
         return allProperties;

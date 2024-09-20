@@ -38,9 +38,9 @@ public class DatasourceBuilder {
         Preconditions.checkNotNull(password);
 
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setUsername("");
-        dataSource.setPassword("");
-        dataSource.setDriverClassName("");
+        dataSource.setUsername(user);
+        dataSource.setPassword(password);
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setTestOnBorrow(true);
         return dataSource;
     }
