@@ -15,6 +15,8 @@ import org.apache.spark.streaming.kafka010.LocationStrategy;
 import org.examples.config.WorkflowConfig;
 import org.examples.processor.StreamJobProcessor;
 
+import java.util.Map;
+
 public abstract class AbstractStreamWorkflow<Key, Value, RddEntity> {
 
     protected WorkflowConfig workflowConfig;
@@ -27,4 +29,10 @@ public abstract class AbstractStreamWorkflow<Key, Value, RddEntity> {
     
     protected abstract StreamJobProcessor<Key, Value, RddEntity> streamProcessor();
 
+    protected abstract Map<String, Object> kafkaConfig();
+
+
+    protected void checkToStop(JavaStreamingContext ssc){
+
+    }
 }

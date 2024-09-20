@@ -3,6 +3,7 @@ package org.examples.datasource;
 import org.codejargon.fluentjdbc.api.mapper.ObjectMappers;
 import org.codejargon.fluentjdbc.api.query.Mapper;
 import org.examples.models.KafkaOffset;
+import org.examples.models.TopicInfo;
 
 import java.sql.Timestamp;
 
@@ -19,6 +20,10 @@ public class DataMappers {
 
     public static Mapper<KafkaOffset> kafkaOffsetMapper() {
         return objectMappers.forClass(KafkaOffset.class);
+    }
+
+    public static Mapper<TopicInfo> topicInfoMapper() {
+        return objectMappers.forClass(TopicInfo.class);
     }
 
 }

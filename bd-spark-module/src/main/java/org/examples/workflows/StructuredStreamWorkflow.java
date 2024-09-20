@@ -20,6 +20,7 @@ import org.apache.spark.sql.streaming.StreamingQuery;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.Map;
 
 public class StructuredStreamWorkflow extends AbstractStreamWorkflow<String, byte[], Row> {
 
@@ -67,5 +68,11 @@ public class StructuredStreamWorkflow extends AbstractStreamWorkflow<String, byt
     @Override
     protected StreamJobProcessor<String, byte[], Row> streamProcessor() {
         return null;
+    }
+
+
+    @Override
+    protected Map<String, Object> kafkaConfig() {
+        return Map.of();
     }
 }

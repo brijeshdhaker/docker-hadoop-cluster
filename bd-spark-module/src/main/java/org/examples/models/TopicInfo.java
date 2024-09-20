@@ -4,7 +4,7 @@ public class TopicInfo {
 
     private String errorTopic;
     private String mainTopic;
-    private int partitions;
+    private Integer partitions;
 
     public static TopicInfo as(){
         return new TopicInfo();
@@ -28,11 +28,11 @@ public class TopicInfo {
         return this;
     }
 
-    public int partitions(){
+    public Integer partitions(){
         return partitions;
     }
 
-    public TopicInfo partitions(int partitions){
+    public TopicInfo partitions(Integer partitions){
         this.partitions = partitions;
         return this;
     }
