@@ -1,5 +1,6 @@
 package org.examples.workflows;
 
+import org.apache.hadoop.shaded.org.apache.commons.collections.ListUtils;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;
@@ -14,6 +15,9 @@ import org.apache.spark.streaming.kafka010.LocationStrategies;
 import org.examples.config.WorkflowConfig;
 import org.examples.processor.AvroJobProcessor;
 import org.examples.processor.StreamJobProcessor;
+import org.examples.utils.ListUtil;
+
+import java.util.List;
 
 public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, byte[], Row> {
 
@@ -46,14 +50,13 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
                 JavaSparkContext jsc = JavaSparkContext.fromSparkContext(spark.sparkContext());
                 JavaStreamingContext ssc = new JavaStreamingContext(jsc, Durations.seconds(30));
 
-                JavaInputDStream<ConsumerRecord<Key, Value>> stream = KafkaUtils.createDirectStream(
+                List<String> topics = ListUtil.listFromStrings("");
+
+                JavaInputDStream<ConsumerRecord<String, byte[]>> stream = KafkaUtils.createDirectStream(
                         ssc,
                         LocationStrategies.PreferConsistent(),
                         ConsumerStrategies.Subscribe(topics, kafkaConfig(), initialOffset)
                 );
-
-
-
 
             }catch (Exception e){
 

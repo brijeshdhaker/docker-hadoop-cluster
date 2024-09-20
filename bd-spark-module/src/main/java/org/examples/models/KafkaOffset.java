@@ -20,6 +20,11 @@ public class KafkaOffset {
         return consumerGroup;
     }
 
+    public KafkaOffset consumerGroup(String consumerGroup){
+        this.consumerGroup = consumerGroup;
+        return this;
+    }
+
     public String topic(){
         return topic;
     }
