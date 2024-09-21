@@ -109,7 +109,7 @@ public class AppLauncher {
                     
                     System.out.println("Spark Workflow Type :: Discretized Stream ");
                     DiscretizedStreamWorkflow dstream = new DiscretizedStreamWorkflow(workflowConfig);
-                    
+                    dstream.startWorkflow();
                 }
 
                 if (cli.hasOption("workflow-type") && cli.getOptionValue("workflow-type").equalsIgnoreCase("stream")) {

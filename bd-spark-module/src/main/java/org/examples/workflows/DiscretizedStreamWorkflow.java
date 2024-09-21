@@ -52,8 +52,8 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
 
                 SparkConf sparkConf = workflowConfig.sparkConf();
 
-                List<String> topics = ListUtil.listFromStrings("spark.kafka.topics");
-                String group = sparkConf.get("spark.kafka.group");
+                List<String> topics = ListUtil.listFromStrings("spark.confluent.kafka.topics");
+                String group = sparkConf.get("spark-transaction-avro-cg");
 
                 ServiceProvider serviceProvider = ServiceProvider.getInstance(sparkConf);
                 OffsetService offsetService = serviceProvider.offsetService();

@@ -89,12 +89,14 @@ public abstract class AbstractAppConfig {
         sparkConf.set("spark.eventLog.dir", "/apps/var/logs/spark-events");
         
         if(Boolean.parseBoolean(this.params.get("cassandra"))) {
+
             sparkConf.set("spark.cassandra.connection.host", "127.0.0.1");
         }
         
         //
         if(this.params.get("storage") != null && this.params.get("storage").equalsIgnoreCase("s3")) {
-            
+
+            sparkConf.set("spark.hadoop.fs.defaultFS=", "s3a://defaultfs/");
             sparkConf.set("spark.hadoop.fs.s3a.endpoint", "http://minio.sandbox.net:9010");
             sparkConf.set("spark.hadoop.fs.s3a.access.key", "pgm2H2bR7a5kMc5XCYdO");
             sparkConf.set("spark.hadoop.fs.s3a.secret.key", "zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG");
@@ -107,12 +109,9 @@ public abstract class AbstractAppConfig {
         //
         if(this.params.get("storage") != null && this.params.get("storage").equalsIgnoreCase("adls")) {
 
-            sparkConf.set("spark.hadoop.fs.s3a.endpoint", "http://minio.sandbox.net:9010");
-            sparkConf.set("spark.hadoop.fs.s3a.access.key", "pgm2H2bR7a5kMc5XCYdO");
-            sparkConf.set("spark.hadoop.fs.s3a.secret.key", "zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG");
-            sparkConf.set("spark.hadoop.fs.s3a.path.style.access", "true");
-            sparkConf.set("spark.hadoop.fs.s3a.aws.credentials.provider", "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider");
-            sparkConf.set("spark.hadoop.fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem");
+            sparkConf.set("spark.hadoop.fs.defaultFS=", "wasb://warehouse@devstoreaccount1");
+            sparkConf.set("spark.hadoop.fs.azure.account.key.devstoreaccount1.blob.core.windows.net", "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==");
+            sparkConf.set("spark.hadoop.fs.azure.storage.emulator.account.name", "devstoreaccount1");
 
         }
 

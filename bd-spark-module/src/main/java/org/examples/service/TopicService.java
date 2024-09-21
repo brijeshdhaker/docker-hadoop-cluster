@@ -64,7 +64,7 @@ public class TopicService {
                 .listResult(DataMappers.topicInfoMapper());
 
         if(topicInfo.size() != topics.size()){
-
+            logger.error("Unable to find kafka topic info for following topics: {}", topics);
         }
 
         partitions = topicInfo.stream()
