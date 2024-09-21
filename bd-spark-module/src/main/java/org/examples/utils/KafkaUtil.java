@@ -22,20 +22,20 @@ public class KafkaUtil {
                 .collect(Collectors.toList());
     }
 
-    private static List<TopicPartition> partitions(String topic, Integer numberOfPartitions) {
+    public static List<TopicPartition> partitions(String topic, Integer numberOfPartitions) {
         return IntStream.range(0,numberOfPartitions)
                 .mapToObj(n -> new TopicPartition(topic, n))
                 .collect(Collectors.toList());
     }
 
 
-    private static Map<TopicPartition, Long> unwrap(List<KafkaOffset> offsets) {
+    public static Map<TopicPartition, Long> unwrap(List<KafkaOffset> offsets) {
         return offsets.stream()
                 .collect(Collectors.toMap(o -> new TopicPartition(o.topic(), o.partition()),
                 KafkaOffset::offsetValue));
     }
 
-    private static List<KafkaOffset> wrap(String cg, OffsetRange[] offsetRanges) {
+    public static List<KafkaOffset> wrap(String cg, OffsetRange[] offsetRanges) {
         return Stream.of(offsetRanges)
                 .filter(offsetRange -> offsetRange.untilOffset() != offsetRange.fromOffset())
                 .map(offsetRange ->
@@ -48,7 +48,7 @@ public class KafkaUtil {
                 ).collect(Collectors.toList());
     }
 
-    private static long count(OffsetRange[] offsetRanges) {
+    public static long count(OffsetRange[] offsetRanges) {
         return Stream.of(offsetRanges).map(offsetRange -> offsetRange.untilOffset() - offsetRange.fromOffset())
                 .reduce((x,y) -> x + y).orElse(0L);
     }

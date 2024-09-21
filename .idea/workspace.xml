@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-20 Update Project Configuration.">
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-21 Update Project Configuration.">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/config/KafkaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/HadoopFileSystemUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/config/AbstractAppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/config/AbstractAppConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/service/OffsetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/service/OffsetService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/service/TopicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/service/TopicService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/spark/AppLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/spark/AppLauncher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/KafkaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/KafkaUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/DiscretizedStreamWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/DiscretizedStreamWorkflow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_workflow.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_workflow.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +24,8 @@
         <option value="Python Script" />
         <option value="Enum" />
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="JUnit3 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -425,14 +424,6 @@
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
     </task>
-    <task id="LOCAL-00005" summary="2024-02-18 Update Setup Script.">
-      <option name="closed" value="true" />
-      <created>1708619495842</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1708619495842</updated>
-    </task>
     <task id="LOCAL-00006" summary="2024-02-23 Update kafka config &amp; validation.">
       <option name="closed" value="true" />
       <created>1708651067068</created>
@@ -817,7 +808,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726808116690</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="2024-09-21 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1726888896428</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1726888896430</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -855,7 +854,8 @@
     <MESSAGE value="2024-09-18 Update Project Configuration." />
     <MESSAGE value="2024-09-19 Update Project Configuration." />
     <MESSAGE value="2024-09-20 Update Project Configuration." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-09-20 Update Project Configuration." />
+    <MESSAGE value="2024-09-21 Update Project Configuration." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-09-21 Update Project Configuration." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

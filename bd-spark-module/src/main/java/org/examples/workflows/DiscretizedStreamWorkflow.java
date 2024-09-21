@@ -1,20 +1,24 @@
 package org.examples.workflows;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.hadoop.shaded.org.apache.commons.collections.ListUtils;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.TopicPartition;
+import org.apache.kafka.common.serialization.ByteArrayDeserializer;
+import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.streaming.Durations;
 import org.apache.spark.streaming.api.java.JavaInputDStream;
 import org.apache.spark.streaming.api.java.JavaStreamingContext;
-import org.apache.spark.streaming.kafka010.ConsumerStrategies;
-import org.apache.spark.streaming.kafka010.KafkaUtils;
-import org.apache.spark.streaming.kafka010.LocationStrategies;
+import org.apache.spark.streaming.kafka010.*;
 import org.apache.spark.util.LongAccumulator;
+import org.examples.config.KafkaConfig;
 import org.examples.config.WorkflowConfig;
+import org.examples.models.KafkaOffset;
 import org.examples.processor.AvroJobProcessor;
 import org.examples.processor.StreamJobProcessor;
 import org.examples.service.OffsetService;
@@ -25,6 +29,8 @@ import org.examples.utils.ListUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -41,8 +47,7 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
 
     @Override
     protected StreamJobProcessor<String, byte[], Row> streamProcessor() {
-        AvroJobProcessor processor = new AvroJobProcessor(workflowConfig.sparkConf());
-        return processor;
+        return new AvroJobProcessor(workflowConfig.sparkConf());
     }
 
     @Override
@@ -53,13 +58,13 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
                 SparkConf sparkConf = workflowConfig.sparkConf();
 
                 List<String> topics = ListUtil.listFromStrings("spark.confluent.kafka.topics");
-                String group = sparkConf.get("spark-transaction-avro-cg");
+                String group = sparkConf.get("spark.confluent.kafka.group");
 
                 ServiceProvider serviceProvider = ServiceProvider.getInstance(sparkConf);
                 OffsetService offsetService = serviceProvider.offsetService();
                 TopicService topicService = serviceProvider.topicService(topics);
 
-
+                //
                 SparkSession spark = SparkSession
                         .builder()
                         .master("local[*]")  // // spark://spark-iceberg.sandbox.net:7077")
@@ -72,14 +77,11 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
                 JavaSparkContext jsc = JavaSparkContext.fromSparkContext(spark.sparkContext());
                 JavaStreamingContext ssc = new JavaStreamingContext(jsc, Durations.seconds(30));
 
-
-
+                //
                 Map<TopicPartition, Long> initialOffsets = KafkaUtil.partitions(topicService.partitions())
                         .stream()
                         .collect(Collectors.toMap(Function.identity(), t -> offsetService.offset(group,t)));
                 logger.info("Initial offsets : {}", initialOffsets);
-
-
 
                 JavaInputDStream<ConsumerRecord<String, byte[]>> stream = KafkaUtils.createDirectStream(
                         ssc,
@@ -92,7 +94,66 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
 
                 String appId = ssc.sparkContext().sc().applicationId();
 
+                //
                 stream.foreachRDD(inputRDD -> {
+
+                    long startBatchTime = System.currentTimeMillis();
+                    OffsetRange[] offsetRanges = ((HasOffsetRanges) inputRDD.rdd()).offsetRanges();
+                    logger.info("Offset Range Details : {} ", Arrays.toString(offsetRanges));
+
+                    boolean isAny = !inputRDD.isEmpty();
+                    if(isAny){
+                        Pair<Long, Long> ids = new Pair<Long, Long>() {
+                            @Override
+                            public Long getLeft() {
+                                return 100L;
+                            }
+
+                            @Override
+                            public Long getRight() {
+                                return 100L;
+                            }
+
+                            @Override
+                            public Long setValue(Long aLong) {
+                                return 100L;
+                            }
+                        };
+
+                    }
+
+                    try{
+
+                        long count = KafkaUtil.count(offsetRanges);
+                        if(inputRDD.getNumPartitions() > 3){
+                            inputRDD = inputRDD.coalesce(3);
+                        }
+
+                        List<KafkaOffset> offsets = KafkaUtil.wrap(group, offsetRanges);
+
+                        JavaRDD<Row> outputRDD = streamProcessor().process(inputRDD, 1L, 1L);
+
+                        String path = null;
+                        if(count > 0) {
+
+                            path = streamProcessor().save(outputRDD);
+
+                        }
+
+                        batchAccumulator.add(1L);
+                        recordAccumulator.add(count);
+
+
+
+
+                    } catch( Exception e){
+
+                        ssc.stop();
+
+                    } finally {
+
+                    }
+
 
                 });
 
@@ -109,8 +170,30 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
 
     @Override
     protected Map<String, Object> kafkaConfig() {
+        Map<String, Object> kafkaConfig = KafkaConfig.dstreamConfig(workflowConfig.sparkConf(), StringDeserializer.class, ByteArrayDeserializer.class );
+        return kafkaConfig;
+    }
 
+    @Override
+    protected void checkToStop(JavaStreamingContext ssc) {
+        long checkIntervalMillis = 0;
 
-        return Map.of();
+        boolean markerExists;
+        boolean isStopped = false;
+
+        while(!isStopped){
+            try{
+                ssc.awaitTerminationOrTimeout(10000);
+            } catch(InterruptedException e){
+
+            }
+
+            if(isStopped){
+
+            }
+
+            markerExists = Boolean.TRUE;
+        }
+
     }
 }
