@@ -16,7 +16,7 @@ public class AvroJobProcessor extends KafkaJobProcessor <String, byte[]>{
 
     @Override
     protected FlatMapFunction<Iterator<ConsumerRecord<String, byte[]>>, Row> partitionProcessor() {
-        Map<String, String> errorTopic = null;
+        Map<String, String> errorTopic = topicService.error_topics();
         return null;
     }
 
