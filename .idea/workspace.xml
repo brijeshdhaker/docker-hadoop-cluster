@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-22 Update Project Configuration.">
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/enums/MessageFormat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/enums/Zone.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/HadoopPathBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/TimeProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/config/AbstractAppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/config/AbstractAppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/StreamJobProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/StreamJobProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/DiscretizedStreamWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/DiscretizedStreamWorkflow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_workflow.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_workflow.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/spark-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/spark-help.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +25,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
-        <option value="Enum" />
         <option value="JUnit5 Test Class" />
         <option value="JUnit3 Test Class" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -420,14 +429,6 @@
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
     </task>
-    <task id="LOCAL-00009" summary="2024-02-24 Merge Docker Projects.">
-      <option name="closed" value="true" />
-      <created>1708764418653</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1708764418653</updated>
-    </task>
     <task id="LOCAL-00010" summary="2024-02-24 Merge Docker Projects.">
       <option name="closed" value="true" />
       <created>1708768699007</created>
@@ -812,7 +813,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727000478816</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="2024-09-22 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1727017888678</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1727017888678</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="UnknownFeatures">

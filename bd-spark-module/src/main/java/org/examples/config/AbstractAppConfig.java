@@ -80,7 +80,7 @@ public abstract class AbstractAppConfig {
     protected SparkConf embedded() throws Exception {
 
         SparkConf sparkConf = new SparkConf();
-        
+        // spark://spark-iceberg.sandbox.net:7077")
         sparkConf.setMaster("local[4]");
         //sparkConf.set("spark.submit.deployMode", "client");
         //sparkConf.set("spark.sql.warehouse.dir", "/apps/sandbox/warehouse");

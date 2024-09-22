@@ -67,8 +67,7 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
                 //
                 SparkSession spark = SparkSession
                         .builder()
-                        .master("local[*]")  // // spark://spark-iceberg.sandbox.net:7077")
-                        .appName("Java Spark SQL basic example")
+                        .appName("AppLauncher::DiscretizedStreamWorkflow")
                         .config(sparkConf)
                         .getOrCreate();
 
