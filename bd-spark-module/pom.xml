@@ -22,7 +22,7 @@
         <spark.version>3.4.1</spark.version>
         <hbase.client.version>2.4.9</hbase.client.version>
         <classifier>local</classifier>
-        <runclass>com.spark.SparkPi</runclass>
+        <runclass>org.examples.spark.AppLauncher</runclass>
         <params>10</params>
         <confluent.version>7.5.2</confluent.version>
     </properties>
@@ -427,22 +427,5 @@
         </dependency>
 
     </dependencies>
-
-
-<!--    <repositories>
-        <repository>
-            <id>confluent</id>
-            <name>Confluent</name>
-            <url>https://packages.confluent.io/maven/</url>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-          <id>confluent</id>
-          <url>https://packages.confluent.io/maven/</url>
-        </pluginRepository>
-  </pluginRepositories>-->
-
 
 </project>
