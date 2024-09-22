@@ -1,3 +1,20 @@
+/**
+
+mvn exec:exec@run-local -Drunclass=com.spark.streaming.structure.KafkaStructuredStream -Dparams="50"
+
+--packages org.apache.spark:spark-avro_2.12:3.4.1,org.apache.spark:spark-streaming-kafka-0-10_2.12:3.4.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1,org.apache.spark:spark-hadoop-cloud_2.12:3.4.1 \
+
+$SPARK_HOME/bin/spark-submit \
+--name "AppLauncher::BatchWorkflow" \
+--master local[4] \
+--conf spark.jars.packages=org.apache.spark:spark-avro_2.12:3.4.1,org.apache.spark:spark-streaming-kafka-0-10_2.12:3.4.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1,org.apache.spark:spark-hadoop-cloud_2.12:3.4.1 \
+--conf spark.jars.ivy=/apps/.ivy2 \
+--class org.examples.spark.AppLauncher \
+bd-spark-module/target/bd-spark-module-1.0-SNAPSHOT.jar --embedded --verbose --workflow-type batch --storage local --property-file /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spark-module/src/main/resources/app_workflow.properties --marker-file /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spark-module/src/main/resources/app_workflow.marker
+
+*/
+
+
 package org.examples.spark;
 
 import org.apache.commons.cli.Options;

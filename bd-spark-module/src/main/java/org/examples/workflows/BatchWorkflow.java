@@ -16,17 +16,19 @@ public class BatchWorkflow {
     }
 
     public void startWorkflow() throws Exception {
+
         if(this.workflowConfig != null){
+
             SparkConf sparkConf = workflowConfig.sparkConf();
 
             SparkSession spark = SparkSession
                     .builder()
-                    .master("local[*]")  // // spark://spark-iceberg.sandbox.net:7077")
-                    .appName("Java Spark SQL basic example")
+                    .master("local[*]")  // // spark://spark-master.sandbox.net:7077")
+                    .appName("AppLauncher::BatchWorkflow")
                     .config(sparkConf)
                     .getOrCreate();
 
-            spark.sparkContext().setLogLevel("ERROR");
+            // spark.sparkContext().setLogLevel("ERROR");
 
 
             Configuration hadoopConf = spark.sparkContext().hadoopConfiguration();

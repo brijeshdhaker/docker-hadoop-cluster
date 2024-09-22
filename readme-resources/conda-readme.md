@@ -11,7 +11,7 @@ sudo chown -Rf brijeshdhaker:root /opt/conda
 conda config --set auto_activate_base false
 
 export PATH=/opt/conda/bin:$PATH
-conda config --set always_yes yes --set changeps1 no
+conda config --set always_yes yes --set changeps1 yes
 conda info -a
 conda update -n base -c defaults conda
 conda install mamba -c conda-forge

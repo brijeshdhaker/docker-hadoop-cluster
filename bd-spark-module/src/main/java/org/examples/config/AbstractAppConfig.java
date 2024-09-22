@@ -57,7 +57,7 @@ public abstract class AbstractAppConfig {
                     .collect(Collectors.joining(System.lineSeparator()));
 
 
-            logger.info("Sprak configuration summary : {}", summary);
+            logger.info("Spark configuration summary : {}", summary);
 
         }
     }
@@ -82,11 +82,11 @@ public abstract class AbstractAppConfig {
         SparkConf sparkConf = new SparkConf();
         
         sparkConf.setMaster("local[4]");
-        sparkConf.set("spark.submit.deployMode", "client");
-        sparkConf.set("spark.sql.warehouse.dir", "/apps/sandbox/warehouse");
-        sparkConf.set("spark.eventLog.enabled", "true");
-        sparkConf.set("spark.jars.ivy", "/apps/.ivy2");
-        sparkConf.set("spark.eventLog.dir", "/apps/var/logs/spark-events");
+        //sparkConf.set("spark.submit.deployMode", "client");
+        //sparkConf.set("spark.sql.warehouse.dir", "/apps/sandbox/warehouse");
+        //sparkConf.set("spark.eventLog.enabled", "true");
+        //sparkConf.set("spark.jars.ivy", "/apps/.ivy2");
+        //sparkConf.set("spark.eventLog.dir", "/apps/var/logs/spark-events");
         
         if(Boolean.parseBoolean(this.params.get("cassandra"))) {
 
