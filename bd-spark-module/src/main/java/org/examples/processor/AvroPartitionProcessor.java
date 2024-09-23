@@ -4,14 +4,33 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.spark.api.java.function.FlatMapFunction;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.catalyst.expressions.GenericRowWithSchema;
-import org.apache.spark.sql.types.StructType;
+import org.examples.context.RawContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class AvroPartitionProcessor implements FlatMapFunction<Iterator<ConsumerRecord<String, byte[]>>, Row> {
+
+
+    private static final Logger logger = LoggerFactory.getLogger(AvroPartitionProcessor.class);
+
+    private RawContext rawContext;
+    private Map<String, String> errorTopics;
+
+    public AvroPartitionProcessor(RawContext rawContext, Map<String, String> errorTopics) {
+        this.rawContext = rawContext;
+        this.errorTopics = errorTopics;
+    }
+
+
+    public static AvroPartitionProcessor as(RawContext rawContext, Map<String, String> errorTopics) {
+        return new AvroPartitionProcessor(rawContext, errorTopics);
+    }
 
     @Override
     public Iterator<Row> call(Iterator<ConsumerRecord<String, byte[]>> consumerRecordIterator) throws Exception {
@@ -31,15 +50,16 @@ public final class AvroPartitionProcessor implements FlatMapFunction<Iterator<Co
     private Row toRawRow(ConsumerRecord<String, byte[]> record){
 
         byte[] avroMessage = record.value();
-        String errorTopic = "";
+        String errorTopic = errorTopics.get(record.topic());
 
         return new GenericRowWithSchema(new Object[]{
                 record.key(),
                 avroMessage,
                 record.topic(),
                 errorTopic,
-                1L,
-                ""
-        }, new StructType());
+                rawContext.jobStepId(),
+                rawContext.messageSource().name()
+
+        }, rawContext.schema());
     }
 }

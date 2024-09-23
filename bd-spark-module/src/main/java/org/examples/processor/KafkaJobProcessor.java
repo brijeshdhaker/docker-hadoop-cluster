@@ -1,5 +1,6 @@
 package org.examples.processor;
 
+import com.amazonaws.services.autoscaling.model.transform.MemoryGiBPerVCpuRequestStaxUnmarshaller;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
@@ -7,12 +8,16 @@ import org.apache.spark.api.java.function.FlatMapFunction;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.types.StructType;
+import org.examples.context.RawContext;
+import org.examples.enums.MessageSource;
+import org.examples.enums.MessageType;
 import org.examples.service.ServiceProvider;
 import org.examples.service.TopicService;
 import org.examples.utils.ListUtil;
 import org.examples.writers.DataWriter;
 import org.examples.writers.ParquitWriter;
 
+import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.List;
 
@@ -66,10 +71,26 @@ public abstract class KafkaJobProcessor<Key, Value> implements StreamJobProcesso
 
     @Override
     public JavaRDD<Row> process(JavaRDD<ConsumerRecord<Key, Value>> rdd, long jobId, long jobStepID) {
+        try {
 
-        return rdd.mapPartitions(partitionProcessor());
+            RawContext rawContext = RawContext.as()
+                    .jobId(0l)
+                    .jobStepId(1L)
+                    .transactionTime(LocalDateTime.now())
+                    .messageSource(MessageSource.KAFKA_AVRO)
+                    .messageType(MessageType.TRANSACTIONS)
+                    .schema(schema);
+
+            return rdd.mapPartitions(partitionProcessor(rawContext));
+
+        } catch (Exception e) {
+
+            throw new RuntimeException("Unable to map partitions", e);
+
+        }
+
     }
 
 
-    protected abstract FlatMapFunction<Iterator<ConsumerRecord<Key,Value>>, Row> partitionProcessor();
+    protected abstract FlatMapFunction<Iterator<ConsumerRecord<Key,Value>>, Row> partitionProcessor(RawContext rawContext);
 }
