@@ -10,7 +10,24 @@ $SPARK_HOME/bin/spark-submit \
 --conf spark.jars.packages=org.apache.spark:spark-avro_2.12:3.4.1,org.apache.spark:spark-streaming-kafka-0-10_2.12:3.4.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1,org.apache.spark:spark-hadoop-cloud_2.12:3.4.1 \
 --conf spark.jars.ivy=/apps/.ivy2 \
 --class org.examples.spark.AppLauncher \
-bd-spark-module/target/bd-spark-module-1.0-SNAPSHOT.jar --embedded --verbose --workflow-type batch --storage local --property-file /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spark-module/src/main/resources/app_workflow.properties --marker-file /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spark-module/src/main/resources/app_workflow.marker
+bd-spark-module/target/bd-spark-module-1.0-SNAPSHOT.jar --embedded --verbose --workflow-type batch --storage local --property-file bd-spark-module/src/main/resources/app_batch_workflow.properties
+
+
+ $SPARK_HOME/bin/spark-submit \
+ --name "AppLauncher::DiscretizedStreamWorkflow" \
+ --master local[4] \
+ --conf spark.jars.packages=org.apache.spark:spark-avro_2.12:3.4.1,org.apache.spark:spark-streaming-kafka-0-10_2.12:3.4.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1,org.apache.spark:spark-hadoop-cloud_2.12:3.4.1 \
+ --conf spark.jars.ivy=/apps/.ivy2 \
+ --class org.examples.spark.AppLauncher \
+ bd-spark-module/target/bd-spark-module-1.0-SNAPSHOT.jar --embedded --verbose --workflow-type dstream --storage local --property-file bd-spark-module/src/main/resources/app_dstream_workflow.properties
+
+ $SPARK_HOME/bin/spark-submit \
+ --name "AppLauncher::StructuredStreamWorkflow" \
+ --master local[4] \
+ --conf spark.jars.packages=org.apache.spark:spark-avro_2.12:3.4.1,org.apache.spark:spark-streaming-kafka-0-10_2.12:3.4.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1,org.apache.spark:spark-hadoop-cloud_2.12:3.4.1 \
+ --conf spark.jars.ivy=/apps/.ivy2 \
+ --class org.examples.spark.AppLauncher \
+ bd-spark-module/target/bd-spark-module-1.0-SNAPSHOT.jar --embedded --verbose --workflow-type sstream --storage local --property-file bd-spark-module/src/main/resources/app_sstream_workflow.properties
 
 */
 
@@ -63,11 +80,13 @@ public class AppLauncher {
         Option propertyOption = new Option("p", "property-file", true, "Embedded");
         propertyOption.setRequired(true);
         options.addOption(propertyOption);
-        
+
+        /*
         Option markerOption = new Option("m", "marker-file", true, "Embedded");
         markerOption.setRequired(false);
         options.addOption(markerOption);
-        
+        */
+
         //options.addOption("help", false, "Print Help");
 
         return options;

@@ -27,9 +27,11 @@ import org.examples.service.TopicService;
 import org.examples.utils.HadoopFileSystemUtil;
 import org.examples.utils.KafkaUtil;
 import org.examples.utils.ListUtil;
+import org.examples.utils.TimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -52,13 +54,21 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
 
     @Override
     public void startWorkflow() throws Exception {
+
+        LocalDateTime startTime = LocalDateTime.now();
+
+        //valodateParams();
+
         if(this.workflowConfig != null){
+
+            SparkConf sparkConf = workflowConfig.sparkConf();
+            String currentJobName = sparkConf.get("workflow.app.name");
+            String currentJobId = sparkConf.get("workflow.app.id");
+            Boolean jobRunningCheckEnabled = sparkConf.getBoolean("workflow.app.running.check.enabled", false);
+            List<String> topics = ListUtil.listFromStrings("spark.confluent.kafka.topics");
+            String group = sparkConf.get("spark.confluent.kafka.group");
+
             try {
-
-                SparkConf sparkConf = workflowConfig.sparkConf();
-
-                List<String> topics = ListUtil.listFromStrings("spark.confluent.kafka.topics");
-                String group = sparkConf.get("spark.confluent.kafka.group");
 
                 ServiceProvider serviceProvider = ServiceProvider.getInstance(sparkConf);
                 OffsetService offsetService = serviceProvider.offsetService();
@@ -91,7 +101,7 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
                 LongAccumulator batchAccumulator = ssc.sparkContext().sc().longAccumulator("count-of-batches");
                 LongAccumulator recordAccumulator = ssc.sparkContext().sc().longAccumulator("count-of-records");
 
-                String appId = ssc.sparkContext().sc().applicationId();
+                String streamAppId = ssc.sparkContext().sc().applicationId();
 
                 //
                 stream.foreachRDD(inputRDD -> {
@@ -126,6 +136,7 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
                     try{
 
                         long count = KafkaUtil.count(offsetRanges);
+                        logger.info("jobId: {} | Starting jobStepId: {} for {} records", 1,1, count);
 
                         if(inputRDD.getNumPartitions() > 3){
                             inputRDD = inputRDD.coalesce(3);
@@ -137,23 +148,32 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
 
                         String path = null;
                         if(count > 0) {
-
                             path = streamProcessor().save(outputRDD);
-
+                            logger.info("jobid: {} | Processed {} records and saved to {}", 1L, count, path);
                         }
+
                         long startOracleTime = System.currentTimeMillis();
                         final String savePath = path;
 
-                        offsetService.query().transaction().isolation(Transaction.Isolation.READ_COMMITTED)
-                                        .inNoResult(() ->{
-                                            offsetService.update(offsets);
-                                            ((CanCommitOffsets) stream.inputDStream()).commitAsync(offsetRanges); // commit async offsets to kafka otherwise we can't use kafka monitoring tool
-                                        });
+                        offsetService.query().transaction()
+                                .isolation(Transaction.Isolation.READ_COMMITTED)
+                                .inNoResult(() ->{
+                                    // Update Job Status
+
+                                    //
+                                    offsetService.update(offsets);
+                                    ((CanCommitOffsets) stream.inputDStream()).commitAsync(offsetRanges); // commit async offsets to kafka otherwise we can't use kafka monitoring tool
+                                });
 
 
                         batchAccumulator.add(1L);
                         recordAccumulator.add(count);
 
+                        logger.info("jobId {} | Finished jobStepId {}, outputCount {}, oracleTime: {}, batchTime {}",
+                                1L, 1L, count,
+                                TimeUtil.diffInMinAndSec(startOracleTime, System.currentTimeMillis()),
+                                TimeUtil.diffInMinAndSec(startBatchTime, System.currentTimeMillis())
+                        );
 
                     } catch( Exception e){
 
