@@ -23,10 +23,12 @@ SOURCE /apps/sandbox/hive/hive-schema-3.1.0.mysql.sql
 
 CREATE USER 'mysqladmin'@'%' IDENTIFIED BY 'mysqladmin';
 GRANT ALL PRIVILEGES ON *.* TO 'mysqladmin'@'%';
+FLUSH PRIVILEGES;
 
 CREATE USER 'hiveadmin'@'localhost' IDENTIFIED BY 'hiveadmin';
 REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'hiveadmin'@'localhost';
 GRANT ALL PRIVILEGES ON HMS334.* TO 'hiveadmin'@'localhost';
+FLUSH PRIVILEGES;
 
 CREATE USER 'hiveadmin'@'%' IDENTIFIED BY 'hiveadmin';
 REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'hiveadmin'@'%';

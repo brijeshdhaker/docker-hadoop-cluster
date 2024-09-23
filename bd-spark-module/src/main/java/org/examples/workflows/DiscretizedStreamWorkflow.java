@@ -188,7 +188,7 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
 
                 ssc.start();
 
-                checkToStop(ssc);
+                //checkToStop(ssc);
 
             } catch (Exception e){
 
