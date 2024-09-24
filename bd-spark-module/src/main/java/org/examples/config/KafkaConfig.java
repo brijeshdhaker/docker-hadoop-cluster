@@ -25,8 +25,9 @@ public class KafkaConfig {
     public static Map<String, Object>  dstreamConfig(SparkConf sparkConf, Class keyDeserialzer, Class valueDeserialzer) {
 
         Map<String, Object> kafkaConfig = config(sparkConf);
+        kafkaConfig.put("client.id",sparkConf.get("spark.confluent.kafka.client"));
         kafkaConfig.put("group.id", sparkConf.get("spark.confluent.kafka.group"));
-        kafkaConfig.put("enable.auto.commit", Boolean.FALSE);
+        kafkaConfig.put("enable.auto.commit", false);
         kafkaConfig.put("key.deserializer", keyDeserialzer);
         kafkaConfig.put("value.deserializer", valueDeserialzer);
 

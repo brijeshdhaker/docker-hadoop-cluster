@@ -55,7 +55,7 @@ services:
     #      datanode:
     #        condition: service_healthy
     healthcheck:
-      test: echo $HOSTNAME || exit 1
+      test: echo zeppelin.sandbox.net || exit 1
       retries: 20
       interval: 10s
     volumes:

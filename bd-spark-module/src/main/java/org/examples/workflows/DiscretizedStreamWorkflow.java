@@ -65,7 +65,7 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
             String currentJobName = sparkConf.get("workflow.app.name");
             String currentJobId = sparkConf.get("workflow.app.id");
             Boolean jobRunningCheckEnabled = sparkConf.getBoolean("workflow.app.running.check.enabled", false);
-            List<String> topics = ListUtil.listFromStrings("spark.confluent.kafka.topics");
+            List<String> topics = ListUtil.listFromStrings(sparkConf.get("spark.confluent.kafka.topics"));
             String group = sparkConf.get("spark.confluent.kafka.group");
 
             try {
@@ -81,7 +81,7 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
                         .config(sparkConf)
                         .getOrCreate();
 
-                spark.sparkContext().setLogLevel("ERROR");
+                //spark.sparkContext().setLogLevel("ERROR");
 
                 JavaSparkContext jsc = JavaSparkContext.fromSparkContext(spark.sparkContext());
                 JavaStreamingContext ssc = new JavaStreamingContext(jsc, Durations.seconds(30));

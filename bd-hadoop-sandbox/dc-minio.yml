@@ -10,7 +10,7 @@ services:
     hostname: minio.sandbox.net
     container_name: minio
     healthcheck:
-      test: echo $HOSTNAME || exit 1
+      test: echo minio.sandbox.net || exit 1
       retries: 20
       interval: 10s
     networks:

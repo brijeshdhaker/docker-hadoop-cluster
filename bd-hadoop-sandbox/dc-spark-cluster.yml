@@ -120,7 +120,7 @@ services:
     hostname: iceberg-rest.sandbox.net
     container_name: iceberg-rest
     healthcheck:
-      test: echo $HOSTNAME || exit 1
+      test: echo iceberg-rest.sandbox.net || exit 1
       retries: 20
       interval: 10s
     networks:

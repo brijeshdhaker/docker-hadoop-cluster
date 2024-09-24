@@ -2,52 +2,53 @@
 # Start Kafka Cluster
 #
 ```shell
-docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml up -d
+docker compose -f  bd-hadoop-sandbox/docker-compose.yml up -d
 ```
 
 # Kafka - Broker Validations
 ```shell
-docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkaclient sh -c "kafkacat -V"
-
-docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker /bin/bash
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkaclient sh -c "kafkacat -V"
 ```
 
 ### Topic - Actions :
 ```shell
-docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker /bin/bash
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker /bin/bash
 
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic kafka-simple-topic --if-not-exists
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 4 --replication-factor 1 --topic kafka-partitioned-topic --if-not-exists
+kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic kafka-simple-topic --if-not-exists
+kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic kafka-partitioned-topic --if-not-exists
 kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic kafka-avro-topic --if-not-exists
 kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic kafka-json-topic --if-not-exists
 
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic transaction-text-topic --if-not-exists
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic transaction-json-topic --if-not-exists
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic transaction-avro-topic --if-not-exists
+kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-text-topic --if-not-exists
+kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-json-topic --if-not-exists
+kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-avro-topic --if-not-exists
+
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-avro-topic --if-not-exists"
 
 # Topic - List
 kafka-topics --list --bootstrap-server kafkabroker.sandbox.net:9092
-docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-topics --list --bootstrap-server kafkabroker.sandbox.net:9092"
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-topics --list --bootstrap-server kafkabroker.sandbox.net:9092"
 
 # Topic - Describe
-kafka-topics --describe --topic kafka-simple-topic --bootstrap-server kafkabroker.sandbox.net:9092
-docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-topics --describe --topic kafka-simple-topic --bootstrap-server kafkabroker.sandbox.net:9092 "
+kafka-topics --describe --topic transaction-avro-topic --bootstrap-server kafkabroker.sandbox.net:9092
+docker compose -f  bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-topics --describe --topic transaction-avro-topic --bootstrap-server kafkabroker.sandbox.net:9092 "
 
 # Topic - Alter
-kafka-topics --alter --topic kafka-partitioned-topic --partitions 5 --bootstrap-server kafkabroker.sandbox.net:9092
-docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-topics --alter --topic kafka-partitioned-topic --partitions 5 --bootstrap-server kafkabroker.sandbox.net:9092 "
+kafka-topics --alter --topic transaction-avro-topic --partitions 3 --bootstrap-server kafkabroker.sandbox.net:9092
+docker compose -f  bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-topics --alter --topic transaction-avro-topic --partitions 3 --bootstrap-server kafkabroker.sandbox.net:9092 "
 
 # Topic - Delete
-kafka-topics --delete --topic kafka-simple-topic --bootstrap-server kafkabroker.sandbox.net:9092
-docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-topics --delete --topic kafka-simple-topic --bootstrap-server kafkabroker.sandbox.net:9092 "
+kafka-topics --delete --topic transaction-avro-topic --bootstrap-server kafkabroker.sandbox.net:9092
+docker compose -f  bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-topics --delete --topic transaction-avro-topic --bootstrap-server kafkabroker.sandbox.net:9092 "
 
 # Topic - Check Retention period
-docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-configs --bootstrap-server kafkabroker.sandbox.net:9092 --entity-type topics --entity-name kafka-simple-topic --describe "
-docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-configs --bootstrap-server kafkabroker.sandbox.net:9092 --entity-type topics --entity-default --alter --add-config delete.retention.ms=172800000 "
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-configs --bootstrap-server kafkabroker.sandbox.net:9092 --entity-type topics --entity-name kafka-simple-topic --describe "
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-configs --bootstrap-server kafkabroker.sandbox.net:9092 --entity-type topics --entity-default --alter --add-config delete.retention.ms=172800000 "
 
 ### Change Kafka Retention Time
-docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-topics --bootstrap-server kafkabroker.sandbox.net:9092 --alter --topic transaction-avro-topic --config retention.ms=1000 "
-docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-topics --bootstrap-server kafkabroker.sandbox.net:9092 --topic kafka-simple-topic --create --partitions 3 --replication-factor 1 "
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-configs --bootstrap-server kafkabroker.sandbox.net:9092 --alter --topic transaction-avro-topic --add-config retention.ms=1000"
+
+
 
 ### Setup Default  7 days (168 hours , retention.ms= 604800000)
 ```
@@ -75,13 +76,13 @@ kafkacat -P -b kafkabroker.sandbox.net:19093 -t kafka-simple-topic \
 -l /apps/sandbox/kafka/json_messages.txt
 
 
-docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-console-producer \
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-producer \
 --topic kafka-simple-topic \
 --broker-list kafkabroker.sandbox.net:9092"
 
 #### With Key
 #### Note : \t is default key seperator
-docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-console-producer \
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-producer \
 --topic kafka-simple-topic \
 --broker-list kafkabroker.sandbox.net:9092 \
 --producer.config /apps/sandbox/kafka/cnf/client_plaintext.config \
@@ -130,14 +131,14 @@ kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_ssl.config -C -t kafka-simpl
 -K '\t' \
 -f '\nKey (%K bytes): %k\nValue (%S bytes): %s\nTimestamp: %T \nPartition: %p \nOffset: %o \n\n--\n' -e
 
-docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-console-consumer \
+docker compose -f  bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
 --topic kafka-simple-topic \
 --bootstrap-server kafkabroker.sandbox.net:9092 \
 --consumer.config /apps/sandbox/kafka/cnf/client_plaintext.config \
 --timeout-ms 5000 2>/dev/null"
 
 #
-docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-console-consumer \
+docker compose -f  bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
 --topic kafka-simple-topic \
 --bootstrap-server kafkabroker.sandbox.net:19092 \
 --consumer.config /apps/sandbox/kafka/cnf/client_plaintext.config \
@@ -147,7 +148,7 @@ docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -
 --property key.separator=' - ' \
 --timeout-ms 5000 2>/dev/null"
 
-docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-console-consumer \
+docker compose -f  bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
 --topic kafka-simple-topic \
 --group kafka-simple-cg \
 --bootstrap-server kafkabroker.sandbox.net:9092 \
@@ -176,26 +177,26 @@ kafka-run-class kafka.tools.GetOffsetShell \
 
 
 ### Get Detail Info about Your Consumer Group –
-docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --list"
-docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --describe --group kafka-simple-cg "
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --list"
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --describe --group transaction-avro-cg --members"
 
 #### Delete Offset
-docker-compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --delete --group kafka-simple-cg "
+docker-compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --delete --group kafka-simple-cg "
 
 #### Reset Offset
-docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --reset-offsets --to-earliest --all-topics --execute --group kafka-simple-cg "
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --reset-offsets --to-earliest --all-topics --execute --group kafka-simple-cg "
 
 ##### --shift-by :- Reset the offset by incrementing the current offset position by take both +ve or -ve number
-docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --group kafka-simple-cg --reset-offsets --shift-by 10 --topic sales_topic --execute "
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --group kafka-simple-cg --reset-offsets --shift-by 10 --topic sales_topic --execute "
 
 ##### --to-datetime :- Reset offsets to offset from datetime. Format: ‘YYYY-MM-DDTHH:mm:SS.sss’
-docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --group kafka-simple-cg --reset-offsets --to-datetime 2020-11-01T00:00:00Z --topic sales_topic --execute "
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --group kafka-simple-cg --reset-offsets --to-datetime 2020-11-01T00:00:00Z --topic sales_topic --execute "
 
 ##### --to-earliest :- Reset offsets to earliest (oldest) offset available in the topic.
-docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --group kafka-simple-cg --reset-offsets --to-earliest --topic sales_topic --execute "
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --group kafka-simple-cg --reset-offsets --to-earliest --topic sales_topic --execute "
 
 ##### --to-latest :- Reset offsets to latest (recent) offset available in the topic.
-docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --group kafka-simple-cg --reset-offsets --to-latest --topic taxi-rides --execute "
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --group kafka-simple-cg --reset-offsets --to-latest --topic taxi-rides --execute "
 
 ### View Only 10  Messages on the Terminal –
 
@@ -213,16 +214,16 @@ kafka-configs --zookeeper zookeeper.sandbox.net:2181 --alter --entity-type topic
 #
 ```shell
 
-docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-avro-console-producer \
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-avro-console-producer \
 --topic transaction-avro-topic \
 --bootstrap-server kafkabroker.sandbox.net:9092 \
 --property value.schema='$(< /opt/app/schema/user.avsc)'"
 
-docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-avro-console-consumer 
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-avro-console-consumer 
 --topic transaction-avro-topic \
 --bootstrap-server kafkabroker.sandbox.net:9092 "
 
-docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-avro-console-consumer \
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-avro-console-consumer \
 --topic transaction-avro-topic \
 --bootstrap-server kafkabroker.sandbox.net:9092 \
 --from-beginning \
@@ -234,7 +235,7 @@ docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c
 ##  schemaregistry
 #
 ```shell
-docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml exec schemaregistry /bin/bash
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec schemaregistry /bin/bash
 
 # Register a new version of a schema under the subject "Kafka-key"
 $ curl -X POST -i -H "Content-Type: application/vnd.schemaregistry.v1+json" \
