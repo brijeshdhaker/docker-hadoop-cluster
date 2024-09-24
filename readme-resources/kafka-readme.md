@@ -184,7 +184,7 @@ docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "k
 docker-compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --delete --group kafka-simple-cg "
 
 #### Reset Offset
-docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --reset-offsets --to-earliest --all-topics --execute --group kafka-simple-cg "
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --reset-offsets --to-earliest --all-topics --execute --group transaction-avro-cg "
 
 ##### --shift-by :- Reset the offset by incrementing the current offset position by take both +ve or -ve number
 docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --group kafka-simple-cg --reset-offsets --shift-by 10 --topic sales_topic --execute "

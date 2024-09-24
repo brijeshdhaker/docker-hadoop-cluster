@@ -1,5 +1,7 @@
 package org.examples.workflows;
 
+import io.confluent.kafka.schemaregistry.client.CachedSchemaRegistryClient;
+import io.confluent.kafka.schemaregistry.client.SchemaRegistryClient;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.TopicPartition;
@@ -12,6 +14,7 @@ import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.streaming.Durations;
 import org.apache.spark.streaming.api.java.JavaInputDStream;
+import org.apache.spark.streaming.api.java.JavaPairDStream;
 import org.apache.spark.streaming.api.java.JavaStreamingContext;
 import org.apache.spark.streaming.kafka010.*;
 import org.apache.spark.util.LongAccumulator;
@@ -24,17 +27,17 @@ import org.examples.processor.StreamJobProcessor;
 import org.examples.service.OffsetService;
 import org.examples.service.ServiceProvider;
 import org.examples.service.TopicService;
+import org.examples.spark.streaming.structure.AvroDeserializer;
 import org.examples.utils.HadoopFileSystemUtil;
 import org.examples.utils.KafkaUtil;
 import org.examples.utils.ListUtil;
 import org.examples.utils.TimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scala.Tuple2;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -65,14 +68,14 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
             String currentJobName = sparkConf.get("workflow.app.name");
             String currentJobId = sparkConf.get("workflow.app.id");
             Boolean jobRunningCheckEnabled = sparkConf.getBoolean("workflow.app.running.check.enabled", false);
-            List<String> topics = ListUtil.listFromStrings(sparkConf.get("spark.confluent.kafka.topics"));
+            //List<String> topics = ListUtil.listFromStrings(sparkConf.get("spark.confluent.kafka.topics"));
             String group = sparkConf.get("spark.confluent.kafka.group");
-
+            Collection<String> topics = Arrays.asList("transaction-avro-topic");
             try {
 
                 ServiceProvider serviceProvider = ServiceProvider.getInstance(sparkConf);
-                OffsetService offsetService = serviceProvider.offsetService();
-                TopicService topicService = serviceProvider.topicService(topics);
+                //OffsetService offsetService = serviceProvider.offsetService();
+                //TopicService topicService = serviceProvider.topicService(topics);
 
                 //
                 SparkSession spark = SparkSession
@@ -82,28 +85,45 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
                         .getOrCreate();
 
                 //spark.sparkContext().setLogLevel("ERROR");
-
                 JavaSparkContext jsc = JavaSparkContext.fromSparkContext(spark.sparkContext());
-                JavaStreamingContext ssc = new JavaStreamingContext(jsc, Durations.seconds(30));
+                JavaStreamingContext streamingContext = new JavaStreamingContext(jsc, Durations.seconds(10));
 
                 //
+                /*
                 Map<TopicPartition, Long> initialOffsets = KafkaUtil.partitions(topicService.partitions())
                         .stream()
                         .collect(Collectors.toMap(Function.identity(), t -> offsetService.offset(group,t)));
                 logger.info("Initial offsets : {}", initialOffsets);
-
+                */
                 JavaInputDStream<ConsumerRecord<String, byte[]>> stream = KafkaUtils.createDirectStream(
-                        ssc,
+                        streamingContext,
                         LocationStrategies.PreferConsistent(),
-                        ConsumerStrategies.Subscribe(topics, kafkaConfig(), initialOffsets)
+                        ConsumerStrategies.Subscribe(topics, kafkaConfig()) //, initialOffsets
                 );
 
-                LongAccumulator batchAccumulator = ssc.sparkContext().sc().longAccumulator("count-of-batches");
-                LongAccumulator recordAccumulator = ssc.sparkContext().sc().longAccumulator("count-of-records");
+                LongAccumulator batchAccumulator = streamingContext.sparkContext().sc().longAccumulator("count-of-batches");
+                LongAccumulator recordAccumulator = streamingContext.sparkContext().sc().longAccumulator("count-of-records");
 
-                String streamAppId = ssc.sparkContext().sc().applicationId();
+                String streamAppId = streamingContext.sparkContext().sc().applicationId();
+
+                JavaPairDStream<String, byte[]> s1  = stream.mapToPair(record -> {
+                    return new Tuple2<>(record.key(), record.value());
+                });
+                SchemaRegistryClient sclient = new CachedSchemaRegistryClient("http://schemaregistry:8081", 128);
+                AvroDeserializer avroDeserializer = new AvroDeserializer(sclient);
+                s1.foreachRDD(r -> {
+                    List<Tuple2<String, byte[]>> touples = r.collect();
+                    touples.forEach(c -> {
+                        String key = avroDeserializer.deserialize(c._1().getBytes());
+                        String value = avroDeserializer.deserialize(c._2());
+                        System.out.println("Key : " + key + " Value " +  value );
+
+                        //System.out.println(c._1 + " ******* " +  new String(c._2, StandardCharsets.UTF_8));
+                    });
+                });
 
                 //
+                /*
                 stream.foreachRDD(inputRDD -> {
 
                     long startBatchTime = System.currentTimeMillis();
@@ -112,6 +132,7 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
 
                     boolean isAny = !inputRDD.isEmpty();
                     logger.info("Checking {} topic(s) with {} partition(s) in total whether there any data to process --> {}", topics.size(), offsetRanges.length, isAny);
+
 
                     if(isAny){
                         Pair<Long, Long> ids = new Pair<Long, Long>() {
@@ -176,19 +197,16 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
                         );
 
                     } catch( Exception e){
-
                         ssc.stop();
-
                     } finally {
                         logger.info("");
                     }
 
-
                 });
+                */
+                streamingContext.start();
 
-                ssc.start();
-
-                //checkToStop(ssc);
+                checkToStop(streamingContext);
 
             } catch (Exception e){
 
@@ -199,14 +217,21 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
 
     @Override
     protected Map<String, Object> kafkaConfig() {
-        Map<String, Object> kafkaConfig = KafkaConfig.dstreamConfig(workflowConfig.sparkConf(), StringDeserializer.class, ByteArrayDeserializer.class );
-        return kafkaConfig;
+        //Map<String, Object> kafkaConfig = KafkaConfig.dstreamConfig(workflowConfig.sparkConf(), StringDeserializer.class, ByteArrayDeserializer.class );
+        Map<String, Object> kafkaParams = new HashMap<>();
+        kafkaParams.put("bootstrap.servers", "kafkabroker.sandbox.net:9092");
+        kafkaParams.put("key.deserializer", StringDeserializer.class);
+        kafkaParams.put("value.deserializer", ByteArrayDeserializer.class);
+        kafkaParams.put("group.id", "transaction-avro-cg");
+        kafkaParams.put("auto.offset.reset", "earliest");
+        kafkaParams.put("enable.auto.commit", false);
+        return kafkaParams;
     }
 
     @Override
     protected void checkToStop(JavaStreamingContext ssc) {
 
-        long checkIntervalMillis = workflowConfig.sparkConf().getLong("workflow.marker.interval.ms", 10_000);
+        long checkIntervalMillis = workflowConfig.sparkConf().getLong("workflow.marker.interval.ms", 10000);
         String shutdownMarker = workflowConfig.sparkConf().get("workflow.marker.file");
         logger.info("Marker file for shout down is [{}], checking with interval {} ms",shutdownMarker, checkIntervalMillis );
 

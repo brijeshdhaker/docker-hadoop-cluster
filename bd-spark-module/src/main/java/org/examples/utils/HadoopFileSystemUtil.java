@@ -13,7 +13,7 @@ public class HadoopFileSystemUtil {
 
 
     private static final Logger logger = LoggerFactory.getLogger(HadoopFileSystemUtil.class);
-    private final static boolean local = Boolean.parseBoolean(System.getProperty(""));
+    private final static boolean local = Boolean.parseBoolean(System.getProperty("workflow.app.local"));
 
 
     public static boolean isExists(String path, Configuration hadoopConfiguration) throws FileSystemException {
