@@ -2,6 +2,8 @@ package org.examples.workflows;
 
 import io.confluent.kafka.schemaregistry.client.CachedSchemaRegistryClient;
 import io.confluent.kafka.schemaregistry.client.SchemaRegistryClient;
+import io.confluent.kafka.schemaregistry.client.rest.RestService;
+import io.confluent.kafka.schemaregistry.client.rest.entities.Schema;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.TopicPartition;
@@ -12,6 +14,7 @@ import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
+import org.apache.spark.sql.avro.SchemaConverters;
 import org.apache.spark.sql.types.DataTypes;
 import org.apache.spark.sql.types.Metadata;
 import org.apache.spark.sql.types.StructField;
@@ -28,6 +31,7 @@ import org.examples.config.WorkflowConfig;
 import org.examples.models.KafkaOffset;
 import org.examples.processor.AvroJobProcessor;
 import org.examples.processor.StreamJobProcessor;
+import org.examples.schema.SchemaProvider;
 import org.examples.service.OffsetService;
 import org.examples.service.ServiceProvider;
 import org.examples.service.TopicService;
@@ -39,7 +43,6 @@ import org.examples.utils.TimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scala.Tuple2;
-
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.function.Function;
@@ -56,26 +59,13 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
 
     @Override
     protected StreamJobProcessor<String, byte[], Row> streamProcessor() {
-
-        StructType details = new StructType(
-                new StructField[]{
-                    new StructField("subject", DataTypes.StringType, false, Metadata.empty()),
-                    new StructField("grade", DataTypes.StringType, false, Metadata.empty()),
-                    new StructField("remark", DataTypes.StringType, false, Metadata.empty())
-                });
-
-        StructType schema = new StructType()
-                .add("id", DataTypes.StringType)
-                .add("uuid", DataTypes.StringType)
-                .add("cardtype", DataTypes.StringType)
-                .add("website", DataTypes.StringType)
-                .add("product", DataTypes.StringType)
-                .add("amount", DataTypes.DoubleType)
-                .add("city", DataTypes.StringType)
-                .add("country", DataTypes.StringType)
-                .add("addts", DataTypes.LongType);
-
-        return new AvroJobProcessor(workflowConfig.sparkConf(), schema);
+        StructType schemaType = null;
+        try{
+            schemaType = SchemaProvider.structType("transaction-avro-topic");
+        } catch(Exception e){
+            logger.error("error occurred while loadin scheeeeeeema details for topic [{}]", "transaction-avro-topic", e);
+        }
+        return new AvroJobProcessor(workflowConfig.sparkConf(), schemaType);
     }
 
     @Override
@@ -83,7 +73,7 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
 
         LocalDateTime startTime = LocalDateTime.now();
 
-        //valodateParams();
+        //validateParams();
 
         if(this.workflowConfig != null){
 

@@ -4,24 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-24 Update Project Configuration.">
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/ParquetWriter.java" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-25 Update Project Configuration.">
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/schema/SchemaProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/JsonUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/ThrowWrappers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/test/java/org/examples/schema/SchemaProviderTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/config/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/config/KafkaConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/datasource/DatasourceBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/datasource/DatasourceBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/AvroJobProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/AvroJobProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/KafkaJobProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/KafkaJobProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/StreamJobProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/StreamJobProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/service/OffsetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/service/OffsetService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/spark/AppStreamWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/spark/AppStreamWorkflow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/CopyUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/CopyUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/TimeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/TimeUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/DiscretizedStreamWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/DiscretizedStreamWorkflow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/DataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/DataWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/ParquitWriter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_batch_workflow.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_batch_workflow.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_dstream_workflow.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_dstream_workflow.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_sstream_workflow.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_sstream_workflow.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +26,7 @@
         <option value="JUnit5 Test Class" />
         <option value="JUnit3 Test Class" />
         <option value="Enum" />
+        <option value="JUnit4 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -173,6 +165,7 @@
     "Docker.ubuntu.executor": "Run",
     "Docker.zeppelin.executor": "Run",
     "JUnit.DatasourceBuilderTest.executor": "Run",
+    "JUnit.SchemaProviderTest.structTypeFromAvro.executor": "Run",
     "Maven.bd-python-module [clean].executor": "Run",
     "Maven.bd-python-module [install].executor": "Run",
     "Maven.bd-python-module [org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy].executor": "Run",
@@ -196,7 +189,7 @@
     "Python.app.executor": "Run",
     "Python.avro-test.executor": "Debug",
     "Python.confluent_kafka_AvroConsumer.executor": "Run",
-    "Python.confluent_kafka_AvroProducer.executor": "Run",
+    "Python.confluent_kafka_AvroProducer.executor": "Debug",
     "Python.confluent_kafka_ConsumerFactory.executor": "Run",
     "Python.confluent_kafka_DeserializingConsumer.executor": "Debug",
     "Python.confluent_kafka_ProducerFactory.executor": "Run",
@@ -218,8 +211,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit3",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "develop/docker-hadoop334-cluster",
     "jdk.selected.JAVA_MODULE": "1.8",
@@ -250,10 +244,11 @@
       <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
-      <recent name="junit.framework.TestCase" />
       <recent name="" />
+      <recent name="junit.framework.TestCase" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.examples.schema" />
       <recent name="org.examples.datasource" />
       <recent name="org.examples.utils" />
     </key>
@@ -261,7 +256,7 @@
       <recent name="org.examples.spark" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.confluent_kafka_AvroProducer">
+  <component name="RunManager" selected="JUnit.SchemaProviderTest.structTypeFromAvro">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -303,17 +298,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TransactionAvroStream" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="org.examples.spark.streaming.structure.TransactionAvroStream" />
+    <configuration name="SchemaProviderTest.structTypeFromAvro" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bd-spark-module" />
-      <option name="PROGRAM_PARAMETERS" value="-b kafkabroker.sandbox.net:9092 -t transaction-avro-topic -s http://schemaregistry.sandbox.net:8081" />
-      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.examples.spark.streaming.structure.*" />
+          <option name="PATTERN" value="org.examples.schema.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="org.examples.schema" />
+      <option name="MAIN_CLASS_NAME" value="org.examples.schema.SchemaProviderTest" />
+      <option name="METHOD_NAME" value="structTypeFromAvro" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -475,22 +471,22 @@
       <item itemvalue="Application.AppLauncher::BatchWorkflow" />
       <item itemvalue="Application.AppLauncher::StructuredStreamWorkflow" />
       <item itemvalue="Application.AppStreamWorkflow" />
-      <item itemvalue="Application.TransactionAvroStream" />
       <item itemvalue="Application.AppLauncher::DiscretizedStreamWorkflow" />
       <item itemvalue="Docker.kafka-cluster" />
       <item itemvalue="Docker.mysqlserver" />
       <item itemvalue="Docker.spark-cluster" />
       <item itemvalue="Docker.zeppelin" />
       <item itemvalue="Docker.minio" />
+      <item itemvalue="JUnit.SchemaProviderTest.structTypeFromAvro" />
       <item itemvalue="Python.confluent_kafka_AvroProducer" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.confluent_kafka_AvroProducer" />
-        <item itemvalue="Application.AppStreamWorkflow" />
+        <item itemvalue="JUnit.SchemaProviderTest.structTypeFromAvro" />
         <item itemvalue="Application.AppLauncher::DiscretizedStreamWorkflow" />
         <item itemvalue="Docker.minio" />
-        <item itemvalue="Application.TransactionAvroStream" />
+        <item itemvalue="Python.confluent_kafka_AvroProducer" />
+        <item itemvalue="Application.AppStreamWorkflow" />
       </list>
     </recent_temporary>
   </component>
@@ -502,14 +498,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00017" summary="2024-02-24 Merge Docker Projects.">
-      <option name="closed" value="true" />
-      <created>1708787198522</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1708787198522</updated>
     </task>
     <task id="LOCAL-00018" summary="2024-02-24 Merge Docker Projects.">
       <option name="closed" value="true" />
@@ -895,7 +883,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727152908353</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="2024-09-25 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1727233608756</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1727233608757</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -937,7 +933,8 @@
     <MESSAGE value="2024-09-22 Update Project Configuration." />
     <MESSAGE value="2024-09-23 Update Project Configuration." />
     <MESSAGE value="2024-09-24 Update Project Configuration." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-09-24 Update Project Configuration." />
+    <MESSAGE value="2024-09-25 Update Project Configuration." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-09-25 Update Project Configuration." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
