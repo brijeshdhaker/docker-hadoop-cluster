@@ -12,6 +12,10 @@ import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
+import org.apache.spark.sql.types.DataTypes;
+import org.apache.spark.sql.types.Metadata;
+import org.apache.spark.sql.types.StructField;
+import org.apache.spark.sql.types.StructType;
 import org.apache.spark.streaming.Durations;
 import org.apache.spark.streaming.api.java.JavaInputDStream;
 import org.apache.spark.streaming.api.java.JavaPairDStream;
@@ -52,7 +56,26 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
 
     @Override
     protected StreamJobProcessor<String, byte[], Row> streamProcessor() {
-        return new AvroJobProcessor(workflowConfig.sparkConf());
+
+        StructType details = new StructType(
+                new StructField[]{
+                    new StructField("subject", DataTypes.StringType, false, Metadata.empty()),
+                    new StructField("grade", DataTypes.StringType, false, Metadata.empty()),
+                    new StructField("remark", DataTypes.StringType, false, Metadata.empty())
+                });
+
+        StructType schema = new StructType()
+                .add("id", DataTypes.StringType)
+                .add("uuid", DataTypes.StringType)
+                .add("cardtype", DataTypes.StringType)
+                .add("website", DataTypes.StringType)
+                .add("product", DataTypes.StringType)
+                .add("amount", DataTypes.DoubleType)
+                .add("city", DataTypes.StringType)
+                .add("country", DataTypes.StringType)
+                .add("addts", DataTypes.LongType);
+
+        return new AvroJobProcessor(workflowConfig.sparkConf(), schema);
     }
 
     @Override
@@ -68,14 +91,14 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
             String currentJobName = sparkConf.get("workflow.app.name");
             String currentJobId = sparkConf.get("workflow.app.id");
             Boolean jobRunningCheckEnabled = sparkConf.getBoolean("workflow.app.running.check.enabled", false);
-            //List<String> topics = ListUtil.listFromStrings(sparkConf.get("spark.confluent.kafka.topics"));
+            List<String> topics = ListUtil.listFromStrings(sparkConf.get("spark.confluent.kafka.topics"));
             String group = sparkConf.get("spark.confluent.kafka.group");
-            Collection<String> topics = Arrays.asList("transaction-avro-topic");
+
             try {
 
                 ServiceProvider serviceProvider = ServiceProvider.getInstance(sparkConf);
-                //OffsetService offsetService = serviceProvider.offsetService();
-                //TopicService topicService = serviceProvider.topicService(topics);
+                OffsetService offsetService = serviceProvider.offsetService();
+                TopicService topicService = serviceProvider.topicService(topics);
 
                 //
                 SparkSession spark = SparkSession
@@ -86,26 +109,25 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
 
                 //spark.sparkContext().setLogLevel("ERROR");
                 JavaSparkContext jsc = JavaSparkContext.fromSparkContext(spark.sparkContext());
-                JavaStreamingContext streamingContext = new JavaStreamingContext(jsc, Durations.seconds(10));
+                JavaStreamingContext streamingContext = new JavaStreamingContext(jsc, Durations.seconds(30));
 
                 //
-                /*
                 Map<TopicPartition, Long> initialOffsets = KafkaUtil.partitions(topicService.partitions())
                         .stream()
                         .collect(Collectors.toMap(Function.identity(), t -> offsetService.offset(group,t)));
                 logger.info("Initial offsets : {}", initialOffsets);
-                */
+
                 JavaInputDStream<ConsumerRecord<String, byte[]>> stream = KafkaUtils.createDirectStream(
                         streamingContext,
                         LocationStrategies.PreferConsistent(),
-                        ConsumerStrategies.Subscribe(topics, kafkaConfig()) //, initialOffsets
+                        ConsumerStrategies.Subscribe(topics, kafkaConfig(), initialOffsets) //
                 );
 
                 LongAccumulator batchAccumulator = streamingContext.sparkContext().sc().longAccumulator("count-of-batches");
                 LongAccumulator recordAccumulator = streamingContext.sparkContext().sc().longAccumulator("count-of-records");
 
                 String streamAppId = streamingContext.sparkContext().sc().applicationId();
-
+                /*
                 JavaPairDStream<String, byte[]> s1  = stream.mapToPair(record -> {
                     return new Tuple2<>(record.key(), record.value());
                 });
@@ -121,9 +143,9 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
                         //System.out.println(c._1 + " ******* " +  new String(c._2, StandardCharsets.UTF_8));
                     });
                 });
-
+                */
                 //
-                /*
+
                 stream.foreachRDD(inputRDD -> {
 
                     long startBatchTime = System.currentTimeMillis();
@@ -157,7 +179,7 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
                     try{
 
                         long count = KafkaUtil.count(offsetRanges);
-                        logger.info("jobId: {} | Starting jobStepId: {} for {} records", 1,1, count);
+                        logger.info("jobId: {} | Starting jobStepId: {} for {} records", 2001,1, count);
 
                         if(inputRDD.getNumPartitions() > 3){
                             inputRDD = inputRDD.coalesce(3);
@@ -165,12 +187,12 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
 
                         List<KafkaOffset> offsets = KafkaUtil.wrap(group, offsetRanges);
 
-                        JavaRDD<Row> outputRDD = streamProcessor().process(inputRDD, 1L, 1L);
+                        JavaRDD<Row> outputRDD = streamProcessor().process(inputRDD, 2001L, 1L);
 
                         String path = null;
                         if(count > 0) {
                             path = streamProcessor().save(outputRDD);
-                            logger.info("jobid: {} | Processed {} records and saved to {}", 1L, count, path);
+                            logger.info("jobid: {} | Processed {} records and saved to {}", 2001L, count, path);
                         }
 
                         long startOracleTime = System.currentTimeMillis();
@@ -183,7 +205,9 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
 
                                     //
                                     offsetService.update(offsets);
-                                    ((CanCommitOffsets) stream.inputDStream()).commitAsync(offsetRanges); // commit async offsets to kafka otherwise we can't use kafka monitoring tool
+
+                                    // commit async offsets to kafka otherwise we can't use kafka monitoring tool
+                                    ((CanCommitOffsets) stream.inputDStream()).commitAsync(offsetRanges);
                                 });
 
 
@@ -191,19 +215,21 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
                         recordAccumulator.add(count);
 
                         logger.info("jobId {} | Finished jobStepId {}, outputCount {}, oracleTime: {}, batchTime {}",
-                                1L, 1L, count,
+                                2001L, 1L, count,
                                 TimeUtil.diffInMinAndSec(startOracleTime, System.currentTimeMillis()),
                                 TimeUtil.diffInMinAndSec(startBatchTime, System.currentTimeMillis())
                         );
 
                     } catch( Exception e){
-                        ssc.stop();
+                        logger.error("DStream batch failed for jobStepId {}", currentJobId, e);
+                        streamingContext.stop();
                     } finally {
-                        logger.info("");
+                        logger.info("Metrics >> Job started at {} and is running for {}", TimeUtil.toString(startTime), TimeUtil.diffWithNow(startTime));
+                        logger.info("Metrics >> Processed batches: {}, total records: {}", batchAccumulator.value(), recordAccumulator.value());
                     }
 
                 });
-                */
+
                 streamingContext.start();
 
                 checkToStop(streamingContext);
@@ -217,15 +243,8 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
 
     @Override
     protected Map<String, Object> kafkaConfig() {
-        //Map<String, Object> kafkaConfig = KafkaConfig.dstreamConfig(workflowConfig.sparkConf(), StringDeserializer.class, ByteArrayDeserializer.class );
-        Map<String, Object> kafkaParams = new HashMap<>();
-        kafkaParams.put("bootstrap.servers", "kafkabroker.sandbox.net:9092");
-        kafkaParams.put("key.deserializer", StringDeserializer.class);
-        kafkaParams.put("value.deserializer", ByteArrayDeserializer.class);
-        kafkaParams.put("group.id", "transaction-avro-cg");
-        kafkaParams.put("auto.offset.reset", "earliest");
-        kafkaParams.put("enable.auto.commit", false);
-        return kafkaParams;
+        Map<String, Object> kafkaConfig = KafkaConfig.dstreamConfig(workflowConfig.sparkConf(), StringDeserializer.class, ByteArrayDeserializer.class );
+        return kafkaConfig;
     }
 
     @Override
@@ -240,11 +259,16 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
         boolean isStopped = false;
 
         while(!isStopped){
+
             logger.debug("awaitTerminationOrTimeout {} ms", checkIntervalMillis );
+
             try{
-                ssc.awaitTerminationOrTimeout(checkIntervalMillis);
+                isStopped = ssc.awaitTerminationOrTimeout(checkIntervalMillis);
             } catch(InterruptedException e){
                 logger.error("JavaStreamContext has been interrupted, stopping gracefully", e);
+                ssc.stop(true, true);
+                logger.info("JavaStreamContext is stopped.");
+                Thread.currentThread().interrupt();
             }
 
             if(isStopped){
@@ -253,7 +277,7 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
 
             try{
                 markerExists = HadoopFileSystemUtil.isExists(shutdownMarker, ssc.sparkContext().hadoopConfiguration());
-                logger.debug("awaitTerminationOrTimeout {} ms", checkIntervalMillis );
+                logger.debug("marker file [{}] exists {}", shutdownMarker, markerExists );
             } catch(Exception e){
                 logger.error("Unable to check file existence ", e);
             }

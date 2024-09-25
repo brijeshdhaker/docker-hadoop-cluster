@@ -7,7 +7,7 @@ import org.apache.spark.sql.SaveMode;
 public abstract class DataWriter {
 
 
-    protected SaveMode saveMode = SaveMode.Append;
+    protected final SaveMode saveMode = SaveMode.Append;
 
     public abstract void write(Dataset<Row> records, String storeDir);
 

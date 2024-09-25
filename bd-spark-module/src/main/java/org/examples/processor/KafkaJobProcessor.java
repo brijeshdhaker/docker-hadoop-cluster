@@ -1,6 +1,5 @@
 package org.examples.processor;
 
-import com.amazonaws.services.autoscaling.model.transform.MemoryGiBPerVCpuRequestStaxUnmarshaller;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
@@ -15,7 +14,9 @@ import org.examples.service.ServiceProvider;
 import org.examples.service.TopicService;
 import org.examples.utils.ListUtil;
 import org.examples.writers.DataWriter;
-import org.examples.writers.ParquitWriter;
+import org.examples.writers.ParquetWriter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 import java.util.Iterator;
@@ -23,50 +24,43 @@ import java.util.List;
 
 public abstract class KafkaJobProcessor<Key, Value> implements StreamJobProcessor <Key, Value, Row> {
 
+
+    private static final Logger logger = LoggerFactory.getLogger(KafkaJobProcessor.class);
+
     protected SparkConf sparkConf;
     protected StructType schema;
 
     private DataWriter dataWriter;
     protected TopicService topicService;
 
-    public KafkaJobProcessor(SparkConf sparkConf){
+    public KafkaJobProcessor(SparkConf sparkConf, StructType schema){
 
         this.sparkConf = sparkConf;
-        ServiceProvider serviceProvider = ServiceProvider.getInstance(sparkConf);
-
+        this.schema = schema;
+        //
         List<String> topics = ListUtil.listFromStrings(sparkConf.get("spark.confluent.kafka.topics"));
+        ServiceProvider serviceProvider = ServiceProvider.getInstance(sparkConf);
         topicService = serviceProvider.topicService(topics);
 
         //
-        dataWriter = new ParquitWriter();
+        this.dataWriter = new ParquetWriter();
 
         //
-        schema = new StructType();
-
     }
 
 
     @Override
     public String save(JavaRDD<Row> rdd) {
-        try{
 
-            SparkSession spark = SparkSession
-                    .builder()
-                    .master("local[*]")  // // spark://spark-iceberg.sandbox.net:7077")
-                    .appName("Java Spark SQL basic example")
-                    .config(this.sparkConf)
-                    .getOrCreate();
+        SparkSession spark = SparkSession
+                .builder()
+                .config(this.sparkConf)
+                .getOrCreate();
 
-            String path = path(sparkConf);
+        String path = path(this.sparkConf);
+        this.dataWriter.write(spark.createDataFrame(rdd, schema),path);
+        return path;
 
-            spark.sparkContext().setLogLevel("ERROR");
-
-            dataWriter.write(spark.createDataFrame(rdd,schema),path);
-
-        }catch (Exception e){
-
-        }
-        return "";
     }
 
     @Override
@@ -74,7 +68,7 @@ public abstract class KafkaJobProcessor<Key, Value> implements StreamJobProcesso
         try {
 
             RawContext rawContext = RawContext.as()
-                    .jobId(0l)
+                    .jobId(2001l)
                     .jobStepId(1L)
                     .transactionTime(LocalDateTime.now())
                     .messageSource(MessageSource.KAFKA_AVRO)
@@ -84,7 +78,7 @@ public abstract class KafkaJobProcessor<Key, Value> implements StreamJobProcesso
             return rdd.mapPartitions(partitionProcessor(rawContext));
 
         } catch (Exception e) {
-
+            logger.error("Unable to map partition");
             throw new RuntimeException("Unable to map partitions", e);
 
         }

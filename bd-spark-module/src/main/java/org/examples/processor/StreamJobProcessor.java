@@ -16,6 +16,7 @@ public interface StreamJobProcessor <Key, Value, RddEntity> {
     String save(JavaRDD<RddEntity> rdd);
 
     default String path(SparkConf sparkConf){
+
         return HadoopPathBuilder.rootPath(sparkConf.get("workflow.root.path"))
                 .zone(Zone.RAW)
                 .messageType(MessageType.TRANSACTIONS)
@@ -23,5 +24,6 @@ public interface StreamJobProcessor <Key, Value, RddEntity> {
                 .messageFormat(MessageFormat.AVRO)
                 .instance(sparkConf.get("spark.confluent.kafka.group"))
                 .build();
+
     }
 }

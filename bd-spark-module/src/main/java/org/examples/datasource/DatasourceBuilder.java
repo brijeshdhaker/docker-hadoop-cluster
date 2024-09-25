@@ -43,6 +43,8 @@ public class DatasourceBuilder {
         dataSource.setPassword(password);
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setTestOnBorrow(true);
+        dataSource.setDefaultAutoCommit(false);
+
         return dataSource;
     }
 }

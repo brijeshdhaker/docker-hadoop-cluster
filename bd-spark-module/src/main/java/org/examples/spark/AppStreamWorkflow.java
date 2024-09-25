@@ -17,7 +17,7 @@ import org.apache.spark.streaming.kafka010.KafkaUtils;
 import org.apache.spark.streaming.kafka010.LocationStrategies;
 import org.examples.spark.streaming.structure.AvroDeserializer;
 import scala.Tuple2;
-
+import org.apache.avro.generic.GenericRecord;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -45,11 +45,13 @@ public class AppStreamWorkflow {
 
         Map<String, Object> kafkaParams = new HashMap<>();
         kafkaParams.put("bootstrap.servers", "kafkabroker.sandbox.net:9092");
-        kafkaParams.put("key.deserializer", StringDeserializer.class);
-        kafkaParams.put("value.deserializer", ByteArrayDeserializer.class);
+        //kafkaParams.put("key.deserializer", org.apache.kafka.common.serialization.StringDeserializer.class);
+        kafkaParams.put("key.deserializer", io.confluent.kafka.serializers.KafkaAvroDeserializer.class);
+        kafkaParams.put("value.deserializer", io.confluent.kafka.serializers.KafkaAvroDeserializer.class);
         kafkaParams.put("group.id", "transaction-avro-cg");
         kafkaParams.put("auto.offset.reset", "earliest");
         kafkaParams.put("enable.auto.commit", false);
+        kafkaParams.put("schema.registry.url", "http://schemaregistry.sandbox.net:8081");
         /*
         kafkaParams.put("heartbeat.interval.ms", 10_000);
         kafkaParams.put("session.timeout.ms", 5_000);
@@ -66,41 +68,39 @@ public class AppStreamWorkflow {
 
         Collection<String> topics = Arrays.asList("transaction-avro-topic");
 
-        JavaInputDStream<ConsumerRecord<String, byte[]>> stream = KafkaUtils.createDirectStream(
+        JavaInputDStream<ConsumerRecord<String, GenericRecord>> stream = KafkaUtils.createDirectStream(
                         streamingContext,
                         LocationStrategies.PreferConsistent(),
-                        ConsumerStrategies.<String, byte[]>Subscribe(topics, kafkaParams)
+                        ConsumerStrategies.<String, GenericRecord>Subscribe(topics, kafkaParams)
                 );
 
-        /*
+        SchemaRegistryClient sclient = new CachedSchemaRegistryClient("http://schemaregistry:8081", 128);
+        AvroDeserializer avroDeserializer = new AvroDeserializer(sclient);
+
         stream.foreachRDD(inputRDD -> {
-            List<ConsumerRecord<String, byte[]>> records = inputRDD.collect();
-            records.forEach(r -> {
-                byte[] value = r.value();
-                byte[] sbytes= Arrays.copyOfRange(value,2,4);
-                byte[] vbytes= Arrays.copyOfRange(value,6,((value.length)-5));
-                System.out.println("Key : " + r.key() + " sByte " +  new String(sbytes,StandardCharsets.UTF_8 )+ " vByte " +  new String(vbytes,StandardCharsets.UTF_8 ));
+            inputRDD.foreach(r -> {
+                System.out.println("Key : " + r.key() + "  *******  Value : " + r.value());
             });
         });
-        */
 
+        JavaPairDStream<String, GenericRecord> pairRDD  = stream.mapToPair(record -> {
+            return new Tuple2<>(record.key(), record.value());
+        });
 
+        /*
         JavaPairDStream<String, byte[]> s1  = stream.mapToPair(record -> {
             return new Tuple2<>(record.key(), record.value());
         });
-        SchemaRegistryClient sclient = new CachedSchemaRegistryClient("http://schemaregistry:8081", 128);
-        AvroDeserializer avroDeserializer = new AvroDeserializer(sclient);
+
         s1.foreachRDD(r -> {
             List<Tuple2<String, byte[]>> touples = r.collect();
             touples.forEach(c -> {
                 String key = avroDeserializer.deserialize(c._1().getBytes());
                 String value = avroDeserializer.deserialize(c._2());
-                System.out.println("Key : " + key + " Value " +  value );
-
-                //System.out.println(c._1 + " ******* " +  new String(c._2, StandardCharsets.UTF_8));
+                System.out.println("Key : " + key + " *******  Value : " +  value );
             });
         });
-
+        */
 
         streamingContext.start();              // Start the computation
         try {

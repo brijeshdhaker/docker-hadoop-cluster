@@ -65,7 +65,7 @@ public class OffsetService {
     public long update(String cg, String topic , int partition, long offset, Timestamp commit_time){
 
         return query.update("UPDATE " + TABLE + " SET (OFFSET_VALUE = :offset,  COMMIT_TIME = :commitTime ) " +
-                        " where (CONSUMER_GROUP = :consumer_group and TOPIC = :topic and  PARTITION = : partition) ")
+                        " where (CONSUMER_GROUP = :consumer_group and TOPIC = :topic and  `PARTITION` = : partition) ")
                 .namedParam("consumer_group",cg)
                 .namedParam("topic", topic)
                 .namedParam("partition", partition)
@@ -78,7 +78,7 @@ public class OffsetService {
     public long initWith(String cg, String topic , int partition, long offset){
 
          query.update("INSERT INTO " + TABLE + " (CONSUMER_GROUP, TOPIC, PARTITION, OFFSET_VALUE) " +
-                        " values (CONSUMER_GROUP = :consumer_group and TOPIC = :topic and  PARTITION = : partition) ")
+                        " values (CONSUMER_GROUP = :consumer_group and TOPIC = :topic and  `PARTITION` = : partition) ")
                 .namedParam("consumer_group",cg)
                 .namedParam("topic", topic)
                 .namedParam("partition", partition)
@@ -90,7 +90,7 @@ public class OffsetService {
 
     public boolean exist(String cg, String topic , int partition){
         return query.select("SELECT count(*) FROM " + TABLE
-                        + " where CONSUMER_GROUP = :consumer_group and TOPIC = :topic and  PARTITION = : partition" )
+                        + " where CONSUMER_GROUP = :consumer_group and TOPIC = :topic and  `PARTITION` = : partition" )
                 .namedParam("consumer_group",cg)
                 .namedParam("topic", topic)
                 .namedParam("partition", partition)
@@ -99,7 +99,7 @@ public class OffsetService {
 
     public Timestamp commitTime(String cg, String topic , int partition){
         return query.select("SELECT COMMIT_TIME FROM " + TABLE
-                        + " where CONSUMER_GROUP = :consumer_group and TOPIC = :topic and  PARTITION = : partition" )
+                        + " where CONSUMER_GROUP = :consumer_group and TOPIC = :topic and  `PARTITION` = : partition" )
                 .namedParam("consumer_group",cg)
                 .namedParam("topic", topic)
                 .namedParam("partition", partition)
@@ -129,20 +129,22 @@ public class OffsetService {
     }
 
     public void update(List<KafkaOffset> offsets){
-        List<Map<String, ?>> params = offsets.stream()
-                .map(o -> {
-                    Map<String, Object> map = new HashMap<>();
-                    map.put("consumer_group",o.consumerGroup());
-                    map.put("topic",o.topic());
-                    map.put("partition",o.partition());
-                    map.put("offset",o.offsetValue());
-                    map.put("commit_time",o.commitTime());
-                    return map;
-                }).collect(Collectors.toList());
+        if(!offsets.isEmpty() && offsets.size() > 0) {
+            List<Map<String, ?>> params = offsets.stream()
+                    .map(o -> {
+                        Map<String, Object> map = new HashMap<>();
+                        map.put("consumer_group", o.consumerGroup());
+                        map.put("topic", o.topic());
+                        map.put("partition", o.partition());
+                        map.put("offset", o.offsetValue());
+                        map.put("commit_time", o.commitTime());
+                        return map;
+                    }).collect(Collectors.toList());
 
-        query.batch(" UPDATE " + TABLE + " set OFFSET_VALUE = :offset, COMMIT_TIME = :commit_time " +
-                        "where CONSUMER_GROUP = :consumer_group and TOPIC = :topic and PARTITION = :partition").batchSize(offsets.size())
-                .namedParams(params)
-                .run();
+            query.batch(" UPDATE " + TABLE + " set OFFSET_VALUE = :offset, COMMIT_TIME = :commit_time " +
+                            "where CONSUMER_GROUP = :consumer_group and TOPIC = :topic and `PARTITION` = :partition").batchSize(offsets.size())
+                    .namedParams(params)
+                    .run();
+        }
     }
 }

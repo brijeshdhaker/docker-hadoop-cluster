@@ -7,11 +7,6 @@ import java.util.List;
 
 public class CopyUtil {
 
-    private CopyUtil(){
-
-    }
-
-
     public static Timestamp copy(Timestamp timestamp){
         return timestamp == null ? null : new Timestamp(timestamp.getTime());
     }
