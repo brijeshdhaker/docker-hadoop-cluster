@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-25 Update Project Configuration.">
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/schema/SchemaProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/JsonUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/ThrowWrappers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/test/java/org/examples/schema/SchemaProviderTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/config/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/config/KafkaConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/DiscretizedStreamWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/DiscretizedStreamWorkflow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_dstream_workflow.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_dstream_workflow.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/resources/log4j2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/log4j2.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -499,14 +493,6 @@
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
     </task>
-    <task id="LOCAL-00018" summary="2024-02-24 Merge Docker Projects.">
-      <option name="closed" value="true" />
-      <created>1708791406817</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1708791406817</updated>
-    </task>
     <task id="LOCAL-00019" summary="2024-02-24 Merge Docker Projects.">
       <option name="closed" value="true" />
       <created>1708806465497</created>
@@ -891,7 +877,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727233608757</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="2024-09-25 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1727245149015</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1727245149017</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="UnknownFeatures">
