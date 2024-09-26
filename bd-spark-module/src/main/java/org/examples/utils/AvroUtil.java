@@ -14,8 +14,8 @@ public class AvroUtil {
 
     private static final Logger logger = LoggerFactory.getLogger(AvroUtil.class);
 
-    public static Schema schemaFromString(String schemasStr) {
-        return new Schema.Parser().parse(schemasStr);
+    public static Schema schemaFromString(String avro) {
+        return new Schema.Parser().parse(avro);
     }
 
     public static Schema schemaFromFile(File avrofile) {

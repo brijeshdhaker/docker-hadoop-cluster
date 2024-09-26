@@ -1,6 +1,8 @@
 
 ```shell
-mysql --user=root --password=p@SSW0rd
+mysql --user=root --password=p@SSW0rd 
+mysql --user=root --password=p@SSW0rd --host=mysqlserver.sandbox.net --database=SANDBOXDB
+mysql --user=hiveadmin --password=hiveadmin --host=mysqlserver.sandbox.net --database=HMS334
 ```
 
 ```shell

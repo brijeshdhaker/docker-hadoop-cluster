@@ -26,7 +26,7 @@ public class SchemaProvider {
             //System.out.println("txn_schema : " + txn_schema);
 
             StructType schemaType = (StructType) SchemaConverters.toSqlType(org.apache.avro.Schema.parse(avroSchema)).dataType();
-            System.out.println("schemaType : " + schemaType);
+            logger.info("schemaType : {} ", schemaType);
             return schemaType;
 
     }
@@ -35,7 +35,15 @@ public class SchemaProvider {
 
         String avro_schema = new String(Files.readAllBytes(Paths.get(path)));
         StructType schemaType = (StructType) SchemaConverters.toSqlType(org.apache.avro.Schema.parse(avro_schema)).dataType();
-        System.out.println("schemaType : " + schemaType);
+        logger.info("StructType from avro : {} ", schemaType);
+        return schemaType;
+
+    }
+
+    public static StructType structTypeFromJson(String json) throws Exception {
+
+        StructType schemaType = (StructType) StructType.fromJson(json);;
+        logger.info("StructType from json : {} ", schemaType);
         return schemaType;
 
     }

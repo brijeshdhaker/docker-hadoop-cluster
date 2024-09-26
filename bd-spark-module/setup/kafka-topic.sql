@@ -23,8 +23,10 @@ show tables;
 commit;
 
 ---
---- mysql --user=root --password=p@SSW0rd
+--- mysql --user=root --password=p@SSW0rd --host=mysqlserver.sandbox.net --database=SANDBOXDB
+--- mysql --user=brijeshdhaker --password=Accoo7@k47 --host=mysqlserver.sandbox.net --database=SANDBOXDB
 ---
+
 USE SANDBOXDB;
 
 CREATE TABLE `SANDBOXDB`.`KAFKA_OFFSETS`(
@@ -39,7 +41,7 @@ CREATE TABLE `SANDBOXDB`.`KAFKA_OFFSETS`(
 select * from KAFKA_OFFSETS;
 select count(*) from KAFKA_OFFSETS;
 
-INSERT INTO KAFKA_OFFSETS(`CONSUMER_GROUP`,`TOPIC`,`PARTITION`, `OFFSET_VALUE`,`COMMIT_TIME`) VALUES('transaction-avro-cg', 'transaction-avro-topic', 1, 100, NOW());
+INSERT INTO KAFKA_OFFSETS(`CONSUMER_GROUP`,`TOPIC`,`PARTITION`, `OFFSET_VALUE`,`COMMIT_TIME`) VALUES('transaction-avro-cg', 'transaction-avro-topic', 0, 100, NOW());
 
 CREATE TABLE `SANDBOXDB`.`KAFKA_TOPICS`(
     `MAIN_TOPIC` VARCHAR(255),

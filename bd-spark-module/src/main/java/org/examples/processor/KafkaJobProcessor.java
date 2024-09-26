@@ -63,6 +63,10 @@ public abstract class KafkaJobProcessor<Key, Value> implements StreamJobProcesso
             byte[] value = (byte[])row.get(1);
             System.out.println("Key : " + key + " *******  Value : []" + value.length);
         });
+        rdd.flatMap(row -> {
+
+            return null;
+        })
         //this.dataWriter.write(spark.createDataFrame(rdd, schema),path);
         return path;
 
