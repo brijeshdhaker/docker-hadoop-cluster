@@ -1,9 +1,5 @@
 package org.examples.workflows;
 
-import io.confluent.kafka.schemaregistry.client.CachedSchemaRegistryClient;
-import io.confluent.kafka.schemaregistry.client.SchemaRegistryClient;
-import io.confluent.kafka.schemaregistry.client.rest.RestService;
-import io.confluent.kafka.schemaregistry.client.rest.entities.Schema;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.TopicPartition;
@@ -14,14 +10,9 @@ import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
-import org.apache.spark.sql.avro.SchemaConverters;
-import org.apache.spark.sql.types.DataTypes;
-import org.apache.spark.sql.types.Metadata;
-import org.apache.spark.sql.types.StructField;
 import org.apache.spark.sql.types.StructType;
 import org.apache.spark.streaming.Durations;
 import org.apache.spark.streaming.api.java.JavaInputDStream;
-import org.apache.spark.streaming.api.java.JavaPairDStream;
 import org.apache.spark.streaming.api.java.JavaStreamingContext;
 import org.apache.spark.streaming.kafka010.*;
 import org.apache.spark.util.LongAccumulator;
@@ -35,16 +26,17 @@ import org.examples.schema.SchemaProvider;
 import org.examples.service.OffsetService;
 import org.examples.service.ServiceProvider;
 import org.examples.service.TopicService;
-import org.examples.spark.streaming.structure.AvroDeserializer;
 import org.examples.utils.HadoopFileSystemUtil;
 import org.examples.utils.KafkaUtil;
 import org.examples.utils.ListUtil;
 import org.examples.utils.TimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scala.Tuple2;
+
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -63,7 +55,7 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
         try{
             schemaType = SchemaProvider.structType("transaction-avro-topic");
         } catch(Exception e){
-            logger.error("error occurred while loadin scheeeeeeema details for topic [{}]", "transaction-avro-topic", e);
+            logger.error("error occurred while loadin schema details for topic [{}]", "transaction-avro-topic", e);
         }
         return new AvroJobProcessor(workflowConfig.sparkConf(), schemaType);
     }

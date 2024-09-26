@@ -5,8 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-25 Update Project Configuration.">
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/ConsoleProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/HiveProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/AvroUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/test/java/org/examples/utils/AvroUtilTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/test/resources/transaction-record.avsc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/resources/log4j2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/log4j2.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/setup/kafka-topic.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/setup/kafka-topic.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/AvroPartitionProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/AvroPartitionProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/KafkaJobProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/KafkaJobProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/spark/AppStreamWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/spark/AppStreamWorkflow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/DiscretizedStreamWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/DiscretizedStreamWorkflow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/test/resources/log4j2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/test/resources/log4j2.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +30,8 @@
         <option value="JUnit5 Test Class" />
         <option value="JUnit3 Test Class" />
         <option value="Enum" />
-        <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -84,7 +94,7 @@
   "keyToString": {
     "Application.AppLauncher.executor": "Run",
     "Application.AppLauncher::BatchWorkflow.executor": "Run",
-    "Application.AppLauncher::DiscretizedStreamWorkflow.executor": "Debug",
+    "Application.AppLauncher::DiscretizedStreamWorkflow.executor": "Run",
     "Application.AppStreamWorkflow.executor": "Run",
     "Application.SparkPi.executor": "Run",
     "Application.TransactionAvroStream.executor": "Run",
@@ -158,6 +168,9 @@
     "Docker.spark-cluster.executor": "Run",
     "Docker.ubuntu.executor": "Run",
     "Docker.zeppelin.executor": "Run",
+    "JUnit.AvroUtilTest.executor": "Run",
+    "JUnit.AvroUtilTest.jsonToAvro.executor": "Run",
+    "JUnit.AvroUtilTest.schemaFromFile.executor": "Run",
     "JUnit.DatasourceBuilderTest.executor": "Run",
     "JUnit.SchemaProviderTest.structTypeFromAvro.executor": "Run",
     "Maven.bd-python-module [clean].executor": "Run",
@@ -183,7 +196,7 @@
     "Python.app.executor": "Run",
     "Python.avro-test.executor": "Debug",
     "Python.confluent_kafka_AvroConsumer.executor": "Run",
-    "Python.confluent_kafka_AvroProducer.executor": "Debug",
+    "Python.confluent_kafka_AvroProducer.executor": "Run",
     "Python.confluent_kafka_ConsumerFactory.executor": "Run",
     "Python.confluent_kafka_DeserializingConsumer.executor": "Debug",
     "Python.confluent_kafka_ProducerFactory.executor": "Run",
@@ -213,7 +226,7 @@
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spark-module/src/test/java/org/examples",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spark-module/src/main/resources",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spark-module/src/test/resources",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -224,11 +237,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-spark-module/src/test/resources" />
       <recent name="$PROJECT_DIR$/bd-spark-module/src/main/resources" />
       <recent name="$PROJECT_DIR$/bd-spark-module" />
       <recent name="$PROJECT_DIR$/bd-spark-module/setup" />
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf" />
-      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bd-spark-module/src/main/resources" />
@@ -242,28 +255,19 @@
       <recent name="junit.framework.TestCase" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.examples.utils" />
       <recent name="org.examples.schema" />
       <recent name="org.examples.datasource" />
-      <recent name="org.examples.utils" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.examples.spark" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SchemaProviderTest.structTypeFromAvro">
+  <component name="RunManager" selected="JUnit.AvroUtilTest">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
       <option name="PROGRAM_PARAMETERS" value="--embedded --verbose --workflow-type batch --storage local --property-file bd-spark-module/src/main/resources/app_batch_workflow.properties" />
-      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppLauncher::DiscretizedStreamWorkflow" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
-      <module name="bd-spark-module" />
-      <option name="PROGRAM_PARAMETERS" value="--embedded --verbose --workflow-type dstream --storage local --property-file bd-spark-module/src/main/resources/app_dstream_workflow.properties" />
       <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -278,16 +282,49 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppStreamWorkflow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppStreamWorkflow" />
+    <configuration name="AvroUtilTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bd-spark-module" />
-      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.examples.spark.*" />
+          <option name="PATTERN" value="org.examples.utils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="org.examples.utils" />
+      <option name="MAIN_CLASS_NAME" value="org.examples.utils.AvroUtilTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AvroUtilTest.jsonToAvro" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bd-spark-module" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.examples.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.examples.utils" />
+      <option name="MAIN_CLASS_NAME" value="org.examples.utils.AvroUtilTest" />
+      <option name="METHOD_NAME" value="jsonToAvro" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AvroUtilTest.schemaFromFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bd-spark-module" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.examples.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.examples.utils" />
+      <option name="MAIN_CLASS_NAME" value="org.examples.utils.AvroUtilTest" />
+      <option name="METHOD_NAME" value="schemaFromFile" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -402,20 +439,6 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="minio" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="envFilePath" value="" />
-          <option name="services">
-            <list>
-              <option value="minio" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="bd-hadoop-sandbox/docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <configuration name="mysqlserver" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -464,23 +487,23 @@
       <item itemvalue="Application.StreamingJob" />
       <item itemvalue="Application.AppLauncher::BatchWorkflow" />
       <item itemvalue="Application.AppLauncher::StructuredStreamWorkflow" />
-      <item itemvalue="Application.AppStreamWorkflow" />
-      <item itemvalue="Application.AppLauncher::DiscretizedStreamWorkflow" />
       <item itemvalue="Docker.kafka-cluster" />
       <item itemvalue="Docker.mysqlserver" />
       <item itemvalue="Docker.spark-cluster" />
       <item itemvalue="Docker.zeppelin" />
-      <item itemvalue="Docker.minio" />
+      <item itemvalue="JUnit.AvroUtilTest" />
+      <item itemvalue="JUnit.AvroUtilTest.jsonToAvro" />
+      <item itemvalue="JUnit.AvroUtilTest.schemaFromFile" />
       <item itemvalue="JUnit.SchemaProviderTest.structTypeFromAvro" />
       <item itemvalue="Python.confluent_kafka_AvroProducer" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SchemaProviderTest.structTypeFromAvro" />
-        <item itemvalue="Application.AppLauncher::DiscretizedStreamWorkflow" />
-        <item itemvalue="Docker.minio" />
+        <item itemvalue="JUnit.AvroUtilTest" />
+        <item itemvalue="JUnit.AvroUtilTest.schemaFromFile" />
+        <item itemvalue="JUnit.AvroUtilTest.jsonToAvro" />
         <item itemvalue="Python.confluent_kafka_AvroProducer" />
-        <item itemvalue="Application.AppStreamWorkflow" />
+        <item itemvalue="JUnit.SchemaProviderTest.structTypeFromAvro" />
       </list>
     </recent_temporary>
   </component>
@@ -492,14 +515,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00019" summary="2024-02-24 Merge Docker Projects.">
-      <option name="closed" value="true" />
-      <created>1708806465497</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1708806465497</updated>
     </task>
     <task id="LOCAL-00020" summary="2024-02-25 Change Project Packaging.">
       <option name="closed" value="true" />
@@ -885,7 +900,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727245149017</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="2024-09-25 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1727245748889</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1727245748889</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -937,6 +960,11 @@
           <url>file://$PROJECT_DIR$/bd-java-module/src/main/java/org/examples/hadoop/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/KafkaJobProcessor.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_simple_consumer.py</url>

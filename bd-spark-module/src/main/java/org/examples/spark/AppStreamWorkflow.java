@@ -2,10 +2,8 @@ package org.examples.spark;
 
 import io.confluent.kafka.schemaregistry.client.CachedSchemaRegistryClient;
 import io.confluent.kafka.schemaregistry.client.SchemaRegistryClient;
-import io.confluent.kafka.serializers.KafkaAvroDeserializer;
+import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.common.serialization.ByteArrayDeserializer;
-import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.streaming.Durations;
@@ -15,14 +13,13 @@ import org.apache.spark.streaming.api.java.JavaStreamingContext;
 import org.apache.spark.streaming.kafka010.ConsumerStrategies;
 import org.apache.spark.streaming.kafka010.KafkaUtils;
 import org.apache.spark.streaming.kafka010.LocationStrategies;
-import org.examples.spark.streaming.structure.AvroDeserializer;
-import scala.Tuple2;
-import org.apache.avro.generic.GenericRecord;
-import java.nio.charset.StandardCharsets;
-import java.util.*;
 
-import static org.apache.commons.io.IOUtils.length;
-import static org.apache.commons.lang.StringUtils.substring;
+import scala.Tuple2;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AppStreamWorkflow {
 
@@ -74,8 +71,8 @@ public class AppStreamWorkflow {
                         ConsumerStrategies.<String, GenericRecord>Subscribe(topics, kafkaParams)
                 );
 
-        SchemaRegistryClient sclient = new CachedSchemaRegistryClient("http://schemaregistry:8081", 128);
-        AvroDeserializer avroDeserializer = new AvroDeserializer(sclient);
+        //SchemaRegistryClient sclient = new CachedSchemaRegistryClient("http://schemaregistry:8081", 128);
+        //AvroDeserializer avroDeserializer = new AvroDeserializer(sclient);
 
         stream.foreachRDD(inputRDD -> {
             inputRDD.foreach(r -> {

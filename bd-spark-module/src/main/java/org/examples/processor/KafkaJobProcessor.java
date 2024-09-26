@@ -58,7 +58,12 @@ public abstract class KafkaJobProcessor<Key, Value> implements StreamJobProcesso
                 .getOrCreate();
 
         String path = path(this.sparkConf);
-        this.dataWriter.write(spark.createDataFrame(rdd, schema),path);
+        rdd.foreach(row -> {
+            String key   = (String)row.get(0);
+            byte[] value = (byte[])row.get(1);
+            System.out.println("Key : " + key + " *******  Value : []" + value.length);
+        });
+        //this.dataWriter.write(spark.createDataFrame(rdd, schema),path);
         return path;
 
     }
@@ -68,8 +73,8 @@ public abstract class KafkaJobProcessor<Key, Value> implements StreamJobProcesso
         try {
 
             RawContext rawContext = RawContext.as()
-                    .jobId(2001l)
-                    .jobStepId(1L)
+                    .jobId(jobId)
+                    .jobStepId(jobStepID)
                     .transactionTime(LocalDateTime.now())
                     .messageSource(MessageSource.KAFKA_AVRO)
                     .messageType(MessageType.TRANSACTIONS)
