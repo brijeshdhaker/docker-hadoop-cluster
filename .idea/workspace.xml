@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-26 Update Project Configuration.">
-      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/HiveWriter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/setup/kafka-topic.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/setup/kafka-topic.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/ConsoleProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/ConsoleWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/HiveProcessor.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/KafkaJobProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/KafkaJobProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/schema/SchemaProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/schema/SchemaProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/AvroUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/AvroUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/mysql-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/mysql-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/service/OffsetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/service/OffsetService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/service/TopicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/service/TopicService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +86,7 @@
   &quot;keyToString&quot;: {
     &quot;Application.AppLauncher.executor&quot;: &quot;Run&quot;,
     &quot;Application.AppLauncher::BatchWorkflow.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AppLauncher::DiscretizedStreamWorkflow.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AppLauncher::DiscretizedStreamWorkflow.executor&quot;: &quot;Debug&quot;,
     &quot;Application.AppStreamWorkflow.executor&quot;: &quot;Run&quot;,
     &quot;Application.SparkPi.executor&quot;: &quot;Run&quot;,
     &quot;Application.TransactionAvroStream.executor&quot;: &quot;Run&quot;,
@@ -260,11 +255,20 @@
       <recent name="org.examples.spark" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.minio">
+  <component name="RunManager" selected="Application.AppLauncher::DiscretizedStreamWorkflow">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
       <option name="PROGRAM_PARAMETERS" value="--embedded --verbose --workflow-type batch --storage local --property-file bd-spark-module/src/main/resources/app_batch_workflow.properties" />
+      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppLauncher::DiscretizedStreamWorkflow" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
+      <module name="bd-spark-module" />
+      <option name="PROGRAM_PARAMETERS" value="--embedded --verbose --workflow-type dstream --storage local --property-file bd-spark-module/src/main/resources/app_dstream_workflow.properties" />
       <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -498,6 +502,7 @@
       <item itemvalue="Application.StreamingJob" />
       <item itemvalue="Application.AppLauncher::BatchWorkflow" />
       <item itemvalue="Application.AppLauncher::StructuredStreamWorkflow" />
+      <item itemvalue="Application.AppLauncher::DiscretizedStreamWorkflow" />
       <item itemvalue="Docker.kafka-cluster" />
       <item itemvalue="Docker.mysqlserver" />
       <item itemvalue="Docker.spark-cluster" />
@@ -527,14 +532,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00021" summary="2024-02-25 Change Project Packaging.">
-      <option name="closed" value="true" />
-      <created>1708834131543</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1708834131543</updated>
     </task>
     <task id="LOCAL-00022" summary="2024-02-25 Change Project Packaging.">
       <option name="closed" value="true" />
@@ -920,7 +917,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727312916339</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="2024-09-26 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1727316878040</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1727316878041</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -975,9 +980,9 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/KafkaJobProcessor.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="38" />
+          <url>file://$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/DiscretizedStreamWorkflow.java</url>
+          <line>99</line>
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_simple_consumer.py</url>

@@ -35,6 +35,7 @@ public class TopicService {
         try {
             this.query = query;
             Heartbeats.checkTable(query, TABLE);
+            init(topics);
         } catch (Exception e){
 
         }

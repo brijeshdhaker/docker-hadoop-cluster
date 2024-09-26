@@ -66,7 +66,7 @@ public abstract class KafkaJobProcessor<Key, Value> implements StreamJobProcesso
         rdd.flatMap(row -> {
 
             return null;
-        })
+        });
         //this.dataWriter.write(spark.createDataFrame(rdd, schema),path);
         return path;
 
