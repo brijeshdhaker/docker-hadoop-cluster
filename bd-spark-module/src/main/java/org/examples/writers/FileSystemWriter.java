@@ -1,15 +1,20 @@
 package org.examples.writers;
 
-import org.apache.spark.sql.Dataset;
-import org.apache.spark.sql.Row;
-import org.apache.spark.sql.SaveMode;
+import org.apache.spark.sql.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ParquetWriter extends DataWriter {
+import java.util.ArrayList;
+import java.util.Collection;
+
+public class FileSystemWriter extends DataWriter {
 
 
-    private static final Logger logger = LoggerFactory.getLogger(ParquetWriter.class);
+    private static final Logger logger = LoggerFactory.getLogger(FileSystemWriter.class);
+
+    public FileSystemWriter(){
+
+    }
 
     @Override
     public void write(Dataset<Row> records, String storeDir) {
@@ -21,8 +26,9 @@ public class ParquetWriter extends DataWriter {
         }
 
         records.write()
-                .mode(saveMode)
-                .parquet(storeDir);
+                .format("parquet")
+                .save(storeDir);
+
     }
 
     @Override
@@ -35,7 +41,8 @@ public class ParquetWriter extends DataWriter {
         }
 
         records.write().mode(saveMode)
-                .partitionBy(partitionColumns)
-                .parquet(storeDir);
+                .partitionBy(partitionColumns).
+                format("parquet")
+                .save(storeDir);
     }
 }

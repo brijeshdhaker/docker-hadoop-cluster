@@ -4,8 +4,9 @@ import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SaveMode;
 
-public abstract class DataWriter {
+import java.util.Collection;
 
+public abstract class DataWriter {
 
     protected final SaveMode saveMode = SaveMode.Append;
 

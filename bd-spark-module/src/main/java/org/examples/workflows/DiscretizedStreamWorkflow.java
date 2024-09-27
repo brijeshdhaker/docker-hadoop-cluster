@@ -1,10 +1,9 @@
 package org.examples.workflows;
 
+import org.apache.avro.generic.GenericRecord;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.TopicPartition;
-import org.apache.kafka.common.serialization.ByteArrayDeserializer;
-import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
@@ -22,7 +21,6 @@ import org.examples.config.WorkflowConfig;
 import org.examples.models.KafkaOffset;
 import org.examples.processor.AvroJobProcessor;
 import org.examples.processor.StreamJobProcessor;
-import org.examples.schema.SchemaProvider;
 import org.examples.service.OffsetService;
 import org.examples.service.ServiceProvider;
 import org.examples.service.TopicService;
@@ -30,6 +28,8 @@ import org.examples.utils.HadoopFileSystemUtil;
 import org.examples.utils.KafkaUtil;
 import org.examples.utils.ListUtil;
 import org.examples.utils.TimeUtil;
+import org.examples.writers.ConsoleWriter;
+import org.examples.writers.DataWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,7 +40,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, byte[], Row> {
+public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, GenericRecord, Row> {
 
 
     private static final Logger logger = LoggerFactory.getLogger(DiscretizedStreamWorkflow.class);
@@ -50,14 +50,9 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
     }
 
     @Override
-    protected StreamJobProcessor<String, byte[], Row> streamProcessor() {
-        StructType schemaType = null;
-        try{
-            schemaType = SchemaProvider.structType("transaction-avro-topic");
-        } catch(Exception e){
-            logger.error("error occurred while loadin schema details for topic [{}]", "transaction-avro-topic", e);
-        }
-        return new AvroJobProcessor(workflowConfig.sparkConf(), schemaType);
+    protected StreamJobProcessor<String, GenericRecord, Row> streamProcessor() {
+        DataWriter writer = new ConsoleWriter();
+        return new AvroJobProcessor(sparkSession(), writer);
     }
 
     @Override
@@ -70,9 +65,8 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
         if(this.workflowConfig != null){
 
             SparkConf sparkConf = workflowConfig.sparkConf();
-            String currentJobName = sparkConf.get("workflow.app.name");
-            String currentJobId = sparkConf.get("workflow.app.id");
-            Boolean jobRunningCheckEnabled = sparkConf.getBoolean("workflow.app.running.check.enabled", false);
+            String workflowAppId = sparkConf.get("workflow.app.id");
+
             List<String> topics = ListUtil.listFromStrings(sparkConf.get("spark.confluent.kafka.topics"));
             String group = sparkConf.get("spark.confluent.kafka.group");
 
@@ -83,11 +77,15 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
                 TopicService topicService = serviceProvider.topicService(topics);
 
                 //
-                SparkSession spark = SparkSession
+                SparkSession spark = sparkSession();
+
+                /*
+                SparkSession
                         .builder()
                         .appName("AppLauncher::DiscretizedStreamWorkflow")
                         .config(sparkConf)
                         .getOrCreate();
+                */
 
                 //spark.sparkContext().setLogLevel("ERROR");
                 JavaSparkContext jsc = JavaSparkContext.fromSparkContext(spark.sparkContext());
@@ -99,35 +97,17 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
                         .collect(Collectors.toMap(Function.identity(), t -> offsetService.offset(group,t)));
                 logger.info("Initial offsets : {}", initialOffsets);
 
-                JavaInputDStream<ConsumerRecord<String, byte[]>> stream = KafkaUtils.createDirectStream(
+                JavaInputDStream<ConsumerRecord<String, GenericRecord>> stream = KafkaUtils.createDirectStream(
                         streamingContext,
                         LocationStrategies.PreferConsistent(),
-                        ConsumerStrategies.Subscribe(topics, kafkaConfig(), initialOffsets) //
+                        ConsumerStrategies.<String, GenericRecord>Subscribe(topics, kafkaConfig(), initialOffsets) //
                 );
 
+                String streamAppId = streamingContext.sparkContext().sc().applicationId();
                 LongAccumulator batchAccumulator = streamingContext.sparkContext().sc().longAccumulator("count-of-batches");
                 LongAccumulator recordAccumulator = streamingContext.sparkContext().sc().longAccumulator("count-of-records");
 
-                String streamAppId = streamingContext.sparkContext().sc().applicationId();
-                /*
-                JavaPairDStream<String, byte[]> s1  = stream.mapToPair(record -> {
-                    return new Tuple2<>(record.key(), record.value());
-                });
-                SchemaRegistryClient sclient = new CachedSchemaRegistryClient("http://schemaregistry:8081", 128);
-                AvroDeserializer avroDeserializer = new AvroDeserializer(sclient);
-                s1.foreachRDD(r -> {
-                    List<Tuple2<String, byte[]>> touples = r.collect();
-                    touples.forEach(c -> {
-                        String key = avroDeserializer.deserialize(c._1().getBytes());
-                        String value = avroDeserializer.deserialize(c._2());
-                        System.out.println("Key : " + key + " Value " +  value );
-
-                        //System.out.println(c._1 + " ******* " +  new String(c._2, StandardCharsets.UTF_8));
-                    });
-                });
-                */
                 //
-
                 stream.foreachRDD(inputRDD -> {
 
                     long startBatchTime = System.currentTimeMillis();
@@ -203,11 +183,15 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
                         );
 
                     } catch( Exception e){
-                        logger.error("DStream batch failed for jobStepId {}", currentJobId, e);
+
+                        logger.error("DStream batch failed for jobStepId {}", workflowAppId, e);
                         streamingContext.stop();
+
                     } finally {
+
                         logger.info("Metrics >> Job started at {} and is running for {}", TimeUtil.toString(startTime), TimeUtil.diffWithNow(startTime));
                         logger.info("Metrics >> Processed batches: {}, total records: {}", batchAccumulator.value(), recordAccumulator.value());
+
                     }
 
                 });
@@ -225,7 +209,11 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, by
 
     @Override
     protected Map<String, Object> kafkaConfig() {
-        Map<String, Object> kafkaConfig = KafkaConfig.dstreamConfig(workflowConfig.sparkConf(), StringDeserializer.class, ByteArrayDeserializer.class );
+        Map<String, Object> kafkaConfig = KafkaConfig.dstreamConfig(
+                workflowConfig.sparkConf(),
+                io.confluent.kafka.serializers.KafkaAvroDeserializer.class,
+                io.confluent.kafka.serializers.KafkaAvroDeserializer.class
+        );
         return kafkaConfig;
     }
 

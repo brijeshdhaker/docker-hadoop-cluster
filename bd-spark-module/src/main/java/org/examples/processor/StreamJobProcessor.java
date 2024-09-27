@@ -3,6 +3,7 @@ package org.examples.processor;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
+import org.apache.spark.sql.SparkSession;
 import org.examples.enums.MessageFormat;
 import org.examples.enums.MessageSource;
 import org.examples.enums.MessageType;
@@ -15,15 +16,4 @@ public interface StreamJobProcessor <Key, Value, RddEntity> {
 
     String save(JavaRDD<RddEntity> rdd);
 
-    default String path(SparkConf sparkConf){
-
-        return HadoopPathBuilder.rootPath(sparkConf.get("workflow.root.path"))
-                .zone(Zone.RAW)
-                .messageType(MessageType.TRANSACTIONS)
-                .messageSource(MessageSource.KAFKA_AVRO)
-                .messageFormat(MessageFormat.AVRO)
-                .instance(sparkConf.get("spark.confluent.kafka.group"))
-                .build();
-
-    }
 }

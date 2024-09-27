@@ -17,12 +17,10 @@ import org.examples.processor.StreamJobProcessor;
 
 import java.util.Map;
 
-public abstract class AbstractStreamWorkflow<Key, Value, RddEntity> {
-
-    protected WorkflowConfig workflowConfig;
+public abstract class AbstractStreamWorkflow<Key, Value, RddEntity> extends Workflow {
 
     public AbstractStreamWorkflow(WorkflowConfig workflowConfig){
-        this.workflowConfig = workflowConfig;
+        super(workflowConfig);
     }
 
     public abstract void startWorkflow() throws Exception;

@@ -14,7 +14,7 @@ import org.examples.service.ServiceProvider;
 import org.examples.service.TopicService;
 import org.examples.utils.ListUtil;
 import org.examples.writers.DataWriter;
-import org.examples.writers.ParquetWriter;
+import org.examples.writers.FileSystemWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,73 +27,26 @@ public abstract class KafkaJobProcessor<Key, Value> implements StreamJobProcesso
 
     private static final Logger logger = LoggerFactory.getLogger(KafkaJobProcessor.class);
 
-    protected SparkConf sparkConf;
+    protected SparkSession spark;
     protected StructType schema;
 
-    private DataWriter dataWriter;
+    protected DataWriter dataWriter;
     protected TopicService topicService;
 
-    public KafkaJobProcessor(SparkConf sparkConf, StructType schema){
+    public KafkaJobProcessor(SparkSession spark, DataWriter dataWriter){
 
-        this.sparkConf = sparkConf;
-        this.schema = schema;
+        this.spark = spark;
+        SparkConf sparkConf = spark.sparkContext().conf();
         //
-        List<String> topics = ListUtil.listFromStrings(sparkConf.get("spark.confluent.kafka.topics"));
         ServiceProvider serviceProvider = ServiceProvider.getInstance(sparkConf);
+        List<String> topics = ListUtil.listFromStrings(sparkConf.get("spark.confluent.kafka.topics"));
         topicService = serviceProvider.topicService(topics);
 
         //
-        this.dataWriter = new ParquetWriter();
+        this.dataWriter = dataWriter;
 
         //
     }
-
-
-    @Override
-    public String save(JavaRDD<Row> rdd) {
-
-        SparkSession spark = SparkSession
-                .builder()
-                .config(this.sparkConf)
-                .getOrCreate();
-
-        String path = path(this.sparkConf);
-        rdd.foreach(row -> {
-            String key   = (String)row.get(0);
-            byte[] value = (byte[])row.get(1);
-            System.out.println("Key : " + key + " *******  Value : []" + value.length);
-        });
-        rdd.flatMap(row -> {
-
-            return null;
-        });
-        //this.dataWriter.write(spark.createDataFrame(rdd, schema),path);
-        return path;
-
-    }
-
-    @Override
-    public JavaRDD<Row> process(JavaRDD<ConsumerRecord<Key, Value>> rdd, long jobId, long jobStepID) {
-        try {
-
-            RawContext rawContext = RawContext.as()
-                    .jobId(jobId)
-                    .jobStepId(jobStepID)
-                    .transactionTime(LocalDateTime.now())
-                    .messageSource(MessageSource.KAFKA_AVRO)
-                    .messageType(MessageType.TRANSACTIONS)
-                    .schema(schema);
-
-            return rdd.mapPartitions(partitionProcessor(rawContext));
-
-        } catch (Exception e) {
-            logger.error("Unable to map partition");
-            throw new RuntimeException("Unable to map partitions", e);
-
-        }
-
-    }
-
 
     protected abstract FlatMapFunction<Iterator<ConsumerRecord<Key,Value>>, Row> partitionProcessor(RawContext rawContext);
 }

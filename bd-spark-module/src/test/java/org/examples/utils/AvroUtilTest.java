@@ -34,7 +34,7 @@ public class AvroUtilTest {
 
     @Test
     public void schemaFromFile() {
-        File avrofile = new File("/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-pyspark-module/src/main/py/resources/avro/transaction-record.avsc");
+        File avrofile = new File("/apps/sandbox/schema-registry/avro/transaction-record.avsc");
         Schema schema = AvroUtil.schemaFromFile(avrofile);
         assertNotNull(schema);
     }

@@ -5,10 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-26 Update Project Configuration.">
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/config/AvroDeserializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/models/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/JsonJobProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/KafkaWriter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/setup/kafka-topic.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/setup/kafka-topic.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/config/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/config/KafkaConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/AvroJobProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/AvroJobProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/AvroPartitionProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/AvroPartitionProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/KafkaJobProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/KafkaJobProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/service/OffsetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/service/OffsetService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/service/TopicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/service/TopicService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/StreamJobProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/processor/StreamJobProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/AvroUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/utils/AvroUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/AbstractStreamWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/AbstractStreamWorkflow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/BatchWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/BatchWorkflow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/DiscretizedStreamWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/DiscretizedStreamWorkflow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/Workflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/Workflow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/ConsoleWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/ConsoleWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/DataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/DataWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/HiveWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/HiveWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/ParquetWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/FileSystemWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/test/java/org/examples/utils/AvroUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/test/java/org/examples/utils/AvroUtilTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +39,8 @@
         <option value="JUnit5 Test Class" />
         <option value="JUnit3 Test Class" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="JUnit4 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -86,7 +103,7 @@
   &quot;keyToString&quot;: {
     &quot;Application.AppLauncher.executor&quot;: &quot;Run&quot;,
     &quot;Application.AppLauncher::BatchWorkflow.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AppLauncher::DiscretizedStreamWorkflow.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.AppLauncher::DiscretizedStreamWorkflow.executor&quot;: &quot;Run&quot;,
     &quot;Application.AppStreamWorkflow.executor&quot;: &quot;Run&quot;,
     &quot;Application.SparkPi.executor&quot;: &quot;Run&quot;,
     &quot;Application.TransactionAvroStream.executor&quot;: &quot;Run&quot;,
@@ -255,7 +272,7 @@
       <recent name="org.examples.spark" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AppLauncher::DiscretizedStreamWorkflow">
+  <component name="RunManager" selected="Python.confluent_kafka_AvroProducer">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -269,7 +286,7 @@
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
       <option name="PROGRAM_PARAMETERS" value="--embedded --verbose --workflow-type dstream --storage local --property-file bd-spark-module/src/main/resources/app_dstream_workflow.properties" />
-      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED" />
+      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -516,10 +533,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.confluent_kafka_AvroProducer" />
         <item itemvalue="JUnit.AvroUtilTest" />
         <item itemvalue="JUnit.AvroUtilTest.schemaFromFile" />
         <item itemvalue="JUnit.AvroUtilTest.jsonToAvro" />
-        <item itemvalue="Python.confluent_kafka_AvroProducer" />
         <item itemvalue="JUnit.SchemaProviderTest.structTypeFromAvro" />
       </list>
     </recent_temporary>
@@ -532,14 +549,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00022" summary="2024-02-25 Change Project Packaging.">
-      <option name="closed" value="true" />
-      <created>1708844951370</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1708844951370</updated>
     </task>
     <task id="LOCAL-00023" summary="2024-02-25 Change Project Packaging.">
       <option name="closed" value="true" />
@@ -925,7 +934,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727316878041</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="2024-09-26 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1727318716425</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1727318716426</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -978,11 +995,6 @@
           <url>file://$PROJECT_DIR$/bd-java-module/src/main/java/org/examples/hadoop/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/DiscretizedStreamWorkflow.java</url>
-          <line>99</line>
-          <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_simple_consumer.py</url>

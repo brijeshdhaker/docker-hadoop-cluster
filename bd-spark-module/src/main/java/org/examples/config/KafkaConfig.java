@@ -20,7 +20,12 @@ public class KafkaConfig {
     }
 
     public static Map<String, Object>  dstreamConfig(SparkConf sparkConf, Class keyDeserialzer, Class valueDeserialzer) {
+        /**
 
+         import org.apache.kafka.common.serialization.ByteArrayDeserializer;
+         import org.apache.kafka.common.serialization.StringDeserializer;
+
+         **/
         Map<String, Object> kafkaConfig = config(sparkConf);
         kafkaConfig.put(ConsumerConfig.CLIENT_ID_CONFIG,sparkConf.get("spark.confluent.kafka.client"));
         kafkaConfig.put(ConsumerConfig.GROUP_ID_CONFIG, sparkConf.get("spark.confluent.kafka.group"));

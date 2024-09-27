@@ -4,6 +4,7 @@ import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericDatumReader;
 import org.apache.avro.generic.GenericDatumWriter;
 import org.apache.avro.io.*;
+import org.apache.avro.specific.SpecificDatumReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,7 +61,7 @@ public class AvroUtil {
         GenericDatumReader<Object> reader = new GenericDatumReader<>(schema);
         DatumWriter<Object> writer = new GenericDatumWriter<>(schema);
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        JsonEncoder encoder = EncoderFactory.get().jsonEncoder(schema, output, pretty);
+        JsonEncoder encoder = EncoderFactory.get().jsonEncoder(schema, output, true);
         Decoder decoder = DecoderFactory.get().binaryDecoder(avro, null);
         Object datum = reader.read(null, decoder);
         writer.write(datum, encoder);
@@ -68,5 +69,15 @@ public class AvroUtil {
         output.flush();
         return new String(output.toByteArray(), "UTF-8");
     }
+
+
+    public static <T> T fromBytes(byte[] avro, Class<T> targetType) throws IOException {
+        DatumReader<T> reader = new SpecificDatumReader<>(targetType);
+        Decoder decoder = DecoderFactory.get().binaryDecoder(avro, null);
+        T returnObject = (T)reader.read(null, decoder);
+        return returnObject;
+    }
+
+
 
 }
