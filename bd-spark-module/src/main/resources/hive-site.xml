@@ -53,11 +53,6 @@
     </property>
 
     <property>
-        <name>javax.jdo.option.ConnectionUserName</name>
-        <value>hiveadmin</value>
-    </property>
-
-    <property>
         <name>hive.execution.engine</name>
         <value>tez</value>
     </property>
@@ -104,12 +99,17 @@
 
     <property>
         <name>javax.jdo.option.ConnectionURL</name>
-        <value>jdbc:mysql://mysqlserver.sandbox.net/HMS334?createDatabaseIfNotExist=true</value>
+        <value>jdbc:mysql://mysqlserver.sandbox.net:3306/HMS_SPARK?createDatabaseIfNotExist=true</value>
     </property>
 
     <property>
         <name>hive.metastore.warehouse.dir</name>
         <value>/warehouse/tablespace/managed/hive</value>
+    </property>
+
+    <property>
+        <name>javax.jdo.option.ConnectionUserName</name>
+        <value>hiveadmin</value>
     </property>
 
     <property>

@@ -7,6 +7,31 @@ GRANT ALL PRIVILEGES ON *.* TO 'brijeshdhaker'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 
 SHOW GRANTS FOR 'brijeshdhaker'@'%';
+---
+---
+---
+create database HMS_SPARK;
+
+SHOW HMS_SPARK;
+
+USE HMS_SPARK;
+
+CREATE EXTERNAL TABLE IF NOT EXISTS transaction_details (
+    `id` int,
+    `uuid` string,
+    `cardtype` string,
+    `website` string,
+    `product` string,
+    `amount` double,
+    `city` string,
+    `country` string,
+    `addts` bigint
+)
+COMMENT 'Transaction Details External Table'
+PARTITIONED BY(`txn_receive_date` string)
+STORED AS Parquet
+LOCATION  'hdfs://namenode:9000/warehouse/tablespace/external/hive/transaction_details/'
+TBLPROPERTIES("creator"="Brijesh K Dhaker");
 
 ---
 ---

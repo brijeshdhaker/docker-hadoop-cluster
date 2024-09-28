@@ -11,6 +11,7 @@ import org.apache.spark.streaming.api.java.JavaStreamingContext;
 import org.apache.spark.streaming.kafka010.ConsumerStrategies;
 import org.apache.spark.streaming.kafka010.KafkaUtils;
 import org.apache.spark.streaming.kafka010.LocationStrategies;
+import org.examples.config.KafkaConfig;
 import org.examples.config.WorkflowConfig;
 import org.examples.processor.StreamJobProcessor;
 
@@ -36,12 +37,8 @@ public class StructuredStreamWorkflow extends AbstractStreamWorkflow<String, byt
 
                 SparkConf sparkConf = workflowConfig.sparkConf();
 
-                SparkSession spark = SparkSession
-                        .builder()
-                        .master("local[*]")  // // spark://spark-iceberg.sandbox.net:7077")
-                        .appName("Java Spark SQL basic example")
-                        .config(sparkConf)
-                        .getOrCreate();
+                //
+                SparkSession spark = sparkSession();
 
                 //spark.sparkContext().setLogLevel("ERROR");
 
@@ -49,8 +46,8 @@ public class StructuredStreamWorkflow extends AbstractStreamWorkflow<String, byt
                 Dataset<Row> df = spark
                         .readStream()
                         .format("kafka")
-                        .option("kafka.bootstrap.servers", "host1:port1,host2:port2")
-                        .option("subscribe", "topic1")
+                        .option("kafka.bootstrap.servers", "kafkabroker.sandbox.net:19092")
+                        .option("subscribe", "transaction-avro-topic")
                         .option("includeHeaders", "true")
                         .load();
 
@@ -73,6 +70,9 @@ public class StructuredStreamWorkflow extends AbstractStreamWorkflow<String, byt
 
     @Override
     protected Map<String, Object> kafkaConfig() {
-        return Map.of();
+        Map<String, Object> kafkaConfig = KafkaConfig.sstreamConfig(
+                workflowConfig.sparkConf()
+        );
+        return kafkaConfig;
     }
 }

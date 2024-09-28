@@ -29,6 +29,7 @@ public class Workflow {
                     .master("local[*]")  // // spark://spark-master.sandbox.net:7077")
                     .appName(currentJobName)
                     .config(sparkConf)
+                    //.enableHiveSupport()
                     .getOrCreate();
 
         }

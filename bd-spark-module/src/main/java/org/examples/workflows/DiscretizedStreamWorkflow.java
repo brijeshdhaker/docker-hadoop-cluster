@@ -30,6 +30,7 @@ import org.examples.utils.ListUtil;
 import org.examples.utils.TimeUtil;
 import org.examples.writers.ConsoleWriter;
 import org.examples.writers.DataWriter;
+import org.examples.writers.HiveWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,7 +52,7 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, Ge
 
     @Override
     protected StreamJobProcessor<String, GenericRecord, Row> streamProcessor() {
-        DataWriter writer = new ConsoleWriter();
+        DataWriter writer = new HiveWriter();
         return new AvroJobProcessor(sparkSession(), writer);
     }
 
