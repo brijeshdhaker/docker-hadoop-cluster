@@ -80,14 +80,6 @@ public class DiscretizedStreamWorkflow extends AbstractStreamWorkflow<String, Ge
                 //
                 SparkSession spark = sparkSession();
 
-                /*
-                SparkSession
-                        .builder()
-                        .appName("AppLauncher::DiscretizedStreamWorkflow")
-                        .config(sparkConf)
-                        .getOrCreate();
-                */
-
                 //spark.sparkContext().setLogLevel("ERROR");
                 JavaSparkContext jsc = JavaSparkContext.fromSparkContext(spark.sparkContext());
                 JavaStreamingContext streamingContext = new JavaStreamingContext(jsc, Durations.seconds(30));

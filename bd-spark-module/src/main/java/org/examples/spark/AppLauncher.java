@@ -148,7 +148,7 @@ public class AppLauncher {
                     dstream.startWorkflow();
                 }
 
-                if (cli.hasOption("workflow-type") && cli.getOptionValue("workflow-type").equalsIgnoreCase("stream")) {
+                if (cli.hasOption("workflow-type") && cli.getOptionValue("workflow-type").equalsIgnoreCase("sstream")) {
                     
                     System.out.println("Spark Workflow Type :: Structured Stream ");
                     StructuredStreamWorkflow streamWorkflow = new StructuredStreamWorkflow(workflowConfig);

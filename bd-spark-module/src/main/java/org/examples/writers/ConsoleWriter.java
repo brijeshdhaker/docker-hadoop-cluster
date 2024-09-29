@@ -3,6 +3,7 @@ package org.examples.writers;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.streaming.OutputMode;
+import org.apache.spark.sql.streaming.StreamingQuery;
 import org.apache.spark.sql.streaming.StreamingQueryException;
 import org.apache.spark.sql.streaming.Trigger;
 import org.slf4j.Logger;
@@ -17,32 +18,36 @@ public class ConsoleWriter extends DataWriter {
     @Override
     public void write(Dataset<Row> records, String storeDir) {
         logger.info("Showing records on console target for {} dir", storeDir);
-        if(records!= null && !records.isEmpty()){
-            if(!records.isStreaming()) {
 
-                records.show();
+        if(!records.isStreaming()) {
 
-            }else {
+            records.show();
 
-                // Writing to console sink (for debugging)
-                try {
+        }else {
 
-                    records.writeStream()
-                            .format("console")
-                            .outputMode(OutputMode.Append())
-                            .option("truncate", false)
-                            .trigger(Trigger.ProcessingTime("10 seconds"))
-                            .start()
-                            .awaitTermination();
+            // Writing to console sink (for debugging)
+            try {
 
-                } catch (StreamingQueryException e) {
-                    throw new RuntimeException(e);
-                } catch (TimeoutException e) {
-                    throw new RuntimeException(e);
-                }
+                StreamingQuery query = records.writeStream()
+                        .format("console")
+                        .outputMode(OutputMode.Append())
+                        .option("truncate", false)
+                        .trigger(Trigger.ProcessingTime("15 seconds"))
+                        .start();
 
+                query.awaitTermination();
+
+            }  catch (TimeoutException e) {
+
+                throw new RuntimeException(e);
+
+            } catch (StreamingQueryException e) {
+
+                throw new RuntimeException(e);
             }
+
         }
+
     }
 
     @Override
