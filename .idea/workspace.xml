@@ -6,18 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-30 Update Project Configuration.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/struct-types.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/struct-types.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/BatchWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/BatchWorkflow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/StructuredStreamWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/StructuredStreamWorkflow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/ConsoleWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/ConsoleWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/DataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/DataWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/FileSystemWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/FileSystemWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/HiveWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/HiveWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/KafkaWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/KafkaWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_batch_workflow.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_batch_workflow.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_dstream_workflow.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_dstream_workflow.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_sstream_workflow.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_sstream_workflow.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/test/java/org/examples/utils/AvroUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/test/java/org/examples/utils/AvroUtilTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +27,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Brijesh K. Dhaker &lt;brijeshdhaker@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="main" />
@@ -543,14 +538,6 @@
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
     </task>
-    <task id="LOCAL-00029" summary="2024-02-28 Update Confluent Kafka Consumers.">
-      <option name="closed" value="true" />
-      <created>1709140376589</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1709140376589</updated>
-    </task>
     <task id="LOCAL-00030" summary="2024-02-28 Update Confluent Kafka Consumers.">
       <option name="closed" value="true" />
       <created>1709140414437</created>
@@ -935,7 +922,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727660584623</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="2024-09-30 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1727670168687</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1727670168689</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -956,6 +951,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>

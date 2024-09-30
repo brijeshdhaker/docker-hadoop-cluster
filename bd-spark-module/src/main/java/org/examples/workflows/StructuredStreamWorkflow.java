@@ -74,7 +74,7 @@ public class StructuredStreamWorkflow extends AbstractStreamWorkflow<String, byt
                 //
                 SparkSession spark = sparkSession();
 
-                //spark.sparkContext().setLogLevel("ERROR");
+                //spark.sparkContext().setLogLevel("ERROR"); checkpoints
 
                 // Subscribe to 1 topic
                 Dataset<Row> streamDF = spark
