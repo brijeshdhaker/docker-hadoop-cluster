@@ -91,7 +91,7 @@ public class StructuredStreamWorkflow extends AbstractStreamWorkflow<String, byt
                         .withColumn("valueSchemaId", expr("substring(value, 2, 4)")) //.withColumn("value", from_json(col("value").cast(StringType), schema))
                         .withColumn("txn_receive_date", date_format(functions.current_date(), "yyyy-MM-dd"));
 
-
+                //streamDF.as()
                 Dataset<Row> transactionDF = streamDF.withColumn("transaction", from_avro(col("fixedValue"), avro_schema))
                         .select("transaction.*",  "valueSchemaId", "txn_receive_date", "timestamp");
 
@@ -103,7 +103,7 @@ public class StructuredStreamWorkflow extends AbstractStreamWorkflow<String, byt
                 transactionDF.printSchema();
 
                 DataWriter writer = new ConsoleWriter();
-                writer.write(transactionDF, "");
+                StreamingQuery query = writer.write(transactionDF);
 
 
             } catch (Exception e) {

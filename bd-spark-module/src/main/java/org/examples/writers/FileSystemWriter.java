@@ -2,6 +2,7 @@ package org.examples.writers;
 
 import org.apache.spark.sql.*;
 import org.apache.spark.sql.streaming.OutputMode;
+import org.apache.spark.sql.streaming.StreamingQuery;
 import org.apache.spark.sql.streaming.StreamingQueryException;
 import org.apache.spark.sql.streaming.Trigger;
 import org.slf4j.Logger;
@@ -76,5 +77,10 @@ public class FileSystemWriter extends DataWriter {
             }
 
         }
+    }
+
+    @Override
+    public StreamingQuery write(Dataset<Row> records) {
+        return null;
     }
 }

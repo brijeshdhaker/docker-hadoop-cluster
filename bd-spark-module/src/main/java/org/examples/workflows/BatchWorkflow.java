@@ -16,6 +16,8 @@ public class BatchWorkflow extends Workflow {
 
         SparkConf sparkConf = workflowConfig.sparkConf();
 
+        String workflowAppId = sparkConf.get("workflow.app.id");
+
         SparkSession spark = sparkSession();
         spark.sparkContext().setLogLevel("ERROR");
 
