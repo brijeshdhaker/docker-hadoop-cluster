@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-27 Update Project Configuration.">
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-29 Update Project Configuration.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/setup/kafka-topic.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/setup/kafka-topic.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/DiscretizedStreamWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/DiscretizedStreamWorkflow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/StructuredStreamWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/StructuredStreamWorkflow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/Workflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/Workflow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/ConsoleWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/ConsoleWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/FileSystemWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/FileSystemWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/HiveWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/HiveWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/KafkaWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/KafkaWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/resources/hive-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/hive-site.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/SPARK Certification Guide/Chap 07 - Aggregations_2HFNBRUEQ.zpln" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/SPARK Certification Guide/Chap 07 - Aggregations_2HFNBRUEQ.zpln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +85,7 @@
     &quot;Application.AppLauncher.executor&quot;: &quot;Run&quot;,
     &quot;Application.AppLauncher::BatchWorkflow.executor&quot;: &quot;Run&quot;,
     &quot;Application.AppLauncher::DiscretizedStreamWorkflow.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AppLauncher::StructuredStreamWorkflow.executor&quot;: &quot;Run&quot;,
     &quot;Application.AppStreamWorkflow.executor&quot;: &quot;Run&quot;,
     &quot;Application.SparkPi.executor&quot;: &quot;Run&quot;,
     &quot;Application.TransactionAvroStream.executor&quot;: &quot;Run&quot;,
@@ -539,38 +532,6 @@
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
     </task>
-    <task id="LOCAL-00024" summary="2024-02-26 Update Confluent Kafka Consumers.">
-      <option name="closed" value="true" />
-      <created>1708923231301</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1708923231301</updated>
-    </task>
-    <task id="LOCAL-00025" summary="2024-02-27 Update Confluent Kafka Consumers.">
-      <option name="closed" value="true" />
-      <created>1709012432253</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1709012432253</updated>
-    </task>
-    <task id="LOCAL-00026" summary="2024-02-27 Update Confluent Kafka Consumers.">
-      <option name="closed" value="true" />
-      <created>1709051415128</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1709051415128</updated>
-    </task>
-    <task id="LOCAL-00027" summary="2024-02-28 Update Confluent Kafka Consumers.">
-      <option name="closed" value="true" />
-      <created>1709089956280</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1709089956280</updated>
-    </task>
     <task id="LOCAL-00028" summary="2024-02-28 Update Confluent Kafka Consumers.">
       <option name="closed" value="true" />
       <created>1709090852195</created>
@@ -931,7 +892,39 @@
       <option name="project" value="LOCAL" />
       <updated>1727419816058</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="2024-09-28 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1727498175790</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1727498175791</updated>
+    </task>
+    <task id="LOCAL-00074" summary="2024-09-28 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1727498310770</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1727498310770</updated>
+    </task>
+    <task id="LOCAL-00075" summary="2024-09-29 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1727626671061</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1727626671062</updated>
+    </task>
+    <task id="LOCAL-00076" summary="2024-09-29 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1727626680461</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1727626680461</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -976,7 +969,9 @@
     <MESSAGE value="2024-09-25 Update Project Configuration." />
     <MESSAGE value="2024-09-26 Update Project Configuration." />
     <MESSAGE value="2024-09-27 Update Project Configuration." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-09-27 Update Project Configuration." />
+    <MESSAGE value="2024-09-28 Update Project Configuration." />
+    <MESSAGE value="2024-09-29 Update Project Configuration." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-09-29 Update Project Configuration." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
