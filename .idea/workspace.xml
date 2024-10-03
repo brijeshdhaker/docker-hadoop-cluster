@@ -5,9 +5,194 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-30 Update Project Configuration.">
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/SandboxSbApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaConsumerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaCustomProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaProducerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/kafka/KafkaConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/kafka/KafkaProducer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application-docker.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/avro/transaction.avsc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/test/java/org/examples/sb/SandboxSbApplicationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/StructuredStreamWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/StructuredStreamWorkflow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_sstream_workflow.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_sstream_workflow.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/airflow/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/airflow/dags/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/airflow/dags/airflow_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/airflow/dags/bash_ssh.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/airflow/dags/delta_lag_dag.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/airflow/dags/flight_search_dag.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/airflow/dags/spark_yarn_test_dag.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/cloud/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/cloud/aws/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/cloud/aws/sql-s3a-read.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/cloud/azure/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/cloud/azure/spark-azure-storage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/accumulator/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/accumulator/accumulator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/broadcast/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/broadcast/broadcast.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/pairrdd/CardTransactionAnalysis.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/pairrdd/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/pairrdd/aggregate-by-key.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/pairrdd/group-by-key.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/pairrdd/reduce-by-key.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/pairrdd/sort-by-key.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/coalesce.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/distinct.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/file-rdd.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/filter.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/flat-map-partitions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/flat-map.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/map-partitions-with-index.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/map-partitions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/map.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/pyspark-test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/re-partition.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/repartition-sort-within-partitions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/sample.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/union.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/ss/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/ss/in-reducer-secondary-sort-compute.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/ss/in-reducer-secondary-sort-print.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/ss/in-shuffle-secondary-sort-compute.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/ss/in-shuffle-secondary-sort-print.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/data/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/data/sampledata.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_create.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_delete.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_merge.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_overwrite.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_timetravel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_update.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/elasticsearch/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/elasticsearch/esreadwrite.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/hbase/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/hbase/pyspark-hive-hbase.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/hbase/pyspark-shc-hbase.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/hbase/pyspark-spark-hbase.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/hello-spark.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/hive/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/hive/pyspark-hive-context.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/hive/pyspark-hive-session.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/hive/pyspark-window-functions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/avro-test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_AvroConsumer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_AvroProducer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_ConfigFactory.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_ConsumerFactory.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_DeserializingConsumer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_ProducerFactory.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_SerializingProducer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_exactly_once_consumer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_sasl_ssl_consumer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_sasl_ssl_producer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_simple_consumer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_simple_producer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_usecase.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_transaction_producer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/custom_avro_consumer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/kafka_utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/user.avsc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/fastavro-test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/partitioners.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka-topic.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_avro_consumer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_avro_producer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_batch_consumer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_confluent_avro_consumer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_exactly_once_consumer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_json_consumer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_json_producer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_least_once_consumer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_most_once_consumer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_partitioned_consumer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_partitioned_producer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_simple_consumer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_simple_producer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/murmurv3.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/matplot/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/matplot/pie.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/models/Order.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/models/Transaction.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/models/User.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/models/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/models/fack-data.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/mysql/DB.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/mysql/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/parquet/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/parquet/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/parquet/schema-merge.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/pipelines/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/pipelines/fake_tweet_stream.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/pipelines/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/pipelines/stream-cassandra-transformer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/pipelines/stream-hbase-transformer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/pipelines/stream-hive-transformer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/postgres/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/postgres/postgres-quries.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/postgres/postgres-test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/pyspark-pandas.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/sql-bucketing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/sql-column.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/sql-dataframe.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/sql-row.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/sql-udf.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/struct-types.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/window-functions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/window_analytic_functions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/discretized/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/discretized/fake_tweet_stream.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/discretized/stream-cassandra-transformer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/discretized/stream-hbase-transformer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/discretized/stream-hive-transformer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/joins/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/joins/stream-stream-join.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/kafka-stream.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/pipeline/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/pipeline/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/pipeline/sstreaming-spark-final.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/KafkaStreamDemo.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/lib/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/lib/logger.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/log4j.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured-avro-stream.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured-delimiter-txn-stream.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured-json-txn-stream.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured-kafka-txn-stream.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured_kafka_wordcount.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/AvroUtils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/Commons.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/DateUtils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/FileUtils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/SparkUtils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/TimeUtils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_Commons.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_Commons.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_User.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_User.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_partitioner.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_partitioner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/unix-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/unix-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +206,8 @@
         <option value="JUnit5 Test Class" />
         <option value="JUnit3 Test Class" />
         <option value="Enum" />
-        <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -69,6 +254,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -86,159 +274,166 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.AppLauncher.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AppLauncher::BatchWorkflow.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AppLauncher::DiscretizedStreamWorkflow.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AppLauncher::StructuredStreamWorkflow.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AppStreamWorkflow.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SparkPi.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TransactionAvroStream.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.Docker Image.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.metastore: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.mysqlserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox.gateway: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-hive-cluster.yml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-rest: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.mc: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka-cluster-7.5.2.yml.control-center: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml.kafkabroker: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml.zookeeper: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kdcserver.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-minio.yml.mc: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-iceburg.yml.mc: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-iceburg.yml.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-iceburg.yml.rest: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-iceburg.yml.spark-iceberg: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml.kafkabroker: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml.kafkaclient: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml.zookeeper: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.datanode: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.gateway: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.historyserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.hivetezui: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.hmaster: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.hregion: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.metastore: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.mysqlserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.namenode: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.nodemanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.resourcemanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.sparkhistory: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.timelineserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.kafka-cluster.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.minio.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.mysqlserver.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.spark-cluster.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.ubuntu.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.zeppelin.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AvroUtilTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AvroUtilTest.jsonToAvro.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AvroUtilTest.schemaFromFile.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DatasourceBuilderTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SchemaProviderTest.structTypeFromAvro.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [verify].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-spark-module [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-spark-module [package].executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_Commons.test_print_separator.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_Commons.test_split_csv.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_Commons.test_split_csv_line.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_User.test_random.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_User.test_to_dict.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_User.test_to_obj.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_static.test_flake8.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests in test_Commons.py.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests in test_User.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python.FileUtils.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Order.executor&quot;: &quot;Run&quot;,
-    &quot;Python.TimeUtils.executor&quot;: &quot;Run&quot;,
-    &quot;Python.User.executor&quot;: &quot;Run&quot;,
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.avro-test.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.confluent_kafka_AvroConsumer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_AvroProducer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_ConsumerFactory.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_DeserializingConsumer.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.confluent_kafka_ProducerFactory.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_SerializingProducer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_simple_consumer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_transaction_producer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.hello-spark.executor&quot;: &quot;Run&quot;,
-    &quot;Python.kafka_python_partitioned_consumer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.kafka_python_partitioned_producer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.kafka_python_simple_consumer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.kafka_python_simple_producer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pie.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pyspark-pandas.executor&quot;: &quot;Run&quot;,
-    &quot;Python.run_tests.executor&quot;: &quot;Run&quot;,
-    &quot;Python.sql-s3a-read.executor&quot;: &quot;Run&quot;,
-    &quot;Python.structured-avro-stream.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3&quot;: &quot;junit.framework.TestCase&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop/docker-hadoop334-cluster&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spark-module/src/test/java/org/examples&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spark-module/src/test/resources&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.31724137&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;jvm.logging&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AppLauncher.executor": "Run",
+    "Application.AppLauncher::BatchWorkflow.executor": "Run",
+    "Application.AppLauncher::DiscretizedStreamWorkflow.executor": "Run",
+    "Application.AppLauncher::StructuredStreamWorkflow.executor": "Run",
+    "Application.AppStreamWorkflow.executor": "Run",
+    "Application.DemoApplication.executor": "Debug",
+    "Application.Main.executor": "Run",
+    "Application.SparkPi.executor": "Run",
+    "Application.TransactionAvroStream.executor": "Run",
+    "Docker.Docker Image.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.metastore: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.mysqlserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox.gateway: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-hive-cluster.yml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-rest: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.mc: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka-cluster-7.5.2.yml.control-center: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka.yml.kafkabroker: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka.yml.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka.yml.zookeeper: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka.yml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kdcserver.yml.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-minio.yml.mc: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox: Compose Deployment.executor": "Run",
+    "Docker.dc-iceburg.yml.mc: Compose Deployment.executor": "Run",
+    "Docker.dc-iceburg.yml.minio: Compose Deployment.executor": "Run",
+    "Docker.dc-iceburg.yml.rest: Compose Deployment.executor": "Run",
+    "Docker.dc-iceburg.yml.spark-iceberg: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml.kafkabroker: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml.kafkaclient: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml.zookeeper: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.datanode: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.gateway: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.historyserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.hivetezui: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.hmaster: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.hregion: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.metastore: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.mysqlserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.namenode: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.nodemanager: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.resourcemanager: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.sparkhistory: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.timelineserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
+    "Docker.kafka-cluster.executor": "Run",
+    "Docker.minio.executor": "Run",
+    "Docker.mysqlserver.executor": "Run",
+    "Docker.spark-cluster.executor": "Run",
+    "Docker.ubuntu.executor": "Run",
+    "Docker.zeppelin.executor": "Run",
+    "JUnit.AvroUtilTest.executor": "Run",
+    "JUnit.AvroUtilTest.jsonToAvro.executor": "Run",
+    "JUnit.AvroUtilTest.schemaFromFile.executor": "Run",
+    "JUnit.DatasourceBuilderTest.executor": "Run",
+    "JUnit.SandboxSbApplicationTest.executor": "Run",
+    "JUnit.SandboxSbApplicationTests (1).executor": "Run",
+    "JUnit.SandboxSbApplicationTests.executor": "Run",
+    "JUnit.SchemaProviderTest.structTypeFromAvro.executor": "Run",
+    "Maven.bd-python-module [clean].executor": "Run",
+    "Maven.bd-python-module [install].executor": "Run",
+    "Maven.bd-python-module [org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy].executor": "Run",
+    "Maven.bd-python-module [package].executor": "Run",
+    "Maven.bd-python-module [verify].executor": "Run",
+    "Maven.bd-spark-module [clean].executor": "Run",
+    "Maven.bd-spark-module [package].executor": "Run",
+    "Maven.bd-spring-module [package].executor": "Run",
+    "Maven.bd-spring-module [test].executor": "Run",
+    "Python tests.Python tests for test_Commons.test_print_separator.executor": "Run",
+    "Python tests.Python tests for test_Commons.test_split_csv.executor": "Run",
+    "Python tests.Python tests for test_Commons.test_split_csv_line.executor": "Debug",
+    "Python tests.Python tests for test_User.test_random.executor": "Debug",
+    "Python tests.Python tests for test_User.test_to_dict.executor": "Debug",
+    "Python tests.Python tests for test_User.test_to_obj.executor": "Run",
+    "Python tests.Python tests for test_static.test_flake8.executor": "Debug",
+    "Python tests.Python tests in test_Commons.py.executor": "Debug",
+    "Python tests.Python tests in test_User.py.executor": "Run",
+    "Python.FileUtils.executor": "Run",
+    "Python.Order.executor": "Run",
+    "Python.TimeUtils.executor": "Run",
+    "Python.User.executor": "Run",
+    "Python.app.executor": "Run",
+    "Python.avro-test.executor": "Debug",
+    "Python.confluent_kafka_AvroConsumer.executor": "Run",
+    "Python.confluent_kafka_AvroProducer.executor": "Run",
+    "Python.confluent_kafka_ConsumerFactory.executor": "Run",
+    "Python.confluent_kafka_DeserializingConsumer.executor": "Debug",
+    "Python.confluent_kafka_ProducerFactory.executor": "Run",
+    "Python.confluent_kafka_SerializingProducer.executor": "Run",
+    "Python.confluent_kafka_simple_consumer.executor": "Run",
+    "Python.confluent_transaction_producer.executor": "Run",
+    "Python.hello-spark.executor": "Run",
+    "Python.kafka_python_partitioned_consumer.executor": "Run",
+    "Python.kafka_python_partitioned_producer.executor": "Run",
+    "Python.kafka_python_simple_consumer.executor": "Run",
+    "Python.kafka_python_simple_producer.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.pie.executor": "Run",
+    "Python.pyspark-pandas.executor": "Run",
+    "Python.run_tests.executor": "Run",
+    "Python.sql-s3a-read.executor": "Run",
+    "Python.structured-avro-stream.executor": "Debug",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "develop/docker-hadoop334-cluster",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/resources/avro",
+    "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.31724137",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "jvm.logging"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-spring-module/src/main/resources/avro" />
+      <recent name="$PROJECT_DIR$/bd-spring-module/src/main/resources" />
       <recent name="$PROJECT_DIR$/bd-spark-module/src/test/resources" />
       <recent name="$PROJECT_DIR$/bd-spark-module/src/main/resources" />
       <recent name="$PROJECT_DIR$/bd-spark-module" />
-      <recent name="$PROJECT_DIR$/bd-spark-module/setup" />
-      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bd-spark-module/src/main/resources" />
@@ -252,6 +447,7 @@
       <recent name="junit.framework.TestCase" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.examples.sb" />
       <recent name="org.examples.utils" />
       <recent name="org.examples.schema" />
       <recent name="org.examples.datasource" />
@@ -260,7 +456,7 @@
       <recent name="org.examples.spark" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.minio">
+  <component name="RunManager" selected="Python.confluent_kafka_AvroProducer">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -288,65 +484,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AvroUtilTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bd-spark-module" />
+    <configuration name="SandboxSbApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.examples.sb.SandboxSbApplication" />
+      <module name="bd-spring-module" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.examples.utils.*" />
+          <option name="PATTERN" value="com.examples.sb.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.examples.utils" />
-      <option name="MAIN_CLASS_NAME" value="org.examples.utils.AvroUtilTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SandboxSbApplicationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bd-spring-module" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.examples.sb.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.examples.sb" />
+      <option name="MAIN_CLASS_NAME" value="org.examples.sb.SandboxSbApplicationTest" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AvroUtilTest.jsonToAvro" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bd-spark-module" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.examples.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.examples.utils" />
-      <option name="MAIN_CLASS_NAME" value="org.examples.utils.AvroUtilTest" />
-      <option name="METHOD_NAME" value="jsonToAvro" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AvroUtilTest.schemaFromFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bd-spark-module" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.examples.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.examples.utils" />
-      <option name="MAIN_CLASS_NAME" value="org.examples.utils.AvroUtilTest" />
-      <option name="METHOD_NAME" value="schemaFromFile" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SchemaProviderTest.structTypeFromAvro" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bd-spark-module" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.examples.schema.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.examples.schema" />
-      <option name="MAIN_CLASS_NAME" value="org.examples.schema.SchemaProviderTest" />
-      <option name="METHOD_NAME" value="structTypeFromAvro" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -508,24 +670,20 @@
       <item itemvalue="Application.AppLauncher::BatchWorkflow" />
       <item itemvalue="Application.AppLauncher::StructuredStreamWorkflow" />
       <item itemvalue="Application.AppLauncher::DiscretizedStreamWorkflow" />
+      <item itemvalue="Application.SandboxSbApplication" />
       <item itemvalue="Docker.kafka-cluster" />
       <item itemvalue="Docker.mysqlserver" />
       <item itemvalue="Docker.spark-cluster" />
       <item itemvalue="Docker.zeppelin" />
       <item itemvalue="Docker.minio" />
-      <item itemvalue="JUnit.AvroUtilTest" />
-      <item itemvalue="JUnit.AvroUtilTest.jsonToAvro" />
-      <item itemvalue="JUnit.AvroUtilTest.schemaFromFile" />
-      <item itemvalue="JUnit.SchemaProviderTest.structTypeFromAvro" />
+      <item itemvalue="JUnit.SandboxSbApplicationTest" />
       <item itemvalue="Python.confluent_kafka_AvroProducer" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SandboxSbApplicationTest" />
         <item itemvalue="Python.confluent_kafka_AvroProducer" />
-        <item itemvalue="JUnit.AvroUtilTest" />
-        <item itemvalue="JUnit.AvroUtilTest.schemaFromFile" />
-        <item itemvalue="JUnit.AvroUtilTest.jsonToAvro" />
-        <item itemvalue="JUnit.SchemaProviderTest.structTypeFromAvro" />
+        <item itemvalue="Application.SandboxSbApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -537,14 +695,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00030" summary="2024-02-28 Update Confluent Kafka Consumers.">
-      <option name="closed" value="true" />
-      <created>1709140414437</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1709140414437</updated>
     </task>
     <task id="LOCAL-00031" summary="2024-02-29 Update Confluent Kafka Consumers.">
       <option name="closed" value="true" />
@@ -930,7 +1080,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727670168689</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="2024-09-30 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1727670744353</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1727670744353</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -1028,6 +1186,12 @@
           <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/avro-test.py</url>
           <line>23</line>
           <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaCustomProperties.java</url>
+          <line>10</line>
+          <properties field="transactionTopic" class="org.examples.sb.config.KafkaCustomProperties" />
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

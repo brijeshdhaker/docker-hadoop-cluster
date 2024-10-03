@@ -66,3 +66,13 @@ done
 ```
 
 update-alternatives --config java
+
+cat <<EOF > test.txt
+Hello
+EOF
+
+cat > test.txt <<EOF
+Hello
+EOF
+
+python -m http.server 8888
