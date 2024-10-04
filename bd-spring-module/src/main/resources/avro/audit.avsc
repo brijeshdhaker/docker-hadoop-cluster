@@ -4,7 +4,7 @@
       "name": "id",
       "type": [
         "null",
-        "int"
+        "long"
       ]
     },
     {
@@ -20,7 +20,7 @@
     },
     {
       "avro.java.string": "String",
-      "name": "cardtype",
+      "name": "userid",
       "type": {
         "avro.java.string": "String",
         "type": "string"
@@ -28,7 +28,7 @@
     },
     {
       "avro.java.string": "String",
-      "name": "website",
+      "name": "auditType",
       "type": {
         "avro.java.string": "String",
         "type": "string"
@@ -36,22 +36,7 @@
     },
     {
       "avro.java.string": "String",
-      "name": "product",
-      "type": {
-        "avro.java.string": "String",
-        "type": "string"
-      }
-    },
-    {
-      "name": "amount",
-      "type": [
-        "null",
-        "double"
-      ]
-    },
-    {
-      "avro.java.string": "String",
-      "name": "city",
+      "name": "logAction",
       "type": {
         "avro.java.string": "String",
         "type": "string"
@@ -59,7 +44,23 @@
     },
     {
       "avro.java.string": "String",
-      "name": "country",
+      "name": "logMessage",
+      "type": {
+        "avro.java.string": "String",
+        "type": "string"
+      }
+    },
+    {
+      "avro.java.string": "String",
+      "name": "refrenceId",
+      "type": {
+        "avro.java.string": "String",
+        "type": "string"
+      }
+    },
+    {
+      "avro.java.string": "String",
+      "name": "refrenceType",
       "type": {
         "avro.java.string": "String",
         "type": "string"
@@ -67,15 +68,16 @@
     },
     {
       "logicalType": "timestamp-millis",
-      "name": "addts",
-      "type": [
-        "null",
-        "long"
-      ]
+      "name": "addTs",
+      "type": "long"
+    },
+    {
+      "logicalType": "timestamp-millis",
+      "name": "updTs",
+      "type": "long"
     }
   ],
-  "name": "Transaction",
+  "name": "AuditlogDTO",
   "namespace": "org.examples.sb.models.avro",
-  "type": "record",
-  "version": "1"
+  "type": "record"
 }

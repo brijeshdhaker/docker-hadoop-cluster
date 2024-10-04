@@ -1,0 +1,231 @@
+## YAML Template.
+---
+databaseChangeLog:
+  - changeSet:  
+      id:  JIRA-0001-T-001  
+      author:  Brijesh D.
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_auditlog
+                  name: ID
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: AUDIT_TYPE
+                  type: VARCHAR(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ACTION
+                  type: VARCHAR(250)
+              - column:
+                  name: DESCRIPTION
+                  type: VARCHAR(512)
+              - column:
+                  name: REF_ID
+                  type: VARCHAR(100)
+              - column:
+                  name: REF_TYPE
+                  type: VARCHAR(100)    
+              - column:
+                  name: USERID
+                  type: VARCHAR(50)
+              - column:
+                  name: ADD_TS
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: UPD_TS
+                  type: TIMESTAMP    
+            tableName: AUDITLOG
+  - changeSet:
+      id:  JIRA-0001-T-001
+      author:  Brijesh D.
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: false
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_assets
+                  name: ASSETS_ID
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ASSETS_NAME
+                  type: VARCHAR(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: SERIAL_NO
+                  type: VARCHAR(250)
+              - column:
+                  name: STATUS
+                  type: VARCHAR(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: USERID
+                  type: BIGINT
+              - column:
+                  name: ADD_TS
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: UPD_TS
+                  type: TIMESTAMP
+            tableName: ASSETS
+  - changeSet:
+      id: JIRA-0001-T-001
+      author: Brijesh D.
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_users
+                  name: USERID
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: USERNAME
+                  type: VARCHAR(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: EMAIL
+                  type: VARCHAR(250)
+              - column:
+                  name: STATUS
+                  type: VARCHAR(50)
+              - column:
+                  name: ADD_TS
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: UPD_TS
+                  type: TIMESTAMP
+            tableName: USERS
+  - changeSet:
+      id: JIRA-0001-T-002
+      author: Brijesh D.
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_user_role
+                  name: ID
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: USER_ID
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ROLE_ID
+                  type: BIGINT
+              - column:
+                  name: ADD_TS
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: UPD_TS
+                  type: TIMESTAMP
+            tableName: USER_ROLES
+  - changeSet:
+      id:  JIRA-0001-T-001
+      author:  Brijesh D.
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_role
+                  name: ID
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: NAME
+                  type: VARCHAR(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: STATUS
+                  type: VARCHAR(20)
+              - column:
+                  name: ADD_TS
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: UPD_TS
+                  type: TIMESTAMP
+            tableName: ROLE
+  - changeSet:
+      id:  JIRA-0001-T-002
+      author:  Brijesh D.
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_account
+                  name: ID
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ACC_NUMBER
+                  type: VARCHAR(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ACC_TYPE
+                  type: VARCHAR(250)
+              - column:
+                  name: BALANCE
+                  type: DOUBLE
+              - column:
+                  name: DESCRIPTION
+                  type: VARCHAR(512)
+              - column:
+                  name: ADD_TS
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: UPD_TS
+                  type: TIMESTAMP
+            tableName: ACCOUNT
+  - changeSet:
+      id:  JIRA-0001-T-002  
+      author:  Brijesh D.
+      changes:
+        - sqlFile:
+            path: ../../objects/audit-type-tables.sql
+            relativeToChangelogFile: true        

@@ -4,195 +4,59 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-09-30 Update Project Configuration.">
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/SandboxSbApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaConsumerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaCustomProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaProducerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/kafka/KafkaConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/kafka/KafkaProducer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/Transaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application-docker.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/avro/transaction.avsc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/test/java/org/examples/sb/SandboxSbApplicationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-10-03 Update Project Configuration.">
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/converters/DateTimeUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/enums/AuditType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/enums/DBEnumeration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/enums/InventoryStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/enums/MessageType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/enums/PaymentStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/enums/RoleTypes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/enums/UserStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/exceptions/AppException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/exceptions/ExceptionType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/AppRestResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/MessageDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/avro/audit.avsc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/avro/order.avsc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/avro/user.avsc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/ehcache.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/base.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/proc-changelog.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/script-changelog.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/table-changelog.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0002/script-changelog.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0002/table-changelog.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/master.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/P_GET_USER_ASSETS.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/P_GET_USER_DETAILS.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/audit-type-tables.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/cart-items-table.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/cart-table.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/item-table.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/transaction-table.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/proc-master.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts-master.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/account-data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/assets-data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/audit-type-data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/auditlog-data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/role-data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/user-data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/user-role-data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/tables-master.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/airflow/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/airflow/dags/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/airflow/dags/airflow_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/airflow/dags/bash_ssh.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/airflow/dags/delta_lag_dag.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/airflow/dags/flight_search_dag.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/airflow/dags/spark_yarn_test_dag.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/app.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/cloud/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/cloud/aws/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/cloud/aws/sql-s3a-read.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/cloud/azure/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/cloud/azure/spark-azure-storage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/accumulator/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/accumulator/accumulator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/broadcast/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/broadcast/broadcast.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/pairrdd/CardTransactionAnalysis.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/pairrdd/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/pairrdd/aggregate-by-key.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/pairrdd/group-by-key.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/pairrdd/reduce-by-key.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/pairrdd/sort-by-key.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/coalesce.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/distinct.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/file-rdd.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/filter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/flat-map-partitions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/flat-map.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/map-partitions-with-index.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/map-partitions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/map.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/pyspark-test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/re-partition.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/repartition-sort-within-partitions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/sample.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/union.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/ss/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/ss/in-reducer-secondary-sort-compute.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/ss/in-reducer-secondary-sort-print.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/ss/in-shuffle-secondary-sort-compute.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/ss/in-shuffle-secondary-sort-print.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/data/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/data/sampledata.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_create.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_delete.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_merge.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_overwrite.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_timetravel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_update.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/elasticsearch/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/elasticsearch/esreadwrite.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/hbase/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/hbase/pyspark-hive-hbase.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/hbase/pyspark-shc-hbase.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/hbase/pyspark-spark-hbase.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/hello-spark.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/hive/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/hive/pyspark-hive-context.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/hive/pyspark-hive-session.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/hive/pyspark-window-functions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/avro-test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_AvroConsumer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_AvroProducer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_ConfigFactory.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_ConsumerFactory.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_DeserializingConsumer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_ProducerFactory.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_SerializingProducer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_exactly_once_consumer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_sasl_ssl_consumer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_sasl_ssl_producer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_simple_consumer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_simple_producer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_usecase.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_transaction_producer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/custom_avro_consumer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/kafka_utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/test" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/user.avsc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/fastavro-test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/partitioners.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka-topic.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_avro_consumer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_avro_producer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_batch_consumer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_confluent_avro_consumer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_exactly_once_consumer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_json_consumer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_json_producer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_least_once_consumer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_most_once_consumer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_partitioned_consumer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_partitioned_producer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_simple_consumer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_simple_producer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/murmurv3.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/matplot/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/matplot/pie.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/models/Order.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/models/Transaction.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/models/User.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/models/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/models/fack-data.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/mysql/DB.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/mysql/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/parquet/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/parquet/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/parquet/schema-merge.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/pipelines/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/pipelines/fake_tweet_stream.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/pipelines/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/pipelines/stream-cassandra-transformer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/pipelines/stream-hbase-transformer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/pipelines/stream-hive-transformer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/postgres/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/postgres/postgres-quries.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/postgres/postgres-test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/pyspark-pandas.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/sql-bucketing.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/sql-column.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/sql-dataframe.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/sql-row.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/sql-udf.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/struct-types.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/window-functions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/window_analytic_functions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/discretized/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/discretized/fake_tweet_stream.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/discretized/stream-cassandra-transformer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/discretized/stream-hbase-transformer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/discretized/stream-hive-transformer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/joins/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/joins/stream-stream-join.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/kafka-stream.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/pipeline/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/pipeline/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/pipeline/sstreaming-spark-final.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/KafkaStreamDemo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/lib/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/lib/logger.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/log4j.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured-avro-stream.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured-delimiter-txn-stream.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured-json-txn-stream.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured-kafka-txn-stream.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured_kafka_wordcount.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/AvroUtils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/Commons.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/DateUtils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/FileUtils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/SparkUtils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/TimeUtils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_Commons.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_Commons.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_User.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_User.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_partitioner.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_partitioner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/unix-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/unix-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/setup/kafka-topic.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/setup/kafka-topic.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/SandboxSbApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/SandboxSbApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaConsumerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaProducerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/kafka/KafkaConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/kafka/KafkaConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/kafka/KafkaProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/kafka/KafkaProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/avro/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/avro/transaction.avsc" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/avro/transaction.avsc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/kafka-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/kafka-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,8 +70,8 @@
         <option value="JUnit5 Test Class" />
         <option value="JUnit3 Test Class" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="JUnit4 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -283,6 +147,7 @@
     "Application.AppStreamWorkflow.executor": "Run",
     "Application.DemoApplication.executor": "Debug",
     "Application.Main.executor": "Run",
+    "Application.SandboxSbApplication.executor": "Run",
     "Application.SparkPi.executor": "Run",
     "Application.TransactionAvroStream.executor": "Run",
     "Docker.Docker Image.executor": "Run",
@@ -418,7 +283,7 @@
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/resources/avro",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/resources/liquibase/objects",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
@@ -429,18 +294,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/bd-spring-module/src/main/resources/avro" />
+      <recent name="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects" />
+      <recent name="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts" />
+      <recent name="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs" />
       <recent name="$PROJECT_DIR$/bd-spring-module/src/main/resources" />
-      <recent name="$PROJECT_DIR$/bd-spark-module/src/test/resources" />
-      <recent name="$PROJECT_DIR$/bd-spark-module/src/main/resources" />
-      <recent name="$PROJECT_DIR$/bd-spark-module" />
+      <recent name="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001" />
       <recent name="$PROJECT_DIR$/bd-spark-module/src/main/resources" />
       <recent name="$PROJECT_DIR$/bd-spark-module/setup" />
       <recent name="$PROJECT_DIR$/readme-resources/images" />
       <recent name="$PROJECT_DIR$/readme-resources" />
-      <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -456,7 +321,7 @@
       <recent name="org.examples.spark" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.confluent_kafka_AvroProducer">
+  <component name="RunManager" selected="Application.SandboxSbApplication">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -681,9 +546,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SandboxSbApplication" />
         <item itemvalue="JUnit.SandboxSbApplicationTest" />
         <item itemvalue="Python.confluent_kafka_AvroProducer" />
-        <item itemvalue="Application.SandboxSbApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -695,14 +560,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00031" summary="2024-02-29 Update Confluent Kafka Consumers.">
-      <option name="closed" value="true" />
-      <created>1709168318304</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1709168318304</updated>
     </task>
     <task id="LOCAL-00032" summary="2024-02-29 Update Confluent Kafka Consumers.">
       <option name="closed" value="true" />
@@ -1088,7 +945,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727670744353</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="2024-10-03 Update Project Configuration.">
+      <option name="closed" value="true" />
+      <created>1727951412862</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1727951412863</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -1138,7 +1003,8 @@
     <MESSAGE value="2024-09-28 Update Project Configuration." />
     <MESSAGE value="2024-09-29 Update Project Configuration." />
     <MESSAGE value="2024-09-30 Update Project Configuration." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-09-30 Update Project Configuration." />
+    <MESSAGE value="2024-10-03 Update Project Configuration." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-10-03 Update Project Configuration." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

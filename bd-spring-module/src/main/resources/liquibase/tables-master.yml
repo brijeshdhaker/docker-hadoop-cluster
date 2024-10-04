@@ -1,0 +1,6 @@
+## YAML Template.
+---
+databaseChangeLog:
+  - include :
+      file: changelogs/JIRA-0001/table-changelog.yml
+      relativeToChangelogFile: true

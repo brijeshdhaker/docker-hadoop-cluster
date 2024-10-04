@@ -1,7 +1,6 @@
 package org.examples.sb.config;
 
-import org.apache.avro.generic.GenericRecord;
-import org.examples.sb.models.Transaction;
+import org.examples.sb.models.avro.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

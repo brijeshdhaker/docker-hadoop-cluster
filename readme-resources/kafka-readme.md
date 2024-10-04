@@ -19,11 +19,13 @@ kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitio
 kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic kafka-avro-topic --if-not-exists
 kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic kafka-json-topic --if-not-exists
 
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-text-topic --if-not-exists
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-json-topic --if-not-exists
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-avro-topic --if-not-exists
+kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 4 --replication-factor 1 --topic transaction-text-topic --if-not-exists
+kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 4 --replication-factor 1 --topic transaction-json-topic --if-not-exists
+kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 4 --replication-factor 1 --topic transaction-avro-topic --if-not-exists
 
-docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-avro-topic --if-not-exists"
+# Topic - Create
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 4 --replication-factor 1 --topic transaction-avro-topic --if-not-exists"
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 4 --replication-factor 1 --topic transaction-json-topic --if-not-exists"
 
 # Topic - List
 kafka-topics --list --bootstrap-server kafkabroker.sandbox.net:9092

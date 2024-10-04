@@ -1,0 +1,15 @@
+## YAML Template.
+---
+databaseChangeLog:
+  - include :
+      file: base.yml
+      relativeToChangelogFile: true
+  - include :
+      file: tables-master.yml
+      relativeToChangelogFile: true
+  - include :
+      file: scripts-master.yml
+      relativeToChangelogFile: true
+  - include :
+      file: proc-master.yml
+      relativeToChangelogFile: true    

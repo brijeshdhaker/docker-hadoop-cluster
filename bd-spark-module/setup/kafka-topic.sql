@@ -67,6 +67,9 @@ select * from KAFKA_OFFSETS;
 select count(*) from KAFKA_OFFSETS;
 
 INSERT INTO KAFKA_OFFSETS(`CONSUMER_GROUP`,`TOPIC`,`PARTITION`, `OFFSET_VALUE`,`COMMIT_TIME`) VALUES('transaction-avro-cg', 'transaction-avro-topic', 0, 0, NOW());
+INSERT INTO KAFKA_OFFSETS(`CONSUMER_GROUP`,`TOPIC`,`PARTITION`, `OFFSET_VALUE`,`COMMIT_TIME`) VALUES('transaction-avro-cg', 'transaction-avro-topic', 1, 0, NOW());
+INSERT INTO KAFKA_OFFSETS(`CONSUMER_GROUP`,`TOPIC`,`PARTITION`, `OFFSET_VALUE`,`COMMIT_TIME`) VALUES('transaction-avro-cg', 'transaction-avro-topic', 2, 0, NOW());
+INSERT INTO KAFKA_OFFSETS(`CONSUMER_GROUP`,`TOPIC`,`PARTITION`, `OFFSET_VALUE`,`COMMIT_TIME`) VALUES('transaction-avro-cg', 'transaction-avro-topic', 3, 0, NOW());
 
 CREATE TABLE `SANDBOXDB`.`KAFKA_TOPICS`(
     `MAIN_TOPIC` VARCHAR(255),
@@ -75,4 +78,5 @@ CREATE TABLE `SANDBOXDB`.`KAFKA_TOPICS`(
 );
 select * from KAFKA_TOPICS;
 select count(*) from KAFKA_TOPICS;
-INSERT INTO KAFKA_TOPICS(`MAIN_TOPIC`,`PARTITIONS`,`ERROR_TOPIC`) VALUES ('transaction-avro-topic', 1, 'error_transaction-avro-topic')
+INSERT INTO KAFKA_TOPICS(`MAIN_TOPIC`,`PARTITIONS`,`ERROR_TOPIC`) VALUES ('transaction-avro-topic', 4, 'error_transaction-avro-topic')
+UPDATE KAFKA_TOPICS SET PARTITIONS=4 where MAIN_TOPIC='transaction-avro-topic';

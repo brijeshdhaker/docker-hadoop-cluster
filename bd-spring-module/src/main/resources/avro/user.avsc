@@ -4,7 +4,7 @@
       "name": "id",
       "type": [
         "null",
-        "int"
+        "long"
       ]
     },
     {
@@ -20,7 +20,7 @@
     },
     {
       "avro.java.string": "String",
-      "name": "cardtype",
+      "name": "name",
       "type": {
         "avro.java.string": "String",
         "type": "string"
@@ -28,38 +28,51 @@
     },
     {
       "avro.java.string": "String",
-      "name": "website",
+      "name": "emailAddr",
       "type": {
         "avro.java.string": "String",
         "type": "string"
       }
     },
     {
-      "avro.java.string": "String",
-      "name": "product",
-      "type": {
-        "avro.java.string": "String",
-        "type": "string"
-      }
-    },
-    {
-      "name": "amount",
+      "name": "age",
       "type": [
         "null",
-        "double"
+        "int"
+      ]
+    },
+    {
+      "logicalType": "date",
+      "name": "dob",
+      "type": [
+        "null",
+        "int"
+      ]
+    },
+    {
+      "name": "height",
+      "type": [
+        "null",
+        "float"
+      ]
+    },
+    {
+      "name": "roles",
+      "type": [
+        "null",
+        {
+          "default": [],
+          "items": {
+            "avro.java.string": "String",
+            "type": "string"
+          },
+          "type": "array"
+        }
       ]
     },
     {
       "avro.java.string": "String",
-      "name": "city",
-      "type": {
-        "avro.java.string": "String",
-        "type": "string"
-      }
-    },
-    {
-      "avro.java.string": "String",
-      "name": "country",
+      "name": "status",
       "type": {
         "avro.java.string": "String",
         "type": "string"
@@ -67,14 +80,22 @@
     },
     {
       "logicalType": "timestamp-millis",
-      "name": "addts",
+      "name": "addTs",
+      "type": [
+        "null",
+        "long"
+      ]
+    },
+    {
+      "logicalType": "timestamp-millis",
+      "name": "updTs",
       "type": [
         "null",
         "long"
       ]
     }
   ],
-  "name": "Transaction",
+  "name": "UserDTO",
   "namespace": "org.examples.sb.models.avro",
   "type": "record",
   "version": "1"

@@ -3,11 +3,9 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package org.examples.sb.models;
+package org.examples.sb.models.avro;
 
-import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
-import org.apache.avro.util.Utf8;
 import org.apache.avro.message.BinaryMessageEncoder;
 import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
@@ -312,8 +310,8 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
    * Creates a new Transaction RecordBuilder.
    * @return A new Transaction RecordBuilder
    */
-  public static org.examples.sb.models.Transaction.Builder newBuilder() {
-    return new org.examples.sb.models.Transaction.Builder();
+  public static Transaction.Builder newBuilder() {
+    return new Transaction.Builder();
   }
 
   /**
@@ -321,11 +319,11 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
    * @param other The existing builder to copy.
    * @return A new Transaction RecordBuilder
    */
-  public static org.examples.sb.models.Transaction.Builder newBuilder(org.examples.sb.models.Transaction.Builder other) {
+  public static Transaction.Builder newBuilder(Transaction.Builder other) {
     if (other == null) {
-      return new org.examples.sb.models.Transaction.Builder();
+      return new Transaction.Builder();
     } else {
-      return new org.examples.sb.models.Transaction.Builder(other);
+      return new Transaction.Builder(other);
     }
   }
 
@@ -334,11 +332,11 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
    * @param other The existing instance to copy.
    * @return A new Transaction RecordBuilder
    */
-  public static org.examples.sb.models.Transaction.Builder newBuilder(org.examples.sb.models.Transaction other) {
+  public static Transaction.Builder newBuilder(Transaction other) {
     if (other == null) {
-      return new org.examples.sb.models.Transaction.Builder();
+      return new Transaction.Builder();
     } else {
-      return new org.examples.sb.models.Transaction.Builder(other);
+      return new Transaction.Builder(other);
     }
   }
 
@@ -368,7 +366,7 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(org.examples.sb.models.Transaction.Builder other) {
+    private Builder(Transaction.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -412,7 +410,7 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
      * Creates a Builder by copying an existing Transaction instance
      * @param other The existing instance to copy.
      */
-    private Builder(org.examples.sb.models.Transaction other) {
+    private Builder(Transaction other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -466,7 +464,7 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public org.examples.sb.models.Transaction.Builder setId(java.lang.Integer value) {
+    public Transaction.Builder setId(java.lang.Integer value) {
       validate(fields()[0], value);
       this.id = value;
       fieldSetFlags()[0] = true;
@@ -486,7 +484,7 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'id' field.
       * @return This builder.
       */
-    public org.examples.sb.models.Transaction.Builder clearId() {
+    public Transaction.Builder clearId() {
       id = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -506,7 +504,7 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'uuid'.
       * @return This builder.
       */
-    public org.examples.sb.models.Transaction.Builder setUuid(java.lang.String value) {
+    public Transaction.Builder setUuid(java.lang.String value) {
       validate(fields()[1], value);
       this.uuid = value;
       fieldSetFlags()[1] = true;
@@ -526,7 +524,7 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'uuid' field.
       * @return This builder.
       */
-    public org.examples.sb.models.Transaction.Builder clearUuid() {
+    public Transaction.Builder clearUuid() {
       uuid = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -546,7 +544,7 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'cardtype'.
       * @return This builder.
       */
-    public org.examples.sb.models.Transaction.Builder setCardtype(java.lang.String value) {
+    public Transaction.Builder setCardtype(java.lang.String value) {
       validate(fields()[2], value);
       this.cardtype = value;
       fieldSetFlags()[2] = true;
@@ -566,7 +564,7 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'cardtype' field.
       * @return This builder.
       */
-    public org.examples.sb.models.Transaction.Builder clearCardtype() {
+    public Transaction.Builder clearCardtype() {
       cardtype = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -586,7 +584,7 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'website'.
       * @return This builder.
       */
-    public org.examples.sb.models.Transaction.Builder setWebsite(java.lang.String value) {
+    public Transaction.Builder setWebsite(java.lang.String value) {
       validate(fields()[3], value);
       this.website = value;
       fieldSetFlags()[3] = true;
@@ -606,7 +604,7 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'website' field.
       * @return This builder.
       */
-    public org.examples.sb.models.Transaction.Builder clearWebsite() {
+    public Transaction.Builder clearWebsite() {
       website = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -626,7 +624,7 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'product'.
       * @return This builder.
       */
-    public org.examples.sb.models.Transaction.Builder setProduct(java.lang.String value) {
+    public Transaction.Builder setProduct(java.lang.String value) {
       validate(fields()[4], value);
       this.product = value;
       fieldSetFlags()[4] = true;
@@ -646,7 +644,7 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'product' field.
       * @return This builder.
       */
-    public org.examples.sb.models.Transaction.Builder clearProduct() {
+    public Transaction.Builder clearProduct() {
       product = null;
       fieldSetFlags()[4] = false;
       return this;
@@ -666,7 +664,7 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'amount'.
       * @return This builder.
       */
-    public org.examples.sb.models.Transaction.Builder setAmount(java.lang.Double value) {
+    public Transaction.Builder setAmount(java.lang.Double value) {
       validate(fields()[5], value);
       this.amount = value;
       fieldSetFlags()[5] = true;
@@ -686,7 +684,7 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'amount' field.
       * @return This builder.
       */
-    public org.examples.sb.models.Transaction.Builder clearAmount() {
+    public Transaction.Builder clearAmount() {
       amount = null;
       fieldSetFlags()[5] = false;
       return this;
@@ -706,7 +704,7 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'city'.
       * @return This builder.
       */
-    public org.examples.sb.models.Transaction.Builder setCity(java.lang.String value) {
+    public Transaction.Builder setCity(java.lang.String value) {
       validate(fields()[6], value);
       this.city = value;
       fieldSetFlags()[6] = true;
@@ -726,7 +724,7 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'city' field.
       * @return This builder.
       */
-    public org.examples.sb.models.Transaction.Builder clearCity() {
+    public Transaction.Builder clearCity() {
       city = null;
       fieldSetFlags()[6] = false;
       return this;
@@ -746,7 +744,7 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'country'.
       * @return This builder.
       */
-    public org.examples.sb.models.Transaction.Builder setCountry(java.lang.String value) {
+    public Transaction.Builder setCountry(java.lang.String value) {
       validate(fields()[7], value);
       this.country = value;
       fieldSetFlags()[7] = true;
@@ -766,7 +764,7 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'country' field.
       * @return This builder.
       */
-    public org.examples.sb.models.Transaction.Builder clearCountry() {
+    public Transaction.Builder clearCountry() {
       country = null;
       fieldSetFlags()[7] = false;
       return this;
@@ -786,7 +784,7 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'addts'.
       * @return This builder.
       */
-    public org.examples.sb.models.Transaction.Builder setAddts(java.lang.Long value) {
+    public Transaction.Builder setAddts(java.lang.Long value) {
       validate(fields()[8], value);
       this.addts = value;
       fieldSetFlags()[8] = true;
@@ -806,7 +804,7 @@ public class Transaction extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'addts' field.
       * @return This builder.
       */
-    public org.examples.sb.models.Transaction.Builder clearAddts() {
+    public Transaction.Builder clearAddts() {
       addts = null;
       fieldSetFlags()[8] = false;
       return this;

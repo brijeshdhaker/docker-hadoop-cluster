@@ -1,0 +1,52 @@
+## YAML Template.
+---
+databaseChangeLog:
+  - changeSet:  
+      id:  JIRA-0001-S-001  
+      author:  Brijesh D.
+      changes:
+        - sqlFile:
+            path: ../../scripts/auditlog-data.sql
+            relativeToChangelogFile: true
+  - changeSet:  
+      id:  JIRA-0001-S-002
+      author:  Brijesh D.
+      changes:
+        - sqlFile:
+            path: ../../scripts/audit-type-data.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id:  JIRA-0002-S-001
+      author:  Brijesh D.
+      changes:
+        - sqlFile:
+            path: ../../scripts/role-data.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id:  JIRA-0002-S-002
+      author:  Brijesh D.
+      changes:
+        - sqlFile:
+            path: ../../scripts/account-data.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id:  JIRA-0003-S-001
+      author:  Brijesh D.
+      changes:
+        - sqlFile:
+            path: ../../scripts/user-data.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id:  JIRA-0003-S-002
+      author:  Brijesh D.
+      changes:
+        - sqlFile:
+            path: ../../scripts/user-role-data.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id:  JIRA-0004-S-001
+      author:  Brijesh D.
+      changes:
+        - sqlFile:
+            path: ../../scripts/assets-data.sql
+            relativeToChangelogFile: true
