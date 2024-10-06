@@ -51,24 +51,27 @@ spring:
       properties:
         specific.avro.reader: false
         spring.json.trusted.packages: "*"
+        isolation.level: read_committed  #read_uncommitted
         # spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
         # spring.deserializer.value.delegate.class: io.confluent.kafka.serializers.KafkaAvroDeserializer
       group-id: sb-sandbox-json-cg
       auto-offset-reset: earliest
       enable.auto.commit: false
-      #key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      key-deserializer: org.apache.kafka.common.serialization.LongDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      #key-deserializer: org.apache.kafka.common.serialization.LongDeserializer
+      #value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       #value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
       #value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
       interceptor.classes: io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor
     producer:
       properties:
         allow.auto.create.topics: false
-      #key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      key-serializer: org.apache.kafka.common.serialization.LongSerializer
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      #key-serializer: org.apache.kafka.common.serialization.LongSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       interceptor.classes: io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor
+      transaction-id-prefix: txn-
     template:
       default-topic:
   #
@@ -99,3 +102,4 @@ logging:
   level:
     root: info
     org.springframework.kafka: debug
+    org.springframework.transaction: trace

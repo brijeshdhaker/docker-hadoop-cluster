@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.examples.sb.models.avro.Transaction;
+import org.examples.sb.models.Transaction;
 import org.springframework.kafka.annotation.DltHandler;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
@@ -33,7 +33,7 @@ public class KafkaConsumer {
     }
 
     @KafkaListener(topics = "${spring.kafka.transaction-topic}", containerFactory = "kafkaListenerContainerFactory", groupId = "${spring.kafka.consumer.group-id}", concurrency = "4")
-    public void consume(ConsumerRecord<String, GenericRecord> record, @Headers MessageHeaders headers){
+    public void consume(ConsumerRecord<String, String> record, @Headers MessageHeaders headers){
         log.info("### -> Header acquired : {}", headers);
         Acknowledgment ack = headers.get(KafkaHeaders.ACKNOWLEDGMENT, Acknowledgment.class);
         executorService.submit(() -> { System.out.println("Hi"); });
@@ -45,7 +45,7 @@ public class KafkaConsumer {
     }
 
     @DltHandler
-    public void dlt(GenericRecord data, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic){
+    public void dlt(String data, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic){
         log.error("Event from topic {} is dead lettered - event: {}", topic, data);
     }
 }

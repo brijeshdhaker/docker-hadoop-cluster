@@ -48,5 +48,5 @@ databaseChangeLog:
       author:  Brijesh D.
       changes:
         - sqlFile:
-            path: ../../scripts/assets-data.sql
+            path: ../../scripts/products-data.sql
             relativeToChangelogFile: true
