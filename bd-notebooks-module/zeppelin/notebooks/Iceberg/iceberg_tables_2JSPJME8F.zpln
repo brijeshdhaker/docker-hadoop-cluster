@@ -424,9 +424,356 @@
       "status": "FINISHED"
     },
     {
+      "text": "%spark.sql\n\nSELECT file_path, file_format, record_count, null_value_counts, lower_bounds, upper_bounds\nFROM nyc.taxis.files ",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-14 04:07:49.926",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "file_path": "string",
+                      "file_format": "string",
+                      "record_count": "string",
+                      "null_value_counts": "string",
+                      "lower_bounds": "string",
+                      "upper_bounds": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "file_path\tfile_format\trecord_count\tnull_value_counts\tlower_bounds\tupper_bounds\ns3a://defaultfs/iceberg/nyc/taxis/data/vendor_id\u003d1/00000-4-9a4f6dd6-1d31-462c-a742-61f102778d0c-0-00001.parquet\tPARQUET\t2\tMap(5 -\u003e 0, 1 -\u003e 0, 2 -\u003e 0, 3 -\u003e 0, 4 -\u003e 0)\tMap(5 -\u003e [B@3e4d8874, 1 -\u003e [B@411c389c, 2 -\u003e [B@56703a23, 3 -\u003e [B@20db7e48, 4 -\u003e [B@72074c0f)\tMap(5 -\u003e [B@527f420b, 1 -\u003e [B@509db45, 2 -\u003e [B@7e5bcc92, 3 -\u003e [B@36749062, 4 -\u003e [B@1e33e3bd)\ns3a://defaultfs/iceberg/nyc/taxis/data/vendor_id\u003d2/00000-4-9a4f6dd6-1d31-462c-a742-61f102778d0c-0-00002.parquet\tPARQUET\t2\tMap(5 -\u003e 0, 1 -\u003e 0, 2 -\u003e 0, 3 -\u003e 0, 4 -\u003e 0)\tMap(5 -\u003e [B@55abc0cd, 1 -\u003e [B@7534a9b6, 2 -\u003e [B@6751c0f2, 3 -\u003e [B@66fee9ae, 4 -\u003e [B@6d58f014)\tMap(5 -\u003e [B@3d718d10, 1 -\u003e [B@54ce9c1c, 2 -\u003e [B@456cbcb2, 3 -\u003e [B@6f9e3c5b, 4 -\u003e [B@5eb625b5)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d5"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1728878862014_334694912",
+      "id": "paragraph_1728878862014_334694912",
+      "dateCreated": "2024-10-14 04:07:42.014",
+      "dateStarted": "2024-10-14 04:07:48.487",
+      "dateFinished": "2024-10-14 04:07:49.131",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n\nSELECT * \nFROM iceberg.nyc.taxis.history",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-14 04:06:23.260",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "made_current_at": "string",
+                      "snapshot_id": "string",
+                      "parent_id": "string",
+                      "is_current_ancestor": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "made_current_at\tsnapshot_id\tparent_id\tis_current_ancestor\n2024-10-14 04:02:41.541\t6403608912241204062\tnull\ttrue\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d3"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1728878624322_2133658996",
+      "id": "paragraph_1728878624322_2133658996",
+      "dateCreated": "2024-10-14 04:03:44.322",
+      "dateStarted": "2024-10-14 04:06:22.436",
+      "dateFinished": "2024-10-14 04:06:22.973",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n\nSELECT snapshot_id, manifest_list\nFROM nyc.taxis.snapshots ;",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-14 04:07:17.682",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "snapshot_id": "string",
+                      "manifest_list": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "snapshot_id\tmanifest_list\n6403608912241204062\ts3a://defaultfs/iceberg/nyc/taxis/metadata/snap-6403608912241204062-1-17fc313a-b530-409d-bd22-b3755ab15656.avro\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d4"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1728878764597_1776004600",
+      "id": "paragraph_1728878764597_1776004600",
+      "dateCreated": "2024-10-14 04:06:04.597",
+      "dateStarted": "2024-10-14 04:07:16.491",
+      "dateFinished": "2024-10-14 04:07:16.867",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n\nSELECT * FROM \nnyc.taxis.partitions\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-14 04:09:33.372",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "partition": "string",
+                      "spec_id": "string",
+                      "record_count": "string",
+                      "file_count": "string",
+                      "total_data_file_size_in_bytes": "string",
+                      "position_delete_record_count": "string",
+                      "position_delete_file_count": "string",
+                      "equality_delete_record_count": "string",
+                      "equality_delete_file_count": "string",
+                      "last_updated_at": "string",
+                      "last_updated_snapshot_id": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "partition\tspec_id\trecord_count\tfile_count\ttotal_data_file_size_in_bytes\tposition_delete_record_count\tposition_delete_file_count\tequality_delete_record_count\tequality_delete_file_count\tlast_updated_at\tlast_updated_snapshot_id\n[1]\t0\t2\t1\t1516\t0\t0\t0\t0\t2024-10-14 04:02:41.541\t6403608912241204062\n[2]\t0\t2\t1\t1558\t0\t0\t0\t0\t2024-10-14 04:02:41.541\t6403608912241204062\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d6"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1728878836490_2063909875",
+      "id": "paragraph_1728878836490_2063909875",
+      "dateCreated": "2024-10-14 04:07:16.491",
+      "dateStarted": "2024-10-14 04:09:32.528",
+      "dateFinished": "2024-10-14 04:09:33.006",
+      "status": "FINISHED"
+    },
+    {
       "text": "%spark.sql\n",
       "user": "anonymous",
-      "dateUpdated": "2024-10-14 04:03:44.322",
+      "dateUpdated": "2024-10-14 04:09:32.528",
       "progress": 0,
       "config": {},
       "settings": {
@@ -436,9 +783,9 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1728878624322_2133658996",
-      "id": "paragraph_1728878624322_2133658996",
-      "dateCreated": "2024-10-14 04:03:44.322",
+      "jobName": "paragraph_1728878972527_401025345",
+      "id": "paragraph_1728878972527_401025345",
+      "dateCreated": "2024-10-14 04:09:32.528",
       "status": "READY"
     }
   ],
