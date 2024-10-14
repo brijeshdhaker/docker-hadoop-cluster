@@ -136,7 +136,7 @@
     {
       "text": "%spark.sql\n\n\nSELECT *, FROM_UNIXTIME(addts) AS txn_datetime from transaction_details;",
       "user": "anonymous",
-      "dateUpdated": "2024-09-28 04:31:28.779",
+      "dateUpdated": "2024-10-13 04:42:16.525",
       "progress": 0,
       "config": {
         "colWidth": 12.0,
@@ -172,6 +172,32 @@
                   },
                   "xLabelStatus": "default",
                   "stacked": false
+                },
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "addts": "string",
+                      "amount": "string",
+                      "cardtype": "string",
+                      "city": "string",
+                      "country": "string",
+                      "id": "string",
+                      "product": "string",
+                      "uuid": "string",
+                      "website": "string",
+                      "txn_datetime": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
                 }
               },
               "keys": [
@@ -194,17 +220,19 @@
                   "index": 1.0,
                   "aggr": "sum"
                 }
-              ]
+              ],
+              "commonSetting": {}
             }
           }
         },
         "enabled": true,
         "editorSetting": {
-          "language": "sql",
+          "language": "scala",
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
-        }
+        },
+        "editorMode": "ace/mode/scala"
       },
       "settings": {
         "params": {},
@@ -248,19 +276,56 @@
     {
       "text": "%spark.sql\n\nSELECT \n        id, \n        uuid,\n        FROM_UNIXTIME(addts) AS txn_datetime,\n        FROM_UNIXTIME(addts,\u0027yyyy-MM-dd\u0027) AS txn_date,\n        current_date() AS today_date,\n        unix_timestamp() AS now_timestamp,\n        now() AS time_now,\n        current_timezone() as time_zone,\n        quarter(FROM_UNIXTIME(addts)) as current_quarter\n    from transaction_details",
       "user": "anonymous",
-      "dateUpdated": "2024-09-28 06:59:27.120",
+      "dateUpdated": "2024-10-13 04:42:16.702",
       "progress": 0,
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "results": {},
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "id": "string",
+                      "uuid": "string",
+                      "txn_datetime": "string",
+                      "txn_date": "string",
+                      "today_date": "string",
+                      "now_timestamp": "string",
+                      "time_now": "string",
+                      "time_zone": "string",
+                      "current_quarter": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
         "enabled": true,
         "editorSetting": {
-          "language": "sql",
+          "language": "scala",
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
-        }
+        },
+        "editorMode": "ace/mode/scala"
       },
       "settings": {
         "params": {},
@@ -333,19 +398,50 @@
     {
       "text": "%spark.sql\n\nSELECT \n    product,\n    amount,\n    city\nfrom (\n    SELECT \n        id, \n        uuid,\n        cardtype,\n        website,\n        product,\n        amount,\n        city,\n        country,\n        FROM_UNIXTIME(addts) AS txn_datetime,\n        RANK() OVER (PARTITION BY city order by amount DESC) AS RANK\n    from transaction_details\n) tmp \nwhere \nRANK \u003c\u003d 2;",
       "user": "anonymous",
-      "dateUpdated": "2024-09-28 04:32:38.096",
+      "dateUpdated": "2024-10-13 04:42:16.868",
       "progress": 0,
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "results": {},
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "product": "string",
+                      "amount": "string",
+                      "city": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
         "enabled": true,
         "editorSetting": {
-          "language": "sql",
+          "language": "scala",
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
-        }
+        },
+        "editorMode": "ace/mode/scala"
       },
       "settings": {
         "params": {},
@@ -389,19 +485,49 @@
     {
       "text": "%spark.sql\n\nSELECT \n    cardtype,\n    sum(CAST(amount AS bigint)) DIV 1000 As MD_SELL\nfrom transaction_details\n    group by cardtype;",
       "user": "anonymous",
-      "dateUpdated": "2024-09-28 04:33:35.054",
+      "dateUpdated": "2024-10-13 04:42:17.052",
       "progress": 20,
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "results": {},
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "cardtype": "string",
+                      "MD_SELL": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
         "enabled": true,
         "editorSetting": {
-          "language": "sql",
+          "language": "scala",
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
-        }
+        },
+        "editorMode": "ace/mode/scala"
       },
       "settings": {
         "params": {},

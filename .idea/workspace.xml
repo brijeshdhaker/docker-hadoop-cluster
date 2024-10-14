@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-10-06 Update Project Configuration.">
-      <change afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/delta-table/spark-delta-table_2K9WEMKQE.zpln" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-10-13 add spark-delta-table notebook.">
+      <change afterPath="$PROJECT_DIR$/readme-resources/microk8s-readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/test-shell_2GTZDXJT9.zpln" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/test-shell_2GTZDXJT9.zpln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-zeppelin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-zeppelin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Mysql/mysql-test_2HM338ASK.zpln" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Mysql/mysql-test_2HM338ASK.zpln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/delta-table/spark-delta-table_2K9WEMKQE.zpln" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/delta-table/spark-delta-table_2K9WEMKQE.zpln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/spark-minio_2KBRMWP59.zpln" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/spark-minio_2KBRMWP59.zpln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,7 +244,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.31724137&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;jvm.logging&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -273,7 +276,7 @@
       <recent name="org.examples.spark" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.minio">
+  <component name="RunManager" selected="Application.AppLauncher::BatchWorkflow">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -497,25 +500,25 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.StreamingJob" />
       <item itemvalue="Application.AppLauncher::BatchWorkflow" />
-      <item itemvalue="Application.AppLauncher::StructuredStreamWorkflow" />
       <item itemvalue="Application.AppLauncher::DiscretizedStreamWorkflow" />
+      <item itemvalue="Application.AppLauncher::StructuredStreamWorkflow" />
+      <item itemvalue="Application.StreamingJob" />
       <item itemvalue="Application.SandboxSbApplication" />
       <item itemvalue="Docker.kafka-cluster" />
+      <item itemvalue="Docker.minio" />
       <item itemvalue="Docker.mysqlserver" />
       <item itemvalue="Docker.spark-cluster" />
       <item itemvalue="Docker.spark-notebook" />
       <item itemvalue="Docker.zeppelin" />
-      <item itemvalue="Docker.minio" />
       <item itemvalue="JUnit.SandboxSbApplicationTest" />
       <item itemvalue="Python.confluent_kafka_AvroProducer" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SandboxSbApplication" />
-        <item itemvalue="JUnit.SandboxSbApplicationTest" />
         <item itemvalue="Python.confluent_kafka_AvroProducer" />
+        <item itemvalue="JUnit.SandboxSbApplicationTest" />
+        <item itemvalue="Application.SandboxSbApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -527,14 +530,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00034" summary="2024-02-29 Update Confluent Kafka Consumers.">
-      <option name="closed" value="true" />
-      <created>1709225198413</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1709225198413</updated>
     </task>
     <task id="LOCAL-00035" summary="2024-03-01 Update PyTest Cases for utils.">
       <option name="closed" value="true" />
@@ -920,7 +915,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728230390924</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="2024-10-13 add spark-delta-table notebook.">
+      <option name="closed" value="true" />
+      <created>1728791862758</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1728791862758</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -946,7 +949,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-02-24 Merge Docker Projects." />
     <MESSAGE value="2024-02-25 Change Project Packaging." />
     <MESSAGE value="2024-02-26 Update Confluent Kafka Consumers." />
     <MESSAGE value="2024-02-27 Update Confluent Kafka Consumers." />
@@ -971,7 +973,8 @@
     <MESSAGE value="2024-10-03 Update Project Configuration." />
     <MESSAGE value="2024-10-04 Update Project Configuration." />
     <MESSAGE value="2024-10-06 Update Project Configuration." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-10-06 Update Project Configuration." />
+    <MESSAGE value="2024-10-13 add spark-delta-table notebook." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-10-13 add spark-delta-table notebook." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

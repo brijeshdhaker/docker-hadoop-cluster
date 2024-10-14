@@ -71,18 +71,47 @@
     {
       "text": "%mysql\n\nSELECT version();",
       "user": "anonymous",
-      "dateUpdated": "2024-09-15 15:14:20.943",
+      "dateUpdated": "2024-10-13 04:44:24.479",
       "progress": 0,
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "results": {},
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "version()": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
         "enabled": true,
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false,
           "completionSupport": true
-        }
+        },
+        "editorMode": "ace/mode/sql"
       },
       "settings": {
         "params": {},
@@ -167,18 +196,47 @@
     {
       "text": "%mysql\n\nSHOW GRANTS FOR \u0027root\u0027@\u0027%\u0027;",
       "user": "anonymous",
-      "dateUpdated": "2024-09-15 15:18:42.710",
+      "dateUpdated": "2024-10-13 04:44:24.590",
       "progress": 0,
       "config": {
         "colWidth": 12.0,
         "fontSize": 10.0,
-        "results": {},
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Grants for root@%": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
         "enabled": true,
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false,
           "completionSupport": true
-        }
+        },
+        "editorMode": "ace/mode/sql"
       },
       "settings": {
         "params": {},
@@ -206,18 +264,47 @@
     {
       "text": "%mysql\n\nSHOW GRANTS;",
       "user": "anonymous",
-      "dateUpdated": "2024-09-15 15:18:52.659",
+      "dateUpdated": "2024-10-13 04:44:24.659",
       "progress": 0,
       "config": {
         "colWidth": 12.0,
         "fontSize": 10.0,
-        "results": {},
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Grants for root@%": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
         "enabled": true,
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false,
           "completionSupport": true
-        }
+        },
+        "editorMode": "ace/mode/sql"
       },
       "settings": {
         "params": {},

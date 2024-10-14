@@ -36,7 +36,8 @@ services:
   # Zeppelin Notebook
   #
   zeppelin:
-    image: brijeshdhaker/zeppelin:0.12.0_spark_3.4.1
+    #image: brijeshdhaker/zeppelin:0.12.0_spark_3.4.1
+    image: apache/zeppelin:0.11.2
     pull_policy: missing
     container_name: zeppelin
     hostname: zeppelin.sandbox.net

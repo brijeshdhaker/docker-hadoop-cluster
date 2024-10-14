@@ -3,7 +3,7 @@
     {
       "text": "%spark.conf\n\n#\n# For Spark 3.4.1\n#\n\nSPARK_HOME \t                                                /opt/spark\nspark.app.name                                              spark_delta_lake\nspark.master                                                local[*]\nspark.jars.ivy                                              /apps/.ivy2\nspark.jars.packages                                         org.apache.spark:spark-hadoop-cloud_2.12:3.4.1,io.delta:delta-core_2.12:2.4.0\nspark.driver.memory                                         1024M\nspark.executor.instances                                    2\nspark.executor.memory                                       1024M\n\n#\nspark.sql.extensions                                        io.delta.sql.DeltaSparkSessionExtension\nspark.sql.catalog.spark_catalog                             org.apache.spark.sql.delta.catalog.DeltaCatalog\n\n#\nspark.hadoop.fs.defaultFS                                   s3a://defaultfs/\nspark.hadoop.fs.s3a.endpoint                                http://minio.sandbox.net:9010\nspark.hadoop.fs.s3a.access.key                              pgm2H2bR7a5kMc5XCYdO\nspark.hadoop.fs.s3a.secret.key                              zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG\nspark.hadoop.fs.s3a.path.style.access                       true\nspark.hadoop.fs.s3a.aws.credentials.provider                org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider\nspark.hadoop.fs.s3a.impl                                    org.apache.hadoop.fs.s3a.S3AFileSystem",
       "user": "anonymous",
-      "dateUpdated": "2024-10-13 03:39:01.933",
+      "dateUpdated": "2024-10-13 04:39:53.810",
       "progress": 0,
       "config": {
         "colWidth": 12.0,
@@ -11,9 +11,12 @@
         "results": {},
         "enabled": true,
         "editorSetting": {
-          "language": "text",
-          "editOnDblClick": false
-        }
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
       },
       "settings": {
         "params": {},
@@ -29,8 +32,8 @@
       "jobName": "paragraph_1728790090694_1177070018",
       "id": "paragraph_1728790090694_1177070018",
       "dateCreated": "2024-10-13 03:28:10.694",
-      "dateStarted": "2024-10-13 03:39:01.949",
-      "dateFinished": "2024-10-13 03:39:01.989",
+      "dateStarted": "2024-10-13 04:39:53.822",
+      "dateFinished": "2024-10-13 04:39:53.855",
       "status": "FINISHED"
     },
     {
@@ -101,8 +104,8 @@
     {
       "text": "%spark\n\nval df \u003d spark.read.format(\"delta\").load(\"/tmp/delta-table\")\ndf.show()",
       "user": "anonymous",
-      "dateUpdated": "2024-10-13 03:41:54.572",
-      "progress": 76,
+      "dateUpdated": "2024-10-13 04:43:37.271",
+      "progress": 0,
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -113,7 +116,8 @@
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
-        }
+        },
+        "editorMode": "ace/mode/scala"
       },
       "settings": {
         "params": {},
@@ -124,7 +128,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "+---+\n| id|\n+---+\n|  0|\n|  1|\n|  4|\n|  2|\n|  3|\n+---+\n\n\u001b[1m\u001b[34mdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: bigint]\n"
+            "data": "+---+\n| id|\n+---+\n|  0|\n|  1|\n|  2|\n|  3|\n|  4|\n|  5|\n|  6|\n|  7|\n|  8|\n|  9|\n| 10|\n| 11|\n| 12|\n| 13|\n| 14|\n| 15|\n| 16|\n| 17|\n| 18|\n| 19|\n+---+\n\n\u001b[1m\u001b[34mdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: bigint]\n"
           }
         ]
       },
@@ -137,13 +141,10 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d5"
-            },
-            {
-              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d6"
-            },
-            {
               "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d7"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d8"
             }
           ],
           "interpreterSettingId": "spark"
@@ -153,8 +154,8 @@
       "jobName": "paragraph_1728790748315_1922306163",
       "id": "paragraph_1728790748315_1922306163",
       "dateCreated": "2024-10-13 03:39:08.315",
-      "dateStarted": "2024-10-13 03:41:54.575",
-      "dateFinished": "2024-10-13 03:41:56.554",
+      "dateStarted": "2024-10-13 04:43:37.284",
+      "dateFinished": "2024-10-13 04:43:38.357",
       "status": "FINISHED"
     },
     {
@@ -374,8 +375,8 @@
     {
       "text": "%spark\n\nval df \u003d spark.read.format(\"delta\").option(\"versionAsOf\", 0).load(\"/tmp/delta-table\")\ndf.show()",
       "user": "anonymous",
-      "dateUpdated": "2024-10-13 03:45:46.128",
-      "progress": 11,
+      "dateUpdated": "2024-10-13 04:43:45.046",
+      "progress": 1,
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -386,7 +387,8 @@
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
-        }
+        },
+        "editorMode": "ace/mode/scala"
       },
       "settings": {
         "params": {},
@@ -410,25 +412,25 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d47"
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d9"
             },
             {
-              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d48"
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d10"
             },
             {
-              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d49"
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d11"
             },
             {
-              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d50"
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d12"
             },
             {
-              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d51"
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d13"
             },
             {
-              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d52"
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d14"
             },
             {
-              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d53"
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d15"
             }
           ],
           "interpreterSettingId": "spark"
@@ -438,26 +440,70 @@
       "jobName": "paragraph_1728791076017_929680169",
       "id": "paragraph_1728791076017_929680169",
       "dateCreated": "2024-10-13 03:44:36.017",
-      "dateStarted": "2024-10-13 03:45:46.131",
-      "dateFinished": "2024-10-13 03:45:48.570",
+      "dateStarted": "2024-10-13 04:43:45.049",
+      "dateFinished": "2024-10-13 04:43:48.342",
       "status": "FINISHED"
     },
     {
       "text": "%spark.sql\n\nDESCRIBE HISTORY \u0027/tmp/delta-table\u0027          -- get the full history of the table\n\n-- DESCRIBE HISTORY delta.`/data/events/`\n\n-- DESCRIBE HISTORY \u0027/data/events/\u0027 LIMIT 1  -- get the last operation only\n\n-- DESCRIBE HISTORY eventsTable\n",
       "user": "anonymous",
-      "dateUpdated": "2024-10-13 03:52:57.544",
-      "progress": 0,
+      "dateUpdated": "2024-10-13 04:41:14.944",
+      "progress": 100,
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "results": {},
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "version": "string",
+                      "timestamp": "string",
+                      "userId": "string",
+                      "userName": "string",
+                      "operation": "string",
+                      "operationParameters": "string",
+                      "job": "string",
+                      "notebook": "string",
+                      "clusterId": "string",
+                      "readVersion": "string",
+                      "isolationLevel": "string",
+                      "isBlindAppend": "string",
+                      "operationMetrics": "string",
+                      "userMetadata": "string",
+                      "engineInfo": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            },
+            "helium": {}
+          }
+        },
         "enabled": true,
         "editorSetting": {
-          "language": "sql",
+          "language": "scala",
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
-        }
+        },
+        "editorMode": "ace/mode/scala"
       },
       "settings": {
         "params": {},
@@ -481,7 +527,7 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d54"
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d6"
             }
           ],
           "interpreterSettingId": "spark"
@@ -491,26 +537,96 @@
       "jobName": "paragraph_1728791146130_1778857646",
       "id": "paragraph_1728791146130_1778857646",
       "dateCreated": "2024-10-13 03:45:46.131",
-      "dateStarted": "2024-10-13 03:52:57.548",
-      "dateFinished": "2024-10-13 03:52:58.413",
+      "dateStarted": "2024-10-13 04:41:01.261",
+      "dateFinished": "2024-10-13 04:41:02.554",
       "status": "FINISHED"
     },
     {
       "text": "%spark.sql\n\nDESCRIBE DETAIL \u0027/tmp/delta-table\u0027",
       "user": "anonymous",
-      "dateUpdated": "2024-10-13 03:54:18.647",
+      "dateUpdated": "2024-10-13 04:44:09.148",
       "progress": 0,
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "results": {},
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "format": "string",
+                      "id": "string",
+                      "name": "string",
+                      "description": "string",
+                      "location": "string",
+                      "createdAt": "string",
+                      "lastModified": "string",
+                      "partitionColumns": "string",
+                      "numFiles": "string",
+                      "sizeInBytes": "string",
+                      "properties": "string",
+                      "minReaderVersion": "string",
+                      "minWriterVersion": "string",
+                      "tableFeatures": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "format",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "id",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
         "enabled": true,
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
-        }
+        },
+        "editorMode": "ace/mode/sql"
       },
       "settings": {
         "params": {},
