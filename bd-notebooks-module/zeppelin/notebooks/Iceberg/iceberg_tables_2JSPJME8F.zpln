@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%spark.conf\n\nset driver memory to 8g\nspark.driver.memory 640m\nspark.driver.cores 1\n\n# set executor number to be \n# spark.executor.instances  2\n# spark.executor.memory  640m\n# spark.executor.cores 2\n\n# spark.jars.packages                                         org.apache.spark:spark-hadoop-cloud_2.12:3.5.0,org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.4.3\n# spark.jars.ivy2                                             /apps/hostpath/.ivy2\n\n#\n# AWS S3 Storage\n#\n# spark.hadoop.fs.defaultFS                                s3a://openlake\nspark.hadoop.fs.s3a.endpoint                               http://minio.sandbox.net:9010\nspark.hadoop.fs.s3a.access.key                             ffaJ6a2MOj8mZ5lI3P6h\nspark.hadoop.fs.s3a.secret.key                             9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs\nspark.hadoop.fs.s3a.path.style.access                      true\nspark.hadoop.fs.s3a.connection.ssl.enabled                 false       \nspark.hadoop.fs.s3a.aws.credentials.provider               org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider\nspark.hadoop.fs.s3a.impl                                   org.apache.hadoop.fs.s3a.S3AFileSystem\nspark.hadoop.fs.s3a.connection.establish.timeout           5000\nspark.hadoop.fs.s3a.connection.timeout                     10000\n\n#\n# Iceberg Spark Catalog\n#\nspark.sql.extensions                                       org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions\nspark.sql.catalog.hadoop_catalog                           org.apache.iceberg.spark.SparkCatalog\nspark.sql.catalog.hadoop_catalog.type                      hadoop\nspark.sql.catalog.hadoop_catalog.warehouse                 s3a://openlake/warehouse/\n# spark.sql.catalog.hadoop_catalog.io-impl                 org.apache.iceberg.aws.s3.S3FileIO\nspark.sql.catalog.hadoop_catalog.s3.endpoint               http://minio.sandbox.net:9010\nspark.sql.defaultCatalog                                   hadoop_catalog\n\n\n#\nspark.kerberos.principal                                   zeppelin@SANDBOX.NET\nspark.kerberos.keytab                                      /apps/security/keytabs/users/zeppelin.keytab\nspark.yarn.am.extraJavaOptions                             -Djava.security.krb5.conf\u003d/etc/krb5.conf\nspark.driver.extraJavaOptions                              -Djava.security.krb5.conf\u003d/etc/krb5.conf\nspark.executor.extraJavaOptions                            -Djava.security.krb5.conf\u003d/etc/krb5.conf\n\n\n",
+      "text": "%spark.conf\n\n#\nspark.driver.memory                                        1024m\nspark.driver.cores                                         1\nspark.executor.instances                                   2\nspark.executor.memory                                      1024m\nspark.executor.cores                                       2\n\n#\nspark.jars.ivy2                                            /apps/hostpath/.ivy2\nspark.jars.packages                                        org.apache.spark:spark-hadoop-cloud_2.12:3.4.1,org.apache.iceberg:iceberg-spark-runtime-3.4_2.12:1.6.1\n\n\n#\n# AWS S3 Storage\n#\n# spark.hadoop.fs.defaultFS                                s3a://defaultfs/\nspark.hadoop.fs.s3a.endpoint                               http://minio.sandbox.net:9010\nspark.hadoop.fs.s3a.access.key                             pgm2H2bR7a5kMc5XCYdO\nspark.hadoop.fs.s3a.secret.key                             zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG\nspark.hadoop.fs.s3a.path.style.access                      true\nspark.hadoop.fs.s3a.connection.ssl.enabled                 false       \nspark.hadoop.fs.s3a.aws.credentials.provider               org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider\nspark.hadoop.fs.s3a.impl                                   org.apache.hadoop.fs.s3a.S3AFileSystem\nspark.hadoop.fs.s3a.connection.establish.timeout           5000\nspark.hadoop.fs.s3a.connection.timeout                     10000\n\n#\n# Iceberg Spark Catalog\n#\nspark.sql.extensions                                       org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions\nspark.sql.catalog.spark_catalog                            org.apache.iceberg.spark.SparkSessionCatalog\nspark.sql.catalog.spark_catalog.type                       hive\nspark.sql.catalog.iceberg                                  org.apache.iceberg.spark.SparkCatalog\nspark.sql.catalog.iceberg.type                             hadoop\nspark.sql.catalog.iceberg.warehouse                        s3a://defaultfs/iceberg/\n# spark.sql.catalog.iceberg.io-impl                        org.apache.iceberg.aws.s3.S3FileIO\nspark.sql.catalog.iceberg.s3.endpoint                      http://minio.sandbox.net:9010\nspark.sql.defaultCatalog                                   iceberg\n\n\n#\n# spark.kerberos.principal                                   zeppelin@SANDBOX.NET\n# spark.kerberos.keytab                                      /apps/security/keytabs/users/zeppelin.keytab\n# spark.yarn.am.extraJavaOptions                             -Djava.security.krb5.conf\u003d/etc/krb5.conf\n# spark.driver.extraJavaOptions                              -Djava.security.krb5.conf\u003d/etc/krb5.conf\n# spark.executor.extraJavaOptions                            -Djava.security.krb5.conf\u003d/etc/krb5.conf\n\n\n",
       "user": "anonymous",
-      "dateUpdated": "2024-03-06 01:40:44.892",
+      "dateUpdated": "2024-10-14 03:55:24.256",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -14,7 +14,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/text",
-        "fontSize": 12.0,
+        "fontSize": 10.0,
         "results": {},
         "enabled": true
       },
@@ -32,14 +32,14 @@
       "jobName": "paragraph_1709684133769_1324797460",
       "id": "paragraph_1709684133769_1324797460",
       "dateCreated": "2024-03-06 00:15:33.769",
-      "dateStarted": "2024-03-06 01:40:44.898",
-      "dateFinished": "2024-03-06 01:40:44.909",
+      "dateStarted": "2024-10-14 03:55:24.260",
+      "dateFinished": "2024-10-14 03:55:24.268",
       "status": "FINISHED"
     },
     {
-      "text": "%spark\n",
+      "text": "%spark\n\nspark.version",
       "user": "anonymous",
-      "dateUpdated": "2024-03-06 01:40:49.035",
+      "dateUpdated": "2024-10-14 03:55:35.244",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -59,11 +59,11 @@
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
+        "code": "SUCCESS",
         "msg": [
           {
             "type": "TEXT",
-            "data": "org.apache.zeppelin.interpreter.InterpreterException: java.lang.NoSuchMethodError: scala.tools.nsc.Settings.usejavacp()Lscala/tools/nsc/settings/AbsSettings$AbsSetting;\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.open(LazyOpenInterpreter.java:76)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:833)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:741)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:172)\n\tat org.apache.zeppelin.scheduler.AbstractScheduler.runJob(AbstractScheduler.java:132)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler.lambda$runJobInScheduler$0(FIFOScheduler.java:42)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\tat java.lang.Thread.run(Thread.java:750)\nCaused by: java.lang.NoSuchMethodError: scala.tools.nsc.Settings.usejavacp()Lscala/tools/nsc/settings/AbsSettings$AbsSetting;\n\tat org.apache.zeppelin.spark.SparkScala212Interpreter.open(SparkScala212Interpreter.scala:66)\n\tat org.apache.zeppelin.spark.SparkInterpreter.open(SparkInterpreter.java:121)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.open(LazyOpenInterpreter.java:70)\n\t... 8 more\n"
+            "data": "\u001b[1m\u001b[34mres1\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m \u003d 3.4.1\n"
           }
         ]
       },
@@ -73,14 +73,14 @@
       "jobName": "paragraph_1709685364944_371914167",
       "id": "paragraph_1709685364944_371914167",
       "dateCreated": "2024-03-06 00:36:04.944",
-      "dateStarted": "2024-03-06 01:40:49.037",
-      "dateFinished": "2024-03-06 01:41:40.623",
-      "status": "ERROR"
+      "dateStarted": "2024-10-14 03:55:35.248",
+      "dateFinished": "2024-10-14 03:56:02.349",
+      "status": "FINISHED"
     },
     {
       "text": "%spark\n\n# Disable below line to see INFO logs\nspark.sparkContext.setLogLevel(\"ERROR\")\n",
       "user": "anonymous",
-      "dateUpdated": "2024-03-06 00:43:46.810",
+      "dateUpdated": "2024-10-14 03:27:18.141",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -91,7 +91,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/scala",
-        "fontSize": 12.0,
+        "fontSize": 10.0,
         "results": {},
         "enabled": true
       },
@@ -105,6 +105,340 @@
       "jobName": "paragraph_1709685384287_1667581926",
       "id": "paragraph_1709685384287_1667581926",
       "dateCreated": "2024-03-06 00:36:24.287",
+      "status": "READY"
+    },
+    {
+      "text": "%spark.sql\n\nUSE iceberg;\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-14 03:56:05.994",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1728877911911_1895057008",
+      "id": "paragraph_1728877911911_1895057008",
+      "dateCreated": "2024-10-14 03:51:51.912",
+      "dateStarted": "2024-10-14 03:56:05.997",
+      "dateFinished": "2024-10-14 03:56:09.969",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n\nCREATE DATABASE IF NOT EXISTS nyc;",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-14 03:56:15.480",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1728878005243_1827588179",
+      "id": "paragraph_1728878005243_1827588179",
+      "dateCreated": "2024-10-14 03:53:25.243",
+      "dateStarted": "2024-10-14 03:56:15.482",
+      "dateFinished": "2024-10-14 04:00:56.136",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n\nDESCRIBE DATABASE EXTENDED nyc;",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-14 04:02:00.166",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "info_name": "string",
+                      "info_value": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "info_name\tinfo_value\nCatalog Name\ticeberg\nNamespace Name\tnyc\nLocation\ts3a://defaultfs/iceberg/nyc\nProperties\t\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1728878030088_1518754421",
+      "id": "paragraph_1728878030088_1518754421",
+      "dateCreated": "2024-10-14 03:53:50.088",
+      "dateStarted": "2024-10-14 04:01:59.111",
+      "dateFinished": "2024-10-14 04:01:59.908",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n\nCREATE TABLE iceberg.nyc.taxis\n(\n  vendor_id bigint,\n  trip_id bigint,\n  trip_distance float,\n  fare_amount double,\n  store_and_fwd_flag string\n)\nPARTITIONED BY (vendor_id);\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-14 04:02:34.110",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1728877510189_1030751597",
+      "id": "paragraph_1728877510189_1030751597",
+      "dateCreated": "2024-10-14 03:45:10.190",
+      "dateStarted": "2024-10-14 04:02:34.114",
+      "dateFinished": "2024-10-14 04:02:34.552",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n\nINSERT INTO iceberg.nyc.taxis\nVALUES (1, 1000371, 1.8, 15.32, \u0027N\u0027), (2, 1000372, 2.5, 22.15, \u0027N\u0027), (2, 1000373, 0.9, 9.01, \u0027N\u0027), (1, 1000374, 8.4, 42.13, \u0027Y\u0027);",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-14 04:02:37.715",
+      "progress": 20,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d0"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d1"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1728877652650_1529614936",
+      "id": "paragraph_1728877652650_1529614936",
+      "dateCreated": "2024-10-14 03:47:32.650",
+      "dateStarted": "2024-10-14 04:02:37.717",
+      "dateFinished": "2024-10-14 04:02:41.825",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n\nSELECT * FROM iceberg.nyc.taxis;\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-14 04:03:45.945",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "vendor_id": "string",
+                      "trip_id": "string",
+                      "trip_distance": "string",
+                      "fare_amount": "string",
+                      "store_and_fwd_flag": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "vendor_id\ttrip_id\ttrip_distance\tfare_amount\tstore_and_fwd_flag\n1\t1000371\t1.8\t15.32\tN\n1\t1000374\t8.4\t42.13\tY\n2\t1000372\t2.5\t22.15\tN\n2\t1000373\t0.9\t9.01\tN\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d2"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1728878536915_50624199",
+      "id": "paragraph_1728878536915_50624199",
+      "dateCreated": "2024-10-14 04:02:16.916",
+      "dateStarted": "2024-10-14 04:03:44.322",
+      "dateFinished": "2024-10-14 04:03:45.644",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-14 04:03:44.322",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1728878624322_2133658996",
+      "id": "paragraph_1728878624322_2133658996",
+      "dateCreated": "2024-10-14 04:03:44.322",
       "status": "READY"
     }
   ],

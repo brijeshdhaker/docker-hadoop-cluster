@@ -3,7 +3,7 @@
     {
       "text": "%mysql\n\nshow databases;",
       "user": "anonymous",
-      "dateUpdated": "2024-09-15 15:11:09.130",
+      "dateUpdated": "2024-10-14 03:23:13.226",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -13,7 +13,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
-        "fontSize": 12.0,
+        "fontSize": 10.0,
         "results": {
           "0": {
             "graph": {
@@ -54,7 +54,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "Database\nPUBLIC\ninformation_schema\nmysql\nperformance_schema\nsys\n"
+            "data": "Database\nPUBLIC\nSANDBOXDB\ninformation_schema\nmysql\nperformance_schema\nsys\n"
           }
         ]
       },
@@ -64,18 +64,18 @@
       "jobName": "paragraph_1669944087805_535027863",
       "id": "paragraph_1669944087805_535027863",
       "dateCreated": "2022-12-02 01:21:27.806",
-      "dateStarted": "2024-09-15 15:11:09.146",
-      "dateFinished": "2024-09-15 15:11:09.462",
+      "dateStarted": "2024-10-14 03:22:47.873",
+      "dateFinished": "2024-10-14 03:22:51.268",
       "status": "FINISHED"
     },
     {
       "text": "%mysql\n\nSELECT version();",
       "user": "anonymous",
-      "dateUpdated": "2024-10-13 04:44:24.479",
+      "dateUpdated": "2024-10-14 03:23:18.125",
       "progress": 0,
       "config": {
         "colWidth": 12.0,
-        "fontSize": 9.0,
+        "fontSize": 10.0,
         "results": {
           "0": {
             "graph": {
@@ -132,8 +132,8 @@
       "jobName": "paragraph_1726413252070_41954641",
       "id": "paragraph_1726413252070_41954641",
       "dateCreated": "2024-09-15 15:14:12.070",
-      "dateStarted": "2024-09-15 15:14:20.950",
-      "dateFinished": "2024-09-15 15:14:20.996",
+      "dateStarted": "2024-10-14 03:23:00.891",
+      "dateFinished": "2024-10-14 03:23:00.919",
       "status": "FINISHED"
     },
     {
@@ -167,7 +167,7 @@
     {
       "text": "%mysql\n\nCREATE USER \u0027root\u0027@\u0027%\u0027 IDENTIFIED BY \u0027p@SSW0rd\u0027;\nREVOKE ALL PRIVILEGES, GRANT OPTION FROM \u0027root\u0027@\u0027%\u0027;\nGRANT ALL PRIVILEGES ON *.* TO \u0027root\u0027@\u0027%\u0027;\n\nFLUSH PRIVILEGES;\n",
       "user": "anonymous",
-      "dateUpdated": "2022-12-02 01:58:38.430",
+      "dateUpdated": "2024-10-14 03:23:32.964",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -177,7 +177,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
-        "fontSize": 12.0,
+        "fontSize": 10.0,
         "results": {},
         "enabled": true
       },
@@ -333,7 +333,7 @@
       "title": "Create Airflow User",
       "text": "%mysql\n\nCREATE USER \u0027airflow\u0027@\u0027localhost\u0027 IDENTIFIED BY \u0027airflow\u0027;\nREVOKE ALL PRIVILEGES, GRANT OPTION FROM \u0027airflow\u0027@\u0027localhost\u0027;\nGRANT ALL PRIVILEGES ON airflow.* TO \u0027airflow\u0027@\u0027localhost\u0027;\n\nCREATE USER \u0027airflow\u0027@\u0027%\u0027 IDENTIFIED BY \u0027airflow\u0027;\nREVOKE ALL PRIVILEGES, GRANT OPTION FROM \u0027airflow\u0027@\u0027%\u0027;\nGRANT ALL PRIVILEGES ON airflow.* TO \u0027airflow\u0027@\u0027%\u0027;\n\nFLUSH PRIVILEGES;",
       "user": "anonymous",
-      "dateUpdated": "2024-09-15 15:19:09.950",
+      "dateUpdated": "2024-10-14 03:23:44.508",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -343,7 +343,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
-        "fontSize": 12.0,
+        "fontSize": 10.0,
         "title": true,
         "results": {},
         "enabled": true
@@ -364,7 +364,7 @@
       "title": "Create Hive User",
       "text": "%mysql\n\nCREATE USER \u0027hiveadmin\u0027@\u0027localhost\u0027 IDENTIFIED BY \u0027hiveadmin\u0027;\nREVOKE ALL PRIVILEGES, GRANT OPTION FROM \u0027hiveadmin\u0027@\u0027localhost\u0027;\nGRANT ALL PRIVILEGES ON metastore.* TO \u0027hiveadmin\u0027@\u0027localhost\u0027;\n\nCREATE USER \u0027hiveadmin\u0027@\u0027%\u0027 IDENTIFIED BY \u0027hiveadmin\u0027;\nREVOKE ALL PRIVILEGES, GRANT OPTION FROM \u0027hiveadmin\u0027@\u0027%\u0027;\nGRANT ALL PRIVILEGES ON metastore.* TO \u0027hiveadmin\u0027@\u0027%\u0027;\n\nFLUSH PRIVILEGES;",
       "user": "anonymous",
-      "dateUpdated": "2022-12-02 02:01:28.433",
+      "dateUpdated": "2024-10-14 03:23:53.895",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -374,7 +374,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
-        "fontSize": 12.0,
+        "fontSize": 10.0,
         "title": true,
         "results": {},
         "enabled": true

@@ -3,7 +3,7 @@
     {
       "text": "%spark.conf\n\nSPARK_HOME \t                                                /opt/spark\nspark.app.name                                              spark_minio\nspark.master                                                local[*]\nspark.jars.ivy                                              /apps/.ivy2\nspark.jars.packages                                         org.apache.hadoop:hadoop-aws:3.3.4\nspark.driver.memory                                         640M\nspark.executor.instances                                    2\nspark.executor.memory                                       640M\n\n#\nspark.hadoop.fs.defaultFS                                   s3a://defaultfs/\nspark.hadoop.fs.s3a.endpoint                                http://minio.sandbox.net:9010\nspark.hadoop.fs.s3a.access.key                              pgm2H2bR7a5kMc5XCYdO\nspark.hadoop.fs.s3a.secret.key                              zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG\nspark.hadoop.fs.s3a.path.style.access                       true\nspark.hadoop.fs.s3a.aws.credentials.provider                org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider\nspark.hadoop.fs.s3a.impl                                    org.apache.hadoop.fs.s3a.S3AFileSystem",
       "user": "anonymous",
-      "dateUpdated": "2024-09-28 04:41:20.230",
+      "dateUpdated": "2024-10-14 03:24:09.573",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -14,7 +14,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/text",
-        "fontSize": 12.0,
+        "fontSize": 10.0,
         "results": {},
         "enabled": true
       },
@@ -39,7 +39,7 @@
     {
       "text": "%spark\n\n\nspark",
       "user": "anonymous",
-      "dateUpdated": "2024-09-28 04:22:23.674",
+      "dateUpdated": "2024-10-14 03:24:16.230",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -50,7 +50,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/scala",
-        "fontSize": 9.0,
+        "fontSize": 10.0,
         "results": {},
         "enabled": true
       },
@@ -80,11 +80,11 @@
     {
       "text": "%spark\n\n\nval sparkDF \u003d spark.read.parquet(\"s3a://defaultfs/warehouse/tablespace/managed/hive/transactions\")\nsparkDF.createOrReplaceTempView(\"transaction_details\")\n// spark.sql(\"SELECT * from transaction_details\").explain()\n    \nval sparkSQL \u003d spark.sql(\"SELECT * from transaction_details\")\nsparkSQL.printSchema()\n\n//\nsparkSQL.show()",
       "user": "anonymous",
-      "dateUpdated": "2024-09-28 04:24:25.104",
+      "dateUpdated": "2024-10-14 03:24:30.596",
       "progress": 0,
       "config": {
         "colWidth": 12.0,
-        "fontSize": 9.0,
+        "fontSize": 10.0,
         "results": {},
         "enabled": true,
         "editorSetting": {
@@ -92,7 +92,8 @@
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
-        }
+        },
+        "editorMode": "ace/mode/scala"
       },
       "settings": {
         "params": {},
@@ -136,11 +137,11 @@
     {
       "text": "%spark.sql\n\n\nSELECT *, FROM_UNIXTIME(addts) AS txn_datetime from transaction_details;",
       "user": "anonymous",
-      "dateUpdated": "2024-10-13 04:42:16.525",
+      "dateUpdated": "2024-10-14 03:24:25.957",
       "progress": 0,
       "config": {
         "colWidth": 12.0,
-        "fontSize": 9.0,
+        "fontSize": 10.0,
         "results": {
           "0": {
             "graph": {
@@ -227,12 +228,12 @@
         },
         "enabled": true,
         "editorSetting": {
-          "language": "scala",
+          "language": "sql",
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
         },
-        "editorMode": "ace/mode/scala"
+        "editorMode": "ace/mode/sql"
       },
       "settings": {
         "params": {},
@@ -276,11 +277,11 @@
     {
       "text": "%spark.sql\n\nSELECT \n        id, \n        uuid,\n        FROM_UNIXTIME(addts) AS txn_datetime,\n        FROM_UNIXTIME(addts,\u0027yyyy-MM-dd\u0027) AS txn_date,\n        current_date() AS today_date,\n        unix_timestamp() AS now_timestamp,\n        now() AS time_now,\n        current_timezone() as time_zone,\n        quarter(FROM_UNIXTIME(addts)) as current_quarter\n    from transaction_details",
       "user": "anonymous",
-      "dateUpdated": "2024-10-13 04:42:16.702",
+      "dateUpdated": "2024-10-14 03:24:37.901",
       "progress": 0,
       "config": {
         "colWidth": 12.0,
-        "fontSize": 9.0,
+        "fontSize": 10.0,
         "results": {
           "0": {
             "graph": {
@@ -320,12 +321,12 @@
         },
         "enabled": true,
         "editorSetting": {
-          "language": "scala",
+          "language": "sql",
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
         },
-        "editorMode": "ace/mode/scala"
+        "editorMode": "ace/mode/sql"
       },
       "settings": {
         "params": {},
@@ -369,11 +370,11 @@
     {
       "text": "%spark.sql\n\nSELECT count(id) from transaction_details where txn_receive_date \u003d \u00272024-02-29\u0027;",
       "user": "anonymous",
-      "dateUpdated": "2024-09-28 04:41:52.834",
+      "dateUpdated": "2024-10-14 03:24:43.267",
       "progress": 0,
       "config": {
         "colWidth": 12.0,
-        "fontSize": 9.0,
+        "fontSize": 10.0,
         "results": {},
         "enabled": true,
         "editorSetting": {
@@ -381,7 +382,8 @@
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
-        }
+        },
+        "editorMode": "ace/mode/sql"
       },
       "settings": {
         "params": {},
@@ -398,11 +400,11 @@
     {
       "text": "%spark.sql\n\nSELECT \n    product,\n    amount,\n    city\nfrom (\n    SELECT \n        id, \n        uuid,\n        cardtype,\n        website,\n        product,\n        amount,\n        city,\n        country,\n        FROM_UNIXTIME(addts) AS txn_datetime,\n        RANK() OVER (PARTITION BY city order by amount DESC) AS RANK\n    from transaction_details\n) tmp \nwhere \nRANK \u003c\u003d 2;",
       "user": "anonymous",
-      "dateUpdated": "2024-10-13 04:42:16.868",
+      "dateUpdated": "2024-10-14 03:24:49.155",
       "progress": 0,
       "config": {
         "colWidth": 12.0,
-        "fontSize": 9.0,
+        "fontSize": 10.0,
         "results": {
           "0": {
             "graph": {
@@ -436,12 +438,12 @@
         },
         "enabled": true,
         "editorSetting": {
-          "language": "scala",
+          "language": "sql",
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
         },
-        "editorMode": "ace/mode/scala"
+        "editorMode": "ace/mode/sql"
       },
       "settings": {
         "params": {},
@@ -485,11 +487,11 @@
     {
       "text": "%spark.sql\n\nSELECT \n    cardtype,\n    sum(CAST(amount AS bigint)) DIV 1000 As MD_SELL\nfrom transaction_details\n    group by cardtype;",
       "user": "anonymous",
-      "dateUpdated": "2024-10-13 04:42:17.052",
+      "dateUpdated": "2024-10-14 03:24:54.210",
       "progress": 20,
       "config": {
         "colWidth": 12.0,
-        "fontSize": 9.0,
+        "fontSize": 10.0,
         "results": {
           "0": {
             "graph": {
@@ -522,12 +524,12 @@
         },
         "enabled": true,
         "editorSetting": {
-          "language": "scala",
+          "language": "sql",
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
         },
-        "editorMode": "ace/mode/scala"
+        "editorMode": "ace/mode/sql"
       },
       "settings": {
         "params": {},
@@ -571,7 +573,7 @@
     {
       "text": "%pyspark\n\na \u003d spark.sparkContext.appName\nm \u003d spark.sparkContext.master\ne \u003d spark.sparkContext.environment\n\n\nprint(a)\nprint(m)\nprint(e)",
       "user": "anonymous",
-      "dateUpdated": "2024-09-28 04:30:19.375",
+      "dateUpdated": "2024-10-14 03:25:00.509",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -582,7 +584,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/python",
-        "fontSize": 12.0,
+        "fontSize": 10.0,
         "results": {},
         "enabled": true
       },
