@@ -39,7 +39,7 @@
     {
       "text": "%spark\n\nspark.version",
       "user": "anonymous",
-      "dateUpdated": "2024-10-14 03:55:35.244",
+      "dateUpdated": "2024-10-14 04:23:15.135",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -50,7 +50,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/scala",
-        "fontSize": 12.0,
+        "fontSize": 10.0,
         "results": {},
         "enabled": true
       },
@@ -110,7 +110,7 @@
     {
       "text": "%spark.sql\n\nUSE iceberg;\n",
       "user": "anonymous",
-      "dateUpdated": "2024-10-14 03:56:05.994",
+      "dateUpdated": "2024-10-14 04:23:03.858",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -121,7 +121,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
-        "fontSize": 9.0,
+        "fontSize": 10.0,
         "results": {},
         "enabled": true
       },
@@ -146,7 +146,7 @@
     {
       "text": "%spark.sql\n\nCREATE DATABASE IF NOT EXISTS nyc;",
       "user": "anonymous",
-      "dateUpdated": "2024-10-14 03:56:15.480",
+      "dateUpdated": "2024-10-14 04:22:56.198",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -157,7 +157,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
-        "fontSize": 9.0,
+        "fontSize": 10.0,
         "results": {},
         "enabled": true
       },
@@ -182,7 +182,7 @@
     {
       "text": "%spark.sql\n\nDESCRIBE DATABASE EXTENDED nyc;",
       "user": "anonymous",
-      "dateUpdated": "2024-10-14 04:02:00.166",
+      "dateUpdated": "2024-10-14 04:22:50.545",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -193,7 +193,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
-        "fontSize": 9.0,
+        "fontSize": 10.0,
         "results": {
           "0": {
             "graph": {
@@ -252,7 +252,7 @@
     {
       "text": "%spark.sql\n\nCREATE TABLE iceberg.nyc.taxis\n(\n  vendor_id bigint,\n  trip_id bigint,\n  trip_distance float,\n  fare_amount double,\n  store_and_fwd_flag string\n)\nPARTITIONED BY (vendor_id);\n",
       "user": "anonymous",
-      "dateUpdated": "2024-10-14 04:02:34.110",
+      "dateUpdated": "2024-10-14 04:22:43.422",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -263,7 +263,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
-        "fontSize": 9.0,
+        "fontSize": 10.0,
         "results": {},
         "enabled": true
       },
@@ -288,7 +288,7 @@
     {
       "text": "%spark.sql\n\nINSERT INTO iceberg.nyc.taxis\nVALUES (1, 1000371, 1.8, 15.32, \u0027N\u0027), (2, 1000372, 2.5, 22.15, \u0027N\u0027), (2, 1000373, 0.9, 9.01, \u0027N\u0027), (1, 1000374, 8.4, 42.13, \u0027Y\u0027);",
       "user": "anonymous",
-      "dateUpdated": "2024-10-14 04:02:37.715",
+      "dateUpdated": "2024-10-14 04:22:33.156",
       "progress": 20,
       "config": {
         "editorSetting": {
@@ -299,7 +299,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
-        "fontSize": 9.0,
+        "fontSize": 10.0,
         "results": {},
         "enabled": true
       },
@@ -340,7 +340,7 @@
     {
       "text": "%spark.sql\n\nSELECT * FROM iceberg.nyc.taxis;\n",
       "user": "anonymous",
-      "dateUpdated": "2024-10-14 04:03:45.945",
+      "dateUpdated": "2024-10-14 04:22:27.091",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -351,7 +351,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
-        "fontSize": 9.0,
+        "fontSize": 10.0,
         "results": {
           "0": {
             "graph": {
@@ -426,7 +426,7 @@
     {
       "text": "%spark.sql\n\nSELECT file_path, file_format, record_count, null_value_counts, lower_bounds, upper_bounds\nFROM nyc.taxis.files ",
       "user": "anonymous",
-      "dateUpdated": "2024-10-14 04:07:49.926",
+      "dateUpdated": "2024-10-14 04:22:20.224",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -437,7 +437,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
-        "fontSize": 9.0,
+        "fontSize": 10.0,
         "results": {
           "0": {
             "graph": {
@@ -446,7 +446,85 @@
               "optionOpen": false,
               "setting": {
                 "table": {
-                  "tableGridState": {},
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "file_path0",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "file_format1",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {
+                          "priority": 0.0,
+                          "direction": "asc"
+                        },
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "record_count2",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "null_value_counts3",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "lower_bounds4",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "upper_bounds5",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1.0,
+                      "paginationPageSize": 250.0
+                    }
+                  },
                   "tableColumnTypeState": {
                     "names": {
                       "file_path": "string",
