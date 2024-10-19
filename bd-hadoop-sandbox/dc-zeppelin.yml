@@ -52,9 +52,9 @@ services:
     ports:
       - "9080:8080"
       - "4040:4040"
-    #    depends_on:
-    #      datanode:
-    #        condition: service_healthy
+    depends_on:
+      minio:
+        condition: service_healthy
     healthcheck:
       test: echo zeppelin.sandbox.net || exit 1
       retries: 20

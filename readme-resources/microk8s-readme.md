@@ -2,7 +2,7 @@
 sudo snap install microk8s --classic
 
 #
-microk8s start
+sudo microk8s start
 
 #
 sudo microk8s status --wait-ready
@@ -12,7 +12,7 @@ mkdir -p ~/.kube/
 sudo microk8s.config  > ~/.kube/config
 
 #
-microk8s stop
+sudo microk8s stop
 
 #
 microk8s enable dns

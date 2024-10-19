@@ -76,3 +76,7 @@ Hello
 EOF
 
 python -m http.server 8888
+
+#
+#
+smbclient -L //192.168.80.1 -U brijeshdhaker@gmail.com --password=Windows2024$ --workgroup=WORKGROUP

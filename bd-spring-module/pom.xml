@@ -16,9 +16,11 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <confluent.version>7.5.2</confluent.version>
+        <docker.host>unix:///var/run/docker.sock</docker.host>
     </properties>
 
     <build>
+        <finalName>bd-spring-module</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -42,6 +44,58 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <!-- Jar local copy -->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                    <execution>
+                        <id>copy-artifact</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.basedir}/jars/</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/target</directory>
+                                    <includes>
+                                        <include>${project.build.finalName}.${project.packaging}</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Maven Docker plugins -->
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.45.1</version>
+                <executions>
+                    <execution>
+                        <id>docker-build</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!--
+                    <dockerHost>${docker.host}</dockerHost>
+                    <certPath>${docker.cert.path}</certPath>
+                    -->
+                    <useColor>true</useColor>
+                    <imagesMap>
+                        <service>
+                            <name>brijeshdhaker/%a:%v</name>
+                        </service>
+                    </imagesMap>
+                </configuration>
             </plugin>
         </plugins>
     </build>
