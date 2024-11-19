@@ -4,19 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-10-14 add spark-delta-table notebook.">
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme-resources/k8s-readme.md" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-10-19 add docker-plugin for springboot.">
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/.helmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/Chart.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/templates/NOTES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/templates/_helpers.tpl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/templates/configmap.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/templates/deployment.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/templates/hpa.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/templates/ingress.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/templates/service.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/templates/serviceaccount.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/templates/tests/test-connection.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme-resources/helm-readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-zeppelin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-zeppelin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/kubernetes/app-springboot.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/k8s/app-springboot.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/kubernetes/app-svc.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/k8s/app-svc.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/kubernetes/app-volume-cliam.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/k8s/app-volume-cliam.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/kubernetes/app-volume.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/k8s/app-volume.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/microk8s-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/microk8s-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/minio-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/minio-help.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/unix-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/unix-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-base.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-base.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/spark-minio_2KBRMWP59.zpln" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/spark-minio_2KBRMWP59.zpln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/table-changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/table-changelog.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/audit-type-tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/audit-type-tables.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,6 +245,7 @@
     "Python.test.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
@@ -263,11 +273,11 @@
       <recent name="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-spring-module/helm" />
       <recent name="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001" />
       <recent name="$PROJECT_DIR$/bd-spark-module/src/main/resources" />
       <recent name="$PROJECT_DIR$/bd-spark-module/setup" />
       <recent name="$PROJECT_DIR$/readme-resources/images" />
-      <recent name="$PROJECT_DIR$/readme-resources" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -284,6 +294,17 @@
     </key>
   </component>
   <component name="RunManager" selected="Docker.zeppelin">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -336,17 +357,6 @@
       <option name="MAIN_CLASS_NAME" value="org.examples.sb.SandboxSbApplicationTest" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -537,14 +547,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00039" summary="2024-09-17 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1726560700124</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1726560700124</updated>
     </task>
     <task id="LOCAL-00040" summary="2024-09-17 Update Project Configuration.">
       <option name="closed" value="true" />
@@ -930,7 +932,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728879819396</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="2024-10-19 add docker-plugin for springboot.">
+      <option name="closed" value="true" />
+      <created>1729308933985</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1729308933987</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -956,7 +966,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-02-26 Update Confluent Kafka Consumers." />
     <MESSAGE value="2024-02-27 Update Confluent Kafka Consumers." />
     <MESSAGE value="2024-02-28 Update Confluent Kafka Consumers." />
     <MESSAGE value="2024-02-29 Update Confluent Kafka Consumers." />
@@ -981,7 +990,8 @@
     <MESSAGE value="2024-10-06 Update Project Configuration." />
     <MESSAGE value="2024-10-13 add spark-delta-table notebook." />
     <MESSAGE value="2024-10-14 add spark-delta-table notebook." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-10-14 add spark-delta-table notebook." />
+    <MESSAGE value="2024-10-19 add docker-plugin for springboot." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-10-19 add docker-plugin for springboot." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

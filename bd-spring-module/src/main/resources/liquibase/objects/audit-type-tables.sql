@@ -2,7 +2,7 @@
  * Author:  brijeshdhaker
  * Created: Jan 12, 2021
  */
-CREATE TABLE  AUDIT_TYPE (
+CREATE TABLE  AUDIT_TYPES (
     ID          bigint(8) AUTO_INCREMENT,
     AUDIT_TYPE  varchar(50),
     DESCRIPTION varchar(200),
@@ -11,11 +11,11 @@ CREATE TABLE  AUDIT_TYPE (
     primary key(ID)
 );
 
-insert into AUDIT_TYPE (AUDIT_TYPE , DESCRIPTION , ADD_TS, UPD_TS ) values
+insert into AUDIT_TYPES (AUDIT_TYPE , DESCRIPTION , ADD_TS, UPD_TS ) values
 ('USER', 'Application Audit Logs',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
 
-insert into AUDIT_TYPE (AUDIT_TYPE , DESCRIPTION , ADD_TS, UPD_TS ) values
+insert into AUDIT_TYPES (AUDIT_TYPE , DESCRIPTION , ADD_TS, UPD_TS ) values
 ('SYSTEM', 'System Audit Logs',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
 
-insert into AUDIT_TYPE (AUDIT_TYPE , DESCRIPTION , ADD_TS, UPD_TS ) values
+insert into AUDIT_TYPES (AUDIT_TYPE , DESCRIPTION , ADD_TS, UPD_TS ) values
 ('BATCH', 'System Audit Logs',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());

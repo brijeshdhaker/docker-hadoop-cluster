@@ -48,7 +48,7 @@ databaseChangeLog:
                     nullable: false
                     primaryKey: true
                     primaryKeyName: pk_role
-                  name: ID
+                  name: ROLE_ID
                   type: BIGINT
               - column:
                   constraints:
@@ -67,7 +67,7 @@ databaseChangeLog:
               - column:
                   name: UPD_TS
                   type: TIMESTAMP
-            tableName: ROLE
+            tableName: ROLES
   - changeSet:
       id: JIRA-0001-T-003
       author: Brijesh D.
@@ -122,20 +122,8 @@ databaseChangeLog:
               - column:
                   constraints:
                     nullable: false
-                  name: ACTION
-                  type: VARCHAR(250)
-              - column:
-                  name: DESCRIPTION
-                  type: VARCHAR(512)
-              - column:
-                  name: REF_ID
-                  type: VARCHAR(100)
-              - column:
-                  name: REF_TYPE
-                  type: VARCHAR(100)    
-              - column:
-                  name: USERID
-                  type: VARCHAR(50)
+                  name: ACTION_CONTEXT   #{action:'', description:"", userid:"", refId:"", refType:""}
+                  type: TEXT
               - column:
                   name: ADD_TS
                   type: TIMESTAMP
@@ -143,7 +131,7 @@ databaseChangeLog:
               - column:
                   name: UPD_TS
                   type: TIMESTAMP    
-            tableName: AUDITLOG
+            tableName: AUDIT_LOGS
   - changeSet:
       id:  JIRA-0001-T-005
       author:  Brijesh D.
@@ -156,7 +144,7 @@ databaseChangeLog:
                     nullable: false
                     primaryKey: true
                     primaryKeyName: pk_products
-                  name: ID
+                  name: PRODUCT_ID
                   type: BIGINT
               - column:
                   constraints:
@@ -167,7 +155,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
                   name: PRICE
-                  type: VARCHAR(250)
+                  type: DECIMAL(6,2)
               - column:
                   name: STATUS
                   type: VARCHAR(50)
@@ -175,7 +163,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
                   name: QUANTITY
-                  type: BIGINT
+                  type: INTEGER
               - column:
                   name: ADD_TS
                   type: TIMESTAMP
@@ -184,6 +172,46 @@ databaseChangeLog:
                   name: UPD_TS
                   type: TIMESTAMP
             tableName: PRODUCTS
+  - changeSet:
+      id:  JIRA-0001-T-005
+      author:  Brijesh D.
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: false
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_products
+                  name: ORDER_ID
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: USER_ID
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: PRODUCT_ID
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: QUANTITY
+                  type: BIGINT
+              - column:
+                  name: STATUS
+                  type: VARCHAR(50)
+              - column:
+                  name: ADD_TS
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: UPD_TS
+                  type: TIMESTAMP
+            tableName: ORDERS
   - changeSet:
       id:  JIRA-0001-T-006
       author:  Brijesh D.
@@ -197,6 +225,11 @@ databaseChangeLog:
                     primaryKey: true
                     primaryKeyName: pk_account
                   name: ID
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: USERID
                   type: BIGINT
               - column:
                   constraints:

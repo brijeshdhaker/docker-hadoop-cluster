@@ -118,9 +118,9 @@ include:
   #     - "thinkpad.sandbox.net:172.18.0.1"
 
 
-  #
-  #
-  #
+#
+# Docker Volumes
+#
 volumes:
   #
   sandbox_apps_path:
@@ -129,6 +129,8 @@ volumes:
   sandbox_security_secrets:
     external: true
 
+#
+# Docker Networks
 #
 networks:
   default:

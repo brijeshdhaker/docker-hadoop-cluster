@@ -3,7 +3,7 @@
     {
       "text": "%spark.conf\n\nSPARK_HOME \t                                                /opt/spark\nspark.app.name                                              spark_minio\nspark.master                                                local[*]\nspark.jars.ivy                                              /apps/.ivy2\nspark.jars.packages                                         org.apache.hadoop:hadoop-aws:3.3.4\nspark.driver.memory                                         640M\nspark.executor.instances                                    2\nspark.executor.memory                                       640M\n\n#\nspark.hadoop.fs.defaultFS                                   s3a://defaultfs/\nspark.hadoop.fs.s3a.endpoint                                http://minio.sandbox.net:9010\nspark.hadoop.fs.s3a.access.key                              pgm2H2bR7a5kMc5XCYdO\nspark.hadoop.fs.s3a.secret.key                              zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG\nspark.hadoop.fs.s3a.path.style.access                       true\nspark.hadoop.fs.s3a.aws.credentials.provider                org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider\nspark.hadoop.fs.s3a.impl                                    org.apache.hadoop.fs.s3a.S3AFileSystem",
       "user": "anonymous",
-      "dateUpdated": "2024-10-14 03:24:09.573",
+      "dateUpdated": "2024-11-19 03:25:41.621",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -32,14 +32,14 @@
       "jobName": "paragraph_1727497128157_1490702358",
       "id": "paragraph_1638439432008_394136546",
       "dateCreated": "2024-09-28 04:18:48.157",
-      "dateStarted": "2024-09-28 04:22:20.807",
-      "dateFinished": "2024-09-28 04:22:20.852",
+      "dateStarted": "2024-11-19 03:25:41.708",
+      "dateFinished": "2024-11-19 03:25:42.256",
       "status": "FINISHED"
     },
     {
       "text": "%spark\n\n\nspark",
       "user": "anonymous",
-      "dateUpdated": "2024-10-14 03:24:16.230",
+      "dateUpdated": "2024-11-19 03:25:48.779",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -63,7 +63,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mres1\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.SparkSession\u001b[0m \u003d org.apache.spark.sql.SparkSession@7444ed25\n"
+            "data": "\u001b[1m\u001b[34mres1\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.SparkSession\u001b[0m \u003d org.apache.spark.sql.SparkSession@55de408\n"
           }
         ]
       },
@@ -73,15 +73,15 @@
       "jobName": "paragraph_1727497128158_1231614521",
       "id": "paragraph_1712292398330_1446997396",
       "dateCreated": "2024-09-28 04:18:48.158",
-      "dateStarted": "2024-09-28 04:22:23.681",
-      "dateFinished": "2024-09-28 04:22:49.928",
+      "dateStarted": "2024-11-19 03:25:48.808",
+      "dateFinished": "2024-11-19 03:28:41.700",
       "status": "FINISHED"
     },
     {
       "text": "%spark\n\n\nval sparkDF \u003d spark.read.parquet(\"s3a://defaultfs/warehouse/tablespace/managed/hive/transactions\")\nsparkDF.createOrReplaceTempView(\"transaction_details\")\n// spark.sql(\"SELECT * from transaction_details\").explain()\n    \nval sparkSQL \u003d spark.sql(\"SELECT * from transaction_details\")\nsparkSQL.printSchema()\n\n//\nsparkSQL.show()",
       "user": "anonymous",
-      "dateUpdated": "2024-10-14 03:24:30.596",
-      "progress": 0,
+      "dateUpdated": "2024-11-19 03:28:53.204",
+      "progress": 100,
       "config": {
         "colWidth": 12.0,
         "fontSize": 10.0,
@@ -130,15 +130,15 @@
       "jobName": "paragraph_1727497375046_559111933",
       "id": "paragraph_1727497375046_559111933",
       "dateCreated": "2024-09-28 04:22:55.047",
-      "dateStarted": "2024-09-28 04:24:25.108",
-      "dateFinished": "2024-09-28 04:24:35.121",
+      "dateStarted": "2024-11-19 03:28:53.209",
+      "dateFinished": "2024-11-19 03:30:15.570",
       "status": "FINISHED"
     },
     {
       "text": "%spark.sql\n\n\nSELECT *, FROM_UNIXTIME(addts) AS txn_datetime from transaction_details;",
       "user": "anonymous",
-      "dateUpdated": "2024-10-14 03:24:25.957",
-      "progress": 0,
+      "dateUpdated": "2024-11-19 03:31:29.019",
+      "progress": 100,
       "config": {
         "colWidth": 12.0,
         "fontSize": 10.0,
@@ -257,10 +257,10 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d4"
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d2"
             },
             {
-              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d5"
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d3"
             }
           ],
           "interpreterSettingId": "spark"
@@ -270,8 +270,8 @@
       "jobName": "paragraph_1727497552705_73246093",
       "id": "paragraph_1727497552705_73246093",
       "dateCreated": "2024-09-28 04:25:52.706",
-      "dateStarted": "2024-09-28 04:31:28.781",
-      "dateFinished": "2024-09-28 04:31:29.398",
+      "dateStarted": "2024-11-19 03:31:29.024",
+      "dateFinished": "2024-11-19 03:31:35.419",
       "status": "FINISHED"
     },
     {
@@ -368,14 +368,43 @@
       "status": "FINISHED"
     },
     {
-      "text": "%spark.sql\n\nSELECT count(id) from transaction_details where txn_receive_date \u003d \u00272024-02-29\u0027;",
+      "text": "%spark.sql\n\nSELECT count(id) AS RCOUNT, FROM_UNIXTIME(addts,\u0027yyyy-MM-dd\u0027) AS txn_date from transaction_details where group by txn_date having RCOUNT \u003e 50;",
       "user": "anonymous",
-      "dateUpdated": "2024-10-14 03:24:43.267",
+      "dateUpdated": "2024-11-19 03:36:40.656",
       "progress": 0,
       "config": {
         "colWidth": 12.0,
         "fontSize": 10.0,
-        "results": {},
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "RCOUNT": "string",
+                      "txn_date": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
         "enabled": true,
         "editorSetting": {
           "language": "sql",
@@ -389,19 +418,46 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "RCOUNT\ttxn_date\n99\t2024-09-28\n"
+          }
+        ]
+      },
       "apps": [],
-      "runtimeInfos": {},
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d12"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d13"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
       "progressUpdateIntervalMs": 500,
       "jobName": "paragraph_1727498500262_1952769129",
       "id": "paragraph_1727498500262_1952769129",
       "dateCreated": "2024-09-28 04:41:40.263",
-      "status": "READY"
+      "dateStarted": "2024-11-19 03:36:40.662",
+      "dateFinished": "2024-11-19 03:36:44.893",
+      "status": "FINISHED"
     },
     {
       "text": "%spark.sql\n\nSELECT \n    product,\n    amount,\n    city\nfrom (\n    SELECT \n        id, \n        uuid,\n        cardtype,\n        website,\n        product,\n        amount,\n        city,\n        country,\n        FROM_UNIXTIME(addts) AS txn_datetime,\n        RANK() OVER (PARTITION BY city order by amount DESC) AS RANK\n    from transaction_details\n) tmp \nwhere \nRANK \u003c\u003d 2;",
       "user": "anonymous",
-      "dateUpdated": "2024-10-14 03:24:49.155",
-      "progress": 0,
+      "dateUpdated": "2024-11-19 03:32:19.951",
+      "progress": 20,
       "config": {
         "colWidth": 12.0,
         "fontSize": 10.0,
@@ -467,10 +523,10 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d6"
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d4"
             },
             {
-              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d7"
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d5"
             }
           ],
           "interpreterSettingId": "spark"
@@ -480,14 +536,14 @@
       "jobName": "paragraph_1727497944966_13645464",
       "id": "paragraph_1727497944966_13645464",
       "dateCreated": "2024-09-28 04:32:24.966",
-      "dateStarted": "2024-09-28 04:32:38.100",
-      "dateFinished": "2024-09-28 04:32:40.210",
+      "dateStarted": "2024-11-19 03:32:19.957",
+      "dateFinished": "2024-11-19 03:32:37.574",
       "status": "FINISHED"
     },
     {
       "text": "%spark.sql\n\nSELECT \n    cardtype,\n    sum(CAST(amount AS bigint)) DIV 1000 As MD_SELL\nfrom transaction_details\n    group by cardtype;",
       "user": "anonymous",
-      "dateUpdated": "2024-10-14 03:24:54.210",
+      "dateUpdated": "2024-11-19 03:32:45.196",
       "progress": 20,
       "config": {
         "colWidth": 12.0,
@@ -553,10 +609,10 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d8"
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d6"
             },
             {
-              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d9"
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d7"
             }
           ],
           "interpreterSettingId": "spark"
@@ -566,8 +622,8 @@
       "jobName": "paragraph_1727498009382_1194104006",
       "id": "paragraph_1727498009382_1194104006",
       "dateCreated": "2024-09-28 04:33:29.382",
-      "dateStarted": "2024-09-28 04:33:35.057",
-      "dateFinished": "2024-09-28 04:33:36.063",
+      "dateStarted": "2024-11-19 03:32:45.204",
+      "dateFinished": "2024-11-19 03:32:53.343",
       "status": "FINISHED"
     },
     {
