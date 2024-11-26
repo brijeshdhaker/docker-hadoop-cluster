@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-11-19 Update configurations.">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__scala_sdk_2_12_17.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-flink-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-flink-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/docker-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/docker-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/unix-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/unix-readme.md" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-11-26 Update configurations.">
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-yarn.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-yarn.conf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -566,14 +561,6 @@
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
     </task>
-    <task id="LOCAL-00041" summary="2024-09-17 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1726568130317</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1726568130317</updated>
-    </task>
     <task id="LOCAL-00042" summary="2024-09-17 Update Project Configuration.">
       <option name="closed" value="true" />
       <created>1726589831235</created>
@@ -958,7 +945,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731987520811</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="2024-11-26 Update configurations.">
+      <option name="closed" value="true" />
+      <created>1732594704133</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1732594704135</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -984,7 +979,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-02-28 Update Confluent Kafka Consumers." />
     <MESSAGE value="2024-02-29 Update Confluent Kafka Consumers." />
     <MESSAGE value="2024-03-01 Update PyTest Cases for utils." />
     <MESSAGE value="2024-03-02 Update PyTest Cases for utils." />
@@ -1009,7 +1003,8 @@
     <MESSAGE value="2024-10-14 add spark-delta-table notebook." />
     <MESSAGE value="2024-10-19 add docker-plugin for springboot." />
     <MESSAGE value="2024-11-19 Update configurations." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-11-19 Update configurations." />
+    <MESSAGE value="2024-11-26 Update configurations." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-11-26 Update configurations." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

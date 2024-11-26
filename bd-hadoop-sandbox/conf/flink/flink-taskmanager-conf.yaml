@@ -121,8 +121,8 @@ env.hadoop.conf.dir: /opt/hadoop/etc/hadoop
 #============================================================================
 # AWS S3
 #============================================================================
-s3.access-key: ffaJ6a2MOj8mZ5lI3P6h
-s3.secret-key: 9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
+s3.access-key: pgm2H2bR7a5kMc5XCYdO
+s3.secret-key: zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
 s3.endpoint: http://minio.sandbox.net:9010
 s3.path-style: true
 s3.path.style.access: true
@@ -132,8 +132,8 @@ s3.path.style.access: true
 #============================================================================
 
 #fs.s3a.endpoint: http://minio.sandbox.net:9010
-#fs.s3a.access.key: ffaJ6a2MOj8mZ5lI3P6h
-#fs.s3a.secret.key: 9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
+#fs.s3a.access.key: pgm2H2bR7a5kMc5XCYdO
+#fs.s3a.secret.key: zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
 #fs.s3a.path.style.access: true
 #fs.s3a.aws.credentials.provider: org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider
 #fs.s3a.aws.credentials.provider: org.apache.flink.fs.s3.common.token.DynamicTemporaryAWSCredentialsProvider

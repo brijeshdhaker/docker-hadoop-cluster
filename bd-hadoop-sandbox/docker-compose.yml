@@ -78,8 +78,8 @@ include:
   #     PYARROW_IGNORE_TIMEZONE: 1
   #     DOCKER_STACKS_JUPYTER_CMD: lab   # lab notebook nbclassic
   #     AWS_ENDPOINT_URL_S3: http://minio.sandbox.net:9010
-  #     AWS_ACCESS_KEY_ID: ffaJ6a2MOj8mZ5lI3P6h
-  #     AWS_SECRET_ACCESS_KEY: 9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
+  #     AWS_ACCESS_KEY_ID: pgm2H2bR7a5kMc5XCYdO
+  #     AWS_SECRET_ACCESS_KEY: zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
   #     AWS_DEFAULT_REGION: us-east-1
 
   #

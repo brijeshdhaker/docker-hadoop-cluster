@@ -106,8 +106,8 @@ parallelism:
 
 #
 s3:
-  access-key: ffaJ6a2MOj8mZ5lI3P6h
-  secret-key: 9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
+  access-key: pgm2H2bR7a5kMc5XCYdO
+  secret-key: zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
   endpoint: http://minio.sandbox.net:9010
   path-style: true
   path:

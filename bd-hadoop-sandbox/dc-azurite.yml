@@ -14,8 +14,8 @@ services:
       retries: 20
       interval: 10s
     environment:
-      - AZURE_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h
-      - AZURE_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
+      - AZURE_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
+      - AZURE_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
       - AZURE_REGION=us-east-1
     networks:
       default:
