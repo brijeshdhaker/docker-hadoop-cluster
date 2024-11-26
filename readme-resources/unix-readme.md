@@ -43,6 +43,7 @@ nc -z -v kdcserver.sandbox.net 749
 
 ## UDP Port Scan
 netcat -u kdcserver.sandbox.net 88
+netstat -na | grep 9080
 
 # Passphrase-less SSH
 $ ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa_hadoop

@@ -14,14 +14,15 @@ version: "3.9"
 
 #
 include:
-  - path: ../bd-hadoop-sandbox/dc-kafka.yml
-  - path: ../bd-hadoop-sandbox/dc-hive-cluster.yml
+  - path: ../bd-hadoop-sandbox/dc-kafka-cluster-7.5.2.yml
+  - path: ../bd-hadoop-sandbox/dc-minio.yml
+#  - path: ../bd-hadoop-sandbox/dc-hive-cluster.yml
 
 #
 services:
   ##
   flink-jobmanager:
-    image: flink:1.19.0-scala_2.12-java11
+    image: flink:1.20.0-scala_2.12-java17
     hostname: flink-jobmanager
     container_name: flink-jobmanager
     command: "jobmanager.sh start-foreground"
@@ -44,7 +45,7 @@ services:
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       - JOB_MANAGER_RPC_ADDRESS=flink-jobmanager
-      - HADOOP_HOME=/opt/hadoop
+#      - HADOOP_HOME=/opt/hadoop
 #      - HIVE_HOME=/opt/hive
 #      - HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
 #      - HADOOP_CLASSPATH=/opt/hadoop/etc/hadoop:/opt/hive/lib/hive-*.jar:/opt/hadoop/share/hadoop/common/lib/*:/opt/hadoop/share/hadoop/common/*:/opt/hadoop/share/hadoop/hdfs:/opt/hadoop/share/hadoop/hdfs/lib/*:/opt/hadoop/share/hadoop/hdfs/*:/opt/hadoop/share/hadoop/mapreduce/*:/opt/hadoop/share/hadoop/yarn:/opt/hadoop/share/hadoop/yarn/lib/*:/opt/hadoop/share/hadoop/yarn/*
@@ -53,7 +54,7 @@ services:
 
   ##
   flink-taskmanager:
-    image: flink:1.19.0-scala_2.12-java11
+    image: flink:1.20.0-scala_2.12-java17
     hostname: flink-taskmanager
     container_name: flink-taskmanager
     command: "taskmanager.sh start-foreground"

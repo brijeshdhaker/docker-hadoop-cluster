@@ -4,28 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-10-19 add docker-plugin for springboot.">
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/.helmignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/Chart.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/templates/NOTES.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/templates/_helpers.tpl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/templates/configmap.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/templates/deployment.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/templates/hpa.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/templates/ingress.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/templates/service.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/templates/serviceaccount.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/templates/tests/test-connection.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/values.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme-resources/helm-readme.md" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-11-19 Update configurations.">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__scala_sdk_2_12_17.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-base.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-base.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/spark-minio_2KBRMWP59.zpln" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/spark-minio_2KBRMWP59.zpln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/table-changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/table-changelog.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/audit-type-tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/audit-type-tables.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-flink-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-flink-cluster.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/docker-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/docker-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/unix-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/unix-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,6 +94,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Application.AppLauncher.executor": "Run",
     "Application.AppLauncher::BatchWorkflow.executor": "Run",
     "Application.AppLauncher::DiscretizedStreamWorkflow.executor": "Run",
@@ -141,6 +127,8 @@
     "Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox.gateway: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-jobmanager: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-taskmanager: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-hive-cluster.yml.hiveserver: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-rest: Compose Deployment.executor": "Run",
@@ -261,7 +249,7 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.31724137",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "MavenSettings"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -293,7 +281,7 @@
       <recent name="org.examples.spark" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.zeppelin">
+  <component name="RunManager" selected="Docker.minio">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -428,6 +416,32 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="bd-hadoop-sandbox/dc-flink-cluster.yml.flink-jobmanager: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="flink-jobmanager" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-flink-cluster.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="bd-hadoop-sandbox/dc-flink-cluster.yml.flink-taskmanager: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="flink-taskmanager" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/dc-flink-cluster.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <configuration name="kafka-cluster" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -528,11 +542,15 @@
       <item itemvalue="Docker.spark-cluster" />
       <item itemvalue="Docker.spark-notebook" />
       <item itemvalue="Docker.zeppelin" />
+      <item itemvalue="Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-jobmanager: Compose Deployment" />
+      <item itemvalue="Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-taskmanager: Compose Deployment" />
       <item itemvalue="JUnit.SandboxSbApplicationTest" />
       <item itemvalue="Python.confluent_kafka_AvroProducer" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-taskmanager: Compose Deployment" />
+        <item itemvalue="Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-jobmanager: Compose Deployment" />
         <item itemvalue="Python.confluent_kafka_AvroProducer" />
         <item itemvalue="JUnit.SandboxSbApplicationTest" />
         <item itemvalue="Application.SandboxSbApplication" />
@@ -547,14 +565,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00040" summary="2024-09-17 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1726560993953</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1726560993953</updated>
     </task>
     <task id="LOCAL-00041" summary="2024-09-17 Update Project Configuration.">
       <option name="closed" value="true" />
@@ -940,7 +950,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729308933987</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="2024-11-19 Update configurations.">
+      <option name="closed" value="true" />
+      <created>1731987520809</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1731987520811</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -966,7 +984,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-02-27 Update Confluent Kafka Consumers." />
     <MESSAGE value="2024-02-28 Update Confluent Kafka Consumers." />
     <MESSAGE value="2024-02-29 Update Confluent Kafka Consumers." />
     <MESSAGE value="2024-03-01 Update PyTest Cases for utils." />
@@ -991,7 +1008,8 @@
     <MESSAGE value="2024-10-13 add spark-delta-table notebook." />
     <MESSAGE value="2024-10-14 add spark-delta-table notebook." />
     <MESSAGE value="2024-10-19 add docker-plugin for springboot." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-10-19 add docker-plugin for springboot." />
+    <MESSAGE value="2024-11-19 Update configurations." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-11-19 Update configurations." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
