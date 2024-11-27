@@ -6,13 +6,15 @@
 #
 # # docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d mysqlserver
 #
-# docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d spark-master, spark-worker-a, spark-worker-b
+# docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d spark-master spark-worker-a spark-worker-b
 #
-# docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d zookeeper, kafkabroker, schemaregistry
+# docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d zookeeper kafkabroker schemaregistry
 #
 # docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d zeppelin
 # docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d spark-notebook
 #
+# docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d flink-jobmanager flink-taskmanager
+# docker compose -f bd-hadoop-sandbox/docker-compose.yml down flink-jobmanager flink-taskmanager
 #
 # docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
 # docker volume create --name sandbox_security_secrets --opt type=none --opt device=/apps/security/ssl --opt o=bind

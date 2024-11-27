@@ -2,12 +2,10 @@
 # docker volume create --name sandbox_flink_data --opt type=none --opt device=/apps/sandbox/flink/data --opt o=bind
 #
 #
-# docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d
-# docker compose -f bd-hadoop-sandbox/docker-compose.yml down
+# docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d flink-jobmanager flink-taskmanager
+# docker compose -f bd-hadoop-sandbox/docker-compose.yml down flink-jobmanager flink-taskmanager
 #
-
-#
-# docker compose -f bd-hadoop-sandbox/dc-flink-cluster.yml up -d
+# docker compose -f bd-hadoop-sandbox/dc-flink-cluster.yml up -d flink-jobmanager, flink-taskmanager
 # docker compose -f bd-hadoop-sandbox/dc-flink-cluster.yml down
 #
 version: "3.9"

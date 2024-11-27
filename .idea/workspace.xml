@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-11-26 Update configurations.">
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-11-27 Update flink configurations.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-flink-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-flink-cluster.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" afterDir="false" />
@@ -580,14 +580,6 @@
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
     </task>
-    <task id="LOCAL-00044" summary="2024-09-18 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1726629586912</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1726629586912</updated>
-    </task>
     <task id="LOCAL-00045" summary="2024-09-18 Update Project Configuration.">
       <option name="closed" value="true" />
       <created>1726629806758</created>
@@ -972,7 +964,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732595354520</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="2024-11-27 Update flink configurations.">
+      <option name="closed" value="true" />
+      <created>1732677259808</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1732677259809</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -998,7 +998,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-02-29 Update Confluent Kafka Consumers." />
     <MESSAGE value="2024-03-01 Update PyTest Cases for utils." />
     <MESSAGE value="2024-03-02 Update PyTest Cases for utils." />
     <MESSAGE value="2024-09-17 Update Project Configuration." />
@@ -1023,7 +1022,8 @@
     <MESSAGE value="2024-10-19 add docker-plugin for springboot." />
     <MESSAGE value="2024-11-19 Update configurations." />
     <MESSAGE value="2024-11-26 Update configurations." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-11-26 Update configurations." />
+    <MESSAGE value="2024-11-27 Update flink configurations." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-11-27 Update flink configurations." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
