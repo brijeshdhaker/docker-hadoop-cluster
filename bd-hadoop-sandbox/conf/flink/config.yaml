@@ -30,10 +30,10 @@ query:
   server:
     port: '6125'
 s3:
+  secret-key: zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
   endpoint: http://minio.sandbox.net:9010
   path-style: true
   access-key: pgm2H2bR7a5kMc5XCYdO
-  secret-key: zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
   path:
     style:
       access: true

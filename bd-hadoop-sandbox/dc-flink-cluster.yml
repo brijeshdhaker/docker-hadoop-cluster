@@ -13,12 +13,6 @@
 version: "3.9"
 
 #
-include:
-  - path: ../bd-hadoop-sandbox/dc-kafka-cluster-7.5.2.yml
-  - path: ../bd-hadoop-sandbox/dc-minio.yml
-#  - path: ../bd-hadoop-sandbox/dc-hive-cluster.yml
-
-#
 services:
   ##
   flink-jobmanager:
@@ -27,6 +21,8 @@ services:
     container_name: flink-jobmanager
     command: "jobmanager.sh start-foreground"
     depends_on:
+      minio:
+        condition: service_healthy
       kafkabroker:
         condition: service_healthy
     ports:
@@ -85,14 +81,6 @@ services:
 
 #
 volumes:
-  #
-  sandbox_apps_path:
-    external: true
-  sandbox_security_secrets:
-    external: true
-  #
-  sandbox_hadoop_334:
-    external: true
   #
   sandbox_flink_data:
     external: true

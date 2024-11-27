@@ -6,17 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-11-26 Update configurations.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_clients.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_clients.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/backup/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/backup/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/flink-jobmanager-conf.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/flink-jobmanager-conf.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/flink-taskmanager-conf.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/flink-taskmanager-conf.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/jobmanager-conf.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/jobmanager-conf.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-yarn.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-yarn.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-azurite.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-azurite.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-flink-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-flink-cluster.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_clients.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_clients.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/cloud/aws/sql-s3a-read.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/cloud/aws/sql-s3a-read.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/spark-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/spark-help.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,6 +168,7 @@
     "Docker.docker-compose.yml.sparkhistory: Compose Deployment.executor": "Run",
     "Docker.docker-compose.yml.timelineserver: Compose Deployment.executor": "Run",
     "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
+    "Docker.flink-cluster.executor": "Run",
     "Docker.kafka-cluster.executor": "Run",
     "Docker.minio.executor": "Run",
     "Docker.mysqlserver.executor": "Run",
@@ -287,7 +279,7 @@
       <recent name="org.examples.spark" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.minio">
+  <component name="RunManager" selected="Docker.flink-cluster">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -448,6 +440,21 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="flink-cluster" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="envFilePath" value="" />
+          <option name="services">
+            <list>
+              <option value="flink-jobmanager" />
+              <option value="flink-taskmanager" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-hadoop-sandbox/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <configuration name="kafka-cluster" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -543,6 +550,7 @@
       <item itemvalue="Application.StreamingJob" />
       <item itemvalue="Application.SandboxSbApplication" />
       <item itemvalue="Docker.kafka-cluster" />
+      <item itemvalue="Docker.flink-cluster" />
       <item itemvalue="Docker.minio" />
       <item itemvalue="Docker.mysqlserver" />
       <item itemvalue="Docker.spark-cluster" />
@@ -571,14 +579,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00043" summary="2024-09-18 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1726629553850</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1726629553850</updated>
     </task>
     <task id="LOCAL-00044" summary="2024-09-18 Update Project Configuration.">
       <option name="closed" value="true" />
@@ -964,7 +964,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732595205791</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="2024-11-26 Update configurations.">
+      <option name="closed" value="true" />
+      <created>1732595354519</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1732595354520</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="UnknownFeatures">

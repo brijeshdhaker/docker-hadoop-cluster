@@ -43,6 +43,7 @@ include:
   - path: ../bd-hadoop-sandbox/dc-minio.yml
   - path: ../bd-hadoop-sandbox/dc-mysqlserver.yml
   - path: ../bd-hadoop-sandbox/dc-kafka-cluster-7.5.2.yml
+  - path: ../bd-hadoop-sandbox/dc-flink-cluster.yml
   - path: ../bd-hadoop-sandbox/dc-spark-cluster.yml
   - path: ../bd-hadoop-sandbox/dc-zeppelin.yml
   #
