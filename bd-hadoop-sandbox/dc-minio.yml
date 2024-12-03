@@ -17,6 +17,7 @@ services:
       default:
         aliases:
           - warehouse-hadoop.minio
+          - warehouse-flink.minio
           - warehouse-rest.minio
           - warehouse-data.minio
           - warehouse-demo.minio

@@ -1,6 +1,12 @@
 blob:
   server:
     port: '6124'
+env:
+  java:
+    opts:
+      jobmanager: -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf
+      all: --add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED
+      taskmanager: -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf
 rest:
   flamegraph:
     enabled: true
@@ -8,6 +14,8 @@ rest:
   address: flink-jobmanager
   profiling:
     enabled: true
+fs:
+  default-scheme: s3a://warehouse-flink/
 jobmanager:
   execution:
     failover-strategy: region
@@ -18,21 +26,12 @@ jobmanager:
   memory:
     process:
       size: 1600m
-state:
-  savepoints:
-    dir: file:///apps/sandbox/flink/savepoints
-  backend:
-    type: hashmap
-    incremental: false
-  checkpoints:
-    dir: file:///apps/sandbox/flink/checkpoints
 query:
   server:
     port: '6125'
 s3:
   secret-key: zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
   endpoint: http://minio.sandbox.net:9010
-  path-style: true
   access-key: pgm2H2bR7a5kMc5XCYdO
   path:
     style:
@@ -40,6 +39,11 @@ s3:
 io:
   tmp:
     dirs: /tmp
+execution:
+  checkpointing:
+    savepoint-dir: s3a://warehouse-flink/execution-savepoints
+    dir: s3a://warehouse-flink/execution-checkpoints
+    interval: 10s
 taskmanager:
   host: flink-taskmanager
   numberOfTaskSlots: 8
@@ -49,6 +53,12 @@ taskmanager:
   bind-host: 0.0.0.0
 parallelism:
   default: 4
+state:
+  backend:
+    type: hashmap
+    fs:
+      checkpointdir: s3a://warehouse-flink/state-checkpoints
+    incremental: false
 web:
   cancel:
     enable: true

@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-11-27 Update flink configurations.">
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/log4j-cli.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/log4j-console.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/flink-conf.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/flink-conf.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-flink-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-flink-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/execute-step.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/execute-step.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/finish-step.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/finish-step.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,7 +247,7 @@
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-hadoop-sandbox/conf/flink",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
@@ -252,11 +258,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink" />
+      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/s3-fs-hadoop" />
       <recent name="$PROJECT_DIR$/bd-spring-module" />
       <recent name="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/converters" />
       <recent name="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/entities" />
-      <recent name="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories" />
-      <recent name="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bd-spring-module/helm" />
@@ -579,14 +585,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00045" summary="2024-09-18 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1726629806758</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1726629806758</updated>
     </task>
     <task id="LOCAL-00046" summary="2024-09-18 Update Project Configuration.">
       <option name="closed" value="true" />
@@ -972,7 +970,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732677259809</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="2024-11-27 Update flink configurations.">
+      <option name="closed" value="true" />
+      <created>1732678283548</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1732678283548</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="UnknownFeatures">

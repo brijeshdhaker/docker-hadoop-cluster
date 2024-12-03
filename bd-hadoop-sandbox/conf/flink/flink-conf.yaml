@@ -106,8 +106,13 @@ query.server.port: 6125
 #
 
 # fs.default-scheme
-fs.default-scheme: hdfs://namenode:9000
-state.backend.fs.checkpointdir: hdfs://namenode:9000/flink-checkpoints
+fs.default-scheme: s3a://warehouse-flink
+state.backend.fs.checkpointdir: s3a://warehouse-flink/checkpoints
+
+s3.secret-key: zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+s3.access-key: pgm2H2bR7a5kMc5XCYdO
+s3.endpoint: http://minio.sandbox.net:9010
+s3.path.style.access: true
 
 #==============================================================================
 # High Availability
@@ -311,4 +316,8 @@ security.kerberos.login.principal: brijeshdhaker@SANDBOX.NET
 
 # Interval in milliseconds for refreshing the monitored directories.
 #historyserver.archive.fs.refresh-interval: 10000
+
+env.java.opts.all: --add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED
+env.java.opts.jobmanager: -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf
+env.java.opts.taskmanager: -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf
 
