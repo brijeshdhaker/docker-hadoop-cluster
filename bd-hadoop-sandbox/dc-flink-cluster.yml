@@ -37,7 +37,7 @@ services:
 #      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
       - ./conf/flink/config.yaml:/opt/flink/conf/config.yaml
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
-      - ./conf/flink/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar
+      - ./resources/libs/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar
     environment:
       - JOB_MANAGER_RPC_ADDRESS=flink-jobmanager
 #      - HADOOP_HOME=/opt/hadoop
@@ -68,7 +68,7 @@ services:
 #      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
       - ./conf/flink/config.yaml:/opt/flink/conf/config.yaml
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
-      - ./conf/flink/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar
+      - ./resources/libs/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar
     environment:
       - JOB_MANAGER_RPC_ADDRESS=flink-jobmanager
       - JOB_MANAGER_RPC_PORT=6123

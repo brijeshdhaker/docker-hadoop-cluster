@@ -18,8 +18,8 @@ blob.server.port: 6124
 
 #
 fs.default-scheme: hdfs://namenode:9000
-state.savepoints.dir: file:///tmp/flink-savepoints-directory
 state.backend: filesystem
+state.savepoints.dir: file:///tmp/flink-savepoints-directory
 state.checkpoints.dir: file:///tmp/flink-checkpoints-directory
 state.backend.fs.checkpointdir: hdfs://namenode:9000/flink-checkpoints
 
