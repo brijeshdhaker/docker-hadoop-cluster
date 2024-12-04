@@ -8,8 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="bd-spring-module" />
-        <module name="bd-data-generator" />
+        <module name="bd-flink-module" />
         <module name="bd-spark-module" />
+        <module name="bd-data-generator" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

@@ -1,6 +1,6 @@
 
 #
-# docker build -t brijeshdhaker/bd-data-generator:1.0.0 -f ./bd-data-generator/Dockerfile ./bd-data-generator
+# docker build --no-cache -t brijeshdhaker/bd-data-generator:1.0.0 -f ./bd-data-generator/Dockerfile ./bd-data-generator
 # docker push brijeshdhaker/bd-data-generator:1.0.0
 #
 

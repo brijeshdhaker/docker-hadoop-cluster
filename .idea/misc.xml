@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/bd-data-generator/pom.xml" />
         <option value="$PROJECT_DIR$/flink-playground/pom.xml" />
         <option value="$PROJECT_DIR$/bd-spark-module/pom.xml" />
+        <option value="$PROJECT_DIR$/bd-flink-module/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
