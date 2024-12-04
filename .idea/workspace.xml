@@ -5,8 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-12-03 Update flink configurations.">
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/dependency-reduced-pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/docker-entrypoint.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/DataGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/Producer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/Throttler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/model/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/model/TransactionSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/model/TransactionSupplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/flink-conf-org.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/flink-conf.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/flink-jobmanager-conf.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/flink-taskmanager-conf.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/log4j-cli.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/log4j-console.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-flink-cluster.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/readme-resources/flink-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/flink-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/kafka-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/kafka-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,6 +203,10 @@
     "JUnit.SandboxSbApplicationTests (1).executor": "Run",
     "JUnit.SandboxSbApplicationTests.executor": "Run",
     "JUnit.SchemaProviderTest.structTypeFromAvro.executor": "Run",
+    "Maven.bd-data-generator [clean,verify].executor": "Run",
+    "Maven.bd-data-generator [clean].executor": "Run",
+    "Maven.bd-data-generator [package].executor": "Run",
+    "Maven.bd-data-generator [verify].executor": "Run",
     "Maven.bd-python-module [clean].executor": "Run",
     "Maven.bd-python-module [install].executor": "Run",
     "Maven.bd-python-module [org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy].executor": "Run",
@@ -240,7 +264,7 @@
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-hadoop-sandbox/resources/libs/s3-fs-hadoop",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-data-generator",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
@@ -578,14 +602,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00049" summary="2024-09-20 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1726796221744</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1726796221744</updated>
     </task>
     <task id="LOCAL-00050" summary="2024-09-20 Update Project Configuration.">
       <option name="closed" value="true" />
@@ -971,7 +987,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733196122143</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="2024-12-03 Update flink configurations.">
+      <option name="closed" value="true" />
+      <created>1733196214141</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1733196214141</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="UnknownFeatures">

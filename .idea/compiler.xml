@@ -8,11 +8,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="bd-spring-module" />
+        <module name="bd-data-generator" />
         <module name="bd-spark-module" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="bd-data-generator" target="11" />
       <module name="bd-flink-operations" target="11" />
       <module name="bd-flink-spend-report" target="11" />
       <module name="bd-grafana-modules" target="11" />
@@ -26,6 +26,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="bd-data-generator" options="" />
       <module name="bd-spark-module" options="-parameters" />
       <module name="bd-spring-module" options="-parameters" />
       <module name="docker-hadoop-cluster" options="-parameters" />

@@ -20,6 +20,7 @@ kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitio
 kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic kafka-json-topic --if-not-exists
 
 kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 4 --replication-factor 1 --topic transaction-text-topic --if-not-exists
+kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 4 --replication-factor 1 --topic transaction-csv-topic --if-not-exists
 kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 4 --replication-factor 1 --topic transaction-json-topic --if-not-exists
 kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 4 --replication-factor 1 --topic transaction-avro-topic --if-not-exists
 
@@ -100,6 +101,38 @@ docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "k
 #
 ```shell
 
+docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
+--topic kafka-simple-topic \
+--bootstrap-server kafkabroker.sandbox.net:9092" \
+--consumer.config "/apps/sandbox/kafka/cnf/client_plaintext.config" \
+--property "print.key=true"
+
+docker compose -f  bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
+--topic kafka-simple-topic \
+--bootstrap-server kafkabroker.sandbox.net:9092 \
+--consumer.config /apps/sandbox/kafka/cnf/client_plaintext.config \
+--timeout-ms 5000 2>/dev/null"
+
+#
+docker compose -f  bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
+--topic kafka-simple-topic \
+--bootstrap-server kafkabroker.sandbox.net:19092 \
+--consumer.config /apps/sandbox/kafka/cnf/client_plaintext.config \
+--offset 0 \
+--partition 0 \
+--property print.key=true \
+--property key.separator=' - ' \
+--timeout-ms 5000 2>/dev/null"
+
+docker compose -f  bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
+--topic kafka-simple-topic \
+--group kafka-simple-cg \
+--bootstrap-server kafkabroker.sandbox.net:9092 \
+--consumer.config /apps/sandbox/kafka/cnf/client_plaintext.config \
+--property print.key=true \
+--property key.separator='  -  ' \
+--timeout-ms 5000 2>/dev/null"
+
 docker run -it --rm \
 --hostname=clients.sandbox.net \
 --network sandbox.net \
@@ -133,31 +166,6 @@ kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_ssl.config -C -t kafka-simpl
 -K '\t' \
 -f '\nKey (%K bytes): %k\nValue (%S bytes): %s\nTimestamp: %T \nPartition: %p \nOffset: %o \n\n--\n' -e
 
-docker compose -f  bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
---topic kafka-simple-topic \
---bootstrap-server kafkabroker.sandbox.net:9092 \
---consumer.config /apps/sandbox/kafka/cnf/client_plaintext.config \
---timeout-ms 5000 2>/dev/null"
-
-#
-docker compose -f  bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
---topic kafka-simple-topic \
---bootstrap-server kafkabroker.sandbox.net:19092 \
---consumer.config /apps/sandbox/kafka/cnf/client_plaintext.config \
---offset 0 \
---partition 0 \
---property print.key=true \
---property key.separator=' - ' \
---timeout-ms 5000 2>/dev/null"
-
-docker compose -f  bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
---topic kafka-simple-topic \
---group kafka-simple-cg \
---bootstrap-server kafkabroker.sandbox.net:9092 \
---consumer.config /apps/sandbox/kafka/cnf/client_plaintext.config \
---property print.key=true \
---property key.separator='  -  ' \
---timeout-ms 5000 2>/dev/null"
 
 ```
 docker system prune -a --volumes --filter "label=io.confluent.docker"
