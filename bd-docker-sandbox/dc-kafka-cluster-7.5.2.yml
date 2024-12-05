@@ -79,7 +79,7 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
       KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL: http://schemaregistry.sandbox.net:8081
       KAFKA_CREATE_TOPICS: "kafka:1:1"
-      # HOSTNAME_COMMAND: "route -n | awk '/UG[ \t]/{print $$2}'"
+      # HOSTNAME_COMMAND: "route -n | awk '/UG[ \t]/{print $2}'"
 
   #
   #
@@ -145,7 +145,7 @@ services:
 #    restart: on-failure
 #    command: sleep infinity
 #    healthcheck:
-#      test: echo $HOSTNAME || exit 1
+#      test: echo $(hostname -f) || exit 1
 #      retries: 20
 #      interval: 10s
 #    volumes:

@@ -78,3 +78,14 @@ services:
     extra_hosts:
       - "thinkpad.sandbox.net:172.18.0.1"
 
+#
+volumes:
+  sandbox_apps_path:
+    external: true
+
+#
+networks:
+  default:
+    external: true
+    driver: bridge
+    name: sandbox.net

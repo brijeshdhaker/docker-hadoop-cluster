@@ -4,444 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-12-04 add transaction data generator.">
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/unsecure/conf/yarn-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/hadoop/client/capacity-scheduler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/hadoop/client/hdfs-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/hadoop/client/hive-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/hadoop/conf/capacity-scheduler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/hadoop/conf/core-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/hadoop/conf/hive-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/hadoop/conf/mapred-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/hadoop/conf/yarn-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/secure/hadoop/client/capacity-scheduler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/secure/hadoop/client/hadoop-env.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/spark/conf/spark-defaults.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/nodemanager/conf/unsecure/mapred-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/ops/example/StreamExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/ops/example/records/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-12-05 consolidate docker-sandbox module.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink-conf.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/flink-conf.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/core-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/unsecure/client/core-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/hbase-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/unsecure/client/hbase-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/hdfs-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/hdfs-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/hive-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/hive-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/mapred-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/mapred-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/yarn-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/unsecure/client/yarn-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/core-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/core-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/hdfs-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/unsecure/conf/hdfs-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/hive-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/unsecure/conf/hive-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/mapred-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/mapred-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/yarn-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/yarn-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/hive/client/hive-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hive/client/hive-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/mysql/initdb/create-table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/mysql/initdb/create-table.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/nifi/authorizers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/nifi/authorizers.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/secure/hadoop/client/capacity-scheduler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/kerberos/client/capacity-scheduler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/secure/hadoop/client/core-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/kerberos/client/core-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/secure/hadoop/client/hadoop-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/hadoop-env.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/secure/hadoop/client/hbase-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/hbase-env.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/secure/hadoop/client/hbase-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/kerberos/client/hbase-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/secure/hadoop/client/hdfs-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/kerberos/client/hdfs-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/secure/hadoop/client/hive-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/kerberos/client/hive-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/secure/hadoop/client/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/kerberos/client/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/secure/hadoop/client/mapred-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/kerberos/client/mapred-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/secure/hadoop/client/yarn-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/kerberos/client/yarn-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-defaults.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-defaults.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/spark/conf/spark-env.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-history.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-history.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-iceburg.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-iceburg.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/zeppelin/conf/shiro.ini" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/zeppelin/conf/shiro.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/zeppelin/conf/zeppelin-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/zeppelin/conf/zeppelin-env.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-hadoop-cluster.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/resources/dc-hadoop-cluster.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-hbase-cluster.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/resources/dc-hbase-cluster.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-hive-cluster.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/resources/dc-hive-cluster.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/resources/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_clients.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_clients.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_hadoop.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_hadoop.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_hbase.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_hbase.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_hive.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_hive.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-azurite.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-azurite.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-flink-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-flink-cluster.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-kafka-cluster-7.1.2.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-kafka-cluster-7.5.2.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-kafka-cluster-7.5.2.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-zeppelin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-zeppelin.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-flink-module/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/dependency-reduced-pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-flink-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/bd-hadoop-sandbox.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/backup/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/backup/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/backup/flink-conf.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/backup/flink-conf.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/backup/flink-jobmanager-conf.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/backup/flink-jobmanager-conf.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/backup/flink-taskmanager-conf.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/backup/flink-taskmanager-conf.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/flink-conf.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/flink-conf.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/flink-jobmanager-conf.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/flink-jobmanager-conf.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/flink-taskmanager-conf.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/flink-taskmanager-conf.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/jobmanager-conf.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/jobmanager-conf.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/log4j-cli.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/log4j-cli.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/flink/log4j-console.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/client/capacity-scheduler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/unsecure/client/capacity-scheduler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/client/core-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/secure/hadoop/client/core-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/client/hadoop-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/kerberos/client/hadoop-env.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/client/hbase-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/kerberos/client/hbase-env.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/client/hbase-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/secure/hadoop/client/hbase-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/client/hdfs-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/secure/hadoop/client/hdfs-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/client/hive-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/secure/hadoop/client/hive-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/client/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/secure/hadoop/client/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/client/mapred-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/secure/hadoop/client/mapred-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/client/yarn-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/secure/hadoop/client/yarn-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/capacity-scheduler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/unsecure/conf/capacity-scheduler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/configuration.xsl" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/configuration.xsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/container-executor.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/container-executor.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/core-site.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/fair-scheduler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/fair-scheduler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/hadoop-env.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/hadoop-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/hadoop-env.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/hadoop-metrics2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/hadoop-metrics2.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/hadoop-policy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/hadoop-policy.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/hadoop-user-functions.sh.example" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/hadoop-user-functions.sh.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/hdfs-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/hadoop/conf/hdfs-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/httpfs-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/httpfs-env.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/httpfs-log4j.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/httpfs-signature.secret" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/httpfs-signature.secret" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/httpfs-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/httpfs-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/kms-acls.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/kms-acls.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/kms-env.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/kms-log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/kms-log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/kms-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/kms-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/mapred-env.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/mapred-env.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/mapred-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/mapred-env.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/mapred-queues.xml.template" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/mapred-queues.xml.template" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/mapred-site.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/shellprofile.d/example.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/shellprofile.d/example.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/ssl-client.xml.example" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/ssl-client.xml.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/ssl-server.xml.example" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/ssl-server.xml.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/user_ec_policies.xml.template" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/user_ec_policies.xml.template" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/workers" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/workers" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/yarn-env.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/yarn-env.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/yarn-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/yarn-env.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/yarn-site.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/conf/yarnservice-log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/conf/yarnservice-log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/unsecure-client/core-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/hadoop/client/core-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/unsecure-client/hbase-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hbase/conf/hbase-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/unsecure-client/hdfs-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/unsecure/client/hdfs-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/unsecure-client/hive-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/unsecure/client/hive-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/unsecure-client/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/hadoop/client/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/unsecure-client/mapred-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/unsecure/client/mapred-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/unsecure-client/yarn-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/hadoop/client/yarn-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hbase/client/hbase-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hbase/client/hbase-env.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hbase/client/hbase-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/hadoop/client/hbase-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hbase/client/log4j2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hbase/client/log4j2.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hbase/conf/hbase-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/secure/hadoop/client/hbase-env.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hbase/conf/hbase-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/hbase/client/hbase-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hbase/conf/log4j2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hbase/conf/log4j2.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hive/client/hive-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/hive/client/hive-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hive/conf/beeline-log4j2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hive/conf/beeline-log4j2.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hive/conf/hive-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hive/conf/hive-env.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hive/conf/hive-exec-log4j2.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hive/conf/hive-log4j2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hive/conf/hive-log4j2.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hive/conf/hive-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hive/conf/hive-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hive/conf/ivysettings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hive/conf/llap-daemon-log4j2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/hive/conf/llap-daemon-log4j2.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/kerberos/http_secret" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/kerberos/http_secret" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/kerberos/krb5.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/kerberos/krb5.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/kibana/elasticsearch.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/kibana/elasticsearch.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/kibana/kibana.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/kibana/kibana.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/maven/settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/maven/settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/monitoring/alert.rules" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/monitoring/alert.rules" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/monitoring/alertmanager.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/monitoring/alertmanager.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/monitoring/dashboard/Docker Prometheus Monitoring-1675703257525.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/monitoring/dashboard/Docker Prometheus Monitoring-1675703257525.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/monitoring/dashboard/docker-and-system-monitoring_rev1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/monitoring/dashboard/spark-jmx-grafana-board.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/monitoring/dashboard/spark-jmx-grafana-board.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/monitoring/graphite_mapping.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/monitoring/graphite_mapping.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/monitoring/graphite_mapping.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/monitoring/graphite_mapping.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/monitoring/graphite_mapping.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/monitoring/prometheus.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/monitoring/statsd_mapping.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/monitoring/statsd_mapping.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/mysql/config-file.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/mysql/config-file.cnf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/nginx/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/nginx/nginx.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/nifi/authorizers.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/nifi/bootstrap-notification-services.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/nifi/bootstrap-notification-services.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/nifi/bootstrap.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/nifi/bootstrap.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/nifi/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/nifi/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/nifi/login-identity-providers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/nifi/login-identity-providers.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/nifi/nifi.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/nifi/nifi.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/nifi/state-management.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/nifi/state-management.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/nifi/zookeeper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/nifi/zookeeper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/profiles/brijeshdhaker.profile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/profiles/brijeshdhaker.profile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/profiles/hadoop.profile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/profiles/hadoop.profile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/profiles/sandbox.profile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/profiles/sandbox.profile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/profiles/zeppelin.profile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/profiles/zeppelin.profile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/prometheus/alert.rules" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/prometheus/prometheus.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/prometheus/prometheus.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/jaas/consumer-jaas.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/jaas/consumer-jaas.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/jaas/hbase-jaas.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/jaas/hbase-jaas.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/jaas/kafkabroker-a-jaas.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/jaas/kafkabroker-b-jaas.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/jaas/kafkabroker-c-jaas.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/jaas/kafkabroker-c-jaas.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/jaas/kafkabroker-jaas.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/jaas/kafkabroker-jaas.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/jaas/kafkaclients-jaas.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/jaas/producer-jaas.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/jaas/producer-jaas.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/jaas/schemaregistry-jaas.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/jaas/schemaregistry-jaas.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/jaas/zookeeper-a-jaas.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/jaas/zookeeper-a-jaas.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/jaas/zookeeper-b-jaas.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/jaas/zookeeper-b-jaas.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/jaas/zookeeper-c-jaas.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/jaas/zookeeper-jaas.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/jaas/zookeeper-jaas.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/keytabs/services/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/keytabs/services/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/keytabs/users/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/keytabs/users/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/scripts/certs-clean.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/certs-clean.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/scripts/certs-create.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/certs-create.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/scripts/certs-verify.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/certs-verify.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/scripts/change-osuser-passwd.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/scripts/change-principal-passwd.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/change-principal-passwd.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/scripts/create-certs.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/create-certs.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/scripts/kafka-certs.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/kafka-certs.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/scripts/kcat-example.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/kcat-example.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/scripts/setup-hadoop-principles.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/scripts/setup-kafka-principles.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/setup-kafka-principles.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/scripts/setup-osuser-principles.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/setup-osuser-principles.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/scripts/test-kafka.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/test-kafka.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/security/ssl/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/ssl/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/log4j2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/spark/conf/log4j2.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-defaults.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-env.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-history.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/spark/conf/spark-history.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-iceburg.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/spark/conf/spark-iceburg.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-minio.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-minio.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-notebook.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-notebook.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-yarn.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-yarn.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/JDBC_Cli_test_with_steps.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/sqlline/JDBC_Cli_test_with_steps.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/sqlline/LICENSE.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/jline-1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/mysql-connector-java-8.0.23.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/sqlline/sqlline.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/tez/tez-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/tez/tez-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/zeppelin/conf/interpreter.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/zeppelin/conf/interpreter.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/zeppelin/conf/shiro.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/zeppelin/conf/zeppelin-env.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/zeppelin/conf/zeppelin-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/zeppelin/conf/zeppelin-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/zeppelin/conf/zeppelin.service" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/zeppelin/conf/zeppelin.service" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-airflow.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-airflow.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-apache-nifi.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-apache-nifi.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-azurite.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-azurite.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-base.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-base.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-cassandra.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-cassandra.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-elasticsearch-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-elasticsearch-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-elasticsearch.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-elasticsearch.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-flink-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-flink-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-gateway.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-gateway.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-graphite-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-graphite-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hadoop-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-hadoop-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hbase-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-hbase-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hdfs-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-hdfs-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-hive-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-hive-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-influxdb-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-influxdb-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-kafka-cluster-7.1.2.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-kafka-cluster-7.1.2.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-kafka-cluster-7.5.2.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-kafka-cluster-7.5.2.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-kafka-secure-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-kafka-secure-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-kafka.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-kafka.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-kdcserver.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-kdcserver.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-minio.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-mysqlserver.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-mysqlserver.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-nginx.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-nginx.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-notebook.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-notebook.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-postgres.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-postgres.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-prometheus.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-prometheus.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-spark-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-spark-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-yarn-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-yarn-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-zeppelin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-zeppelin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-zookeeper.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-zookeeper.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-airflow/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-airflow/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-airflow/constraints-3.7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-airflow/constraints-3.7.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-airflow/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-airflow/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-cloudera/cdh-6.3.2-setup .md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-cloudera/cdh-6.3.2-setup .md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-cloudera/cloudera-5.12.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-cloudera/cloudera-5.12.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-cloudera/cloudera-docker.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-cloudera/cloudera-docker.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-cloudera/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-cloudera/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-cloudera/docker-swarn.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-cloudera/docker-swarn.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/base/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/base/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/base/entrypoint.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/execute-step.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/base/execute-step.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/finish-step.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/base/finish-step.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/libs/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/base/libs/readme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/masters" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/base/masters" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/slaves" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/base/slaves" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/tars/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/base/tars/readme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/base/wait-for-step.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/base/wait-for-step.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/build.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/jobmanager/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/jobmanager/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/jobmanager/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/jobmanager/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/jobmanager/master.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/jobmanager/master.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/submit/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/submit/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/submit/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/submit/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/submit/submit.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/submit/submit.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/taskmanager/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/taskmanager/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/taskmanager/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/taskmanager/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/taskmanager/worker.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/taskmanager/worker.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/template/maven/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/template/maven/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/template/maven/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/template/maven/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/template/maven/template.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/template/maven/template.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/template/sbt/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/template/sbt/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/template/sbt/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/template/sbt/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-flink/template/sbt/template.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/template/sbt/template.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/base/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/base/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/base/entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/base/entrypoint.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/build.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/datanode/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/datanode/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/datanode/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/datanode/run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/historyserver/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/historyserver/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/historyserver/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/historyserver/run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/namenode/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/namenode/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/namenode/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/namenode/run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nginx/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/nginx/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nginx/bde-hadoop.css" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/nginx/bde-hadoop.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nginx/default.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/nginx/default.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nginx/materialize.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/nginx/materialize.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/nodemanager/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/secure/core-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/nodemanager/conf/secure/core-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/secure/hdfs-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/nodemanager/conf/secure/hdfs-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/secure/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/nodemanager/conf/secure/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/secure/mapred-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/nodemanager/conf/secure/mapred-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/secure/yarn-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/nodemanager/conf/secure/yarn-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/unsecure/core-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/nodemanager/conf/unsecure/core-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/unsecure/hbase-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/nodemanager/conf/unsecure/hbase-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/unsecure/hdfs-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/nodemanager/conf/unsecure/hdfs-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/unsecure/hive-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/nodemanager/conf/unsecure/hive-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/unsecure/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/nodemanager/conf/unsecure/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/unsecure/mapred-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/hadoop/client/mapred-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/conf/unsecure/yarn-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/nodemanager/conf/unsecure/yarn-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/container-executor.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/nodemanager/container-executor.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/nodemanager/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/nodemanager/run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/resourcemanager/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/resourcemanager/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/resourcemanager/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/resourcemanager/run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/timelineserver/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/timelineserver/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hadoop/timelineserver/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hadoop/timelineserver/run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hbase/base/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hbase/base/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hbase/base/entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hbase/base/entrypoint.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hbase/base/hbase-site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hbase/base/hbase-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hbase/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hbase/build.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hbase/hmaster/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hbase/hmaster/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hbase/hmaster/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hbase/hmaster/run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hbase/hregion/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hbase/hregion/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hbase/hregion/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hbase/hregion/run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/Introduction_to_hortonworks_sandbox.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/Introduction_to_hortonworks_sandbox.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/deploy-scripts/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/deploy-scripts/README.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/deploy-scripts/assets/generate-proxy-deploy-script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/deploy-scripts/assets/generate-proxy-deploy-script.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/deploy-scripts/assets/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/deploy-scripts/assets/nginx.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/deploy-scripts/docker-deploy-hdf311.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/deploy-scripts/docker-deploy-hdf311.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/deploy-scripts/docker-deploy-hdf320.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/deploy-scripts/docker-deploy-hdf320.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/deploy-scripts/docker-deploy-hdp30.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/deploy-scripts/docker-deploy-hdp30.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/deploy-scripts/enable-native-cda.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/deploy-scripts/enable-native-cda.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/deploy-scripts/enable-vm-cda.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/deploy-scripts/enable-vm-cda.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/deploy-scripts/sandbox-reset.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/deploy-scripts/sandbox-reset.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/gen-hosts.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/gen-hosts.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/proxy/conf.d/http-hdp.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/proxy/conf.d/http-hdp.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/proxy/conf.stream.d/tcp-hdp.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/proxy/conf.stream.d/tcp-hdp.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/proxy/generate-proxy-deploy-script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/proxy/generate-proxy-deploy-script.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/proxy/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/proxy/nginx.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/proxy/proxy-deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/proxy/proxy-deploy.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/sandbox-deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/sandbox-deploy.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/sandbox-flavor" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/sandbox-flavor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/sandbox-start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/sandbox-start.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/sandbox-stop.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/sandbox-stop.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/sandbox-undeploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/sandbox-undeploy.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/setup-and-splash.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/setup-and-splash.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hdp-sandbox/terminal-splash.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hdp-sandbox/terminal-splash.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hive/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hive/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hive/entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hive/entrypoint.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hive/hive-hbase-setup.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hive/hive-hbase-setup.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hive/hive-mysql.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hive/hive-mysql.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hive/hive-schema-3.1.0.mysql.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hive/hive-schema-3.1.0.mysql.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hive/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hive/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-hive/startup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hive/startup.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-iceberg/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-iceberg/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-iceberg/entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-iceberg/entrypoint.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-kafkaclient/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-kafkaclient/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-kdcserver/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-kdcserver/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-kdcserver/init-script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-kdcserver/init-script.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-localstack/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-localstack/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-localstack/k8s/localstack-endpoints.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-localstack/k8s/localstack-endpoints.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-localstack/k8s/localstack-ns.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-localstack/k8s/localstack-ns.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-localstack/k8s/localstack-pv.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-localstack/k8s/localstack-pv.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-localstack/k8s/localstack-pvc.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-localstack/k8s/localstack-pvc.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-minio/mc/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-minio/mc/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-minio/mc/setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-minio/mc/setup.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-minio/mc/users.parquet" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-minio/mc/users.parquet" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-minio/minio.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-minio/minio.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-minio/minio/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-minio/minio/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-nginx/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-nginx/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-nginx/bde-hadoop.css" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-nginx/bde-hadoop.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-nginx/default.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-nginx/default.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-nginx/materialize.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-nginx/materialize.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-notebook/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-notebook/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-notebook/entrypoint.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/k8s/jupyter.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-notebook/k8s/jupyter.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/k8s/localstack.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-notebook/k8s/localstack.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/k8s/mypv.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-notebook/k8s/mypv.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/k8s/pv-pod.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-notebook/k8s/pv-pod.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/k8s/pv-volume.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-notebook/k8s/pv-volume.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/requirements.pip" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-notebook/requirements.pip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/startup/00-prettytables.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-notebook/startup/00-prettytables.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-notebook/startup/README" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-notebook/startup/README" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-postgres/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-postgres/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-postgres/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-postgres/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-postgres/hive-schema-3.1.0.postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-postgres/hive-schema-3.1.0.postgres.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-postgres/init-hive-db.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-postgres/init-hive-db.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-spark/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-spark/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-spark/entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-spark/entrypoint.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-spark/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-spark/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-spark/start-spark.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-spark/start-spark.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-tezui/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-tezui/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-tezui/entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-tezui/entrypoint.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-tezui/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-tezui/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-tezui/startup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-tezui/startup.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-ubuntu/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-ubuntu/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-ubuntu/entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-ubuntu/entrypoint.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-ubuntu/env_pyspark37.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-ubuntu/env_pyspark37.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-zeppelin/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-zeppelin/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-zeppelin/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-zeppelin/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-zeppelin/env_python_3_with_R.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-zeppelin/env_python_3_with_R.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-zeppelin/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-zeppelin/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-zeppelin/log4j2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-zeppelin/log4j2.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-zeppelin/log4j2_docker.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-zeppelin/log4j2_docker.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-zeppelin/log4j_docker.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-zeppelin/log4j_docker.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-zeppelin/zeppelin-example-spark-conf.yml.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-zeppelin/zeppelin-example-spark-conf.yml.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-zookeeper/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-zookeeper/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-zookeeper/reame.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-zookeeper/reame.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-zookeeper/startup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-zookeeper/startup.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_airflow.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_airflow.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_cassandra.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_cassandra.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_clients.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/regular/docker_clients.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_grafana.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_grafana.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_hadoop.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/regular/docker_hadoop.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_hbase.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/regular/docker_hbase.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_hive.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/regular/docker_hive.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_kerberos.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_kerberos.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_minio.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_minio.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_mysql.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/regular/docker_mysql.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_postgres.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/regular/docker_postgres.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/nbproject/project.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/pyproject.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/bin/jsvc" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/resources/bin/jsvc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/examples/nifi/convert-csv-to-json-avro-xml.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/resources/examples/nifi/convert-csv-to-json-avro-xml.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/examples/nifi/convert-csv-to-json.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/resources/examples/nifi/convert-csv-to-json.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/examples/nifi/users.csv" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/resources/examples/nifi/users.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/JDBC_Cli_test_with_steps.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/resources/libs/JDBC_Cli_test_with_steps.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/resources/libs/readme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/libs/s3-fs-hadoop/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/resources/libs/s3-fs-hadoop/readme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/tars/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/resources/tars/readme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/resources/versions.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/resources/versions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/kcat-example.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/scripts/kcat-example.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/cassandra-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/cassandra-help.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme-resources/flink-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/flink-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/iceberg-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/iceberg-help.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/kafka-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/kafka-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/minio-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/minio-help.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -523,177 +95,178 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Application.AppLauncher.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AppLauncher::BatchWorkflow.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AppLauncher::DiscretizedStreamWorkflow.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AppLauncher::StructuredStreamWorkflow.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AppStreamWorkflow.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ClickEventGenerator.executor&quot;: &quot;Run&quot;,
-    &quot;Application.DemoApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SandboxSbApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.SparkPi.executor&quot;: &quot;Run&quot;,
-    &quot;Application.StreamExample.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TransactionAvroStream.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.Docker Image.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.metastore: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.mysqlserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox.gateway: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-jobmanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-taskmanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-hive-cluster.yml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-rest: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.mc: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka-cluster-7.5.2.yml.control-center: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml.kafkabroker: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml.zookeeper: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kdcserver.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-minio.yml.mc: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-iceburg.yml.mc: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-iceburg.yml.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-iceburg.yml.rest: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-iceburg.yml.spark-iceberg: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml.kafkabroker: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml.kafkaclient: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml.zookeeper: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.datanode: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.gateway: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.historyserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.hivetezui: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.hmaster: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.hregion: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.metastore: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.mysqlserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.namenode: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.nodemanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.resourcemanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.sparkhistory: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.timelineserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.flink-cluster.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.kafka-cluster.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.minio.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.mysqlserver.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.spark-cluster.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.spark-notebook.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.ubuntu.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.zeppelin.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AvroUtilTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AvroUtilTest.jsonToAvro.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AvroUtilTest.schemaFromFile.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DatasourceBuilderTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SandboxSbApplicationTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SandboxSbApplicationTests (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SandboxSbApplicationTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SchemaProviderTest.structTypeFromAvro.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-data-generator [clean,verify].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-data-generator [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-data-generator [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-data-generator [verify].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-flink-module [clean,package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-flink-module [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-flink-module [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [verify].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-spark-module [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-spark-module [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-spring-module [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-spring-module [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-spring-module [test].executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_Commons.test_print_separator.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_Commons.test_split_csv.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_Commons.test_split_csv_line.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_User.test_random.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_User.test_to_dict.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_User.test_to_obj.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_static.test_flake8.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests in test_Commons.py.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests in test_User.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python.FileUtils.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Order.executor&quot;: &quot;Run&quot;,
-    &quot;Python.TimeUtils.executor&quot;: &quot;Run&quot;,
-    &quot;Python.User.executor&quot;: &quot;Run&quot;,
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.avro-test.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.confluent_kafka_AvroConsumer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_AvroProducer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_ConsumerFactory.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_DeserializingConsumer.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.confluent_kafka_ProducerFactory.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_SerializingProducer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_simple_consumer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_transaction_producer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.hello-spark.executor&quot;: &quot;Run&quot;,
-    &quot;Python.kafka_python_partitioned_consumer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.kafka_python_partitioned_producer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.kafka_python_simple_consumer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.kafka_python_simple_producer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pie.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pyspark-pandas.executor&quot;: &quot;Run&quot;,
-    &quot;Python.run_tests.executor&quot;: &quot;Run&quot;,
-    &quot;Python.sql-s3a-read.executor&quot;: &quot;Run&quot;,
-    &quot;Python.structured-avro-stream.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3&quot;: &quot;junit.framework.TestCase&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop/docker-hadoop334-cluster&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-hadoop-sandbox/envs/regular&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.31724137&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.AppLauncher.executor": "Run",
+    "Application.AppLauncher::BatchWorkflow.executor": "Run",
+    "Application.AppLauncher::DiscretizedStreamWorkflow.executor": "Run",
+    "Application.AppLauncher::StructuredStreamWorkflow.executor": "Run",
+    "Application.AppStreamWorkflow.executor": "Run",
+    "Application.ClickEventGenerator.executor": "Run",
+    "Application.DemoApplication.executor": "Debug",
+    "Application.Main.executor": "Run",
+    "Application.SandboxSbApplication.executor": "Debug",
+    "Application.SparkPi.executor": "Run",
+    "Application.StreamExample.executor": "Run",
+    "Application.TransactionAvroStream.executor": "Run",
+    "Docker.Docker Image.executor": "Run",
+    "Docker.bd-docker-sandbox.minio: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.metastore: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.mysqlserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox.gateway: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-jobmanager: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-taskmanager: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-hive-cluster.yml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-rest: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.mc: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka-cluster-7.5.2.yml.control-center: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka.yml.kafkabroker: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka.yml.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka.yml.zookeeper: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka.yml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kdcserver.yml.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-minio.yml.mc: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox: Compose Deployment.executor": "Run",
+    "Docker.dc-iceburg.yml.mc: Compose Deployment.executor": "Run",
+    "Docker.dc-iceburg.yml.minio: Compose Deployment.executor": "Run",
+    "Docker.dc-iceburg.yml.rest: Compose Deployment.executor": "Run",
+    "Docker.dc-iceburg.yml.spark-iceberg: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml.kafkabroker: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml.kafkaclient: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml.zookeeper: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.datanode: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.gateway: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.historyserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.hivetezui: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.hmaster: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.hregion: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.metastore: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.mysqlserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.namenode: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.nodemanager: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.resourcemanager: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.sparkhistory: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.timelineserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
+    "Docker.flink-cluster.executor": "Run",
+    "Docker.kafka-cluster.executor": "Run",
+    "Docker.minio.executor": "Run",
+    "Docker.mysqlserver.executor": "Run",
+    "Docker.spark-cluster.executor": "Run",
+    "Docker.spark-notebook.executor": "Run",
+    "Docker.ubuntu.executor": "Run",
+    "Docker.zeppelin-notebook.executor": "Run",
+    "Docker.zeppelin.executor": "Run",
+    "JUnit.AvroUtilTest.executor": "Run",
+    "JUnit.AvroUtilTest.jsonToAvro.executor": "Run",
+    "JUnit.AvroUtilTest.schemaFromFile.executor": "Run",
+    "JUnit.DatasourceBuilderTest.executor": "Run",
+    "JUnit.SandboxSbApplicationTest.executor": "Run",
+    "JUnit.SandboxSbApplicationTests (1).executor": "Run",
+    "JUnit.SandboxSbApplicationTests.executor": "Run",
+    "JUnit.SchemaProviderTest.structTypeFromAvro.executor": "Run",
+    "Maven.bd-data-generator [clean,verify].executor": "Run",
+    "Maven.bd-data-generator [clean].executor": "Run",
+    "Maven.bd-data-generator [package].executor": "Run",
+    "Maven.bd-data-generator [verify].executor": "Run",
+    "Maven.bd-flink-module [clean,package].executor": "Run",
+    "Maven.bd-flink-module [clean].executor": "Run",
+    "Maven.bd-flink-module [package].executor": "Run",
+    "Maven.bd-python-module [clean].executor": "Run",
+    "Maven.bd-python-module [install].executor": "Run",
+    "Maven.bd-python-module [org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy].executor": "Run",
+    "Maven.bd-python-module [package].executor": "Run",
+    "Maven.bd-python-module [verify].executor": "Run",
+    "Maven.bd-spark-module [clean].executor": "Run",
+    "Maven.bd-spark-module [package].executor": "Run",
+    "Maven.bd-spring-module [clean].executor": "Run",
+    "Maven.bd-spring-module [package].executor": "Run",
+    "Maven.bd-spring-module [test].executor": "Run",
+    "Python tests.Python tests for test_Commons.test_print_separator.executor": "Run",
+    "Python tests.Python tests for test_Commons.test_split_csv.executor": "Run",
+    "Python tests.Python tests for test_Commons.test_split_csv_line.executor": "Debug",
+    "Python tests.Python tests for test_User.test_random.executor": "Debug",
+    "Python tests.Python tests for test_User.test_to_dict.executor": "Debug",
+    "Python tests.Python tests for test_User.test_to_obj.executor": "Run",
+    "Python tests.Python tests for test_static.test_flake8.executor": "Debug",
+    "Python tests.Python tests in test_Commons.py.executor": "Debug",
+    "Python tests.Python tests in test_User.py.executor": "Run",
+    "Python.FileUtils.executor": "Run",
+    "Python.Order.executor": "Run",
+    "Python.TimeUtils.executor": "Run",
+    "Python.User.executor": "Run",
+    "Python.app.executor": "Run",
+    "Python.avro-test.executor": "Debug",
+    "Python.confluent_kafka_AvroConsumer.executor": "Run",
+    "Python.confluent_kafka_AvroProducer.executor": "Run",
+    "Python.confluent_kafka_ConsumerFactory.executor": "Run",
+    "Python.confluent_kafka_DeserializingConsumer.executor": "Debug",
+    "Python.confluent_kafka_ProducerFactory.executor": "Run",
+    "Python.confluent_kafka_SerializingProducer.executor": "Run",
+    "Python.confluent_kafka_simple_consumer.executor": "Run",
+    "Python.confluent_transaction_producer.executor": "Run",
+    "Python.hello-spark.executor": "Run",
+    "Python.kafka_python_partitioned_consumer.executor": "Run",
+    "Python.kafka_python_partitioned_producer.executor": "Run",
+    "Python.kafka_python_simple_consumer.executor": "Run",
+    "Python.kafka_python_simple_producer.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.pie.executor": "Run",
+    "Python.pyspark-pandas.executor": "Run",
+    "Python.run_tests.executor": "Run",
+    "Python.sql-s3a-read.executor": "Run",
+    "Python.structured-avro-stream.executor": "Debug",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "develop/docker-hadoop334-cluster",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-hadoop-sandbox/envs/regular",
+    "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.31724137",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/envs/regular" />
@@ -724,7 +297,7 @@
       <recent name="org.examples.spark" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.minio">
+  <component name="RunManager" selected="Docker.kafka-cluster">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -991,22 +564,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00052" summary="2024-09-20 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1726807664265</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1726807664265</updated>
-    </task>
-    <task id="LOCAL-00053" summary="2024-09-20 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1726808116689</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1726808116690</updated>
     </task>
     <task id="LOCAL-00054" summary="2024-09-21 Update Project Configuration.">
       <option name="closed" value="true" />
@@ -1384,7 +941,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733295187876</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="2024-12-05 consolidate docker-sandbox module.">
+      <option name="closed" value="true" />
+      <created>1733368721090</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1733368721096</updated>
+    </task>
+    <task id="LOCAL-00102" summary="2024-12-05 consolidate docker-sandbox module.">
+      <option name="closed" value="true" />
+      <created>1733368757644</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1733368757645</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -1410,7 +983,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-09-17 Update Project Configuration." />
     <MESSAGE value="2024-09-18 Update Project Configuration." />
     <MESSAGE value="2024-09-19 Update Project Configuration." />
     <MESSAGE value="2024-09-20 Update Project Configuration." />
@@ -1435,7 +1007,8 @@
     <MESSAGE value="2024-11-27 Update flink configurations." />
     <MESSAGE value="2024-12-03 Update flink configurations." />
     <MESSAGE value="2024-12-04 add transaction data generator." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-12-04 add transaction data generator." />
+    <MESSAGE value="2024-12-05 consolidate docker-sandbox module." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-12-05 consolidate docker-sandbox module." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

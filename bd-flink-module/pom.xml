@@ -157,6 +157,34 @@ under the License.
 					</execution>
 				</executions>
 			</plugin>
+
+			<!-- Maven Docker plugins -->
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.45.1</version>
+				<executions>
+					<execution>
+						<id>docker-build</id>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!--
+                    <dockerHost>${docker.host}</dockerHost>
+                    <certPath>${docker.cert.path}</certPath>
+                    -->
+					<useColor>true</useColor>
+					<imagesMap>
+						<service>
+							<name>brijeshdhaker/%a:%v</name>
+						</service>
+					</imagesMap>
+				</configuration>
+			</plugin>
 		</plugins>
 
 		<pluginManagement>

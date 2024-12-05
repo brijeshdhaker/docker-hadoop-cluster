@@ -10,7 +10,7 @@ services:
     hostname: azurite.sandbox.net
     container_name: azurite
     healthcheck:
-      test: echo $HOSTNAME || exit 1
+      test: echo $(hostname -f) || exit 1
       retries: 20
       interval: 10s
     environment:
