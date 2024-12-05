@@ -1,60 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
-
-	<property>
-		<name>fs.defaultFS</name>
-		<value>s3a://defaultfs/</value>
-	</property>
-
-	<property>
-		<name>fs.s3a.endpoint</name>
-		<value>http://minio.sandbox.net:9010</value>
-	</property>
-
-	<property>
-		<name>fs.s3a.access.key</name>
-		<value>pgm2H2bR7a5kMc5XCYdO</value>
-	</property>
-
-	<property>
-		<name>fs.s3a.secret.key</name>
-		<value>zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG</value>
-	</property>
-
-	<property>
-		<name>fs.s3a.path.style.access</name>
-		<value>true</value>
-	</property>
-
-	<property>
-		<name>fs.s3a.aws.credentials.provider</name>
-		<value>org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider</value>
-	</property>
-
-	<property>
-		<name>fs.s3a.impl</name>
-		<value>org.apache.hadoop.fs.s3a.S3AFileSystem</value>
-	</property>
-
-	<property><name>io.compression.codecs</name><value>org.apache.hadoop.io.compress.SnappyCodec</value></property>
-	<property><name>hadoop.proxyuser.mapred.hosts</name><value>*</value></property>
-	<property><name>hadoop.proxyuser.brijeshdhaker.groups</name><value>*</value></property>
-	<property><name>hadoop.proxyuser.root.hosts</name><value>*</value></property>
-	<property><name>hadoop.proxyuser.spark.groups</name><value>*</value></property>
-	<property><name>hadoop.proxyuser.mapred.groups</name><value>*</value></property>
-	<property><name>hadoop.proxyuser.hive.hosts</name><value>*</value></property>
-	<property><name>hadoop.proxyuser.hbase.hosts</name><value>*</value></property>
-	<property><name>hadoop.proxyuser.yarn.hosts</name><value>*</value></property>
-	<property><name>hadoop.proxyuser.zeppelin.groups</name><value>*</value></property>
-	<property><name>hadoop.proxyuser.hdfs.groups</name><value>*</value></property>
-	<property><name>hadoop.proxyuser.root.groups</name><value>*</value></property>
-	<property><name>hadoop.proxyuser.hive.groups</name><value>*</value></property>
-	<property><name>hadoop.proxyuser.yarn.groups</name><value>*</value></property>
-	<property><name>hadoop.proxyuser.hdfs.hosts</name><value>*</value></property>
-	<property><name>hadoop.proxyuser.hbase.groups</name><value>*</value></property>
-	<property><name>hadoop.proxyuser.spark.hosts</name><value>*</value></property>
-	<property><name>hadoop.proxyuser.zeppelin.hosts</name><value>*</value></property>
-	<property><name>hadoop.proxyuser.brijeshdhaker.hosts</name><value>*</value></property>
-	<property><name>hadoop.http.staticuser.user</name><value>hdfs</value></property>
+    <property>
+        <name>hadoop.security.auth_to_local</name>
+        <value>
+            RULE:[2:$1/$2@$0](namenode/.*@SANDBOX\.NET)s/.*/hdfs/
+            RULE:[2:$1/$2@$0](datanode/.*@SANDBOX\.NET)s/.*/hdfs/
+            RULE:[2:$1/$2@$0](resourcemanager/.*@SANDBOX\.NET)s/.*/yarn/
+            RULE:[2:$1/$2@$0](nodemanager/.*@SANDBOX\.NET)s/.*/yarn/
+            RULE:[2:$1/$2@$0](timelineserver/.*@SANDBOX\.NET)s/.*/yarn/
+            RULE:[2:$1/$2@$0](historyserver/.*@SANDBOX\.NET)s/.*/mapred/
+            DEFAULT
+        </value>
+    </property>
 </configuration>

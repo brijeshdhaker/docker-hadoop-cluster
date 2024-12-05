@@ -118,7 +118,7 @@ under the License.
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>3.6.0</version>
 				<executions>
 					<!-- Run shade goal on package phase -->
 					<execution>
@@ -173,7 +173,7 @@ under the License.
 									<pluginExecutionFilter>
 										<groupId>org.apache.maven.plugins</groupId>
 										<artifactId>maven-shade-plugin</artifactId>
-										<versionRange>[3.0.0,)</versionRange>
+										<versionRange>[3.6.0,)</versionRange>
 										<goals>
 											<goal>shade</goal>
 										</goals>
@@ -210,10 +210,18 @@ under the License.
 					<version>${flink.version}</version>
 					<scope>compile</scope>
 				</dependency>
+
 				<dependency>
 					<groupId>org.apache.flink</groupId>
 					<artifactId>flink-streaming-java</artifactId>
 					<version>${flink.version}</version>
+					<scope>compile</scope>
+				</dependency>
+
+				<dependency>
+					<groupId>org.apache.flink</groupId>
+					<artifactId>flink-connector-base</artifactId>
+					<version>1.20.0</version>
 					<scope>compile</scope>
 				</dependency>
 

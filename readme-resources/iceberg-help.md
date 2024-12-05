@@ -6,14 +6,14 @@ export CATALOG_CATALOG__IMPL=org.apache.iceberg.aws.glue.GlueCatalog
 #
 # 
 #
-docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec rest /bin/bash
+docker compose -f bd-docker-sandbox/dc-iceburg.yml exec rest /bin/bash
 
 docker run -it --rm \
 tabulario/spark-iceberg:3.4.1_1.4.1 /bin/bash
 
 docker run -it --rm \
 -v /apps/drivers/libs/mysql-connector-java-8.0.23.jar:/usr/lib/iceberg-rest/mysql-connector-java-8.0.23.jar \
--v ./bd-hadoop-sandbox/conf/sqlline:/usr/lib/iceberg-rest/sqlline \
+-v ./bd-docker-sandbox/conf/sqlline:/usr/lib/iceberg-rest/sqlline \
 --network sandbox.net \
 tabulario/iceberg-rest /bin/bash
 
@@ -104,7 +104,7 @@ spark.sql.catalog.hadoop_prod.warehouse = hdfs://namenode.sandbox.net:9000/wareh
 
 docker run -it --rm \
 -v /apps/drivers/libs/mysql-connector-java-8.0.23.jar:/usr/lib/iceberg-rest/mysql-connector-java-8.0.23.jar \
--v ./bd-hadoop-sandbox/conf/sqlline:/usr/lib/iceberg-rest/sqlline \
+-v ./bd-docker-sandbox/conf/sqlline:/usr/lib/iceberg-rest/sqlline \
 --network sandbox.net \
 brijeshdhaker/spark-notebook:3.5.1 spark-class org.apache.spark.deploy.master.Master --ip localhost --port 7077 --webui-port 8080
 
@@ -117,10 +117,10 @@ start-thriftserver.sh  --driver-java-options "-Dderby.system.home=/tmp/derby"
 #
 #
 #
-docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg /bin/bash
-docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg pyspark 
-docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg spark-shell 
-docker compose -f bd-hadoop-sandbox/dc-iceburg.yml exec spark-iceberg spark-sql
+docker compose -f bd-docker-sandbox/dc-iceburg.yml exec spark-iceberg /bin/bash
+docker compose -f bd-docker-sandbox/dc-iceburg.yml exec spark-iceberg pyspark 
+docker compose -f bd-docker-sandbox/dc-iceburg.yml exec spark-iceberg spark-shell 
+docker compose -f bd-docker-sandbox/dc-iceburg.yml exec spark-iceberg spark-sql
 
 
 ### Start Spark Shell

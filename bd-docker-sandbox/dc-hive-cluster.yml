@@ -1,0 +1,95 @@
+#
+# docker compose -f bd-docker-sandbox/dc-hive-cluster.yml up -d
+# docker compose -f bd-docker-sandbox/dc-hive-cluster.yml down
+#
+
+version: "3.9"
+
+#
+include:
+  - path: ../bd-docker-sandbox/dc-hadoop-cluster.yml
+  - path: ../bd-docker-sandbox/dc-mysqlserver.yml
+
+#
+services:
+  #
+  # Hive Metastore
+  #
+  metastore:
+    image: brijeshdhaker/hive:3.1.3
+    hostname: metastore.sandbox.net
+    container_name: metastore
+    healthcheck:
+      test: netstat -lpn | grep 9083 || exit 1
+      retries: 20
+      interval: 10s
+    depends_on:
+      mysqlserver:
+        condition: service_healthy
+    env_file:
+      - ./envs/docker_hive.env
+      - ./envs/docker_clients.env
+    command: /opt/hive/bin/hive --service metastore
+    environment:
+      SERVICE_PRECONDITION: "mysqlserver.sandbox.net:3306"
+    ports:
+      - "9083:9083"
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_hadoop_334:/opt/hadoop
+      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+
+  # Hive Server
+  hiveserver:
+    image: brijeshdhaker/hive:3.1.3
+    container_name: hiveserver
+    hostname: hiveserver.sandbox.net
+    healthcheck:
+      test: nc -vz hiveserver.sandbox.net 10002 || exit 1
+      retries: 20
+      interval: 10s
+    depends_on:
+      metastore:
+        condition: service_healthy
+    env_file:
+      - ./envs/docker_hive.env
+      - ./envs/docker_clients.env
+    environment:
+      SERVICE_PRECONDITION: "namenode.sandbox.net:9000 metastore.sandbox.net:9083"
+    ports:
+      - "10000:10000"
+      - "10002:10002"
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_tez_102:/opt/tez
+      - sandbox_hadoop_334:/opt/hadoop
+      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+      - ./conf/tez/tez-site.xml:/opt/tez/conf/tez-site.xml
+
+  # Hive Tez UI
+  hivetezui:
+    image: brijeshdhaker/tezui:0.10.2
+    container_name: hivetezui
+    hostname: hivetezui.sandbox.net
+    healthcheck:
+      test: nc -vz hivetezui.sandbox.net 9999 || exit 1
+      retries: 20
+      interval: 10s
+    depends_on:
+      timelineserver:
+        condition: service_healthy
+    environment:
+      KRB5_CONFIG: "/etc/krb5.conf"
+      SERVICE_PRECONDITION: "timelineserver.sandbox.net:8188"
+    ports:
+      - "9999:9999"
+    volumes:
+      - sandbox_apps_path:/apps
+
+#
+volumes:
+  #
+  sandbox_hive_313:
+    external: true
+  sandbox_tez_102:
+    external: true

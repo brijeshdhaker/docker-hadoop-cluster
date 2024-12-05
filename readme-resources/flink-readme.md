@@ -11,7 +11,7 @@ HADOOP_CLASSPATH=`hadoop classpath` /home/foouser/flink-1.9.0/bin/flink run \
 #
 #
 ```shell
-docker compose -f bd-hadoop-sandbox/docker-compose.yml up -d zookeeper kafkabroker
+docker compose -f bd-docker-sandbox/docker-compose.yml up -d zookeeper kafkabroker
 
 ```
 
@@ -27,7 +27,7 @@ docker logs -f txn-data-generator
 docker container stop txn-data-generator
 docker container rm txn-data-generator
 
-docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
 --topic transaction-csv-topic \
 --bootstrap-server kafkabroker.sandbox.net:9092" \
 --consumer.config /apps/sandbox/kafka/cnf/client_plaintext.config \
@@ -61,7 +61,7 @@ docker logs -f click-event-generator
 docker container stop click-event-generator
 docker container rm click-event-generator
 
-docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
 --topic click-event-source \
 --bootstrap-server kafkabroker.sandbox.net:9092" \
 --consumer.config /apps/sandbox/kafka/cnf/client_plaintext.config \
@@ -74,7 +74,7 @@ docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "k
 docker run --rm -i -t --network sandbox.net \
 -e JOB_MANAGER_RPC_ADDRESS=flink-jobmanager \
 -e JOB_MANAGER_RPC_PORT=6123 \
--v ./bd-hadoop-sandbox/conf/flink/config.yaml:/opt/flink/conf/config.yaml \
+-v ./bd-docker-sandbox/conf/flink/config.yaml:/opt/flink/conf/config.yaml \
 -v /apps:/apps \
 --name click-event-counter \
 brijeshdhaker/bd-flink-module:1.0.0 flink run -d /opt/bd-flink-module-1.0.0.jar --bootstrap.servers kafkabroker.sandbox.net:9092 --checkpointing --event-time --input-topic click-event-source --output-topic click-event-sink
@@ -82,7 +82,7 @@ brijeshdhaker/bd-flink-module:1.0.0 flink run -d /opt/bd-flink-module-1.0.0.jar 
 docker run --rm -i -t --network sandbox.net \
 -e JOB_MANAGER_RPC_ADDRESS=flink-jobmanager \
 -e JOB_MANAGER_RPC_PORT=6123 \
--v ./bd-hadoop-sandbox/conf/flink/config.yaml:/opt/flink/conf/config.yaml \
+-v ./bd-docker-sandbox/conf/flink/config.yaml:/opt/flink/conf/config.yaml \
 -v /apps:/apps \
 --name click-event-counter \
 brijeshdhaker/bd-flink-module:1.0.0 flink run -c flink.playgrounds.ops.clickcount.ClickEventCount /opt/bd-flink-module-1.0.0.jar --bootstrap.servers kafkabroker.sandbox.net:9092 --checkpointing --event-time --input-topic click-event-source --output-topic click-event-sink
@@ -90,7 +90,7 @@ brijeshdhaker/bd-flink-module:1.0.0 flink run -c flink.playgrounds.ops.clickcoun
 docker run --rm -i -t --network sandbox.net \
 -e JOB_MANAGER_RPC_ADDRESS=flink-jobmanager \
 -e JOB_MANAGER_RPC_PORT=6123 \
--v ./bd-hadoop-sandbox/conf/flink/config.yaml:/opt/flink/conf/config.yaml \
+-v ./bd-docker-sandbox/conf/flink/config.yaml:/opt/flink/conf/config.yaml \
 -v /apps:/apps \
 --name click-event-counter \
 brijeshdhaker/bd-flink-module:1.0.0 flink run -c flink.playgrounds.ops.clickcount.ClickEventCount /opt/bd-flink-module-1.0.0.jar --bootstrap.servers kafkabroker.sandbox.net:9092 --checkpointing --event-time --input-topic click-event-source --output-topic click-event-sink
@@ -99,7 +99,7 @@ brijeshdhaker/bd-flink-module:1.0.0 flink run -c flink.playgrounds.ops.clickcoun
 docker run --rm -i -t --network sandbox.net \
 -e JOB_MANAGER_RPC_ADDRESS=flink-jobmanager \
 -e JOB_MANAGER_RPC_PORT=6123 \
--v ./bd-hadoop-sandbox/conf/flink/config.yaml:/opt/flink/conf/config.yaml \
+-v ./bd-docker-sandbox/conf/flink/config.yaml:/opt/flink/conf/config.yaml \
 -v /apps:/apps \
 --name click-event-client brijeshdhaker/bd-flink-module:1.0.0 /bin/bash
 
@@ -115,7 +115,7 @@ flink run \
   --checkpointing \
   --event-time
   
-docker compose -f bd-hadoop-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
 --topic click-event-sink \
 --bootstrap-server kafkabroker.sandbox.net:9092" \
 --consumer.config /apps/sandbox/kafka/cnf/client_plaintext.config

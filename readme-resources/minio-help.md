@@ -5,7 +5,7 @@
 #
 # 
 #
-docker compose -f bd-hadoop-sandbox/docker-compose.yml exec minio /bin/bash
+docker compose -f bd-docker-sandbox/docker-compose.yml exec minio /bin/bash
 
 ```shell
 /usr/bin/mc config host add minio http://minio.sandbox.net:9010 admin password

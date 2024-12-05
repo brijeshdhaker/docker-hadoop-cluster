@@ -1,0 +1,196 @@
+#
+# docker compose -f bd-docker-sandbox/dc-hadoop-cluster.yml up -d
+# docker compose -f bd-docker-sandbox/dc-hadoop-cluster.yml down
+#
+
+#
+# docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
+# docker volume create --name sandbox_hadoop_334 --opt type=none --opt device=/opt/hadoop-3.3.4 --opt o=bind
+#
+# docker volume create --name sandbox_hadoop_334_dfs --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/dfs --opt o=bind
+# docker volume create --name sandbox_hadoop_334_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/yarn --opt o=bind
+#
+
+version: "3.9"
+
+include:
+  - path: ../bd-docker-sandbox/dc-kdcserver.yml
+
+services:
+  #
+  # HDFS Cluster
+  #
+  namenode:
+    image: brijeshdhaker/hadoop-namenode:3.3.4
+    build:
+      context: .
+      dockerfile: docker-hadoop/namenode/Dockerfile
+    container_name: namenode
+    hostname: namenode.sandbox.net
+    restart: no
+    healthcheck:
+      test: nc -vz namenode.sandbox.net 9870 || exit 1
+      retries: 20
+      interval: 10s
+    depends_on:
+      kdcserver:
+        condition: service_healthy
+    ports:
+      - "9870:9870"   # http
+      - "9871:9871"   # https
+      - "9000:9000"   # hdfs
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_hadoop_334_dfs:/hadoop/dfs
+    environment:
+      CLUSTER_NAME: "docker-sandbox"
+      MULTIHOMED_NETWORK: 2
+    env_file:
+      - ./envs/docker_hadoop.env
+
+  #
+  datanode:
+    image: brijeshdhaker/hadoop-datanode:3.3.4
+    build:
+      context: .
+      dockerfile: docker-hadoop/datanode/Dockerfile
+    container_name: datanode
+    hostname: datanode.sandbox.net
+    healthcheck:
+      test: nc -vz datanode.sandbox.net 1006 || exit 1
+      retries: 20
+      interval: 10s
+    depends_on:
+      namenode:
+        condition: service_healthy
+    ports:
+      - "9864:9864"   # http
+      - "9865:9865"   # https
+      - "9866:9866"
+    restart: no
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_hadoop_334_dfs:/hadoop/dfs
+    environment:
+      CLUSTER_NAME: "docker-sandbox"
+      SERVICE_PRECONDITION: "namenode.sandbox.net:9000"
+    env_file:
+      - ./envs/docker_hadoop.env
+
+  #
+  # YARN Cluster
+  #
+  resourcemanager:
+    image: brijeshdhaker/hadoop-resourcemanager:3.3.4
+    build:
+      context: .
+      dockerfile: docker-hadoop/resourcemanager/Dockerfile
+    container_name: resourcemanager
+    hostname: resourcemanager.sandbox.net
+    healthcheck:
+      test: curl -f http://resourcemanager.sandbox.net:8088 || exit 1
+      retries: 20
+      interval: 10s
+    restart: no
+    ports:
+      - "8088:8088"
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_hadoop_334_yarn:/yarn
+    environment:
+      SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
+    env_file:
+      - ./envs/docker_hadoop.env
+
+  #
+  nodemanager:
+    image: brijeshdhaker/hadoop-nodemanager:3.3.4
+    build:
+      context: .
+      dockerfile: docker-hadoop/nodemanager/Dockerfile
+    container_name: nodemanager
+    hostname: nodemanager.sandbox.net
+    restart: no
+    healthcheck:
+      test: nc -vz nodemanager.sandbox.net 8042 || exit 1
+      retries: 20
+      interval: 10s
+    depends_on:
+      resourcemanager:
+        condition: service_healthy
+    ports:
+      - "8042:8042"
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_hadoop_334_yarn:/yarn
+    environment:
+      HADOOP_CONF_DIR: "/opt/hadoop/etc/hadoop"
+      YARN_CONF_DIR: "/opt/hadoop/etc/hadoop"
+      SERVICE_PRECONDITION: "resourcemanager.sandbox.net:8088"
+    env_file:
+      - ./envs/docker_hadoop.env
+
+  # YARN Timeline Server
+  timelineserver:
+    image: brijeshdhaker/hadoop-timelineserver:3.3.4
+    build:
+      context: .
+      dockerfile: docker-hadoop/timelineserver/Dockerfile
+    container_name: timelineserver
+    hostname: timelineserver.sandbox.net
+    restart: no
+    healthcheck:
+      test: nc -vz timelineserver.sandbox.net 8188 || exit 1
+      retries: 20
+      interval: 10s
+    depends_on:
+      resourcemanager:
+        condition: service_healthy
+    ports:
+      - "8188:8188"
+    environment:
+      SERVICE_PRECONDITION: "namenode.sandbox.net:9000"
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_hadoop_334_yarn:/yarn
+    env_file:
+      - ./envs/docker_hadoop.env
+
+  # MR History Server
+#  historyserver:
+#    image: brijeshdhaker/hadoop-historyserver:3.3.4
+#    build:
+#      context: .
+#      dockerfile: docker-hadoop/historyserver/Dockerfile
+#    container_name: historyserver
+#    hostname: historyserver.sandbox.net
+#    restart: no
+#    healthcheck:
+#      test: nc -vz historyserver.sandbox.net 19888 || exit 1
+#      retries: 20
+#      interval: 10s
+#    depends_on:
+#      resourcemanager:
+#        condition: service_healthy
+#    ports:
+#      - "19888:19888"
+#    environment:
+#      SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
+#    volumes:
+#      - sandbox_apps_path:/apps
+#      - sandbox_hadoop_334_mapred:/mapred
+#    env_file:
+#      - envs/docker_hadoop.env
+
+
+#
+volumes:
+  #
+  sandbox_hadoop_334:
+    external: true
+  sandbox_hadoop_334_dfs:
+    external: true
+  sandbox_hadoop_334_yarn:
+    external: true
+  sandbox_hadoop_334_mapred:
+    external: true
