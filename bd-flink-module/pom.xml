@@ -49,8 +49,8 @@ under the License.
 		<java.version>17</java.version>
 		<scala.binary.version>2.12</scala.binary.version>
 		<maven.compiler.release>${java.version}</maven.compiler.release>
-		<maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+    	<maven.compiler.target>17</maven.compiler.target>
 	</properties>
 
 	<dependencies>
@@ -85,6 +85,73 @@ under the License.
 			<version>3.4.0-1.20</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-clients</artifactId>
+			<version>${flink.version}</version>
+			<scope>${flink.scope}</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-parquet</artifactId>
+			<version>${flink.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-client</artifactId>
+			<version>3.4.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.12.0</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-table-common</artifactId>
+			<version>${flink.version}</version>
+			<scope>${flink.scope}</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-connector-files</artifactId>
+			<version>${flink.version}</version>
+			<scope>${flink.scope}</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-table-runtime</artifactId>
+			<version>${flink.version}</version>
+			<scope>${flink.scope}</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-table-planner_2.12</artifactId>
+			<version>${flink.version}</version>
+			<scope>${flink.scope}</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.delta</groupId>
+			<artifactId>delta-flink</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.delta</groupId>
+			<artifactId>delta-standalone_2.12</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+
 		<!-- Logging dependencies -->
 		<!-- These dependencies are excluded from the application JAR by default. -->
 		<dependency>
@@ -101,6 +168,14 @@ under the License.
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- Test dependencies -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -111,6 +186,10 @@ under the License.
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.10.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>17</target>
+				</configuration>
 			</plugin>
 
 			<!-- We use the maven-shade plugin to create a fat jar that contains all necessary dependencies. -->
@@ -222,6 +301,24 @@ under the License.
 	<!-- Its adds Flink's core classes to the runtime class path. -->
 	<!-- Otherwise they are missing in IntelliJ, because the dependency is 'provided' -->
 	<profiles>
+		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<flink.scope>compile</flink.scope>
+			</properties>
+		</profile>
+		<profile>
+			<id>cluster</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<flink.scope>provided</flink.scope>
+			</properties>
+		</profile>
 		<profile>
 			<id>add-dependencies-for-IDEA</id>
 

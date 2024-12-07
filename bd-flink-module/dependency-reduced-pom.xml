@@ -51,6 +51,10 @@
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.10.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>17</target>
+        </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
@@ -115,6 +119,18 @@
   </build>
   <profiles>
     <profile>
+      <id>local</id>
+      <properties>
+        <flink.scope>compile</flink.scope>
+      </properties>
+    </profile>
+    <profile>
+      <id>cluster</id>
+      <properties>
+        <flink.scope>provided</flink.scope>
+      </properties>
+    </profile>
+    <profile>
       <id>add-dependencies-for-IDEA</id>
       <dependencies>
         <dependency>
@@ -174,12 +190,24 @@
       <version>1.2.17</version>
       <scope>runtime</scope>
     </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>hamcrest-core</artifactId>
+          <groupId>org.hamcrest</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
   </dependencies>
   <properties>
     <scala.binary.version>2.12</scala.binary.version>
     <maven.compiler.release>${java.version}</maven.compiler.release>
     <java.version>17</java.version>
-    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.source>1.8</maven.compiler.source>
     <flink.version>1.20.0</flink.version>
     <maven.compiler.target>17</maven.compiler.target>
     <slf4j.version>2.0.16</slf4j.version>
