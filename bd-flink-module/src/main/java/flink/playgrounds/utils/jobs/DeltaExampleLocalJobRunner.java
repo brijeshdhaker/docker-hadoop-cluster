@@ -27,9 +27,10 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 public interface DeltaExampleLocalJobRunner extends DeltaExampleJobRunner {
 
     default MiniCluster getMiniCluster() {
-        final org.apache.flink.configuration.Configuration config =
-                new org.apache.flink.configuration.Configuration();
+
+        final org.apache.flink.configuration.Configuration config = new org.apache.flink.configuration.Configuration();
         config.setString(RestOptions.BIND_PORT, "18081-19000");
+
         final MiniClusterConfiguration cfg =
                 new MiniClusterConfiguration.Builder()
                         .setNumTaskManagers(2)

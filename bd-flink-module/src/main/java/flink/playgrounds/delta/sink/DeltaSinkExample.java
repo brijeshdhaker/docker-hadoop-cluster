@@ -1,4 +1,4 @@
-package flink.playgrounds.delta;
+package flink.playgrounds.delta.sink;
 
 import flink.playgrounds.utils.Utils;
 import flink.playgrounds.utils.jobs.DeltaSinkLocalJobExampleBase;
@@ -54,11 +54,13 @@ public class DeltaSinkExample extends DeltaSinkLocalJobExampleBase {
      */
     @Override
     public DeltaSink<RowData> getDeltaSink(String tablePath) {
-        return DeltaSink
-                .forRowData(
+
+        Configuration configuration = Utils.getHadoopFsConfiguration();
+
+        return DeltaSink.forRowData(
                         new Path(TABLE_PATH),
-                        new Configuration(),
-                        Utils.FULL_SCHEMA_ROW_TYPE)
-                .build();
+                        configuration,
+                        Utils.FULL_SCHEMA_ROW_TYPE
+                ).build();
     }
 }

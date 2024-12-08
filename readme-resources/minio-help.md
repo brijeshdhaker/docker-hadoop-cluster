@@ -31,6 +31,8 @@ export AWS_REGION=us-east-1
 
 /usr/bin/mc du warehouse
 
+/usr/bin/mc ls --recursive minio
+
 ```
 
 

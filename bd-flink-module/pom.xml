@@ -22,9 +22,8 @@ under the License.
 
 	<groupId>org.apache.flink</groupId>
 	<artifactId>bd-flink-module</artifactId>
-	<version>1.0.0</version>
-
 	<name>bd-flink-module</name>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 	<url>https://flink.apache.org</url>
 
@@ -43,14 +42,16 @@ under the License.
     </scm>
 
     <properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<slf4j.version>2.0.16</slf4j.version>
+		<log4j.version>2.12.1</log4j.version>
 		<flink.version>1.20.0</flink.version>
+		<delta.connectors.version>3.2.1</delta.connectors.version>
+		<hadoop.version>3.3.4</hadoop.version>
 		<java.version>17</java.version>
 		<scala.binary.version>2.12</scala.binary.version>
-		<maven.compiler.release>${java.version}</maven.compiler.release>
 		<maven.compiler.source>1.8</maven.compiler.source>
     	<maven.compiler.target>17</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<dependencies>
@@ -60,14 +61,14 @@ under the License.
 			<groupId>org.apache.flink</groupId>
 			<artifactId>flink-java</artifactId>
 			<version>${flink.version}</version>
-			<scope>provided</scope>
+			<scope>${flink.scope}</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.flink</groupId>
 			<artifactId>flink-streaming-java</artifactId>
 			<version>${flink.version}</version>
-			<scope>provided</scope>
+			<scope>${flink.scope}</scope>
 		</dependency>
 
 		<!-- Connector dependencies -->
@@ -75,14 +76,15 @@ under the License.
 		<dependency>
 			<groupId>org.apache.flink</groupId>
 			<artifactId>flink-connector-base</artifactId>
-			<version>1.20.0</version>
-			<scope>provided</scope>
+			<version>${flink.version}</version>
+			<scope>${flink.scope}</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.flink</groupId>
 			<artifactId>flink-connector-kafka</artifactId>
 			<version>3.4.0-1.20</version>
+			<scope>${flink.scope}</scope>
 		</dependency>
 
 		<dependency>
@@ -101,16 +103,14 @@ under the License.
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>
 			<artifactId>hadoop-client</artifactId>
-			<version>3.4.1</version>
+			<version>${hadoop.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.12.0</version>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-aws</artifactId>
+			<version>${hadoop.version}</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.apache.flink</groupId>
@@ -143,28 +143,35 @@ under the License.
 		<dependency>
 			<groupId>io.delta</groupId>
 			<artifactId>delta-flink</artifactId>
-			<version>3.2.1</version>
+			<version>${delta.connectors.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>io.delta</groupId>
 			<artifactId>delta-standalone_2.12</artifactId>
-			<version>3.2.1</version>
+			<version>${delta.connectors.version}</version>
 		</dependency>
 
-		<!-- Logging dependencies -->
+		<!-- Add logging framework, to produce console output when running in the IDE. -->
 		<!-- These dependencies are excluded from the application JAR by default. -->
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.7</version>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>${log4j.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4j.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 
@@ -188,18 +195,43 @@ under the License.
 				<version>3.10.1</version>
 				<configuration>
 					<source>1.8</source>
-					<target>17</target>
+					<target>11</target>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.3.0</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>flink.playgrounds.ops.clickcount.ClickEventGenerator</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>assemble-all</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 			<!-- We use the maven-shade plugin to create a fat jar that contains all necessary dependencies. -->
 			<!-- Change the value of <mainClass>...</mainClass> if your program entry point changes. -->
-			<plugin>
+			<!--<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
 				<version>3.6.0</version>
 				<executions>
-					<!-- Run shade goal on package phase -->
+					&lt;!&ndash; Run shade goal on package phase &ndash;&gt;
 					<execution>
 						<phase>package</phase>
 						<goals>
@@ -216,8 +248,8 @@ under the License.
 							</artifactSet>
 							<filters>
 								<filter>
-									<!-- Do not copy the signatures in the META-INF folder.
-									Otherwise, this might cause SecurityExceptions when using the JAR. -->
+									&lt;!&ndash; Do not copy the signatures in the META-INF folder.
+									Otherwise, this might cause SecurityExceptions when using the JAR. &ndash;&gt;
 									<artifact>*:*</artifact>
 									<excludes>
 										<exclude>META-INF/*.SF</exclude>
@@ -227,7 +259,7 @@ under the License.
 								</filter>
 							</filters>
 							<transformers>
-								<!-- flink.playgrounds.ops.clickcount.ClickEventCount -->
+								&lt;!&ndash; flink.playgrounds.ops.clickcount.ClickEventCount &ndash;&gt;
 								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
 									<mainClass>flink.playgrounds.ops.clickcount.ClickEventGenerator</mainClass>
 								</transformer>
@@ -236,9 +268,9 @@ under the License.
 					</execution>
 				</executions>
 			</plugin>
-
+-->
 			<!-- Maven Docker plugins -->
-			<plugin>
+			<!--<plugin>
 				<groupId>io.fabric8</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>0.45.1</version>
@@ -252,10 +284,10 @@ under the License.
 					</execution>
 				</executions>
 				<configuration>
-					<!--
+					&lt;!&ndash;
                     <dockerHost>${docker.host}</dockerHost>
                     <certPath>${docker.cert.path}</certPath>
-                    -->
+                    &ndash;&gt;
 					<useColor>true</useColor>
 					<imagesMap>
 						<service>
@@ -263,38 +295,8 @@ under the License.
 						</service>
 					</imagesMap>
 				</configuration>
-			</plugin>
+			</plugin>-->
 		</plugins>
-
-		<pluginManagement>
-			<plugins>
-				<!-- This improves the out-of-the-box experience in Eclipse by resolving some warnings. -->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.apache.maven.plugins</groupId>
-										<artifactId>maven-shade-plugin</artifactId>
-										<versionRange>[3.6.0,)</versionRange>
-										<goals>
-											<goal>shade</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore/>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 
 	<!-- This profile helps to make things run out of the box in IntelliJ -->
@@ -319,47 +321,5 @@ under the License.
 				<flink.scope>provided</flink.scope>
 			</properties>
 		</profile>
-		<profile>
-			<id>add-dependencies-for-IDEA</id>
-
-			<activation>
-				<property>
-					<name>idea.version</name>
-				</property>
-			</activation>
-
-			<dependencies>
-				<dependency>
-					<groupId>org.apache.flink</groupId>
-					<artifactId>flink-java</artifactId>
-					<version>${flink.version}</version>
-					<scope>compile</scope>
-				</dependency>
-
-				<dependency>
-					<groupId>org.apache.flink</groupId>
-					<artifactId>flink-streaming-java</artifactId>
-					<version>${flink.version}</version>
-					<scope>compile</scope>
-				</dependency>
-
-				<dependency>
-					<groupId>org.apache.flink</groupId>
-					<artifactId>flink-connector-base</artifactId>
-					<version>1.20.0</version>
-					<scope>compile</scope>
-				</dependency>
-
-				<!-- https://mvnrepository.com/artifact/org.apache.flink/flink-connector-base -->
-				<dependency>
-					<groupId>org.apache.flink</groupId>
-					<artifactId>flink-connector-kafka</artifactId>
-					<version>3.4.0-1.20</version>
-				</dependency>
-
-			</dependencies>
-		</profile>
 	</profiles>
-
-
 </project>

@@ -23,6 +23,7 @@ import io.delta.standalone.DeltaLog;
 import io.delta.standalone.Snapshot;
 import io.delta.standalone.data.CloseableIterator;
 import io.delta.standalone.data.RowRecord;
+import org.apache.hadoop.conf.Configuration;
 
 public final class Utils {
 
@@ -81,9 +82,24 @@ public final class Utils {
         );
     }
 
+    public static Configuration getHadoopFsConfiguration(){
+
+        Configuration configuration = new org.apache.hadoop.conf.Configuration();
+        configuration.set("fs.defaultFS", "s3a://warehouse-flink/");
+        configuration.set("fs.s3a.endpoint", "http://minio.sandbox.net:9010");
+        configuration.set("fs.s3a.access.key", "admin");
+        configuration.set("fs.s3a.secret.key", "password");
+        configuration.set("fs.s3a.path.style.access", "true");
+        configuration.set("fs.s3a.aws.credentials.provider", "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider");
+        configuration.set("fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem");
+
+        return configuration;
+    }
+
     public static void printDeltaTableRows(String tablePath) throws InterruptedException {
-        DeltaLog deltaLog =
-                DeltaLog.forTable(new org.apache.hadoop.conf.Configuration(), tablePath);
+
+        Configuration configuration = getHadoopFsConfiguration();
+        DeltaLog deltaLog = DeltaLog.forTable(configuration, tablePath);
 
         for (int i = 0; i < 30; i++) {
             deltaLog.update();

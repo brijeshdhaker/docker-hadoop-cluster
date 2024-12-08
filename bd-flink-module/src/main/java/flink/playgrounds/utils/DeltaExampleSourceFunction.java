@@ -35,7 +35,8 @@ public class DeltaExampleSourceFunction extends RichParallelSourceFunction<RowDa
                     Row.of(
                             String.valueOf(random.nextInt(0, 10)),
                             String.valueOf(random.nextInt(0, 100)),
-                            random.nextInt(0, 30))
+                            random.nextInt(0, 30)
+                    )
             );
             ctx.collect(row);
             Thread.sleep(NEXT_ROW_INTERVAL_MILLIS);

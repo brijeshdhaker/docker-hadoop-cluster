@@ -4,97 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-12-05 refactor bd-flink-module project.">
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/client/capacity-scheduler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/client/core-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/client/hadoop-env.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/client/hbase-env.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/client/hbase-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/client/hdfs-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/client/hive-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/client/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/client/mapred-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/client/yarn-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/capacity-scheduler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/configuration.xsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/container-executor.cfg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/core-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/fair-scheduler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/hadoop-env.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/hadoop-env.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/hadoop-metrics2.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/hadoop-policy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/hadoop-user-functions.sh.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/hdfs-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/httpfs-env.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/httpfs-log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/httpfs-signature.secret" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/httpfs-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/kms-acls.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/kms-env.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/kms-log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/kms-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/mapred-env.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/mapred-env.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/mapred-queues.xml.template" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/mapred-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/shellprofile.d/example.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/ssl-client.xml.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/ssl-server.xml.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/user_ec_policies.xml.template" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/workers" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/yarn-env.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/yarn-env.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/yarn-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/conf/yarnservice-log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/kerberos/client/capacity-scheduler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/kerberos/client/core-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/kerberos/client/hadoop-env.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/kerberos/client/hbase-env.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/kerberos/client/hbase-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/kerberos/client/hdfs-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/kerberos/client/hive-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/kerberos/client/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/kerberos/client/mapred-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/kerberos/client/yarn-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/unsecure/client/capacity-scheduler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/unsecure/client/core-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/unsecure/client/hbase-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/unsecure/client/hdfs-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/unsecure/client/hive-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/unsecure/client/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/unsecure/client/mapred-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/unsecure/client/yarn-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/unsecure/conf/capacity-scheduler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/unsecure/conf/core-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/unsecure/conf/hdfs-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/unsecure/conf/hive-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/unsecure/conf/mapred-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos/hadoop/unsecure/conf/yarn-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/delta/DeltaSinkExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/ConsoleSink.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/DeltaExampleSourceFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/DeltaTableUpdater.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/Descriptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/Utils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/ValueVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/jobs/DeltaExampleJobRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/jobs/DeltaExampleLocalJobRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/jobs/DeltaSinkClusterJobExampleBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/jobs/DeltaSinkLocalJobExampleBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-12-08 refactor secure &amp; non secure configs.">
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/delta/sink/DeltaSinkExampleCluster.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/delta/sink/DeltaSinkPartitionedTableExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/delta/source/bounded/DeltaBoundedSourceClusterExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/delta/source/bounded/DeltaBoundedSourceExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/delta/source/bounded/DeltaBoundedSourceUserColumnsExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/delta/source/bounded/DeltaBoundedSourceVersionAsOfExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/delta/source/continuous/DeltaContinuousSourceClusterExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/delta/source/continuous/DeltaContinuousSourceExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/delta/source/continuous/DeltaContinuousSourceStartingVersionExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/delta/source/continuous/DeltaContinuousSourceUserColumnsExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/jobs/bounded/DeltaBoundedSourceClusterJobExampleBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/jobs/bounded/DeltaBoundedSourceLocalJobExampleBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/jobs/continuous/DeltaContinuousSourceClusterJobExampleBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/jobs/continuous/DeltaContinuousSourceLocalJobExampleBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/jobs/sql/BoundedSqlSourceExampleBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/jobs/sql/ContinuousSqlSourceExampleBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/jobs/sql/RowMapperFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/jobs/sql/SqlExampleBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/jobs/sql/SqlSinkExampleBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/bd-docker-sandbox.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/bd-docker-sandbox.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-base.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-base.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-flink-module/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/dependency-reduced-pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-flink-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/readme-resources.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/delta/DeltaSinkExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/delta/sink/DeltaSinkExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/DeltaExampleSourceFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/DeltaExampleSourceFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/jobs/DeltaExampleLocalJobRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/jobs/DeltaExampleLocalJobRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/minio-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/minio-help.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,13 +88,15 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="alwaysUpdateSnapshots" value="true" />
+        <option name="customMavenHome" value="/opt/maven-3.6.3" />
         <option name="localRepository" value="$MAVEN_REPOSITORY$" />
+        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
         <option name="useMavenConfig" value="false" />
         <option name="userSettingsFile" value="$USER_HOME$/.m2/settings.xml" />
       </MavenGeneralSettings>
     </option>
-    <option name="explicitlyEnabledProfiles" value="local" />
-    <option name="explicitlyDisabledProfiles" value="add-dependencies-for-IDEA" />
+    <option name="explicitlyEnabledProfiles" value="cluster" />
+    <option name="explicitlyDisabledProfiles" value="local" />
   </component>
   <component name="MavenRunner">
     <option name="skipTests" value="true" />
@@ -195,6 +135,7 @@
     "Application.TransactionAvroStream.executor": "Run",
     "Docker.Docker Image.executor": "Run",
     "Docker.bd-docker-sandbox.minio: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-flink-cluster.yml: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
@@ -341,29 +282,29 @@
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/readme-resources",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-flink-module/backup",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.31724137",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "MavenSettings"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-flink-module/backup" />
+      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/backup" />
+      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/flink" />
+      <recent name="$PROJECT_DIR$/bd-docker-sandbox/resources/libs/s3-fs-hadoop" />
       <recent name="$PROJECT_DIR$/bd-docker-sandbox/configs/kerberos" />
-      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/envs/regular" />
-      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/configs/regular" />
-      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/unsecure" />
-      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop/kerberos" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/bd-docker-sandbox" />
-      <recent name="$PROJECT_DIR$/bd-docker-sandbox/resources" />
-      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf" />
-      <recent name="$PROJECT_DIR$/bd-docker-sandbox/envs" />
-      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/hadoop" />
+      <recent name="$PROJECT_DIR$/bd-flink-module/backup" />
+      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client" />
+      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/unsecure" />
+      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/secure" />
+      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/minio" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -512,6 +453,14 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="bd-docker-sandbox/dc-flink-cluster.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-flink-cluster.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <configuration name="flink-cluster" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -629,10 +578,12 @@
       <item itemvalue="Docker.spark-cluster" />
       <item itemvalue="Docker.spark-notebook" />
       <item itemvalue="Docker.zeppelin-notebook" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-flink-cluster.yml: Compose Deployment" />
       <item itemvalue="Python.confluent_kafka_AvroProducer" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.bd-docker-sandbox/dc-flink-cluster.yml: Compose Deployment" />
         <item itemvalue="Application.StreamExample" />
         <item itemvalue="Application.ClickEventGenerator" />
         <item itemvalue="Python.confluent_kafka_AvroProducer" />
@@ -647,22 +598,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00055" summary="2024-09-21 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1726915531687</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1726915531688</updated>
-    </task>
-    <task id="LOCAL-00056" summary="2024-09-22 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1726983375011</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1726983375012</updated>
     </task>
     <task id="LOCAL-00057" summary="2024-09-22 Update Project Configuration.">
       <option name="closed" value="true" />
@@ -1040,7 +975,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733374620214</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="2024-12-07 refactor bd-flink-module project.">
+      <option name="closed" value="true" />
+      <created>1733547069226</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1733547069228</updated>
+    </task>
+    <task id="LOCAL-00105" summary="2024-12-08 refactor secure &amp; non secure configs.">
+      <option name="closed" value="true" />
+      <created>1733669171430</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1733669171432</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -1066,8 +1017,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-09-19 Update Project Configuration." />
-    <MESSAGE value="2024-09-20 Update Project Configuration." />
     <MESSAGE value="2024-09-21 Update Project Configuration." />
     <MESSAGE value="2024-09-22 Update Project Configuration." />
     <MESSAGE value="2024-09-23 Update Project Configuration." />
@@ -1091,7 +1040,9 @@
     <MESSAGE value="2024-12-04 add transaction data generator." />
     <MESSAGE value="2024-12-05 consolidate docker-sandbox module." />
     <MESSAGE value="2024-12-05 refactor bd-flink-module project." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-12-05 refactor bd-flink-module project." />
+    <MESSAGE value="2024-12-07 refactor bd-flink-module project." />
+    <MESSAGE value="2024-12-08 refactor secure &amp; non secure configs." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-12-08 refactor secure &amp; non secure configs." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
