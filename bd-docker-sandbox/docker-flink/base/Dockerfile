@@ -1,6 +1,6 @@
 #
-# docker build -t brijeshdhaker/flink:1.18.1 -f ./bd-docker-sandbox/docker-flink/base/Dockerfile ./bd-docker-sandbox/docker-flink/base
-# docker push brijeshdhaker/flink:1.18.1
+# docker build -t brijeshdhaker/flink:1.20.0 -f ./bd-docker-sandbox/docker-flink/base/Dockerfile ./bd-docker-sandbox/docker-flink/base
+# docker push brijeshdhaker/flink:1.20.0
 #
 
 FROM apache/flink:1.20.0-scala_2.12-java17
@@ -26,7 +26,7 @@ WORKDIR /opt/flink
 # COPY --chown=flink conf/log4j.properties ./conf/log4j-console.properties
 
 # Enable SQL Client to find the job manager when running it from this image
-RUN sed -i "s/jobmanager.rpc.address: localhost/jobmanager.rpc.address: flink-jobmanager/g" ./conf/flink-conf.yaml
+#RUN sed -i "s/jobmanager.rpc.address: localhost/jobmanager.rpc.address: flink-jobmanager/g" ./conf/flink-conf.yaml
 
 # # Enable this for debug logging
 RUN cat >> ./conf/log4j.properties <<EOF
@@ -57,26 +57,27 @@ RUN mkdir -p ./lib/delta ./lib/kafka ./lib/hive ./lib/hadoop
 
 RUN echo "Add Flink S3 Plugin" && \
     mkdir ./plugins/s3-fs-hadoop && \
-    cp ./opt/flink-s3-fs-hadoop-1.18.1.jar ./plugins/s3-fs-hadoop/
+    cp ./opt/flink-s3-fs-hadoop-1.20.0.jar ./plugins/s3-fs-hadoop/
 
 # Download and Install JARs
 
 RUN echo "-> Install JARs: Flink's Kafka connector" && \
     mkdir -p ./lib/kafka && pushd $_ && \
-    curl https://repo1.maven.org/maven2/org/apache/flink/flink-sql-connector-kafka/3.1.0-1.18/flink-sql-connector-kafka-3.1.0-1.18.jar -O && \
+    curl https://repo1.maven.org/maven2/org/apache/flink/flink-connector-kafka/3.4.0-1.20/flink-connector-kafka-3.4.0-1.20.jar -O && \
+    curl https://repo1.maven.org/maven2/org/apache/flink/flink-sql-connector-kafka/3.4.0-1.20/flink-sql-connector-kafka-3.4.0-1.20.jar -O && \
     popd
 
 RUN echo "-> Install JARs: Flink's Hive connector" && \
     mkdir -p ./lib/hive && pushd $_ && \
-    curl https://repo1.maven.org/maven2/org/apache/flink/flink-sql-connector-hive-3.1.3_2.12/1.18.1/flink-sql-connector-hive-3.1.3_2.12-1.18.1.jar -O && \
+    curl https://repo.maven.apache.org/maven2/org/apache/flink/flink-sql-connector-hive-3.1.3_2.12/1.20.0/flink-sql-connector-hive-3.1.3_2.12-1.20.0.jar -O && \
     popd
 
 RUN echo "-> Install JARs: Dependencies for Delta Lake" && \
     mkdir -p ./lib/delta && pushd $_ && \
-    curl https://repo1.maven.org/maven2/io/delta/delta-flink/3.2.0/delta-flink-3.2.0.jar -O && \
-    curl https://repo1.maven.org/maven2/io/delta/delta-standalone_2.12/3.2.0/delta-standalone_2.12-3.2.0.jar -O && \
-    curl https://repo1.maven.org/maven2/io/delta/delta-storage/3.2.0/delta-storage-3.2.0.jar -O && \
-    curl https://repo.maven.apache.org/maven2/org/apache/flink/flink-sql-parquet/1.18.1/flink-sql-parquet-1.18.1.jar -O && \
+    curl https://repo1.maven.org/maven2/io/delta/delta-flink/3.2.1/delta-flink-3.2.1.jar -O && \
+    curl https://repo1.maven.org/maven2/io/delta/delta-standalone_2.12/3.2.1/delta-standalone_2.12-3.2.1.jar -O && \
+    curl https://repo1.maven.org/maven2/io/delta/delta-storage/3.2.1/delta-storage-3.2.1.jar -O && \
+    curl https://repo1.maven.org/maven2/org/apache/flink/flink-sql-parquet/1.20.0/flink-sql-parquet-1.20.0.jar -O && \
     curl https://repo1.maven.org/maven2/com/chuusai/shapeless_2.12/2.3.4/shapeless_2.12-2.3.4.jar -O && \
     popd
 #

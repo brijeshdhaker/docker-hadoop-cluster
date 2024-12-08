@@ -39,11 +39,11 @@ public final class Utils {
 
     public static String resolveExampleTableAbsolutePath(String resourcesTableDir) {
         String rootPath = Paths.get(".").toAbsolutePath().normalize().toString();
-        return rootPath.endsWith("flink-example") ?
+        return rootPath.endsWith("bd-flink-module") ?
                 // Maven commands are run from the examples/flink-example/ directory
                 rootPath + "/src/main/resources/" + resourcesTableDir :
                 // while SBT commands are run from the examples/ directory
-                rootPath + "/examples/flink-example/src/main/resources/" + resourcesTableDir;
+                rootPath + "/bd-flink-module/src/main/resources/" + resourcesTableDir;
     }
 
     public static void prepareDirs(String tablePath) throws IOException {
@@ -98,8 +98,8 @@ public final class Utils {
 
     public static void printDeltaTableRows(String tablePath) throws InterruptedException {
 
-        Configuration configuration = getHadoopFsConfiguration();
-        DeltaLog deltaLog = DeltaLog.forTable(configuration, tablePath);
+        //Configuration configuration = getHadoopFsConfiguration();
+        DeltaLog deltaLog = DeltaLog.forTable(new Configuration(), tablePath);
 
         for (int i = 0; i < 30; i++) {
             deltaLog.update();

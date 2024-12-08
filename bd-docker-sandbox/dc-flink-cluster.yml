@@ -41,10 +41,6 @@ services:
         rest.flamegraph.enabled: true
       - JOB_MANAGER_RPC_ADDRESS=flink-jobmanager
       - JOB_MANAGER_RPC_PORT=6123
-#      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
-#      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
-#      - AWS_REGION=us-east-1
-#      - PATH=/opt/flink/bin:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/hadoop/bin:/opt/hadoop/sbin
 
   ##
   flink-taskmanager:
@@ -70,12 +66,6 @@ services:
         rest.flamegraph.enabled: true
       - JOB_MANAGER_RPC_ADDRESS=flink-jobmanager
       - JOB_MANAGER_RPC_PORT=6123
-#      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
-#      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
-#      - AWS_REGION=us-east-1
-#      - PATH=/opt/flink/bin:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/hadoop/bin:/opt/hadoop/sbin
-#      - FLINK_NUM_TASK_SLOTS=2
-
 
 #
 volumes:

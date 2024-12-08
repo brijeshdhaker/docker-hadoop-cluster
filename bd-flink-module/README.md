@@ -50,9 +50,6 @@ docker run --rm -i -t \
 --network sandbox.net \
 -e JOB_MANAGER_RPC_ADDRESS=flink-jobmanager \
 -e JOB_MANAGER_RPC_PORT=6123 \
--e AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO \
--e AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG \
--e AWS_REGION=us-east-1 \
 -v /apps:/apps \
 -v ./bd-flink-module/target:/opt/bd-flink-module \
 -v ./bd-docker-sandbox/conf/flink/config.yaml:/opt/flink/conf/config.yaml \

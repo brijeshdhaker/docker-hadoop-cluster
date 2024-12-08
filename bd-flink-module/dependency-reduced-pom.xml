@@ -19,34 +19,6 @@
     <url>https://github.com/apache/flink-playgrounds</url>
   </scm>
   <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.eclipse.m2e</groupId>
-          <artifactId>lifecycle-mapping</artifactId>
-          <version>1.0.0</version>
-          <configuration>
-            <lifecycleMappingMetadata>
-              <pluginExecutions>
-                <pluginExecution>
-                  <pluginExecutionFilter>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-shade-plugin</artifactId>
-                    <versionRange>[3.6.0,)</versionRange>
-                    <goals>
-                      <goal>shade</goal>
-                    </goals>
-                  </pluginExecutionFilter>
-                  <action>
-                    <ignore />
-                  </action>
-                </pluginExecution>
-              </pluginExecutions>
-            </lifecycleMappingMetadata>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -108,34 +80,6 @@
         <flink.scope>provided</flink.scope>
       </properties>
     </profile>
-    <profile>
-      <id>add-dependencies-for-IDEA</id>
-      <dependencies>
-        <dependency>
-          <groupId>org.apache.flink</groupId>
-          <artifactId>flink-java</artifactId>
-          <version>${flink.version}</version>
-          <scope>compile</scope>
-        </dependency>
-        <dependency>
-          <groupId>org.apache.flink</groupId>
-          <artifactId>flink-streaming-java</artifactId>
-          <version>${flink.version}</version>
-          <scope>compile</scope>
-        </dependency>
-        <dependency>
-          <groupId>org.apache.flink</groupId>
-          <artifactId>flink-connector-base</artifactId>
-          <version>${flink.version}</version>
-          <scope>compile</scope>
-        </dependency>
-        <dependency>
-          <groupId>org.apache.flink</groupId>
-          <artifactId>flink-connector-kafka</artifactId>
-          <version>3.4.0-1.20</version>
-        </dependency>
-      </dependencies>
-    </profile>
   </profiles>
   <dependencies>
     <dependency>
@@ -154,6 +98,12 @@
       <groupId>org.apache.flink</groupId>
       <artifactId>flink-connector-base</artifactId>
       <version>1.20.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.flink</groupId>
+      <artifactId>flink-connector-kafka</artifactId>
+      <version>3.4.0-1.20</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -205,7 +155,7 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <delta.connectors.version>3.2.1</delta.connectors.version>
     <flink.version>1.20.0</flink.version>
-    <hadoop.version>3.1.0</hadoop.version>
+    <hadoop.version>3.3.4</hadoop.version>
     <maven.compiler.target>17</maven.compiler.target>
     <slf4j.version>2.0.16</slf4j.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

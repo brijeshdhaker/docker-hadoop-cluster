@@ -59,7 +59,7 @@ public class DeltaSinkExample extends DeltaSinkLocalJobExampleBase {
 
         return DeltaSink.forRowData(
                         new Path(TABLE_PATH),
-                        configuration,
+                        new Configuration(),
                         Utils.FULL_SCHEMA_ROW_TYPE
                 ).build();
     }
