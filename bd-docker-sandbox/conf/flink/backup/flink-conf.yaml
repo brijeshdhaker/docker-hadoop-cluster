@@ -98,13 +98,25 @@ blob.server.port: 6124
 query.server.port: 6125
 
 # The default file system scheme and authority.
-# 
+#
 # By default file paths without scheme are interpreted relative to the local
 # root file system 'file:///'. Use this to override the default and interpret
 # relative paths relative to a different file system,
 # for example 'hdfs://mynamenode:12345'
 #
+
+flink.hadoop.fs.s3a.access.key: pgm2H2bR7a5kMc5XCYdO
+flink.hadoop.fs.s3a.secret.key: zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+flink.hadoop.fs.s3a.endpoint: http://minio.sandbox.net:9010
+flink.hadoop.fs.s3a.path.style.access: true
+
 # fs.default-scheme
+fs.default-scheme: s3a://warehouse-flink/
+
+s3.secret-key: zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+s3.access-key: pgm2H2bR7a5kMc5XCYdO
+s3.endpoint: http://minio.sandbox.net:9010
+s3.path.style.access: true
 
 #==============================================================================
 # High Availability
@@ -117,9 +129,9 @@ query.server.port: 6125
 # The path where metadata for master recovery is persisted. While ZooKeeper stores
 # the small ground truth for checkpoint and leader election, this location stores
 # the larger objects, like persisted dataflow graphs.
-# 
+#
 # Must be a durable file system that is accessible from all nodes
-# (like HDFS, S3, Ceph, nfs, ...) 
+# (like HDFS, S3, Ceph, nfs, ...)
 #
 # high-availability.storageDir: hdfs:///flink/ha/
 
@@ -145,31 +157,33 @@ query.server.port: 6125
 #
 # Execution checkpointing related parameters. Please refer to CheckpointConfig and ExecutionCheckpointingOptions for more details.
 #
-# execution.checkpointing.interval: 3min
+execution.checkpointing.interval: 3min
 # execution.checkpointing.externalized-checkpoint-retention: [DELETE_ON_CANCELLATION, RETAIN_ON_CANCELLATION]
-# execution.checkpointing.max-concurrent-checkpoints: 1
-# execution.checkpointing.min-pause: 0
+execution.checkpointing.max-concurrent-checkpoints: 1
+execution.checkpointing.min-pause: 0
 # execution.checkpointing.mode: [EXACTLY_ONCE, AT_LEAST_ONCE]
-# execution.checkpointing.timeout: 10min
-# execution.checkpointing.tolerable-failed-checkpoints: 0
-# execution.checkpointing.unaligned: false
+execution.checkpointing.timeout: 10min
+execution.checkpointing.tolerable-failed-checkpoints: 0
+execution.checkpointing.unaligned: false
+execution.checkpointing.dir: s3a://warehouse-flink/execution-checkpoints
+execution.checkpointing.savepoint-dir: s3a://warehouse-flink/execution-savepoints
 #
 # Supported backends are 'hashmap', 'rocksdb', or the
 # <class-name-of-factory>.
 #
-# state.backend.type: hashmap
-
-# Directory for checkpoints filesystem, when using any of the default bundled
-# state backends.
+state.backend.type: hashmap
+state.backend.fs.checkpointdir: s3a://warehouse-flink/checkpoints
 #
-# state.checkpoints.dir: hdfs://namenode-host:port/flink-checkpoints
-
+# Directory for checkpoints filesystem, when using any of the default bundled state backends.
+#
+state.checkpoints.dir: s3a://warehouse-flink/checkpoints
+#
 # Default target directory for savepoints, optional.
 #
-# state.savepoints.dir: hdfs://namenode-host:port/flink-savepoints
+state.savepoints.dir: s3a://warehouse-flink/savepoints
 
 # Flag to enable/disable incremental checkpoints for backends that
-# support incremental checkpoints (like the RocksDB state backend). 
+# support incremental checkpoints (like the RocksDB state backend).
 #
 # state.backend.incremental: false
 
@@ -245,10 +259,10 @@ rest.bind-address: 0.0.0.0
 #
 # classloader.resolve-order: child-first
 
-# The amount of memory going to the network stack. These numbers usually need 
+# The amount of memory going to the network stack. These numbers usually need
 # no tuning. Adjusting them may be necessary in case of an "Insufficient number
 # of network buffers" error. The default min is 64MB, the default max is 1GB.
-# 
+#
 # taskmanager.memory.network.fraction: 0.1
 # taskmanager.memory.network.min: 64mb
 # taskmanager.memory.network.max: 1gb
@@ -308,4 +322,10 @@ security.kerberos.login.principal: brijeshdhaker@SANDBOX.NET
 
 # Interval in milliseconds for refreshing the monitored directories.
 #historyserver.archive.fs.refresh-interval: 10000
+env.log.dir: /apps/var/logs/flink
+env.log.level: INFO
+env.log.max: 5
+env.java.opts.all: --add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED
+env.java.opts.jobmanager: -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf
+env.java.opts.taskmanager: -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf
 

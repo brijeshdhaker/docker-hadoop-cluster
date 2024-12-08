@@ -13,7 +13,7 @@ env:
     level: INFO
 rest:
   flamegraph:
-    enabled: true
+    enabled: 'true'
   bind-address: 0.0.0.0
   address: flink-jobmanager
   profiling:
@@ -33,11 +33,7 @@ jobmanager:
 state:
   savepoints:
     dir: s3a://warehouse-flink/state/savepoints
-  backend:
-    type: hashmap
-    fs:
-      checkpointdir: s3a://warehouse-flink/fs/checkpoints
-    incremental: false
+  backend: filesystem
   checkpoints:
     dir: s3a://warehouse-flink/state/checkpoints
 security:
@@ -50,9 +46,9 @@ query:
   server:
     port: '6125'
 s3:
-  secret-key: zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+  secret-key: password
   endpoint: http://minio.sandbox.net:9010
-  access-key: pgm2H2bR7a5kMc5XCYdO
+  access-key: admin
   path:
     style:
       access: true

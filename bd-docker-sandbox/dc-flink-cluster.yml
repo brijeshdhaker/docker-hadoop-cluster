@@ -15,7 +15,7 @@
 services:
   ##
   flink-jobmanager:
-    image: flink:1.20.0-scala_2.12-java17
+    image: apache/flink:1.20.0-scala_2.12-java17
     hostname: flink-jobmanager
     container_name: flink-jobmanager
     command: "jobmanager.sh start-foreground"
@@ -32,25 +32,23 @@ services:
       interval: 10s
     volumes:
       - sandbox_apps_path:/apps
-#      - sandbox_hadoop_334:/opt/hadoop
-#      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-#      - sandbox_hive_313:/opt/hive
-#      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
       - ./conf/flink/config.yaml:/opt/flink/conf/config.yaml
-      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - ./resources/libs/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar
+#      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
+      - |
+        FLINK_PROPERTIES=
+        rest.flamegraph.enabled: true
       - JOB_MANAGER_RPC_ADDRESS=flink-jobmanager
-#      - HADOOP_HOME=/opt/hadoop
-#      - HIVE_HOME=/opt/hive
-#      - HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
-#      - HADOOP_CLASSPATH=/opt/hadoop/etc/hadoop:/opt/hive/lib/hive-*.jar:/opt/hadoop/share/hadoop/common/lib/*:/opt/hadoop/share/hadoop/common/*:/opt/hadoop/share/hadoop/hdfs:/opt/hadoop/share/hadoop/hdfs/lib/*:/opt/hadoop/share/hadoop/hdfs/*:/opt/hadoop/share/hadoop/mapreduce/*:/opt/hadoop/share/hadoop/yarn:/opt/hadoop/share/hadoop/yarn/lib/*:/opt/hadoop/share/hadoop/yarn/*
+      - JOB_MANAGER_RPC_PORT=6123
+#      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
+#      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+#      - AWS_REGION=us-east-1
 #      - PATH=/opt/flink/bin:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/hadoop/bin:/opt/hadoop/sbin
-
 
   ##
   flink-taskmanager:
-    image: flink:1.20.0-scala_2.12-java17
+    image: apache/flink:1.20.0-scala_2.12-java17
     hostname: flink-taskmanager
     container_name: flink-taskmanager
     command: "taskmanager.sh start-foreground"
@@ -63,19 +61,18 @@ services:
       interval: 10s
     volumes:
       - sandbox_apps_path:/apps
-#      - sandbox_hadoop_334:/opt/hadoop
-#      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-#      - sandbox_hive_313:/opt/hive
-#      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
       - ./conf/flink/config.yaml:/opt/flink/conf/config.yaml
-      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - ./resources/libs/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar
+#      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
+      - |
+        FLINK_PROPERTIES=
+        rest.flamegraph.enabled: true
       - JOB_MANAGER_RPC_ADDRESS=flink-jobmanager
       - JOB_MANAGER_RPC_PORT=6123
-#      - HADOOP_HOME=/opt/hadoop
-#      - HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
-#      - HADOOP_CLASSPATH=/opt/hadoop/etc/hadoop:/opt/hive/lib/*:/opt/hadoop/share/hadoop/common/lib/*:/opt/hadoop/share/hadoop/common/*:/opt/hadoop/share/hadoop/hdfs:/opt/hadoop/share/hadoop/hdfs/lib/*:/opt/hadoop/share/hadoop/hdfs/*:/opt/hadoop/share/hadoop/mapreduce/*:/opt/hadoop/share/hadoop/yarn:/opt/hadoop/share/hadoop/yarn/lib/*:/opt/hadoop/share/hadoop/yarn/*
+#      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
+#      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+#      - AWS_REGION=us-east-1
 #      - PATH=/opt/flink/bin:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/hadoop/bin:/opt/hadoop/sbin
 #      - FLINK_NUM_TASK_SLOTS=2
 

@@ -1,65 +1,107 @@
-FROM brijeshdhaker/ubuntu:22.04
+#
+# docker build -t brijeshdhaker/flink:1.18.1 -f ./bd-docker-sandbox/docker-flink/base/Dockerfile ./bd-docker-sandbox/docker-flink/base
+# docker push brijeshdhaker/flink:1.18.1
+#
+
+FROM apache/flink:1.20.0-scala_2.12-java17
 
 LABEL MAINTAINER="Brijesh K Dhaker <brijeshdhaker@gmail.com>"
+SHELL ["/bin/bash", "-c"]
 
-# GID
-ARG flink_gid=5001
-ARG flink_uid=5001
+# Install some useful tools
+RUN apt-get update && \
+    apt-get install -y neovim tree lnav unzip && \
+    apt-get purge -y --auto-remove && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
+RUN wget https://github.com/duckdb/duckdb/releases/download/v1.0.0/duckdb_cli-linux-amd64.zip \
+    && unzip duckdb_cli-linux-amd64.zip -d /usr/local/bin \
+    && rm duckdb_cli-linux-amd64.zip
+
+USER flink
+WORKDIR /opt/flink
+
+# COPY --chown=flink conf/hive-site.xml ./conf/hive-site.xml
+# COPY --chown=flink conf/log4j.properties ./conf/log4j-console.properties
+
+# Enable SQL Client to find the job manager when running it from this image
+RUN sed -i "s/jobmanager.rpc.address: localhost/jobmanager.rpc.address: flink-jobmanager/g" ./conf/flink-conf.yaml
+
+# # Enable this for debug logging
+RUN cat >> ./conf/log4j.properties <<EOF
+ logger.fs.name = org.apache.hadoop.fs
+ logger.fs.level = TRACE
+ logger.fs2.name = org.apache.flink.fs
+ logger.fs2.level = TRACE
+ logger.aws.name = com.amazonaws
+ logger.aws.level = TRACE
+ logger.delta.name = io.delta
+ logger.delta.level =TRACE
+EOF
+
+RUN cat >> ./conf/log4j-cli.properties <<EOF
+logger.fs.name = org.apache.hadoop.fs
+logger.fs.level = TRACE
+logger.fs2.name = org.apache.flink.fs
+logger.fs2.level = TRACE
+logger.aws.name = com.amazonaws
+logger.aws.level = TRACE
+logger.delta.name = io.delta
+logger.delta.level =TRACE
+EOF
+
+# Install JARs
+# Create necessary directories
+RUN mkdir -p ./lib/delta ./lib/kafka ./lib/hive ./lib/hadoop
+
+RUN echo "Add Flink S3 Plugin" && \
+    mkdir ./plugins/s3-fs-hadoop && \
+    cp ./opt/flink-s3-fs-hadoop-1.18.1.jar ./plugins/s3-fs-hadoop/
+
+# Download and Install JARs
+
+RUN echo "-> Install JARs: Flink's Kafka connector" && \
+    mkdir -p ./lib/kafka && pushd $_ && \
+    curl https://repo1.maven.org/maven2/org/apache/flink/flink-sql-connector-kafka/3.1.0-1.18/flink-sql-connector-kafka-3.1.0-1.18.jar -O && \
+    popd
+
+RUN echo "-> Install JARs: Flink's Hive connector" && \
+    mkdir -p ./lib/hive && pushd $_ && \
+    curl https://repo1.maven.org/maven2/org/apache/flink/flink-sql-connector-hive-3.1.3_2.12/1.18.1/flink-sql-connector-hive-3.1.3_2.12-1.18.1.jar -O && \
+    popd
+
+RUN echo "-> Install JARs: Dependencies for Delta Lake" && \
+    mkdir -p ./lib/delta && pushd $_ && \
+    curl https://repo1.maven.org/maven2/io/delta/delta-flink/3.2.0/delta-flink-3.2.0.jar -O && \
+    curl https://repo1.maven.org/maven2/io/delta/delta-standalone_2.12/3.2.0/delta-standalone_2.12-3.2.0.jar -O && \
+    curl https://repo1.maven.org/maven2/io/delta/delta-storage/3.2.0/delta-storage-3.2.0.jar -O && \
+    curl https://repo.maven.apache.org/maven2/org/apache/flink/flink-sql-parquet/1.18.1/flink-sql-parquet-1.18.1.jar -O && \
+    curl https://repo1.maven.org/maven2/com/chuusai/shapeless_2.12/2.3.4/shapeless_2.12-2.3.4.jar -O && \
+    popd
 #
-ENV HADOOP_VERSION=3.3.4
-ENV BASE_DIR=/opt
-ENV HADOOP_HOME=$BASE_DIR/hadoop
-ENV HADOOP_CONF_DIR=$BASE_DIR/hadoop/etc/hadoop
-ENV PATH=$PATH:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin
-ENV HADOOP_LOG_DIR=${HADOOP_LOG_DIR:-"/apps/var/logs/hadoop"}
+RUN echo "-> Install JARs: AWS / Hadoop S3" && \
+    mkdir -p ./lib/aws && pushd $_ && \
+    curl https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.3.4/hadoop-aws-3.3.4.jar -O && \
+    curl https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/1.12.648/aws-java-sdk-bundle-1.12.648.jar -O  && \
+    popd
 
-#
-ENV FLINK_VERSION=1.17.2
-ENV SCALA_VERSION=2.12
+RUN echo "-> Install JARs: Hadoop" && \
+    mkdir -p ./lib/hadoop && pushd $_ && \
+    curl https://repo1.maven.org/maven2/com/google/guava/guava/27.0-jre/guava-27.0-jre.jar -O && \
+    curl https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.12.7/jackson-databind-2.12.7.jar -O && \
+    curl https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.17.1/jackson-core-2.17.1.jar -O && \
+    curl https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.12.7/jackson-annotations-2.12.7.jar -O && \
+    curl https://repo1.maven.org/maven2/org/apache/commons/commons-configuration2/2.1.1/commons-configuration2-2.1.1.jar -O && \
+    curl https://repo1.maven.org/maven2/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar -O && \
+    curl https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-auth/3.3.4/hadoop-auth-3.3.4.jar -O && \
+    curl https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-common/3.3.4/hadoop-common-3.3.4.jar -O && \
+    curl https://repo1.maven.org/maven2/org/apache/hadoop/thirdparty/hadoop-shaded-guava/1.1.1/hadoop-shaded-guava-1.1.1.jar -O && \
+    curl https://repo1.maven.org/maven2/org/codehaus/woodstox/stax2-api/4.2.1/stax2-api-4.2.1.jar -O && \
+    curl https://repo1.maven.org/maven2/com/fasterxml/woodstox/woodstox-core/5.3.0/woodstox-core-5.3.0.jar -O && \
+    curl https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-hdfs-client/3.3.4/hadoop-hdfs-client-3.3.4.jar -O && \
+    curl https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-mapreduce-client-core/3.3.4/hadoop-mapreduce-client-core-3.3.4.jar -O  && \
+    popd
 
-#Enable poc-init-daemon
-ENV ENABLE_INIT_DAEMON false
-ENV INIT_DAEMON_BASE_URI http://identifier/init-daemon
-ENV INIT_DAEMON_STEP flink_master_init
-
-COPY wait-for-step.sh /
-COPY execute-step.sh /
-COPY finish-step.sh /
-#
-COPY tars/flink-${FLINK_VERSION}-bin-scala_${SCALA_VERSION}.tgz flink-${FLINK_VERSION}-bin-scala_${SCALA_VERSION}.tgz
-
-#
-RUN set -x && \
-    groupadd -f -r -g ${flink_gid} flink && \
-    useradd -m -s /bin/bash -g ${flink_gid} -u ${flink_uid} -G sudo flink && \
-    echo "flink user added successfully. "
-
-##Flink Installation
-###Download:
-RUN   set -x \
-      && apt-get update \
-      && apt-get install dnsutils openssh-client -y  \
-      && chown -Rf flink:root *.sh && chmod +x *.sh \
-      # && curl -fSL https://archive.apache.org/dist/flink/flink-${FLINK_VERSION}/flink-${FLINK_VERSION}-bin-scala_${SCALA_VERSION}.tgz -o flink-${FLINK_VERSION}-bin-scala_${SCALA_VERSION}.tgz\
-      && tar -xvzf flink-${FLINK_VERSION}-bin-scala_${SCALA_VERSION}.tgz \
-      && rm flink-${FLINK_VERSION}-bin-scala_${SCALA_VERSION}.tgz \
-      && mv flink-${FLINK_VERSION} /opt/flink \
-      && chown -Rf flink:root /opt/flink && chmod -Rf 775 /opt/flink \
-      && echo "flink setup successfully done. "
-
-ENV FLINK_HOME /opt/flink
-ENV PATH $PATH:$FLINK_HOME/bin
-
-# Add Drivers & Other Libs
-COPY libs/*.jar $FLINK_HOME/lib/
-
-#add passless key to ssh
-#RUN ssh-keygen -f ~/.ssh/id_rsa -t rsa -N ''
-#RUN cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/*
-
-#
-COPY entrypoint.sh /
-RUN set -x && chown -Rf flink:root /entrypoint.sh && chmod -Rf 775 /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
+# Set the launch command
+CMD ./bin/start-cluster.sh && sleep infinity
