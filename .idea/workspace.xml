@@ -4,16 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-12-08 update bd-flink-module.">
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/resources/config.yaml" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-12-10 update bd-flink-module.">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__scala_sdk_2_12_17.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__scala_sdk_2_12_17.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/StreamingJob.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sbt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sbt.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/scala_compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/scala_compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-flink-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-flink-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/base/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-flink/base/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/dependency-reduced-pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/delta/sink/DeltaSinkExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/delta/sink/DeltaSinkExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/flink/playgrounds/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-data-generator/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-data-generator/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-data-generator/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-data-generator/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-data-generator/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-data-generator/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/DataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/DataGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/Producer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/Throttler.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/Throttler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/model/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/model/TransactionSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/model/TransactionSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/model/TransactionSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/apache/flink/playground/datagen/model/TransactionSupplier.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,14 +87,13 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="alwaysUpdateSnapshots" value="true" />
-        <option name="customMavenHome" value="/opt/maven-3.6.3" />
         <option name="localRepository" value="$MAVEN_REPOSITORY$" />
-        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
         <option name="useMavenConfig" value="false" />
         <option name="userSettingsFile" value="$USER_HOME$/.m2/settings.xml" />
       </MavenGeneralSettings>
     </option>
-    <option name="explicitlyEnabledProfiles" value="cluster" />
+    <option name="explicitlyEnabledProfiles" value="local" />
+    <option name="explicitlyDisabledProfiles" value="cluster" />
   </component>
   <component name="MavenRunner">
     <option name="skipTests" value="true" />
@@ -107,7 +124,12 @@
     "Application.AppLauncher::StructuredStreamWorkflow.executor": "Run",
     "Application.AppStreamWorkflow.executor": "Run",
     "Application.ClickEventGenerator.executor": "Run",
+    "Application.DataStreamJob.executor": "Run",
+    "Application.DeltaBoundedSourceLocalExample.executor": "Run",
+    "Application.DeltaBoundedSourceUserColumnsExample.executor": "Run",
+    "Application.DeltaContinuousSourceLocalExample.executor": "Debug",
     "Application.DeltaSinkExample.executor": "Debug",
+    "Application.DeltaSinkExampleLocal.executor": "Debug",
     "Application.DemoApplication.executor": "Debug",
     "Application.Main.executor": "Run",
     "Application.SandboxSbApplication.executor": "Debug",
@@ -265,7 +287,7 @@
     "last_directory_selection": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb",
     "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-flink-module/src/main/resources",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.31724137",
     "run.code.analysis.last.selected.profile": "pProject Default",
@@ -275,17 +297,17 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources" />
+      <recent name="$PROJECT_DIR$/bd-flink-module" />
+      <recent name="$PROJECT_DIR$/bd-flink-module/data" />
       <recent name="$PROJECT_DIR$/bd-flink-module/backup" />
       <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/backup" />
-      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/flink" />
-      <recent name="$PROJECT_DIR$/bd-docker-sandbox/resources/libs/s3-fs-hadoop" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/bd-flink-module/backup" />
-      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client" />
-      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/unsecure" />
-      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/client/secure" />
-      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/hadoop/minio" />
+      <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources" />
+      <recent name="$PROJECT_DIR$/bd-flink-module" />
+      <recent name="$PROJECT_DIR$/bd-flink-module/conf" />
+      <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources/data/source_table_no_partitions" />
+      <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources/example_table" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -302,7 +324,7 @@
       <recent name="org.examples.spark" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.flink-cluster">
+  <component name="RunManager" selected="Application.DataStreamJob">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -341,12 +363,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ClickEventGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="flink.playgrounds.ops.clickcount.ClickEventGenerator" />
+    <configuration name="DataStreamJob" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.DataStreamJob" />
       <module name="bd-flink-module" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="flink.playgrounds.ops.clickcount.*" />
+          <option name="PATTERN" value="com.org.example.flink.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -354,13 +376,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DeltaSinkExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="flink.playgrounds.delta.sink.DeltaSinkExample" />
+    <configuration name="DeltaContinuousSourceLocalExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.delta.source.continuous.DeltaContinuousSourceLocalExample" />
       <module name="bd-flink-module" />
-      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="flink.playgrounds.delta.sink.*" />
+          <option name="PATTERN" value="com.org.example.flink.delta.source.continuous.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -368,12 +389,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StreamExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="flink.playgrounds.ops.example.StreamExample" />
+    <configuration name="DeltaSinkExampleLocal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.delta.sink.DeltaSinkExampleLocal" />
       <module name="bd-flink-module" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="flink.playgrounds.ops.example.*" />
+          <option name="PATTERN" value="com.org.example.flink.delta.sink.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -403,28 +424,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="confluent_kafka_AvroProducer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="bd-pyspark-module" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/main/py" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_AvroProducer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="Tox" factoryName="Tox">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -445,14 +444,6 @@
     <configuration default="true" type="docker-deploy" factoryName="docker-image" temporary="true">
       <deployment type="docker-image">
         <settings />
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="bd-docker-sandbox/dc-flink-cluster.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-flink-cluster.yml" />
-        </settings>
       </deployment>
       <method v="2" />
     </configuration>
@@ -563,10 +554,9 @@
       <item itemvalue="Application.AppLauncher::BatchWorkflow" />
       <item itemvalue="Application.AppLauncher::DiscretizedStreamWorkflow" />
       <item itemvalue="Application.AppLauncher::StructuredStreamWorkflow" />
-      <item itemvalue="Application.StreamingJob" />
-      <item itemvalue="Application.DeltaSinkExample" />
-      <item itemvalue="Application.StreamExample" />
-      <item itemvalue="Application.ClickEventGenerator" />
+      <item itemvalue="Application.DeltaContinuousSourceLocalExample" />
+      <item itemvalue="Application.DeltaSinkExampleLocal" />
+      <item itemvalue="Application.DataStreamJob" />
       <item itemvalue="Docker.kafka-cluster" />
       <item itemvalue="Docker.flink-cluster" />
       <item itemvalue="Docker.minio" />
@@ -574,16 +564,12 @@
       <item itemvalue="Docker.spark-cluster" />
       <item itemvalue="Docker.spark-notebook" />
       <item itemvalue="Docker.zeppelin-notebook" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-flink-cluster.yml: Compose Deployment" />
-      <item itemvalue="Python.confluent_kafka_AvroProducer" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DeltaSinkExample" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-flink-cluster.yml: Compose Deployment" />
-        <item itemvalue="Application.StreamExample" />
-        <item itemvalue="Application.ClickEventGenerator" />
-        <item itemvalue="Python.confluent_kafka_AvroProducer" />
+        <item itemvalue="Application.DataStreamJob" />
+        <item itemvalue="Application.DeltaSinkExampleLocal" />
+        <item itemvalue="Application.DeltaContinuousSourceLocalExample" />
       </list>
     </recent_temporary>
   </component>
@@ -595,62 +581,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00058" summary="2024-09-22 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1727017888678</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1727017888678</updated>
-    </task>
-    <task id="LOCAL-00059" summary="2024-09-22 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1727021158047</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1727021158047</updated>
-    </task>
-    <task id="LOCAL-00060" summary="2024-09-22 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1727023093385</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1727023093385</updated>
-    </task>
-    <task id="LOCAL-00061" summary="2024-09-23 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1727056662364</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1727056662365</updated>
-    </task>
-    <task id="LOCAL-00062" summary="2024-09-23 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1727060192433</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1727060192433</updated>
-    </task>
-    <task id="LOCAL-00063" summary="2024-09-23 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1727064662037</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1727064662037</updated>
-    </task>
-    <task id="LOCAL-00064" summary="2024-09-24 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1727139040529</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1727139040530</updated>
     </task>
     <task id="LOCAL-00065" summary="2024-09-24 Update Project Configuration.">
       <option name="closed" value="true" />
@@ -988,7 +918,63 @@
       <option name="project" value="LOCAL" />
       <updated>1733670594648</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="2024-12-08 update bd-flink-module.">
+      <option name="closed" value="true" />
+      <created>1733682663956</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1733682663956</updated>
+    </task>
+    <task id="LOCAL-00108" summary="2024-12-10 update bd-flink-module.">
+      <option name="closed" value="true" />
+      <created>1733822744395</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1733822744422</updated>
+    </task>
+    <task id="LOCAL-00109" summary="2024-12-10 update bd-flink-module.">
+      <option name="closed" value="true" />
+      <created>1733823286392</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1733823286393</updated>
+    </task>
+    <task id="LOCAL-00110" summary="2024-12-10 update bd-flink-module.">
+      <option name="closed" value="true" />
+      <created>1733823519695</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1733823519695</updated>
+    </task>
+    <task id="LOCAL-00111" summary="2024-12-10 update bd-flink-module.">
+      <option name="closed" value="true" />
+      <created>1733823596474</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1733823596476</updated>
+    </task>
+    <task id="LOCAL-00112" summary="2024-12-10 update bd-flink-module.">
+      <option name="closed" value="true" />
+      <created>1733823659982</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1733823659983</updated>
+    </task>
+    <task id="LOCAL-00113" summary="2024-12-10 update bd-flink-module.">
+      <option name="closed" value="true" />
+      <created>1733823754303</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1733823754307</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -1014,7 +1000,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-09-22 Update Project Configuration." />
     <MESSAGE value="2024-09-23 Update Project Configuration." />
     <MESSAGE value="2024-09-24 Update Project Configuration." />
     <MESSAGE value="2024-09-25 Update Project Configuration." />
@@ -1039,7 +1024,8 @@
     <MESSAGE value="2024-12-07 refactor bd-flink-module project." />
     <MESSAGE value="2024-12-08 refactor secure &amp; non secure configs." />
     <MESSAGE value="2024-12-08 update bd-flink-module." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-12-08 update bd-flink-module." />
+    <MESSAGE value="2024-12-10 update bd-flink-module." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-12-10 update bd-flink-module." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1048,6 +1034,16 @@
           <url>file://$PROJECT_DIR$/bd-java-module/src/main/java/org/examples/hadoop/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/continuous/DeltaContinuousSourceClusterExample.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/Utils.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_simple_consumer.py</url>
