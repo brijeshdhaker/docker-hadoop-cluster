@@ -57,6 +57,7 @@ docker run --rm -i -t \
 --name flink-playbox \
 apache/flink:1.20.0-scala_2.12-java17 /bin/bash
 
+
 # start event generation
 java -classpath /opt/bd-flink-module/bd-flink-module-1.0.0.jar:/opt/flink/lib/* flink.playgrounds.ops.clickcount.ClickEventGenerator --bootstrap.servers kafkabroker.sandbox.net:9092 --topic click-event-source &
 
@@ -110,20 +111,49 @@ docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "k
 ```
 jar tf ./bd-docker-sandbox/resources/libs/s3-fs-hadoop/flink-s3-fs-hadoop-1.16.2.jar | grep "org.apache.hadoop.fs.s3a.S3AFileSystem"
 
+#
 # start event count flink job
+#
 flink run --detached \
---class flink.playgrounds.delta.sink.DeltaSinkExample /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
+--class flink.playgrounds.delta.sink.DeltaSinkExampleLocal /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
 --checkpointing \
 --event-time
 
-
+#
+#
+#
 flink run --detached \
 --class flink.playgrounds.delta.sink.DeltaSinkExampleCluster /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
 --checkpointing \
 --event-time
-
+#
+# bounded
+#
 flink run --detached \
---class flink.playgrounds.delta.sink.DeltaSinkExampleCluster /opt/bd-flink-module/bd-flink-module-1.0.0-jar-with-dependencies.jar \
+--class flink.playgrounds.delta.source.bounded.DeltaBoundedSourceClusterExample /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
+--table-path s3a://warehouse-flink/delta-flink-example/
+#
+# continuous
+#
+flink run --detached \
+--class flink.playgrounds.delta.source.continuous.DeltaContinuousSourceClusterExample /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
 --table-path s3a://warehouse-flink/delta-flink-example/
 
 
+mvn package exec:java -Dexec.cleanupDaemonThreads=false -Dexec.mainClass=org.example.source.bounded.DeltaBoundedSourceExample -Dstaging.repo.url={maven_repo} -Dconnectors.version={version}
+
+mvn package exec:java -Dexec.cleanupDaemonThreads=false -Dexec.mainClass=org.example.sink.DeltaSinkExample -Dstaging.repo.url={maven_repo} -Dconnectors.version={version}
+
+
+mvn package exec:java \ 
+-Dmaven.multiModuleProjectDirectory=/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-flink-module/ \
+-Dmaven.repo.local=/apps/.m2/repository \
+-DskipTests=true \
+-Dexec.cleanupDaemonThreads=false \
+-Dexec.mainClass=flink.playgrounds.delta.sink.DeltaSinkExampleCluster \
+-P local \
+
+-Dstaging.repo.url={maven_repo} \
+-Dconnectors.version={version}
+
+/usr/lib/jvm/java-1.17.0-openjdk-amd64/bin/java  -Djansi.passthrough=true -Dmaven.home=/opt/maven-3.6.3 -Dclassworlds.conf=/opt/maven-3.6.3/bin/m2.conf -Dmaven.ext.class.path=/snap/intellij-idea-community/553/plugins/maven/lib/maven-event-listener.jar -javaagent:/snap/intellij-idea-community/553/lib/idea_rt.jar=41423:/snap/intellij-idea-community/553/bin -Dfile.encoding=UTF-8 -classpath /opt/maven-3.6.3/boot/plexus-classworlds-2.6.0.jar:/opt/maven-3.6.3/boot/plexus-classworlds.license org.codehaus.classworlds.Launcher -Didea.version=2024.3 --update-snapshots -s /home/brijeshdhaker/.m2/settings.xml -Dmaven.repo.local=/apps/.m2/repository -DskipTests=true clean package -P local,!cluster
