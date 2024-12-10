@@ -5,10 +5,10 @@ export TERM=xterm-color
 export PATH=/opt/conda/bin:$PATH
 
 # JAVA_HOME for Fedora
-# export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk
+# export JAVA_HOME=/usr/lib/jvm/java-1.17.0-openjdk
 
 # JAVA_HOME for Ubuntu
-export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/java-1.17.0-openjdk-amd64
 export PATH=$PATH:$JAVA_HOME/bin
 
 # Kerberos
