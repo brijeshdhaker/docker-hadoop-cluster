@@ -12,6 +12,6 @@ public abstract class SqlSinkExampleBase extends SqlExampleBase {
         Utils.prepareDirs(tablePath);
         StreamTableEnvironment tableEnv = createTableStreamingEnv(false); // streamingMode = false
         runSqlJob(tablePath, tableEnv);
-        Utils.printDeltaTableRows(tablePath);
+        Utils.printDeltaTableRows(tablePath,"Local");
     }
 }

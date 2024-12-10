@@ -23,10 +23,9 @@ import org.apache.hadoop.conf.Configuration;
  * This configuration will read all columns from underlying Delta table from the latest Snapshot.
  * If any of the columns was a partition column, connector will automatically detect it.
  */
-public class DeltaContinuousSourceClusterExample extends
-        DeltaContinuousSourceClusterJobExampleBase {
+public class DeltaContinuousSourceClusterExample extends DeltaContinuousSourceClusterJobExampleBase {
 
-    private static final String TABLE_PATH = "s3a://warehouse-flink/delta-flink-example/cf1c3a4ba50c4a0cb0889d2abde3eedd";
+    private static final String TABLE_PATH = Utils.resolveExampleTableAbsolutePath("data/source_delta_table", "Local");
 
     public static void main(String[] args) throws Exception {
         new DeltaContinuousSourceClusterExample().run(TABLE_PATH);

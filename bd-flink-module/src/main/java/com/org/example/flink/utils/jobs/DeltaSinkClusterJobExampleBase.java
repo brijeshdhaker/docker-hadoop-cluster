@@ -1,11 +1,13 @@
 package com.org.example.flink.utils.jobs;
 
 import io.delta.flink.sink.DeltaSink;
+import org.apache.flink.api.common.RuntimeExecutionMode;
+import org.apache.flink.streaming.api.CheckpointingMode;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.data.RowData;
 import com.org.example.flink.utils.Utils;
 
-public abstract class DeltaSinkClusterJobExampleBase implements DeltaExampleJobRunner {
+public abstract class DeltaSinkClusterJobExampleBase implements DeltaExampleClusterJobRunner {
 
     @Override
     public void run(String tablePath) throws Exception {

@@ -11,7 +11,7 @@ import org.apache.flink.table.data.RowData;
 public abstract class DeltaContinuousSourceLocalJobExampleBase
         implements DeltaExampleLocalJobRunner {
 
-    private final String workPath = Utils.resolveExampleTableAbsolutePath("data/sink_delta_table");
+    private final String workPath = Utils.resolveExampleTableAbsolutePath("data/sink_delta_table", getRunnerType());
 
     @Override
     public void run(String tablePath) throws Exception {

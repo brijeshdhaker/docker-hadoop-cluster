@@ -8,12 +8,20 @@ import com.org.example.flink.utils.Utils;
 public abstract class DeltaSinkLocalJobExampleBase implements DeltaExampleLocalJobRunner {
 
     public void run(String tablePath) throws Exception {
-        System.out.println("Will use table path: " + tablePath);
 
+        System.out.println("Will use table path: " + tablePath);
         Utils.prepareDirs(tablePath);
         StreamExecutionEnvironment env = createPipeline(tablePath, 2, 3);
         runFlinkJobInBackground(env);
-        Utils.printDeltaTableRows(tablePath);
+        Utils.printDeltaTableRows(tablePath, getRunnerType());
+
+        /*
+        System.out.println("Will use table path: " + tablePath);
+        Utils.prepareDirs(tablePath);
+        StreamExecutionEnvironment env = createPipeline(tablePath, 1, 1);
+        env.execute("flink-delta-table");
+
+         */
     }
 
     public abstract DeltaSink<RowData> getDeltaSink(String tablePath);

@@ -16,11 +16,14 @@
 
 package com.org.example.flink.utils.jobs;
 
+import org.apache.calcite.util.Static;
+import org.apache.flink.api.common.RuntimeExecutionMode;
 import org.apache.flink.configuration.GlobalConfiguration;
 import org.apache.flink.configuration.RestOptions;
 import org.apache.flink.core.fs.FileSystem;
 import org.apache.flink.runtime.minicluster.MiniCluster;
 import org.apache.flink.runtime.minicluster.MiniClusterConfiguration;
+import org.apache.flink.streaming.api.CheckpointingMode;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 import java.io.File;
@@ -31,8 +34,23 @@ import java.net.URL;
  */
 public interface DeltaExampleLocalJobRunner extends DeltaExampleJobRunner {
 
-    default String getRunnerType(){
+    default public String getRunnerType(){
         return "local";
+    }
+
+    default StreamExecutionEnvironment getStreamExecutionEnvironment() {
+
+        URL url = ClassLoader.getSystemResource(".");
+        File file = (url != null) ? new File(url.getFile()) : new File(".");
+
+        final org.apache.flink.configuration.Configuration config = GlobalConfiguration.loadConfiguration(file.getAbsolutePath());
+        //FileSystem.initialize(config);
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironment(2, config);
+        //StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironment();
+        env.setRuntimeMode(RuntimeExecutionMode.AUTOMATIC);
+        env.enableCheckpointing(2000, CheckpointingMode.EXACTLY_ONCE);
+        return env;
+
     }
 
     default MiniCluster getMiniCluster() {
@@ -40,10 +58,10 @@ public interface DeltaExampleLocalJobRunner extends DeltaExampleJobRunner {
         URL url = ClassLoader.getSystemResource(".");
         File file = (url != null) ? new File(url.getFile()) : new File(".");
 
-        final org.apache.flink.configuration.Configuration config = GlobalConfiguration.loadConfiguration();
-        //FileSystem.initialize(config);
+        final org.apache.flink.configuration.Configuration config = GlobalConfiguration.loadConfiguration(file.getAbsolutePath());
+        FileSystem.initialize(config);
 
-        config.setString(RestOptions.BIND_PORT, "18081-19000");
+        //config.setString(RestOptions.BIND_PORT, "18081-19000");
 
         final MiniClusterConfiguration cfg =
                 new MiniClusterConfiguration.Builder()

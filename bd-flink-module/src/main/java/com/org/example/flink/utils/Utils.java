@@ -37,14 +37,10 @@ public final class Utils {
             new RowType.RowField("f3", new IntType())
     ));
 
-    public static String resolveExampleTableAbsolutePath(String resourcesTableDir) {
+    public static String resolveExampleTableAbsolutePath(String resourcesTableDir, String runnerType) {
         //String rootPath = Paths.get(".").toAbsolutePath().normalize().toString();
-        String rootPath = "/apps/sandbox/defaultfs";
-        return rootPath.endsWith("docker-hadoop-cluster") ?
-                // Maven commands are run from the examples/flink-example/ directory
-                rootPath + "/bd-flink-module/" + resourcesTableDir:
-                // while SBT commands are run from the examples/ directory
-                rootPath +"/"+ resourcesTableDir;
+        String rootPath = runnerType.equalsIgnoreCase("Local") ? "file:///apps/sandbox/defaultfs" : "s3a://warehouse-flink";
+        return rootPath + "/" + resourcesTableDir;
     }
 
     public static void prepareDirs(String tablePath) throws IOException {
@@ -98,10 +94,10 @@ public final class Utils {
         return configuration;
     }
 
-    public static void printDeltaTableRows(String tablePath) throws InterruptedException {
+    public static void printDeltaTableRows(String tablePath, String runnerType) throws InterruptedException {
 
-        //Configuration configuration = getHadoopFsConfiguration();
-        DeltaLog deltaLog = DeltaLog.forTable(new Configuration(), tablePath);
+        Configuration configuration = getHadoopFsConfiguration(runnerType);
+        DeltaLog deltaLog = DeltaLog.forTable(configuration, tablePath);
 
         for (int i = 0; i < 30; i++) {
             deltaLog.update();

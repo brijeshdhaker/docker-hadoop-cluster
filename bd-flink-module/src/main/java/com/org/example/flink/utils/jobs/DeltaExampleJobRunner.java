@@ -6,16 +6,7 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 public interface DeltaExampleJobRunner {
 
-    default String getRunnerType(){
-        return "cluster";
-    }
-
-    default StreamExecutionEnvironment getStreamExecutionEnvironment() {
-        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-        env.setRuntimeMode(RuntimeExecutionMode.AUTOMATIC);
-        env.enableCheckpointing(2000, CheckpointingMode.EXACTLY_ONCE);
-        return env;
-    }
+    StreamExecutionEnvironment getStreamExecutionEnvironment();
 
     void run(String tablePath) throws Exception;
 

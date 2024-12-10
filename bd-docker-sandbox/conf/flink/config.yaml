@@ -33,7 +33,8 @@ jobmanager:
 state:
   savepoints:
     dir: s3a://warehouse-flink/state/savepoints
-  backend: filesystem
+  backend:
+    type: hashmap
   checkpoints:
     dir: s3a://warehouse-flink/state/checkpoints
 security:

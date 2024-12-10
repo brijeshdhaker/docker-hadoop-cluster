@@ -34,11 +34,12 @@ import org.apache.flink.api.java.utils.ParameterTool;
  */
 public class DeltaSinkExampleCluster extends DeltaSinkClusterJobExampleBase {
 
+    static String TABLE_PATH = Utils.resolveExampleTableAbsolutePath("data/sink_delta_table", "Cluster");
 
     public static void main(String[] args) throws Exception {
         ParameterTool params = ParameterTool.fromArgs(args);
-        String tablePath = params.get("table-path", "s3a://warehouse-flink/delta-flink-example/");
-        String TABLE_PATH = tablePath + UUID.randomUUID().toString().replace("-", "");
+        //String tablePath = params.get("table-path", "s3a://warehouse-flink/delta-flink-example/");
+        //String TABLE_PATH = tablePath + UUID.randomUUID().toString().replace("-", "");
         new DeltaSinkExampleCluster().run(TABLE_PATH);
     }
 

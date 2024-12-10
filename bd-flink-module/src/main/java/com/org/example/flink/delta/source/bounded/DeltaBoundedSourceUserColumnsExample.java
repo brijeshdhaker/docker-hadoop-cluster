@@ -30,8 +30,7 @@ import org.apache.hadoop.conf.Configuration;
  */
 public class DeltaBoundedSourceUserColumnsExample extends DeltaBoundedSourceLocalJobExampleBase {
 
-    private static final String TABLE_PATH =
-            Utils.resolveExampleTableAbsolutePath("data/source_delta_table");
+    private static final String TABLE_PATH = Utils.resolveExampleTableAbsolutePath("data/source_delta_table", "Local");
 
     private static final RowType ROW_TYPE = new RowType(Arrays.asList(
             new RowType.RowField("f1", new VarCharType(VarCharType.MAX_LENGTH)),

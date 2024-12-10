@@ -1,15 +1,16 @@
 package com.org.example.flink.utils.jobs.bounded;
 
 import com.org.example.flink.utils.Utils;
+import com.org.example.flink.utils.jobs.DeltaExampleClusterJobRunner;
 import com.org.example.flink.utils.jobs.DeltaExampleJobRunner;
 import io.delta.flink.source.DeltaSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.data.RowData;
 
 
-public abstract class DeltaBoundedSourceClusterJobExampleBase implements DeltaExampleJobRunner {
+public abstract class DeltaBoundedSourceClusterJobExampleBase implements DeltaExampleClusterJobRunner {
 
-    private static final String workPath = "/tmp/delta-flink-example/source_table_work";
+    private final String workPath = Utils.resolveExampleTableAbsolutePath("data/source_delta_table", getRunnerType());
 
     @Override
     public void run(String tablePath) throws Exception {
