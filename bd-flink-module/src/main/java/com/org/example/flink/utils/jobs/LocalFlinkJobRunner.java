@@ -17,6 +17,7 @@
 package com.org.example.flink.utils.jobs;
 
 import org.apache.flink.api.common.RuntimeExecutionMode;
+import org.apache.flink.configuration.Configuration;
 import org.apache.flink.configuration.GlobalConfiguration;
 import org.apache.flink.core.fs.FileSystem;
 import org.apache.flink.runtime.minicluster.MiniCluster;
@@ -41,10 +42,10 @@ public interface LocalFlinkJobRunner extends FlinkJobRunner {
         URL url = ClassLoader.getSystemResource(".");
         File file = (url != null) ? new File(url.getFile()) : new File(".");
 
-        final org.apache.flink.configuration.Configuration config = GlobalConfiguration.loadConfiguration(file.getAbsolutePath());
+        //final org.apache.flink.configuration.Configuration config = GlobalConfiguration.loadConfiguration(file.getAbsolutePath());
         //FileSystem.initialize(config);
-        StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironment(2, config);
-        //StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironment();
+        //StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironment(2, config);
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironment();
         env.setRuntimeMode(RuntimeExecutionMode.AUTOMATIC);
         env.enableCheckpointing(2000, CheckpointingMode.EXACTLY_ONCE);
         return env;
@@ -56,9 +57,9 @@ public interface LocalFlinkJobRunner extends FlinkJobRunner {
         URL url = ClassLoader.getSystemResource(".");
         File file = (url != null) ? new File(url.getFile()) : new File(".");
 
-        final org.apache.flink.configuration.Configuration config = GlobalConfiguration.loadConfiguration(file.getAbsolutePath());
-        FileSystem.initialize(config);
-
+        //final org.apache.flink.configuration.Configuration config = GlobalConfiguration.loadConfiguration(file.getAbsolutePath());
+        //FileSystem.initialize(config);
+        final org.apache.flink.configuration.Configuration config = new Configuration();
         //config.setString(RestOptions.BIND_PORT, "18081-19000");
 
         final MiniClusterConfiguration cfg =

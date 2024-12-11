@@ -19,6 +19,7 @@
 package com.org.example.flink.transaction;
 
 import com.org.example.flink.example.models.Person;
+import com.org.example.flink.transaction.functions.DeltaTransactionSourceFunction;
 import com.org.example.flink.transaction.models.raw.RawTransaction;
 import com.org.example.flink.transaction.source.TransactionGenerator;
 import com.org.example.flink.utils.DeltaExampleSourceFunction;
@@ -81,10 +82,11 @@ public class TransactionPipeline extends LocalFlinkJobRunnerBase {
         StreamExecutionEnvironment env = createPipeline(tablePath, 2, 3);
 
         // start the data generator
-        DataStream<RawTransaction> raw_txns = env.addSource(new TransactionGenerator());
+        //DataStream<RawTransaction> raw_txns = env.addSource(new TransactionGenerator());
         //raw_txns.print();
 
         // filter VISA Transactions
+        /*
         DataStream<RawTransaction> visa_raw_txns = raw_txns.filter(new FilterFunction<RawTransaction>() {
             @Override
             public boolean filter(RawTransaction raw_txn) throws Exception {
@@ -92,7 +94,7 @@ public class TransactionPipeline extends LocalFlinkJobRunnerBase {
             }
         });
         visa_raw_txns.print();
-
+        */
         /*
         // map each ride to a tuple of (driverId, 1)
         DataStream<Tuple2<Long, Long>> tuples =
@@ -127,7 +129,7 @@ public class TransactionPipeline extends LocalFlinkJobRunnerBase {
 
         // Using Flink Delta Sink in processing pipeline
         env
-                .addSource(new DeltaExampleSourceFunction())
+                .addSource(new DeltaTransactionSourceFunction())
                 .setParallelism(sourceParallelism)
                 .sinkTo(deltaSink)
                 .name("Sink Transactions : Delta Table ")
