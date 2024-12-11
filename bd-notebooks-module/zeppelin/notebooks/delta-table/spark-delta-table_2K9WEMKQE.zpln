@@ -3,7 +3,7 @@
     {
       "text": "%spark.conf\n\n#\n# For Spark 3.4.1\n#\n\nSPARK_HOME \t                                                /opt/spark\nspark.app.name                                              spark_delta_lake\nspark.master                                                local[*]\nspark.jars.ivy                                              /apps/.ivy2\nspark.jars.packages                                         org.apache.spark:spark-hadoop-cloud_2.12:3.4.1,io.delta:delta-core_2.12:2.4.0\nspark.driver.memory                                         1024M\nspark.executor.instances                                    2\nspark.executor.memory                                       1024M\n\n#\nspark.sql.extensions                                        io.delta.sql.DeltaSparkSessionExtension\nspark.sql.catalog.spark_catalog                             org.apache.spark.sql.delta.catalog.DeltaCatalog\n\n#\nspark.hadoop.fs.defaultFS                                   s3a://defaultfs/\nspark.hadoop.fs.s3a.endpoint                                http://minio.sandbox.net:9010\nspark.hadoop.fs.s3a.access.key                              pgm2H2bR7a5kMc5XCYdO\nspark.hadoop.fs.s3a.secret.key                              zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG\nspark.hadoop.fs.s3a.path.style.access                       true\nspark.hadoop.fs.s3a.aws.credentials.provider                org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider\nspark.hadoop.fs.s3a.impl                                    org.apache.hadoop.fs.s3a.S3AFileSystem",
       "user": "anonymous",
-      "dateUpdated": "2024-10-13 04:39:53.810",
+      "dateUpdated": "2024-12-11 15:53:14.097",
       "progress": 0,
       "config": {
         "colWidth": 12.0,
@@ -11,12 +11,12 @@
         "results": {},
         "enabled": true,
         "editorSetting": {
-          "language": "scala",
+          "language": "text",
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
         },
-        "editorMode": "ace/mode/scala"
+        "editorMode": "ace/mode/text"
       },
       "settings": {
         "params": {},
@@ -32,14 +32,14 @@
       "jobName": "paragraph_1728790090694_1177070018",
       "id": "paragraph_1728790090694_1177070018",
       "dateCreated": "2024-10-13 03:28:10.694",
-      "dateStarted": "2024-10-13 04:39:53.822",
-      "dateFinished": "2024-10-13 04:39:53.855",
+      "dateStarted": "2024-12-11 15:53:14.145",
+      "dateFinished": "2024-12-11 15:53:14.266",
       "status": "FINISHED"
     },
     {
       "text": "%spark\n\nval data \u003d spark.range(0, 5)\ndata.write.format(\"delta\").save(\"/tmp/delta-table\")",
       "user": "anonymous",
-      "dateUpdated": "2024-10-13 03:40:55.108",
+      "dateUpdated": "2024-12-11 15:55:47.183",
       "progress": 1,
       "config": {
         "colWidth": 12.0,
@@ -51,7 +51,8 @@
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
-        }
+        },
+        "editorMode": "ace/mode/scala"
       },
       "settings": {
         "params": {},
@@ -102,10 +103,10 @@
       "status": "FINISHED"
     },
     {
-      "text": "%spark\n\nval df \u003d spark.read.format(\"delta\").load(\"/tmp/delta-table\")\ndf.show()",
+      "text": "%spark\n\nval df \u003d spark.read.format(\"delta\").load(\"file:///apps/sandbox/defaultfs/pipelines/raw/transactions\")\ndf.show()",
       "user": "anonymous",
-      "dateUpdated": "2024-10-13 04:43:37.271",
-      "progress": 0,
+      "dateUpdated": "2024-12-11 15:57:58.421",
+      "progress": 100,
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -128,7 +129,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "+---+\n| id|\n+---+\n|  0|\n|  1|\n|  2|\n|  3|\n|  4|\n|  5|\n|  6|\n|  7|\n|  8|\n|  9|\n| 10|\n| 11|\n| 12|\n| 13|\n| 14|\n| 15|\n| 16|\n| 17|\n| 18|\n| 19|\n+---+\n\n\u001b[1m\u001b[34mdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: bigint]\n"
+            "data": "+----+--------------------+--------+--------+--------+----------+----------+-------+----------+\n|  id|                uuid|cardType| website| product|    amount|      city|country| eventTime|\n+----+--------------------+--------+--------+--------+----------+----------+-------+----------+\n|1663|a5dceb81-4494-41e...|Discover|  Amazon|Keyboard| 52.977463|  Yokohama|     JP|1733932206|\n|1666|ec9f0f72-bb40-4aa...|   RuPay|  Myntra|  Mobile| 151.01062|  Yokohama|     JP|1733932206|\n|1669|429c2195-94fb-49b...|    Amex|  Amazon|     LDC| 136.08598|      Pune|     IN|1733932206|\n|1672|7f4d4408-48fa-499...|    Amex|Flipkart|     LDC|  95.06088|     Delhi|     IN|1733932206|\n|1675|8ebd3b08-1674-49e...|    VISA|  Myntra| Printer| 14.764664|  Yokohama|     JP|1733932206|\n|1678|7841633f-4baa-4a2...|  Master|Flipkart|Keyboard| 118.33669|    Oxford|     UK|1733932206|\n|1681|c31aeb9b-c8fa-45c...|   RuPay|SnapDeal|  Laptop| 142.91942|Manchester|     UK|1733932206|\n|1684|f97745b4-308f-4ad...|  Master|    Ebay|  Mobile| 143.17233| Liverpool|     UK|1733932206|\n|1687|d84bfb5a-5d29-4a7...|Discover|SnapDeal|  Mobile| 193.36969|    Mumbai|     IN|1733932206|\n|1690|e2e01675-4cd6-48d...|Discover|  Amazon|     RAM| 37.464405|    Oxford|     UK|1733932206|\n|1693|0067b4c5-3701-4b1...|   RuPay|  Amazon|     LDC|  67.08566|  Yokohama|     JP|1733932207|\n|1696|a727ff3e-2e9f-434...|    VISA|Flipkart|      TV| 31.036076| Hiroshima|     JP|1733932207|\n|1699|5a76fc78-3d84-416...|Discover|  Amazon|  Laptop|119.060585|  New York|    USA|1733932207|\n|1702|9307068a-d644-448...|  Master|    Ebay|   Mouse| 176.31613|    Mumbai|     IN|1733932207|\n|1705|65958d2a-e882-4e4...|   RuPay|SnapDeal|Keyboard| 199.77625|    Mumbai|     IN|1733932207|\n|1708|070f0bbc-78d5-482...|  Master|    Ebay|     LDC| 1.9423822|Manchester|     UK|1733932207|\n|1711|99ff68e3-d49f-475...|    VISA|  Amazon|Computer| 189.89922|  Yokohama|     JP|1733932207|\n|1714|3bcd88f0-e614-458...|    VISA|  Amazon| Monitor| 62.224445|  Yokohama|     JP|1733932207|\n|1717|ecd3ebae-893d-43a...|  Master|    Ebay|     LDC| 12.711041| Hiroshima|     JP|1733932207|\n|1720|ef22531d-3287-437...|   RuPay|  Myntra|     LDC| 47.676563|  New York|    USA|1733932207|\n+----+--------------------+--------+--------+--------+----------+----------+-------+----------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34mdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: bigint, uuid: string ... 7 more fields]\n"
           }
         ]
       },
@@ -141,10 +142,10 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d7"
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d6"
             },
             {
-              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d8"
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d7"
             }
           ],
           "interpreterSettingId": "spark"
@@ -154,8 +155,8 @@
       "jobName": "paragraph_1728790748315_1922306163",
       "id": "paragraph_1728790748315_1922306163",
       "dateCreated": "2024-10-13 03:39:08.315",
-      "dateStarted": "2024-10-13 04:43:37.284",
-      "dateFinished": "2024-10-13 04:43:38.357",
+      "dateStarted": "2024-12-11 15:57:58.427",
+      "dateFinished": "2024-12-11 15:58:04.635",
       "status": "FINISHED"
     },
     {

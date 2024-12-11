@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-12-11 update bd-flink-module.">
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/functions/DeltaTransactionMapFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/TransactionPipeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/TransactionPipeline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/functions/DeltaTransactionSourceFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/functions/DeltaTransactionSourceFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/LocalFlinkJobRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/LocalFlinkJobRunner.java" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-12-11 update bd-flink-module for working examples.">
       <change beforePath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/delta-table/spark-delta-table_2K9WEMKQE.zpln" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/delta-table/spark-delta-table_2K9WEMKQE.zpln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -285,11 +280,11 @@
       <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/delta-table" />
       <recent name="$PROJECT_DIR$/bd-flink-module" />
       <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources" />
       <recent name="$PROJECT_DIR$/bd-flink-module/conf" />
       <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources/data/source_table_no_partitions" />
-      <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources/example_table" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -611,14 +606,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00070" summary="2024-09-26 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1727316878040</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1727316878041</updated>
     </task>
     <task id="LOCAL-00071" summary="2024-09-26 Update Project Configuration.">
       <option name="closed" value="true" />
@@ -1004,7 +991,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733892936098</updated>
     </task>
-    <option name="localTasksCounter" value="119" />
+    <task id="LOCAL-00119" summary="2024-12-11 update bd-flink-module for working examples.">
+      <option name="closed" value="true" />
+      <created>1733933613696</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1733933613697</updated>
+    </task>
+    <option name="localTasksCounter" value="120" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -1030,7 +1025,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-09-24 Update Project Configuration." />
     <MESSAGE value="2024-09-25 Update Project Configuration." />
     <MESSAGE value="2024-09-26 Update Project Configuration." />
     <MESSAGE value="2024-09-27 Update Project Configuration." />
@@ -1055,7 +1049,8 @@
     <MESSAGE value="2024-12-08 update bd-flink-module." />
     <MESSAGE value="2024-12-10 update bd-flink-module." />
     <MESSAGE value="2024-12-11 update bd-flink-module." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-12-11 update bd-flink-module." />
+    <MESSAGE value="2024-12-11 update bd-flink-module for working examples." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-12-11 update bd-flink-module for working examples." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
