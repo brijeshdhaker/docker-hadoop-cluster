@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.org.example.flink.records;
+package com.org.example.flink.clickcount.models;
 
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -23,30 +23,48 @@ import java.util.Date;
 import java.util.Objects;
 
 /**
- * A simple event recording a click on a {@link ClickEvent#page} at time {@link ClickEvent#timestamp}.
+ * A small wrapper class for windowed page counts.
  *
  */
-public class ClickEvent {
+public class ClickEventStatistics {
 
 	//using java.util.Date for better readability
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss:SSS")
-	private Date timestamp;
+	private Date windowStart;
+	//using java.util.Date for better readability
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss:SSS")
+	private Date windowEnd;
 	private String page;
+	private long count;
 
-	public ClickEvent() {
+	public ClickEventStatistics() {
 	}
 
-	public ClickEvent(final Date timestamp, final String page) {
-		this.timestamp = timestamp;
+	public ClickEventStatistics(
+			final Date windowStart,
+			final Date windowEnd,
+			final String page,
+			final long count) {
+		this.windowStart = windowStart;
+		this.windowEnd = windowEnd;
 		this.page = page;
+		this.count = count;
 	}
 
-	public Date getTimestamp() {
-		return timestamp;
+	public Date getWindowStart() {
+		return windowStart;
 	}
 
-	public void setTimestamp(final Date timestamp) {
-		this.timestamp = timestamp;
+	public void setWindowStart(final Date windowStart) {
+		this.windowStart = windowStart;
+	}
+
+	public Date getWindowEnd() {
+		return windowEnd;
+	}
+
+	public void setWindowEnd(final Date windowEnd) {
+		this.windowEnd = windowEnd;
 	}
 
 	public String getPage() {
@@ -57,6 +75,14 @@ public class ClickEvent {
 		this.page = page;
 	}
 
+	public long getCount() {
+		return count;
+	}
+
+	public void setCount(final long count) {
+		this.count = count;
+	}
+
 	@Override
 	public boolean equals(final Object o) {
 		if (this == o) {
@@ -65,20 +91,25 @@ public class ClickEvent {
 		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
-		final ClickEvent that = (ClickEvent) o;
-		return Objects.equals(timestamp, that.timestamp) && Objects.equals(page, that.page);
+		final ClickEventStatistics that = (ClickEventStatistics) o;
+		return count == that.count &&
+				Objects.equals(windowStart, that.windowStart) &&
+				Objects.equals(windowEnd, that.windowEnd) &&
+				Objects.equals(page, that.page);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(timestamp, page);
+		return Objects.hash(windowStart, windowEnd, page, count);
 	}
 
 	@Override
 	public String toString() {
-		final StringBuilder sb = new StringBuilder("ClickEvent{");
-		sb.append("timestamp=").append(timestamp);
+		final StringBuilder sb = new StringBuilder("ClickEventStatistics{");
+		sb.append("windowStart=").append(windowStart);
+		sb.append(", windowEnd=").append(windowEnd);
 		sb.append(", page='").append(page).append('\'');
+		sb.append(", count=").append(count);
 		sb.append('}');
 		return sb.toString();
 	}

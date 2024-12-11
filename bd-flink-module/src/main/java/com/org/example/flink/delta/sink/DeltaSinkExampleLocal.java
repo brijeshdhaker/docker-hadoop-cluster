@@ -1,7 +1,7 @@
 package com.org.example.flink.delta.sink;
 
 import com.org.example.flink.utils.Utils;
-import com.org.example.flink.utils.jobs.DeltaSinkLocalJobExampleBase;
+import com.org.example.flink.utils.jobs.LocalFlinkJobRunnerBase;
 import io.delta.flink.sink.DeltaSink;
 import org.apache.flink.core.fs.Path;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -18,7 +18,7 @@ import com.org.example.flink.utils.DeltaExampleSourceFunction;
  * run in a daemon thread while in the main app's thread there will Delta Standalone application
  * reading and printing all the data to the std out.
  */
-public class DeltaSinkExampleLocal extends DeltaSinkLocalJobExampleBase {
+public class DeltaSinkExampleLocal extends LocalFlinkJobRunnerBase {
 
     static String TABLE_PATH = Utils.resolveExampleTableAbsolutePath("data/sink_delta_table", "Local");
 

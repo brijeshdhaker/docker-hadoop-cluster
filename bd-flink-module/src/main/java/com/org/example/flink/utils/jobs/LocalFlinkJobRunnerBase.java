@@ -5,7 +5,7 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.data.RowData;
 import com.org.example.flink.utils.Utils;
 
-public abstract class DeltaSinkLocalJobExampleBase implements DeltaExampleLocalJobRunner {
+public abstract class LocalFlinkJobRunnerBase implements LocalFlinkJobRunner {
 
     public void run(String tablePath) throws Exception {
 

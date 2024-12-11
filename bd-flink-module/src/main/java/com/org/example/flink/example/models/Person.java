@@ -1,4 +1,4 @@
-package com.org.example.flink.records;
+package com.org.example.flink.example.models;
 
 public class Person {
 

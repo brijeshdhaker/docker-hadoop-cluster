@@ -145,7 +145,7 @@ under the License.
 							<transformers>
 								<transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
 								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>com.org.example.flink.DataStreamJob</mainClass>
+									<mainClass>com.org.example.flink.example.DataStreamJob</mainClass>
 								</transformer>
 							</transformers>
 						</configuration>
@@ -363,6 +363,20 @@ under the License.
 			<version>${hadoop.version}</version>
 		</dependency>
 		-->
+
+		<!-- module specific -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.34</version>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.javafaker</groupId>
+			<artifactId>javafaker</artifactId>
+			<version>1.0.2</version>
+		</dependency>
 
 		<!-- Add logging framework, to produce console output when running in the IDE. -->
 		<!-- These dependencies are excluded from the application JAR by default. -->

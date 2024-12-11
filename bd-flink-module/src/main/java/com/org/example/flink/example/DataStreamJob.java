@@ -1,15 +1,13 @@
-package com.org.example.flink;
+package com.org.example.flink.example;
 
-import com.org.example.flink.records.Person;
+import com.org.example.flink.example.models.Person;
 import org.apache.flink.configuration.GlobalConfiguration;
 import org.apache.flink.core.fs.FileSystem;
-import org.apache.flink.core.fs.Path;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.api.common.functions.FilterFunction;
 
 import java.io.File;
-import java.net.URI;
 import java.net.URL;
 
 

@@ -18,7 +18,7 @@
 package com.org.example.flink.clickcount.functions;
 
 import org.apache.flink.api.common.functions.AggregateFunction;
-import com.org.example.flink.records.ClickEvent;
+import com.org.example.flink.clickcount.models.ClickEvent;
 
 /**
  * An {@link AggregateFunction} which simply counts {@link ClickEvent}s.

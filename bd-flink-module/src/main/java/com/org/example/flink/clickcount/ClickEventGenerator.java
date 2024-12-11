@@ -19,8 +19,8 @@
 package com.org.example.flink.clickcount;
 
 import org.apache.flink.api.java.utils.ParameterTool;
-import com.org.example.flink.records.ClickEvent;
-import com.org.example.flink.records.ClickEventSerializationSchema;
+import com.org.example.flink.clickcount.models.ClickEvent;
+import com.org.example.flink.clickcount.models.ClickEventSerializationSchema;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;

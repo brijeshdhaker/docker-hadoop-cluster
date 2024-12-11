@@ -15,26 +15,37 @@
  * limitations under the License.
  */
 
-package com.org.example.flink.records;
+package com.org.example.flink.clickcount.models;
 
-import org.apache.flink.api.common.serialization.SerializationSchema;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.core.JsonProcessingException;
+import org.apache.flink.api.common.serialization.DeserializationSchema;
+import org.apache.flink.api.common.typeinfo.TypeInformation;
+
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.IOException;
+
 /**
- * A Kafka {@link SerializationSchema} to serialize {@link ClickEventStatistics}s as JSON.
+ * A Kafka {@link DeserializationSchema} to deserialize {@link ClickEvent}s from JSON.
  *
  */
-public class ClickEventStatisticsSerializationSchema implements SerializationSchema<ClickEventStatistics> {
+public class ClickEventDeserializationSchema implements DeserializationSchema<ClickEvent> {
+
+	private static final long serialVersionUID = 1L;
+
 	private static final ObjectMapper objectMapper = new ObjectMapper();
 
 	@Override
-	public byte[] serialize(ClickEventStatistics event) {
-		try {
-			//if topic is null, default topic will be used
-			return objectMapper.writeValueAsBytes(event);
-		} catch (JsonProcessingException e) {
-			throw new IllegalArgumentException("Could not serialize record: " + event, e);
-		}
+	public ClickEvent deserialize(byte[] message) throws IOException {
+		return objectMapper.readValue(message, ClickEvent.class);
+	}
+
+	@Override
+	public boolean isEndOfStream(ClickEvent nextElement) {
+		return false;
+	}
+
+	@Override
+	public TypeInformation<ClickEvent> getProducedType() {
+		return TypeInformation.of(ClickEvent.class);
 	}
 }

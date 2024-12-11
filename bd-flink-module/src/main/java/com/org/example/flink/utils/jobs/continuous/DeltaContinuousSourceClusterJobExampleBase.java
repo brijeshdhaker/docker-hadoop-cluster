@@ -1,13 +1,12 @@
 package com.org.example.flink.utils.jobs.continuous;
 
 import com.org.example.flink.utils.Utils;
-import com.org.example.flink.utils.jobs.DeltaExampleClusterJobRunner;
-import com.org.example.flink.utils.jobs.DeltaExampleJobRunner;
+import com.org.example.flink.utils.jobs.ClusterFlinkJobRunner;
 import io.delta.flink.source.DeltaSource;
 import org.apache.flink.table.data.RowData;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
-public abstract class DeltaContinuousSourceClusterJobExampleBase implements DeltaExampleClusterJobRunner {
+public abstract class DeltaContinuousSourceClusterJobExampleBase implements ClusterFlinkJobRunner {
 
     private static final String workPath = "/tmp/delta-flink-example/source_table_work";
 

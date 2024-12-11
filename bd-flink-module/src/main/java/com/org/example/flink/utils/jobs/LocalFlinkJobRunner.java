@@ -16,10 +16,8 @@
 
 package com.org.example.flink.utils.jobs;
 
-import org.apache.calcite.util.Static;
 import org.apache.flink.api.common.RuntimeExecutionMode;
 import org.apache.flink.configuration.GlobalConfiguration;
-import org.apache.flink.configuration.RestOptions;
 import org.apache.flink.core.fs.FileSystem;
 import org.apache.flink.runtime.minicluster.MiniCluster;
 import org.apache.flink.runtime.minicluster.MiniClusterConfiguration;
@@ -32,9 +30,9 @@ import java.net.URL;
 /**
  * Internal class providing utility methods to run local Flink job in memory.
  */
-public interface DeltaExampleLocalJobRunner extends DeltaExampleJobRunner {
+public interface LocalFlinkJobRunner extends FlinkJobRunner {
 
-    default public String getRunnerType(){
+    default String getRunnerType(){
         return "local";
     }
 

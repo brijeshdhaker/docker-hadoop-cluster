@@ -17,20 +17,13 @@
 package com.org.example.flink.utils.jobs;
 
 import org.apache.flink.api.common.RuntimeExecutionMode;
-import org.apache.flink.configuration.GlobalConfiguration;
-import org.apache.flink.configuration.RestOptions;
-import org.apache.flink.runtime.minicluster.MiniCluster;
-import org.apache.flink.runtime.minicluster.MiniClusterConfiguration;
 import org.apache.flink.streaming.api.CheckpointingMode;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-
-import java.io.File;
-import java.net.URL;
 
 /**
  * Internal class providing utility methods to run local Flink job in memory.
  */
-public interface DeltaExampleClusterJobRunner extends DeltaExampleJobRunner {
+public interface ClusterFlinkJobRunner extends FlinkJobRunner {
 
     default String getRunnerType(){
         return "cluster";

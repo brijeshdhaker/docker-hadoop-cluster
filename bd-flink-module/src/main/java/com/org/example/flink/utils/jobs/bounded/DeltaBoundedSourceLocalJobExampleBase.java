@@ -1,13 +1,13 @@
 package com.org.example.flink.utils.jobs.bounded;
 
 import com.org.example.flink.utils.Utils;
-import com.org.example.flink.utils.jobs.DeltaExampleLocalJobRunner;
+import com.org.example.flink.utils.jobs.LocalFlinkJobRunner;
 import io.delta.flink.source.DeltaSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.data.RowData;
 
 
-public abstract class DeltaBoundedSourceLocalJobExampleBase implements DeltaExampleLocalJobRunner {
+public abstract class DeltaBoundedSourceLocalJobExampleBase implements LocalFlinkJobRunner {
 
     private final String workPath = Utils.resolveExampleTableAbsolutePath("data/sink_delta_table", getRunnerType());
 

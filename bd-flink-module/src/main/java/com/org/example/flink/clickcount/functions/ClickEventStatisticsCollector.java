@@ -17,8 +17,8 @@
 
 package com.org.example.flink.clickcount.functions;
 
-import com.org.example.flink.records.ClickEvent;
-import com.org.example.flink.records.ClickEventStatistics;
+import com.org.example.flink.clickcount.models.ClickEvent;
+import com.org.example.flink.clickcount.models.ClickEventStatistics;
 import org.apache.flink.streaming.api.functions.windowing.ProcessWindowFunction;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
