@@ -5,30 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-12-11 update bd-flink-module for working examples.">
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/FileSystemUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/models/enriched/EnrichedTransaction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/sink/DeltaSinkExampleCluster.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/sink/DeltaSinkExampleCluster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/sink/DeltaSinkExampleLocal.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/sink/DeltaSinkExampleLocal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/sink/DeltaSinkPartitionedTableExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/sink/DeltaSinkPartitionedTableExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/bounded/DeltaBoundedSourceClusterExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/bounded/DeltaBoundedSourceClusterExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/bounded/DeltaBoundedSourceLocalExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/bounded/DeltaBoundedSourceLocalExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/bounded/DeltaBoundedSourceUserColumnsExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/bounded/DeltaBoundedSourceUserColumnsExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/bounded/DeltaBoundedSourceVersionAsOfExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/bounded/DeltaBoundedSourceVersionAsOfExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/continuous/DeltaContinuousSourceClusterExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/continuous/DeltaContinuousSourceClusterExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/continuous/DeltaContinuousSourceLocalExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/continuous/DeltaContinuousSourceLocalExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/continuous/DeltaContinuousSourceStartingVersionExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/continuous/DeltaContinuousSourceStartingVersionExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/continuous/DeltaContinuousSourceUserColumnsExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/continuous/DeltaContinuousSourceUserColumnsExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/TransactionPipeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/TransactionPipeline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/source/TransactionGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/source/TransactionGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/LocalFlinkJobRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/LocalFlinkJobRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/LocalFlinkJobRunnerBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/LocalFlinkJobRunnerBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/bounded/DeltaBoundedSourceClusterJobExampleBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/bounded/DeltaBoundedSourceClusterJobExampleBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/bounded/DeltaBoundedSourceLocalJobExampleBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/bounded/DeltaBoundedSourceLocalJobExampleBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/continuous/DeltaContinuousSourceLocalJobExampleBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/continuous/DeltaContinuousSourceLocalJobExampleBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/sql/BoundedSqlSourceExampleBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/sql/BoundedSqlSourceExampleBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/sql/ContinuousSqlSourceExampleBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/sql/ContinuousSqlSourceExampleBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/models/raw/RawTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/models/raw/RawTransaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/models/refined/RefineTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/models/refined/RefineTransaction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -320,11 +301,11 @@
       <recent name="org.examples.datasource" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.org.example.flink.transaction.models.enriched" />
       <recent name="com.org.example.flink.transaction.functions" />
       <recent name="com.org.example.flink.txns" />
       <recent name="com.org.example.flink.records.raw" />
       <recent name="com.org.example.flink.utils" />
-      <recent name="com.org.example.flink.records" />
     </key>
   </component>
   <component name="RunManager" selected="Application.TransactionPipeline">
@@ -597,13 +578,6 @@
       <item itemvalue="Application.DeltaContinuousSourceLocalExample" />
       <item itemvalue="Application.DeltaSinkExampleLocal" />
       <item itemvalue="Application.DataStreamJob" />
-      <item itemvalue="Docker.kafka-cluster" />
-      <item itemvalue="Docker.flink-cluster" />
-      <item itemvalue="Docker.minio" />
-      <item itemvalue="Docker.mysqlserver" />
-      <item itemvalue="Docker.spark-cluster" />
-      <item itemvalue="Docker.spark-notebook" />
-      <item itemvalue="Docker.zeppelin-notebook" />
     </list>
     <recent_temporary>
       <list>
@@ -623,22 +597,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00072" summary="2024-09-27 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1727419816056</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1727419816058</updated>
-    </task>
-    <task id="LOCAL-00073" summary="2024-09-28 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1727498175790</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1727498175791</updated>
     </task>
     <task id="LOCAL-00074" summary="2024-09-28 Update Project Configuration.">
       <option name="closed" value="true" />
@@ -1016,7 +974,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733934071402</updated>
     </task>
-    <option name="localTasksCounter" value="121" />
+    <task id="LOCAL-00121" summary="2024-12-11 update bd-flink-module for working examples.">
+      <option name="closed" value="true" />
+      <created>1733973467698</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1733973467701</updated>
+    </task>
+    <task id="LOCAL-00122" summary="2024-12-11 update bd-flink-module for working examples.">
+      <option name="closed" value="true" />
+      <created>1733973488565</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1733973488565</updated>
+    </task>
+    <option name="localTasksCounter" value="123" />
     <servers />
   </component>
   <component name="UnknownFeatures">
