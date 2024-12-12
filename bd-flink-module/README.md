@@ -119,6 +119,11 @@ flink run --detached \
 --checkpointing \
 --event-time
 
+flink run --detached \
+--class com.org.example.flink.transaction.TransactionPipeline /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
+--engine-type=local \
+--table-path=pipelines/raw/transactions
+
 #
 #
 #

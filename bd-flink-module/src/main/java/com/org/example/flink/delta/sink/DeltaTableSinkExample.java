@@ -19,7 +19,6 @@ import com.org.example.flink.utils.DeltaExampleSourceFunction;
 import com.org.example.flink.utils.Utils;
 import com.org.example.flink.utils.jobs.FlinkJobRunnerBase;
 import io.delta.flink.sink.DeltaSink;
-import io.delta.flink.sink.RowDataDeltaSinkBuilder;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.configuration.GlobalConfiguration;
 import org.apache.flink.core.fs.Path;
@@ -33,21 +32,20 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * Demonstrates how the Flink Delta Sink can be used to write data to a partitioned Delta table.
+ * Demonstrates how the Flink Delta Sink can be used to write data to Delta table.
  * <p>
- * If you run this example then application will spawn example local Flink job generating data to
- * the underlying Delta table under directory of "src/main/resources/sink_delta_table". The job will be
- * run in a daemon thread while in the main app's thread there will Delta Standalone application
- * reading and printing all the data to the std out.
+ * This application is supposed to be run on a Flink cluster. When run it will start to generate
+ * data to the underlying Delta table under directory of `/tmp/delta-flink-example/<UUID>`.
  */
 /*
 
---engine-type local --sink-table-path data/sink_delta_partitioned_table
---engine-type cluster --sink-table-path data/sink_delta_partitioned_table
+--engine-type=local --sink-table-path=pipelines/raw/transactions
+--engine-type=cluster --sink-table-path=pipelines/raw/transactions
 
 */
-public class DeltaSinkPartitionedTableExample extends FlinkJobRunnerBase {
+public class DeltaTableSinkExample extends FlinkJobRunnerBase {
 
+    static String TABLE_PATH = Utils.resolveTableAbsolutePath("data/sink_delta_table", "cluster");
 
     public static void main(String[] args) throws Exception {
 
@@ -64,20 +62,19 @@ public class DeltaSinkPartitionedTableExample extends FlinkJobRunnerBase {
             params.put("engine-type", engine_type);
         }
 
-        String sink_tbl_path = "data/sink_delta_partitioned_table";
+        String sink_tbl_path = "data/sink_delta_table";
         if(arg_params.toMap().containsKey("sink-table-path")){
             sink_tbl_path = Utils.resolveTableAbsolutePath(params.get("sink-table-path"), engine_type);
         }
-        params.put("sink-table-path", sink_tbl_path);
 
+        params.put("sink-table-path", sink_tbl_path);
         String uuid = UUID.randomUUID().toString().split("-")[0];
-        params.put("flink-workflow-name","partitioned-delta-table-pipeline-"+uuid);
+        params.put("flink-workflow-name","delta-table-pipeline-"+uuid);
 
         params.put("source-parallelism", "2");
         params.put("sink-parallelism", "2");
 
-        new DeltaSinkPartitionedTableExample().run(params);
-
+        new DeltaTableSinkExample().run(params);
     }
 
     /**
@@ -85,9 +82,8 @@ public class DeltaSinkPartitionedTableExample extends FlinkJobRunnerBase {
      */
     @Override
     public StreamExecutionEnvironment createPipeline(Map<String, String> params) {
-
-        int sourceParallelism = Integer.parseInt(params.get("source-parallelism"));
-        int sinkParallelism = Integer.parseInt(params.get("sink-parallelism"));
+        int sourceParallelism = 2;
+        int sinkParallelism = 2;
 
         String sink_tbl_path = params.get("sink-table-path");
         DeltaSink<RowData> deltaSink = getDeltaSink(sink_tbl_path);
@@ -96,28 +92,25 @@ public class DeltaSinkPartitionedTableExample extends FlinkJobRunnerBase {
 
         // Using Flink Delta Sink in processing pipeline
         env.addSource(new DeltaExampleSourceFunction())
-                .setParallelism(sourceParallelism)
+                .setParallelism(Integer.parseInt(params.get("source-parallelism")))
                 .sinkTo(deltaSink)
                 .name("sink-delta-table")
                 .setParallelism(sinkParallelism);
 
         return env;
-
     }
 
     /**
-     * An example of Flink Delta Sink configuration with partition column.
+     * An example of Flink Delta Sink configuration.
      */
     public DeltaSink<RowData> getDeltaSink(String tablePath) {
-        String[] partitionCols = {"f1"};
 
         Configuration configuration = HadoopUtils.getHadoopConfiguration(GlobalConfiguration.loadConfiguration());
-        RowDataDeltaSinkBuilder deltaSinkBuilder = DeltaSink.forRowData(
-                new Path(tablePath),
-                configuration,
-                Utils.FULL_SCHEMA_ROW_TYPE
-        );
-        deltaSinkBuilder.withPartitionColumns(partitionCols);
-        return deltaSinkBuilder.build();
+
+        return DeltaSink.forRowData(
+                        new Path(tablePath),
+                        configuration,
+                        Utils.FULL_SCHEMA_ROW_TYPE
+                ).build();
     }
 }

@@ -40,7 +40,7 @@ public final class Utils {
 
     public static String resolveTableAbsolutePath(String resourcesTableDir, String runnerType) {
         //String rootPath = Paths.get(".").toAbsolutePath().normalize().toString();
-        String rootPath = runnerType.equalsIgnoreCase("Local") ? "file:///apps/sandbox/defaultfs" : "s3a://warehouse-flink";
+        String rootPath = runnerType.equalsIgnoreCase("local") ? "file:///apps/sandbox/defaultfs" : "s3a://warehouse-flink";
         return rootPath + "/" + resourcesTableDir;
     }
 

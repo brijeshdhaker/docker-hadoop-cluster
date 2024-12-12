@@ -4,12 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-12-11 update bd-flink-module for working examples.">
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/models/enriched/EnrichedTransaction.java" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-12-12 add refine &amp; enrichment for flink module.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/sink/DeltaSinkExampleCluster.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/sink/DeltaTableSinkExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/sink/DeltaSinkExampleLocal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/sink/DeltaSinkPartitionedTableExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/sink/DeltaSinkPartitionedTableExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/bounded/DeltaBoundedSourceClusterExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/bounded/DeltaBoundedSourceClusterExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/bounded/DeltaBoundedSourceLocalExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/bounded/DeltaBoundedSourceUserColumnsExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/bounded/DeltaBoundedSourceUserColumnsExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/bounded/DeltaBoundedSourceVersionAsOfExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/bounded/DeltaBoundedSourceVersionAsOfExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/continuous/DeltaContinuousSourceClusterExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/continuous/DeltaContinuousSourceClusterExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/continuous/DeltaContinuousSourceLocalExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/continuous/DeltaContinuousSourceStartingVersionExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/continuous/DeltaContinuousSourceStartingVersionExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/continuous/DeltaContinuousSourceUserColumnsExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/continuous/DeltaContinuousSourceUserColumnsExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/TransactionPipeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/TransactionPipeline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/models/raw/RawTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/models/raw/RawTransaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/models/refined/RefineTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/models/refined/RefineTransaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/ClusterFlinkJobRunner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/DeltaSinkClusterJobExampleBase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/FlinkJobRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/FlinkJobRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/LocalFlinkJobRunner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/LocalFlinkJobRunnerBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/FlinkJobRunnerBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/bounded/DeltaBoundedSourceClusterJobExampleBase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/bounded/DeltaBoundedSourceLocalJobExampleBase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/continuous/DeltaContinuousSourceClusterJobExampleBase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/continuous/DeltaContinuousSourceLocalJobExampleBase.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +90,6 @@
       </MavenGeneralSettings>
     </option>
     <option name="explicitlyEnabledProfiles" value="local" />
-    <option name="explicitlyDisabledProfiles" value="cluster" />
   </component>
   <component name="MavenRunner">
     <option name="skipTests" value="true" />
@@ -116,7 +134,7 @@
     "Application.StreamExample.executor": "Run",
     "Application.TransactionAvroStream.executor": "Run",
     "Application.TransactionCountExample.executor": "Run",
-    "Application.TransactionPipeline.executor": "Run",
+    "Application.TransactionPipeline.executor": "Debug",
     "Docker.Docker Image.executor": "Run",
     "Docker.bd-docker-sandbox.minio: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-flink-cluster.yml: Compose Deployment.executor": "Run",
@@ -301,11 +319,11 @@
       <recent name="org.examples.datasource" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.org.example.flink.utils.jobs" />
       <recent name="com.org.example.flink.transaction.models.enriched" />
       <recent name="com.org.example.flink.transaction.functions" />
       <recent name="com.org.example.flink.txns" />
       <recent name="com.org.example.flink.records.raw" />
-      <recent name="com.org.example.flink.utils" />
     </key>
   </component>
   <component name="RunManager" selected="Application.TransactionPipeline">
@@ -409,7 +427,7 @@
     <configuration name="TransactionPipeline" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.org.example.flink.transaction.TransactionPipeline" />
       <module name="bd-flink-module" />
-      <option name="PROGRAM_PARAMETERS" value="--engine-type=local --table-path=pipelines/raw/transactions" />
+      <option name="PROGRAM_PARAMETERS" value="--engine-type mini-cluster --sink-table-path pipelines/raw/transactions --config-path $PROJECT_DIR$/bd-docker-sandbox/conf/flink" />
       <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED" />
       <extension name="coverage">
         <pattern>
@@ -578,6 +596,13 @@
       <item itemvalue="Application.DeltaContinuousSourceLocalExample" />
       <item itemvalue="Application.DeltaSinkExampleLocal" />
       <item itemvalue="Application.DataStreamJob" />
+      <item itemvalue="Docker.flink-cluster" />
+      <item itemvalue="Docker.kafka-cluster" />
+      <item itemvalue="Docker.minio" />
+      <item itemvalue="Docker.mysqlserver" />
+      <item itemvalue="Docker.spark-cluster" />
+      <item itemvalue="Docker.spark-notebook" />
+      <item itemvalue="Docker.zeppelin-notebook" />
     </list>
     <recent_temporary>
       <list>
@@ -597,22 +622,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00074" summary="2024-09-28 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1727498310770</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1727498310770</updated>
-    </task>
-    <task id="LOCAL-00075" summary="2024-09-29 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1727626671061</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1727626671062</updated>
     </task>
     <task id="LOCAL-00076" summary="2024-09-29 Update Project Configuration.">
       <option name="closed" value="true" />
@@ -990,7 +999,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733973488565</updated>
     </task>
-    <option name="localTasksCounter" value="123" />
+    <task id="LOCAL-00123" summary="2024-12-12 add refine &amp; enrichment for flink module.">
+      <option name="closed" value="true" />
+      <created>1733976320926</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1733976320926</updated>
+    </task>
+    <task id="LOCAL-00124" summary="2024-12-12 add refine &amp; enrichment for flink module.">
+      <option name="closed" value="true" />
+      <created>1733976341707</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1733976341707</updated>
+    </task>
+    <option name="localTasksCounter" value="125" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -1016,7 +1041,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-09-25 Update Project Configuration." />
     <MESSAGE value="2024-09-26 Update Project Configuration." />
     <MESSAGE value="2024-09-27 Update Project Configuration." />
     <MESSAGE value="2024-09-28 Update Project Configuration." />
@@ -1041,7 +1065,8 @@
     <MESSAGE value="2024-12-10 update bd-flink-module." />
     <MESSAGE value="2024-12-11 update bd-flink-module." />
     <MESSAGE value="2024-12-11 update bd-flink-module for working examples." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-12-11 update bd-flink-module for working examples." />
+    <MESSAGE value="2024-12-12 add refine &amp; enrichment for flink module." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-12-12 add refine &amp; enrichment for flink module." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1050,11 +1075,6 @@
           <url>file://$PROJECT_DIR$/bd-java-module/src/main/java/org/examples/hadoop/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/delta/source/continuous/DeltaContinuousSourceClusterExample.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_simple_consumer.py</url>
