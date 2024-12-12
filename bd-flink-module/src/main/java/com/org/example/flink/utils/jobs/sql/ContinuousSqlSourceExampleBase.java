@@ -11,7 +11,7 @@ import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 
 public abstract class ContinuousSqlSourceExampleBase extends SqlExampleBase {
 
-    private final String workPath = Utils.resolveExampleTableAbsolutePath("example_table_" + UUID.randomUUID().toString().split("-")[0], "Local");
+    private final String workPath = Utils.resolveTableAbsolutePath("example_table_" + UUID.randomUUID().toString().split("-")[0], "Local");
 
     protected final boolean isStreaming;
 

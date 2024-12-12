@@ -20,7 +20,7 @@ import com.org.example.flink.utils.DeltaExampleSourceFunction;
  */
 public class DeltaSinkExampleLocal extends LocalFlinkJobRunnerBase {
 
-    static String TABLE_PATH = Utils.resolveExampleTableAbsolutePath("data/sink_delta_table", "Local");
+    static String TABLE_PATH = Utils.resolveTableAbsolutePath("data/sink_delta_table", "Local");
 
     public static void main(String[] args) throws Exception {
         new DeltaSinkExampleLocal().run(TABLE_PATH);

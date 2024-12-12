@@ -25,6 +25,7 @@ import org.apache.flink.runtime.minicluster.MiniClusterConfiguration;
 import org.apache.flink.streaming.api.CheckpointingMode;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
+
 import java.io.File;
 import java.net.URL;
 
@@ -42,12 +43,12 @@ public interface LocalFlinkJobRunner extends FlinkJobRunner {
         URL url = ClassLoader.getSystemResource(".");
         File file = (url != null) ? new File(url.getFile()) : new File(".");
 
-        //final org.apache.flink.configuration.Configuration config = GlobalConfiguration.loadConfiguration(file.getAbsolutePath());
-        //FileSystem.initialize(config);
+        final org.apache.flink.configuration.Configuration config = GlobalConfiguration.loadConfiguration(file.getAbsolutePath());
+        FileSystem.initialize(config);
         //StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironment(2, config);
-        StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironment();
-        env.setRuntimeMode(RuntimeExecutionMode.AUTOMATIC);
-        env.enableCheckpointing(2000, CheckpointingMode.EXACTLY_ONCE);
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(config);
+        //env.setRuntimeMode(RuntimeExecutionMode.AUTOMATIC);
+        //env.enableCheckpointing(2000, CheckpointingMode.EXACTLY_ONCE);
         return env;
 
     }
@@ -71,7 +72,7 @@ public interface LocalFlinkJobRunner extends FlinkJobRunner {
         return new MiniCluster(cfg);
     }
 
-    default void runFlinkJobInBackground(StreamExecutionEnvironment env) {
+    default void runJobInBackground(StreamExecutionEnvironment env) {
         new Thread(() -> {
             try (MiniCluster miniCluster = getMiniCluster()) {
                 miniCluster.start();

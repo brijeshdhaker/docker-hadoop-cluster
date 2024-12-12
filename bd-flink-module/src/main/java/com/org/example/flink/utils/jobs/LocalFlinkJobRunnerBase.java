@@ -12,7 +12,7 @@ public abstract class LocalFlinkJobRunnerBase implements LocalFlinkJobRunner {
         System.out.println("Will use table path: " + tablePath);
         Utils.prepareDirs(tablePath);
         StreamExecutionEnvironment env = createPipeline(tablePath, 2, 3);
-        runFlinkJobInBackground(env);
+        runJobInBackground(env);
         Utils.printDeltaTableRows(tablePath, getRunnerType());
 
         /*

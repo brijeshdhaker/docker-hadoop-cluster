@@ -25,7 +25,7 @@ import org.apache.hadoop.conf.Configuration;
  */
 public class DeltaBoundedSourceVersionAsOfExample extends DeltaBoundedSourceLocalJobExampleBase {
 
-    private static final String TABLE_PATH = Utils.resolveExampleTableAbsolutePath("data/source_delta_table", "Local");
+    private static final String TABLE_PATH = Utils.resolveTableAbsolutePath("data/source_delta_table", "Local");
 
     public static void main(String[] args) throws Exception {
         new DeltaBoundedSourceVersionAsOfExample().run(TABLE_PATH);

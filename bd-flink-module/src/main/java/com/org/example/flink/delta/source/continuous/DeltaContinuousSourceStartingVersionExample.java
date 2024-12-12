@@ -24,7 +24,7 @@ public class DeltaContinuousSourceStartingVersionExample extends
         DeltaContinuousSourceLocalJobExampleBase {
 
     private static final String TABLE_PATH =
-            Utils.resolveExampleTableAbsolutePath("data/source_delta_table", "Local");
+            Utils.resolveTableAbsolutePath("data/source_delta_table", "Local");
 
     public static void main(String[] args) throws Exception {
         new DeltaContinuousSourceStartingVersionExample().run(TABLE_PATH);

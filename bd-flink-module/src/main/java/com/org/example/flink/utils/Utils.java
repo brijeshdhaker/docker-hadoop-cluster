@@ -2,7 +2,6 @@ package com.org.example.flink.utils;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -14,6 +13,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.flink.configuration.GlobalConfiguration;
+import org.apache.flink.runtime.util.HadoopUtils;
 import org.apache.flink.table.types.logical.IntType;
 import org.apache.flink.table.types.logical.RowType;
 import org.apache.flink.table.types.logical.VarCharType;
@@ -37,7 +38,7 @@ public final class Utils {
             new RowType.RowField("f3", new IntType())
     ));
 
-    public static String resolveExampleTableAbsolutePath(String resourcesTableDir, String runnerType) {
+    public static String resolveTableAbsolutePath(String resourcesTableDir, String runnerType) {
         //String rootPath = Paths.get(".").toAbsolutePath().normalize().toString();
         String rootPath = runnerType.equalsIgnoreCase("Local") ? "file:///apps/sandbox/defaultfs" : "s3a://warehouse-flink";
         return rootPath + "/" + resourcesTableDir;
@@ -81,7 +82,8 @@ public final class Utils {
 
     public static Configuration getHadoopFsConfiguration(String runnerType){
 
-        Configuration configuration = new org.apache.hadoop.conf.Configuration();
+        Configuration configuration = HadoopUtils.getHadoopConfiguration(GlobalConfiguration.loadConfiguration());
+        /*
         if(runnerType.equalsIgnoreCase("Cluster")){
             configuration.set("fs.defaultFS", "s3a://warehouse-flink/");
             configuration.set("fs.s3a.endpoint", "http://minio.sandbox.net:9010");
@@ -91,12 +93,13 @@ public final class Utils {
             configuration.set("fs.s3a.aws.credentials.provider", "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider");
             configuration.set("fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem");
         }
+        */
         return configuration;
     }
 
     public static void printDeltaTableRows(String tablePath, String runnerType) throws InterruptedException {
 
-        Configuration configuration = getHadoopFsConfiguration(runnerType);
+        Configuration configuration = HadoopUtils.getHadoopConfiguration(GlobalConfiguration.loadConfiguration());
         DeltaLog deltaLog = DeltaLog.forTable(configuration, tablePath);
 
         for (int i = 0; i < 30; i++) {

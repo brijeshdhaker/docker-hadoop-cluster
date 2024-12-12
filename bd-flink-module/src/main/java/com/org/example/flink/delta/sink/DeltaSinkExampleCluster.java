@@ -15,8 +15,6 @@
  */
 package com.org.example.flink.delta.sink;
 
-import java.util.UUID;
-
 import io.delta.flink.sink.DeltaSink;
 import org.apache.flink.core.fs.Path;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -34,7 +32,7 @@ import org.apache.flink.api.java.utils.ParameterTool;
  */
 public class DeltaSinkExampleCluster extends DeltaSinkClusterJobExampleBase {
 
-    static String TABLE_PATH = Utils.resolveExampleTableAbsolutePath("data/sink_delta_table", "Cluster");
+    static String TABLE_PATH = Utils.resolveTableAbsolutePath("data/sink_delta_table", "Cluster");
 
     public static void main(String[] args) throws Exception {
         ParameterTool params = ParameterTool.fromArgs(args);

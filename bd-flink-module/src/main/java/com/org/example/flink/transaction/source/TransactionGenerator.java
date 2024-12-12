@@ -79,19 +79,18 @@ public class TransactionGenerator implements SourceFunction<RawTransaction> {
                 //maxStartTime = Math.max(maxStartTime, ride.getEventTimeMillis());
             }
 
-            txns.iterator().forEachRemaining(r -> sourceContext.collect(r));
+            txns.iterator().forEachRemaining(rtx -> sourceContext.collect(rtx));
 
             // prepare for the next batch
             id += BATCH_SIZE;
-
             // don't go too fast
             Thread.sleep(BATCH_SIZE * SLEEP_MILLIS_PER_EVENT);
-
         }
+
     }
 
     @Override
     public void cancel() {
-
+        running = false;
     }
 }

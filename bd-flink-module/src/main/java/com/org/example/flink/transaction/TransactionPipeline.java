@@ -18,27 +18,28 @@
 
 package com.org.example.flink.transaction;
 
-import com.org.example.flink.example.models.Person;
+import com.org.example.flink.transaction.functions.DeltaTransactionMapFunction;
 import com.org.example.flink.transaction.functions.DeltaTransactionSourceFunction;
 import com.org.example.flink.transaction.models.raw.RawTransaction;
 import com.org.example.flink.transaction.source.TransactionGenerator;
-import com.org.example.flink.utils.DeltaExampleSourceFunction;
 import com.org.example.flink.utils.Utils;
-import com.org.example.flink.utils.jobs.LocalFlinkJobRunner;
 import com.org.example.flink.utils.jobs.LocalFlinkJobRunnerBase;
 import io.delta.flink.sink.DeltaSink;
 import org.apache.flink.api.common.functions.FilterFunction;
+import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.configuration.GlobalConfiguration;
 import org.apache.flink.core.fs.Path;
+import org.apache.flink.runtime.util.HadoopUtils;
 import org.apache.flink.streaming.api.datastream.DataStream;
+import org.apache.flink.streaming.api.datastream.KeyedStream;
+import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.data.RowData;
 import org.apache.flink.table.types.logical.*;
 import org.apache.hadoop.conf.Configuration;
+import org.apache.flink.api.java.tuple.Tuple2;
 
-import java.io.File;
-import java.net.URL;
 import java.util.Arrays;
 import java.util.UUID;
 
@@ -53,8 +54,11 @@ import java.util.UUID;
  */
 
 /*
+
 --engine-type=local --table-path=pipelines/raw/transactions
- */
+AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO;AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG;AWS_REGION=us-east-1;AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
+AWS_ACCESS_KEY_ID=admin;AWS_SECRET_ACCESS_KEY=passwprd;AWS_REGION=us-east-1;AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
+*/
 public class TransactionPipeline extends LocalFlinkJobRunnerBase {
 
     /**
@@ -69,7 +73,7 @@ public class TransactionPipeline extends LocalFlinkJobRunnerBase {
         String uuid = UUID.randomUUID().toString().replace("-", "");
         String engine_type  = params.get("engine-type", "local");
         String table_path  = params.get("table-path", "pipelines/raw/transactions");
-        String TABLE_PATH = Utils.resolveExampleTableAbsolutePath(table_path, engine_type);
+        String TABLE_PATH = Utils.resolveTableAbsolutePath(table_path, engine_type);
         new TransactionPipeline().run(TABLE_PATH);
 
         // run the cleansing pipeline
@@ -78,23 +82,12 @@ public class TransactionPipeline extends LocalFlinkJobRunnerBase {
 
     public void run(String tablePath) throws Exception {
 
-        System.out.println("Pipeline will use table " + tablePath);
+        System.out.println("Transaction Pipeline will use delta table " + tablePath);
         StreamExecutionEnvironment env = createPipeline(tablePath, 2, 3);
 
-        // start the data generator
-        //DataStream<RawTransaction> raw_txns = env.addSource(new TransactionGenerator());
-        //raw_txns.print();
 
-        // filter VISA Transactions
-        /*
-        DataStream<RawTransaction> visa_raw_txns = raw_txns.filter(new FilterFunction<RawTransaction>() {
-            @Override
-            public boolean filter(RawTransaction raw_txn) throws Exception {
-                return raw_txn.getCardType().equalsIgnoreCase("VISA");
-            }
-        });
-        visa_raw_txns.print();
-        */
+
+
         /*
         // map each ride to a tuple of (driverId, 1)
         DataStream<Tuple2<Long, Long>> tuples =
@@ -116,25 +109,68 @@ public class TransactionPipeline extends LocalFlinkJobRunnerBase {
         rideCounts.print();
         */
 
-        runFlinkJobInBackground(env);
+        //runJobInBackground(env);
+        env.execute();
 
     }
 
     @Override
     public StreamExecutionEnvironment createPipeline(String tablePath, int sourceParallelism, int sinkParallelism) {
 
-        DeltaSink<RowData> deltaSink = getDeltaSink(tablePath);
-
         StreamExecutionEnvironment env = getStreamExecutionEnvironment();
 
+        // start the data generator
+        DataStream<RawTransaction> raw_txns = env.addSource(new TransactionGenerator()).name("Source Raw Transactions");
+        //raw_txns.print();
+
+
+        // filter VISA Transactions
+        DataStream<RawTransaction> raw_visa_txns = raw_txns.filter(new FilterFunction<RawTransaction>() {
+            @Override
+            public boolean filter(RawTransaction raw_txn) throws Exception {
+                return raw_txn.getCardType().equalsIgnoreCase("VISA");
+            }
+        }).name("Filter VISA Transactions");
+        //raw_visa_txns.print();
+
+        // map each txn to a tuple of (card_type, 1)
+        DataStream<Tuple2<String, Long>> card_type_touple = raw_txns.map(
+                        new MapFunction<RawTransaction, Tuple2<String, Long>>() {
+                            @Override
+                            public Tuple2<String, Long> map(RawTransaction rt) {
+                                return Tuple2.of(rt.getCardType(), 1L);
+                            }
+                        }).name("Map txn to (card_type, 1)");
+
+        // partition the stream by the CardType
+        KeyedStream<Tuple2<String, Long>, String> keyedByCardType = card_type_touple.keyBy(t -> t.f0);
+        //keyedByCardType.print();
+
+        // count the Transactions for each card type
+        DataStream<Tuple2<String, Long>> cardTypeTxnCounts = keyedByCardType.sum(1).name("Transactions count for each card type");
+        cardTypeTxnCounts.print();
+
+        // we could, in fact, print out any or all of these streams
+        //cardTypeTxnCounts.print();
+
+        //
+        /*
+        DataStream<RowData> raw_delta_txns = raw_txns.map(new DeltaTransactionMapFunction());
+        raw_delta_txns.print();
+        */
+
         // Using Flink Delta Sink in processing pipeline
-        env
-                .addSource(new DeltaTransactionSourceFunction())
+        /*
+
+        DeltaSink<RowData> deltaSink = getDeltaSink(tablePath);
+
+        env.addSource(new DeltaTransactionSourceFunction())
                 .setParallelism(sourceParallelism)
                 .sinkTo(deltaSink)
                 .name("Sink Transactions : Delta Table ")
                 .setParallelism(sinkParallelism);
 
+        */
         return env;
 
     }
@@ -142,7 +178,7 @@ public class TransactionPipeline extends LocalFlinkJobRunnerBase {
     @Override
     public DeltaSink<RowData> getDeltaSink(String tablePath) {
 
-        Configuration configuration = Utils.getHadoopFsConfiguration(getRunnerType());
+        Configuration configuration = HadoopUtils.getHadoopConfiguration(GlobalConfiguration.loadConfiguration());
 
         RowType FULL_SCHEMA_ROW_TYPE = new RowType(Arrays.asList(
                 new RowType.RowField("id", new BigIntType()),

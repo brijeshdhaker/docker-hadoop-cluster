@@ -36,7 +36,7 @@ import org.apache.flink.api.java.utils.ParameterTool;
  */
 public class DeltaSinkPartitionedTableExample extends DeltaSinkClusterJobExampleBase {
 
-    static String TABLE_PATH = Utils.resolveExampleTableAbsolutePath("data/sink_delta_partitioned_table", "Cluster");
+    static String TABLE_PATH = Utils.resolveTableAbsolutePath("data/sink_delta_partitioned_table", "Cluster");
 
     public static void main(String[] args) throws Exception {
 

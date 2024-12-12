@@ -9,7 +9,7 @@ import org.apache.flink.table.data.RowData;
 
 public abstract class DeltaBoundedSourceLocalJobExampleBase implements LocalFlinkJobRunner {
 
-    private final String workPath = Utils.resolveExampleTableAbsolutePath("data/sink_delta_table", getRunnerType());
+    private final String workPath = Utils.resolveTableAbsolutePath("data/sink_delta_table", getRunnerType());
 
     @Override
     public void run(String tablePath) throws Exception {
@@ -17,7 +17,7 @@ public abstract class DeltaBoundedSourceLocalJobExampleBase implements LocalFlin
 
         Utils.prepareDirs(tablePath, workPath);
         StreamExecutionEnvironment env = createPipeline(workPath, 2, 3);
-        runFlinkJobInBackground(env);
+        runJobInBackground(env);
     }
 
     public abstract DeltaSource<RowData> getDeltaSource(String tablePath);

@@ -9,7 +9,7 @@ import org.apache.flink.table.data.RowData;
 
 public abstract class DeltaBoundedSourceClusterJobExampleBase implements ClusterFlinkJobRunner {
 
-    private final String workPath = Utils.resolveExampleTableAbsolutePath("data/source_delta_table", getRunnerType());
+    private final String workPath = Utils.resolveTableAbsolutePath("data/source_delta_table", getRunnerType());
 
     @Override
     public void run(String tablePath) throws Exception {

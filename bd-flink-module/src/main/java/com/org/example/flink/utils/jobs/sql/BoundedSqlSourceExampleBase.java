@@ -17,7 +17,7 @@ public abstract class BoundedSqlSourceExampleBase extends SqlExampleBase {
 
     protected BoundedSqlSourceExampleBase() {
         this.isStreaming = false;
-        this.workPath = Utils.resolveExampleTableAbsolutePath("example_table_" + UUID.randomUUID().toString().split("-")[0], "Local");
+        this.workPath = Utils.resolveTableAbsolutePath("example_table_" + UUID.randomUUID().toString().split("-")[0], "Local");
     }
 
     public void run(String tablePath) throws Exception {
