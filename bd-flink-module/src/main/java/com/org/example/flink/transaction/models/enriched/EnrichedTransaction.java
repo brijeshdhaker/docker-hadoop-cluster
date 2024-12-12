@@ -1,73 +1,69 @@
-package com.org.example.flink.transaction.models.raw;
+package com.org.example.flink.transaction.models.enriched;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.Objects;
-import java.util.Random;
-import java.util.UUID;
 
 @Getter
 @Setter
-public class RawTransaction implements Comparable<RawTransaction>, Serializable {
+public class EnrichedTransaction implements Comparable<EnrichedTransaction>, Serializable {
 
     private Long id;
     private String uuid;
     private String cardType;
     private String website;
     private String product;
-    private Float amount;
+    private Double amount;
     private String city;
     private String country;
     private Long eventTime;
+    private Long addts;
 
-    public static RawTransaction builder(){
-        Random random = new Random();
-        RawTransaction t = new RawTransaction();
-        t.uuid = UUID.randomUUID().toString();
-        t.eventTime = Instant.now().getEpochSecond();
+    public static EnrichedTransaction builder(){
+        EnrichedTransaction t = new EnrichedTransaction();
+        t.addts = System.currentTimeMillis();
         return t;
     }
 
-    public RawTransaction id(Long id){
+    public EnrichedTransaction id(Long id){
         this.id = id;
         return this;
     }
 
-    public RawTransaction cardtype(String cardType){
+    public EnrichedTransaction cardType(String cardType){
         this.cardType = cardType;
         return this;
     }
 
-    public RawTransaction website(String website){
+    public EnrichedTransaction website(String website){
         this.website = website;
         return this;
     }
 
-    public RawTransaction product(String product){
+    public EnrichedTransaction product(String product){
         this.product = product;
         return this;
     }
 
-    public RawTransaction amount(Float amount){
+    public EnrichedTransaction amount(Double amount){
         this.amount = amount;
         return this;
     }
 
-    public RawTransaction city(String city){
+    public EnrichedTransaction city(String city){
         this.city = city;
         return this;
     }
 
-    public RawTransaction country(String country){
+    public EnrichedTransaction country(String country){
         this.country = country;
         return this;
     }
 
     @Override
-    public int compareTo(RawTransaction transaction) {
+    public int compareTo(EnrichedTransaction transaction) {
         return 0;
     }
 
@@ -78,7 +74,7 @@ public class RawTransaction implements Comparable<RawTransaction>, Serializable 
 
     @Override
     public String toString() {
-        return "Raw Transaction : " +id + ", "
+        return "Enriched Transaction : " + id + ", "
                 + uuid + ", "
                 + cardType + ", "
                 + website + ", "
@@ -86,6 +82,7 @@ public class RawTransaction implements Comparable<RawTransaction>, Serializable 
                 + amount + ", "
                 + city + ", "
                 + country + ", "
+                + addts + ", "
                 + eventTime;
     }
 }

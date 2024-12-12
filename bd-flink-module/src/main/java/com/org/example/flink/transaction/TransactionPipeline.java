@@ -20,11 +20,14 @@ package com.org.example.flink.transaction;
 
 import com.org.example.flink.transaction.functions.DeltaTransactionMapFunction;
 import com.org.example.flink.transaction.functions.DeltaTransactionSourceFunction;
+import com.org.example.flink.transaction.models.enriched.EnrichedTransaction;
 import com.org.example.flink.transaction.models.raw.RawTransaction;
+import com.org.example.flink.transaction.models.refined.RefineTransaction;
 import com.org.example.flink.transaction.source.TransactionGenerator;
 import com.org.example.flink.utils.Utils;
 import com.org.example.flink.utils.jobs.LocalFlinkJobRunnerBase;
 import io.delta.flink.sink.DeltaSink;
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.flink.api.common.functions.FilterFunction;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.java.utils.ParameterTool;
@@ -40,6 +43,7 @@ import org.apache.flink.table.types.logical.*;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.flink.api.java.tuple.Tuple2;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.UUID;
 
@@ -119,11 +123,48 @@ public class TransactionPipeline extends LocalFlinkJobRunnerBase {
 
         StreamExecutionEnvironment env = getStreamExecutionEnvironment();
 
-        // start the data generator
+        // Generate RAW Transactions
         DataStream<RawTransaction> raw_txns = env.addSource(new TransactionGenerator()).name("Source Raw Transactions");
         //raw_txns.print();
 
+        // Transaction Refinement
+        DataStream<RefineTransaction> refine_txns = raw_txns.map(
+                new MapFunction<RawTransaction, RefineTransaction>() {
+                    @Override
+                    public RefineTransaction map(RawTransaction raw_txn) {
+                        RefineTransaction refine_txn = RefineTransaction.builder();
+                        try {
+                            BeanUtils.copyProperties(refine_txn,raw_txn);
+                        } catch (IllegalAccessException e) {
+                            throw new RuntimeException(e);
+                        } catch (InvocationTargetException e) {
+                            throw new RuntimeException(e);
+                        }
+                        return refine_txn;
+                    }
+                }).name("Transaction Refinement");
 
+        // Transaction Enrichment
+        DataStream<EnrichedTransaction> enriched_txns = refine_txns.map(
+                new MapFunction<RefineTransaction, EnrichedTransaction>() {
+                    @Override
+                    public EnrichedTransaction map(RefineTransaction refine_txn) {
+                        EnrichedTransaction enriched_txn = EnrichedTransaction.builder();
+                        try {
+                            BeanUtils.copyProperties(enriched_txn,refine_txn);
+                        } catch (IllegalAccessException e) {
+                            throw new RuntimeException(e);
+                        } catch (InvocationTargetException e) {
+                            throw new RuntimeException(e);
+                        }
+                        return enriched_txn;
+                    }
+                }).name("Transaction Enrichment");
+
+        enriched_txns.print();
+
+
+        /*
         // filter VISA Transactions
         DataStream<RawTransaction> raw_visa_txns = raw_txns.filter(new FilterFunction<RawTransaction>() {
             @Override
@@ -135,12 +176,14 @@ public class TransactionPipeline extends LocalFlinkJobRunnerBase {
 
         // map each txn to a tuple of (card_type, 1)
         DataStream<Tuple2<String, Long>> card_type_touple = raw_txns.map(
-                        new MapFunction<RawTransaction, Tuple2<String, Long>>() {
-                            @Override
-                            public Tuple2<String, Long> map(RawTransaction rt) {
-                                return Tuple2.of(rt.getCardType(), 1L);
-                            }
-                        }).name("Map txn to (card_type, 1)");
+                new MapFunction<RawTransaction, Tuple2<String, Long>>() {
+                    @Override
+                    public Tuple2<String, Long> map(RawTransaction rt) {
+                        return Tuple2.of(rt.getCardType(), 1L);
+                    }
+                }).name("Map txn to (card_type, 1)");
+
+
 
         // partition the stream by the CardType
         KeyedStream<Tuple2<String, Long>, String> keyedByCardType = card_type_touple.keyBy(t -> t.f0);
@@ -152,6 +195,7 @@ public class TransactionPipeline extends LocalFlinkJobRunnerBase {
 
         // we could, in fact, print out any or all of these streams
         //cardTypeTxnCounts.print();
+        */
 
         //
         /*

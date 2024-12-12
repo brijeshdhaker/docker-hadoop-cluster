@@ -2,6 +2,7 @@ package com.org.example.flink.transaction.models.refined;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.beanutils.BeanUtils;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -15,21 +16,18 @@ public class RefineTransaction implements Comparable<RefineTransaction>, Seriali
 
     private java.lang.Long id;
     private java.lang.String uuid;
-    private java.lang.String cardtype;
+    private java.lang.String cardType;
     private java.lang.String website;
     private java.lang.String product;
     private java.lang.Double amount;
     private java.lang.String city;
     private java.lang.String country;
+    private java.lang.Long eventTime;
     private java.lang.Long addts;
-    private java.time.Instant eventTime;
 
     public static RefineTransaction builder(){
-        Random random = new Random();
         RefineTransaction t = new RefineTransaction();
-        t.uuid = UUID.randomUUID().toString();
         t.addts = System.currentTimeMillis();
-        t.eventTime = Instant.now();
         return t;
     }
 
@@ -38,8 +36,8 @@ public class RefineTransaction implements Comparable<RefineTransaction>, Seriali
         return this;
     }
 
-    public RefineTransaction cardtype(String cardtype){
-        this.cardtype = cardtype;
+    public RefineTransaction cardType(String cardType){
+        this.cardType = cardType;
         return this;
     }
 
@@ -80,14 +78,15 @@ public class RefineTransaction implements Comparable<RefineTransaction>, Seriali
 
     @Override
     public String toString() {
-        return id + ", "
+        return "Refined Transaction : " +id + ", "
                 + uuid + ", "
-                + cardtype + ", "
+                + cardType + ", "
                 + website + ", "
                 + product + ", "
                 + amount + ", "
                 + city + ", "
                 + country + ", "
-                + addts;
+                + addts + ", "
+                + eventTime;
     }
 }
