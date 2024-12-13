@@ -119,10 +119,15 @@ flink run --detached \
 --checkpointing \
 --event-time
 
+#
+# Transaction Pipeline
+#
 flink run --detached \
 --class com.org.example.flink.transaction.TransactionPipeline /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
---engine-type=local \
---table-path=pipelines/raw/transactions
+--engine-type cluster \
+--table-name transactions \
+--config-file /opt/flink/conf 
+
 
 #
 #
@@ -162,3 +167,6 @@ mvn package exec:java \
 -Dconnectors.version={version}
 
 /usr/lib/jvm/java-1.17.0-openjdk-amd64/bin/java  -Djansi.passthrough=true -Dmaven.home=/opt/maven-3.6.3 -Dclassworlds.conf=/opt/maven-3.6.3/bin/m2.conf -Dmaven.ext.class.path=/snap/intellij-idea-community/553/plugins/maven/lib/maven-event-listener.jar -javaagent:/snap/intellij-idea-community/553/lib/idea_rt.jar=41423:/snap/intellij-idea-community/553/bin -Dfile.encoding=UTF-8 -classpath /opt/maven-3.6.3/boot/plexus-classworlds-2.6.0.jar:/opt/maven-3.6.3/boot/plexus-classworlds.license org.codehaus.classworlds.Launcher -Didea.version=2024.3 --update-snapshots -s /home/brijeshdhaker/.m2/settings.xml -Dmaven.repo.local=/apps/.m2/repository -DskipTests=true clean package -P local,!cluster
+
+
+-Dlog.file=/apps/var/logs/flink/flink--standalonesession-0-flink-jobmanager.log -Dlog4j.configuration=file:/opt/flink/conf/log4j-console.properties -Dlog4j.configurationFile=file:/opt/flink/conf/log4j-console.properties -Dlogback.configurationFile=file:/opt/flink/conf/logback-console.xml

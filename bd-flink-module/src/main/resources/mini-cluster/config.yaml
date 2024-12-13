@@ -1,15 +1,27 @@
+#flink:
+#  hadoop:
+#    fs:
+#      default-scheme: s3a://warehouse-flink/
+##      s3a.access.key: pgm2H2bR7a5kMc5XCYdO
+##      s3a.secret.key: zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+#      s3a.access.key: admin
+#      s3a.secret.key: password
+#      s3a.impl: org.apache.hadoop.fs.s3a.S3AFileSystem
+#      s3a.aws.credentials.provider: org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider
+#      s3a.path.style.access: true
+#      s3a.endpoint: http://minio.sandbox.net:9010
 blob:
   server:
     port: '6124'
 env:
   java:
     opts:
-      jobmanager: -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf
+      jobmanager: -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf -Dlog.file=/apps/var/logs/flink/flink-standalone-session-0-flink-jobmanager.log
       all: --add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED
-      taskmanager: -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf
+      taskmanager: -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf -Dlog.file=/apps/var/logs/flink/flink--taskexecutor-0-flink-taskmanager.log
   log:
     max: 5
-    dir: /apps/var/logs/flink/
+    dir: /apps/var/logs/flink
     level: INFO
 rest:
   flamegraph:
@@ -20,6 +32,11 @@ rest:
     enabled: true
 fs:
   default-scheme: s3a://warehouse-flink/
+s3:
+  access-key: admin
+  secret-key: password
+  endpoint: http://minio.sandbox.net:9010
+  path.style.access: true
 jobmanager:
   execution:
     failover-strategy: region
@@ -46,13 +63,6 @@ security:
 query:
   server:
     port: '6125'
-s3:
-  secret-key: password
-  endpoint: http://minio.sandbox.net:9010
-  access-key: admin
-  path:
-    style:
-      access: true
 io:
   tmp:
     dirs: /tmp

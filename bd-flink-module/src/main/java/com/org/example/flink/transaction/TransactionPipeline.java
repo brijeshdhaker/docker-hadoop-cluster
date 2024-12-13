@@ -18,30 +18,27 @@
 
 package com.org.example.flink.transaction;
 
+import com.org.example.flink.enums.Zone;
+import com.org.example.flink.transaction.functions.EnrichDeltaTransactionMapFunction;
 import com.org.example.flink.transaction.models.enriched.EnrichedTransaction;
 import com.org.example.flink.transaction.models.raw.RawTransaction;
 import com.org.example.flink.transaction.models.refined.RefineTransaction;
 import com.org.example.flink.transaction.source.TransactionGenerator;
+import com.org.example.flink.utils.Constants;
 import com.org.example.flink.utils.Utils;
 import com.org.example.flink.utils.jobs.FlinkJobRunnerBase;
 import io.delta.flink.sink.DeltaSink;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.java.utils.ParameterTool;
-import org.apache.flink.configuration.GlobalConfiguration;
 import org.apache.flink.core.fs.Path;
 import org.apache.flink.runtime.util.HadoopUtils;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.data.RowData;
-import org.apache.flink.table.types.logical.BigIntType;
-import org.apache.flink.table.types.logical.FloatType;
-import org.apache.flink.table.types.logical.RowType;
-import org.apache.flink.table.types.logical.VarCharType;
 import org.apache.hadoop.conf.Configuration;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -58,12 +55,16 @@ import java.util.UUID;
 
 /*
 
---engine-type local --sink-table-path pipelines/raw/transactions --config-path /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-docker-sandbox/conf/flink
+--engine-type local-cluster --table-name transactions --config-path /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-flink-module/src/main/resources/local-cluster
+
 AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO;AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG;AWS_REGION=us-east-1;AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
-AWS_ACCESS_KEY_ID=admin;AWS_SECRET_ACCESS_KEY=passwprd;AWS_REGION=us-east-1;AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
+
+AWS_ACCESS_KEY_ID=admin;AWS_SECRET_ACCESS_KEY=password;AWS_REGION=us-east-1;AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
+
 */
 public class TransactionPipeline extends FlinkJobRunnerBase {
 
+    public static final String PARMA_TABLE_NAME = "table-name";
     /**
      * Main method.
      *
@@ -72,23 +73,21 @@ public class TransactionPipeline extends FlinkJobRunnerBase {
     public static void main(String[] args) throws Exception {
 
         ParameterTool arg_params = ParameterTool.fromArgs(args);
-        String engine_type  = arg_params.get("engine-type", "local");
-
+        Map<String, String> args_map = arg_params.toMap();
         Map<String, String> params = new LinkedHashMap<>();
-        arg_params.toMap().forEach((key, value) -> params.put(key.toString(), value.toString()));
 
-        if(!params.containsKey("engine-type")){
-            params.put("engine-type", engine_type);
+        args_map.forEach((key, value) -> params.put(key.toString(), value.toString()));
+
+        String engine_type  = arg_params.get(ENGINE_TYPE, Constants.LOCAL_CLUSTER);
+        if(!params.containsKey(ENGINE_TYPE)){
+            params.put(ENGINE_TYPE, engine_type);
         }
 
-        String sink_tbl_path = "pipelines/raw/transactions";
-        if(arg_params.toMap().containsKey("sink-table-path")){
-            sink_tbl_path = Utils.resolveTableAbsolutePath(params.get("sink-table-path"), engine_type);
-        }
-
-        params.put("sink-table-path", sink_tbl_path);
         String uuid = UUID.randomUUID().toString().split("-")[0];
-        params.put("flink-workflow-name","transaction-pipeline-"+uuid);
+        params.put(WORKFLOW_NAME,"transaction-pipeline-"+uuid);
+
+        params.put("source-parallelism", "2");
+        params.put("sink-parallelism", "2");
 
         new TransactionPipeline().run(params);
 
@@ -103,9 +102,26 @@ public class TransactionPipeline extends FlinkJobRunnerBase {
         StreamExecutionEnvironment env = getStreamExecutionEnvironment(params);
 
         // Generate RAW Transactions
-        DataStream<RawTransaction> raw_txns = env.addSource(new TransactionGenerator()).name("Generate Raw Transactions");
+        DataStream<RawTransaction> raw_txns = env.addSource(new TransactionGenerator()).name("Raw Transactions");
         //raw_txns.print();
 
+        // filter VISA Transactions
+        /*
+        DataStream<RawTransaction> raw_visa_txns = raw_txns.filter(new FilterFunction<RawTransaction>() {
+            @Override
+            public boolean filter(RawTransaction raw_txn) throws Exception {
+                return raw_txn.getCardType().equalsIgnoreCase("VISA");
+            }
+        }).name("Filter VISA Transactions");
+        raw_visa_txns.print();
+        */
+
+        //DeltaSink<RowData> rawTxnSink = getDeltaSink(Zone.RAW.name().toLowerCase(), params);
+
+
+        /**
+         *
+         */
         // Transaction Refinement
         DataStream<RefineTransaction> refine_txns = raw_txns.map(
                 new MapFunction<RawTransaction, RefineTransaction>() {
@@ -122,7 +138,11 @@ public class TransactionPipeline extends FlinkJobRunnerBase {
                         return refine_txn;
                     }
                 }).name("Transaction Refinement");
+        //DeltaSink<RowData> refineTxnSink = getDeltaSink(Zone.REFINE.name().toLowerCase(), params);
 
+        /**
+         *
+         */
         // Transaction Enrichment
         DataStream<EnrichedTransaction> enriched_txns = refine_txns.map(
                 new MapFunction<RefineTransaction, EnrichedTransaction>() {
@@ -139,20 +159,12 @@ public class TransactionPipeline extends FlinkJobRunnerBase {
                         return enriched_txn;
                     }
                 }).name("Transaction Enrichment");
-
-        enriched_txns.print();
-
+        //enriched_txns.print();
+        DataStream<RowData> enriched_delta_txns = enriched_txns.map(new EnrichDeltaTransactionMapFunction());
+        DeltaSink<RowData> enrichTxnDeltaSink = getDeltaSink(Zone.ENRICH.name().toLowerCase(), params);
+        enriched_delta_txns.sinkTo(enrichTxnDeltaSink).name("Enrich Delta Write");
 
         /*
-        // filter VISA Transactions
-        DataStream<RawTransaction> raw_visa_txns = raw_txns.filter(new FilterFunction<RawTransaction>() {
-            @Override
-            public boolean filter(RawTransaction raw_txn) throws Exception {
-                return raw_txn.getCardType().equalsIgnoreCase("VISA");
-            }
-        }).name("Filter VISA Transactions");
-        //raw_visa_txns.print();
-
         // map each txn to a tuple of (card_type, 1)
         DataStream<Tuple2<String, Long>> card_type_touple = raw_txns.map(
                 new MapFunction<RawTransaction, Tuple2<String, Long>>() {
@@ -198,26 +210,41 @@ public class TransactionPipeline extends FlinkJobRunnerBase {
 
     }
 
-    public DeltaSink<RowData> getDeltaSink(String tablePath) {
+    private DeltaSink<RowData> getDeltaSink(String zone, Map<String, String> params) {
 
-        Configuration configuration = HadoopUtils.getHadoopConfiguration(GlobalConfiguration.loadConfiguration());
 
-        RowType FULL_SCHEMA_ROW_TYPE = new RowType(Arrays.asList(
-                new RowType.RowField("id", new BigIntType()),
-                new RowType.RowField("uuid", new VarCharType(VarCharType.MAX_LENGTH)),
-                new RowType.RowField("cardType", new VarCharType(VarCharType.MAX_LENGTH)),
-                new RowType.RowField("website", new VarCharType(VarCharType.MAX_LENGTH)),
-                new RowType.RowField("product", new VarCharType(VarCharType.MAX_LENGTH)),
-                new RowType.RowField("amount", new FloatType()),
-                new RowType.RowField("city", new VarCharType(VarCharType.MAX_LENGTH)),
-                new RowType.RowField("country", new VarCharType(VarCharType.MAX_LENGTH)),
-                new RowType.RowField("eventTime", new BigIntType())
-        ));
+        Configuration configuration = HadoopUtils.getHadoopConfiguration(loadConfig(params));
 
-        return DeltaSink.forRowData(
-                new Path(tablePath),
-                configuration,
-                FULL_SCHEMA_ROW_TYPE
-        ).build();
+        String table_name = String.format("pipelines/%s/%s", zone, params.get(PARMA_TABLE_NAME));
+        String table_path = Utils.resolveTableAbsolutePath(table_name, params.get(ENGINE_TYPE)); ;
+
+        DeltaSink<RowData> deltaSink = null;
+        switch (Zone.valueOf(zone.toUpperCase())){
+            case RAW:
+                params.put("raw-txn-delta-table", table_path);
+                deltaSink = DeltaSink.forRowData(
+                        new Path(table_path),
+                        configuration,
+                        Constants.RAW_TXN_SCHEMA_ROW_TYPE
+                ).build();
+                break;
+            case REFINE:
+                params.put("refine-txn-delta-table", table_path);
+                deltaSink = DeltaSink.forRowData(
+                        new Path(table_path),
+                        configuration,
+                        Constants.REFINED_TXN_SCHEMA_ROW_TYPE
+                ).build();
+                break;
+            case ENRICH:
+                params.put("enrich-txn-delta-table", table_path);
+                deltaSink = DeltaSink.forRowData(
+                        new Path(table_path),
+                        configuration,
+                        Constants.ENRICH_TXN_SCHEMA_ROW_TYPE
+                ).build();
+                break;
+        }
+        return deltaSink;
     }
 }

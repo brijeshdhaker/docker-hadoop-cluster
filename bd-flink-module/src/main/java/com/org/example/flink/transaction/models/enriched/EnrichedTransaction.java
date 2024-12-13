@@ -15,7 +15,7 @@ public class EnrichedTransaction implements Comparable<EnrichedTransaction>, Ser
     private String cardType;
     private String website;
     private String product;
-    private Double amount;
+    private Float amount;
     private String city;
     private String country;
     private Long eventTime;
@@ -47,7 +47,7 @@ public class EnrichedTransaction implements Comparable<EnrichedTransaction>, Ser
         return this;
     }
 
-    public EnrichedTransaction amount(Double amount){
+    public EnrichedTransaction amount(Float amount){
         this.amount = amount;
         return this;
     }

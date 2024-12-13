@@ -19,7 +19,7 @@ public class RefineTransaction implements Comparable<RefineTransaction>, Seriali
     private java.lang.String cardType;
     private java.lang.String website;
     private java.lang.String product;
-    private java.lang.Double amount;
+    private java.lang.Float amount;
     private java.lang.String city;
     private java.lang.String country;
     private java.lang.Long eventTime;
@@ -51,7 +51,7 @@ public class RefineTransaction implements Comparable<RefineTransaction>, Seriali
         return this;
     }
 
-    public RefineTransaction amount(Double amount){
+    public RefineTransaction amount(Float amount){
         this.amount = amount;
         return this;
     }

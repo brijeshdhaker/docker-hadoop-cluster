@@ -28,7 +28,7 @@ import io.delta.standalone.actions.AddFile;
  */
 public class DeltaTableUpdater {
 
-    private static final String ENGINE_INFO = "local";
+    private static final String ENGINE_INFO = "local-cluster";
 
     private static final Configuration configuration = Utils.getHadoopFsConfiguration(DeltaTableUpdater.ENGINE_INFO);
 

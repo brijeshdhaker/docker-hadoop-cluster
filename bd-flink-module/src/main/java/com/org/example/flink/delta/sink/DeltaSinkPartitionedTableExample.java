@@ -55,7 +55,7 @@ public class DeltaSinkPartitionedTableExample extends FlinkJobRunnerBase {
         //String TABLE_PATH = tablePath + UUID.randomUUID().toString().replace("-", "");
 
         ParameterTool arg_params = ParameterTool.fromArgs(args);
-        String engine_type  = arg_params.get("engine-type", "local");
+        String engine_type  = arg_params.get("engine-type", "local-cluster");
 
         Map<String, String> params = new LinkedHashMap<>();
         arg_params.toMap().forEach((key, value) -> params.put(key.toString(), value.toString()));
@@ -71,7 +71,7 @@ public class DeltaSinkPartitionedTableExample extends FlinkJobRunnerBase {
         params.put("sink-table-path", sink_tbl_path);
 
         String uuid = UUID.randomUUID().toString().split("-")[0];
-        params.put("flink-workflow-name","partitioned-delta-table-pipeline-"+uuid);
+        params.put(WORKFLOW_NAME,"partitioned-delta-table-pipeline-"+uuid);
 
         params.put("source-parallelism", "2");
         params.put("sink-parallelism", "2");

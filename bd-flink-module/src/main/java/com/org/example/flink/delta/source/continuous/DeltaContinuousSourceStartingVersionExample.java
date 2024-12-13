@@ -37,7 +37,7 @@ public class DeltaContinuousSourceStartingVersionExample extends FlinkJobRunnerB
         //String TABLE_PATH = tablePath + UUID.randomUUID().toString().replace("-", "");
 
         ParameterTool arg_params = ParameterTool.fromArgs(args);
-        String engine_type  = arg_params.get("engine-type", "local");
+        String engine_type  = arg_params.get("engine-type", "local-cluster");
 
         Map<String, String> params = new LinkedHashMap<>();
         arg_params.toMap().forEach((key, value) -> params.put(key.toString(), value.toString()));
@@ -53,7 +53,7 @@ public class DeltaContinuousSourceStartingVersionExample extends FlinkJobRunnerB
         params.put("source-table-path", source_tbl_path);
 
         String uuid = UUID.randomUUID().toString().split("-")[0];
-        params.put("flink-workflow-name","bounded-delta-table-source-"+uuid);
+        params.put(WORKFLOW_NAME,"bounded-delta-table-source-"+uuid);
 
         params.put("source-parallelism", "2");
         params.put("sink-parallelism", "2");
