@@ -1,0 +1,9 @@
+flink-sql-json-1.17.2.jar
+flink-sql-connector-kafka-1.17.2.jar
+flink-hadoop-fs-1.17.2.jar
+flink-connector-hive_2.12-1.17.2.jar
+flink-sql-csv-1.17.2.jar
+flink-sql-avro-1.17.2.jar
+flink-connector-jdbc-3.1.2-1.17.jar
+flink-connector-cassandra_2.12-1.16.3.jar
+mysql-connector-java-8.0.23.jar

@@ -1,0 +1,237 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.conf\n\n# SPARK_HOME \t/opt/spark-3.1.2\n\n# master local[*] ,/opt/hbase-2.4.9/lib/hbase-*.jar,/opt/hbase-2.4.9/lib/shaded-clients/hbase-shaded-mapreduce-2.4.9.jar\n\nspark.jars  /opt/hive-3.1.2/lib/hive-hbase-handler-3.1.2.jar,/opt/hive-3.1.2/lib/hbase-*.jar\n\n# spark.driver.extraClassPath file:///opt/hive-3.1.2/lib/hive-hbase-handler-3.1.2.jar\n# spark.executor.extraClassPath file:///opt/hive-3.1.2/lib/hive-hbase-handler-2.3.9.jar\n# spark.executor.extraLibrary file:///opt/hive-3.1.2/lib/hive-hbase-handler-2.3.9.jar\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-07 11:23:13.091",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1638384744512_1909351765",
+      "id": "paragraph_1638384744512_1909351765",
+      "dateCreated": "2021-12-02 00:22:24.512",
+      "dateStarted": "2022-12-07 11:23:13.095",
+      "dateFinished": "2022-12-07 11:23:13.098",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n# SparkContext as spark\n# HiveContext Present As sqlContext\n\nspark.sql(\"use default\")\nspark.sql(\"show tables\").show(truncate\u003dFalse)",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-08 02:52:20.710",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------+---------------------------+-----------+\n|database|tableName                  |isTemporary|\n+--------+---------------------------+-----------+\n|default |10e4                       |false      |\n|default |10e6                       |false      |\n|default |global_external_table      |false      |\n|default |global_managed_table       |false      |\n|default |optrans_tbl                |false      |\n|default |permanent_view             |false      |\n|default |product_revenue            |false      |\n|default |sales_delta_managed        |false      |\n|default |transact_tbl               |false      |\n|default |transaction_detail_hive_tbl|false      |\n|default |transaction_details        |false      |\n|default |transaction_details_orc    |false      |\n|default |transaction_details_parquet|false      |\n|default |tweeter_tweets             |false      |\n+--------+---------------------------+-----------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1638411082061_375960719",
+      "id": "paragraph_1638411082061_375960719",
+      "dateCreated": "2021-12-02 07:41:22.061",
+      "dateStarted": "2022-12-08 02:52:20.713",
+      "dateFinished": "2022-12-08 02:52:20.879",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nspark.sql(\"select * from transaction_detail_hive_tbl\").show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-08 02:56:06.354",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "ANTLR Tool version 4.7 used for code generation does not match the current runtime version 4.8ANTLR Tool version 4.7 used for code generation does not match the current runtime version 4.8"
+          },
+          {
+            "type": "TEXT",
+            "data": "Py4JJavaError: An error occurred while calling o100.showString.\n: java.io.IOException: Cannot create a record reader because of a previous error. Please look at the previous logs lines from the task\u0027s full log for more details.\n\tat org.apache.hadoop.hbase.mapreduce.TableInputFormatBase.getSplits(TableInputFormatBase.java:251)\n\tat org.apache.spark.rdd.NewHadoopRDD.getPartitions(NewHadoopRDD.scala:131)\n\tat org.apache.spark.rdd.RDD.$anonfun$partitions$2(RDD.scala:300)\n\tat scala.Option.getOrElse(Option.scala:189)\n\tat org.apache.spark.rdd.RDD.partitions(RDD.scala:296)\n\tat org.apache.spark.rdd.MapPartitionsRDD.getPartitions(MapPartitionsRDD.scala:49)\n\tat org.apache.spark.rdd.RDD.$anonfun$partitions$2(RDD.scala:300)\n\tat scala.Option.getOrElse(Option.scala:189)\n\tat org.apache.spark.rdd.RDD.partitions(RDD.scala:296)\n\tat org.apache.spark.rdd.MapPartitionsRDD.getPartitions(MapPartitionsRDD.scala:49)\n\tat org.apache.spark.rdd.RDD.$anonfun$partitions$2(RDD.scala:300)\n\tat scala.Option.getOrElse(Option.scala:189)\n\tat org.apache.spark.rdd.RDD.partitions(RDD.scala:296)\n\tat org.apache.spark.rdd.MapPartitionsRDD.getPartitions(MapPartitionsRDD.scala:49)\n\tat org.apache.spark.rdd.RDD.$anonfun$partitions$2(RDD.scala:300)\n\tat scala.Option.getOrElse(Option.scala:189)\n\tat org.apache.spark.rdd.RDD.partitions(RDD.scala:296)\n\tat org.apache.spark.rdd.MapPartitionsRDD.getPartitions(MapPartitionsRDD.scala:49)\n\tat org.apache.spark.rdd.RDD.$anonfun$partitions$2(RDD.scala:300)\n\tat scala.Option.getOrElse(Option.scala:189)\n\tat org.apache.spark.rdd.RDD.partitions(RDD.scala:296)\n\tat org.apache.spark.sql.execution.SparkPlan.executeTake(SparkPlan.scala:442)\n\tat org.apache.spark.sql.execution.SparkPlan.executeTake(SparkPlan.scala:425)\n\tat org.apache.spark.sql.execution.CollectLimitExec.executeCollect(limit.scala:47)\n\tat org.apache.spark.sql.Dataset.collectFromPlan(Dataset.scala:3696)\n\tat org.apache.spark.sql.Dataset.$anonfun$head$1(Dataset.scala:2722)\n\tat org.apache.spark.sql.Dataset.$anonfun$withAction$1(Dataset.scala:3687)\n\tat org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$5(SQLExecution.scala:103)\n\tat org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:163)\n\tat org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:90)\n\tat org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:775)\n\tat org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:64)\n\tat org.apache.spark.sql.Dataset.withAction(Dataset.scala:3685)\n\tat org.apache.spark.sql.Dataset.head(Dataset.scala:2722)\n\tat org.apache.spark.sql.Dataset.take(Dataset.scala:2929)\n\tat org.apache.spark.sql.Dataset.getRows(Dataset.scala:301)\n\tat org.apache.spark.sql.Dataset.showString(Dataset.scala:338)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)\n\tat py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)\n\tat py4j.Gateway.invoke(Gateway.java:282)\n\tat py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)\n\tat py4j.commands.CallCommand.execute(CallCommand.java:79)\n\tat py4j.GatewayConnection.run(GatewayConnection.java:238)\n\tat java.lang.Thread.run(Thread.java:750)\nCaused by: java.lang.IllegalStateException: The input format instance has not been properly initialized. Ensure you call initializeTable either in your constructor or initialize method\n\tat org.apache.hadoop.hbase.mapreduce.TableInputFormatBase.getTable(TableInputFormatBase.java:569)\n\tat org.apache.hadoop.hbase.mapreduce.TableInputFormatBase.getSplits(TableInputFormatBase.java:246)\n\t... 47 more\n\n(\u003cclass \u0027py4j.protocol.Py4JJavaError\u0027\u003e, Py4JJavaError(\u0027An error occurred while calling o100.showString.\\n\u0027, JavaObject id\u003do101), \u003ctraceback object at 0x7f48aa032780\u003e)"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1638384983451_1866590903",
+      "id": "paragraph_1638384983451_1866590903",
+      "dateCreated": "2021-12-02 00:26:23.451",
+      "dateStarted": "2022-12-08 02:56:06.359",
+      "dateFinished": "2022-12-08 02:56:08.730",
+      "status": "ERROR"
+    },
+    {
+      "text": "%pyspark\n\nspark.sql(\"select * from transaction_detail_hive_tbl where transaction_city_name \u003d \u0027Mumbai\u0027\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-08 02:57:30.824",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Fail to execute line 3: spark.sql(\"select * from transaction_detail_hive_tbl where transaction_city_name \u003d \u0027Mumbai\u0027\").show()\nTraceback (most recent call last):\n  File \"/tmp/hadoop-root/nm-local-dir/usercache/zeppelin/appcache/application_1670462386538_0006/container_1670462386538_0006_01_000001/tmp/python6779730925465829698/zeppelin_python.py\", line 167, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 3, in \u003cmodule\u003e\n  File \"/tmp/hadoop-root/nm-local-dir/usercache/zeppelin/appcache/application_1670462386538_0006/container_1670462386538_0006_01_000001/pyspark.zip/pyspark/sql/session.py\", line 723, in sql\n    return DataFrame(self._jsparkSession.sql(sqlQuery), self._wrapped)\n  File \"/tmp/hadoop-root/nm-local-dir/usercache/zeppelin/appcache/application_1670462386538_0006/container_1670462386538_0006_01_000001/py4j-0.10.9-src.zip/py4j/java_gateway.py\", line 1305, in __call__\n    answer, self.gateway_client, self.target_id, self.name)\n  File \"/tmp/hadoop-root/nm-local-dir/usercache/zeppelin/appcache/application_1670462386538_0006/container_1670462386538_0006_01_000001/pyspark.zip/pyspark/sql/utils.py\", line 117, in deco\n    raise converted from None\npyspark.sql.utils.AnalysisException: cannot resolve \u0027`transaction_city_name`\u0027 given input columns: [spark_catalog.default.transaction_detail_hive_tbl.addts, spark_catalog.default.transaction_detail_hive_tbl.amount, spark_catalog.default.transaction_detail_hive_tbl.cardtype, spark_catalog.default.transaction_detail_hive_tbl.city, spark_catalog.default.transaction_detail_hive_tbl.country, spark_catalog.default.transaction_detail_hive_tbl.id, spark_catalog.default.transaction_detail_hive_tbl.product, spark_catalog.default.transaction_detail_hive_tbl.txn_receive_date, spark_catalog.default.transaction_detail_hive_tbl.uuid, spark_catalog.default.transaction_detail_hive_tbl.website]; line 1 pos 48;\n\u0027Project [*]\n+- \u0027Filter (\u0027transaction_city_name \u003d Mumbai)\n   +- SubqueryAlias spark_catalog.default.transaction_detail_hive_tbl\n      +- HiveTableRelation [`default`.`transaction_detail_hive_tbl`, org.apache.hadoop.hive.hbase.HBaseSerDe, Data Cols: [id#116, uuid#117, cardtype#118, website#119, product#120, amount#121, city#122, country#123, add..., Partition Cols: []]\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1638411377270_1771889263",
+      "id": "paragraph_1638411377270_1771889263",
+      "dateCreated": "2021-12-02 07:46:17.271",
+      "dateStarted": "2022-12-08 02:57:30.828",
+      "dateFinished": "2022-12-08 02:57:30.893",
+      "status": "ERROR"
+    },
+    {
+      "text": "%pyspark\n\nsqlContext.sql(\"select * from transaction_detail_hive_tbl where transaction_country_name \u003d \u0027India\u0027\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-08 02:57:45.587",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Fail to execute line 3: sqlContext.sql(\"select * from transaction_detail_hive_tbl where transaction_country_name \u003d \u0027India\u0027\").show()\nTraceback (most recent call last):\n  File \"/tmp/hadoop-root/nm-local-dir/usercache/zeppelin/appcache/application_1670462386538_0006/container_1670462386538_0006_01_000001/tmp/python6779730925465829698/zeppelin_python.py\", line 167, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 3, in \u003cmodule\u003e\n  File \"/tmp/hadoop-root/nm-local-dir/usercache/zeppelin/appcache/application_1670462386538_0006/container_1670462386538_0006_01_000001/pyspark.zip/pyspark/sql/context.py\", line 433, in sql\n    return self.sparkSession.sql(sqlQuery)\n  File \"/tmp/hadoop-root/nm-local-dir/usercache/zeppelin/appcache/application_1670462386538_0006/container_1670462386538_0006_01_000001/pyspark.zip/pyspark/sql/session.py\", line 723, in sql\n    return DataFrame(self._jsparkSession.sql(sqlQuery), self._wrapped)\n  File \"/tmp/hadoop-root/nm-local-dir/usercache/zeppelin/appcache/application_1670462386538_0006/container_1670462386538_0006_01_000001/py4j-0.10.9-src.zip/py4j/java_gateway.py\", line 1305, in __call__\n    answer, self.gateway_client, self.target_id, self.name)\n  File \"/tmp/hadoop-root/nm-local-dir/usercache/zeppelin/appcache/application_1670462386538_0006/container_1670462386538_0006_01_000001/pyspark.zip/pyspark/sql/utils.py\", line 117, in deco\n    raise converted from None\npyspark.sql.utils.AnalysisException: cannot resolve \u0027`transaction_country_name`\u0027 given input columns: [spark_catalog.default.transaction_detail_hive_tbl.addts, spark_catalog.default.transaction_detail_hive_tbl.amount, spark_catalog.default.transaction_detail_hive_tbl.cardtype, spark_catalog.default.transaction_detail_hive_tbl.city, spark_catalog.default.transaction_detail_hive_tbl.country, spark_catalog.default.transaction_detail_hive_tbl.id, spark_catalog.default.transaction_detail_hive_tbl.product, spark_catalog.default.transaction_detail_hive_tbl.txn_receive_date, spark_catalog.default.transaction_detail_hive_tbl.uuid, spark_catalog.default.transaction_detail_hive_tbl.website]; line 1 pos 48;\n\u0027Project [*]\n+- \u0027Filter (\u0027transaction_country_name \u003d India)\n   +- SubqueryAlias spark_catalog.default.transaction_detail_hive_tbl\n      +- HiveTableRelation [`default`.`transaction_detail_hive_tbl`, org.apache.hadoop.hive.hbase.HBaseSerDe, Data Cols: [id#126, uuid#127, cardtype#128, website#129, product#130, amount#131, city#132, country#133, add..., Partition Cols: []]\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640836880496_1919040192",
+      "id": "paragraph_1640836880496_1919040192",
+      "dateCreated": "2021-12-30 04:01:20.496",
+      "dateStarted": "2022-12-08 02:57:45.589",
+      "dateFinished": "2022-12-08 02:57:45.655",
+      "status": "ERROR"
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-30 04:01:55.025",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640836915025_2105622214",
+      "id": "paragraph_1640836915025_2105622214",
+      "dateCreated": "2021-12-30 04:01:55.025",
+      "status": "READY"
+    }
+  ],
+  "name": "pyspark-hive-hbase",
+  "id": "2GRHRBP3V",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

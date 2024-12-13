@@ -2,142 +2,182 @@
 # docker-compose up -d
 # docker-compose scale nodemanager=X; # X=integer number --> allows to add more nodes to the hadoop cluster for testing
 
-version: '3.9'
+#
+# include:
+#   - path: ../bd-docker-sandbox/dc-minio.yml
+#   - path: ../bd-docker-sandbox/dc-mysqlserver.yml
 
-include:
-  - dc-hadoop-cluster.yaml
-
+#
 services:
   #
-  #
-  #
   spark-master:
-    image: docker.io/brijeshdhaker/spark-standalon:3.1.2
+    image: brijeshdhaker/spark-notebook:3.4.1
+    hostname: spark-master.sandbox.net
     container_name: spark-master
-    hostname: spark-master
-    ports:
-      - "7077:7077"
-      - "8080:8080"
-    volumes:
-      - sandbox_apps_path:/apps
-      - sandbox_hadoop_311:/opt/hadoop
-      - sandbox_hive_313:/opt/hive
-      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
-      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-      - ./conf/spark/conf:/opt/spark/conf
-    env_file:
-      - ./envs/docker_clients.env
-    environment:
-      - SPARK_MASTER_LOG=/apps/var/log/spark/spark-master.out
-      - SPARK_MASTER_PORT=7077
-      - SPARK_MASTER_WEBUI_PORT=8080
-      - SPARK_DRIVER_CORES=1
-      - SPARK_DRIVER_MEMORY=1G
-
-  #
-  #
-  #
-  spark-worker-a:
-    image: docker.io/brijeshdhaker/spark-standalon:3.1.2
-    container_name: spark-worker-a
-    hostname: spark-worker-a
-    ports:
-      - "8081:8081"
+    command: [ spark-class org.apache.spark.deploy.master.Master --ip spark-master.sandbox.net --port 7077 --webui-port 8080 ]
     depends_on:
-      - spark-master
-    env_file:
-      - ./envs/docker_clients.env
-    environment:
-      - SPARK_WORKLOAD=worker
-      - SPARK_MASTER=spark://spark-master:7077
-      - SPARK_WORKER_CORES=1
-      - SPARK_WORKER_MEMORY=1G
-      - SPARK_EXECUTOR_MEMORY=1G
-      - SPARK_LOCAL_IP=spark-worker-a
-      - SPARK_WORKER_WEBUI_PORT=8081
-      - SPARK_WORKER_LOG=/apps/var/log/spark/spark-worker-a.out
-    volumes:
-      - sandbox_apps_path:/apps
-      - sandbox_hadoop_311:/opt/hadoop
-      - sandbox_hive_313:/opt/hive
-      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
-      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-      - ./conf/spark/conf:/opt/spark/conf
-
-
-  #
-  #
-  #
-  spark-worker-b:
-    image: docker.io/brijeshdhaker/spark-standalon:3.1.2
-    container_name: spark-worker-b
-    hostname: spark-worker-b
-    ports:
-      - "8082:8082"
-    depends_on:
-      - spark-master
-    env_file:
-      - ./envs/docker_clients.env
-    environment:
-      - SPARK_WORKLOAD=worker
-      - SPARK_MASTER=spark://spark-master:7077
-      - SPARK_WORKER_CORES=1
-      - SPARK_WORKER_MEMORY=1G
-      - SPARK_EXECUTOR_MEMORY=1G
-      - SPARK_LOCAL_IP=spark-worker-b
-      - SPARK_WORKER_WEBUI_PORT=8082
-      - SPARK_WORKER_LOG=/apps/var/log/spark/spark-worker-b.out
-    volumes:
-      - sandbox_apps_path:/apps
-      - sandbox_hadoop_311:/opt/hadoop
-      - sandbox_hive_313:/opt/hive
-      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
-      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-      - ./conf/spark/conf:/opt/spark/conf
-
-  #
-  # Spark History Server
-  #
-  sparkhistory:
-    image: brijeshdhaker/spark-standalon:3.1.2
-    container_name: sparkhistory
-    hostname: sparkhistory.sandbox.net
+      - minio
+      - mysqlserver
     healthcheck:
-      test: curl -f http://sparkhistory.sandbox.net:18080 || exit 1
+      test: curl -f http://spark-master.sandbox.net:8080 || exit 1
       retries: 20
       interval: 10s
-    environment:
-      SPARK_WORKLOAD: HistoryServer
-      SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
-    env_file:
-      - ./envs/docker_clients.env
-    ports:
-      - "18080:18080"
-    depends_on:
-      namenode:
-        condition: service_healthy
-      datanode:
-        condition: service_healthy
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_hadoop_311:/opt/hadoop
-      - sandbox_hive_313:/opt/hive
-      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
-      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
       - ./conf/spark/conf:/opt/spark/conf
+    environment:
+      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
+      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+      - AWS_REGION=us-east-1
+      - GRANT_SUDO=yes
+      - PYARROW_IGNORE_TIMEZONE=1
+      - SPARK_LOG_DIR=/apps/var/logs/spark-master
+      - SPARK_LOG_FILE=spark-master
+    ports:
+      - 8080:8080
 
+  #
+  spark-worker-a:
+    image: brijeshdhaker/spark-notebook:3.4.1
+    hostname: spark-worker-a.sandbox.net
+    container_name: spark-worker-a
+    command: [ spark-class org.apache.spark.deploy.worker.Worker --host localhost --webui-port 8081 --cores 4 --memory 6G spark://spark-master:7077 ]
+    depends_on:
+      - spark-master
+    healthcheck:
+      test: curl -f http://spark-worker-a.sandbox.net:8081 || exit 1
+      retries: 20
+      interval: 10s
+    volumes:
+      - sandbox_apps_path:/apps
+      - ./conf/spark/conf:/opt/spark/conf
+    environment:
+      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
+      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+      - AWS_REGION=us-east-1
+      - GRANT_SUDO=yes
+      - PYARROW_IGNORE_TIMEZONE=1
+      - SPARK_LOG_DIR=/apps/var/logs/spark-worker-a
+      - SPARK_LOG_FILE=spark-worker-a
+#    ports:
+#      - 8081:8081
+
+  #
+  spark-worker-b:
+    image: brijeshdhaker/spark-notebook:3.4.1
+    hostname: spark-worker-b.sandbox.net
+    container_name: spark-worker-b
+    command: [ spark-class org.apache.spark.deploy.worker.Worker --host localhost --webui-port 8082 --cores 4 --memory 6G spark://spark-master:7077 ]
+    depends_on:
+      - spark-master
+    healthcheck:
+      test: curl -f http://spark-worker-b.sandbox.net:8082 || exit 1
+      retries: 20
+      interval: 10s
+    volumes:
+      - sandbox_apps_path:/apps
+      - ./conf/spark/conf:/opt/spark/conf
+    environment:
+      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
+      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+      - AWS_REGION=us-east-1
+      - GRANT_SUDO=yes
+      - PYARROW_IGNORE_TIMEZONE=1
+      - SPARK_LOG_DIR=/apps/var/logs/spark-worker-b
+      - SPARK_LOG_FILE=spark-worker-b
+#    ports:
+#      - 8082:8082
+
+  #
+  spark-history:
+    image: brijeshdhaker/spark-notebook:3.4.1
+    hostname: spark-history.sandbox.net
+    container_name: spark-history
+    command: [ spark-class org.apache.spark.deploy.history.HistoryServer --properties-file /opt/spark/conf/spark-history.conf ]
+    depends_on:
+      - spark-master
+    healthcheck:
+      test: curl -f http://spark-history.sandbox.net:18080 || exit 1
+      retries: 20
+      interval: 10s
+    volumes:
+      - sandbox_apps_path:/apps
+      - ./conf/spark/conf:/opt/spark/conf
+    environment:
+      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
+      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+      - AWS_REGION=us-east-1
+      - GRANT_SUDO=yes
+      - PYARROW_IGNORE_TIMEZONE=1
+      - SPARK_LOG_DIR=/apps/var/logs/spark-history/
+      - SPARK_LOG_FILE=spark-history
+    ports:
+      - 18080:18080
+
+  #
+  iceberg-rest:
+    image: tabulario/iceberg-rest
+    hostname: iceberg-rest.sandbox.net
+    container_name: iceberg-rest
+    healthcheck:
+      test: echo iceberg-rest.sandbox.net || exit 1
+      retries: 20
+      interval: 10s
+    networks:
+      default:
+    ports:
+      - 8181:8181
+    #    command: ["java", "-cp", "mysql-connector-java-8.0.23.jar", "-jar", "iceberg-rest-image-all.jar"]
+    volumes:
+      - /apps/libs/drivers/mysql-connector-java-8.0.23.jar:/usr/lib/iceberg-rest/mysql-connector-java-8.0.23.jar
+    environment:
+      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
+      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+      - AWS_REGION=us-east-1
+      - CATALOG_WAREHOUSE=s3://warehouse-rest/
+      - CATALOG_IO__IMPL=org.apache.iceberg.aws.s3.S3FileIO
+      - CATALOG_S3_ENDPOINT=http://minio:9010
+#      - CATALOG_CATALOG__IMPL=org.apache.iceberg.jdbc.JdbcCatalog
+#      - CATALOG_URI=jdbc:mysql://mysqlserver.sandbox.net:3306/ICEBERG_REST_CATALOG
+#      - CATALOG_JDBC_USER=mysqladmin
+#      - CATALOG_JDBC_PASSWORD=mysqladmin
+#      - CATALOG_JDBC_DRIVER=com.mysql.cj.jdbc.Driver
+
+  #
+  spark-notebook:
+    image: brijeshdhaker/spark-notebook:3.4.1
+    hostname: spark-notebook.sandbox.net
+    container_name: spark-notebook
+    depends_on:
+      - spark-master
+      - spark-worker-a
+      - spark-worker-b
+    healthcheck:
+      test: curl -f http://spark-notebook.sandbox.net:8888 || exit 1
+      retries: 20
+      interval: 10s
+    volumes:
+      - sandbox_apps_path:/apps
+      - /apps/sandbox/warehouse:/home/iceberg/warehouse
+      - ../bd-notebooks-module/jupyter/notebooks:/home/iceberg/notebooks
+      - ./conf/spark/conf:/opt/spark/conf
+#      - ./conf/spark/conf/log4j2.properties:/opt/spark/conf/log4j2.properties
+#      - ./conf/spark/conf/spark-notebook.conf:/opt/spark/conf/spark-defaults.conf
+    environment:
+      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
+      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+      - AWS_REGION=us-east-1
+      - GRANT_SUDO=yes
+      - PYARROW_IGNORE_TIMEZONE=1
+      - SPARK_LOG_DIR=/apps/var/logs/spark-notebook
+      - SPARK_LOG_FILE=spark-notebook
+    ports:
+      - 4040:4040
+      - 8888:8888
 
 #
 volumes:
   sandbox_apps_path:
-    external: true
-  #
-  sandbox_hadoop_311:
-    external: true
-  sandbox_hive_313:
-    external: true
-  #
-  sandbox_spark_312:
     external: true
 
 #

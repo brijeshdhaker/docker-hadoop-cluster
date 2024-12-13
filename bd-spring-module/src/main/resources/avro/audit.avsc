@@ -1,0 +1,83 @@
+{
+  "fields": [
+    {
+      "name": "id",
+      "type": [
+        "null",
+        "long"
+      ]
+    },
+    {
+      "logicalType": "uuid",
+      "name": "uuid",
+      "type": [
+        "null",
+        {
+          "avro.java.string": "String",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "avro.java.string": "String",
+      "name": "userid",
+      "type": {
+        "avro.java.string": "String",
+        "type": "string"
+      }
+    },
+    {
+      "avro.java.string": "String",
+      "name": "auditType",
+      "type": {
+        "avro.java.string": "String",
+        "type": "string"
+      }
+    },
+    {
+      "avro.java.string": "String",
+      "name": "logAction",
+      "type": {
+        "avro.java.string": "String",
+        "type": "string"
+      }
+    },
+    {
+      "avro.java.string": "String",
+      "name": "logMessage",
+      "type": {
+        "avro.java.string": "String",
+        "type": "string"
+      }
+    },
+    {
+      "avro.java.string": "String",
+      "name": "refrenceId",
+      "type": {
+        "avro.java.string": "String",
+        "type": "string"
+      }
+    },
+    {
+      "avro.java.string": "String",
+      "name": "refrenceType",
+      "type": {
+        "avro.java.string": "String",
+        "type": "string"
+      }
+    },
+    {
+      "logicalType": "timestamp-millis",
+      "name": "addTs",
+      "type": "long"
+    },
+    {
+      "logicalType": "timestamp-millis",
+      "name": "updTs",
+      "type": "long"
+    }
+  ],
+  "name": "AuditlogDTO",
+  "namespace": "org.examples.sb.models.avro",
+  "type": "record"
+}

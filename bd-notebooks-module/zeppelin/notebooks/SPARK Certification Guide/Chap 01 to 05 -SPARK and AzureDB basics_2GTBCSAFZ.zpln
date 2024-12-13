@@ -1,0 +1,572 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n## DATABRICKS\n\nDatabricks is a zero-management cloud platform that provides:\n\n* Fully managed Spark clusters\n* An interactive workspace for exploration and visualization\n* A production pipeline scheduler\n* A platform for powering your favorite Spark-based applications",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-24 05:55:29.171",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eDATABRICKS\u003c/h2\u003e\n\u003cp\u003eDatabricks is a zero-management cloud platform that provides:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eFully managed Spark clusters\u003c/li\u003e\n\u003cli\u003eAn interactive workspace for exploration and visualization\u003c/li\u003e\n\u003cli\u003eA production pipeline scheduler\u003c/li\u003e\n\u003cli\u003eA platform for powering your favorite Spark-based applications\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643003681777_2037510367",
+      "id": "paragraph_1643003681777_2037510367",
+      "dateCreated": "2022-01-24 05:54:41.777",
+      "dateStarted": "2022-01-24 05:55:29.179",
+      "dateFinished": "2022-01-24 05:55:29.193",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n\n## Databricks File System\n**Databricks File System(DBFS)** is a layer over Azure\u0027s blob storage\n* Files in DBFS persist to the blob store, so data is not lost even after clusters are terminated\n\n**Databricks Utilities - dbutils** \n* Access the DBFS through the Databricks utilities class (and other file IO routines)\n* An instansce of DBUtils is already declared as dbutils\n\n* **Note:** \n    * Please go through the \"**The-Databricks-Environment.dbc**\" and \"**Databricks-Setup.pdf**\" before proceeding further.\n    * This dbc file is created only with **Python** code\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-24 05:55:44.277",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eDatabricks File System\u003c/h2\u003e\n\u003cp\u003e\u003cstrong\u003eDatabricks File System(DBFS)\u003c/strong\u003e is a layer over Azure\u0026rsquo;s blob storage\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eFiles in DBFS persist to the blob store, so data is not lost even after clusters are terminated\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u003cstrong\u003eDatabricks Utilities - dbutils\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\n\u003cp\u003eAccess the DBFS through the Databricks utilities class (and other file IO routines)\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003eAn instansce of DBUtils is already declared as dbutils\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003e\u003cstrong\u003eNote:\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003ePlease go through the \u0026ldquo;\u003cstrong\u003eThe-Databricks-Environment.dbc\u003c/strong\u003e\u0026rdquo; and \u0026ldquo;\u003cstrong\u003eDatabricks-Setup.pdf\u003c/strong\u003e\u0026rdquo; before proceeding further.\u003c/li\u003e\n\u003cli\u003eThis dbc file is created only with \u003cstrong\u003ePython\u003c/strong\u003e code\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643003729170_670638224",
+      "id": "paragraph_1643003729170_670638224",
+      "dateCreated": "2022-01-24 05:55:29.170",
+      "dateStarted": "2022-01-24 05:55:44.277",
+      "dateFinished": "2022-01-24 05:55:44.299",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n\n## APACHE SPARK ![Spark Logo Tiny](https://files.training.databricks.com/images/105/logo_spark_tiny.png)\nSPARK is a unified processing engine that helps in managing and coordinating the execution of tasks on data across a cluster of computers. \n\n![Spark Engines](https://files.training.databricks.com/images/wiki-book/book_intro/spark_4engines.png)\n\u003cbr/\u003e\n\u003cbr/\u003e\n* At its core is the Spark Engine.\n* The DataFrames API provides an abstraction above RDDs while simultaneously improving performance 5-20x over traditional RDDs with its Catalyst Optimizer.\n* Spark ML provides high quality and finely tuned machine learning algorithms for processing big data.\n* The Graph processing API gives us an easily approachable API for modeling pairwise relationships between people, objects, or nodes in a network.\n* The Streaming APIs give us End-to-End Fault Tolerance, with Exactly-Once semantics, and the possibility for sub-millisecond latency.\n\n**RDDs**\n* The primary data abstraction of Spark engine is the RDD: Resilient Distributed Dataset\n  * Resilient, i.e., fault-tolerant with the help of RDD lineage graph and so able to recompute missing or damaged partitions due to node failures.\n  * Distributed with data residing on multiple nodes in a cluster.\n  * Dataset is a collection of partitioned data with primitive values or values of values, e.g., tuples or other objects.\n* The original paper that gave birth to the concept of RDD is \u003ca href\u003d\"https://cs.stanford.edu/~matei/papers/2012/nsdi_spark.pdf\" target\u003d\"_blank\"\u003eResilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing\u003c/a\u003e by Matei Zaharia et al.\n* Today, with Spark 2.x, we treat RDDs as the assembly language of the Spark ecosystem.\n* DataFrames, Datasets \u0026 SQL provide the higher level abstraction over RDDs.\n\n\n**SPARK** is a distributed programming model where the user specifies\n* **Transformations**, which build-up a directed acyclic- graph of instructions\n* **Actions**, which begin the process of executing that graph of instructions, as a single job, by breaking it down into stages and tasks to execute across the cluster\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-19 03:39:15.871",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eAPACHE SPARK \u003cimg src\u003d\"https://files.training.databricks.com/images/105/logo_spark_tiny.png\" alt\u003d\"Spark Logo Tiny\" /\u003e\u003c/h2\u003e\n\u003cp\u003eSPARK is a unified processing engine that helps in managing and coordinating the execution of tasks on data across a cluster of computers.\u003c/p\u003e\n\u003cp\u003e\u003cimg src\u003d\"https://files.training.databricks.com/images/wiki-book/book_intro/spark_4engines.png\" alt\u003d\"Spark Engines\" /\u003e\u003cbr /\u003e\n\u003cbr/\u003e\u003cbr /\u003e\n\u003cbr/\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eAt its core is the Spark Engine.\u003c/li\u003e\n\u003cli\u003eThe DataFrames API provides an abstraction above RDDs while simultaneously improving performance 5-20x over traditional RDDs with its Catalyst Optimizer.\u003c/li\u003e\n\u003cli\u003eSpark ML provides high quality and finely tuned machine learning algorithms for processing big data.\u003c/li\u003e\n\u003cli\u003eThe Graph processing API gives us an easily approachable API for modeling pairwise relationships between people, objects, or nodes in a network.\u003c/li\u003e\n\u003cli\u003eThe Streaming APIs give us End-to-End Fault Tolerance, with Exactly-Once semantics, and the possibility for sub-millisecond latency.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u003cstrong\u003eRDDs\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eThe primary data abstraction of Spark engine is the RDD: Resilient Distributed Dataset\n\u003cul\u003e\n\u003cli\u003eResilient, i.e., fault-tolerant with the help of RDD lineage graph and so able to recompute missing or damaged partitions due to node failures.\u003c/li\u003e\n\u003cli\u003eDistributed with data residing on multiple nodes in a cluster.\u003c/li\u003e\n\u003cli\u003eDataset is a collection of partitioned data with primitive values or values of values, e.g., tuples or other objects.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eThe original paper that gave birth to the concept of RDD is \u003ca href\u003d\"https://cs.stanford.edu/~matei/papers/2012/nsdi_spark.pdf\" target\u003d\"_blank\"\u003eResilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing\u003c/a\u003e by Matei Zaharia et al.\u003c/li\u003e\n\u003cli\u003eToday, with Spark 2.x, we treat RDDs as the assembly language of the Spark ecosystem.\u003c/li\u003e\n\u003cli\u003eDataFrames, Datasets \u0026amp; SQL provide the higher level abstraction over RDDs.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u003cstrong\u003eSPARK\u003c/strong\u003e is a distributed programming model where the user specifies\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cstrong\u003eTransformations\u003c/strong\u003e, which build-up a directed acyclic- graph of instructions\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003eActions\u003c/strong\u003e, which begin the process of executing that graph of instructions, as a single job, by breaking it down into stages and tasks to execute across the cluster\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643003744276_1868632623",
+      "id": "paragraph_1643003744276_1868632623",
+      "dateCreated": "2022-01-24 05:55:44.276",
+      "dateStarted": "2024-03-19 03:39:15.873",
+      "dateFinished": "2024-03-19 03:39:18.039",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n\n ##  ![Spark Logo Tiny](https://files.training.databricks.com/images/105/logo_spark_tiny.png) The Cluster: Drivers, Executors, Slots \u0026 Tasks\n![Spark Physical Cluster, slots](https://files.training.databricks.com/images/105/spark_cluster_slots.png)\n\n* The **Driver** is the JVM in which our application runs.\n* The secret to Spark\u0027s awesome performance is parallelism.\n  * Scaling vertically is limited to a finite amount of RAM, Threads and CPU speeds.\n  * Scaling horizontally means we can simply add new \"nodes\" to the cluster almost endlessly.\n* We parallelize at two levels:\n  * The first level of parallelization is the **Executor** - a Java virtual machine running on a node, typically, one instance per node.\n  * The second level of parallelization is the **Slot** - the number of which is determined by the number of cores and CPUs of each node.\n* Each **Executor** has a number of **Slots** to which parallelized **Tasks** can be assigned to it by the **Driver**.\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-24 05:57:48.176",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e\u003cimg src\u003d\"https://files.training.databricks.com/images/105/logo_spark_tiny.png\" alt\u003d\"Spark Logo Tiny\" /\u003e The Cluster: Drivers, Executors, Slots \u0026amp; Tasks\u003c/h2\u003e\n\u003cp\u003e\u003cimg src\u003d\"https://files.training.databricks.com/images/105/spark_cluster_slots.png\" alt\u003d\"Spark Physical Cluster, slots\" /\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eThe \u003cstrong\u003eDriver\u003c/strong\u003e is the JVM in which our application runs.\u003c/li\u003e\n\u003cli\u003eThe secret to Spark\u0026rsquo;s awesome performance is parallelism.\n\u003cul\u003e\n\u003cli\u003eScaling vertically is limited to a finite amount of RAM, Threads and CPU speeds.\u003c/li\u003e\n\u003cli\u003eScaling horizontally means we can simply add new \u0026ldquo;nodes\u0026rdquo; to the cluster almost endlessly.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eWe parallelize at two levels:\n\u003cul\u003e\n\u003cli\u003eThe first level of parallelization is the \u003cstrong\u003eExecutor\u003c/strong\u003e - a Java virtual machine running on a node, typically, one instance per node.\u003c/li\u003e\n\u003cli\u003eThe second level of parallelization is the \u003cstrong\u003eSlot\u003c/strong\u003e - the number of which is determined by the number of cores and CPUs of each node.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eEach \u003cstrong\u003eExecutor\u003c/strong\u003e has a number of \u003cstrong\u003eSlots\u003c/strong\u003e to which parallelized \u003cstrong\u003eTasks\u003c/strong\u003e can be assigned to it by the \u003cstrong\u003eDriver\u003c/strong\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643003757657_458755333",
+      "id": "paragraph_1643003757657_458755333",
+      "dateCreated": "2022-01-24 05:55:57.657",
+      "dateStarted": "2022-01-24 05:57:48.177",
+      "dateFinished": "2022-01-24 05:57:48.193",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n## ![Spark Logo Tiny](https://files.training.databricks.com/images/105/logo_spark_tiny.png) Task,Jobs \u0026 Stages\n* **Task** : A task is a series of operations that works on the same parition and operations in a task pipelined together.\n* **Stage** : A group of tasks that operate on the same sequence of RDD is a stage.\n* **Job** : A job is made up of all the stages in aquery that is a series of transformations completed by an action.\n\n* Each parallelized action is referred to as a **Job**.\n* The results of each **Job** (parallelized/distributed action) is returned to the **Driver**.\n* Depending on the work required, multiple **Jobs** will be required.\n* Each **Job** is broken down into **Stages**.\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-24 05:58:20.403",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e\u003cimg src\u003d\"https://files.training.databricks.com/images/105/logo_spark_tiny.png\" alt\u003d\"Spark Logo Tiny\" /\u003e Task,Jobs \u0026amp; Stages\u003c/h2\u003e\n\u003cul\u003e\n\u003cli\u003e\n\u003cp\u003e\u003cstrong\u003eTask\u003c/strong\u003e : A task is a series of operations that works on the same parition and operations in a task pipelined together.\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003e\u003cstrong\u003eStage\u003c/strong\u003e : A group of tasks that operate on the same sequence of RDD is a stage.\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003e\u003cstrong\u003eJob\u003c/strong\u003e : A job is made up of all the stages in aquery that is a series of transformations completed by an action.\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003eEach parallelized action is referred to as a \u003cstrong\u003eJob\u003c/strong\u003e.\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003eThe results of each \u003cstrong\u003eJob\u003c/strong\u003e (parallelized/distributed action) is returned to the \u003cstrong\u003eDriver\u003c/strong\u003e.\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003eDepending on the work required, multiple \u003cstrong\u003eJobs\u003c/strong\u003e will be required.\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003eEach \u003cstrong\u003eJob\u003c/strong\u003e is broken down into \u003cstrong\u003eStages\u003c/strong\u003e.\u003c/p\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643003810821_1856722866",
+      "id": "paragraph_1643003810821_1856722866",
+      "dateCreated": "2022-01-24 05:56:50.821",
+      "dateStarted": "2022-01-24 05:58:20.404",
+      "dateFinished": "2022-01-24 05:58:20.416",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n\n![Spark Physical Cluster, tasks](https://files.training.databricks.com/images/105/spark_cluster_tasks.png)\n\u003cbr/\u003e\n\u003cbr/\u003e\n* The JVM is naturally multithreaded, but a single JVM, such as our **Driver**, has a finite upper limit.\n* By creating **Tasks**, the **Driver** can assign units of work to **Slots** for parallel execution.\n* Additionally, the **Driver** must also decide how to partition the data so that it can be distributed for parallel processing (not shown here).\n* Consequently, the **Driver** is assigning a **Partition** of data to each task - in this way each **Task** knows which piece of data it is to process.\n* Once started, each **Task** will fetch from the original data source the **Partition** of data assigned to it.\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-24 06:00:15.954",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cimg src\u003d\"https://files.training.databricks.com/images/105/spark_cluster_tasks.png\" alt\u003d\"Spark Physical Cluster, tasks\" /\u003e\u003cbr /\u003e\n\u003cbr/\u003e\u003cbr /\u003e\n\u003cbr/\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eThe JVM is naturally multithreaded, but a single JVM, such as our \u003cstrong\u003eDriver\u003c/strong\u003e, has a finite upper limit.\u003c/li\u003e\n\u003cli\u003eBy creating \u003cstrong\u003eTasks\u003c/strong\u003e, the \u003cstrong\u003eDriver\u003c/strong\u003e can assign units of work to \u003cstrong\u003eSlots\u003c/strong\u003e for parallel execution.\u003c/li\u003e\n\u003cli\u003eAdditionally, the \u003cstrong\u003eDriver\u003c/strong\u003e must also decide how to partition the data so that it can be distributed for parallel processing (not shown here).\u003c/li\u003e\n\u003cli\u003eConsequently, the \u003cstrong\u003eDriver\u003c/strong\u003e is assigning a \u003cstrong\u003ePartition\u003c/strong\u003e of data to each task - in this way each \u003cstrong\u003eTask\u003c/strong\u003e knows which piece of data it is to process.\u003c/li\u003e\n\u003cli\u003eOnce started, each \u003cstrong\u003eTask\u003c/strong\u003e will fetch from the original data source the \u003cstrong\u003ePartition\u003c/strong\u003e of data assigned to it.\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643003887529_1937179220",
+      "id": "paragraph_1643003887529_1937179220",
+      "dateCreated": "2022-01-24 05:58:07.529",
+      "dateStarted": "2022-01-24 06:00:15.953",
+      "dateFinished": "2022-01-24 06:00:15.971",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n\ndbutils.help()",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-24 06:03:38.994",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643004015952_786253996",
+      "id": "paragraph_1643004015952_786253996",
+      "dateCreated": "2022-01-24 06:00:15.952",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\n\nspark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-24 06:03:58.860",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres24\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.SparkSession\u001b[0m \u003d org.apache.spark.sql.SparkSession@3084452a\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643004219137_375147176",
+      "id": "paragraph_1643004219137_375147176",
+      "dateCreated": "2022-01-24 06:03:39.137",
+      "dateStarted": "2022-01-24 06:03:58.864",
+      "dateFinished": "2022-01-24 06:03:59.003",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nmyrange \u003d spark.range(1000).toDF(\"number\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-21 00:56:06.120",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643004238862_1196232586",
+      "id": "paragraph_1643004238862_1196232586",
+      "dateCreated": "2022-01-24 06:03:58.863",
+      "dateStarted": "2022-01-24 06:04:27.735",
+      "dateFinished": "2022-01-24 06:04:28.872",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nmyrange.printSchema()\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-21 00:56:09.488",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- number: long (nullable \u003d false)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643004258243_1405597394",
+      "id": "paragraph_1643004258243_1405597394",
+      "dateCreated": "2022-01-24 06:04:18.243",
+      "dateStarted": "2022-01-24 06:04:46.311",
+      "dateFinished": "2022-01-24 06:04:46.532",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\ndivisBy2 \u003d myrange.where(\"number % 2 \u003d 0\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-24 06:05:00.104",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643004286302_80460020",
+      "id": "paragraph_1643004286302_80460020",
+      "dateCreated": "2022-01-24 06:04:46.302",
+      "dateStarted": "2022-01-24 06:05:00.114",
+      "dateFinished": "2022-01-24 06:05:00.480",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\ndivisBy2.count()",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-24 06:05:18.799",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "500"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d14"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643004300106_16529214",
+      "id": "paragraph_1643004300106_16529214",
+      "dateCreated": "2022-01-24 06:05:00.106",
+      "dateStarted": "2022-01-24 06:05:10.343",
+      "dateFinished": "2022-01-24 06:05:11.763",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n\n* This dbc file is created based on my understanding from ADB training and SPARK definitive guide from Databricks\n* All the data that will be used as part of this can be downloaded from \"https://github.com/databricks/Spark-The-Definitive-Guide\"\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-24 06:05:33.562",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cul\u003e\n\u003cli\u003eThis dbc file is created based on my understanding from ADB training and SPARK definitive guide from Databricks\u003c/li\u003e\n\u003cli\u003eAll the data that will be used as part of this can be downloaded from \u0026ldquo;\u003ca href\u003d\"https://github.com/databricks/Spark-The-Definitive-Guide\"\u003ehttps://github.com/databricks/Spark-The-Definitive-Guide\u003c/a\u003e\u0026rdquo;\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643004310342_1680434572",
+      "id": "paragraph_1643004310342_1680434572",
+      "dateCreated": "2022-01-24 06:05:10.342",
+      "dateStarted": "2022-01-24 06:05:33.562",
+      "dateFinished": "2022-01-24 06:05:33.574",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-24 06:05:33.561",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643004333561_1358821928",
+      "id": "paragraph_1643004333561_1358821928",
+      "dateCreated": "2022-01-24 06:05:33.561",
+      "status": "READY"
+    }
+  ],
+  "name": "Chap 01 to 05 -SPARK and AzureDB basics",
+  "id": "2GTBCSAFZ",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

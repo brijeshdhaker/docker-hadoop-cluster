@@ -1,0 +1,431 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.conf\n\nSPARK_HOME\u003d/opt/spark\n\nmaster yarn\n\nspark.submit.deployMode client\n\nspark.driver.memory 1G\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-21 02:03:31.795",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640887371473_1073052224",
+      "id": "paragraph_1640887371473_1073052224",
+      "dateCreated": "2021-12-30 18:02:51.474",
+      "dateStarted": "2022-10-21 02:03:31.800",
+      "dateFinished": "2022-10-21 02:03:31.813",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Disable Brodcast Join",
+      "text": "%spark\n\nspark.conf.set(\"spark.sql.autoBroadcastJoinThreshold\",-1)",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-21 02:03:37.888",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640887160384_472269493",
+      "id": "paragraph_1640887160384_472269493",
+      "dateCreated": "2021-12-30 17:59:20.385",
+      "dateStarted": "2022-10-21 02:03:37.891",
+      "dateFinished": "2022-10-21 02:04:14.092",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Join Performance without Broadcast",
+      "text": "%spark\n\n// Loading github.json into a dataframe\nval githubDF \u003d spark.read.json(\"/datasets/github.json\")\n//githubDF.printSchema\n//githubDF.show()\n\n\n// Loading github-top20.json into a dataframe\nval githubTop20DF \u003d spark.read.json(\"/datasets/github-top20.json\")\ngithubTop20DF.printSchema\ngithubTop20DF.show()\n\n\n// Or you can specify the join condition explicitly in case the key is different between tables\nval topContributorsJoinedDF \u003d githubDF.join(githubTop20DF, githubDF(\"actor.login\") \u003d\u003d\u003d githubTop20DF(\"login\"))\n\nimport spark.implicits._\n\n// Counting the results, and ordering by descending count.\ntopContributorsJoinedDF.groupBy(\"actor.login\").count().orderBy(col(\"count\").desc).show()\n//topContributorsJoinedDF.groupBy(\"actor.login\").count.orderBy(\u0027count.desc).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-07 04:28:08.106",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- login: string (nullable \u003d true)\n\n+------------------+\n|             login|\n+------------------+\n|GoogleCodeExporter|\n|         stackmutt|\n|      greatfirebot|\n|diversify-exp-user|\n|            kwurst|\n|   direwolf-github|\n|     KenanSulayman|\n|        jack-oquin|\n|        manuelrp07|\n|    mirror-updates|\n|     tryton-mirror|\n|        EstifanosG|\n|           houndci|\n|      jeff1evesque|\n|      LukasReschke|\n|       nwt-patrick|\n|           Somasis|\n|        mikegazdag|\n|       tterrag1098|\n|   EmanueleMinotto|\n+------------------+\n\n+------------------+-----+\n|             login|count|\n+------------------+-----+\n|GoogleCodeExporter| 2073|\n|         stackmutt|  284|\n|      greatfirebot|  192|\n|diversify-exp-user|  146|\n|            kwurst|   92|\n|   direwolf-github|   88|\n|     KenanSulayman|   72|\n|        jack-oquin|   52|\n|        manuelrp07|   45|\n|    mirror-updates|   42|\n|     tryton-mirror|   37|\n|        EstifanosG|   32|\n|           houndci|   30|\n|      jeff1evesque|   29|\n|      LukasReschke|   28|\n|       nwt-patrick|   27|\n|           Somasis|   27|\n|        mikegazdag|   26|\n|       tterrag1098|   23|\n|   EmanueleMinotto|   22|\n+------------------+-----+\n\n\u001b[1m\u001b[34mgithubDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [actor: struct\u003cavatar_url: string, gravatar_id: string ... 3 more fields\u003e, created_at: string ... 6 more fields]\n\u001b[1m\u001b[34mgithubTop20DF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [login: string]\n\u001b[1m\u001b[34mtopContributorsJoinedDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [actor: struct\u003cavatar_url: string, gravatar_id: string ... 3 more fields\u003e, created_at: string ... 7 more fields]\nimport spark.implicits._\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675736285804_0008//jobs/job?id\u003d40"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675736285804_0008//jobs/job?id\u003d41"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675736285804_0008//jobs/job?id\u003d42"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675736285804_0008//jobs/job?id\u003d44"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640887822291_2091545505",
+      "id": "paragraph_1640887822291_2091545505",
+      "dateCreated": "2021-12-30 18:10:22.291",
+      "dateStarted": "2023-02-07 04:28:08.108",
+      "dateFinished": "2023-02-07 04:28:13.089",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\ntopContributorsJoinedDF.explain()",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-07 04:28:20.331",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u003d\u003d Physical Plan \u003d\u003d\nBroadcastHashJoin [actor#1113.login], [login#1136], Inner, BuildRight, false\n:- Filter isnotnull(actor#1113)\n:  +- FileScan json [actor#1113,created_at#1114,id#1115,org#1116,payload#1117,public#1118,repo#1119,type#1120] Batched: false, DataFilters: [isnotnull(actor#1113)], Format: JSON, Location: InMemoryFileIndex[hdfs://namenode:9000/datasets/github.json], PartitionFilters: [], PushedFilters: [IsNotNull(actor)], ReadSchema: struct\u003cactor:struct\u003cavatar_url:string,gravatar_id:string,id:bigint,login:string,url:string\u003e,creat...\n+- BroadcastExchange HashedRelationBroadcastMode(List(input[0, string, false]),false), [id\u003d#442]\n   +- *(1) Filter isnotnull(login#1136)\n      +- FileScan json [login#1136] Batched: false, DataFilters: [isnotnull(login#1136)], Format: JSON, Location: InMemoryFileIndex[hdfs://namenode:9000/datasets/github-top20.json], PartitionFilters: [], PushedFilters: [IsNotNull(login)], ReadSchema: struct\u003clogin:string\u003e\n\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640914777382_654592376",
+      "id": "paragraph_1640914777382_654592376",
+      "dateCreated": "2021-12-31 01:39:37.382",
+      "dateStarted": "2023-02-07 04:28:20.333",
+      "dateFinished": "2023-02-07 04:28:20.558",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Enable Brodcast Join",
+      "text": "%spark\n\n//Renable automatic broadcasting\nspark.conf.set(\"spark.sql.autoBroadcastJoinThreshold\",1024*1024*10)\n\n// Loading github.json into a dataframe\nval githubDF \u003d spark.read.json(\"/datasets/github.json\")\n//githubDF.printSchema\n//githubDF.show()\n\n\n// Loading github-top20.json into a dataframe\nval githubTop20DF \u003d spark.read.json(\"/datasets/github-top20.json\")\n//githubTop20DF.printSchema\n//githubTop20DF.show()\n\n\n// Or you can specify the join condition explicitly in case the key is different between tables\nval topContributorsJoinedDF \u003d githubDF.join(githubTop20DF, githubDF(\"actor.login\") \u003d\u003d\u003d githubTop20DF(\"login\"))\n\nimport spark.implicits._\n\n// Counting the results, and ordering by descending count.\ntopContributorsJoinedDF.groupBy(\"actor.login\").count().orderBy(col(\"count\").desc).show()\n//topContributorsJoinedDF.groupBy(\"actor.login\").count.orderBy(\u0027count.desc).show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-07 04:28:25.618",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------------------+-----+\n|             login|count|\n+------------------+-----+\n|GoogleCodeExporter| 2073|\n|         stackmutt|  284|\n|      greatfirebot|  192|\n|diversify-exp-user|  146|\n|            kwurst|   92|\n|   direwolf-github|   88|\n|     KenanSulayman|   72|\n|        jack-oquin|   52|\n|        manuelrp07|   45|\n|    mirror-updates|   42|\n|     tryton-mirror|   37|\n|        EstifanosG|   32|\n|           houndci|   30|\n|      jeff1evesque|   29|\n|      LukasReschke|   28|\n|           Somasis|   27|\n|       nwt-patrick|   27|\n|        mikegazdag|   26|\n|       tterrag1098|   23|\n|   EmanueleMinotto|   22|\n+------------------+-----+\n\n\u001b[1m\u001b[34mgithubDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [actor: struct\u003cavatar_url: string, gravatar_id: string ... 3 more fields\u003e, created_at: string ... 6 more fields]\n\u001b[1m\u001b[34mgithubTop20DF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [login: string]\n\u001b[1m\u001b[34mtopContributorsJoinedDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [actor: struct\u003cavatar_url: string, gravatar_id: string ... 3 more fields\u003e, created_at: string ... 7 more fields]\nimport spark.implicits._\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675736285804_0008//jobs/job?id\u003d45"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675736285804_0008//jobs/job?id\u003d46"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675736285804_0008//jobs/job?id\u003d48"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640890399555_1395854605",
+      "id": "paragraph_1640890399555_1395854605",
+      "dateCreated": "2021-12-30 18:53:19.555",
+      "dateStarted": "2023-02-07 04:28:25.619",
+      "dateFinished": "2023-02-07 04:28:28.486",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\ntopContributorsJoinedDF.explain()",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-21 02:07:11.117",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u003d\u003d Physical Plan \u003d\u003d\nBroadcastHashJoin [actor#93.login], [login#116], Inner, BuildRight, false\n:- Filter isnotnull(actor#93)\n:  +- FileScan json [actor#93,created_at#94,id#95,org#96,payload#97,public#98,repo#99,type#100] Batched: false, DataFilters: [isnotnull(actor#93)], Format: JSON, Location: InMemoryFileIndex[hdfs://namenode:9000/datasets/github.json], PartitionFilters: [], PushedFilters: [IsNotNull(actor)], ReadSchema: struct\u003cactor:struct\u003cavatar_url:string,gravatar_id:string,id:bigint,login:string,url:string\u003e,creat...\n+- BroadcastExchange HashedRelationBroadcastMode(List(input[0, string, false]),false), [id\u003d#211]\n   +- *(1) Filter isnotnull(login#116)\n      +- FileScan json [login#116] Batched: false, DataFilters: [isnotnull(login#116)], Format: JSON, Location: InMemoryFileIndex[hdfs://namenode:9000/datasets/github-top20.json], PartitionFilters: [], PushedFilters: [IsNotNull(login)], ReadSchema: struct\u003clogin:string\u003e\n\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641201327174_615923441",
+      "id": "paragraph_1641201327174_615923441",
+      "dateCreated": "2022-01-03 09:15:27.175",
+      "dateStarted": "2022-10-21 02:07:11.120",
+      "dateFinished": "2022-10-21 02:07:11.263",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Using Broadcast Join Hint",
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import *\n\n# Disable Broadcast Join\nspark.conf.set(\"spark.sql.autoBroadcastJoinThreshold\",-1)\nspark.conf.set(\"spark.sql.shuffle.partitions\", 3)\n\n\ndf1 \u003d spark.read.json(\"/datasets/github.json\")\ndf2 \u003d spark.read.json(\"/datasets/github-top20.json\")\n\njoinExper \u003d df1[\"actor.login\"] \u003d\u003d df2[\"login\"]\njoinDF \u003d df1.join(broadcast(df2), joinExper, \"inner\")\n\n#joinDF.show()\n\n# Foreach example\n# def f(x): print(x)\n# joinDF.foreach(f)\n\n# Another example\njoinDF.count()\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-07 04:28:37.100",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "3367\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675736285804_0008//jobs/job?id\u003d49"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675736285804_0008//jobs/job?id\u003d50"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675736285804_0008//jobs/job?id\u003d52"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641184938968_1677982082",
+      "id": "paragraph_1641184938968_1677982082",
+      "dateCreated": "2022-01-03 04:42:18.968",
+      "dateStarted": "2023-02-07 04:28:37.102",
+      "dateFinished": "2023-02-07 04:28:38.125",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\njoinDF.explain()\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-07 04:28:43.959",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u003d\u003d Physical Plan \u003d\u003d\nBroadcastHashJoin [actor#1279.login], [login#1302], Inner, BuildRight, false\n:- Filter isnotnull(actor#1279)\n:  +- FileScan json [actor#1279,created_at#1280,id#1281,org#1282,payload#1283,public#1284,repo#1285,type#1286] Batched: false, DataFilters: [isnotnull(actor#1279)], Format: JSON, Location: InMemoryFileIndex[hdfs://namenode:9000/datasets/github.json], PartitionFilters: [], PushedFilters: [IsNotNull(actor)], ReadSchema: struct\u003cactor:struct\u003cavatar_url:string,gravatar_id:string,id:bigint,login:string,url:string\u003e,creat...\n+- BroadcastExchange HashedRelationBroadcastMode(List(input[0, string, false]),false), [id\u003d#601]\n   +- *(1) Filter isnotnull(login#1302)\n      +- FileScan json [login#1302] Batched: false, DataFilters: [isnotnull(login#1302)], Format: JSON, Location: InMemoryFileIndex[hdfs://namenode:9000/datasets/github-top20.json], PartitionFilters: [], PushedFilters: [IsNotNull(login)], ReadSchema: struct\u003clogin:string\u003e\n\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640890439987_243762451",
+      "id": "paragraph_1640890439987_243762451",
+      "dateCreated": "2021-12-30 18:53:59.987",
+      "dateStarted": "2023-02-07 04:28:43.969",
+      "dateFinished": "2023-02-07 04:28:43.995",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-02-02 05:02:46.535",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640914842278_627600917",
+      "id": "paragraph_1640914842278_627600917",
+      "dateCreated": "2021-12-31 01:40:42.279",
+      "status": "READY"
+    }
+  ],
+  "name": "broadcast-hash-join",
+  "id": "2GRZN5DS9",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

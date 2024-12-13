@@ -3,19 +3,23 @@
 ![s3-compatibility.svg](images%2Fs3-compatibility.svg)
 
 #
+# 
+#
+docker compose -f bd-docker-sandbox/docker-compose.yml exec minio /bin/bash
+
 ```shell
 /usr/bin/mc config host add minio http://minio.sandbox.net:9010 admin password
 
 echo "Creating Credentials for 'minio/warehouse' bucket "
 export AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
-export AWS_ACCESS_KEY_ID=ffaJ6a2MOj8mZ5lI3P6h
-export AWS_SECRET_ACCESS_KEY=9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
+export AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
+export AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
 export AWS_REGION=us-east-1
 
  
 /usr/bin/mc rm -r --force minio/warehouse;
 
-/usr/bin/mc mb minio/warehouse;
+/usr/bin/mc mb minio/warehouse --ignore-existing;
 
 /usr/bin/mc policy set public minio/warehouse;
 
@@ -27,6 +31,8 @@ export AWS_REGION=us-east-1
 
 /usr/bin/mc du warehouse
 
+/usr/bin/mc ls --recursive minio
+
 ```
 
 
@@ -34,15 +40,24 @@ To configure AWS CLI, type `aws configure` and specify the MinIO key information
 Access credentials shown in this example belong to http://minio.sandbox.net:9010.
 These credentials are open to public. Feel free to use this service for testing and development. Replace with your own MinIO keys in deployment.
 
+## install aws cli
+```shell
+sudo apt install curl unzip
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+aws --version
+aws-cli/2.17.42 Python/3.11.9 Linux/6.8.0-41-generic exe/x86_64.ubuntu.24
+```
 ## aws configure
 ```shell
-sudo yum install awscli
 aws configure
-AWS Access Key ID [None]: ffaJ6a2MOj8mZ5lI3P6h
-AWS Secret Access Key [None]: 9u8TCmTtg9VyCVzgfDl6LvgcDd84DaM4h43bg1Bs
+AWS Access Key ID [None]: pgm2H2bR7a5kMc5XCYdO
+AWS Secret Access Key [None]: zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
 Default region name [None]: us-east-1
 Default output format [None]: ENTER
 ```
+
 
 ## Additionally enable AWS Signature Version '4' for MinIO server.
 ```shell

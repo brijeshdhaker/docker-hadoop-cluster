@@ -1,0 +1,87 @@
+flink:
+  hadoop:
+    fs:
+      default-scheme: file:///apps/sandbox/defaultfs
+      s3a.access.key: pgm2H2bR7a5kMc5XCYdO
+      s3a.secret.key: zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+#      s3a.access.key: admin
+#      s3a.secret.key: password
+      s3a.impl: org.apache.hadoop.fs.s3a.S3AFileSystem
+      s3a.aws.credentials.provider: org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider
+      s3a.path.style.access: true
+      s3a.endpoint: http://minio.sandbox.net:9010
+blob:
+  server:
+    port: '6124'
+env:
+  java:
+    opts:
+      jobmanager: -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf
+      all: --add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED
+      taskmanager: -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf
+  log:
+    max: 5
+    dir: /apps/var/logs/flink
+    level: INFO
+rest:
+  flamegraph:
+    enabled: 'true'
+  bind-address: 0.0.0.0
+  address: flink-jobmanager
+  profiling:
+    enabled: true
+fs:
+  default-scheme: file:///apps/sandbox/defaultfs
+jobmanager:
+  execution:
+    failover-strategy: region
+  rpc:
+    address: flink-jobmanager
+    port: 6123
+  bind-host: 0.0.0.0
+  memory:
+    process:
+      size: 1600m
+state:
+  savepoints:
+    dir: file:///apps/sandbox/defaultfs/state/savepoints
+  backend:
+    type: hashmap
+  checkpoints:
+    dir: file:///apps/sandbox/defaultfs/state/checkpoints
+security:
+  kerberos:
+    login:
+      use-ticket-cache: false
+      principal: brijeshdhaker@SANDBOX.NET
+      keytab: /apps/security/keytabs/users/brijeshdhaker.keytab
+query:
+  server:
+    port: '6125'
+s3:
+  endpoint: http://minio.sandbox.net:9010
+  access-key: admin
+  secret-key: password
+  path.style.access: true
+io:
+  tmp:
+    dirs: /tmp
+execution:
+  checkpointing:
+    savepoint-dir: file:///apps/sandbox/defaultfs/execution/savepoints
+    dir: file:///apps/sandbox/defaultfs/execution/
+    interval: 10s
+taskmanager:
+  host: flink-taskmanager
+  numberOfTaskSlots: 8
+  memory:
+    process:
+      size: 1728m
+  bind-host: 0.0.0.0
+parallelism:
+  default: 4
+web:
+  cancel:
+    enable: true
+  submit:
+    enable: true

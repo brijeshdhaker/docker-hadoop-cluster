@@ -1,0 +1,67 @@
+[
+  {
+    "namespace": "org.examples.sb.models.avro",
+    "type": "enum",
+    "name": "OrderStatus",
+    "symbols": [
+      "ORDER_CREATED",
+      "ORDER_CANCELLED",
+      "ORDER_COMPLETED"
+    ]
+  },
+  {
+    "namespace": "org.examples.sb.models.avro",
+    "type": "record",
+    "name": "OrchestratorRequestDTO",
+    "version": "1",
+    "fields": [
+      {
+        "name": "orderId",
+        "type": "string",
+        "logicalType": "uuid"
+      },
+      {
+        "name": "userId",
+        "type": "int"
+      },
+      {
+        "name": "productId",
+        "type": "int"
+      },
+      {
+        "name": "amount",
+        "type": "double"
+      }
+    ]
+  },
+  {
+    "namespace": "org.examples.sb.models.avro",
+    "type": "record",
+    "name": "OrchestratorResponseDTO",
+    "version": "1",
+    "fields": [
+      {
+        "name": "orderId",
+        "type": "string",
+        "logicalType": "uuid"
+      },
+      {
+        "name": "userId",
+        "type": "int"
+      },
+      {
+        "name": "productId",
+        "type": "int"
+      },
+      {
+        "name": "amount",
+        "type": "double"
+      },
+      {
+        "name": "status",
+        "type": "org.examples.sb.models.avro.OrderStatus"
+      }
+    ]
+  }
+]
+

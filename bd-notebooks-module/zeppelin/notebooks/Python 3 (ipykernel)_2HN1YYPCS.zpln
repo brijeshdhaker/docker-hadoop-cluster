@@ -1,0 +1,598 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n## Delta with PySpark",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-17 02:54:34.653",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eDelta with PySpark\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653674653_1822499842",
+      "id": "20221117-025434_1598386965",
+      "dateCreated": "2022-11-17 02:54:34.653",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n# Create Spark Session with Delta JARS and conf\n\nfrom pyspark.sql import SparkSession\n\nspark \u003d SparkSession \\\n    .builder \\\n    .appName(\"Delta with PySpark\") \\\n    .config(\u0027spark.jars.packages\u0027, \u0027io.delta:delta-core_2.12:2.1.1\u0027) \\\n    .config(\"spark.sql.extensions\", \"io.delta.sql.DeltaSparkSessionExtension\") \\\n    .config(\n        \"spark.sql.catalog.spark_catalog\",\n        \"org.apache.spark.sql.delta.catalog.DeltaCatalog\",\n    ) \\\n    .config(\"spark.sql.warehouse.dir\", \"spark-warehouse\") \\\n    .master(\"local[*]\") \\\n    .enableHiveSupport() \\\n    .getOrCreate()\n\nspark",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-04 03:11:30.372",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Fail to execute line 4: from pyspark.sql import SparkSession\nTraceback (most recent call last):\n  File \"/tmp/1709521837221-0/zeppelin_python.py\", line 153, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 4, in \u003cmodule\u003e\nModuleNotFoundError: No module named \u0027pyspark\u0027\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653674653_1316870545",
+      "id": "20221117-025434_1296940234",
+      "dateCreated": "2022-11-17 02:54:34.654",
+      "dateStarted": "2024-03-04 03:11:30.376",
+      "dateFinished": "2024-03-04 03:11:30.387",
+      "status": "ERROR"
+    },
+    {
+      "text": "%python\n# pip install sparksql-magic\n# Run below command to enable sparksql\n%load_ext sparksql_magic",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-17 02:54:34.654",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653674654_791624213",
+      "id": "20221117-025434_2076845361",
+      "dateCreated": "2022-11-17 02:54:34.654",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n%%sparksql\nshow tables in default;",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-17 02:54:34.654",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ctable\u003e\u003ctr style\u003d\"border-bottom: 1px solid\"\u003e\u003ctd style\u003d\"font-weight: bold\"\u003enamespace\u003c/td\u003e\u003ctd style\u003d\"font-weight: bold\"\u003etableName\u003c/td\u003e\u003ctd style\u003d\"font-weight: bold\"\u003eisTemporary\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edefault\u003c/td\u003e\u003ctd\u003esales_managed\u003c/td\u003e\u003ctd\u003eFalse\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653674654_1471233244",
+      "id": "20221117-025434_829413370",
+      "dateCreated": "2022-11-17 02:54:34.654",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n# Lets read our Sales dataset\n\ndf_sales \u003d spark.read.parquet(\"dataset/sales.parquet/*parquet\")\ndf_sales.printSchema()\ndf_sales.show(10, False)",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-17 02:54:34.654",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- transacted_at: string (nullable \u003d true)\n |-- trx_id: string (nullable \u003d true)\n |-- retailer_id: string (nullable \u003d true)\n |-- description: string (nullable \u003d true)\n |-- amount: string (nullable \u003d true)\n |-- city_id: string (nullable \u003d true)\n\n+------------------------+----------+-----------+---------------------------------------------+-----------------------+----------+\n|transacted_at           |trx_id    |retailer_id|description                                  |amount                 |city_id   |\n+------------------------+----------+-----------+---------------------------------------------+-----------------------+----------+\n|2017-11-24T19:00:00.000Z|1995601912|2077350195 |Walgreen       11-25                         |197.230000000000000000 |216510442 |\n|2017-11-24T19:00:00.000Z|1734117021|644879053  |unkn    ppd id: 768641     11-26             |8.580000000000000000   |930259917 |\n|2017-11-24T19:00:00.000Z|1734117022|847200066  |Wal-Mart  ppd id: 555914     Algiers    11-26|1737.260000000000000000|1646415505|\n|2017-11-24T19:00:00.000Z|1734117030|1953761884 |Home Depot     ppd id: 265293   11-25        |384.500000000000000000 |287177635 |\n|2017-11-24T19:00:00.000Z|1734117089|1898522855 |Target        11-25                          |66.330000000000000000  |1855530529|\n|2017-11-24T19:00:00.000Z|1734117117|997626433  |Sears  ppd id: 856095  Ashgabat              |298.870000000000000000 |957346984 |\n|2017-11-24T19:00:00.000Z|1734117123|1953761884 |unkn   ppd id: 153174    Little Rock    11-25|19.550000000000000000  |45522086  |\n|2017-11-24T19:00:00.000Z|1734117152|1429095612 |Ikea     arc id: 527956  Saint John\u0027s   11-26|9.390000000000000000   |1268541279|\n|2017-11-24T19:00:00.000Z|1734117153|847200066  |unkn        Kingstown                        |2907.570000000000000000|1483931123|\n|2017-11-24T19:00:00.000Z|1734117212|1996661856 |unkn    ppd id: 454437   11-24               |140.380000000000000000 |336763936 |\n+------------------------+----------+-----------+---------------------------------------------+-----------------------+----------+\nonly showing top 10 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653674654_609051564",
+      "id": "20221117-025434_2055621193",
+      "dateCreated": "2022-11-17 02:54:34.654",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n\n# Lets create a sales managed delta table\nfrom pyspark.sql.functions import to_timestamp, expr\n\ndf_formatted \u003d (\n    df_sales\n    .withColumn(\"transacted_at\", to_timestamp(\"transacted_at\"))\n    .withColumn(\"amount\", expr(\"CAST(amount as decimal(14,2))\"))\n               )\n    \ndf_formatted.write \\\n    .format(\"delta\") \\\n    .saveAsTable(\"sales_delta_managed\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-18 02:37:59.427",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653674654_1480347940",
+      "id": "20221117-025434_1193853862",
+      "dateCreated": "2022-11-17 02:54:34.654",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n%%sparksql\n\ndescribe extended default.sales_delta_managed;",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-17 02:54:34.654",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ctable\u003e\u003ctr style\u003d\"border-bottom: 1px solid\"\u003e\u003ctd style\u003d\"font-weight: bold\"\u003ecol_name\u003c/td\u003e\u003ctd style\u003d\"font-weight: bold\"\u003edata_type\u003c/td\u003e\u003ctd style\u003d\"font-weight: bold\"\u003ecomment\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003etransacted_at\u003c/td\u003e\u003ctd\u003etimestamp\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003etrx_id\u003c/td\u003e\u003ctd\u003estring\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eretailer_id\u003c/td\u003e\u003ctd\u003estring\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edescription\u003c/td\u003e\u003ctd\u003estring\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eamount\u003c/td\u003e\u003ctd\u003edecimal(14,2)\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003ecity_id\u003c/td\u003e\u003ctd\u003estring\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e# Partitioning\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eNot partitioned\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e# Detailed Table Information\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eName\u003c/td\u003e\u003ctd\u003edefault.sales_delta_managed\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eLocation\u003c/td\u003e\u003ctd\u003efile:/home/jovyan/EaseWithApacheSpark/ease-with-apache-spark/spark-warehouse/sales_delta_managed\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eProvider\u003c/td\u003e\u003ctd\u003edelta\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eOwner\u003c/td\u003e\u003ctd\u003ejovyan\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eTable Properties\u003c/td\u003e\u003ctd\u003e[delta.minReaderVersion\u003d1,delta.minWriterVersion\u003d2]\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653674654_685633571",
+      "id": "20221117-025434_1843496415",
+      "dateCreated": "2022-11-17 02:54:34.654",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n%%sparksql\n\nselect * from default.sales_delta_managed limit 10;",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-17 02:54:34.654",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ctable\u003e\u003ctr style\u003d\"border-bottom: 1px solid\"\u003e\u003ctd style\u003d\"font-weight: bold\"\u003etransacted_at\u003c/td\u003e\u003ctd style\u003d\"font-weight: bold\"\u003etrx_id\u003c/td\u003e\u003ctd style\u003d\"font-weight: bold\"\u003eretailer_id\u003c/td\u003e\u003ctd style\u003d\"font-weight: bold\"\u003edescription\u003c/td\u003e\u003ctd style\u003d\"font-weight: bold\"\u003eamount\u003c/td\u003e\u003ctd style\u003d\"font-weight: bold\"\u003ecity_id\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e2017-11-24 19:00:00\u003c/td\u003e\u003ctd\u003e1995601912\u003c/td\u003e\u003ctd\u003e2077350195\u003c/td\u003e\u003ctd\u003eWalgreen       11-25\u003c/td\u003e\u003ctd\u003e197.23\u003c/td\u003e\u003ctd\u003e216510442\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e2017-11-24 19:00:00\u003c/td\u003e\u003ctd\u003e1734117021\u003c/td\u003e\u003ctd\u003e644879053\u003c/td\u003e\u003ctd\u003eunkn    ppd id: 768641     11-26\u003c/td\u003e\u003ctd\u003e8.58\u003c/td\u003e\u003ctd\u003e930259917\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e2017-11-24 19:00:00\u003c/td\u003e\u003ctd\u003e1734117022\u003c/td\u003e\u003ctd\u003e847200066\u003c/td\u003e\u003ctd\u003eWal-Mart  ppd id: 555914     Algiers    11-26\u003c/td\u003e\u003ctd\u003e1737.26\u003c/td\u003e\u003ctd\u003e1646415505\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e2017-11-24 19:00:00\u003c/td\u003e\u003ctd\u003e1734117030\u003c/td\u003e\u003ctd\u003e1953761884\u003c/td\u003e\u003ctd\u003eHome Depot     ppd id: 265293   11-25\u003c/td\u003e\u003ctd\u003e384.50\u003c/td\u003e\u003ctd\u003e287177635\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e2017-11-24 19:00:00\u003c/td\u003e\u003ctd\u003e1734117089\u003c/td\u003e\u003ctd\u003e1898522855\u003c/td\u003e\u003ctd\u003eTarget        11-25\u003c/td\u003e\u003ctd\u003e66.33\u003c/td\u003e\u003ctd\u003e1855530529\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e2017-11-24 19:00:00\u003c/td\u003e\u003ctd\u003e1734117117\u003c/td\u003e\u003ctd\u003e997626433\u003c/td\u003e\u003ctd\u003eSears  ppd id: 856095  Ashgabat\u003c/td\u003e\u003ctd\u003e298.87\u003c/td\u003e\u003ctd\u003e957346984\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e2017-11-24 19:00:00\u003c/td\u003e\u003ctd\u003e1734117123\u003c/td\u003e\u003ctd\u003e1953761884\u003c/td\u003e\u003ctd\u003eunkn   ppd id: 153174    Little Rock    11-25\u003c/td\u003e\u003ctd\u003e19.55\u003c/td\u003e\u003ctd\u003e45522086\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e2017-11-24 19:00:00\u003c/td\u003e\u003ctd\u003e1734117152\u003c/td\u003e\u003ctd\u003e1429095612\u003c/td\u003e\u003ctd\u003eIkea     arc id: 527956  Saint John\u0026#x27;s   11-26\u003c/td\u003e\u003ctd\u003e9.39\u003c/td\u003e\u003ctd\u003e1268541279\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e2017-11-24 19:00:00\u003c/td\u003e\u003ctd\u003e1734117153\u003c/td\u003e\u003ctd\u003e847200066\u003c/td\u003e\u003ctd\u003eunkn        Kingstown\u003c/td\u003e\u003ctd\u003e2907.57\u003c/td\u003e\u003ctd\u003e1483931123\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e2017-11-24 19:00:00\u003c/td\u003e\u003ctd\u003e1734117212\u003c/td\u003e\u003ctd\u003e1996661856\u003c/td\u003e\u003ctd\u003eunkn    ppd id: 454437   11-24\u003c/td\u003e\u003ctd\u003e140.38\u003c/td\u003e\u003ctd\u003e336763936\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653674654_386447",
+      "id": "20221117-025434_578707358",
+      "dateCreated": "2022-11-17 02:54:34.654",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n# Lets check the current version of the table\n\nfrom delta import DeltaTable\n\ndt \u003d DeltaTable.forName(spark, \"sales_delta_managed\")\ndt.history().select(\"version\", \"timestamp\").show(truncate\u003dFalse)",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-17 02:54:34.654",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+-----------------------+\n|version|timestamp              |\n+-------+-----------------------+\n|0      |2022-11-14 10:32:59.751|\n+-------+-----------------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653674654_1545567204",
+      "id": "20221117-025434_1784843674",
+      "dateCreated": "2022-11-17 02:54:34.654",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n%%sparksql\n\nupdate default.sales_delta_managed set amount \u003d 450.56 where trx_id \u003d \u00271995601912\u0027;",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-17 02:54:34.654",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ctable\u003e\u003ctr style\u003d\"border-bottom: 1px solid\"\u003e\u003ctd style\u003d\"font-weight: bold\"\u003enum_affected_rows\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e1\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653674654_1487611089",
+      "id": "20221117-025434_1800820355",
+      "dateCreated": "2022-11-17 02:54:34.654",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n# Lets check the current version of the table\n\ndt.history().select(\"version\", \"timestamp\").show(truncate\u003dFalse)",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-17 02:54:34.654",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+-----------------------+\n|version|timestamp              |\n+-------+-----------------------+\n|1      |2022-11-14 10:33:34.513|\n|0      |2022-11-14 10:32:59.751|\n+-------+-----------------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653674654_629139642",
+      "id": "20221117-025434_184088907",
+      "dateCreated": "2022-11-17 02:54:34.654",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n%%sparksql\n\nselect * from default.sales_delta_managed limit 10;",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-17 02:54:34.654",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ctable\u003e\u003ctr style\u003d\"border-bottom: 1px solid\"\u003e\u003ctd style\u003d\"font-weight: bold\"\u003etransacted_at\u003c/td\u003e\u003ctd style\u003d\"font-weight: bold\"\u003etrx_id\u003c/td\u003e\u003ctd style\u003d\"font-weight: bold\"\u003eretailer_id\u003c/td\u003e\u003ctd style\u003d\"font-weight: bold\"\u003edescription\u003c/td\u003e\u003ctd style\u003d\"font-weight: bold\"\u003eamount\u003c/td\u003e\u003ctd style\u003d\"font-weight: bold\"\u003ecity_id\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e2017-11-24 19:00:00\u003c/td\u003e\u003ctd\u003e1995601912\u003c/td\u003e\u003ctd\u003e2077350195\u003c/td\u003e\u003ctd\u003eWalgreen       11-25\u003c/td\u003e\u003ctd\u003e450.56\u003c/td\u003e\u003ctd\u003e216510442\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e2017-11-24 19:00:00\u003c/td\u003e\u003ctd\u003e1734117021\u003c/td\u003e\u003ctd\u003e644879053\u003c/td\u003e\u003ctd\u003eunkn    ppd id: 768641     11-26\u003c/td\u003e\u003ctd\u003e8.58\u003c/td\u003e\u003ctd\u003e930259917\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e2017-11-24 19:00:00\u003c/td\u003e\u003ctd\u003e1734117022\u003c/td\u003e\u003ctd\u003e847200066\u003c/td\u003e\u003ctd\u003eWal-Mart  ppd id: 555914     Algiers    11-26\u003c/td\u003e\u003ctd\u003e1737.26\u003c/td\u003e\u003ctd\u003e1646415505\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e2017-11-24 19:00:00\u003c/td\u003e\u003ctd\u003e1734117030\u003c/td\u003e\u003ctd\u003e1953761884\u003c/td\u003e\u003ctd\u003eHome Depot     ppd id: 265293   11-25\u003c/td\u003e\u003ctd\u003e384.50\u003c/td\u003e\u003ctd\u003e287177635\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e2017-11-24 19:00:00\u003c/td\u003e\u003ctd\u003e1734117089\u003c/td\u003e\u003ctd\u003e1898522855\u003c/td\u003e\u003ctd\u003eTarget        11-25\u003c/td\u003e\u003ctd\u003e66.33\u003c/td\u003e\u003ctd\u003e1855530529\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e2017-11-24 19:00:00\u003c/td\u003e\u003ctd\u003e1734117117\u003c/td\u003e\u003ctd\u003e997626433\u003c/td\u003e\u003ctd\u003eSears  ppd id: 856095  Ashgabat\u003c/td\u003e\u003ctd\u003e298.87\u003c/td\u003e\u003ctd\u003e957346984\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e2017-11-24 19:00:00\u003c/td\u003e\u003ctd\u003e1734117123\u003c/td\u003e\u003ctd\u003e1953761884\u003c/td\u003e\u003ctd\u003eunkn   ppd id: 153174    Little Rock    11-25\u003c/td\u003e\u003ctd\u003e19.55\u003c/td\u003e\u003ctd\u003e45522086\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e2017-11-24 19:00:00\u003c/td\u003e\u003ctd\u003e1734117152\u003c/td\u003e\u003ctd\u003e1429095612\u003c/td\u003e\u003ctd\u003eIkea     arc id: 527956  Saint John\u0026#x27;s   11-26\u003c/td\u003e\u003ctd\u003e9.39\u003c/td\u003e\u003ctd\u003e1268541279\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e2017-11-24 19:00:00\u003c/td\u003e\u003ctd\u003e1734117153\u003c/td\u003e\u003ctd\u003e847200066\u003c/td\u003e\u003ctd\u003eunkn        Kingstown\u003c/td\u003e\u003ctd\u003e2907.57\u003c/td\u003e\u003ctd\u003e1483931123\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e2017-11-24 19:00:00\u003c/td\u003e\u003ctd\u003e1734117212\u003c/td\u003e\u003ctd\u003e1996661856\u003c/td\u003e\u003ctd\u003eunkn    ppd id: 454437   11-24\u003c/td\u003e\u003ctd\u003e140.38\u003c/td\u003e\u003ctd\u003e336763936\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653674654_399393757",
+      "id": "20221117-025434_1521141029",
+      "dateCreated": "2022-11-17 02:54:34.654",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n# Verify if a given table is Delta\n\nprint(DeltaTable.isDeltaTable(spark, \"spark-warehouse/sales_managed/\"))\nprint(DeltaTable.isDeltaTable(spark, \"spark-warehouse/sales_delta_managed/\"))",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-17 02:54:34.654",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "False\nTrue\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653674654_2079332597",
+      "id": "20221117-025434_609918391",
+      "dateCreated": "2022-11-17 02:54:34.654",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n# Shortcut to create a Parquet location to delta table\n# We will convert the sales_managed table to delta\n\nDeltaTable.convertToDelta(spark, \"parquet.`spark-warehouse/sales_managed`\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-17 02:54:34.654",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u003cdelta.tables.DeltaTable at 0x7fb3dc549810\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653674654_2020024496",
+      "id": "20221117-025434_2111907313",
+      "dateCreated": "2022-11-17 02:54:34.654",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n# Verify if a given table is Delta\n\nprint(DeltaTable.isDeltaTable(spark, \"spark-warehouse/sales_managed/\"))\nprint(DeltaTable.isDeltaTable(spark, \"spark-warehouse/sales_delta_managed/\"))",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-17 02:54:34.655",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "True\nTrue\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653674654_1786365464",
+      "id": "20221117-025434_815704487",
+      "dateCreated": "2022-11-17 02:54:34.655",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n%%sparksql\n\ndescribe extended default.sales_managed;",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-17 02:54:34.655",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "only showing top 20 row(s)\n"
+          },
+          {
+            "type": "HTML",
+            "data": "\u003ctable\u003e\u003ctr style\u003d\"border-bottom: 1px solid\"\u003e\u003ctd style\u003d\"font-weight: bold\"\u003ecol_name\u003c/td\u003e\u003ctd style\u003d\"font-weight: bold\"\u003edata_type\u003c/td\u003e\u003ctd style\u003d\"font-weight: bold\"\u003ecomment\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003etransacted_at\u003c/td\u003e\u003ctd\u003estring\u003c/td\u003e\u003ctd\u003enull\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003etrx_id\u003c/td\u003e\u003ctd\u003estring\u003c/td\u003e\u003ctd\u003enull\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eretailer_id\u003c/td\u003e\u003ctd\u003estring\u003c/td\u003e\u003ctd\u003enull\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edescription\u003c/td\u003e\u003ctd\u003estring\u003c/td\u003e\u003ctd\u003enull\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eamount\u003c/td\u003e\u003ctd\u003estring\u003c/td\u003e\u003ctd\u003enull\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003ecity_id\u003c/td\u003e\u003ctd\u003estring\u003c/td\u003e\u003ctd\u003enull\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e# Detailed Table Information\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eDatabase\u003c/td\u003e\u003ctd\u003edefault\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eTable\u003c/td\u003e\u003ctd\u003esales_managed\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eOwner\u003c/td\u003e\u003ctd\u003ejovyan\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eCreated Time\u003c/td\u003e\u003ctd\u003eThu Nov 10 13:52:58 UTC 2022\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eLast Access\u003c/td\u003e\u003ctd\u003eUNKNOWN\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eCreated By\u003c/td\u003e\u003ctd\u003eSpark 3.3.0\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eType\u003c/td\u003e\u003ctd\u003eMANAGED\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eProvider\u003c/td\u003e\u003ctd\u003eparquet\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eStatistics\u003c/td\u003e\u003ctd\u003e123051140 bytes\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eLocation\u003c/td\u003e\u003ctd\u003efile:/home/jovyan/EaseWithApacheSpark/ease-with-apache-spark/spark-warehouse/sales_managed\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eSerde Library\u003c/td\u003e\u003ctd\u003eorg.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eInputFormat\u003c/td\u003e\u003ctd\u003eorg.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653674655_2019036806",
+      "id": "20221117-025434_1007800700",
+      "dateCreated": "2022-11-17 02:54:34.655",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n%%sparksql\n\nCONVERT TO DELTA default.sales_managed;",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-17 02:54:34.655",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ctable\u003e\u003ctr style\u003d\"border-bottom: 1px solid\"\u003e\u003c/tr\u003e\u003c/table\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653674655_976360971",
+      "id": "20221117-025434_1289114732",
+      "dateCreated": "2022-11-17 02:54:34.655",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n%%sparksql\n\ndescribe extended default.sales_managed;",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-17 02:54:34.655",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ctable\u003e\u003ctr style\u003d\"border-bottom: 1px solid\"\u003e\u003ctd style\u003d\"font-weight: bold\"\u003ecol_name\u003c/td\u003e\u003ctd style\u003d\"font-weight: bold\"\u003edata_type\u003c/td\u003e\u003ctd style\u003d\"font-weight: bold\"\u003ecomment\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003etransacted_at\u003c/td\u003e\u003ctd\u003estring\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003etrx_id\u003c/td\u003e\u003ctd\u003estring\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eretailer_id\u003c/td\u003e\u003ctd\u003estring\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003edescription\u003c/td\u003e\u003ctd\u003estring\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eamount\u003c/td\u003e\u003ctd\u003estring\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003ecity_id\u003c/td\u003e\u003ctd\u003estring\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e# Partitioning\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eNot partitioned\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e# Detailed Table Information\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eName\u003c/td\u003e\u003ctd\u003edefault.sales_managed\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eLocation\u003c/td\u003e\u003ctd\u003efile:/home/jovyan/EaseWithApacheSpark/ease-with-apache-spark/spark-warehouse/sales_managed\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eProvider\u003c/td\u003e\u003ctd\u003edelta\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eOwner\u003c/td\u003e\u003ctd\u003ejovyan\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eTable Properties\u003c/td\u003e\u003ctd\u003e[delta.minReaderVersion\u003d1,delta.minWriterVersion\u003d2]\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653674655_1264279484",
+      "id": "20221117-025434_955002538",
+      "dateCreated": "2022-11-17 02:54:34.655",
+      "status": "READY"
+    },
+    {
+      "text": "%python\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-17 02:54:34.655",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1668653674655_2042329448",
+      "id": "20221117-025434_2105174913",
+      "dateCreated": "2022-11-17 02:54:34.655",
+      "status": "READY"
+    }
+  ],
+  "name": "Python 3 (ipykernel)",
+  "id": "2HN1YYPCS",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

@@ -1,0 +1,273 @@
+{
+  "paragraphs": [
+    {
+      "text": "%python\n\nnum\u003d10e6\nprint(num)\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-04 03:10:34.881",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "10000000.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640967184140_1828589803",
+      "id": "paragraph_1640967184140_1828589803",
+      "dateCreated": "2021-12-31 16:13:04.140",
+      "dateStarted": "2024-03-04 03:10:34.900",
+      "dateFinished": "2024-03-04 03:10:38.041",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%python\n\nprint(\"{:e}\".format(1000000))\nprint(\"{:.3e}\".format(9620000000))\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-04 03:10:42.762",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "1.000000e+06\n9.620e+09\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640967206847_668026016",
+      "id": "paragraph_1640967206847_668026016",
+      "dateCreated": "2021-12-31 16:13:26.847",
+      "dateStarted": "2024-03-04 03:10:42.766",
+      "dateFinished": "2024-03-04 03:10:42.776",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%python\n\n# Tuples are immutable, and usually, they contain a sequence of heterogeneous elements that are accessed via unpacking or indexing (or even by attribute in the case of named tuples). \n\ntuple \u003d (1,2,3,4,\u0027Brijesh\u0027, \u002705-05-2983\u0027)\n\nprint(type(tuple))\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-04 03:10:47.073",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u003cclass \u0027tuple\u0027\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640967316338_1816689951",
+      "id": "paragraph_1640967316338_1816689951",
+      "dateCreated": "2021-12-31 16:15:16.338",
+      "dateStarted": "2024-03-04 03:10:47.079",
+      "dateFinished": "2024-03-04 03:10:47.087",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%python\n\nlist \u003d [1,2,3,4,\u0027Brijesh\u0027, \u002705-05-2983\u0027]\n\nprint(type(list))\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-01 00:24:37.663",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u003cclass \u0027list\u0027\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640996626439_151046454",
+      "id": "paragraph_1640996626439_151046454",
+      "dateCreated": "2022-01-01 00:23:46.439",
+      "dateStarted": "2022-01-01 00:24:37.668",
+      "dateFinished": "2022-01-01 00:24:37.729",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%python\n\ndict \u003d {\"A\":\"Apple\", \"B\":\"Boy\"}\n\nprint(type(dict))",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-01 00:26:06.914",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u003cclass \u0027dict\u0027\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640996677666_151701858",
+      "id": "paragraph_1640996677666_151701858",
+      "dateCreated": "2022-01-01 00:24:37.667",
+      "dateStarted": "2022-01-01 00:26:06.919",
+      "dateFinished": "2022-01-01 00:26:06.981",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%python\n\nset \u003d {\"A\",\"B\", \"C\", \"D\"}\n\nprint(type(set))",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-01 00:26:50.827",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u003cclass \u0027set\u0027\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640996766917_1691682388",
+      "id": "paragraph_1640996766917_1691682388",
+      "dateCreated": "2022-01-01 00:26:06.917",
+      "dateStarted": "2022-01-01 00:26:50.832",
+      "dateFinished": "2022-01-01 00:26:50.893",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%python\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-01 00:26:50.831",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640996810831_621047766",
+      "id": "paragraph_1640996810831_621047766",
+      "dateCreated": "2022-01-01 00:26:50.831",
+      "status": "READY"
+    }
+  ],
+  "name": "python-test",
+  "id": "2GRJMVUFZ",
+  "defaultInterpreterGroup": "python",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

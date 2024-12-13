@@ -1,0 +1,35 @@
+
+
+Step1:
+tar -xvf jline_sqlline__mysql_connector.tar -C sqlline
+
+Step2:
+java -cp sqlline/jline-1.0.jar:sqlline/sqlline.jar:/usr/lib/iceberg-rest/mysql-connector-java-8.0.23.jar sqlline.SqlLine
+sqlline version 1.0.2 by Marc Prud'hommeaux
+
+Step3:
+sqlline> !connect jdbc:mysql://mysqlserver.sandbox.net:3306/ICEBERG_REST_CATALOG mysqladmin mysqladmin
+Connecting to jdbc:mysql://mysqlserver.sandbox.net:3306/ICEBERG_REST_CATALOG
+Connected to: MySQL (version 8.0.33)
+Driver: MySQL Connector/J (version mysql-connector-java-8.0.23 (Revision: 18bbd5e68195d0da083cbd5bd0d05d76320df7cd))
+Autocommit status: true
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+0: jdbc:mysql://mysqlserver.sandbox.net:3306/>
+
+
+0: jdbc:mysql://mysqlserver.sandbox.net:3306/> show databases;
++-----------------------+
+|       Database        |
++-----------------------+
+| ICEBERG_CATALOG       |
+| ICEBERG_REST_CATALOG  |
+| PUBLIC                |
+| information_schema    |
+| mysql                 |
+| performance_schema    |
+| sys                   |
++-----------------------+
+7 rows selected (0.024 seconds)
+0: jdbc:mysql://mysqlserver.sandbox.net:3306/> !q
+
+

@@ -1,0 +1,503 @@
+{
+  "paragraphs": [
+    {
+      "title": "1. Global Managed Table",
+      "text": "%spark\n\nimport org.apache.spark.sql.types.{IntegerType, StringType, LongType, StructField, StructType}\nimport org.apache.spark.sql.{Row, SaveMode, SparkSession}\n\n// create DataFrame from scala Seq. It can infer schema for you.\nval df \u003d spark.createDataFrame(Seq(\n    (\"cd56bef5-997b-47c1-8edc-6657c806bbf7\", \"Hello world\", 2, 10, 1669888540), \n    (\"c719729d-34f4-4306-a646-f495d7edbb58\", \"Brijesh Kumar Dhaker\", 3, 16, 1669888545), \n    (\"c719729d-34f4-4306-a646-f495d7edbb59\", \"james\", 1, 5, 1669888550)\n)).toDF(\"uuid\", \"text\", \"words\", \"length\", \"timestamp\")\n\n\ndf.write.mode(SaveMode.Append).saveAsTable(\"Global_Managed_Table\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:28:32.627",
+      "progress": 66,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark.sql.types.{IntegerType, StringType, LongType, StructField, StructType}\nimport org.apache.spark.sql.{Row, SaveMode, SparkSession}\n\u001b[1m\u001b[34mdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [uuid: string, text: string ... 3 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669908656623_0001//jobs/job?id\u003d9"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669914129000_1174107994",
+      "id": "paragraph_1669914129000_1174107994",
+      "dateCreated": "2022-12-01 17:02:09.000",
+      "dateStarted": "2022-12-01 17:28:32.629",
+      "dateFinished": "2022-12-01 17:28:33.402",
+      "status": "FINISHED"
+    },
+    {
+      "title": "2. Global Unmanaged/External Table",
+      "text": "%spark\n\ndf.write.mode(SaveMode.Append).option(\"path\", \"hdfs://namenode:9000/user/zeppelin/External/Global_External_Table\").saveAsTable(\"Global_External_Table\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:32:17.114",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669908656623_0001//jobs/job?id\u003d10"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669915694437_256595995",
+      "id": "paragraph_1669915694437_256595995",
+      "dateCreated": "2022-12-01 17:28:14.437",
+      "dateStarted": "2022-12-01 17:32:17.115",
+      "dateFinished": "2022-12-01 17:32:17.432",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nspark.sql(\"desc formatted default.Global_External_Table\").show(Integer.MAX_VALUE, truncate \u003d false)",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:38:38.676",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------------------------+-----------------------------------------------------------------+-------+\n|col_name                    |data_type                                                        |comment|\n+----------------------------+-----------------------------------------------------------------+-------+\n|uuid                        |string                                                           |null   |\n|text                        |string                                                           |null   |\n|words                       |int                                                              |null   |\n|length                      |int                                                              |null   |\n|timestamp                   |int                                                              |null   |\n|                            |                                                                 |       |\n|# Detailed Table Information|                                                                 |       |\n|Database                    |default                                                          |       |\n|Table                       |global_external_table                                            |       |\n|Owner                       |zeppelin                                                         |       |\n|Created Time                |Thu Dec 01 17:32:17 UTC 2022                                     |       |\n|Last Access                 |UNKNOWN                                                          |       |\n|Created By                  |Spark 3.1.2                                                      |       |\n|Type                        |EXTERNAL                                                         |       |\n|Provider                    |parquet                                                          |       |\n|Statistics                  |4869 bytes                                                       |       |\n|Location                    |hdfs://namenode:9000/user/zeppelin/External/Global_External_Table|       |\n|Serde Library               |org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe      |       |\n|InputFormat                 |org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat    |       |\n|OutputFormat                |org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat   |       |\n+----------------------------+-----------------------------------------------------------------+-------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669916273719_1155319717",
+      "id": "paragraph_1669916273719_1155319717",
+      "dateCreated": "2022-12-01 17:37:53.719",
+      "dateStarted": "2022-12-01 17:38:38.678",
+      "dateFinished": "2022-12-01 17:38:38.801",
+      "status": "FINISHED"
+    },
+    {
+      "title": "3. Local Table (a.k.a) Temporary Table (a.k.a) Temporary View",
+      "text": "%spark\n\ndf.createOrReplaceTempView(\"my_local_view\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:33:38.474",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669915921170_363662885",
+      "id": "paragraph_1669915921170_363662885",
+      "dateCreated": "2022-12-01 17:32:01.170",
+      "dateStarted": "2022-12-01 17:33:38.475",
+      "dateFinished": "2022-12-01 17:33:38.559",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n\nselect * from my_local_view;",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:40:50.159",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "uuid": "string",
+                      "text": "string",
+                      "words": "string",
+                      "length": "string",
+                      "timestamp": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "uuid\ttext\twords\tlength\ttimestamp\ncd56bef5-997b-47c1-8edc-6657c806bbf7\tHello world\t2\t10\t1669888540\nc719729d-34f4-4306-a646-f495d7edbb58\tBrijesh Kumar Dhaker\t3\t16\t1669888545\nc719729d-34f4-4306-a646-f495d7edbb59\tjames\t1\t5\t1669888550\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669916408701_1516181606",
+      "id": "paragraph_1669916408701_1516181606",
+      "dateCreated": "2022-12-01 17:40:08.701",
+      "dateStarted": "2022-12-01 17:40:21.992",
+      "dateFinished": "2022-12-01 17:40:22.019",
+      "status": "FINISHED"
+    },
+    {
+      "title": "4. Global Temporary View",
+      "text": "%spark\n\ndf.createOrReplaceGlobalTempView(\"my_global_view\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:35:06.239",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669916018475_1738793302",
+      "id": "paragraph_1669916018475_1738793302",
+      "dateCreated": "2022-12-01 17:33:38.475",
+      "dateStarted": "2022-12-01 17:35:06.240",
+      "dateFinished": "2022-12-01 17:35:06.346",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nspark.read.table(\"global_temp.my_global_view\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:35:17.251",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+--------------------+-----+------+----------+\n|                uuid|                text|words|length| timestamp|\n+--------------------+--------------------+-----+------+----------+\n|cd56bef5-997b-47c...|         Hello world|    2|    10|1669888540|\n|c719729d-34f4-430...|Brijesh Kumar Dhaker|    3|    16|1669888545|\n|c719729d-34f4-430...|               james|    1|     5|1669888550|\n+--------------------+--------------------+-----+------+----------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669916081826_1023925236",
+      "id": "paragraph_1669916081826_1023925236",
+      "dateCreated": "2022-12-01 17:34:41.826",
+      "dateStarted": "2022-12-01 17:35:09.878",
+      "dateFinished": "2022-12-01 17:35:09.978",
+      "status": "FINISHED"
+    },
+    {
+      "title": "5. Global Permanent View",
+      "text": "%spark\n\nspark.sql(\"CREATE VIEW permanent_view AS SELECT * FROM Global_Managed_Table\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:37:02.652",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres44\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d []\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669916109877_1536386919",
+      "id": "paragraph_1669916109877_1536386919",
+      "dateCreated": "2022-12-01 17:35:09.877",
+      "dateStarted": "2022-12-01 17:37:02.653",
+      "dateFinished": "2022-12-01 17:37:02.829",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n\nselect * from permanent_view;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:40:50.260",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "uuid": "string",
+                      "text": "string",
+                      "words": "string",
+                      "length": "string",
+                      "timestamp": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "uuid\ttext\twords\tlength\ttimestamp\nc719729d-34f4-4306-a646-f495d7edbb58\tBrijesh Kumar Dhaker\t3\t16\t1669888545\ncd56bef5-997b-47c1-8edc-6657c806bbf7\tHello world\t2\t10\t1669888540\nc719729d-34f4-4306-a646-f495d7edbb59\tjames\t1\t5\t1669888550\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669908656623_0001//jobs/job?id\u003d11"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1669908656623_0001//jobs/job?id\u003d12"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669916202120_1659233003",
+      "id": "paragraph_1669916202120_1659233003",
+      "dateCreated": "2022-12-01 17:36:42.120",
+      "dateStarted": "2022-12-01 17:37:31.816",
+      "dateFinished": "2022-12-01 17:37:33.271",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 17:37:31.816",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669916251816_612973077",
+      "id": "paragraph_1669916251816_612973077",
+      "dateCreated": "2022-12-01 17:37:31.816",
+      "status": "READY"
+    }
+  ],
+  "name": "pyspark-table-types",
+  "id": "2HMAW1Q7V",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

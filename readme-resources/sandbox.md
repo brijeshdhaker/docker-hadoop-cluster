@@ -9,8 +9,9 @@ ${SPARK_HOME}/bin/spark-shell \
 --master yarn \
 --principal zeppelin@SANDBOX.NET \
 --keytab /apps/security/keytabs/users/zeppelin.keytab \
---conf spark.yarn.archive=hdfs://namenode:9000/archives/spark/spark-3.1.2.zip \
---conf spark.yarn.dist.archives=hdfs://namenode:9000/archives/pyspark/pyspark3.7-20221125.tar.gz#environment \
+--conf spark.yarn.jars=/opt/spark/jars/*.jar \
+--conf spark.yarn.archive=hdfs://namenode:9000/archives/spark/spark-3.5.0.zip \
+--conf spark.yarn.dist.archives=hdfs://namenode:9000/archives/pyspark/pyspark37-20221125.tar.gz#environment \
 --conf spark.shuffle.service.enabled=true  \
 --conf spark.dynamicAllocation.enabled=true \
 --conf spark.dynamicAllocation.minExecutors=0 \
@@ -27,16 +28,16 @@ ${SPARK_HOME}/bin/spark-submit \
 --class org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer \
 --driver-java-options "-Dfile.encoding=UTF-8 -Dlog4j.configuration=log4j_yarn_cluster.properties -Djava.security.krb5.conf=/etc/krb5.conf" \
 --conf spark.yarn.historyServer.allowTracking=true \
---conf spark.yarn.dist.archives=hdfs://namenode:9000/archives/pyspark/pyspark3.7-20221125.tar.gz#environment \
+--conf spark.yarn.dist.archives=hdfs://namenode:9000/archives/pyspark/pyspark37-20221125.tar.gz#environment \
 --conf spark.yarn.isPython=true \
 --conf spark.jars=/opt/spark/examples/jars/scopt_2.12-3.7.1.jar \
 --conf spark.submit.deployMode=cluster \
 --conf spark.eventLog.enabled=true \
 --conf spark.yarn.maxAppAttempts=1 \
 --conf spark.yarn.queue=engineering \
---conf spark.yarn.archive=hdfs://namenode:9000/archives/spark/spark-3.1.2.zip \
+--conf spark.yarn.archive=hdfs://namenode:9000/archives/spark/spark-3.5.0.zip \
 --conf spark.yarn.submit.waitAppCompletion=false \
---conf spark.jars.packages=io.delta:delta-core_2.12:1.0.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 \
+--conf spark.jars.packages=io.delta:delta-core_2.12:1.0.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 \
 --conf spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension \
 --conf spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog \
 --conf spark.master=yarn \
@@ -49,8 +50,8 @@ ${SPARK_HOME}/bin/spark-submit \
 --conf spark.app.name=zeppelin-app \
 --conf spark.kerberos.keytab=/apps/security/keytabs/users/zeppelin.keytab \
 --conf spark.kerberos.principal=zeppelin@SANDBOX.NET \
---conf spark.eventLog.dir=hdfs://namenode:9000/apps/var/log/spark \
-/opt/spark/examples/jars/spark-examples_2.12-3.1.2.jar 10
+--conf spark.eventLog.dir=hdfs://namenode:9000/apps/var/logs/spark \
+/opt/spark/examples/jars/spark-examples_2.12-3.5.0.jar 10
 
 ${SPARK_HOME}/bin/spark-submit \
     --keytab /apps/security/keytabs/users/zeppelin.keytab \
@@ -63,7 +64,7 @@ ${SPARK_HOME}/bin/spark-submit \
     --queue engineering \
     --name spark-app \
     --class org.apache.spark.examples.SparkPi \
-    /opt/spark/examples/jars/spark-examples_2.12-3.1.2.jar 10
+    /opt/spark/examples/jars/spark-examples_2.12-3.5.0.jar 10
     
 ${SPARK_HOME}/bin/spark-submit \
 --class org.apache.spark.examples.SparkPi \
@@ -75,8 +76,8 @@ ${SPARK_HOME}/bin/spark-submit \
 --conf "spark.driver.cores=1" \
 --conf "spark.executor.memory=640m" \
 --conf "spark.executor.cores=2" \
---conf "spark.yarn.archive=hdfs://namenode:9000/archives/spark/spark-3.1.2.zip" \
---conf "spark.jars.packages=io.delta:delta-core_2.12:1.0.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2" \
+--conf "spark.yarn.archive=hdfs://namenode:9000/archives/spark/spark-3.5.0.zip" \
+--conf "spark.jars.packages=io.delta:delta-core_2.12:1.0.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1" \
 --conf "spark.security.credentials.hive.enabled=false" \
 --conf "spark.security.credentials.hbase.enabled=false" \
 --conf "spark.kerberos.keytab=/apps/security/keytabs/users/zeppelin.keytab" \
@@ -84,10 +85,10 @@ ${SPARK_HOME}/bin/spark-submit \
 --conf "spark.driver.extraJavaOptions='-Divy.cache.dir=/tmp -Divy.home=/tmp -Djava.security.krb5.conf=/etc/krb5.conf'" \
 --conf "spark.executor.extraJavaOptions='-Djava.security.krb5.conf=/etc/krb5.conf'" \
 --conf "spark.eventLog.enabled=true" \
---conf "spark.eventLog.dir=hdfs://namenode:9000/apps/var/log/spark" \
+--conf "spark.eventLog.dir=hdfs://namenode:9000/apps/var/logs/spark" \
 --conf "spark.yarn.historyServer.allowTracking=true" \
 --conf "spark.webui.yarn.useProxy=true" \
-/opt/spark/examples/jars/spark-examples_2.12-3.1.2.jar 10
+/opt/spark/examples/jars/spark-examples_2.12-3.5.0.jar 10
 
 ```
 

@@ -1,0 +1,609 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\n\nShuffle Hash Join, as the name indicates works by shuffling both datasets. So the same keys from both sides end up in the same partition or task. Once the data is shuffled, the smallest of the two will be hashed into buckets and a hash join is performed within the partition.\n\nShuffle Hash Join is different from Broadcast Hash Join because the entire dataset is not broadcasted instead both datasets are shuffled and then the smallest side data is hashed and bucketed and hash joined with the bigger side in all the partitions.\n\n### Shuffle Hash Join is divided into 2 phases.\n\n#### Shuffle phase – both datasets are shuffled\n\n#### Hash Join phase – smaller side data is hashed and bucketed and hash joined with he bigger side in all the partitions.\n\n### When does Shuffle Hash Join work?\nFaster than a sort merge join since sorting is not involved.\nWorks only for equi joins\nWorks for all join types\nWorks well when a dataset can not be broadcasted but one side of partitioned data after shuffling will be small enough for hash join.\n \n\n#### When Shuffle Hash Join doesn’t work?\nDoes not works for non-equi joins\nDoes not work with data which are heavily skewed. Let’s say we are joining a sales dataset on the product key. It is possible that the dataset has a disproportionate number of records for a certain product key. Shuffle will result in sending all the records for this product key to a single partition. Hashing all the records for this product key inside a single partition will result in an Out of Memory exception. So Shuffle Hash Join will work for a balanced dataset but not for skewed dataset.\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-01 01:43:09.789",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eShuffle Hash Join, as the name indicates works by shuffling both datasets. So the same keys from both sides end up in the same partition or task. Once the data is shuffled, the smallest of the two will be hashed into buckets and a hash join is performed within the partition.\u003c/p\u003e\n\u003cp\u003eShuffle Hash Join is different from Broadcast Hash Join because the entire dataset is not broadcasted instead both datasets are shuffled and then the smallest side data is hashed and bucketed and hash joined with the bigger side in all the partitions.\u003c/p\u003e\n\u003ch3\u003eShuffle Hash Join is divided into 2 phases.\u003c/h3\u003e\n\u003ch4\u003eShuffle phase – both datasets are shuffled\u003c/h4\u003e\n\u003ch4\u003eHash Join phase – smaller side data is hashed and bucketed and hash joined with he bigger side in all the partitions.\u003c/h4\u003e\n\u003ch3\u003eWhen does Shuffle Hash Join work?\u003c/h3\u003e\n\u003cp\u003eFaster than a sort merge join since sorting is not involved.\u003cbr /\u003e\nWorks only for equi joins\u003cbr /\u003e\nWorks for all join types\u003cbr /\u003e\nWorks well when a dataset can not be broadcasted but one side of partitioned data after shuffling will be small enough for hash join.\u003c/p\u003e\n\u003ch4\u003eWhen Shuffle Hash Join doesn’t work?\u003c/h4\u003e\n\u003cp\u003eDoes not works for non-equi joins\u003cbr /\u003e\nDoes not work with data which are heavily skewed. Let’s say we are joining a sales dataset on the product key. It is possible that the dataset has a disproportionate number of records for a certain product key. Shuffle will result in sending all the records for this product key to a single partition. Hashing all the records for this product key inside a single partition will result in an Out of Memory exception. So Shuffle Hash Join will work for a balanced dataset but not for skewed dataset.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640921039971_538316983",
+      "id": "paragraph_1640921039971_538316983",
+      "dateCreated": "2021-12-31 03:23:59.971",
+      "dateStarted": "2022-01-01 01:43:09.789",
+      "dateFinished": "2022-01-01 01:43:09.804",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.conf\n\nSPARK_HOME /opt/spark-2.3.4\nmaster local[*]\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-02 15:11:54.553",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640920820364_1629104986",
+      "id": "paragraph_1640920820364_1629104986",
+      "dateCreated": "2021-12-31 03:20:20.365",
+      "dateStarted": "2022-01-02 15:11:54.560",
+      "dateFinished": "2022-01-02 15:11:54.568",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nimport scala.util._\nimport  org.apache.spark.sql.functions._\n\nimport spark.sqlContext.implicits._\n\nval df1 \u003d Seq.fill(50)(Random.nextInt).toDF(\"C1\")\n//df1.show()\nval df2 \u003d df1.withColumn(\"C2\", rand()).join(df1, \"C1\").cache()\n\n//df1.select(concat($\"C1\", lit(\" Brijesh \")).alias(\"VAL\")).show()\n\n//use withColumn method to add a new column called newColName\ndf1.withColumn(\"newColName\", concat($\"C1\", lit(\" Hello\"))).select(\"newColName\", \"C1\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-23 02:07:13.214",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----------------+-----------+\n|       newColName|         C1|\n+-----------------+-----------+\n|-1080580068 Hello|-1080580068|\n|  474963058 Hello|  474963058|\n|  265907090 Hello|  265907090|\n|  690863799 Hello|  690863799|\n|  483110999 Hello|  483110999|\n|  507261083 Hello|  507261083|\n|-1617955421 Hello|-1617955421|\n| 1991204141 Hello| 1991204141|\n| -618234747 Hello| -618234747|\n|-1638384624 Hello|-1638384624|\n| 1716582348 Hello| 1716582348|\n| 1968463279 Hello| 1968463279|\n|  277336863 Hello|  277336863|\n| -163354128 Hello| -163354128|\n|  517411800 Hello|  517411800|\n| 1761010396 Hello| 1761010396|\n| 1159428778 Hello| 1159428778|\n| 1557113873 Hello| 1557113873|\n|  -22975720 Hello|  -22975720|\n|-1594820355 Hello|-1594820355|\n+-----------------+-----------+\nonly showing top 20 rows\n\nimport scala.util._\nimport org.apache.spark.sql.functions._\nimport spark.sqlContext.implicits._\n\u001b[1m\u001b[34mdf1\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [C1: int]\n\u001b[1m\u001b[34mdf2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m \u003d [C1: int, C2: double]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641033351266_1126094960",
+      "id": "paragraph_1641033351266_1126094960",
+      "dateCreated": "2022-01-01 10:35:51.266",
+      "dateStarted": "2023-07-23 02:07:13.216",
+      "dateFinished": "2023-07-23 02:07:14.098",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nimport spark.sqlContext.implicits._\nimport org.apache.spark.sql.{Row, SaveMode, SparkSession}\n\nval df \u003d spark.range(1,31).withColumn(\"partition_id\", col(\"id\")%3)\nprint(df.count())\ndf.show()\ndf.write.mode(SaveMode.Overwrite).option(\"inferSchema\", false).partitionBy(\"partition_id\").format(\"parquet\").save(\"range_data\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-23 02:07:18.759",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "30+---+------------+\n| id|partition_id|\n+---+------------+\n|  1|           1|\n|  2|           2|\n|  3|           0|\n|  4|           1|\n|  5|           2|\n|  6|           0|\n|  7|           1|\n|  8|           2|\n|  9|           0|\n| 10|           1|\n| 11|           2|\n| 12|           0|\n| 13|           1|\n| 14|           2|\n| 15|           0|\n| 16|           1|\n| 17|           2|\n| 18|           0|\n| 19|           1|\n| 20|           2|\n+---+------------+\nonly showing top 20 rows\n\nimport spark.sqlContext.implicits._\nimport org.apache.spark.sql.{Row, SaveMode, SparkSession}\n\u001b[1m\u001b[34mdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: bigint, partition_id: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1690076238010_0002//jobs/job?id\u003d8"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1690076238010_0002//jobs/job?id\u003d9"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1690076238010_0002//jobs/job?id\u003d10"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1690076238010_0002//jobs/job?id\u003d11"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640921002358_1279001877",
+      "id": "paragraph_1640921002358_1279001877",
+      "dateCreated": "2021-12-31 03:23:22.358",
+      "dateStarted": "2023-07-23 02:07:18.763",
+      "dateFinished": "2023-07-23 02:07:22.167",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%file\n\nls -l /user/zeppelin/range_data",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-23 02:07:42.784",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/undefined",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "-rw-r--r--\t3\t zeppelin\tsupergroup\t0\t2023-07-23 02:07GMT\t/user/zeppelin/range_data/_SUCCESS\ndrwxr-xr-x\t-\t zeppelin\tsupergroup\t0\t2023-07-23 02:07GMT\t/user/zeppelin/range_data/partition_id\u003d0\ndrwxr-xr-x\t-\t zeppelin\tsupergroup\t0\t2023-07-23 02:07GMT\t/user/zeppelin/range_data/partition_id\u003d1\ndrwxr-xr-x\t-\t zeppelin\tsupergroup\t0\t2023-07-23 02:07GMT\t/user/zeppelin/range_data/partition_id\u003d2\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641020658037_259879160",
+      "id": "paragraph_1641020658037_259879160",
+      "dateCreated": "2022-01-01 07:04:18.037",
+      "dateStarted": "2023-07-23 02:07:42.794",
+      "dateFinished": "2023-07-23 02:07:42.800",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\n//\nspark.conf.set(\"spark.sql.autoBroadcastJoinThreshold\", -1)\n\n//\nspark.conf.set(\"spark.sql.join.preferSortMergeJoin\", \"false\")\n\n//\nspark.conf.set(\"spark.sql.shuffle.partitions\", 3)\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-02 15:00:34.215",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641022861672_2076483879",
+      "id": "paragraph_1641022861672_2076483879",
+      "dateCreated": "2022-01-01 07:41:01.672",
+      "dateStarted": "2022-01-02 14:54:01.789",
+      "dateFinished": "2022-01-02 14:54:01.903",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nval data1 \u003d spark.read.format(\"parquet\").load(\"/user/zeppelin/range_data\")\nval data2 \u003d spark.range(1,31).withColumn(\"value\", col(\"id\"))\n\nval dfJoined \u003d data1.join(data2, data1(\"id\") \u003d\u003d\u003d data2(\"id\"))\n\ndfJoined.foreach(x \u003d\u003e ())",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-02 14:54:04.110",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdata1\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: bigint, partition_id: int]\n\u001b[1m\u001b[34mdata2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: bigint, value: bigint]\n\u001b[1m\u001b[34mdfJoined\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: bigint, partition_id: int ... 2 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d71"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d72"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641023245881_926550242",
+      "id": "paragraph_1641023245881_926550242",
+      "dateCreated": "2022-01-01 07:47:25.881",
+      "dateStarted": "2022-01-02 14:54:04.111",
+      "dateFinished": "2022-01-02 14:54:04.457",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nprintln(\" spark.sql.join.preferSortMergeJoin \" + spark.conf.get(\"spark.sql.join.preferSortMergeJoin\"))\nprintln(\" spark.sql.autoBroadcastJoinThreshold \" + spark.conf.get(\"spark.sql.autoBroadcastJoinThreshold\"))\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-02 15:26:27.811",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": " spark.sql.join.preferSortMergeJoin false\n spark.sql.autoBroadcastJoinThreshold -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641135207534_2144843192",
+      "id": "paragraph_1641135207534_2144843192",
+      "dateCreated": "2022-01-02 14:53:27.534",
+      "dateStarted": "2022-01-02 15:26:27.814",
+      "dateFinished": "2022-01-02 15:26:27.950",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\n// 1. Disable auto broadcasting\nspark.conf.set(\"spark.sql.autoBroadcastJoinThreshold\", 1)\n// 2. Disable preference on SortMergeJoin\nspark.conf.set(\"spark.sql.join.preferSortMergeJoin\", false)\n\n\nval dataset \u003d Seq(\n  (0, \"playing\"),\n  (1, \"with\"),\n  (2, \"ShuffledHashJoinExec\")\n).toDF(\"id\", \"token\")\n// Self LEFT SEMI join\nval dfJoined \u003d dataset.join(dataset, Seq(\"id\"), \"leftsemi\")\n\ndfJoined.foreach(x \u003d\u003e ())",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-02 15:30:30.582",
+      "progress": 52,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdataset\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: int, token: string]\n\u001b[1m\u001b[34mdfJoined\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: int, token: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d2"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641135382995_731628130",
+      "id": "paragraph_1641135382995_731628130",
+      "dateCreated": "2022-01-02 14:56:22.995",
+      "dateStarted": "2022-01-02 15:30:30.586",
+      "dateFinished": "2022-01-02 15:30:31.703",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\ndfJoined.explain",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-02 15:32:47.309",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u003d\u003d Physical Plan \u003d\u003d\nShuffledHashJoin [id#39], [id#43], LeftSemi, BuildRight\n:- Exchange hashpartitioning(id#39, 200)\n:  +- LocalTableScan [id#39, token#40]\n+- Exchange hashpartitioning(id#43, 200)\n   +- LocalTableScan [id#43]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641137558370_1243688250",
+      "id": "paragraph_1641137558370_1243688250",
+      "dateCreated": "2022-01-02 15:32:38.370",
+      "dateStarted": "2022-01-02 15:32:47.534",
+      "dateFinished": "2022-01-02 15:32:47.657",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\ndfJoined.queryExecution.optimizedPlan",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-02 15:31:51.651",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres8\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.catalyst.plans.logical.LogicalPlan\u001b[0m \u003d\nJoin LeftSemi, (id#39 \u003d id#43)\n:- LocalRelation [id#39, token#40]\n+- LocalRelation [id#43]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641137501669_1819126930",
+      "id": "paragraph_1641137501669_1819126930",
+      "dateCreated": "2022-01-02 15:31:41.669",
+      "dateStarted": "2022-01-02 15:31:51.654",
+      "dateFinished": "2022-01-02 15:31:51.820",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\ndfJoined.queryExecution.executedPlan",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-02 15:30:34.448",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres7\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.execution.SparkPlan\u001b[0m \u003d\nShuffledHashJoin [id#39], [id#43], LeftSemi, BuildRight\n:- Exchange hashpartitioning(id#39, 200)\n:  +- LocalTableScan [id#39, token#40]\n+- Exchange hashpartitioning(id#43, 200)\n   +- LocalTableScan [id#43]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641027342352_611862974",
+      "id": "paragraph_1641027342352_611862974",
+      "dateCreated": "2022-01-01 08:55:42.352",
+      "dateStarted": "2022-01-02 15:30:34.450",
+      "dateFinished": "2022-01-02 15:30:34.611",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\ndfJoined.queryExecution",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-02 14:49:50.548",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres13\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.execution.QueryExecution\u001b[0m \u003d\n\u003d\u003d Parsed Logical Plan \u003d\u003d\nJoin Inner, (id#734L \u003d id#738L)\n:- Relation[id#734L,partition_id#735] parquet\n+- Project [id#738L, id#738L AS value#740L]\n   +- Range (1, 31, step\u003d1, splits\u003dSome(2))\n\n\u003d\u003d Analyzed Logical Plan \u003d\u003d\nid: bigint, partition_id: int, id: bigint, value: bigint\nJoin Inner, (id#734L \u003d id#738L)\n:- Relation[id#734L,partition_id#735] parquet\n+- Project [id#738L, id#738L AS value#740L]\n   +- Range (1, 31, step\u003d1, splits\u003dSome(2))\n\n\u003d\u003d Optimized Logical Plan \u003d\u003d\nJoin Inner, (id#734L \u003d id#738L)\n:- Filter isnotnull(id#734L)\n:  +- Relation[id#734L,partition_id#735] parquet\n+- Project [id#738L, id#738L AS value#740L]\n   +- Range (1, 31, step\u003d1, splits\u003dSome(2))\n\n\u003d\u003d Physical Plan \u003d\u003d\n*(5) SortMergeJoin [id#..."
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641023591644_697401469",
+      "id": "paragraph_1641023591644_697401469",
+      "dateCreated": "2022-01-01 07:53:11.644",
+      "dateStarted": "2022-01-02 14:49:50.549",
+      "dateFinished": "2022-01-02 14:49:50.659",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-01 08:56:02.211",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641027362211_1817547450",
+      "id": "paragraph_1641027362211_1817547450",
+      "dateCreated": "2022-01-01 08:56:02.211",
+      "status": "READY"
+    }
+  ],
+  "name": "shuffle-hash-join",
+  "id": "2GRFYA2BN",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

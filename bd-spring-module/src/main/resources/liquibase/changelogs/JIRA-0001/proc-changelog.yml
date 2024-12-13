@@ -1,0 +1,25 @@
+## YAML Template.
+---
+databaseChangeLog:
+  - changeSet:  
+      id:  JIRA-0003-P-001  
+      author:  Brijesh D.
+      runOnChange: true
+      context: mysql
+      changes:
+        - sqlFile:
+            path: ../../objects/P_GET_USER_DETAILS.sql
+            relativeToChangelogFile: true
+            endDelimiter: $$
+            stripComments: true
+  - changeSet:
+        id:  JIRA-0004-P-001
+        author:  Brijesh D.
+        runOnChange: true
+        context: mysql
+        changes:
+            - sqlFile:
+                  path: ../../objects/P_GET_USER_ASSETS.sql
+                  relativeToChangelogFile: true
+                  endDelimiter: $$
+                  stripComments: true

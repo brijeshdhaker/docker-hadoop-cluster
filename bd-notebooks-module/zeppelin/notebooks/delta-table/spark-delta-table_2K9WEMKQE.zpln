@@ -1,0 +1,685 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.conf\n\n#\n# For Spark 3.4.1\n#\n\nSPARK_HOME \t                                                /opt/spark\nspark.app.name                                              spark_delta_lake\nspark.master                                                local[*]\nspark.jars.ivy                                              /apps/.ivy2\nspark.jars.packages                                         org.apache.spark:spark-hadoop-cloud_2.12:3.4.1,io.delta:delta-core_2.12:2.4.0\nspark.driver.memory                                         1024M\nspark.executor.instances                                    2\nspark.executor.memory                                       1024M\n\n#\nspark.sql.extensions                                        io.delta.sql.DeltaSparkSessionExtension\nspark.sql.catalog.spark_catalog                             org.apache.spark.sql.delta.catalog.DeltaCatalog\n\n#\nspark.hadoop.fs.defaultFS                                   s3a://defaultfs/\nspark.hadoop.fs.s3a.endpoint                                http://minio.sandbox.net:9010\nspark.hadoop.fs.s3a.access.key                              pgm2H2bR7a5kMc5XCYdO\nspark.hadoop.fs.s3a.secret.key                              zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG\nspark.hadoop.fs.s3a.path.style.access                       true\nspark.hadoop.fs.s3a.aws.credentials.provider                org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider\nspark.hadoop.fs.s3a.impl                                    org.apache.hadoop.fs.s3a.S3AFileSystem",
+      "user": "anonymous",
+      "dateUpdated": "2024-12-11 15:53:14.097",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/text"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1728790090694_1177070018",
+      "id": "paragraph_1728790090694_1177070018",
+      "dateCreated": "2024-10-13 03:28:10.694",
+      "dateStarted": "2024-12-11 15:53:14.145",
+      "dateFinished": "2024-12-11 15:53:14.266",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nval data \u003d spark.range(0, 5)\ndata.write.format(\"delta\").save(\"/tmp/delta-table\")",
+      "user": "anonymous",
+      "dateUpdated": "2024-12-11 15:55:47.183",
+      "progress": 1,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdata\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[Long]\u001b[0m \u003d [id: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d0"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d1"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d2"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d3"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d4"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1728790741942_578587733",
+      "id": "paragraph_1728790741942_578587733",
+      "dateCreated": "2024-10-13 03:39:01.942",
+      "dateStarted": "2024-10-13 03:40:55.112",
+      "dateFinished": "2024-10-13 03:41:08.338",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nval df \u003d spark.read.format(\"delta\").load(\"file:///apps/sandbox/defaultfs/pipelines/raw/transactions\")\ndf.show()",
+      "user": "anonymous",
+      "dateUpdated": "2024-12-11 15:57:58.421",
+      "progress": 100,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----+--------------------+--------+--------+--------+----------+----------+-------+----------+\n|  id|                uuid|cardType| website| product|    amount|      city|country| eventTime|\n+----+--------------------+--------+--------+--------+----------+----------+-------+----------+\n|1663|a5dceb81-4494-41e...|Discover|  Amazon|Keyboard| 52.977463|  Yokohama|     JP|1733932206|\n|1666|ec9f0f72-bb40-4aa...|   RuPay|  Myntra|  Mobile| 151.01062|  Yokohama|     JP|1733932206|\n|1669|429c2195-94fb-49b...|    Amex|  Amazon|     LDC| 136.08598|      Pune|     IN|1733932206|\n|1672|7f4d4408-48fa-499...|    Amex|Flipkart|     LDC|  95.06088|     Delhi|     IN|1733932206|\n|1675|8ebd3b08-1674-49e...|    VISA|  Myntra| Printer| 14.764664|  Yokohama|     JP|1733932206|\n|1678|7841633f-4baa-4a2...|  Master|Flipkart|Keyboard| 118.33669|    Oxford|     UK|1733932206|\n|1681|c31aeb9b-c8fa-45c...|   RuPay|SnapDeal|  Laptop| 142.91942|Manchester|     UK|1733932206|\n|1684|f97745b4-308f-4ad...|  Master|    Ebay|  Mobile| 143.17233| Liverpool|     UK|1733932206|\n|1687|d84bfb5a-5d29-4a7...|Discover|SnapDeal|  Mobile| 193.36969|    Mumbai|     IN|1733932206|\n|1690|e2e01675-4cd6-48d...|Discover|  Amazon|     RAM| 37.464405|    Oxford|     UK|1733932206|\n|1693|0067b4c5-3701-4b1...|   RuPay|  Amazon|     LDC|  67.08566|  Yokohama|     JP|1733932207|\n|1696|a727ff3e-2e9f-434...|    VISA|Flipkart|      TV| 31.036076| Hiroshima|     JP|1733932207|\n|1699|5a76fc78-3d84-416...|Discover|  Amazon|  Laptop|119.060585|  New York|    USA|1733932207|\n|1702|9307068a-d644-448...|  Master|    Ebay|   Mouse| 176.31613|    Mumbai|     IN|1733932207|\n|1705|65958d2a-e882-4e4...|   RuPay|SnapDeal|Keyboard| 199.77625|    Mumbai|     IN|1733932207|\n|1708|070f0bbc-78d5-482...|  Master|    Ebay|     LDC| 1.9423822|Manchester|     UK|1733932207|\n|1711|99ff68e3-d49f-475...|    VISA|  Amazon|Computer| 189.89922|  Yokohama|     JP|1733932207|\n|1714|3bcd88f0-e614-458...|    VISA|  Amazon| Monitor| 62.224445|  Yokohama|     JP|1733932207|\n|1717|ecd3ebae-893d-43a...|  Master|    Ebay|     LDC| 12.711041| Hiroshima|     JP|1733932207|\n|1720|ef22531d-3287-437...|   RuPay|  Myntra|     LDC| 47.676563|  New York|    USA|1733932207|\n+----+--------------------+--------+--------+--------+----------+----------+-------+----------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34mdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: bigint, uuid: string ... 7 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d6"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d7"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1728790748315_1922306163",
+      "id": "paragraph_1728790748315_1922306163",
+      "dateCreated": "2024-10-13 03:39:08.315",
+      "dateStarted": "2024-12-11 15:57:58.427",
+      "dateFinished": "2024-12-11 15:58:04.635",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nval data \u003d spark.range(5, 10)\ndata.write.format(\"delta\").mode(\"overwrite\").save(\"/tmp/delta-table\")\ndf.show()",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-13 03:43:08.832",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+\n| id|\n+---+\n|  7|\n|  5|\n|  8|\n|  9|\n|  6|\n+---+\n\n\u001b[1m\u001b[34mdata\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[Long]\u001b[0m \u003d [id: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d8"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d9"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d10"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d11"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d12"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d13"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d14"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d15"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d16"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1728790914575_1439551931",
+      "id": "paragraph_1728790914575_1439551931",
+      "dateCreated": "2024-10-13 03:41:54.577",
+      "dateStarted": "2024-10-13 03:43:08.835",
+      "dateFinished": "2024-10-13 03:43:13.506",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nimport io.delta.tables._\nimport org.apache.spark.sql.functions._\n\nval deltaTable \u003d DeltaTable.forPath(\"/tmp/delta-table\")\n\n// Update every even value by adding 100 to it\ndeltaTable.update(\n  condition \u003d expr(\"id % 2 \u003d\u003d 0\"),\n  set \u003d Map(\"id\" -\u003e expr(\"id + 100\")))\n\n// Delete every even value\ndeltaTable.delete(condition \u003d expr(\"id % 2 \u003d\u003d 0\"))\n\n// Upsert (merge) new data\nval newData \u003d spark.range(0, 20).toDF\n\ndeltaTable.as(\"oldData\")\n  .merge(\n    newData.as(\"newData\"),\n    \"oldData.id \u003d newData.id\")\n  .whenMatched\n  .update(Map(\"id\" -\u003e col(\"newData.id\")))\n  .whenNotMatched\n  .insert(Map(\"id\" -\u003e col(\"newData.id\")))\n  .execute()\n\ndeltaTable.toDF.show()",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-13 03:44:36.015",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+\n| id|\n+---+\n|  0|\n|  1|\n|  2|\n|  3|\n|  4|\n|  5|\n|  6|\n|  7|\n|  8|\n|  9|\n| 10|\n| 11|\n| 12|\n| 13|\n| 14|\n| 15|\n| 16|\n| 17|\n| 18|\n| 19|\n+---+\n\nimport io.delta.tables._\nimport org.apache.spark.sql.functions._\n\u001b[1m\u001b[34mdeltaTable\u001b[0m: \u001b[1m\u001b[32mio.delta.tables.DeltaTable\u001b[0m \u003d io.delta.tables.DeltaTable@306afed2\n\u001b[1m\u001b[34mnewData\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d17"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d18"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d19"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d20"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d21"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d22"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d23"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d24"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d25"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d26"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d27"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d28"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d29"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d30"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d31"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d32"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d33"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d35"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d36"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d37"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d38"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d39"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d40"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d41"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d42"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d43"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d44"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d45"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d46"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1728790988834_1994985029",
+      "id": "paragraph_1728790988834_1994985029",
+      "dateCreated": "2024-10-13 03:43:08.835",
+      "dateStarted": "2024-10-13 03:44:36.018",
+      "dateFinished": "2024-10-13 03:44:47.520",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nval df \u003d spark.read.format(\"delta\").option(\"versionAsOf\", 0).load(\"/tmp/delta-table\")\ndf.show()",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-13 04:43:45.046",
+      "progress": 1,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+\n| id|\n+---+\n|  0|\n|  1|\n|  4|\n|  2|\n|  3|\n+---+\n\n\u001b[1m\u001b[34mdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d9"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d10"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d11"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d12"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d13"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d14"
+            },
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d15"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1728791076017_929680169",
+      "id": "paragraph_1728791076017_929680169",
+      "dateCreated": "2024-10-13 03:44:36.017",
+      "dateStarted": "2024-10-13 04:43:45.049",
+      "dateFinished": "2024-10-13 04:43:48.342",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n\nDESCRIBE HISTORY \u0027/tmp/delta-table\u0027          -- get the full history of the table\n\n-- DESCRIBE HISTORY delta.`/data/events/`\n\n-- DESCRIBE HISTORY \u0027/data/events/\u0027 LIMIT 1  -- get the last operation only\n\n-- DESCRIBE HISTORY eventsTable\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-13 04:41:14.944",
+      "progress": 100,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "version": "string",
+                      "timestamp": "string",
+                      "userId": "string",
+                      "userName": "string",
+                      "operation": "string",
+                      "operationParameters": "string",
+                      "job": "string",
+                      "notebook": "string",
+                      "clusterId": "string",
+                      "readVersion": "string",
+                      "isolationLevel": "string",
+                      "isBlindAppend": "string",
+                      "operationMetrics": "string",
+                      "userMetadata": "string",
+                      "engineInfo": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "version\ttimestamp\tuserId\tuserName\toperation\toperationParameters\tjob\tnotebook\tclusterId\treadVersion\tisolationLevel\tisBlindAppend\toperationMetrics\tuserMetadata\tengineInfo\n4\t2024-10-13 03:44:45.0\tnull\tnull\tMERGE\tMap(predicate -\u003e [\"(id#1475L \u003d id#2962L)\"], matchedPredicates -\u003e [{\"actionType\":\"update\"}], notMatchedPredicates -\u003e [{\"actionType\":\"insert\"}], notMatchedBySourcePredicates -\u003e [])\tnull\tnull\tnull\t3\tSerializable\tfalse\tMap(numTargetRowsCopied -\u003e 0, numTargetRowsDeleted -\u003e 0, numTargetFilesAdded -\u003e 1, numTargetBytesAdded -\u003e 610, numTargetBytesRemoved -\u003e 1434, numTargetRowsMatchedUpdated -\u003e 3, executionTimeMs -\u003e 2106, numTargetRowsInserted -\u003e 17, numTargetRowsMatchedDeleted -\u003e 0, scanTimeMs -\u003e 1205, numTargetRowsUpdated -\u003e 3, numOutputRows -\u003e 20, numTargetRowsNotMatchedBySourceUpdated -\u003e 0, numTargetChangeFilesAdded -\u003e 0, numSourceRows -\u003e 20, numTargetFilesRemoved -\u003e 3, numTargetRowsNotMatchedBySourceDeleted -\u003e 0, rewriteTimeMs -\u003e 825)\tnull\tApache-Spark/3.4.1 Delta-Lake/2.4.0\n3\t2024-10-13 03:44:41.0\tnull\tnull\tDELETE\tMap(predicate -\u003e [\"((id#1475L % 2) \u003d 0)\"])\tnull\tnull\tnull\t2\tSerializable\tfalse\tMap(numRemovedFiles -\u003e 2, numRemovedBytes -\u003e 956, numCopiedRows -\u003e 0, numAddedChangeFiles -\u003e 0, executionTimeMs -\u003e 1202, numDeletedRows -\u003e 2, scanTimeMs -\u003e 931, numAddedFiles -\u003e 0, numAddedBytes -\u003e 0, rewriteTimeMs -\u003e 270)\tnull\tApache-Spark/3.4.1 Delta-Lake/2.4.0\n2\t2024-10-13 03:44:38.0\tnull\tnull\tUPDATE\tMap(predicate -\u003e [\"((id#1475L % 2) \u003d 0)\"])\tnull\tnull\tnull\t1\tSerializable\tfalse\tMap(numRemovedFiles -\u003e 2, numRemovedBytes -\u003e 956, numCopiedRows -\u003e 0, numAddedChangeFiles -\u003e 0, executionTimeMs -\u003e 1470, scanTimeMs -\u003e 1123, numAddedFiles -\u003e 2, numUpdatedRows -\u003e 2, numAddedBytes -\u003e 956, rewriteTimeMs -\u003e 343)\tnull\tApache-Spark/3.4.1 Delta-Lake/2.4.0\n1\t2024-10-13 03:43:10.0\tnull\tnull\tWRITE\tMap(mode -\u003e Overwrite, partitionBy -\u003e [])\tnull\tnull\tnull\t0\tSerializable\tfalse\tMap(numFiles -\u003e 6, numOutputRows -\u003e 5, numOutputBytes -\u003e 2686)\tnull\tApache-Spark/3.4.1 Delta-Lake/2.4.0\n0\t2024-10-13 03:41:02.0\tnull\tnull\tWRITE\tMap(mode -\u003e ErrorIfExists, partitionBy -\u003e [])\tnull\tnull\tnull\tnull\tSerializable\ttrue\tMap(numFiles -\u003e 6, numOutputRows -\u003e 5, numOutputBytes -\u003e 2686)\tnull\tApache-Spark/3.4.1 Delta-Lake/2.4.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin.sandbox.net:4040/jobs/job?id\u003d6"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1728791146130_1778857646",
+      "id": "paragraph_1728791146130_1778857646",
+      "dateCreated": "2024-10-13 03:45:46.131",
+      "dateStarted": "2024-10-13 04:41:01.261",
+      "dateFinished": "2024-10-13 04:41:02.554",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n\nDESCRIBE DETAIL \u0027/tmp/delta-table\u0027",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-13 04:44:09.148",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "format": "string",
+                      "id": "string",
+                      "name": "string",
+                      "description": "string",
+                      "location": "string",
+                      "createdAt": "string",
+                      "lastModified": "string",
+                      "partitionColumns": "string",
+                      "numFiles": "string",
+                      "sizeInBytes": "string",
+                      "properties": "string",
+                      "minReaderVersion": "string",
+                      "minWriterVersion": "string",
+                      "tableFeatures": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "format",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "id",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "format\tid\tname\tdescription\tlocation\tcreatedAt\tlastModified\tpartitionColumns\tnumFiles\tsizeInBytes\tproperties\tminReaderVersion\tminWriterVersion\ttableFeatures\ndelta\td3ab833d-8720-4832-bdf4-1c966dfb1095\tnull\tnull\ts3a://defaultfs/tmp/delta-table\t2024-10-13 03:40:59.67\t2024-10-13 03:44:45.0\tWrappedArray()\t1\t610\tMap()\t1\t2\tWrappedArray(appendOnly, invariants)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1728791577548_1652693776",
+      "id": "paragraph_1728791577548_1652693776",
+      "dateCreated": "2024-10-13 03:52:57.548",
+      "dateStarted": "2024-10-13 03:54:18.657",
+      "dateFinished": "2024-10-13 03:54:18.921",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-13 03:54:18.657",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1728791658657_1304369054",
+      "id": "paragraph_1728791658657_1304369054",
+      "dateCreated": "2024-10-13 03:54:18.657",
+      "status": "READY"
+    }
+  ],
+  "name": "spark-delta-table",
+  "id": "2K9WEMKQE",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.12.0-SNAPSHOT",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

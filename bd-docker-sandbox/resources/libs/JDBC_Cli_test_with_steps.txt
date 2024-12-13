@@ -1,0 +1,42 @@
+
+
+Step1:
+
+tar -xvf jline_sqlline__mysql_connector.tar 
+
+
+
+Step2:
+
+Syntax: 
+
+[root]# java -Djava.ext.dirs=/path/to/jline_sqlline__mysql_connector/ sqlline.SqlLine
+
+Example:
+
+[root@mi3 sqlline]# java -Djava.ext.dirs=/root/sqlline/jline-1.0/ sqlline.SqlLine
+sqlline version 1.0.2 by Marc Prud'hommeaux
+
+
+
+Step3:
+
+
+Syntax:
+
+sqlline> !connect jdbc:mysql://<mysql db hostname>:<port>/<db>    <username>    <password>
+
+
+Example:
+
+sqlline> !connect jdbc:mysql://mi1.openstacklocal:3306/hue hue hue
+Connecting to jdbc:mysql://mi1.openstacklocal:3306/hue
+Connected to: MySQL (version 5.1.73)
+Driver: MySQL-AB JDBC Driver (version mysql-connector-java-5.1.17-SNAPSHOT ( Revision: ${bzr.revision-id} ))
+Autocommit status: true
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+0: jdbc:mysql://mi1.openstacklocal:3306/hue> 
+
+
+
+

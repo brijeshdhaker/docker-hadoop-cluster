@@ -43,6 +43,7 @@ nc -z -v kdcserver.sandbox.net 749
 
 ## UDP Port Scan
 netcat -u kdcserver.sandbox.net 88
+netstat -na | grep 9080
 
 # Passphrase-less SSH
 $ ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa_hadoop
@@ -53,3 +54,30 @@ $ chmod 0600 ~/.ssh/authorized_keys
 ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsacat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keyschmod 0600 ~/.ssh/authorized_keysssh localhost
 
 yarn logs -applicationId your_application_id > your_application_id.log 2>&1
+
+## Find Hidden Files Using Find Command
+```shell
+find . -name ".*" -type f 
+for i in $(find . -name ".*" -type f)
+do
+  #echo "output: $i"
+  rm -Rf $i
+done
+
+```
+
+update-alternatives --config java
+
+cat <<EOF > test.txt
+Hello
+EOF
+
+cat > test.txt <<EOF
+Hello
+EOF
+
+python -m http.server 8888
+
+#
+#
+smbclient -L //192.168.80.1 -U brijeshdhaker@gmail.com --password=Windows2024$ --workgroup=WORKGROUP

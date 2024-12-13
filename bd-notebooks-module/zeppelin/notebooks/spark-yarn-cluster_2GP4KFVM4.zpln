@@ -1,0 +1,239 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.conf\n\n# Must set SPARK_HOME for this example, because it won\u0027t work for Zeppelin\u0027s embedded spark mode. The embedded spark mode doesn\u0027t \n# use spark-submit to launch spark interpreter, so spark.jars and spark.jars.packages won\u0027t take affect. \n\n#\n#\n#\n\nSPARK_HOME /opt/spark\nspark.master yarn\n\n# set driver memory to 8g\nspark.driver.memory 640m\nspark.driver.cores 1\n\n# set executor number to be \nspark.executor.instances  2\nspark.executor.memory  640m\nspark.executor.cores 2\nzeppelin.spark.enableSupportedVersionCheck false\n#\nspark.submit.deployMode cluster\n\n#\n# spark.jars can be used for adding any local jar files into spark interpreter\n# \n\n# spark.jars  file:///opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/lib/hive/lib/hive-hbase-handler-2.1.1-cdh6.3.2.jar\n\n#\n# spark.driver.extraClassPath file:///opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/lib/hive/lib/hive-hbase-handler-2.1.1-cdh6.3.2.jar\n\n#\n# spark.executor.extraClassPath file:///opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/lib/hive/lib/hive-hbase-handler-2.1.1-cdh6.3.2.jar\n# spark.executor.extraLibrary file:///opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/lib/hive/lib/hive-hbase-handler-2.1.1-cdh6.3.2.jar\n\n\n#\n# spark.jars.packages can be used for adding packages into spark interpreter\n# The following is to add avro into your spark interpreter\n#\n\n# spark.jars.packages com.databricks:spark-avro_2.11:4.0.0\n\n#\nspark.yarn.archive\t      hdfs://namenode:9000/archives/spark/spark-3.5.0.zip\n#spark.yarn.jars         /opt/spark/jars/*.jar\n\n#\n# Python 3.7 Runtime\n#\nspark.yarn.dist.archives hdfs://namenode:9000/archives/pyspark/pyspark37-20221125.tar.gz#environment\n\n\n# com.databricks:spark-avro_2.11:4.0.0\n# io.delta:delta-core_2.12:1.0.0\n# org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2\n\n# spark.jars.packages io.delta:delta-core_2.12:1.0.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2\n# spark.sql.extensions\tio.delta.sql.DeltaSparkSessionExtension\t\n# spark.sql.catalog.spark_catalog\torg.apache.spark.sql.delta.catalog.DeltaCatalog\n\n#\nspark.yarn.queue\u003dengineering\n\n#\nspark.kerberos.principal  zeppelin@SANDBOX.NET\nspark.kerberos.keytab     /apps/security/keytabs/users/zeppelin.keytab\nspark.yarn.principal      zeppelin@SANDBOX.NET\nspark.yarn.keytab         /apps/security/keytabs/users/zeppelin.keytab\nspark.yarn.am.extraJavaOptions -Djava.security.krb5.conf\u003d/etc/krb5.conf\nspark.driver.extraJavaOptions -Djava.security.krb5.conf\u003d/etc/krb5.conf\nspark.executor.extraJavaOptions -Djava.security.krb5.conf\u003d/etc/krb5.conf\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-07 12:27:39.772",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1638439801256_1921713656",
+      "id": "paragraph_1638439801256_1921713656",
+      "dateCreated": "2021-12-02 15:40:01.256",
+      "dateStarted": "2024-03-07 12:27:39.776",
+      "dateFinished": "2024-03-07 12:27:39.787",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nspark.sparkContext.master",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-07 12:27:45.519",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "org.apache.zeppelin.interpreter.InterpreterException: java.lang.NoSuchMethodError: scala.tools.nsc.Settings.usejavacp()Lscala/tools/nsc/settings/AbsSettings$AbsSetting;\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.open(LazyOpenInterpreter.java:76)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:833)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:741)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:172)\n\tat org.apache.zeppelin.scheduler.AbstractScheduler.runJob(AbstractScheduler.java:132)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler.lambda$runJobInScheduler$0(FIFOScheduler.java:42)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\tat java.lang.Thread.run(Thread.java:750)\nCaused by: java.lang.NoSuchMethodError: scala.tools.nsc.Settings.usejavacp()Lscala/tools/nsc/settings/AbsSettings$AbsSetting;\n\tat org.apache.zeppelin.spark.SparkScala212Interpreter.open(SparkScala212Interpreter.scala:66)\n\tat org.apache.zeppelin.spark.SparkInterpreter.open(SparkInterpreter.java:121)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.open(LazyOpenInterpreter.java:70)\n\t... 8 more\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1638440008618_2040289727",
+      "id": "paragraph_1638440008618_2040289727",
+      "dateCreated": "2021-12-02 15:43:28.618",
+      "dateStarted": "2024-03-07 12:27:45.523",
+      "dateFinished": "2024-03-07 12:28:47.617",
+      "status": "ERROR"
+    },
+    {
+      "text": "%spark\n\nval employee \u003d Seq(\n      (101,\"Chloe\",-1,\"2018\",8,\"M\",3000),\n      (102,\"Paul\",101,\"2010\",3,\"M\",4000),\n      (103,\"John\",101,\"2010\",1,\"M\",1000),\n      (104,\"Lisa\",102,\"2005\",2,\"F\",2000),\n      (105,\"Evan\",102,\"2010\",7,\"\",-1),\n      (106,\"Amy\",102,\"2010\",9,\"\",-1)\n    )\nval empColumns \u003d Seq(\"id\",\"name\",\"superior_emp_id\",\"year_joined\",\"deptno\",\"gender\",\"salary\")\n\nval department \u003d Seq(\n      (\"Marketing\",1),\n      (\"Sales\",2),\n      (\"Engineering\",3),\n      (\"Finance\",4),\n      (\"IT\",5),\n      (\"HR\",6)\n    )\nval deptColumns \u003d Seq(\"dept_name\",\"deptno\")\n\nimport spark.sqlContext.implicits._\n\nspark.conf.set(\"spark.sql.crossJoin.enabled\",true);\n\nval employeeDF \u003d employee.toDF(empColumns:_*)\nemployeeDF.show(false)\n\nval departmentDF \u003d department.toDF(deptColumns:_*)\ndepartmentDF.show(false)\n\nprintln(\"1. Inner Join Using Expression : join(right: Dataset[_]): DataFrame\")\nemployeeDF.join(departmentDF).show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-06 03:19:49.153",
+      "progress": 100,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+-----+---------------+-----------+------+------+------+\n|id |name |superior_emp_id|year_joined|deptno|gender|salary|\n+---+-----+---------------+-----------+------+------+------+\n|101|Chloe|-1             |2018       |8     |M     |3000  |\n|102|Paul |101            |2010       |3     |M     |4000  |\n|103|John |101            |2010       |1     |M     |1000  |\n|104|Lisa |102            |2005       |2     |F     |2000  |\n|105|Evan |102            |2010       |7     |      |-1    |\n|106|Amy  |102            |2010       |9     |      |-1    |\n+---+-----+---------------+-----------+------+------+------+\n\n+-----------+------+\n|dept_name  |deptno|\n+-----------+------+\n|Marketing  |1     |\n|Sales      |2     |\n|Engineering|3     |\n|Finance    |4     |\n|IT         |5     |\n|HR         |6     |\n+-----------+------+\n\n1. Inner Join Using Expression : join(right: Dataset[_]): DataFrame\n+---+-----+---------------+-----------+------+------+------+-----------+------+\n| id| name|superior_emp_id|year_joined|deptno|gender|salary|  dept_name|deptno|\n+---+-----+---------------+-----------+------+------+------+-----------+------+\n|101|Chloe|             -1|       2018|     8|     M|  3000|  Marketing|     1|\n|101|Chloe|             -1|       2018|     8|     M|  3000|      Sales|     2|\n|101|Chloe|             -1|       2018|     8|     M|  3000|Engineering|     3|\n|101|Chloe|             -1|       2018|     8|     M|  3000|    Finance|     4|\n|101|Chloe|             -1|       2018|     8|     M|  3000|         IT|     5|\n|101|Chloe|             -1|       2018|     8|     M|  3000|         HR|     6|\n|102| Paul|            101|       2010|     3|     M|  4000|  Marketing|     1|\n|102| Paul|            101|       2010|     3|     M|  4000|      Sales|     2|\n|102| Paul|            101|       2010|     3|     M|  4000|Engineering|     3|\n|102| Paul|            101|       2010|     3|     M|  4000|    Finance|     4|\n|102| Paul|            101|       2010|     3|     M|  4000|         IT|     5|\n|102| Paul|            101|       2010|     3|     M|  4000|         HR|     6|\n|103| John|            101|       2010|     1|     M|  1000|  Marketing|     1|\n|103| John|            101|       2010|     1|     M|  1000|      Sales|     2|\n|103| John|            101|       2010|     1|     M|  1000|Engineering|     3|\n|103| John|            101|       2010|     1|     M|  1000|    Finance|     4|\n|103| John|            101|       2010|     1|     M|  1000|         IT|     5|\n|103| John|            101|       2010|     1|     M|  1000|         HR|     6|\n|104| Lisa|            102|       2005|     2|     F|  2000|  Marketing|     1|\n|104| Lisa|            102|       2005|     2|     F|  2000|      Sales|     2|\n+---+-----+---------------+-----------+------+------+------+-----------+------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709694169817_0004//jobs/job?id\u003d4"
+            },
+            {
+              "jobUrl": "http://resourcemanager.sandbox.net:8088/proxy/application_1709694169817_0004//jobs/job?id\u003d5"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1638442347634_2006643863",
+      "id": "paragraph_1638442347634_2006643863",
+      "dateCreated": "2021-12-02 16:22:27.634",
+      "dateStarted": "2024-03-06 03:19:49.156",
+      "dateFinished": "2024-03-06 03:19:50.372",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nspark.sparkContext.stop()\n",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-30 03:15:45.344",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640794966503_1048083866",
+      "id": "paragraph_1640794966503_1048083866",
+      "dateCreated": "2021-12-29 16:22:46.503",
+      "dateStarted": "2021-12-30 03:15:45.346",
+      "dateFinished": "2021-12-30 03:15:45.661",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-17 11:22:34.511",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640834145345_1976143351",
+      "id": "paragraph_1640834145345_1976143351",
+      "dateCreated": "2021-12-30 03:15:45.345",
+      "dateStarted": "2024-02-17 11:22:34.514",
+      "dateFinished": "2024-02-17 11:22:34.710",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-20 02:36:59.048",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1689820619048_1152570598",
+      "id": "paragraph_1689820619048_1152570598",
+      "dateCreated": "2023-07-20 02:36:59.048",
+      "status": "READY"
+    }
+  ],
+  "name": "spark-yarn-cluster",
+  "id": "2GP4KFVM4",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

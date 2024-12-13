@@ -1,0 +1,470 @@
+{
+  "paragraphs": [
+    {
+      "text": "%hive\n\ndrop table IF EXISTS tweeter_tweets;\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 15:38:16.857",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "2": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "_c0": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641828852655_1982241524",
+      "id": "paragraph_1641828852655_1982241524",
+      "dateCreated": "2022-01-10 15:34:12.655",
+      "dateStarted": "2022-12-01 15:38:16.862",
+      "dateFinished": "2022-12-01 15:38:17.585",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\n--\nCREATE TABLE if not exists tweeter_tweets (\n    uuid STRING,\n    text STRING, \n    words INT, \n    length INT,\n    `timestamp` BIGINT\n) \nSTORED AS ORC;\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 08:39:47.550",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "2": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "_c0": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641875515517_863888253",
+      "id": "paragraph_1641875515517_863888253",
+      "dateCreated": "2022-01-11 04:31:55.517",
+      "dateStarted": "2022-12-01 08:39:47.553",
+      "dateFinished": "2022-12-01 08:39:47.605",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\n--\nselect * from tweeter_tweets;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 15:37:10.545",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "uuid": "string",
+                      "text": "string",
+                      "words": "string",
+                      "length": "string",
+                      "timestamp": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "uuid\ttext\twords\tlength\ttimestamp\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653712022765_1387770565",
+      "id": "paragraph_1653712022765_1387770565",
+      "dateCreated": "2022-05-28 04:27:02.765",
+      "dateStarted": "2022-12-01 15:37:10.565",
+      "dateFinished": "2022-12-01 15:37:14.992",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nMSCK REPAIR TABLE tweeter_tweets\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 10:02:44.071",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641875777438_949392300",
+      "id": "paragraph_1641875777438_949392300",
+      "dateCreated": "2022-01-11 04:36:17.438",
+      "dateStarted": "2022-12-01 10:02:44.074",
+      "dateFinished": "2022-12-01 10:02:44.114",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nselect * from tweeter_tweets;",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 15:37:50.750",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": true,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "uuid": "string",
+                      "text": "string",
+                      "words": "string",
+                      "length": "string",
+                      "timestamp": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "rotate",
+                  "stacked": true
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "uuid",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "words",
+                  "index": 2.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "uuid\ttext\twords\tlength\ttimestamp\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641828889460_1168357193",
+      "id": "paragraph_1641828889460_1168357193",
+      "dateCreated": "2022-01-10 15:34:49.460",
+      "dateStarted": "2022-12-01 15:37:50.756",
+      "dateFinished": "2022-12-01 15:37:50.919",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\ndescribe formatted tweeter_tweets;",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 15:38:03.151",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "col_name": "string",
+                      "data_type": "string",
+                      "comment": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "col_name\tdata_type\tcomment\n# col_name\tdata_type\tcomment\nuuid\tstring\t\ntext\tstring\t\nwords\tint\t\nlength\tint\t\ntimestamp\tbigint\t\n\tnull\tnull\n# Detailed Table Information\tnull\tnull\nDatabase:           \tdefault             \tnull\nOwnerType:          \tUSER                \tnull\nOwner:              \tzeppelin            \tnull\nCreateTime:         \tThu Dec 01 09:55:37 UTC 2022\tnull\nLastAccessTime:     \tUNKNOWN             \tnull\nRetention:          \t0                   \tnull\nLocation:           \thdfs://namenode:9000/user/hive/warehouse/tweeter_tweets\tnull\nTable Type:         \tMANAGED_TABLE       \tnull\nTable Parameters:\tnull\tnull\n\tnumFiles            \t27                  \n\tspark.sql.create.version\t3.1.2               \n\tspark.sql.sources.provider\torc                 \n\tspark.sql.sources.schema.numParts\t1                   \n\tspark.sql.sources.schema.part.0\t{\\\"type\\\":\\\"struct\\\",\\\"fields\\\":[{\\\"name\\\":\\\"uuid\\\",\\\"type\\\":\\\"string\\\",\\\"nullable\\\":true,\\\"metadata\\\":{}},{\\\"name\\\":\\\"text\\\",\\\"type\\\":\\\"string\\\",\\\"nullable\\\":true,\\\"metadata\\\":{}},{\\\"name\\\":\\\"words\\\",\\\"type\\\":\\\"integer\\\",\\\"nullable\\\":true,\\\"metadata\\\":{}},{\\\"name\\\":\\\"length\\\",\\\"type\\\":\\\"integer\\\",\\\"nullable\\\":true,\\\"metadata\\\":{}},{\\\"name\\\":\\\"timestamp\\\",\\\"type\\\":\\\"long\\\",\\\"nullable\\\":true,\\\"metadata\\\":{}}]}\n\ttotalSize           \t32623               \n\ttransient_lastDdlTime\t1669888790          \n\tnull\tnull\n# Storage Information\tnull\tnull\nSerDe Library:      \torg.apache.hadoop.hive.ql.io.orc.OrcSerde\tnull\nInputFormat:        \torg.apache.hadoop.hive.ql.io.orc.OrcInputFormat\tnull\nOutputFormat:       \torg.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\tnull\nCompressed:         \tNo                  \tnull\nNum Buckets:        \t-1                  \tnull\nBucket Columns:     \t[]                  \tnull\nSort Columns:       \t[]                  \tnull\nStorage Desc Params:\tnull\tnull\n\tpath                \thdfs://namenode:9000/user/hive/warehouse/tweeter_tweets\n\tserialization.format\t1                   \n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641828914639_1165800673",
+      "id": "paragraph_1641828914639_1165800673",
+      "dateCreated": "2022-01-10 15:35:14.639",
+      "dateStarted": "2022-12-01 15:38:03.155",
+      "dateFinished": "2022-12-01 15:38:03.372",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-05-28 04:27:51.330",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641881313438_844089109",
+      "id": "paragraph_1641881313438_844089109",
+      "dateCreated": "2022-01-11 06:08:33.438",
+      "status": "READY"
+    }
+  ],
+  "name": "hive-dstream-table",
+  "id": "2GTVB8B4U",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

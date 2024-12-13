@@ -1,0 +1,711 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\n### Perform Analysis to get the average price for houses with different number of bedrooms.\n\nThe houses data set at `/datasets/RealEstate.csv` contains a collection of recent reale state listings in SanLuis Obispo county and around it.\nThe data set contains the following fields:\n1. MLS: Multiple listing Service number for the house(uniqueID).\n2. Location: city/town where the house is located.\n3. Price: the most recent listing price of the house(in dollars).\n4. Bedrooms: Number of bedrooms.\n5. Bathrooms: Number of bathrooms.\n6. Size: Size of the house in square feet.\n7. Price/SQ.ft: price of the house per square foot.\n8. Status:type of sale.Thee type sarerepresented in the dataset: ShortSale,Foreclosureand Regular.\n\nEach field is comma separated.\n\n#### Sample output:\n (3, 325000)\n (1, 266356)\n (2, 325000)\n ...\n\n 3, 1 and 2 mean the number of bedrooms. 325000 means the average price of houses with 3 bedrooms is 325000.\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-14 04:11:37.124",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003ePerform Analysis to get the average price for houses with different number of bedrooms.\u003c/h3\u003e\n\u003cp\u003eThe houses data set at \u003ccode\u003e/datasets/RealEstate.csv\u003c/code\u003e contains a collection of recent reale state listings in SanLuis Obispo county and around it.\u003cbr /\u003e\nThe data set contains the following fields:\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003eMLS: Multiple listing Service number for the house(uniqueID).\u003c/li\u003e\n\u003cli\u003eLocation: city/town where the house is located.\u003c/li\u003e\n\u003cli\u003ePrice: the most recent listing price of the house(in dollars).\u003c/li\u003e\n\u003cli\u003eBedrooms: Number of bedrooms.\u003c/li\u003e\n\u003cli\u003eBathrooms: Number of bathrooms.\u003c/li\u003e\n\u003cli\u003eSize: Size of the house in square feet.\u003c/li\u003e\n\u003cli\u003ePrice/SQ.ft: price of the house per square foot.\u003c/li\u003e\n\u003cli\u003eStatus:type of sale.Thee type sarerepresented in the dataset: ShortSale,Foreclosureand Regular.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eEach field is comma separated.\u003c/p\u003e\n\u003ch4\u003eSample output:\u003c/h4\u003e\n\u003cp\u003e(3, 325000)\u003cbr /\u003e\n(1, 266356)\u003cbr /\u003e\n(2, 325000)\u003cbr /\u003e\n\u0026hellip;\u003c/p\u003e\n\u003cp\u003e3, 1 and 2 mean the number of bedrooms. 325000 means the average price of houses with 3 bedrooms is 325000.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642133269255_1571842163",
+      "id": "paragraph_1642133269255_1571842163",
+      "dateCreated": "2022-01-14 04:07:49.255",
+      "dateStarted": "2022-01-14 04:11:37.125",
+      "dateFinished": "2022-01-14 04:11:37.154",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.conf\n\nSPARK_HOME /opt/spark-3.1.2\nmaster local\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-14 04:00:52.980",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642132852980_1377302931",
+      "id": "paragraph_1642062869510_282349625",
+      "dateCreated": "2022-01-14 04:00:52.980",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\n\n// cat people.json | jq\n\nval rawdata \u003d sc.textFile(\"/datasets/RealEstate.csv\").filter(line \u003d\u003e !line.contains(\"Bedrooms\"))\nrawdata.take(4).foreach(println)\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:58:58.776",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 11.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "132842,Arroyo Grande,795000.00,3,3,2371,335.30,Short Sale\n134364,Paso Robles,399000.00,4,3,2818,141.59,Short Sale\n135141,Paso Robles,545000.00,4,3,3032,179.75,Short Sale\n135712,Morro Bay,909000.00,4,4,3540,256.78,Short Sale\n\u001b[1m\u001b[34mrawdata\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[String]\u001b[0m \u003d MapPartitionsRDD[221] at filter at \u003cconsole\u003e:32\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d74"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642132852981_919997246",
+      "id": "paragraph_1642061616834_1676521321",
+      "dateCreated": "2022-01-14 04:00:52.981",
+      "dateStarted": "2023-02-10 02:58:58.780",
+      "dateFinished": "2023-02-10 02:58:59.005",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nval housePricePairRdd \u003d rawdata.map(record \u003d\u003e (record.split(\",\")(3), record.split(\",\")(2).toDouble))\n\nhousePricePairRdd.take(4).foreach(println)\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:59:02.273",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 11.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(3,795000.0)\n(4,399000.0)\n(4,545000.0)\n(4,909000.0)\n\u001b[1m\u001b[34mhousePricePairRdd\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[(String, Double)]\u001b[0m \u003d MapPartitionsRDD[222] at map at \u003cconsole\u003e:30\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d75"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642132852981_2104761314",
+      "id": "paragraph_1642061766413_1835503491",
+      "dateCreated": "2022-01-14 04:00:52.981",
+      "dateStarted": "2023-02-10 02:59:02.276",
+      "dateFinished": "2023-02-10 02:59:02.467",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Get Average Price By Bed Room Count",
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-14 05:43:08.676",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642138922109_352616450",
+      "id": "paragraph_1642138922109_352616450",
+      "dateCreated": "2022-01-14 05:42:02.110",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\n\ntype AvgCount \u003d (Int, Double)\n\n//1st Argument : specify the what to do with value of the key when the first time key appears in partition.\nval initialize \u003d (x: Double) \u003d\u003e (1, x)\n\n//2nd Argument : specify what to do with value of the key if the same key appears inside same partition\nval combiner \u003d (avgCount: AvgCount, x: Double) \u003d\u003e (avgCount._1 + 1, avgCount._2 + x)\n\n//3rd Argument : specify what to do with the values of key across  other partitions\nval mergeCombiners \u003d (avgCountA: AvgCount, avgCountB: AvgCount) \u003d\u003e (avgCountA._1 + avgCountB._1, avgCountA._2 + avgCountB._2)\n    ",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 03:24:55.148",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "defined type alias AvgCount\n\u001b[1m\u001b[34minitialize\u001b[0m: \u001b[1m\u001b[32mDouble \u003d\u003e (Int, Double)\u001b[0m \u003d $Lambda$4750/183543521@413cbc59\n\u001b[1m\u001b[34mcombiner\u001b[0m: \u001b[1m\u001b[32m(AvgCount, Double) \u003d\u003e (Int, Double)\u001b[0m \u003d $Lambda$4751/538988770@4e74cd31\n\u001b[1m\u001b[34mmergeCombiners\u001b[0m: \u001b[1m\u001b[32m(AvgCount, AvgCount) \u003d\u003e (Int, Double)\u001b[0m \u003d $Lambda$4752/1959762344@6c71235d\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642132852981_1448398896",
+      "id": "paragraph_1642064227753_1830165128",
+      "dateCreated": "2022-01-14 04:00:52.981",
+      "dateStarted": "2023-02-10 03:24:55.151",
+      "dateFinished": "2023-02-10 03:24:55.277",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nval avgPriceByBedroo \u003d housePricePairRdd.combineByKey(initialize, combiner, mergeCombiners)\navgPriceByBedroo.take(4).foreach(println)",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:59:09.170",
+      "progress": 66,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(4,(177,8.557519E7))\n(6,(4,2412900.0))\n(0,(2,586900.0))\n(2,(123,3.2761834E7))\n\u001b[1m\u001b[34mavgPriceByBedroo\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[(String, (Int, Double))]\u001b[0m \u003d ShuffledRDD[223] at combineByKey at \u003cconsole\u003e:34\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d76"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642135668586_883679369",
+      "id": "paragraph_1642135668586_883679369",
+      "dateCreated": "2022-01-14 04:47:48.586",
+      "dateStarted": "2023-02-10 02:59:09.172",
+      "dateFinished": "2023-02-10 02:59:09.380",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nval initPriceRdd \u003d housePricePairRdd.map(x \u003d\u003e (x._1, (1, x._2)))\ninitPriceRdd.take(4).foreach(println)",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 03:25:00.994",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 11.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(3,(1,795000.0))\n(4,(1,399000.0))\n(4,(1,545000.0))\n(4,(1,909000.0))\n\u001b[1m\u001b[34minitPriceRdd\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[(String, (Int, Double))]\u001b[0m \u003d MapPartitionsRDD[235] at map at \u003cconsole\u003e:32\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d92"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642132852981_654680058",
+      "id": "paragraph_1642064478786_1665558630",
+      "dateCreated": "2022-01-14 04:00:52.981",
+      "dateStarted": "2023-02-10 03:25:01.004",
+      "dateFinished": "2023-02-10 03:25:01.136",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nval reducePriceRdd \u003d initPriceRdd.reduceByKey((x, y) \u003d\u003e (x._1 + y._1, x._2 + y._2))\nreducePriceRdd.take(9).foreach(println)",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:59:14.587",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(4,(177,8.557519E7))\n(6,(4,2412900.0))\n(0,(2,586900.0))\n(2,(123,3.2761834E7))\n(7,(1,325000.0))\n(5,(31,2.03936E7))\n(3,(431,1.54755811E8))\n(1,(11,1869800.0))\n(10,(1,699000.0))\n\u001b[1m\u001b[34mreducePriceRdd\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[(String, (Int, Double))]\u001b[0m \u003d ShuffledRDD[225] at reduceByKey at \u003cconsole\u003e:30\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d78"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d79"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642134542273_1319963737",
+      "id": "paragraph_1642134542273_1319963737",
+      "dateCreated": "2022-01-14 04:29:02.273",
+      "dateStarted": "2023-02-10 02:59:14.590",
+      "dateFinished": "2023-02-10 02:59:14.813",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nval avgPriceRdd \u003d reducePriceRdd.map(x \u003d\u003e (x._1, x._2._2/x._2._1))\navgPriceRdd.take(9).foreach(println)\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:59:17.752",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(4,483475.6497175141)\n(6,603225.0)\n(0,293450.0)\n(2,266356.3739837398)\n(7,325000.0)\n(5,657858.0645161291)\n(3,359062.20649651974)\n(1,169981.81818181818)\n(10,699000.0)\n\u001b[1m\u001b[34mavgPriceRdd\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[(String, Double)]\u001b[0m \u003d MapPartitionsRDD[226] at map at \u003cconsole\u003e:30\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d80"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d81"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642132852981_611157992",
+      "id": "paragraph_1642062060602_1630820985",
+      "dateCreated": "2022-01-14 04:00:52.981",
+      "dateStarted": "2023-02-10 02:59:17.755",
+      "dateFinished": "2023-02-10 02:59:17.948",
+      "status": "FINISHED"
+    },
+    {
+      "title": "SortByKey",
+      "text": "%spark\n\n \nprintln(\"Sort by Key \u003d\u003d\u003e\")\nval sortRDD \u003d pairedWordRDD.sortByKey()\nsortRDD.take(3).foreach(println)",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:59:19.455",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Sort by Key \u003d\u003d\u003e\n(Brazil,1)\n(Canada,1)\n(China,1)\n\u001b[1m\u001b[34msortRDD\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[(String, Int)]\u001b[0m \u003d ShuffledRDD[229] at sortByKey at \u003cconsole\u003e:34\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d82"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d83"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642132852981_186213286",
+      "id": "paragraph_1642064342739_1401623065",
+      "dateCreated": "2022-01-14 04:00:52.981",
+      "dateStarted": "2023-02-10 02:59:19.458",
+      "dateFinished": "2023-02-10 02:59:19.668",
+      "status": "FINISHED"
+    },
+    {
+      "title": "reduceByKey",
+      "text": "%spark\n\n//reduceByKey\nprintln(\"Reduce by Key \u003d\u003d\u003e\")\nval wordCount \u003d pairedWordRDD.reduceByKey((a,b)\u003d\u003ea+b)\nwordCount.take(6).foreach(println)",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:59:22.050",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Reduce by Key \u003d\u003d\u003e\n(Brazil,1)\n(Canada,1)\n(China,1)\n(USA,2)\n(Germany,1)\n(Russia,1)\n\u001b[1m\u001b[34mwordCount\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[(String, Int)]\u001b[0m \u003d ShuffledRDD[230] at reduceByKey at \u003cconsole\u003e:34\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d84"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d85"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642132852981_1363851267",
+      "id": "paragraph_1642064509536_1828362782",
+      "dateCreated": "2022-01-14 04:00:52.981",
+      "dateStarted": "2023-02-10 02:59:22.053",
+      "dateFinished": "2023-02-10 02:59:22.231",
+      "status": "FINISHED"
+    },
+    {
+      "title": "aggregateByKey",
+      "text": "%spark\n\n/*\n\nAggregateByKey(arg1,arg2):\n\nThis will take the two functions:\n1st Argument : specify what to do with value of the key if the same key appears inside same partition\n2nd Argument : specify what to do with the values of same key across all other partitions\n\n*/\n\ndef seqFunction \u003d (accu:Int, v:Int) \u003d\u003e accu + v\n\ndef combFunction \u003d (accu1:Int, accu2:Int) \u003d\u003e accu1 + accu2\n\nprintln(\"Aggregate by Key \u003d\u003d\u003e wordcount\")\nval wordCount2 \u003d pairedWordRDD.aggregateByKey(0)(seqFunction, combFunction)\n\nwordCount2.take(3).foreach(println)\n    \n\n//keys\nprintln(\"Keys \u003d\u003d\u003e\")\nwordCount2.keys.foreach(println)\n\n//values\nprintln(\"values \u003d\u003d\u003e\")\nwordCount2.values.foreach(println)\n\nprintln(\"Count :\"+wordCount2.count())\n    ",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:59:25.792",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Aggregate by Key \u003d\u003d\u003e wordcount\n(Brazil,1)\n(Canada,1)\n(China,1)\nKeys \u003d\u003d\u003e\nvalues \u003d\u003d\u003e\nCount :7\n\u001b[1m\u001b[34mseqFunction\u001b[0m: \u001b[1m\u001b[32m(Int, Int) \u003d\u003e Int\u001b[0m\n\u001b[1m\u001b[34mcombFunction\u001b[0m: \u001b[1m\u001b[32m(Int, Int) \u003d\u003e Int\u001b[0m\n\u001b[1m\u001b[34mwordCount2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[(String, Int)]\u001b[0m \u003d ShuffledRDD[231] at aggregateByKey at \u003cconsole\u003e:49\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d86"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d87"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d88"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d89"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d90"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642132852981_1888914659",
+      "id": "paragraph_1642064654166_2014856083",
+      "dateCreated": "2022-01-14 04:00:52.981",
+      "dateStarted": "2023-02-10 02:59:25.795",
+      "dateFinished": "2023-02-10 02:59:26.136",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n/*\n\ncombineByKey(arg1, arg2, arg3) :\n\nIt will take three functions and here is the usage of these functions,\n1st Argument : specify the what to do with value of the key when the first time key appears in partition.\n2nd Argument : specify what to do with value of the key if the same key appears inside same partition\n3rd Argument : specify what to do with the values of key across  other partitions\n\n*/\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-14 04:00:52.981",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642132852981_1712066431",
+      "id": "paragraph_1642064853540_1431845509",
+      "dateCreated": "2022-01-14 04:00:52.981",
+      "status": "READY"
+    }
+  ],
+  "name": "CombineByKeyOperation",
+  "id": "2GT17UUHP",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

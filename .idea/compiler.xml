@@ -2,16 +2,36 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="bd-python-module" />
-        <module name="bd-java-module" />
+        <module name="bd-flink-module" />
+        <module name="bd-spring-module" />
+        <module name="bd-spark-module" />
+        <module name="bd-data-generator" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="bd-flink-operations" target="11" />
+      <module name="bd-flink-spend-report" target="11" />
+      <module name="bd-grafana-modules" target="11" />
+      <module name="bd-hadoop-module" target="11" />
+      <module name="bd-java-module" target="1.8" />
+      <module name="bd-pyspark-module" target="1.8" />
+      <module name="bd-python-module" target="1.8" />
+      <module name="docker-hadoop-cluster" target="17" />
       <module name="docker-python-module" target="1.8" />
+      <module name="flink-playground" target="11" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="bd-data-generator" options="" />
+      <module name="bd-spark-module" options="" />
+      <module name="bd-spring-module" options="-parameters" />
+      <module name="docker-hadoop-cluster" options="" />
+    </option>
   </component>
 </project>

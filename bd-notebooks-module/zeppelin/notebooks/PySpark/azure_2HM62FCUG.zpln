@@ -1,0 +1,129 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.conf\n\nspark.app.name spark-azure-store\n\n#\n#\n#\n# spark.jars  hdfs://namenode:9000/common-libs/azure/hadoop-azure-3.3.4.jar,hdfs://namenode:9000/common-libs/azure/azure-storage-7.0.1.jar\n\n#\n#\n#\n\nspark.yarn.archive hdfs://namenode:9000/archives/spark-3.1.2.zip\nspark.yarn.dist.archives hdfs://namenode:9000/archives/pyspark3.7-20221125.tar.gz#environment\n\n#\n#\n#\nspark.jars.packages io.delta:delta-core_2.12:1.0.0,org.apache.hadoop:hadoop-azure:3.3.4,org.apache.hadoop:hadoop-azure-datalake:3.3.4,com.microsoft.azure:azure-storage:7.0.1\n\n\n#\n# Azure Keys\n#\n\nspark.hadoop.fs.azure.account.auth.type SharedKey\nspark.hadoop.fs.azure org.apache.hadoop.fs.azure.NativeAzureFileSystem\nspark.hadoop.fs.azure.account.key.csg100320025a786393.blob.core.windows.net QjhwrUQ1gcQhebsYoIPmQONO8s2vD/rJy4NNxwMfI4zz9ENeGusZNbZFIshgxEaCJ4QRJ3VqAShD+AStXMEfrw\u003d\u003d\n\n# fs.azure org.apache.hadoop.fs.azure.NativeAzureFileSystem\n# fs.azure.account.key.csg100320025a786393.blob.core.windows.net QjhwrUQ1gcQhebsYoIPmQONO8s2vD/rJy4NNxwMfI4zz9ENeGusZNbZFIshgxEaCJ4QRJ3VqAShD+AStXMEfrw\u003d\u003d\n\n\n#\n# Key for ADLSv2\n#\n\n# spark.hadoop.fs.azure.account.key.csg100320025a786393.dfs.core.windows.net QjhwrUQ1gcQhebsYoIPmQONO8s2vD/rJy4NNxwMfI4zz9ENeGusZNbZFIshgxEaCJ4QRJ3VqAShD+AStXMEfrw\u003d\u003d\n\n\n#\n#\n#",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-16 13:50:20.466",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1671182747761_1693705252",
+      "id": "paragraph_1671182747761_1693705252",
+      "dateCreated": "2022-12-16 09:25:47.761",
+      "dateStarted": "2022-12-16 13:50:20.468",
+      "dateFinished": "2022-12-16 13:50:20.482",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n#\n# These should be provided from spark submitt \n#\n\n# spark.conf.set(\"fs.azure.account.auth.type\", \"SharedKey\")\n# spark.conf.set(\"spark.hadoop.fs.azure\", \"org.apache.hadoop.fs.azure.NativeAzureFileSystem\")\n# spark.conf.set(\"spark.hadoop.fs.azure.account.key.csg100320025a786393.blob.core.windows.net\", \"QjhwrUQ1gcQhebsYoIPmQONO8s2vD/rJy4NNxwMfI4zz9ENeGusZNbZFIshgxEaCJ4QRJ3VqAShD+AStXMEfrw\u003d\u003d\")\n\n#\n# These Should be in Spark Programme\n#\n\n#spark.conf.set(\"fs.azure\", \"org.apache.hadoop.fs.azure.NativeAzureFileSystem\");\n#spark.conf.set(\"fs.azure.account.key.csg100320025a786393.blob.core.windows.net\", \"QjhwrUQ1gcQhebsYoIPmQONO8s2vD/rJy4NNxwMfI4zz9ENeGusZNbZFIshgxEaCJ4QRJ3VqAShD+AStXMEfrw\u003d\u003d\");\n\n\n#\n# Load data from Azure Storage\n#\ndf \u003d spark.read.csv(\n    \"wasbs://container001@csg100320025a786393.blob.core.windows.net/flight_weather.csv\",\n    header\u003dTrue,\n    nullValue\u003d\"NA\",\n    inferSchema\u003dTrue\n)\n\n#\n# Select only label and features\n#\ndf \u003d df.select(\n    \"ARR_DEL15\",\n    \"MONTH\",\n    \"DAY_OF_MONTH\",\n    \"DAY_OF_WEEK\",\n    \"UNIQUE_CARRIER\",\n    \"ORIGIN\",\n    \"DEST\",\n    \"CRS_DEP_TIME\",\n    \"CRS_ARR_TIME\",\n    \"RelativeHumidityOrigin\",\n    \"AltimeterOrigin\",\n    \"DryBulbCelsiusOrigin\",\n    \"WindSpeedOrigin\",\n    \"VisibilityOrigin\",\n    \"DewPointCelsiusOrigin\",\n    \"RelativeHumidityDest\",\n    \"AltimeterDest\",\n    \"DryBulbCelsiusDest\",\n    \"WindSpeedDest\",\n    \"VisibilityDest\",\n    \"DewPointCelsiusDest\")\n\n#\n# Drop rows having null field\n#\n\ndf \u003d df.dropna()\n\n\ndf.show(truncate\u003dFalse)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-16 13:50:23.977",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------+-----+------------+-----------+--------------+------+----+------------+------------+----------------------+----------------+--------------------+----------------+----------------+---------------------+--------------------+----------------+------------------+----------------+--------------+-------------------+\n|ARR_DEL15|MONTH|DAY_OF_MONTH|DAY_OF_WEEK|UNIQUE_CARRIER|ORIGIN|DEST|CRS_DEP_TIME|CRS_ARR_TIME|RelativeHumidityOrigin|AltimeterOrigin |DryBulbCelsiusOrigin|WindSpeedOrigin |VisibilityOrigin|DewPointCelsiusOrigin|RelativeHumidityDest|AltimeterDest   |DryBulbCelsiusDest|WindSpeedDest   |VisibilityDest|DewPointCelsiusDest|\n+---------+-----+------------+-----------+--------------+------+----+------------+------------+----------------------+----------------+--------------------+----------------+----------------+---------------------+--------------------+----------------+------------------+----------------+--------------+-------------------+\n|0        |1    |4           |3          |AA            |JFK   |LAX |9           |12          |29.0                  |30.1            |-3.9                |7.0             |10.0            |-19.4                |65.0                |30.18           |17.2              |3.0             |10.0          |10.6               |\n|0        |1    |20          |5          |AA            |JFK   |LAX |9           |12          |28.0                  |30.21           |0.0                 |15.0            |10.0            |-16.7                |78.0                |30.09           |13.9              |6.0             |10.0          |10.0               |\n|0        |1    |5           |4          |AA            |LAX   |JFK |9           |18          |49.0                  |30.02           |18.3                |8.0             |10.0            |7.2                  |72.0                |29.99           |-0.6              |9.0             |10.0          |-5.0               |\n|0        |1    |6           |5          |AA            |JFK   |LAX |12          |15          |54.0                  |29.78           |8.9                 |13.0            |10.0            |0.0                  |90.0                |29.99           |13.3              |0.0             |6.0           |11.7               |\n|0        |1    |22          |7          |AA            |JFK   |LAX |12          |15          |72.0                  |30.5            |0.0                 |6.0             |10.0            |-4.4                 |80.0                |30.14           |12.8              |3.0             |10.0          |9.4                |\n|0        |1    |7           |6          |AA            |LAX   |JFK |12          |20          |83.0                  |30.02           |12.8                |0.0             |6.0             |10.0                 |44.0                |30.01           |7.2               |15.0            |10.0          |-4.4               |\n|0        |1    |23          |1          |AA            |LAX   |JFK |12          |20          |83.0                  |29.98           |12.2                |0.0             |10.0            |9.4                  |98.0                |29.91           |8.15              |8.0             |6.0           |7.9                |\n|1        |1    |8           |7          |AA            |DFW   |HNL |13          |17          |81.0                  |30.0766666666667|11.9                |8.33333333333333|9.0             |8.96666666666667     |87.0                |30.09           |20.0              |0.0             |10.0          |17.8               |\n|0        |1    |24          |2          |AA            |DFW   |HNL |13          |17          |83.5                  |29.94           |12.35               |8.5             |7.5             |9.5                  |84.0                |30.01           |21.7              |0.0             |10.0          |18.9               |\n|1        |1    |9           |1          |AA            |OGG   |DFW |18          |5           |78.0                  |30.06           |20.0                |5.0             |10.0            |16.1                 |87.5                |30.135          |7.1               |11.0            |7.0           |5.3                |\n|1        |1    |25          |3          |AA            |OGG   |DFW |18          |5           |81.0                  |29.95           |15.6                |3.0             |10.0            |12.2                 |91.0                |29.835          |9.2               |16.5            |10.0          |7.9                |\n|0        |1    |10          |2          |AA            |DFW   |OGG |12          |16          |83.0                  |29.83           |7.8                 |14.0            |10.0            |5.0                  |78.0                |30.03           |18.3              |0.0             |10.0          |14.4               |\n|0        |1    |26          |4          |AA            |DFW   |OGG |12          |16          |51.0                  |29.99           |12.8                |11.0            |10.0            |2.8                  |76.0                |29.91           |20.0              |6.0             |10.0          |15.6               |\n|0        |1    |11          |3          |AA            |HNL   |DFW |18          |5           |87.0                  |29.95           |20.0                |5.0             |10.0            |17.8                 |64.0                |29.73           |11.7              |5.0             |10.0          |5.0                |\n|0        |1    |27          |5          |AA            |HNL   |DFW |18          |5           |76.0                  |30.02           |22.8                |9.0             |10.0            |18.3                 |50.0                |29.98           |15.0              |21.0            |10.0          |4.4                |\n|0        |1    |12          |4          |AA            |LAX   |JFK |21          |5           |20.0                  |30.09           |12.2                |6.0             |10.0            |-10.0                |89.3333333333333    |29.4333333333333|7.76666666666667  |25.6666666666667|9.0           |6.03333333333333   |\n|0        |1    |28          |6          |AA            |LAX   |JFK |21          |5           |22.0                  |30.18           |11.7                |6.0             |10.0            |-9.4                 |45.0                |30.02           |6.7               |0.0             |10.0          |-4.4               |\n|0        |1    |13          |5          |AA            |OGG   |LAX |22          |5           |87.0                  |29.94           |17.8                |0.0             |10.0            |15.6                 |4.0                 |30.11           |25.0              |6.0             |10.0          |-19.4              |\n|0        |1    |29          |7          |AA            |OGG   |LAX |22          |5           |68.0                  |30.11           |22.2                |15.0            |10.0            |16.1                 |5.0                 |30.13           |25.6              |6.0             |10.0          |-16.7              |\n|0        |1    |14          |6          |AA            |SFO   |JFK |12          |21          |66.0                  |30.11           |10.6                |13.0            |10.0            |4.4                  |46.0                |30.13           |-3.3              |10.0            |10.0          |-13.3              |\n+---------+-----+------------+-----------+--------------+------+----+------------+------------+----------------------+----------------+--------------------+----------------+----------------+---------------------+--------------------+----------------+------------------+----------------+--------------+-------------------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1671190703944_0025//jobs/job?id\u003d0"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1671190703944_0025//jobs/job?id\u003d1"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1671190703944_0025//jobs/job?id\u003d2"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1671183299665_832903313",
+      "id": "paragraph_1671183299665_832903313",
+      "dateCreated": "2022-12-16 09:34:59.665",
+      "dateStarted": "2022-12-16 13:50:23.978",
+      "dateFinished": "2022-12-16 13:51:41.211",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-16 09:41:17.179",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1671183677178_729435415",
+      "id": "paragraph_1671183677178_729435415",
+      "dateCreated": "2022-12-16 09:41:17.179",
+      "status": "READY"
+    }
+  ],
+  "name": "azure",
+  "id": "2HM62FCUG",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

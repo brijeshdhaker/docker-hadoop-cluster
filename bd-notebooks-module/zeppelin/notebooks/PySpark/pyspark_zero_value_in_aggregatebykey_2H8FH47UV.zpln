@@ -1,0 +1,344 @@
+{
+  "paragraphs": [
+    {
+      "text": "%pyspark\n\nteams_raw_data \u003d [\n (\"Arsenal\", \"2014–2015\", 75), (\"Arsenal\", \"2015–2016\", 71), (\"Arsenal\", \"2016–2017\", 75), (\"Arsenal\", \"2017–2018\", 63),\n (\"Chelsea\", \"2014–2015\", 87), (\"Chelsea\", \"2015–2016\", 50), (\"Chelsea\", \"2016–2017\", 93), (\"Chelsea\", \"2017–2018\", 70), \n (\"Liverpool\", \"2014–2015\", 62), (\"Liverpool\", \"2015–2016\", 60), (\"Liverpool\", \"2016–2017\", 76), (\"Liverpool\", \"2017–2018\", 75),\n (\"M. City\", \"2014–2015\", 79), (\"M. City\", \"2015–2016\", 66), (\"M. City\", \"2016–2017\", 78), (\"M. City\", \"2017–2018\", 100), \n (\"M. United\", \"2014–2015\", 70), (\"M. United\", \"2015–2016\", 66), (\"M. United\", \"2016–2017\", 69), (\"M. United\", \"2017–2018\", 81) \n]\n\n# \npremierRDD \u003d sc.parallelize(teams_raw_data)\nfor i in premierRDD.collect(): print(i)",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-11 01:57:25.336",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(\u0027Arsenal\u0027, \u00272014–2015\u0027, 75)\n(\u0027Arsenal\u0027, \u00272015–2016\u0027, 71)\n(\u0027Arsenal\u0027, \u00272016–2017\u0027, 75)\n(\u0027Arsenal\u0027, \u00272017–2018\u0027, 63)\n(\u0027Chelsea\u0027, \u00272014–2015\u0027, 87)\n(\u0027Chelsea\u0027, \u00272015–2016\u0027, 50)\n(\u0027Chelsea\u0027, \u00272016–2017\u0027, 93)\n(\u0027Chelsea\u0027, \u00272017–2018\u0027, 70)\n(\u0027Liverpool\u0027, \u00272014–2015\u0027, 62)\n(\u0027Liverpool\u0027, \u00272015–2016\u0027, 60)\n(\u0027Liverpool\u0027, \u00272016–2017\u0027, 76)\n(\u0027Liverpool\u0027, \u00272017–2018\u0027, 75)\n(\u0027M. City\u0027, \u00272014–2015\u0027, 79)\n(\u0027M. City\u0027, \u00272015–2016\u0027, 66)\n(\u0027M. City\u0027, \u00272016–2017\u0027, 78)\n(\u0027M. City\u0027, \u00272017–2018\u0027, 100)\n(\u0027M. United\u0027, \u00272014–2015\u0027, 70)\n(\u0027M. United\u0027, \u00272015–2016\u0027, 66)\n(\u0027M. United\u0027, \u00272016–2017\u0027, 69)\n(\u0027M. United\u0027, \u00272017–2018\u0027, 81)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676002203816_0003//jobs/job?id\u003d7"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1656048768102_990028263",
+      "id": "paragraph_1656048768102_990028263",
+      "dateCreated": "2022-06-24 05:32:48.102",
+      "dateStarted": "2023-02-11 01:57:25.339",
+      "dateFinished": "2023-02-11 01:57:25.478",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\ndef seqFunc(acc, teams):\n    if(acc[1] \u003e teams[1]):\n        return acc \n    else: \n        return teams\n \ndef combFunc(acc1, acc2):\n    if(acc1[1] \u003e acc2[1]):\n        return acc1 \n    else:\n        return acc2\n \npremierMap \u003d premierRDD.map(lambda t: (t[0], (t[1], t[2])))\npremierMap.first()\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-11 01:57:28.744",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(\u0027Arsenal\u0027, (\u00272014–2015\u0027, 75))\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676002203816_0003//jobs/job?id\u003d8"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1656049015956_465313861",
+      "id": "paragraph_1656049015956_465313861",
+      "dateCreated": "2022-06-24 05:36:55.957",
+      "dateStarted": "2023-02-11 01:57:28.750",
+      "dateFinished": "2023-02-11 01:57:29.130",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\npremierMax \u003d premierMap.aggregateByKey((\u0027\u0027, 0), seqFunc, combFunc)\nfor i in premierMax.collect(): print(i)\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-11 01:57:33.158",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(\u0027Chelsea\u0027, (\u00272016–2017\u0027, 93))\n(\u0027M. United\u0027, (\u00272017–2018\u0027, 81))\n(\u0027M. City\u0027, (\u00272017–2018\u0027, 100))\n(\u0027Arsenal\u0027, (\u00272016–2017\u0027, 75))\n(\u0027Liverpool\u0027, (\u00272016–2017\u0027, 76))\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676002203816_0003//jobs/job?id\u003d9"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1656049091229_1430708951",
+      "id": "paragraph_1656049091229_1430708951",
+      "dateCreated": "2022-06-24 05:38:11.229",
+      "dateStarted": "2023-02-11 01:57:33.161",
+      "dateFinished": "2023-02-11 01:57:34.167",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n\"\"\"\nLet’s find total points and then start to describe zeroValue. For this, I define new seqFunc and combFunc functions to find total points\n\nIt calculates total points and counts for each team.\n\n\"\"\"\n\nseqFunc \u003d (lambda x, y: (x[0] + y[1], x[1] + 1))\ncombFunc \u003d (lambda x, y: (x[0] + y[0], x[1] + y[1]))\n\npremierAgg \u003d premierMap.aggregateByKey((0,0), seqFunc, combFunc)\nfor i in premierAgg.collect(): print(i)",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-11 01:57:39.658",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(\u0027M. United\u0027, (286, 4))\n(\u0027Chelsea\u0027, (300, 4))\n(\u0027M. City\u0027, (323, 4))\n(\u0027Arsenal\u0027, (284, 4))\n(\u0027Liverpool\u0027, (273, 4))\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676002203816_0003//jobs/job?id\u003d10"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1656049184033_2038824104",
+      "id": "paragraph_1656049184033_2038824104",
+      "dateCreated": "2022-06-24 05:39:44.033",
+      "dateStarted": "2023-02-11 01:57:39.662",
+      "dateFinished": "2023-02-11 01:57:39.900",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n\"\"\"\nWhat if we use a different zeroValue? Let’s use it in total point example;\n\"\"\"\n\npremierAgg \u003d premierMap.aggregateByKey((1,0), seqFunc, combFunc)\nfor i in premierAgg.collect(): print(i)",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-11 01:57:45.929",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(\u0027Chelsea\u0027, (302, 4))\n(\u0027M. United\u0027, (287, 4))\n(\u0027M. City\u0027, (324, 4))\n(\u0027Arsenal\u0027, (285, 4))\n(\u0027Liverpool\u0027, (274, 4))\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676002203816_0003//jobs/job?id\u003d11"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1656051194230_51406278",
+      "id": "paragraph_1656051194230_51406278",
+      "dateCreated": "2022-06-24 06:13:14.231",
+      "dateStarted": "2023-02-11 01:57:45.932",
+      "dateFinished": "2023-02-11 01:57:46.174",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\npremierRDD.getNumPartitions()",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-11 01:57:52.200",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "3\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1656051253186_604254688",
+      "id": "paragraph_1656051253186_604254688",
+      "dateCreated": "2022-06-24 06:14:13.186",
+      "dateStarted": "2023-02-11 01:57:52.203",
+      "dateFinished": "2023-02-11 01:57:52.215",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-06-24 06:15:33.029",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1656051333029_1845288078",
+      "id": "paragraph_1656051333029_1845288078",
+      "dateCreated": "2022-06-24 06:15:33.029",
+      "status": "READY"
+    }
+  ],
+  "name": "pyspark_zero_value_in_aggregatebykey",
+  "id": "2H8FH47UV",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

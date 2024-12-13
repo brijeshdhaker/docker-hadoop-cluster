@@ -1,0 +1,33 @@
+blob.server.port: 6124
+env.java.opts.jobmanager: -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf
+rest.flamegraph.enabled: true
+jobmanager.execution.failover-strategy: region
+jobmanager.rpc.address: a046e3fb3e52
+state.savepoints.dir: hdfs://namenode.sandbox.net:9000/flink/savepoints
+security.kerberos.login.use-ticket-cache: false
+security.kerberos.login.contexts: Client,KafkaClient
+query.server.port: 6125
+jobmanager.bind-host: 0.0.0.0
+s3.secret-key: zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+s3.endpoint: http://minio.sandbox.net:9010
+taskmanager.host: flink-taskmanager
+parallelism.default: 4
+taskmanager.numberOfTaskSlots: 8
+env.hadoop.conf.dir: /opt/hadoop/etc/hadoop
+security.delegation.tokens.enabled: true
+s3.path-style: true
+taskmanager.memory.process.size: 1728m
+taskmanager.bind-host: 0.0.0.0
+jobmanager.memory.process.size: 1600m
+jobmanager.rpc.port: 6123
+rest.bind-address: 0.0.0.0
+security.kerberos.login.principal: flink@SANDBOX.NET
+s3.access-key: pgm2H2bR7a5kMc5XCYdO
+rest.address: flink-jobmanager
+state.backend: filesystem
+rest.profiling.enabled: true
+env.java.opts.taskmanager: -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf
+security.kerberos.login.keytab: /apps/security/keytabs/users/flink.keytab
+s3.path.style.access: true
+state.checkpoints.dir: hdfs://namenode.sandbox.net:9000/flink/checkpoints
+security.kerberos.access.hadoopFileSystems: hdfs://namenode.sandbox.net:9000

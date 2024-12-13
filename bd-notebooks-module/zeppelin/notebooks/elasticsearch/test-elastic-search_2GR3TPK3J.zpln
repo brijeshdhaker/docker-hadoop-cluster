@@ -1,0 +1,180 @@
+{
+  "paragraphs": [
+    {
+      "text": "%elasticsearch\n\nhelp",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-05 01:08:49.510",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/undefined",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Elasticsearch interpreter:\nGeneral format: \u003ccommand\u003e /\u003cindices\u003e/\u003ctypes\u003e/\u003cid\u003e \u003coption\u003e \u003cJSON\u003e\n  - indices: list of indices separated by commas (depends on the command)\n  - types: list of document types separated by commas (depends on the command)\nCommands:\n  - search /indices/types \u003cquery\u003e\n    . indices and types can be omitted (at least, you have to provide \u0027/\u0027)\n    . a query is either a JSON-formatted query, nor a lucene query\n  - size \u003cvalue\u003e\n    . defines the size of the result set (default value is in the config)\n    . if used, this command must be declared before a search command\n  - count /indices/types \u003cquery\u003e\n    . same comments as for the search\n  - get /index/type/id\n  - delete /index/type/id\n  - index /index/type/id \u003cjson-formatted document\u003e\n    . the id can be omitted, elasticsearch will generate one\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641302361321_902222317",
+      "id": "paragraph_1641302361321_902222317",
+      "dateCreated": "2022-01-04 13:19:21.321",
+      "dateStarted": "2022-01-05 01:08:49.516",
+      "dateFinished": "2022-01-05 01:08:51.338",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%elasticsearch\n\nget /demoindex/albumindex/mhLyJ34BXdz264d8bX9H",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-05 03:21:34.649",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/undefined",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "{\n  \"albumName\": \"Tusk\",\n  \"yearOfRelease\": 1979,\n  \"artist\": \"Fleetwood Mac\"\n}"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641302396258_971467720",
+      "id": "paragraph_1641302396258_971467720",
+      "dateCreated": "2022-01-04 13:19:56.258",
+      "dateStarted": "2022-01-05 03:21:34.658",
+      "dateFinished": "2022-01-05 03:21:34.690",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%elasticsearch\n\nsearch /demoindex { \"query\": { \"match_all\": { } } }\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-05 03:22:09.124",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/undefined",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "albumName": "string",
+                      "artist": "string",
+                      "yearOfRelease": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "albumName\tartist\tyearOfRelease\nTusk\tFleetwood Mac\t1979\nLed Zeppelin\tLed Zeppelin\t1969\nBoston\tBoston\t1976\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641302415579_918915367",
+      "id": "paragraph_1641302415579_918915367",
+      "dateCreated": "2022-01-04 13:20:15.579",
+      "dateStarted": "2022-01-05 03:22:08.972",
+      "dateFinished": "2022-01-05 03:22:08.999",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%elasticsearch\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-04 13:22:21.394",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641302541394_1535696282",
+      "id": "paragraph_1641302541394_1535696282",
+      "dateCreated": "2022-01-04 13:22:21.394",
+      "status": "READY"
+    }
+  ],
+  "name": "test-elastic-search",
+  "id": "2GR3TPK3J",
+  "defaultInterpreterGroup": "elasticsearch",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

@@ -1,0 +1,42 @@
+#
+# conda env create -f env_python_37.yml
+#
+# conda activate mr-delta
+# pip install confluent-kafka avro-python3 fastavro==1.4.9 pycodestyle
+# pip install numpy pandas scipy grpcio protobuf pandasql ipython ipykernel
+# pip install jupyter_client nb_conda panel pyyaml seaborn plotnine hvplot intake
+# pip install intake-parquet intake-xarray altair vega_datasets pyarrow pytest
+
+#
+#
+#
+
+name: env_python_37
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7
+  - pyarrow
+  - pandas
+  - conda-pack
+  - ipykernel
+#  - r-base=3
+#  - r-data.table
+#  - r-evaluate
+#  - r-base64enc
+#  - r-knitr
+#  - r-ggplot2
+#  - r-irkernel
+#  - r-shiny
+#  - r-googlevis
+#  - nb_conda
+#  - jupyterlab
+#  - jupyterlab_code_formatter
+#  - isort
+#  - black
+#  - pytest
+#  - pip
+#  - pip:
+#    - pyspark==3.5.0
+#    - delta-spark==1.0.1

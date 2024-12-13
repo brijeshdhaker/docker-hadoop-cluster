@@ -1,0 +1,224 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\nApache Spark 2.2 recently shipped with a state-of-art cost-based optimization framework that collects and leverages a variety of per-column data statistics (e.g., cardinality, number of distinct values, NULL values, max/min, average/max length, etc.) to improve the quality of query execution plans. Leveraging these statistics helps Spark to make better decisions in picking the most optimal query plan. Examples of these optimizations include selecting the correct build side in a hash-join, choosing the right join type (broadcast hash-join vs. shuffled hash-join) or adjusting a multi-way join order, among others.\n\nLet us demonstrate this with a simple example. Consider a query shown below that filters a table t1 of size 500GB and joins the output with another table t2 of size 20GB. Spark implements this query using a hash join by choosing the smaller join relation as the build side (to build a hash table) and the larger relation as the probe side 1. Given that t2 is smaller than t1, Apache Spark 2.1 would choose the right side as the build side without factoring in the effect of the filter operator (which in this case filters out the majority of t1‘s records). Choosing the incorrect side as the build side often forces the system to give up on a fast hash join and turn to sort-merge join due to memory constraints.\n\n![cbo](https://databricks.com/wp-content/uploads/2017/08/image5.png)\n\nApache Spark 2.2, on the other hand, collects statistics for each operator and figures out that the left side would be only 100MB (1 million records) after filtering, and the right side would be 20GB (100 million records). With the correct size/cardinality information for both sides, Spark 2.2 would choose the left side as the build side resulting in significant query speedups.\nAccoo7@k47\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-02-16 03:22:24.469",
+      "progress": 0,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eApache Spark 2.2 recently shipped with a state-of-art cost-based optimization framework that collects and leverages a variety of per-column data statistics (e.g., cardinality, number of distinct values, NULL values, max/min, average/max length, etc.) to improve the quality of query execution plans. Leveraging these statistics helps Spark to make better decisions in picking the most optimal query plan. Examples of these optimizations include selecting the correct build side in a hash-join, choosing the right join type (broadcast hash-join vs. shuffled hash-join) or adjusting a multi-way join order, among others.\u003c/p\u003e\n\u003cp\u003eLet us demonstrate this with a simple example. Consider a query shown below that filters a table t1 of size 500GB and joins the output with another table t2 of size 20GB. Spark implements this query using a hash join by choosing the smaller join relation as the build side (to build a hash table) and the larger relation as the probe side 1. Given that t2 is smaller than t1, Apache Spark 2.1 would choose the right side as the build side without factoring in the effect of the filter operator (which in this case filters out the majority of t1‘s records). Choosing the incorrect side as the build side often forces the system to give up on a fast hash join and turn to sort-merge join due to memory constraints.\u003c/p\u003e\n\u003cp\u003e\u003cimg src\u003d\"https://databricks.com/wp-content/uploads/2017/08/image5.png\" alt\u003d\"cbo\" /\u003e\u003c/p\u003e\n\u003cp\u003eApache Spark 2.2, on the other hand, collects statistics for each operator and figures out that the left side would be only 100MB (1 million records) after filtering, and the right side would be 20GB (100 million records). With the correct size/cardinality information for both sides, Spark 2.2 would choose the left side as the build side resulting in significant query speedups.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641387228343_1888952001",
+      "id": "paragraph_1641387228343_1888952001",
+      "dateCreated": "2022-01-05 12:53:48.343",
+      "dateStarted": "2022-01-05 15:07:48.886",
+      "dateFinished": "2022-01-05 15:07:48.904",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.conf\n\nSPARK_HOME /opt/spark-2.3.4\nmaster local[4]\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-05 10:22:38.435",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641375824513_1824393446",
+      "id": "paragraph_1641375824513_1824393446",
+      "dateCreated": "2022-01-05 09:43:44.513",
+      "dateStarted": "2022-01-05 10:22:38.438",
+      "dateFinished": "2022-01-05 10:22:38.446",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Joins Without CBO",
+      "text": "%spark.conf\n\n//\nspark.range(1000000).write.mode(\"overwrite\").saveAsTable(\"1000K\")\nspark.range(100000).write.mode(\"overwrite\").saveAsTable(\"100K\")\nspark.range(10000).write.mode(\"overwrite\").saveAsTable(\"10K\")\n\nval evalDF \u003d spark.table(\"1000K\").join(spark.table(\"100K\"), \"id\").join(spark.table(\"10K\"), \"id\")\n\nevalDF.foreach(x \u003d\u003e ())\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-05 15:11:02.240",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641395410003_1592878541",
+      "id": "paragraph_1641395410003_1592878541",
+      "dateCreated": "2022-01-05 15:10:10.003",
+      "status": "READY"
+    },
+    {
+      "title": "Joins With CBO Enabled",
+      "text": "%spark\n\n//\nspark.conf.set(\"spark.sql.crossJoin.enabled\", \"true\")\nspark.conf.set(\"spark.sql.cbo.enabled\", \"true\")\nspark.conf.set(\"spark.sql.cbo.joinRecorder.enabled\", \"true\")\n\n//\nspark.range(1000000).write.mode(\"overwrite\").saveAsTable(\"1000K\")\nspark.range(100000).write.mode(\"overwrite\").saveAsTable(\"100K\")\nspark.range(10000).write.mode(\"overwrite\").saveAsTable(\"10K\")\n\n//\nspark.sql(\"Analyze table 1000K compute statistics\")\nspark.sql(\"Analyze table 100K compute statistics\")\nspark.sql(\"Analyze table 10K compute statistics\")\n\nval evalDF \u003d spark.table(\"1000K\").join(spark.table(\"100K\"), \"id\").join(spark.table(\"10K\"), \"id\")\n\nevalDF.foreach(x \u003d\u003e ())\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-05 15:11:24.666",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mevalDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d0"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d1"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d2"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d3"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d4"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d5"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d6"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d7"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d8"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641375886106_217025053",
+      "id": "paragraph_1641375886106_217025053",
+      "dateCreated": "2022-01-05 09:44:46.106",
+      "dateStarted": "2022-01-05 10:24:54.535",
+      "dateFinished": "2022-01-05 10:25:18.271",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-05 10:13:42.530",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641377622530_524483262",
+      "id": "paragraph_1641377622530_524483262",
+      "dateCreated": "2022-01-05 10:13:42.530",
+      "status": "READY"
+    }
+  ],
+  "name": "cost_based_optimization",
+  "id": "2GT743VVU",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

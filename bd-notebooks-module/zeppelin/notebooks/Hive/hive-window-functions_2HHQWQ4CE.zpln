@@ -1,0 +1,453 @@
+{
+  "paragraphs": [
+    {
+      "text": "%hive\n\nDROP TABLE IF EXISTS product_revenue;\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-22 02:28:49.848",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669083583482_891890903",
+      "id": "paragraph_1669083583482_891890903",
+      "dateCreated": "2022-11-22 02:19:43.482",
+      "dateStarted": "2022-11-22 02:28:49.850",
+      "dateFinished": "2022-11-22 02:28:49.877",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nCREATE TABLE IF NOT EXISTS product_revenue (\n    id int,\n    product string,\n    category string,\n    revenue double\n)\nCOMMENT \u0027PRODUCT_REVENUE Hive Managed ORC Table\u0027\nSTORED AS ORC\nTBLPROPERTIES(\n \"creator\"\u003d\"Brijesh K Dhaker\",\n \"hive.exec.dynamic.partition\"\u003d\"true\",\n \"hive.exec.dynamic.partition.mode\"\u003d\"nonstrict\",\n \"orc.compress\"\u003d\"SNAPPY\"\n);\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-22 02:29:07.990",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669083678454_1137042908",
+      "id": "paragraph_1669083678454_1137042908",
+      "dateCreated": "2022-11-22 02:21:18.454",
+      "dateStarted": "2022-11-22 02:29:07.993",
+      "dateFinished": "2022-11-22 02:29:08.089",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nINSERT INTO product_revenue VALUES \n    (1, \"Thin\",       \"cell phone\", 6000),\n    (2, \"Normal\",     \"tablet\",     1500),\n    (3, \"Mini\",       \"tablet\",     5500),\n    (4, \"Ultra thin\", \"cell phone\", 5000),\n    (5, \"Very thin\",  \"cell phone\", 6000),\n    (6, \"Big\",        \"tablet\",     2500),\n    (7, \"Bendable\",   \"cell phone\", 3000),\n    (8, \"Foldable\",   \"cell phone\", 3000),\n    (9, \"Pro\",        \"tablet\",     4500),\n    (10, \"Slim\",       \"tablet\",     6500)\n    ",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-22 02:43:00.092",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "INFO  : Compiling command(queryId\u003droot_20221122024300_59980656-fdd7-46c5-aa56-ed1cc7394324): \n\nINSERT INTO product_revenue VALUES \n    (1, \"Thin\",       \"cell phone\", 6000),\n    (2, \"Normal\",     \"tablet\",     1500),\n    (3, \"Mini\",       \"tablet\",     5500),\n    (4, \"Ultra thin\", \"cell phone\", 5000),\n    (5, \"Very thin\",  \"cell phone\", 6000),\n    (6, \"Big\",        \"tablet\",     2500),\n    (7, \"Bendable\",   \"cell phone\", 3000),\n    (8, \"Foldable\",   \"cell phone\", 3000),\n    (9, \"Pro\",        \"tablet\",     4500),\n    (10, \"Slim\",       \"tablet\",     6500)\n    \nINFO  : Concurrency mode is disabled, not creating a lock manager\nINFO  : Semantic Analysis Completed (retrial \u003d false)\nINFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:_col0, type:int, comment:null), FieldSchema(name:_col1, type:string, comment:null), FieldSchema(name:_col2, type:string, comment:null), FieldSchema(name:_col3, type:double, comment:null)], properties:null)\nINFO  : EXPLAIN output for queryid root_20221122024300_59980656-fdd7-46c5-aa56-ed1cc7394324 : STAGE DEPENDENCIES:\n  Stage-1 is a root stage [MAPRED]\n  Stage-7 depends on stages: Stage-1 , consists of Stage-4, Stage-3, Stage-5 [CONDITIONAL]\n  Stage-4 [MOVE]\n  Stage-0 depends on stages: Stage-4, Stage-3, Stage-6 [MOVE]\n  Stage-2 depends on stages: Stage-0 [STATS]\n  Stage-3 [MAPRED]\n  Stage-5 [MAPRED]\n  Stage-6 depends on stages: Stage-5 [MOVE]\n\nSTAGE PLANS:\n  Stage: Stage-1\n    Map Reduce\n      Map Operator Tree:\n          TableScan\n            alias: _dummy_table\n            Row Limit Per Split: 1\n            GatherStats: false\n            Select Operator\n              expressions: array(const struct(1,\u0027Thin\u0027,\u0027cell phone\u0027,6000),const struct(2,\u0027Normal\u0027,\u0027tablet\u0027,1500),const struct(3,\u0027Mini\u0027,\u0027tablet\u0027,5500),const struct(4,\u0027Ultra thin\u0027,\u0027cell phone\u0027,5000),const struct(5,\u0027Very thin\u0027,\u0027cell phone\u0027,6000),const struct(6,\u0027Big\u0027,\u0027tablet\u0027,2500),const struct(7,\u0027Bendable\u0027,\u0027cell phone\u0027,3000),const struct(8,\u0027Foldable\u0027,\u0027cell phone\u0027,3000),const struct(9,\u0027Pro\u0027,\u0027tablet\u0027,4500),const struct(10,\u0027Slim\u0027,\u0027tablet\u0027,6500)) (type: array\u003cstruct\u003ccol1:int,col2:string,col3:string,col4:int\u003e\u003e)\n              outputColumnNames: _col0\n              UDTF Operator\n                function name: inline\n                Select Operator\n                  expressions: col1 (type: int), col2 (type: string), col3 (type: string), UDFToDouble(col4) (type: double)\n                  outputColumnNames: _col0, _col1, _col2, _col3\n                  File Output Operator\n                    compressed: false\n                    GlobalTableId: 1\n                    directory: hdfs://namenode:9000/user/hive/warehouse/product_revenue/.hive-staging_hive_2022-11-22_02-43-00_112_3033988899125317379-1/-ext-10002\n                    NumFilesPerFileSink: 1\n                    Stats Publishing Key Prefix: hdfs://namenode:9000/user/hive/warehouse/product_revenue/.hive-staging_hive_2022-11-22_02-43-00_112_3033988899125317379-1/-ext-10000/\n                    table:\n                        input format: org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n                        output format: org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n                        properties:\n                          COLUMN_STATS_ACCURATE {\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"category\":\"true\",\"id\":\"true\",\"product\":\"true\",\"revenue\":\"true\"}}\n                          bucket_count -1\n                          bucketing_version 2\n                          column.name.delimiter ,\n                          columns id,product,category,revenue\n                          columns.comments \n                          columns.types int:string:string:double\n                          comment PRODUCT_REVENUE Hive Managed ORC Table\n                          creator Brijesh K Dhaker\n                          file.inputformat org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n                          file.outputformat org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n                          hive.exec.dynamic.partition true\n                          hive.exec.dynamic.partition.mode nonstrict\n                          location hdfs://namenode:9000/user/hive/warehouse/product_revenue\n                          name default.product_revenue\n                          numFiles 0\n                          numRows 0\n                          orc.compress SNAPPY\n                          rawDataSize 0\n                          serialization.ddl struct product_revenue { i32 id, string product, string category, double revenue}\n                          serialization.format 1\n                          serialization.lib org.apache.hadoop.hive.ql.io.orc.OrcSerde\n                          totalSize 0\n                          transient_lastDdlTime 1669084148\n                        serde: org.apache.hadoop.hive.ql.io.orc.OrcSerde\n                        name: default.product_revenue\n                    TotalFiles: 1\n                    GatherStats: true\n                    MultiFileSpray: false\n                  Select Operator\n                    expressions: _col0 (type: int), _col1 (type: string), _col2 (type: string), _col3 (type: double)\n                    outputColumnNames: id, product, category, revenue\n                    Group By Operator\n                      aggregations: compute_stats(id, \u0027hll\u0027), compute_stats(product, \u0027hll\u0027), compute_stats(category, \u0027hll\u0027), compute_stats(revenue, \u0027hll\u0027)\n                      mode: hash\n                      outputColumnNames: _col0, _col1, _col2, _col3\n                      Reduce Output Operator\n                        null sort order: \n                        sort order: \n                        tag: -1\n                        value expressions: _col0 (type: struct\u003ccolumntype:string,min:bigint,max:bigint,countnulls:bigint,bitvector:binary\u003e), _col1 (type: struct\u003ccolumntype:string,maxlength:bigint,sumlength:bigint,count:bigint,countnulls:bigint,bitvector:binary\u003e), _col2 (type: struct\u003ccolumntype:string,maxlength:bigint,sumlength:bigint,count:bigint,countnulls:bigint,bitvector:binary\u003e), _col3 (type: struct\u003ccolumntype:string,min:double,max:double,countnulls:bigint,bitvector:binary\u003e)\n                        auto parallelism: false\n      Path -\u003e Alias:\n        hdfs://namenode:9000/tmp/hive/hive/4279e518-9abb-4b99-9e4a-9419180a45f0/hive_2022-11-22_02-43-00_112_3033988899125317379-1/dummy_path [$hdt$_0:_dummy_table]\n      Path -\u003e Partition:\n        hdfs://namenode:9000/tmp/hive/hive/4279e518-9abb-4b99-9e4a-9419180a45f0/hive_2022-11-22_02-43-00_112_3033988899125317379-1/dummy_path \n          Partition\n            base file name: dummy_path\n            input format: org.apache.hadoop.hive.ql.io.NullRowsInputFormat\n            output format: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n            properties:\n              bucket_count -1\n              bucketing_version 2\n              column.name.delimiter ,\n              columns \n              columns.comments \n              columns.types \n              file.inputformat org.apache.hadoop.hive.ql.io.NullRowsInputFormat\n              file.outputformat org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n              location hdfs://namenode:9000/tmp/hive/hive/4279e518-9abb-4b99-9e4a-9419180a45f0/hive_2022-11-22_02-43-00_112_3033988899125317379-1/dummy_path\n              name _dummy_database._dummy_table\n              serialization.ddl struct _dummy_table { }\n              serialization.format 1\n              serialization.lib org.apache.hadoop.hive.serde2.NullStructSerDe\n            serde: org.apache.hadoop.hive.serde2.NullStructSerDe\n          \n              input format: org.apache.hadoop.hive.ql.io.NullRowsInputFormat\n              output format: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n              properties:\n                bucket_count -1\n                bucketing_version 2\n                column.name.delimiter ,\n                columns \n                columns.comments \n                columns.types \n                file.inputformat org.apache.hadoop.hive.ql.io.NullRowsInputFormat\n                file.outputformat org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n                location hdfs://namenode:9000/tmp/hive/hive/4279e518-9abb-4b99-9e4a-9419180a45f0/hive_2022-11-22_02-43-00_112_3033988899125317379-1/dummy_path\n                name _dummy_database._dummy_table\n                serialization.ddl struct _dummy_table { }\n                serialization.format 1\n                serialization.lib org.apache.hadoop.hive.serde2.NullStructSerDe\n              serde: org.apache.hadoop.hive.serde2.NullStructSerDe\n              name: _dummy_database._dummy_table\n            name: _dummy_database._dummy_table\n      Truncated Path -\u003e Alias:\n        hdfs://namenode:9000/tmp/hive/hive/4279e518-9abb-4b99-9e4a-9419180a45f0/hive_2022-11-22_02-43-00_112_3033988899125317379-1/dummy_path [$hdt$_0:_dummy_table]\n      Needs Tagging: false\n      Reduce Operator Tree:\n        Group By Operator\n          aggregations: compute_stats(VALUE._col0), compute_stats(VALUE._col1), compute_stats(VALUE._col2), compute_stats(VALUE._col3)\n          mode: mergepartial\n          outputColumnNames: _col0, _col1, _col2, _col3\n          File Output Operator\n            compressed: false\n            GlobalTableId: 0\n            directory: hdfs://namenode:9000/tmp/hive/hive/4279e518-9abb-4b99-9e4a-9419180a45f0/hive_2022-11-22_02-43-00_661_5088103786764930189-1/-mr-10000/.hive-staging_hive_2022-11-22_02-43-00_661_5088103786764930189-1/-ext-10001\n            NumFilesPerFileSink: 1\n            Stats Publishing Key Prefix: hdfs://namenode:9000/tmp/hive/hive/4279e518-9abb-4b99-9e4a-9419180a45f0/hive_2022-11-22_02-43-00_661_5088103786764930189-1/-mr-10000/.hive-staging_hive_2022-11-22_02-43-00_661_5088103786764930189-1/-ext-10001/\n            table:\n                input format: org.apache.hadoop.mapred.SequenceFileInputFormat\n                output format: org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat\n                properties:\n                  columns _col0,_col1,_col2,_col3\n                  columns.types struct\u003ccolumntype:string,min:bigint,max:bigint,countnulls:bigint,numdistinctvalues:bigint,ndvbitvector:binary\u003e:struct\u003ccolumntype:string,maxlength:bigint,avglength:double,countnulls:bigint,numdistinctvalues:bigint,ndvbitvector:binary\u003e:struct\u003ccolumntype:string,maxlength:bigint,avglength:double,countnulls:bigint,numdistinctvalues:bigint,ndvbitvector:binary\u003e:struct\u003ccolumntype:string,min:double,max:double,countnulls:bigint,numdistinctvalues:bigint,ndvbitvector:binary\u003e\n                  escape.delim \\\n                  hive.serialization.extend.additional.nesting.levels true\n                  serialization.escape.crlf true\n                  serialization.format 1\n                  serialization.lib org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                serde: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n            TotalFiles: 1\n            GatherStats: false\n            MultiFileSpray: false\n\n  Stage: Stage-7\n    Conditional Operator\n\n  Stage: Stage-4\n    Move Operator\n      files:\n          hdfs directory: true\n          source: hdfs://namenode:9000/user/hive/warehouse/product_revenue/.hive-staging_hive_2022-11-22_02-43-00_112_3033988899125317379-1/-ext-10002\n          destination: hdfs://namenode:9000/user/hive/warehouse/product_revenue/.hive-staging_hive_2022-11-22_02-43-00_112_3033988899125317379-1/-ext-10000\n\n  Stage: Stage-0\n    Move Operator\n      tables:\n          replace: false\n          source: hdfs://namenode:9000/user/hive/warehouse/product_revenue/.hive-staging_hive_2022-11-22_02-43-00_112_3033988899125317379-1/-ext-10000\n          table:\n              input format: org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n              output format: org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n              properties:\n                COLUMN_STATS_ACCURATE {\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"category\":\"true\",\"id\":\"true\",\"product\":\"true\",\"revenue\":\"true\"}}\n                bucket_count -1\n                bucketing_version 2\n                column.name.delimiter ,\n                columns id,product,category,revenue\n                columns.comments \n                columns.types int:string:string:double\n                comment PRODUCT_REVENUE Hive Managed ORC Table\n                creator Brijesh K Dhaker\n                file.inputformat org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n                file.outputformat org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n                hive.exec.dynamic.partition true\n                hive.exec.dynamic.partition.mode nonstrict\n                location hdfs://namenode:9000/user/hive/warehouse/product_revenue\n                name default.product_revenue\n                numFiles 0\n                numRows 0\n                orc.compress SNAPPY\n                rawDataSize 0\n                serialization.ddl struct product_revenue { i32 id, string product, string category, double revenue}\n                serialization.format 1\n                serialization.lib org.apache.hadoop.hive.ql.io.orc.OrcSerde\n                totalSize 0\n                transient_lastDdlTime 1669084148\n              serde: org.apache.hadoop.hive.ql.io.orc.OrcSerde\n              name: default.product_revenue\n\n  Stage: Stage-2\n    Stats Work\n      Basic Stats Work:\n          Stats Aggregation Key Prefix: hdfs://namenode:9000/user/hive/warehouse/product_revenue/.hive-staging_hive_2022-11-22_02-43-00_112_3033988899125317379-1/-ext-10000/\n      Column Stats Desc:\n          Columns: id, product, category, revenue\n          Column Types: int, string, string, double\n          Table: default.product_revenue\n          Is Table Level Stats: true\n\n  Stage: Stage-3\n    Merge File Operator\n      Map Operator Tree:\n          ORC File Merge Operator\n      merge level: stripe\n      Path -\u003e Alias:\n        hdfs://namenode:9000/user/hive/warehouse/product_revenue/.hive-staging_hive_2022-11-22_02-43-00_112_3033988899125317379-1/-ext-10002 [hdfs://namenode:9000/user/hive/warehouse/product_revenue/.hive-staging_hive_2022-11-22_02-43-00_112_3033988899125317379-1/-ext-10002]\n      Path -\u003e Partition:\n        hdfs://namenode:9000/user/hive/warehouse/product_revenue/.hive-staging_hive_2022-11-22_02-43-00_112_3033988899125317379-1/-ext-10002 \n          Partition\n            input format: org.apache.hadoop.hive.ql.io.orc.OrcFileStripeMergeInputFormat\n            output format: org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n            properties:\n              COLUMN_STATS_ACCURATE {\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"category\":\"true\",\"id\":\"true\",\"product\":\"true\",\"revenue\":\"true\"}}\n              bucket_count -1\n              bucketing_version 2\n              column.name.delimiter ,\n              columns id,product,category,revenue\n              columns.comments \n              columns.types int:string:string:double\n              comment PRODUCT_REVENUE Hive Managed ORC Table\n              creator Brijesh K Dhaker\n              file.inputformat org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n              file.outputformat org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n              hive.exec.dynamic.partition true\n              hive.exec.dynamic.partition.mode nonstrict\n              location hdfs://namenode:9000/user/hive/warehouse/product_revenue\n              name default.product_revenue\n              numFiles 0\n              numRows 0\n              orc.compress SNAPPY\n              rawDataSize 0\n              serialization.ddl struct product_revenue { i32 id, string product, string category, double revenue}\n              serialization.format 1\n              serialization.lib org.apache.hadoop.hive.ql.io.orc.OrcSerde\n              totalSize 0\n              transient_lastDdlTime 1669084148\n            serde: org.apache.hadoop.hive.ql.io.orc.OrcSerde\n          \n              input format: org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n              output format: org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n              properties:\n                COLUMN_STATS_ACCURATE {\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"category\":\"true\",\"id\":\"true\",\"product\":\"true\",\"revenue\":\"true\"}}\n                bucket_count -1\n                bucketing_version 2\n                column.name.delimiter ,\n                columns id,product,category,revenue\n                columns.comments \n                columns.types int:string:string:double\n                comment PRODUCT_REVENUE Hive Managed ORC Table\n                creator Brijesh K Dhaker\n                file.inputformat org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n                file.outputformat org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n                hive.exec.dynamic.partition true\n                hive.exec.dynamic.partition.mode nonstrict\n                location hdfs://namenode:9000/user/hive/warehouse/product_revenue\n                name default.product_revenue\n                numFiles 0\n                numRows 0\n                orc.compress SNAPPY\n                rawDataSize 0\n                serialization.ddl struct product_revenue { i32 id, string product, string category, double revenue}\n                serialization.format 1\n                serialization.lib org.apache.hadoop.hive.ql.io.orc.OrcSerde\n                totalSize 0\n                transient_lastDdlTime 1669084148\n              serde: org.apache.hadoop.hive.ql.io.orc.OrcSerde\n              name: default.product_revenue\n            name: default.product_revenue\n      input format: org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n      Truncated Path -\u003e Alias:\n        /product_revenue/.hive-staging_hive_2022-11-22_02-43-00_112_3033988899125317379-1/-ext-10002 [hdfs://namenode:9000/user/hive/warehouse/product_revenue/.hive-staging_hive_2022-11-22_02-43-00_112_3033988899125317379-1/-ext-10002]\n\n  Stage: Stage-5\n    Merge File Operator\n      Map Operator Tree:\n          ORC File Merge Operator\n      merge level: stripe\n      Path -\u003e Alias:\n        hdfs://namenode:9000/user/hive/warehouse/product_revenue/.hive-staging_hive_2022-11-22_02-43-00_112_3033988899125317379-1/-ext-10002 [hdfs://namenode:9000/user/hive/warehouse/product_revenue/.hive-staging_hive_2022-11-22_02-43-00_112_3033988899125317379-1/-ext-10002]\n      Path -\u003e Partition:\n        hdfs://namenode:9000/user/hive/warehouse/product_revenue/.hive-staging_hive_2022-11-22_02-43-00_112_3033988899125317379-1/-ext-10002 \n          Partition\n            input format: org.apache.hadoop.hive.ql.io.orc.OrcFileStripeMergeInputFormat\n            output format: org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n            properties:\n              COLUMN_STATS_ACCURATE {\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"category\":\"true\",\"id\":\"true\",\"product\":\"true\",\"revenue\":\"true\"}}\n              bucket_count -1\n              bucketing_version 2\n              column.name.delimiter ,\n              columns id,product,category,revenue\n              columns.comments \n              columns.types int:string:string:double\n              comment PRODUCT_REVENUE Hive Managed ORC Table\n              creator Brijesh K Dhaker\n              file.inputformat org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n              file.outputformat org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n              hive.exec.dynamic.partition true\n              hive.exec.dynamic.partition.mode nonstrict\n              location hdfs://namenode:9000/user/hive/warehouse/product_revenue\n              name default.product_revenue\n              numFiles 0\n              numRows 0\n              orc.compress SNAPPY\n              rawDataSize 0\n              serialization.ddl struct product_revenue { i32 id, string product, string category, double revenue}\n              serialization.format 1\n              serialization.lib org.apache.hadoop.hive.ql.io.orc.OrcSerde\n              totalSize 0\n              transient_lastDdlTime 1669084148\n            serde: org.apache.hadoop.hive.ql.io.orc.OrcSerde\n          \n              input format: org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n              output format: org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n              properties:\n                COLUMN_STATS_ACCURATE {\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"category\":\"true\",\"id\":\"true\",\"product\":\"true\",\"revenue\":\"true\"}}\n                bucket_count -1\n                bucketing_version 2\n                column.name.delimiter ,\n                columns id,product,category,revenue\n                columns.comments \n                columns.types int:string:string:double\n                comment PRODUCT_REVENUE Hive Managed ORC Table\n                creator Brijesh K Dhaker\n                file.inputformat org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n                file.outputformat org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n                hive.exec.dynamic.partition true\n                hive.exec.dynamic.partition.mode nonstrict\n                location hdfs://namenode:9000/user/hive/warehouse/product_revenue\n                name default.product_revenue\n                numFiles 0\n                numRows 0\n                orc.compress SNAPPY\n                rawDataSize 0\n                serialization.ddl struct product_revenue { i32 id, string product, string category, double revenue}\n                serialization.format 1\n                serialization.lib org.apache.hadoop.hive.ql.io.orc.OrcSerde\n                totalSize 0\n                transient_lastDdlTime 1669084148\n              serde: org.apache.hadoop.hive.ql.io.orc.OrcSerde\n              name: default.product_revenue\n            name: default.product_revenue\n      input format: org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n      Truncated Path -\u003e Alias:\n        /product_revenue/.hive-staging_hive_2022-11-22_02-43-00_112_3033988899125317379-1/-ext-10002 [hdfs://namenode:9000/user/hive/warehouse/product_revenue/.hive-staging_hive_2022-11-22_02-43-00_112_3033988899125317379-1/-ext-10002]\n\n  Stage: Stage-6\n    Move Operator\n      files:\n          hdfs directory: true\n          source: hdfs://namenode:9000/user/hive/warehouse/product_revenue/.hive-staging_hive_2022-11-22_02-43-00_112_3033988899125317379-1/-ext-10002\n          destination: hdfs://namenode:9000/user/hive/warehouse/product_revenue/.hive-staging_hive_2022-11-22_02-43-00_112_3033988899125317379-1/-ext-10000\n\n\nINFO  : Completed compiling command(queryId\u003droot_20221122024300_59980656-fdd7-46c5-aa56-ed1cc7394324); Time taken: 0.653 seconds\nINFO  : Concurrency mode is disabled, not creating a lock manager\nINFO  : Executing command(queryId\u003droot_20221122024300_59980656-fdd7-46c5-aa56-ed1cc7394324): \n\nINSERT INTO product_revenue VALUES \n    (1, \"Thin\",       \"cell phone\", 6000),\n    (2, \"Normal\",     \"tablet\",     1500),\n    (3, \"Mini\",       \"tablet\",     5500),\n    (4, \"Ultra thin\", \"cell phone\", 5000),\n    (5, \"Very thin\",  \"cell phone\", 6000),\n    (6, \"Big\",        \"tablet\",     2500),\n    (7, \"Bendable\",   \"cell phone\", 3000),\n    (8, \"Foldable\",   \"cell phone\", 3000),\n    (9, \"Pro\",        \"tablet\",     4500),\n    (10, \"Slim\",       \"tablet\",     6500)\n    \nWARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.\nINFO  : Query ID \u003d root_20221122024300_59980656-fdd7-46c5-aa56-ed1cc7394324\nINFO  : Total jobs \u003d 1\nINFO  : Launching Job 1 out of 1\nINFO  : Starting task [Stage-1:MAPRED] in serial mode\nINFO  : Number of reduce tasks determined at compile time: 1\nINFO  : In order to change the average load for a reducer (in bytes):\nINFO  :   set hive.exec.reducers.bytes.per.reducer\u003d\u003cnumber\u003e\nINFO  : In order to limit the maximum number of reducers:\nINFO  :   set hive.exec.reducers.max\u003d\u003cnumber\u003e\nINFO  : In order to set a constant number of reducers:\nINFO  :   set mapreduce.job.reduces\u003d\u003cnumber\u003e\n\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669084138573_1603531620",
+      "id": "paragraph_1669084138573_1603531620",
+      "dateCreated": "2022-11-22 02:28:58.573",
+      "dateStarted": "2022-11-22 02:43:00.094",
+      "dateFinished": "2022-11-22 02:43:16.926",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nselect * from product_revenue;",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-22 02:44:43.802",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "id": "string",
+                      "product": "string",
+                      "category": "string",
+                      "revenue": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "id\tproduct\tcategory\trevenue\n1\tThin\tcell phone\t6000.0\n2\tNormal\ttablet\t1500.0\n3\tMini\ttablet\t5500.0\n4\tUltra thin\tcell phone\t5000.0\n5\tVery thin\tcell phone\t6000.0\n6\tBig\ttablet\t2500.0\n7\tBendable\tcell phone\t3000.0\n8\tFoldable\tcell phone\t3000.0\n9\tPro\ttablet\t4500.0\n10\tSlim\ttablet\t6500.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669084980094_80435285",
+      "id": "paragraph_1669084980094_80435285",
+      "dateCreated": "2022-11-22 02:43:00.094",
+      "dateStarted": "2022-11-22 02:44:43.510",
+      "dateFinished": "2022-11-22 02:44:43.632",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nSELECT\nproduct,\ncategory,\nrevenue,\nrank() OVER (PARTITION BY category ORDER BY revenue DESC) as rank,\ndense_rank() OVER (PARTITION BY category ORDER BY revenue DESC) as dense_rank\nFROM PRODUCT_REVENUE;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-22 02:53:26.183",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "product": "string",
+                      "category": "string",
+                      "revenue": "string",
+                      "rank": "string",
+                      "dense_rank": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "INFO  : Compiling command(queryId\u003droot_20221122024550_aec2721a-6a3e-4884-b65e-fb9a3837c4f9): \n\nSELECT\nproduct,\ncategory,\nrevenue,\nrank() OVER (PARTITION BY category ORDER BY revenue DESC) as rank,\ndense_rank() OVER (PARTITION BY category ORDER BY revenue DESC) as dense_rank\nFROM PRODUCT_REVENUE\nINFO  : Concurrency mode is disabled, not creating a lock manager\nINFO  : Semantic Analysis Completed (retrial \u003d false)\nINFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:product, type:string, comment:null), FieldSchema(name:category, type:string, comment:null), FieldSchema(name:revenue, type:double, comment:null), FieldSchema(name:rank, type:int, comment:null), FieldSchema(name:dense_rank, type:int, comment:null)], properties:null)\nINFO  : EXPLAIN output for queryid root_20221122024550_aec2721a-6a3e-4884-b65e-fb9a3837c4f9 : STAGE DEPENDENCIES:\n  Stage-1 is a root stage [MAPRED]\n  Stage-0 depends on stages: Stage-1 [FETCH]\n\nSTAGE PLANS:\n  Stage: Stage-1\n    Map Reduce\n      Map Operator Tree:\n          TableScan\n            alias: product_revenue\n            GatherStats: false\n            Reduce Output Operator\n              key expressions: category (type: string), revenue (type: double)\n              null sort order: az\n              sort order: +-\n              Map-reduce partition columns: category (type: string)\n              tag: -1\n              value expressions: product (type: string)\n              auto parallelism: false\n      Execution mode: vectorized\n      Path -\u003e Alias:\n        hdfs://namenode:9000/user/hive/warehouse/product_revenue [product_revenue]\n      Path -\u003e Partition:\n        hdfs://namenode:9000/user/hive/warehouse/product_revenue \n          Partition\n            base file name: product_revenue\n            input format: org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n            output format: org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n            properties:\n              COLUMN_STATS_ACCURATE {\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"category\":\"true\",\"id\":\"true\",\"product\":\"true\",\"revenue\":\"true\"}}\n              bucket_count -1\n              bucketing_version 2\n              column.name.delimiter ,\n              columns id,product,category,revenue\n              columns.comments \n              columns.types int:string:string:double\n              comment PRODUCT_REVENUE Hive Managed ORC Table\n              creator Brijesh K Dhaker\n              file.inputformat org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n              file.outputformat org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n              hive.exec.dynamic.partition true\n              hive.exec.dynamic.partition.mode nonstrict\n              location hdfs://namenode:9000/user/hive/warehouse/product_revenue\n              name default.product_revenue\n              numFiles 1\n              numRows 10\n              orc.compress SNAPPY\n              rawDataSize 1930\n              serialization.ddl struct product_revenue { i32 id, string product, string category, double revenue}\n              serialization.format 1\n              serialization.lib org.apache.hadoop.hive.ql.io.orc.OrcSerde\n              totalSize 796\n              transient_lastDdlTime 1669084996\n            serde: org.apache.hadoop.hive.ql.io.orc.OrcSerde\n          \n              input format: org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n              output format: org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n              properties:\n                COLUMN_STATS_ACCURATE {\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"category\":\"true\",\"id\":\"true\",\"product\":\"true\",\"revenue\":\"true\"}}\n                bucket_count -1\n                bucketing_version 2\n                column.name.delimiter ,\n                columns id,product,category,revenue\n                columns.comments \n                columns.types int:string:string:double\n                comment PRODUCT_REVENUE Hive Managed ORC Table\n                creator Brijesh K Dhaker\n                file.inputformat org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n                file.outputformat org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n                hive.exec.dynamic.partition true\n                hive.exec.dynamic.partition.mode nonstrict\n                location hdfs://namenode:9000/user/hive/warehouse/product_revenue\n                name default.product_revenue\n                numFiles 1\n                numRows 10\n                orc.compress SNAPPY\n                rawDataSize 1930\n                serialization.ddl struct product_revenue { i32 id, string product, string category, double revenue}\n                serialization.format 1\n                serialization.lib org.apache.hadoop.hive.ql.io.orc.OrcSerde\n                totalSize 796\n                transient_lastDdlTime 1669084996\n              serde: org.apache.hadoop.hive.ql.io.orc.OrcSerde\n              name: default.product_revenue\n            name: default.product_revenue\n      Truncated Path -\u003e Alias:\n        /product_revenue [product_revenue]\n      Needs Tagging: false\n      Reduce Operator Tree:\n        Select Operator\n          expressions: VALUE._col1 (type: string), KEY.reducesinkkey0 (type: string), KEY.reducesinkkey1 (type: double)\n          outputColumnNames: _col1, _col2, _col3\n          PTF Operator\n            Function definitions:\n                Input definition\n                  input alias: ptf_0\n                  output shape: _col1: string, _col2: string, _col3: double\n                  type: WINDOWING\n                Windowing table definition\n                  input alias: ptf_1\n                  name: windowingtablefunction\n                  order by: _col3 DESC NULLS LAST\n                  partition by: _col2\n                  raw input shape:\n                  window functions:\n                      window function definition\n                        alias: rank_window_0\n                        arguments: _col3\n                        name: rank\n                        window function: GenericUDAFRankEvaluator\n                        window frame: ROWS PRECEDING(MAX)~FOLLOWING(MAX)\n                        isPivotResult: true\n                      window function definition\n                        alias: dense_rank_window_1\n                        arguments: _col3\n                        name: dense_rank\n                        window function: GenericUDAFDenseRankEvaluator\n                        window frame: ROWS PRECEDING(MAX)~FOLLOWING(MAX)\n                        isPivotResult: true\n            Select Operator\n              expressions: _col1 (type: string), _col2 (type: string), _col3 (type: double), rank_window_0 (type: int), dense_rank_window_1 (type: int)\n              outputColumnNames: _col0, _col1, _col2, _col3, _col4\n              File Output Operator\n                compressed: false\n                GlobalTableId: 0\n                directory: hdfs://namenode:9000/tmp/hive/hive/4279e518-9abb-4b99-9e4a-9419180a45f0/hive_2022-11-22_02-45-50_128_4324383012301263642-1/-mr-10001/.hive-staging_hive_2022-11-22_02-45-50_128_4324383012301263642-1/-ext-10002\n                NumFilesPerFileSink: 1\n                Stats Publishing Key Prefix: hdfs://namenode:9000/tmp/hive/hive/4279e518-9abb-4b99-9e4a-9419180a45f0/hive_2022-11-22_02-45-50_128_4324383012301263642-1/-mr-10001/.hive-staging_hive_2022-11-22_02-45-50_128_4324383012301263642-1/-ext-10002/\n                table:\n                    input format: org.apache.hadoop.mapred.SequenceFileInputFormat\n                    output format: org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat\n                    properties:\n                      columns _col0,_col1,_col2,_col3,_col4\n                      columns.types string:string:double:int:int\n                      escape.delim \\\n                      hive.serialization.extend.additional.nesting.levels true\n                      serialization.escape.crlf true\n                      serialization.format 1\n                      serialization.lib org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                    serde: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                TotalFiles: 1\n                GatherStats: false\n                MultiFileSpray: false\n\n  Stage: Stage-0\n    Fetch Operator\n      limit: -1\n      Processor Tree:\n        ListSink\n\n\nINFO  : Completed compiling command(queryId\u003droot_20221122024550_aec2721a-6a3e-4884-b65e-fb9a3837c4f9); Time taken: 0.137 seconds\nINFO  : Concurrency mode is disabled, not creating a lock manager\nINFO  : Executing command(queryId\u003droot_20221122024550_aec2721a-6a3e-4884-b65e-fb9a3837c4f9): \n\nSELECT\nproduct,\ncategory,\nrevenue,\nrank() OVER (PARTITION BY category ORDER BY revenue DESC) as rank,\ndense_rank() OVER (PARTITION BY category ORDER BY revenue DESC) as dense_rank\nFROM PRODUCT_REVENUE\nWARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.\nINFO  : Query ID \u003d root_20221122024550_aec2721a-6a3e-4884-b65e-fb9a3837c4f9\nINFO  : Total jobs \u003d 1\nINFO  : Launching Job 1 out of 1\nINFO  : Starting task [Stage-1:MAPRED] in serial mode\nINFO  : Number of reduce tasks not specified. Estimated from input data size: 1\nINFO  : In order to change the average load for a reducer (in bytes):\nINFO  :   set hive.exec.reducers.bytes.per.reducer\u003d\u003cnumber\u003e\nINFO  : In order to limit the maximum number of reducers:\nINFO  :   set hive.exec.reducers.max\u003d\u003cnumber\u003e\nINFO  : In order to set a constant number of reducers:\nINFO  :   set mapreduce.job.reduces\u003d\u003cnumber\u003e\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "product\tcategory\trevenue\trank\tdense_rank\nVery thin\tcell phone\t6000.0\t1\t1\nThin\tcell phone\t6000.0\t1\t1\nUltra thin\tcell phone\t5000.0\t3\t2\nFoldable\tcell phone\t3000.0\t4\t3\nBendable\tcell phone\t3000.0\t4\t3\nSlim\ttablet\t6500.0\t1\t1\nMini\ttablet\t5500.0\t2\t2\nPro\ttablet\t4500.0\t3\t3\nBig\ttablet\t2500.0\t4\t4\nNormal\ttablet\t1500.0\t5\t5\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669085083509_153582846",
+      "id": "paragraph_1669085083509_153582846",
+      "dateCreated": "2022-11-22 02:44:43.509",
+      "dateStarted": "2022-11-22 02:45:50.114",
+      "dateFinished": "2022-11-22 02:46:08.799",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nSELECT\nproduct,\ncategory,\nrevenue,\ndense_rank() OVER (PARTITION BY category ORDER BY revenue DESC) as rank\nFROM PRODUCT_REVENUE;\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-22 02:52:44.356",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "product": "string",
+                      "category": "string",
+                      "revenue": "string",
+                      "rank": "string"
+                    },
+                    "updated": true
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "INFO  : Compiling command(queryId\u003droot_20221122024652_0e7e6065-7ebc-44b6-82df-3385833e4bd2): \n\nSELECT\nproduct,\ncategory,\nrevenue,\ndense_rank() OVER (PARTITION BY category ORDER BY revenue DESC) as rank\nFROM PRODUCT_REVENUE\nINFO  : Concurrency mode is disabled, not creating a lock manager\nINFO  : Semantic Analysis Completed (retrial \u003d false)\nINFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:product, type:string, comment:null), FieldSchema(name:category, type:string, comment:null), FieldSchema(name:revenue, type:double, comment:null), FieldSchema(name:rank, type:int, comment:null)], properties:null)\nINFO  : EXPLAIN output for queryid root_20221122024652_0e7e6065-7ebc-44b6-82df-3385833e4bd2 : STAGE DEPENDENCIES:\n  Stage-1 is a root stage [MAPRED]\n  Stage-0 depends on stages: Stage-1 [FETCH]\n\nSTAGE PLANS:\n  Stage: Stage-1\n    Map Reduce\n      Map Operator Tree:\n          TableScan\n            alias: product_revenue\n            GatherStats: false\n            Reduce Output Operator\n              key expressions: category (type: string), revenue (type: double)\n              null sort order: az\n              sort order: +-\n              Map-reduce partition columns: category (type: string)\n              tag: -1\n              value expressions: product (type: string)\n              auto parallelism: false\n      Execution mode: vectorized\n      Path -\u003e Alias:\n        hdfs://namenode:9000/user/hive/warehouse/product_revenue [product_revenue]\n      Path -\u003e Partition:\n        hdfs://namenode:9000/user/hive/warehouse/product_revenue \n          Partition\n            base file name: product_revenue\n            input format: org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n            output format: org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n            properties:\n              COLUMN_STATS_ACCURATE {\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"category\":\"true\",\"id\":\"true\",\"product\":\"true\",\"revenue\":\"true\"}}\n              bucket_count -1\n              bucketing_version 2\n              column.name.delimiter ,\n              columns id,product,category,revenue\n              columns.comments \n              columns.types int:string:string:double\n              comment PRODUCT_REVENUE Hive Managed ORC Table\n              creator Brijesh K Dhaker\n              file.inputformat org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n              file.outputformat org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n              hive.exec.dynamic.partition true\n              hive.exec.dynamic.partition.mode nonstrict\n              location hdfs://namenode:9000/user/hive/warehouse/product_revenue\n              name default.product_revenue\n              numFiles 1\n              numRows 10\n              orc.compress SNAPPY\n              rawDataSize 1930\n              serialization.ddl struct product_revenue { i32 id, string product, string category, double revenue}\n              serialization.format 1\n              serialization.lib org.apache.hadoop.hive.ql.io.orc.OrcSerde\n              totalSize 796\n              transient_lastDdlTime 1669084996\n            serde: org.apache.hadoop.hive.ql.io.orc.OrcSerde\n          \n              input format: org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n              output format: org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n              properties:\n                COLUMN_STATS_ACCURATE {\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"category\":\"true\",\"id\":\"true\",\"product\":\"true\",\"revenue\":\"true\"}}\n                bucket_count -1\n                bucketing_version 2\n                column.name.delimiter ,\n                columns id,product,category,revenue\n                columns.comments \n                columns.types int:string:string:double\n                comment PRODUCT_REVENUE Hive Managed ORC Table\n                creator Brijesh K Dhaker\n                file.inputformat org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n                file.outputformat org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n                hive.exec.dynamic.partition true\n                hive.exec.dynamic.partition.mode nonstrict\n                location hdfs://namenode:9000/user/hive/warehouse/product_revenue\n                name default.product_revenue\n                numFiles 1\n                numRows 10\n                orc.compress SNAPPY\n                rawDataSize 1930\n                serialization.ddl struct product_revenue { i32 id, string product, string category, double revenue}\n                serialization.format 1\n                serialization.lib org.apache.hadoop.hive.ql.io.orc.OrcSerde\n                totalSize 796\n                transient_lastDdlTime 1669084996\n              serde: org.apache.hadoop.hive.ql.io.orc.OrcSerde\n              name: default.product_revenue\n            name: default.product_revenue\n      Truncated Path -\u003e Alias:\n        /product_revenue [product_revenue]\n      Needs Tagging: false\n      Reduce Operator Tree:\n        Select Operator\n          expressions: VALUE._col1 (type: string), KEY.reducesinkkey0 (type: string), KEY.reducesinkkey1 (type: double)\n          outputColumnNames: _col1, _col2, _col3\n          PTF Operator\n            Function definitions:\n                Input definition\n                  input alias: ptf_0\n                  output shape: _col1: string, _col2: string, _col3: double\n                  type: WINDOWING\n                Windowing table definition\n                  input alias: ptf_1\n                  name: windowingtablefunction\n                  order by: _col3 DESC NULLS LAST\n                  partition by: _col2\n                  raw input shape:\n                  window functions:\n                      window function definition\n                        alias: dense_rank_window_0\n                        arguments: _col3\n                        name: dense_rank\n                        window function: GenericUDAFDenseRankEvaluator\n                        window frame: ROWS PRECEDING(MAX)~FOLLOWING(MAX)\n                        isPivotResult: true\n            Select Operator\n              expressions: _col1 (type: string), _col2 (type: string), _col3 (type: double), dense_rank_window_0 (type: int)\n              outputColumnNames: _col0, _col1, _col2, _col3\n              File Output Operator\n                compressed: false\n                GlobalTableId: 0\n                directory: hdfs://namenode:9000/tmp/hive/hive/4279e518-9abb-4b99-9e4a-9419180a45f0/hive_2022-11-22_02-46-52_735_4074427392719330920-1/-mr-10001/.hive-staging_hive_2022-11-22_02-46-52_735_4074427392719330920-1/-ext-10002\n                NumFilesPerFileSink: 1\n                Stats Publishing Key Prefix: hdfs://namenode:9000/tmp/hive/hive/4279e518-9abb-4b99-9e4a-9419180a45f0/hive_2022-11-22_02-46-52_735_4074427392719330920-1/-mr-10001/.hive-staging_hive_2022-11-22_02-46-52_735_4074427392719330920-1/-ext-10002/\n                table:\n                    input format: org.apache.hadoop.mapred.SequenceFileInputFormat\n                    output format: org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat\n                    properties:\n                      columns _col0,_col1,_col2,_col3\n                      columns.types string:string:double:int\n                      escape.delim \\\n                      hive.serialization.extend.additional.nesting.levels true\n                      serialization.escape.crlf true\n                      serialization.format 1\n                      serialization.lib org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                    serde: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                TotalFiles: 1\n                GatherStats: false\n                MultiFileSpray: false\n\n  Stage: Stage-0\n    Fetch Operator\n      limit: -1\n      Processor Tree:\n        ListSink\n\n\nINFO  : Completed compiling command(queryId\u003droot_20221122024652_0e7e6065-7ebc-44b6-82df-3385833e4bd2); Time taken: 0.092 seconds\nINFO  : Concurrency mode is disabled, not creating a lock manager\nINFO  : Executing command(queryId\u003droot_20221122024652_0e7e6065-7ebc-44b6-82df-3385833e4bd2): \n\nSELECT\nproduct,\ncategory,\nrevenue,\ndense_rank() OVER (PARTITION BY category ORDER BY revenue DESC) as rank\nFROM PRODUCT_REVENUE\nWARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.\nINFO  : Query ID \u003d root_20221122024652_0e7e6065-7ebc-44b6-82df-3385833e4bd2\nINFO  : Total jobs \u003d 1\nINFO  : Launching Job 1 out of 1\nINFO  : Starting task [Stage-1:MAPRED] in serial mode\nINFO  : Number of reduce tasks not specified. Estimated from input data size: 1\nINFO  : In order to change the average load for a reducer (in bytes):\nINFO  :   set hive.exec.reducers.bytes.per.reducer\u003d\u003cnumber\u003e\nINFO  : In order to limit the maximum number of reducers:\nINFO  :   set hive.exec.reducers.max\u003d\u003cnumber\u003e\nINFO  : In order to set a constant number of reducers:\nINFO  :   set mapreduce.job.reduces\u003d\u003cnumber\u003e\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "product\tcategory\trevenue\trank\nVery thin\tcell phone\t6000.0\t1\nThin\tcell phone\t6000.0\t1\nUltra thin\tcell phone\t5000.0\t2\nFoldable\tcell phone\t3000.0\t3\nBendable\tcell phone\t3000.0\t3\nSlim\ttablet\t6500.0\t1\nMini\ttablet\t5500.0\t2\nPro\ttablet\t4500.0\t3\nBig\ttablet\t2500.0\t4\nNormal\ttablet\t1500.0\t5\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669085150113_67703712",
+      "id": "paragraph_1669085150113_67703712",
+      "dateCreated": "2022-11-22 02:45:50.113",
+      "dateStarted": "2022-11-22 02:46:52.721",
+      "dateFinished": "2022-11-22 02:47:10.873",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\n--\n-- 1. What are the best-selling and the second best-selling products in every category?\n-- \n\nSELECT\n    product,\n    category,\n    revenue\nFROM (\n    SELECT\n    product,\n    category,\n    revenue,\n    dense_rank() OVER (PARTITION BY category ORDER BY revenue DESC) as rank\n    FROM PRODUCT_REVENUE\n) tmp\nWHERE\nrank \u003c\u003d 2\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-22 02:52:14.947",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "product": "string",
+                      "category": "string",
+                      "revenue": "string"
+                    },
+                    "updated": true
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "INFO  : Compiling command(queryId\u003droot_20221122024846_61f674ec-16f2-4382-970f-afc6d618f294): \n\nSELECT\n    product,\n    category,\n    revenue\nFROM (\n    SELECT\n    product,\n    category,\n    revenue,\n    dense_rank() OVER (PARTITION BY category ORDER BY revenue DESC) as rank\n    FROM PRODUCT_REVENUE\n) tmp\nWHERE\nrank \u003c\u003d 2\nINFO  : Concurrency mode is disabled, not creating a lock manager\nINFO  : Semantic Analysis Completed (retrial \u003d false)\nINFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:product, type:string, comment:null), FieldSchema(name:category, type:string, comment:null), FieldSchema(name:revenue, type:double, comment:null)], properties:null)\nINFO  : EXPLAIN output for queryid root_20221122024846_61f674ec-16f2-4382-970f-afc6d618f294 : STAGE DEPENDENCIES:\n  Stage-1 is a root stage [MAPRED]\n  Stage-0 depends on stages: Stage-1 [FETCH]\n\nSTAGE PLANS:\n  Stage: Stage-1\n    Map Reduce\n      Map Operator Tree:\n          TableScan\n            alias: product_revenue\n            GatherStats: false\n            Reduce Output Operator\n              key expressions: category (type: string), revenue (type: double)\n              null sort order: az\n              sort order: +-\n              Map-reduce partition columns: category (type: string)\n              tag: -1\n              TopN: 3\n              TopN Hash Memory Usage: 0.1\n              value expressions: product (type: string)\n              auto parallelism: false\n      Execution mode: vectorized\n      Path -\u003e Alias:\n        hdfs://namenode:9000/user/hive/warehouse/product_revenue [$hdt$_0:product_revenue]\n      Path -\u003e Partition:\n        hdfs://namenode:9000/user/hive/warehouse/product_revenue \n          Partition\n            base file name: product_revenue\n            input format: org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n            output format: org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n            properties:\n              COLUMN_STATS_ACCURATE {\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"category\":\"true\",\"id\":\"true\",\"product\":\"true\",\"revenue\":\"true\"}}\n              bucket_count -1\n              bucketing_version 2\n              column.name.delimiter ,\n              columns id,product,category,revenue\n              columns.comments \n              columns.types int:string:string:double\n              comment PRODUCT_REVENUE Hive Managed ORC Table\n              creator Brijesh K Dhaker\n              file.inputformat org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n              file.outputformat org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n              hive.exec.dynamic.partition true\n              hive.exec.dynamic.partition.mode nonstrict\n              location hdfs://namenode:9000/user/hive/warehouse/product_revenue\n              name default.product_revenue\n              numFiles 1\n              numRows 10\n              orc.compress SNAPPY\n              rawDataSize 1930\n              serialization.ddl struct product_revenue { i32 id, string product, string category, double revenue}\n              serialization.format 1\n              serialization.lib org.apache.hadoop.hive.ql.io.orc.OrcSerde\n              totalSize 796\n              transient_lastDdlTime 1669084996\n            serde: org.apache.hadoop.hive.ql.io.orc.OrcSerde\n          \n              input format: org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n              output format: org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n              properties:\n                COLUMN_STATS_ACCURATE {\"BASIC_STATS\":\"true\",\"COLUMN_STATS\":{\"category\":\"true\",\"id\":\"true\",\"product\":\"true\",\"revenue\":\"true\"}}\n                bucket_count -1\n                bucketing_version 2\n                column.name.delimiter ,\n                columns id,product,category,revenue\n                columns.comments \n                columns.types int:string:string:double\n                comment PRODUCT_REVENUE Hive Managed ORC Table\n                creator Brijesh K Dhaker\n                file.inputformat org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\n                file.outputformat org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\n                hive.exec.dynamic.partition true\n                hive.exec.dynamic.partition.mode nonstrict\n                location hdfs://namenode:9000/user/hive/warehouse/product_revenue\n                name default.product_revenue\n                numFiles 1\n                numRows 10\n                orc.compress SNAPPY\n                rawDataSize 1930\n                serialization.ddl struct product_revenue { i32 id, string product, string category, double revenue}\n                serialization.format 1\n                serialization.lib org.apache.hadoop.hive.ql.io.orc.OrcSerde\n                totalSize 796\n                transient_lastDdlTime 1669084996\n              serde: org.apache.hadoop.hive.ql.io.orc.OrcSerde\n              name: default.product_revenue\n            name: default.product_revenue\n      Truncated Path -\u003e Alias:\n        /product_revenue [$hdt$_0:product_revenue]\n      Needs Tagging: false\n      Reduce Operator Tree:\n        Select Operator\n          expressions: VALUE._col1 (type: string), KEY.reducesinkkey0 (type: string), KEY.reducesinkkey1 (type: double)\n          outputColumnNames: _col1, _col2, _col3\n          PTF Operator\n            Function definitions:\n                Input definition\n                  input alias: ptf_0\n                  output shape: _col1: string, _col2: string, _col3: double\n                  type: WINDOWING\n                Windowing table definition\n                  input alias: ptf_1\n                  name: windowingtablefunction\n                  order by: _col3 DESC NULLS LAST\n                  partition by: _col2\n                  raw input shape:\n                  window functions:\n                      window function definition\n                        alias: dense_rank_window_0\n                        arguments: _col3\n                        name: dense_rank\n                        window function: GenericUDAFDenseRankEvaluator\n                        window frame: ROWS PRECEDING(MAX)~FOLLOWING(MAX)\n                        isPivotResult: true\n            Filter Operator\n              isSamplingPred: false\n              predicate: (dense_rank_window_0 \u003c\u003d 2) (type: boolean)\n              Select Operator\n                expressions: _col1 (type: string), _col2 (type: string), _col3 (type: double)\n                outputColumnNames: _col0, _col1, _col2\n                File Output Operator\n                  compressed: false\n                  GlobalTableId: 0\n                  directory: hdfs://namenode:9000/tmp/hive/hive/4279e518-9abb-4b99-9e4a-9419180a45f0/hive_2022-11-22_02-48-46_698_4014773367840924794-1/-mr-10001/.hive-staging_hive_2022-11-22_02-48-46_698_4014773367840924794-1/-ext-10002\n                  NumFilesPerFileSink: 1\n                  Stats Publishing Key Prefix: hdfs://namenode:9000/tmp/hive/hive/4279e518-9abb-4b99-9e4a-9419180a45f0/hive_2022-11-22_02-48-46_698_4014773367840924794-1/-mr-10001/.hive-staging_hive_2022-11-22_02-48-46_698_4014773367840924794-1/-ext-10002/\n                  table:\n                      input format: org.apache.hadoop.mapred.SequenceFileInputFormat\n                      output format: org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat\n                      properties:\n                        columns _col0,_col1,_col2\n                        columns.types string:string:double\n                        escape.delim \\\n                        hive.serialization.extend.additional.nesting.levels true\n                        serialization.escape.crlf true\n                        serialization.format 1\n                        serialization.lib org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                      serde: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                  TotalFiles: 1\n                  GatherStats: false\n                  MultiFileSpray: false\n\n  Stage: Stage-0\n    Fetch Operator\n      limit: -1\n      Processor Tree:\n        ListSink\n\n\nINFO  : Completed compiling command(queryId\u003droot_20221122024846_61f674ec-16f2-4382-970f-afc6d618f294); Time taken: 0.108 seconds\nINFO  : Concurrency mode is disabled, not creating a lock manager\nINFO  : Executing command(queryId\u003droot_20221122024846_61f674ec-16f2-4382-970f-afc6d618f294): \n\nSELECT\n    product,\n    category,\n    revenue\nFROM (\n    SELECT\n    product,\n    category,\n    revenue,\n    dense_rank() OVER (PARTITION BY category ORDER BY revenue DESC) as rank\n    FROM PRODUCT_REVENUE\n) tmp\nWHERE\nrank \u003c\u003d 2\nWARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.\nINFO  : Query ID \u003d root_20221122024846_61f674ec-16f2-4382-970f-afc6d618f294\nINFO  : Total jobs \u003d 1\nINFO  : Launching Job 1 out of 1\nINFO  : Starting task [Stage-1:MAPRED] in serial mode\nINFO  : Number of reduce tasks not specified. Estimated from input data size: 1\nINFO  : In order to change the average load for a reducer (in bytes):\nINFO  :   set hive.exec.reducers.bytes.per.reducer\u003d\u003cnumber\u003e\nINFO  : In order to limit the maximum number of reducers:\nINFO  :   set hive.exec.reducers.max\u003d\u003cnumber\u003e\nINFO  : In order to set a constant number of reducers:\nINFO  :   set mapreduce.job.reduces\u003d\u003cnumber\u003e\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "product\tcategory\trevenue\nThin\tcell phone\t6000.0\nVery thin\tcell phone\t6000.0\nUltra thin\tcell phone\t5000.0\nSlim\ttablet\t6500.0\nMini\ttablet\t5500.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669085212721_1066285927",
+      "id": "paragraph_1669085212721_1066285927",
+      "dateCreated": "2022-11-22 02:46:52.721",
+      "dateStarted": "2022-11-22 02:48:46.685",
+      "dateFinished": "2022-11-22 02:49:02.200",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-22 02:48:46.685",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669085326685_1780601709",
+      "id": "paragraph_1669085326685_1780601709",
+      "dateCreated": "2022-11-22 02:48:46.685",
+      "status": "READY"
+    }
+  ],
+  "name": "hive-window-functions",
+  "id": "2HHQWQ4CE",
+  "defaultInterpreterGroup": "hive",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

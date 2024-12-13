@@ -1,0 +1,1 @@
+./resources/libs/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar

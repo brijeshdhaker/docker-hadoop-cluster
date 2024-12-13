@@ -53,7 +53,7 @@ under the License.
   <localRepository>/path/to/local/repo</localRepository>
   -->
   
-  <localRepository>/apps/hostpath/.m2/repository</localRepository>
+  <localRepository>/apps/.m2/repository</localRepository>
 
   <!-- interactiveMode
    | This will determine whether maven prompts you when it needs input. If set to false,

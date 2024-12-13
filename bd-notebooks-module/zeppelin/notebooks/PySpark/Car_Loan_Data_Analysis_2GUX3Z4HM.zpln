@@ -1,0 +1,722 @@
+{
+  "paragraphs": [
+    {
+      "text": "%pyspark\n# Spark Context\nsc.version\n#\nsc.setLogLevel(\u0027INFO\u0027)\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:25:19.900",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669766661630_1786052506",
+      "id": "paragraph_1669766661630_1786052506",
+      "dateCreated": "2022-11-30 00:04:21.630",
+      "dateStarted": "2023-02-10 02:25:19.904",
+      "dateFinished": "2023-02-10 02:25:19.913",
+      "status": "FINISHED"
+    },
+    {
+      "text": " %pyspark\n\nimport json\n\n#\nconf \u003d json.loads(sc.wholeTextFiles(\u0027/datasets/auto_loan.json\u0027).collect()[0][1])\nprint(conf)\n\ninput_location \u003d conf.get(\"input_location\")\noutput_locatin \u003d conf.get(\"output_location\")\ndelimiter \u003d conf.get(\"delimiter\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:25:23.740",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 13.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "{\u0027input_location\u0027: \u0027/datasets/auto_loan.csv\u0027, \u0027output_location\u0027: \u0027/datasets/auto_loan_analysis\u0027, \u0027delimiter\u0027: \u0027,\u0027}\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d9"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642395913081_322983982",
+      "id": "paragraph_1642395913081_322983982",
+      "dateCreated": "2022-01-17 05:05:13.082",
+      "dateStarted": "2023-02-10 02:25:23.744",
+      "dateFinished": "2023-02-10 02:25:23.983",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n\n| Left-Aligned  | Center Aligned  | Right Aligned |\n| :------------ |:---------------:| -----:|\n| col 3 is      | some wordy text | $1600 |\n| col 2 is      | centered        |   $12 |\n| zebra stripes | are neat        |    $1 |\n\n#### Column Description for Data Feed\n| Column ID | Column Name | Sample Value |\n| ---:| :---: |:---|\n|[0]| application_id        | A_bfc8_5f2c1076521e | \n|[1]| customer_id,          | C_85542 |\n|[2]| car_price,            | $6436    |\n|[3]| car_type,             | sedan |\n|[4]| location,             | luxury cars |    \n|[5]| application_date,     | 2020-01-14 |\n|[6]| application_status    | approved |\n\n\nFirst Header  | Second Header\n------------- | -------------\nContent Cell  | Content Cell\nContent Cell  | Content Cell",
+      "user": "anonymous",
+      "dateUpdated": "2022-06-17 02:53:29.125",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\u003cth align\u003d\"left\"\u003eLeft-Aligned\u003c/th\u003e\u003cth align\u003d\"center\"\u003eCenter Aligned\u003c/th\u003e\u003cth align\u003d\"right\"\u003eRight Aligned\u003c/th\u003e\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\u003ctd align\u003d\"left\"\u003ecol 3 is\u003c/td\u003e\u003ctd align\u003d\"center\"\u003esome wordy text\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e$1600\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd align\u003d\"left\"\u003ecol 2 is\u003c/td\u003e\u003ctd align\u003d\"center\"\u003ecentered\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e$12\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd align\u003d\"left\"\u003ezebra stripes\u003c/td\u003e\u003ctd align\u003d\"center\"\u003eare neat\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e$1\u003c/td\u003e\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\n\u003ch4\u003eColumn Description for Data Feed\u003c/h4\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\u003cth align\u003d\"right\"\u003eColumn ID\u003c/th\u003e\u003cth align\u003d\"center\"\u003eColumn Name\u003c/th\u003e\u003cth align\u003d\"left\"\u003eSample Value\u003c/th\u003e\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\u003ctd align\u003d\"right\"\u003e[0]\u003c/td\u003e\u003ctd align\u003d\"center\"\u003eapplication_id\u003c/td\u003e\u003ctd align\u003d\"left\"\u003eA_bfc8_5f2c1076521e\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd align\u003d\"right\"\u003e[1]\u003c/td\u003e\u003ctd align\u003d\"center\"\u003ecustomer_id,\u003c/td\u003e\u003ctd align\u003d\"left\"\u003eC_85542\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd align\u003d\"right\"\u003e[2]\u003c/td\u003e\u003ctd align\u003d\"center\"\u003ecar_price,\u003c/td\u003e\u003ctd align\u003d\"left\"\u003e$6436\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd align\u003d\"right\"\u003e[3]\u003c/td\u003e\u003ctd align\u003d\"center\"\u003ecar_type,\u003c/td\u003e\u003ctd align\u003d\"left\"\u003esedan\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd align\u003d\"right\"\u003e[4]\u003c/td\u003e\u003ctd align\u003d\"center\"\u003elocation,\u003c/td\u003e\u003ctd align\u003d\"left\"\u003eluxury cars\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd align\u003d\"right\"\u003e[5]\u003c/td\u003e\u003ctd align\u003d\"center\"\u003eapplication_date,\u003c/td\u003e\u003ctd align\u003d\"left\"\u003e2020-01-14\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd align\u003d\"right\"\u003e[6]\u003c/td\u003e\u003ctd align\u003d\"center\"\u003eapplication_status\u003c/td\u003e\u003ctd align\u003d\"left\"\u003eapproved\u003c/td\u003e\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\u003cth\u003eFirst Header\u003c/th\u003e\u003cth\u003eSecond Header\u003c/th\u003e\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\u003ctd\u003eContent Cell\u003c/td\u003e\u003ctd\u003eContent Cell\u003c/td\u003e\u003c/tr\u003e\n\u003ctr\u003e\u003ctd\u003eContent Cell\u003c/td\u003e\u003ctd\u003eContent Cell\u003c/td\u003e\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1655433592624_1464445934",
+      "id": "paragraph_1655433592624_1464445934",
+      "dateCreated": "2022-06-17 02:39:52.626",
+      "dateStarted": "2022-06-17 02:53:29.126",
+      "dateFinished": "2022-06-17 02:53:29.166",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\ninput_rdd \u003d sc.textFile(input_location).filter(lambda record: not record.startswith(\"application_id\"))\nfor e in input_rdd.take(4) : print(e)\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-16 03:14:02.210",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "A_bfc8_5f2c1076521e,C_85542,6436,luxury cars,california,2020-01-14,approved\nA_98fd_619878723d1f,C_18419,6731,sedan,hawaii,2019-07-18,approved\nA_ac1b_6f65291e17e2,C_34019,6424,luxury cars,west virginia,2020-03-02,approved\nA_94c9_90aa7db883c9,C_8997,9827,crossover,north carolin,2019-07-08,approved\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676513290919_0001//jobs/job?id\u003d1"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642395997969_396002322",
+      "id": "paragraph_1642395997969_396002322",
+      "dateCreated": "2022-01-17 05:06:37.969",
+      "dateStarted": "2023-02-16 03:14:02.221",
+      "dateFinished": "2023-02-16 03:14:02.824",
+      "status": "FINISHED"
+    },
+    {
+      "text": " %md\n \n #### The month in which maximum loan requests were submitted in the last one year [2019-04-01 to 2020-03-31]\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-06-17 02:01:42.919",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true,
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch4\u003eThe month in which maximum loan requests were submitted in the last one year [2019-04-01 to 2020-03-31]\u003c/h4\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642396137875_1677551371",
+      "id": "paragraph_1642396137875_1677551371",
+      "dateCreated": "2022-01-17 05:08:57.875",
+      "dateStarted": "2022-06-17 02:01:42.918",
+      "dateFinished": "2022-06-17 02:01:44.869",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nmonth_count_rdd \u003d input_rdd.filter(lambda x: x.split(\",\")[5] \u003e\u003d \"2019-04-01\" and x.split(\",\")[5] \u003c \"2020-04-01\").map(lambda record: (int(record.split(delimiter)[5].split(\"-\")[1]), 1)).reduceByKey(lambda x, y: x + y)\ncount_month_rdd \u003d month_count_rdd.map(lambda x: (x[1], x[0]))\nresult \u003d count_month_rdd.takeOrdered(1, key\u003dlambda x: -1 * x[0])\n\nfor e in result : print(e)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-16 03:14:12.384",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(93, 7)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676513290919_0001//jobs/job?id\u003d2"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642396163479_2136930122",
+      "id": "paragraph_1642396163479_2136930122",
+      "dateCreated": "2022-01-17 05:09:23.479",
+      "dateStarted": "2023-02-16 03:14:12.389",
+      "dateFinished": "2023-02-16 03:14:14.933",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n\n#### Max, Min and Average number of applications submitted per customer id\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-06-17 04:14:43.274",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch4\u003eMax, Min and Average number of applications submitted per customer id\u003c/h4\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642396326605_1326329091",
+      "id": "paragraph_1642396326605_1326329091",
+      "dateCreated": "2022-01-17 05:12:06.605",
+      "dateStarted": "2022-06-17 04:14:43.274",
+      "dateFinished": "2022-06-17 04:14:45.416",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n#\ndef initialize(num_applications):\n    # (max_val, min_val, total_application, count)\n    return (num_applications, num_applications, num_applications, 1)\n\n# The second function is a merging function that takes a value and merges/combines it into the previously collected values.\ndef add(aggregated_values, num_applications):\n    max_val \u003d max(aggregated_values[0], num_applications)\n    min_val \u003d min(aggregated_values[1], num_applications)\n    total_applications \u003d aggregated_values[2] + num_applications\n    count \u003d aggregated_values[3] + 1\n    return max_val, min_val, total_applications, count\n\n# The third function combines the merged values together. Basically this function takes the new values produced at the partition level and combines them until we end up with one singular value.\ndef merge(agg1, agg2):\n    max_val \u003d max(agg1[0], agg2[0])\n    min_val \u003d min(agg1[1], agg2[1])\n    total \u003d agg1[2] + agg2[2]\n    count \u003d agg1[3] + agg2[3]\n    return max_val, min_val, total, count\n  \n\n# (customerid, 1) --\u003e (customerid, totalapp)\n\ncustomer_applications_rdd \u003d input_rdd.map(lambda record: (record.split(delimiter)[1], 1)).reduceByKey(lambda x, y: x + y)\nfor e in customer_applications_rdd.take(4) : print(e)\n\n# (customer_count, totalapp) --\u003e (1, totalapp)\nnum_applications_rdd \u003d customer_applications_rdd.map(lambda x: (1, x[1]))\nprint()\nprint(\"num_applications_rdd :: (customer count as 1, total application by cutomer)\")\nfor e in num_applications_rdd.take(4) : print(e)\n\nresult_rdd \u003d num_applications_rdd.combineByKey(initialize, add, merge)\nprint()\nprint(\"result_rdd ::\")\nmax_val, min_val, total, count \u003d result_rdd.collect()[0][1]\nprint(\"max: {}, min:{}, avg: {}\".format(max_val, min_val, round(float(total)/count, 4)))\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-16 03:14:23.196",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(\u0027C_85542\u0027, 1)\n(\u0027C_34019\u0027, 1)\n(\u0027C_7346\u0027, 1)\n(\u0027C_93917\u0027, 1)\n\nnum_applications_rdd :: (customer count as 1, total application by cutomer)\n(1, 1)\n(1, 1)\n(1, 1)\n(1, 1)\n\nresult_rdd ::\nmax: 2, min:1, avg: 1.003\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676513290919_0001//jobs/job?id\u003d3"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676513290919_0001//jobs/job?id\u003d4"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676513290919_0001//jobs/job?id\u003d5"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642396290147_501981753",
+      "id": "paragraph_1642396290147_501981753",
+      "dateCreated": "2022-01-17 05:11:30.147",
+      "dateStarted": "2023-02-16 03:14:23.202",
+      "dateFinished": "2023-02-16 03:14:23.799",
+      "status": "FINISHED"
+    },
+    {
+      "text": " %md\n #### Top 10 highest car price against which applications got approved\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-06-17 02:55:57.426",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true,
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch4\u003eTop 10 highest car price against which applications got approved\u003c/h4\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642397084301_896562647",
+      "id": "paragraph_1642397084301_896562647",
+      "dateCreated": "2022-01-17 05:24:44.301",
+      "dateStarted": "2022-06-17 02:55:57.427",
+      "dateFinished": "2022-06-17 02:55:57.438",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\napproved_car_loans \u003d input_rdd.filter(lambda x: x.split(delimiter)[6] \u003d\u003d \u0027approved\u0027)\n\n# (price, application_id)\nprice_application_rdd \u003d approved_car_loans.map(lambda record: (int(record.split(delimiter)[2]), record.split(delimiter)[0]))\n\n#\nresult \u003d price_application_rdd.takeOrdered(10, key\u003dlambda x: -1 * x[0])\nprint(\"price-application: {}\".format(result))",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-16 03:14:29.448",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "price-application: [(9983, \u0027A_917d_6eae0c762607\u0027), (9958, \u0027A_a9a8_1ba61df60345\u0027), (9950, \u0027A_9788_55ce826c48b5\u0027), (9948, \u0027A_8e80_6ed58dd4c487\u0027), (9939, \u0027A_8b2a_1a34e9e3f4fd\u0027), (9917, \u0027A_8f4c_d7b312adf383\u0027), (9913, \u0027A_b5b3_984a360ab344\u0027), (9911, \u0027A_9b4b_66c719a1c29c\u0027), (9905, \u0027A_a375_8eaa5e372b43\u0027), (9904, \u0027A_b781_6d9cdc1239d4\u0027)]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676513290919_0001//jobs/job?id\u003d6"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642396813362_163667230",
+      "id": "paragraph_1642396813362_163667230",
+      "dateCreated": "2022-01-17 05:20:13.362",
+      "dateStarted": "2023-02-16 03:14:29.451",
+      "dateFinished": "2023-02-16 03:14:29.574",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n #### For each customer location, top 5 car models which have most loan applications in the last month\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-17 07:07:25.467",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch4\u003eFor each customer location, top 5 car models which have most loan applications in the last month\u003c/h4\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642403240771_420944680",
+      "id": "paragraph_1642403240771_420944680",
+      "dateCreated": "2022-01-17 07:07:20.771",
+      "dateStarted": "2022-01-17 07:07:25.469",
+      "dateFinished": "2022-01-17 07:07:25.663",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.rdd import portable_hash\n\ndef partition_func(key):\n\treturn portable_hash(key[0])\n\ndef key_func(key):\n\treturn key\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-16 03:14:42.169",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642403208928_1176176516",
+      "id": "paragraph_1642403208928_1176176516",
+      "dateCreated": "2022-01-17 07:06:48.931",
+      "dateStarted": "2023-02-16 03:14:42.172",
+      "dateFinished": "2023-02-16 03:14:42.181",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n# ((location, car_type),1) ---\u003e ((location, car_type), application_count)\nlocation_model_count_rdd \u003d input_rdd.map(lambda x: ((x.split(delimiter)[4], x.split(delimiter)[3]), 1)).reduceByKey(lambda x, y : x + y)\n\n#  ((location, car_type), application_count) ---\u003e  ((location, application_count), car_type)\nlocation_count_model_rdd \u003d location_model_count_rdd.map(lambda x: ((x[0][0], x[1]), x[0][1]))\n\n# This will create partition based upon location and sort partition data by Key\nsorted_rdd \u003d location_count_model_rdd.repartitionAndSortWithinPartitions(partitionFunc\u003dpartition_func, keyfunc\u003dkey_func, ascending\u003dFalse)\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-16 03:14:44.232",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1655438633605_1869102225",
+      "id": "paragraph_1655438633605_1869102225",
+      "dateCreated": "2022-06-17 04:03:53.606",
+      "dateStarted": "2023-02-16 03:14:44.243",
+      "dateFinished": "2023-02-16 03:14:44.287",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nTOP_N \u003d 5\ndef get_top_values(records):\n  last_location \u003d None\n  current_rank \u003d 0\n  for record in records:\n    current_location, num_applications, car_type \u003d record[0][0], record[0][1], record[1]\n    if current_location !\u003d last_location:\n      last_location \u003d current_location\n      current_rank \u003d 1\n    else:\n      current_rank +\u003d 1\n    if current_rank \u003c\u003d TOP_N:\n      yield current_location, num_applications, car_type, current_rank\n    else:\n      continue\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:26:22.541",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1655438868757_208004157",
+      "id": "paragraph_1655438868757_208004157",
+      "dateCreated": "2022-06-17 04:07:48.757",
+      "dateStarted": "2023-02-10 02:26:22.544",
+      "dateFinished": "2023-02-10 02:26:22.550",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nresult_rdd \u003d sorted_rdd.mapPartitions(get_top_values)\nfor e in result_rdd.collect() : z.show(e)\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:26:24.694",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(\u0027wisconsin\u0027, 3, \u0027hybrid cars\u0027, 1)\n(\u0027wisconsin\u0027, 2, \u0027suvs\u0027, 2)\n(\u0027wisconsin\u0027, 2, \u0027microcar\u0027, 3)\n(\u0027wisconsin\u0027, 2, \u0027crossover\u0027, 4)\n(\u0027wisconsin\u0027, 2, \u0027luxury cars\u0027, 5)\n(\u0027west virginia\u0027, 4, \u0027estate cars\u0027, 1)\n(\u0027west virginia\u0027, 4, \u0027convertibles\u0027, 2)\n(\u0027west virginia\u0027, 3, \u0027modified cars\u0027, 3)\n(\u0027west virginia\u0027, 2, \u0027sports cars\u0027, 4)\n(\u0027west virginia\u0027, 2, \u0027hybrid cars\u0027, 5)\n(\u0027virginia\u0027, 2, \u0027modified cars\u0027, 1)\n(\u0027virginia\u0027, 2, \u0027microcar\u0027, 2)\n(\u0027virginia\u0027, 2, \u0027limousine\u0027, 3)\n(\u0027virginia\u0027, 2, \u0027luxury cars\u0027, 4)\n(\u0027virginia\u0027, 1, \u0027convertibles\u0027, 5)\n(\u0027texas\u0027, 4, \u0027estate cars\u0027, 1)\n(\u0027texas\u0027, 4, \u0027modified cars\u0027, 2)\n(\u0027texas\u0027, 3, \u0027sedan\u0027, 3)\n(\u0027texas\u0027, 3, \u0027economy hatchback\u0027, 4)\n(\u0027texas\u0027, 2, \u0027microcar\u0027, 5)\n(\u0027tennessee\u0027, 2, \u0027suvs\u0027, 1)\n(\u0027tennessee\u0027, 2, \u0027limousine\u0027, 2)\n(\u0027tennessee\u0027, 2, \u0027luxury cars\u0027, 3)\n(\u0027tennessee\u0027, 2, \u0027crossover\u0027, 4)\n(\u0027tennessee\u0027, 2, \u0027pickup\u0027, 5)\n(\u0027south carolina\u0027, 3, \u0027modified cars\u0027, 1)\n(\u0027south carolina\u0027, 3, \u0027coupe\u0027, 2)\n(\u0027south carolina\u0027, 2, \u0027sedan\u0027, 3)\n(\u0027south carolina\u0027, 2, \u0027suvs\u0027, 4)\n(\u0027south carolina\u0027, 1, \u0027estate cars\u0027, 5)\n(\u0027rhode island\u0027, 2, \u0027luxury cars\u0027, 1)\n(\u0027rhode island\u0027, 1, \u0027coupe\u0027, 2)\n(\u0027rhode island\u0027, 1, \u0027estate cars\u0027, 3)\n(\u0027rhode island\u0027, 1, \u0027suvs\u0027, 4)\n(\u0027rhode island\u0027, 1, \u0027convertibles\u0027, 5)\n(\u0027pennsylvania\u0027, 5, \u0027estate cars\u0027, 1)\n(\u0027pennsylvania\u0027, 4, \u0027economy hatchback\u0027, 2)\n(\u0027pennsylvania\u0027, 3, \u0027luxury cars\u0027, 3)\n(\u0027pennsylvania\u0027, 2, \u0027suvs\u0027, 4)\n(\u0027pennsylvania\u0027, 2, \u0027limousine\u0027, 5)\n(\u0027oregon\u0027, 3, \u0027suvs\u0027, 1)\n(\u0027oregon\u0027, 3, \u0027pickup\u0027, 2)\n(\u0027oregon\u0027, 3, \u0027luxury cars\u0027, 3)\n(\u0027oregon\u0027, 2, \u0027sedan\u0027, 4)\n(\u0027oregon\u0027, 2, \u0027microcar\u0027, 5)\n(\u0027north dakota\u0027, 3, \u0027hybrid cars\u0027, 1)\n(\u0027north dakota\u0027, 2, \u0027convertibles\u0027, 2)\n(\u0027north dakota\u0027, 2, \u0027suvs\u0027, 3)\n(\u0027north dakota\u0027, 2, \u0027coupe\u0027, 4)\n(\u0027north dakota\u0027, 2, \u0027modified cars\u0027, 5)\n(\u0027new hampshire\u0027, 4, \u0027sedan\u0027, 1)\n(\u0027new hampshire\u0027, 3, \u0027modified cars\u0027, 2)\n(\u0027new hampshire\u0027, 3, \u0027economy hatchback\u0027, 3)\n(\u0027new hampshire\u0027, 3, \u0027pickup\u0027, 4)\n(\u0027new hampshire\u0027, 2, \u0027suvs\u0027, 5)\n(\u0027nevada\u0027, 4, \u0027modified cars\u0027, 1)\n(\u0027nevada\u0027, 3, \u0027estate cars\u0027, 2)\n(\u0027nevada\u0027, 2, \u0027limousine\u0027, 3)\n(\u0027nevada\u0027, 2, \u0027coupe\u0027, 4)\n(\u0027nevada\u0027, 2, \u0027microcar\u0027, 5)\n(\u0027montana\u0027, 4, \u0027convertibles\u0027, 1)\n(\u0027montana\u0027, 3, \u0027suvs\u0027, 2)\n(\u0027montana\u0027, 2, \u0027sedan\u0027, 3)\n(\u0027montana\u0027, 2, \u0027coupe\u0027, 4)\n(\u0027montana\u0027, 2, \u0027pickup\u0027, 5)\n(\u0027mississippi\u0027, 3, \u0027sports cars\u0027, 1)\n(\u0027mississippi\u0027, 2, \u0027coupe\u0027, 2)\n(\u0027mississippi\u0027, 2, \u0027estate cars\u0027, 3)\n(\u0027mississippi\u0027, 2, \u0027economy hatchback\u0027, 4)\n(\u0027mississippi\u0027, 1, \u0027modified cars\u0027, 5)\n(\u0027minnesota\u0027, 5, \u0027economy hatchback\u0027, 1)\n(\u0027minnesota\u0027, 4, \u0027crossover\u0027, 2)\n(\u0027minnesota\u0027, 4, \u0027pickup\u0027, 3)\n(\u0027minnesota\u0027, 3, \u0027modified cars\u0027, 4)\n(\u0027minnesota\u0027, 3, \u0027limousine\u0027, 5)\n(\u0027michigan\u0027, 4, \u0027luxury cars\u0027, 1)\n(\u0027michigan\u0027, 4, \u0027pickup\u0027, 2)\n(\u0027michigan\u0027, 2, \u0027coupe\u0027, 3)\n(\u0027michigan\u0027, 2, \u0027economy hatchback\u0027, 4)\n(\u0027michigan\u0027, 1, \u0027modified cars\u0027, 5)\n(\u0027maryland\u0027, 3, \u0027convertibles\u0027, 1)\n(\u0027maryland\u0027, 3, \u0027microcar\u0027, 2)\n(\u0027maryland\u0027, 3, \u0027modified cars\u0027, 3)\n(\u0027maryland\u0027, 3, \u0027suvs\u0027, 4)\n(\u0027maryland\u0027, 3, \u0027pickup\u0027, 5)\n(\u0027iowa\u0027, 4, \u0027coupe\u0027, 1)\n(\u0027iowa\u0027, 3, \u0027convertibles\u0027, 2)\n(\u0027iowa\u0027, 3, \u0027luxury cars\u0027, 3)\n(\u0027iowa\u0027, 2, \u0027estate cars\u0027, 4)\n(\u0027iowa\u0027, 2, \u0027limousine\u0027, 5)\n(\u0027idaho\u0027, 5, \u0027economy hatchback\u0027, 1)\n(\u0027idaho\u0027, 4, \u0027luxury cars\u0027, 2)\n(\u0027idaho\u0027, 4, \u0027crossover\u0027, 3)\n(\u0027idaho\u0027, 3, \u0027convertibles\u0027, 4)\n(\u0027idaho\u0027, 2, \u0027coupe\u0027, 5)\n(\u0027georgia\u0027, 3, \u0027limousine\u0027, 1)\n(\u0027georgia\u0027, 2, \u0027sports cars\u0027, 2)\n(\u0027georgia\u0027, 2, \u0027coupe\u0027, 3)\n(\u0027georgia\u0027, 1, \u0027modified cars\u0027, 4)\n(\u0027georgia\u0027, 1, \u0027sedan\u0027, 5)\n(\u0027delaware\u0027, 4, \u0027pickup\u0027, 1)\n(\u0027delaware\u0027, 3, \u0027limousine\u0027, 2)\n(\u0027delaware\u0027, 3, \u0027sports cars\u0027, 3)\n(\u0027delaware\u0027, 3, \u0027sedan\u0027, 4)\n(\u0027delaware\u0027, 2, \u0027hybrid cars\u0027, 5)\n(\u0027connecticut\u0027, 3, \u0027hybrid cars\u0027, 1)\n(\u0027connecticut\u0027, 3, \u0027economy hatchback\u0027, 2)\n(\u0027connecticut\u0027, 2, \u0027convertibles\u0027, 3)\n(\u0027connecticut\u0027, 2, \u0027modified cars\u0027, 4)\n(\u0027connecticut\u0027, 2, \u0027pickup\u0027, 5)\n(\u0027colorado\u0027, 3, \u0027sedan\u0027, 1)\n(\u0027colorado\u0027, 3, \u0027estate cars\u0027, 2)\n(\u0027colorado\u0027, 3, \u0027limousine\u0027, 3)\n(\u0027colorado\u0027, 3, \u0027sports cars\u0027, 4)\n(\u0027colorado\u0027, 2, \u0027modified cars\u0027, 5)\n(\u0027alaska\u0027, 5, \u0027sports cars\u0027, 1)\n(\u0027alaska\u0027, 4, \u0027economy hatchback\u0027, 2)\n(\u0027alaska\u0027, 2, \u0027limousine\u0027, 3)\n(\u0027alaska\u0027, 2, \u0027crossover\u0027, 4)\n(\u0027alaska\u0027, 2, \u0027hybrid cars\u0027, 5)\n(\u0027alabama\u0027, 3, \u0027estate cars\u0027, 1)\n(\u0027alabama\u0027, 3, \u0027pickup\u0027, 2)\n(\u0027alabama\u0027, 3, \u0027luxury cars\u0027, 3)\n(\u0027alabama\u0027, 2, \u0027suvs\u0027, 4)\n(\u0027alabama\u0027, 2, \u0027convertibles\u0027, 5)\n(\u0027wyoming\u0027, 4, \u0027suvs\u0027, 1)\n(\u0027wyoming\u0027, 2, \u0027crossover\u0027, 2)\n(\u0027wyoming\u0027, 2, \u0027modified cars\u0027, 3)\n(\u0027wyoming\u0027, 2, \u0027sports cars\u0027, 4)\n(\u0027wyoming\u0027, 1, \u0027pickup\u0027, 5)\n(\u0027washington\u0027, 4, \u0027limousine\u0027, 1)\n(\u0027washington\u0027, 2, \u0027hybrid cars\u0027, 2)\n(\u0027washington\u0027, 2, \u0027economy hatchback\u0027, 3)\n(\u0027washington\u0027, 2, \u0027pickup\u0027, 4)\n(\u0027washington\u0027, 2, \u0027suvs\u0027, 5)\n(\u0027vermont\u0027, 5, \u0027luxury cars\u0027, 1)\n(\u0027vermont\u0027, 4, \u0027modified cars\u0027, 2)\n(\u0027vermont\u0027, 2, \u0027crossover\u0027, 3)\n(\u0027vermont\u0027, 2, \u0027economy hatchback\u0027, 4)\n(\u0027vermont\u0027, 2, \u0027pickup\u0027, 5)\n(\u0027utah\u0027, 4, \u0027hybrid cars\u0027, 1)\n(\u0027utah\u0027, 2, \u0027suvs\u0027, 2)\n(\u0027utah\u0027, 2, \u0027limousine\u0027, 3)\n(\u0027utah\u0027, 1, \u0027economy hatchback\u0027, 4)\n(\u0027utah\u0027, 1, \u0027crossover\u0027, 5)\n(\u0027south dakota\u0027, 4, \u0027modified cars\u0027, 1)\n(\u0027south dakota\u0027, 3, \u0027luxury cars\u0027, 2)\n(\u0027south dakota\u0027, 3, \u0027estate cars\u0027, 3)\n(\u0027south dakota\u0027, 3, \u0027convertibles\u0027, 4)\n(\u0027south dakota\u0027, 2, \u0027crossover\u0027, 5)\n(\u0027oklahoma\u0027, 6, \u0027modified cars\u0027, 1)\n(\u0027oklahoma\u0027, 5, \u0027convertibles\u0027, 2)\n(\u0027oklahoma\u0027, 4, \u0027crossover\u0027, 3)\n(\u0027oklahoma\u0027, 4, \u0027pickup\u0027, 4)\n(\u0027oklahoma\u0027, 3, \u0027economy hatchback\u0027, 5)\n(\u0027ohio\u0027, 2, \u0027economy hatchback\u0027, 1)\n(\u0027ohio\u0027, 2, \u0027suvs\u0027, 2)\n(\u0027ohio\u0027, 1, \u0027pickup\u0027, 3)\n(\u0027ohio\u0027, 1, \u0027luxury cars\u0027, 4)\n(\u0027ohio\u0027, 1, \u0027crossover\u0027, 5)\n(\u0027north carolin\u0027, 5, \u0027sports cars\u0027, 1)\n(\u0027north carolin\u0027, 4, \u0027pickup\u0027, 2)\n(\u0027north carolin\u0027, 4, \u0027suvs\u0027, 3)\n(\u0027north carolin\u0027, 3, \u0027estate cars\u0027, 4)\n(\u0027north carolin\u0027, 3, \u0027convertibles\u0027, 5)\n(\u0027new york\u0027, 5, \u0027economy hatchback\u0027, 1)\n(\u0027new york\u0027, 2, \u0027crossover\u0027, 2)\n(\u0027new york\u0027, 2, \u0027hybrid cars\u0027, 3)\n(\u0027new york\u0027, 2, \u0027sports cars\u0027, 4)\n(\u0027new york\u0027, 2, \u0027coupe\u0027, 5)\n(\u0027new mexico\u0027, 3, \u0027pickup\u0027, 1)\n(\u0027new mexico\u0027, 3, \u0027modified cars\u0027, 2)\n(\u0027new mexico\u0027, 3, \u0027microcar\u0027, 3)\n(\u0027new mexico\u0027, 2, \u0027hybrid cars\u0027, 4)\n(\u0027new mexico\u0027, 2, \u0027suvs\u0027, 5)\n(\u0027new jersey\u0027, 3, \u0027estate cars\u0027, 1)\n(\u0027new jersey\u0027, 2, \u0027luxury cars\u0027, 2)\n(\u0027new jersey\u0027, 2, \u0027hybrid cars\u0027, 3)\n(\u0027new jersey\u0027, 2, \u0027sedan\u0027, 4)\n(\u0027new jersey\u0027, 2, \u0027microcar\u0027, 5)\n(\u0027nebraska\u0027, 4, \u0027luxury cars\u0027, 1)\n(\u0027nebraska\u0027, 2, \u0027hybrid cars\u0027, 2)\n(\u0027nebraska\u0027, 2, \u0027limousine\u0027, 3)\n(\u0027nebraska\u0027, 2, \u0027coupe\u0027, 4)\n(\u0027nebraska\u0027, 2, \u0027sports cars\u0027, 5)\n(\u0027missouri\u0027, 5, \u0027luxury cars\u0027, 1)\n(\u0027missouri\u0027, 3, \u0027economy hatchback\u0027, 2)\n(\u0027missouri\u0027, 2, \u0027crossover\u0027, 3)\n(\u0027missouri\u0027, 2, \u0027pickup\u0027, 4)\n(\u0027missouri\u0027, 2, \u0027suvs\u0027, 5)\n(\u0027massachusetts\u0027, 3, \u0027luxury cars\u0027, 1)\n(\u0027massachusetts\u0027, 2, \u0027hybrid cars\u0027, 2)\n(\u0027massachusetts\u0027, 2, \u0027limousine\u0027, 3)\n(\u0027massachusetts\u0027, 2, \u0027sedan\u0027, 4)\n(\u0027massachusetts\u0027, 2, \u0027microcar\u0027, 5)\n(\u0027maine\u0027, 4, \u0027modified cars\u0027, 1)\n(\u0027maine\u0027, 3, \u0027suvs\u0027, 2)\n(\u0027maine\u0027, 2, \u0027hybrid cars\u0027, 3)\n(\u0027maine\u0027, 2, \u0027sedan\u0027, 4)\n(\u0027maine\u0027, 2, \u0027convertibles\u0027, 5)\n(\u0027louisiana\u0027, 3, \u0027economy hatchback\u0027, 1)\n(\u0027louisiana\u0027, 3, \u0027hybrid cars\u0027, 2)\n(\u0027louisiana\u0027, 3, \u0027microcar\u0027, 3)\n(\u0027louisiana\u0027, 3, \u0027coupe\u0027, 4)\n(\u0027louisiana\u0027, 2, \u0027luxury cars\u0027, 5)\n(\u0027kentucky\u0027, 3, \u0027coupe\u0027, 1)\n(\u0027kentucky\u0027, 2, \u0027pickup\u0027, 2)\n(\u0027kentucky\u0027, 2, \u0027crossover\u0027, 3)\n(\u0027kentucky\u0027, 2, \u0027modified cars\u0027, 4)\n(\u0027kentucky\u0027, 2, \u0027microcar\u0027, 5)\n(\u0027kansas\u0027, 2, \u0027hybrid cars\u0027, 1)\n(\u0027kansas\u0027, 2, \u0027luxury cars\u0027, 2)\n(\u0027kansas\u0027, 2, \u0027convertibles\u0027, 3)\n(\u0027kansas\u0027, 2, \u0027sports cars\u0027, 4)\n(\u0027kansas\u0027, 1, \u0027economy hatchback\u0027, 5)\n(\u0027indiana\u0027, 3, \u0027economy hatchback\u0027, 1)\n(\u0027indiana\u0027, 2, \u0027crossover\u0027, 2)\n(\u0027indiana\u0027, 2, \u0027luxury cars\u0027, 3)\n(\u0027indiana\u0027, 2, \u0027convertibles\u0027, 4)\n(\u0027indiana\u0027, 2, \u0027suvs\u0027, 5)\n(\u0027illinois\u0027, 4, \u0027limousine\u0027, 1)\n(\u0027illinois\u0027, 3, \u0027modified cars\u0027, 2)\n(\u0027illinois\u0027, 3, \u0027microcar\u0027, 3)\n(\u0027illinois\u0027, 3, \u0027suvs\u0027, 4)\n(\u0027illinois\u0027, 2, \u0027economy hatchback\u0027, 5)\n(\u0027hawaii\u0027, 4, \u0027convertibles\u0027, 1)\n(\u0027hawaii\u0027, 3, \u0027hybrid cars\u0027, 2)\n(\u0027hawaii\u0027, 3, \u0027economy hatchback\u0027, 3)\n(\u0027hawaii\u0027, 2, \u0027pickup\u0027, 4)\n(\u0027hawaii\u0027, 2, \u0027sedan\u0027, 5)\n(\u0027florida\u0027, 3, \u0027hybrid cars\u0027, 1)\n(\u0027florida\u0027, 3, \u0027luxury cars\u0027, 2)\n(\u0027florida\u0027, 3, \u0027estate cars\u0027, 3)\n(\u0027florida\u0027, 3, \u0027microcar\u0027, 4)\n(\u0027florida\u0027, 3, \u0027coupe\u0027, 5)\n(\u0027california\u0027, 3, \u0027luxury cars\u0027, 1)\n(\u0027california\u0027, 2, \u0027hybrid cars\u0027, 2)\n(\u0027california\u0027, 2, \u0027crossover\u0027, 3)\n(\u0027california\u0027, 2, \u0027convertibles\u0027, 4)\n(\u0027california\u0027, 2, \u0027sedan\u0027, 5)\n(\u0027arkansas\u0027, 3, \u0027hybrid cars\u0027, 1)\n(\u0027arkansas\u0027, 2, \u0027luxury cars\u0027, 2)\n(\u0027arkansas\u0027, 2, \u0027economy hatchback\u0027, 3)\n(\u0027arkansas\u0027, 2, \u0027coupe\u0027, 4)\n(\u0027arkansas\u0027, 2, \u0027microcar\u0027, 5)\n(\u0027arizona\u0027, 4, \u0027pickup\u0027, 1)\n(\u0027arizona\u0027, 4, \u0027estate cars\u0027, 2)\n(\u0027arizona\u0027, 2, \u0027luxury cars\u0027, 3)\n(\u0027arizona\u0027, 2, \u0027hybrid cars\u0027, 4)\n(\u0027arizona\u0027, 2, \u0027coupe\u0027, 5)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d23"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1655438879954_1645082131",
+      "id": "paragraph_1655438879954_1645082131",
+      "dateCreated": "2022-06-17 04:07:59.954",
+      "dateStarted": "2023-02-10 02:26:24.698",
+      "dateFinished": "2023-02-10 02:26:25.003",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-06-17 04:15:39.946",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1655439339946_1877714418",
+      "id": "paragraph_1655439339946_1877714418",
+      "dateCreated": "2022-06-17 04:15:39.946",
+      "status": "READY"
+    }
+  ],
+  "name": "Car_Loan_Data_Analysis",
+  "id": "2GUX3Z4HM",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

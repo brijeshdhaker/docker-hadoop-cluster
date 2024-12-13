@@ -1,0 +1,282 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.conf\n\nSPARK_HOME /opt/spark-3.1.2\nmaster local[4]\nspark.jars.packages org.elasticsearch:elasticsearch-spark-30_2.12:7.16.2\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-12 08:35:52.276",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641345128649_737315202",
+      "id": "paragraph_1641345128649_737315202",
+      "dateCreated": "2022-01-05 01:12:08.649",
+      "dateStarted": "2022-01-05 03:32:59.755",
+      "dateFinished": "2022-01-05 03:32:59.763",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nspark.conf.set(\"cluster.name\", \"docker-cluster\")\nspark.conf.set(\"es.index.auto.create\", \"true\")\nspark.conf.set(\"es.read.metadata\", \"true\")\nspark.conf.set(\"es.nodes.wan.only\",\"true\")\nspark.conf.set(\"es.net.ssl\",\"false\")\nspark.conf.set(\"es.nodes.discovery\", \"false\") \n//spark.conf.set(\"es.resource\", \"index/type\")\nspark.conf.set(\"es.nodes\", \"http://elasticsearch\")\nspark.conf.set(\"es.port\",\"9200\")\nspark.conf.set(\"es.net.http.auth.user\", \"elastic\")\nspark.conf.set(\"es.net.http.auth.pass\", \"admin\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-05 04:00:41.544",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641345122329_830801308",
+      "id": "paragraph_1641345122329_830801308",
+      "dateCreated": "2022-01-05 01:12:02.329",
+      "dateStarted": "2022-01-05 04:00:41.547",
+      "dateFinished": "2022-01-05 04:00:41.646",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nimport spark.implicits._\ncase class AlbumIndex(artist:String, yearOfRelease:Int, albumName: String)\n\nval indexDocuments \u003d Seq(\n    AlbumIndex(\"Led Zeppelin\",1969,\"Led Zeppelin\"),\n    AlbumIndex(\"Boston\",1976,\"Boston\"),\n    AlbumIndex(\"Fleetwood Mac\", 1979,\"Tusk\")\n).toDF\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-05 03:33:31.174",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import spark.implicits._\ndefined class AlbumIndex\n\u001b[1m\u001b[34mindexDocuments\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [artist: string, yearOfRelease: int ... 1 more field]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641345334400_402597325",
+      "id": "paragraph_1641345334400_402597325",
+      "dateCreated": "2022-01-05 01:15:34.401",
+      "dateStarted": "2022-01-05 03:33:31.177",
+      "dateFinished": "2022-01-05 03:33:45.393",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nimport org.elasticsearch.spark.sql._\n\nval albums \u003d spark.esDF(\"demoindex/albumindex\")\nprintln(albums.schema.treeString)",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-05 04:00:47.073",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "org.elasticsearch.hadoop.EsHadoopIllegalArgumentException: Cannot detect ES version - typically this happens if the network/Elasticsearch cluster is not accessible or when targeting a WAN/Cloud instance without the proper setting \u0027es.nodes.wan.only\u0027\n  at org.elasticsearch.hadoop.rest.InitializationUtils.discoverClusterInfo(InitializationUtils.java:340)\n  at org.elasticsearch.spark.sql.ElasticsearchRelation.cfg$lzycompute(DefaultSource.scala:225)\n  at org.elasticsearch.spark.sql.ElasticsearchRelation.cfg(DefaultSource.scala:223)\n  at org.elasticsearch.spark.sql.ElasticsearchRelation.lazySchema$lzycompute(DefaultSource.scala:229)\n  at org.elasticsearch.spark.sql.ElasticsearchRelation.lazySchema(DefaultSource.scala:229)\n  at org.elasticsearch.spark.sql.ElasticsearchRelation$$anonfun$schema$1.apply(DefaultSource.scala:233)\n  at org.elasticsearch.spark.sql.ElasticsearchRelation$$anonfun$schema$1.apply(DefaultSource.scala:233)\n  at scala.Option.getOrElse(Option.scala:121)\n  at org.elasticsearch.spark.sql.ElasticsearchRelation.schema(DefaultSource.scala:233)\n  at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:432)\n  at org.apache.spark.sql.DataFrameReader.loadV1Source(DataFrameReader.scala:239)\n  at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:227)\n  at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:164)\n  at org.elasticsearch.spark.sql.EsSparkSQL$.esDF(EsSparkSQL.scala:56)\n  at org.elasticsearch.spark.sql.EsSparkSQL$.esDF(EsSparkSQL.scala:69)\n  at org.elasticsearch.spark.sql.package$SparkSessionFunctions.esDF(package.scala:57)\n  ... 49 elided\nCaused by: org.elasticsearch.hadoop.rest.EsHadoopNoNodesLeftException: Connection error (check network and/or proxy settings)- all nodes failed; tried [[127.0.0.1:9200]]\n  at org.elasticsearch.hadoop.rest.NetworkClient.execute(NetworkClient.java:160)\n  at org.elasticsearch.hadoop.rest.RestClient.execute(RestClient.java:432)\n  at org.elasticsearch.hadoop.rest.RestClient.execute(RestClient.java:428)\n  at org.elasticsearch.hadoop.rest.RestClient.execute(RestClient.java:388)\n  at org.elasticsearch.hadoop.rest.RestClient.execute(RestClient.java:392)\n  at org.elasticsearch.hadoop.rest.RestClient.get(RestClient.java:168)\n  at org.elasticsearch.hadoop.rest.RestClient.mainInfo(RestClient.java:745)\n  at org.elasticsearch.hadoop.rest.InitializationUtils.discoverClusterInfo(InitializationUtils.java:330)\n  ... 64 more\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641355090142_902581765",
+      "id": "paragraph_1641355090142_902581765",
+      "dateCreated": "2022-01-05 03:58:10.142",
+      "dateStarted": "2022-01-05 04:00:47.076",
+      "dateFinished": "2022-01-05 04:00:47.319",
+      "status": "ERROR"
+    },
+    {
+      "text": "%spark\n\nimport org.elasticsearch.spark.sql._\n\n// val albums \u003d spark.esDF(\"demoindex/albumindex\")\n// println(albums.schema.treeString)\n\nval reader \u003d spark.read.format(\"org.elasticsearch.spark.sql\")\n      .option(\"es.read.metadata\", \"true\")\n      .option(\"es.nodes.wan.only\",\"true\")\n      .option(\"es.port\",\"9200\")\n      .option(\"es.net.http.auth.user\", \"elastic\")\n      .option(\"es.net.http.auth.pass\", \"admin\")\n      .option(\"es.net.ssl\",\"false\")\n      .option(\"es.nodes\", \"http://elasticsearch\")\n\n    // check the associated schema\n    val esDF \u003d reader.load(\"demoindex/albumindex\")\n    println(esDF.schema.treeString)\n    esDF.show()\n    ",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-05 04:23:39.727",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- albumName: string (nullable \u003d true)\n |-- artist: string (nullable \u003d true)\n |-- yearOfRelease: long (nullable \u003d true)\n |-- _metadata: map (nullable \u003d true)\n |    |-- key: string\n |    |-- value: string (valueContainsNull \u003d true)\n\n+------------+-------------+-------------+--------------------+\n|   albumName|       artist|yearOfRelease|           _metadata|\n+------------+-------------+-------------+--------------------+\n|        Tusk|Fleetwood Mac|         1979|[_index -\u003e demoin...|\n|Led Zeppelin| Led Zeppelin|         1969|[_index -\u003e demoin...|\n|      Boston|       Boston|         1976|[_index -\u003e demoin...|\n+------------+-------------+-------------+--------------------+\n\nimport org.elasticsearch.spark.sql._\n\u001b[1m\u001b[34mreader\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrameReader\u001b[0m \u003d org.apache.spark.sql.DataFrameReader@295ecde4\n\u001b[1m\u001b[34mesDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [albumName: string, artist: string ... 2 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d2"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641353448207_1457187354",
+      "id": "paragraph_1641353448207_1457187354",
+      "dateCreated": "2022-01-05 03:30:48.208",
+      "dateStarted": "2022-01-05 04:23:39.731",
+      "dateFinished": "2022-01-05 04:23:39.981",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nimport org.elasticsearch.spark.sql._\n\nindexDocuments.saveToEs(\"demoindex/albumindex\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-05 03:43:43.745",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "org.elasticsearch.hadoop.EsHadoopIllegalArgumentException: Cannot detect ES version - typically this happens if the network/Elasticsearch cluster is not accessible or when targeting a WAN/Cloud instance without the proper setting \u0027es.nodes.wan.only\u0027\n  at org.elasticsearch.hadoop.rest.InitializationUtils.discoverClusterInfo(InitializationUtils.java:340)\n  at org.elasticsearch.spark.sql.EsSparkSQL$.saveToEs(EsSparkSQL.scala:97)\n  at org.elasticsearch.spark.sql.EsSparkSQL$.saveToEs(EsSparkSQL.scala:80)\n  at org.elasticsearch.spark.sql.package$SparkDataFrameFunctions.saveToEs(package.scala:48)\n  ... 47 elided\nCaused by: org.elasticsearch.hadoop.rest.EsHadoopNoNodesLeftException: Connection error (check network and/or proxy settings)- all nodes failed; tried [[127.0.0.1:9200]]\n  at org.elasticsearch.hadoop.rest.NetworkClient.execute(NetworkClient.java:160)\n  at org.elasticsearch.hadoop.rest.RestClient.execute(RestClient.java:432)\n  at org.elasticsearch.hadoop.rest.RestClient.execute(RestClient.java:428)\n  at org.elasticsearch.hadoop.rest.RestClient.execute(RestClient.java:388)\n  at org.elasticsearch.hadoop.rest.RestClient.execute(RestClient.java:392)\n  at org.elasticsearch.hadoop.rest.RestClient.get(RestClient.java:168)\n  at org.elasticsearch.hadoop.rest.RestClient.mainInfo(RestClient.java:745)\n  at org.elasticsearch.hadoop.rest.InitializationUtils.discoverClusterInfo(InitializationUtils.java:330)\n  ... 50 more\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641345386201_2064485034",
+      "id": "paragraph_1641345386201_2064485034",
+      "dateCreated": "2022-01-05 01:16:26.201",
+      "dateStarted": "2022-01-05 03:43:43.748",
+      "dateFinished": "2022-01-05 03:43:43.940",
+      "status": "ERROR"
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-05 01:18:44.973",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641345524973_325838413",
+      "id": "paragraph_1641345524973_325838413",
+      "dateCreated": "2022-01-05 01:18:44.973",
+      "status": "READY"
+    }
+  ],
+  "name": "elastic-search",
+  "id": "2GQNA92JB",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

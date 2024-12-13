@@ -8,10 +8,25 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/bd-flink-spend-report/pom.xml" />
+        <option value="$PROJECT_DIR$/bd-flink-operations/pom.xml" />
+        <option value="$PROJECT_DIR$/bd-data-generator/pom.xml" />
+        <option value="$PROJECT_DIR$/flink-playground/pom.xml" />
+        <option value="$PROJECT_DIR$/bd-spark-module/pom.xml" />
+        <option value="$PROJECT_DIR$/bd-flink-module/pom.xml" />
+        <option value="$PROJECT_DIR$/bd-spring-module/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/bd-flink-operations/pom.xml" />
+        <option value="$PROJECT_DIR$/bd-flink-spend-report/pom.xml" />
+        <option value="$PROJECT_DIR$/bd-hadoop-module/pom.xml" />
+        <option value="$PROJECT_DIR$/flink-playground/pom.xml" />
+      </set>
+    </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="Python 3.12" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK" />
   <component name="PythonCompatibilityInspectionAdvertiser">
     <option name="version" value="3" />
   </component>

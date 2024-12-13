@@ -1,0 +1,459 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.conf\n\n#\n#\n#\n\nSPARK_HOME /opt/spark-3.1.2\n\n\n#\n# set execution mode\n#\n\nmaster yarn\nspark.submit.deployMode cluster\n\n#\n#\n#\nspark.driver.memory 640m\nspark.driver.cores 1\n\n#\n# set executor number to be \n# Note: If the executor memory is less than 1.5 times of reserved memory (1.5 * Reserved Memory \u003d 450MB heap)\n#\nspark.executor.instances  2\nspark.executor.memory  640m\nspark.executor.cores 2\n\n\n#\n# spark.jars can be used for adding any local jar files into spark interpreter\n# \n\nspark.jars.packages io.delta:delta-core_2.12:1.0.0,com.databricks:spark-avro_2.11:4.0.0\nspark.yarn.dist.files hdfs://namenode:9000/configs/graphite.metrics.properties#metrics.properties\n\n#\n# Python 3.7 Runtime\n#\nspark.yarn.dist.archives hdfs://namenode:9000/archives/pyspark3.7-20221125.tar.gz#environment\n\n#\n# Graphite Configuration\n#\nspark.metrics.conf metrics.properties\nspark.metrics.staticSources.enabled true\nspark.metrics.appStatusSource.enabled true\nspark.executor.processTreeMetrics.enabled true\n\n   \n\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-16 02:09:53.140",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1675736524018_1835814203",
+      "id": "paragraph_1638439801256_1921713656",
+      "dateCreated": "2023-02-07 02:22:04.018",
+      "dateStarted": "2023-02-16 02:09:53.144",
+      "dateFinished": "2023-02-16 02:09:53.151",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n\n\n## 2. Executor memory\nExecutor acts as a JVM process launched on a worker node. So, it is important to understand JVM memory management.\n\nJVM memory management is categorized into two types:\n\n### On-Heap memory management (In-Heap memory) - \nObjects are allocated on the JVM Heap and bound by GC.\n### Off-Heap memory management (External memory) - \nObjects are allocated in memory outside the JVM by serialization, managed by the application, and are not bound by GC.\n\n\n\n\nspark.executor.memory\u003d5g\nspark.memory.fraction\u003d0.6\nspark.memory.storageFraction\u003d0.5\n\nava Heap Memory       \u003d 5 GB\n                       \u003d 5 * 1024 MB\n                       \u003d 5120 MB\n\nReserved Memory        \u003d 300 MB\n\nUsable Memory          \u003d (Java Heap Memory — Reserved Memory)\n                       \u003d 5120 MB - 300 MB\n                       \u003d 4820 MB\n\nUser Memory            \u003d Usable Memory * (1.0 — spark.memory.fraction) \n                       \u003d 4820 MB * (1.0 - 0.6) \n                       \u003d 4820 MB * 0.4 \n                       \u003d 1928 MB\n\nSpark Memory           \u003d Usable Memory * spark.memory.fraction\n                       \u003d 4820 MB * 0.6 \n                       \u003d 2892 MB\n\nSpark Storage Memory   \u003d Spark Memory * spark.memory.storageFraction\n                       \u003d 2892 MB * 0.5 \n                       \u003d 1446 MB\n\nSpark Execution Memory \u003d Spark Memory * (1.0 - spark.memory.storageFraction)\n                       \u003d 2892 MB * ( 1 - 0.5) \n                       \u003d 2892 MB * 0.5 \n                       \u003d 1446 MB\n                       \n\n\nJava Heap Memory       \u003d 5 GB\nReserved Memory        \u003d 300 MB\nUsable Memory          \u003d 4820 MB\nUser Memory            \u003d 1928 MB\nSpark Memory           \u003d 2892 MB \u003d 2.8242 GB\nSpark Storage Memory   \u003d 1446 MB \u003d 1.4121 GB\nSpark Execution Memory \u003d 1446 MB \u003d 1.4121 GB\n\n# \nStorage Memory \u003d On Heap Memory + Off Heap Memory\n\n\n# Memory Calculation:\n\n## On Heap Memory\n \n\nJava Heap Memory       \u003d 954728448 bytes \u003d 954728448/1000/1000 \u003d 954 MB\nReserved Memory        \u003d 300 MB\nUsable Memory          \u003d (Java Heap Memory - Reserved Memory) \u003d (954 - 300) MB \u003d 654 MB\nUser Memory            \u003d (Usable Memory * (1 -spark.memory.fraction)) \u003d 261.6 MB\nSpark Memory           \u003d (Usable Memory * spark.memory.fraction) \u003d 392.4 MB\nSpark Storage Memory   \u003d 196.2 MB\nSpark Execution Memory \u003d 196.2 MB\n\n## Off Heap Memory\n\nspark.memory.offHeap.size \u003d 5 GB \u003d 5 * 1000 MB \u003d 5000 MB\n\n\n\n## Storage Memory\n \n\nStorage Memory \u003d On Heap Memory + Off Heap Memory\n               \u003d 392.4 MB + 5000 MB\n               \u003d 5392.4 MB\n               \u003d 5.4 GB\n\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-15 04:09:28.765",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e2. Executor memory\u003c/h2\u003e\n\u003cp\u003eExecutor acts as a JVM process launched on a worker node. So, it is important to understand JVM memory management.\u003c/p\u003e\n\u003cp\u003eJVM memory management is categorized into two types:\u003c/p\u003e\n\u003ch3\u003eOn-Heap memory management (In-Heap memory) -\u003c/h3\u003e\n\u003cp\u003eObjects are allocated on the JVM Heap and bound by GC.\u003c/p\u003e\n\u003ch3\u003eOff-Heap memory management (External memory) -\u003c/h3\u003e\n\u003cp\u003eObjects are allocated in memory outside the JVM by serialization, managed by the application, and are not bound by GC.\u003c/p\u003e\n\u003cp\u003espark.executor.memory\u003d5g\u003cbr /\u003e\nspark.memory.fraction\u003d0.6\u003cbr /\u003e\nspark.memory.storageFraction\u003d0.5\u003c/p\u003e\n\u003cp\u003eava Heap Memory       \u003d 5 GB\u003cbr /\u003e\n\u003d 5 * 1024 MB\u003cbr /\u003e\n\u003d 5120 MB\u003c/p\u003e\n\u003cp\u003eReserved Memory        \u003d 300 MB\u003c/p\u003e\n\u003cp\u003eUsable Memory          \u003d (Java Heap Memory — Reserved Memory)\u003cbr /\u003e\n\u003d 5120 MB - 300 MB\u003cbr /\u003e\n\u003d 4820 MB\u003c/p\u003e\n\u003cp\u003eUser Memory            \u003d Usable Memory * (1.0 — spark.memory.fraction)\u003cbr /\u003e\n\u003d 4820 MB * (1.0 - 0.6)\u003cbr /\u003e\n\u003d 4820 MB * 0.4\u003cbr /\u003e\n\u003d 1928 MB\u003c/p\u003e\n\u003cp\u003eSpark Memory           \u003d Usable Memory * spark.memory.fraction\u003cbr /\u003e\n\u003d 4820 MB * 0.6\u003cbr /\u003e\n\u003d 2892 MB\u003c/p\u003e\n\u003cp\u003eSpark Storage Memory   \u003d Spark Memory * spark.memory.storageFraction\u003cbr /\u003e\n\u003d 2892 MB * 0.5\u003cbr /\u003e\n\u003d 1446 MB\u003c/p\u003e\n\u003cp\u003eSpark Execution Memory \u003d Spark Memory * (1.0 - spark.memory.storageFraction)\u003cbr /\u003e\n\u003d 2892 MB * ( 1 - 0.5)\u003cbr /\u003e\n\u003d 2892 MB * 0.5\u003cbr /\u003e\n\u003d 1446 MB\u003c/p\u003e\n\u003cp\u003eJava Heap Memory       \u003d 5 GB\u003cbr /\u003e\nReserved Memory        \u003d 300 MB\u003cbr /\u003e\nUsable Memory          \u003d 4820 MB\u003cbr /\u003e\nUser Memory            \u003d 1928 MB\u003cbr /\u003e\nSpark Memory           \u003d 2892 MB \u003d 2.8242 GB\u003cbr /\u003e\nSpark Storage Memory   \u003d 1446 MB \u003d 1.4121 GB\u003cbr /\u003e\nSpark Execution Memory \u003d 1446 MB \u003d 1.4121 GB\u003c/p\u003e\n\u003ch1\u003e\u003c/h1\u003e\n\u003cp\u003eStorage Memory \u003d On Heap Memory + Off Heap Memory\u003c/p\u003e\n\u003ch1\u003eMemory Calculation:\u003c/h1\u003e\n\u003ch2\u003eOn Heap Memory\u003c/h2\u003e\n\u003cp\u003eJava Heap Memory       \u003d 954728448 bytes \u003d 954728448/1000/1000 \u003d 954 MB\u003cbr /\u003e\nReserved Memory        \u003d 300 MB\u003cbr /\u003e\nUsable Memory          \u003d (Java Heap Memory - Reserved Memory) \u003d (954 - 300) MB \u003d 654 MB\u003cbr /\u003e\nUser Memory            \u003d (Usable Memory * (1 -spark.memory.fraction)) \u003d 261.6 MB\u003cbr /\u003e\nSpark Memory           \u003d (Usable Memory * spark.memory.fraction) \u003d 392.4 MB\u003cbr /\u003e\nSpark Storage Memory   \u003d 196.2 MB\u003cbr /\u003e\nSpark Execution Memory \u003d 196.2 MB\u003c/p\u003e\n\u003ch2\u003eOff Heap Memory\u003c/h2\u003e\n\u003cp\u003espark.memory.offHeap.size \u003d 5 GB \u003d 5 * 1000 MB \u003d 5000 MB\u003c/p\u003e\n\u003ch2\u003eStorage Memory\u003c/h2\u003e\n\u003cp\u003eStorage Memory \u003d On Heap Memory + Off Heap Memory\u003cbr /\u003e\n\u003d 392.4 MB + 5000 MB\u003cbr /\u003e\n\u003d 5392.4 MB\u003cbr /\u003e\n\u003d 5.4 GB\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1676433541051_1977097254",
+      "id": "paragraph_1676433541051_1977097254",
+      "dateCreated": "2023-02-15 03:59:01.051",
+      "dateStarted": "2023-02-15 04:09:28.765",
+      "dateFinished": "2023-02-15 04:09:28.784",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nprint( \"Spark Master : \" + spark.sparkContext.master)\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-16 02:48:36.505",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Spark Master : yarn"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1675736524019_1822524795",
+      "id": "paragraph_1638440008618_2040289727",
+      "dateCreated": "2023-02-07 02:22:04.019",
+      "dateStarted": "2023-02-16 02:48:36.510",
+      "dateFinished": "2023-02-16 02:48:36.681",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nspark.conf.get(\"spark.memory.storageFraction\");\n\n//sc.getConf.get(\"spark.yarn.dist.archives\");\n\n//\n\n\n//\n// print(\"spark.memory.storageFraction : \" + spark.conf.get(\"spark.memory.storageFraction\"))\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-16 02:52:09.703",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 318.844,
+              "optionOpen": false
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "java.util.NoSuchElementException: spark.memory.storageFraction\n  at org.apache.spark.sql.internal.SQLConf.$anonfun$getConfString$3(SQLConf.scala:3732)\n  at scala.Option.getOrElse(Option.scala:189)\n  at org.apache.spark.sql.internal.SQLConf.getConfString(SQLConf.scala:3732)\n  at org.apache.spark.sql.RuntimeConfig.get(RuntimeConfig.scala:71)\n  ... 44 elided\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1676515007658_660685873",
+      "id": "paragraph_1676515007658_660685873",
+      "dateCreated": "2023-02-16 02:36:47.658",
+      "dateStarted": "2023-02-16 02:52:09.706",
+      "dateFinished": "2023-02-16 02:52:09.905",
+      "status": "ERROR"
+    },
+    {
+      "title": "HDFS Read",
+      "text": "%pyspark\n\nimport json\n\n#\nconf \u003d json.loads(sc.wholeTextFiles(\u0027/datasets/auto_loan.json\u0027).collect()[0][1])\nprint(conf)\n\ninput_location \u003d conf.get(\"input_location\")\noutput_locatin \u003d conf.get(\"output_location\")\ndelimiter \u003d conf.get(\"delimiter\")",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-16 03:43:03.643",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "{\u0027input_location\u0027: \u0027/datasets/auto_loan.csv\u0027, \u0027output_location\u0027: \u0027/datasets/auto_loan_analysis\u0027, \u0027delimiter\u0027: \u0027,\u0027}\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676513290919_0001//jobs/job?id\u003d12"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1676263706175_1407168308",
+      "id": "paragraph_1676263706175_1407168308",
+      "dateCreated": "2023-02-13 04:48:26.176",
+      "dateStarted": "2023-02-16 03:43:03.645",
+      "dateFinished": "2023-02-16 03:43:03.750",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nval employee \u003d Seq(\n      (101,\"Chloe\",-1,\"2018\",8,\"M\",3000),\n      (102,\"Paul\",101,\"2010\",3,\"M\",4000),\n      (103,\"John\",101,\"2010\",1,\"M\",1000),\n      (104,\"Lisa\",102,\"2005\",2,\"F\",2000),\n      (105,\"Evan\",102,\"2010\",7,\"\",-1),\n      (106,\"Amy\",102,\"2010\",9,\"\",-1)\n    )\nval empColumns \u003d Seq(\"id\",\"name\",\"superior_emp_id\",\"year_joined\",\"deptno\",\"gender\",\"salary\")\n\nval department \u003d Seq(\n      (\"Marketing\",1),\n      (\"Sales\",2),\n      (\"Engineering\",3),\n      (\"Finance\",4),\n      (\"IT\",5),\n      (\"HR\",6)\n    )\nval deptColumns \u003d Seq(\"dept_name\",\"deptno\")\n\nimport spark.sqlContext.implicits._\n\nspark.conf.set(\"spark.sql.crossJoin.enabled\",true);\n\nval employeeDF \u003d employee.toDF(empColumns:_*)\nemployeeDF.show(false)\n\nval departmentDF \u003d department.toDF(deptColumns:_*)\ndepartmentDF.show(false)\n\nprintln(\"1. Inner Join Using Expression : join(right: Dataset[_]): DataFrame\")\nemployeeDF.join(departmentDF).show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-15 02:49:28.827",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+-----+---------------+-----------+------+------+------+\n|id |name |superior_emp_id|year_joined|deptno|gender|salary|\n+---+-----+---------------+-----------+------+------+------+\n|101|Chloe|-1             |2018       |8     |M     |3000  |\n|102|Paul |101            |2010       |3     |M     |4000  |\n|103|John |101            |2010       |1     |M     |1000  |\n|104|Lisa |102            |2005       |2     |F     |2000  |\n|105|Evan |102            |2010       |7     |      |-1    |\n|106|Amy  |102            |2010       |9     |      |-1    |\n+---+-----+---------------+-----------+------+------+------+\n\n+-----------+------+\n|dept_name  |deptno|\n+-----------+------+\n|Marketing  |1     |\n|Sales      |2     |\n|Engineering|3     |\n|Finance    |4     |\n|IT         |5     |\n|HR         |6     |\n+-----------+------+\n\n1. Inner Join Using Expression : join(right: Dataset[_]): DataFrame\n+---+-----+---------------+-----------+------+------+------+-----------+------+\n| id| name|superior_emp_id|year_joined|deptno|gender|salary|  dept_name|deptno|\n+---+-----+---------------+-----------+------+------+------+-----------+------+\n|101|Chloe|             -1|       2018|     8|     M|  3000|  Marketing|     1|\n|101|Chloe|             -1|       2018|     8|     M|  3000|      Sales|     2|\n|101|Chloe|             -1|       2018|     8|     M|  3000|Engineering|     3|\n|101|Chloe|             -1|       2018|     8|     M|  3000|    Finance|     4|\n|101|Chloe|             -1|       2018|     8|     M|  3000|         IT|     5|\n|101|Chloe|             -1|       2018|     8|     M|  3000|         HR|     6|\n|102| Paul|            101|       2010|     3|     M|  4000|  Marketing|     1|\n|102| Paul|            101|       2010|     3|     M|  4000|      Sales|     2|\n|102| Paul|            101|       2010|     3|     M|  4000|Engineering|     3|\n|102| Paul|            101|       2010|     3|     M|  4000|    Finance|     4|\n|102| Paul|            101|       2010|     3|     M|  4000|         IT|     5|\n|102| Paul|            101|       2010|     3|     M|  4000|         HR|     6|\n|103| John|            101|       2010|     1|     M|  1000|  Marketing|     1|\n|103| John|            101|       2010|     1|     M|  1000|      Sales|     2|\n|103| John|            101|       2010|     1|     M|  1000|Engineering|     3|\n|103| John|            101|       2010|     1|     M|  1000|    Finance|     4|\n|103| John|            101|       2010|     1|     M|  1000|         IT|     5|\n|103| John|            101|       2010|     1|     M|  1000|         HR|     6|\n|104| Lisa|            102|       2005|     2|     F|  2000|  Marketing|     1|\n|104| Lisa|            102|       2005|     2|     F|  2000|      Sales|     2|\n+---+-----+---------------+-----------+------+------+------+-----------+------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34memployee\u001b[0m: \u001b[1m\u001b[32mSeq[(Int, String, Int, String, Int, String, Int)]\u001b[0m \u003d List((101,Chloe,-1,2018,8,M,3000), (102,Paul,101,2010,3,M,4000), (103,John,101,2010,1,M,1000), (104,Lisa,102,2005,2,F,2000), (105,Evan,102,2010,7,\"\",-1), (106,Amy,102,2010,9,\"\",-1))\n\u001b[1m\u001b[34mempColumns\u001b[0m: \u001b[1m\u001b[32mSeq[String]\u001b[0m \u003d List(id, name, superior_emp_id, year_joined, deptno, gender, salary)\n\u001b[1m\u001b[34mdepartment\u001b[0m: \u001b[1m\u001b[32mSeq[(String, Int)]\u001b[0m \u003d List((Marketing,1), (Sales,2), (Engineering,3), (Finance,4), (IT,5), (HR,6))\n\u001b[1m\u001b[34mdeptColumns\u001b[0m: \u001b[1m\u001b[32mSeq[String]\u001b[0m \u003d List(dept_name, deptno)\nimport spark.sqlContext.implicits._\n\u001b[1m\u001b[34memployeeDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: int, name: string ... 5 more fields]\n\u001b[1m\u001b[34mdepartmentDF\u001b[0m: \u001b[1m\u001b[32morg.apac...\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676427769595_0004//jobs/job?id\u003d2"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676427769595_0004//jobs/job?id\u003d3"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1675736524019_383388660",
+      "id": "paragraph_1638442347634_2006643863",
+      "dateCreated": "2023-02-07 02:22:04.019",
+      "dateStarted": "2023-02-15 02:49:28.829",
+      "dateFinished": "2023-02-15 02:49:33.945",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nspark.sparkContext.stop()\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-16 04:28:00.178",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1675736524019_1593588239",
+      "id": "paragraph_1640794966503_1048083866",
+      "dateCreated": "2023-02-07 02:22:04.019",
+      "dateStarted": "2023-02-16 04:28:00.189",
+      "dateFinished": "2023-02-16 04:28:00.422",
+      "status": "FINISHED"
+    },
+    {
+      "title": "HDFS Read",
+      "text": "%spark\n\n// Read JSON file into dataframe\nval df \u003d spark.read.json(\"/datasets/card_transactions.json\")\ndf.printSchema()\ndf.show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-16 03:42:43.813",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- amount: long (nullable \u003d true)\n |-- card_num: string (nullable \u003d true)\n |-- category: string (nullable \u003d true)\n |-- merchant: string (nullable \u003d true)\n |-- ts: long (nullable \u003d true)\n |-- user_id: string (nullable \u003d true)\n\n+------+--------+-------------+--------+----------+-------+\n|amount|card_num|     category|merchant|        ts|user_id|\n+------+--------+-------------+--------+----------+-------+\n|   243|   C_108|         food|   M_102|1579532902|  U_104|\n|   699|   C_106|    cosmetics|   M_103|1581759040|  U_103|\n|   228|   C_104|     children|   M_110|1584161986|  U_103|\n|   795|   C_107|    groceries|   M_110|1584180442|  U_104|\n|   722|   C_106|         food|   M_106|1579077866|  U_103|\n|   999|   C_101|entertainment|   M_101|1580077316|  U_101|\n|   855|   C_101|         food|   M_102|1581758143|  U_101|\n|    87|   C_107|    groceries|   M_102|1580819768|  U_104|\n|   146|   C_101|    cosmetics|   M_110|1584179530|  U_101|\n|  1000|   C_101|entertainment|   M_100|1580163399|  U_101|\n|   576|   C_107|entertainment|   M_104|1581191831|  U_104|\n|   752|   C_105|entertainment|   M_100|1584121835|  U_103|\n|   240|   C_105|    groceries|   M_102|1580860277|  U_103|\n|   496|   C_101|         food|   M_102|1582393902|  U_101|\n|   980|   C_103|     children|   M_102|1580687268|  U_102|\n|   325|   C_106|    cosmetics|   M_103|1579288386|  U_103|\n|   326|   C_101|    groceries|   M_105|1583414905|  U_101|\n|   622|   C_103|    groceries|   M_107|1582757359|  U_102|\n|   810|   C_104|entertainment|   M_103|1582368402|  U_103|\n|   294|   C_107|    groceries|   M_110|1583034793|  U_104|\n+------+--------+-------------+--------+----------+-------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34mdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [amount: bigint, card_num: string ... 4 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676513290919_0001//jobs/job?id\u003d10"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676513290919_0001//jobs/job?id\u003d11"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1675736524019_1277474643",
+      "id": "paragraph_1640834145345_1976143351",
+      "dateCreated": "2023-02-07 02:22:04.019",
+      "dateStarted": "2023-02-16 03:42:43.824",
+      "dateFinished": "2023-02-16 03:42:44.339",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\n\ndf.write.mode(\"Overwrite\").csv(\"tmp/spark_output/card_transactions\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-16 03:22:04.529",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676513290919_0001//jobs/job?id\u003d9"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1676517515044_934769323",
+      "id": "paragraph_1676517515044_934769323",
+      "dateCreated": "2023-02-16 03:18:35.044",
+      "dateStarted": "2023-02-16 03:22:04.540",
+      "dateFinished": "2023-02-16 03:22:05.180",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-16 03:21:46.691",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1676517706690_331048514",
+      "id": "paragraph_1676517706690_331048514",
+      "dateCreated": "2023-02-16 03:21:46.690",
+      "status": "READY"
+    }
+  ],
+  "name": "spark-cluster-graphite-metrics",
+  "id": "2HQV3V6XH",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

@@ -1,0 +1,401 @@
+{
+  "paragraphs": [
+    {
+      "title": "Spark Streaming",
+      "text": "import org.apache.spark.streaming._\nimport org.apache.spark.streaming.StreamingContext\nimport org.apache.spark.streaming.StreamingContext._\nimport org.apache.spark.streaming.dstream.DStream\nimport org.apache.spark.streaming.Duration\nimport org.apache.spark.streaming.Seconds\nimport com.amazonaws.auth.{DefaultAWSCredentialsProviderChain, BasicAWSCredentials}\nimport com.amazonaws.services.kinesis.AmazonKinesisClient\nimport com.amazonaws.regions.RegionUtils\nimport org.apache.spark.streaming.kinesis.KinesisUtils\nimport com.amazonaws.services.kinesis.clientlibrary.lib.worker.InitialPositionInStream\nimport org.apache.spark.storage.StorageLevel\nimport org.apache.spark.SparkConf\nimport org.apache.spark.sql.types.{StructType,StructField,StringType}\nimport org.apache.spark.rdd.RDD\nimport org.apache.spark.sql.Row\nimport org.apache.spark.sql.hive.HiveContext\nimport org.apache.spark.sql.SaveMode.Append\n\n\nval endpointUrl \u003d \"https://kinesis.us-east-1.amazonaws.com\"\nval credentials \u003d new DefaultAWSCredentialsProviderChain().getCredentials()\n    require(credentials !\u003d null,\n      \"No AWS credentials found. Please specify credentials using one of the methods specified \" +\n        \"in http://docs.aws.amazon.com/AWSSdkDocsJava/latest/DeveloperGuide/credentials.html\")\n    val kinesisClient \u003d new AmazonKinesisClient(credentials)\n    kinesisClient.setEndpoint(\"https://kinesis.us-east-1.amazonaws.com\")\n    val numShards \u003d kinesisClient.describeStream(\"spark-demo\").getStreamDescription().getShards().size\n\nval numStreams \u003d numShards\nval batchInterval \u003d Seconds(5)\nval kinesisCheckpointInterval \u003d batchInterval\nval regionName \u003d RegionUtils.getRegionByEndpoint(endpointUrl).getName()\n\n \nval ssc \u003d new StreamingContext(sc, batchInterval)\n\n // Create the Kinesis DStreams\n    val kinesisStreams \u003d (0 until numStreams).map { i \u003d\u003e\n      KinesisUtils.createStream(ssc, \"app-spark-demo\", \"spark-demo\", endpointUrl, regionName,InitialPositionInStream.LATEST, kinesisCheckpointInterval, StorageLevel.MEMORY_AND_DISK_2)\n    }\n\n\n// Union all the streams\nval unionStreams \u003d ssc.union(kinesisStreams)\n\n//Schema of the incoming data on Kinesis Stream\nval schemaString \u003d \"device_id,temperature,timestamp\"\n\n//Parse the data\nval tableSchema \u003d StructType( schemaString.split(\",\").map(fieldName \u003d\u003e StructField(fieldName, StringType, true)))\n\n//Processing each RDD and storing it in temporary table\n unionStreams.foreachRDD ((rdd: RDD[Array[Byte]], time: Time) \u003d\u003e {\n  val rowRDD \u003d rdd.map(w \u003d\u003e Row.fromSeq(new String(w).split(\",\")))\n  val wordsDF \u003d sqlContext.createDataFrame(rowRDD,tableSchema)\n  wordsDF.registerTempTable(\"realTimeTable\")\n}) \n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 06:57:49.820",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669877869820_1221052283",
+      "id": "20160518-223015_1999024044",
+      "dateCreated": "2022-12-01 06:57:49.820",
+      "status": "READY"
+    },
+    {
+      "title": "Start streaming context",
+      "text": "ssc.start()\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 06:57:49.820",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669877869820_1575850439",
+      "id": "20160518-223015_792264000",
+      "dateCreated": "2022-12-01 06:57:49.820",
+      "status": "READY"
+    },
+    {
+      "title": "Some SQL\u0027s",
+      "text": "%sql\nshow tables",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 06:57:49.821",
+      "progress": 0,
+      "config": {
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/sql",
+        "title": true,
+        "graph": {
+          "mode": "table",
+          "height": 98.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "tableName",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "isTemporary",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "tableName",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "isTemporary",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669877869820_535435120",
+      "id": "20160518-223015_398266862",
+      "dateCreated": "2022-12-01 06:57:49.820",
+      "status": "READY"
+    },
+    {
+      "text": "%sql \ndesc realtimetable",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 06:57:49.821",
+      "progress": 0,
+      "config": {
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/sql",
+        "graph": {
+          "mode": "table",
+          "height": 125.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "col_name",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "data_type",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "col_name",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "data_type",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669877869821_1443215656",
+      "id": "20160518-223015_1711626440",
+      "dateCreated": "2022-12-01 06:57:49.821",
+      "status": "READY"
+    },
+    {
+      "text": "%sql\nselect device_id,timestamp, avg(temperature) as avg_temp\nfrom realtimetable  \ngroup by device_id,timestamp \norder by timestamp",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 06:57:49.821",
+      "progress": 0,
+      "config": {
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/sql",
+        "graph": {
+          "mode": "multiBarChart",
+          "height": 202.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "device_id",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "avg_temp",
+              "index": 2.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "device_id",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "timestamp",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          },
+          "lineWithFocus": true
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669877869821_703688450",
+      "id": "20160518-223015_2112105582",
+      "dateCreated": "2022-12-01 06:57:49.821",
+      "status": "READY"
+    },
+    {
+      "text": "%sql\n\nselect device_id, avg(temperature) as avg_temp from realtimetable \nwhere device_id between 100 and 150 \ngroup by device_id",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 06:57:49.821",
+      "progress": 0,
+      "config": {
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/sql",
+        "graph": {
+          "mode": "pieChart",
+          "height": 193.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "device_id",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "avg_temp",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "device_id",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "avg_temp",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669877869821_93548563",
+      "id": "20160518-223015_253831764",
+      "dateCreated": "2022-12-01 06:57:49.821",
+      "status": "READY"
+    },
+    {
+      "text": "%sql\nselect * from realtimetable",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 06:57:49.821",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "device_id",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "temperature",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "device_id",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "temperature",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669877869821_246981344",
+      "id": "20160518-223015_1247934606",
+      "dateCreated": "2022-12-01 06:57:49.821",
+      "status": "READY"
+    },
+    {
+      "title": "Gracefully stop Streaming Context",
+      "text": "ssc.stop(stopSparkContext\u003dfalse, stopGracefully\u003dtrue)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-01 06:58:24.799",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669877869821_1621732503",
+      "id": "20160518-223015_1182436600",
+      "dateCreated": "2022-12-01 06:57:49.821",
+      "status": "READY"
+    }
+  ],
+  "name": "Spark Streaming",
+  "id": "2HK44BKKJ",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

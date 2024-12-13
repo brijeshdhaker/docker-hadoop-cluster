@@ -1,0 +1,269 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\n### Internal workings of Broadcast Nested Loop Join\n\n#### There are 2 phases in a Broadcast Nested Loop Join.\nStages involved in a Broadcast Nested Loop Join\nBroadcast Nested Loop join does not involve a shuffle or a sort. Smallest dataset of the two will be broadcasted to all partitions and a nested loop is performed between the 2 datasets to perform the join. Every record from dataset 1 is attempted to join with every record from dataset 2.\n\n![spark stages](https://www.hadoopinrealworld.com/wp-content/uploads/2020/12/Broadcast-Nested-Loop-Join-Spark-stages.png)\n\n#### Broadcast phase\nSmallest dataset is broadcasted to all executors or tasks processing the bigger dataset\n* Left side will be broadcasted in a right outer join.\n* Right side in a left outer, left semi, left anti or existence join will be broadcasted.\n* Either side can be broadcasted in an inner-like join.\n![brodcase phase](https://www.hadoopinrealworld.com/wp-content/uploads/2020/12/Broadcast-Nested-Loop-Spark-stage-1.png)\n\n#### Nested Loop Join phase\n* Once the dataset is broadcasted, every record from one dataset is attempted to join with every record from another dataset in a nested loop.\n* Since this join is used for non-equi conditions, the iteration can not stop as soon as a match is encountered like in Sort Merge Join. The iteration will go through the entire dataset.\n* Note that a sort is not involved in this join.\n\n![nested loop phase](https://www.hadoopinrealworld.com/wp-content/uploads/2020/12/Broadcast-Nested-Loop-Spark-stage-1-and-2.png)",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-31 11:19:04.092",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eInternal workings of Broadcast Nested Loop Join\u003c/h3\u003e\n\u003ch4\u003eThere are 2 phases in a Broadcast Nested Loop Join.\u003c/h4\u003e\n\u003cp\u003eStages involved in a Broadcast Nested Loop Join\u003cbr /\u003e\nBroadcast Nested Loop join does not involve a shuffle or a sort. Smallest dataset of the two will be broadcasted to all partitions and a nested loop is performed between the 2 datasets to perform the join. Every record from dataset 1 is attempted to join with every record from dataset 2.\u003c/p\u003e\n\u003cp\u003e\u003cimg src\u003d\"https://www.hadoopinrealworld.com/wp-content/uploads/2020/12/Broadcast-Nested-Loop-Join-Spark-stages.png\" alt\u003d\"spark stages\" /\u003e\u003c/p\u003e\n\u003ch4\u003eBroadcast phase\u003c/h4\u003e\n\u003cp\u003eSmallest dataset is broadcasted to all executors or tasks processing the bigger dataset\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eLeft side will be broadcasted in a right outer join.\u003c/li\u003e\n\u003cli\u003eRight side in a left outer, left semi, left anti or existence join will be broadcasted.\u003c/li\u003e\n\u003cli\u003eEither side can be broadcasted in an inner-like join.\u003cbr /\u003e\n\u003cimg src\u003d\"https://www.hadoopinrealworld.com/wp-content/uploads/2020/12/Broadcast-Nested-Loop-Spark-stage-1.png\" alt\u003d\"brodcase phase\" /\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch4\u003eNested Loop Join phase\u003c/h4\u003e\n\u003cul\u003e\n\u003cli\u003eOnce the dataset is broadcasted, every record from one dataset is attempted to join with every record from another dataset in a nested loop.\u003c/li\u003e\n\u003cli\u003eSince this join is used for non-equi conditions, the iteration can not stop as soon as a match is encountered like in Sort Merge Join. The iteration will go through the entire dataset.\u003c/li\u003e\n\u003cli\u003eNote that a sort is not involved in this join.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u003cimg src\u003d\"https://www.hadoopinrealworld.com/wp-content/uploads/2020/12/Broadcast-Nested-Loop-Spark-stage-1-and-2.png\" alt\u003d\"nested loop phase\" /\u003e\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640948242551_1469808027",
+      "id": "paragraph_1640948242551_1469808027",
+      "dateCreated": "2021-12-31 10:57:22.551",
+      "dateStarted": "2021-12-31 11:19:04.094",
+      "dateFinished": "2021-12-31 11:19:04.109",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-31 11:19:00.052",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640949540052_1059568211",
+      "id": "paragraph_1640949540052_1059568211",
+      "dateCreated": "2021-12-31 11:19:00.052",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\n\n//\nspark.conf.set(\"spark.sql.join.preferSortMergeJoin\", true)\n\n//\nspark.conf.set(\"spark.sql.autoBroadcastJoinThreshold\", 10485760)\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-31 11:07:27.807",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640948304985_887739845",
+      "id": "paragraph_1640948304985_887739845",
+      "dateCreated": "2021-12-31 10:58:24.985",
+      "dateStarted": "2021-12-31 11:07:27.810",
+      "dateFinished": "2021-12-31 11:07:27.957",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nprintln(spark.conf.get(\"spark.sql.join.preferSortMergeJoin\"))\n\nprintln(spark.conf.get(\"spark.sql.autoBroadcastJoinThreshold\"))\n",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-31 11:07:29.895",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "true\n10485760\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640948274697_1943822666",
+      "id": "paragraph_1640948274697_1943822666",
+      "dateCreated": "2021-12-31 10:57:54.697",
+      "dateStarted": "2021-12-31 11:07:29.899",
+      "dateFinished": "2021-12-31 11:07:30.046",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nval data1 \u003d Seq(10, 20, 20, 30, 40, 10, 40, 20, 20, 20, 20, 50)\nval data2 \u003d Seq(30, 20, 40, 50)\n\nval df1 \u003d data1.toDF(\"id1\")\nval df2 \u003d data2.toDF(\"id2\")\n\nval dfJoined \u003d df1.join(df2, $\"id1\" \u003e\u003d $\"id2\")\ndfJoined.foreach(_ \u003d\u003e ())\n",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-31 11:07:33.602",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdata1\u001b[0m: \u001b[1m\u001b[32mSeq[Int]\u001b[0m \u003d List(10, 20, 20, 30, 40, 10, 40, 20, 20, 20, 20, 50)\n\u001b[1m\u001b[34mdata2\u001b[0m: \u001b[1m\u001b[32mSeq[Int]\u001b[0m \u003d List(30, 20, 40, 50)\n\u001b[1m\u001b[34mdf1\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id1: int]\n\u001b[1m\u001b[34mdf2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id2: int]\n\u001b[1m\u001b[34mdfJoined\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id1: int, id2: int]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640948404191_954954746",
+      "id": "paragraph_1640948404191_954954746",
+      "dateCreated": "2021-12-31 11:00:04.191",
+      "dateStarted": "2021-12-31 11:07:33.607",
+      "dateFinished": "2021-12-31 11:07:34.474",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\ndfJoined.queryExecution.executedPlan\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-31 11:07:38.167",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres14\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.execution.SparkPlan\u001b[0m \u003d\nBroadcastNestedLoopJoin BuildRight, Inner, (id1#20 \u003e\u003d id2#25)\n:- LocalTableScan [id1#20]\n+- BroadcastExchange IdentityBroadcastMode\n   +- LocalTableScan [id2#25]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640948464230_1064197494",
+      "id": "paragraph_1640948464230_1064197494",
+      "dateCreated": "2021-12-31 11:01:04.230",
+      "dateStarted": "2021-12-31 11:07:38.171",
+      "dateFinished": "2021-12-31 11:07:38.287",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-31 11:07:38.169",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640948858169_1396097650",
+      "id": "paragraph_1640948858169_1396097650",
+      "dateCreated": "2021-12-31 11:07:38.169",
+      "status": "READY"
+    }
+  ],
+  "name": "broadcast_nestedloop_join",
+  "id": "2GQDFN3RM",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

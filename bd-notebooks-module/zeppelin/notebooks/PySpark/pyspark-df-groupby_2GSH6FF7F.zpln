@@ -1,0 +1,1111 @@
+{
+  "paragraphs": [
+    {
+      "title": "Spark Configurtion",
+      "text": "%spark.conf\n\nSPARK_HOME /opt/spark-3.1.2\nmaster local[2]\nspark.driver.memory 1024M\nspark.executor.instances  2\nspark.executor.memory  1024M\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-10 11:48:20.015",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639624545516_25976163",
+      "id": "paragraph_1639409576586_1256700125",
+      "dateCreated": "2021-12-16 08:45:45.516",
+      "dateStarted": "2022-01-02 13:21:54.127",
+      "dateFinished": "2022-01-02 13:21:54.132",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Data \u0026 Struct Types",
+      "text": "%pyspark\n\nfrom pyspark.sql.types import *\nfrom pyspark.sql.functions import *\n\n\nsimpleData \u003d [\n    (\"James\",\"Sales\",\"NY\",90000,34,10000),\n    (\"Michael\",\"Sales\",\"NY\",86000,56,20000),\n    (\"Robert\",\"Sales\",\"CA\",81000,30,23000),\n    (\"Maria\",\"Finance\",\"CA\",90000,24,23000),\n    (\"Raman\",\"Finance\",\"CA\",99000,40,24000),\n    (\"Scott\",\"Finance\",\"NY\",83000,36,19000),\n    (\"Jen\",\"Finance\",\"NY\",79000,53,15000),\n    (\"Jeff\",\"Marketing\",\"CA\",80000,25,18000),\n    (\"Kumar\",\"Marketing\",\"NY\",91000,50,21000),\n    (\"Kumar\",\"Marketing\", None, 91000, None,21000)\n  ]\n\nschema \u003d [\"employee_name\",\"department\",\"state\",\"salary\",\"age\",\"bonus\"]\ndf \u003d spark.createDataFrame(data\u003dsimpleData, schema \u003d schema)\ndf.createOrReplaceTempView(\"employees\")\n\n\n\n\n\n#df.printSchema()\n#df.show(truncate\u003dFalse)",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-10 11:48:33.462",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "avg_salary": "string",
+                      "max_salary": "string",
+                      "min_salary": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true,
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639624545516_303891",
+      "id": "paragraph_1639409641645_1113256137",
+      "dateCreated": "2021-12-16 08:45:45.516",
+      "dateStarted": "2022-01-10 11:48:33.464",
+      "dateFinished": "2022-01-10 11:48:33.779",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Text Input Form",
+      "text": "%pyspark\n\n\nresults \u003d spark.sql(\"SELECT avg(salary) as avg_salary, max(salary) as max_salary, min(salary) as min_salary FROM employees WHERE state \u003d \u0027\" + z.textbox(\"state\", \"NY\") + \"\u0027\")\nz.show(results)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-10 11:49:09.523",
+      "progress": 100,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "avg_salary": "string",
+                      "max_salary": "string",
+                      "min_salary": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "avg_salary",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "max_salary",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "avg_salary": "string",
+                      "max_salary": "string",
+                      "min_salary": "string"
+                    },
+                    "updated": true
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "name": "FL",
+          "state": "CA"
+        },
+        "forms": {
+          "state": {
+            "type": "TextBox",
+            "name": "state",
+            "displayName": "state",
+            "defaultValue": "NY",
+            "hidden": false
+          }
+        }
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "avg_salary\tmax_salary\tmin_salary\n87500.0\t99000\t80000\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d12"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641129651738_871470605",
+      "id": "paragraph_1641129651738_871470605",
+      "dateCreated": "2022-01-02 13:20:51.738",
+      "dateStarted": "2022-01-10 11:49:09.528",
+      "dateFinished": "2022-01-10 11:49:09.896",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Checkbox Form",
+      "text": "%pyspark\n\noptions \u003d [(\"employee_name\", \"Name\"), (\"department\", \"Departmants\"), (\"state\",\"States\"), (\"salary\",\"Salaries\"), (\"age\",\"Age\"), (\"bonus\",\"Bonus\")]\nsoptions \u003d z.checkbox(\"Check column Name to show in results \", options, [\"employee_name\"])\n\ndf.select(*soptions).show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-10 11:49:27.602",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "runOnSelectionChange": true,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "Column Names": [
+            "employee_name",
+            "department"
+          ],
+          "Check column Name to show in results ": [
+            "employee_name",
+            "department",
+            "state",
+            "salary",
+            "age",
+            "bonus"
+          ]
+        },
+        "forms": {
+          "Check column Name to show in results ": {
+            "type": "CheckBox",
+            "options": [
+              {
+                "value": "employee_name",
+                "displayName": "Name"
+              },
+              {
+                "value": "department",
+                "displayName": "Departmants"
+              },
+              {
+                "value": "state",
+                "displayName": "States"
+              },
+              {
+                "value": "salary",
+                "displayName": "Salaries"
+              },
+              {
+                "value": "age",
+                "displayName": "Age"
+              },
+              {
+                "value": "bonus",
+                "displayName": "Bonus"
+              }
+            ],
+            "name": "Check column Name to show in results ",
+            "displayName": "Check column Name to show in results ",
+            "defaultValue": [
+              "employee_name"
+            ],
+            "hidden": false
+          }
+        }
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------+----------+-----+------+----+-----+\n|employee_name|department|state|salary| age|bonus|\n+-------------+----------+-----+------+----+-----+\n|        James|     Sales|   NY| 90000|  34|10000|\n|      Michael|     Sales|   NY| 86000|  56|20000|\n|       Robert|     Sales|   CA| 81000|  30|23000|\n|        Maria|   Finance|   CA| 90000|  24|23000|\n|        Raman|   Finance|   CA| 99000|  40|24000|\n|        Scott|   Finance|   NY| 83000|  36|19000|\n|          Jen|   Finance|   NY| 79000|  53|15000|\n|         Jeff| Marketing|   CA| 80000|  25|18000|\n|        Kumar| Marketing|   NY| 91000|  50|21000|\n|        Kumar| Marketing| null| 91000|null|21000|\n+-------------+----------+-----+------+----+-----+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d22"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d23"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d24"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641126873472_1410581170",
+      "id": "paragraph_1641126873472_1410581170",
+      "dateCreated": "2022-01-02 12:34:33.472",
+      "dateStarted": "2022-01-10 11:49:27.604",
+      "dateFinished": "2022-01-10 11:49:28.079",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Select Form",
+      "text": "%pyspark\n\ndoption \u003d z.select(\"Please Select\", [(\"Sales\", \"Sales\"), (\"Finance\", \"Finance\"), (\"Marketing\",\"Marketing\")], \"Sales\")\n\nresults \u003d df.filter(col(\"department\") \u003d\u003d doption)\nz.show(results)\n\n# df.registerTempTable(\"employee\")\n# z.put(\u0027value_choice\u0027, z.select(\"Value\", [\u0027NY\u0027, \u0027CA\u0027, \u0027FL\u0027], \u0027FL\u0027))\n\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-10 11:49:59.335",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "runOnSelectionChange": true,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "employee_name": "string",
+                      "department": "string",
+                      "state": "string",
+                      "salary": "string",
+                      "age": "string",
+                      "bonus": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "scatterChart": {
+                  "xAxis": {
+                    "name": "employee_name",
+                    "index": 0.0,
+                    "aggr": "sum"
+                  },
+                  "yAxis": {
+                    "name": "salary",
+                    "index": 3.0,
+                    "aggr": "sum"
+                  }
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "keys": [
+                {
+                  "name": "employee_name",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "salary",
+                  "index": 3.0,
+                  "aggr": "sum"
+                }
+              ],
+              "commonSetting": {}
+            },
+            "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "employee_name": "string",
+                      "department": "string",
+                      "state": "string",
+                      "salary": "string",
+                      "age": "string",
+                      "bonus": "string"
+                    },
+                    "updated": true
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "Select Item": "N",
+          "Items": "FL",
+          "Value": "F",
+          "select_1": "state",
+          "Sales": "Marketing",
+          "Please Select": "Finance"
+        },
+        "forms": {
+          "Please Select": {
+            "type": "Select",
+            "options": [
+              {
+                "value": "Sales",
+                "displayName": "Sales"
+              },
+              {
+                "value": "Finance",
+                "displayName": "Finance"
+              },
+              {
+                "value": "Marketing",
+                "displayName": "Marketing"
+              }
+            ],
+            "name": "Please Select",
+            "displayName": "Please Select",
+            "defaultValue": "Sales",
+            "hidden": false
+          }
+        }
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "employee_name\tdepartment\tstate\tsalary\tage\tbonus\nMaria\tFinance\tCA\t90000\t24\t23000\nRaman\tFinance\tCA\t99000\t40\t24000\nScott\tFinance\tNY\t83000\t36\t19000\nJen\tFinance\tNY\t79000\t53\t15000\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d47"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d48"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641110527523_1393492298",
+      "id": "paragraph_1641110527523_1393492298",
+      "dateCreated": "2022-01-02 08:02:07.523",
+      "dateStarted": "2022-01-02 13:36:52.748",
+      "dateFinished": "2022-01-02 13:36:53.011",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nprint(\"Hello \"+z.textbox(\"name\", \"sun\"))\n\nz.noteTextbox(\"state\",\"FL\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-02 13:39:31.146",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "State": "CA",
+          "state": "CA",
+          "Year": "2000",
+          "name": "sun"
+        },
+        "forms": {
+          "name": {
+            "type": "TextBox",
+            "name": "name",
+            "displayName": "name",
+            "defaultValue": "sun",
+            "hidden": false
+          }
+        }
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Hello sun\n\u0027FL\u0027"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641127494634_280506675",
+      "id": "paragraph_1641127494634_280506675",
+      "dateCreated": "2022-01-02 12:44:54.634",
+      "dateStarted": "2022-01-02 13:39:31.147",
+      "dateFinished": "2022-01-02 13:39:31.363",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\ndf.filter((df[\u0027department\u0027] \u003d\u003d \"Marketing\") \u0026 (df[\u0027state\u0027].isNull())).show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-02 05:53:10.248",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d20"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d21"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641102553179_1798892626",
+      "id": "paragraph_1641102553179_1798892626",
+      "dateCreated": "2022-01-02 05:49:13.179",
+      "dateStarted": "2022-01-02 05:53:10.253",
+      "dateFinished": "2022-01-02 05:53:10.629",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\ndf.select(\"department\", col(\"department\").alias(\"A\"),(df.department).alias(\"D\"),df[\u0027department\u0027].alias(\"E\")).show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-02 13:40:41.173",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------+---------+---------+---------+\n|department|        A|        D|        E|\n+----------+---------+---------+---------+\n|     Sales|    Sales|    Sales|    Sales|\n|     Sales|    Sales|    Sales|    Sales|\n|     Sales|    Sales|    Sales|    Sales|\n|   Finance|  Finance|  Finance|  Finance|\n|   Finance|  Finance|  Finance|  Finance|\n|   Finance|  Finance|  Finance|  Finance|\n|   Finance|  Finance|  Finance|  Finance|\n| Marketing|Marketing|Marketing|Marketing|\n| Marketing|Marketing|Marketing|Marketing|\n| Marketing|Marketing|Marketing|Marketing|\n+----------+---------+---------+---------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d54"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d55"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641098866368_1710245247",
+      "id": "paragraph_1641098866368_1710245247",
+      "dateCreated": "2022-01-02 04:47:46.368",
+      "dateStarted": "2022-01-02 13:40:41.174",
+      "dateFinished": "2022-01-02 13:40:41.486",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.types import *\nfrom pyspark.sql.functions import *\n\n# pretend this is Python-specific logic.\ndef calculate_bonus(salary\u003d0, percentage\u003d0):\n    return salary + salary*percentage  \n\ncalculate_bonus_udf \u003d udf(calculate_bonus,returnType\u003dtypes.FloatType())\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-02 05:47:19.064",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641101221817_1049630559",
+      "id": "paragraph_1641101221817_1049630559",
+      "dateCreated": "2022-01-02 05:27:01.817",
+      "dateStarted": "2022-01-02 05:47:19.069",
+      "dateFinished": "2022-01-02 05:47:19.289",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n\ndf.withColumn(\"bonus\", lit(0.25))\\\n    .withColumn(\"total_salary\", calculate_bonus(df.salary, 0.25)) \\\n    .withColumn(\"name-slalry\", format_string(\u0027%d-%s\u0027, df[\u0027salary\u0027], df[\u0027employee_name\u0027])) \\\n    .show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-02 05:47:30.903",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d14"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d15"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641101651538_337106222",
+      "id": "paragraph_1641101651538_337106222",
+      "dateCreated": "2022-01-02 05:34:11.538",
+      "dateStarted": "2022-01-02 05:47:30.909",
+      "dateFinished": "2022-01-02 05:47:31.330",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n#\n#\n\ndf.groupBy(\"department\").sum(\"salary\").show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-16 08:49:13.055",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://quickstart-bigdata:4040/jobs/job?id\u003d18"
+            },
+            {
+              "jobUrl": "http://quickstart-bigdata:4040/jobs/job?id\u003d19"
+            },
+            {
+              "jobUrl": "http://quickstart-bigdata:4040/jobs/job?id\u003d20"
+            },
+            {
+              "jobUrl": "http://quickstart-bigdata:4040/jobs/job?id\u003d21"
+            },
+            {
+              "jobUrl": "http://quickstart-bigdata:4040/jobs/job?id\u003d22"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639624545516_368799454",
+      "id": "paragraph_1639409650868_773043775",
+      "dateCreated": "2021-12-16 08:45:45.516",
+      "dateStarted": "2021-12-16 08:49:06.157",
+      "dateFinished": "2021-12-16 08:49:07.158",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Change Data Type of existing dataframe",
+      "text": "%pyspark\n\ndf.groupBy(\"department\").count().show()",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-16 08:50:00.117",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://quickstart-bigdata:4040/jobs/job?id\u003d23"
+            },
+            {
+              "jobUrl": "http://quickstart-bigdata:4040/jobs/job?id\u003d24"
+            },
+            {
+              "jobUrl": "http://quickstart-bigdata:4040/jobs/job?id\u003d25"
+            },
+            {
+              "jobUrl": "http://quickstart-bigdata:4040/jobs/job?id\u003d26"
+            },
+            {
+              "jobUrl": "http://quickstart-bigdata:4040/jobs/job?id\u003d27"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639624545516_1795573461",
+      "id": "paragraph_1639410101967_760815982",
+      "dateCreated": "2021-12-16 08:45:45.516",
+      "dateStarted": "2021-12-16 08:50:00.122",
+      "dateFinished": "2021-12-16 08:50:01.727",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n#\n#\n\n#GroupBy on multiple columns\n\ndf.groupBy(\"department\",\"state\").sum(\"salary\",\"bonus\").show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-16 08:52:37.621",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://quickstart-bigdata:4040/jobs/job?id\u003d28"
+            },
+            {
+              "jobUrl": "http://quickstart-bigdata:4040/jobs/job?id\u003d29"
+            },
+            {
+              "jobUrl": "http://quickstart-bigdata:4040/jobs/job?id\u003d30"
+            },
+            {
+              "jobUrl": "http://quickstart-bigdata:4040/jobs/job?id\u003d31"
+            },
+            {
+              "jobUrl": "http://quickstart-bigdata:4040/jobs/job?id\u003d32"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639624545516_481101181",
+      "id": "paragraph_1639410123534_1690144218",
+      "dateCreated": "2021-12-16 08:45:45.516",
+      "dateStarted": "2021-12-16 08:52:37.628",
+      "dateFinished": "2021-12-16 08:52:38.583",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n# Drop duplicates on selected columns\ndf2.select(\"id\", \"name.*\", \"state\").dropDuplicates([\"state\"]).show(truncate\u003dFalse)",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-16 08:45:45.516",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639624545516_990356924",
+      "id": "paragraph_1639546458690_1619100954",
+      "dateCreated": "2021-12-16 08:45:45.516",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n\ndf.groupBy(\"department\") \\\n    .agg(sum(\"salary\").alias(\"sum_salary\"), \\\n      avg(\"salary\").alias(\"avg_salary\"), \\\n      sum(\"bonus\").alias(\"sum_bonus\"), \\\n      max(\"bonus\").alias(\"max_bonus\")) \\\n    .where(col(\"sum_bonus\") \u003e\u003d 50000) \\\n    .show(truncate\u003dFalse)",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-10 11:50:29.695",
+      "progress": 31,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------+----------+-----------------+---------+---------+\n|department|sum_salary|avg_salary       |sum_bonus|max_bonus|\n+----------+----------+-----------------+---------+---------+\n|Sales     |257000    |85666.66666666667|53000    |23000    |\n|Finance   |351000    |87750.0          |81000    |24000    |\n|Marketing |262000    |87333.33333333333|60000    |21000    |\n+----------+----------+-----------------+---------+---------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d25"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d26"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d27"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d28"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d29"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639624545516_1252271784",
+      "id": "paragraph_1639546896007_867686178",
+      "dateCreated": "2021-12-16 08:45:45.516",
+      "dateStarted": "2022-01-10 11:50:19.196",
+      "dateFinished": "2022-01-10 11:50:20.778",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-16 08:54:05.379",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639625045378_629535567",
+      "id": "paragraph_1639625045378_629535567",
+      "dateCreated": "2021-12-16 08:54:05.379",
+      "status": "READY"
+    }
+  ],
+  "name": "pyspark-df-groupby",
+  "id": "2GSH6FF7F",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

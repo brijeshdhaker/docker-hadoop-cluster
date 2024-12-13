@@ -1,7 +1,7 @@
 
 ### Start Cassandra Cluster
 ```shell
-docker compose -f  bd-hadoop-sandbox/dc-cassandra.yml up -d
+docker compose -f  bd-docker-sandbox/dc-cassandra.yml up -d
 ```
 
 ### Create Cassandra Table

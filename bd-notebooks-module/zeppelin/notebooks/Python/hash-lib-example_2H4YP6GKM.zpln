@@ -1,0 +1,115 @@
+{
+  "paragraphs": [
+    {
+      "text": "%python\n\nimport hashlib\n\nprint(hashlib.algorithms_available)\nprint(hashlib.algorithms_guaranteed)\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-07-23 02:01:09.192",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "{\u0027shake_256\u0027, \u0027sha3_224\u0027, \u0027sha1\u0027, \u0027md5\u0027, \u0027sha3_512\u0027, \u0027sha3_384\u0027, \u0027shake_128\u0027, \u0027sha512\u0027, \u0027blake2b\u0027, \u0027blake2s\u0027, \u0027sha224\u0027, \u0027sha256\u0027, \u0027sha3_256\u0027, \u0027sha384\u0027}\n{\u0027shake_256\u0027, \u0027sha3_224\u0027, \u0027sha1\u0027, \u0027md5\u0027, \u0027sha3_512\u0027, \u0027sha3_384\u0027, \u0027shake_128\u0027, \u0027sha512\u0027, \u0027blake2b\u0027, \u0027blake2s\u0027, \u0027sha224\u0027, \u0027sha256\u0027, \u0027sha3_256\u0027, \u0027sha384\u0027}\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1655641178876_1317183166",
+      "id": "paragraph_1655641178876_1317183166",
+      "dateCreated": "2022-06-19 12:19:38.876",
+      "dateStarted": "2023-07-23 02:01:09.203",
+      "dateFinished": "2023-07-23 02:01:13.965",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%python\n\nimport hashlib  # import hashlib module\n\n# initialize using sha256\nprint(\u0027\\nExample for SHA256\u0027)\nm \u003d hashlib.sha256()\n# append string one after another\nm.update(b\"This is a\")\nm.update(b\" great python tutorial.\")\nprint(\u0027Output 1 :\u0027, m.digest())\n\n# use the whole string at once\nx \u003d hashlib.sha256(b\"This is a great python tutorial.\")\nprint(\u0027Output 2 :\u0027, x.digest())\n\n# initialize using md5\nprint(\u0027\\nExample for md5\u0027)\nm \u003d hashlib.md5()\n# append string one after another\nm.update(b\"This is a\")\nm.update(b\" great python tutorial.\")\nprint(\u0027Output 1 :\u0027, m.digest())\n\n# use the whole string at once\nx \u003d hashlib.md5(b\"This is a great python tutorial.\")\nprint(\u0027Output 2 :\u0027, x.digest())\n\n# Conver hexadecimal number to decimal no % by 10 expo 8\nidx \u003d int(hashlib.sha1(b\"Hello\").hexdigest(), 16) % (10 ** 8)\nprint(idx)\nprint((10 ** 8))\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-06-19 12:52:43.393",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\nExample for SHA256\nOutput 1 : b\u0027\\xae[@\\xa0Z\\x02\\xca/\\xb8Y\\x86\\xdf\\x88?6a\\x8a\\xbbW\\x83\\xe7\\xec!\\x14\\x11vI\\x95\\xa3\\x9d\\xd8S\u0027\nOutput 2 : b\u0027\\xae[@\\xa0Z\\x02\\xca/\\xb8Y\\x86\\xdf\\x88?6a\\x8a\\xbbW\\x83\\xe7\\xec!\\x14\\x11vI\\x95\\xa3\\x9d\\xd8S\u0027\n\nExample for md5\nOutput 1 : b\u0027\\xb0\\xdd\\xeb\\xa2o}T9\\xa3\\xf1#\\x05\\x14|\\xfbp\u0027\nOutput 2 : b\u0027\\xb0\\xdd\\xeb\\xa2o}T9\\xa3\\xf1#\\x05\\x14|\\xfbp\u0027\n40359920\n100000000\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1655641209262_1632129660",
+      "id": "paragraph_1655641209262_1632129660",
+      "dateCreated": "2022-06-19 12:20:09.262",
+      "dateStarted": "2022-06-19 12:52:43.416",
+      "dateFinished": "2022-06-19 12:52:43.484",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%python\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-06-19 12:20:46.166",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1655641246166_1568094135",
+      "id": "paragraph_1655641246166_1568094135",
+      "dateCreated": "2022-06-19 12:20:46.166",
+      "status": "READY"
+    }
+  ],
+  "name": "hash-lib-example",
+  "id": "2H4YP6GKM",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

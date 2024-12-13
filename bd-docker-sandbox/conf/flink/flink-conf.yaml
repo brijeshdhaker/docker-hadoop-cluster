@@ -1,0 +1,41 @@
+blob.server.port: 6124
+env.java.opts.jobmanager: -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf
+rest.flamegraph.enabled: true
+fs.default-scheme: s3a://warehouse-flink/
+jobmanager.execution.failover-strategy: region
+jobmanager.rpc.address: flink-jobmanager
+state.savepoints.dir: s3a://warehouse-flink/savepoints
+security.kerberos.login.use-ticket-cache: false
+query.server.port: 6125
+s3.secret-key: password
+jobmanager.bind-host: 0.0.0.0
+s3.endpoint: http://minio.sandbox.net:9010
+execution.checkpointing.savepoint-dir: s3a://warehouse-flink/execution-savepoints
+taskmanager.host: flink-taskmanager
+parallelism.default: 1
+taskmanager.numberOfTaskSlots: 1
+execution.checkpointing.dir: s3a://warehouse-flink/execution-checkpoints
+env.java.opts.all: --add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED
+state.backend.type: hashmap
+taskmanager.memory.process.size: 1728m
+execution.checkpointing.tolerable-failed-checkpoints: 0
+taskmanager.bind-host: 0.0.0.0
+execution.checkpointing.unaligned: false
+jobmanager.memory.process.size: 1600m
+jobmanager.rpc.port: 6123
+env.log.max: 5
+rest.bind-address: 0.0.0.0
+security.kerberos.login.principal: brijeshdhaker@SANDBOX.NET
+s3.access-key: admin
+execution.checkpointing.interval: 3min
+execution.checkpointing.timeout: 10min
+env.log.dir: /apps/var/logs/flink
+rest.address: flink-jobmanager
+state.backend: filesystem
+execution.checkpointing.min-pause: 0
+execution.checkpointing.max-concurrent-checkpoints: 1
+env.java.opts.taskmanager: -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf
+security.kerberos.login.keytab: /apps/security/keytabs/users/brijeshdhaker.keytab
+env.log.level: INFO
+s3.path.style.access: true
+state.checkpoints.dir: s3a://warehouse-flink/checkpoints

@@ -1,0 +1,237 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-01 14:23:35.566",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641047008689_1581262571",
+      "id": "paragraph_1641047008689_1581262571",
+      "dateCreated": "2022-01-01 14:23:28.690",
+      "status": "READY"
+    },
+    {
+      "text": "%spark.conf\n\nSPARK_HOME /opt/spark-3.1.2\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-21 02:19:17.165",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641046568367_377060661",
+      "id": "paragraph_1641046568367_377060661",
+      "dateCreated": "2022-01-01 14:16:08.367",
+      "dateStarted": "2022-01-10 11:10:26.237",
+      "dateFinished": "2022-01-10 11:10:26.241",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nitemsSchema \u003d (\"id integer, name string, price float\")\nordersSchema\u003d(\"id integer, itemid integer, count integer\")\n\nitems \u003d spark.createDataFrame([[0, \"Tomato\", 2.0], \\\n                               [1, \"Watermelon\", 5.5], \\\n                               [2, \"pineapple\", 7.0]], \\\n                              schema\u003ditemsSchema)\n                              \norders \u003d spark.createDataFrame([[100, 0, 1], \\\n                                [100, 1, 1], \\\n                                [101, 2, 3], \\\n                                [102,2,8]],\\\n                               schema\u003dordersSchema)\n                               ",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-21 02:19:07.896",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641046600272_440087584",
+      "id": "paragraph_1641046600272_440087584",
+      "dateCreated": "2022-01-01 14:16:40.272",
+      "dateStarted": "2022-01-10 11:10:28.264",
+      "dateFinished": "2022-01-10 11:10:47.058",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import sum\n\ny\u003d(items.join(orders,items.id\u003d\u003dorders.itemid, how\u003d\"inner\"))\\\n        .where(items.id\u003d\u003d2)\\\n        .groupBy(\"name\",\"price\").agg(sum(\"count\")\\\n        .alias(\"c\"))\n        \ny.foreach(lambda x : ())\n\n        ",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-21 02:19:26.147",
+      "progress": 84,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d0"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641046675176_1722048064",
+      "id": "paragraph_1641046675176_1722048064",
+      "dateCreated": "2022-01-01 14:17:55.177",
+      "dateStarted": "2022-01-10 11:10:53.193",
+      "dateFinished": "2022-01-10 11:11:00.121",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\ny.explain(extended\u003dTrue)\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-21 02:19:33.811",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u003d\u003d Parsed Logical Plan \u003d\u003d\n\u0027Aggregate [\u0027name, \u0027price], [\u0027name, \u0027price, sum(\u0027count) AS c#31]\n+- Filter (id#0 \u003d 2)\n   +- Join Inner, (id#0 \u003d itemid#7)\n      :- LogicalRDD [id#0, name#1, price#2], false\n      +- LogicalRDD [id#6, itemid#7, count#8], false\n\n\u003d\u003d Analyzed Logical Plan \u003d\u003d\nname: string, price: float, c: bigint\nAggregate [name#1, price#2], [name#1, price#2, sum(cast(count#8 as bigint)) AS c#31L]\n+- Filter (id#0 \u003d 2)\n   +- Join Inner, (id#0 \u003d itemid#7)\n      :- LogicalRDD [id#0, name#1, price#2], false\n      +- LogicalRDD [id#6, itemid#7, count#8], false\n\n\u003d\u003d Optimized Logical Plan \u003d\u003d\nAggregate [name#1, price#2], [name#1, price#2, sum(cast(count#8 as bigint)) AS c#31L]\n+- Project [name#1, price#2, count#8]\n   +- Join Inner, (id#0 \u003d itemid#7)\n      :- Filter (isnotnull(id#0) AND (id#0 \u003d 2))\n      :  +- LogicalRDD [id#0, name#1, price#2], false\n      +- Project [itemid#7, count#8]\n         +- Filter ((itemid#7 \u003d 2) AND isnotnull(itemid#7))\n            +- LogicalRDD [id#6, itemid#7, count#8], false\n\n\u003d\u003d Physical Plan \u003d\u003d\n*(6) HashAggregate(keys\u003d[name#1, price#2], functions\u003d[sum(cast(count#8 as bigint))], output\u003d[name#1, price#2, c#31L])\n+- Exchange hashpartitioning(name#1, price#2, 200), ENSURE_REQUIREMENTS, [id\u003d#61]\n   +- *(5) HashAggregate(keys\u003d[name#1, knownfloatingpointnormalized(normalizenanandzero(price#2)) AS price#2], functions\u003d[partial_sum(cast(count#8 as bigint))], output\u003d[name#1, price#2, sum#36L])\n      +- *(5) Project [name#1, price#2, count#8]\n         +- *(5) SortMergeJoin [id#0], [itemid#7], Inner\n            :- *(2) Sort [id#0 ASC NULLS FIRST], false, 0\n            :  +- Exchange hashpartitioning(id#0, 200), ENSURE_REQUIREMENTS, [id\u003d#46]\n            :     +- *(1) Filter (isnotnull(id#0) AND (id#0 \u003d 2))\n            :        +- *(1) Scan ExistingRDD[id#0,name#1,price#2]\n            +- *(4) Sort [itemid#7 ASC NULLS FIRST], false, 0\n               +- Exchange hashpartitioning(itemid#7, 200), ENSURE_REQUIREMENTS, [id\u003d#52]\n                  +- *(3) Project [itemid#7, count#8]\n                     +- *(3) Filter ((itemid#7 \u003d 2) AND isnotnull(itemid#7))\n                        +- *(3) Scan ExistingRDD[id#6,itemid#7,count#8]\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641046757291_785407690",
+      "id": "paragraph_1641046757291_785407690",
+      "dateCreated": "2022-01-01 14:19:17.291",
+      "dateStarted": "2022-01-10 11:11:03.394",
+      "dateFinished": "2022-01-10 11:11:03.653",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n#\n# Spark-3.0 support following \n#\nexplain(mode\u003d”simple”)      # which will display the physical plan\nexplain(mode\u003d”extended”)    # which will display physical and logical plans (like “extended” option)\nexplain(mode\u003d”codegen”)     # which will display the java code planned to be executed\nexplain(mode\u003d”cost”)        # which will display the optimized logical plan and related statistics (if they exist)\nexplain(mode\u003d”formatted”)   # which will display a splitted output composed by a nice physical plan outline, and a section with each node details\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-01 14:36:52.711",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641046796793_1906969994",
+      "id": "paragraph_1641046796793_1906969994",
+      "dateCreated": "2022-01-01 14:19:56.793",
+      "status": "READY"
+    }
+  ],
+  "name": "logical_physical_plans",
+  "id": "2GSB9H2KW",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

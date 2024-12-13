@@ -1,0 +1,531 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\nJoin hints are powerful way for developer to optimise their joins. Spark 3.0 brings all the possible joins to spark SQL hint framework.\n\n### Join Hints ###\nIn spark SQL, developer can give additional information to query optimiser to optimise the join in certain way. Using this mechanism, developer can override the default optimisation done by the spark catalyst. These are known as join hints.\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-03 10:44:19.411",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eJoin hints are powerful way for developer to optimise their joins. Spark 3.0 brings all the possible joins to spark SQL hint framework.\u003c/p\u003e\n\u003ch3\u003eJoin Hints\u003c/h3\u003e\n\u003cp\u003eIn spark SQL, developer can give additional information to query optimiser to optimise the join in certain way. Using this mechanism, developer can override the default optimisation done by the spark catalyst. These are known as join hints.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641206264186_1257140194",
+      "id": "paragraph_1641206264186_1257140194",
+      "dateCreated": "2022-01-03 10:37:44.187",
+      "dateStarted": "2022-01-03 10:44:19.411",
+      "dateFinished": "2022-01-03 10:44:21.508",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-03 09:50:23.344",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641203414096_1185983594",
+      "id": "paragraph_1641203414096_1185983594",
+      "dateCreated": "2022-01-03 09:50:14.096",
+      "status": "READY"
+    },
+    {
+      "text": "%file\n\nls -l /datasets/sales.csv\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-15 02:50:55.416",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/undefined",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "No such File or directory"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641203643675_986720381",
+      "id": "paragraph_1641203643675_986720381",
+      "dateCreated": "2022-01-03 09:54:03.675",
+      "dateStarted": "2023-02-15 02:50:55.428",
+      "dateFinished": "2023-02-15 02:50:55.436",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%file\n\nls -l /datasets/customer.csv",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-15 02:50:44.668",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/undefined",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "-rw-rw-rw-\t1\t brijeshdhaker\tsupergroup\t188\t2022-01-10 16:51GMT\t/datasets/customer.csv/"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641203786143_420941312",
+      "id": "paragraph_1641203786143_420941312",
+      "dateCreated": "2022-01-03 09:56:26.143",
+      "dateStarted": "2023-02-15 02:50:44.670",
+      "dateFinished": "2023-02-15 02:50:44.677",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nval salesDf \u003d spark.read.\n      format(\"csv\")\n      .option(\"header\", \"true\")\n      .option(\"inferSchema\", \"true\")\n      .load(\"/datasets/sales.csv\")\n\nsalesDf.show()\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-03 10:43:07.890",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------+----------+------+----------+\n|transactionId|customerId|itemId|amountPaid|\n+-------------+----------+------+----------+\n|          111|         1|     1|     100.0|\n|          112|         2|     2|     505.0|\n|          113|         3|     3|     510.0|\n|          114|         4|     4|     600.0|\n|          115|         1|     2|     500.0|\n|          116|         1|     2|     500.0|\n|          117|         1|     2|     500.0|\n|          118|         1|     2|     500.0|\n|          119|         2|     3|     500.0|\n|          120|         1|     2|     500.0|\n|          121|         1|     4|     500.0|\n|          122|         1|     2|     500.0|\n|          123|         1|     4|     500.0|\n|          124|         1|     2|     500.0|\n+-------------+----------+------+----------+\n\n\u001b[1m\u001b[34msalesDf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [transactionId: int, customerId: int ... 2 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641203423459_1989164571",
+      "id": "paragraph_1641203423459_1989164571",
+      "dateCreated": "2022-01-03 09:50:23.459",
+      "dateStarted": "2022-01-03 10:00:07.188",
+      "dateFinished": "2022-01-03 10:00:09.619",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nimport org.apache.spark.sql.types._\n\nval columnNames \u003d Seq(\"customerId\", \"customerName\", \"customerAge\", \"customerCity\", \"customerBalance\")\n\nval schema \u003d new StructType()\n      .add(\"customerId\",IntegerType,true)\n      .add(\"customerName\",StringType,true)\n      .add(\"customerAge\",IntegerType,true)\n      .add(\"customerCity\",StringType,true)\n      .add(\"customerBalance\",DoubleType,true)\n      \nval customerDf \u003d spark.read.\n  format(\"csv\")\n  .option(\"header\", false)\n  .schema(schema)\n  .load(\"/datasets/customer.csv\")\ncustomerDf.show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-03 10:52:59.553",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------+------------+-----------+------------+---------------+\n|customerId|customerName|customerAge|customerCity|customerBalance|\n+----------+------------+-----------+------------+---------------+\n|         1|      Ramesh|         32|   Ahmedabad|         2000.0|\n|         2|      Khilan|         25|       Delhi|         1500.0|\n|         3|     kaushik|         23|        Kota|         2000.0|\n|         4|    Chaitali|         25|      Mumbai|         6500.0|\n|         5|      Hardik|         27|      Bhopal|         8500.0|\n|         6|       Komal|         22|          MP|         4500.0|\n|         7|       Muffy|         24|      Indore|        10000.0|\n+----------+------------+-----------+------------+---------------+\n\nimport org.apache.spark.sql.types._\n\u001b[1m\u001b[34mcolumnNames\u001b[0m: \u001b[1m\u001b[32mSeq[String]\u001b[0m \u003d List(customerId, customerName, customerAge, customerCity, customerBalance)\n\u001b[1m\u001b[34mschema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(customerId,IntegerType,true), StructField(customerName,StringType,true), StructField(customerAge,IntegerType,true), StructField(customerCity,StringType,true), StructField(customerBalance,DoubleType,true))\n\u001b[1m\u001b[34mcustomerDf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [customerId: int, customerName: string ... 3 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641203991296_796296922",
+      "id": "paragraph_1641203991296_796296922",
+      "dateCreated": "2022-01-03 09:59:51.296",
+      "dateStarted": "2022-01-03 10:52:59.554",
+      "dateFinished": "2022-01-03 10:52:59.894",
+      "status": "FINISHED"
+    },
+    {
+      "title": "BroadCast Join Hint in Spark 2.x",
+      "text": "%spark\n\n//broadcast hint\nval broadcastJoin \u003d salesDf.hint(\"broadcast\").join(customerDf,\"customerId\")\nbroadcastJoin.show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-03 10:55:06.364",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------+-------------+------+----------+------------+-----------+------------+---------------+\n|customerId|transactionId|itemId|amountPaid|customerName|customerAge|customerCity|customerBalance|\n+----------+-------------+------+----------+------------+-----------+------------+---------------+\n|         1|          124|     2|     500.0|      Ramesh|         32|   Ahmedabad|         2000.0|\n|         1|          123|     4|     500.0|      Ramesh|         32|   Ahmedabad|         2000.0|\n|         1|          122|     2|     500.0|      Ramesh|         32|   Ahmedabad|         2000.0|\n|         1|          121|     4|     500.0|      Ramesh|         32|   Ahmedabad|         2000.0|\n|         1|          120|     2|     500.0|      Ramesh|         32|   Ahmedabad|         2000.0|\n|         1|          118|     2|     500.0|      Ramesh|         32|   Ahmedabad|         2000.0|\n|         1|          117|     2|     500.0|      Ramesh|         32|   Ahmedabad|         2000.0|\n|         1|          116|     2|     500.0|      Ramesh|         32|   Ahmedabad|         2000.0|\n|         1|          115|     2|     500.0|      Ramesh|         32|   Ahmedabad|         2000.0|\n|         1|          111|     1|     100.0|      Ramesh|         32|   Ahmedabad|         2000.0|\n|         2|          119|     3|     500.0|      Khilan|         25|       Delhi|         1500.0|\n|         2|          112|     2|     505.0|      Khilan|         25|       Delhi|         1500.0|\n|         3|          113|     3|     510.0|     kaushik|         23|        Kota|         2000.0|\n|         4|          114|     4|     600.0|    Chaitali|         25|      Mumbai|         6500.0|\n+----------+-------------+------+----------+------------+-----------+------------+---------------+\n\n\u001b[1m\u001b[34mbroadcastJoin\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [customerId: int, transactionId: int ... 6 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641203974603_469036678",
+      "id": "paragraph_1641203974603_469036678",
+      "dateCreated": "2022-01-03 09:59:34.603",
+      "dateStarted": "2022-01-03 10:55:06.374",
+      "dateFinished": "2022-01-03 10:55:06.770",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nbroadcastJoin.explain()",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-03 10:34:05.876",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u003d\u003d Physical Plan \u003d\u003d\n*(2) Project [customerId#1478, transactionId#1477, itemId#1479, amountPaid#1480, customerName#1681, customerAge#1687, customerCity#1693, _c4#1669]\n+- *(2) BroadcastHashJoin [customerId#1478], [customerId#1675], Inner, BuildLeft\n   :- BroadcastExchange HashedRelationBroadcastMode(List(cast(input[1, int, true] as bigint)))\n   :  +- *(1) Project [transactionId#1477, customerId#1478, itemId#1479, amountPaid#1480]\n   :     +- *(1) Filter isnotnull(customerId#1478)\n   :        +- *(1) FileScan csv [transactionId#1477,customerId#1478,itemId#1479,amountPaid#1480] Batched: false, Format: CSV, Location: InMemoryFileIndex[hdfs://namenode:9000/datasets/sales.csv], PartitionFilters: [], PushedFilters: [IsNotNull(customerId)], ReadSchema: struct\u003ctransactionId:int,customerId:int,itemId:int,amountPaid:double\u003e\n   +- *(2) Project [_c0#1665 AS customerId#1675, _c1#1666 AS customerName#1681, _c2#1667 AS customerAge#1687, _c3#1668 AS customerCity#1693, _c4#1669]\n      +- *(2) Filter isnotnull(_c0#1665)\n         +- *(2) FileScan csv [_c0#1665,_c1#1666,_c2#1667,_c3#1668,_c4#1669] Batched: false, Format: CSV, Location: InMemoryFileIndex[hdfs://namenode:9000/datasets/customer.csv], PartitionFilters: [], PushedFilters: [IsNotNull(_c0)], ReadSchema: struct\u003c_c0:int,_c1:string,_c2:int,_c3:string,_c4:double\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641206032839_1508632669",
+      "id": "paragraph_1641206032839_1508632669",
+      "dateCreated": "2022-01-03 10:33:52.839",
+      "dateStarted": "2022-01-03 10:34:05.880",
+      "dateFinished": "2022-01-03 10:34:06.060",
+      "status": "FINISHED"
+    },
+    {
+      "title": "SortMerge Join Hint",
+      "text": "%spark\n\nval mergeJoin \u003d salesDf.hint(\"merge\").join(customerDf, \"customerId\")\nmergeJoin.explain()\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-03 10:35:24.042",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u003d\u003d Physical Plan \u003d\u003d\n*(5) Project [customerId#1478, transactionId#1477, itemId#1479, amountPaid#1480, customerName#1681, customerAge#1687, customerCity#1693, _c4#1669]\n+- *(5) SortMergeJoin [customerId#1478], [customerId#1675], Inner\n   :- *(2) Sort [customerId#1478 ASC NULLS FIRST], false, 0\n   :  +- Exchange hashpartitioning(customerId#1478, 3)\n   :     +- *(1) Project [transactionId#1477, customerId#1478, itemId#1479, amountPaid#1480]\n   :        +- *(1) Filter isnotnull(customerId#1478)\n   :           +- *(1) FileScan csv [transactionId#1477,customerId#1478,itemId#1479,amountPaid#1480] Batched: false, Format: CSV, Location: InMemoryFileIndex[hdfs://namenode:9000/datasets/sales.csv], PartitionFilters: [], PushedFilters: [IsNotNull(customerId)], ReadSchema: struct\u003ctransactionId:int,customerId:int,itemId:int,amountPaid:double\u003e\n   +- *(4) Sort [customerId#1675 ASC NULLS FIRST], false, 0\n      +- Exchange hashpartitioning(customerId#1675, 3)\n         +- *(3) Project [_c0#1665 AS customerId#1675, _c1#1666 AS customerName#1681, _c2#1667 AS customerAge#1687, _c3#1668 AS customerCity#1693, _c4#1669]\n            +- *(3) Filter isnotnull(_c0#1665)\n               +- *(3) FileScan csv [_c0#1665,_c1#1666,_c2#1667,_c3#1668,_c4#1669] Batched: false, Format: CSV, Location: InMemoryFileIndex[hdfs://namenode:9000/datasets/customer.csv], PartitionFilters: [], PushedFilters: [IsNotNull(_c0)], ReadSchema: struct\u003c_c0:int,_c1:string,_c2:int,_c3:string,_c4:double\u003e\n\u001b[1m\u001b[34mmergeJoin\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [customerId: int, transactionId: int ... 6 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641206045878_557206638",
+      "id": "paragraph_1641206045878_557206638",
+      "dateCreated": "2022-01-03 10:34:05.878",
+      "dateStarted": "2022-01-03 10:35:24.049",
+      "dateFinished": "2022-01-03 10:35:24.299",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Shuffle Hash Join Hint",
+      "text": "%spark\n\nval shuffleHashJoin \u003d salesDf.hint(\"shuffle_hash\").join(customerDf,\"customerId\")\nshuffleHashJoin.explain()",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-03 10:36:13.466",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u003d\u003d Physical Plan \u003d\u003d\n*(5) Project [customerId#1478, transactionId#1477, itemId#1479, amountPaid#1480, customerName#1681, customerAge#1687, customerCity#1693, _c4#1669]\n+- *(5) SortMergeJoin [customerId#1478], [customerId#1675], Inner\n   :- *(2) Sort [customerId#1478 ASC NULLS FIRST], false, 0\n   :  +- Exchange hashpartitioning(customerId#1478, 3)\n   :     +- *(1) Project [transactionId#1477, customerId#1478, itemId#1479, amountPaid#1480]\n   :        +- *(1) Filter isnotnull(customerId#1478)\n   :           +- *(1) FileScan csv [transactionId#1477,customerId#1478,itemId#1479,amountPaid#1480] Batched: false, Format: CSV, Location: InMemoryFileIndex[hdfs://namenode:9000/datasets/sales.csv], PartitionFilters: [], PushedFilters: [IsNotNull(customerId)], ReadSchema: struct\u003ctransactionId:int,customerId:int,itemId:int,amountPaid:double\u003e\n   +- *(4) Sort [customerId#1675 ASC NULLS FIRST], false, 0\n      +- Exchange hashpartitioning(customerId#1675, 3)\n         +- *(3) Project [_c0#1665 AS customerId#1675, _c1#1666 AS customerName#1681, _c2#1667 AS customerAge#1687, _c3#1668 AS customerCity#1693, _c4#1669]\n            +- *(3) Filter isnotnull(_c0#1665)\n               +- *(3) FileScan csv [_c0#1665,_c1#1666,_c2#1667,_c3#1668,_c4#1669] Batched: false, Format: CSV, Location: InMemoryFileIndex[hdfs://namenode:9000/datasets/customer.csv], PartitionFilters: [], PushedFilters: [IsNotNull(_c0)], ReadSchema: struct\u003c_c0:int,_c1:string,_c2:int,_c3:string,_c4:double\u003e\n\u001b[1m\u001b[34mshuffleHashJoin\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [customerId: int, transactionId: int ... 6 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641206124045_1095405013",
+      "id": "paragraph_1641206124045_1095405013",
+      "dateCreated": "2022-01-03 10:35:24.045",
+      "dateStarted": "2022-01-03 10:36:13.470",
+      "dateFinished": "2022-01-03 10:36:13.686",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Cartesian Product Hint",
+      "text": "%spark\n\nval cartesianProduct \u003d salesDf.hint(\"shuffle_replicate_nl\").join(customerDf)\ncartesianProduct.explain()\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-03 10:37:09.971",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u003d\u003d Physical Plan \u003d\u003d\norg.apache.spark.sql.AnalysisException: Detected implicit cartesian product for INNER join between logical plans\nRelation[transactionId#1477,customerId#1478,itemId#1479,amountPaid#1480] csv\nand\nProject [_c0#1665 AS customerId#1675, _c1#1666 AS customerName#1681, _c2#1667 AS customerAge#1687, _c3#1668 AS customerCity#1693, _c4#1669]\n+- Relation[_c0#1665,_c1#1666,_c2#1667,_c3#1668,_c4#1669] csv\nJoin condition is missing or trivial.\nEither: use the CROSS JOIN syntax to allow cartesian products between these\nrelations, or: enable implicit cartesian products by setting the configuration\nvariable spark.sql.crossJoin.enabled\u003dtrue;\n\u001b[1m\u001b[34mcartesianProduct\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [transactionId: int, customerId: int ... 7 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641206173469_1496302331",
+      "id": "paragraph_1641206173469_1496302331",
+      "dateCreated": "2022-01-03 10:36:13.469",
+      "dateStarted": "2022-01-03 10:37:09.975",
+      "dateFinished": "2022-01-03 10:37:10.185",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-03 10:37:09.975",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1641206229974_1012419070",
+      "id": "paragraph_1641206229974_1012419070",
+      "dateCreated": "2022-01-03 10:37:09.975",
+      "status": "READY"
+    }
+  ],
+  "name": "spark-join-hints",
+  "id": "2GS65GYQ5",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

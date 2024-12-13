@@ -1,5 +1,4 @@
 .DS_Store
-nbactions.xml
 target
 *.gz
 *.tgz
@@ -26,4 +25,6 @@ target
 /data/postgresql/*
 /data/mysql/*
 /data/cassandra/*
-bd-hadoop-sandbox/conf/cluster/*/*
+bd-docker-sandbox/conf/cluster/*/*
+*/dependency-reduced-pom.xml
+bd-notebooks-module/zeppelin/notebooks/.git

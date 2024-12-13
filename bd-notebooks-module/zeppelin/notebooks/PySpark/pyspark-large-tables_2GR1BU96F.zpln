@@ -1,0 +1,302 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.conf\n\nSPARK_HOME /opt/spark-3.1.2\nmaster local[*]\nspark.driver.memory 1024M\nspark.executor.instances  2\nspark.executor.memory  1024M\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-06-20 01:03:55.309",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639629269664_1571957419",
+      "id": "paragraph_1639629269664_1571957419",
+      "dateCreated": "2021-12-16 10:04:29.664",
+      "dateStarted": "2022-01-01 01:01:39.491",
+      "dateFinished": "2022-01-01 01:01:39.494",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Create Tables Without Buckets",
+      "text": "%pyspark\n\nfrom pyspark.sql.functions import *\n\n#\n# Huge Table with 10000000 Records\n#\nhuge \u003d spark.range(10e6).withColumn(\"hash\", hash(col(\"id\"))).withColumn(\"bucket\", expr(\"pmod(hash, 8)\"))\n\n#\n# Large Table with 100000 Records\n#\nlarge \u003d spark.range(10e4).withColumn(\"hash\", hash(col(\"id\"))).withColumn(\"bucket\", expr(\"pmod(hash, 8)\"))\n\n#\n# Slamll Table with 10K Records\n#\nsmall \u003d spark.range(10e3).withColumn(\"hash\", hash(col(\"id\"))).withColumn(\"bucket\", expr(\"pmod(hash, 8)\"))\n\n\n\n# Enable Automatic Broadcasting\n#\n#spark.conf.set(\"spark.sql.autoBroadcastJoinThreshold\",1024*1024*10)",
+      "user": "anonymous",
+      "dateUpdated": "2022-06-20 00:59:24.812",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639629302926_841957200",
+      "id": "paragraph_1639629302926_841957200",
+      "dateCreated": "2021-12-16 10:05:02.926",
+      "dateStarted": "2022-01-01 01:01:42.195",
+      "dateFinished": "2022-01-01 01:01:57.656",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Disable Automatic Broadcasting",
+      "text": "%pyspark\n\n# Disable automatic broadcasting\n#\nspark.conf.set(\"spark.sql.autoBroadcastJoinThreshold\",-1)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-06-20 00:59:30.399",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639633158849_575399175",
+      "id": "paragraph_1639633158849_575399175",
+      "dateCreated": "2021-12-16 11:09:18.849",
+      "dateStarted": "2021-12-16 11:48:08.002",
+      "dateFinished": "2021-12-16 11:48:08.011",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n#\nhuge.write.mode(\"overwrite\").saveAsTable(\"huge\");\n\n\nhuge.write.bucketBy(4, \"id\").sortBy(\"id\").mode(\"overwrite\").saveAsTable(\"bucketed_huge\");\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-06-20 00:59:41.112",
+      "progress": 100,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d0"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d1"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639631821444_2025746142",
+      "id": "paragraph_1639631821444_2025746142",
+      "dateCreated": "2021-12-16 10:47:01.444",
+      "dateStarted": "2022-01-01 01:02:42.870",
+      "dateFinished": "2022-01-01 01:03:00.547",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n#\nlarge.write.mode(\"overwrite\").saveAsTable(\"large\");\n\nlarge.write.bucketBy(4, \"id\").sortBy(\"id\").mode(\"overwrite\").saveAsTable(\"bucketed_large\");\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-06-20 00:59:46.305",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d2"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d3"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639634793239_2078711713",
+      "id": "paragraph_1639634793239_2078711713",
+      "dateCreated": "2021-12-16 11:36:33.239",
+      "dateStarted": "2022-01-01 01:03:02.404",
+      "dateFinished": "2022-01-01 01:03:06.644",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\n#\nsmall.write.mode(\"overwrite\").saveAsTable(\"small\");\n\nsmall.write.bucketBy(4, \"id\").sortBy(\"id\").mode(\"overwrite\").saveAsTable(\"bucketed_small\");",
+      "user": "anonymous",
+      "dateUpdated": "2022-06-20 00:59:59.945",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d4"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d5"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639632370789_1429215378",
+      "id": "paragraph_1639632370789_1429215378",
+      "dateCreated": "2021-12-16 10:56:10.789",
+      "dateStarted": "2022-01-01 01:03:10.622",
+      "dateFinished": "2022-01-01 01:03:13.603",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-16 11:48:55.074",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639635535074_1906590928",
+      "id": "paragraph_1639635535074_1906590928",
+      "dateCreated": "2021-12-16 11:48:55.074",
+      "status": "READY"
+    }
+  ],
+  "name": "pyspark-large-tables",
+  "id": "2GR1BU96F",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

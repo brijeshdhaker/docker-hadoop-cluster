@@ -1,0 +1,91 @@
+#
+# docker compose -f bd-docker-sandbox/dc-flink-cluster.yml up -d
+# docker compose -f bd-docker-sandbox/dc-flink-cluster.yml down
+#
+
+#
+# docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
+# docker volume create --name sandbox_security_secrets --opt type=none --opt device=/apps/security/ssl --opt o=bind
+#
+# docker volume create --name sandbox_krb5_stash --opt type=none --opt device=/apps/sandbox/kerberos/stash --opt o=bind
+# docker volume create --name sandbox_krb5_principal --opt type=none --opt device=/apps/sandbox/kerberos/principal --opt o=bind
+#
+# docker volume create --name sandbox_zookeeper334_data --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop334/data --opt o=bind
+# docker volume create --name sandbox_zookeeper334_log --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop334/log --opt o=bind
+#
+# docker volume create --name sandbox_hadoop_334 --opt type=none --opt device=/opt/hadoop-3.3.4 --opt o=bind
+# docker volume create --name sandbox_hadoop_334_dfs --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/dfs --opt o=bind
+# docker volume create --name sandbox_hadoop_334_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/yarn --opt o=bind
+# docker volume create --name sandbox_hadoop_334_mapred --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/mapred --opt o=bind
+#
+# docker volume create --name sandbox_spark_350 --opt type=none --opt device=/opt/spark-3.5.0 --opt o=bind
+# docker volume create --name sandbox_hive_313 --opt type=none --opt device=/opt/hive-3.1.3 --opt o=bind
+# docker volume create --name sandbox_tez_102 --opt type=none --opt device=/opt/tez-0.10.2 --opt o=bind
+# docker volume create --name sandbox_hbase_246 --opt type=none --opt device=/opt/hbase-2.4.6 --opt o=bind
+# docker volume create --name sandbox_hbase_117 --opt type=none --opt device=/opt/hbase-1.1.7 --opt o=bind
+# docker volume create --name sandbox_flink_112 --opt type=none --opt device=/opt/flink-1.12.2 --opt o=bind
+#
+---
+
+# include:
+#   - dc-minio.yml
+# #  - dc-hive-cluster.yml
+
+services:
+  #
+  # Zeppelin Notebook
+  #
+  zeppelin:
+    #image: brijeshdhaker/zeppelin:0.12.0_spark_3.4.1
+    image: apache/zeppelin:0.11.2
+    pull_policy: missing
+    container_name: zeppelin
+    hostname: zeppelin.sandbox.net
+    environment:
+      ALLOW_ANONYMOUS_LOGIN: "yes"
+      SPARK_HOME: /opt/spark
+      ZEPPELIN_LOG_DIR: /opt/zeppelin/logs
+      SPARK_LOG_DIR: /apps/var/logs/spark-zeppelin/
+      SPARK_LOG_FILE: spark-zeppelin
+    #    env_file:
+    #      - ./envs/docker_clients.env
+    ports:
+      - "9080:8080"
+      - "4040:4040"
+    depends_on:
+      minio:
+        condition: service_healthy
+    healthcheck:
+      test: echo zeppelin.sandbox.net || exit 1
+      retries: 20
+      interval: 10s
+    volumes:
+#      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
+      - sandbox_apps_path:/apps
+      - /apps/sandbox/zeppelin/conf:/opt/zeppelin/conf
+      - ../bd-notebooks-module/zeppelin/notebooks:/opt/zeppelin/notebook
+      - /apps/var/logs/zeppelin:/opt/zeppelin/logs
+#      - /apps/sandbox/zeppelin/local-repo:/opt/zeppelin/local-repo
+      - /opt/spark-3.4.1:/opt/spark
+      - ./conf/spark/conf:/opt/spark/conf
+#      - sandbox_hadoop_334:/opt/hadoop
+#      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+#      - sandbox_hive_313:/opt/hive
+#      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
+#      - sandbox_hbase_246:/opt/hbase
+#      - ./conf/hbase/client:/opt/hbase/conf
+#      - /opt/flink-1.12.2:/opt/flink
+    extra_hosts:
+      - "thinkpad.sandbox.net:172.18.0.1"
+
+#
+volumes:
+  sandbox_apps_path:
+    external: true
+
+#
+networks:
+  default:
+    external: true
+    driver: bridge
+    name: sandbox.net

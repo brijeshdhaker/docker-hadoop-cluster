@@ -1,0 +1,406 @@
+{
+  "paragraphs": [
+    {
+      "text": "%mysql\n\nshow databases;",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-14 03:23:13.226",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 10.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Database": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "Database\nPUBLIC\nSANDBOXDB\ninformation_schema\nmysql\nperformance_schema\nsys\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669944087805_535027863",
+      "id": "paragraph_1669944087805_535027863",
+      "dateCreated": "2022-12-02 01:21:27.806",
+      "dateStarted": "2024-10-14 03:22:47.873",
+      "dateFinished": "2024-10-14 03:22:51.268",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%mysql\n\nSELECT version();",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-14 03:23:18.125",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 10.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "version()": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "version()\n8.0.33\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1726413252070_41954641",
+      "id": "paragraph_1726413252070_41954641",
+      "dateCreated": "2024-09-15 15:14:12.070",
+      "dateStarted": "2024-10-14 03:23:00.891",
+      "dateFinished": "2024-10-14 03:23:00.919",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%mysql\n\nSET PASSWORD FOR \u0027mysqladmin\u0027@\u0027%\u0027 \u003d PASSWORD(\u0027new_password\u0027);",
+      "user": "anonymous",
+      "dateUpdated": "2024-09-15 15:15:32.262",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1726413282397_1172678128",
+      "id": "paragraph_1726413282397_1172678128",
+      "dateCreated": "2024-09-15 15:14:42.397",
+      "status": "READY"
+    },
+    {
+      "text": "%mysql\n\nCREATE USER \u0027root\u0027@\u0027%\u0027 IDENTIFIED BY \u0027p@SSW0rd\u0027;\nREVOKE ALL PRIVILEGES, GRANT OPTION FROM \u0027root\u0027@\u0027%\u0027;\nGRANT ALL PRIVILEGES ON *.* TO \u0027root\u0027@\u0027%\u0027;\n\nFLUSH PRIVILEGES;\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-14 03:23:32.964",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 10.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669944105662_524793678",
+      "id": "paragraph_1669944105662_524793678",
+      "dateCreated": "2022-12-02 01:21:45.662",
+      "status": "READY"
+    },
+    {
+      "text": "%mysql\n\nSHOW GRANTS FOR \u0027root\u0027@\u0027%\u0027;",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-13 04:44:24.590",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 10.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Grants for root@%": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "Grants for root@%\nGRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, SHUTDOWN, PROCESS, FILE, REFERENCES, INDEX, ALTER, SHOW DATABASES, SUPER, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER, CREATE TABLESPACE, CREATE ROLE, DROP ROLE ON *.* TO `root`@`%`\nGRANT APPLICATION_PASSWORD_ADMIN,AUDIT_ABORT_EXEMPT,AUDIT_ADMIN,AUTHENTICATION_POLICY_ADMIN,BACKUP_ADMIN,BINLOG_ADMIN,BINLOG_ENCRYPTION_ADMIN,CLONE_ADMIN,CONNECTION_ADMIN,ENCRYPTION_KEY_ADMIN,FIREWALL_EXEMPT,FLUSH_OPTIMIZER_COSTS,FLUSH_STATUS,FLUSH_TABLES,FLUSH_USER_RESOURCES,GROUP_REPLICATION_ADMIN,GROUP_REPLICATION_STREAM,INNODB_REDO_LOG_ARCHIVE,INNODB_REDO_LOG_ENABLE,PASSWORDLESS_USER_ADMIN,PERSIST_RO_VARIABLES_ADMIN,REPLICATION_APPLIER,REPLICATION_SLAVE_ADMIN,RESOURCE_GROUP_ADMIN,RESOURCE_GROUP_USER,ROLE_ADMIN,SENSITIVE_VARIABLES_OBSERVER,SERVICE_CONNECTION_ADMIN,SESSION_VARIABLES_ADMIN,SET_USER_ID,SHOW_ROUTINE,SYSTEM_USER,SYSTEM_VARIABLES_ADMIN,TABLE_ENCRYPTION_ADMIN,TELEMETRY_LOG_ADMIN,XA_RECOVER_ADMIN ON *.* TO `root`@`%`\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1726413358663_1790377134",
+      "id": "paragraph_1726413358663_1790377134",
+      "dateCreated": "2024-09-15 15:15:58.663",
+      "dateStarted": "2024-09-15 15:16:15.807",
+      "dateFinished": "2024-09-15 15:16:15.843",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%mysql\n\nSHOW GRANTS;",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-13 04:44:24.659",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 10.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Grants for root@%": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "Grants for root@%\nGRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, SHUTDOWN, PROCESS, FILE, REFERENCES, INDEX, ALTER, SHOW DATABASES, SUPER, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER, CREATE TABLESPACE, CREATE ROLE, DROP ROLE ON *.* TO `root`@`%`\nGRANT APPLICATION_PASSWORD_ADMIN,AUDIT_ABORT_EXEMPT,AUDIT_ADMIN,AUTHENTICATION_POLICY_ADMIN,BACKUP_ADMIN,BINLOG_ADMIN,BINLOG_ENCRYPTION_ADMIN,CLONE_ADMIN,CONNECTION_ADMIN,ENCRYPTION_KEY_ADMIN,FIREWALL_EXEMPT,FLUSH_OPTIMIZER_COSTS,FLUSH_STATUS,FLUSH_TABLES,FLUSH_USER_RESOURCES,GROUP_REPLICATION_ADMIN,GROUP_REPLICATION_STREAM,INNODB_REDO_LOG_ARCHIVE,INNODB_REDO_LOG_ENABLE,PASSWORDLESS_USER_ADMIN,PERSIST_RO_VARIABLES_ADMIN,REPLICATION_APPLIER,REPLICATION_SLAVE_ADMIN,RESOURCE_GROUP_ADMIN,RESOURCE_GROUP_USER,ROLE_ADMIN,SENSITIVE_VARIABLES_OBSERVER,SERVICE_CONNECTION_ADMIN,SESSION_VARIABLES_ADMIN,SET_USER_ID,SHOW_ROUTINE,SYSTEM_USER,SYSTEM_VARIABLES_ADMIN,TABLE_ENCRYPTION_ADMIN,TELEMETRY_LOG_ADMIN,XA_RECOVER_ADMIN ON *.* TO `root`@`%`\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1726413419430_940097721",
+      "id": "paragraph_1726413419430_940097721",
+      "dateCreated": "2024-09-15 15:16:59.430",
+      "dateStarted": "2024-09-15 15:17:07.338",
+      "dateFinished": "2024-09-15 15:17:07.370",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Create Airflow User",
+      "text": "%mysql\n\nCREATE USER \u0027airflow\u0027@\u0027localhost\u0027 IDENTIFIED BY \u0027airflow\u0027;\nREVOKE ALL PRIVILEGES, GRANT OPTION FROM \u0027airflow\u0027@\u0027localhost\u0027;\nGRANT ALL PRIVILEGES ON airflow.* TO \u0027airflow\u0027@\u0027localhost\u0027;\n\nCREATE USER \u0027airflow\u0027@\u0027%\u0027 IDENTIFIED BY \u0027airflow\u0027;\nREVOKE ALL PRIVILEGES, GRANT OPTION FROM \u0027airflow\u0027@\u0027%\u0027;\nGRANT ALL PRIVILEGES ON airflow.* TO \u0027airflow\u0027@\u0027%\u0027;\n\nFLUSH PRIVILEGES;",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-14 03:23:44.508",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 10.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669946259830_957293708",
+      "id": "paragraph_1669946259830_957293708",
+      "dateCreated": "2022-12-02 01:57:39.830",
+      "status": "READY"
+    },
+    {
+      "title": "Create Hive User",
+      "text": "%mysql\n\nCREATE USER \u0027hiveadmin\u0027@\u0027localhost\u0027 IDENTIFIED BY \u0027hiveadmin\u0027;\nREVOKE ALL PRIVILEGES, GRANT OPTION FROM \u0027hiveadmin\u0027@\u0027localhost\u0027;\nGRANT ALL PRIVILEGES ON metastore.* TO \u0027hiveadmin\u0027@\u0027localhost\u0027;\n\nCREATE USER \u0027hiveadmin\u0027@\u0027%\u0027 IDENTIFIED BY \u0027hiveadmin\u0027;\nREVOKE ALL PRIVILEGES, GRANT OPTION FROM \u0027hiveadmin\u0027@\u0027%\u0027;\nGRANT ALL PRIVILEGES ON metastore.* TO \u0027hiveadmin\u0027@\u0027%\u0027;\n\nFLUSH PRIVILEGES;",
+      "user": "anonymous",
+      "dateUpdated": "2024-10-14 03:23:53.895",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 10.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669946259331_28833976",
+      "id": "paragraph_1669946259331_28833976",
+      "dateCreated": "2022-12-02 01:57:39.332",
+      "status": "READY"
+    }
+  ],
+  "name": "mysql-test",
+  "id": "2HM338ASK",
+  "defaultInterpreterGroup": "mysql",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

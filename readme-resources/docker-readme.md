@@ -1,4 +1,36 @@
 #
+# Enable Remote login
+#
+```shell
+
+# 1. Access with daemon.json file
+sudo vi /etc/docker/daemon.json
+{"hosts": ["tcp://0.0.0.0:2375", "unix:///var/run/docker.sock"]}
+
+# 2. Access With systemd unit file
+sudo mkdir -p /etc/systemd/system/docker.service.d
+sudo vi /etc/systemd/system/docker.service.d/override.conf
+sudo systemctl edit docker.service
+
+[Service]
+ExecStart=
+ExecStart=/usr/bin/dockerd
+#ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2375
+
+sudo systemctl daemon-reload
+sudo systemctl restart docker.service
+
+sudo netstat -lntp | grep dockerd
+
+```
+
+
+#
+# docker login
+#
+docker login --username brijeshdhaker@gmail.com --password Accoo7@k47
+
+#
 # Docker Commands
 #
 ## Stop

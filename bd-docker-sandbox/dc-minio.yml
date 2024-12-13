@@ -1,0 +1,85 @@
+#
+# docker volume create --name sandbox_minio_data --opt type=none --opt device=/apps/sandbox/minio --opt o=bind
+#
+---
+
+services:
+#
+  minio:
+    image: minio/minio:latest
+    hostname: minio.sandbox.net
+    container_name: minio
+    healthcheck:
+      test: echo minio.sandbox.net || exit 1
+      retries: 20
+      interval: 10s
+    networks:
+      default:
+        aliases:
+          - warehouse-hadoop.minio
+          - warehouse-flink.minio
+          - warehouse-rest.minio
+          - warehouse-data.minio
+          - warehouse-demo.minio
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=password
+      - MINIO_DOMAIN=minio
+      - MINIO_ADDRESS=0.0.0.0:9010
+      - MINIO_CONSOLE_ADDRESS=0.0.0.0:9011
+      - MINIO_ACCESS_KEY_FILE=/apps/security/keys/minio_access_key
+      - MINIO_SECRET_KEY_FILE=/apps/security/keys/minio_secret_key
+      - MINIO_ROOT_USER_FILE=/apps/security/keys/minio_root_user
+      - MINIO_ROOT_PASSWORD_FILE=/apps/security/keys/minio_root_password
+    ports:
+      - "9010:9010"
+      - "9011:9011"
+    command: ["server", "/data", "--console-address", ":9011"]
+    volumes:
+      - sandbox_apps_path:/apps
+      - sandbox_minio_data:/data
+
+   ##
+#  mc:
+#    image: minio/mc:latest
+#    hostname: mc.sandbox.net
+#    container_name: mc
+#    healthcheck:
+#      test: curl -f http://minio.sandbox.net:9010 || exit 1
+#      retries: 20
+#      interval: 10s
+#    depends_on:
+#      minio:
+#        condition: service_healthy
+#    environment:
+#      - AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
+#      - AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO
+#      - AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+#      - AWS_REGION=us-east-1
+#    entrypoint: >
+#      /bin/sh -c "
+#      until (/usr/bin/mc config host add minio http://minio.sandbox.net:9010 admin password) do echo '...waiting...' && sleep 1; done;
+#      # /usr/bin/mc rm -r --force minio/warehouse-rest ;
+#      /usr/bin/mc mb minio/warehouse-rest --ignore-existing ;
+#      /usr/bin/mc policy set public minio/warehouse-rest ;
+#      /usr/bin/mc mb minio/warehouse-data --ignore-existing ;
+#      /usr/bin/mc policy set public minio/warehouse-data ;
+#      /usr/bin/mc mb minio/warehouse-demo --ignore-existing ;
+#      /usr/bin/mc policy set public minio/warehouse-demo ;
+#      tail -f /dev/null
+#      "
+
+#
+volumes:
+  #
+  sandbox_apps_path:
+    external: true
+  sandbox_minio_data:
+    external: true
+
+#
+networks:
+  default:
+    external: true
+    driver: bridge
+    name: sandbox.net

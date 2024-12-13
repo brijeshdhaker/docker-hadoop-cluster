@@ -1,0 +1,210 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.conf\n\nSPARK_HOME \t/opt/spark-3.1.2\nmaster local[4]\n\n#\nspark.jars  file:///opt/hbase-2.4.9/lib/hbase-common-2.4.9.jar,file:///opt/hbase-2.4.9/lib/hbase-client-2.4.9.jar,file:///opt/hbase-2.4.9/lib/hbase-server-2.4.9.jar,file:///opt/hbase-2.4.9/lib/hbase-protocol-2.4.9.jar,file:///opt/hbase-2.4.9/lib/guava-11.0.2.jar\nspark.driver.memory 1024M\nspark.executor.instances  2\nspark.executor.memory  1024M\n\n# spark.executor.extraClassPath file:///opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/lib/hive/lib/hive-hbase-handler-2.1.1-cdh6.3.2.jar\n#spark.executor.extraLibrary file:///opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/lib/hive/lib/hive-hbase-handler-2.1.1-cdh6.3.2.jar\n\nspark.jars.packages com.hortonworks:shc-core:1.1.3-2.4-s_2.11\n\n#spark.repositories http://repo..com/content/groups/public/\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-11 00:10:26.367",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640826236332_552311362",
+      "id": "paragraph_1640795692298_1493563315",
+      "dateCreated": "2021-12-30 01:03:56.333",
+      "dateStarted": "2022-01-11 00:10:26.372",
+      "dateFinished": "2022-01-11 00:10:26.388",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Write To Hbase Table Using Spark Hortonworks Connector (SHC) ",
+      "text": "\n%spark\n\nimport org.apache.spark.sql.execution.datasources.hbase._\nimport spark.sqlContext.implicits._\n\n\ndef catalog \u003d s\"\"\"{\n   |\"table\": {\"namespace\": \"default\", \"name\": \"books\"},\n   |\"rowkey\": \"key\",\n   |\"columns\": {\n   |    \"title\": {\"cf\": \"rowkey\", \"col\": \"key\", \"type\": \"string\"},\n   |    \"author\": {\"cf\": \"info\", \"col\": \"author\", \"type\": \"string\"},\n   |    \"year\": {\"cf\": \"info\", \"col\": \"year\", \"type\": \"string\"},\n   |    \"views\": {\"cf\": \"analytics\", \"col\": \"views\", \"type\": \"string\"}\n   | }\n   |}\n   |}\"\"\".stripMargin\n   \n   \n// Create Dataframe\nval data \u003d Seq(\n    (\"Meancamf\", \"A. Hitler\", \"1931\", \"174190\"), \n    (\"Discovery Of India\", \"Jawaher Lal Nehru\", \"1942\", \"90\"), \n    (\"Ram Charit Manas\", \"Tulsidaas\", \"1212\", \"199990\")\n)\nval dataDF \u003d data.toDF(Seq(\"title\", \"author\", \"year\", \"views\"):_*)\n\n// Write DataFrame\ndataDF.write.options(Map(HBaseTableCatalog.tableCatalog-\u003ecatalog, HBaseTableCatalog.newTable -\u003e \"4\")).format(\"org.apache.spark.sql.execution.datasources.hbase\").save()\n   \n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-11 00:10:28.606",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "java.lang.NoClassDefFoundError: scala/Product$class\n  at org.apache.spark.sql.execution.datasources.hbase.HBaseRelation.\u003cinit\u003e(HBaseRelation.scala:75)\n  at org.apache.spark.sql.execution.datasources.hbase.DefaultSource.createRelation(HBaseRelation.scala:61)\n  at org.apache.spark.sql.execution.datasources.SaveIntoDataSourceCommand.run(SaveIntoDataSourceCommand.scala:46)\n  at org.apache.spark.sql.execution.command.ExecutedCommandExec.sideEffectResult$lzycompute(commands.scala:70)\n  at org.apache.spark.sql.execution.command.ExecutedCommandExec.sideEffectResult(commands.scala:68)\n  at org.apache.spark.sql.execution.command.ExecutedCommandExec.doExecute(commands.scala:90)\n  at org.apache.spark.sql.execution.SparkPlan.$anonfun$execute$1(SparkPlan.scala:180)\n  at org.apache.spark.sql.execution.SparkPlan.$anonfun$executeQuery$1(SparkPlan.scala:218)\n  at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)\n  at org.apache.spark.sql.execution.SparkPlan.executeQuery(SparkPlan.scala:215)\n  at org.apache.spark.sql.execution.SparkPlan.execute(SparkPlan.scala:176)\n  at org.apache.spark.sql.execution.QueryExecution.toRdd$lzycompute(QueryExecution.scala:132)\n  at org.apache.spark.sql.execution.QueryExecution.toRdd(QueryExecution.scala:131)\n  at org.apache.spark.sql.DataFrameWriter.$anonfun$runCommand$1(DataFrameWriter.scala:989)\n  at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$5(SQLExecution.scala:103)\n  at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:163)\n  at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:90)\n  at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:775)\n  at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:64)\n  at org.apache.spark.sql.DataFrameWriter.runCommand(DataFrameWriter.scala:989)\n  at org.apache.spark.sql.DataFrameWriter.saveToV1Source(DataFrameWriter.scala:438)\n  at org.apache.spark.sql.DataFrameWriter.saveInternal(DataFrameWriter.scala:415)\n  at org.apache.spark.sql.DataFrameWriter.save(DataFrameWriter.scala:301)\n  ... 44 elided\nCaused by: java.lang.ClassNotFoundException: scala.Product$class\n  at java.net.URLClassLoader.findClass(URLClassLoader.java:382)\n  at java.lang.ClassLoader.loadClass(ClassLoader.java:418)\n  at java.lang.ClassLoader.loadClass(ClassLoader.java:351)\n  ... 67 more\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640849168135_927213226",
+      "id": "paragraph_1640849168135_927213226",
+      "dateCreated": "2021-12-30 07:26:08.135",
+      "dateStarted": "2022-01-11 00:10:28.611",
+      "dateFinished": "2022-01-11 00:10:49.838",
+      "status": "ERROR"
+    },
+    {
+      "title": "Read From Hbase Table Using Spark Hortonworks Connector (SHC)",
+      "text": "%spark\n\nimport org.apache.spark.sql.execution.datasources.hbase._\nimport org.apache.spark.sql.{DataFrame, SparkSession}\n\ndef catalog \u003d s\"\"\"{\n   |\"table\": {\"namespace\": \"default\", \"name\": \"books\"},\n   |\"rowkey\": \"key\",\n   |\"columns\": {\n   |    \"title\": {\"cf\": \"rowkey\", \"col\": \"key\", \"type\": \"string\"},\n   |    \"author\": {\"cf\": \"info\", \"col\": \"author\", \"type\": \"string\"},\n   |    \"year\": {\"cf\": \"info\", \"col\": \"year\", \"type\": \"string\"},\n   |    \"views\": {\"cf\": \"analytics\", \"col\": \"views\", \"type\": \"string\"}\n   | }\n   |}\n   |}\"\"\".stripMargin\n\ndef withCatalog(cat: String): DataFrame \u003d {\n  spark.read.options(Map(HBaseTableCatalog.tableCatalog-\u003ecatalog, HBaseTableCatalog.newTable -\u003e \"4\")).format(\"org.apache.spark.sql.execution.datasources.hbase\").load()\n}\n// Load the dataframe\nval df \u003d withCatalog(catalog)\ndf.show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-30 11:51:23.502",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------------------+-----------------+----+------+\n|             title|           author|year| views|\n+------------------+-----------------+----+------+\n|Discovery Of India|Jawaher Lal Nehru|1942|    90|\n|          Meancamf|        A. Hitler|1931|174190|\n|  Ram Charit Manas|        Tulsidaas|1212|199990|\n+------------------+-----------------+----+------+\n\nimport org.apache.spark.sql.execution.datasources.hbase._\nimport org.apache.spark.sql.{DataFrame, SparkSession}\n\u001b[1m\u001b[34mcatalog\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m\n\u001b[1m\u001b[34mwithCatalog\u001b[0m: \u001b[1m\u001b[32m(cat: String)org.apache.spark.sql.DataFrame\u001b[0m\n\u001b[1m\u001b[34mdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [title: string, author: string ... 2 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d1"
+            },
+            {
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d2"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640826236334_1676142100",
+      "id": "paragraph_1640795934142_1423522912",
+      "dateCreated": "2021-12-30 01:03:56.334",
+      "dateStarted": "2021-12-30 11:51:23.506",
+      "dateFinished": "2021-12-30 11:51:24.273",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\ndef uuid \u003d java.util.UUID.randomUUID.toString\nprintln(uuid)",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-30 01:03:56.335",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "09b3f816-9905-45da-ad3d-e5c4d4593d4f\n\u001b[1m\u001b[34muuid\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640826236335_724405868",
+      "id": "paragraph_1640796047221_1817204418",
+      "dateCreated": "2021-12-30 01:03:56.335",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-30 01:03:56.336",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640826236336_1891636473",
+      "id": "paragraph_1640798476978_174538416",
+      "dateCreated": "2021-12-30 01:03:56.336",
+      "status": "READY"
+    }
+  ],
+  "name": "hortonworks-shc-connector",
+  "id": "2GSAZR9BQ",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

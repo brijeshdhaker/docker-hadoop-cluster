@@ -1,0 +1,201 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.conf\n\n#\n#\n#\n\nSPARK_HOME /opt/spark-3.1.2\n\n\n#\n# set execution mode\n#\n\nmaster yarn\nspark.submit.deployMode cluster\n\n\n#\n#\n#\nspark.driver.memory 640m\nspark.driver.cores 1\n\n#\n#\n#\nspark.executor.instances  2\nspark.executor.memory  640m\nspark.executor.cores 2\n\n#\n# spark.jars.packages can be used for adding packages into spark interpreter\n#\nspark.jars.packages io.delta:delta-core_2.12:1.0.0,com.databricks:spark-avro_2.11:4.0.0\n\n#\n#\n#\nspark.yarn.dist.files hdfs://namenode:9000/configs/statsd.metrics.properties#metrics.properties\n\n#\n# Python 3.7 Runtime\n#\nspark.yarn.dist.archives hdfs://namenode:9000/archives/pyspark3.7-20221125.tar.gz#environment\n\n#\n# stadsd Configuration\n#\nspark.metrics.conf metrics.properties\nspark.metrics.staticSources.enabled true\nspark.metrics.appStatusSource.enabled true\nspark.executor.processTreeMetrics.enabled true\n\n#\n#\n#\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-12 12:18:39.024",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1676188665009_1164526171",
+      "id": "paragraph_1638439801256_1921713656",
+      "dateCreated": "2023-02-12 07:57:45.009",
+      "dateStarted": "2023-02-12 12:18:39.028",
+      "dateFinished": "2023-02-12 12:18:39.037",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nspark.sparkContext.master",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-12 12:18:42.272",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres1\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m \u003d yarn\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1676188665009_903672141",
+      "id": "paragraph_1638440008618_2040289727",
+      "dateCreated": "2023-02-12 07:57:45.010",
+      "dateStarted": "2023-02-12 12:18:42.276",
+      "dateFinished": "2023-02-12 12:19:05.299",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nval employee \u003d Seq(\n      (101,\"Chloe\",-1,\"2018\",8,\"M\",3000),\n      (102,\"Paul\",101,\"2010\",3,\"M\",4000),\n      (103,\"John\",101,\"2010\",1,\"M\",1000),\n      (104,\"Lisa\",102,\"2005\",2,\"F\",2000),\n      (105,\"Evan\",102,\"2010\",7,\"\",-1),\n      (106,\"Amy\",102,\"2010\",9,\"\",-1)\n    )\nval empColumns \u003d Seq(\"id\",\"name\",\"superior_emp_id\",\"year_joined\",\"deptno\",\"gender\",\"salary\")\n\nval department \u003d Seq(\n      (\"Marketing\",1),\n      (\"Sales\",2),\n      (\"Engineering\",3),\n      (\"Finance\",4),\n      (\"IT\",5),\n      (\"HR\",6)\n    )\nval deptColumns \u003d Seq(\"dept_name\",\"deptno\")\n\nimport spark.sqlContext.implicits._\n\nspark.conf.set(\"spark.sql.crossJoin.enabled\",true);\n\nval employeeDF \u003d employee.toDF(empColumns:_*)\nemployeeDF.show(false)\n\nval departmentDF \u003d department.toDF(deptColumns:_*)\ndepartmentDF.show(false)\n\nprintln(\"1. Inner Join Using Expression : join(right: Dataset[_]): DataFrame\")\nemployeeDF.join(departmentDF).show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-12 13:14:47.419",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+-----+---------------+-----------+------+------+------+\n|id |name |superior_emp_id|year_joined|deptno|gender|salary|\n+---+-----+---------------+-----------+------+------+------+\n|101|Chloe|-1             |2018       |8     |M     |3000  |\n|102|Paul |101            |2010       |3     |M     |4000  |\n|103|John |101            |2010       |1     |M     |1000  |\n|104|Lisa |102            |2005       |2     |F     |2000  |\n|105|Evan |102            |2010       |7     |      |-1    |\n|106|Amy  |102            |2010       |9     |      |-1    |\n+---+-----+---------------+-----------+------+------+------+\n\n+-----------+------+\n|dept_name  |deptno|\n+-----------+------+\n|Marketing  |1     |\n|Sales      |2     |\n|Engineering|3     |\n|Finance    |4     |\n|IT         |5     |\n|HR         |6     |\n+-----------+------+\n\n1. Inner Join Using Expression : join(right: Dataset[_]): DataFrame\n+---+-----+---------------+-----------+------+------+------+-----------+------+\n| id| name|superior_emp_id|year_joined|deptno|gender|salary|  dept_name|deptno|\n+---+-----+---------------+-----------+------+------+------+-----------+------+\n|101|Chloe|             -1|       2018|     8|     M|  3000|  Marketing|     1|\n|101|Chloe|             -1|       2018|     8|     M|  3000|      Sales|     2|\n|101|Chloe|             -1|       2018|     8|     M|  3000|Engineering|     3|\n|101|Chloe|             -1|       2018|     8|     M|  3000|    Finance|     4|\n|101|Chloe|             -1|       2018|     8|     M|  3000|         IT|     5|\n|101|Chloe|             -1|       2018|     8|     M|  3000|         HR|     6|\n|102| Paul|            101|       2010|     3|     M|  4000|  Marketing|     1|\n|102| Paul|            101|       2010|     3|     M|  4000|      Sales|     2|\n|102| Paul|            101|       2010|     3|     M|  4000|Engineering|     3|\n|102| Paul|            101|       2010|     3|     M|  4000|    Finance|     4|\n|102| Paul|            101|       2010|     3|     M|  4000|         IT|     5|\n|102| Paul|            101|       2010|     3|     M|  4000|         HR|     6|\n|103| John|            101|       2010|     1|     M|  1000|  Marketing|     1|\n|103| John|            101|       2010|     1|     M|  1000|      Sales|     2|\n|103| John|            101|       2010|     1|     M|  1000|Engineering|     3|\n|103| John|            101|       2010|     1|     M|  1000|    Finance|     4|\n|103| John|            101|       2010|     1|     M|  1000|         IT|     5|\n|103| John|            101|       2010|     1|     M|  1000|         HR|     6|\n|104| Lisa|            102|       2005|     2|     F|  2000|  Marketing|     1|\n|104| Lisa|            102|       2005|     2|     F|  2000|      Sales|     2|\n+---+-----+---------------+-----------+------+------+------+-----------+------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34memployee\u001b[0m: \u001b[1m\u001b[32mSeq[(Int, String, Int, String, Int, String, Int)]\u001b[0m \u003d List((101,Chloe,-1,2018,8,M,3000), (102,Paul,101,2010,3,M,4000), (103,John,101,2010,1,M,1000), (104,Lisa,102,2005,2,F,2000), (105,Evan,102,2010,7,\"\",-1), (106,Amy,102,2010,9,\"\",-1))\n\u001b[1m\u001b[34mempColumns\u001b[0m: \u001b[1m\u001b[32mSeq[String]\u001b[0m \u003d List(id, name, superior_emp_id, year_joined, deptno, gender, salary)\n\u001b[1m\u001b[34mdepartment\u001b[0m: \u001b[1m\u001b[32mSeq[(String, Int)]\u001b[0m \u003d List((Marketing,1), (Sales,2), (Engineering,3), (Finance,4), (IT,5), (HR,6))\n\u001b[1m\u001b[34mdeptColumns\u001b[0m: \u001b[1m\u001b[32mSeq[String]\u001b[0m \u003d List(dept_name, deptno)\nimport spark.sqlContext.implicits._\n\u001b[1m\u001b[34memployeeDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: int, name: string ... 5 more fields]\n\u001b[1m\u001b[34mdepartmentDF\u001b[0m: \u001b[1m\u001b[32morg.apac...\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676201956571_0002//jobs/job?id\u003d1"
+            },
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1676201956571_0002//jobs/job?id\u003d2"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1676188665010_2129620470",
+      "id": "paragraph_1638442347634_2006643863",
+      "dateCreated": "2023-02-12 07:57:45.010",
+      "dateStarted": "2023-02-12 13:14:47.421",
+      "dateFinished": "2023-02-12 13:14:52.112",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nspark.sparkContext.stop()\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-12 07:57:45.010",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1676188665010_764372359",
+      "id": "paragraph_1640794966503_1048083866",
+      "dateCreated": "2023-02-12 07:57:45.010",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-12 07:57:45.010",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1676188665010_610706502",
+      "id": "paragraph_1640834145345_1976143351",
+      "dateCreated": "2023-02-12 07:57:45.010",
+      "status": "READY"
+    }
+  ],
+  "name": "spark-cluster-statsd-metrics",
+  "id": "2HR615J5B",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

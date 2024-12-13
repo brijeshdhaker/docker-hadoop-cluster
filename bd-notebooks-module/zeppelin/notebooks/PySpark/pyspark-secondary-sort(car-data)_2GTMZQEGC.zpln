@@ -1,0 +1,363 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\nSecondary sort is nothing more than sorting data by two values. What makes the problem challenging is sorting large volumes of data as fast as possible without running out of memory and thus crashing the machines. Thus, Secondary sort represents the process of grouping data by key and sorting the payloads within each group before running further computation\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-11-27 11:54:44.208",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eSecondary sort is nothing more than sorting data by two values. What makes the problem challenging is sorting large volumes of data as fast as possible without running out of memory and thus crashing the machines. Thus, Secondary sort represents the process of grouping data by key and sorting the payloads within each group before running further computation\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669550074813_1899246451",
+      "id": "paragraph_1669550074813_1899246451",
+      "dateCreated": "2022-11-27 11:54:34.813",
+      "dateStarted": "2022-11-27 11:54:44.210",
+      "dateFinished": "2022-11-27 11:54:46.124",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%sh\n\n$HADOOP_HOME/bin/hdfs dfs -ls /datasets/auto_*\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:39:13.793",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sh",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "-rw-r--r--   1 root supergroup      72976 2022-01-14 08:28 /datasets/auto_loan.csv\n-rw-r--r--   1 root supergroup        121 2022-01-17 05:07 /datasets/auto_loan.json\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669518984217_452227711",
+      "id": "paragraph_1669518984217_452227711",
+      "dateCreated": "2022-11-27 03:16:24.217",
+      "dateStarted": "2023-02-10 02:39:13.796",
+      "dateFinished": "2023-02-10 02:39:16.884",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%sh\n\n$HADOOP_HOME/bin/hdfs dfs -ls /user\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:39:18.653",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sh",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Found 5 items\ndrwxr-xr-x   - airflow       supergroup          0 2022-12-02 18:08 /user/airflow\ndrwxrwxrwx   - brijeshdhaker supergroup          0 2022-11-26 06:44 /user/brijeshdhaker\ndrwxrwxrwx   - root          supergroup          0 2022-01-10 10:44 /user/hive\ndrwxr-xr-x   - root          supergroup          0 2022-11-27 03:39 /user/root\ndrwxrwxrwx   - zeppelin      supergroup          0 2022-12-06 14:44 /user/zeppelin\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669519848606_1067092595",
+      "id": "paragraph_1669519848606_1067092595",
+      "dateCreated": "2022-11-27 03:30:48.606",
+      "dateStarted": "2023-02-10 02:39:18.656",
+      "dateFinished": "2023-02-10 02:39:19.868",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\ninput_rdd \u003d sc.textFile(\"/datasets/auto_loan.csv\").filter(lambda record: not record.startswith(\"application_id\"))\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:39:24.893",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642933202378_118502267",
+      "id": "paragraph_1642933202378_118502267",
+      "dateCreated": "2022-01-23 10:20:02.378",
+      "dateStarted": "2023-02-10 02:39:24.897",
+      "dateFinished": "2023-02-10 02:39:24.925",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n\n#### For each customer location, top 5 car models which have most loan applications in the last month\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-23 10:25:00.983",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 12.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch4\u003eFor each customer location, top 5 car models which have most loan applications in the last month\u003c/h4\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642933413232_1768415497",
+      "id": "paragraph_1642933413232_1768415497",
+      "dateCreated": "2022-01-23 10:23:33.232",
+      "dateStarted": "2022-01-23 10:25:00.981",
+      "dateFinished": "2022-01-23 10:25:03.010",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.rdd import portable_hash\n\ndef partition_func(key):\n\treturn portable_hash(key[0])\n\ndef key_func(key):\n\treturn key\n\n# COMMAND ----------\ndelimiter \u003d \",\"\nlocation_model_count_rdd \u003d input_rdd.map(lambda x: ((x.split(delimiter)[4], x.split(delimiter)[3]), 1)).reduceByKey(lambda x, y : x + y)\n\n#\n#\n#\nlocation_count_model_rdd \u003d location_model_count_rdd.map(lambda x: ((x[0][0], x[1]), x[0][1]))\n\n#\n# This function will partition data as per provided key part (key[0]) ...and sort data as per provided key .\n#\nsorted_rdd \u003d location_count_model_rdd.repartitionAndSortWithinPartitions(partitionFunc\u003dpartition_func, keyfunc\u003dkey_func, ascending\u003dFalse)\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:39:30.414",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642933500980_27814994",
+      "id": "paragraph_1642933500980_27814994",
+      "dateCreated": "2022-01-23 10:25:00.980",
+      "dateStarted": "2023-02-10 02:39:30.418",
+      "dateFinished": "2023-02-10 02:39:30.463",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nTOP_N \u003d 5\ndef get_top_values(records):\n  last_location \u003d None\n  current_rank \u003d 0\n  for record in records:\n    current_location, num_applications, car_type \u003d record[0][0], record[0][1], record[1]\n    if current_location !\u003d last_location:\n      last_location \u003d current_location\n      current_rank \u003d 1\n    else:\n      current_rank +\u003d 1\n    if current_rank \u003c\u003d TOP_N:\n      yield current_location, num_applications, car_type, current_rank\n    else:\n      continue\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:39:33.864",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642933572672_903719926",
+      "id": "paragraph_1642933572672_903719926",
+      "dateCreated": "2022-01-23 10:26:12.672",
+      "dateStarted": "2023-02-10 02:39:33.867",
+      "dateFinished": "2023-02-10 02:39:33.877",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nresult_rdd \u003d sorted_rdd.mapPartitions(get_top_values)\n\nfor e in result_rdd.collect() : print(e)\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-02-10 02:39:39.212",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(\u0027wisconsin\u0027, 3, \u0027hybrid cars\u0027, 1)\n(\u0027wisconsin\u0027, 2, \u0027suvs\u0027, 2)\n(\u0027wisconsin\u0027, 2, \u0027microcar\u0027, 3)\n(\u0027wisconsin\u0027, 2, \u0027crossover\u0027, 4)\n(\u0027wisconsin\u0027, 2, \u0027luxury cars\u0027, 5)\n(\u0027west virginia\u0027, 4, \u0027estate cars\u0027, 1)\n(\u0027west virginia\u0027, 4, \u0027convertibles\u0027, 2)\n(\u0027west virginia\u0027, 3, \u0027modified cars\u0027, 3)\n(\u0027west virginia\u0027, 2, \u0027sports cars\u0027, 4)\n(\u0027west virginia\u0027, 2, \u0027hybrid cars\u0027, 5)\n(\u0027virginia\u0027, 2, \u0027modified cars\u0027, 1)\n(\u0027virginia\u0027, 2, \u0027microcar\u0027, 2)\n(\u0027virginia\u0027, 2, \u0027limousine\u0027, 3)\n(\u0027virginia\u0027, 2, \u0027luxury cars\u0027, 4)\n(\u0027virginia\u0027, 1, \u0027convertibles\u0027, 5)\n(\u0027texas\u0027, 4, \u0027estate cars\u0027, 1)\n(\u0027texas\u0027, 4, \u0027modified cars\u0027, 2)\n(\u0027texas\u0027, 3, \u0027sedan\u0027, 3)\n(\u0027texas\u0027, 3, \u0027economy hatchback\u0027, 4)\n(\u0027texas\u0027, 2, \u0027microcar\u0027, 5)\n(\u0027tennessee\u0027, 2, \u0027suvs\u0027, 1)\n(\u0027tennessee\u0027, 2, \u0027limousine\u0027, 2)\n(\u0027tennessee\u0027, 2, \u0027luxury cars\u0027, 3)\n(\u0027tennessee\u0027, 2, \u0027crossover\u0027, 4)\n(\u0027tennessee\u0027, 2, \u0027pickup\u0027, 5)\n(\u0027south carolina\u0027, 3, \u0027modified cars\u0027, 1)\n(\u0027south carolina\u0027, 3, \u0027coupe\u0027, 2)\n(\u0027south carolina\u0027, 2, \u0027sedan\u0027, 3)\n(\u0027south carolina\u0027, 2, \u0027suvs\u0027, 4)\n(\u0027south carolina\u0027, 1, \u0027estate cars\u0027, 5)\n(\u0027rhode island\u0027, 2, \u0027luxury cars\u0027, 1)\n(\u0027rhode island\u0027, 1, \u0027coupe\u0027, 2)\n(\u0027rhode island\u0027, 1, \u0027estate cars\u0027, 3)\n(\u0027rhode island\u0027, 1, \u0027suvs\u0027, 4)\n(\u0027rhode island\u0027, 1, \u0027convertibles\u0027, 5)\n(\u0027pennsylvania\u0027, 5, \u0027estate cars\u0027, 1)\n(\u0027pennsylvania\u0027, 4, \u0027economy hatchback\u0027, 2)\n(\u0027pennsylvania\u0027, 3, \u0027luxury cars\u0027, 3)\n(\u0027pennsylvania\u0027, 2, \u0027suvs\u0027, 4)\n(\u0027pennsylvania\u0027, 2, \u0027limousine\u0027, 5)\n(\u0027oregon\u0027, 3, \u0027suvs\u0027, 1)\n(\u0027oregon\u0027, 3, \u0027pickup\u0027, 2)\n(\u0027oregon\u0027, 3, \u0027luxury cars\u0027, 3)\n(\u0027oregon\u0027, 2, \u0027sedan\u0027, 4)\n(\u0027oregon\u0027, 2, \u0027microcar\u0027, 5)\n(\u0027north dakota\u0027, 3, \u0027hybrid cars\u0027, 1)\n(\u0027north dakota\u0027, 2, \u0027convertibles\u0027, 2)\n(\u0027north dakota\u0027, 2, \u0027suvs\u0027, 3)\n(\u0027north dakota\u0027, 2, \u0027coupe\u0027, 4)\n(\u0027north dakota\u0027, 2, \u0027modified cars\u0027, 5)\n(\u0027new hampshire\u0027, 4, \u0027sedan\u0027, 1)\n(\u0027new hampshire\u0027, 3, \u0027modified cars\u0027, 2)\n(\u0027new hampshire\u0027, 3, \u0027economy hatchback\u0027, 3)\n(\u0027new hampshire\u0027, 3, \u0027pickup\u0027, 4)\n(\u0027new hampshire\u0027, 2, \u0027suvs\u0027, 5)\n(\u0027nevada\u0027, 4, \u0027modified cars\u0027, 1)\n(\u0027nevada\u0027, 3, \u0027estate cars\u0027, 2)\n(\u0027nevada\u0027, 2, \u0027limousine\u0027, 3)\n(\u0027nevada\u0027, 2, \u0027coupe\u0027, 4)\n(\u0027nevada\u0027, 2, \u0027microcar\u0027, 5)\n(\u0027montana\u0027, 4, \u0027convertibles\u0027, 1)\n(\u0027montana\u0027, 3, \u0027suvs\u0027, 2)\n(\u0027montana\u0027, 2, \u0027sedan\u0027, 3)\n(\u0027montana\u0027, 2, \u0027coupe\u0027, 4)\n(\u0027montana\u0027, 2, \u0027pickup\u0027, 5)\n(\u0027mississippi\u0027, 3, \u0027sports cars\u0027, 1)\n(\u0027mississippi\u0027, 2, \u0027coupe\u0027, 2)\n(\u0027mississippi\u0027, 2, \u0027estate cars\u0027, 3)\n(\u0027mississippi\u0027, 2, \u0027economy hatchback\u0027, 4)\n(\u0027mississippi\u0027, 1, \u0027modified cars\u0027, 5)\n(\u0027minnesota\u0027, 5, \u0027economy hatchback\u0027, 1)\n(\u0027minnesota\u0027, 4, \u0027crossover\u0027, 2)\n(\u0027minnesota\u0027, 4, \u0027pickup\u0027, 3)\n(\u0027minnesota\u0027, 3, \u0027modified cars\u0027, 4)\n(\u0027minnesota\u0027, 3, \u0027limousine\u0027, 5)\n(\u0027michigan\u0027, 4, \u0027luxury cars\u0027, 1)\n(\u0027michigan\u0027, 4, \u0027pickup\u0027, 2)\n(\u0027michigan\u0027, 2, \u0027coupe\u0027, 3)\n(\u0027michigan\u0027, 2, \u0027economy hatchback\u0027, 4)\n(\u0027michigan\u0027, 1, \u0027modified cars\u0027, 5)\n(\u0027maryland\u0027, 3, \u0027convertibles\u0027, 1)\n(\u0027maryland\u0027, 3, \u0027microcar\u0027, 2)\n(\u0027maryland\u0027, 3, \u0027modified cars\u0027, 3)\n(\u0027maryland\u0027, 3, \u0027suvs\u0027, 4)\n(\u0027maryland\u0027, 3, \u0027pickup\u0027, 5)\n(\u0027iowa\u0027, 4, \u0027coupe\u0027, 1)\n(\u0027iowa\u0027, 3, \u0027convertibles\u0027, 2)\n(\u0027iowa\u0027, 3, \u0027luxury cars\u0027, 3)\n(\u0027iowa\u0027, 2, \u0027estate cars\u0027, 4)\n(\u0027iowa\u0027, 2, \u0027limousine\u0027, 5)\n(\u0027idaho\u0027, 5, \u0027economy hatchback\u0027, 1)\n(\u0027idaho\u0027, 4, \u0027luxury cars\u0027, 2)\n(\u0027idaho\u0027, 4, \u0027crossover\u0027, 3)\n(\u0027idaho\u0027, 3, \u0027convertibles\u0027, 4)\n(\u0027idaho\u0027, 2, \u0027coupe\u0027, 5)\n(\u0027georgia\u0027, 3, \u0027limousine\u0027, 1)\n(\u0027georgia\u0027, 2, \u0027sports cars\u0027, 2)\n(\u0027georgia\u0027, 2, \u0027coupe\u0027, 3)\n(\u0027georgia\u0027, 1, \u0027modified cars\u0027, 4)\n(\u0027georgia\u0027, 1, \u0027sedan\u0027, 5)\n(\u0027delaware\u0027, 4, \u0027pickup\u0027, 1)\n(\u0027delaware\u0027, 3, \u0027limousine\u0027, 2)\n(\u0027delaware\u0027, 3, \u0027sports cars\u0027, 3)\n(\u0027delaware\u0027, 3, \u0027sedan\u0027, 4)\n(\u0027delaware\u0027, 2, \u0027hybrid cars\u0027, 5)\n(\u0027connecticut\u0027, 3, \u0027hybrid cars\u0027, 1)\n(\u0027connecticut\u0027, 3, \u0027economy hatchback\u0027, 2)\n(\u0027connecticut\u0027, 2, \u0027convertibles\u0027, 3)\n(\u0027connecticut\u0027, 2, \u0027modified cars\u0027, 4)\n(\u0027connecticut\u0027, 2, \u0027pickup\u0027, 5)\n(\u0027colorado\u0027, 3, \u0027sedan\u0027, 1)\n(\u0027colorado\u0027, 3, \u0027estate cars\u0027, 2)\n(\u0027colorado\u0027, 3, \u0027limousine\u0027, 3)\n(\u0027colorado\u0027, 3, \u0027sports cars\u0027, 4)\n(\u0027colorado\u0027, 2, \u0027modified cars\u0027, 5)\n(\u0027alaska\u0027, 5, \u0027sports cars\u0027, 1)\n(\u0027alaska\u0027, 4, \u0027economy hatchback\u0027, 2)\n(\u0027alaska\u0027, 2, \u0027limousine\u0027, 3)\n(\u0027alaska\u0027, 2, \u0027crossover\u0027, 4)\n(\u0027alaska\u0027, 2, \u0027hybrid cars\u0027, 5)\n(\u0027alabama\u0027, 3, \u0027estate cars\u0027, 1)\n(\u0027alabama\u0027, 3, \u0027pickup\u0027, 2)\n(\u0027alabama\u0027, 3, \u0027luxury cars\u0027, 3)\n(\u0027alabama\u0027, 2, \u0027suvs\u0027, 4)\n(\u0027alabama\u0027, 2, \u0027convertibles\u0027, 5)\n(\u0027wyoming\u0027, 4, \u0027suvs\u0027, 1)\n(\u0027wyoming\u0027, 2, \u0027crossover\u0027, 2)\n(\u0027wyoming\u0027, 2, \u0027modified cars\u0027, 3)\n(\u0027wyoming\u0027, 2, \u0027sports cars\u0027, 4)\n(\u0027wyoming\u0027, 1, \u0027pickup\u0027, 5)\n(\u0027washington\u0027, 4, \u0027limousine\u0027, 1)\n(\u0027washington\u0027, 2, \u0027hybrid cars\u0027, 2)\n(\u0027washington\u0027, 2, \u0027economy hatchback\u0027, 3)\n(\u0027washington\u0027, 2, \u0027pickup\u0027, 4)\n(\u0027washington\u0027, 2, \u0027suvs\u0027, 5)\n(\u0027vermont\u0027, 5, \u0027luxury cars\u0027, 1)\n(\u0027vermont\u0027, 4, \u0027modified cars\u0027, 2)\n(\u0027vermont\u0027, 2, \u0027crossover\u0027, 3)\n(\u0027vermont\u0027, 2, \u0027economy hatchback\u0027, 4)\n(\u0027vermont\u0027, 2, \u0027pickup\u0027, 5)\n(\u0027utah\u0027, 4, \u0027hybrid cars\u0027, 1)\n(\u0027utah\u0027, 2, \u0027suvs\u0027, 2)\n(\u0027utah\u0027, 2, \u0027limousine\u0027, 3)\n(\u0027utah\u0027, 1, \u0027economy hatchback\u0027, 4)\n(\u0027utah\u0027, 1, \u0027crossover\u0027, 5)\n(\u0027south dakota\u0027, 4, \u0027modified cars\u0027, 1)\n(\u0027south dakota\u0027, 3, \u0027luxury cars\u0027, 2)\n(\u0027south dakota\u0027, 3, \u0027estate cars\u0027, 3)\n(\u0027south dakota\u0027, 3, \u0027convertibles\u0027, 4)\n(\u0027south dakota\u0027, 2, \u0027crossover\u0027, 5)\n(\u0027oklahoma\u0027, 6, \u0027modified cars\u0027, 1)\n(\u0027oklahoma\u0027, 5, \u0027convertibles\u0027, 2)\n(\u0027oklahoma\u0027, 4, \u0027crossover\u0027, 3)\n(\u0027oklahoma\u0027, 4, \u0027pickup\u0027, 4)\n(\u0027oklahoma\u0027, 3, \u0027economy hatchback\u0027, 5)\n(\u0027ohio\u0027, 2, \u0027economy hatchback\u0027, 1)\n(\u0027ohio\u0027, 2, \u0027suvs\u0027, 2)\n(\u0027ohio\u0027, 1, \u0027pickup\u0027, 3)\n(\u0027ohio\u0027, 1, \u0027luxury cars\u0027, 4)\n(\u0027ohio\u0027, 1, \u0027crossover\u0027, 5)\n(\u0027north carolin\u0027, 5, \u0027sports cars\u0027, 1)\n(\u0027north carolin\u0027, 4, \u0027pickup\u0027, 2)\n(\u0027north carolin\u0027, 4, \u0027suvs\u0027, 3)\n(\u0027north carolin\u0027, 3, \u0027estate cars\u0027, 4)\n(\u0027north carolin\u0027, 3, \u0027convertibles\u0027, 5)\n(\u0027new york\u0027, 5, \u0027economy hatchback\u0027, 1)\n(\u0027new york\u0027, 2, \u0027crossover\u0027, 2)\n(\u0027new york\u0027, 2, \u0027hybrid cars\u0027, 3)\n(\u0027new york\u0027, 2, \u0027sports cars\u0027, 4)\n(\u0027new york\u0027, 2, \u0027coupe\u0027, 5)\n(\u0027new mexico\u0027, 3, \u0027pickup\u0027, 1)\n(\u0027new mexico\u0027, 3, \u0027modified cars\u0027, 2)\n(\u0027new mexico\u0027, 3, \u0027microcar\u0027, 3)\n(\u0027new mexico\u0027, 2, \u0027hybrid cars\u0027, 4)\n(\u0027new mexico\u0027, 2, \u0027suvs\u0027, 5)\n(\u0027new jersey\u0027, 3, \u0027estate cars\u0027, 1)\n(\u0027new jersey\u0027, 2, \u0027luxury cars\u0027, 2)\n(\u0027new jersey\u0027, 2, \u0027hybrid cars\u0027, 3)\n(\u0027new jersey\u0027, 2, \u0027sedan\u0027, 4)\n(\u0027new jersey\u0027, 2, \u0027microcar\u0027, 5)\n(\u0027nebraska\u0027, 4, \u0027luxury cars\u0027, 1)\n(\u0027nebraska\u0027, 2, \u0027hybrid cars\u0027, 2)\n(\u0027nebraska\u0027, 2, \u0027limousine\u0027, 3)\n(\u0027nebraska\u0027, 2, \u0027coupe\u0027, 4)\n(\u0027nebraska\u0027, 2, \u0027sports cars\u0027, 5)\n(\u0027missouri\u0027, 5, \u0027luxury cars\u0027, 1)\n(\u0027missouri\u0027, 3, \u0027economy hatchback\u0027, 2)\n(\u0027missouri\u0027, 2, \u0027crossover\u0027, 3)\n(\u0027missouri\u0027, 2, \u0027pickup\u0027, 4)\n(\u0027missouri\u0027, 2, \u0027suvs\u0027, 5)\n(\u0027massachusetts\u0027, 3, \u0027luxury cars\u0027, 1)\n(\u0027massachusetts\u0027, 2, \u0027hybrid cars\u0027, 2)\n(\u0027massachusetts\u0027, 2, \u0027limousine\u0027, 3)\n(\u0027massachusetts\u0027, 2, \u0027sedan\u0027, 4)\n(\u0027massachusetts\u0027, 2, \u0027microcar\u0027, 5)\n(\u0027maine\u0027, 4, \u0027modified cars\u0027, 1)\n(\u0027maine\u0027, 3, \u0027suvs\u0027, 2)\n(\u0027maine\u0027, 2, \u0027hybrid cars\u0027, 3)\n(\u0027maine\u0027, 2, \u0027sedan\u0027, 4)\n(\u0027maine\u0027, 2, \u0027convertibles\u0027, 5)\n(\u0027louisiana\u0027, 3, \u0027economy hatchback\u0027, 1)\n(\u0027louisiana\u0027, 3, \u0027hybrid cars\u0027, 2)\n(\u0027louisiana\u0027, 3, \u0027microcar\u0027, 3)\n(\u0027louisiana\u0027, 3, \u0027coupe\u0027, 4)\n(\u0027louisiana\u0027, 2, \u0027luxury cars\u0027, 5)\n(\u0027kentucky\u0027, 3, \u0027coupe\u0027, 1)\n(\u0027kentucky\u0027, 2, \u0027pickup\u0027, 2)\n(\u0027kentucky\u0027, 2, \u0027crossover\u0027, 3)\n(\u0027kentucky\u0027, 2, \u0027modified cars\u0027, 4)\n(\u0027kentucky\u0027, 2, \u0027microcar\u0027, 5)\n(\u0027kansas\u0027, 2, \u0027hybrid cars\u0027, 1)\n(\u0027kansas\u0027, 2, \u0027luxury cars\u0027, 2)\n(\u0027kansas\u0027, 2, \u0027convertibles\u0027, 3)\n(\u0027kansas\u0027, 2, \u0027sports cars\u0027, 4)\n(\u0027kansas\u0027, 1, \u0027economy hatchback\u0027, 5)\n(\u0027indiana\u0027, 3, \u0027economy hatchback\u0027, 1)\n(\u0027indiana\u0027, 2, \u0027crossover\u0027, 2)\n(\u0027indiana\u0027, 2, \u0027luxury cars\u0027, 3)\n(\u0027indiana\u0027, 2, \u0027convertibles\u0027, 4)\n(\u0027indiana\u0027, 2, \u0027suvs\u0027, 5)\n(\u0027illinois\u0027, 4, \u0027limousine\u0027, 1)\n(\u0027illinois\u0027, 3, \u0027modified cars\u0027, 2)\n(\u0027illinois\u0027, 3, \u0027microcar\u0027, 3)\n(\u0027illinois\u0027, 3, \u0027suvs\u0027, 4)\n(\u0027illinois\u0027, 2, \u0027economy hatchback\u0027, 5)\n(\u0027hawaii\u0027, 4, \u0027convertibles\u0027, 1)\n(\u0027hawaii\u0027, 3, \u0027hybrid cars\u0027, 2)\n(\u0027hawaii\u0027, 3, \u0027economy hatchback\u0027, 3)\n(\u0027hawaii\u0027, 2, \u0027pickup\u0027, 4)\n(\u0027hawaii\u0027, 2, \u0027sedan\u0027, 5)\n(\u0027florida\u0027, 3, \u0027hybrid cars\u0027, 1)\n(\u0027florida\u0027, 3, \u0027luxury cars\u0027, 2)\n(\u0027florida\u0027, 3, \u0027estate cars\u0027, 3)\n(\u0027florida\u0027, 3, \u0027microcar\u0027, 4)\n(\u0027florida\u0027, 3, \u0027coupe\u0027, 5)\n(\u0027california\u0027, 3, \u0027luxury cars\u0027, 1)\n(\u0027california\u0027, 2, \u0027hybrid cars\u0027, 2)\n(\u0027california\u0027, 2, \u0027crossover\u0027, 3)\n(\u0027california\u0027, 2, \u0027convertibles\u0027, 4)\n(\u0027california\u0027, 2, \u0027sedan\u0027, 5)\n(\u0027arkansas\u0027, 3, \u0027hybrid cars\u0027, 1)\n(\u0027arkansas\u0027, 2, \u0027luxury cars\u0027, 2)\n(\u0027arkansas\u0027, 2, \u0027economy hatchback\u0027, 3)\n(\u0027arkansas\u0027, 2, \u0027coupe\u0027, 4)\n(\u0027arkansas\u0027, 2, \u0027microcar\u0027, 5)\n(\u0027arizona\u0027, 4, \u0027pickup\u0027, 1)\n(\u0027arizona\u0027, 4, \u0027estate cars\u0027, 2)\n(\u0027arizona\u0027, 2, \u0027luxury cars\u0027, 3)\n(\u0027arizona\u0027, 2, \u0027hybrid cars\u0027, 4)\n(\u0027arizona\u0027, 2, \u0027coupe\u0027, 5)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://resourcemanager:8088/proxy/application_1675994320382_0001//jobs/job?id\u003d40"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642933586908_173963390",
+      "id": "paragraph_1642933586908_173963390",
+      "dateCreated": "2022-01-23 10:26:26.908",
+      "dateStarted": "2023-02-10 02:39:39.216",
+      "dateFinished": "2023-02-10 02:39:39.314",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-23 10:27:37.606",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642933657606_580318825",
+      "id": "paragraph_1642933657606_580318825",
+      "dateCreated": "2022-01-23 10:27:37.606",
+      "status": "READY"
+    }
+  ],
+  "name": "pyspark-secondary-sort(car-data)",
+  "id": "2GTMZQEGC",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

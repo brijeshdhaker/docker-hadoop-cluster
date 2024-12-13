@@ -1,0 +1,39 @@
+# 
+#  docker-compose -H tcp://192.168.0.103:2375 -f dc-flink-cluster.yml up -d
+#  
+#  aws configure --profile localstack
+#  aws --endpoint-url=http://localhost:4566 s3 mb s3://my-bucket
+#  aws --endpoint-url=http://localhost:4566 s3 cp stocks.csv s3://my-bucket/stocks.csv
+#  aws --endpoint-url=http://localhost:4566 s3 ls s3://my-bucket
+#  aws --endpoint-url http://localhost:4566 kinesis list-streams
+#
+version: '3.1'
+#
+services:
+#
+  slocalstack:
+    image: localstack/localstack
+    container_name: localstack
+    hostname: localstack
+    network_mode: bridge
+    ports:
+      - "4566:4566"
+      - "4571:4571"
+      - "5678:5678"
+      - "9000:9000"
+    environment:
+      - SERVICES=s3,kinsesis,dynamodb
+      - DEFAULT_REGION=us-east-1
+      - DATA_DIR=/tmp/localstack/data
+      - PORT_WEB_UI=9000
+      - LAMBDA_EXECUTOR=local
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - START_WEB=1
+#
+#networks:
+#  default:
+#    external:
+#      name: bridge  
+#  backend:
+#    driver: bridge
+# 

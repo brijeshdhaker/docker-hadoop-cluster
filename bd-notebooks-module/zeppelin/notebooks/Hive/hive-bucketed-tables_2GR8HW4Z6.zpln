@@ -1,0 +1,694 @@
+{
+  "paragraphs": [
+    {
+      "title": "Bucketing in Hive",
+      "text": "%md\n\n## Advantage :\n1. The concept of bucketing is based on the hashing technique.\n2. Here, modules of current column value and the number of required buckets is calculated (let say, F(x) % 3).\n3. Now, based on the resulted value, the data is stored into the corresponding bucket.\n4. On a larger table, creating a bucketing gives you 2-3x better query performance than a non-bucket table.\n5. Hive Bucketing overcomes creating too many directories by specifying the number of buckets you wanted to create (you are in control).",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-15 16:35:17.051",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 11.0,
+        "title": true,
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eAdvantage :\u003c/h2\u003e\n\u003col\u003e\n\u003cli\u003eThe concept of bucketing is based on the hashing technique.\u003c/li\u003e\n\u003cli\u003eHere, modules of current column value and the number of required buckets is calculated (let say, F(x) % 3).\u003c/li\u003e\n\u003cli\u003eNow, based on the resulted value, the data is stored into the corresponding bucket.\u003c/li\u003e\n\u003cli\u003eOn a larger table, creating a bucketing gives you 2-3x better query performance than a non-bucket table.\u003c/li\u003e\n\u003cli\u003eHive Bucketing overcomes creating too many directories by specifying the number of buckets you wanted to create (you are in control).\u003c/li\u003e\n\u003c/ol\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639296085741_398019413",
+      "id": "paragraph_1639296085741_398019413",
+      "dateCreated": "2021-12-12 13:31:25.741",
+      "dateStarted": "2022-01-10 04:38:10.928",
+      "dateFinished": "2022-01-10 04:38:12.950",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\n-- Enable the bucketing by using the following command: -\n-- This property is not needed if you are using Hive 2.x or later\n\nset hive.enforce.bucketing \u003d true;  ",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-15 16:25:52.513",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639296125624_2064451048",
+      "id": "paragraph_1639296125624_2064451048",
+      "dateCreated": "2021-12-12 13:32:05.624",
+      "dateStarted": "2022-09-15 16:25:52.530",
+      "dateFinished": "2022-09-15 16:25:52.558",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nDROP TABLE IF EXISTS zipcodes;\n\nDROP TABLE IF EXISTS zipcodes_tmp;",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-15 16:35:20.683",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1663259479375_1196128550",
+      "id": "paragraph_1663259479375_1196128550",
+      "dateCreated": "2022-09-15 16:31:19.376",
+      "dateStarted": "2022-09-15 16:32:03.806",
+      "dateFinished": "2022-09-15 16:32:04.099",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\n\n\nCREATE TABLE IF NOT EXISTS zipcodes (\n    RecordNumber int,\n    Country string,\n    City string,\n    Zipcode int\n)\nPARTITIONED BY(state string)\nCLUSTERED BY (Zipcode) INTO 32 BUCKETS\nROW FORMAT DELIMITED\nFIELDS TERMINATED BY \u0027,\u0027;",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-15 16:32:22.009",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639296290967_2066318887",
+      "id": "paragraph_1639296290967_2066318887",
+      "dateCreated": "2021-12-12 13:34:50.967",
+      "dateStarted": "2022-09-15 16:32:22.027",
+      "dateFinished": "2022-09-15 16:32:22.102",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\n\nCREATE TABLE IF NOT EXISTS zipcodes_tmp(\n    RecordNumber int,\n    Country string,\n    City string,\n    Zipcode int,\n    State string\n) \nROW FORMAT DELIMITED FIELDS TERMINATED BY \u0027,\u0027;",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-15 16:32:24.933",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 11.0,
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639301878715_2101183113",
+      "id": "paragraph_1639301878715_2101183113",
+      "dateCreated": "2021-12-12 15:07:58.716",
+      "dateStarted": "2022-09-15 16:32:24.962",
+      "dateFinished": "2022-09-15 16:32:25.052",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nSHOW CREATE TABLE zipcodes_tmp;",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-15 16:26:10.813",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 11.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "createtab_stmt": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "createtab_stmt\nCREATE TABLE `zipcodes_tmp`(\n  `recordnumber` int, \n  `country` string, \n  `city` string, \n  `zipcode` int, \n  `state` string)\nROW FORMAT SERDE \n  \u0027org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\u0027 \nWITH SERDEPROPERTIES ( \n  \u0027field.delim\u0027\u003d\u0027,\u0027, \n  \u0027serialization.format\u0027\u003d\u0027,\u0027) \nSTORED AS INPUTFORMAT \n  \u0027org.apache.hadoop.mapred.TextInputFormat\u0027 \nOUTPUTFORMAT \n  \u0027org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\u0027\nLOCATION\n  \u0027hdfs://namenode:9000/user/hive/warehouse/zipcodes_tmp\u0027\nTBLPROPERTIES (\n  \u0027bucketing_version\u0027\u003d\u00272\u0027, \n  \u0027transient_lastDdlTime\u0027\u003d\u00271663259165\u0027)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640923218221_2013693547",
+      "id": "paragraph_1640923218221_2013693547",
+      "dateCreated": "2021-12-31 04:00:18.221",
+      "dateStarted": "2022-09-15 16:26:10.831",
+      "dateFinished": "2022-09-15 16:26:10.974",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nLOAD DATA LOCAL INPATH \u0027/apps/hostpath/datasets/zipcodes20.csv\u0027 INTO TABLE zipcodes_tmp;",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-15 16:32:33.807",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 11.0,
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639301969458_574966835",
+      "id": "paragraph_1639301969458_574966835",
+      "dateCreated": "2021-12-12 15:09:29.458",
+      "dateStarted": "2022-09-15 16:32:33.830",
+      "dateFinished": "2022-09-15 16:32:34.718",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nselect RecordNumber, Country, City, Zipcode, State  \nfrom zipcodes_tmp;",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-15 16:32:38.797",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 11.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "recordnumber": "string",
+                      "country": "string",
+                      "city": "string",
+                      "zipcode": "string",
+                      "state": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "recordnumber\tcountry\tcity\tzipcode\tstate\n1\tUS\tPARC PARQUE\t704\tPR\n2\tUS\tPASEO COSTA DEL SUR\t704\tPR\n10\tUS\tBDA SAN LUIS\t709\tPR\n61391\tUS\tCINGULAR WIRELESS\t76166\tTX\n61392\tUS\tFORT WORTH\t76177\tTX\n61393\tUS\tFT WORTH\t76177\tTX\n4\tUS\tURB EUGENE RICE\t704\tPR\n39827\tUS\tMESA\t85209\tAZ\n39828\tUS\tMESA\t85210\tAZ\n49345\tUS\tHILLIARD\t32046\tFL\n49346\tUS\tHOLDER\t34445\tFL\n49347\tUS\tHOLT\t32564\tFL\n49348\tUS\tHOMOSASSA\t34487\tFL\n3\tUS\tSECT LANAUSSE\t704\tPR\n54354\tUS\tSPRING GARDEN\t36275\tAL\n54355\tUS\tSPRINGVILLE\t35146\tAL\n54356\tUS\tSPRUCE PINE\t35585\tAL\n76511\tUS\tASH HILL\t27007\tNC\n76512\tUS\tASHEBORO\t27203\tNC\n76513\tUS\tASHEBORO\t27204\tNC\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640866238034_520915120",
+      "id": "paragraph_1640866238034_520915120",
+      "dateCreated": "2021-12-30 12:10:38.034",
+      "dateStarted": "2022-09-15 16:32:38.824",
+      "dateFinished": "2022-09-15 16:32:39.003",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\n--\n--\nset hive.exec.dynamic.partition.mode\u003dnonstrict;\n\n--\n--\nINSERT OVERWRITE TABLE zipcodes PARTITION(state) SELECT RecordNumber,Country,City,Zipcode,State from  zipcodes_tmp;\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-15 16:32:47.047",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 11.0,
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\nINFO  : Compiling command(queryId\u003droot_20220915163247_05e12cd8-9544-4c7f-bfe8-1ecf05230e3d): \n\n\n\n\n\n\n\nINSERT OVERWRITE TABLE zipcodes PARTITION(state) SELECT RecordNumber,Country,City,Zipcode,State from  zipcodes_tmp\nINFO  : Concurrency mode is disabled, not creating a lock manager\nINFO  : Semantic Analysis Completed (retrial \u003d false)\nINFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:recordnumber, type:int, comment:null), FieldSchema(name:country, type:string, comment:null), FieldSchema(name:city, type:string, comment:null), FieldSchema(name:zipcode, type:int, comment:null), FieldSchema(name:state, type:string, comment:null)], properties:null)\nINFO  : EXPLAIN output for queryid root_20220915163247_05e12cd8-9544-4c7f-bfe8-1ecf05230e3d : STAGE DEPENDENCIES:\n  Stage-1 is a root stage [MAPRED]\n  Stage-0 depends on stages: Stage-1 [MOVE]\n  Stage-2 depends on stages: Stage-0, Stage-3 [STATS]\n  Stage-3 depends on stages: Stage-1 [MAPRED]\n\nSTAGE PLANS:\n  Stage: Stage-1\n    Map Reduce\n      Map Operator Tree:\n          TableScan\n            alias: zipcodes_tmp\n            GatherStats: false\n            Select Operator\n              expressions: recordnumber (type: int), country (type: string), city (type: string), zipcode (type: int), state (type: string)\n              outputColumnNames: _col0, _col1, _col2, _col3, _col4\n              Reduce Output Operator\n                null sort order: \n                sort order: \n                Map-reduce partition columns: _col3 (type: int)\n                tag: -1\n                value expressions: _col0 (type: int), _col1 (type: string), _col2 (type: string), _col3 (type: int), _col4 (type: string)\n                auto parallelism: false\n      Execution mode: vectorized\n      Path -\u003e Alias:\n        hdfs://namenode:9000/user/hive/warehouse/zipcodes_tmp [zipcodes_tmp]\n      Path -\u003e Partition:\n        hdfs://namenode:9000/user/hive/warehouse/zipcodes_tmp \n          Partition\n            base file name: zipcodes_tmp\n            input format: org.apache.hadoop.mapred.TextInputFormat\n            output format: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n            properties:\n              bucket_count -1\n              bucketing_version 2\n              column.name.delimiter ,\n              columns recordnumber,country,city,zipcode,state\n              columns.comments \n              columns.types int:string:string:int:string\n              field.delim ,\n              file.inputformat org.apache.hadoop.mapred.TextInputFormat\n              file.outputformat org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n              location hdfs://namenode:9000/user/hive/warehouse/zipcodes_tmp\n              name default.zipcodes_tmp\n              numFiles 1\n              numRows 0\n              rawDataSize 0\n              serialization.ddl struct zipcodes_tmp { i32 recordnumber, string country, string city, i32 zipcode, string state}\n              serialization.format ,\n              serialization.lib org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n              totalSize 550\n              transient_lastDdlTime 1663259554\n            serde: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n          \n              input format: org.apache.hadoop.mapred.TextInputFormat\n              output format: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n              properties:\n                bucket_count -1\n                bucketing_version 2\n                column.name.delimiter ,\n                columns recordnumber,country,city,zipcode,state\n                columns.comments \n                columns.types int:string:string:int:string\n                field.delim ,\n                file.inputformat org.apache.hadoop.mapred.TextInputFormat\n                file.outputformat org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n                location hdfs://namenode:9000/user/hive/warehouse/zipcodes_tmp\n                name default.zipcodes_tmp\n                numFiles 1\n                numRows 0\n                rawDataSize 0\n                serialization.ddl struct zipcodes_tmp { i32 recordnumber, string country, string city, i32 zipcode, string state}\n                serialization.format ,\n                serialization.lib org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                totalSize 550\n                transient_lastDdlTime 1663259554\n              serde: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n              name: default.zipcodes_tmp\n            name: default.zipcodes_tmp\n      Truncated Path -\u003e Alias:\n        /zipcodes_tmp [zipcodes_tmp]\n      Needs Tagging: false\n      Reduce Operator Tree:\n        Select Operator\n          expressions: VALUE._col0 (type: int), VALUE._col1 (type: string), VALUE._col2 (type: string), VALUE._col3 (type: int), VALUE._col4 (type: string)\n          outputColumnNames: _col0, _col1, _col2, _col3, _col4\n          File Output Operator\n            compressed: false\n            GlobalTableId: 1\n            directory: hdfs://namenode:9000/user/hive/warehouse/zipcodes/.hive-staging_hive_2022-09-15_16-32-47_101_459262006156399065-1/-ext-10000\n            NumFilesPerFileSink: 1\n            Stats Publishing Key Prefix: hdfs://namenode:9000/user/hive/warehouse/zipcodes/.hive-staging_hive_2022-09-15_16-32-47_101_459262006156399065-1/-ext-10000/\n            table:\n                input format: org.apache.hadoop.mapred.TextInputFormat\n                output format: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n                properties:\n                  bucket_count 32\n                  bucket_field_name zipcode\n                  bucketing_version 2\n                  column.name.delimiter ,\n                  columns recordnumber,country,city,zipcode\n                  columns.comments \n                  columns.types int:string:string:int\n                  field.delim ,\n                  file.inputformat org.apache.hadoop.mapred.TextInputFormat\n                  file.outputformat org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n                  location hdfs://namenode:9000/user/hive/warehouse/zipcodes\n                  name default.zipcodes\n                  partition_columns state\n                  partition_columns.types string\n                  serialization.ddl struct zipcodes { i32 recordnumber, string country, string city, i32 zipcode}\n                  serialization.format ,\n                  serialization.lib org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                  transient_lastDdlTime 1663259542\n                serde: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                name: default.zipcodes\n            TotalFiles: 1\n            GatherStats: true\n            MultiFileSpray: false\n          Select Operator\n            expressions: _col0 (type: int), _col1 (type: string), _col2 (type: string), _col3 (type: int), _col4 (type: string)\n            outputColumnNames: recordnumber, country, city, zipcode, state\n            Group By Operator\n              aggregations: compute_stats(recordnumber, \u0027hll\u0027), compute_stats(country, \u0027hll\u0027), compute_stats(city, \u0027hll\u0027), compute_stats(zipcode, \u0027hll\u0027)\n              keys: state (type: string)\n              mode: hash\n              outputColumnNames: _col0, _col1, _col2, _col3, _col4\n              File Output Operator\n                compressed: false\n                GlobalTableId: 0\n                directory: hdfs://namenode:9000/tmp/hive/hive/2fea9d12-4345-4635-80e1-462ee1a5d9d9/hive_2022-09-15_16-32-47_101_459262006156399065-1/-mr-10002\n                NumFilesPerFileSink: 1\n                table:\n                    input format: org.apache.hadoop.mapred.SequenceFileInputFormat\n                    output format: org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat\n                    properties:\n                      column.name.delimiter ,\n                      columns _col0,_col1,_col2,_col3,_col4\n                      columns.types string,struct\u003ccolumntype:string,min:bigint,max:bigint,countnulls:bigint,bitvector:binary\u003e,struct\u003ccolumntype:string,maxlength:bigint,sumlength:bigint,count:bigint,countnulls:bigint,bitvector:binary\u003e,struct\u003ccolumntype:string,maxlength:bigint,sumlength:bigint,count:bigint,countnulls:bigint,bitvector:binary\u003e,struct\u003ccolumntype:string,min:bigint,max:bigint,countnulls:bigint,bitvector:binary\u003e\n                      escape.delim \\\n                      serialization.lib org.apache.hadoop.hive.serde2.lazybinary.LazyBinarySerDe\n                    serde: org.apache.hadoop.hive.serde2.lazybinary.LazyBinarySerDe\n                TotalFiles: 1\n                GatherStats: false\n                MultiFileSpray: false\n\n  Stage: Stage-0\n    Move Operator\n      tables:\n          partition:\n            state \n          replace: true\n          source: hdfs://namenode:9000/user/hive/warehouse/zipcodes/.hive-staging_hive_2022-09-15_16-32-47_101_459262006156399065-1/-ext-10000\n          table:\n              input format: org.apache.hadoop.mapred.TextInputFormat\n              output format: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n              properties:\n                bucket_count 32\n                bucket_field_name zipcode\n                bucketing_version 2\n                column.name.delimiter ,\n                columns recordnumber,country,city,zipcode\n                columns.comments \n                columns.types int:string:string:int\n                field.delim ,\n                file.inputformat org.apache.hadoop.mapred.TextInputFormat\n                file.outputformat org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat\n                location hdfs://namenode:9000/user/hive/warehouse/zipcodes\n                name default.zipcodes\n                partition_columns state\n                partition_columns.types string\n                serialization.ddl struct zipcodes { i32 recordnumber, string country, string city, i32 zipcode}\n                serialization.format ,\n                serialization.lib org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                transient_lastDdlTime 1663259542\n              serde: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n              name: default.zipcodes\n\n  Stage: Stage-2\n    Stats Work\n      Basic Stats Work:\n          Stats Aggregation Key Prefix: hdfs://namenode:9000/user/hive/warehouse/zipcodes/.hive-staging_hive_2022-09-15_16-32-47_101_459262006156399065-1/-ext-10000/\n      Column Stats Desc:\n          Columns: recordnumber, country, city, zipcode\n          Column Types: int, string, string, int\n          Table: default.zipcodes\n          Is Table Level Stats: false\n\n  Stage: Stage-3\n    Map Reduce\n      Map Operator Tree:\n          TableScan\n            GatherStats: false\n            Reduce Output Operator\n              key expressions: _col0 (type: string)\n              null sort order: a\n              sort order: +\n              Map-reduce partition columns: _col0 (type: string)\n              tag: -1\n              value expressions: _col1 (type: struct\u003ccolumntype:string,min:bigint,max:bigint,countnulls:bigint,bitvector:binary\u003e), _col2 (type: struct\u003ccolumntype:string,maxlength:bigint,sumlength:bigint,count:bigint,countnulls:bigint,bitvector:binary\u003e), _col3 (type: struct\u003ccolumntype:string,maxlength:bigint,sumlength:bigint,count:bigint,countnulls:bigint,bitvector:binary\u003e), _col4 (type: struct\u003ccolumntype:string,min:bigint,max:bigint,countnulls:bigint,bitvector:binary\u003e)\n              auto parallelism: false\n      Execution mode: vectorized\n      Path -\u003e Alias:\n        hdfs://namenode:9000/tmp/hive/hive/2fea9d12-4345-4635-80e1-462ee1a5d9d9/hive_2022-09-15_16-32-47_101_459262006156399065-1/-mr-10002 [hdfs://namenode:9000/tmp/hive/hive/2fea9d12-4345-4635-80e1-462ee1a5d9d9/hive_2022-09-15_16-32-47_101_459262006156399065-1/-mr-10002]\n      Path -\u003e Partition:\n        hdfs://namenode:9000/tmp/hive/hive/2fea9d12-4345-4635-80e1-462ee1a5d9d9/hive_2022-09-15_16-32-47_101_459262006156399065-1/-mr-10002 \n          Partition\n            base file name: -mr-10002\n            input format: org.apache.hadoop.mapred.SequenceFileInputFormat\n            output format: org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat\n            properties:\n              column.name.delimiter ,\n              columns _col0,_col1,_col2,_col3,_col4\n              columns.types string,struct\u003ccolumntype:string,min:bigint,max:bigint,countnulls:bigint,bitvector:binary\u003e,struct\u003ccolumntype:string,maxlength:bigint,sumlength:bigint,count:bigint,countnulls:bigint,bitvector:binary\u003e,struct\u003ccolumntype:string,maxlength:bigint,sumlength:bigint,count:bigint,countnulls:bigint,bitvector:binary\u003e,struct\u003ccolumntype:string,min:bigint,max:bigint,countnulls:bigint,bitvector:binary\u003e\n              escape.delim \\\n              serialization.lib org.apache.hadoop.hive.serde2.lazybinary.LazyBinarySerDe\n            serde: org.apache.hadoop.hive.serde2.lazybinary.LazyBinarySerDe\n          \n              input format: org.apache.hadoop.mapred.SequenceFileInputFormat\n              output format: org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat\n              properties:\n                column.name.delimiter ,\n                columns _col0,_col1,_col2,_col3,_col4\n                columns.types string,struct\u003ccolumntype:string,min:bigint,max:bigint,countnulls:bigint,bitvector:binary\u003e,struct\u003ccolumntype:string,maxlength:bigint,sumlength:bigint,count:bigint,countnulls:bigint,bitvector:binary\u003e,struct\u003ccolumntype:string,maxlength:bigint,sumlength:bigint,count:bigint,countnulls:bigint,bitvector:binary\u003e,struct\u003ccolumntype:string,min:bigint,max:bigint,countnulls:bigint,bitvector:binary\u003e\n                escape.delim \\\n                serialization.lib org.apache.hadoop.hive.serde2.lazybinary.LazyBinarySerDe\n              serde: org.apache.hadoop.hive.serde2.lazybinary.LazyBinarySerDe\n      Truncated Path -\u003e Alias:\n        hdfs://namenode:9000/tmp/hive/hive/2fea9d12-4345-4635-80e1-462ee1a5d9d9/hive_2022-09-15_16-32-47_101_459262006156399065-1/-mr-10002 [hdfs://namenode:9000/tmp/hive/hive/2fea9d12-4345-4635-80e1-462ee1a5d9d9/hive_2022-09-15_16-32-47_101_459262006156399065-1/-mr-10002]\n      Needs Tagging: false\n      Reduce Operator Tree:\n        Group By Operator\n          aggregations: compute_stats(VALUE._col0), compute_stats(VALUE._col1), compute_stats(VALUE._col2), compute_stats(VALUE._col3)\n          keys: KEY._col0 (type: string)\n          mode: mergepartial\n          outputColumnNames: _col0, _col1, _col2, _col3, _col4\n          Select Operator\n            expressions: _col1 (type: struct\u003ccolumntype:string,min:bigint,max:bigint,countnulls:bigint,numdistinctvalues:bigint,ndvbitvector:binary\u003e), _col2 (type: struct\u003ccolumntype:string,maxlength:bigint,avglength:double,countnulls:bigint,numdistinctvalues:bigint,ndvbitvector:binary\u003e), _col3 (type: struct\u003ccolumntype:string,maxlength:bigint,avglength:double,countnulls:bigint,numdistinctvalues:bigint,ndvbitvector:binary\u003e), _col4 (type: struct\u003ccolumntype:string,min:bigint,max:bigint,countnulls:bigint,numdistinctvalues:bigint,ndvbitvector:binary\u003e), _col0 (type: string)\n            outputColumnNames: _col0, _col1, _col2, _col3, _col4\n            File Output Operator\n              compressed: false\n              GlobalTableId: 0\n              directory: hdfs://namenode:9000/tmp/hive/hive/2fea9d12-4345-4635-80e1-462ee1a5d9d9/hive_2022-09-15_16-32-47_238_1078978688670825018-1/-mr-10000/.hive-staging_hive_2022-09-15_16-32-47_238_1078978688670825018-1/-ext-10001\n              NumFilesPerFileSink: 1\n              Stats Publishing Key Prefix: hdfs://namenode:9000/tmp/hive/hive/2fea9d12-4345-4635-80e1-462ee1a5d9d9/hive_2022-09-15_16-32-47_238_1078978688670825018-1/-mr-10000/.hive-staging_hive_2022-09-15_16-32-47_238_1078978688670825018-1/-ext-10001/\n              table:\n                  input format: org.apache.hadoop.mapred.SequenceFileInputFormat\n                  output format: org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat\n                  properties:\n                    columns _col0,_col1,_col2,_col3,_col4\n                    columns.types struct\u003ccolumntype:string,min:bigint,max:bigint,countnulls:bigint,numdistinctvalues:bigint,ndvbitvector:binary\u003e:struct\u003ccolumntype:string,maxlength:bigint,avglength:double,countnulls:bigint,numdistinctvalues:bigint,ndvbitvector:binary\u003e:struct\u003ccolumntype:string,maxlength:bigint,avglength:double,countnulls:bigint,numdistinctvalues:bigint,ndvbitvector:binary\u003e:struct\u003ccolumntype:string,min:bigint,max:bigint,countnulls:bigint,numdistinctvalues:bigint,ndvbitvector:binary\u003e:string\n                    escape.delim \\\n                    hive.serialization.extend.additional.nesting.levels true\n                    serialization.escape.crlf true\n                    serialization.format 1\n                    serialization.lib org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n                  serde: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe\n              TotalFiles: 1\n              GatherStats: false\n              MultiFileSpray: false\n\n\nINFO  : Completed compiling command(queryId\u003droot_20220915163247_05e12cd8-9544-4c7f-bfe8-1ecf05230e3d); Time taken: 0.225 seconds\nINFO  : Concurrency mode is disabled, not creating a lock manager\nINFO  : Executing command(queryId\u003droot_20220915163247_05e12cd8-9544-4c7f-bfe8-1ecf05230e3d): \n\n\n\n\n\n\n\nINSERT OVERWRITE TABLE zipcodes PARTITION(state) SELECT RecordNumber,Country,City,Zipcode,State from  zipcodes_tmp\nWARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.\nINFO  : Query ID \u003d root_20220915163247_05e12cd8-9544-4c7f-bfe8-1ecf05230e3d\nINFO  : Total jobs \u003d 2\nINFO  : Launching Job 1 out of 2\nINFO  : Starting task [Stage-1:MAPRED] in serial mode\nINFO  : Number of reduce tasks determined at compile time: 32\nINFO  : In order to change the average load for a reducer (in bytes):\nINFO  :   set hive.exec.reducers.bytes.per.reducer\u003d\u003cnumber\u003e\nINFO  : In order to limit the maximum number of reducers:\nINFO  :   set hive.exec.reducers.max\u003d\u003cnumber\u003e\nINFO  : In order to set a constant number of reducers:\nINFO  :   set mapreduce.job.reduces\u003d\u003cnumber\u003e\n\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639301092472_1781330536",
+      "id": "paragraph_1639301092472_1781330536",
+      "dateCreated": "2021-12-12 14:54:52.472",
+      "dateStarted": "2022-09-15 16:32:47.071",
+      "dateFinished": "2022-09-15 16:34:10.792",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nSELECT * FROM zipcodes;",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-15 16:33:52.665",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 11.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "recordnumber": "string",
+                      "country": "string",
+                      "city": "string",
+                      "zipcode": "string",
+                      "state": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "recordnumber": "string",
+                      "country": "string",
+                      "city": "string",
+                      "zipcode": "string",
+                      "state": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "recordnumber\tcountry\tcity\tzipcode\tstate\n54356\tUS\tSPRUCE PINE\t35585\tAL\n54355\tUS\tSPRINGVILLE\t35146\tAL\n54354\tUS\tSPRING GARDEN\t36275\tAL\n39827\tUS\tMESA\t85209\tAZ\n39828\tUS\tMESA\t85210\tAZ\n49346\tUS\tHOLDER\t34445\tFL\n49345\tUS\tHILLIARD\t32046\tFL\n49347\tUS\tHOLT\t32564\tFL\n49348\tUS\tHOMOSASSA\t34487\tFL\n76512\tUS\tASHEBORO\t27203\tNC\n76513\tUS\tASHEBORO\t27204\tNC\n76511\tUS\tASH HILL\t27007\tNC\n3\tUS\tSECT LANAUSSE\t704\tPR\n2\tUS\tPASEO COSTA DEL SUR\t704\tPR\n4\tUS\tURB EUGENE RICE\t704\tPR\n1\tUS\tPARC PARQUE\t704\tPR\n10\tUS\tBDA SAN LUIS\t709\tPR\n61391\tUS\tCINGULAR WIRELESS\t76166\tTX\n61393\tUS\tFT WORTH\t76177\tTX\n61392\tUS\tFORT WORTH\t76177\tTX\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639301190320_717614809",
+      "id": "paragraph_1639301190320_717614809",
+      "dateCreated": "2021-12-12 14:56:30.320",
+      "dateStarted": "2022-09-15 16:33:52.682",
+      "dateFinished": "2022-09-15 16:33:53.332",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n\nselect * from zipcodes where state\u003d\u0027NC\u0027;",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-15 16:34:11.955",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 11.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "recordnumber": "string",
+                      "country": "string",
+                      "city": "string",
+                      "zipcode": "string",
+                      "state": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "recordnumber\tcountry\tcity\tzipcode\tstate\n76512\tUS\tASHEBORO\t27203\tNC\n76513\tUS\tASHEBORO\t27204\tNC\n76511\tUS\tASH HILL\t27007\tNC\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639302287464_1424409880",
+      "id": "paragraph_1639302287464_1424409880",
+      "dateCreated": "2021-12-12 15:14:47.464",
+      "dateStarted": "2022-09-15 16:34:11.975",
+      "dateFinished": "2022-09-15 16:34:12.410",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%hive\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-10 04:38:41.982",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 11.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1640866961560_1734318077",
+      "id": "paragraph_1640866961560_1734318077",
+      "dateCreated": "2021-12-30 12:22:41.560",
+      "status": "READY"
+    },
+    {
+      "text": "%file\n\nls /user/hive/warehouse",
+      "user": "anonymous",
+      "dateUpdated": "2022-02-02 05:31:49.107",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/undefined",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643779893878_406927839",
+      "id": "paragraph_1643779893878_406927839",
+      "dateCreated": "2022-02-02 05:31:33.878",
+      "status": "READY"
+    }
+  ],
+  "name": "hive-bucketed-tables",
+  "id": "2GR8HW4Z6",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

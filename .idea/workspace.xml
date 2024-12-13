@@ -4,24 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-03-02 Update PyTest Cases for utils.">
-      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-iceburg.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-history.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-iceburg.conf" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-12-13 update bd-flink-module.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-defaults.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-defaults.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-env.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/spark-defaults.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-history.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_clients.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_clients.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-defaults.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf/spark-defaults.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-iceburg.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-iceburg.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/dc-minio.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_clients.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-hadoop-sandbox/envs/docker_clients.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws/sql-s3a-read.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws/sql-s3a-read.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/iceberg-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/iceberg-help.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/minio-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/minio-help.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/resources/log4j2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/resources/log4j2.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,10 +17,21 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="JUnit5 Test Class" />
+        <option value="JUnit3 Test Class" />
+        <option value="JUnit4 Test Class" />
+        <option value="Class" />
+        <option value="Interface" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Brijesh K. Dhaker &lt;brijeshdhaker@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="main" />
@@ -43,18 +39,38 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;brijeshdhaker&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/brijeshdhaker/docker-hadoop-cluster.git&quot;,
+    &quot;accountId&quot;: &quot;25155102-5365-462a-8807-019d78164e85&quot;
+  }
+}</component>
+  <component name="JvmLoggingSettingsStorage">
+    <option name="loggerId" value="Slf4j" />
+    <option name="loggerName" value="logger" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
+        <option name="alwaysUpdateSnapshots" value="true" />
         <option name="localRepository" value="$MAVEN_REPOSITORY$" />
-        <option name="mavenHome" value="/opt/maven-3.6.3" />
         <option name="useMavenConfig" value="false" />
         <option name="userSettingsFile" value="$USER_HOME$/.m2/settings.xml" />
       </MavenGeneralSettings>
     </option>
+    <option name="explicitlyEnabledProfiles" value="local" />
+  </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -66,14 +82,42 @@
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2cX3TktHfGdHsUFzByi07LxLGH3" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.AppLauncher.executor": "Run",
+    "Application.AppLauncher::BatchWorkflow.executor": "Run",
+    "Application.AppLauncher::DiscretizedStreamWorkflow.executor": "Run",
+    "Application.AppLauncher::StructuredStreamWorkflow.executor": "Run",
+    "Application.AppStreamWorkflow.executor": "Run",
+    "Application.ClickEventGenerator.executor": "Run",
+    "Application.DataStreamJob.executor": "Run",
+    "Application.DeltaBoundedSourceLocalExample.executor": "Run",
+    "Application.DeltaBoundedSourceUserColumnsExample.executor": "Run",
+    "Application.DeltaContinuousSourceLocalExample.executor": "Debug",
+    "Application.DeltaSinkExample.executor": "Debug",
+    "Application.DeltaSinkExampleLocal.executor": "Run",
+    "Application.DemoApplication.executor": "Debug",
+    "Application.Main.executor": "Run",
+    "Application.RideCountExample.executor": "Run",
+    "Application.SandboxSbApplication.executor": "Debug",
+    "Application.SparkPi.executor": "Run",
+    "Application.StreamExample.executor": "Run",
+    "Application.TransactionAvroStream.executor": "Run",
+    "Application.TransactionCountExample.executor": "Run",
+    "Application.TransactionPipeline.executor": "Run",
+    "Application.local-transaction-pipeline.executor": "Run",
+    "Application.mini-cluster-transaction-pipeline.executor": "Run",
     "Docker.Docker Image.executor": "Run",
+    "Docker.bd-docker-sandbox.minio: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-flink-cluster.yml: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
@@ -95,6 +139,8 @@
     "Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox.gateway: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-jobmanager: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-taskmanager: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-hive-cluster.yml.hiveserver: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-rest: Compose Deployment.executor": "Run",
@@ -102,6 +148,7 @@
     "Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka-cluster-7.5.2.yml.control-center: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-kafka.yml.kafkabroker: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-kafka.yml.kdcserver: Compose Deployment.executor": "Run",
     "Docker.bd-hadoop-sandbox/dc-kafka.yml.zookeeper: Compose Deployment.executor": "Run",
@@ -136,12 +183,40 @@
     "Docker.docker-compose.yml.sparkhistory: Compose Deployment.executor": "Run",
     "Docker.docker-compose.yml.timelineserver: Compose Deployment.executor": "Run",
     "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
+    "Docker.flink-cluster.executor": "Run",
+    "Docker.kafka-cluster.executor": "Run",
+    "Docker.minio.executor": "Run",
+    "Docker.mysqlserver.executor": "Run",
+    "Docker.spark-cluster.executor": "Run",
+    "Docker.spark-notebook.executor": "Run",
     "Docker.ubuntu.executor": "Run",
+    "Docker.zeppelin-notebook.executor": "Run",
+    "Docker.zeppelin.executor": "Run",
+    "JUnit.AvroUtilTest.executor": "Run",
+    "JUnit.AvroUtilTest.jsonToAvro.executor": "Run",
+    "JUnit.AvroUtilTest.schemaFromFile.executor": "Run",
+    "JUnit.DatasourceBuilderTest.executor": "Run",
+    "JUnit.SandboxSbApplicationTest.executor": "Run",
+    "JUnit.SandboxSbApplicationTests (1).executor": "Run",
+    "JUnit.SandboxSbApplicationTests.executor": "Run",
+    "JUnit.SchemaProviderTest.structTypeFromAvro.executor": "Run",
+    "Maven.bd-data-generator [clean,verify].executor": "Run",
+    "Maven.bd-data-generator [clean].executor": "Run",
+    "Maven.bd-data-generator [package].executor": "Run",
+    "Maven.bd-data-generator [verify].executor": "Run",
+    "Maven.bd-flink-module [clean,package].executor": "Run",
+    "Maven.bd-flink-module [clean].executor": "Run",
+    "Maven.bd-flink-module [package].executor": "Run",
     "Maven.bd-python-module [clean].executor": "Run",
     "Maven.bd-python-module [install].executor": "Run",
     "Maven.bd-python-module [org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy].executor": "Run",
     "Maven.bd-python-module [package].executor": "Run",
     "Maven.bd-python-module [verify].executor": "Run",
+    "Maven.bd-spark-module [clean].executor": "Run",
+    "Maven.bd-spark-module [package].executor": "Run",
+    "Maven.bd-spring-module [clean].executor": "Run",
+    "Maven.bd-spring-module [package].executor": "Run",
+    "Maven.bd-spring-module [test].executor": "Run",
     "Python tests.Python tests for test_Commons.test_print_separator.executor": "Run",
     "Python tests.Python tests for test_Commons.test_split_csv.executor": "Run",
     "Python tests.Python tests for test_Commons.test_split_csv_line.executor": "Debug",
@@ -179,36 +254,59 @@
     "Python.test.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "docker-hadoop311-cluster",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "develop/docker-hadoop334-cluster",
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-hadoop-sandbox/conf/spark/conf",
+    "last_directory_selection": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-flink-module/src/main/resources/mini-cluster",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.31724137",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "MavenSettings"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/conf/spark/conf" />
-      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf" />
-      <recent name="$PROJECT_DIR$/bd-setup-module/scripts" />
-      <recent name="$PROJECT_DIR$/bd-hadoop-sandbox/envs" />
-      <recent name="$PROJECT_DIR$/bd-python-module/src/test" />
+      <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources/mini-cluster" />
+      <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources" />
+      <recent name="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxiride" />
+      <recent name="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils" />
+      <recent name="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/records" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/readme-resources/images" />
-      <recent name="$PROJECT_DIR$/readme-resources" />
-      <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example/cloud/aws" />
-      <recent name="$PROJECT_DIR$/bd-python-module/src/test" />
-      <recent name="$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/confluent" />
+      <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources/local-cluster" />
+      <recent name="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/delta-table" />
+      <recent name="$PROJECT_DIR$/bd-flink-module" />
+      <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources" />
+      <recent name="$PROJECT_DIR$/bd-flink-module/conf" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+      <recent name="junit.framework.TestCase" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.examples.sb" />
+      <recent name="org.examples.utils" />
+      <recent name="org.examples.schema" />
+      <recent name="org.examples.datasource" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.org.example.flink.transaction.functions" />
+      <recent name="com.org.example.flink.utils.jobs" />
+      <recent name="com.org.example.flink.transaction.models.enriched" />
+      <recent name="com.org.example.flink.txns" />
+      <recent name="com.org.example.flink.records.raw" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment">
+  <component name="RunManager" selected="Application.local-transaction-pipeline">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -216,6 +314,137 @@
     </configuration>
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
+      <module name="bd-spark-module" />
+      <option name="PROGRAM_PARAMETERS" value="--embedded --verbose --workflow-type batch --storage local --property-file bd-spark-module/src/main/resources/app_batch_workflow.properties" />
+      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppLauncher::DiscretizedStreamWorkflow" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
+      <module name="bd-spark-module" />
+      <option name="PROGRAM_PARAMETERS" value="--embedded --verbose --workflow-type dstream --storage local --property-file bd-spark-module/src/main/resources/app_dstream_workflow.properties" />
+      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppLauncher::StructuredStreamWorkflow" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
+      <module name="bd-spark-module" />
+      <option name="PROGRAM_PARAMETERS" value="--embedded --verbose --workflow-type sstream --storage local --property-file bd-spark-module/src/main/resources/app_sstream_workflow.properties" />
+      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataStreamJob" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.example.DataStreamJob" />
+      <module name="bd-flink-module" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.org.example.flink.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DeltaContinuousSourceLocalExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.delta.source.continuous.DeltaContinuousSourceLocalExample" />
+      <module name="bd-flink-module" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.org.example.flink.delta.source.continuous.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DeltaSinkExampleLocal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="AWS_ACCESS_KEY_ID" value="pgm2H2bR7a5kMc5XCYdO" />
+        <env name="AWS_SECRET_ACCESS_KEY" value="zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG" />
+        <env name="AWS_REGION" value="us-east-1" />
+        <env name="AWS_S3_ENDPOINT" value="http://minio.sandbox.net:9010" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.delta.sink.DeltaSinkExampleLocal" />
+      <module name="bd-flink-module" />
+      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.org.example.flink.delta.sink.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RideCountExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.taxiride.RideCountExample" />
+      <module name="bd-flink-module" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.org.example.flink.taxiride.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="cluster-transaction-pipeline" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.transaction.TransactionPipeline" />
+      <module name="bd-flink-module" />
+      <option name="PROGRAM_PARAMETERS" value="--engine-type cluster --table-name transactions --config-path $PROJECT_DIR$/bd-docker-sandbox/conf/flink" />
+      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.org.example.flink.transaction.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="local-transaction-pipeline" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.transaction.TransactionPipeline" />
+      <module name="bd-flink-module" />
+      <option name="PROGRAM_PARAMETERS" value="--engine-type local-cluster --table-name transactions --config-path $PROJECT_DIR$/bd-flink-module/src/main/resources/local-cluster" />
+      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED -Dlog.file=/apps/var/logs/flink/flink-local-session.log" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.org.example.flink.transaction.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="mini-cluster-transaction-pipeline" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.transaction.TransactionPipeline" />
+      <module name="bd-flink-module" />
+      <option name="PROGRAM_PARAMETERS" value="--engine-type mini-cluster --table-name transactions --config-path $PROJECT_DIR$/bd-flink-module/src/main/resources/mini-cluster" />
+      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED -Dlog.file=/apps/var/logs/flink/flink-minicluster-session.log" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.org.example.flink.transaction.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -265,94 +494,137 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="flink-cluster" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
+          <option name="envFilePath" value="" />
           <option name="services">
             <list>
-              <option value="datanode" />
+              <option value="flink-jobmanager" />
+              <option value="flink-taskmanager" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hadoop-cluster.yaml" />
+          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="kafka-cluster" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
+          <option name="envFilePath" value="" />
           <option name="services">
             <list>
-              <option value="namenode" />
+              <option value="zookeeper" />
+              <option value="kafkabroker" />
+              <option value="schemaregistry" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hadoop-cluster.yaml" />
+          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="minio" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
+          <option name="envFilePath" value="" />
           <option name="services">
             <list>
-              <option value="metastore" />
+              <option value="minio" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-hive-cluster.yaml" />
+          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="mysqlserver" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
+          <option name="envFilePath" value="" />
           <option name="services">
             <list>
               <option value="mysqlserver" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-mysqlserver.yaml" />
+          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="spark-cluster" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
+          <option name="envFilePath" value="" />
           <option name="services">
             <list>
-              <option value="gateway" />
+              <option value="spark-master" />
+              <option value="spark-worker-a" />
+              <option value="spark-worker-b" />
             </list>
           </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yaml" />
+          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="spark-notebook" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="envFilePath" value="" />
+          <option name="services">
+            <list>
+              <option value="spark-notebook" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="zeppelin-notebook" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="envFilePath" value="" />
+          <option name="services">
+            <list>
+              <option value="zeppelin" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-docker-sandbox/docker-compose.yml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment" />
+      <item itemvalue="Application.AppLauncher::BatchWorkflow" />
+      <item itemvalue="Application.AppLauncher::DiscretizedStreamWorkflow" />
+      <item itemvalue="Application.AppLauncher::StructuredStreamWorkflow" />
+      <item itemvalue="Application.cluster-transaction-pipeline" />
+      <item itemvalue="Application.mini-cluster-transaction-pipeline" />
+      <item itemvalue="Application.RideCountExample" />
+      <item itemvalue="Application.local-transaction-pipeline" />
+      <item itemvalue="Application.DeltaContinuousSourceLocalExample" />
+      <item itemvalue="Application.DeltaSinkExampleLocal" />
+      <item itemvalue="Application.DataStreamJob" />
+      <item itemvalue="Docker.flink-cluster" />
+      <item itemvalue="Docker.kafka-cluster" />
+      <item itemvalue="Docker.minio" />
+      <item itemvalue="Docker.mysqlserver" />
+      <item itemvalue="Docker.spark-cluster" />
+      <item itemvalue="Docker.spark-notebook" />
+      <item itemvalue="Docker.zeppelin-notebook" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment" />
-        <item itemvalue="Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment" />
+        <item itemvalue="Application.local-transaction-pipeline" />
+        <item itemvalue="Application.RideCountExample" />
+        <item itemvalue="Application.DeltaSinkExampleLocal" />
+        <item itemvalue="Application.DeltaContinuousSourceLocalExample" />
+        <item itemvalue="Application.DataStreamJob" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-1.8.0_402-corretto-1.8.0_402-4caba194b151-a39a91d7" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -363,311 +635,399 @@
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
     </task>
-    <task id="LOCAL-00001" summary="2024-02-18 Update Setup Script.">
+    <task id="LOCAL-00079" summary="2024-09-30 Update Project Configuration.">
       <option name="closed" value="true" />
-      <created>1708256635960</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
+      <created>1727670744353</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
       <option name="project" value="LOCAL" />
-      <updated>1708256635960</updated>
+      <updated>1727670744353</updated>
     </task>
-    <task id="LOCAL-00002" summary="2024-02-18 Update Setup Script.">
+    <task id="LOCAL-00080" summary="2024-10-03 Update Project Configuration.">
       <option name="closed" value="true" />
-      <created>1708262787101</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
+      <created>1727951412862</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
       <option name="project" value="LOCAL" />
-      <updated>1708262787101</updated>
+      <updated>1727951412863</updated>
     </task>
-    <task id="LOCAL-00003" summary="2024-02-18 Update Setup Script.">
+    <task id="LOCAL-00081" summary="2024-10-04 Update Project Configuration.">
       <option name="closed" value="true" />
-      <created>1708279460213</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
+      <created>1728018995042</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
       <option name="project" value="LOCAL" />
-      <updated>1708279460213</updated>
+      <updated>1728018995043</updated>
     </task>
-    <task id="LOCAL-00004" summary="2024-02-18 Update Setup Script.">
+    <task id="LOCAL-00082" summary="2024-10-06 Update Project Configuration.">
       <option name="closed" value="true" />
-      <created>1708617870809</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
+      <created>1728230390923</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
       <option name="project" value="LOCAL" />
-      <updated>1708617870809</updated>
+      <updated>1728230390924</updated>
     </task>
-    <task id="LOCAL-00005" summary="2024-02-18 Update Setup Script.">
+    <task id="LOCAL-00083" summary="2024-10-13 add spark-delta-table notebook.">
       <option name="closed" value="true" />
-      <created>1708619495842</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
+      <created>1728791862758</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
       <option name="project" value="LOCAL" />
-      <updated>1708619495842</updated>
+      <updated>1728791862758</updated>
     </task>
-    <task id="LOCAL-00006" summary="2024-02-23 Update kafka config &amp; validation.">
+    <task id="LOCAL-00084" summary="2024-10-14 add spark-delta-table notebook.">
       <option name="closed" value="true" />
-      <created>1708651067068</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
+      <created>1728875806839</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
       <option name="project" value="LOCAL" />
-      <updated>1708651067068</updated>
+      <updated>1728875806840</updated>
     </task>
-    <task id="LOCAL-00007" summary="2024-02-24 Merge Docker Projects.">
+    <task id="LOCAL-00085" summary="2024-10-14 add spark-delta-table notebook.">
       <option name="closed" value="true" />
-      <created>1708743039684</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
+      <created>1728878690815</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
       <option name="project" value="LOCAL" />
-      <updated>1708743039684</updated>
+      <updated>1728878690815</updated>
     </task>
-    <task id="LOCAL-00008" summary="2024-02-24 Merge Docker Projects.">
+    <task id="LOCAL-00086" summary="2024-10-14 add spark-delta-table notebook.">
       <option name="closed" value="true" />
-      <created>1708762479910</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
+      <created>1728879028707</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
       <option name="project" value="LOCAL" />
-      <updated>1708762479910</updated>
+      <updated>1728879028707</updated>
     </task>
-    <task id="LOCAL-00009" summary="2024-02-24 Merge Docker Projects.">
+    <task id="LOCAL-00087" summary="2024-10-14 add spark-delta-table notebook.">
       <option name="closed" value="true" />
-      <created>1708764418653</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
+      <created>1728879819396</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
       <option name="project" value="LOCAL" />
-      <updated>1708764418653</updated>
+      <updated>1728879819396</updated>
     </task>
-    <task id="LOCAL-00010" summary="2024-02-24 Merge Docker Projects.">
+    <task id="LOCAL-00088" summary="2024-10-19 add docker-plugin for springboot.">
       <option name="closed" value="true" />
-      <created>1708768699007</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
+      <created>1729308933985</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
       <option name="project" value="LOCAL" />
-      <updated>1708768699007</updated>
+      <updated>1729308933987</updated>
     </task>
-    <task id="LOCAL-00011" summary="2024-02-24 Merge Docker Projects.">
+    <task id="LOCAL-00089" summary="2024-11-19 Update configurations.">
       <option name="closed" value="true" />
-      <created>1708768719300</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
+      <created>1731987520809</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
       <option name="project" value="LOCAL" />
-      <updated>1708768719300</updated>
+      <updated>1731987520811</updated>
     </task>
-    <task id="LOCAL-00012" summary="2024-02-24 Merge Docker Projects.">
+    <task id="LOCAL-00090" summary="2024-11-26 Update configurations.">
       <option name="closed" value="true" />
-      <created>1708769489576</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
+      <created>1732594704133</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
       <option name="project" value="LOCAL" />
-      <updated>1708769489576</updated>
+      <updated>1732594704135</updated>
     </task>
-    <task id="LOCAL-00013" summary="2024-02-24 Merge Docker Projects.">
+    <task id="LOCAL-00091" summary="2024-11-26 Update configurations.">
       <option name="closed" value="true" />
-      <created>1708777785312</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
+      <created>1732595205791</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
       <option name="project" value="LOCAL" />
-      <updated>1708777785312</updated>
+      <updated>1732595205791</updated>
     </task>
-    <task id="LOCAL-00014" summary="2024-02-24 Merge Docker Projects.">
+    <task id="LOCAL-00092" summary="2024-11-26 Update configurations.">
       <option name="closed" value="true" />
-      <created>1708778768889</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
+      <created>1732595354519</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
       <option name="project" value="LOCAL" />
-      <updated>1708778768889</updated>
+      <updated>1732595354520</updated>
     </task>
-    <task id="LOCAL-00015" summary="2024-02-24 Merge Docker Projects.">
+    <task id="LOCAL-00093" summary="2024-11-27 Update flink configurations.">
       <option name="closed" value="true" />
-      <created>1708778946891</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
+      <created>1732677259808</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
       <option name="project" value="LOCAL" />
-      <updated>1708778946891</updated>
+      <updated>1732677259809</updated>
     </task>
-    <task id="LOCAL-00016" summary="2024-02-24 Merge Docker Projects.">
+    <task id="LOCAL-00094" summary="2024-11-27 Update flink configurations.">
       <option name="closed" value="true" />
-      <created>1708779422145</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
+      <created>1732678283548</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
       <option name="project" value="LOCAL" />
-      <updated>1708779422145</updated>
+      <updated>1732678283548</updated>
     </task>
-    <task id="LOCAL-00017" summary="2024-02-24 Merge Docker Projects.">
+    <task id="LOCAL-00095" summary="2024-12-03 Update flink configurations.">
       <option name="closed" value="true" />
-      <created>1708787198522</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
+      <created>1733190060336</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
       <option name="project" value="LOCAL" />
-      <updated>1708787198522</updated>
+      <updated>1733190060338</updated>
     </task>
-    <task id="LOCAL-00018" summary="2024-02-24 Merge Docker Projects.">
+    <task id="LOCAL-00096" summary="2024-12-03 Update flink configurations.">
       <option name="closed" value="true" />
-      <created>1708791406817</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
+      <created>1733195800953</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
       <option name="project" value="LOCAL" />
-      <updated>1708791406817</updated>
+      <updated>1733195800954</updated>
     </task>
-    <task id="LOCAL-00019" summary="2024-02-24 Merge Docker Projects.">
+    <task id="LOCAL-00097" summary="2024-12-03 Update flink configurations.">
       <option name="closed" value="true" />
-      <created>1708806465497</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
+      <created>1733196122143</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
       <option name="project" value="LOCAL" />
-      <updated>1708806465497</updated>
+      <updated>1733196122143</updated>
     </task>
-    <task id="LOCAL-00020" summary="2024-02-25 Change Project Packaging.">
+    <task id="LOCAL-00098" summary="2024-12-03 Update flink configurations.">
       <option name="closed" value="true" />
-      <created>1708831118381</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
+      <created>1733196214141</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
       <option name="project" value="LOCAL" />
-      <updated>1708831118381</updated>
+      <updated>1733196214141</updated>
     </task>
-    <task id="LOCAL-00021" summary="2024-02-25 Change Project Packaging.">
+    <task id="LOCAL-00099" summary="2024-12-04 add transaction data generator.">
       <option name="closed" value="true" />
-      <created>1708834131543</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
+      <created>1733271225691</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
       <option name="project" value="LOCAL" />
-      <updated>1708834131543</updated>
+      <updated>1733271225698</updated>
     </task>
-    <task id="LOCAL-00022" summary="2024-02-25 Change Project Packaging.">
+    <task id="LOCAL-00100" summary="2024-12-04 add transaction data generator.">
       <option name="closed" value="true" />
-      <created>1708844951370</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
+      <created>1733295187870</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
       <option name="project" value="LOCAL" />
-      <updated>1708844951370</updated>
+      <updated>1733295187876</updated>
     </task>
-    <task id="LOCAL-00023" summary="2024-02-25 Change Project Packaging.">
+    <task id="LOCAL-00101" summary="2024-12-05 consolidate docker-sandbox module.">
       <option name="closed" value="true" />
-      <created>1708859876822</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
+      <created>1733368721090</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
       <option name="project" value="LOCAL" />
-      <updated>1708859876822</updated>
+      <updated>1733368721096</updated>
     </task>
-    <task id="LOCAL-00024" summary="2024-02-26 Update Confluent Kafka Consumers.">
+    <task id="LOCAL-00102" summary="2024-12-05 consolidate docker-sandbox module.">
       <option name="closed" value="true" />
-      <created>1708923231301</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
+      <created>1733368757644</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
       <option name="project" value="LOCAL" />
-      <updated>1708923231301</updated>
+      <updated>1733368757645</updated>
     </task>
-    <task id="LOCAL-00025" summary="2024-02-27 Update Confluent Kafka Consumers.">
+    <task id="LOCAL-00103" summary="2024-12-05 refactor bd-flink-module project.">
       <option name="closed" value="true" />
-      <created>1709012432253</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
+      <created>1733374620213</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
       <option name="project" value="LOCAL" />
-      <updated>1709012432253</updated>
+      <updated>1733374620214</updated>
     </task>
-    <task id="LOCAL-00026" summary="2024-02-27 Update Confluent Kafka Consumers.">
+    <task id="LOCAL-00104" summary="2024-12-07 refactor bd-flink-module project.">
       <option name="closed" value="true" />
-      <created>1709051415128</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
+      <created>1733547069226</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
       <option name="project" value="LOCAL" />
-      <updated>1709051415128</updated>
+      <updated>1733547069228</updated>
     </task>
-    <task id="LOCAL-00027" summary="2024-02-28 Update Confluent Kafka Consumers.">
+    <task id="LOCAL-00105" summary="2024-12-08 refactor secure &amp; non secure configs.">
       <option name="closed" value="true" />
-      <created>1709089956280</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
+      <created>1733669171430</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
       <option name="project" value="LOCAL" />
-      <updated>1709089956280</updated>
+      <updated>1733669171432</updated>
     </task>
-    <task id="LOCAL-00028" summary="2024-02-28 Update Confluent Kafka Consumers.">
+    <task id="LOCAL-00106" summary="2024-12-08 update bd-flink-module.">
       <option name="closed" value="true" />
-      <created>1709090852195</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
+      <created>1733670594597</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
       <option name="project" value="LOCAL" />
-      <updated>1709090852195</updated>
+      <updated>1733670594648</updated>
     </task>
-    <task id="LOCAL-00029" summary="2024-02-28 Update Confluent Kafka Consumers.">
+    <task id="LOCAL-00107" summary="2024-12-08 update bd-flink-module.">
       <option name="closed" value="true" />
-      <created>1709140376589</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
+      <created>1733682663956</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
       <option name="project" value="LOCAL" />
-      <updated>1709140376589</updated>
+      <updated>1733682663956</updated>
     </task>
-    <task id="LOCAL-00030" summary="2024-02-28 Update Confluent Kafka Consumers.">
+    <task id="LOCAL-00108" summary="2024-12-10 update bd-flink-module.">
       <option name="closed" value="true" />
-      <created>1709140414437</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
+      <created>1733822744395</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
       <option name="project" value="LOCAL" />
-      <updated>1709140414437</updated>
+      <updated>1733822744422</updated>
     </task>
-    <task id="LOCAL-00031" summary="2024-02-29 Update Confluent Kafka Consumers.">
+    <task id="LOCAL-00109" summary="2024-12-10 update bd-flink-module.">
       <option name="closed" value="true" />
-      <created>1709168318304</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
+      <created>1733823286392</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
       <option name="project" value="LOCAL" />
-      <updated>1709168318304</updated>
+      <updated>1733823286393</updated>
     </task>
-    <task id="LOCAL-00032" summary="2024-02-29 Update Confluent Kafka Consumers.">
+    <task id="LOCAL-00110" summary="2024-12-10 update bd-flink-module.">
       <option name="closed" value="true" />
-      <created>1709175896444</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
+      <created>1733823519695</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
       <option name="project" value="LOCAL" />
-      <updated>1709175896444</updated>
+      <updated>1733823519695</updated>
     </task>
-    <task id="LOCAL-00033" summary="2024-02-29 Update Confluent Kafka Consumers.">
+    <task id="LOCAL-00111" summary="2024-12-10 update bd-flink-module.">
       <option name="closed" value="true" />
-      <created>1709179015706</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
+      <created>1733823596474</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
       <option name="project" value="LOCAL" />
-      <updated>1709179015706</updated>
+      <updated>1733823596476</updated>
     </task>
-    <task id="LOCAL-00034" summary="2024-02-29 Update Confluent Kafka Consumers.">
+    <task id="LOCAL-00112" summary="2024-12-10 update bd-flink-module.">
       <option name="closed" value="true" />
-      <created>1709225198413</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
+      <created>1733823659982</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
       <option name="project" value="LOCAL" />
-      <updated>1709225198413</updated>
+      <updated>1733823659983</updated>
     </task>
-    <task id="LOCAL-00035" summary="2024-03-01 Update PyTest Cases for utils.">
+    <task id="LOCAL-00113" summary="2024-12-10 update bd-flink-module.">
       <option name="closed" value="true" />
-      <created>1709262904292</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
+      <created>1733823754303</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
       <option name="project" value="LOCAL" />
-      <updated>1709262904293</updated>
+      <updated>1733823754307</updated>
     </task>
-    <task id="LOCAL-00036" summary="2024-03-01 Update PyTest Cases for utils.">
+    <task id="LOCAL-00114" summary="2024-12-10 update bd-flink-module.">
       <option name="closed" value="true" />
-      <created>1709277801258</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
+      <created>1733823815039</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
       <option name="project" value="LOCAL" />
-      <updated>1709277801258</updated>
+      <updated>1733823815039</updated>
     </task>
-    <task id="LOCAL-00037" summary="2024-03-02 Update PyTest Cases for utils.">
+    <task id="LOCAL-00115" summary="2024-12-10 update bd-flink-module.">
       <option name="closed" value="true" />
-      <created>1709402263178</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
+      <created>1733823923217</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
       <option name="project" value="LOCAL" />
-      <updated>1709402263178</updated>
+      <updated>1733823923217</updated>
     </task>
-    <task id="LOCAL-00038" summary="2024-03-02 Update PyTest Cases for utils.">
+    <task id="LOCAL-00116" summary="2024-12-10 update bd-flink-module.">
       <option name="closed" value="true" />
-      <created>1709402286740</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
+      <created>1733853990190</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
       <option name="project" value="LOCAL" />
-      <updated>1709402286740</updated>
+      <updated>1733853990192</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00117" summary="2024-12-11 update bd-flink-module.">
+      <option name="closed" value="true" />
+      <created>1733892919004</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1733892919008</updated>
+    </task>
+    <task id="LOCAL-00118" summary="2024-12-11 update bd-flink-module.">
+      <option name="closed" value="true" />
+      <created>1733892936098</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1733892936098</updated>
+    </task>
+    <task id="LOCAL-00119" summary="2024-12-11 update bd-flink-module for working examples.">
+      <option name="closed" value="true" />
+      <created>1733933613696</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1733933613697</updated>
+    </task>
+    <task id="LOCAL-00120" summary="2024-12-11 update bd-flink-module for working examples.">
+      <option name="closed" value="true" />
+      <created>1733934071401</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1733934071402</updated>
+    </task>
+    <task id="LOCAL-00121" summary="2024-12-11 update bd-flink-module for working examples.">
+      <option name="closed" value="true" />
+      <created>1733973467698</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1733973467701</updated>
+    </task>
+    <task id="LOCAL-00122" summary="2024-12-11 update bd-flink-module for working examples.">
+      <option name="closed" value="true" />
+      <created>1733973488565</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1733973488565</updated>
+    </task>
+    <task id="LOCAL-00123" summary="2024-12-12 add refine &amp; enrichment for flink module.">
+      <option name="closed" value="true" />
+      <created>1733976320926</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1733976320926</updated>
+    </task>
+    <task id="LOCAL-00124" summary="2024-12-12 add refine &amp; enrichment for flink module.">
+      <option name="closed" value="true" />
+      <created>1733976341707</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1733976341707</updated>
+    </task>
+    <task id="LOCAL-00125" summary="2024-12-13 add refine &amp; enrichment for flink module.">
+      <option name="closed" value="true" />
+      <created>1734029130832</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1734029130833</updated>
+    </task>
+    <task id="LOCAL-00126" summary="2024-12-13 update bd-flink-module.">
+      <option name="closed" value="true" />
+      <created>1734092633634</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1734092633648</updated>
+    </task>
+    <task id="LOCAL-00127" summary="2024-12-13 update bd-flink-module.">
+      <option name="closed" value="true" />
+      <created>1734092851323</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1734092851324</updated>
+    </task>
+    <option name="localTasksCounter" value="128" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -688,17 +1048,37 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2024-02-18 Update Setup Script." />
-    <MESSAGE value="2024-02-23 Update kafka config &amp; validation." />
-    <MESSAGE value="2024-02-24 Merge Docker Projects." />
-    <MESSAGE value="2024-02-25 Change Project Packaging." />
-    <MESSAGE value="2024-02-26 Update Confluent Kafka Consumers." />
-    <MESSAGE value="2024-02-27 Update Confluent Kafka Consumers." />
-    <MESSAGE value="2024-02-28 Update Confluent Kafka Consumers." />
-    <MESSAGE value="2024-02-29 Update Confluent Kafka Consumers." />
-    <MESSAGE value="2024-03-01 Update PyTest Cases for utils." />
-    <MESSAGE value="2024-03-02 Update PyTest Cases for utils." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-03-02 Update PyTest Cases for utils." />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
+    </ignored-roots>
+    <MESSAGE value="2024-09-28 Update Project Configuration." />
+    <MESSAGE value="2024-09-29 Update Project Configuration." />
+    <MESSAGE value="2024-09-30 Update Project Configuration." />
+    <MESSAGE value="2024-10-03 Update Project Configuration." />
+    <MESSAGE value="2024-10-04 Update Project Configuration." />
+    <MESSAGE value="2024-10-06 Update Project Configuration." />
+    <MESSAGE value="2024-10-13 add spark-delta-table notebook." />
+    <MESSAGE value="2024-10-14 add spark-delta-table notebook." />
+    <MESSAGE value="2024-10-19 add docker-plugin for springboot." />
+    <MESSAGE value="2024-11-19 Update configurations." />
+    <MESSAGE value="2024-11-26 Update configurations." />
+    <MESSAGE value="2024-11-27 Update flink configurations." />
+    <MESSAGE value="2024-12-03 Update flink configurations." />
+    <MESSAGE value="2024-12-04 add transaction data generator." />
+    <MESSAGE value="2024-12-05 consolidate docker-sandbox module." />
+    <MESSAGE value="2024-12-05 refactor bd-flink-module project." />
+    <MESSAGE value="2024-12-07 refactor bd-flink-module project." />
+    <MESSAGE value="2024-12-08 refactor secure &amp; non secure configs." />
+    <MESSAGE value="2024-12-08 update bd-flink-module." />
+    <MESSAGE value="2024-12-10 update bd-flink-module." />
+    <MESSAGE value="2024-12-11 update bd-flink-module." />
+    <MESSAGE value="2024-12-11 update bd-flink-module for working examples." />
+    <MESSAGE value="2024-12-12 add refine &amp; enrichment for flink module." />
+    <MESSAGE value="2024-12-13 add refine &amp; enrichment for flink module." />
+    <MESSAGE value="2024-12-13 update bd-flink-module." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-12-13 update bd-flink-module." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -746,6 +1126,12 @@
           <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/avro-test.py</url>
           <line>23</line>
           <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaCustomProperties.java</url>
+          <line>10</line>
+          <properties field="transactionTopic" class="org.examples.sb.config.KafkaCustomProperties" />
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
