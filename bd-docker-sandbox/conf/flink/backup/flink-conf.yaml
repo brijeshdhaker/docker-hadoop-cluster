@@ -111,7 +111,7 @@ flink.hadoop.fs.s3a.endpoint: http://minio.sandbox.net:9010
 flink.hadoop.fs.s3a.path.style.access: true
 
 # fs.default-scheme
-fs.default-scheme: s3a://warehouse-flink/
+fs.default-scheme: s3a://defaultfs/
 
 s3.secret-key: zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
 s3.access-key: pgm2H2bR7a5kMc5XCYdO
@@ -165,22 +165,22 @@ execution.checkpointing.min-pause: 0
 execution.checkpointing.timeout: 10min
 execution.checkpointing.tolerable-failed-checkpoints: 0
 execution.checkpointing.unaligned: false
-execution.checkpointing.dir: s3a://warehouse-flink/execution-checkpoints
-execution.checkpointing.savepoint-dir: s3a://warehouse-flink/execution-savepoints
+execution.checkpointing.dir: s3a://defaultfs/execution-checkpoints
+execution.checkpointing.savepoint-dir: s3a://defaultfs/execution-savepoints
 #
 # Supported backends are 'hashmap', 'rocksdb', or the
 # <class-name-of-factory>.
 #
 state.backend.type: hashmap
-state.backend.fs.checkpointdir: s3a://warehouse-flink/checkpoints
+state.backend.fs.checkpointdir: s3a://defaultfs/checkpoints
 #
 # Directory for checkpoints filesystem, when using any of the default bundled state backends.
 #
-state.checkpoints.dir: s3a://warehouse-flink/checkpoints
+state.checkpoints.dir: s3a://defaultfs/checkpoints
 #
 # Default target directory for savepoints, optional.
 #
-state.savepoints.dir: s3a://warehouse-flink/savepoints
+state.savepoints.dir: s3a://defaultfs/savepoints
 
 # Flag to enable/disable incremental checkpoints for backends that
 # support incremental checkpoints (like the RocksDB state backend).

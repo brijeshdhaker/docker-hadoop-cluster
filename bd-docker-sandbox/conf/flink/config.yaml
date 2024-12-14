@@ -1,3 +1,20 @@
+flink:
+  hadoop:
+    fs:
+      default-scheme: s3a://defaultfs
+      s3a:
+        secret:
+          key: zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+        impl: org.apache.hadoop.fs.s3a.S3AFileSystem
+        access:
+          key: pgm2H2bR7a5kMc5XCYdO
+        aws:
+          credentials:
+            provider: org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider
+        endpoint: http://minio.sandbox.net:9010
+        path:
+          style:
+            access: true
 blob:
   server:
     port: '6124'
@@ -19,7 +36,7 @@ rest:
   profiling:
     enabled: true
 fs:
-  default-scheme: s3a://warehouse-flink/
+  default-scheme: s3a://defaultfs/
 jobmanager:
   execution:
     failover-strategy: region
@@ -32,11 +49,11 @@ jobmanager:
       size: 1600m
 state:
   savepoints:
-    dir: s3a://warehouse-flink/state/savepoints
+    dir: s3a://defaultfs/state/savepoints
   backend:
     type: hashmap
   checkpoints:
-    dir: s3a://warehouse-flink/state/checkpoints
+    dir: s3a://defaultfs/state/checkpoints
 security:
   kerberos:
     login:
@@ -58,8 +75,8 @@ io:
     dirs: /tmp
 execution:
   checkpointing:
-    savepoint-dir: s3a://warehouse-flink/execution/savepoints
-    dir: s3a://warehouse-flink/execution/
+    savepoint-dir: s3a://defaultfs/execution/savepoints
+    dir: s3a://defaultfs/execution/
     interval: 10s
 taskmanager:
   host: flink-taskmanager

@@ -39,7 +39,7 @@ docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "k
 #
 #
 #
-./bin/flink run examples/streaming/WordCount.jar --input s3a://warehouse-flink/README.md --output s3a://warehouse-flink/output/3f7e50176f1221e967d3ca0d22ebaab1
+./bin/flink run examples/streaming/WordCount.jar --input s3a://defaultfs/README.md --output s3a://defaultfs/output/3f7e50176f1221e967d3ca0d22ebaab1
 
 
 
@@ -78,7 +78,7 @@ flink stop 3ee7c8da616b3cfdea2a37916c7ac41e
 
 # Restart Job from save  point
 /opt/flink/bin/flink run --detached \
---fromSavepoint s3a://warehouse-flink/execution/savepoints/savepoint-3ee7c8-4671ebd2716c \
+--fromSavepoint s3a://defaultfs/execution/savepoints/savepoint-3ee7c8-4671ebd2716c \
 --class flink.playgrounds.ops.clickcount.ClickEventCount /opt/bd-flink-module-1.0.0.jar \
 --checkpointing \
 --event-time \
