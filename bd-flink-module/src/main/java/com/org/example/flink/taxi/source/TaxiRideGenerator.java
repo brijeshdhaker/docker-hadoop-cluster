@@ -16,9 +16,9 @@
  * limitations under the License.
  */
 
-package com.org.example.flink.taxiride.source;
+package com.org.example.flink.taxi.source;
 
-import com.org.example.flink.taxiride.models.TaxiRide;
+import com.org.example.flink.taxi.models.TaxiRide;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
 
 import java.util.ArrayList;

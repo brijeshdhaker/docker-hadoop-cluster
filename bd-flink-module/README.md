@@ -33,19 +33,14 @@ docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "k
 --timeout-ms 5000 2>/dev/null"
 
 ```
-
-#
-#
-#
-./bin/flink run examples/streaming/WordCount.jar --input s3a://defaultfs/README.md --output s3a://defaultfs/output
-
-
-
-#
-#
 #
 ```shell
 
+./bin/flink run examples/streaming/WordCount.jar --input s3a://defaultfs/README.md --output s3a://defaultfs/output
+
+```
+#
+```shell
 
 docker run --rm -i -t \
 --network sandbox.net \
@@ -61,9 +56,12 @@ apache/flink:1.20.0-scala_2.12-java17 /bin/bash
 ```
 
 # start event generation
+```shell
 java -classpath /opt/bd-flink-module/bd-flink-module-1.0.0.jar:/opt/flink/lib/* flink.playgrounds.ops.clickcount.ClickEventGenerator --bootstrap.servers kafkabroker.sandbox.net:9092 --topic click-event-source &
+```
 
 # start event count flink job
+```shell
 flink run --detached \
 --class flink.playgrounds.ops.clickcount.ClickEventCount /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
 --checkpointing \
@@ -71,14 +69,18 @@ flink run --detached \
 --bootstrap.servers kafkabroker.sandbox.net:9092 \
 --input-topic click-event-source \
 --output-topic click-event-sink
-
+```
 # Job has been submitted with JobID 3ee7c8da616b3cfdea2a37916c7ac41e
-
+```shell
 flink list
-
+```
+#
+```shell
 flink stop 3ee7c8da616b3cfdea2a37916c7ac41e
+```
 
 # Restart Job from save  point
+```shell
 /opt/flink/bin/flink run --detached \
 --fromSavepoint s3a://defaultfs/execution/savepoints/savepoint-3ee7c8-4671ebd2716c \
 --class flink.playgrounds.ops.clickcount.ClickEventCount /opt/bd-flink-module-1.0.0.jar \
@@ -87,48 +89,44 @@ flink stop 3ee7c8da616b3cfdea2a37916c7ac41e
 --bootstrap.servers kafkabroker.sandbox.net:9092 \
 --input-topic click-event-source \
 --output-topic click-event-sink
-
 ```
 
 # Validate Source & Sink
 ```shell
-
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
 --topic click-event-source \
 --bootstrap-server kafkabroker.sandbox.net:9092" \
 --consumer.config /apps/sandbox/kafka/cnf/client_plaintext.config \
 --timeout-ms 5000 2>/dev/null"
-
 ```
 
 # Validate Sink
 ```shell
-
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
 --topic click-event-sink \
 --bootstrap-server kafkabroker.sandbox.net:9092" \
 --consumer.config /apps/sandbox/kafka/cnf/client_plaintext.config \
 --timeout-ms 5000 2>/dev/null"
-
 ```
+
 jar tf ./bd-docker-sandbox/resources/libs/s3-fs-hadoop/flink-s3-fs-hadoop-1.16.2.jar | grep "org.apache.hadoop.fs.s3a.S3AFileSystem"
 
-#
 # start event count flink job
-#
+```shell
 flink run --detached \
 --class flink.playgrounds.delta.sink.DeltaSinkExampleLocal /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
 --checkpointing \
 --event-time
+```
 
-#
 # Transaction Pipeline
-#
+```shell
 flink run --detached \
 --class com.org.example.flink.transaction.TransactionPipeline /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
 --engine-type remote-cluster \
 --table-name transactions \
 --config-path /opt/flink/conf
+```
 
 #
 #

@@ -16,9 +16,9 @@
  * limitations under the License.
  */
 
-package com.org.example.flink.taxiride.models;
+package com.org.example.flink.taxi.models;
 
-import com.org.example.flink.utils.DataGenerator;
+import com.org.example.flink.taxi.source.DataGenerator;
 import org.apache.flink.annotation.VisibleForTesting;
 import org.apache.flink.streaming.runtime.streamrecord.StreamRecord;
 

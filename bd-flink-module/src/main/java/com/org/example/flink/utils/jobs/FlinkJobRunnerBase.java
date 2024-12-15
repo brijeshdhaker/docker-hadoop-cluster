@@ -54,16 +54,16 @@ public abstract class FlinkJobRunnerBase implements FlinkJobRunner {
 
         StreamExecutionEnvironment env;
         String engine_type = params.get(ENGINE_TYPE);
+        Configuration config = loadConfig(params);
+        config.set(RestOptions.PORT, 8881);
         switch (engine_type){
             case Constants.LOCAL_CLUSTER :
-                Configuration config = loadConfig(params);
-                config.set(RestOptions.PORT, 8881);
                 FileSystem.initialize(config);
                 env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(config);
                 break;
             case Constants.MINI_CLUSTER:
-                FileSystem.initialize(loadConfig(params));
-                env = StreamExecutionEnvironment.getExecutionEnvironment(loadConfig(params));
+                FileSystem.initialize(config);
+                env = StreamExecutionEnvironment.getExecutionEnvironment(config);
                 break;
             case Constants.REMOTE_CLUSTER:
                 env = StreamExecutionEnvironment.getExecutionEnvironment();

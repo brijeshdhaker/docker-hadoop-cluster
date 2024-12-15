@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package com.org.example.flink.taxiride.models;
+package com.org.example.flink.taxi.models;
 
 import java.io.Serializable;
 

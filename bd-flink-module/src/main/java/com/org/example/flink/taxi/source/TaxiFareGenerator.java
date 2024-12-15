@@ -16,10 +16,9 @@
  * limitations under the License.
  */
 
-package com.org.example.flink.taxiride.source;
+package com.org.example.flink.taxi.source;
 
-import com.org.example.flink.taxiride.models.TaxiFare;
-import com.org.example.flink.utils.DataGenerator;
+import com.org.example.flink.taxi.models.TaxiFare;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
 
 
