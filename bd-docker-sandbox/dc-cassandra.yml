@@ -1,7 +1,12 @@
 #
 # docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
-# docker volume create --name sandbox_cassandra_data --opt type=none --opt device=/apps/sandbox/cassandra/data --opt o=bind
-# docker volume create --name sandbox_cassandra_conf --opt type=none --opt device=/apps/sandbox/cassandra/conf --opt o=bind
+#
+#
+# docker run -it --rm --network sandbox.net --name cassandra-cqlsh cassandra:4.1 cqlsh cassandra-node01
+# select * from system_schema.keyspaces;
+# select * from system_schema.tables;
+# select * from system_schema.tables WHERE keyspace_name = 'system_auth'
+# select * from system_schema.columns WHERE keyspace_name = 'system_auth' AND table_name = 'roles';
 #
 ---
 version: "3.9"
@@ -10,22 +15,43 @@ services:
   #
   # Cassandra Server
   #
-  cassandra:
+  cassandra-node01:
     image: cassandra:4.1
-    hostname: cassandra
-    container_name: cassandra
+    hostname: cassandra-node01.sandbox.net
+    container_name: cassandra-node01
     restart: always
-    ports:
-      - "7000:7000"
-      - "7001:7001"  #
-      - "7199:7199"  # JMX
-      - "9042:9042"  # Native Transport
-      - "9160:9160"  # Thrift Clients
+#    ports:
+#      - "7000:7000"
+#      - "7001:7001"  #
+#      - "7199:7199"  # JMX
+#      - "9042:9042"  # Native Transport
+#      - "9160:9160"  # Thrift Clients
     volumes:
       - sandbox_apps_path:/apps
-      - sandbox_cassandra_data:/var/lib/cassandra
+      - /apps/sandbox/cassandra/node01:/var/lib/cassandra
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
+      - CASSANDRA_BROADCAST_ADDRESS=cassandra-node01.sandbox.net
+
+  #
+  cassandra-node02:
+    image: cassandra:4.1
+    hostname: cassandra-node02.sandbox.net
+    container_name: cassandra-node02
+    restart: always
+#    ports:
+#      - "7000:7000"
+#      - "7001:7001"  #
+#      - "7199:7199"  # JMX
+#      - "9042:9042"  # Native Transport
+#      - "9160:9160"  # Thrift Clients
+    volumes:
+      - sandbox_apps_path:/apps
+      - /apps/sandbox/cassandra/node02:/var/lib/cassandra
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+      - CASSANDRA_BROADCAST_ADDRESS=cassandra-node02.sandbox.net
+      - CASSANDRA_SEEDS=cassandra-node01.sandbox.net
 
 
 #
@@ -33,13 +59,13 @@ volumes:
   #
   sandbox_apps_path:
     external: true
-  sandbox_security_secrets:
-    external: true
-  #
-  sandbox_cassandra_data:
-    external: true
-  sandbox_cassandra_conf:
-    external: true
+#  sandbox_security_secrets:
+#    external: true
+#  #
+#  sandbox_cassandra_data:
+#    external: true
+#  sandbox_cassandra_conf:
+#    external: true
 
 #
 networks:

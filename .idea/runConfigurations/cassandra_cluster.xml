@@ -1,0 +1,17 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="cassandra-cluster" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+    <deployment type="docker-compose.yml">
+      <settings>
+        <option name="envFilePath" value="" />
+        <option name="services">
+          <list>
+            <option value="cassandra-node01" />
+            <option value="cassandra-node02" />
+          </list>
+        </option>
+        <option name="sourceFilePath" value="bd-docker-sandbox/dc-cassandra.yml" />
+      </settings>
+    </deployment>
+    <method v="2" />
+  </configuration>
+</component>

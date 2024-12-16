@@ -4,11 +4,21 @@
 
 sudo mkdir -p /apps
 
+# maven repo & ivy
 sudo mkdir -p /apps/{.m2,.ivy2}
+
+# logs & config dirs
 sudo mkdir -p /apps/{python,var/logs,security/ssl}
 
-sudo mkdir -p /apps/{sandbox/minio,sandbox/mysql/data}
-sudo mkdir -p /apps/{sandbox/zookeeper/data,sandbox/zookeeper/log,sandbox/kafka/data,sandbox/kafka/log,sandbox/schema-registry/data,sandbox/schema-registry/log}
+# Storage
+sudo mkdir -p /apps/sandbox/{defaultfs,minio,mysql/data}
 
+# Kafka
+sudo mkdir -p /apps/sandbox/{zookeeper/data,zookeeper/log,kafka/data,kafka/log,schema-registry/data,schema-registry/log}
+
+# Cassandra
+sudo mkdir -p /apps/sandbox/cassandra/{node01,node02}
+
+#
 sudo chmod 775 -R /apps/
 sudo chown brijeshdhaker:root -R /apps/
