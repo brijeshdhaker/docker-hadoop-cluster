@@ -1,7 +1,7 @@
 flink:
   hadoop:
     fs:
-      default-scheme: s3a://warehouse-flink/
+      default-scheme: s3a://defaultfs/
       s3a:
         access:
           key: admin
@@ -48,9 +48,9 @@ io:
     dirs: /tmp
 execution:
   checkpointing:
-    savepoint-dir: s3a://warehouse-flink/execution/savepoints
+    savepoint-dir: s3a://defaultfs/execution/savepoints
     interval: 10s
-    dir: s3a://warehouse-flink/execution/
+    dir: s3a://defaultfs/execution/
 parallelism:
   default: 4
 state:
@@ -58,13 +58,13 @@ state:
     type: hashmap
     incremental: false
     fs:
-      checkpointdir: s3a://warehouse-flink/fs/checkpoints
+      checkpointdir: s3a://defaultfs/fs/checkpoints
   savepoints:
-    dir: s3a://warehouse-flink/state/savepoints
+    dir: s3a://defaultfs/state/savepoints
   checkpoints:
-    dir: s3a://warehouse-flink/state/checkpoints
+    dir: s3a://defaultfs/state/checkpoints
 fs:
-  default-scheme: s3a://warehouse-flink/
+  default-scheme: s3a://defaultfs/
   s3a:
     access:
       key: admin

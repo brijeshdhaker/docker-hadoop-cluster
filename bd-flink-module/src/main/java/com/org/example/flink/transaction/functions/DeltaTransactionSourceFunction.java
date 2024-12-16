@@ -1,10 +1,8 @@
 package com.org.example.flink.transaction.functions;
 
 import com.github.javafaker.Faker;
-import com.org.example.flink.transaction.models.raw.RawTransaction;
 import com.org.example.flink.transaction.models.refined.RefineTransaction;
-import com.org.example.flink.transaction.source.TransactionGenerator;
-import com.org.example.flink.utils.DataGenerator;
+import com.org.example.flink.taxi.source.DataGenerator;
 import com.org.example.flink.utils.RandomItem;
 import com.org.example.flink.utils.Utils;
 import org.apache.flink.streaming.api.functions.source.RichParallelSourceFunction;
@@ -20,7 +18,6 @@ import org.apache.flink.types.Row;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Internal class providing mock implementation for example stream source.

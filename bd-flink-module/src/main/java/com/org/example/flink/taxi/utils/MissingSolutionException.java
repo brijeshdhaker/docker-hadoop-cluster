@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package com.org.example.flink.utils;
+package com.org.example.flink.taxi.utils;
 
 /** Exception denoting a missing solution (results in tests verifying the solution instead). */
 public class MissingSolutionException extends Exception {

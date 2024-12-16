@@ -15,6 +15,7 @@
  */
 package com.org.example.flink.delta.sink;
 
+import com.org.example.flink.utils.Constants;
 import com.org.example.flink.utils.DeltaExampleSourceFunction;
 import com.org.example.flink.utils.Utils;
 import com.org.example.flink.utils.jobs.FlinkJobRunnerBase;
@@ -42,8 +43,8 @@ import java.util.UUID;
  */
 /*
 
---engine-type local --sink-table-path data/sink_delta_partitioned_table
---engine-type cluster --sink-table-path data/sink_delta_partitioned_table
+--engine-type local-cluster --table-path data/sink_delta_partitioned_table
+--engine-type remote-cluster --table-path data/sink_delta_partitioned_table
 
 */
 public class DeltaSinkPartitionedTableExample extends FlinkJobRunnerBase {
@@ -51,22 +52,22 @@ public class DeltaSinkPartitionedTableExample extends FlinkJobRunnerBase {
 
     public static void main(String[] args) throws Exception {
 
-        //String tablePath = params.get("table-path", "s3a://warehouse-flink/delta-flink-example/");
+        //String tablePath = params.get("table-path", "s3a://defaultfs/delta-flink-example/");
         //String TABLE_PATH = tablePath + UUID.randomUUID().toString().replace("-", "");
 
         ParameterTool arg_params = ParameterTool.fromArgs(args);
-        String engine_type  = arg_params.get("engine-type", "local-cluster");
+        String engine_type  = arg_params.get(ENGINE_TYPE, Constants.LOCAL_CLUSTER);
 
         Map<String, String> params = new LinkedHashMap<>();
         arg_params.toMap().forEach((key, value) -> params.put(key.toString(), value.toString()));
 
-        if(!params.containsKey("engine-type")){
-            params.put("engine-type", engine_type);
+        if(!params.containsKey(ENGINE_TYPE)){
+            params.put(ENGINE_TYPE, Constants.LOCAL_CLUSTER);
         }
 
         String sink_tbl_path = "data/sink_delta_partitioned_table";
         if(arg_params.toMap().containsKey("sink-table-path")){
-            sink_tbl_path = Utils.resolveTableAbsolutePath(params.get("sink-table-path"), engine_type);
+            sink_tbl_path = Utils.resolveTableAbsolutePath(params.get("sink-table-path"), Constants.LOCAL_CLUSTER);
         }
         params.put("sink-table-path", sink_tbl_path);
 

@@ -31,7 +31,9 @@ import io.delta.flink.sink.DeltaSink;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.java.utils.ParameterTool;
+import org.apache.flink.configuration.GlobalConfiguration;
 import org.apache.flink.core.fs.Path;
+import org.apache.flink.runtime.hadoop.HadoopUserUtils;
 import org.apache.flink.runtime.util.HadoopUtils;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -212,9 +214,7 @@ public class TransactionPipeline extends FlinkJobRunnerBase {
 
     private DeltaSink<RowData> getDeltaSink(String zone, Map<String, String> params) {
 
-
-        Configuration configuration = HadoopUtils.getHadoopConfiguration(loadConfig(params));
-
+        Configuration configuration = Utils.getHadoopFsConfiguration(params.get(ENGINE_TYPE));
         String table_name = String.format("pipelines/%s/%s", zone, params.get(PARMA_TABLE_NAME));
         String table_path = Utils.resolveTableAbsolutePath(table_name, params.get(ENGINE_TYPE)); ;
 
@@ -222,6 +222,7 @@ public class TransactionPipeline extends FlinkJobRunnerBase {
         switch (Zone.valueOf(zone.toUpperCase())){
             case RAW:
                 params.put("raw-txn-delta-table", table_path);
+                System.out.println("raw-txn will save in delta table path : " + table_path);
                 deltaSink = DeltaSink.forRowData(
                         new Path(table_path),
                         configuration,
@@ -230,6 +231,7 @@ public class TransactionPipeline extends FlinkJobRunnerBase {
                 break;
             case REFINE:
                 params.put("refine-txn-delta-table", table_path);
+                System.out.println("refine-txn will save in delta table path : " + table_path);
                 deltaSink = DeltaSink.forRowData(
                         new Path(table_path),
                         configuration,
@@ -238,6 +240,7 @@ public class TransactionPipeline extends FlinkJobRunnerBase {
                 break;
             case ENRICH:
                 params.put("enrich-txn-delta-table", table_path);
+                System.out.println("enrich-txn will save in delta table path : " + table_path);
                 deltaSink = DeltaSink.forRowData(
                         new Path(table_path),
                         configuration,

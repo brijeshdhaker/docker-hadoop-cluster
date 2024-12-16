@@ -16,7 +16,9 @@
  * limitations under the License.
  */
 
-package com.org.example.flink.utils;
+package com.org.example.flink.taxi.source;
+
+import com.org.example.flink.taxi.utils.GeoUtils;
 
 import java.time.Instant;
 import java.util.Random;

@@ -4,9 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-12-13 update bd-flink-module.">
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-12-14 update bd-flink-module.">
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/mini_cluster_transaction_pipeline.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxi/DriverHourlyMaxTips.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxi/TaxiLongRidesAlerts.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxi/TaxiRidesAndFares.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/ProductsHourlySales.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/resources/log4j2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/resources/log4j2.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxiride/RideCountExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxi/RideCountExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxiride/models/RideAndFare.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxi/models/RideAndFare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxiride/models/TaxiFare.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxi/models/TaxiFare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxiride/models/TaxiRide.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxi/models/TaxiRide.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxiride/source/TaxiFareGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxi/source/TaxiFareGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxiride/source/TaxiRideGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxi/source/TaxiRideGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/functions/DeltaTransactionSourceFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/functions/DeltaTransactionSourceFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/source/TransactionGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/source/TransactionGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/DataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxi/source/DataGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/FileSystemUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/FileSystemUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/GeoUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxi/utils/GeoUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/MissingSolutionException.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxi/utils/MissingSolutionException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/FlinkJobRunnerBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/FlinkJobRunnerBase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +39,9 @@
         <option value="JUnit5 Test Class" />
         <option value="JUnit3 Test Class" />
         <option value="JUnit4 Test Class" />
-        <option value="Class" />
         <option value="Interface" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -67,7 +86,6 @@
         <option name="userSettingsFile" value="$USER_HOME$/.m2/settings.xml" />
       </MavenGeneralSettings>
     </option>
-    <option name="explicitlyEnabledProfiles" value="local" />
   </component>
   <component name="MavenRunner">
     <option name="skipTests" value="true" />
@@ -105,6 +123,7 @@
     "Application.DeltaSinkExample.executor": "Debug",
     "Application.DeltaSinkExampleLocal.executor": "Run",
     "Application.DemoApplication.executor": "Debug",
+    "Application.DriverHourlyMaxTips.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.RideCountExample.executor": "Run",
     "Application.SandboxSbApplication.executor": "Debug",
@@ -114,7 +133,7 @@
     "Application.TransactionCountExample.executor": "Run",
     "Application.TransactionPipeline.executor": "Run",
     "Application.local-transaction-pipeline.executor": "Run",
-    "Application.mini-cluster-transaction-pipeline.executor": "Run",
+    "Application.mini-cluster-transaction-pipeline.executor": "Debug",
     "Docker.Docker Image.executor": "Run",
     "Docker.bd-docker-sandbox.minio: Compose Deployment.executor": "Run",
     "Docker.bd-docker-sandbox/dc-flink-cluster.yml: Compose Deployment.executor": "Run",
@@ -206,6 +225,8 @@
     "Maven.bd-data-generator [verify].executor": "Run",
     "Maven.bd-flink-module [clean,package].executor": "Run",
     "Maven.bd-flink-module [clean].executor": "Run",
+    "Maven.bd-flink-module [compile,package].executor": "Run",
+    "Maven.bd-flink-module [compile].executor": "Run",
     "Maven.bd-flink-module [package].executor": "Run",
     "Maven.bd-python-module [clean].executor": "Run",
     "Maven.bd-python-module [install].executor": "Run",
@@ -266,11 +287,11 @@
     "last_directory_selection": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb",
     "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-flink-module/src/main/resources/mini-cluster",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.31724137",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "MavenSettings"
+    "settings.editor.selected.configurable": "terminal"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -306,7 +327,7 @@
       <recent name="com.org.example.flink.records.raw" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.local-transaction-pipeline">
+  <component name="RunManager" selected="Docker.flink-cluster">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -358,32 +379,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DeltaContinuousSourceLocalExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.delta.source.continuous.DeltaContinuousSourceLocalExample" />
+    <configuration name="DriverHourlyMaxTips" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.taxi.DriverHourlyMaxTips" />
       <module name="bd-flink-module" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.org.example.flink.delta.source.continuous.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DeltaSinkExampleLocal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <envs>
-        <env name="AWS_ACCESS_KEY_ID" value="pgm2H2bR7a5kMc5XCYdO" />
-        <env name="AWS_SECRET_ACCESS_KEY" value="zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG" />
-        <env name="AWS_REGION" value="us-east-1" />
-        <env name="AWS_S3_ENDPOINT" value="http://minio.sandbox.net:9010" />
-      </envs>
-      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.delta.sink.DeltaSinkExampleLocal" />
-      <module name="bd-flink-module" />
-      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.org.example.flink.delta.sink.*" />
+          <option name="PATTERN" value="com.org.example.flink.taxi.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -392,56 +393,11 @@
       </method>
     </configuration>
     <configuration name="RideCountExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.taxiride.RideCountExample" />
+      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.taxi.RideCountExample" />
       <module name="bd-flink-module" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.org.example.flink.taxiride.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="cluster-transaction-pipeline" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.transaction.TransactionPipeline" />
-      <module name="bd-flink-module" />
-      <option name="PROGRAM_PARAMETERS" value="--engine-type cluster --table-name transactions --config-path $PROJECT_DIR$/bd-docker-sandbox/conf/flink" />
-      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.org.example.flink.transaction.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="local-transaction-pipeline" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.transaction.TransactionPipeline" />
-      <module name="bd-flink-module" />
-      <option name="PROGRAM_PARAMETERS" value="--engine-type local-cluster --table-name transactions --config-path $PROJECT_DIR$/bd-flink-module/src/main/resources/local-cluster" />
-      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED -Dlog.file=/apps/var/logs/flink/flink-local-session.log" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.org.example.flink.transaction.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="mini-cluster-transaction-pipeline" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.transaction.TransactionPipeline" />
-      <module name="bd-flink-module" />
-      <option name="PROGRAM_PARAMETERS" value="--engine-type mini-cluster --table-name transactions --config-path $PROJECT_DIR$/bd-flink-module/src/main/resources/mini-cluster" />
-      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED -Dlog.file=/apps/var/logs/flink/flink-minicluster-session.log" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.org.example.flink.transaction.*" />
+          <option name="PATTERN" value="com.org.example.flink.taxi.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -601,12 +557,10 @@
       <item itemvalue="Application.AppLauncher::BatchWorkflow" />
       <item itemvalue="Application.AppLauncher::DiscretizedStreamWorkflow" />
       <item itemvalue="Application.AppLauncher::StructuredStreamWorkflow" />
-      <item itemvalue="Application.cluster-transaction-pipeline" />
       <item itemvalue="Application.mini-cluster-transaction-pipeline" />
-      <item itemvalue="Application.RideCountExample" />
       <item itemvalue="Application.local-transaction-pipeline" />
-      <item itemvalue="Application.DeltaContinuousSourceLocalExample" />
-      <item itemvalue="Application.DeltaSinkExampleLocal" />
+      <item itemvalue="Application.DriverHourlyMaxTips" />
+      <item itemvalue="Application.RideCountExample" />
       <item itemvalue="Application.DataStreamJob" />
       <item itemvalue="Docker.flink-cluster" />
       <item itemvalue="Docker.kafka-cluster" />
@@ -618,10 +572,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.local-transaction-pipeline" />
+        <item itemvalue="Application.DriverHourlyMaxTips" />
         <item itemvalue="Application.RideCountExample" />
-        <item itemvalue="Application.DeltaSinkExampleLocal" />
-        <item itemvalue="Application.DeltaContinuousSourceLocalExample" />
         <item itemvalue="Application.DataStreamJob" />
       </list>
     </recent_temporary>
@@ -634,22 +586,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00079" summary="2024-09-30 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1727670744353</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1727670744353</updated>
-    </task>
-    <task id="LOCAL-00080" summary="2024-10-03 Update Project Configuration.">
-      <option name="closed" value="true" />
-      <created>1727951412862</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1727951412863</updated>
     </task>
     <task id="LOCAL-00081" summary="2024-10-04 Update Project Configuration.">
       <option name="closed" value="true" />
@@ -1027,7 +963,23 @@
       <option name="project" value="LOCAL" />
       <updated>1734092851324</updated>
     </task>
-    <option name="localTasksCounter" value="128" />
+    <task id="LOCAL-00128" summary="2024-12-13 update bd-flink-module.">
+      <option name="closed" value="true" />
+      <created>1734094705409</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1734094705410</updated>
+    </task>
+    <task id="LOCAL-00129" summary="2024-12-14 update bd-flink-module.">
+      <option name="closed" value="true" />
+      <created>1734153214234</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1734153214236</updated>
+    </task>
+    <option name="localTasksCounter" value="130" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -1053,7 +1005,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-09-28 Update Project Configuration." />
     <MESSAGE value="2024-09-29 Update Project Configuration." />
     <MESSAGE value="2024-09-30 Update Project Configuration." />
     <MESSAGE value="2024-10-03 Update Project Configuration." />
@@ -1078,7 +1029,8 @@
     <MESSAGE value="2024-12-12 add refine &amp; enrichment for flink module." />
     <MESSAGE value="2024-12-13 add refine &amp; enrichment for flink module." />
     <MESSAGE value="2024-12-13 update bd-flink-module." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-12-13 update bd-flink-module." />
+    <MESSAGE value="2024-12-14 update bd-flink-module." />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-12-14 update bd-flink-module." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1087,6 +1039,11 @@
           <url>file://$PROJECT_DIR$/bd-java-module/src/main/java/org/examples/hadoop/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-core/1.20.0/flink-core-1.20.0.jar!/org/apache/flink/core/fs/FileSystem.class</url>
+          <line>121</line>
+          <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/bd-python-module/src/main/com/example/kafka/python/kafka_python_simple_consumer.py</url>

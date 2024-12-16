@@ -35,7 +35,7 @@ public class DeltaContinuousSourceClusterExample extends FlinkJobRunnerBase {
     private static final String TABLE_PATH = Utils.resolveTableAbsolutePath("data/source_delta_table", "Local");
 
     public static void main(String[] args) throws Exception {
-        //String tablePath = params.get("table-path", "s3a://warehouse-flink/delta-flink-example/");
+        //String tablePath = params.get("table-path", "s3a://defaultfs/delta-flink-example/");
         //String TABLE_PATH = tablePath + UUID.randomUUID().toString().replace("-", "");
 
         ParameterTool arg_params = ParameterTool.fromArgs(args);

@@ -16,10 +16,10 @@
  * limitations under the License.
  */
 
-package com.org.example.flink.taxiride;
+package com.org.example.flink.taxi;
 
-import com.org.example.flink.taxiride.models.TaxiRide;
-import com.org.example.flink.taxiride.source.TaxiRideGenerator;
+import com.org.example.flink.taxi.models.TaxiRide;
+import com.org.example.flink.taxi.source.TaxiRideGenerator;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 

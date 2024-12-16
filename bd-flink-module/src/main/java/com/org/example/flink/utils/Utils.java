@@ -38,10 +38,10 @@ public final class Utils {
             new RowType.RowField("f3", new IntType())
     ));
 
-    public static String resolveTableAbsolutePath(String resourcesTableDir, String runnerType) {
+    public static String resolveTableAbsolutePath(String resource_path, String engine_type) {
         //String rootPath = Paths.get(".").toAbsolutePath().normalize().toString();
-        String rootPath = runnerType.equalsIgnoreCase("local-cluster") ? "file:///apps/sandbox/defaultfs" : "s3a://defaultfs";
-        return rootPath + "/" + resourcesTableDir;
+        String rootPath = engine_type.equalsIgnoreCase("local-cluster") ? "file:///apps/sandbox/defaultfs" : "s3a://defaultfs";
+        return rootPath + "/" + resource_path;
     }
 
     public static void prepareDirs(String tablePath) throws IOException {
@@ -80,26 +80,26 @@ public final class Utils {
         );
     }
 
-    public static Configuration getHadoopFsConfiguration(String runnerType){
+    public static Configuration getHadoopFsConfiguration(String engine_type){
 
-        Configuration configuration = HadoopUtils.getHadoopConfiguration(GlobalConfiguration.loadConfiguration());
-        /*
-        if(runnerType.equalsIgnoreCase("Cluster")){
-            configuration.set("fs.defaultFS", "s3a://warehouse-flink/");
+        Configuration configuration = new Configuration();
+        if(engine_type.equalsIgnoreCase(Constants.REMOTE_CLUSTER) || engine_type.equalsIgnoreCase(Constants.MINI_CLUSTER)){
+            configuration.set("fs.defaultFS", "s3a://defaultfs");
             configuration.set("fs.s3a.endpoint", "http://minio.sandbox.net:9010");
-            configuration.set("fs.s3a.access.key", "admin");
-            configuration.set("fs.s3a.secret.key", "password");
+            configuration.set("fs.s3a.access.key", "pgm2H2bR7a5kMc5XCYdO");
+            configuration.set("fs.s3a.secret.key", "zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG");
             configuration.set("fs.s3a.path.style.access", "true");
             configuration.set("fs.s3a.aws.credentials.provider", "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider");
             configuration.set("fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem");
+        }else {
+            configuration.set("fs.defaultFS", "file:///apps/sandbox/defaultfs");
         }
-        */
         return configuration;
     }
 
-    public static void printDeltaTableRows(String tablePath, String runnerType) throws InterruptedException {
+    public static void printDeltaTableRows(String tablePath, String engine_type) throws InterruptedException {
 
-        Configuration configuration = HadoopUtils.getHadoopConfiguration(GlobalConfiguration.loadConfiguration());
+        Configuration configuration = getHadoopFsConfiguration(engine_type);
         DeltaLog deltaLog = DeltaLog.forTable(configuration, tablePath);
 
         for (int i = 0; i < 30; i++) {

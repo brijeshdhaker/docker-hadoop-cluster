@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package com.org.example.flink.utils;
+package com.org.example.flink.taxi.utils;
 
 import java.util.ArrayList;
 import java.util.List;

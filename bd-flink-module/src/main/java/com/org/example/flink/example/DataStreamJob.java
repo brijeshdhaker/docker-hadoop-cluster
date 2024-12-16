@@ -38,7 +38,7 @@ public class DataStreamJob {
 		adults.print();
 
 		/*
-		URI path = new URI("s3a://warehouse-flink/README.md");
+		URI path = new URI("s3a://defaultfs/README.md");
 		FileSystem fs = FileSystem.get(path);
 		Path hd = fs.getHomeDirectory();
 		Path wd = fs.getWorkingDirectory();
