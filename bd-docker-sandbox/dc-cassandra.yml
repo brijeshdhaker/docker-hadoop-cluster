@@ -2,6 +2,9 @@
 # docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
 #
 #
+# docker compose -f bd-docker-sandbox/docker-compose.yml up -d cassandra-node01 cassandra-node02
+# docker compose -f bd-docker-sandbox/docker-compose.yml down cassandra-node01 cassandra-node02
+#
 # docker run -it --rm --network sandbox.net --name cassandra-cqlsh cassandra:4.1 cqlsh cassandra-node01
 # select * from system_schema.keyspaces;
 # select * from system_schema.tables;
