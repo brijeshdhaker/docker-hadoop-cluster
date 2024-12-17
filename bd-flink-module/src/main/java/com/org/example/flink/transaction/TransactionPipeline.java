@@ -18,6 +18,8 @@
 
 package com.org.example.flink.transaction;
 
+import com.org.example.flink.AbstractFlinkStreamWorkflow;
+import com.org.example.flink.config.WorkflowConfig;
 import com.org.example.flink.enums.Zone;
 import com.org.example.flink.transaction.functions.EnrichDeltaTransactionMapFunction;
 import com.org.example.flink.transaction.models.enriched.EnrichedTransaction;
@@ -29,6 +31,7 @@ import com.org.example.flink.utils.Utils;
 import com.org.example.flink.utils.jobs.FlinkJobRunnerBase;
 import io.delta.flink.sink.DeltaSink;
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.flink.api.common.JobExecutionResult;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.configuration.GlobalConfiguration;
@@ -57,16 +60,20 @@ import java.util.UUID;
 
 /*
 
---engine-type local-cluster --table-name transactions --config-path /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-flink-module/src/main/resources/local-cluster
+--app-config transactions_workflow.properties --engine-type local-cluster --table-name transactions --config-path /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-flink-module/src/main/resources/local-cluster
 
 AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO;AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG;AWS_REGION=us-east-1;AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
 
 AWS_ACCESS_KEY_ID=admin;AWS_SECRET_ACCESS_KEY=password;AWS_REGION=us-east-1;AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
 
 */
-public class TransactionPipeline extends FlinkJobRunnerBase {
+public class TransactionPipeline extends AbstractFlinkStreamWorkflow {
 
-    public static final String PARMA_TABLE_NAME = "table-name";
+
+    TransactionPipeline(WorkflowConfig workflowConfig){
+        super(workflowConfig);
+    }
+
     /**
      * Main method.
      *
@@ -74,34 +81,24 @@ public class TransactionPipeline extends FlinkJobRunnerBase {
      */
     public static void main(String[] args) throws Exception {
 
-        ParameterTool arg_params = ParameterTool.fromArgs(args);
-        Map<String, String> args_map = arg_params.toMap();
-        Map<String, String> params = new LinkedHashMap<>();
+        //
+        WorkflowConfig workflowConfig = new WorkflowConfig(args);
+        System.out.println("Workflow Id :: " + workflowConfig.workflowConf().get(Constants.WORKFLOW_ID));
+        System.out.println("Workflow Name :: " + workflowConfig.workflowConf().get(Constants.WORKFLOW_NAME));
 
-        args_map.forEach((key, value) -> params.put(key.toString(), value.toString()));
-
-        String engine_type  = arg_params.get(ENGINE_TYPE, Constants.LOCAL_CLUSTER);
-        if(!params.containsKey(ENGINE_TYPE)){
-            params.put(ENGINE_TYPE, engine_type);
-        }
-
-        String uuid = UUID.randomUUID().toString().split("-")[0];
-        params.put(WORKFLOW_NAME,"transaction-pipeline-"+uuid);
-
-        params.put("source-parallelism", "2");
-        params.put("sink-parallelism", "2");
-
-        new TransactionPipeline().run(params);
+        TransactionPipeline streamWorkflow = new TransactionPipeline(workflowConfig);
+        JobExecutionResult result = streamWorkflow.startWorkflow();
+        System.out.println(result.toString());
 
         // run the cleansing pipeline
 
     }
 
     @Override
-    public StreamExecutionEnvironment createPipeline(Map<String, String> params) {
+    public StreamExecutionEnvironment createPipeline() {
 
 
-        StreamExecutionEnvironment env = getStreamExecutionEnvironment(params);
+        StreamExecutionEnvironment env = flinkSession();
 
         // Generate RAW Transactions
         DataStream<RawTransaction> raw_txns = env.addSource(new TransactionGenerator()).name("Raw Transactions");
@@ -163,7 +160,7 @@ public class TransactionPipeline extends FlinkJobRunnerBase {
                 }).name("Transaction Enrichment");
         //enriched_txns.print();
         DataStream<RowData> enriched_delta_txns = enriched_txns.map(new EnrichDeltaTransactionMapFunction());
-        DeltaSink<RowData> enrichTxnDeltaSink = getDeltaSink(Zone.ENRICH.name().toLowerCase(), params);
+        DeltaSink<RowData> enrichTxnDeltaSink = getDeltaSink(Zone.ENRICH.name().toLowerCase(), workflowConfig.workflowConf());
         enriched_delta_txns.sinkTo(enrichTxnDeltaSink).name("Enrich Delta Write");
 
         /*
@@ -214,9 +211,9 @@ public class TransactionPipeline extends FlinkJobRunnerBase {
 
     private DeltaSink<RowData> getDeltaSink(String zone, Map<String, String> params) {
 
-        Configuration configuration = Utils.getHadoopFsConfiguration(params.get(ENGINE_TYPE));
-        String table_name = String.format("pipelines/%s/%s", zone, params.get(PARMA_TABLE_NAME));
-        String table_path = Utils.resolveTableAbsolutePath(table_name, params.get(ENGINE_TYPE)); ;
+        Configuration configuration = Utils.getHadoopFsConfiguration(workflowConfig.workflowConf().get(Constants.ENGINE_TYPE));
+        String table_name = String.format("pipelines/%s/%s", zone, workflowConfig.workflowConf().get(Constants.PARMA_TABLE_NAME));
+        String table_path = Utils.resolveTableAbsolutePath(table_name, workflowConfig.workflowConf().get(Constants.ENGINE_TYPE));
 
         DeltaSink<RowData> deltaSink = null;
         switch (Zone.valueOf(zone.toUpperCase())){

@@ -1,6 +1,9 @@
 package com.org.example.flink.taxi;
+import com.org.example.flink.AbstractFlinkStreamWorkflow;
+import com.org.example.flink.config.WorkflowConfig;
 import com.org.example.flink.taxi.models.TaxiRide;
 import com.org.example.flink.taxi.source.TaxiRideGenerator;
+import com.org.example.flink.utils.Constants;
 import org.apache.flink.annotation.VisibleForTesting;
 import org.apache.flink.api.common.JobExecutionResult;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
@@ -18,27 +21,20 @@ import org.apache.flink.util.Collector;
 
 import java.time.Duration;
 
-public class TaxiLongRidesAlerts {
-    private final SourceFunction<TaxiRide> source;
-    private final SinkFunction<Long> sink;
+public class TaxiLongRidesAlerts extends AbstractFlinkStreamWorkflow {
+
 
     /** Creates a job using the source and sink provided. */
-    public TaxiLongRidesAlerts(SourceFunction<TaxiRide> source, SinkFunction<Long> sink) {
-
-        this.source = source;
-        this.sink = sink;
+    public TaxiLongRidesAlerts(WorkflowConfig workflowConfig) {
+        super(workflowConfig);
     }
 
-    /**
-     * Creates and executes the long rides pipeline.
-     *
-     * @return {JobExecutionResult}
-     * @throws Exception which occurs during job execution.
-     */
-    public JobExecutionResult execute() throws Exception {
+    @Override
+    public StreamExecutionEnvironment createPipeline() throws Exception {
+        final SourceFunction<TaxiRide> source = new TaxiRideGenerator();
+        final SinkFunction<Long> sink = new PrintSinkFunction<>();
 
-        // set up streaming execution environment
-        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        StreamExecutionEnvironment env = flinkSession();
 
         // start the data generator
         DataStream<TaxiRide> rides = env.addSource(source);
@@ -55,8 +51,7 @@ public class TaxiLongRidesAlerts {
                 .process(new AlertFunction())
                 .addSink(sink);
 
-        // execute the pipeline and return the result
-        return env.execute("Long Taxi Rides");
+        return env;
     }
 
     /**
@@ -66,8 +61,14 @@ public class TaxiLongRidesAlerts {
      */
     public static void main(String[] args) throws Exception {
 
-        TaxiLongRidesAlerts job = new TaxiLongRidesAlerts(new TaxiRideGenerator(), new PrintSinkFunction<>());
-        job.execute();
+        // Long Taxi Rides
+        WorkflowConfig workflowConfig = new WorkflowConfig(args);
+        System.out.println("Workflow Id :: " + workflowConfig.workflowConf().get(Constants.WORKFLOW_ID));
+        System.out.println("Workflow Name :: " + workflowConfig.workflowConf().get(Constants.WORKFLOW_NAME));
+
+        TaxiLongRidesAlerts job = new TaxiLongRidesAlerts(workflowConfig);
+        JobExecutionResult result = job.startWorkflow("Long Taxi Rides");
+        System.out.println(result.toString());
 
     }
 

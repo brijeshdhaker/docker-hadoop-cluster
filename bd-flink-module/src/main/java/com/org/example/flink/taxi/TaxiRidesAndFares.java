@@ -1,10 +1,14 @@
 package com.org.example.flink.taxi;
 
+import com.org.example.flink.AbstractFlinkStreamWorkflow;
+import com.org.example.flink.config.WorkflowConfig;
 import com.org.example.flink.taxi.models.RideAndFare;
 import com.org.example.flink.taxi.models.TaxiFare;
 import com.org.example.flink.taxi.models.TaxiRide;
 import com.org.example.flink.taxi.source.TaxiFareGenerator;
 import com.org.example.flink.taxi.source.TaxiRideGenerator;
+import com.org.example.flink.utils.Constants;
+import com.org.example.flink.utils.Utils;
 import org.apache.flink.api.common.JobExecutionResult;
 import org.apache.flink.api.common.state.ValueState;
 import org.apache.flink.api.common.state.ValueStateDescriptor;
@@ -18,32 +22,35 @@ import org.apache.flink.streaming.api.functions.source.SourceFunction;
 
 import org.apache.flink.util.Collector;
 
-public class TaxiRidesAndFares {
+
+/*
+--app-config taxi_workflow.properties --engine-type local-cluster --table-name transactions --config-path /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-flink-module/src/main/resources/local-cluster
+
+*/
+public class TaxiRidesAndFares extends AbstractFlinkStreamWorkflow  {
 
 
-    private final SourceFunction<TaxiRide> rideSource;
-    private final SourceFunction<TaxiFare> fareSource;
-    private final SinkFunction<RideAndFare> sink;
-
-    /** Creates a job using the sources and sink provided. */
-    public TaxiRidesAndFares(
-            SourceFunction<TaxiRide> rideSource,
-            SourceFunction<TaxiFare> fareSource,
-            SinkFunction<RideAndFare> sink) {
-
-        this.rideSource = rideSource;
-        this.fareSource = fareSource;
-        this.sink = sink;
+    TaxiRidesAndFares(WorkflowConfig workflowConfig){
+        super(workflowConfig);
     }
 
-    /**
-     * Creates and executes the pipeline using the StreamExecutionEnvironment provided.
-     *
-     * @throws Exception which occurs during job execution.
-     * @param env The {StreamExecutionEnvironment}.
-     * @return {JobExecutionResult}
-     */
-    public JobExecutionResult execute(StreamExecutionEnvironment env) throws Exception {
+    @Override
+    public StreamExecutionEnvironment createPipeline() throws Exception {
+        final SourceFunction<TaxiRide> rideSource = new TaxiRideGenerator();
+        final SourceFunction<TaxiFare> fareSource = new TaxiFareGenerator();
+        final SinkFunction<RideAndFare> sink = new PrintSinkFunction<>();
+
+        // Setting up checkpointing so that the state can be explored with the State Processor API.
+        // Generally it's better to separate configuration settings from the code,
+        // but for this example it's convenient to have it here for running in the IDE.
+        Configuration conf = new Configuration();
+        conf.setString("state.backend", "filesystem");
+        String checkpoint_dir = workflowConfig.workflowConf().getOrDefault("workflow.state.checkpoints.dir", "checkpoints");
+        conf.setString("state.checkpoints.dir", Utils.resolveTableAbsolutePath(checkpoint_dir, workflowConfig.workflowConf().get(Constants.ENGINE_TYPE)));
+        conf.setString("execution.checkpointing.interval", "10s");
+        conf.setString("execution.checkpointing.externalized-checkpoint-retention","RETAIN_ON_CANCELLATION");
+
+        StreamExecutionEnvironment env = this.flinkSession();
 
         // A stream of taxi ride START events, keyed by rideId.
         DataStream<TaxiRide> rides =
@@ -59,16 +66,10 @@ public class TaxiRidesAndFares {
                 .name("enrichment") // name for this operator in the web UI
                 .addSink(sink);
 
-        // Execute the pipeline and return the result.
-        return env.execute("Join Rides with Fares");
+        return env;
     }
 
-    /** Creates and executes the pipeline using the default StreamExecutionEnvironment. */
-    public JobExecutionResult execute() throws Exception {
-        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-        return execute(env);
-    }
 
     /**
      * Main method.
@@ -77,24 +78,15 @@ public class TaxiRidesAndFares {
      */
     public static void main(String[] args) throws Exception {
 
-        TaxiRidesAndFares job = new TaxiRidesAndFares(
-                        new TaxiRideGenerator(),
-                        new TaxiFareGenerator(),
-                        new PrintSinkFunction<>()
-                );
+        // Join Rides with Fares
+        WorkflowConfig workflowConfig = new WorkflowConfig(args);
+        System.out.println("Workflow Id :: " + workflowConfig.workflowConf().get(Constants.WORKFLOW_ID));
+        System.out.println("Workflow Name :: " + workflowConfig.workflowConf().get(Constants.WORKFLOW_NAME));
 
-        // Setting up checkpointing so that the state can be explored with the State Processor API.
-        // Generally it's better to separate configuration settings from the code,
-        // but for this example it's convenient to have it here for running in the IDE.
-        Configuration conf = new Configuration();
-        conf.setString("state.backend", "filesystem");
-        conf.setString("state.checkpoints.dir", "file:///apps/sandbox/defaultfs/checkpoints");
-        conf.setString("execution.checkpointing.interval", "10s");
-        conf.setString("execution.checkpointing.externalized-checkpoint-retention","RETAIN_ON_CANCELLATION");
+        TaxiRidesAndFares job = new TaxiRidesAndFares(workflowConfig);
+        JobExecutionResult result = job.startWorkflow("Rides with Fares");
+        System.out.println(result.toString());
 
-        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment(conf);
-
-        job.execute(env);
     }
 
     public static class EnrichmentFunction

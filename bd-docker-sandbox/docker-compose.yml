@@ -13,6 +13,9 @@
 # docker compose -f bd-docker-sandbox/docker-compose.yml up -d zeppelin
 # docker compose -f bd-docker-sandbox/docker-compose.yml up -d spark-notebook
 #
+# docker compose -f bd-docker-sandbox/docker-compose.yml up -d cassandra-node01 cassandra-node02
+# docker compose -f bd-docker-sandbox/docker-compose.yml down cassandra-node01 cassandra-node02
+#
 # docker compose -f bd-docker-sandbox/docker-compose.yml up -d flink-jobmanager flink-taskmanager
 # docker compose -f bd-docker-sandbox/docker-compose.yml down flink-jobmanager flink-taskmanager
 #
@@ -44,6 +47,7 @@
 include:
   - path: ../bd-docker-sandbox/dc-minio.yml
   - path: ../bd-docker-sandbox/dc-mysqlserver.yml
+  - path: ../bd-docker-sandbox/dc-cassandra.yml
   - path: ../bd-docker-sandbox/dc-kafka-cluster-7.5.2.yml
   - path: ../bd-docker-sandbox/dc-flink-cluster.yml
   - path: ../bd-docker-sandbox/dc-spark-cluster.yml
