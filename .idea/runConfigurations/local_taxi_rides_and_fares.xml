@@ -1,12 +1,12 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="local-transaction-pipeline" type="Application" factoryName="Application">
-    <option name="MAIN_CLASS_NAME" value="com.org.example.flink.transaction.TransactionPipeline" />
+  <configuration default="false" name="local-taxi-rides-and-fares" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.org.example.flink.taxi.TaxiRidesAndFares" />
     <module name="bd-flink-module" />
-    <option name="PROGRAM_PARAMETERS" value="--app-config transactions_workflow.properties --engine-type local-cluster --table-name transactions --config-path $PROJECT_DIR$/bd-flink-module/src/main/resources/local-cluster" />
+    <option name="PROGRAM_PARAMETERS" value="--app-config taxi_workflow.properties --config-path $PROJECT_DIR$/bd-flink-module/src/main/resources/local-cluster" />
     <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED -Dlog.file=/apps/var/logs/flink/flink-local-session.log" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="com.org.example.flink.transaction.*" />
+        <option name="PATTERN" value="com.org.example.flink.taxi.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>

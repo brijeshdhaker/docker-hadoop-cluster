@@ -9,8 +9,13 @@ import java.util.Arrays;
 
 public interface Constants {
 
-    public static final String WORKFLOW_NAME = "workflow-name";
-    public static final String ENGINE_TYPE = "engine-type";
+    String WORKFLOW_ID = "workflow-id";
+    String WORKFLOW_NAME = "workflow-name";
+    String ENGINE_TYPE = "engine-type";
+    String APP_CONFIG_PATH = "app-config";
+    String APP_MARKER_PATH = "app-marker";
+    String FLINK_CONFIG_PATH = "config-path";
+    String PARMA_TABLE_NAME = "workflow.delta.table.name";
 
     String LOCAL_CLUSTER = "local-cluster";
     String MINI_CLUSTER = "mini-cluster";
