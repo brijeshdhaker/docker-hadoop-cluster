@@ -84,7 +84,7 @@ public class TaxiRidesAndFares extends AbstractFlinkStreamWorkflow  {
         System.out.println("Workflow Name :: " + workflowConfig.workflowConf().get(Constants.WORKFLOW_NAME));
 
         TaxiRidesAndFares job = new TaxiRidesAndFares(workflowConfig);
-        JobExecutionResult result = job.startWorkflow();
+        JobExecutionResult result = job.startWorkflow("Rides with Fares");
         System.out.println(result.toString());
 
     }

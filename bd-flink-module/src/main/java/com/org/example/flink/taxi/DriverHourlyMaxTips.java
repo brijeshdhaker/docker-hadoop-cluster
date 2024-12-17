@@ -1,13 +1,13 @@
 package com.org.example.flink.taxi;
 
+import com.org.example.flink.AbstractFlinkStreamWorkflow;
+import com.org.example.flink.config.WorkflowConfig;
 import com.org.example.flink.taxi.models.TaxiFare;
 import com.org.example.flink.taxi.source.TaxiFareGenerator;
 import com.org.example.flink.utils.Constants;
-import com.org.example.flink.utils.jobs.FlinkJobRunnerBase;
 import org.apache.flink.api.common.JobExecutionResult;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.api.java.tuple.Tuple3;
-import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.sink.PrintSinkFunction;
@@ -19,39 +19,25 @@ import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.UUID;
+public class DriverHourlyMaxTips extends AbstractFlinkStreamWorkflow {
 
-public class DriverHourlyMaxTips {
 
-    private final SourceFunction<TaxiFare> source;
-    private final SinkFunction<Tuple3<Long, Long, Float>> sink;
 
     /** Creates a job using the source and sink provided. */
-    public DriverHourlyMaxTips(
-            SourceFunction<TaxiFare> source,
-            SinkFunction<Tuple3<Long, Long, Float>> sink) {
-
-        this.source = source;
-        this.sink = sink;
+    public DriverHourlyMaxTips(WorkflowConfig workflowConfig) {
+        super(workflowConfig);
     }
 
     public static void main(String[] args) throws Exception {
 
-        ParameterTool arg_params = ParameterTool.fromArgs(args);
-        Map<String, String> args_map = arg_params.toMap();
-        Map<String, String> params = new LinkedHashMap<>();
+        //
+        WorkflowConfig workflowConfig = new WorkflowConfig(args);
+        System.out.println("Workflow Id :: " + workflowConfig.workflowConf().get(Constants.WORKFLOW_ID));
+        System.out.println("Workflow Name :: " + workflowConfig.workflowConf().get(Constants.WORKFLOW_NAME));
 
-        args_map.forEach((key, value) -> params.put(key.toString(), value.toString()));
-
-        DriverHourlyMaxTips job = new DriverHourlyMaxTips(
-                        new TaxiFareGenerator(),
-                        new PrintSinkFunction<>()
-                );
-
-        JobExecutionResult result = job.execute();
-        result.getJobID();
+        DriverHourlyMaxTips job = new DriverHourlyMaxTips(workflowConfig);
+        JobExecutionResult result = job.startWorkflow("Hourly Tips");
+        System.out.println(result.toString());
     }
 
     /**
@@ -60,10 +46,13 @@ public class DriverHourlyMaxTips {
      * @return {JobExecutionResult}
      * @throws Exception which occurs during job execution.
      */
-    public JobExecutionResult execute() throws Exception {
-
+    @Override
+    public StreamExecutionEnvironment createPipeline() throws Exception {
         // set up streaming execution environment
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+
+        final SourceFunction<TaxiFare> source = new TaxiFareGenerator();
+        final SinkFunction<Tuple3<Long, Long, Float>> sink = new PrintSinkFunction<>();
 
         // start the data generator and arrange for watermarking
         DataStream<TaxiFare> fares =
@@ -92,8 +81,7 @@ public class DriverHourlyMaxTips {
 
         hourlyMax.addSink(sink);
 
-        // execute the transformation pipeline
-        return env.execute("Hourly Tips");
+        return env;
     }
 
     /*

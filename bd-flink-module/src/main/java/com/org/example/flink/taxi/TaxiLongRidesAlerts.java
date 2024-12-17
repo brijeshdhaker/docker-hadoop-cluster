@@ -67,7 +67,7 @@ public class TaxiLongRidesAlerts extends AbstractFlinkStreamWorkflow {
         System.out.println("Workflow Name :: " + workflowConfig.workflowConf().get(Constants.WORKFLOW_NAME));
 
         TaxiLongRidesAlerts job = new TaxiLongRidesAlerts(workflowConfig);
-        JobExecutionResult result = job.startWorkflow();
+        JobExecutionResult result = job.startWorkflow("Long Taxi Rides");
         System.out.println(result.toString());
 
     }

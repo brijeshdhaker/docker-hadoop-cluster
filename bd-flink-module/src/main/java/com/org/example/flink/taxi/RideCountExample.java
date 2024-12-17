@@ -18,10 +18,18 @@
 
 package com.org.example.flink.taxi;
 
+import com.org.example.flink.AbstractFlinkStreamWorkflow;
+import com.org.example.flink.config.WorkflowConfig;
 import com.org.example.flink.taxi.models.TaxiRide;
 import com.org.example.flink.taxi.source.TaxiRideGenerator;
+import com.org.example.flink.utils.Constants;
+import org.apache.flink.api.common.JobExecutionResult;
+import org.apache.flink.api.common.functions.MapFunction;
+import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.streaming.api.datastream.DataStream;
+import org.apache.flink.streaming.api.datastream.KeyedStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+
 
 
 /**
@@ -32,8 +40,12 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
  * issue, look at the SQL/Table API, or ProcessFunction, or state TTL, all of which provide
  * mechanisms for expiring state for stale keys.
  */
-public class RideCountExample {
+public class RideCountExample extends AbstractFlinkStreamWorkflow {
 
+    /** Creates a job using the source and sink provided. */
+    public RideCountExample(WorkflowConfig workflowConfig) {
+        super(workflowConfig);
+    }
     /**
      * Main method.
      *
@@ -41,18 +53,28 @@ public class RideCountExample {
      */
     public static void main(String[] args) throws Exception {
 
+        //
+        WorkflowConfig workflowConfig = new WorkflowConfig(args);
+        System.out.println("Workflow Id :: " + workflowConfig.workflowConf().get(Constants.WORKFLOW_ID));
+        System.out.println("Workflow Name :: " + workflowConfig.workflowConf().get(Constants.WORKFLOW_NAME));
+
+        RideCountExample job = new RideCountExample(workflowConfig);
+        JobExecutionResult result = job.startWorkflow("Ride Count");
+        System.out.println(result.toString());
+
+    }
+
+    @Override
+    public StreamExecutionEnvironment createPipeline() throws Exception {
         // set up streaming execution environment
-        StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironment();
+        StreamExecutionEnvironment env = flinkSession();
 
         // start the data generator
         DataStream<TaxiRide> rides = env.addSource(new TaxiRideGenerator());
         rides.print();
 
-        /*
         // map each ride to a tuple of (driverId, 1)
-        DataStream<Tuple2<Long, Long>> tuples =
-                rides.map(
-                        new MapFunction<TaxiRide, Tuple2<Long, Long>>() {
+        DataStream<Tuple2<Long, Long>> tuples = rides.map(new MapFunction<TaxiRide, Tuple2<Long, Long>>() {
                             @Override
                             public Tuple2<Long, Long> map(TaxiRide ride) {
                                 return Tuple2.of(ride.driverId, 1L);
@@ -67,9 +89,7 @@ public class RideCountExample {
 
         // we could, in fact, print out any or all of these streams
         rideCounts.print();
-        */
 
-        // run the cleansing pipeline
-        env.execute("Ride Count");
+        return env;
     }
 }

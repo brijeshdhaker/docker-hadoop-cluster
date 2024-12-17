@@ -30,17 +30,25 @@ public abstract class AbstractFlinkStreamWorkflow extends Workflow {
         return results.get();
     }
 
-    public JobExecutionResult startWorkflow() throws Exception {
+    public JobExecutionResult startWorkflow(String workflow_name) throws Exception {
 
         Map<String,String> workflowConf = workflowConfig.workflowConf();
-
         StreamExecutionEnvironment env = createPipeline();
         String engine_type = workflowConf.get(Constants.ENGINE_TYPE);
         if(engine_type.equalsIgnoreCase(Constants.MINI_CLUSTER)) {
+            env.getStreamGraph().setJobName(workflow_name);
             return runJobInBackground(env);
         }else{
-            return env.execute(workflowConf.get(Constants.WORKFLOW_NAME));
+            return env.execute(workflow_name);
         }
+
+    }
+    public JobExecutionResult startWorkflow() throws Exception {
+
+        Map<String,String> workflowConf = workflowConfig.workflowConf();
+        String workflow_name = workflowConf.get(Constants.WORKFLOW_NAME);
+
+        return startWorkflow(workflow_name);
 
     }
 

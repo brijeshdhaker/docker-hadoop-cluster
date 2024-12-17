@@ -5,25 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-12-17 Add examples to bd-flink-module.">
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/AbstractFlinkStreamWorkflow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/Workflow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/config/AbstractAppConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/config/WorkflowConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/sink/ConsoleSink.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/LinkedProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/PropertyFileReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/resources/app_workflow.marker" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/resources/app_workflow.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/resources/taxi_workflow.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/resources/transactions_workflow.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/local_transaction_pipeline.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/local_transaction_pipeline.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/mini_cluster_transaction_pipeline.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/mini_cluster_transaction_pipeline.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/AbstractFlinkStreamWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/AbstractFlinkStreamWorkflow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxi/DriverHourlyMaxTips.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxi/DriverHourlyMaxTips.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxi/RideCountExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxi/RideCountExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxi/TaxiLongRidesAlerts.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxi/TaxiLongRidesAlerts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxi/TaxiRidesAndFares.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxi/TaxiRidesAndFares.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/ProductsHourlySales.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/ProductsHourlySales.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/TransactionPipeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/transaction/TransactionPipeline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/Constants.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,6 +121,7 @@
     "Application.TransactionAvroStream.executor": "Run",
     "Application.TransactionCountExample.executor": "Run",
     "Application.TransactionPipeline.executor": "Run",
+    "Application.local-taxi-ride-counts.executor": "Debug",
     "Application.local-taxi-rides-and-fares.executor": "Debug",
     "Application.local-transaction-pipeline.executor": "Debug",
     "Application.mini-cluster-transaction-pipeline.executor": "Debug",
@@ -331,7 +319,7 @@
       <recent name="com.org.example.flink.transaction.functions" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.local-taxi-long-rides-alerts">
+  <component name="RunManager" selected="Application.local-taxi-ride-counts">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -600,14 +588,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00083" summary="2024-10-13 add spark-delta-table notebook.">
-      <option name="closed" value="true" />
-      <created>1728791862758</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1728791862758</updated>
     </task>
     <task id="LOCAL-00084" summary="2024-10-14 add spark-delta-table notebook.">
       <option name="closed" value="true" />
@@ -993,7 +973,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734401172129</updated>
     </task>
-    <option name="localTasksCounter" value="132" />
+    <task id="LOCAL-00132" summary="2024-12-17 Add examples to bd-flink-module.">
+      <option name="closed" value="true" />
+      <created>1734423452638</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1734423452639</updated>
+    </task>
+    <option name="localTasksCounter" value="133" />
     <servers />
   </component>
   <component name="UnknownFeatures">
