@@ -26,7 +26,7 @@
 # docker volume create --name sandbox_flink_112 --opt type=none --opt device=/opt/flink-1.12.2 --opt o=bind
 #
 ---
-version: "3.9"
+# version: "3.9"
 
 include:
   - ./dc-minio.yml

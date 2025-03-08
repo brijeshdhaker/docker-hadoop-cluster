@@ -6,9 +6,10 @@
 # docker volume create --name sandbox_kafka334_log --opt type=none --opt device=/apps/sandbox/kafka/hadoop334/log --opt o=bind
 #
 ---
-version: "3.9"
+# version: "3.9"
 
 include:
+  - path: ../bd-docker-sandbox/dc-base.yml
   - path: ../bd-docker-sandbox/dc-kdcserver.yml
 
 services:
@@ -68,3 +69,23 @@ services:
       - io.confluent.docker.testing=true
     extra_hosts:
       - "thinkpad.sandbox.net:172.18.0.1"
+
+#
+# Docker Volumes
+#
+volumes:
+  #
+  sandbox_apps_path:
+    external: true
+  #
+  sandbox_security_secrets:
+    external: true
+
+#
+# Docker Networks
+#
+networks:
+  default:
+    external: true
+    driver: bridge
+    name: sandbox.net

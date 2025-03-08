@@ -11,7 +11,7 @@
 # docker volume create --name sandbox_hadoop_334_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/yarn --opt o=bind
 #
 
-version: "3.9"
+# version: "3.9"
 
 include:
   - path: ../bd-docker-sandbox/dc-kdcserver.yml
