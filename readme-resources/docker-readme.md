@@ -82,7 +82,7 @@ $ docker-machine start default
 
 $ `docker-machine config`
 $ `docker-machine env`
-$ docker-machine inspect
+$ `docker-machine inspect`
 $ `docker-machine ip`
 $ `docker-machine kill`
 $ `docker-machine provision`

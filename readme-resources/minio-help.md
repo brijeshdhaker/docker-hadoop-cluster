@@ -95,7 +95,7 @@ upload: ../../../../apps/hostpath/datasets/airlines.csv to s3://warehouse/airlin
 aws --endpoint-url http://minio.sandbox.net:9010 s3 cp /apps/hostpath/datasets/airports.csv s3://warehouse
 upload: ../../../../apps/hostpath/datasets/airports.csv to s3://warehouse/airports.csv
 
-```
+```                                   
 
 ## To delete an object from a bucket
 ```shell

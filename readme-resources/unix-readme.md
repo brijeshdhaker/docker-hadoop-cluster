@@ -55,7 +55,12 @@ ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsacat ~/.ssh/id_rsa.pub >> ~/.ssh/authoriz
 
 yarn logs -applicationId your_application_id > your_application_id.log 2>&1
 
+#
 ## Find Hidden Files Using Find Command
+#
+find /tmp/* -mtime +7 -type f -size +1G
+find /tmp/* -mtime +7 -type f -exec rm {} \;
+
 ```shell
 find . -name ".*" -type f 
 for i in $(find . -name ".*" -type f)
@@ -80,4 +85,46 @@ python -m http.server 8888
 
 #
 #
-smbclient -L //192.168.80.1 -U brijeshdhaker@gmail.com --password=Windows2024$ --workgroup=WORKGROUP
+smbclient -L //192.168.65.1 --user='brijesh dhaker' --password='Accoo7@k47' --workgroup='THINKPAD-WIN-10'
+
+#
+#
+today=$(date +'%s')
+now=`date +"%Y-%m-%dT%H:%M:%S"`
+YYYYMMDD=`date +"%Y%m%d"`
+
+#
+# Split Strings
+#
+A="$(echo 'one_two_three_four_five' | cut -d'_' -f2)"
+B="$(echo 'one_two_three_four_five' | cut -d'_' -f4)"
+
+C=$(awk -F_ '{print $2}' <<< 'one_two_three_four_five')
+D=$(awk -F_ '{print $4}' <<< 'one_two_three_four_five')
+
+#
+# break string with token
+#
+s_path="/ib/core/data/csv:dfilter_44
+
+s_dir_path=${s_path%%:*}
+s_filter=${s_path#*:}
+
+#
+#
+#
+nc -v -n -z -w 1 192.168.65.1 22
+
+#
+last | grep -i reboot
+
+ps -ef | grep -i java
+
+netstat -na | grep 7180
+
+#
+#
+ls -l | awk '$1 !~ /^d/ {print $9}'
+ls -l | awk '$1 ~ /^d/ {print $9}'
+awk '/pattern/{ print $0 }' file
+awk '{for(i=1;i<=NF;i++){ if($i=="yyy"){print $i} } }' file
