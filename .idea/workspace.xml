@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2024-12-17 Add examples to bd-flink-module.">
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-03-10 add helm chart for springboot application.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Python Tutorial/2. IPython Visualization Tutorial_2F1S9ZY8Z.zpln" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/Python Tutorial/2. IPython Visualization Tutorial_2F1S9ZY8Z.zpln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/~Trash/delta-table/enriched-transactions_2KDZRWRXJ.zpln" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/~Trash/delta-table/enriched-transactions_2KDZRWRXJ.zpln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/k8s/app-springboot.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/k8s/app-springboot.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/k8s-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/k8s-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,7 +277,7 @@
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-flink-module/src/main/resources&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/helm/templates&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
@@ -283,18 +288,18 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-spring-module/helm/templates" />
+      <recent name="$PROJECT_DIR$/bd-spring-module/helm/configs/dev" />
+      <recent name="$PROJECT_DIR$/bd-spring-module/helm/configs/local" />
       <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources" />
       <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources/mini-cluster" />
-      <recent name="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/taxiride" />
-      <recent name="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils" />
-      <recent name="$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/records" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-spring-module/helm/configs" />
       <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources/local-cluster" />
       <recent name="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/delta-table" />
       <recent name="$PROJECT_DIR$/bd-flink-module" />
       <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources" />
-      <recent name="$PROJECT_DIR$/bd-flink-module/conf" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -314,7 +319,7 @@
       <recent name="com.org.example.flink.transaction.functions" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.minio">
+  <component name="RunManager" selected="Docker.zeppelin-notebook">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -556,7 +561,6 @@
       <item itemvalue="Application.DataStreamJob" />
       <item itemvalue="Application.ProductsHourlySales" />
       <item itemvalue="Application.local-taxi-long-rides-alerts" />
-      <item itemvalue="Docker.cassandra-cluster" />
       <item itemvalue="Docker.flink-cluster" />
       <item itemvalue="Docker.kafka-cluster" />
       <item itemvalue="Docker.minio" />
@@ -564,6 +568,7 @@
       <item itemvalue="Docker.spark-cluster" />
       <item itemvalue="Docker.spark-notebook" />
       <item itemvalue="Docker.zeppelin-notebook" />
+      <item itemvalue="Docker.cassandra-cluster" />
     </list>
     <recent_temporary>
       <list>
@@ -581,70 +586,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00085" summary="2024-10-14 add spark-delta-table notebook.">
-      <option name="closed" value="true" />
-      <created>1728878690815</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1728878690815</updated>
-    </task>
-    <task id="LOCAL-00086" summary="2024-10-14 add spark-delta-table notebook.">
-      <option name="closed" value="true" />
-      <created>1728879028707</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1728879028707</updated>
-    </task>
-    <task id="LOCAL-00087" summary="2024-10-14 add spark-delta-table notebook.">
-      <option name="closed" value="true" />
-      <created>1728879819396</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1728879819396</updated>
-    </task>
-    <task id="LOCAL-00088" summary="2024-10-19 add docker-plugin for springboot.">
-      <option name="closed" value="true" />
-      <created>1729308933985</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1729308933987</updated>
-    </task>
-    <task id="LOCAL-00089" summary="2024-11-19 Update configurations.">
-      <option name="closed" value="true" />
-      <created>1731987520809</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1731987520811</updated>
-    </task>
-    <task id="LOCAL-00090" summary="2024-11-26 Update configurations.">
-      <option name="closed" value="true" />
-      <created>1732594704133</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1732594704135</updated>
-    </task>
-    <task id="LOCAL-00091" summary="2024-11-26 Update configurations.">
-      <option name="closed" value="true" />
-      <created>1732595205791</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1732595205791</updated>
-    </task>
-    <task id="LOCAL-00092" summary="2024-11-26 Update configurations.">
-      <option name="closed" value="true" />
-      <created>1732595354519</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1732595354520</updated>
     </task>
     <task id="LOCAL-00093" summary="2024-11-27 Update flink configurations.">
       <option name="closed" value="true" />
@@ -974,7 +915,71 @@
       <option name="project" value="LOCAL" />
       <updated>1734425760583</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <task id="LOCAL-00134" summary="2025-03-01 Add examples to bd-flink-module.">
+      <option name="closed" value="true" />
+      <created>1740838523800</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1740838523800</updated>
+    </task>
+    <task id="LOCAL-00135" summary="2025-03-09 Update docker files configurations.">
+      <option name="closed" value="true" />
+      <created>1741444612810</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1741444612811</updated>
+    </task>
+    <task id="LOCAL-00136" summary="2025-03-09 Update docker files configurations.">
+      <option name="closed" value="true" />
+      <created>1741529897334</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1741529897336</updated>
+    </task>
+    <task id="LOCAL-00137" summary="2025-03-09 Update docker files configurations.">
+      <option name="closed" value="true" />
+      <created>1741529952874</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1741529952874</updated>
+    </task>
+    <task id="LOCAL-00138" summary="2025-03-09 add helm chart for springboot application.">
+      <option name="closed" value="true" />
+      <created>1741530455647</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1741530455647</updated>
+    </task>
+    <task id="LOCAL-00139" summary="2025-03-09 add helm chart for springboot application.">
+      <option name="closed" value="true" />
+      <created>1741530501063</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1741530501064</updated>
+    </task>
+    <task id="LOCAL-00140" summary="2025-03-10 add helm chart for springboot application.">
+      <option name="closed" value="true" />
+      <created>1741576283160</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1741576283161</updated>
+    </task>
+    <task id="LOCAL-00141" summary="2025-03-10 add helm chart for springboot application.">
+      <option name="closed" value="true" />
+      <created>1741578404946</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1741578404946</updated>
+    </task>
+    <option name="localTasksCounter" value="142" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -1000,10 +1005,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-10-03 Update Project Configuration." />
-    <MESSAGE value="2024-10-04 Update Project Configuration." />
-    <MESSAGE value="2024-10-06 Update Project Configuration." />
-    <MESSAGE value="2024-10-13 add spark-delta-table notebook." />
     <MESSAGE value="2024-10-14 add spark-delta-table notebook." />
     <MESSAGE value="2024-10-19 add docker-plugin for springboot." />
     <MESSAGE value="2024-11-19 Update configurations." />
@@ -1025,7 +1026,11 @@
     <MESSAGE value="2024-12-14 update bd-flink-module." />
     <MESSAGE value="2024-12-15 Add examples to bd-flink-module." />
     <MESSAGE value="2024-12-17 Add examples to bd-flink-module." />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-12-17 Add examples to bd-flink-module." />
+    <MESSAGE value="2025-03-01 Add examples to bd-flink-module." />
+    <MESSAGE value="2025-03-09 Update docker files configurations." />
+    <MESSAGE value="2025-03-09 add helm chart for springboot application." />
+    <MESSAGE value="2025-03-10 add helm chart for springboot application." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-03-10 add helm chart for springboot application." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
