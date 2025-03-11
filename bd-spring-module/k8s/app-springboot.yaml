@@ -25,7 +25,7 @@ spec:
   restartPolicy: Always
 status: {}
 
-# 
 # kubectl run app-springboot --image=brijeshdhaker/my-app:0.0.1-SNAPSHOT -n i100121 --port=8080 $do > app-springboot.yaml
+# kubectl create deployment app-springboot --image=brijeshdhaker/my-app:0.0.1-SNAPSHOT --dry-run=client -o yaml > app-springboot.yaml
 # kubectl expose pod app-springboot -n i100121 --port=80 --target-port=8080 --type=NodePort $do > app-svc.yaml
 #
