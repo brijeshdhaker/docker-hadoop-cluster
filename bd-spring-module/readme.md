@@ -6,13 +6,18 @@ helm template bd-spring-module ./bd-spring-module/helm \
 --namespace AA100121 \
 --dry-run \
 --debug \
---set favoriteDrink=slurm
+--output-dir ./bd-spring-module/helm/k8s/ \
+--set author=brijeshdhaker@gmail.com
 
-helm template bd-spring-module ./bd-spring-module/helm/archives/repo/bd-spring-module-1.0.0.tgz \
+#
+helm package ./bd-spring-module/helm --destination ./bd-spring-module/helm/charts
+
+#
+helm template bd-spring-module ./bd-spring-module/helm/charts/bd-spring-module-0.1.0.tgz \
 --namespace AA100121 \
 --dry-run \
 --debug \
---set favoriteDrink=slurm
+--set author=brijeshdhaker@gmail.com
 --output-dir ./bd-spring-module/helm/k8s/
 
 #
@@ -20,7 +25,15 @@ helm install bd-spring-module ./bd-spring-module/helm \
 --namespace AA100121 \
 --dry-run \
 --debug \
---set favoriteDrink=slurm \
+--set author=brijeshdhaker@gmail.com \
+--version 1.0.0
+
+#
+helm install bd-spring-module ./bd-spring-module/helm/charts/bd-spring-module-0.1.0.tgz \
+--namespace AA100121 \
+--dry-run \
+--debug \
+--set author=brijeshdhaker@gmail.com \
 --version 1.0.0
 
 #
@@ -28,7 +41,7 @@ helm upgrade bd-spring-module ./bd-spring-module/helm \
 --namespace AA100121 \
 --dry-run \
 --debug \
---set favoriteDrink=slurm
+--set author=brijeshdhaker@gmail.com
 --output-dir ./bd-spring-module/helm/k8s/
 
 #

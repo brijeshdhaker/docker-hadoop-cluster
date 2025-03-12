@@ -33,7 +33,7 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: "sa_dev"
+  name: "sa_devops"
 
 # This is for setting Kubernetes Annotations to a Pod.
 # For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
@@ -111,7 +111,7 @@ autoscaling:
 
 # Additional volumes on the output Deployment definition.
 volumes:
-  - name: app-vol
+  - name: vol-sandbox
     hostPath:
       path: /apps/sandbox
       type: Directory
@@ -122,7 +122,7 @@ volumes:
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
- - name: app-vol
+ - name: vol-sandbox
    mountPath: "/apps/sandbox"
    readOnly: true
 

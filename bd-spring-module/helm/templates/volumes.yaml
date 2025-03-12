@@ -28,5 +28,5 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: /d/hostpath
+    path: /apps/sandbox
 ---

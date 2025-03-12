@@ -31,7 +31,7 @@ cd $HOME
 mkdir -p ~/.kube
 chmod 0700 ~/.kube
 cd ~/.kube
-microk8s config > config
+microk8s config > ~/.kube/config
 
 #
 alias kubectl='microk8s kubectl'
