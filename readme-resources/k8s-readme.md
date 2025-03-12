@@ -11,8 +11,11 @@ kubectl expose pod app-springboot -n i100121 --port=80 --target-port=8080 --type
 
 kubectl create deployment nginx --image=nginx --dry-run=client -o yaml
 kubectl expose deployment app-springboot -n i100121 --port=80 --target-port=8080 --type=NodePort --dry-run=client -o yaml > app-svc.yaml
+kubectl autoscale deployment app-springboot --min=5 --max=10 --cpu-percent=85
 
-kubectl create job hello --image=busybox:1.28 --dry-run=client -o yaml -- bin/sh -c "date; echo 'Hello World' " >> k8s-job.yaml
+
+kubectl create job hello --image=busybox:1.37.0 -- bin/sh -c "date; echo 'Hello World' " >> k8s-job.yaml
+kubectl create job hello --image=busybox:1.37.0 --dry-run=client -o yaml -- bin/sh -c "date; echo 'Hello World' " >> k8s-job.yaml
 kubectl create cronjob hello --image=busybox:1.28 --schedule="*/1 8 * * * *" --dry-run=client -o yaml -- bin/sh -c "date; echo 'Hello World' " >> cron-job.yaml
 
 kubectl apply -f - <<EOF

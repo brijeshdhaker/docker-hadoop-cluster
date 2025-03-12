@@ -1,3 +1,6 @@
+#
+### https://helm.sh/docs/intro/cheatsheet/
+#
 -Dspring.profiles.active=cloud
 
 helm create bd-spring-module/helm --namespace AA100121
@@ -35,6 +38,9 @@ helm install bd-spring-module ./bd-spring-module/helm/charts/bd-spring-module-0.
 --debug \
 --set author=brijeshdhaker@gmail.com \
 --version 1.0.0
+
+#
+helm uninstall <name>
 
 #
 helm upgrade bd-spring-module ./bd-spring-module/helm \

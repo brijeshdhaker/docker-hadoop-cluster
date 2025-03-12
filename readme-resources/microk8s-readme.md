@@ -8,8 +8,13 @@ sudo microk8s start
 sudo microk8s status --wait-ready
 
 #
-mkdir -p ~/.kube/
-sudo microk8s.config  > ~/.kube/config
+#
+sudo usermod -a -G microk8s $USER
+cd $HOME
+mkdir -p ~/.kube
+chmod 0700 ~/.kube
+cd ~/.kube
+microk8s config > ~/.kube/config
 
 #
 sudo microk8s stop
@@ -22,16 +27,6 @@ microk8s enable helm3
 microk8s enable metallb
 microk8s enable metrics-server
 microk8s enable prometheus
-
-
-
-#
-sudo usermod -a -G microk8s $USER
-cd $HOME
-mkdir -p ~/.kube
-chmod 0700 ~/.kube
-cd ~/.kube
-microk8s config > ~/.kube/config
 
 #
 alias kubectl='microk8s kubectl'
