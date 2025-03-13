@@ -27,6 +27,7 @@ microk8s enable helm3
 microk8s enable metallb
 microk8s enable metrics-server
 microk8s enable prometheus
+microk8s enable ingress
 
 #
 alias kubectl='microk8s kubectl'
