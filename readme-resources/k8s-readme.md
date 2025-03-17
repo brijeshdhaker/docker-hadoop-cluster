@@ -1,4 +1,4 @@
-kubectl -n kube-system get pods -l k8s-app=calico-node -L k8s-app
+kubectl -n kube-system get pods -l 'k8s-app=calico-node' -L k8s-app
 kubectl -n kube-system get pods -l 'k8s-app=calico-node' -L k8s-app
 kubectl -n kube-system get pods -l 'k8s-app in (calico-node)' -L k8s-app
 kubectl -n kube-system get pods -l 'k8s-app notin (qa)' -L k8s-app
@@ -11,9 +11,9 @@ kubectl -n kube-system get pods --selector=batch.kubernetes.io/job-name=pi --out
 kubectl run pod nginx --image=nginx --dry-run=client -o yaml
 kubectl expose pod app-springboot -n i100121 --port=80 --target-port=8080 --type=NodePort --dry-run=client -o yaml > app-svc.yaml
 
-#
+# 
 # ingress
-#
+# 
 kubectl get pods -n ingress
 
 kubectl create deployment web --image=gcr.io/google-samples/hello-app:1.0
@@ -24,6 +24,33 @@ kubectl expose deployment web2 --port=8080 --type=NodePort
 
 curl http://192.168.65.128:30473/
 
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: hello-world.example
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web
+                port:
+                  number: 8080
+          - path: /v2
+	    pathType: Prefix
+	    backend:
+	      service:
+		name: web2
+		port:
+		  number: 8080
+```
+
 kubectl create ingress example-ingress --class=nginx --rule="hello-world.example/*=web:8080"
 kubectl get ingress example-ingress -o yaml > ./bd-spring-module/helm/k8s/app-ingress.yaml
 
@@ -32,13 +59,25 @@ curl --resolve "hello-world.example:80:127.0.0.1" -i http://hello-world.example
 
 kubectl port-forward --namespace=ingress-nginx service/ingress-nginx-controller 8080:80
 
-#
-#
-#
-kubectl create deployment nginx --image=nginx --dry-run=client -o yaml
-kubectl expose deployment app-springboot -n i100121 --port=80 --target-port=8080 --type=NodePort --dry-run=client -o yaml > app-svc.yaml
-kubectl autoscale deployment app-springboot --min=5 --max=10 --cpu-percent=85
+# 
+# 
+# 
+kubectl create deployment nginx --image=nginx:latest --dry-run=client -o yaml
+kubectl expose deployment nginx -n i100121 --port=80 --target-port=8080 --type=NodePort --dry-run=client -o yaml > app-svc.yaml
 
+kubectl autoscale deployment nginx --min=5 --max=10 --cpu-percent=85
+
+kubectl create deployment web --image=gcr.io/google-samples/hello-app:1.0
+kubectl expose deployment web --type=NodePort --port=8080
+curl http://172.17.0.15:31637 
+
+kubectl create deployment web2 --image=gcr.io/google-samples/hello-app:2.0
+kubectl expose deployment web2 --type=NodePort --port=8080
+
+
+#
+#
+#
 kubectl create clusterrolebinding cluster-admin-binding \
 --clusterrole cluster-admin \
 --user $(gcloud config get-value account)
@@ -52,9 +91,9 @@ helm upgrade --install ingress-nginx ingress-nginx \
 --repo https://kubernetes.github.io/ingress-nginx \
 --namespace ingress-nginx --create-namespace
 
-kubectl create job hello --image=busybox:1.37.0 -- bin/sh -c "date; echo 'Hello World' " >> k8s-job.yaml
-kubectl create job hello --image=busybox:1.37.0 --dry-run=client -o yaml -- bin/sh -c "date; echo 'Hello World' " >> k8s-job.yaml
-kubectl create cronjob hello --image=busybox:1.28 --schedule="*/1 8 * * * *" --dry-run=client -o yaml -- bin/sh -c "date; echo 'Hello World' " >> cron-job.yaml
+kubectl create job hello --image=busybox:latest -- bin/sh -c "date; echo 'Hello World' " >> k8s-job.yaml
+kubectl create job hello --image=busybox:latest --dry-run=client -o yaml -- bin/sh -c "date; echo 'Hello World' " >> k8s-job.yaml
+kubectl create cronjob hello --image=busybox:latest --schedule="*/1 8 * * * *" --dry-run=client -o yaml -- bin/sh -c "date; echo 'Hello World' " >> cron-job.yaml
 
 ```shell
 kubectl apply -f - <<EOF
@@ -106,9 +145,9 @@ spec:
         - port: 80
 ```
 
-#
+# 
 # Allow ingress traffic from pods in a different namespace
-#
+# 
 ```yaml
 #
 # In the following example, incoming traffic is allowed only if they come from a pod with label color=red, in a namespace with label shape=square, on port 80.
@@ -283,9 +322,9 @@ spec:
         namespaceSelector: shape == 'circle'
 ```
 
-#
+# 
 ## Control traffic to/from endpoints using IP addresses or CIDR ranges
-#
+# 
 ```yaml
 apiVersion: projectcalico.org/v3
 kind: NetworkPolicy

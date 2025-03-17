@@ -106,7 +106,6 @@ D=$(awk -F_ '{print $4}' <<< 'one_two_three_four_five')
 # break string with token
 #
 s_path="/ib/core/data/csv:dfilter_44
-
 s_dir_path=${s_path%%:*}
 s_filter=${s_path#*:}
 

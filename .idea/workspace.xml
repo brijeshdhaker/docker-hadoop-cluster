@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-03-12 add helm chart for springboot application.">
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm/templates/networkpolicy.yaml" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-03-13 add helm chart for springboot application.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm/values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/curl-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/curl-readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme-resources/k8s-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/k8s-readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme-resources/microk8s-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/microk8s-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/unix-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/unix-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -570,9 +570,9 @@
       <item itemvalue="Application.local-taxi-driver-hourly-max-tips" />
       <item itemvalue="Application.local-transaction-pipeline" />
       <item itemvalue="Application.local-taxi-rides-and-fares" />
-      <item itemvalue="Application.SandboxSbApplication" />
       <item itemvalue="Application.DataStreamJob" />
       <item itemvalue="Application.ProductsHourlySales" />
+      <item itemvalue="Application.SandboxSbApplication" />
       <item itemvalue="Application.local-taxi-long-rides-alerts" />
       <item itemvalue="Docker.flink-cluster" />
       <item itemvalue="Docker.kafka-cluster" />
@@ -600,14 +600,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00097" summary="2024-12-03 Update flink configurations.">
-      <option name="closed" value="true" />
-      <created>1733196122143</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1733196122143</updated>
     </task>
     <task id="LOCAL-00098" summary="2024-12-03 Update flink configurations.">
       <option name="closed" value="true" />
@@ -993,7 +985,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741744645764</updated>
     </task>
-    <option name="localTasksCounter" value="146" />
+    <task id="LOCAL-00146" summary="2025-03-13 add helm chart for springboot application.">
+      <option name="closed" value="true" />
+      <created>1741835257027</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1741835257028</updated>
+    </task>
+    <option name="localTasksCounter" value="147" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -1019,7 +1019,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-11-19 Update configurations." />
     <MESSAGE value="2024-11-26 Update configurations." />
     <MESSAGE value="2024-11-27 Update flink configurations." />
     <MESSAGE value="2024-12-03 Update flink configurations." />
@@ -1044,7 +1043,8 @@
     <MESSAGE value="2025-03-10 add helm chart for springboot application." />
     <MESSAGE value="2025-03-11 add helm chart for springboot application." />
     <MESSAGE value="2025-03-12 add helm chart for springboot application." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-03-12 add helm chart for springboot application." />
+    <MESSAGE value="2025-03-13 add helm chart for springboot application." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-03-13 add helm chart for springboot application." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

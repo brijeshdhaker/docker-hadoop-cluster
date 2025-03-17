@@ -1,5 +1,5 @@
 #
-sudo snap install microk8s --classic
+sudo snap install microk8s --classic --channel=latest/stable
 
 #
 sudo microk8s start
@@ -18,7 +18,8 @@ microk8s config > ~/.kube/config
 
 #
 sudo microk8s stop
-
+#
+# Enable Addons
 #
 microk8s enable dns
 microk8s enable hostpath-storage
@@ -33,7 +34,15 @@ microk8s enable ingress
 alias kubectl='microk8s kubectl'
 
 #
+# microk8s images 
+#
 microk8s ctr images ls
+microk8s ctr images check
+microk8s ctr images pull
+microk8s ctr images push
+microk8s ctr images remove
+microk8s ctr images rm
+microk8s ctr images label
 microk8s ctr image import - < nginx.tar
 
 microk8s images import < nginx.tar
