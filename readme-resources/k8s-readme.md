@@ -1,3 +1,9 @@
+#
+#
+#
+-l --selector
+-L label-column
+
 kubectl -n kube-system get pods -l 'k8s-app=calico-node' -L k8s-app
 kubectl -n kube-system get pods -l 'k8s-app=calico-node' -L k8s-app
 kubectl -n kube-system get pods -l 'k8s-app in (calico-node)' -L k8s-app
@@ -11,14 +17,22 @@ kubectl -n kube-system get pods --selector=batch.kubernetes.io/job-name=pi --out
 #
 # POD
 #
-kubectl run pod nginx --image=nginx --dry-run=client -o yaml
-kubectl expose pod app-springboot -n i100121 --port=80 --target-port=8080 --type=NodePort --dry-run=client -o yaml > app-svc.yaml
+kubectl run pod nginx --image=nginx:latest --dry-run=client -o yaml
+kubectl expose pod nginx --port=80 --target-port=80 --type=NodePort --dry-run=client -o yaml > app-svc.yaml
 
 #
 # Deployment
 #
 kubectl create deployment nginx --image=nginx:latest --dry-run=client -o yaml
 kubectl expose deployment nginx -n i100121 --port=80 --target-port=8080 --type=NodePort --dry-run=client -o yaml > app-svc.yaml
+
+#
+# Scaling
+#
+kubectl scale deployment nginx --replicas=4
+kubectl scale deployment nginx --min=5 --max=10 --cpu-percent=85
+kubectl set image deployment nginx --replicas=4
+kubectl rollout undo deploy nginx
 
 kubectl autoscale deployment nginx --min=5 --max=10 --cpu-percent=85
 
@@ -67,11 +81,11 @@ spec:
                 port:
                   number: 8080
           - path: /v2
-	        pathType: Prefix
-	        backend:
-	          service:
-		        name: web2
-		        port:
+            pathType: Prefix
+            backend:
+              service:
+                name: web2
+                port:
 		          number: 8080
 ```
 
