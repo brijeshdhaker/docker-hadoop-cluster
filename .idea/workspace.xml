@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-03-13 add helm chart for springboot application.">
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-03-17 add helm chart for springboot application.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/curl-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/curl-readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme-resources/k8s-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/k8s-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/microk8s-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/microk8s-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/unix-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/unix-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -601,14 +598,6 @@
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
     </task>
-    <task id="LOCAL-00098" summary="2024-12-03 Update flink configurations.">
-      <option name="closed" value="true" />
-      <created>1733196214141</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1733196214141</updated>
-    </task>
     <task id="LOCAL-00099" summary="2024-12-04 add transaction data generator.">
       <option name="closed" value="true" />
       <created>1733271225691</created>
@@ -993,7 +982,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741835257028</updated>
     </task>
-    <option name="localTasksCounter" value="147" />
+    <task id="LOCAL-00147" summary="2025-03-17 add helm chart for springboot application.">
+      <option name="closed" value="true" />
+      <created>1742184453646</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1742184453647</updated>
+    </task>
+    <option name="localTasksCounter" value="148" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -1019,7 +1016,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-11-26 Update configurations." />
     <MESSAGE value="2024-11-27 Update flink configurations." />
     <MESSAGE value="2024-12-03 Update flink configurations." />
     <MESSAGE value="2024-12-04 add transaction data generator." />
@@ -1044,7 +1040,8 @@
     <MESSAGE value="2025-03-11 add helm chart for springboot application." />
     <MESSAGE value="2025-03-12 add helm chart for springboot application." />
     <MESSAGE value="2025-03-13 add helm chart for springboot application." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-03-13 add helm chart for springboot application." />
+    <MESSAGE value="2025-03-17 add helm chart for springboot application." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-03-17 add helm chart for springboot application." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -8,8 +8,32 @@ kubectl api-resources -o wide
 
 kubectl -n kube-system get pods --selector=batch.kubernetes.io/job-name=pi --output=jsonpath='{.items[*].metadata.name}'
 
+#
+# POD
+#
 kubectl run pod nginx --image=nginx --dry-run=client -o yaml
 kubectl expose pod app-springboot -n i100121 --port=80 --target-port=8080 --type=NodePort --dry-run=client -o yaml > app-svc.yaml
+
+#
+# Deployment
+#
+kubectl create deployment nginx --image=nginx:latest --dry-run=client -o yaml
+kubectl expose deployment nginx -n i100121 --port=80 --target-port=8080 --type=NodePort --dry-run=client -o yaml > app-svc.yaml
+
+kubectl autoscale deployment nginx --min=5 --max=10 --cpu-percent=85
+
+#
+# Jobs & Cron Jobs
+#
+kubectl create job job_hello --image=busybox:latest --dry-run=client -o yaml -- bin/sh -c "date; echo 'Hello World' " >> k8s-job.yaml
+kubectl create cronjob cronjob_hello --image=busybox:latest --schedule="*/1 8 * * * *" --dry-run=client -o yaml -- bin/sh -c "date; echo 'Hello World' " >> cron-job.yaml
+
+#
+# Roles & Role Bindings
+#
+kubectl create clusterrolebinding cluster-admin-binding \
+--clusterrole cluster-admin \
+--user $(gcloud config get-value account)
 
 # 
 # ingress
@@ -43,12 +67,12 @@ spec:
                 port:
                   number: 8080
           - path: /v2
-	    pathType: Prefix
-	    backend:
-	      service:
-		name: web2
-		port:
-		  number: 8080
+	        pathType: Prefix
+	        backend:
+	          service:
+		        name: web2
+		        port:
+		          number: 8080
 ```
 
 kubectl create ingress example-ingress --class=nginx --rule="hello-world.example/*=web:8080"
@@ -62,25 +86,6 @@ kubectl port-forward --namespace=ingress-nginx service/ingress-nginx-controller 
 # 
 # 
 # 
-kubectl create deployment nginx --image=nginx:latest --dry-run=client -o yaml
-kubectl expose deployment nginx -n i100121 --port=80 --target-port=8080 --type=NodePort --dry-run=client -o yaml > app-svc.yaml
-
-kubectl autoscale deployment nginx --min=5 --max=10 --cpu-percent=85
-
-kubectl create deployment web --image=gcr.io/google-samples/hello-app:1.0
-kubectl expose deployment web --type=NodePort --port=8080
-curl http://172.17.0.15:31637 
-
-kubectl create deployment web2 --image=gcr.io/google-samples/hello-app:2.0
-kubectl expose deployment web2 --type=NodePort --port=8080
-
-
-#
-#
-#
-kubectl create clusterrolebinding cluster-admin-binding \
---clusterrole cluster-admin \
---user $(gcloud config get-value account)
 
 kubectl wait --namespace ingress-nginx \
 --for=condition=ready pod \
@@ -91,9 +96,7 @@ helm upgrade --install ingress-nginx ingress-nginx \
 --repo https://kubernetes.github.io/ingress-nginx \
 --namespace ingress-nginx --create-namespace
 
-kubectl create job hello --image=busybox:latest -- bin/sh -c "date; echo 'Hello World' " >> k8s-job.yaml
-kubectl create job hello --image=busybox:latest --dry-run=client -o yaml -- bin/sh -c "date; echo 'Hello World' " >> k8s-job.yaml
-kubectl create cronjob hello --image=busybox:latest --schedule="*/1 8 * * * *" --dry-run=client -o yaml -- bin/sh -c "date; echo 'Hello World' " >> cron-job.yaml
+
 
 ```shell
 kubectl apply -f - <<EOF
