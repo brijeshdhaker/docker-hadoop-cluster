@@ -4,6 +4,15 @@ sudo snap install microk8s --classic --channel=latest/stable
 #
 sudo microk8s start
 
+echo Accoo7@k47 | sudo -S -k microk8s start
+
+echo Accoo7@k47 | sudo -S -v
+sudo whoami
+
+sudo microk8s start <<EOF
+Accoo7@k47
+EOF
+
 #
 sudo microk8s status --wait-ready
 
@@ -16,11 +25,12 @@ chmod 0700 ~/.kube
 cd ~/.kube
 microk8s config > ~/.kube/config
 
-#
+# 
 sudo microk8s stop
-#
+echo Accoo7@k47 | sudo -S -k microk8s stop
+
+
 # Enable Addons
-#
 microk8s enable dns
 microk8s enable hostpath-storage
 microk8s enable dashboard
@@ -30,6 +40,9 @@ microk8s enable metrics-server
 microk8s enable prometheus
 microk8s enable ingress
 
+# Community Supported 
+microk8s enable community
+microk8s enable istio
 #
 alias kubectl='microk8s kubectl'
 

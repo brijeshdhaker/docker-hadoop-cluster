@@ -1,3 +1,8 @@
+# Run with sudo password
+echo Accoo7@k47 | sudo -S -k microk8s start
+echo Accoo7@k47 | sudo -S -v
+sudo whoami
+
 
 <<comment
 # Schema Registry Test :

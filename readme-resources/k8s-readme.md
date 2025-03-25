@@ -13,12 +13,12 @@ kubectl -n kube-system get pods -l 'k8s-app notin (qa), tier in (app)' -L k8s-ap
 kubectl api-resources -o wide
 
 kubectl -n kube-system get pods --selector=batch.kubernetes.io/job-name=pi --output=jsonpath='{.items[*].metadata.name}'
-
+kubectl delete --ignore-not-found=true -f samples/httpbin/httpbin.yaml
 #
 # POD
 #
-kubectl run pod nginx --image=nginx:latest --dry-run=client -o yaml
-kubectl expose pod nginx --port=80 --target-port=80 --type=NodePort --dry-run=client -o yaml > app-svc.yaml
+kubectl -n ingress-demo run pod nginx --image=nginx:latest --dry-run=client -o yaml
+kubectl -n ingress-demo expose pod nginx --port=80 --target-port=80 --type=NodePort --dry-run=client -o yaml > app-svc.yaml
 
 #
 # Deployment
@@ -51,49 +51,77 @@ kubectl create clusterrolebinding cluster-admin-binding \
 
 # 
 # ingress
-# 
-kubectl get pods -n ingress
+#
+ 
+kubectl create ns nginx-ingress-demo
+kubectl get pods -n nginx-ingress-demo
 
-kubectl create deployment web --image=gcr.io/google-samples/hello-app:1.0
-kubectl expose deployment web --type=NodePort --port=8080
+kubectl -n nginx-ingress-demo create deployment hello-app-v1 --image=gcr.io/google-samples/hello-app:1.0
+kubectl -n nginx-ingress-demo expose deployment hello-app-v1 --type=NodePort --port=8080
 
-kubectl create deployment web2 --image=gcr.io/google-samples/hello-app:2.0
-kubectl expose deployment web2 --port=8080 --type=NodePort
+kubectl -n nginx-ingress-demo create deployment hello-app-v2 --image=gcr.io/google-samples/hello-app:2.0
+kubectl -n nginx-ingress-demo expose deployment hello-app-v2 --type=NodePort --port=8080
 
 curl http://192.168.65.128:30473/
 
 ```yaml
+kubectl -n nginx-ingress-demo apply -f - <<EOF
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: example-ingress
+  creationTimestamp: null
+  name: hello-app-ingress
+  namespace: nginx-ingress-demo
 spec:
   ingressClassName: nginx
   rules:
-    - host: hello-world.example
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: web
-                port:
-                  number: 8080
-          - path: /v2
-            pathType: Prefix
-            backend:
-              service:
-                name: web2
-                port:
-		          number: 8080
+  - host: hello-app.example
+    http:
+      paths:
+      - backend:
+          service:
+            name: hello-app-v1
+            port:
+              number: 8080
+        path: /
+        pathType: Prefix
+      - backend:
+          service:
+            name: hello-app-v1
+            port:
+              number: 8080
+        path: /v1
+        pathType: Exact
+      - backend:
+          service:
+            name: hello-app-v2
+            port:
+              number: 8080
+        path: /v2
+        pathType: Exact
+status:
+  loadBalancer: {}
+EOF
 ```
 
-kubectl create ingress example-ingress --class=nginx --rule="hello-world.example/*=web:8080"
-kubectl get ingress example-ingress -o yaml > ./bd-spring-module/helm/k8s/app-ingress.yaml
+kubectl -n nginx-ingress-demo create ingress hello-app-ingress --class=nginx --rule="hello-app.example/*=hello-app-v1:8080" --rule="hello-app.example/v1=hello-app-v1:8080" --rule="hello-app.example/v2=hello-app-v2:8080" --dry-run=client -o yaml
 
-curl --resolve "hello-world.example:80:192.168.65.128" -i http://hello-world.example
-curl --resolve "hello-world.example:80:127.0.0.1" -i http://hello-world.example
+kubectl -n nginx-ingress-demo get ingress hello-app-ingress -o yaml > ./bd-spring-module/helm/k8s/app-ingress.yaml
+
+curl --resolve "hello-app.example:80:192.168.65.128" -i http://hello-app.example
+curl --resolve "hello-app.example:80:192.168.65.128" -i http://hello-app.example/v1
+curl --resolve "hello-app.example:80:192.168.65.128" -i http://hello-app.example/v2
+
+curl -D- http://hello-app.example
+curl -D- http://127.0.0.1 -HHost:hello-app.example
+
+curl -D- http://hello-app.example/v1
+curl -D- http://127.0.0.1/v1 -HHost:hello-app.example
+
+curl -D- http://hello-app.example/v2
+curl -D- http://127.0.0.1/v2 -HHost:hello-app.example
+
+curl --resolve "hello-app.example:80:127.0.0.1" -i http://hello-app.example
 
 kubectl port-forward --namespace=ingress-nginx service/ingress-nginx-controller 8080:80
 

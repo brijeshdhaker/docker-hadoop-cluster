@@ -46,9 +46,28 @@ docker run --rm -it \
   -v $(pwd)/charts:/charts \
   ghcr.io/helm/chartmuseum:v0.14.0
   
+
 #
+# Install nginx ingress using helm
 #
-#
+
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+helm install ingress-nginx ingress-nginx/ingress-nginx
+
+# OR
+
+helm upgrade --install ingress-nginx ingress-nginx \
+  --repo https://kubernetes.github.io/ingress-nginx \
+  --namespace ingress-nginx \
+  --create-namespace
+
+helm show values ingress-nginx --repo https://kubernetes.github.io/ingress-nginx
+
+# Upgrade nginx controller
+helm upgrade --reuse-values ingress-nginx ingress-nginx/ingress-nginx
+
+# Maven Plugin
 <plugin>
     <groupId>com.kiwigrid</groupId>
     <artifactId>helm-maven-plugin</artifactId>
