@@ -10,7 +10,7 @@
 # docker volume create --name sandbox_alert_manager_data --opt type=none --opt device=/apps/sandbox/monitoring/alert-manager/data --opt o=bind
 #
 ---
-version: "3.9"
+# version: "3.9"
 
 services:
 

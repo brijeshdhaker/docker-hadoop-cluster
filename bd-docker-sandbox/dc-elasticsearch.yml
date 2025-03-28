@@ -5,7 +5,7 @@
 # docker volume create --name sandbox_es_standalone_data --opt type=none --opt device=/apps/sandbox/elasticsearch/standalone/data --opt o=bind
 #
 ---
-version: "3.9"
+# version: "3.9"
 
 services:
   #

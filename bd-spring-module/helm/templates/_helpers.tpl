@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "bd-spring-module.name" -}}
+{{- define "helm.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "bd-spring-module.fullname" -}}
+{{- define "helm.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "bd-spring-module.chart" -}}
+{{- define "helm.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "bd-spring-module.labels" -}}
-helm.sh/chart: {{ include "bd-spring-module.chart" . }}
-{{ include "bd-spring-module.selectorLabels" . }}
+{{- define "helm.labels" -}}
+helm.sh/chart: {{ include "helm.chart" . }}
+{{ include "helm.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "bd-spring-module.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "bd-spring-module.name" . }}
+{{- define "helm.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "helm.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "bd-spring-module.serviceAccountName" -}}
+{{- define "helm.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "bd-spring-module.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "helm.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

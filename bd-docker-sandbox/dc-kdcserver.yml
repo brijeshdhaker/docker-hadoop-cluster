@@ -6,7 +6,7 @@
 # Based on https://github.com/ist-dsi/docker-kerberos
 #
 
-version: "3.9"
+# version: "3.9"
 
 include:
   - path: ../bd-docker-sandbox/dc-base.yaml
@@ -44,3 +44,22 @@ services:
     env_file:
       - ./envs/docker_kerberos.env
 
+#
+# Docker Volumes
+#
+volumes:
+  #
+  sandbox_apps_path:
+    external: true
+  #
+  sandbox_security_secrets:
+    external: true
+
+#
+# Docker Networks
+#
+networks:
+  default:
+    external: true
+    driver: bridge
+    name: sandbox.net

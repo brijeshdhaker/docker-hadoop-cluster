@@ -8,7 +8,7 @@
 # docker volume create --name sandbox_postgres_init --opt type=none --opt device=/apps/sandbox/postgres/init.d --opt o=bind
 #
 ---
-version: '3.9'
+# version: "3.9"
 
 services:
   #

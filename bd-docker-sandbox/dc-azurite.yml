@@ -2,7 +2,8 @@
 # docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
 #
 ---
-version: '3.9'
+# version: '3.9'
+
 services:
 #
   azurite:

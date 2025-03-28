@@ -6,7 +6,7 @@
 # docker volume create --name sandbox_kafka334_log --opt type=none --opt device=/apps/sandbox/kafka/hadoop334/log --opt o=bind
 #
 ---
-version: '3.9'
+# version: '3.9'
 #
 
 #

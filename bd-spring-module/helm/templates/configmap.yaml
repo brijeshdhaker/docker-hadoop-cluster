@@ -2,19 +2,28 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-configmap
+  namespace: {{ .Release.Namespace }}
 data:
+  {{- if eq .Values.environment "local" }}
+    {{- (.Files.Glob "configs/local/application.yaml").AsConfig | nindent 2 }}
+  {{- else if eq .Values.environment "dev" }}
+    {{- (.Files.Glob "configs/dev/application.yaml").AsConfig | nindent 2 }}
+  {{- end }}
+  name: {{ .Release.Name }}-configmap
   {{- $files := .Files }}
     {{- range tuple "config1.toml" "config2.toml" "config3.toml" }}
-    {{ . }}: |-
-    {{ $files.Get . }}
-    {{- end }}
+    # {{ . }}: |-
+    # {{ $files.Get . }}
+  {{- end }}
+
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: conf
 data:
-  {{ (.Files.Glob "foo/*").AsConfig | indent 2 }}
+  {{ tpl ($.Files.Get "configs/config1.toml") . |  indent 2 }}
+  #  {{ (.Files.Glob "foo/*").AsConfig | indent 2 }}
 ---
 apiVersion: v1
 kind: Secret
@@ -22,7 +31,7 @@ metadata:
   name: very-secret
 type: Opaque
 data:
-  {{ (.Files.Glob "bar/*").AsSecrets | indent 2 }}
+  {{ (.Files.Glob "secrets/*").AsSecrets | indent 2 }}
 ---
 apiVersion: v1
 kind: Secret
@@ -31,4 +40,4 @@ metadata:
 type: Opaque
 data:
   token: |-
-    {{ .Files.Get "config1.toml" | b64enc }}
+    {{ .Files.Get "secrets/password" | b64enc }}

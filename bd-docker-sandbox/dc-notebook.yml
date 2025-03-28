@@ -2,7 +2,10 @@
 # docker-compose -H tcp://raspberry:2375 -f dc-notebook.yml up -d
 # /home/jovyan/work
 # brijeshdhaker/notebook:3.5.0
-version: '3.9'
+#
+
+#
+# version: "3.9"
 #
 services:
 # /usr/local/spark

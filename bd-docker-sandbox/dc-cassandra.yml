@@ -12,7 +12,7 @@
 # select * from system_schema.columns WHERE keyspace_name = 'system_auth' AND table_name = 'roles';
 #
 ---
-version: "3.9"
+# version: "3.9"
 
 services:
   #
