@@ -4,9 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.examples.hadoop</groupId>
+    <groupId>com.org.example.k8s</groupId>
     <artifactId>bd-k8s-module</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <name>bd-k8s-module</name>
+    <version>1.0.0</version>
+    <packaging>zip</packaging>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
