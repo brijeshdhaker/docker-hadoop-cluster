@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-03-18 add helm chart for springboot application.">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-03-28 add helm chart for springboot application.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-k8s-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-k8s-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/hosts" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/hosts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,7 +273,7 @@
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-k8s-module&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-k8s-module/src/test&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
@@ -288,11 +284,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-k8s-module/src/test" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm/templates" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm/configs/dev" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm/configs/local" />
       <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources" />
-      <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources/mini-cluster" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bd-spring-module/helm/charts" />
@@ -601,14 +597,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00101" summary="2024-12-05 consolidate docker-sandbox module.">
-      <option name="closed" value="true" />
-      <created>1733368721090</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1733368721096</updated>
     </task>
     <task id="LOCAL-00102" summary="2024-12-05 consolidate docker-sandbox module.">
       <option name="closed" value="true" />
@@ -994,7 +982,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742272231832</updated>
     </task>
-    <option name="localTasksCounter" value="150" />
+    <task id="LOCAL-00150" summary="2025-03-28 add helm chart for springboot application.">
+      <option name="closed" value="true" />
+      <created>1743131575252</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
+      <option name="project" value="LOCAL" />
+      <updated>1743131575252</updated>
+    </task>
+    <option name="localTasksCounter" value="151" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -1020,7 +1016,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-12-03 Update flink configurations." />
     <MESSAGE value="2024-12-04 add transaction data generator." />
     <MESSAGE value="2024-12-05 consolidate docker-sandbox module." />
     <MESSAGE value="2024-12-05 refactor bd-flink-module project." />
@@ -1045,7 +1040,8 @@
     <MESSAGE value="2025-03-13 add helm chart for springboot application." />
     <MESSAGE value="2025-03-17 add helm chart for springboot application." />
     <MESSAGE value="2025-03-18 add helm chart for springboot application." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-03-18 add helm chart for springboot application." />
+    <MESSAGE value="2025-03-28 add helm chart for springboot application." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-03-28 add helm chart for springboot application." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
