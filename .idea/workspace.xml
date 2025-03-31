@@ -4,9 +4,192 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-03-28 add helm chart for springboot application.">
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-03-31 Add Sandbox Root CA &amp; Certs.">
+      <change afterPath="$PROJECT_DIR$/bd-k8s-module/istio/secure-gateway.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-setup-module/security/client/plain.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-setup-module/security/hosts.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/addons/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/addons/extras/prometheus-operator.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/addons/extras/skywalking.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/addons/extras/zipkin.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/addons/grafana.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/addons/jaeger.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/addons/kiali.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/addons/loki.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/addons/prometheus.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/application/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/application/bookinfo-versions.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/application/details-waypoint.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/application/details.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/application/ingress-gateway.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/application/namespace.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/application/productpage.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/application/ratings.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/application/reviews-waypoint.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/application/reviews.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/application/route-reviews-90-10.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/istio/cni.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/istio/control-plane-appset.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/istio/extras.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/istio/tags.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/istio/ztunnel.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/meta-application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/tag-chart/Chart.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/tag-chart/templates/mutatingwebhooks.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/tag-chart/templates/shimservice.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/tag-chart/templates/validatingwebhook.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ambient-argo/tag-chart/values.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/demo-profile-no-gateways.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/gateway-api/bookinfo-gateway.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/gateway-api/route-all-v1.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/gateway-api/route-reviews-50-v3.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/gateway-api/route-reviews-90-10.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/gateway-api/route-reviews-v1.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/gateway-api/route-reviews-v3.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/bookinfo-gateway.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/certmanager-gateway.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/destination-rule-all-mtls.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/destination-rule-all.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/destination-rule-reviews.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/egress-rule-google-apis.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/fault-injection-details-v1.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/virtual-service-all-v1.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/virtual-service-details-v2.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/virtual-service-ratings-db.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/virtual-service-ratings-mysql-vm.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/virtual-service-ratings-mysql.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/virtual-service-ratings-test-abort.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/virtual-service-ratings-test-delay.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/virtual-service-reviews-50-v3.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/virtual-service-reviews-80-20.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/virtual-service-reviews-90-10.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/virtual-service-reviews-jason-v2-v3.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/virtual-service-reviews-test-v2.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/virtual-service-reviews-v2-v3.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/networking/virtual-service-reviews-v3.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/bookinfo-certificate.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/bookinfo-db.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/bookinfo-details-dualstack.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/bookinfo-details-v2.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/bookinfo-details.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/bookinfo-dualstack.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/bookinfo-ingress.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/bookinfo-mysql.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/bookinfo-psa.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/bookinfo-ratings-discovery-dualstack.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/bookinfo-ratings-discovery.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/bookinfo-ratings-dualstack.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/bookinfo-ratings-v2-mysql-vm.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/bookinfo-ratings-v2-mysql.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/bookinfo-ratings-v2.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/bookinfo-ratings.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/bookinfo-reviews-v2.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/bookinfo-versions.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/bookinfo.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/cleanup.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/platform/kube/productpage-nodeport.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/policy/productpage_envoy_ratelimit.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/src/build-services.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/src/mongodb/ratings_data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/src/mongodb/script.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/src/productpage/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/src/productpage/test-requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/src/ratings/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/bookinfo/swagger.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/builder/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/certs/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/certs/generate-workload.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/cicd/skaffold/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/cicd/skaffold/skaffold.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/curl/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/curl/curl.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/custom-bootstrap/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/custom-bootstrap/custom-bootstrap.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/custom-bootstrap/example-app.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/extauthz/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/extauthz/ext-authz.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/extauthz/local-ext-authz.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/external/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/external/aptget.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/external/github.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/external/pypi.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/grpc-echo/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/grpc-echo/grpc-echo.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/health-check/liveness-command.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/health-check/liveness-http-same-port.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/helloworld/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/helloworld/gateway-api/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/helloworld/gateway-api/helloworld-gateway.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/helloworld/gateway-api/helloworld-route.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/helloworld/gateway-api/helloworld-versions.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/helloworld/gen-helloworld.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/helloworld/helloworld-dual-stack.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/helloworld/helloworld-gateway.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/helloworld/helloworld.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/helloworld/loadgen.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/helloworld/src/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/httpbin/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/httpbin/gateway-api/httpbin-gateway.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/httpbin/httpbin-gateway.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/httpbin/httpbin-nodeport.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/httpbin/httpbin.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/httpbin/sample-client/fortio-deploy.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/jwt-server/jwt-server.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/jwt-server/src/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/kind-lb/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/kind-lb/setupkind.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/multicluster/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/multicluster/expose-istiod-https.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/multicluster/expose-istiod.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/multicluster/expose-services.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/multicluster/gen-eastwest-gateway.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/open-telemetry/als/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/open-telemetry/loki/REAME.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/open-telemetry/loki/iop.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/open-telemetry/loki/otel.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/open-telemetry/loki/telemetry.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/open-telemetry/otel.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/open-telemetry/tracing/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/open-telemetry/tracing/telemetry.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/proxy-coredump/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/proxy-coredump/daemonset.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ratelimit/local-rate-limit-service.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/ratelimit/rate-limit-service.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/security/psp/sidecar-psp.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/security/spire/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/security/spire/clusterspiffeid.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/security/spire/curl-spire.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/security/spire/istio-spire-config.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/security/spire/sleep-spire.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/security/spire/spire-quickstart.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/sleep/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/sleep/sleep.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/tcp-echo/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/tcp-echo/gateway-api/tcp-echo-20-v2.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/tcp-echo/gateway-api/tcp-echo-all-v1.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/tcp-echo/tcp-echo-20-v2.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/tcp-echo/tcp-echo-all-v1.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/tcp-echo/tcp-echo-dual-stack.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/tcp-echo/tcp-echo-ipv4.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/tcp-echo/tcp-echo-ipv6.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/tcp-echo/tcp-echo-services.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/tcp-echo/tcp-echo.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/wasm_modules/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/wasm_modules/header_injector/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/websockets/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/websockets/app.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio-samples/websockets/route.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-setup-module/hosts" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/hosts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/certs-create.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/scripts/certs-create.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/istio-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/istio-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/microk8s-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/microk8s-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/openssl-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/openssl-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,7 +456,7 @@
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-k8s-module/src/test&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-setup-module/security/client&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
@@ -284,18 +467,18 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-setup-module/security/client" />
       <recent name="$PROJECT_DIR$/bd-k8s-module/src/test" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm/templates" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm/configs/dev" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm/configs/local" />
-      <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/bd-spring-module/helm/charts" />
-      <recent name="$PROJECT_DIR$/bd-spring-module/helm/k8s" />
-      <recent name="$PROJECT_DIR$/bd-spring-module/helm/configs" />
-      <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources/local-cluster" />
-      <recent name="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks/delta-table" />
+      <recent name="$PROJECT_DIR$/bd-setup-module/security/root/ca/public" />
+      <recent name="$PROJECT_DIR$/bd-setup-module/security/intermediate/ca" />
+      <recent name="$PROJECT_DIR$/bd-setup-module/security/root/ca" />
+      <recent name="$PROJECT_DIR$/bd-setup-module/security" />
+      <recent name="$PROJECT_DIR$/bd-setup-module/security/root" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -582,8 +765,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SandboxSbApplication" />
         <item itemvalue="Application.local-taxi-long-rides-alerts" />
+        <item itemvalue="Application.SandboxSbApplication" />
         <item itemvalue="Application.ProductsHourlySales" />
         <item itemvalue="Application.DataStreamJob" />
       </list>
@@ -597,46 +780,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00102" summary="2024-12-05 consolidate docker-sandbox module.">
-      <option name="closed" value="true" />
-      <created>1733368757644</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1733368757645</updated>
-    </task>
-    <task id="LOCAL-00103" summary="2024-12-05 refactor bd-flink-module project.">
-      <option name="closed" value="true" />
-      <created>1733374620213</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1733374620214</updated>
-    </task>
-    <task id="LOCAL-00104" summary="2024-12-07 refactor bd-flink-module project.">
-      <option name="closed" value="true" />
-      <created>1733547069226</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1733547069228</updated>
-    </task>
-    <task id="LOCAL-00105" summary="2024-12-08 refactor secure &amp; non secure configs.">
-      <option name="closed" value="true" />
-      <created>1733669171430</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1733669171432</updated>
-    </task>
-    <task id="LOCAL-00106" summary="2024-12-08 update bd-flink-module.">
-      <option name="closed" value="true" />
-      <created>1733670594597</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1733670594648</updated>
     </task>
     <task id="LOCAL-00107" summary="2024-12-08 update bd-flink-module.">
       <option name="closed" value="true" />
@@ -990,13 +1133,55 @@
       <option name="project" value="LOCAL" />
       <updated>1743131575252</updated>
     </task>
-    <option name="localTasksCounter" value="151" />
+    <task id="LOCAL-00151" summary="2025-03-29 add helm chart for springboot application.">
+      <option name="closed" value="true" />
+      <created>1743207734319</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1743207734320</updated>
+    </task>
+    <task id="LOCAL-00152" summary="2025-03-29 add helm chart for springboot application.">
+      <option name="closed" value="true" />
+      <created>1743217312959</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1743217312960</updated>
+    </task>
+    <task id="LOCAL-00153" summary="2025-03-31 Add Sandbox Root CA &amp; Certs.">
+      <option name="closed" value="true" />
+      <created>1743385021685</created>
+      <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
+      <option name="project" value="LOCAL" />
+      <updated>1743385021685</updated>
+    </task>
+    <task id="LOCAL-00154" summary="2025-03-31 Add Sandbox Root CA &amp; Certs.">
+      <option name="closed" value="true" />
+      <created>1743398093996</created>
+      <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
+      <option name="project" value="LOCAL" />
+      <updated>1743398093996</updated>
+    </task>
+    <task id="LOCAL-00155" summary="2025-03-31 Add Sandbox Root CA &amp; Certs.">
+      <option name="closed" value="true" />
+      <created>1743398123134</created>
+      <option name="number" value="00155" />
+      <option name="presentableId" value="LOCAL-00155" />
+      <option name="project" value="LOCAL" />
+      <updated>1743398123134</updated>
+    </task>
+    <option name="localTasksCounter" value="156" />
     <servers />
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName=".bash_profile" />
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.env" />
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.conf" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.pem" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.crt" />
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.profile" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -1016,8 +1201,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-12-04 add transaction data generator." />
-    <MESSAGE value="2024-12-05 consolidate docker-sandbox module." />
     <MESSAGE value="2024-12-05 refactor bd-flink-module project." />
     <MESSAGE value="2024-12-07 refactor bd-flink-module project." />
     <MESSAGE value="2024-12-08 refactor secure &amp; non secure configs." />
@@ -1041,7 +1224,9 @@
     <MESSAGE value="2025-03-17 add helm chart for springboot application." />
     <MESSAGE value="2025-03-18 add helm chart for springboot application." />
     <MESSAGE value="2025-03-28 add helm chart for springboot application." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-03-28 add helm chart for springboot application." />
+    <MESSAGE value="2025-03-29 add helm chart for springboot application." />
+    <MESSAGE value="2025-03-31 Add Sandbox Root CA &amp; Certs." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-03-31 Add Sandbox Root CA &amp; Certs." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

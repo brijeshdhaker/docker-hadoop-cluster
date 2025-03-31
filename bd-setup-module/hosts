@@ -4,11 +4,19 @@
 # sed -i 's/127.0.0.1/127.0.0.1/' /etc/hosts
 
 ###
-127.0.0.1           localhost ubuntu-vmware
-192.168.9.128       hostmaster.sandbox.net kubernetes.default.svc.cluster.local hostmaster
+127.0.0.1           localhost
+127.0.1.1           ubuntu-vmware.sandbox.net ubuntu-vmware
 
-# Sandbox
+192.168.9.128       hostmaster.sandbox.net hostmaster
+
+# thinkpad-win-11
 192.168.9.1         thinkpad.sandbox.net thinkpad
+
+# Docker
+127.0.0.1           docker.sandbox.net
+
+# Kubernetes
+127.0.0.1           kubernetes.default.svc.cluster.local kubernetes.sandbox.net kubernetes
 
 # Kerberos
 127.0.0.1           kdcserver.sandbox.net kdcserver

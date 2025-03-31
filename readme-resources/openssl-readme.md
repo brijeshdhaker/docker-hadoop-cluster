@@ -119,6 +119,21 @@ req     to process csr
     # echo subjectAltName = DNS:$(hostname -f),IP:192.168.1.*,IP:127.0.0.1 >> ${SERVER_CERT_PATH}/server-extfile.cnf
     # echo extendedKeyUsage = serverAuth >> ${SERVER_CERT_PATH}/server-extfile.cnf
     
+cat << EOF > /apps/security/ssl/$i.extfile
+    [req]
+    distinguished_name = req_distinguished_name
+    x509_extensions = v3_req
+    prompt = no
+    [req_distinguished_name]
+    CN = $i
+    [v3_req]
+    subjectAltName = @alt_names
+    [alt_names]
+    DNS.1 = $i
+    DNS.2 = $i.sandbox.net
+    DNS.3 = localhost
+EOF
+    
     # 3. Sign server certificate with Intermediate Root CA
     openssl ca -config ${INTERMEDIATE_CA_PATH}/openssl.cnf \
       -extensions server_cert -days 375 -notext -md sha256 \
@@ -149,6 +164,24 @@ req     to process csr
     # 1. Create a key
     openssl genrsa \
     -out ${CLIENT_CERT_PATH}/private/sandbox-client.key.pem 2048
+    
+    :'
+    
+    echo ABCDE-FGHIJ-KLMNO-PQRST-UVWXY-Z > ${CLIENT_CERT_PATH}/plain.txt
+    
+    # Encrypt plain text
+    openssl pkeyutl -encrypt -pubin \
+    -inkey ${CLIENT_CERT_PATH}/public/sandbox-client-public.key.pem \
+    -in ${CLIENT_CERT_PATH}/plain.txt \
+    -out ${CLIENT_CERT_PATH}/cipher.txt
+
+    # Decrypt Plain Text
+    openssl pkeyutl -decrypt \
+    -inkey ${CLIENT_CERT_PATH}/private/sandbox-client.key.pem \
+    -in ${CLIENT_CERT_PATH}/cipher.txt \
+    -out ${CLIENT_CERT_PATH}/plain-out.txt
+    
+    '
     
     # 2. extract public key
     openssl rsa -pubout -in ${CLIENT_CERT_PATH}/private/sandbox-client.key.pem -out ${CLIENT_CERT_PATH}/public/sandbox-client-public.key.pem

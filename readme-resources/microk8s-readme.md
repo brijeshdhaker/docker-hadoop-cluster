@@ -4,17 +4,11 @@ sudo snap install microk8s --classic --channel=latest/stable
 #
 sudo microk8s start
 
-echo Accoo7@k47 | sudo -S -k microk8s start
-
-echo Accoo7@k47 | sudo -S -v
-sudo whoami
-
-sudo microk8s start <<EOF
-Accoo7@k47
-EOF
+#
+sudo -S <<< "Accoo7@k47" microk8s start
 
 #
-sudo microk8s status --wait-ready
+sudo -S <<< "Accoo7@k47" microk8s status --wait-ready
 
 #
 #
@@ -39,10 +33,15 @@ microk8s enable metallb
 microk8s enable metrics-server
 microk8s enable prometheus
 microk8s enable ingress
+microk8s enable cert-manager
 
 # Community Supported 
 microk8s enable community
 microk8s enable istio
+
+#
+microk8s disable cert-manager
+
 #
 alias kubectl='microk8s kubectl'
 
@@ -66,3 +65,6 @@ microk8s kubectl get nodes
 microk8s kubectl get services
 microk8s kubectl get pods
 microk8s kubectl create deployment nginx --image=nginx --dry-run=client -o yaml
+
+#
+/var/snap/microk8s/current

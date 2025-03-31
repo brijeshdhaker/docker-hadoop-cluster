@@ -1,6 +1,28 @@
 #!/bin/bash
 
 
+if [[ $# -eq 0]]; then
+  echo 'Usage: ./setup-ssl.sh <base_path>'
+fi
+
+if [[ ! -f "$1"]] ; then
+  echo '$1 No Such File'
+  exit 1
+fi
+
+pkgs=""
+while IFS= read -r pkg; do
+  # Append the package name to pkgs
+  pkgs="$pkgs $pkg"
+done < "./bd-setup-module/security/hosts.txt"
+echo $pkgs
+
+for pkg in $(cat ./bd-setup-module/security/hosts.txt); do
+  echo $pkg
+done
+
+
+
     export BASE_PATH=/apps/security/ssl
     export KEY_PASSWORD=sandbox
     export ROOT_CA_PATH=$BASE_PATH/root/ca

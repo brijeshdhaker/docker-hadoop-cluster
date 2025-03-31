@@ -26,7 +26,7 @@ openssl req -new \
   -x509 \
   -keyout /apps/security/ssl/sandbox-ca.key \
   -out /apps/security/ssl/sandbox-ca.crt \
-  -days 365 \
+  -days 7300 \
   -subj '/CN=sandbox-ca/OU=Kafka/O=Sandbox/L=Pune/ST=MH/C=IN' \
   -passin pass:confluent \
   -passout pass:confluent
@@ -71,25 +71,52 @@ subjectAltName = @alt_names
 DNS.1 = $i
 DNS.2 = $i.sandbox.net
 DNS.3 = localhost
+IP.1  = 127.0.0.1
+IP.2  = 192.168.*.*
 EOF
 
 
 
     # Sign the host certificate with the certificate authority (CA)
-    openssl x509 -req -CA /apps/security/ssl/sandbox-ca.crt -CAkey /apps/security/ssl/sandbox-ca.key -in /apps/security/ssl/$i.csr -out /apps/security/ssl/$i-signed.crt -days 9999 -CAcreateserial -passin pass:confluent -extensions v3_req -extfile /apps/security/ssl/$i.extfile
+    openssl x509 -req \
+    -CA /apps/security/ssl/sandbox-ca.crt \
+    -CAkey /apps/security/ssl/sandbox-ca.key \
+    -in /apps/security/ssl/$i.csr \
+    -out /apps/security/ssl/$i-signed.crt \
+    -days 9999 \
+    -CAcreateserial \
+    -passin pass:confluent \
+    -extensions v3_req \
+    -extfile /apps/security/ssl/$i.extfile
 
     #openssl x509 -noout -text -in /apps/security/ssl/$i-signed.crt
 
     # Sign and import the CA cert into the keystore
-    keytool -noprompt -keystore /apps/security/ssl/$i.keystore.jks -alias sandbox-ca -import -file /apps/security/ssl/sandbox-ca.crt -storepass confluent -keypass confluent
+    keytool -noprompt \
+    -keystore /apps/security/ssl/$i.keystore.jks \
+    -alias sandbox-ca -import \
+    -file /apps/security/ssl/sandbox-ca.crt \
+    -storepass confluent \
+    -keypass confluent
     #keytool -list -v -keystore /apps/security/ssl/$i.keystore.jks -storepass confluent | grep "sandbox-ca"
 
     # Sign and import the host certificate into the keystore
-    keytool -noprompt -keystore /apps/security/ssl/$i.keystore.jks -alias $i -import -file /apps/security/ssl/$i-signed.crt -storepass confluent -keypass confluent -ext "SAN=dns:$i,dns:$i.sandbox.net,dns:localhost"
+    keytool -noprompt \
+    -keystore /apps/security/ssl/$i.keystore.jks \
+    -alias $i -import \
+    -file /apps/security/ssl/$i-signed.crt \
+    -storepass confluent \
+    -keypass confluent \
+    -ext "SAN=dns:$i,dns:$i.sandbox.net,dns:localhost"
     #keytool -list -v -keystore /apps/security/ssl/$i.keystore.jks -storepass confluent
 
     # Create truststore and import the CA cert
-    keytool -noprompt -keystore /apps/security/ssl/$i.truststore.jks -alias sandbox-ca -import -file /apps/security/ssl/sandbox-ca.crt -storepass confluent -keypass confluent
+    keytool -noprompt \
+    -keystore /apps/security/ssl/$i.truststore.jks \
+    -alias sandbox-ca -import \
+    -file /apps/security/ssl/sandbox-ca.crt \
+    -storepass confluent \
+    -keypass confluent
 
     # Save creds
     echo  "confluent" > /apps/security/ssl/${i}-sslkey-creds

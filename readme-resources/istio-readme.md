@@ -5,6 +5,7 @@ curl -L https://istio.io/downloadIstio | sh -
 cd istio-1.25.0
 export PATH=$PWD/bin:$PATH
 
+istioctl install --set profile=demo -y
 istioctl install --set profile=minimal -y
 istioctl version
 istioctl dashboard kiali
@@ -43,3 +44,15 @@ export INGRESS_PORT=$(kubectl get gtw bookinfo-gateway -o jsonpath='{.spec.liste
 export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
 
 http://192.168.1.151/productpage
+
+# fetching root ca from k8s cluster
+kubectl get secret istio-ca-secret -n istio-system -o "jsonpath={.data['root-cert\.pem']}" | base64 -d
+kubectl get secret istio-ca-secret -n istio-system -o "jsonpath={.data['ca-cert\.pem']}" | base64 -d
+kubectl get secret istio-ca-secret -n istio-system -o "jsonpath={.data['ca-key\.pem']}" | base64 -d
+
+# Uninstallation
+istioctl uninstall -y --purge
+kubectl delete namespace istio-system
+kubectl label namespace default istio-injection-
+kubectl kustomize "github.com/kubernetes-sigs/gateway-api/config/crd/experimental?ref=v1.2.1" | kubectl delete -f -
+kubectl kustomize "github.com/kubernetes-sigs/gateway-api/config/crd?ref=v1.2.1" | kubectl delete
