@@ -1,0 +1,20 @@
+subjectAltName = DNS:vm-ubuntu.sandbox.net,IP:192.168.1.*,IP:127.0.0.1
+extendedKeyUsage = serverAuth
+
+[req]
+distinguished_name = req_distinguished_name
+x509_extensions = v3_req
+prompt = no
+[req_distinguished_name]
+CN = $i
+[v3_req]
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = $i
+DNS.2 = $i.sandbox.net
+DNS.3 = localhost
+IP:1 = 127.0.0.1
+IP:2 = 127.0.1.1
+IP:3 = 192.168.*.*
+IP:4 = 172.*.*.*
