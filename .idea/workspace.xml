@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-01 Add Sandbox Root CA &amp; Certs.">
+      <change afterPath="$PROJECT_DIR$/bd-k8s-module/istio/example_certs1/httpbin-server-extfile.cnf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-k8s-module/istio/example_certs2/httpbin-server-extfile.cnf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio/example_certs1/server-extfile.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-k8s-module/istio/example_certs1/helloworld-server-extfile.cnf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio/secure-gateway.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-k8s-module/istio/secure-gateway.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl-cert.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl-cert.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl-cert_old.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/microk8s-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/microk8s-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/openssl-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/openssl-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,7 +277,7 @@
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-setup-module/security/server",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-k8s-module/istio/example_certs2",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -288,11 +288,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-k8s-module/istio/example_certs2" />
+      <recent name="$PROJECT_DIR$/bd-k8s-module/istio/example_certs1" />
       <recent name="$PROJECT_DIR$/bd-setup-module/security/server" />
       <recent name="$PROJECT_DIR$/bd-setup-module/security" />
       <recent name="$PROJECT_DIR$/bd-setup-module/security/client" />
-      <recent name="$PROJECT_DIR$/bd-k8s-module/src/test" />
-      <recent name="$PROJECT_DIR$/bd-spring-module/helm/templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bd-setup-module/security/ca" />
@@ -601,14 +601,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00110" summary="2024-12-10 update bd-flink-module.">
-      <option name="closed" value="true" />
-      <created>1733823519695</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1733823519695</updated>
     </task>
     <task id="LOCAL-00111" summary="2024-12-10 update bd-flink-module.">
       <option name="closed" value="true" />
@@ -994,7 +986,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743479608666</updated>
     </task>
-    <option name="localTasksCounter" value="159" />
+    <task id="LOCAL-00159" summary="2025-04-01 Add Sandbox Root CA &amp; Certs.">
+      <option name="closed" value="true" />
+      <created>1743481183682</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1743481183682</updated>
+    </task>
+    <option name="localTasksCounter" value="160" />
     <servers />
   </component>
   <component name="UnknownFeatures">
