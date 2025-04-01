@@ -1,0 +1,223 @@
+#!/bin/bash
+#
+# @Auther : Brijesh K Dhaker
+# @Usage: ./bd-setup-module/security/setup-ssl-cert.sh <base_path>
+#
+#
+#
+
+if [ $# -eq 0 ]
+then
+
+  echo '@Usage   : ./bd-setup-module/security/setup-ssl-cert.sh ./bd-setup-module/security <type> <hostname>'
+  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh ./bd-setup-module/security CA'
+  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh ./bd-setup-module/security Intermediate'
+  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh ./bd-setup-module/security Server kubernetes'
+  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh ./bd-setup-module/security Client'
+  exit 1
+
+fi
+
+#
+if [ ! -d "$1" ]
+then
+  echo '$1 should be a directory.'
+  exit 1
+fi
+
+CERT_TYPE=$2
+if [ $CERT_TYPE == "" ]
+then
+    echo "Certificate Type can't be blank."
+    exit 1
+fi
+
+export BASE_PATH=$1
+export ROOT_CA_PATH=${BASE_PATH}/ca/root
+export INTERMEDIATE_CA_PATH=${BASE_PATH}/ca/intermediate
+export SERVER_CERT_PATH=${BASE_PATH}/server
+
+case "$CERT_TYPE" in
+    #case 1
+    "CA")
+        echo "Generating Root CA Certificate"
+
+        mkdir -p ${ROOT_CA_PATH}/{certs,crl,newcerts,private,public}
+        chmod 700 ${ROOT_CA_PATH}/private
+        touch ${ROOT_CA_PATH}/index.txt
+        echo 1000 > ${ROOT_CA_PATH}/serial
+
+        #
+        # 1. Acting as a certificate authority (CA)
+        # means dealing with cryptographic pairs of private keys and public certificates.
+        #
+
+        # 1. Create the root key
+        # omit the -aes256 option to create a key without a password
+        openssl genrsa -aes256 \
+        -passout pass:sandbox \
+        -out ${ROOT_CA_PATH}/private/root-ca.key.pem 4096
+
+        chmod 400 ${ROOT_CA_PATH}/private/root-ca.key.pem
+
+        # 2. Extract public key
+        openssl rsa -pubout \
+        -passin pass:sandbox \
+        -in ${ROOT_CA_PATH}/private/root-ca.key.pem \
+        -out ${ROOT_CA_PATH}/public/root-ca-public.key.pem
+
+        # 3. Create the root certificate
+        openssl req -new -x509 -days 7300 -sha256 -extensions v3_ca \
+          -config ${ROOT_CA_PATH}/openssl.cnf \
+          -subj "/CN=Sandbox Root CA/O=Sandbox/OU=Security/L=Pune/ST=MH/C=IN/emailAddress=security@sandbox.net" \
+          -passin pass:sandbox \
+          -key ${ROOT_CA_PATH}/private/root-ca.key.pem \
+          -out ${ROOT_CA_PATH}/certs/root-ca.cert.pem
+
+        # 4. Check certificate details
+        openssl x509 -noout -text -in ${ROOT_CA_PATH}/certs/root-ca.cert.pem
+
+      ;;
+    #case 2
+    "Intermediate")
+        echo "Generating Intermediate CA Certificate"
+
+        #
+        # 2. Create the intermediate pair :
+        # An intermediate certificate authority (CA) is an entity that can sign certificates
+        # on behalf of the root CA. The root CA signs the intermediate certificate, forming a chain of trust.
+        #
+
+        # 1. Prepare the directory
+        mkdir -p ${INTERMEDIATE_CA_PATH}/{certs,crl,csr,newcerts,private,public}
+        chmod 700 ${INTERMEDIATE_CA_PATH}/private
+        touch ${INTERMEDIATE_CA_PATH}/index.txt
+        echo 1000 > ${INTERMEDIATE_CA_PATH}/serial
+
+        # crlnumber is used to keep track of certificate revocation lists.
+        echo 1000 > ${INTERMEDIATE_CA_PATH}/crlnumber
+
+        # 2. Create the intermediate key
+        openssl genrsa -aes256 -passout pass:sandbox \
+          -out ${INTERMEDIATE_CA_PATH}/private/intermediate-ca.key.pem 4096
+
+        chmod 400 ${INTERMEDIATE_CA_PATH}/private/intermediate-ca.key.pem
+
+        # 3. Extract public key
+        openssl rsa -pubout \
+          -passin pass:sandbox \
+          -in ${INTERMEDIATE_CA_PATH}/private/intermediate-ca.key.pem \
+          -out ${INTERMEDIATE_CA_PATH}/public/intermediate-ca-public.key.pem
+
+        # 4. Create the intermediate certificate Signing Request
+        openssl req -new -sha256 \
+          -config ${INTERMEDIATE_CA_PATH}/openssl.cnf \
+          -subj "/CN=Sandbox Intermediate CA/O=Sandbox/OU=Security/L=Pune/ST=MH/C=IN/emailAddress=security@sandbox.net" \
+          -passin pass:sandbox \
+          -key ${INTERMEDIATE_CA_PATH}/private/intermediate-ca.key.pem \
+          -out ${INTERMEDIATE_CA_PATH}/csr/intermediate-ca.csr.pem
+
+        # 5. Sign intermediate certificate with Root CA
+        openssl ca -days 3650 -notext -md sha256 \
+          -config ${ROOT_CA_PATH}/openssl.cnf \
+          -extensions v3_intermediate_ca \
+          -passin pass:sandbox \
+          -in ${INTERMEDIATE_CA_PATH}/csr/intermediate-ca.csr.pem \
+          -out ${INTERMEDIATE_CA_PATH}/certs/intermediate-ca.cert.pem
+
+
+        chmod 444 ${INTERMEDIATE_CA_PATH}/certs/intermediate-ca.cert.pem
+
+        # 6. Check certificate details
+        openssl x509 -noout -text \
+          -in ${INTERMEDIATE_CA_PATH}/certs/intermediate-ca.cert.pem
+
+        # 7. Verify the intermediate certificate against the root certificate
+        openssl verify -CAfile ${ROOT_CA_PATH}/certs/root-ca.cert.pem \
+          ${INTERMEDIATE_CA_PATH}/certs/intermediate-ca.cert.pem
+
+        # 8. Create the certificate chain file
+        cat ${INTERMEDIATE_CA_PATH}/certs/intermediate-ca.cert.pem \
+          ${ROOT_CA_PATH}/certs/root-ca.cert.pem > ${INTERMEDIATE_CA_PATH}/certs/ca-chain.cert.pem
+
+
+      ;;
+    #case 3
+    "Server")
+        echo "Generating Server Certificate"
+
+        #
+        # 3. Sign server and client certificates
+        #
+        mkdir -p ${SERVER_CERT_PATH}/{certs,crl,csr,newcerts,private,public}
+        chmod 700 ${SERVER_CERT_PATH}/private
+
+        SERVER_NAME=$3
+        if [ $SERVER_NAME == "" ]
+        then
+            SERVER_NAME=$(hostname -f)
+        fi
+
+        # 1. Create a key
+        # Omit the -aes256 option to create a key without a password
+        openssl genrsa \
+          -out ${SERVER_CERT_PATH}/private/${SERVER_NAME}.key.pem 2048
+
+        chmod 400 ${SERVER_CERT_PATH}/private/${SERVER_NAME}.key.pem
+
+
+        # Extract public key
+        openssl rsa -pubout -passin pass:sandbox \
+        -in ${SERVER_CERT_PATH}/private/${SERVER_NAME}.key.pem \
+        -out ${SERVER_CERT_PATH}/public/${SERVER_NAME}-public.key.pem
+
+        # 2. Create a Server Certificate Signing Request
+        openssl req -config ${INTERMEDIATE_CA_PATH}/openssl.cnf \
+          -new -sha256 \
+          -subj "/CN=${SERVER_NAME}/O=Sandbox/OU=Servers/L=Pune/ST=MH/C=IN/emailAddress=security@sandbox.net" \
+          -addext "subjectAltName = DNS:localhost,DNS:*.sandbox.net,DNS:*.example.com,IP:127.0.0.1,IP:192.168.9.128, IP:192.168.30.128" \
+          -key ${SERVER_CERT_PATH}/private/${SERVER_NAME}.key.pem \
+          -out ${SERVER_CERT_PATH}/csr/${SERVER_NAME}.csr.pem
+
+        # 3. Verify Certificate Signing Request
+        openssl req -text -noout -verify -in ${SERVER_CERT_PATH}/csr/${SERVER_NAME}.csr.pem
+
+        # 4. Creating Server Extension Conf file
+        if [ ! -f "${SERVER_CERT_PATH}/${SERVER_NAME}-extfile.cnf" ]
+        then
+          rm -f ${SERVER_CERT_PATH}/${SERVER_NAME}-extfile.cnf
+        fi
+
+        sed_expression=$(eval echo "s/#SERVER_NAME#/${SERVER_NAME}/g")
+        sed -E ${sed_expression} ${SERVER_CERT_PATH}/server-extfile.cnf > ${SERVER_CERT_PATH}/${SERVER_NAME}-extfile.cnf
+
+        # 5. Sign server certificate with Intermediate Root CA
+        openssl ca -config ${INTERMEDIATE_CA_PATH}/openssl.cnf \
+          -extensions server_cert -days 375 -notext -md sha256 \
+          -in ${SERVER_CERT_PATH}/csr/${SERVER_NAME}.csr.pem \
+          -out ${SERVER_CERT_PATH}/certs/${SERVER_NAME}.cert.pem \
+          -extensions v3_req \
+          -extfile ${SERVER_CERT_PATH}/${SERVER_NAME}-extfile.cnf
+
+
+        chmod 444 ${SERVER_CERT_PATH}/certs/${SERVER_NAME}.cert.pem
+
+        # 6. Verify the certificate
+        openssl x509 -noout -text \
+          -in ${SERVER_CERT_PATH}/certs/${SERVER_NAME}.cert.pem
+
+        # 7. Verify the certificate against Signing CA
+        openssl verify -CAfile ${INTERMEDIATE_CA_PATH}/certs/ca-chain.cert.pem \
+          ${SERVER_CERT_PATH}/certs/${SERVER_NAME}.cert.pem
+
+
+
+      ;;
+    #case 4
+    "Client")
+      echo "Generating Client Certificate"
+      ;;
+esac
+
+
+

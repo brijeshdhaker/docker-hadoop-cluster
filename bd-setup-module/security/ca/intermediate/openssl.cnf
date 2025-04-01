@@ -7,7 +7,7 @@ default_ca = CA_default
 
 [ CA_default ]
 # Directory and file locations.
-dir               = /apps/security/ssl/intermediate/ca
+dir               = ./bd-setup-module/security/ca/intermediate
 certs             = $dir/certs
 crl_dir           = $dir/crl
 new_certs_dir     = $dir/newcerts
@@ -16,12 +16,12 @@ serial            = $dir/serial
 RANDFILE          = $dir/private/.rand
 
 # The root key and root certificate.
-private_key       = $dir/private/sandbox-intermediate.key.pem
-certificate       = $dir/certs/sandbox-intermediate.cert.pem
+private_key       = $dir/private/intermediate-ca.key.pem
+certificate       = $dir/certs/intermediate-ca.cert.pem
 
 # For certificate revocation lists.
 crlnumber         = $dir/crlnumber
-crl               = $dir/crl/sandbox-intermediate.crl.pem
+crl               = $dir/crl/intermediate.crl.pem
 crl_extensions    = crl_ext
 default_crl_days  = 30
 
@@ -82,9 +82,9 @@ countryName_default             = IN
 stateOrProvinceName_default     = MH
 localityName_default            = Pune
 0.organizationName_default      = Sandbox
-organizationalUnitName_default  = Sandbox
-commonName_default              = Intermediate Root CA
-emailAddress_default            = support@sandbox.net
+organizationalUnitName_default  = Security
+commonName_default              = Sandbox Intermediate CA
+emailAddress_default            = security@sandbox.net
 
 [ v3_ca ]
 # Extensions for a typical CA (`man x509v3_config`).
