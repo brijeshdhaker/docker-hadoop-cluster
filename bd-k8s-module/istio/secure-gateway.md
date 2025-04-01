@@ -12,9 +12,9 @@ openssl req -x509 -sha256 \
 -nodes \
 -days 365 \
 -newkey rsa:2048 \
--subj '/O=example Inc./CN=example.com' \
--keyout ./bd-k8s-module/istio/example_certs1/example.com.key \
--out ./bd-k8s-module/istio/example_certs1/example.com.crt
+-subj "/CN=Root CA/O=Sandbox/OU=Security/L=Pune/ST=MH/C=IN/emailAddress=security@sandbox.net" \
+-keyout ./bd-k8s-module/istio/example_certs1/root-ca.key \
+-out ./bd-k8s-module/istio/example_certs1/root-ca.crt
 
 ```
 
