@@ -4,25 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-03-31 Add Sandbox Root CA &amp; Certs.">
-      <change afterPath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl-cert_old.sh" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-01 Add Sandbox Root CA &amp; Certs.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio/secure-gateway.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-k8s-module/istio/secure-gateway.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/intermediate/ca/crlnumber" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/intermediate/ca/index.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/intermediate/ca/index.txt.attr" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/intermediate/ca/index.txt.old" beforeDir="false" afterPath="$PROJECT_DIR$/bd-k8s-module/istio/example_certs1/server-extfile.cnf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/intermediate/ca/openssl.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/ca/intermediate/openssl.cnf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/intermediate/ca/serial" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/intermediate/ca/serial.old" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/root/ca/index.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/root/ca/index.txt.attr" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/root/ca/index.txt.old" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/root/ca/openssl.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/ca/root/openssl.cnf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/root/ca/serial" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/root/ca/serial.old" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/server/server-extfile.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/server/server-extfile.cnf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl-cert.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl-cert.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl-cert.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl-cert_old.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme-resources/microk8s-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/microk8s-readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme-resources/openssl-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/openssl-readme.md" afterDir="false" />
     </list>
@@ -616,14 +602,6 @@
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
     </task>
-    <task id="LOCAL-00109" summary="2024-12-10 update bd-flink-module.">
-      <option name="closed" value="true" />
-      <created>1733823286392</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1733823286393</updated>
-    </task>
     <task id="LOCAL-00110" summary="2024-12-10 update bd-flink-module.">
       <option name="closed" value="true" />
       <created>1733823519695</created>
@@ -1008,7 +986,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743442163091</updated>
     </task>
-    <option name="localTasksCounter" value="158" />
+    <task id="LOCAL-00158" summary="2025-04-01 Add Sandbox Root CA &amp; Certs.">
+      <option name="closed" value="true" />
+      <created>1743479608657</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1743479608666</updated>
+    </task>
+    <option name="localTasksCounter" value="159" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -1036,7 +1022,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-12-05 refactor bd-flink-module project." />
     <MESSAGE value="2024-12-07 refactor bd-flink-module project." />
     <MESSAGE value="2024-12-08 refactor secure &amp; non secure configs." />
     <MESSAGE value="2024-12-08 update bd-flink-module." />
@@ -1061,7 +1046,8 @@
     <MESSAGE value="2025-03-28 add helm chart for springboot application." />
     <MESSAGE value="2025-03-29 add helm chart for springboot application." />
     <MESSAGE value="2025-03-31 Add Sandbox Root CA &amp; Certs." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-03-31 Add Sandbox Root CA &amp; Certs." />
+    <MESSAGE value="2025-04-01 Add Sandbox Root CA &amp; Certs." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-04-01 Add Sandbox Root CA &amp; Certs." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

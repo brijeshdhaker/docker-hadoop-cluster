@@ -13,7 +13,7 @@ then
   echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh ./bd-setup-module/security CA'
   echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh ./bd-setup-module/security Intermediate'
   echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh ./bd-setup-module/security Server kubernetes'
-  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh ./bd-setup-module/security Client'
+  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh ./bd-setup-module/security Client kubernetes'
   exit 1
 
 fi
@@ -36,6 +36,7 @@ export BASE_PATH=$1
 export ROOT_CA_PATH=${BASE_PATH}/ca/root
 export INTERMEDIATE_CA_PATH=${BASE_PATH}/ca/intermediate
 export SERVER_CERT_PATH=${BASE_PATH}/server
+export CLIENT_CERT_PATH=${BASE_PATH}/client
 
 case "$CERT_TYPE" in
     #case 1
@@ -166,10 +167,10 @@ case "$CERT_TYPE" in
         chmod 400 ${SERVER_CERT_PATH}/private/${SERVER_NAME}.key.pem
 
 
-        # Extract public key
-        openssl rsa -pubout -passin pass:sandbox \
-        -in ${SERVER_CERT_PATH}/private/${SERVER_NAME}.key.pem \
-        -out ${SERVER_CERT_PATH}/public/${SERVER_NAME}-public.key.pem
+        # Extract Server public key
+        openssl rsa -pubout \
+          -in ${SERVER_CERT_PATH}/private/${SERVER_NAME}.key.pem \
+          -out ${SERVER_CERT_PATH}/public/${SERVER_NAME}-public.key.pem
 
         # 2. Create a Server Certificate Signing Request
         openssl req -config ${INTERMEDIATE_CA_PATH}/openssl.cnf \
@@ -191,15 +192,19 @@ case "$CERT_TYPE" in
         sed_expression=$(eval echo "s/#SERVER_NAME#/${SERVER_NAME}/g")
         sed -E ${sed_expression} ${SERVER_CERT_PATH}/server-extfile.cnf > ${SERVER_CERT_PATH}/${SERVER_NAME}-extfile.cnf
 
-        # 5. Sign server certificate with Intermediate Root CA
-        openssl ca -config ${INTERMEDIATE_CA_PATH}/openssl.cnf \
-          -extensions server_cert -days 375 -notext -md sha256 \
+        # 5. Sign server certificate with Intermediate CA
+        openssl x509 \
+          -req -sha256 -days 365 \
+          -passin pass:sandbox \
+          -set_serial 1001 \
+          -CA ${INTERMEDIATE_CA_PATH}/certs/intermediate-ca.cert.pem \
+          -CAkey ${INTERMEDIATE_CA_PATH}/private/intermediate-ca.key.pem \
           -in ${SERVER_CERT_PATH}/csr/${SERVER_NAME}.csr.pem \
           -out ${SERVER_CERT_PATH}/certs/${SERVER_NAME}.cert.pem \
           -extensions v3_req \
           -extfile ${SERVER_CERT_PATH}/${SERVER_NAME}-extfile.cnf
 
-
+        #
         chmod 444 ${SERVER_CERT_PATH}/certs/${SERVER_NAME}.cert.pem
 
         # 6. Verify the certificate
@@ -211,11 +216,55 @@ case "$CERT_TYPE" in
           ${SERVER_CERT_PATH}/certs/${SERVER_NAME}.cert.pem
 
 
-
       ;;
     #case 4
     "Client")
       echo "Generating Client Certificate"
+
+      mkdir -p ${CLIENT_CERT_PATH}/{certs,crl,csr,newcerts,private,public}
+
+      CLIENT_NAME=$3
+      if [ $CLIENT_NAME == "" ]
+      then
+          CLIENT_NAME=$(hostname -f)
+      fi
+
+      # 1. Create a key
+      openssl genrsa \
+      -out ${CLIENT_CERT_PATH}/private/${CLIENT_NAME}-client.key.pem 2048
+
+      # 2. Extract Client public key
+      openssl rsa \
+        -pubout -in ${CLIENT_CERT_PATH}/private/${CLIENT_NAME}-client.key.pem \
+        -out ${CLIENT_CERT_PATH}/public/${CLIENT_NAME}-client-public.key.pem
+
+      # 3. Create a certificate Signing Request
+      openssl req \
+        -subj '/CN=Sandbox Client' -new \
+        -key ${CLIENT_CERT_PATH}/private/${CLIENT_NAME}-client.key.pem \
+        -out ${CLIENT_CERT_PATH}/csr/${CLIENT_NAME}-client.csr
+
+      # echo extendedKeyUsage = clientAuth > ${CLIENT_CERT_PATH}/client-extfile.cnf
+
+      # Generate the signed client certificate
+      openssl x509 -req -days 365 -sha256 \
+        -passin pass:sandbox \
+        -CAcreateserial \
+        -CA ${INTERMEDIATE_CA_PATH}/certs/intermediate.cert.pem \
+        -CAkey ${INTERMEDIATE_CA_PATH}/private/intermediate.key.pem \
+        -in ${CLIENT_CERT_PATH}/csr/${CLIENT_NAME}-client.csr \
+        -out ${CLIENT_CERT_PATH}/certs/${CLIENT_NAME}-client.cert.pem \
+        -extfile ${CLIENT_CERT_PATH}/client-extfile.cnf
+
+      # Verify the certificate
+      openssl x509 -noout -text \
+        -in ${CLIENT_CERT_PATH}/certs/${CLIENT_NAME}-client.cert.pem
+
+      # Verify the certificate against Signing CA
+      openssl verify \
+        -CAfile ${INTERMEDIATE_CA_PATH}/certs/ca-chain.cert.pem \
+        ${CLIENT_CERT_PATH}/certs/${CLIENT_NAME}-client.cert.pem
+
       ;;
 esac
 

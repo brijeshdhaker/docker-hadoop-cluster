@@ -22,20 +22,37 @@ openssl req -x509 -sha256 \
 ```shell
 
 openssl req \
--out ./bd-k8s-module/istio/example_certs1/httpbin.example.com.csr \
 -newkey rsa:2048 \
 -nodes \
+-out ./bd-k8s-module/istio/example_certs1/httpbin.example.com.csr \
 -keyout ./bd-k8s-module/istio/example_certs1/httpbin.example.com.key \
--subj "/CN=httpbin.example.com/O=httpbin organization"
+-subj "/CN=httpbin.sandbox.net/O=Sandbox/OU=Istio/L=Pune/ST=MH/C=IN/emailAddress=support@sandbox.net" \
+-addext "subjectAltName = DNS:localhost,DNS:*.sandbox.net,IP:127.0.0.1,IP:192.168.9.128, IP:192.168.30.128" \
+-addext "extendedKeyUsage = serverAuth"
 
-openssl x509 -req -sha256 \
+openssl req -text -noout -verify -in ./bd-k8s-module/istio/example_certs1/httpbin.example.com.csr
+
+openssl x509 \
+-req \
+-sha256 \
 -days 365 \
--CA ./bd-k8s-module/istio/example_certs1/example.com.crt \
--CAkey ./bd-k8s-module/istio/example_certs1/example.com.key \
--set_serial 0 \
+-passin pass:sandbox \
+-set_serial 1003 \
+-CA ./bd-setup-module/security/intermediate/ca/certs/sandbox-intermediate.cert.pem \
+-CAkey ./bd-setup-module/security/intermediate/ca/private/sandbox-intermediate.key.pem \
 -in ./bd-k8s-module/istio/example_certs1/httpbin.example.com.csr \
--out ./bd-k8s-module/istio/example_certs1/httpbin.example.com.crt
-
+-out ./bd-k8s-module/istio/example_certs1/httpbin.example.com.crt \
+-extensions v3_req \
+-extfile ./bd-k8s-module/istio/example_certs1/server-extfile.cnf
+    
+# 3. Sign server certificate with Intermediate Root CA
+openssl ca -config bd-setup-module/security/intermediate/ca/openssl.cnf \
+  -extensions server_cert \
+  -days 375 -notext -md sha256 \
+  -passin pass:sandbox \
+  -in ./bd-k8s-module/istio/example_certs1/httpbin.example.com.csr \
+  -out ./bd-k8s-module/istio/example_certs1/httpbin.sandbox.net.crt
+      
 ```
 
 # 3. Create a second set of the same kind of certificates and keys:

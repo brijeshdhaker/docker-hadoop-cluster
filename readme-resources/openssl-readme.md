@@ -109,10 +109,11 @@ req     to process csr
     openssl rsa -pubout -passin pass:sandbox -in ${SERVER_CERT_PATH}/private/sandbox-server.key.pem -out ${SERVER_CERT_PATH}/public/sandbox-server-public.key.pem
         
     # 2. Create a certificate Signing Request
-    openssl req -config ${INTERMEDIATE_CA_PATH}/openssl.cnf \
+    openssl req \
+      -config ${INTERMEDIATE_CA_PATH}/openssl.cnf \
       -new -sha256 \
       -passin pass:sandbox \
-      -subj "/CN=$(hostname -f)"
+      -subj "/CN=$(hostname -f)" \
       -key ${SERVER_CERT_PATH}/private/sandbox-server.key.pem \
       -out ${SERVER_CERT_PATH}/csr/sandbox-server.csr.pem
     
@@ -229,7 +230,9 @@ openssl req -new \
 ```
 
 # creating a new key and certificate that is valid for 365 days, uses the rsa:2048 encryption,
-openssl req -new -nodes \
+openssl req \
+-new \
+-nodes \
 -days 365 \
 -newkey rsa:2048 \
 -keyout /apps/security/ssl/server.key \

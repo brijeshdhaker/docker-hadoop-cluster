@@ -21,6 +21,7 @@ microk8s config > ~/.kube/config
 
 # 
 sudo microk8s stop
+sudo -S <<< "Accoo7@k47" microk8s stop
 echo Accoo7@k47 | sudo -S -k microk8s stop
 
 
