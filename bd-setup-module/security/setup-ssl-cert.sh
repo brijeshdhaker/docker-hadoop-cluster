@@ -57,26 +57,26 @@ case "$CERT_TYPE" in
         # omit the -aes256 option to create a key without a password
         openssl genrsa -aes256 \
         -passout pass:sandbox \
-        -out ${ROOT_CA_PATH}/private/root-ca.key.pem 4096
+        -out ${ROOT_CA_PATH}/private/root-ca.key 4096
 
-        chmod 400 ${ROOT_CA_PATH}/private/root-ca.key.pem
+        chmod 400 ${ROOT_CA_PATH}/private/root-ca.key
 
         # 2. Extract public key
         openssl rsa -pubout \
         -passin pass:sandbox \
-        -in ${ROOT_CA_PATH}/private/root-ca.key.pem \
-        -out ${ROOT_CA_PATH}/public/root-ca-public.key.pem
+        -in ${ROOT_CA_PATH}/private/root-ca.key \
+        -out ${ROOT_CA_PATH}/public/root-ca-public.key
 
         # 3. Create the root certificate
         openssl req -new -x509 -days 7300 -sha256 -extensions v3_ca \
           -config ${ROOT_CA_PATH}/openssl.cnf \
-          -subj "/CN=Sandbox Root CA/O=Sandbox/OU=Security/L=Pune/ST=MH/C=IN/emailAddress=security@sandbox.net" \
           -passin pass:sandbox \
-          -key ${ROOT_CA_PATH}/private/root-ca.key.pem \
-          -out ${ROOT_CA_PATH}/certs/root-ca.cert.pem
+          -subj "/CN=Root CA/O=Sandbox/OU=Security/L=Pune/ST=MH/C=IN/emailAddress=security@sandbox.net" \
+          -key ${ROOT_CA_PATH}/private/root-ca.key \
+          -out ${ROOT_CA_PATH}/certs/root-ca.cert
 
         # 4. Check certificate details
-        openssl x509 -noout -text -in ${ROOT_CA_PATH}/certs/root-ca.cert.pem
+        openssl x509 -noout -text -in ${ROOT_CA_PATH}/certs/root-ca.cert
 
       ;;
     #case 2
@@ -100,46 +100,46 @@ case "$CERT_TYPE" in
 
         # 2. Create the intermediate key
         openssl genrsa -aes256 -passout pass:sandbox \
-          -out ${INTERMEDIATE_CA_PATH}/private/intermediate-ca.key.pem 4096
+          -out ${INTERMEDIATE_CA_PATH}/private/intermediate-ca.key 4096
 
-        chmod 400 ${INTERMEDIATE_CA_PATH}/private/intermediate-ca.key.pem
+        chmod 400 ${INTERMEDIATE_CA_PATH}/private/intermediate-ca.key
 
         # 3. Extract public key
         openssl rsa -pubout \
           -passin pass:sandbox \
-          -in ${INTERMEDIATE_CA_PATH}/private/intermediate-ca.key.pem \
-          -out ${INTERMEDIATE_CA_PATH}/public/intermediate-ca-public.key.pem
+          -in ${INTERMEDIATE_CA_PATH}/private/intermediate-ca.key \
+          -out ${INTERMEDIATE_CA_PATH}/public/intermediate-ca-public.key
 
         # 4. Create the intermediate certificate Signing Request
         openssl req -new -sha256 \
           -config ${INTERMEDIATE_CA_PATH}/openssl.cnf \
-          -subj "/CN=Sandbox Intermediate CA/O=Sandbox/OU=Security/L=Pune/ST=MH/C=IN/emailAddress=security@sandbox.net" \
+          -subj "/CN=Intermediate CA/O=Sandbox/OU=Security/L=Pune/ST=MH/C=IN/emailAddress=security@sandbox.net" \
           -passin pass:sandbox \
-          -key ${INTERMEDIATE_CA_PATH}/private/intermediate-ca.key.pem \
-          -out ${INTERMEDIATE_CA_PATH}/csr/intermediate-ca.csr.pem
+          -key ${INTERMEDIATE_CA_PATH}/private/intermediate-ca.key \
+          -out ${INTERMEDIATE_CA_PATH}/csr/intermediate-ca.csr
 
         # 5. Sign intermediate certificate with Root CA
         openssl ca -days 3650 -notext -md sha256 \
           -config ${ROOT_CA_PATH}/openssl.cnf \
           -extensions v3_intermediate_ca \
           -passin pass:sandbox \
-          -in ${INTERMEDIATE_CA_PATH}/csr/intermediate-ca.csr.pem \
-          -out ${INTERMEDIATE_CA_PATH}/certs/intermediate-ca.cert.pem
+          -in ${INTERMEDIATE_CA_PATH}/csr/intermediate-ca.csr \
+          -out ${INTERMEDIATE_CA_PATH}/certs/intermediate-ca.crt
 
 
-        chmod 444 ${INTERMEDIATE_CA_PATH}/certs/intermediate-ca.cert.pem
+        chmod 444 ${INTERMEDIATE_CA_PATH}/certs/intermediate-ca.crt
 
         # 6. Check certificate details
         openssl x509 -noout -text \
-          -in ${INTERMEDIATE_CA_PATH}/certs/intermediate-ca.cert.pem
+          -in ${INTERMEDIATE_CA_PATH}/certs/intermediate-ca.crt
 
         # 7. Verify the intermediate certificate against the root certificate
-        openssl verify -CAfile ${ROOT_CA_PATH}/certs/root-ca.cert.pem \
-          ${INTERMEDIATE_CA_PATH}/certs/intermediate-ca.cert.pem
+        openssl verify -CAfile ${ROOT_CA_PATH}/certs/root-ca.cert \
+          ${INTERMEDIATE_CA_PATH}/certs/intermediate-ca.crt
 
         # 8. Create the certificate chain file
-        cat ${INTERMEDIATE_CA_PATH}/certs/intermediate-ca.cert.pem \
-          ${ROOT_CA_PATH}/certs/root-ca.cert.pem > ${INTERMEDIATE_CA_PATH}/certs/ca-chain.cert.pem
+        cat ${INTERMEDIATE_CA_PATH}/certs/intermediate-ca.crt \
+          ${ROOT_CA_PATH}/certs/root-ca.cert > ${INTERMEDIATE_CA_PATH}/certs/ca-chain.crt
 
 
       ;;
@@ -162,26 +162,26 @@ case "$CERT_TYPE" in
         # 1. Create a key
         # Omit the -aes256 option to create a key without a password
         openssl genrsa \
-          -out ${SERVER_CERT_PATH}/private/${SERVER_NAME}.key.pem 2048
+          -out ${SERVER_CERT_PATH}/private/${SERVER_NAME}.key 2048
 
-        chmod 400 ${SERVER_CERT_PATH}/private/${SERVER_NAME}.key.pem
+        chmod 400 ${SERVER_CERT_PATH}/private/${SERVER_NAME}.key
 
 
         # Extract Server public key
         openssl rsa -pubout \
-          -in ${SERVER_CERT_PATH}/private/${SERVER_NAME}.key.pem \
-          -out ${SERVER_CERT_PATH}/public/${SERVER_NAME}-public.key.pem
+          -in ${SERVER_CERT_PATH}/private/${SERVER_NAME}.key \
+          -out ${SERVER_CERT_PATH}/public/${SERVER_NAME}-public.key
 
         # 2. Create a Server Certificate Signing Request
         openssl req -config ${INTERMEDIATE_CA_PATH}/openssl.cnf \
           -new -sha256 \
           -subj "/CN=${SERVER_NAME}/O=Sandbox/OU=Servers/L=Pune/ST=MH/C=IN/emailAddress=security@sandbox.net" \
-          -addext "subjectAltName = DNS:localhost,DNS:*.sandbox.net,DNS:*.example.com,IP:127.0.0.1,IP:192.168.9.128, IP:192.168.30.128" \
-          -key ${SERVER_CERT_PATH}/private/${SERVER_NAME}.key.pem \
-          -out ${SERVER_CERT_PATH}/csr/${SERVER_NAME}.csr.pem
+          -addext "subjectAltName = DNS:localhost,DNS:${SERVER_NAME},DNS:${SERVER_NAME}.sandbox.net,DNS:*.sandbox.net,DNS:*.example.com,IP:127.0.0.1,IP:192.168.9.128, IP:192.168.30.128" \
+          -key ${SERVER_CERT_PATH}/private/${SERVER_NAME}.key \
+          -out ${SERVER_CERT_PATH}/csr/${SERVER_NAME}.csr
 
         # 3. Verify Certificate Signing Request
-        openssl req -text -noout -verify -in ${SERVER_CERT_PATH}/csr/${SERVER_NAME}.csr.pem
+        openssl req -text -noout -verify -in ${SERVER_CERT_PATH}/csr/${SERVER_NAME}.csr
 
         # 4. Creating Server Extension Conf file
         if [ ! -f "${SERVER_CERT_PATH}/${SERVER_NAME}-extfile.cnf" ]
@@ -196,24 +196,24 @@ case "$CERT_TYPE" in
         openssl x509 \
           -req -sha256 -days 365 \
           -passin pass:sandbox \
-          -set_serial 1001 \
-          -CA ${INTERMEDIATE_CA_PATH}/certs/intermediate-ca.cert.pem \
-          -CAkey ${INTERMEDIATE_CA_PATH}/private/intermediate-ca.key.pem \
-          -in ${SERVER_CERT_PATH}/csr/${SERVER_NAME}.csr.pem \
-          -out ${SERVER_CERT_PATH}/certs/${SERVER_NAME}.cert.pem \
+          -CAcreateserial \
+          -CA ${INTERMEDIATE_CA_PATH}/certs/intermediate-ca.crt \
+          -CAkey ${INTERMEDIATE_CA_PATH}/private/intermediate-ca.key \
+          -in ${SERVER_CERT_PATH}/csr/${SERVER_NAME}.csr \
+          -out ${SERVER_CERT_PATH}/certs/${SERVER_NAME}.cert \
           -extensions v3_req \
           -extfile ${SERVER_CERT_PATH}/${SERVER_NAME}-extfile.cnf
 
         #
-        chmod 444 ${SERVER_CERT_PATH}/certs/${SERVER_NAME}.cert.pem
+        chmod 444 ${SERVER_CERT_PATH}/certs/${SERVER_NAME}.cert
 
         # 6. Verify the certificate
         openssl x509 -noout -text \
-          -in ${SERVER_CERT_PATH}/certs/${SERVER_NAME}.cert.pem
+          -in ${SERVER_CERT_PATH}/certs/${SERVER_NAME}.cert
 
         # 7. Verify the certificate against Signing CA
-        openssl verify -CAfile ${INTERMEDIATE_CA_PATH}/certs/ca-chain.cert.pem \
-          ${SERVER_CERT_PATH}/certs/${SERVER_NAME}.cert.pem
+        openssl verify -CAfile ${INTERMEDIATE_CA_PATH}/certs/ca-chain.crt \
+          ${SERVER_CERT_PATH}/certs/${SERVER_NAME}.cert
 
 
       ;;
@@ -231,17 +231,17 @@ case "$CERT_TYPE" in
 
       # 1. Create a key
       openssl genrsa \
-      -out ${CLIENT_CERT_PATH}/private/${CLIENT_NAME}-client.key.pem 2048
+      -out ${CLIENT_CERT_PATH}/private/${CLIENT_NAME}-client.key 2048
 
       # 2. Extract Client public key
       openssl rsa \
-        -pubout -in ${CLIENT_CERT_PATH}/private/${CLIENT_NAME}-client.key.pem \
-        -out ${CLIENT_CERT_PATH}/public/${CLIENT_NAME}-client-public.key.pem
+        -pubout -in ${CLIENT_CERT_PATH}/private/${CLIENT_NAME}-client.key \
+        -out ${CLIENT_CERT_PATH}/public/${CLIENT_NAME}-client-public.key
 
       # 3. Create a certificate Signing Request
       openssl req \
         -subj '/CN=Sandbox Client' -new \
-        -key ${CLIENT_CERT_PATH}/private/${CLIENT_NAME}-client.key.pem \
+        -key ${CLIENT_CERT_PATH}/private/${CLIENT_NAME}-client.key \
         -out ${CLIENT_CERT_PATH}/csr/${CLIENT_NAME}-client.csr
 
       # echo extendedKeyUsage = clientAuth > ${CLIENT_CERT_PATH}/client-extfile.cnf
@@ -250,20 +250,20 @@ case "$CERT_TYPE" in
       openssl x509 -req -days 365 -sha256 \
         -passin pass:sandbox \
         -CAcreateserial \
-        -CA ${INTERMEDIATE_CA_PATH}/certs/intermediate.cert.pem \
-        -CAkey ${INTERMEDIATE_CA_PATH}/private/intermediate.key.pem \
+        -CA ${INTERMEDIATE_CA_PATH}/certs/intermediate.cert \
+        -CAkey ${INTERMEDIATE_CA_PATH}/private/intermediate.key \
         -in ${CLIENT_CERT_PATH}/csr/${CLIENT_NAME}-client.csr \
-        -out ${CLIENT_CERT_PATH}/certs/${CLIENT_NAME}-client.cert.pem \
+        -out ${CLIENT_CERT_PATH}/certs/${CLIENT_NAME}-client.cert \
         -extfile ${CLIENT_CERT_PATH}/client-extfile.cnf
 
       # Verify the certificate
       openssl x509 -noout -text \
-        -in ${CLIENT_CERT_PATH}/certs/${CLIENT_NAME}-client.cert.pem
+        -in ${CLIENT_CERT_PATH}/certs/${CLIENT_NAME}-client.cert
 
       # Verify the certificate against Signing CA
       openssl verify \
-        -CAfile ${INTERMEDIATE_CA_PATH}/certs/ca-chain.cert.pem \
-        ${CLIENT_CERT_PATH}/certs/${CLIENT_NAME}-client.cert.pem
+        -CAfile ${INTERMEDIATE_CA_PATH}/certs/ca-chain.crt \
+        ${CLIENT_CERT_PATH}/certs/${CLIENT_NAME}-client.cert
 
       ;;
 esac
