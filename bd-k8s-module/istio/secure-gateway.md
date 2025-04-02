@@ -277,6 +277,9 @@ kubectl create -n istio-system secret generic httpbin-credential \
 --from-file=ca.crt=./bd-k8s-module/istio/certs/ca-chain.crt \
 --dry-run=client \
 -o yaml
+
+kubectl -n istio-system get secret httpbin-credential --output=yaml
+
 ```
 
 # Configure the ingress gateway:
@@ -314,7 +317,7 @@ curl -v \
 # Pass a client certificate and private key to curl and resend the request. 
 # Pass your client’s certificate with the --cert flag and your private key with the --key flag to curl:
 ```shell
-curl -v -HHost:httpbin.sandbox.net --resolve "httpbin.sandbox.net:$SECURE_INGRESS_PORT:$INGRESS_HOST" \
+curl -v -k -HHost:httpbin.sandbox.net --resolve "httpbin.sandbox.net:$SECURE_INGRESS_PORT:$INGRESS_HOST" \
 --cacert ./bd-k8s-module/istio/certs/ca-chain.crt \
 --cert ./bd-k8s-module/istio/certs/client.sandbox.net.crt \
 --key ./bd-k8s-module/istio/certs/client.sandbox.net.key \
