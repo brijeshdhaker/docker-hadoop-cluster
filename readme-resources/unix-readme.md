@@ -88,43 +88,60 @@ EOF
 
 python -m http.server 8888
 
+pkgs=""
+while IFS= read -r pkg; do
+# Append the package name to pkgs
+pkgs="$pkgs $pkg"
+done < "./bd-setup-module/security/hosts.txt"
+echo $pkgs
+
+for pkg in $(cat ./bd-setup-module/security/hosts.txt); do
+echo $pkg
+done
+
 #
-#
-smbclient -L //192.168.65.1 --user='brijesh dhaker' --password='Accoo7@k47' --workgroup='THINKPAD-WIN-10'
+# SMBA Client
+```shell
+smbclient -L //thinkpad.sandbox.net --user='brijeshdhaker@gmail.com' --password='Windows2024$' --workgroup='THINKPAD-WIN-11'
+```
 
 #
 #
+```shell
 today=$(date +'%s')
 now=`date +"%Y-%m-%dT%H:%M:%S"`
 YYYYMMDD=`date +"%Y%m%d"`
-
+```
 #
 # Split Strings
 #
+```shell
 A="$(echo 'one_two_three_four_five' | cut -d'_' -f2)"
 B="$(echo 'one_two_three_four_five' | cut -d'_' -f4)"
 
 C=$(awk -F_ '{print $2}' <<< 'one_two_three_four_five')
 D=$(awk -F_ '{print $4}' <<< 'one_two_three_four_five')
 
+```
+
 #
 # break string with token
 #
+```shell
 s_path="/ib/core/data/csv:dfilter_44
 s_dir_path=${s_path%%:*}
 s_filter=${s_path#*:}
+```
 
 #
 #
 #
 nc -v -n -z -w 1 192.168.65.1 22
+netstat -na | grep 7180
 
 #
 last | grep -i reboot
-
 ps -ef | grep -i java
-
-netstat -na | grep 7180
 
 #
 #

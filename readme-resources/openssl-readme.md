@@ -277,6 +277,35 @@ openssl s_client -connect schemaregistry.sandbox.net:8081 -tls1_3 -showcerts \
 
 ```
 
+```shell
+
+openssl s_server \
+  -key ./bd-k8s-module/istio/certs/set-02/httpbin.sandbox.net.key \
+  -cert ./bd-k8s-module/istio/certs/set-02/httpbin.sandbox.net.crt \
+  -accept 5443 \
+  -state \
+  -www \
+  -CAfile ./bd-k8s-module/istio/certs/ca-chain.crt \
+  -verify 2 \
+  -debug \
+  -security_debug_verbose \
+  -tls1_2 \
+  -msg
+
+openssl s_client \
+  -tls1_2 \
+  -showcerts \
+  -connect localhost:5443 \
+  -cert ./bd-k8s-module/istio/certs/client.sandbox.net.crt \
+  -key ./bd-k8s-module/istio/certs/client.sandbox.net.key
+
+
+openssl s_client -connect google.com:443 2>/dev/null | openssl x509 -noout -dates
+echo | openssl s_client -connect example.org:443 2>/dev/null | openssl x509 -noout -ext subjectAltName
+    
+# Hit https://localhost:5443 in browser  
+
+```
 <<comment
  # Schema Registry Test :
 comment

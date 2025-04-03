@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: {{ include "helm.fullname" . }}-vsvc
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - {{ include "helm.fullname" . }}-gateway
+  http:
+  - route:
+      - destination:
+          host: {{ include "helm.fullname" . }}-svc
+          port:
+            number: {{ .Values.service.port }}
