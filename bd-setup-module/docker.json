@@ -1,0 +1,10 @@
+{
+  "auths": {
+    "https://index.docker.io/v1/": {
+      "username": "brijeshdhaker",
+      "password": "Accoo7@k47",
+      "email": "brijeshdhaker@gmail.com",
+      "auth": "YnJpamVzaGRoYWtlcjpBY2NvbzdAazQ3"
+    }
+  }
+}
