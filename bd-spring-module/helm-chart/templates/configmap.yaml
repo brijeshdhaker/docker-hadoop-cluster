@@ -24,20 +24,3 @@ metadata:
 data:
   {{ tpl ($.Files.Get "configs/config1.toml") . |  indent 2 }}
   #  {{ (.Files.Glob "foo/*").AsConfig | indent 2 }}
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: very-secret
-type: Opaque
-data:
-  {{ (.Files.Glob "secrets/*").AsSecrets | indent 2 }}
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: {{ .Release.Name }}-secret
-type: Opaque
-data:
-  token: |-
-    {{ .Files.Get "secrets/password" | b64enc }}

@@ -8,39 +8,39 @@ kubectl apply -f ./bd-k8s-module/istio/samples/httpbin/httpbin.yaml
 
 mkdir -p ./bd-k8s-module/istio/certs
 
-# 1.1 ROOT-CA
+# 1.1 ca-root
 openssl req -x509 -sha256 \
 -nodes \
 -days 7300 \
 -newkey rsa:2048 \
 -subj "/CN=Root CA/O=Sandbox/OU=Security/L=Pune/ST=MH/C=IN/emailAddress=security@sandbox.net" \
--keyout ./bd-k8s-module/istio/certs/root-ca.key \
--out ./bd-k8s-module/istio/certs/root-ca.crt
+-keyout ./bd-k8s-module/istio/certs/ca-root.key \
+-out ./bd-k8s-module/istio/certs/ca-root.crt
 
-# 1.2.1 INTERMEDIATE-CA CSR
+# 1.2.1 ca-intermediate CSR
 openssl req \
 -newkey rsa:2048 \
 -nodes \
--out ./bd-k8s-module/istio/certs/intermediate-ca.csr \
--keyout ./bd-k8s-module/istio/certs/intermediate-ca.key \
+-out ./bd-k8s-module/istio/certs/ca-intermediate.csr \
+-keyout ./bd-k8s-module/istio/certs/ca-intermediate.key \
 -subj "/CN=Intermediate CA/O=Sandbox/OU=Security/L=Pune/ST=MH/C=IN/emailAddress=security@sandbox.net"
 
-openssl req -text -noout -verify -in ./bd-k8s-module/istio/certs/intermediate-ca.csr
+openssl req -text -noout -verify -in ./bd-k8s-module/istio/certs/ca-intermediate.csr
 
-# 1.2.2 INTERMEDIATE-CA
+# 1.2.2 ca-intermediate
 openssl x509 \
 -req \
 -sha256 \
 -days 3650 \
 -set_serial 1000 \
--CA ./bd-k8s-module/istio/certs/root-ca.crt \
--CAkey ./bd-k8s-module/istio/certs/root-ca.key \
--in ./bd-k8s-module/istio/certs/intermediate-ca.csr \
--out ./bd-k8s-module/istio/certs/intermediate-ca.crt
+-CA ./bd-k8s-module/istio/certs/ca-root.crt \
+-CAkey ./bd-k8s-module/istio/certs/ca-root.key \
+-in ./bd-k8s-module/istio/certs/ca-intermediate.csr \
+-out ./bd-k8s-module/istio/certs/ca-intermediate.crt
 
 # 1.3 CA CHAIN CRT
-cat ./bd-k8s-module/istio/certs/intermediate-ca.crt \
-  ./bd-k8s-module/istio/certs/root-ca.crt > ./bd-k8s-module/istio/certs/ca-chain.crt
+cat ./bd-k8s-module/istio/certs/ca-intermediate.crt \
+  ./bd-k8s-module/istio/certs/ca-root.crt > ./bd-k8s-module/istio/certs/ca-cert-chain.crt
 
 ```
 
@@ -64,8 +64,8 @@ openssl x509 \
 -days 365 \
 -passin pass:sandbox \
 -set_serial 1001 \
--CA ./bd-k8s-module/istio/certs/intermediate-ca.crt \
--CAkey ./bd-k8s-module/istio/certs/intermediate-ca.key \
+-CA ./bd-k8s-module/istio/certs/ca-intermediate.crt \
+-CAkey ./bd-k8s-module/istio/certs/ca-intermediate.key \
 -in ./bd-k8s-module/istio/certs/httpbin.sandbox.net.csr \
 -out ./bd-k8s-module/istio/certs/httpbin.sandbox.net.crt \
 -extensions v3_req \
@@ -95,8 +95,8 @@ openssl x509 \
 -sha256 \
 -days 365 \
 -set_serial 1002 \
--CA ./bd-k8s-module/istio/certs/intermediate-ca.crt \
--CAkey ./bd-k8s-module/istio/certs/intermediate-ca.key \
+-CA ./bd-k8s-module/istio/certs/ca-intermediate.crt \
+-CAkey ./bd-k8s-module/istio/certs/ca-intermediate.key \
 -in ./bd-k8s-module/istio/certs/set-02/httpbin.sandbox.net.csr \
 -out ./bd-k8s-module/istio/certs/set-02/httpbin.sandbox.net.crt \
 -extensions v3_req \
@@ -124,8 +124,8 @@ openssl x509 \
 -days 365 \
 -passin pass:sandbox \
 -set_serial 1003 \
--CA ./bd-k8s-module/istio/certs/intermediate-ca.crt \
--CAkey ./bd-k8s-module/istio/certs/intermediate-ca.key \
+-CA ./bd-k8s-module/istio/certs/ca-intermediate.crt \
+-CAkey ./bd-k8s-module/istio/certs/ca-intermediate.key \
 -in ./bd-k8s-module/istio/certs/helloworld.sandbox.net.csr \
 -out ./bd-k8s-module/istio/certs/helloworld.sandbox.net.crt \
 -extensions v3_req \
@@ -149,8 +149,8 @@ openssl x509 \
 -sha256 \
 -days 365 \
 -set_serial 1004 \
--CA ./bd-k8s-module/istio/certs/intermediate-ca.crt \
--CAkey ./bd-k8s-module/istio/certs/intermediate-ca.key \
+-CA ./bd-k8s-module/istio/certs/ca-intermediate.crt \
+-CAkey ./bd-k8s-module/istio/certs/ca-intermediate.key \
 -in ./bd-k8s-module/istio/certs/client.sandbox.net.csr \
 -out ./bd-k8s-module/istio/certs/client.sandbox.net.crt
 
@@ -237,7 +237,7 @@ export TCP_INGRESS_PORT=$(kubectl -n "$INGRESS_NS" get service "$INGRESS_NAME" -
 curl -v \
   -HHost:httpbin.sandbox.net \
   --resolve "httpbin.sandbox.net:$SECURE_INGRESS_PORT:$INGRESS_HOST" \
-  --cacert /bd-k8s-module/istio/certs/ca-chain.crt \
+  --cacert /bd-k8s-module/istio/certs/ca-cert-chain.crt \
   "https://httpbin.sandbox.net:$SECURE_INGRESS_PORT/status/418"
 ```
 
@@ -257,7 +257,7 @@ curl -v -HHost:httpbin.sandbox.net --resolve "httpbin.sandbox.net:$SECURE_INGRES
 # 6. If you try to access httpbin using the previous certificate chain, the attempt now fails:
 ```shell
 curl -v -HHost:httpbin.sandbox.net --resolve "httpbin.sandbox.net:$SECURE_INGRESS_PORT:$INGRESS_HOST" \
---cacert ./bd-k8s-module/istio/certs/ca-chain.crt "https://httpbin.sandbox.net:$SECURE_INGRESS_PORT/status/418"
+--cacert ./bd-k8s-module/istio/certs/ca-cert-chain.crt "https://httpbin.sandbox.net:$SECURE_INGRESS_PORT/status/418"
 ```
 
 
@@ -274,7 +274,7 @@ kubectl -n istio-system delete secret httpbin-credential
 kubectl create -n istio-system secret generic httpbin-credential \
 --from-file=tls.key=./bd-k8s-module/istio/certs/httpbin.sandbox.net.key \
 --from-file=tls.crt=./bd-k8s-module/istio/certs/httpbin.sandbox.net.crt \
---from-file=ca.crt=./bd-k8s-module/istio/certs/ca-chain.crt \
+--from-file=ca.crt=./bd-k8s-module/istio/certs/ca-cert-chain.crt \
 --dry-run=client \
 -o yaml
 
@@ -309,7 +309,7 @@ EOF
 ```shell
 curl -v \
 -HHost:httpbin.sandbox.net \
---cacert ./bd-k8s-module/istio/certs/ca-chain.crt \
+--cacert ./bd-k8s-module/istio/certs/ca-cert-chain.crt \
 --resolve "httpbin.sandbox.net:$SECURE_INGRESS_PORT:$INGRESS_HOST" \
 "https://httpbin.sandbox.net:$SECURE_INGRESS_PORT/status/418"
 ```
@@ -318,7 +318,7 @@ curl -v \
 # Pass your client’s certificate with the --cert flag and your private key with the --key flag to curl:
 ```shell
 curl -v -k -HHost:httpbin.sandbox.net --resolve "httpbin.sandbox.net:$SECURE_INGRESS_PORT:$INGRESS_HOST" \
---cacert ./bd-k8s-module/istio/certs/ca-chain.crt \
+--cacert ./bd-k8s-module/istio/certs/ca-cert-chain.crt \
 --cert ./bd-k8s-module/istio/certs/client.sandbox.net.crt \
 --key ./bd-k8s-module/istio/certs/client.sandbox.net.key \
 "https://httpbin.sandbox.net:$SECURE_INGRESS_PORT/status/418"

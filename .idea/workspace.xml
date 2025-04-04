@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-03 Add Sandbox Root CA &amp; Certs.">
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/docker.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/docker.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio/secure-gateway.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-k8s-module/istio/secure-gateway.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/Chart.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/Chart.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/local/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/local/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/configmap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/configmap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/secrets.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/secrets.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/helm-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/helm-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/k8s-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/k8s-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,12 +52,12 @@
     &quot;assignee&quot;: &quot;brijeshdhaker&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/brijeshdhaker/docker-hadoop-cluster.git",
-    "accountId": "32a6027c-5adc-44fe-b44b-96d7dfb134ec"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/brijeshdhaker/docker-hadoop-cluster.git&quot;,
+    &quot;accountId&quot;: &quot;32a6027c-5adc-44fe-b44b-96d7dfb134ec&quot;
   }
-}]]></component>
+}</component>
   <component name="JvmLoggingSettingsStorage">
     <option name="loggerId" value="Slf4j" />
     <option name="loggerName" value="logger" />
@@ -597,14 +605,6 @@
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
     </task>
-    <task id="LOCAL-00119" summary="2024-12-11 update bd-flink-module for working examples.">
-      <option name="closed" value="true" />
-      <created>1733933613696</created>
-      <option name="number" value="00119" />
-      <option name="presentableId" value="LOCAL-00119" />
-      <option name="project" value="LOCAL" />
-      <updated>1733933613697</updated>
-    </task>
     <task id="LOCAL-00120" summary="2024-12-11 update bd-flink-module for working examples.">
       <option name="closed" value="true" />
       <created>1733934071401</created>
@@ -989,7 +989,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743651454476</updated>
     </task>
-    <option name="localTasksCounter" value="168" />
+    <task id="LOCAL-00168" summary="2025-04-03 Add Sandbox Root CA &amp; Certs.">
+      <option name="closed" value="true" />
+      <created>1743651535449</created>
+      <option name="number" value="00168" />
+      <option name="presentableId" value="LOCAL-00168" />
+      <option name="project" value="LOCAL" />
+      <updated>1743651535449</updated>
+    </task>
+    <option name="localTasksCounter" value="169" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
