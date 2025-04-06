@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="bd-k8s-module" />
         <module name="bd-flink-module" />
         <module name="bd-spring-module" />
         <module name="bd-spark-module" />
@@ -19,7 +20,6 @@
       <module name="bd-grafana-modules" target="11" />
       <module name="bd-hadoop-module" target="11" />
       <module name="bd-java-module" target="1.8" />
-      <module name="bd-k8s-module" target="17" />
       <module name="bd-pyspark-module" target="1.8" />
       <module name="bd-python-module" target="1.8" />
       <module name="docker-hadoop-cluster" target="17" />

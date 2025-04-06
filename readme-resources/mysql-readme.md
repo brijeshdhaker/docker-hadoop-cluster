@@ -1,3 +1,7 @@
+#
+```shell
+docker exec -it mysqlserver mysql --user=root --password=p@SSW0rd --host=mysqlserver.sandbox.net --database=SANDBOXDB
+```
 
 ```shell
 mysql --user=root --password=p@SSW0rd 
