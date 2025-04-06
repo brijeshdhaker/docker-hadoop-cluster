@@ -2,24 +2,24 @@
 ---
 databaseChangeLog:
   - changeSet:  
-      id:  JIRA-0003-P-001  
+      id:  JIRA-0001-P-001
       author:  Brijesh D.
       runOnChange: true
       context: mysql
       changes:
         - sqlFile:
-            path: ../../objects/P_GET_USER_DETAILS.sql
+            path: ../../objects/procs/P_GET_USER_DETAILS.sql
             relativeToChangelogFile: true
             endDelimiter: $$
             stripComments: true
   - changeSet:
-        id:  JIRA-0004-P-001
-        author:  Brijesh D.
-        runOnChange: true
-        context: mysql
-        changes:
-            - sqlFile:
-                  path: ../../objects/P_GET_USER_ASSETS.sql
-                  relativeToChangelogFile: true
-                  endDelimiter: $$
-                  stripComments: true
+      id:  JIRA-0001-P-002
+      author:  Brijesh D.
+      runOnChange: true
+      context: mysql
+      changes:
+        - sqlFile:
+            path: ../../objects/procs/P_GET_PRODUCT_DETAILS.sql
+            relativeToChangelogFile: true
+            endDelimiter: $$
+            stripComments: true

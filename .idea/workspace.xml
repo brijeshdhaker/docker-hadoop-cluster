@@ -4,51 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-04 Update Configuration &amp; Resources.">
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/configmap.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/file-configmap.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-06 Update Configuration &amp; Resources.">
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/tables/table_products.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-mysqlserver.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-mysqlserver.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-k8s-module/bd-k8s-module.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/config1.toml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/config1.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/dev/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/dev/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/local/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/local/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/NOTES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/NOTES.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/_helpers.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/_helpers.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/configmap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/configmap.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/deployment.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/gateway.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/gateway.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/hpa.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/hpa.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/ingress.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/ingress.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/networkpolicy.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/networkpolicy.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/secrets.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/secrets.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/service.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/serviceaccount.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/serviceaccount.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/tests/test-connection.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/tests/test-connection.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/virtualservice.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/virtualservice.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/volumes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/volumes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/values.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaConsumerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaCustomProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaCustomProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaProducerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/kafka/KafkaConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/kafka/KafkaConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/kafka/KafkaProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/kafka/KafkaProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/AssetRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/entities/ProductEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/entities/RoleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/entities/RoleEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/proc-changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/proc-changelog.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/script-changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/script-changelog.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/table-changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/table-changelog.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/P_GET_USER_ASSETS.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/P_GET_USER_ASSETS.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/P_GET_USER_DETAILS.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/P_GET_USER_DETAILS.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/transaction-table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/transaction-table.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/account-data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/account-data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/audit-type-data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/audit-type-data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/auditlog-data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/auditlog-data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/P_GET_USER_ASSETS.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/procs/P_GET_PRODUCT_DETAILS.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/P_GET_USER_DETAILS.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/procs/P_GET_USER_DETAILS.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/audit-type-tables.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/cart-items-table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/cart-table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/item-table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/transaction-table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/tables/transaction-table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/account-data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/audit-type-data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/auditlog-data.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/products-data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/products-data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/role-data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/role-data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/curl-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/curl-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/mysql-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/mysql-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -333,11 +308,11 @@
       <recent name="$PROJECT_DIR$/bd-setup-module/security" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/tables" />
+      <recent name="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/procedures" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/templates" />
       <recent name="$PROJECT_DIR$/bd-setup-module" />
-      <recent name="$PROJECT_DIR$/bd-k8s-module/istio/certs" />
-      <recent name="$PROJECT_DIR$/bd-setup-module/security/ca" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -639,22 +614,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00121" summary="2024-12-11 update bd-flink-module for working examples.">
-      <option name="closed" value="true" />
-      <created>1733973467698</created>
-      <option name="number" value="00121" />
-      <option name="presentableId" value="LOCAL-00121" />
-      <option name="project" value="LOCAL" />
-      <updated>1733973467701</updated>
-    </task>
-    <task id="LOCAL-00122" summary="2024-12-11 update bd-flink-module for working examples.">
-      <option name="closed" value="true" />
-      <created>1733973488565</created>
-      <option name="number" value="00122" />
-      <option name="presentableId" value="LOCAL-00122" />
-      <option name="project" value="LOCAL" />
-      <updated>1733973488565</updated>
     </task>
     <task id="LOCAL-00123" summary="2024-12-12 add refine &amp; enrichment for flink module.">
       <option name="closed" value="true" />
@@ -1032,7 +991,23 @@
       <option name="project" value="LOCAL" />
       <updated>1743734178219</updated>
     </task>
-    <option name="localTasksCounter" value="170" />
+    <task id="LOCAL-00170" summary="2025-04-06 Update Configuration &amp; Resources.">
+      <option name="closed" value="true" />
+      <created>1743914073532</created>
+      <option name="number" value="00170" />
+      <option name="presentableId" value="LOCAL-00170" />
+      <option name="project" value="LOCAL" />
+      <updated>1743914073533</updated>
+    </task>
+    <task id="LOCAL-00171" summary="2025-04-06 Update Configuration &amp; Resources.">
+      <option name="closed" value="true" />
+      <created>1743914098210</created>
+      <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
+      <option name="project" value="LOCAL" />
+      <updated>1743914098211</updated>
+    </task>
+    <option name="localTasksCounter" value="172" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -1093,7 +1068,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-12-08 update bd-flink-module." />
     <MESSAGE value="2024-12-10 update bd-flink-module." />
     <MESSAGE value="2024-12-11 update bd-flink-module." />
     <MESSAGE value="2024-12-11 update bd-flink-module for working examples." />
@@ -1118,7 +1092,8 @@
     <MESSAGE value="2025-04-01 Add Sandbox Root CA &amp; Certs." />
     <MESSAGE value="2025-04-03 Add Sandbox Root CA &amp; Certs." />
     <MESSAGE value="2025-04-04 Update Configuration &amp; Resources." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-04-04 Update Configuration &amp; Resources." />
+    <MESSAGE value="2025-04-06 Update Configuration &amp; Resources." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-04-06 Update Configuration &amp; Resources." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

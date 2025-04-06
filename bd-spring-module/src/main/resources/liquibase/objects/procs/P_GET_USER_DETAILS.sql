@@ -18,6 +18,6 @@ BEGIN
         UPD_TS 
     FROM
         USERS
-    ORDER BY USERID;
+    ORDER BY NAME;
     
 END $$
