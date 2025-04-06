@@ -118,14 +118,17 @@ volumes:
     hostPath:
       path: /apps/sandbox
       type: Directory
-# - name: app-vol
-#   secret:
-#     secretName: mysecret
-#     optional: false
+  - name: vol-secret
+    secret:
+     secretName: very-secret
+     optional: false
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
  - name: vol-sandbox
+   mountPath: "/apps/sandbox"
+   readOnly: true
+ - name: vol-secret
    mountPath: "/apps/sandbox"
    readOnly: true
 
@@ -134,3 +137,13 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+favorite:
+  food: Bread
+  drink: coffee
+pizzaToppings:
+  - mushrooms
+  - cheese
+  - peppers
+  - onions
+  - pineapple

@@ -2,13 +2,15 @@
  * Author:  brijeshdhaker
  * Created: May 1, 2021
  * DROP PROCEDURE IF EXISTS P_GET_USER_DETAILS;
+ * DELIMITER $$
  */
 
-CREATE OR REPLACE PROCEDURE P_GET_USER_DETAILS(IN id bigint)
+
+CREATE PROCEDURE IF NOT EXISTS P_GET_USER_DETAILS(IN id bigint)
 BEGIN
     
     SELECT 
-        ID,
+        USERID,
         USERNAME, 
         EMAIL, 
         STATUS, 

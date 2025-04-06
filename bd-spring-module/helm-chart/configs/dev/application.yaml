@@ -19,7 +19,7 @@ spring:
     url: jdbc:mysql://mysqlserver.sandbox.net:3306/SANDBOXDB?zeroDateTimeBehavior=CONVERT_TO_NULL
   #
   jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
+#    database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: update
       use-new-id-gnerator-mappings: false
@@ -79,12 +79,12 @@ spring:
 #    jcache:
 #      config: classpath:ehcache.xml
   #
-#  liquibase:
-#    enabled: true
-#    change-log: classpath:liquibase/master.yml
-#    contexts: mysql
-#    parameters:
-#      textColumnType: TEXT
+  liquibase:
+    enabled: true
+    change-log: classpath:liquibase/master.yml
+    contexts: mysql
+    parameters:
+      textColumnType: TEXT
 #
 management:
   security:

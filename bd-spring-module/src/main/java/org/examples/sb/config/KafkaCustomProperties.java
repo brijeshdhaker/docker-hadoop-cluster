@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Getter
 @Setter
-@ConfigurationProperties("kafka")
+//@ConfigurationProperties("kafka")
 public class KafkaCustomProperties {
     private String transactionTopic;
 }

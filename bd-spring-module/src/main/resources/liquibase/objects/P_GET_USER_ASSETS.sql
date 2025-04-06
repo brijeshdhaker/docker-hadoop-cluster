@@ -4,15 +4,18 @@
  * DROP PROCEDURE IF EXISTS P_GET_USER_ASSETS;
  */
 
-CREATE OR REPLACE PROCEDURE P_GET_USER_ASSETS(IN id bigint)
+CREATE PROCEDURE IF NOT EXISTS P_GET_USER_ASSETS(IN id bigint)
 BEGIN
     
     SELECT 
-        *
+        USERID,
+        USERNAME,
+        EMAIL,
+        STATUS,
+        ADD_TS,
+        UPD_TS
     FROM
-        ASSETS
-    WHERE
-        USERID = id
-    ORDER BY ASSETS_ID;
+        USERS
+    ORDER BY USERID;
     
 END $$

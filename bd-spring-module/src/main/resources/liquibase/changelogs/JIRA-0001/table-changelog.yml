@@ -173,7 +173,7 @@ databaseChangeLog:
                   type: TIMESTAMP
             tableName: PRODUCTS
   - changeSet:
-      id:  JIRA-0001-T-005
+      id:  JIRA-0001-T-006
       author:  Brijesh D.
       changes:
         - createTable:
@@ -213,7 +213,7 @@ databaseChangeLog:
                   type: TIMESTAMP
             tableName: ORDERS
   - changeSet:
-      id:  JIRA-0001-T-006
+      id:  JIRA-0001-T-007
       author:  Brijesh D.
       changes:
         - createTable:
@@ -256,7 +256,7 @@ databaseChangeLog:
                   type: TIMESTAMP
             tableName: ACCOUNT
   - changeSet:
-      id:  JIRA-0001-T-007
+      id:  JIRA-0001-T-008
       author:  Brijesh D.
       changes:
         - sqlFile:

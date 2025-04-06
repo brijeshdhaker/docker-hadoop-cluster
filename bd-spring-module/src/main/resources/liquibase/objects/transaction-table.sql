@@ -1,18 +1,7 @@
-    private java.lang.Integer id;
-    private java.lang.String uuid;
-    private java.lang.String cardtype;
-    private java.lang.String website;
-    private java.lang.String product;
-    private java.lang.Double amount;
-    private java.lang.String city;
-    private java.lang.String country;
-    private java.lang.Long addts;
-
 /**
  * Author:  brijeshdhaker
  * Created: Jan 12, 2021
  */
-
 CREATE TABLE `ITEM` (
   `ITEM_ID`         bigint(8) AUTO_INCREMENT,
   `NAME`            VARCHAR(30) NOT NULL,

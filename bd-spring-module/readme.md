@@ -2,7 +2,7 @@
 ### https://helm.sh/docs/intro/cheatsheet/
 #
 -Dspring.profiles.active=cloud
--Dspring.server.context=/api/v1
+-Dserver.servlet.context-path=/api/v1
 
 #
 helm create ./bd-spring-module/helm-chart --namespace sb-apps
@@ -13,7 +13,7 @@ helm template bd-spring-module ./bd-spring-module/helm-chart \
 --set author=brijeshdhaker@gmail.com \
 --dry-run \
 --debug \
---output-dir ./bd-spring-module/helm-chart/manifests/
+--output-dir ./bd-spring-module/helm-chart/manifests
 
 #
 helm template bd-spring-module ./bd-spring-module/helm-chart/distro/bd-spring-module-0.1.0.tgz \
@@ -28,6 +28,7 @@ helm package ./bd-spring-module/helm-chart --destination ./bd-spring-module/helm
 
 # Install
 helm install bd-spring-module ./bd-spring-module/helm-chart \
+-s ./bd-spring-module/helm-chart/templates/configmap.yaml \
 --namespace sb-apps \
 --debug \
 --set author=brijeshdhaker@gmail.com \
@@ -59,3 +60,26 @@ helm upgrade bd-spring-module ./bd-spring-module/helm-chart \
 #
 helm repo add bd-spring-module https://nexus.repo.com --namespace sb-apps 
 helm repo update bd-spring-module https://nexus.repo.com
+
+
+#
+#
+#
+{{ range $index, $service := (lookup "v1" "Service" "mynamespace" "").items }}
+    {{/* do something with each service */}}
+{{ end }}
+
+{{- range $index, $topping := .Values.pizzaToppings }}
+    {{ $index }}: {{ $topping }}
+{{- end }}
+
+#
+favorite:
+    drink: coffee
+    food: pizza
+
+{{- range $key, $val := .Values.favorite }}
+    {{ $key }}: {{ $val | quote }}
+{{- end }}
+
+{{ (.Files.Glob "configs/*.toml").AsConfig | indent 2 }}

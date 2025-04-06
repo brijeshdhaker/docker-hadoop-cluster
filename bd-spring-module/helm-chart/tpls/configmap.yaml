@@ -34,3 +34,12 @@ data:
   #
   some-file.txt: |- {{ range .Files.Lines "configs/config1.toml" }}
     {{ . }}{{ end }}
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: conf
+data:
+  {{ tpl ($.Files.Get "configs/config1.toml") . |  indent 4 }}
+  #  {{ (.Files.Glob "foo/*").AsConfig | indent 2 }}

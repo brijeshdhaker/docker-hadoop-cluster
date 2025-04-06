@@ -81,12 +81,12 @@ spring:
 #    jcache:
 #      config: classpath:ehcache.xml
   #
-#  liquibase:
-#    enabled: true
-#    change-log: classpath:liquibase/master.yml
-#    contexts: mysql
-#    parameters:
-#      textColumnType: TEXT
+  liquibase:
+    enabled: true
+    change-log: classpath:liquibase/master.yml
+    contexts: mysql
+    parameters:
+      textColumnType: TEXT
 #
 management:
   security:
