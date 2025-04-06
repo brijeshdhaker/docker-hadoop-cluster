@@ -12,7 +12,7 @@ CMD mkdir -p /apps/{libs,configs}
  
 ADD ${project.build.directory}/${project.build.finalName}.jar /apps/libs/${project.build.finalName}.jar
  
-EXPOSE 8094
+EXPOSE 9080
 
 # Debug enable
 # CMD java -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=docker -jar -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n /apps/libs/${project.build.finalName}.jar

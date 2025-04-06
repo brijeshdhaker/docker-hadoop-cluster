@@ -1,3 +1,9 @@
+#
+# kubectl run {{ include "helm.fullname" . }} -n {{ .Release.Namespace }} --image={{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }} --port=9080 --dry-run=client -o yaml > app-springboot.yaml
+# kubectl create deployment {{ include "helm.fullname" . }} -n {{ .Release.Namespace }} --image={{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }} --dry-run=client -o yaml > app-springboot.yaml
+# kubectl expose pod {{ include "helm.fullname" . }} -n {{ .Release.Namespace }} --port=80 --target-port=9080 --type=NodePort --dry-run=client -o yaml > app-svc.yaml
+#
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:

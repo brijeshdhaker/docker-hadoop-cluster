@@ -5,17 +5,19 @@
  */
 package org.examples.sb.models.avro;
 
+import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
+import org.apache.avro.util.Utf8;
 import org.apache.avro.message.BinaryMessageEncoder;
 import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -5320796092940882270L;
+  private static final long serialVersionUID = -5089161197647153870L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"AuditlogDTO\",\"namespace\":\"org.examples.sb.models\",\"fields\":[{\"name\":\"id\",\"type\":[\"null\",\"long\"]},{\"name\":\"uuid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"logicalType\":\"uuid\"},{\"name\":\"userid\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"},{\"name\":\"auditType\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"},{\"name\":\"logAction\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"},{\"name\":\"logMessage\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"},{\"name\":\"refrenceId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"},{\"name\":\"refrenceType\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"},{\"name\":\"addTs\",\"type\":\"long\",\"logicalType\":\"timestamp-millis\"},{\"name\":\"updTs\",\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"AuditlogDTO\",\"namespace\":\"org.examples.sb.models.avro\",\"fields\":[{\"name\":\"id\",\"type\":[\"null\",\"long\"]},{\"name\":\"uuid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"logicalType\":\"uuid\"},{\"name\":\"userid\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"},{\"name\":\"auditType\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"},{\"name\":\"logAction\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"},{\"name\":\"logMessage\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"},{\"name\":\"refrenceId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"},{\"name\":\"refrenceType\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"},{\"name\":\"addTs\",\"type\":\"long\",\"logicalType\":\"timestamp-millis\"},{\"name\":\"updTs\",\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -332,8 +334,8 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
    * Creates a new AuditlogDTO RecordBuilder.
    * @return A new AuditlogDTO RecordBuilder
    */
-  public static AuditlogDTO.Builder newBuilder() {
-    return new AuditlogDTO.Builder();
+  public static org.examples.sb.models.avro.AuditlogDTO.Builder newBuilder() {
+    return new org.examples.sb.models.avro.AuditlogDTO.Builder();
   }
 
   /**
@@ -341,11 +343,11 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
    * @param other The existing builder to copy.
    * @return A new AuditlogDTO RecordBuilder
    */
-  public static AuditlogDTO.Builder newBuilder(AuditlogDTO.Builder other) {
+  public static org.examples.sb.models.avro.AuditlogDTO.Builder newBuilder(org.examples.sb.models.avro.AuditlogDTO.Builder other) {
     if (other == null) {
-      return new AuditlogDTO.Builder();
+      return new org.examples.sb.models.avro.AuditlogDTO.Builder();
     } else {
-      return new AuditlogDTO.Builder(other);
+      return new org.examples.sb.models.avro.AuditlogDTO.Builder(other);
     }
   }
 
@@ -354,11 +356,11 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
    * @param other The existing instance to copy.
    * @return A new AuditlogDTO RecordBuilder
    */
-  public static AuditlogDTO.Builder newBuilder(AuditlogDTO other) {
+  public static org.examples.sb.models.avro.AuditlogDTO.Builder newBuilder(org.examples.sb.models.avro.AuditlogDTO other) {
     if (other == null) {
-      return new AuditlogDTO.Builder();
+      return new org.examples.sb.models.avro.AuditlogDTO.Builder();
     } else {
-      return new AuditlogDTO.Builder(other);
+      return new org.examples.sb.models.avro.AuditlogDTO.Builder(other);
     }
   }
 
@@ -389,7 +391,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(AuditlogDTO.Builder other) {
+    private Builder(org.examples.sb.models.avro.AuditlogDTO.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -437,7 +439,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
      * Creates a Builder by copying an existing AuditlogDTO instance
      * @param other The existing instance to copy.
      */
-    private Builder(AuditlogDTO other) {
+    private Builder(org.examples.sb.models.avro.AuditlogDTO other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -495,7 +497,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public AuditlogDTO.Builder setId(java.lang.Long value) {
+    public org.examples.sb.models.avro.AuditlogDTO.Builder setId(java.lang.Long value) {
       validate(fields()[0], value);
       this.id = value;
       fieldSetFlags()[0] = true;
@@ -515,7 +517,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'id' field.
       * @return This builder.
       */
-    public AuditlogDTO.Builder clearId() {
+    public org.examples.sb.models.avro.AuditlogDTO.Builder clearId() {
       id = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -535,7 +537,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'uuid'.
       * @return This builder.
       */
-    public AuditlogDTO.Builder setUuid(java.lang.String value) {
+    public org.examples.sb.models.avro.AuditlogDTO.Builder setUuid(java.lang.String value) {
       validate(fields()[1], value);
       this.uuid = value;
       fieldSetFlags()[1] = true;
@@ -555,7 +557,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'uuid' field.
       * @return This builder.
       */
-    public AuditlogDTO.Builder clearUuid() {
+    public org.examples.sb.models.avro.AuditlogDTO.Builder clearUuid() {
       uuid = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -575,7 +577,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'userid'.
       * @return This builder.
       */
-    public AuditlogDTO.Builder setUserid(java.lang.String value) {
+    public org.examples.sb.models.avro.AuditlogDTO.Builder setUserid(java.lang.String value) {
       validate(fields()[2], value);
       this.userid = value;
       fieldSetFlags()[2] = true;
@@ -595,7 +597,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'userid' field.
       * @return This builder.
       */
-    public AuditlogDTO.Builder clearUserid() {
+    public org.examples.sb.models.avro.AuditlogDTO.Builder clearUserid() {
       userid = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -615,7 +617,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'auditType'.
       * @return This builder.
       */
-    public AuditlogDTO.Builder setAuditType(java.lang.String value) {
+    public org.examples.sb.models.avro.AuditlogDTO.Builder setAuditType(java.lang.String value) {
       validate(fields()[3], value);
       this.auditType = value;
       fieldSetFlags()[3] = true;
@@ -635,7 +637,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'auditType' field.
       * @return This builder.
       */
-    public AuditlogDTO.Builder clearAuditType() {
+    public org.examples.sb.models.avro.AuditlogDTO.Builder clearAuditType() {
       auditType = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -655,7 +657,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'logAction'.
       * @return This builder.
       */
-    public AuditlogDTO.Builder setLogAction(java.lang.String value) {
+    public org.examples.sb.models.avro.AuditlogDTO.Builder setLogAction(java.lang.String value) {
       validate(fields()[4], value);
       this.logAction = value;
       fieldSetFlags()[4] = true;
@@ -675,7 +677,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'logAction' field.
       * @return This builder.
       */
-    public AuditlogDTO.Builder clearLogAction() {
+    public org.examples.sb.models.avro.AuditlogDTO.Builder clearLogAction() {
       logAction = null;
       fieldSetFlags()[4] = false;
       return this;
@@ -695,7 +697,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'logMessage'.
       * @return This builder.
       */
-    public AuditlogDTO.Builder setLogMessage(java.lang.String value) {
+    public org.examples.sb.models.avro.AuditlogDTO.Builder setLogMessage(java.lang.String value) {
       validate(fields()[5], value);
       this.logMessage = value;
       fieldSetFlags()[5] = true;
@@ -715,7 +717,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'logMessage' field.
       * @return This builder.
       */
-    public AuditlogDTO.Builder clearLogMessage() {
+    public org.examples.sb.models.avro.AuditlogDTO.Builder clearLogMessage() {
       logMessage = null;
       fieldSetFlags()[5] = false;
       return this;
@@ -735,7 +737,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'refrenceId'.
       * @return This builder.
       */
-    public AuditlogDTO.Builder setRefrenceId(java.lang.String value) {
+    public org.examples.sb.models.avro.AuditlogDTO.Builder setRefrenceId(java.lang.String value) {
       validate(fields()[6], value);
       this.refrenceId = value;
       fieldSetFlags()[6] = true;
@@ -755,7 +757,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'refrenceId' field.
       * @return This builder.
       */
-    public AuditlogDTO.Builder clearRefrenceId() {
+    public org.examples.sb.models.avro.AuditlogDTO.Builder clearRefrenceId() {
       refrenceId = null;
       fieldSetFlags()[6] = false;
       return this;
@@ -775,7 +777,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'refrenceType'.
       * @return This builder.
       */
-    public AuditlogDTO.Builder setRefrenceType(java.lang.String value) {
+    public org.examples.sb.models.avro.AuditlogDTO.Builder setRefrenceType(java.lang.String value) {
       validate(fields()[7], value);
       this.refrenceType = value;
       fieldSetFlags()[7] = true;
@@ -795,7 +797,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'refrenceType' field.
       * @return This builder.
       */
-    public AuditlogDTO.Builder clearRefrenceType() {
+    public org.examples.sb.models.avro.AuditlogDTO.Builder clearRefrenceType() {
       refrenceType = null;
       fieldSetFlags()[7] = false;
       return this;
@@ -815,7 +817,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'addTs'.
       * @return This builder.
       */
-    public AuditlogDTO.Builder setAddTs(long value) {
+    public org.examples.sb.models.avro.AuditlogDTO.Builder setAddTs(long value) {
       validate(fields()[8], value);
       this.addTs = value;
       fieldSetFlags()[8] = true;
@@ -835,7 +837,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'addTs' field.
       * @return This builder.
       */
-    public AuditlogDTO.Builder clearAddTs() {
+    public org.examples.sb.models.avro.AuditlogDTO.Builder clearAddTs() {
       fieldSetFlags()[8] = false;
       return this;
     }
@@ -854,7 +856,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'updTs'.
       * @return This builder.
       */
-    public AuditlogDTO.Builder setUpdTs(long value) {
+    public org.examples.sb.models.avro.AuditlogDTO.Builder setUpdTs(long value) {
       validate(fields()[9], value);
       this.updTs = value;
       fieldSetFlags()[9] = true;
@@ -874,7 +876,7 @@ public class AuditlogDTO extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'updTs' field.
       * @return This builder.
       */
-    public AuditlogDTO.Builder clearUpdTs() {
+    public org.examples.sb.models.avro.AuditlogDTO.Builder clearUpdTs() {
       fieldSetFlags()[9] = false;
       return this;
     }

@@ -28,11 +28,11 @@ helm package ./bd-spring-module/helm-chart --destination ./bd-spring-module/helm
 
 # Install
 helm install bd-spring-module ./bd-spring-module/helm-chart \
--s ./bd-spring-module/helm-chart/templates/configmap.yaml \
 --namespace sb-apps \
 --debug \
 --set author=brijeshdhaker@gmail.com \
 --version 1.0.0 \
+--create-namespace=true \
 --dry-run 
 > ./bd-spring-module/helm-chart/manifests/bd-spring-module.yaml
 
@@ -54,13 +54,16 @@ helm upgrade bd-spring-module ./bd-spring-module/helm-chart \
 --namespace sb-apps \
 --dry-run \
 --debug \
---set author=brijeshdhaker@gmail.com
+--set author=brijeshdhaker@gmail.com \
 --output-dir ./bd-spring-module/helm-chart/manifests/
 
 #
 helm repo add bd-spring-module https://nexus.repo.com --namespace sb-apps 
 helm repo update bd-spring-module https://nexus.repo.com
 
+
+kubectl run mysql-client -it --rm --restart=Never --image=mysql:8.0.33 -- /bin/bash -c "mysql --user=root --password=p@SSW0rd --host=mysql-external-svc.sb-apps.svc.cluster.local --database=SANDBOXDB"
+kubectl run mysql-client -it --rm --restart=Never --image=mysql:8.0.33 -- /bin/bash -c "mysql --user=root --password=p@SSW0rd --host=mysql-docker.sb-apps.svc.cluster.local --database=SANDBOXDB"
 
 #
 #

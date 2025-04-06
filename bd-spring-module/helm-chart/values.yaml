@@ -15,10 +15,8 @@ replicaCount: 1
 # This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
 image:
   repository: brijeshdhaker/bd-spring-module
-  # This sets the pull policy for images.
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.0-SNAPSHOT"
+  pullPolicy: Always
+  tag: 1.0.0
 
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets:
@@ -36,7 +34,7 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: "sa_devops"
+  name: "sa-devops"
 
 # This is for setting Kubernetes Annotations to a Pod.
 # For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
@@ -66,8 +64,13 @@ service:
   port: 9080
 
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
+networkpolicies:
+  enabled: false
+  ingress: {}
+  egress: {}
+
 ingress:
-  enabled: true
+  enabled: false
   className: "nginx"
   annotations:
     # kubernetes.io/ingress.class: nginx
@@ -75,7 +78,7 @@ ingress:
   hosts:
     - host: springboot-app.sandbox.net
       paths:
-        - path: /
+        - path: /api/v1
           pathType: ImplementationSpecific
   tls:
     - secretName: springboot-app-tls
@@ -97,11 +100,11 @@ resources: {}
 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 livenessProbe:
   httpGet:
-    path: /
+    path: /api/v1
     port: http
 readinessProbe:
   httpGet:
-    path: /
+    path: /api/v1
     port: http
 
 # This section is for setting up autoscaling more information can be found here: https://kubernetes.io/docs/concepts/workloads/autoscaling/
@@ -129,7 +132,7 @@ volumeMounts:
    mountPath: "/apps/sandbox"
    readOnly: true
  - name: vol-secret
-   mountPath: "/apps/sandbox"
+   mountPath: "/apps/secrets"
    readOnly: true
 
 nodeSelector: {}
