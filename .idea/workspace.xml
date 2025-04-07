@@ -5,32 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-06 Update Configuration &amp; Resources.">
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/services-external.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/services.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/gateways.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/k8s/app-springboot.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/k8s/app-svc.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/k8s/app-volume-cliam.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/volumes-claims.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/k8s/app-volume.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/NOTES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/NOTES.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/_helpers.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/_helpers.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/deployment.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/file-configmap.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/gateway.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/gateway.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/hpa.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/hpa.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/ingress.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/ingress.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/networkpolicy.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/networkpolicy.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/secrets.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/secrets.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/service.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/serviceaccount.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/serviceaccount.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/virtualservice.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/virtualservice.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/volumes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/volumes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio/certs/httpbin-server-extfile.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-k8s-module/istio/certs/httpbin-server-extfile.cnf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio/secure-gateway.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-k8s-module/istio/secure-gateway.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/NOTES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/NOTES.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/gateway.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/virtualservice.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/virtualservice.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/values.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/avro/AuditlogDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/avro/AuditlogDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/avro/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/avro/Transaction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application-docker.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application-docker.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/istio-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/istio-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/k8s-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/k8s-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -622,14 +610,6 @@
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
     </task>
-    <task id="LOCAL-00124" summary="2024-12-12 add refine &amp; enrichment for flink module.">
-      <option name="closed" value="true" />
-      <created>1733976341707</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
-      <option name="project" value="LOCAL" />
-      <updated>1733976341707</updated>
-    </task>
     <task id="LOCAL-00125" summary="2024-12-13 add refine &amp; enrichment for flink module.">
       <option name="closed" value="true" />
       <created>1734029130832</created>
@@ -1014,7 +994,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743916838027</updated>
     </task>
-    <option name="localTasksCounter" value="173" />
+    <task id="LOCAL-00173" summary="2025-04-06 Update Configuration &amp; Resources.">
+      <option name="closed" value="true" />
+      <created>1743946798596</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1743946798596</updated>
+    </task>
+    <option name="localTasksCounter" value="174" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">

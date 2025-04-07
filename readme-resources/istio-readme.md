@@ -23,6 +23,7 @@ $ kubectl get crd gateways.gateway.networking.k8s.io &> /dev/null || \
 # Label the namespace that will host the application with istio-injection=enabled
 # 
 kubectl label namespace default istio-injection=enabled
+kubectl label namespace default istio-injection-
 
 for i in $(seq 1 100); do curl -s -o /dev/null "http://$GATEWAY_URL/productpage"; done
 
@@ -55,4 +56,4 @@ istioctl uninstall -y --purge
 kubectl delete namespace istio-system
 kubectl label namespace default istio-injection-
 kubectl kustomize "github.com/kubernetes-sigs/gateway-api/config/crd/experimental?ref=v1.2.1" | kubectl delete -f -
-kubectl kustomize "github.com/kubernetes-sigs/gateway-api/config/crd?ref=v1.2.1" | kubectl delete
+kubectl kustomize "github.com/kubernetes-sigs/gateway-api/config/crd?ref=v1.2.1" | kubectl delete -f -

@@ -32,7 +32,7 @@ openssl x509 \
 -req \
 -sha256 \
 -days 3650 \
--set_serial 1000 \
+-CAcreateserial \
 -CA ./bd-k8s-module/istio/certs/ca-root.crt \
 -CAkey ./bd-k8s-module/istio/certs/ca-root.key \
 -in ./bd-k8s-module/istio/certs/ca-intermediate.csr \
@@ -53,7 +53,7 @@ openssl req \
 -out ./bd-k8s-module/istio/certs/httpbin.sandbox.net.csr \
 -keyout ./bd-k8s-module/istio/certs/httpbin.sandbox.net.key \
 -subj "/CN=httpbin.sandbox.net/O=Sandbox/OU=Istio/L=Pune/ST=MH/C=IN/emailAddress=support@sandbox.net" \
--addext "subjectAltName = DNS:localhost,DNS:httpbin,DNS:*.sandbox.net,IP:127.0.0.1,IP:192.168.9.128, IP:192.168.30.128" \
+-addext "subjectAltName = DNS:localhost,DNS:httpbin.sandbox.net,DNS:*.sandbox.net,IP:127.0.0.1,IP:192.168.9.128, IP:192.168.30.128" \
 -addext "extendedKeyUsage = serverAuth"
 
 openssl req -text -noout -verify -in ./bd-k8s-module/istio/certs/httpbin.sandbox.net.csr
@@ -63,7 +63,7 @@ openssl x509 \
 -sha256 \
 -days 365 \
 -passin pass:sandbox \
--set_serial 1001 \
+-CAcreateserial \
 -CA ./bd-k8s-module/istio/certs/ca-intermediate.crt \
 -CAkey ./bd-k8s-module/istio/certs/ca-intermediate.key \
 -in ./bd-k8s-module/istio/certs/httpbin.sandbox.net.csr \
@@ -85,7 +85,7 @@ openssl req \
 -out ./bd-k8s-module/istio/certs/set-02/httpbin.sandbox.net.csr \
 -keyout ./bd-k8s-module/istio/certs/set-02/httpbin.sandbox.net.key \
 -subj "/CN=httpbin.sandbox.net/O=Sandbox/OU=Istio/L=Pune/ST=MH/C=IN/emailAddress=support@sandbox.net" \
--addext "subjectAltName = DNS:localhost,DNS:httpbin,DNS:*.sandbox.net,IP:127.0.0.1,IP:192.168.9.128, IP:192.168.30.128" \
+-addext "subjectAltName = DNS:localhost,DNS:httpbin.sandbox.net,DNS:*.sandbox.net,IP:127.0.0.1,IP:192.168.9.128, IP:192.168.30.128" \
 -addext "extendedKeyUsage = serverAuth"
 
 openssl req -text -noout -verify -in ./bd-k8s-module/istio/certs/set-02/httpbin.sandbox.net.csr
@@ -94,7 +94,7 @@ openssl x509 \
 -req \
 -sha256 \
 -days 365 \
--set_serial 1002 \
+-CAcreateserial \
 -CA ./bd-k8s-module/istio/certs/ca-intermediate.crt \
 -CAkey ./bd-k8s-module/istio/certs/ca-intermediate.key \
 -in ./bd-k8s-module/istio/certs/set-02/httpbin.sandbox.net.csr \
@@ -123,7 +123,7 @@ openssl x509 \
 -sha256 \
 -days 365 \
 -passin pass:sandbox \
--set_serial 1003 \
+-CAcreateserial \
 -CA ./bd-k8s-module/istio/certs/ca-intermediate.crt \
 -CAkey ./bd-k8s-module/istio/certs/ca-intermediate.key \
 -in ./bd-k8s-module/istio/certs/helloworld.sandbox.net.csr \
@@ -148,7 +148,7 @@ openssl x509 \
 -req \
 -sha256 \
 -days 365 \
--set_serial 1004 \
+-CAcreateserial \
 -CA ./bd-k8s-module/istio/certs/ca-intermediate.crt \
 -CAkey ./bd-k8s-module/istio/certs/ca-intermediate.key \
 -in ./bd-k8s-module/istio/certs/client.sandbox.net.csr \
@@ -164,9 +164,14 @@ ls -lt ./bd-k8s-module/istio/certs
 
 # 1. Create a secret for the ingress gateway:
 ```shell
-kubectl create -n istio-system secret tls httpbin-credential \
+kubectl -n istio-system delete secret ingress-tls-credential
+
+kubectl -n istio-system create secret tls ingress-tls-credential \
 --key=./bd-k8s-module/istio/certs/httpbin.sandbox.net.key \
 --cert=./bd-k8s-module/istio/certs/httpbin.sandbox.net.crt
+
+kubectl -n istio-system get secret ingress-tls-credential
+
 ```
 
 # 2. Configure the ingress gateway:
@@ -186,7 +191,8 @@ spec:
       protocol: HTTPS
     tls:
       mode: SIMPLE
-      credentialName: httpbin-credential # must be the same as secret
+      # must be the same as secret
+      credentialName: ingress-tls-credential 
     hosts:
     - httpbin.sandbox.net
 EOF
@@ -237,16 +243,20 @@ export TCP_INGRESS_PORT=$(kubectl -n "$INGRESS_NS" get service "$INGRESS_NAME" -
 curl -v \
   -HHost:httpbin.sandbox.net \
   --resolve "httpbin.sandbox.net:$SECURE_INGRESS_PORT:$INGRESS_HOST" \
-  --cacert /bd-k8s-module/istio/certs/ca-cert-chain.crt \
+  --cacert ./bd-k8s-module/istio/certs/ca-cert-chain.crt \
   "https://httpbin.sandbox.net:$SECURE_INGRESS_PORT/status/418"
 ```
 
 # 4. Change the gateway’s credentials by deleting the gateway’s secret and then recreating it using different certificates and keys
 ```shell
-kubectl -n istio-system delete secret httpbin-credential
-kubectl create -n istio-system secret tls httpbin-credential \
+
+kubectl -n istio-system delete secret ingress-tls-credential
+
+kubectl create -n istio-system secret tls ingress-tls-credential \
 --key=./bd-k8s-module/istio/certs/set-02/httpbin.sandbox.net.key \
 --cert=./bd-k8s-module/istio/certs/set-02/httpbin.sandbox.net.crt
+
+kubectl -n istio-system get secret ingress-tls-credential
 ```
 
 # 5. Access the httpbin service with curl using the new certificate chain:
@@ -269,16 +279,16 @@ curl -v -HHost:httpbin.sandbox.net --resolve "httpbin.sandbox.net:$SECURE_INGRES
 # The server uses the CA certificate to verify its clients, and we must use the key ca.crt to hold the CA certificate.
 ```shell
 
-kubectl -n istio-system delete secret httpbin-credential
+kubectl -n istio-system delete secret ingress-mtls-credential
 
-kubectl create -n istio-system secret generic httpbin-credential \
+kubectl -n istio-system create secret generic ingress-mtls-credential \
 --from-file=tls.key=./bd-k8s-module/istio/certs/httpbin.sandbox.net.key \
 --from-file=tls.crt=./bd-k8s-module/istio/certs/httpbin.sandbox.net.crt \
 --from-file=ca.crt=./bd-k8s-module/istio/certs/ca-cert-chain.crt \
 --dry-run=client \
 -o yaml
 
-kubectl -n istio-system get secret httpbin-credential --output=yaml
+kubectl -n istio-system get secret ingress-mtls-credential --output=yaml
 
 ```
 
@@ -290,8 +300,9 @@ kind: Gateway
 metadata:
   name: mygateway
 spec:
+  # use istio default ingress gateway
   selector:
-    istio: ingressgateway # use istio default ingress gateway
+    istio: ingressgateway 
   servers:
   - port:
       number: 443
@@ -299,7 +310,7 @@ spec:
       protocol: HTTPS
     tls:
       mode: MUTUAL
-      credentialName: httpbin-credential # must be the same as secret
+      credentialName: ingress-mtls-credential 
     hosts:
     - httpbin.sandbox.net
 EOF

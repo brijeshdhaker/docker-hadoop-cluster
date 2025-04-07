@@ -45,6 +45,8 @@ JSONPath provides a concise and flexible way to query JSON data. It's an essenti
 
 
 kubectl delete --ignore-not-found=true -f samples/httpbin/httpbin.yaml
+kubectl delete pod <> --grace-period=0 --force
+
 #
 # POD
 #

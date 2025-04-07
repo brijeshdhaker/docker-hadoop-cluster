@@ -8,6 +8,8 @@ server:
   port: 9080
   servlet:
     context-path: /api/v1
+  http2:
+    enabled: true
 spring:
   application:
     name: bd-spring-module
