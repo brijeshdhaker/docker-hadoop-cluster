@@ -106,3 +106,8 @@
 192.168.122.23      k8c1m0.sandbox.net k8c1m0
 192.168.122.145	    k8c1s1.sandbox.net k8c1s1
 192.168.122.204	    k8c1s2.sandbox.net k8c1s2
+
+# SpringBoot K8S Apps
+192.168.9.150       sbhttp.sandbox.net
+192.168.9.150       sbhttps.sandbox.net
+192.168.9.150       sbmtls.sandbox.net

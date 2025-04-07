@@ -4,21 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-06 Update Configuration &amp; Resources.">
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/gateways.yaml" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-07 Update Configuration &amp; Resources.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio/certs/httpbin-server-extfile.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-k8s-module/istio/certs/httpbin-server-extfile.cnf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio/secure-gateway.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-k8s-module/istio/secure-gateway.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/NOTES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/NOTES.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/gateway.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/virtualservice.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/virtualservice.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/hosts" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/hosts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/services-external.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/services-external.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application-docker.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application-docker.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/istio-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/istio-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/k8s-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/k8s-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -610,14 +600,6 @@
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
     </task>
-    <task id="LOCAL-00125" summary="2024-12-13 add refine &amp; enrichment for flink module.">
-      <option name="closed" value="true" />
-      <created>1734029130832</created>
-      <option name="number" value="00125" />
-      <option name="presentableId" value="LOCAL-00125" />
-      <option name="project" value="LOCAL" />
-      <updated>1734029130833</updated>
-    </task>
     <task id="LOCAL-00126" summary="2024-12-13 update bd-flink-module.">
       <option name="closed" value="true" />
       <created>1734092633634</created>
@@ -1002,7 +984,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743946798596</updated>
     </task>
-    <option name="localTasksCounter" value="174" />
+    <task id="LOCAL-00174" summary="2025-04-07 Update Configuration &amp; Resources.">
+      <option name="closed" value="true" />
+      <created>1743994876930</created>
+      <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
+      <option name="project" value="LOCAL" />
+      <updated>1743994876931</updated>
+    </task>
+    <option name="localTasksCounter" value="175" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -1063,7 +1053,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-12-10 update bd-flink-module." />
     <MESSAGE value="2024-12-11 update bd-flink-module." />
     <MESSAGE value="2024-12-11 update bd-flink-module for working examples." />
     <MESSAGE value="2024-12-12 add refine &amp; enrichment for flink module." />
@@ -1088,7 +1077,8 @@
     <MESSAGE value="2025-04-03 Add Sandbox Root CA &amp; Certs." />
     <MESSAGE value="2025-04-04 Update Configuration &amp; Resources." />
     <MESSAGE value="2025-04-06 Update Configuration &amp; Resources." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-04-06 Update Configuration &amp; Resources." />
+    <MESSAGE value="2025-04-07 Update Configuration &amp; Resources." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-04-07 Update Configuration &amp; Resources." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
