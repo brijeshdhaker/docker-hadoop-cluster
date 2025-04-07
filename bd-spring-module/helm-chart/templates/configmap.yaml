@@ -3,12 +3,11 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-configmap
 data:
-  myvalue: "Hello World"
-  food: {{ .Values.favorite.food | upper | quote }}
+  myfood: {{ .Values.favorite.food | upper | quote }}
   {{- if eq .Values.favorite.drink "coffee" }}
-  mug: "true"
+  myvalue: "Hello World"
   {{- end }}
-  {{- range $path, $_ := .Files.Glob "configs/*.toml" -}}
+  {{- range $path, $_ := .Files.Glob "configs/dev/application.yaml" -}}
   {{- base $path | nindent 2 }}: |-
   {{- $.Files.Get $path | nindent 4 }}
   {{- end }}

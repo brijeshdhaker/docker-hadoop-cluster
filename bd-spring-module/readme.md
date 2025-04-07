@@ -4,12 +4,44 @@
 -Dspring.profiles.active=cloud
 -Dserver.servlet.context-path=/api/v1
 
+
 kubectl label namespace sb-apps istio-injection=enabled
+kubectl label namespace sb-apps istio-injection-
+
+# 1. Create a secret for the ingress gateway:
+```shell
+kubectl -n istio-system delete secret ingress-tls-credential
+
+kubectl -n istio-system create secret tls ingress-tls-credential \
+--key=./bd-setup-module/security/server/private/sbhttps.key.pem \
+--cert=./bd-setup-module/security/server/certs/sbhttps.cert.pem \
+--dry-run=client \
+--output=yaml
+
+kubectl -n istio-system get secret ingress-tls-credential --output=yaml
+
+```
+
+```shell
+kubectl -n istio-system delete secret ingress-mtls-credential
+
+kubectl -n istio-system create secret generic ingress-mtls-credential \
+--from-file=tls.key=./bd-setup-module/security/server/private/sbhttps.key.pem \
+--from-file=tls.crt=./bd-setup-module/security/server/certs/sbhttps.cert.pem \
+--from-file=ca.crt=./bd-setup-module/security/ca/intermediate/certs/ca-chain.cert.pem \
+--dry-run=client \
+--output=yaml
+
+kubectl -n istio-system get secret ingress-mtls-credential --output=yaml
+
+```
 
 # Create Chart
+```shell
 helm create ./bd-spring-module/helm-chart --namespace sb-apps
-
+```
 # template
+```shell
 helm template bd-spring-module ./bd-spring-module/helm-chart \
 --namespace sb-apps \
 --set author=brijeshdhaker@gmail.com \
@@ -30,11 +62,14 @@ helm template bd-spring-module ./bd-spring-module/helm-chart/distro/bd-spring-mo
 --debug \
 --dry-run \
 --output-dir ./bd-spring-module/helm-chart/manifests/
+```
 
 # Distro
+```shell
 helm package ./bd-spring-module/helm-chart --destination ./bd-spring-module/helm-chart/distro
-
+```
 # Install
+```shell
 helm install bd-spring-module ./bd-spring-module/helm-chart \
 --namespace=sb-apps \
 --set author=brijeshdhaker@gmail.com \
@@ -56,7 +91,9 @@ helm install bd-spring-module ./bd-spring-module/helm-chart/distro/bd-spring-mod
 --dry-run
 > ./bd-spring-module/helm-chart/manifests/bd-spring-module.yaml
 
+```
 # Upgrade
+```shell
 helm upgrade bd-spring-module ./bd-spring-module/helm-chart \
 --namespace=sb-apps \
 --set author=brijeshdhaker@gmail.com \
@@ -67,32 +104,39 @@ helm upgrade bd-spring-module ./bd-spring-module/helm-chart \
 --debug \
 --dry-run \
 --output-dir ./bd-spring-module/helm-chart/manifests/
-
+```
 #
+```shell
 helm show values ./bd-spring-module/helm-chart
 helm show values ingress-nginx --repo https://kubernetes.github.io/ingress-nginx
-
+```
 
 #
+```shell
 helm get manifest bd-spring-module -n sb-apps > ./bd-spring-module/helm-chart/manifests/bd-spring-module.yaml
-
+```
 #
+```shell
 helm uninstall bd-spring-module -n sb-apps
-
+```
 #
+```shell
 kubectl --namespace=sb-apps get all  
-
+```
 #
+```shell
 helm repo add bd-spring-module https://nexus.repo.com --namespace sb-apps 
 helm repo update bd-spring-module https://nexus.repo.com
-
+```
 # 
 # Label the namespace that will host the application with istio-injection=enabled
 # 
+```shell
 kubectl label namespace sb-apps istio-injection=enabled
 kubectl label namespace sb-apps istio-injection-
-
+```
 # Test Clients
+```shell
 kubectl run mysql-client -it --rm --restart=Never --image=mysql:8.0.33 -- /bin/bash -c "mysql --user=root --password=p@SSW0rd --host=mysql-external-svc.sb-apps.svc.cluster.local --database=SANDBOXDB"
 
 kubectl run mysql-client -it --rm --restart=Never --image=mysql:8.0.33 -- /bin/bash -c "mysql --user=root --password=p@SSW0rd --host=mysql-service.sb-apps.svc.cluster.local --database=SANDBOXDB"
@@ -101,9 +145,10 @@ kubectl run mysql-client -it --rm --restart=Never --image=mysql:8.0.33 -- /bin/b
 
 kubectl run curl-client -i --rm --restart=Never  --image=dockerqa/curl:ubuntu-trusty -- /bin/sh -c "curl -v http://springboot-app-svc.sb-apps.svc.cluster.local:9080/api/v1/ | grep 'Hello, World'"
 kubectl run curl-client -i --rm --restart=Never --image=dockerqa/curl:ubuntu-trusty --command -- curl --silent http://sbhttp.sandbox.net/api/v1/
+```
 
-
-# http
+# HTTP
+```shell
 curl -v \
 --resolve "sbhttp.sandbox.net:80:192.168.9.150" \
 "http://sbhttp.sandbox.net/api/v1/" | grep 'Hello, World'
@@ -112,44 +157,56 @@ curl -v -k \
 -HHost:sbhttp.sandbox.net \
 --resolve "sbhttp.sandbox.net:80:192.168.9.150" \
 "http://sbhttp.sandbox.net/api/v1/" | grep 'Hello, World'
+```
 
-
-# https : HTTP/1.1
+# HTTPS : HTTP/1.1
+```shell
 curl -v \
 -HHost:sbhttps.sandbox.net \
 --resolve sbhttps.sandbox.net:443:192.168.9.150 \
---cacert ./bd-k8s-module/istio/certs/ca-cert-chain.crt \
+--cacert ./bd-setup-module/security/ca/intermediate/certs/ca-chain.cert.pem \
 https://sbhttps.sandbox.net:443/api/v1/ | grep 'Hello, World'
-
-# https : HTTP/2
+```
+# HTTPS : HTTP/2
+```shell
 curl -v -k \
 -HHost:sbhttps.sandbox.net \
 --resolve sbhttps.sandbox.net:443:192.168.9.150 \
---cacert ./bd-k8s-module/istio/certs/ca-cert-chain.crt \
+--cacert ./bd-setup-module/security/ca/intermediate/certs/ca-chain.cert.pem \
 https://sbhttps.sandbox.net:443/api/v1/ | grep 'Hello, World'
+```
 
-
-# mtls : HTTP/1.1
+# mTLS : HTTP/1.1
+```shell
 curl -v -sI \
 -HHost:sbmtls.sandbox.net \
 --resolve sbmtls.sandbox.net:443:192.168.9.150 \
---cacert ./bd-k8s-module/istio/certs/ca-cert-chain.crt \
---cert ./bd-k8s-module/istio/certs/client.sandbox.net.crt \
---key ./bd-k8s-module/istio/certs/client.sandbox.net.key \
+--cacert ./bd-setup-module/security/ca/intermediate/certs/ca-chain.cert.pem \
+--cert ./bd-setup-module/security/client/certs/sbhttps-client.cert.pem \
+--key ./bd-setup-module/security/client/private/sbhttps-client.key.pem \
+https://sbmtls.sandbox.net:443/api/v1/ | grep 'Hello, World'
+```
+# mTLS : HTTP/2
+```shell
+curl -X GET -s \
+--cacert ./bd-setup-module/security/ca/intermediate/certs/ca-chain.cert.pem \
+--cert ./bd-setup-module/security/client/certs/sbhttps-client.cert.pem \
+--key ./bd-setup-module/security/client/private/sbhttps-client.key.pem \
 https://sbmtls.sandbox.net:443/api/v1/ | grep 'Hello, World'
 
-# mtls : HTTP/2
 curl -v -k \
 -HHost:sbmtls.sandbox.net \
 --resolve sbmtls.sandbox.net:443:192.168.9.150 \
---cacert ./bd-k8s-module/istio/certs/ca-cert-chain.crt \
---cert ./bd-k8s-module/istio/certs/client.sandbox.net.crt \
---key ./bd-k8s-module/istio/certs/client.sandbox.net.key \
+--cacert ./bd-setup-module/security/ca/intermediate/certs/ca-chain.cert.pem \
+--cert ./bd-setup-module/security/client/certs/sbhttps-client.cert.pem \
+--key ./bd-setup-module/security/client/private/sbhttps-client.key.pem \
 https://sbmtls.sandbox.net:443/api/v1/ | grep 'Hello, World'
 
+```
 #
 #
 #
+```shell
 {{ range $index, $service := (lookup "v1" "Service" "mynamespace" "").items }}
     {{/* do something with each service */}}
 {{ end }}
@@ -168,3 +225,4 @@ favorite:
 {{- end }}
 
 {{ (.Files.Glob "configs/*.toml").AsConfig | indent 2 }}
+```
