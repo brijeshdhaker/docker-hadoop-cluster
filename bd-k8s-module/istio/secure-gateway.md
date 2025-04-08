@@ -14,15 +14,15 @@ openssl req -x509 -sha256 \
 -days 7300 \
 -newkey rsa:2048 \
 -subj "/CN=Root CA/O=Sandbox/OU=Security/L=Pune/ST=MH/C=IN/emailAddress=security@sandbox.net" \
--keyout ./bd-k8s-module/istio/certs/ca-root.key \
--out ./bd-k8s-module/istio/certs/ca-root.crt
+-keyout ./bd-k8s-module/istio/certs/ca-root.key.pem \
+-out ./bd-k8s-module/istio/certs/ca-root.cert.pem
 
 # 1.2.1 ca-intermediate CSR
 openssl req \
 -newkey rsa:2048 \
 -nodes \
 -out ./bd-k8s-module/istio/certs/ca-intermediate.csr \
--keyout ./bd-k8s-module/istio/certs/ca-intermediate.key \
+-keyout ./bd-k8s-module/istio/certs/ca-intermediate.key.pem \
 -subj "/CN=Intermediate CA/O=Sandbox/OU=Security/L=Pune/ST=MH/C=IN/emailAddress=security@sandbox.net"
 
 openssl req -text -noout -verify -in ./bd-k8s-module/istio/certs/ca-intermediate.csr
@@ -33,25 +33,24 @@ openssl x509 \
 -sha256 \
 -days 3650 \
 -CAcreateserial \
--CA ./bd-k8s-module/istio/certs/ca-root.crt \
--CAkey ./bd-k8s-module/istio/certs/ca-root.key \
+-CA ./bd-k8s-module/istio/certs/ca-root.cert.pem \
+-CAkey ./bd-k8s-module/istio/certs/ca-root.key.pem \
 -in ./bd-k8s-module/istio/certs/ca-intermediate.csr \
--out ./bd-k8s-module/istio/certs/ca-intermediate.crt
+-out ./bd-k8s-module/istio/certs/ca-intermediate.cert.pem
 
 # 1.3 CA CHAIN CRT
-cat ./bd-k8s-module/istio/certs/ca-intermediate.crt \
-  ./bd-k8s-module/istio/certs/ca-root.crt > ./bd-k8s-module/istio/certs/ca-cert-chain.crt
+cat ./bd-k8s-module/istio/certs/ca-intermediate.cert.pem \
+  ./bd-k8s-module/istio/certs/ca-root.cert.pem > ./bd-k8s-module/istio/certs/ca-chain.cert.pem
 
 ```
 
 # 2. Generate a certificate and a private key for httpbin.sandbox.net:
 ```shell
-
 openssl req \
 -newkey rsa:2048 \
 -nodes \
--out ./bd-k8s-module/istio/certs/httpbin.sandbox.net.csr \
--keyout ./bd-k8s-module/istio/certs/httpbin.sandbox.net.key \
+-out ./bd-k8s-module/istio/certs/sbhttps.csr \
+-keyout ./bd-k8s-module/istio/certs/sbhttps.key.pem \
 -subj "/CN=httpbin.sandbox.net/O=Sandbox/OU=Istio/L=Pune/ST=MH/C=IN/emailAddress=support@sandbox.net" \
 -addext "subjectAltName = DNS:localhost,DNS:httpbin.sandbox.net,DNS:*.sandbox.net,IP:127.0.0.1,IP:192.168.9.128, IP:192.168.30.128" \
 -addext "extendedKeyUsage = serverAuth"
@@ -62,113 +61,45 @@ openssl x509 \
 -req \
 -sha256 \
 -days 365 \
--passin pass:sandbox \
 -CAcreateserial \
--CA ./bd-k8s-module/istio/certs/ca-intermediate.crt \
--CAkey ./bd-k8s-module/istio/certs/ca-intermediate.key \
--in ./bd-k8s-module/istio/certs/httpbin.sandbox.net.csr \
--out ./bd-k8s-module/istio/certs/httpbin.sandbox.net.crt \
+-CA ./bd-k8s-module/istio/certs/ca-intermediate.cert.pem \
+-CAkey ./bd-k8s-module/istio/certs/ca-intermediate.key.pem \
+-in ./bd-k8s-module/istio/certs/sbhttps.csr \
+-out ./bd-k8s-module/istio/certs/sbhttps.cert.pem \
 -extensions v3_req \
--extfile ./bd-k8s-module/istio/certs/httpbin-server-extfile.cnf
-
+-extfile ./bd-k8s-module/istio/certs/sbhttps-extfile.cnf
 
 ```
-
-# 3. Create a second set of the same kind of certificates and keys:
+# 3. Generate a client certificate and private key:
 ```shell
-
-mkdir -p ./bd-k8s-module/istio/certs/set-02
-
-openssl req \
--newkey rsa:2048 \
--nodes \
--out ./bd-k8s-module/istio/certs/set-02/httpbin.sandbox.net.csr \
--keyout ./bd-k8s-module/istio/certs/set-02/httpbin.sandbox.net.key \
--subj "/CN=httpbin.sandbox.net/O=Sandbox/OU=Istio/L=Pune/ST=MH/C=IN/emailAddress=support@sandbox.net" \
--addext "subjectAltName = DNS:localhost,DNS:httpbin.sandbox.net,DNS:*.sandbox.net,IP:127.0.0.1,IP:192.168.9.128, IP:192.168.30.128" \
--addext "extendedKeyUsage = serverAuth"
-
-openssl req -text -noout -verify -in ./bd-k8s-module/istio/certs/set-02/httpbin.sandbox.net.csr
-
-openssl x509 \
--req \
--sha256 \
--days 365 \
--CAcreateserial \
--CA ./bd-k8s-module/istio/certs/ca-intermediate.crt \
--CAkey ./bd-k8s-module/istio/certs/ca-intermediate.key \
--in ./bd-k8s-module/istio/certs/set-02/httpbin.sandbox.net.csr \
--out ./bd-k8s-module/istio/certs/set-02/httpbin.sandbox.net.crt \
--extensions v3_req \
--extfile ./bd-k8s-module/istio/certs/httpbin-server-extfile.cnf
-
-```
-
-# 4. Generate a certificate and a private key for helloworld.example.com:
-```shell
-
-openssl req \
--newkey rsa:2048 \
--nodes \
--out ./bd-k8s-module/istio/certs/helloworld.sandbox.net.csr \
--keyout ./bd-k8s-module/istio/certs/helloworld.sandbox.net.key \
--subj "/CN=helloworld.sandbox.net/O=Sandbox/OU=Istio/L=Pune/ST=MH/C=IN/emailAddress=support@sandbox.net" \
--addext "subjectAltName = DNS:localhost,DNS:helloworld,DNS:*.sandbox.net,IP:127.0.0.1,IP:192.168.9.128, IP:192.168.30.128" \
--addext "extendedKeyUsage = serverAuth"
-
-openssl req -text -noout -verify -in ./bd-k8s-module/istio/certs/helloworld.sandbox.net.csr
-
-openssl x509 \
--req \
--sha256 \
--days 365 \
--passin pass:sandbox \
--CAcreateserial \
--CA ./bd-k8s-module/istio/certs/ca-intermediate.crt \
--CAkey ./bd-k8s-module/istio/certs/ca-intermediate.key \
--in ./bd-k8s-module/istio/certs/helloworld.sandbox.net.csr \
--out ./bd-k8s-module/istio/certs/helloworld.sandbox.net.crt \
--extensions v3_req \
--extfile ./bd-k8s-module/istio/certs/helloworld-server-extfile.cnf
-
-```
-
-# 5. Generate a client certificate and private key:
-```shell
-
 openssl req \
 -newkey rsa:2048 -nodes \
--out ./bd-k8s-module/istio/certs/client.sandbox.net.csr \
--keyout ./bd-k8s-module/istio/certs/client.sandbox.net.key \
+-out ./bd-k8s-module/istio/certs/sbhttps-client.csr \
+-keyout ./bd-k8s-module/istio/certs/sbhttps-client.key.pem \
 -subj "/CN=client.sandbox.net/O=Sandbox/OU=Istio/L=Pune/ST=MH/C=IN/emailAddress=support@sandbox.net"
 
-openssl req -text -noout -verify -in ./bd-k8s-module/istio/certs/client.sandbox.net.csr
+openssl req -text -noout -verify -in ./bd-k8s-module/istio/certs/sbhttps-client.csr
 
 openssl x509 \
 -req \
 -sha256 \
 -days 365 \
 -CAcreateserial \
--CA ./bd-k8s-module/istio/certs/ca-intermediate.crt \
--CAkey ./bd-k8s-module/istio/certs/ca-intermediate.key \
--in ./bd-k8s-module/istio/certs/client.sandbox.net.csr \
--out ./bd-k8s-module/istio/certs/client.sandbox.net.crt
-
+-CA ./bd-k8s-module/istio/certs/ca-intermediate.cert.pem \
+-CAkey ./bd-k8s-module/istio/certs/ca-intermediate.key.pem \
+-in ./bd-k8s-module/istio/certs/sbhttps-client.csr \
+-out ./bd-k8s-module/istio/certs/sbhttps-client.cert.pem
 ```
 
-ls -lt ./bd-k8s-module/istio/certs
-
-#
 # Configure a TLS ingress gateway for a single host
-# 
 
 # 1. Create a secret for the ingress gateway:
 ```shell
 kubectl -n istio-system delete secret ingress-tls-credential
 
 kubectl -n istio-system create secret tls ingress-tls-credential \
---key=./bd-k8s-module/istio/certs/httpbin.sandbox.net.key \
---cert=./bd-k8s-module/istio/certs/httpbin.sandbox.net.crt
+--key=./bd-k8s-module/istio/certs/sbhttps.key.pem \
+--cert=./bd-k8s-module/istio/certs/sbhttps.cert.pem
 
 kubectl -n istio-system get secret ingress-tls-credential
 
@@ -243,33 +174,9 @@ export TCP_INGRESS_PORT=$(kubectl -n "$INGRESS_NS" get service "$INGRESS_NAME" -
 curl -v \
   -HHost:httpbin.sandbox.net \
   --resolve "httpbin.sandbox.net:$SECURE_INGRESS_PORT:$INGRESS_HOST" \
-  --cacert ./bd-k8s-module/istio/certs/ca-cert-chain.crt \
+  --cacert ./bd-k8s-module/istio/certs/ca-chain.cert.pem \
   "https://httpbin.sandbox.net:$SECURE_INGRESS_PORT/status/418"
 ```
-
-# 4. Change the gateway’s credentials by deleting the gateway’s secret and then recreating it using different certificates and keys
-```shell
-
-kubectl -n istio-system delete secret ingress-tls-credential
-
-kubectl create -n istio-system secret tls ingress-tls-credential \
---key=./bd-k8s-module/istio/certs/set-02/httpbin.sandbox.net.key \
---cert=./bd-k8s-module/istio/certs/set-02/httpbin.sandbox.net.crt
-
-kubectl -n istio-system get secret ingress-tls-credential
-```
-
-# 5. Access the httpbin service with curl using the new certificate chain:
-```shell
-curl -v -HHost:httpbin.sandbox.net --resolve "httpbin.sandbox.net:$SECURE_INGRESS_PORT:$INGRESS_HOST" \
---cacert ./bd-k8s-module/istio/certs/set-02/example.com.crt "https://httpbin.sandbox.net:$SECURE_INGRESS_PORT/status/418"
-```
-# 6. If you try to access httpbin using the previous certificate chain, the attempt now fails:
-```shell
-curl -v -HHost:httpbin.sandbox.net --resolve "httpbin.sandbox.net:$SECURE_INGRESS_PORT:$INGRESS_HOST" \
---cacert ./bd-k8s-module/istio/certs/ca-cert-chain.crt "https://httpbin.sandbox.net:$SECURE_INGRESS_PORT/status/418"
-```
-
 
 #
 # Configure a mutual TLS ingress gateway
@@ -282,9 +189,9 @@ curl -v -HHost:httpbin.sandbox.net --resolve "httpbin.sandbox.net:$SECURE_INGRES
 kubectl -n istio-system delete secret ingress-mtls-credential
 
 kubectl -n istio-system create secret generic ingress-mtls-credential \
---from-file=tls.key=./bd-k8s-module/istio/certs/httpbin.sandbox.net.key \
---from-file=tls.crt=./bd-k8s-module/istio/certs/httpbin.sandbox.net.crt \
---from-file=ca.crt=./bd-k8s-module/istio/certs/ca-cert-chain.crt \
+--from-file=tls.key=./bd-k8s-module/istio/certs/sbhttps.key.pem \
+--from-file=tls.crt=./bd-k8s-module/istio/certs/sbhttps.cert.pem \
+--from-file=ca.crt=./bd-k8s-module/istio/certs/ca-chain.cert.pem \
 --dry-run=client \
 -o yaml
 
@@ -320,7 +227,7 @@ EOF
 ```shell
 curl -v \
 -HHost:httpbin.sandbox.net \
---cacert ./bd-k8s-module/istio/certs/ca-cert-chain.crt \
+--cacert ./bd-k8s-module/istio/certs/ca-chain.cert.pem \
 --resolve "httpbin.sandbox.net:$SECURE_INGRESS_PORT:$INGRESS_HOST" \
 "https://httpbin.sandbox.net:$SECURE_INGRESS_PORT/status/418"
 ```
@@ -329,8 +236,8 @@ curl -v \
 # Pass your client’s certificate with the --cert flag and your private key with the --key flag to curl:
 ```shell
 curl -v -k -HHost:httpbin.sandbox.net --resolve "httpbin.sandbox.net:$SECURE_INGRESS_PORT:$INGRESS_HOST" \
---cacert ./bd-k8s-module/istio/certs/ca-cert-chain.crt \
---cert ./bd-k8s-module/istio/certs/client.sandbox.net.crt \
---key ./bd-k8s-module/istio/certs/client.sandbox.net.key \
+--cacert ./bd-k8s-module/istio/certs/ca-chain.cert.pem \
+--cert ./bd-k8s-module/istio/certs/sbhttps-client.cert.pem \
+--key ./bd-k8s-module/istio/certs/sbhttps-client.cert.pem \
 "https://httpbin.sandbox.net:$SECURE_INGRESS_PORT/status/418"
 ```

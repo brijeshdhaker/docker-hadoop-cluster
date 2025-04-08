@@ -6,19 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-08 Update ssl configuration for springboot app.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/dev/application-docker.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-docker.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/dev/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/dev/ehcache.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/ehcache.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/local/application.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/secrets/password" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/password" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/configmap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/configmap.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/deployment.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/secrets.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/secrets.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/configmap.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/tests/test-connection.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/values.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/openssl-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/openssl-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio/certs/helloworld-server-extfile.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-k8s-module/istio/certs/sbhttps-extfile.cnf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio/certs/httpbin-server-extfile.cnf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio/secure-gateway.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-k8s-module/istio/secure-gateway.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,7 +275,7 @@
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/helm-chart/configs/dev",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-k8s-module/istio/certs",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
@@ -296,11 +286,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-k8s-module/istio/certs" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/dev" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/manifests" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/certs" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/templates" />
-      <recent name="$PROJECT_DIR$/bd-k8s-module/istio/example_certs2" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/configs" />
@@ -609,14 +599,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00129" summary="2024-12-14 update bd-flink-module.">
-      <option name="closed" value="true" />
-      <created>1734153214234</created>
-      <option name="number" value="00129" />
-      <option name="presentableId" value="LOCAL-00129" />
-      <option name="project" value="LOCAL" />
-      <updated>1734153214236</updated>
     </task>
     <task id="LOCAL-00130" summary="2024-12-15 Add examples to bd-flink-module.">
       <option name="closed" value="true" />
@@ -1002,7 +984,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744068412485</updated>
     </task>
-    <option name="localTasksCounter" value="178" />
+    <task id="LOCAL-00178" summary="2025-04-08 Update ssl configuration for springboot app.">
+      <option name="closed" value="true" />
+      <created>1744077963883</created>
+      <option name="number" value="00178" />
+      <option name="presentableId" value="LOCAL-00178" />
+      <option name="project" value="LOCAL" />
+      <updated>1744077963883</updated>
+    </task>
+    <option name="localTasksCounter" value="179" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
