@@ -3,11 +3,11 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-configmap
 data:
-  myfood: {{ .Values.favorite.food | upper | quote }}
+  environment: {{ .Values.environment | upper | quote }}
   {{- if eq .Values.favorite.drink "coffee" }}
-  myvalue: "Hello World"
+  message: "Hello World"
   {{- end }}
-  {{- range $path, $_ := .Files.Glob "configs/dev/application.yaml" -}}
+  {{- range $path, $_ := .Files.Glob "configs/*.yaml" -}}
   {{- base $path | nindent 2 }}: |-
   {{- $.Files.Get $path | nindent 4 }}
   {{- end }}
@@ -22,7 +22,7 @@ data:
     - {{ . }}
     {{- end }}
   #
-  rtoppings: |-
+  pizzaToppings: |-
     {{- range $index, $topping := .Values.pizzaToppings }}
       {{ $index }}: {{ $topping }}
     {{- end }}

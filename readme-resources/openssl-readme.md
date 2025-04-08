@@ -12,206 +12,168 @@ req     to process csr
 -keyout (optional) save to different name than default: key.pem
 -out    (optional) save to different name than default: req.pem
 
-# Setup Directory
+# root_req.config
 ```shell
-    export BASE_PATH=/apps/security/ssl/
-    export ROOT_CA_PATH=$BASE_PATH/root/ca
-    mkdir -p ${ROOT_CA_PATH}
-    # cd -p ${ROOT_CA_PATH}
-    mkdir -p ${ROOT_CA_PATH}/{certs,crl,newcerts,private,public}
-    chmod 700 ${ROOT_CA_PATH}/private
-    touch ${ROOT_CA_PATH}/index.txt
-    echo 1000 > ${ROOT_CA_PATH}/serial
-    
-    # 1. Create the root key
-    openssl genrsa -aes256 -passout pass:sandbox -out ${ROOT_CA_PATH}/private/sandbox-root-ca.key.pem 4096
-    chmod 400 ${ROOT_CA_PATH}/private/ca.key.pem
-    
-    # 3. Extract public key
-    openssl rsa -pubout -passin pass:sandbox -in ${ROOT_CA_PATH}/private/sandbox-root-ca.key.pem -out ${ROOT_CA_PATH}/public/sandbox-root-ca-public.key.pem
-    
-    # 2. Create the root certificate
-    openssl req -new -x509 -days 7300 -sha256 -extensions v3_ca \
-      -config ${ROOT_CA_PATH}/openssl.cnf \
-      -passin pass:sandbox \
-      -key ${ROOT_CA_PATH}/private/sandbox-root-ca.key.pem \
-      -out ${ROOT_CA_PATH}/certs/sandbox-root-ca.cert.pem
-    
-    #
-    openssl x509 -noout -text -in ${ROOT_CA_PATH}/certs/sandbox-root-ca.cert.pem
-    
-    #
-    # Create the intermediate pair : 
-    # An intermediate certificate authority (CA) is an entity that can sign certificates 
-    # on behalf of the root CA. The root CA signs the intermediate certificate, forming a chain of trust.
-    #
-    
-    # 1. Prepare the directory
-    export INTERMEDIATE_CA_PATH=$BASE_PATH/intermediate/ca
-    mkdir -p ${INTERMEDIATE_CA_PATH}/{certs,crl,csr,newcerts,private,public}
-    chmod 700 ${INTERMEDIATE_CA_PATH}/private
-    touch ${INTERMEDIATE_CA_PATH}/index.txt
-    echo 1000 > ${INTERMEDIATE_CA_PATH}/serial
-    
-    # crlnumber is used to keep track of certificate revocation lists.
-    echo 1000 > ${INTERMEDIATE_CA_PATH}/crlnumber
-    
-    # 2. Create the intermediate key
-    openssl genrsa -aes256 -passout pass:sandbox -out ${INTERMEDIATE_CA_PATH}/private/sandbox-intermediate.key.pem 4096
-    chmod 400 ${INTERMEDIATE_CA_PATH}/private/sandbox-intermediate.key.pem
-    
-    # 3. Extract public key
-    openssl rsa -pubout -passin pass:sandbox -in ${INTERMEDIATE_CA_PATH}/private/sandbox-intermediate.key.pem -out ${INTERMEDIATE_CA_PATH}/public/sandbox-intermediate-public.key.pem
-    
-    # 4. Create the intermediate certificate Signing Request
-    openssl req -config ${INTERMEDIATE_CA_PATH}/openssl.cnf -new -sha256 \
-      -passin pass:sandbox \
-      -key ${INTERMEDIATE_CA_PATH}/private/sandbox-intermediate.key.pem \
-      -out ${INTERMEDIATE_CA_PATH}/csr/sandbox-intermediate.csr.pem
-    
-    # 5. Sign intermediate certificate with Root CA
-    openssl ca -config ${ROOT_CA_PATH}/openssl.cnf -extensions v3_intermediate_ca \
-      -days 3650 -notext -md sha256 \
-      -passin pass:sandbox \
-      -in ${INTERMEDIATE_CA_PATH}/csr/sandbox-intermediate.csr.pem \
-      -out ${INTERMEDIATE_CA_PATH}/certs/sandbox-intermediate.cert.pem
-      
-      
-    chmod 444 ${INTERMEDIATE_CA_PATH}/certs/sandbox-intermediate.cert.pem
-   
-    # 6. Check certificate details
-    openssl x509 -noout -text \
-      -in ${INTERMEDIATE_CA_PATH}/certs/sandbox-intermediate.cert.pem
-    
-    # 7. Verify the intermediate certificate against the root certificate
-    openssl verify -CAfile ${ROOT_CA_PATH}/certs/sandbox-root-ca.cert.pem \
-      ${INTERMEDIATE_CA_PATH}/certs/sandbox-intermediate.cert.pem
-    
-    # 8. Create the certificate chain file
-    cat ${INTERMEDIATE_CA_PATH}/certs/sandbox-intermediate.cert.pem \
-      ${ROOT_CA_PATH}/certs/sandbox-root-ca.cert.pem > ${INTERMEDIATE_CA_PATH}/certs/sandbox-ca-chain.cert.pem
-      
-      
-    #
-    # Sign server and client certificates
-    #
-    export SERVER_CERT_PATH=$BASE_PATH/server
-    mkdir -p ${SERVER_CERT_PATH}/{certs,crl,csr,newcerts,private,public}
-    chmod 700 ${SERVER_CERT_PATH}/private
-    
-    # 1. Create a key
-    openssl genrsa -aes256 \
-      -out ${SERVER_CERT_PATH}/private/sandbox-server.key.pem 2048
-    
-    chmod 400 ${SERVER_CERT_PATH}/private/sandbox-server.key.pem
-    
-    # extract public key
-    openssl rsa -pubout -passin pass:sandbox -in ${SERVER_CERT_PATH}/private/sandbox-server.key.pem -out ${SERVER_CERT_PATH}/public/sandbox-server-public.key.pem
-        
-    # 2. Create a certificate Signing Request
-    openssl req \
-      -config ${INTERMEDIATE_CA_PATH}/openssl.cnf \
-      -new -sha256 \
-      -passin pass:sandbox \
-      -subj "/CN=$(hostname -f)" \
-      -key ${SERVER_CERT_PATH}/private/sandbox-server.key.pem \
-      -out ${SERVER_CERT_PATH}/csr/sandbox-server.csr.pem
-    
-    # echo subjectAltName = DNS:$(hostname -f),IP:192.168.1.*,IP:127.0.0.1 >> ${SERVER_CERT_PATH}/server-extfile.cnf
-    # echo extendedKeyUsage = serverAuth >> ${SERVER_CERT_PATH}/server-extfile.cnf
-    
-cat << EOF > /apps/security/ssl/$i.extfile
-    [req]
-    distinguished_name = req_distinguished_name
-    x509_extensions = v3_req
-    prompt = no
-    [req_distinguished_name]
-    CN = $i
-    [v3_req]
-    subjectAltName = @alt_names
-    [alt_names]
-    DNS.1 = $i
-    DNS.2 = $i.sandbox.net
-    DNS.3 = localhost
-EOF
-    
-    # 3. Sign server certificate with Intermediate Root CA
-    openssl ca -config ${INTERMEDIATE_CA_PATH}/openssl.cnf \
-      -extensions server_cert -days 375 -notext -md sha256 \
-      -passin pass:sandbox \
-      -in ${SERVER_CERT_PATH}/csr/sandbox-server.csr.pem \
-      -out ${SERVER_CERT_PATH}/certs/sandbox-server.cert.pem
-    
-    chmod 444 ${SERVER_CERT_PATH}/certs/sandbox-server.cert.pem
-          
-    # Verify the certificate
-    openssl x509 -noout -text \
-      -in ${SERVER_CERT_PATH}/certs/sandbox-server.cert.pem
-    
-    #
-    openssl verify -CAfile ${INTERMEDIATE_CA_PATH}/certs/sandbox-ca-chain.cert.pem \
-      ${SERVER_CERT_PATH}/certs/sandbox-server.cert.pem
-    
-    #
-    # Deployment on Server
-    #
-    
-    #
-    # Client Certificate
-    #
-    export CLIENT_CERT_PATH=${BASE_PATH}/client
-    mkdir -p ${CLIENT_CERT_PATH}/{certs,crl,csr,newcerts,private,public}
-    
-    # 1. Create a key
-    openssl genrsa \
-    -out ${CLIENT_CERT_PATH}/private/sandbox-client.key.pem 2048
-    
-    :'
-    
-    echo ABCDE-FGHIJ-KLMNO-PQRST-UVWXY-Z > ${CLIENT_CERT_PATH}/plain.txt
-    
-    # Encrypt plain text
-    openssl pkeyutl -encrypt -pubin \
-    -inkey ${CLIENT_CERT_PATH}/public/sandbox-client-public.key.pem \
-    -in ${CLIENT_CERT_PATH}/plain.txt \
-    -out ${CLIENT_CERT_PATH}/cipher.txt
+[ req ]
+distinguished_name = req_distinguished_name
+prompt             = no
 
-    # Decrypt Plain Text
-    openssl pkeyutl -decrypt \
-    -inkey ${CLIENT_CERT_PATH}/private/sandbox-client.key.pem \
-    -in ${CLIENT_CERT_PATH}/cipher.txt \
-    -out ${CLIENT_CERT_PATH}/plain-out.txt
-    
-    '
-    
-    # 2. extract public key
-    openssl rsa -pubout -in ${CLIENT_CERT_PATH}/private/sandbox-client.key.pem -out ${CLIENT_CERT_PATH}/public/sandbox-client-public.key.pem
-    
-    # 3. Create a certificate Signing Request
-    openssl req -subj '/CN=Sandbox Client' -new \
-    -key ${CLIENT_CERT_PATH}/private/sandbox-client.key.pem \
-    -out ${CLIENT_CERT_PATH}/csr/sandbox-client.csr
-    
-    # echo extendedKeyUsage = clientAuth > ${CLIENT_CERT_PATH}/client-extfile.cnf
-    
-    # Generate the signed client certificate
-    openssl x509 -req -days 365 -sha256 \
-    -passin pass:sandbox \
-    -CAcreateserial \
-    -CA ${INTERMEDIATE_CA_PATH}/certs/sandbox-intermediate.cert.pem \
-    -CAkey ${INTERMEDIATE_CA_PATH}/private/sandbox-intermediate.key.pem \
-    -in ${CLIENT_CERT_PATH}/csr/sandbox-client.csr \
-    -out ${CLIENT_CERT_PATH}/certs/sandbox-client.cert.pem \
-    -extfile ${CLIENT_CERT_PATH}/client-extfile.cnf
+[ req_distinguished_name ]
+countryName = US
+commonName  = Test Root CA
+```
+# root.config
+```shell
+[ ca ]
+default_ca      = CA_default
 
-    # Verify the certificate
-    openssl x509 -noout -text \
-      -in ${CLIENT_CERT_PATH}/certs/sandbox-client.cert.pem
-    
-    #
-    openssl verify -CAfile ${INTERMEDIATE_CA_PATH}/certs/sandbox-ca-chain.cert.pem \
-      ${CLIENT_CERT_PATH}/certs/sandbox-client.cert.pem
-             
+[ CA_default]
+dir             = ./root_ca      # helper variable pointing to ca specific files
+database        = $dir/index     # database of certs generated by the ca
+new_certs_dir   = ./             # one dir up to make the demo easier
+certificate     = ./root.pem     # one dir up to make the demo easier
+serial          = $dir/serial    # file with incrementing hex serial number for certs
+private_key     = ./root.key
+
+policy          = policy_any
+email_in_dn     = no             # recommended
+unique_subject  = no             # recommended for easier certificate rollover
+copy_extensions = none           # don't honor the extensions in the csr
+default_md      = sha256
+
+[ policy_any ]
+countryName            = optional
+stateOrProvinceName    = optional
+organizationName       = optional
+organizationalUnitName = optional
+commonName             = supplied
+```
+
+# intermediate_req.config
+```shell
+[ req ]
+distinguished_name = req_distinguished_name
+prompt             = no
+
+[ req_distinguished_name ]
+countryName = US
+commonName  = Test Intermediate CA
+```
+
+# intermediate.config
+```shell
+[ ca ]
+default_ca      = CA_default
+
+[ CA_default]
+dir             = ./intermediate_ca   # helper variable pointing to ca specific files
+database        = $dir/index          # database of certs generated by the ca
+new_certs_dir   = ./                  # one dir up to make the demo easier
+certificate     = ./intermediate.pem  # one dir up to make the demo easier
+serial          = $dir/serial         # file with incrementing hex serial number for certs
+private_key     = ./intermediate.key
+
+policy          = policy_any
+email_in_dn     = no                  # recommended
+unique_subject  = no                  # recommended for easier certificate rollover
+copy_extensions = none                # don't honor the extensions in the csr
+default_md      = sha256
+
+[ policy_any ]
+countryName            = optional
+stateOrProvinceName    = optional
+organizationName       = optional
+organizationalUnitName = optional
+commonName             = supplied
+```
+# leaf_req.config
+```shell
+[ req ]
+distinguished_name = req_distinguished_name
+prompt             = no
+
+[ req_distinguished_name ]
+countryName = US
+commonName  = Test Leaf
+```
+# leaf.config
+```shell
+[ req ]
+distinguished_name = req_distinguished_name
+prompt             = no
+
+[ req_distinguished_name ]
+countryName = US
+commonName  = Test Leaf
+```
+
+```shell
+# create the private key for the root CA
+openssl genrsa 
+    -out root.key                   # output file
+    2048                            # bitcount
+
+# create the csr for the root CA
+openssl req 
+    -new 
+    -key root.key                   # private key associated with the csr
+    -out root.csr                   # output file
+    -config root_req.config         # contains config for generating the csr such as the distinguished name
+
+# create the root CA cert
+openssl ca 
+    -in root.csr                    # csr file
+    -out root.pem                   # output certificate file
+    -config root.config             # CA configuration file
+    -selfsign                       # create a self-signed certificate
+    -extfile ca.ext                 # extensions that must be present for CAs that sign certificates
+    -days 1095                      # 3 years
+
+# create the private key for the intermediate CA
+openssl genrsa 
+    -out intermediate.key           # output file
+    2048                            # bitcount
+
+# create the csr for the intermediate CA
+openssl req 
+    -new 
+    -key intermediate.key           # private key associated with the csr
+    -out intermediate.csr           # output file
+    -config intermediate_req.config # contains config for generating the csr such as the distinguished name
+
+# create the intermediate CA cert
+openssl ca 
+    -in intermediate.csr            # csr file
+    -out intermediate.pem           # output certificate file
+    -config root.config             # CA configuration file (note: root is still issuing)
+    -extfile ca.ext                 # extensions that must be present for CAs that sign certificates
+    -days 730                       # 2 years
+
+# create the private key for the leaf certificate
+openssl genrsa 
+    -out leaf.key                   # output file
+    2048                            # bitcount
+
+# create the csr for the leaf certificate
+openssl req 
+    -new 
+    -key leaf.key                   # private key associated with the csr
+    -out leaf.csr                   # output file
+    -config leaf_req.config         # contains config for generating the csr such as the distinguished name
+
+# create the leaf certificate (note: no ca.ext. this certificate is not a CA)
+openssl ca 
+    -in leaf.csr                    # csr file
+    -out leaf.pem                   # output certificate file
+    -config intermediate.config     # CA configuration file (note: intermediate is issuing)
+    -days 365                       # 1 year
+
+# verify the certificate chain
+openssl verify 
+    -x509_strict                    # strict adherence to rules
+    -CAfile root.pem                # root certificate
+    -untrusted intermediate.pem     # file with all intermediates
+    leaf.pem                        # leaf certificate to verify             
 ```
 
 

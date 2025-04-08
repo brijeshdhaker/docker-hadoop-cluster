@@ -7,7 +7,7 @@ fullnameOverride: "springboot-app"
 
 # Declare variables to be passed into your templates.
 author: Brijesh K Dhaker
-environment: "local"
+environment: "docker"
 
 # This will set the replicaset count more information can be found here: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
 replicaCount: 1
@@ -123,9 +123,17 @@ volumes:
       type: Directory
   - name: vol-secret
     secret:
-     secretName: very-secret
+     secretName: password-secret
      optional: false
-
+  - name: vol-configmap
+    configMap:
+      name: bd-spring-module-configmap
+      optional: false
+      items:
+      - key: application-docker.yaml
+        path: application-docker.yaml
+      - key: application.yaml
+        path: application.yaml
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
  - name: vol-sandbox
@@ -134,7 +142,9 @@ volumeMounts:
  - name: vol-secret
    mountPath: "/apps/secrets"
    readOnly: true
-
+ - name: vol-configmap
+   mountPath: "/apps/configs"
+   readOnly: true
 nodeSelector: {}
 
 tolerations: []

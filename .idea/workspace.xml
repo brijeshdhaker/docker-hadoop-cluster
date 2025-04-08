@@ -4,15 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-07 Update Configuration &amp; Resources.">
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-08 Update ssl configuration for springboot app.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/ca/intermediate/openssl.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/ca/intermediate/openssl.cnf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/ca/root/openssl.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/ca/root/openssl.cnf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/server/server-extfile.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/server/server-extfile.cnf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl-cert.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl-cert.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/dev/application-docker.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-docker.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/dev/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/dev/ehcache.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/ehcache.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/local/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/secrets/password" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/password" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/configmap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/configmap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/deployment.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/secrets.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/secrets.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/configmap.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls/tests/test-connection.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/values.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/openssl-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/openssl-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -279,7 +285,7 @@
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/helm-chart/manifests",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/helm-chart/configs/dev",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
@@ -290,18 +296,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/dev" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/manifests" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/certs" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/templates" />
       <recent name="$PROJECT_DIR$/bd-k8s-module/istio/example_certs2" />
-      <recent name="$PROJECT_DIR$/bd-k8s-module/istio/example_certs1" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/configs" />
+      <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/docker" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/templates" />
       <recent name="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/tables" />
       <recent name="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/procedures" />
-      <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/tpls" />
-      <recent name="$PROJECT_DIR$/bd-setup-module" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -603,14 +609,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00128" summary="2024-12-13 update bd-flink-module.">
-      <option name="closed" value="true" />
-      <created>1734094705409</created>
-      <option name="number" value="00128" />
-      <option name="presentableId" value="LOCAL-00128" />
-      <option name="project" value="LOCAL" />
-      <updated>1734094705410</updated>
     </task>
     <task id="LOCAL-00129" summary="2024-12-14 update bd-flink-module.">
       <option name="closed" value="true" />
@@ -996,7 +994,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743999163885</updated>
     </task>
-    <option name="localTasksCounter" value="177" />
+    <task id="LOCAL-00177" summary="2025-04-08 Update ssl configuration for springboot app.">
+      <option name="closed" value="true" />
+      <created>1744068412484</created>
+      <option name="number" value="00177" />
+      <option name="presentableId" value="LOCAL-00177" />
+      <option name="project" value="LOCAL" />
+      <updated>1744068412485</updated>
+    </task>
+    <option name="localTasksCounter" value="178" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -1057,7 +1063,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-12-11 update bd-flink-module." />
     <MESSAGE value="2024-12-11 update bd-flink-module for working examples." />
     <MESSAGE value="2024-12-12 add refine &amp; enrichment for flink module." />
     <MESSAGE value="2024-12-13 add refine &amp; enrichment for flink module." />
@@ -1082,7 +1087,8 @@
     <MESSAGE value="2025-04-04 Update Configuration &amp; Resources." />
     <MESSAGE value="2025-04-06 Update Configuration &amp; Resources." />
     <MESSAGE value="2025-04-07 Update Configuration &amp; Resources." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-04-07 Update Configuration &amp; Resources." />
+    <MESSAGE value="2025-04-08 Update ssl configuration for springboot app." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-04-08 Update ssl configuration for springboot app." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
