@@ -104,3 +104,58 @@ helm upgrade --reuse-values ingress-nginx ingress-nginx/ingress-nginx
         </execution>
     </executions>
 </plugin>
+
+#
+# Json PATH in Helm
+#
+config:
+  app:
+    name: myapp
+    port: 8080
+  database:
+    host: localhost
+    port: 5432
+
+#
+{{- $config := .Values.config | mustYaml | mustToJson -}}
+appName: {{ get $config "config.app.name" }}
+appPort: {{ get $config "config.app.port" }}
+dbHost: {{ get $config "config.database.host" }}
+dbPort: {{ get $config "config.database.port" }}
+
+
+# config.json
+{
+"services": [
+    {
+    "name": "service1",
+    "port": 8080
+    },
+    {
+    "name": "service2",
+    "port": 8081
+    }
+  ]
+}
+
+{{- $config := .Files.Get "config.json" | mustToJson -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+name: myapp-config
+data:
+{{- range get $config "services[*]" }}
+{{ .name }}.port: {{ .port | quote }}
+{{- end }}
+
+# filters
+{{- $config := .Files.Get "config.json" | mustToJson -}}
+{{- range get $config "services[?(@.port > 8080)]" }}
+{{ .name }} has port greater than 8080
+{{- end }}
+
+# sorting
+{{- $config := .Files.Get "config.json" | mustToJson -}}
+{{- range sort (get $config "services[*]" "name") }}
+{{ .name }}: {{ .port }}
+{{- end }}

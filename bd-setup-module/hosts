@@ -5,10 +5,18 @@
 
 ###
 127.0.0.1           localhost
-192.168.80.128      hostmaster.sandbox.net hostmaster
+127.0.1.1           ubuntu-vmware.sandbox.net ubuntu-vmware
 
-# Sandbox
-192.168.80.1        thinkpad.sandbox.net thinkpad
+192.168.9.128       hostmaster.sandbox.net hostmaster
+
+# thinkpad-win-11
+192.168.9.1         thinkpad.sandbox.net thinkpad
+
+# Docker
+127.0.0.1           docker.sandbox.net
+
+# Kubernetes
+127.0.0.1           kubernetes.default.svc.cluster.local kubernetes.sandbox.net kubernetes
 
 # Kerberos
 127.0.0.1           kdcserver.sandbox.net kdcserver
@@ -98,3 +106,8 @@
 192.168.122.23      k8c1m0.sandbox.net k8c1m0
 192.168.122.145	    k8c1s1.sandbox.net k8c1s1
 192.168.122.204	    k8c1s2.sandbox.net k8c1s2
+
+# SpringBoot K8S Apps
+192.168.9.150       sbhttp.sandbox.net
+192.168.9.150       sbhttps.sandbox.net
+192.168.9.150       sbmtls.sandbox.net

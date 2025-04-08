@@ -1,0 +1,17 @@
+[req]
+distinguished_name = req_distinguished_name
+x509_extensions = v3_req
+prompt = no
+[req_distinguished_name]
+CN = httpbin.sandbox.net
+[v3_req]
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = localhost
+DNS.2 = #SERVER_NAME#
+DNS.3 = #SERVER_NAME#.sandbox.net
+DNS.4 = *.sandbox.net
+IP.1 = 127.0.0.1
+IP.2 = 192.168.9.128
+IP.3 = 192.168.30.128

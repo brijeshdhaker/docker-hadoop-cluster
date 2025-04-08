@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
  * @author brijeshdhaker
  */
 @Entity
-@Table(name= "ROLE")
+@Table(name= "ROLES")
 public class RoleEntity implements Serializable {
 
     //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ROLE_SEQ_GENERATOR")

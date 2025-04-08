@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  environment: {{ .Values.environment | upper | quote }}
+  {{- if eq .Values.favorite.drink "coffee" }}
+  message: "Hello World"
+  {{- end }}
+  {{- range $path, $_ := .Files.Glob "configs/*.yaml" -}}
+  {{- base $path | nindent 2 }}: |-
+  {{- $.Files.Get $path | nindent 4 }}
+  {{- end }}
+  #
+  toppings: |-
+    {{- range .Values.pizzaToppings }}
+    - {{ . | title | quote }}
+    {{- end }}
+  #
+  sizes: |-
+    {{- range tuple "small" "medium" "large" }}
+    - {{ . }}
+    {{- end }}
+  #
+  pizzaToppings: |-
+    {{- range $index, $topping := .Values.pizzaToppings }}
+      {{ $index }}: {{ $topping }}
+    {{- end }}
+  #
+  {{- range $key, $val := .Values.favorite }}
+  {{ $key }}: {{ $val | quote }}
+  {{- end }}
+  #
+  some-file.txt: |- {{ range .Files.Lines "configs/config1.toml" }}
+    {{ . }}{{ end }}

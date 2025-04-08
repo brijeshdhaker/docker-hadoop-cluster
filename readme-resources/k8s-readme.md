@@ -13,7 +13,40 @@ kubectl -n kube-system get pods -l 'k8s-app notin (qa), tier in (app)' -L k8s-ap
 kubectl api-resources -o wide
 
 kubectl -n kube-system get pods --selector=batch.kubernetes.io/job-name=pi --output=jsonpath='{.items[*].metadata.name}'
+kubectl -n kube-system get pod -o jsonpath='{range .items[*]}{.kind}{"\n"}{end}'
+kubectl get pod myapp-pod -o=jsonpath='{range .spec.containers[*]}{.name} {.image}{"\n"}{end}'
+kubectl -n kube-system get pods -o=jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.spec.nodeName}{"\n"}{end}'
+kubectl -n kube-system get pods -o=jsonpath='{range .items[?(@.status.phase=="Running")]}{.metadata.name}{"\n"}{end}'
+kubectl get svc -l app=myapp -o=jsonpath='{range .items[*]}{.metadata.name} {range .status.loadBalancer.ingress[*]}{.ip},{end}{"\n"}{end}'
+kubectl get pod myapp-pod -o=jsonpath='{.metadata.creationTimestamp} {@.metadata.creationTimestamp:date:"2006-01-02 15:04:05 -0700"}'
+
+# Filters
+?(@...) - Filters elements based on a condition.
+?(@.property == 'value') selects elements with a property field equal to 'value'.
+Logical operators like ==, !=, >, <, >=, <=, &&, ||, ! can be used in filters.
+
+Script Expressions
+JSONPath supports basic arithmetic operations and string functions within filter expressions.
+?(@.price * @.qty >= 20) - Selects elements where the product of price and qty is greater than or equal to 20.
+?(@.name.length() > 3) - Selects elements where the length of the name string is greater than 3.
+
+Examples
+
+Here are some example JSONPath expressions:
+
+$.store.book[*].author - Retrieves the author from all book elements under store.book.
+$..book[?(@.price < 10)] - Retrieves all book elements with a price less than 10, no matter where they are in the JSON structure.
+$.store..price - Retrieves all prices in the store object, traversing nested objects and arrays.
+$..books[?(@.category=='fiction')].price - Retrieves the prices of all fiction books.
+JSONPath provides a concise and flexible way to query JSON data. It's an essential tool when working with Kubernetes APIs and other JSON-based interfaces.
+
+
+
+
+
 kubectl delete --ignore-not-found=true -f samples/httpbin/httpbin.yaml
+kubectl delete pod <> --grace-period=0 --force
+
 #
 # POD
 #

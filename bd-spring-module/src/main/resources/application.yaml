@@ -6,6 +6,10 @@ topic:
   replication-factor: 1
 server:
   port: 9080
+  servlet:
+    context-path: /api/v1
+  http2:
+    enabled: true
 spring:
   application:
     name: bd-spring-module
@@ -19,9 +23,9 @@ spring:
     url: jdbc:mysql://mysqlserver.sandbox.net:3306/SANDBOXDB?zeroDateTimeBehavior=CONVERT_TO_NULL
   #
   jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
+#    database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
       use-new-id-gnerator-mappings: false
     properties:
       hibernate:
@@ -79,12 +83,12 @@ spring:
 #    jcache:
 #      config: classpath:ehcache.xml
   #
-#  liquibase:
-#    enabled: true
-#    change-log: classpath:liquibase/master.yml
-#    contexts: mysql
-#    parameters:
-#      textColumnType: TEXT
+  liquibase:
+    enabled: true
+    change-log: classpath:liquibase/master.yml
+    contexts: mysql
+    parameters:
+      textColumnType: TEXT
 #
 management:
   security:
