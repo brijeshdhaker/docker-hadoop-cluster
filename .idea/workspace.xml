@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-08 Update ssl configuration for springboot app.">
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-09 Update ssl configuration for springboot app.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio/secure-gateway.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-k8s-module/istio/secure-gateway.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/certs-clean.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/certs-clean.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/certs-create.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/certs-create.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/certs-verify.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/certs-verify.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/create-certs.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/create-certs.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/ca/intermediate/openssl.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/ca/intermediate/openssl.cnf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/ca/root/openssl.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/ca/root/openssl.cnf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl-cert.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl-cert.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/k8s-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/k8s-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/openssl-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/openssl-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -608,14 +598,6 @@
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
     </task>
-    <task id="LOCAL-00131" summary="2024-12-17 Add examples to bd-flink-module.">
-      <option name="closed" value="true" />
-      <created>1734401172128</created>
-      <option name="number" value="00131" />
-      <option name="presentableId" value="LOCAL-00131" />
-      <option name="project" value="LOCAL" />
-      <updated>1734401172129</updated>
-    </task>
     <task id="LOCAL-00132" summary="2024-12-17 Add examples to bd-flink-module.">
       <option name="closed" value="true" />
       <created>1734423452638</created>
@@ -1000,7 +982,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744080721975</updated>
     </task>
-    <option name="localTasksCounter" value="180" />
+    <task id="LOCAL-00180" summary="2025-04-09 Update ssl configuration for springboot app.">
+      <option name="closed" value="true" />
+      <created>1744169608325</created>
+      <option name="number" value="00180" />
+      <option name="presentableId" value="LOCAL-00180" />
+      <option name="project" value="LOCAL" />
+      <updated>1744169608326</updated>
+    </task>
+    <option name="localTasksCounter" value="181" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -1061,7 +1051,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-12-11 update bd-flink-module for working examples." />
     <MESSAGE value="2024-12-12 add refine &amp; enrichment for flink module." />
     <MESSAGE value="2024-12-13 add refine &amp; enrichment for flink module." />
     <MESSAGE value="2024-12-13 update bd-flink-module." />
@@ -1086,7 +1075,8 @@
     <MESSAGE value="2025-04-06 Update Configuration &amp; Resources." />
     <MESSAGE value="2025-04-07 Update Configuration &amp; Resources." />
     <MESSAGE value="2025-04-08 Update ssl configuration for springboot app." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-04-08 Update ssl configuration for springboot app." />
+    <MESSAGE value="2025-04-09 Update ssl configuration for springboot app." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-04-09 Update ssl configuration for springboot app." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

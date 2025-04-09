@@ -218,7 +218,7 @@ case "$CERT_TYPE" in
 
       mkdir -p ${CLIENT_CERT_PATH}/{certs,crl,csr,newcerts,private,public}
 
-      CLIENT_NAME=${3:-"client"}
+      CLIENT_NAME=${3:-`hostname`}
       # 1. Create a key
       openssl genrsa \
       -out ${CLIENT_CERT_PATH}/private/${CLIENT_NAME}-client.key.pem 2048
