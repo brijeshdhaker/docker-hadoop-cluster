@@ -14,6 +14,7 @@ openssl req -x509 -sha256 \
 -days 7300 \
 -newkey rsa:2048 \
 -subj "/CN=Root CA/O=Sandbox/OU=Security/L=Pune/ST=MH/C=IN/emailAddress=security@sandbox.net" \
+-extensions v3_ca \
 -keyout ./bd-k8s-module/istio/certs/ca-root.key.pem \
 -out ./bd-k8s-module/istio/certs/ca-root.cert.pem
 
@@ -23,7 +24,9 @@ openssl req \
 -nodes \
 -out ./bd-k8s-module/istio/certs/ca-intermediate.csr \
 -keyout ./bd-k8s-module/istio/certs/ca-intermediate.key.pem \
--subj "/CN=Intermediate CA/O=Sandbox/OU=Security/L=Pune/ST=MH/C=IN/emailAddress=security@sandbox.net"
+-subj "/CN=Intermediate CA/O=Sandbox/OU=Security/L=Pune/ST=MH/C=IN/emailAddress=security@sandbox.net" \
+-addext "basicConstraints = critical, CA:true, pathlen:0" \
+-addext "keyUsage = critical, digitalSignature, cRLSign, keyCertSign"
 
 openssl req -text -noout -verify -in ./bd-k8s-module/istio/certs/ca-intermediate.csr
 

@@ -6,9 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-08 Update ssl configuration for springboot app.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio/certs/helloworld-server-extfile.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-k8s-module/istio/certs/sbhttps-extfile.cnf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio/certs/httpbin-server-extfile.cnf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-k8s-module/istio/secure-gateway.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-k8s-module/istio/secure-gateway.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/certs-clean.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/certs-clean.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/certs-create.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/certs-create.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/certs-verify.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/certs-verify.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/create-certs.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/create-certs.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/ca/intermediate/openssl.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/ca/intermediate/openssl.cnf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/ca/root/openssl.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/ca/root/openssl.cnf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl-cert.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl-cert.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/k8s-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/k8s-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/openssl-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/openssl-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,199 +99,199 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.AppLauncher.executor": "Run",
-    "Application.AppLauncher::BatchWorkflow.executor": "Run",
-    "Application.AppLauncher::DiscretizedStreamWorkflow.executor": "Run",
-    "Application.AppLauncher::StructuredStreamWorkflow.executor": "Run",
-    "Application.AppStreamWorkflow.executor": "Run",
-    "Application.ClickEventGenerator.executor": "Run",
-    "Application.DataStreamJob.executor": "Run",
-    "Application.DeltaBoundedSourceLocalExample.executor": "Run",
-    "Application.DeltaBoundedSourceUserColumnsExample.executor": "Run",
-    "Application.DeltaContinuousSourceLocalExample.executor": "Debug",
-    "Application.DeltaSinkExample.executor": "Debug",
-    "Application.DeltaSinkExampleLocal.executor": "Run",
-    "Application.DemoApplication.executor": "Debug",
-    "Application.DriverHourlyMaxTips.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.ProductsHourlySales.executor": "Debug",
-    "Application.RideCountExample.executor": "Run",
-    "Application.SandboxSbApplication.executor": "Run",
-    "Application.SparkPi.executor": "Run",
-    "Application.StreamExample.executor": "Run",
-    "Application.TaxiLongRidesAlerts.executor": "Run",
-    "Application.TaxiRidesAndFares.executor": "Coverage",
-    "Application.TransactionAvroStream.executor": "Run",
-    "Application.TransactionCountExample.executor": "Run",
-    "Application.TransactionPipeline.executor": "Run",
-    "Application.local-taxi-ride-counts.executor": "Debug",
-    "Application.local-taxi-rides-and-fares.executor": "Debug",
-    "Application.local-transaction-pipeline.executor": "Debug",
-    "Application.mini-cluster-transaction-pipeline.executor": "Debug",
-    "Docker.Docker Image.executor": "Run",
-    "Docker.bd-docker-sandbox.minio: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/dc-flink-cluster.yml: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/dc-spark-cluster.yml: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/docker-compose.yaml.hiveserver: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/docker-compose.yaml.metastore: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/docker-compose.yaml.mysqlserver: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment.executor": "Run",
-    "Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox.gateway: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-jobmanager: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-taskmanager: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-hive-cluster.yml.hiveserver: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-rest: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.mc: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-kafka-cluster-7.5.2.yml.control-center: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-kafka.yml.kafkabroker: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-kafka.yml.kdcserver: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-kafka.yml.zookeeper: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-kafka.yml: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-kdcserver.yml.kdcserver: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-minio.yml.mc: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor": "Run",
-    "Docker.bd-hadoop-sandbox: Compose Deployment.executor": "Run",
-    "Docker.cassandra-cluster.executor": "Run",
-    "Docker.dc-iceburg.yml.mc: Compose Deployment.executor": "Run",
-    "Docker.dc-iceburg.yml.minio: Compose Deployment.executor": "Run",
-    "Docker.dc-iceburg.yml.rest: Compose Deployment.executor": "Run",
-    "Docker.dc-iceburg.yml.spark-iceberg: Compose Deployment.executor": "Run",
-    "Docker.dc-kafka.yml.kafkabroker: Compose Deployment.executor": "Run",
-    "Docker.dc-kafka.yml.kafkaclient: Compose Deployment.executor": "Run",
-    "Docker.dc-kafka.yml.kdcserver: Compose Deployment.executor": "Run",
-    "Docker.dc-kafka.yml.zookeeper: Compose Deployment.executor": "Run",
-    "Docker.dc-kafka.yml: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.datanode: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.gateway: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.historyserver: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.hiveserver: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.hivetezui: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.hmaster: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.hregion: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.kdcserver: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.metastore: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.mysqlserver: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.namenode: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.nodemanager: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.resourcemanager: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.sparkhistory: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.timelineserver: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
-    "Docker.flink-cluster.executor": "Run",
-    "Docker.kafka-cluster.executor": "Run",
-    "Docker.minio.executor": "Run",
-    "Docker.mysqlserver.executor": "Run",
-    "Docker.spark-cluster.executor": "Run",
-    "Docker.spark-notebook.executor": "Run",
-    "Docker.ubuntu.executor": "Run",
-    "Docker.zeppelin-notebook.executor": "Run",
-    "Docker.zeppelin.executor": "Run",
-    "JUnit.AvroUtilTest.executor": "Run",
-    "JUnit.AvroUtilTest.jsonToAvro.executor": "Run",
-    "JUnit.AvroUtilTest.schemaFromFile.executor": "Run",
-    "JUnit.DatasourceBuilderTest.executor": "Run",
-    "JUnit.SandboxSbApplicationTest.executor": "Run",
-    "JUnit.SandboxSbApplicationTests (1).executor": "Run",
-    "JUnit.SandboxSbApplicationTests.executor": "Run",
-    "JUnit.SchemaProviderTest.structTypeFromAvro.executor": "Run",
-    "Maven.bd-data-generator [clean,verify].executor": "Run",
-    "Maven.bd-data-generator [clean].executor": "Run",
-    "Maven.bd-data-generator [package].executor": "Run",
-    "Maven.bd-data-generator [verify].executor": "Run",
-    "Maven.bd-flink-module [clean,package].executor": "Run",
-    "Maven.bd-flink-module [clean].executor": "Run",
-    "Maven.bd-flink-module [compile,package].executor": "Run",
-    "Maven.bd-flink-module [compile].executor": "Run",
-    "Maven.bd-flink-module [package].executor": "Run",
-    "Maven.bd-python-module [clean].executor": "Run",
-    "Maven.bd-python-module [install].executor": "Run",
-    "Maven.bd-python-module [org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy].executor": "Run",
-    "Maven.bd-python-module [package].executor": "Run",
-    "Maven.bd-python-module [verify].executor": "Run",
-    "Maven.bd-spark-module [clean].executor": "Run",
-    "Maven.bd-spark-module [package].executor": "Run",
-    "Maven.bd-spring-module [clean].executor": "Run",
-    "Maven.bd-spring-module [package].executor": "Run",
-    "Maven.bd-spring-module [test].executor": "Run",
-    "Python tests.Python tests for test_Commons.test_print_separator.executor": "Run",
-    "Python tests.Python tests for test_Commons.test_split_csv.executor": "Run",
-    "Python tests.Python tests for test_Commons.test_split_csv_line.executor": "Debug",
-    "Python tests.Python tests for test_User.test_random.executor": "Debug",
-    "Python tests.Python tests for test_User.test_to_dict.executor": "Debug",
-    "Python tests.Python tests for test_User.test_to_obj.executor": "Run",
-    "Python tests.Python tests for test_static.test_flake8.executor": "Debug",
-    "Python tests.Python tests in test_Commons.py.executor": "Debug",
-    "Python tests.Python tests in test_User.py.executor": "Run",
-    "Python.FileUtils.executor": "Run",
-    "Python.Order.executor": "Run",
-    "Python.TimeUtils.executor": "Run",
-    "Python.User.executor": "Run",
-    "Python.app.executor": "Run",
-    "Python.avro-test.executor": "Debug",
-    "Python.confluent_kafka_AvroConsumer.executor": "Run",
-    "Python.confluent_kafka_AvroProducer.executor": "Run",
-    "Python.confluent_kafka_ConsumerFactory.executor": "Run",
-    "Python.confluent_kafka_DeserializingConsumer.executor": "Debug",
-    "Python.confluent_kafka_ProducerFactory.executor": "Run",
-    "Python.confluent_kafka_SerializingProducer.executor": "Run",
-    "Python.confluent_kafka_simple_consumer.executor": "Run",
-    "Python.confluent_transaction_producer.executor": "Run",
-    "Python.hello-spark.executor": "Run",
-    "Python.kafka_python_partitioned_consumer.executor": "Run",
-    "Python.kafka_python_partitioned_producer.executor": "Run",
-    "Python.kafka_python_simple_consumer.executor": "Run",
-    "Python.kafka_python_simple_producer.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.pie.executor": "Run",
-    "Python.pyspark-pandas.executor": "Run",
-    "Python.run_tests.executor": "Run",
-    "Python.sql-s3a-read.executor": "Run",
-    "Python.structured-avro-stream.executor": "Debug",
-    "Python.test.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "develop/docker-hadoop334-cluster",
-    "jdk.selected.JAVA_MODULE": "1.8",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-k8s-module/istio/certs",
-    "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.31724137",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "terminal"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.AppLauncher.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AppLauncher::BatchWorkflow.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AppLauncher::DiscretizedStreamWorkflow.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AppLauncher::StructuredStreamWorkflow.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AppStreamWorkflow.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ClickEventGenerator.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DataStreamJob.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DeltaBoundedSourceLocalExample.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DeltaBoundedSourceUserColumnsExample.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DeltaContinuousSourceLocalExample.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.DeltaSinkExample.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.DeltaSinkExampleLocal.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DemoApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.DriverHourlyMaxTips.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ProductsHourlySales.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.RideCountExample.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SandboxSbApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SparkPi.executor&quot;: &quot;Run&quot;,
+    &quot;Application.StreamExample.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TaxiLongRidesAlerts.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TaxiRidesAndFares.executor&quot;: &quot;Coverage&quot;,
+    &quot;Application.TransactionAvroStream.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TransactionCountExample.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TransactionPipeline.executor&quot;: &quot;Run&quot;,
+    &quot;Application.local-taxi-ride-counts.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.local-taxi-rides-and-fares.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.local-transaction-pipeline.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.mini-cluster-transaction-pipeline.executor&quot;: &quot;Debug&quot;,
+    &quot;Docker.Docker Image.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/dc-flink-cluster.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.metastore: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.mysqlserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox.gateway: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-jobmanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-taskmanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox/dc-hive-cluster.yml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-rest: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.mc: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox/dc-kafka-cluster-7.5.2.yml.control-center: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml.kafkabroker: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml.zookeeper: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox/dc-kdcserver.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox/dc-minio.yml.mc: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-hadoop-sandbox: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.cassandra-cluster.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.dc-iceburg.yml.mc: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.dc-iceburg.yml.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.dc-iceburg.yml.rest: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.dc-iceburg.yml.spark-iceberg: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.dc-kafka.yml.kafkabroker: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.dc-kafka.yml.kafkaclient: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.dc-kafka.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.dc-kafka.yml.zookeeper: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.dc-kafka.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.datanode: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.gateway: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.historyserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.hivetezui: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.hmaster: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.hregion: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.metastore: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.mysqlserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.namenode: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.nodemanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.resourcemanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.sparkhistory: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.timelineserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.flink-cluster.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.kafka-cluster.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.minio.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.mysqlserver.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.spark-cluster.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.spark-notebook.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.ubuntu.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.zeppelin-notebook.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.zeppelin.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AvroUtilTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AvroUtilTest.jsonToAvro.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AvroUtilTest.schemaFromFile.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DatasourceBuilderTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SandboxSbApplicationTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SandboxSbApplicationTests (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SandboxSbApplicationTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SchemaProviderTest.structTypeFromAvro.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-data-generator [clean,verify].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-data-generator [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-data-generator [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-data-generator [verify].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-flink-module [clean,package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-flink-module [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-flink-module [compile,package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-flink-module [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-flink-module [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-python-module [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-python-module [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-python-module [org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-python-module [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-python-module [verify].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-spark-module [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-spark-module [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-spring-module [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-spring-module [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-spring-module [test].executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_Commons.test_print_separator.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_Commons.test_split_csv.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_Commons.test_split_csv_line.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests for test_User.test_random.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests for test_User.test_to_dict.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests for test_User.test_to_obj.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_static.test_flake8.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests in test_Commons.py.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests in test_User.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.FileUtils.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Order.executor&quot;: &quot;Run&quot;,
+    &quot;Python.TimeUtils.executor&quot;: &quot;Run&quot;,
+    &quot;Python.User.executor&quot;: &quot;Run&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.avro-test.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.confluent_kafka_AvroConsumer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.confluent_kafka_AvroProducer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.confluent_kafka_ConsumerFactory.executor&quot;: &quot;Run&quot;,
+    &quot;Python.confluent_kafka_DeserializingConsumer.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.confluent_kafka_ProducerFactory.executor&quot;: &quot;Run&quot;,
+    &quot;Python.confluent_kafka_SerializingProducer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.confluent_kafka_simple_consumer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.confluent_transaction_producer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.hello-spark.executor&quot;: &quot;Run&quot;,
+    &quot;Python.kafka_python_partitioned_consumer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.kafka_python_partitioned_producer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.kafka_python_simple_consumer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.kafka_python_simple_producer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pie.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pyspark-pandas.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run_tests.executor&quot;: &quot;Run&quot;,
+    &quot;Python.sql-s3a-read.executor&quot;: &quot;Run&quot;,
+    &quot;Python.structured-avro-stream.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3&quot;: &quot;junit.framework.TestCase&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop/docker-hadoop334-cluster&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-k8s-module/istio/certs&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.31724137&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bd-k8s-module/istio/certs" />
@@ -293,11 +301,11 @@
       <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-setup-module/security" />
+      <recent name="$PROJECT_DIR$/bd-k8s-module/istio/certs/old" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/configs" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/docker" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/templates" />
-      <recent name="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/tables" />
-      <recent name="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/procedures" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -317,7 +325,7 @@
       <recent name="com.org.example.flink.transaction.functions" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.SandboxSbApplication">
+  <component name="RunManager" selected="Docker.mysqlserver">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -573,7 +581,6 @@
       <item itemvalue="Application.ProductsHourlySales" />
       <item itemvalue="Application.SandboxSbApplication" />
       <item itemvalue="Application.local-taxi-long-rides-alerts" />
-      <item itemvalue="Docker.cassandra-cluster" />
       <item itemvalue="Docker.flink-cluster" />
       <item itemvalue="Docker.kafka-cluster" />
       <item itemvalue="Docker.minio" />
@@ -581,6 +588,7 @@
       <item itemvalue="Docker.spark-cluster" />
       <item itemvalue="Docker.spark-notebook" />
       <item itemvalue="Docker.zeppelin-notebook" />
+      <item itemvalue="Docker.cassandra-cluster" />
     </list>
     <recent_temporary>
       <list>
@@ -599,14 +607,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00130" summary="2024-12-15 Add examples to bd-flink-module.">
-      <option name="closed" value="true" />
-      <created>1734268631003</created>
-      <option name="number" value="00130" />
-      <option name="presentableId" value="LOCAL-00130" />
-      <option name="project" value="LOCAL" />
-      <updated>1734268631004</updated>
     </task>
     <task id="LOCAL-00131" summary="2024-12-17 Add examples to bd-flink-module.">
       <option name="closed" value="true" />
@@ -992,7 +992,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744077963883</updated>
     </task>
-    <option name="localTasksCounter" value="179" />
+    <task id="LOCAL-00179" summary="2025-04-08 Update ssl configuration for springboot app.">
+      <option name="closed" value="true" />
+      <created>1744080721975</created>
+      <option name="number" value="00179" />
+      <option name="presentableId" value="LOCAL-00179" />
+      <option name="project" value="LOCAL" />
+      <updated>1744080721975</updated>
+    </task>
+    <option name="localTasksCounter" value="180" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">

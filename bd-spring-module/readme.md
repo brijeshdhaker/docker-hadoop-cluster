@@ -68,12 +68,12 @@ helm template bd-spring-module ./bd-spring-module/helm-chart/distro/bd-spring-mo
 ```shell
 helm package ./bd-spring-module/helm-chart --destination ./bd-spring-module/helm-chart/distro
 ```
-# Install
+# Install Always
 ```shell
 helm install bd-spring-module ./bd-spring-module/helm-chart \
 --namespace=sb-apps \
 --set author=brijeshdhaker@gmail.com \
---set image.pullPolicy=Always \
+--set image.pullPolicy=IfNotPresent \
 --version=1.0.0 \
 --create-namespace=true \
 --debug \
@@ -97,7 +97,7 @@ helm install bd-spring-module ./bd-spring-module/helm-chart/distro/bd-spring-mod
 helm upgrade bd-spring-module ./bd-spring-module/helm-chart \
 --namespace=sb-apps \
 --set author=brijeshdhaker@gmail.com \
---set image.pullPolicy=Always \
+--set image.pullPolicy=IfNotPresent \
 --version=1.0.0 \
 --create-namespace=true \
 --install \
@@ -121,13 +121,13 @@ helm uninstall bd-spring-module --namespace=sb-apps
 ```
 #
 ```shell
-kubectl --namespace=sb-apps get all
+kubectl --namespace=sb-apps get all 
+kubectl --namespace=sb-apps get pods --show-labels
 
 export POD_NAME=$(kubectl get pods --namespace sb-apps -l "app.kubernetes.io/name=springboot-app,app.kubernetes.io/instance=bd-spring-module" -o jsonpath="{.items[0].metadata.name}")
 
 kubectl --namespace=sb-apps exec -it pod/$POD_NAME -- /bin/bash
-
-kubectl --namespace=sb-apps exec -it pod/$POD_NAME -- /bin/bash  
+  
 ```
 #
 ```shell
