@@ -14,6 +14,10 @@ istioctl dashboard kiali
 # Install Istio using the demo profile, without any gateways:
 istioctl install -f samples/bookinfo/demo-profile-no-gateways.yaml -y
 
+#
+#
+#
+
 # 
 # Install the Kubernetes Gateway API CRDs
 $ kubectl get crd gateways.gateway.networking.k8s.io &> /dev/null || \

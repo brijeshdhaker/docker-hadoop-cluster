@@ -9,9 +9,9 @@ Features: alt-svc AsynchDNS GSS-API HSTS HTTP2 HTTPS-proxy IPv6 Kerberos Largefi
 
 
 # Login to the KDC using kinit.
-$ kinit -k -t /apps/security/keytabs/users/brijeshdhaker.keytab brijeshdhaker@SANDBOX.NET
+kinit -k -t /apps/security/keytabs/users/brijeshdhaker.keytab brijeshdhaker@SANDBOX.NET
 
-$kinit brijeshdhaker@SANDBOX.NET
+kinit brijeshdhaker@SANDBOX.NET
 Please enter the password for brijeshdhaker@SANDBOX.NET:
 
 # Use curl to fetch the protected URL:

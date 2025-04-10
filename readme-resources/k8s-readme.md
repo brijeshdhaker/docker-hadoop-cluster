@@ -41,52 +41,50 @@ $.store..price - Retrieves all prices in the store object, traversing nested obj
 $..books[?(@.category=='fiction')].price - Retrieves the prices of all fiction books.
 JSONPath provides a concise and flexible way to query JSON data. It's an essential tool when working with Kubernetes APIs and other JSON-based interfaces.
 
-
-
-
-
-kubectl delete --ignore-not-found=true -f samples/httpbin/httpbin.yaml
-kubectl delete pod <> --grace-period=0 --force
-
 #
 # POD
 #
+```shell
 kubectl -n ingress-demo run pod nginx --image=nginx:latest --dry-run=client -o yaml
 kubectl -n ingress-demo expose pod nginx --port=80 --target-port=80 --type=NodePort --dry-run=client -o yaml > app-svc.yaml
-
+kubectl delete --ignore-not-found=true -f samples/httpbin/httpbin.yaml
+kubectl delete pod <> --grace-period=0 --force
+```
 #
 # Deployment
 #
+```shell
 kubectl create deployment nginx --image=nginx:latest --dry-run=client -o yaml
 kubectl expose deployment nginx -n i100121 --port=80 --target-port=8080 --type=NodePort --dry-run=client -o yaml > app-svc.yaml
+
+```
 
 #
 # Scaling
 #
+```shell
 kubectl scale deployment nginx --replicas=4
 kubectl scale deployment nginx --min=5 --max=10 --cpu-percent=85
 kubectl set image deployment nginx --replicas=4
 kubectl rollout undo deploy nginx
-
 kubectl autoscale deployment nginx --min=5 --max=10 --cpu-percent=85
+```
 
-#
 # Jobs & Cron Jobs
-#
+```shell
 kubectl create job job_hello --image=busybox:latest --dry-run=client -o yaml -- bin/sh -c "date; echo 'Hello World' " >> k8s-job.yaml
 kubectl create cronjob cronjob_hello --image=busybox:latest --schedule="*/1 8 * * * *" --dry-run=client -o yaml -- bin/sh -c "date; echo 'Hello World' " >> cron-job.yaml
+```
 
-#
 # Roles & Role Bindings
-#
+```shell
 kubectl create clusterrolebinding cluster-admin-binding \
 --clusterrole cluster-admin \
 --user $(gcloud config get-value account)
-
-# 
-# ingress
-#
+```
  
+# ingress
+```shell
 kubectl create ns nginx-ingress-demo
 kubectl get pods -n nginx-ingress-demo
 
@@ -97,6 +95,7 @@ kubectl -n nginx-ingress-demo create deployment hello-app-v2 --image=gcr.io/goog
 kubectl -n nginx-ingress-demo expose deployment hello-app-v2 --type=NodePort --port=8080
 
 curl http://192.168.65.128:30473/
+``` 
 
 ```yaml
 kubectl -n nginx-ingress-demo apply -f - <<EOF
@@ -139,7 +138,6 @@ EOF
 ```
 
 kubectl -n nginx-ingress-demo create ingress hello-app-ingress --class=nginx --rule="hello-app.example/*=hello-app-v1:8080" --rule="hello-app.example/v1=hello-app-v1:8080" --rule="hello-app.example/v2=hello-app-v2:8080" --dry-run=client -o yaml
-
 kubectl -n nginx-ingress-demo get ingress hello-app-ingress -o yaml > ./bd-spring-module/helm/k8s/app-ingress.yaml
 
 curl --resolve "hello-app.example:80:192.168.65.128" -i http://hello-app.example
@@ -171,8 +169,6 @@ kubectl wait --namespace ingress-nginx \
 helm upgrade --install ingress-nginx ingress-nginx \
 --repo https://kubernetes.github.io/ingress-nginx \
 --namespace ingress-nginx --create-namespace
-
-
 
 ```shell
 kubectl apply -f - <<EOF
