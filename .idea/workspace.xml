@@ -4,22 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-09 Update ssl configuration for springboot app.">
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/test/java/TestFlink.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/test/resources/test_transactions_workflow.properties" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-10 Update ssl configuration for springboot app.">
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/test/java/TestFlink.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/test/resources/test_transactions_workflow.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/hbase-commands.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/hbase-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/hbase-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/hbase-spark.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/hive-beeline.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/hive-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/hive-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/hive-setup.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/http-spnego.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/http-spnego.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/istio-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/istio-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/k8s-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/k8s-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/kcat-help.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/kcat-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/kcat-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-data-generator/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-data-generator/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/test-kafka.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/test-kafka.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-flink-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-flink-cluster.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -286,7 +278,7 @@
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-flink-module/src/test/resources",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-data-generator/src/test",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
@@ -297,11 +289,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-data-generator/src/test" />
+      <recent name="$PROJECT_DIR$/bd-docker-sandbox/resources/libs/s3-fs-hadoop" />
       <recent name="$PROJECT_DIR$/bd-flink-module/src/test/resources" />
       <recent name="$PROJECT_DIR$/bd-k8s-module/istio/certs" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/dev" />
-      <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/manifests" />
-      <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/certs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bd-setup-module/security" />
@@ -610,14 +602,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00133" summary="2024-12-17 Add examples to bd-flink-module.">
-      <option name="closed" value="true" />
-      <created>1734425760582</created>
-      <option name="number" value="00133" />
-      <option name="presentableId" value="LOCAL-00133" />
-      <option name="project" value="LOCAL" />
-      <updated>1734425760583</updated>
     </task>
     <task id="LOCAL-00134" summary="2025-03-01 Add examples to bd-flink-module.">
       <option name="closed" value="true" />
@@ -1003,7 +987,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744169958284</updated>
     </task>
-    <option name="localTasksCounter" value="182" />
+    <task id="LOCAL-00182" summary="2025-04-10 Update ssl configuration for springboot app.">
+      <option name="closed" value="true" />
+      <created>1744266255522</created>
+      <option name="number" value="00182" />
+      <option name="presentableId" value="LOCAL-00182" />
+      <option name="project" value="LOCAL" />
+      <updated>1744266255524</updated>
+    </task>
+    <option name="localTasksCounter" value="183" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -1064,7 +1056,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-12-12 add refine &amp; enrichment for flink module." />
     <MESSAGE value="2024-12-13 add refine &amp; enrichment for flink module." />
     <MESSAGE value="2024-12-13 update bd-flink-module." />
     <MESSAGE value="2024-12-14 update bd-flink-module." />
@@ -1089,7 +1080,8 @@
     <MESSAGE value="2025-04-07 Update Configuration &amp; Resources." />
     <MESSAGE value="2025-04-08 Update ssl configuration for springboot app." />
     <MESSAGE value="2025-04-09 Update ssl configuration for springboot app." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-04-09 Update ssl configuration for springboot app." />
+    <MESSAGE value="2025-04-10 Update ssl configuration for springboot app." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-04-10 Update ssl configuration for springboot app." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

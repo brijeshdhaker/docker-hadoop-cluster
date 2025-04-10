@@ -33,7 +33,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/flink/config.yaml:/opt/flink/conf/config.yaml
-      - ./resources/libs/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar
+      - /apps/libs/flink/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar
 #      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       - |
@@ -58,7 +58,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/flink/config.yaml:/opt/flink/conf/config.yaml
-      - ./resources/libs/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar
+      - /apps/libs/flink/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar
 #      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       - |
