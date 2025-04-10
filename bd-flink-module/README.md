@@ -36,7 +36,7 @@ docker run --rm -i -t \
 -e JOB_MANAGER_RPC_ADDRESS=flink-jobmanager \
 -e JOB_MANAGER_RPC_PORT=6123 \
 -v /apps:/apps \
--v ./bd-flink-module/target:/opt/bd-flink-module \
+-v ./bd-flink-module/distro:/opt/bd-flink-module \
 -v ./bd-docker-sandbox/conf/flink/config.yaml:/opt/flink/conf/config.yaml \
 -v /apps/libs/flink/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar \
 --name flink-playbox \
