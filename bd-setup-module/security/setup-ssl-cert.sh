@@ -9,11 +9,11 @@
 if [ $# -eq 0 ]
 then
 
-  echo '@Usage   : ./bd-setup-module/security/setup-ssl-cert.sh /apps/security <type> <hostname>'
-  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh /apps/security CA'
-  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh /apps/security Intermediate'
-  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh /apps/security Server sbhttps'
-  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh /apps/security Client sbhttps'
+  echo '@Usage   : ./bd-setup-module/security/setup-ssl-cert.sh /apps/security/ssl <type> <hostname>'
+  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh /apps/security/ssl CA'
+  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh /apps/security/ssl Intermediate'
+  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh /apps/security/ssl Server sbhttps'
+  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh /apps/security/ssl Client sbhttps'
   exit 1
 
 fi
@@ -32,7 +32,7 @@ then
     exit 1
 fi
 
-export BASE_PATH=${1:-"/apps/security"}
+export BASE_PATH=${1:-"/apps/security/ssl"}
 export ROOT_CA_PATH=${BASE_PATH}/ca/root
 export INTERMEDIATE_CA_PATH=${BASE_PATH}/ca/intermediate
 export SERVER_CERT_PATH=${BASE_PATH}/server

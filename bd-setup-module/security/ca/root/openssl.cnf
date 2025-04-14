@@ -4,7 +4,7 @@ default_ca                      = CA_default
 
 [ CA_default ]
 # Directory and file locations.
-dir                             = /apps/security/ca/root
+dir                             = /apps/security/ssl/ca/root
 certs                           = $dir/certs
 crl_dir                         = $dir/crl
 new_certs_dir                   = $dir/newcerts
