@@ -123,9 +123,9 @@ helm uninstall bd-spring-module --namespace=sb-apps
 ```shell
 kubectl --namespace=sb-apps get all 
 kubectl --namespace=sb-apps get pods --show-labels
+kubectl --namespace=sb-apps get hpa
 
 export POD_NAME=$(kubectl get pods --namespace sb-apps -l "app.kubernetes.io/name=springboot-app,app.kubernetes.io/instance=bd-spring-module" -o jsonpath="{.items[0].metadata.name}")
-
 kubectl --namespace=sb-apps exec -it pod/$POD_NAME -- /bin/bash
   
 ```
@@ -151,6 +151,13 @@ kubectl run mysql-client -it --rm --restart=Never --image=mysql:8.0.33 -- /bin/b
 
 kubectl run curl-client -i --rm --restart=Never  --image=dockerqa/curl:ubuntu-trusty -- /bin/sh -c "curl -v http://springboot-app-svc.sb-apps.svc.cluster.local:9080/api/v1/ | grep 'Hello, World'"
 kubectl run curl-client -i --rm --restart=Never --image=dockerqa/curl:ubuntu-trusty --command -- curl --silent http://sbhttp.sandbox.net/api/v1/
+
+# Run this in a separate terminal
+# so that the load generation continues and you can carry on with the rest of the steps
+kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://springboot-app-svc.sb-apps:9080/api/v1; done"
+
+kubectl --namespace=sb-apps get hpa springboot-app --watch
+
 ```
 
 # HTTP
@@ -208,7 +215,21 @@ curl -v -k \
 --key ./bd-setup-module/security/client/private/sbhttps-client.key.pem \
 https://sbmtls.sandbox.net:443/api/v1/ | grep 'Hello, World'
 
+for a in {1..1000}; do 
+curl -v -k \
+-HHost:sbmtls.sandbox.net \
+--resolve sbmtls.sandbox.net:443:192.168.9.150 \
+--cacert ./bd-setup-module/security/ca/intermediate/certs/ca-chain.cert.pem \
+--cert ./bd-setup-module/security/client/certs/sbhttps-client.cert.pem \
+--key ./bd-setup-module/security/client/private/sbhttps-client.key.pem \
+https://sbmtls.sandbox.net:443/api/v1/ | grep 'Hello, World' ;
+
+done;
+
 ```
+#
+https://sbhttps.sandbox.net/api/v1/actuator/env
+
 #
 #
 #
