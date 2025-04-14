@@ -69,13 +69,13 @@ sudo systemctl enable --now cri-docker.socket
 > Add the GPG key for kubernetes
 
 ```bash
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.32/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 ```
 
 > Add the kubernetes repository
 
 ```bash
-echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.32/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 ```
 
 > Update the repository
@@ -138,6 +138,9 @@ sudo vim /etc/fstab
 **Calico**
 
 ```bash
+
+sudo kubeadm config images pull --cri-socket unix:///var/run/cri-dockerd.sock
+
 # Calico network
 # Make sure to copy the join command
 sudo kubeadm init --apiserver-advertise-address=<control_plane_ip> --cri-socket unix:///var/run/cri-dockerd.sock  --pod-network-cidr=192.168.0.0/16
@@ -145,10 +148,18 @@ sudo kubeadm init --apiserver-advertise-address=<control_plane_ip> --cri-socket 
 # Use below command if the node network is 192.168.x.x
 sudo kubeadm init --apiserver-advertise-address=<control_plane_ip> --cri-socket unix:///var/run/cri-dockerd.sock  --pod-network-cidr=10.244.0.0/16
 
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --cri-socket unix:///var/run/cri-dockerd.sock --v=5
+
 # Copy your join command and keep it safe.
 # Below is a sample format
 # Add --cri-socket /var/run/cri-dockerd.sock to the command
-kubeadm join <control_plane_ip>:6443 --token 31rvbl.znk703hbelja7qbx --cri-socket unix:///var/run/cri-dockerd.sock --discovery-token-ca-cert-hash sha256:3dd5f401d1c86be4axxxxxxxxxx61ce965f5xxxxxxxxxxf16cb29a89b96c97dd
+kubeadm join 192.168.30.129:6443 --token noyyy4.2u2x729fkpdll1al \
+        --discovery-token-ca-cert-hash sha256:3a1f6b84ff9baef8ce42900afffa3a1d8e462d1c0bce7c4119ef19ac7bce8ad7
+
+# If you want to be able to schedule pods on the Kubernetes control-plane node, you need to remove a taint on the master nodes.
+kubectl taint nodes --all node-role.kubernetes.io/master-
+kubectl taint nodes --all  node-role.kubernetes.io/control-plane-
+
 ```
 
 > To start using the cluster with current user.
@@ -164,11 +175,15 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```bash
 # Use this if you have initialised the cluster with Calico network add on.
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.2/manifests/tigera-operator.yaml
-
 curl https://raw.githubusercontent.com/projectcalico/calico/v3.28.2/manifests/custom-resources.yaml -O
-
 # Change the ip to 10.244.0.0/16 if the node network is 192.168.x.x
 kubectl create -f custom-resources.yaml
+
+#
+# Install CNI Plugin
+#
+curl https://docs.projectcalico.org/manifests/calico.yaml -O
+kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 
 ```
 
@@ -190,6 +205,11 @@ sudo kubeadm join $controller_private_ip:6443 --token $token --discovery-token-c
 #Ex:
 # kubeadm join <control_plane_ip>:6443 --cri-socket unix:///var/run/cri-dockerd.sock --token 31rvbl.znk703hbelja7qbx --discovery-token-ca-cert-hash sha256:3dd5f401d1c86be4axxxxxxxxxx61ce965f5xxxxxxxxxxf16cb29a89b96c97dd
 
+```
+
+**Metric Server**
+```bash
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 ```
 
 **TIP**
