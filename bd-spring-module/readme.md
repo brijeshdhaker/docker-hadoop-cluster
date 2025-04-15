@@ -4,9 +4,11 @@
 -Dspring.profiles.active=cloud
 -Dserver.servlet.context-path=/api/v1
 
-
+```shell
+kubectl create ns sb-apps
 kubectl label namespace sb-apps istio-injection=enabled
 kubectl label namespace sb-apps istio-injection-
+```
 
 # 1. Create a secret for the ingress gateway:
 ```shell
@@ -43,7 +45,7 @@ helm create ./bd-spring-module/helm-chart --namespace sb-apps
 # template
 ```shell
 helm template bd-spring-module ./bd-spring-module/helm-chart \
---namespace sb-apps \
+--namespace=sb-apps \
 --set author=brijeshdhaker@gmail.com \
 --set image.pullPolicy=Always \
 --create-namespace=true \
@@ -54,11 +56,11 @@ helm template bd-spring-module ./bd-spring-module/helm-chart \
 
 #
 helm template bd-spring-module ./bd-spring-module/helm-chart/distro/bd-spring-module-0.1.0.tgz \
---namespace sb-apps \
+--namespace=sb-apps \
 --set author=brijeshdhaker@gmail.com \
 --set image.pullPolicy=Always \
---version 1.0.0 \
---create-namespace true \
+--version=1.0.0 \
+--create-namespace=true \
 --debug \
 --dry-run \
 --output-dir ./bd-spring-module/helm-chart/manifests/

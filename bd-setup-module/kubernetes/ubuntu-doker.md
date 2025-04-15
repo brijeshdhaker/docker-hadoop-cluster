@@ -124,6 +124,7 @@ sudo sysctl --system
 
 ```bash
 sudo swappff -a
+sudo sed -i.bak -r 's/(.+ swap .+)/#\1/' /etc/fstab
 ```
 
 ```bash
@@ -139,14 +140,14 @@ sudo vim /etc/fstab
 
 ```bash
 
-sudo kubeadm config images pull --cri-socket unix:///var/run/cri-dockerd.sock
+sudo kubeadm config images pull --v=5 --cri-socket unix:///var/run/cri-dockerd.sock
 
 # Calico network
-# Make sure to copy the join command
-sudo kubeadm init --apiserver-advertise-address=<control_plane_ip> --cri-socket unix:///var/run/cri-dockerd.sock  --pod-network-cidr=192.168.0.0/16
+# Make sure to copy the join commandv
+sudo kubeadm init --apiserver-advertise-address=<control_plane_ip> --cri-socket unix:///var/run/containerd/containerd.sock  --pod-network-cidr=192.168.0.0/16
 
 # Use below command if the node network is 192.168.x.x
-sudo kubeadm init --apiserver-advertise-address=<control_plane_ip> --cri-socket unix:///var/run/cri-dockerd.sock  --pod-network-cidr=10.244.0.0/16
+sudo kubeadm init --apiserver-advertise-address=0.0.0.0 --cri-socket unix:///var/run/cri-dockerd.sock  --pod-network-cidr=10.244.0.0/16
 
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --cri-socket unix:///var/run/cri-dockerd.sock --v=5
 
@@ -204,28 +205,47 @@ kubectl get nodes
 sudo kubeadm join $controller_private_ip:6443 --token $token --discovery-token-ca-cert-hash $hash
 #Ex:
 # kubeadm join <control_plane_ip>:6443 --cri-socket unix:///var/run/cri-dockerd.sock --token 31rvbl.znk703hbelja7qbx --discovery-token-ca-cert-hash sha256:3dd5f401d1c86be4axxxxxxxxxx61ce965f5xxxxxxxxxxf16cb29a89b96c97dd
-
 ```
 
-**Metric Server**
+
 ```bash
-kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
 ```
 
 **TIP**
-
 > If the joining code is lost, it can retrieve using below command
 
 ```bash
 kubeadm token create --print-join-command
 ```
 
-### To install metrics server
+### To install Metrics Server
 
 ```bash
-git clone https://github.com/mialeevs/kubernetes_installation_docker.git
-cd kubernetes_installation_docker/
-kubectl apply -f metrics-server.yaml
-cd
-rm -rf kubernetes_installation_docker/
+kubectl apply -f ./bd-setup-module/kubernetes/metrics-server.yaml
+```
+
+### TO Install MetalLB
+```bash
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.9/config/manifests/metallb-native.yaml
+
+helm repo add metallb https://metallb.github.io/metallb
+helm install metallb metallb/metallb --namespace=metallb-system --create-namespace=true
+helm install metallb metallb/metallb -f values.yaml 
+```
+
+### DNS
+```shell
+
+kubectl apply -f https://k8s.io/examples/admin/dns/dnsutils.yaml
+kubectl get pods dnsutils
+kubectl exec -i -t dnsutils -- nslookup kubernetes.default
+kubectl exec -i -t dnsutils -- cat /etc/resolv.conf
+
+kubectl exec -i -t dnsutils -- nslookup google.com
+kubectl exec -i -t dnsutils -- ping -4 192.168.1.1
+kubectl exec -i -t dnsutils -- ping -4 192.168.30.1
+kubectl exec -i -t dnsutils -- ping -4 192.168.9.1
+
+kubectl exec -i -t dnsutils -- nc -vz 192.168.0.102 2375
 ```
