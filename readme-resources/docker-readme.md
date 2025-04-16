@@ -24,6 +24,9 @@ sudo netstat -lntp | grep dockerd
 
 ```
 
+# docker image storage
+/var/lib/docker
+/var/lib/docker/image/overlay2
 
 #
 # docker login

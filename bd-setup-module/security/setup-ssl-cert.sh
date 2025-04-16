@@ -9,11 +9,11 @@
 if [ $# -eq 0 ]
 then
 
-  echo '@Usage   : ./bd-setup-module/security/setup-ssl-cert.sh ./bd-setup-module/security <type> <hostname>'
-  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh ./bd-setup-module/security CA'
-  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh ./bd-setup-module/security Intermediate'
-  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh ./bd-setup-module/security Server sbhttps'
-  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh ./bd-setup-module/security Client sbhttps'
+  echo '@Usage   : ./bd-setup-module/security/setup-ssl-cert.sh /apps/security/ssl <type> <hostname>'
+  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh /apps/security/ssl CA'
+  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh /apps/security/ssl Intermediate'
+  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh /apps/security/ssl Server sbhttps'
+  echo '@Example : ./bd-setup-module/security/setup-ssl-cert.sh /apps/security/ssl Client sbhttps'
   exit 1
 
 fi
@@ -32,7 +32,7 @@ then
     exit 1
 fi
 
-export BASE_PATH=$1
+export BASE_PATH=${1:-"/apps/security/ssl"}
 export ROOT_CA_PATH=${BASE_PATH}/ca/root
 export INTERMEDIATE_CA_PATH=${BASE_PATH}/ca/intermediate
 export SERVER_CERT_PATH=${BASE_PATH}/server
@@ -151,12 +151,7 @@ case "$CERT_TYPE" in
         mkdir -p ${SERVER_CERT_PATH}/{certs,crl,csr,newcerts,private,public}
         chmod 700 ${SERVER_CERT_PATH}/private
 
-        SERVER_NAME=$3
-        if [ $SERVER_NAME == "" ]
-        then
-            SERVER_NAME=$(hostname -f)
-        fi
-
+        SERVER_NAME=${3:-`hostname`}
         # 1. Create a key
         # Omit the -aes256 option to create a key without a password
         openssl genrsa \
@@ -223,12 +218,7 @@ case "$CERT_TYPE" in
 
       mkdir -p ${CLIENT_CERT_PATH}/{certs,crl,csr,newcerts,private,public}
 
-      CLIENT_NAME=$3
-      if [ $CLIENT_NAME == "" ]
-      then
-          CLIENT_NAME=$(hostname -f)
-      fi
-
+      CLIENT_NAME=${3:-`hostname`}
       # 1. Create a key
       openssl genrsa \
       -out ${CLIENT_CERT_PATH}/private/${CLIENT_NAME}-client.key.pem 2048

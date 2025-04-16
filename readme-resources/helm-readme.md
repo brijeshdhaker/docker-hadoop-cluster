@@ -1,42 +1,33 @@
--Dspring.profiles.active=cloud
+### 
+```bash
+curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+sudo apt-get install apt-transport-https --yes
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get update
+sudo apt-get install helm
+# or
+sudo snap install helm --classic
+```
 
-helm create bd-spring-module/helm --namespace AA100121
+# install metallb using helm
+```bash
+helm repo add metallb https://metallb.github.io/metallb
+helm repo update
+helm search repo metallb
+helm show values metallb/metallb > ./bd-setup-module/kubernetes/metallb-values.yaml
 
-helm template bd-spring-module ./bd-spring-module/helm \
---namespace AA100121 \
---dry-run \
---debug \
---set author=brijeshdhaker@gmail.com
+helm install metallb metallb/metallb --namespace=metallb-system --create-namespace=true
+# or
+helm install -f ./bd-setup-module/kubernetes/metallb-values.yaml metallb metallb/metallb --generate-name
 
-helm template bd-spring-module ./bd-spring-module/helm/archives/repo/bd-spring-module-1.0.0.tgz \
---namespace AA100121 \
---dry-run \
---debug \
---set author=brijeshdhaker@gmail.com
---output-dir ./bd-spring-module/helm/k8s/
+helm list --all-namespaces
+helm ls -n metallb-system
+helm status metallb -n metallb-system
+helm history metallb -n metallb-system
 
-#
-helm install bd-spring-module ./bd-spring-module/helm \
---namespace AA100121 \
---dry-run \
---debug \
---set favoriteDrink=slurm \
---version 1.0.0
+helm uninstall metallb --namespace=metallb-system --purge
+```
 
-#
-helm upgrade bd-spring-module ./bd-spring-module/helm \
---namespace AA100121 \
---dry-run \
---debug \
---set favoriteDrink=slurm
---output-dir ./bd-spring-module/helm/k8s/
-
-#
-helm repo add bd-spring-module https://nexus.repo.com --namespace AA100121
-helm repo update bd-spring-module https://nexus.repo.com
-
-#
-#
 #
 docker run --rm -it \
   -p 8080:8080 \
@@ -46,23 +37,25 @@ docker run --rm -it \
   -v $(pwd)/charts:/charts \
   ghcr.io/helm/chartmuseum:v0.14.0
   
-
-#
-# Install nginx ingress using helm
-#
-
+### Install nginx ingress using helm
+```bash
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo update
 helm install ingress-nginx ingress-nginx/ingress-nginx
-
 # OR
-
-helm upgrade --install ingress-nginx ingress-nginx \
+helm upgrade --reuse-values --install ingress-nginx ingress-nginx \
   --repo https://kubernetes.github.io/ingress-nginx \
   --namespace ingress-nginx \
   --create-namespace
 
 helm show values ingress-nginx --repo https://kubernetes.github.io/ingress-nginx
+
+# Get IP of the ingress service
+IP=$(kubectl get services -n istio-system istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+curl -H "Host: foo.bar.com" http://$IP/testpath
+
+```
+
 
 # Upgrade nginx controller
 helm upgrade --reuse-values ingress-nginx ingress-nginx/ingress-nginx
