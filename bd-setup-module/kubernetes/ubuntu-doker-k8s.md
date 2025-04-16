@@ -227,11 +227,26 @@ kubectl apply -f ./bd-setup-module/kubernetes/metrics-server.yaml
 
 ### TO Install MetalLB
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.9/config/manifests/metallb-native.yaml
+kubectl -n metallb-system apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.9/config/manifests/metallb-native.yaml
 
 helm repo add metallb https://metallb.github.io/metallb
 helm install metallb metallb/metallb --namespace=metallb-system --create-namespace=true
 helm install metallb metallb/metallb -f values.yaml 
+kubectl -n metallb-system apply -f ./bd-setup-module/kubernetes/metallb-address-pool.yaml
+# or
+kubectl apply -f - <<EOF
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: first-pool
+  namespace: metallb-system
+spec:
+  addresses:
+  - 192.168.9.150-192.168.9.250
+  - 192.168.30.150-192.168.30.250
+  - 192.168.1.150-192.168.1.250
+  - 192.168.10.0/24
+EOF  
 ```
 
 ### DNS

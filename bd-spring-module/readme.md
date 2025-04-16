@@ -164,13 +164,18 @@ kubectl --namespace=sb-apps get hpa springboot-app --watch
 
 # HTTP
 ```shell
+
+# Get IP of the ingress service
+
+IP=$(kubectl get services -n istio-system istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+
 curl -v \
---resolve "sbhttp.sandbox.net:80:192.168.9.150" \
+--resolve "sbhttp.sandbox.net:80:${IP}" \
 "http://sbhttp.sandbox.net/api/v1/" | grep 'Hello, World'
 
 curl -v -k \
 -HHost:sbhttp.sandbox.net \
---resolve "sbhttp.sandbox.net:80:192.168.9.150" \
+--resolve "sbhttp.sandbox.net:80:${IP}" \
 "http://sbhttp.sandbox.net/api/v1/" | grep 'Hello, World'
 ```
 
@@ -178,7 +183,7 @@ curl -v -k \
 ```shell
 curl -v \
 -HHost:sbhttps.sandbox.net \
---resolve sbhttps.sandbox.net:443:192.168.9.150 \
+--resolve sbhttps.sandbox.net:443:${IP} \
 --cacert ./bd-setup-module/security/ca/intermediate/certs/ca-chain.cert.pem \
 https://sbhttps.sandbox.net:443/api/v1/ | grep 'Hello, World'
 ```
@@ -186,7 +191,7 @@ https://sbhttps.sandbox.net:443/api/v1/ | grep 'Hello, World'
 ```shell
 curl -v -k \
 -HHost:sbhttps.sandbox.net \
---resolve sbhttps.sandbox.net:443:192.168.9.150 \
+--resolve sbhttps.sandbox.net:443:${IP} \
 --cacert ./bd-setup-module/security/ca/intermediate/certs/ca-chain.cert.pem \
 https://sbhttps.sandbox.net:443/api/v1/ | grep 'Hello, World'
 ```
@@ -195,7 +200,7 @@ https://sbhttps.sandbox.net:443/api/v1/ | grep 'Hello, World'
 ```shell
 curl -v -sI \
 -HHost:sbmtls.sandbox.net \
---resolve sbmtls.sandbox.net:443:192.168.9.150 \
+--resolve sbmtls.sandbox.net:443:${IP} \
 --cacert ./bd-setup-module/security/ca/intermediate/certs/ca-chain.cert.pem \
 --cert ./bd-setup-module/security/client/certs/sbhttps-client.cert.pem \
 --key ./bd-setup-module/security/client/private/sbhttps-client.key.pem \
@@ -211,7 +216,7 @@ https://sbmtls.sandbox.net:443/api/v1/ | grep 'Hello, World'
 
 curl -v -k \
 -HHost:sbmtls.sandbox.net \
---resolve sbmtls.sandbox.net:443:192.168.9.150 \
+--resolve sbmtls.sandbox.net:443:${IP} \
 --cacert ./bd-setup-module/security/ca/intermediate/certs/ca-chain.cert.pem \
 --cert ./bd-setup-module/security/client/certs/sbhttps-client.cert.pem \
 --key ./bd-setup-module/security/client/private/sbhttps-client.key.pem \
@@ -220,7 +225,7 @@ https://sbmtls.sandbox.net:443/api/v1/ | grep 'Hello, World'
 for a in {1..1000}; do 
 curl -v -k \
 -HHost:sbmtls.sandbox.net \
---resolve sbmtls.sandbox.net:443:192.168.9.150 \
+--resolve sbmtls.sandbox.net:443:${IP} \
 --cacert ./bd-setup-module/security/ca/intermediate/certs/ca-chain.cert.pem \
 --cert ./bd-setup-module/security/client/certs/sbhttps-client.cert.pem \
 --key ./bd-setup-module/security/client/private/sbhttps-client.key.pem \
