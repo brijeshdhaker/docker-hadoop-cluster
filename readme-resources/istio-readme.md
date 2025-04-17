@@ -1,6 +1,7 @@
 # 
 # Install istioctl
 # 
+```bash
 curl -L https://istio.io/downloadIstio | sh -
 cd istio-1.25.0
 export PATH=$PWD/bin:$PATH
@@ -9,6 +10,33 @@ istioctl install --set profile=demo -y
 istioctl install --set profile=minimal -y
 istioctl version
 istioctl dashboard kiali
+istioctl tag list
+```
+
+### Install Istio  using helm
+```bash
+
+helm repo add istio https://istio-release.storage.googleapis.com/charts
+
+helm install istio-base istio/base -n istio-system --set defaultRevision=default --create-namespace
+helm install istio-base istio/base -n istio-system --set profile=demo
+
+kubectl create namespace istio-system
+helm show values istio/istiod
+
+# control plan
+helm install istiod istio/istiod --namespace istio-system --create-namespace=true --set profile=demo --wait
+helm ls -n istio-system
+helm status istiod -n istio-system
+
+# Install an ingress gateway
+kubectl create namespace istio-ingress
+helm show values istio/gateway
+helm install istio-ingressgateway istio/gateway -n istio-ingress
+
+
+helm delete istiod --namespace istio-system
+```
 
 # 
 # Install Istio using the demo profile, without any gateways:

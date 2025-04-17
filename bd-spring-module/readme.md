@@ -44,6 +44,7 @@ helm create ./bd-spring-module/helm-chart --namespace sb-apps
 ```
 # template
 ```shell
+#
 helm template bd-spring-module ./bd-spring-module/helm-chart \
 --namespace=sb-apps \
 --set author=brijeshdhaker@gmail.com \
@@ -55,6 +56,15 @@ helm template bd-spring-module ./bd-spring-module/helm-chart \
 --output-dir ./bd-spring-module/helm-chart/manifests
 
 #
+helm template bd-spring-module ./bd-spring-module/helm-chart \
+--namespace=sb-apps \
+--set author=brijeshdhaker@gmail.com \
+--set image.pullPolicy=Always \
+--create-namespace=true \
+--version=1.0.0 \
+> ./bd-spring-module/helm-chart/manifests/bd-spring-module.yaml
+
+#
 helm template bd-spring-module ./bd-spring-module/helm-chart/distro/bd-spring-module-0.1.0.tgz \
 --namespace=sb-apps \
 --set author=brijeshdhaker@gmail.com \
@@ -64,6 +74,7 @@ helm template bd-spring-module ./bd-spring-module/helm-chart/distro/bd-spring-mo
 --debug \
 --dry-run \
 --output-dir ./bd-spring-module/helm-chart/manifests/
+
 ```
 
 # Distro
@@ -79,8 +90,8 @@ helm install bd-spring-module ./bd-spring-module/helm-chart \
 --version=1.0.0 \
 --create-namespace=true \
 --debug \
---dry-run 
-> ./bd-spring-module/helm-chart/manifests/bd-spring-module.txt
+--dry-run \
+> ./bd-spring-module/helm-chart/manifests/bd-spring-module.yaml
 
 #
 helm install bd-spring-module ./bd-spring-module/helm-chart/distro/bd-spring-module-0.1.0.tgz \
@@ -90,7 +101,7 @@ helm install bd-spring-module ./bd-spring-module/helm-chart/distro/bd-spring-mod
 --version=1.0.0 \
 --create-namespace=true \
 --debug \
---dry-run
+--dry-run \
 > ./bd-spring-module/helm-chart/manifests/bd-spring-module.yaml
 
 ```
@@ -110,7 +121,6 @@ helm upgrade bd-spring-module ./bd-spring-module/helm-chart \
 #
 ```shell
 helm show values ./bd-spring-module/helm-chart
-helm show values ingress-nginx --repo https://kubernetes.github.io/ingress-nginx
 ```
 
 #
@@ -120,6 +130,7 @@ helm get manifest bd-spring-module -n sb-apps > ./bd-spring-module/helm-chart/ma
 #
 ```shell
 helm uninstall bd-spring-module --namespace=sb-apps
+helm delete bd-spring-module --namespace=sb-apps
 ```
 #
 ```shell
