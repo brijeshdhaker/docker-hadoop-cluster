@@ -9,7 +9,7 @@ import org.springframework.kafka.annotation.EnableKafka;
 import java.util.Random;
 
 @Slf4j
-@EnableKafka
+//@EnableKafka
 @SpringBootApplication
 public class SandboxSbApplication {
 

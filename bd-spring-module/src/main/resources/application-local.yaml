@@ -13,13 +13,14 @@ server:
 spring:
   application:
     name: bd-spring-module
+  output.ansi.enabled: ALWAYS
   #
   datasource:
     name: SANDBOXDB
     username: mysqladmin
     password: mysqladmin
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysql-docker.sb-apps.svc.cluster.local:3306/SANDBOXDB?zeroDateTimeBehavior=CONVERT_TO_NULL
+    url: jdbc:mysql://mysqlserver.sandbox.net:3306/SANDBOXDB?zeroDateTimeBehavior=CONVERT_TO_NULL
   #
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
@@ -34,7 +35,7 @@ spring:
         type: info
   #
   kafka:
-    transaction-topic: transaction-avro-topic
+    transaction-topic: transaction-json-topic
     bootstrap-servers:
       - kafkabroker.sandbox.net:9092
     properties:
@@ -46,26 +47,63 @@ spring:
       schema.registry.ssl.keystore.type: JKS
       schema.registry.ssl.truststore.location: /apps/security/ssl/clients.truststore.jks
       schema.registry.ssl.truststore.password: confluent
+    #    listener:
+    #      immediate-stop: true
+    #      ack-mode: RECORD  #BATCH RECORD MANUAL_IMMEDIATE MANUAL
+    #      async-acks: true
     consumer:
       properties:
         specific.avro.reader: false
+        spring.json.trusted.packages: "*"
+        isolation.level: read_committed  #read_uncommitted
         # spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
         # spring.deserializer.value.delegate.class: io.confluent.kafka.serializers.KafkaAvroDeserializer
-      group-id: sb-sandbox-cg
+      group-id: sb-sandbox-json-cg
       auto-offset-reset: earliest
+      enable.auto.commit: false
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      #key-deserializer: org.apache.kafka.common.serialization.LongDeserializer
+      #value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      #value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
       #value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
       interceptor.classes: io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor
     producer:
-      #properties:
-      #  allow.auto.create.topics: false
+      properties:
+        allow.auto.create.topics: false
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      #key-serializer: org.apache.kafka.common.serialization.LongSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       interceptor.classes: io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor
+      transaction-id-prefix: txn-
     template:
       default-topic:
+  #
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
+  #
+  liquibase:
+    enabled: false
+    change-log: classpath:liquibase/master.yml
+    contexts: mysql
+    parameters:
+      textColumnType: TEXT
+#
+management:
+  security:
+    enabled: false
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    info:
+      enabled: true
 #
 logging:
   level:
     root: info
+    org.springframework.kafka: debug
+    org.springframework.transaction: trace

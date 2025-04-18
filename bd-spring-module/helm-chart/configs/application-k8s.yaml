@@ -25,7 +25,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: update
-      use-new-id-generator-mappings: false
+      use-new-id-gnerator-mappings: false
     properties:
       hibernate:
         show-sql: true

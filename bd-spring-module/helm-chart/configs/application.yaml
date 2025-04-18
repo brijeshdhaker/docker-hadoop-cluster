@@ -6,6 +6,10 @@ topic:
   replication-factor: 1
 server:
   port: 9080
+  servlet:
+    context-path: /api/v1
+  http2:
+    enabled: true
 spring:
   application:
     name: bd-spring-module
@@ -22,7 +26,7 @@ spring:
 #    database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: update
-      use-new-id-gnerator-mappings: false
+      use-new-id-generator-mappings: false
     properties:
       hibernate:
         show-sql: true
@@ -73,11 +77,11 @@ spring:
       interceptor.classes: io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor
       transaction-id-prefix: txn-
     template:
-      default-topic:
+      default-topic: transaction-avro-topic
   #
-#  cache:
-#    jcache:
-#      config: classpath:ehcache.xml
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
   #
   liquibase:
     enabled: true

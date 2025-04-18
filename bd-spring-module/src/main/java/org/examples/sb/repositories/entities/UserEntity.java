@@ -42,8 +42,8 @@ public class UserEntity implements Serializable {
     @OneToMany(cascade = CascadeType.MERGE)
     @JoinTable(
         name = "USER_ROLES",
-        joinColumns = @JoinColumn(name="USER_ID", referencedColumnName = "USERID"),
-        inverseJoinColumns = @JoinColumn(name="ROLE_ID", referencedColumnName = "ID")
+        joinColumns = @JoinColumn(name="USERID", referencedColumnName = "USERID"),
+        inverseJoinColumns = @JoinColumn(name="ROLEID", referencedColumnName = "ROLEID")
     )
     private Set<RoleEntity> roles = new HashSet<>();;
     
@@ -147,7 +147,7 @@ public class UserEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "sample.multimodule.domain.User[ id=" + id + " ]";
+        return "org.examples.sb.repositories.entities.UserEntity[ id=" + id + " ]";
     }
     
 }

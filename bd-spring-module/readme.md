@@ -3,6 +3,9 @@
 #
 -Dspring.profiles.active=cloud
 -Dserver.servlet.context-path=/api/v1
+-Dspring.config.location=./bd-spring-module/helm-chart/configs/application-local.yaml
+
+-Dspring.profiles.active=default -Dspring.config.location=bd-spring-module/helm-chart/configs/application-local.yaml
 
 ```shell
 kubectl create ns sb-apps
