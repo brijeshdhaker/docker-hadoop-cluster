@@ -34,11 +34,16 @@ public class KafkaConsumer {
 
     @KafkaListener(topics = "${spring.kafka.transaction-topic}", containerFactory = "kafkaListenerContainerFactory", groupId = "${spring.kafka.consumer.group-id}", concurrency = "4")
     public void consume(ConsumerRecord<String, String> record, @Headers MessageHeaders headers){
+
         log.info("### -> Header acquired : {}", headers);
         Acknowledgment ack = headers.get(KafkaHeaders.ACKNOWLEDGMENT, Acknowledgment.class);
-        executorService.submit(() -> { System.out.println("Hi"); });
-        System.out.println("### -> Key " + String.format("%s",record.key()));
-        System.out.println("### -> Value " + String.format("%s",record.value()));
+        // Processing
+        executorService.submit(() -> {
+            log.info("### -> Key " + String.format("%s",record.key()));
+            log.info("### -> Value " + String.format("%s",record.value()));
+            System.out.println("Event with key " + record.key() + " successfully processed.");
+        });
+        // Acknowledgement
         if(Objects.nonNull(ack)){
             ack.acknowledge();
         }

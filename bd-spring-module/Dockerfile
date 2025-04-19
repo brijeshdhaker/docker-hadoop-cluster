@@ -18,4 +18,4 @@ EXPOSE 9080
 # CMD java -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=docker -jar -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n /apps/libs/${project.build.finalName}.jar
 
 #
-CMD java -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=docker -jar /apps/libs/${project.build.finalName}.jar
+CMD java -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=k8s -Dspring.config.location=/mnt/configs/application.yaml -jar /apps/libs/${project.build.finalName}.jar

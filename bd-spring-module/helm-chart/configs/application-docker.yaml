@@ -25,7 +25,7 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
       use-new-id-gnerator-mappings: false
     properties:
       hibernate:
@@ -33,6 +33,13 @@ spring:
         use-sql-comments: true
         format-sql: true
         type: info
+  #
+  liquibase:
+    enabled: true
+    change-log: classpath:liquibase/master.yml
+    contexts: mysql
+    parameters:
+      textColumnType: TEXT
   #
   kafka:
     transaction-topic: transaction-avro-topic

@@ -29,7 +29,7 @@ spring:
     # database-platform: org.hibernate.dialect.MySQLDialect
     # database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
       use-new-id-gnerator-mappings: false
       dialect: org.hibernate.dialect.H2Dialect
     properties:

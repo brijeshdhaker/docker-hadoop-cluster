@@ -36,12 +36,12 @@ public class TransactionsService {
     KafkaProducer kafkaProducer;
 
     @Transactional(transactionManager = "transactionManager")
-    public void generateAndSendTransaction() throws AppException {
+    public void generateAndSendTransaction(Integer count) throws AppException {
         try{
 
             Faker faker = new Faker(Locale.US);
-            for (int i = 0; i < 10; i++) {
-                //Order t = new Order(id++, i+1, i+2, 1000, "NEW");
+            for (int i = 1; i <= count; i++) {
+
                 Address address = faker.address();
                 List<String> CCTYPES = Arrays.asList("VISA", "Master", "Amex", "RuPay", "Discover");
                 String ccType = RandomItem.getRandomItem(CCTYPES);

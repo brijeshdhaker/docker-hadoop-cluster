@@ -24,7 +24,8 @@ public class KafkaProducer {
     private String kafkaTopic;
 
     public void sendMessage(Transaction transaction) {
-        ProducerRecord<String, Transaction> producerRecord = new ProducerRecord<>(kafkaTopic, transaction);
+
+        ProducerRecord<String, Transaction> producerRecord = new ProducerRecord<>(kafkaTopic, transaction.getUuid(), transaction);
         CompletableFuture<SendResult<String, Transaction>> completableFuture = kafkaTemplate.send(producerRecord);
         log.info("Sending kafka message on topic {}", kafkaTopic);
         completableFuture.whenComplete((result, ex) -> {

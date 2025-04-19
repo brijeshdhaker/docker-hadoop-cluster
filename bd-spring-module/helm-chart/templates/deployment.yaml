@@ -54,7 +54,7 @@ spec:
             - name: ENVIRONMENT
               valueFrom:
                 configMapKeyRef:
-                  name: {{ .Release.Name }}-configmap
+                  name: {{ include "helm.fullname" . }}-configmap
                   key: environment
           {{- with .Values.livenessProbe }}
           livenessProbe:

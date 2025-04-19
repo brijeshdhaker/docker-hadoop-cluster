@@ -21,10 +21,10 @@ public class KafkaController {
     TransactionsService transactionsService;
 
     @GetMapping("transactions/{count}")
-    public ResponseEntity<String> getUser(@PathVariable String count) {
+    public ResponseEntity<String> transactions(@PathVariable Integer count) {
         ResponseEntity<String> response = null;
         try {
-            transactionsService.generateAndSendTransaction();
+            transactionsService.generateAndSendTransaction(count);
             if(true){
                 response = new ResponseEntity<>("Success",HttpStatus.OK);
             }else{

@@ -1,9 +1,4 @@
-kafka:
-  transaction-topic: transaction-avro-topic
-topic:
-  name: users
-  partitions-num: 1
-  replication-factor: 1
+#
 server:
   port: 9080
   servlet:
@@ -23,9 +18,9 @@ spring:
     url: jdbc:mysql://mysql-service.sb-apps.svc.cluster.local:3306/SANDBOXDB?zeroDateTimeBehavior=CONVERT_TO_NULL
   #
   jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
+    # database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
       use-new-id-gnerator-mappings: false
     properties:
       hibernate:
@@ -34,6 +29,13 @@ spring:
         format-sql: true
         type: info
   #
+  liquibase:
+    enabled: true
+    change-log: classpath:liquibase/master.yml
+    contexts: mysql
+    parameters:
+      textColumnType: TEXT
+  #
   kafka:
     transaction-topic: transaction-avro-topic
     bootstrap-servers:
@@ -41,18 +43,18 @@ spring:
     properties:
       # Schema Registry Connection parameter
       schema.registry.url: http://kafka-service.sb-apps.svc.cluster.local:8081
-      schema.registry.ssl.keystore.location: /apps/security/ssl/clients.keystore.jks
+      schema.registry.ssl.keystore.location: /mnt/apps/security/ssl/clients.keystore.jks
       schema.registry.ssl.keystore.password: confluent
       schema.registry.ssl.key.password: confluent
       schema.registry.ssl.keystore.type: JKS
-      schema.registry.ssl.truststore.location: /apps/security/ssl/clients.truststore.jks
+      schema.registry.ssl.truststore.location: /mnt/apps/security/ssl/clients.truststore.jks
       schema.registry.ssl.truststore.password: confluent
     consumer:
       properties:
         specific.avro.reader: false
         # spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
         # spring.deserializer.value.delegate.class: io.confluent.kafka.serializers.KafkaAvroDeserializer
-      group-id: sb-sandbox-cg
+      group-id: sb-k8s-cg
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
