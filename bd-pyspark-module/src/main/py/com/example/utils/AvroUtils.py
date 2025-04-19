@@ -23,9 +23,10 @@ def load_avro_json(schema_file):
 
     # Get the current working directory
     cwd = os.getcwd()
+    work_dir= os.environ.get("WORK_DIR","/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-pyspark-module/src/main/py")
 
     #
-    with open(os.path.join(cwd, schema_file), 'r') as file:
+    with open(os.path.join(work_dir, schema_file), 'r') as file:
         value_schema_string = file.read().rstrip()
 
     return json.loads(key_schema_string), json.loads(value_schema_string)
@@ -37,8 +38,9 @@ def load_avro_schema(schema_file):
     """
     # Get the current working directory
     cwd = os.getcwd()
+    work_dir= os.environ.get("WORK_DIR","/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-pyspark-module/src/main/py")
 
     key_schema = avro.loads(key_schema_string)
-    value_schema = avro.load(os.path.join(cwd, schema_file))
+    value_schema = avro.load(os.path.join(work_dir, schema_file))
 
     return key_schema, value_schema

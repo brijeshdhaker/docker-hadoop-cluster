@@ -26,6 +26,8 @@ helm status metallb -n metallb-system
 helm history metallb -n metallb-system
 
 helm uninstall metallb --namespace=metallb-system --purge
+helm delete metallb --namespace=metallb-system --purge
+
 ```
 
 #
@@ -49,18 +51,47 @@ helm upgrade --reuse-values --install ingress-nginx ingress-nginx \
   --create-namespace
 
 helm show values ingress-nginx --repo https://kubernetes.github.io/ingress-nginx
+helm show values ingress-nginx/ingress-nginx --repo https://kubernetes.github.io/ingress-nginx
 
 # Get IP of the ingress service
 IP=$(kubectl get services -n istio-system istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 curl -H "Host: foo.bar.com" http://$IP/testpath
 
-```
-
-
 # Upgrade nginx controller
 helm upgrade --reuse-values ingress-nginx ingress-nginx/ingress-nginx
 
-# Maven Plugin
+```
+
+
+
+### Install Istio  using helm
+```bash
+
+helm repo add istio https://istio-release.storage.googleapis.com/charts
+
+helm install istio-base istio/base -n istio-system --set defaultRevision=default --create-namespace
+helm install istio-base istio/base -n istio-system --set profile=demo
+
+kubectl create namespace istio-system
+helm show values istio/istiod
+
+# control plan
+helm install istiod istio/istiod --namespace istio-system --create-namespace=true --set profile=demo --wait
+helm ls -n istio-system
+helm status istiod -n istio-system
+
+# Install an ingress gateway
+kubectl create namespace istio-ingress
+helm show values istio/gateway
+helm install istio-ingressgateway istio/gateway -n istio-ingress
+
+
+helm delete istiod --namespace istio-system
+```
+
+
+### Maven Plugin
+```xml
 <plugin>
     <groupId>com.kiwigrid</groupId>
     <artifactId>helm-maven-plugin</artifactId>
@@ -97,6 +128,7 @@ helm upgrade --reuse-values ingress-nginx ingress-nginx/ingress-nginx
         </execution>
     </executions>
 </plugin>
+```
 
 #
 # Json PATH in Helm

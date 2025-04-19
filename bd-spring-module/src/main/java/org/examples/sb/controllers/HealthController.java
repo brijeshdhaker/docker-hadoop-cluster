@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class HomeController {
+public class HealthController {
 
-    @RequestMapping(path ="/home", produces = MediaType.TEXT_HTML_VALUE)
-    public @ResponseBody String home() {
-        return "Hello, World";
+    @RequestMapping(path ="/health", produces = MediaType.TEXT_HTML_VALUE)
+    public @ResponseBody String health() {
+        return "OK";
     }
 
 }

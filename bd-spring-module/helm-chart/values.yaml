@@ -7,7 +7,7 @@ fullnameOverride: "springboot-app"
 
 # Declare variables to be passed into your templates.
 author: Brijesh K Dhaker
-environment: "docker"
+environment: "k8s"
 
 # This will set the replicaset count more information can be found here: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
 replicaCount: 1
@@ -85,6 +85,7 @@ ingress:
       hosts:
         - springboot-app.sandbox.net
 
+#
 resources:
   limits:
     cpu: 1500m
@@ -96,16 +97,16 @@ resources:
 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 livenessProbe:
   httpGet:
-    path: /api/v1
+    path: /api/v1/health
     port: http
 readinessProbe:
   httpGet:
-    path: /api/v1
+    path: /api/v1/health
     port: http
 
 # This section is for setting up autoscaling more information can be found here: https://kubernetes.io/docs/concepts/workloads/autoscaling/
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 1
   maxReplicas: 4
   targetCPUUtilizationPercentage: 80
@@ -115,31 +116,29 @@ autoscaling:
 volumes:
   - name: vol-sandbox
     hostPath:
-      path: /apps/sandbox
+      path: /apps
       type: Directory
   - name: vol-secret
     secret:
-     secretName: password-secret
+     secretName: springboot-app-secret
      optional: false
   - name: vol-configmap
     configMap:
-      name: bd-spring-module-configmap
+      name: springboot-app-configmap
       optional: false
       items:
-      - key: application-docker.yaml
-        path: application-docker.yaml
       - key: application.yaml
         path: application.yaml
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
  - name: vol-sandbox
-   mountPath: "/apps/sandbox"
+   mountPath: "/mnt/apps"
    readOnly: true
  - name: vol-secret
-   mountPath: "/apps/secrets"
+   mountPath: "/mnt/secrets"
    readOnly: true
  - name: vol-configmap
-   mountPath: "/apps/configs"
+   mountPath: "/mnt/configs"
    readOnly: true
 nodeSelector: {}
 

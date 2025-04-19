@@ -1,6 +1,8 @@
 #
 ```shell
 docker exec -it mysqlserver mysql --user=root --password=p@SSW0rd --host=mysqlserver.sandbox.net --database=SANDBOXDB
+docker exec -it mysqlserver mysql --user=admin --password=password --host=mysqlserver.sandbox.net --database=SANDBOXDB
+docker exec -it mysqlserver mysql --user=mysqladmin --password=mysqladmin --host=mysqlserver.sandbox.net --database=SANDBOXDB
 ```
 
 ```shell
@@ -46,6 +48,10 @@ FLUSH PRIVILEGES;
 # Setup ICEBERG Catalog Database
 #
 ```shell
+
+CREATE DATABASE SANDBOXDB;
+USE SANDBOXDB;
+
 CREATE DATABASE ICEBERG_CATALOG;
 USE ICEBERG_CATALOG;
 

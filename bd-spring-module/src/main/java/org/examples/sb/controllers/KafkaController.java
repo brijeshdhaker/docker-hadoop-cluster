@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = {"*localhost*"})
 @RestController
-@RequestMapping(path ="api/kafka", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path ="kafka", produces = MediaType.APPLICATION_JSON_VALUE)
 public class KafkaController {
 
     private static final Logger log = LoggerFactory.getLogger(KafkaController.class);
@@ -21,10 +21,10 @@ public class KafkaController {
     TransactionsService transactionsService;
 
     @GetMapping("transactions/{count}")
-    public ResponseEntity<String> getUser(@PathVariable String count) {
+    public ResponseEntity<String> transactions(@PathVariable Integer count) {
         ResponseEntity<String> response = null;
         try {
-            transactionsService.generateAndSendTransaction();
+            transactionsService.generateAndSendTransaction(count);
             if(true){
                 response = new ResponseEntity<>("Success",HttpStatus.OK);
             }else{

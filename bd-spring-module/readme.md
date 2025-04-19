@@ -3,6 +3,9 @@
 #
 -Dspring.profiles.active=cloud
 -Dserver.servlet.context-path=/api/v1
+-Dspring.config.location=./bd-spring-module/helm-chart/configs/application-local.yaml
+
+-Dspring.profiles.active=default -Dspring.config.location=bd-spring-module/helm-chart/configs/application-local.yaml
 
 ```shell
 kubectl create ns sb-apps
@@ -44,15 +47,28 @@ helm create ./bd-spring-module/helm-chart --namespace sb-apps
 ```
 # template
 ```shell
+#
 helm template bd-spring-module ./bd-spring-module/helm-chart \
 --namespace=sb-apps \
 --set author=brijeshdhaker@gmail.com \
 --set image.pullPolicy=Always \
+--set environment=k8s \
 --create-namespace=true \
 --version=1.0.0 \
 --dry-run \
 --debug \
 --output-dir ./bd-spring-module/helm-chart/manifests
+
+#
+helm template bd-spring-module ./bd-spring-module/helm-chart \
+--namespace=sb-apps \
+--set author=brijeshdhaker@gmail.com \
+--set image.pullPolicy=Always \
+--set environment=k8s \
+--create-namespace=true \
+--version=1.0.0 \
+--debug \
+> ./bd-spring-module/helm-chart/manifests/bd-spring-module.yaml
 
 #
 helm template bd-spring-module ./bd-spring-module/helm-chart/distro/bd-spring-module-0.1.0.tgz \
@@ -64,33 +80,36 @@ helm template bd-spring-module ./bd-spring-module/helm-chart/distro/bd-spring-mo
 --debug \
 --dry-run \
 --output-dir ./bd-spring-module/helm-chart/manifests/
+
 ```
 
 # Distro
 ```shell
 helm package ./bd-spring-module/helm-chart --destination ./bd-spring-module/helm-chart/distro
 ```
-# Install Always
+# Install Always IfNotPresent
 ```shell
 helm install bd-spring-module ./bd-spring-module/helm-chart \
 --namespace=sb-apps \
 --set author=brijeshdhaker@gmail.com \
---set image.pullPolicy=IfNotPresent \
+--set image.pullPolicy=Always \
+--set environment=k8s \
 --version=1.0.0 \
 --create-namespace=true \
 --debug \
---dry-run 
-> ./bd-spring-module/helm-chart/manifests/bd-spring-module.txt
+--dry-run \
+> ./bd-spring-module/helm-chart/manifests/bd-spring-module.yaml
 
 #
 helm install bd-spring-module ./bd-spring-module/helm-chart/distro/bd-spring-module-0.1.0.tgz \
 --namespace=sb-apps \
 --set author=brijeshdhaker@gmail.com \
 --set image.pullPolicy=Always \
+--set environment=k8s \
 --version=1.0.0 \
 --create-namespace=true \
 --debug \
---dry-run
+--dry-run \
 > ./bd-spring-module/helm-chart/manifests/bd-spring-module.yaml
 
 ```
@@ -99,7 +118,8 @@ helm install bd-spring-module ./bd-spring-module/helm-chart/distro/bd-spring-mod
 helm upgrade bd-spring-module ./bd-spring-module/helm-chart \
 --namespace=sb-apps \
 --set author=brijeshdhaker@gmail.com \
---set image.pullPolicy=IfNotPresent \
+--set image.pullPolicy=Always \
+--set environment=k8s \
 --version=1.0.0 \
 --create-namespace=true \
 --install \
@@ -110,7 +130,6 @@ helm upgrade bd-spring-module ./bd-spring-module/helm-chart \
 #
 ```shell
 helm show values ./bd-spring-module/helm-chart
-helm show values ingress-nginx --repo https://kubernetes.github.io/ingress-nginx
 ```
 
 #
@@ -120,6 +139,7 @@ helm get manifest bd-spring-module -n sb-apps > ./bd-spring-module/helm-chart/ma
 #
 ```shell
 helm uninstall bd-spring-module --namespace=sb-apps
+helm delete bd-spring-module --namespace=sb-apps
 ```
 #
 ```shell
@@ -171,12 +191,12 @@ IP=$(kubectl get services -n istio-system istio-ingressgateway -o jsonpath='{.st
 
 curl -v \
 --resolve "sbhttp.sandbox.net:80:${IP}" \
-"http://sbhttp.sandbox.net/api/v1/" | grep 'Hello, World'
+"http://sbhttp.sandbox.net/api/v1/health" | grep 'OK'
 
 curl -v -k \
 -HHost:sbhttp.sandbox.net \
 --resolve "sbhttp.sandbox.net:80:${IP}" \
-"http://sbhttp.sandbox.net/api/v1/" | grep 'Hello, World'
+"http://sbhttp.sandbox.net/api/v1/home" | grep 'Hello, World'
 ```
 
 # HTTPS : HTTP/1.1
@@ -185,7 +205,7 @@ curl -v \
 -HHost:sbhttps.sandbox.net \
 --resolve sbhttps.sandbox.net:443:${IP} \
 --cacert ./bd-setup-module/security/ca/intermediate/certs/ca-chain.cert.pem \
-https://sbhttps.sandbox.net:443/api/v1/ | grep 'Hello, World'
+"https://sbhttps.sandbox.net:443/api/v1/home" | grep 'Hello, World'
 ```
 # HTTPS : HTTP/2
 ```shell
@@ -193,7 +213,7 @@ curl -v -k \
 -HHost:sbhttps.sandbox.net \
 --resolve sbhttps.sandbox.net:443:${IP} \
 --cacert ./bd-setup-module/security/ca/intermediate/certs/ca-chain.cert.pem \
-https://sbhttps.sandbox.net:443/api/v1/ | grep 'Hello, World'
+"https://sbhttps.sandbox.net:443/api/v1/home" | grep 'Hello, World'
 ```
 
 # mTLS : HTTP/1.1
@@ -204,7 +224,7 @@ curl -v -sI \
 --cacert ./bd-setup-module/security/ca/intermediate/certs/ca-chain.cert.pem \
 --cert ./bd-setup-module/security/client/certs/sbhttps-client.cert.pem \
 --key ./bd-setup-module/security/client/private/sbhttps-client.key.pem \
-https://sbmtls.sandbox.net:443/api/v1/ | grep 'Hello, World'
+"https://sbmtls.sandbox.net:443/api/v1/home" | grep 'Hello, World'
 ```
 # mTLS : HTTP/2
 ```shell
@@ -212,7 +232,7 @@ curl -X GET -s \
 --cacert ./bd-setup-module/security/ca/intermediate/certs/ca-chain.cert.pem \
 --cert ./bd-setup-module/security/client/certs/sbhttps-client.cert.pem \
 --key ./bd-setup-module/security/client/private/sbhttps-client.key.pem \
-https://sbmtls.sandbox.net:443/api/v1/ | grep 'Hello, World'
+"https://sbmtls.sandbox.net:443/api/v1/home" | grep 'Hello, World'
 
 curl -v -k \
 -HHost:sbmtls.sandbox.net \
@@ -220,16 +240,16 @@ curl -v -k \
 --cacert ./bd-setup-module/security/ca/intermediate/certs/ca-chain.cert.pem \
 --cert ./bd-setup-module/security/client/certs/sbhttps-client.cert.pem \
 --key ./bd-setup-module/security/client/private/sbhttps-client.key.pem \
-https://sbmtls.sandbox.net:443/api/v1/ | grep 'Hello, World'
+"https://sbmtls.sandbox.net:443/api/v1/home" | grep 'Hello, World'
 
 for a in {1..1000}; do 
-curl -v -k \
+curl \
 -HHost:sbmtls.sandbox.net \
 --resolve sbmtls.sandbox.net:443:${IP} \
 --cacert ./bd-setup-module/security/ca/intermediate/certs/ca-chain.cert.pem \
 --cert ./bd-setup-module/security/client/certs/sbhttps-client.cert.pem \
 --key ./bd-setup-module/security/client/private/sbhttps-client.key.pem \
-https://sbmtls.sandbox.net:443/api/v1/ | grep 'Hello, World' ;
+"https://sbmtls.sandbox.net:443/api/v1/home"| grep 'Hello, World' ;
 
 done;
 
@@ -267,6 +287,9 @@ favorite:
 {{- (.Files.Glob "configs/docker/application.yaml").AsConfig | nindent 2 -}}
 {{- end }}
 
+#
+aapplication.yaml: |- {{ range .Files.Lines "configs/config1.toml" }}
+{{ . }}{{ end }}
 
 # kubectl -n istio-system get secret ingress-tls-credential --output='jsonpath={.data.tls\.crt}' | base64 -d
 ---

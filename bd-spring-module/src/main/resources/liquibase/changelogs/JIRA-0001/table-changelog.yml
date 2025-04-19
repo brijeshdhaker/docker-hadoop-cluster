@@ -48,7 +48,7 @@ databaseChangeLog:
                     nullable: false
                     primaryKey: true
                     primaryKeyName: pk_role
-                  name: ROLE_ID
+                  name: ROLEID
                   type: BIGINT
               - column:
                   constraints:
@@ -85,12 +85,12 @@ databaseChangeLog:
               - column:
                   constraints:
                     nullable: false
-                  name: USER_ID
+                  name: USERID
                   type: BIGINT
               - column:
                   constraints:
                     nullable: false
-                  name: ROLE_ID
+                  name: ROLEID
                   type: BIGINT
               - column:
                   name: ADD_TS
@@ -103,6 +103,7 @@ databaseChangeLog:
   - changeSet:
       id:  JIRA-0001-T-004
       author:  Brijesh D.
+      context: mysql
       changes:
         - sqlFile:
             path: ../../objects/tables/table_products.sql

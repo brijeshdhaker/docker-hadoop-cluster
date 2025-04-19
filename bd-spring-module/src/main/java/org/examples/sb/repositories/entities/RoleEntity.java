@@ -21,7 +21,7 @@ public class RoleEntity implements Serializable {
     //@SequenceGenerator(name= "ROLE_SEQ_GENERATOR", sequenceName = "ROLE_SEQUENCE", schema = "PUBLIC", allocationSize = 1)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "ID", updatable = false, nullable = false)
+    @Column(name= "ROLEID", updatable = false, nullable = false)
     private Long id;
     
     @Column(name= "NAME")
@@ -99,6 +99,6 @@ public class RoleEntity implements Serializable {
     
     @Override
     public String toString() {
-        return "org.examples.sb.repositories.entities.Role[ id=" + id + " ]";
+        return "org.examples.sb.repositories.entities.RoleEntity[ id=" + id + " ]";
     }
 }

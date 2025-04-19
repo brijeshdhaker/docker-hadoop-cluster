@@ -10,6 +10,7 @@ server:
     context-path: /api/v1
   http2:
     enabled: true
+#
 spring:
   application:
     name: bd-spring-module
@@ -19,12 +20,12 @@ spring:
     username: mysqladmin
     password: mysqladmin
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysql-docker.sb-apps.svc.cluster.local:3306/SANDBOXDB?zeroDateTimeBehavior=CONVERT_TO_NULL
+    url: jdbc:mysql://mysql-service.sb-apps.svc.cluster.local:3306/SANDBOXDB?zeroDateTimeBehavior=CONVERT_TO_NULL
   #
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
       use-new-id-gnerator-mappings: false
     properties:
       hibernate:
@@ -33,13 +34,20 @@ spring:
         format-sql: true
         type: info
   #
+  liquibase:
+    enabled: true
+    change-log: classpath:liquibase/master.yml
+    contexts: mysql
+    parameters:
+      textColumnType: TEXT
+  #
   kafka:
     transaction-topic: transaction-avro-topic
     bootstrap-servers:
-      - kafkabroker.sandbox.net:9092
+      - kafka-service.sb-apps.svc.cluster.local:9092
     properties:
       # Schema Registry Connection parameter
-      schema.registry.url: http://schemaregistry.sandbox.net:8081
+      schema.registry.url: http://kafka-service.sb-apps.svc.cluster.local:8081
       schema.registry.ssl.keystore.location: /apps/security/ssl/clients.keystore.jks
       schema.registry.ssl.keystore.password: confluent
       schema.registry.ssl.key.password: confluent
@@ -64,8 +72,22 @@ spring:
       value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
       interceptor.classes: io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor
     template:
-      default-topic:
+      default-topic: transaction-avro-topic
+#
+management:
+  security:
+    enabled: false
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    info:
+      enabled: true
 #
 logging:
   level:
     root: info
+    org.springframework.kafka: info
+    org.springframework.transaction: info

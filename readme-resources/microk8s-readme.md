@@ -27,11 +27,11 @@ echo Accoo7@k47 | sudo -S -k microk8s stop
 
 # Enable Addons
 microk8s enable dns
+microk8s enable metallb
+microk8s enable metrics-server
 microk8s enable hostpath-storage
 microk8s enable dashboard
 microk8s enable helm3
-microk8s enable metallb
-microk8s enable metrics-server
 microk8s enable prometheus
 microk8s enable ingress
 microk8s enable cert-manager

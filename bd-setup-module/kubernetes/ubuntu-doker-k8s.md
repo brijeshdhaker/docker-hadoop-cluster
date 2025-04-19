@@ -140,6 +140,7 @@ sudo vim /etc/fstab
 
 ```bash
 
+sudo kubeadm reset --v=5 --cri-socket unix:///var/run/cri-dockerd.sock
 sudo kubeadm config images pull --v=5 --cri-socket unix:///var/run/cri-dockerd.sock
 
 # Calico network

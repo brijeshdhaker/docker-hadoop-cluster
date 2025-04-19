@@ -1,15 +1,11 @@
-kafka:
-  transaction-topic: transaction-avro-topic
-topic:
-  name: users
-  partitions-num: 1
-  replication-factor: 1
+#
 server:
   port: 9080
   servlet:
     context-path: /api/v1
   http2:
     enabled: true
+#
 spring:
   application:
     name: bd-spring-module
@@ -17,16 +13,27 @@ spring:
   #
   datasource:
     name: SANDBOXDB
-    username: mysqladmin
-    password: mysqladmin
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysqlserver.sandbox.net:3306/SANDBOXDB?zeroDateTimeBehavior=CONVERT_TO_NULL
+    username: sa
+    password: sa
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:SANDBOXDB;DB_CLOSE_DELAY=-1
+  #  url: jdbc:h2:file:/apps/hostpath/databases/SANDBOXDB;AUTO_SERVER=true;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;
+  #
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: true
   #
   jpa:
-#    database-platform: org.hibernate.dialect.MySQLDialect
+    # database-platform: org.hibernate.dialect.MySQLDialect
+    # database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
       use-new-id-gnerator-mappings: false
+      dialect: org.hibernate.dialect.H2Dialect
     properties:
       hibernate:
         show-sql: true
@@ -34,8 +41,15 @@ spring:
         format-sql: true
         type: info
   #
+  liquibase:
+    enabled: true
+    change-log: classpath:liquibase/master.yml
+    contexts: h2
+    parameters:
+      textColumnType: TEXT
+  #
   kafka:
-    transaction-topic: transaction-json-topic
+    transaction-topic: transaction-avro-topic
     bootstrap-servers:
       - kafkabroker.sandbox.net:9092
     properties:
@@ -47,48 +61,23 @@ spring:
       schema.registry.ssl.keystore.type: JKS
       schema.registry.ssl.truststore.location: /apps/security/ssl/clients.truststore.jks
       schema.registry.ssl.truststore.password: confluent
-#    listener:
-#      immediate-stop: true
-#      ack-mode: RECORD  #BATCH RECORD MANUAL_IMMEDIATE MANUAL
-#      async-acks: true
     consumer:
       properties:
         specific.avro.reader: false
-        spring.json.trusted.packages: "*"
-        isolation.level: read_committed  #read_uncommitted
         # spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
         # spring.deserializer.value.delegate.class: io.confluent.kafka.serializers.KafkaAvroDeserializer
-      group-id: sb-sandbox-json-cg
+      group-id: sb-sandbox-cg
       auto-offset-reset: earliest
-      enable.auto.commit: false
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      #key-deserializer: org.apache.kafka.common.serialization.LongDeserializer
-      #value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      #value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
       #value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
       interceptor.classes: io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor
     producer:
-      properties:
-        allow.auto.create.topics: false
+      #properties:
+      #  allow.auto.create.topics: false
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      #key-serializer: org.apache.kafka.common.serialization.LongSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
       interceptor.classes: io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor
-      transaction-id-prefix: txn-
-    template:
-      default-topic:
-  #
-#  cache:
-#    jcache:
-#      config: classpath:ehcache.xml
-  #
-  liquibase:
-    enabled: true
-    change-log: classpath:liquibase/master.yml
-    contexts: mysql
-    parameters:
-      textColumnType: TEXT
 #
 management:
   security:
