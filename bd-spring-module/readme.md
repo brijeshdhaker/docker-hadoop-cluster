@@ -63,8 +63,10 @@ helm template bd-spring-module ./bd-spring-module/helm-chart \
 --namespace=sb-apps \
 --set author=brijeshdhaker@gmail.com \
 --set image.pullPolicy=Always \
+--set environment=k8s \
 --create-namespace=true \
 --version=1.0.0 \
+--debug \
 > ./bd-spring-module/helm-chart/manifests/bd-spring-module.yaml
 
 #

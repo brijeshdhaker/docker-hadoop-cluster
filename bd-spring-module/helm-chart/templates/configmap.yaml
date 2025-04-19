@@ -7,10 +7,10 @@ data:
   {{- if eq .Values.favorite.drink "coffee" }}
   message: "Hello World"
   {{- end }}
-  {{- range $path, $_ := .Files.Glob "configs/*.yaml" -}}
+  {{- /* range $path, $_ := .Files.Glob "configs/*.yaml" -}}
   {{- base $path | nindent 2 }}: |-
   {{- $.Files.Get $path | nindent 4 }}
-  {{- end }}
+  {{- end */}}
   #
   toppings: |-
     {{- range .Values.pizzaToppings }}
@@ -31,5 +31,13 @@ data:
   {{ $key }}: {{ $val | quote }}
   {{- end }}
   #
-  some-file.txt: |- {{ range .Files.Lines "configs/config1.toml" }}
+  {{- if eq .Values.environment "local" }}
+  {{- (.Files.Glob "configs/application-local.yaml").AsConfig | nindent 2 -}}
+  {{- else if eq .Values.environment "docker" }}
+  {{- (.Files.Glob "configs/application-docker.yaml").AsConfig | nindent 2 -}}
+  {{- else if eq .Values.environment "k8s" }}
+  {{- (.Files.Glob "configs/application-k8s.yaml").AsConfig | nindent 2 -}}
+  {{- end }}
+  #
+  application.yaml: |- {{ range .Files.Lines "configs/config1.toml" }}
     {{ . }}{{ end }}
