@@ -20,7 +20,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Slf4j
-//@Service
+@Service
 @RequiredArgsConstructor
 public class KafkaConsumer {
 

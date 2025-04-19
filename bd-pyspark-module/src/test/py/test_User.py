@@ -13,5 +13,5 @@ def test_to_obj():
 
 def test_to_dict():
     u = User.random()
-    u.__dict__
-    assert False
+    d = User.to_dict(u,None)
+    assert len(d.values()) > 0

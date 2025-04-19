@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = {"*localhost*"})
 @RestController
-@RequestMapping(path ="api/kafka", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path ="kafka", produces = MediaType.APPLICATION_JSON_VALUE)
 public class KafkaController {
 
     private static final Logger log = LoggerFactory.getLogger(KafkaController.class);
