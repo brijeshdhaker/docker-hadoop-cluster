@@ -24,7 +24,7 @@ public class OpenAPIConfiguration {
         server.setDescription("Development");
 
         Server k8s_http = new Server();
-        k8s_http.setUrl("http://sbhttps.sandbox.net/api/v1");
+        k8s_http.setUrl("http://sbhttp.sandbox.net/api/v1");
         k8s_http.setDescription("Kubernetes Http");
 
         Server k8s_https = new Server();
