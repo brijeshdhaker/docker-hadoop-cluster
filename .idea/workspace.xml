@@ -6,12 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-20 Add Ehcache Support to sb-springboot-module.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-docker.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-docker.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-k8s.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-k8s.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-local.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/ehcache.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/ehcache.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/cache/CacheEventLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/cache/CacheEventLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/ehcache.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/ehcache.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -329,7 +327,7 @@
       <recent name="com.org.example.flink.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.bd-spring-module_docker">
+  <component name="RunManager" selected="Application.bd-spring-module_default">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -642,30 +640,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00149" summary="2025-03-18 add helm chart for springboot application.">
-      <option name="closed" value="true" />
-      <created>1742272231832</created>
-      <option name="number" value="00149" />
-      <option name="presentableId" value="LOCAL-00149" />
-      <option name="project" value="LOCAL" />
-      <updated>1742272231832</updated>
-    </task>
-    <task id="LOCAL-00150" summary="2025-03-28 add helm chart for springboot application.">
-      <option name="closed" value="true" />
-      <created>1743131575252</created>
-      <option name="number" value="00150" />
-      <option name="presentableId" value="LOCAL-00150" />
-      <option name="project" value="LOCAL" />
-      <updated>1743131575252</updated>
-    </task>
-    <task id="LOCAL-00151" summary="2025-03-29 add helm chart for springboot application.">
-      <option name="closed" value="true" />
-      <created>1743207734319</created>
-      <option name="number" value="00151" />
-      <option name="presentableId" value="LOCAL-00151" />
-      <option name="project" value="LOCAL" />
-      <updated>1743207734320</updated>
     </task>
     <task id="LOCAL-00152" summary="2025-03-29 add helm chart for springboot application.">
       <option name="closed" value="true" />
@@ -1035,7 +1009,31 @@
       <option name="project" value="LOCAL" />
       <updated>1745166406070</updated>
     </task>
-    <option name="localTasksCounter" value="198" />
+    <task id="LOCAL-00198" summary="2025-04-20 Add Ehcache Support to sb-springboot-module.">
+      <option name="closed" value="true" />
+      <created>1745166905354</created>
+      <option name="number" value="00198" />
+      <option name="presentableId" value="LOCAL-00198" />
+      <option name="project" value="LOCAL" />
+      <updated>1745166905354</updated>
+    </task>
+    <task id="LOCAL-00199" summary="2025-04-20 Add Ehcache Support to sb-springboot-module.">
+      <option name="closed" value="true" />
+      <created>1745166915008</created>
+      <option name="number" value="00199" />
+      <option name="presentableId" value="LOCAL-00199" />
+      <option name="project" value="LOCAL" />
+      <updated>1745166915008</updated>
+    </task>
+    <task id="LOCAL-00200" summary="2025-04-20 Add Ehcache Support to sb-springboot-module.">
+      <option name="closed" value="true" />
+      <created>1745166997368</created>
+      <option name="number" value="00200" />
+      <option name="presentableId" value="LOCAL-00200" />
+      <option name="project" value="LOCAL" />
+      <updated>1745166997368</updated>
+    </task>
+    <option name="localTasksCounter" value="201" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">

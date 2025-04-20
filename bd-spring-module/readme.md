@@ -14,7 +14,7 @@
 # docker
 -Dspring.profiles.active=docker -Dspring.config.location=bd-spring-module/helm-chart/configs/application-docker.yaml
 
-# docker
+# k8s
 -Dspring.profiles.active=k8s -Dspring.config.location=bd-spring-module/helm-chart/configs/application-k8s.yaml
 
 mvn spring-boot:run
