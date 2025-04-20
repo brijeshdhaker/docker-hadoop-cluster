@@ -6,7 +6,16 @@ server:
   http2:
     enabled: true
 #
+springdoc:
+  api-docs:
+    path: /api-docs
+#
 spring:
+  #
+#  config:
+#    activate:
+#      on-profile: default
+  #
   application:
     name: bd-spring-module
   output.ansi.enabled: ALWAYS

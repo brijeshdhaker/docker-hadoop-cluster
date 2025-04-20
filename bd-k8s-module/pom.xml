@@ -8,7 +8,7 @@
     <artifactId>bd-k8s-module</artifactId>
     <name>bd-k8s-module</name>
     <version>1.0.0</version>
-    <packaging>zip</packaging>
+
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

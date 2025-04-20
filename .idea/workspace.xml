@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-10 Update ssl configuration for springboot app.">
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-19 Update spring-boot app for K8S Deployment.">
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/OpenAPIConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/SandboxSbApplication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/bd_spring_module.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/ca/intermediate/openssl.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/ca/intermediate/openssl.cnf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/ca/root/openssl.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/ca/root/openssl.cnf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl-cert.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/setup-ssl-cert.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-k8s-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-k8s-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,221 +89,229 @@
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2cX3TktHfGdHsUFzByi07LxLGH3" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Application.AppLauncher.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AppLauncher::BatchWorkflow.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AppLauncher::DiscretizedStreamWorkflow.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AppLauncher::StructuredStreamWorkflow.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AppStreamWorkflow.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ClickEventGenerator.executor&quot;: &quot;Run&quot;,
-    &quot;Application.DataStreamJob.executor&quot;: &quot;Run&quot;,
-    &quot;Application.DeltaBoundedSourceLocalExample.executor&quot;: &quot;Run&quot;,
-    &quot;Application.DeltaBoundedSourceUserColumnsExample.executor&quot;: &quot;Run&quot;,
-    &quot;Application.DeltaContinuousSourceLocalExample.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.DeltaSinkExample.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.DeltaSinkExampleLocal.executor&quot;: &quot;Run&quot;,
-    &quot;Application.DemoApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.DriverHourlyMaxTips.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ProductsHourlySales.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.RideCountExample.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SandboxSbApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SparkPi.executor&quot;: &quot;Run&quot;,
-    &quot;Application.StreamExample.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TaxiLongRidesAlerts.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TaxiRidesAndFares.executor&quot;: &quot;Coverage&quot;,
-    &quot;Application.TransactionAvroStream.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TransactionCountExample.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TransactionPipeline.executor&quot;: &quot;Run&quot;,
-    &quot;Application.local-taxi-ride-counts.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.local-taxi-rides-and-fares.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.local-transaction-pipeline.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.mini-cluster-transaction-pipeline.executor&quot;: &quot;Debug&quot;,
-    &quot;Docker.Docker Image.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-flink-cluster.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/dc-spark-cluster.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.metastore: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.mysqlserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox.gateway: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-jobmanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-taskmanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-hive-cluster.yml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-rest: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.mc: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka-cluster-7.5.2.yml.control-center: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml.kafkabroker: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml.zookeeper: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kafka.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-kdcserver.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-minio.yml.mc: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.bd-hadoop-sandbox: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.cassandra-cluster.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-iceburg.yml.mc: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-iceburg.yml.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-iceburg.yml.rest: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-iceburg.yml.spark-iceberg: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml.kafkabroker: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml.kafkaclient: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml.zookeeper: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dc-kafka.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.datanode: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.gateway: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.historyserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.hiveserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.hivetezui: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.hmaster: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.hregion: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.kdcserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.metastore: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.mysqlserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.namenode: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.nodemanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.resourcemanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.sparkhistory: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.timelineserver: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.flink-cluster.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.kafka-cluster.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.minio.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.mysqlserver.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.spark-cluster.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.spark-notebook.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.ubuntu.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.zeppelin-notebook.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.zeppelin.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AvroUtilTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AvroUtilTest.jsonToAvro.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AvroUtilTest.schemaFromFile.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DatasourceBuilderTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SandboxSbApplicationTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SandboxSbApplicationTests (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SandboxSbApplicationTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SchemaProviderTest.structTypeFromAvro.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-data-generator [clean,verify].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-data-generator [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-data-generator [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-data-generator [verify].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-flink-module [clean,package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-flink-module [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-flink-module [compile,package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-flink-module [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-flink-module [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-python-module [verify].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-spark-module [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-spark-module [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-spring-module [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-spring-module [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bd-spring-module [test].executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_Commons.test_print_separator.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_Commons.test_split_csv.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_Commons.test_split_csv_line.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_User.test_random.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_User.test_to_dict.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_User.test_to_obj.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_static.test_flake8.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests in test_Commons.py.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests in test_User.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python.FileUtils.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Order.executor&quot;: &quot;Run&quot;,
-    &quot;Python.TimeUtils.executor&quot;: &quot;Run&quot;,
-    &quot;Python.User.executor&quot;: &quot;Run&quot;,
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.avro-test.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.confluent_kafka_AvroConsumer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_AvroProducer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_ConsumerFactory.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_DeserializingConsumer.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.confluent_kafka_ProducerFactory.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_SerializingProducer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_kafka_simple_consumer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.confluent_transaction_producer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.hello-spark.executor&quot;: &quot;Run&quot;,
-    &quot;Python.hello.executor&quot;: &quot;Run&quot;,
-    &quot;Python.kafka_python_partitioned_consumer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.kafka_python_partitioned_producer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.kafka_python_simple_consumer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.kafka_python_simple_producer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pie.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pyspark-pandas.executor&quot;: &quot;Run&quot;,
-    &quot;Python.run_tests.executor&quot;: &quot;Run&quot;,
-    &quot;Python.sql-s3a-read.executor&quot;: &quot;Run&quot;,
-    &quot;Python.structured-avro-stream.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3&quot;: &quot;junit.framework.TestCase&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop/docker-hadoop334-cluster&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-data-generator/src/test&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.31724137&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.AppLauncher.executor": "Run",
+    "Application.AppLauncher::BatchWorkflow.executor": "Run",
+    "Application.AppLauncher::DiscretizedStreamWorkflow.executor": "Run",
+    "Application.AppLauncher::StructuredStreamWorkflow.executor": "Run",
+    "Application.AppStreamWorkflow.executor": "Run",
+    "Application.ClickEventGenerator.executor": "Run",
+    "Application.DataStreamJob.executor": "Run",
+    "Application.DeltaBoundedSourceLocalExample.executor": "Run",
+    "Application.DeltaBoundedSourceUserColumnsExample.executor": "Run",
+    "Application.DeltaContinuousSourceLocalExample.executor": "Debug",
+    "Application.DeltaSinkExample.executor": "Debug",
+    "Application.DeltaSinkExampleLocal.executor": "Run",
+    "Application.DemoApplication.executor": "Debug",
+    "Application.DriverHourlyMaxTips.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.ProductsHourlySales.executor": "Debug",
+    "Application.RideCountExample.executor": "Run",
+    "Application.SandboxSbApplication.executor": "Run",
+    "Application.SparkPi.executor": "Run",
+    "Application.StreamExample.executor": "Run",
+    "Application.TaxiLongRidesAlerts.executor": "Run",
+    "Application.TaxiRidesAndFares.executor": "Coverage",
+    "Application.TransactionAvroStream.executor": "Run",
+    "Application.TransactionCountExample.executor": "Run",
+    "Application.TransactionPipeline.executor": "Run",
+    "Application.bd-spring-module.executor": "Run",
+    "Application.local-taxi-ride-counts.executor": "Debug",
+    "Application.local-taxi-rides-and-fares.executor": "Debug",
+    "Application.local-transaction-pipeline.executor": "Debug",
+    "Application.mini-cluster-transaction-pipeline.executor": "Debug",
+    "Docker.Docker Image.executor": "Run",
+    "Docker.bd-docker-sandbox.minio: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-flink-cluster.yml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml.metastore: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-hive-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-kafka-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-mysqlserver.yaml.mysqlserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-master: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-a: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.spark-worker-b: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/dc-spark-cluster.yml: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.gateway: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.metastore: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.mysqlserver: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml.zeppelin: Compose Deployment.executor": "Run",
+    "Docker.bd-docker-sandbox/docker-compose.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox.gateway: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox.zeppelin: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-jobmanager: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-flink-cluster.yml.flink-taskmanager: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-hadoop-cluster.yaml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-hive-cluster.yml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.iceberg-rest: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.mc: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.rest: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml.spark-iceberg: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-iceburg.yml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka-cluster-7.5.2.yml.control-center: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka.yml.kafkabroker: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka.yml.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka.yml.zookeeper: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kafka.yml: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-kdcserver.yml.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-minio.yml.mc: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-minio.yml.minio: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox/dc-spark-cluster.yml.sparkhistory: Compose Deployment.executor": "Run",
+    "Docker.bd-hadoop-sandbox: Compose Deployment.executor": "Run",
+    "Docker.cassandra-cluster.executor": "Run",
+    "Docker.dc-iceburg.yml.mc: Compose Deployment.executor": "Run",
+    "Docker.dc-iceburg.yml.minio: Compose Deployment.executor": "Run",
+    "Docker.dc-iceburg.yml.rest: Compose Deployment.executor": "Run",
+    "Docker.dc-iceburg.yml.spark-iceberg: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml.kafkabroker: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml.kafkaclient: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml.zookeeper: Compose Deployment.executor": "Run",
+    "Docker.dc-kafka.yml: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.datanode: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.gateway: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.historyserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.hiveserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.hivetezui: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.hmaster: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.hregion: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.kdcserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.metastore: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.mysqlserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.namenode: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.nodemanager: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.resourcemanager: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.sparkhistory: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.timelineserver: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
+    "Docker.flink-cluster.executor": "Run",
+    "Docker.kafka-cluster.executor": "Run",
+    "Docker.minio.executor": "Run",
+    "Docker.mysqlserver.executor": "Run",
+    "Docker.spark-cluster.executor": "Run",
+    "Docker.spark-notebook.executor": "Run",
+    "Docker.ubuntu.executor": "Run",
+    "Docker.zeppelin-notebook.executor": "Run",
+    "Docker.zeppelin.executor": "Run",
+    "JUnit.AvroUtilTest.executor": "Run",
+    "JUnit.AvroUtilTest.jsonToAvro.executor": "Run",
+    "JUnit.AvroUtilTest.schemaFromFile.executor": "Run",
+    "JUnit.DatasourceBuilderTest.executor": "Run",
+    "JUnit.SandboxSbApplicationTest.executor": "Run",
+    "JUnit.SandboxSbApplicationTests (1).executor": "Run",
+    "JUnit.SandboxSbApplicationTests.executor": "Run",
+    "JUnit.SchemaProviderTest.structTypeFromAvro.executor": "Run",
+    "Maven.bd-data-generator [clean,verify].executor": "Run",
+    "Maven.bd-data-generator [clean].executor": "Run",
+    "Maven.bd-data-generator [package].executor": "Run",
+    "Maven.bd-data-generator [verify].executor": "Run",
+    "Maven.bd-flink-module [clean,package].executor": "Run",
+    "Maven.bd-flink-module [clean].executor": "Run",
+    "Maven.bd-flink-module [compile,package].executor": "Run",
+    "Maven.bd-flink-module [compile].executor": "Run",
+    "Maven.bd-flink-module [package].executor": "Run",
+    "Maven.bd-python-module [clean].executor": "Run",
+    "Maven.bd-python-module [install].executor": "Run",
+    "Maven.bd-python-module [org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy].executor": "Run",
+    "Maven.bd-python-module [package].executor": "Run",
+    "Maven.bd-python-module [verify].executor": "Run",
+    "Maven.bd-spark-module [clean].executor": "Run",
+    "Maven.bd-spark-module [package].executor": "Run",
+    "Maven.bd-spring-module [clean,package].executor": "Run",
+    "Maven.bd-spring-module [clean].executor": "Run",
+    "Maven.bd-spring-module [package].executor": "Run",
+    "Maven.bd-spring-module [test].executor": "Run",
+    "Python tests.Python tests for test_Commons.test_print_separator.executor": "Run",
+    "Python tests.Python tests for test_Commons.test_split_csv.executor": "Run",
+    "Python tests.Python tests for test_Commons.test_split_csv_line.executor": "Debug",
+    "Python tests.Python tests for test_User.test_random.executor": "Run",
+    "Python tests.Python tests for test_User.test_to_dict.executor": "Run",
+    "Python tests.Python tests for test_User.test_to_obj.executor": "Run",
+    "Python tests.Python tests for test_static.test_flake8.executor": "Run",
+    "Python tests.Python tests in test_Commons.py.executor": "Run",
+    "Python tests.Python tests in test_User.py.executor": "Run",
+    "Python tests.Python tests in test_partitioner.py.executor": "Run",
+    "Python tests.Python tests in test_static.py.executor": "Debug",
+    "Python tests.Python tests in test_util.py.executor": "Run",
+    "Python.FileUtils.executor": "Run",
+    "Python.Order.executor": "Run",
+    "Python.TimeUtils.executor": "Run",
+    "Python.User.executor": "Run",
+    "Python.__main__.executor": "Run",
+    "Python.app.executor": "Run",
+    "Python.avro-test.executor": "Debug",
+    "Python.confluent_kafka_AvroConsumer.executor": "Run",
+    "Python.confluent_kafka_AvroProducer.executor": "Run",
+    "Python.confluent_kafka_ConsumerFactory.executor": "Run",
+    "Python.confluent_kafka_DeserializingConsumer.executor": "Debug",
+    "Python.confluent_kafka_ProducerFactory.executor": "Run",
+    "Python.confluent_kafka_SerializingProducer.executor": "Run",
+    "Python.confluent_kafka_avro_producer.executor": "Run",
+    "Python.confluent_kafka_simple_consumer.executor": "Run",
+    "Python.confluent_transaction_producer.executor": "Run",
+    "Python.hello-spark.executor": "Run",
+    "Python.hello.executor": "Run",
+    "Python.kafka_python_partitioned_consumer.executor": "Run",
+    "Python.kafka_python_partitioned_producer.executor": "Run",
+    "Python.kafka_python_simple_consumer.executor": "Run",
+    "Python.kafka_python_simple_producer.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.pie.executor": "Run",
+    "Python.pyspark-pandas.executor": "Run",
+    "Python.run_tests.executor": "Run",
+    "Python.sql-s3a-read.executor": "Run",
+    "Python.structured-avro-stream.executor": "Debug",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SHELLCHECK.PATH": "/home/brijeshdhaker/.local/share/JetBrains/IdeaIC2024.3/Shell Script/shellcheck",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "develop/docker-hadoop334-cluster",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/helm-chart/configs",
+    "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-java-module/src/main/java/org/examples/hadoop/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.31724137",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "advanced.settings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/configs" />
+      <recent name="$PROJECT_DIR$/bd-spring-module/src/main/resources" />
+      <recent name="$PROJECT_DIR$/bd-spring-module/src/test/resources" />
       <recent name="$PROJECT_DIR$/bd-data-generator/src/test" />
       <recent name="$PROJECT_DIR$/bd-docker-sandbox/resources/libs/s3-fs-hadoop" />
-      <recent name="$PROJECT_DIR$/bd-flink-module/src/test/resources" />
-      <recent name="$PROJECT_DIR$/bd-k8s-module/istio/certs" />
-      <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/dev" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-setup-module/kubernetes" />
       <recent name="$PROJECT_DIR$/bd-setup-module/security" />
       <recent name="$PROJECT_DIR$/bd-k8s-module/istio/certs/old" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/configs" />
       <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/docker" />
-      <recent name="$PROJECT_DIR$/bd-spring-module/helm-chart/templates" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -311,14 +324,14 @@
       <recent name="org.examples.datasource" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.examples.sb.controllers" />
       <recent name="com.org.example.flink.transaction.sink" />
       <recent name="com.org.example.flink" />
       <recent name="com.org.example.flink.config" />
       <recent name="com.org.example.flink.utils" />
-      <recent name="com.org.example.flink.transaction.functions" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.hello">
+  <component name="RunManager" selected="Application.bd-spring-module">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -342,62 +355,6 @@
       <module name="bd-spark-module" />
       <option name="PROGRAM_PARAMETERS" value="--embedded --verbose --workflow-type sstream --storage local --property-file bd-spark-module/src/main/resources/app_sstream_workflow.properties" />
       <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DataStreamJob" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.example.DataStreamJob" />
-      <module name="bd-flink-module" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.org.example.flink.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductsHourlySales" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.transaction.ProductsHourlySales" />
-      <module name="bd-flink-module" />
-      <option name="PROGRAM_PARAMETERS" value="--app-config app_workflow.properties --engine-type local-cluster --table-name transactions --config-path $PROJECT_DIR$/bd-flink-module/src/main/resources/local-cluster" />
-      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED -Dlog.file=/apps/var/logs/flink/flink-minicluster-session.log" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.org.example.flink.transaction.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SandboxSbApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.examples.sb.SandboxSbApplication" />
-      <module name="bd-spring-module" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.examples.sb.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="local-taxi-long-rides-alerts" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.org.example.flink.taxi.TaxiLongRidesAlerts" />
-      <module name="bd-flink-module" />
-      <option name="PROGRAM_PARAMETERS" value="--app-config taxi_workflow.properties --config-path $PROJECT_DIR$/bd-flink-module/src/main/resources/local-cluster" />
-      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED -Dlog.file=/apps/var/logs/flink/flink-local-session.log" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.org.example.flink.taxi.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -435,7 +392,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="hello" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="run_tests" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="bd-pyspark-module" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -444,11 +401,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/main/py" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-pyspark-module/src/main/py/hello.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py/run_tests.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -583,6 +540,66 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for test_Commons.test_print_separator" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="bd-pyspark-module" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_Commons.test_print_separator&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_User.test_to_obj" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="bd-pyspark-module" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_User.test_to_obj&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests in test_Commons.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="bd-pyspark-module" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_Commons.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests in test_partitioner.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="bd-pyspark-module" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_partitioner.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.AppLauncher::BatchWorkflow" />
       <item itemvalue="Application.AppLauncher::DiscretizedStreamWorkflow" />
@@ -592,10 +609,8 @@
       <item itemvalue="Application.local-taxi-driver-hourly-max-tips" />
       <item itemvalue="Application.local-transaction-pipeline" />
       <item itemvalue="Application.local-taxi-rides-and-fares" />
-      <item itemvalue="Application.DataStreamJob" />
-      <item itemvalue="Application.ProductsHourlySales" />
-      <item itemvalue="Application.SandboxSbApplication" />
-      <item itemvalue="Application.local-taxi-long-rides-alerts" />
+      <item itemvalue="Application.bd-spring-module" />
+      <item itemvalue="Docker.cassandra-cluster" />
       <item itemvalue="Docker.flink-cluster" />
       <item itemvalue="Docker.kafka-cluster" />
       <item itemvalue="Docker.minio" />
@@ -603,16 +618,20 @@
       <item itemvalue="Docker.spark-cluster" />
       <item itemvalue="Docker.spark-notebook" />
       <item itemvalue="Docker.zeppelin-notebook" />
-      <item itemvalue="Docker.cassandra-cluster" />
-      <item itemvalue="Python.hello" />
+      <item itemvalue="Python.confluent_kafka_avro_producer" />
+      <item itemvalue="Python.run_tests" />
+      <item itemvalue="Python tests.Python tests for test_Commons.test_print_separator" />
+      <item itemvalue="Python tests.Python tests for test_User.test_to_obj" />
+      <item itemvalue="Python tests.Python tests in test_Commons.py" />
+      <item itemvalue="Python tests.Python tests in test_partitioner.py" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.hello" />
-        <item itemvalue="Application.SandboxSbApplication" />
-        <item itemvalue="Application.local-taxi-long-rides-alerts" />
-        <item itemvalue="Application.ProductsHourlySales" />
-        <item itemvalue="Application.DataStreamJob" />
+        <item itemvalue="Python tests.Python tests for test_User.test_to_obj" />
+        <item itemvalue="Python tests.Python tests in test_partitioner.py" />
+        <item itemvalue="Python tests.Python tests for test_Commons.test_print_separator" />
+        <item itemvalue="Python.run_tests" />
+        <item itemvalue="Python tests.Python tests in test_Commons.py" />
       </list>
     </recent_temporary>
   </component>
@@ -624,86 +643,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00136" summary="2025-03-09 Update docker files configurations.">
-      <option name="closed" value="true" />
-      <created>1741529897334</created>
-      <option name="number" value="00136" />
-      <option name="presentableId" value="LOCAL-00136" />
-      <option name="project" value="LOCAL" />
-      <updated>1741529897336</updated>
-    </task>
-    <task id="LOCAL-00137" summary="2025-03-09 Update docker files configurations.">
-      <option name="closed" value="true" />
-      <created>1741529952874</created>
-      <option name="number" value="00137" />
-      <option name="presentableId" value="LOCAL-00137" />
-      <option name="project" value="LOCAL" />
-      <updated>1741529952874</updated>
-    </task>
-    <task id="LOCAL-00138" summary="2025-03-09 add helm chart for springboot application.">
-      <option name="closed" value="true" />
-      <created>1741530455647</created>
-      <option name="number" value="00138" />
-      <option name="presentableId" value="LOCAL-00138" />
-      <option name="project" value="LOCAL" />
-      <updated>1741530455647</updated>
-    </task>
-    <task id="LOCAL-00139" summary="2025-03-09 add helm chart for springboot application.">
-      <option name="closed" value="true" />
-      <created>1741530501063</created>
-      <option name="number" value="00139" />
-      <option name="presentableId" value="LOCAL-00139" />
-      <option name="project" value="LOCAL" />
-      <updated>1741530501064</updated>
-    </task>
-    <task id="LOCAL-00140" summary="2025-03-10 add helm chart for springboot application.">
-      <option name="closed" value="true" />
-      <created>1741576283160</created>
-      <option name="number" value="00140" />
-      <option name="presentableId" value="LOCAL-00140" />
-      <option name="project" value="LOCAL" />
-      <updated>1741576283161</updated>
-    </task>
-    <task id="LOCAL-00141" summary="2025-03-10 add helm chart for springboot application.">
-      <option name="closed" value="true" />
-      <created>1741578404946</created>
-      <option name="number" value="00141" />
-      <option name="presentableId" value="LOCAL-00141" />
-      <option name="project" value="LOCAL" />
-      <updated>1741578404946</updated>
-    </task>
-    <task id="LOCAL-00142" summary="2025-03-11 add helm chart for springboot application.">
-      <option name="closed" value="true" />
-      <created>1741666951846</created>
-      <option name="number" value="00142" />
-      <option name="presentableId" value="LOCAL-00142" />
-      <option name="project" value="LOCAL" />
-      <updated>1741666951848</updated>
-    </task>
-    <task id="LOCAL-00143" summary="2025-03-11 add helm chart for springboot application.">
-      <option name="closed" value="true" />
-      <created>1741666981100</created>
-      <option name="number" value="00143" />
-      <option name="presentableId" value="LOCAL-00143" />
-      <option name="project" value="LOCAL" />
-      <updated>1741666981100</updated>
-    </task>
-    <task id="LOCAL-00144" summary="2025-03-12 add helm chart for springboot application.">
-      <option name="closed" value="true" />
-      <created>1741738928699</created>
-      <option name="number" value="00144" />
-      <option name="presentableId" value="LOCAL-00144" />
-      <option name="project" value="LOCAL" />
-      <updated>1741738928700</updated>
-    </task>
-    <task id="LOCAL-00145" summary="2025-03-12 add helm chart for springboot application.">
-      <option name="closed" value="true" />
-      <created>1741744645764</created>
-      <option name="number" value="00145" />
-      <option name="presentableId" value="LOCAL-00145" />
-      <option name="project" value="LOCAL" />
-      <updated>1741744645764</updated>
     </task>
     <task id="LOCAL-00146" summary="2025-03-13 add helm chart for springboot application.">
       <option name="closed" value="true" />
@@ -1017,7 +956,87 @@
       <option name="project" value="LOCAL" />
       <updated>1744271975028</updated>
     </task>
-    <option name="localTasksCounter" value="185" />
+    <task id="LOCAL-00185" summary="2025-04-14 Update ssl configuration for springboot app.">
+      <option name="closed" value="true" />
+      <created>1744609689179</created>
+      <option name="number" value="00185" />
+      <option name="presentableId" value="LOCAL-00185" />
+      <option name="project" value="LOCAL" />
+      <updated>1744609689180</updated>
+    </task>
+    <task id="LOCAL-00186" summary="2025-04-14 Update hpa configuration for springboot app.">
+      <option name="closed" value="true" />
+      <created>1744627103396</created>
+      <option name="number" value="00186" />
+      <option name="presentableId" value="LOCAL-00186" />
+      <option name="project" value="LOCAL" />
+      <updated>1744627103397</updated>
+    </task>
+    <task id="LOCAL-00187" summary="2025-04-15 Update hpa configuration for springboot app.">
+      <option name="closed" value="true" />
+      <created>1744684916276</created>
+      <option name="number" value="00187" />
+      <option name="presentableId" value="LOCAL-00187" />
+      <option name="project" value="LOCAL" />
+      <updated>1744684916276</updated>
+    </task>
+    <task id="LOCAL-00188" summary="2025-04-15 Update hpa configuration for springboot app.">
+      <option name="closed" value="true" />
+      <created>1744690229667</created>
+      <option name="number" value="00188" />
+      <option name="presentableId" value="LOCAL-00188" />
+      <option name="project" value="LOCAL" />
+      <updated>1744690229667</updated>
+    </task>
+    <task id="LOCAL-00189" summary="2025-04-16 Update hpa configuration for springboot app.">
+      <option name="closed" value="true" />
+      <created>1744776989265</created>
+      <option name="number" value="00189" />
+      <option name="presentableId" value="LOCAL-00189" />
+      <option name="project" value="LOCAL" />
+      <updated>1744776989267</updated>
+    </task>
+    <task id="LOCAL-00190" summary="2025-04-17 Update hpa configuration for springboot app.">
+      <option name="closed" value="true" />
+      <created>1744856037381</created>
+      <option name="number" value="00190" />
+      <option name="presentableId" value="LOCAL-00190" />
+      <option name="project" value="LOCAL" />
+      <updated>1744856037383</updated>
+    </task>
+    <task id="LOCAL-00191" summary="2025-04-17 Update hpa configuration for springboot app.">
+      <option name="closed" value="true" />
+      <created>1744958430176</created>
+      <option name="number" value="00191" />
+      <option name="presentableId" value="LOCAL-00191" />
+      <option name="project" value="LOCAL" />
+      <updated>1744958430178</updated>
+    </task>
+    <task id="LOCAL-00192" summary="2025-04-19 Update hpa configuration for springboot app.">
+      <option name="closed" value="true" />
+      <created>1745025368111</created>
+      <option name="number" value="00192" />
+      <option name="presentableId" value="LOCAL-00192" />
+      <option name="project" value="LOCAL" />
+      <updated>1745025368111</updated>
+    </task>
+    <task id="LOCAL-00193" summary="2025-04-19 Update hpa configuration for springboot app.">
+      <option name="closed" value="true" />
+      <created>1745028337856</created>
+      <option name="number" value="00193" />
+      <option name="presentableId" value="LOCAL-00193" />
+      <option name="project" value="LOCAL" />
+      <updated>1745028337857</updated>
+    </task>
+    <task id="LOCAL-00194" summary="2025-04-19 Update spring-boot app for K8S Deployment.">
+      <option name="closed" value="true" />
+      <created>1745054032591</created>
+      <option name="number" value="00194" />
+      <option name="presentableId" value="LOCAL-00194" />
+      <option name="project" value="LOCAL" />
+      <updated>1745054032591</updated>
+    </task>
+    <option name="localTasksCounter" value="195" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -1078,13 +1097,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2024-12-13 add refine &amp; enrichment for flink module." />
-    <MESSAGE value="2024-12-13 update bd-flink-module." />
-    <MESSAGE value="2024-12-14 update bd-flink-module." />
-    <MESSAGE value="2024-12-15 Add examples to bd-flink-module." />
-    <MESSAGE value="2024-12-17 Add examples to bd-flink-module." />
-    <MESSAGE value="2025-03-01 Add examples to bd-flink-module." />
-    <MESSAGE value="2025-03-09 Update docker files configurations." />
     <MESSAGE value="2025-03-09 add helm chart for springboot application." />
     <MESSAGE value="2025-03-10 add helm chart for springboot application." />
     <MESSAGE value="2025-03-11 add helm chart for springboot application." />
@@ -1103,7 +1115,14 @@
     <MESSAGE value="2025-04-08 Update ssl configuration for springboot app." />
     <MESSAGE value="2025-04-09 Update ssl configuration for springboot app." />
     <MESSAGE value="2025-04-10 Update ssl configuration for springboot app." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-04-10 Update ssl configuration for springboot app." />
+    <MESSAGE value="2025-04-14 Update ssl configuration for springboot app." />
+    <MESSAGE value="2025-04-14 Update hpa configuration for springboot app." />
+    <MESSAGE value="2025-04-15 Update hpa configuration for springboot app." />
+    <MESSAGE value="2025-04-16 Update hpa configuration for springboot app." />
+    <MESSAGE value="2025-04-17 Update hpa configuration for springboot app." />
+    <MESSAGE value="2025-04-19 Update hpa configuration for springboot app." />
+    <MESSAGE value="2025-04-19 Update spring-boot app for K8S Deployment." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-04-19 Update spring-boot app for K8S Deployment." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1129,6 +1148,16 @@
           <line>18</line>
           <properties field="ENGINE_TYPE" class="com.org.example.flink.utils.jobs.FlinkJobRunnerBase" />
           <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_partitioner.py</url>
+          <line>2</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_static.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="56" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

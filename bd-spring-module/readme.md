@@ -7,6 +7,12 @@
 
 -Dspring.profiles.active=default -Dspring.config.location=bd-spring-module/helm-chart/configs/application-local.yaml
 
+### Swagger
+```shell
+http://localhost:9080/api/v1/api-docs
+http://localhost:9080/api/v1/swagger-ui/index.html
+```
+
 ```shell
 kubectl create ns sb-apps
 kubectl label namespace sb-apps istio-injection=enabled
