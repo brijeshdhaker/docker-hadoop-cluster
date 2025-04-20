@@ -23,7 +23,7 @@ spring:
     username: mysqladmin
     password: mysqladmin
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysql-service.sb-apps.svc.cluster.local:3306/SANDBOXDB?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&zeroDateTimeBehavior=CONVERT_TO_NULL
+    url: jdbc:mysql://mysqlserver.sandbox.net:3306/SANDBOXDB?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&zeroDateTimeBehavior=CONVERT_TO_NULL
   #
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
@@ -47,10 +47,10 @@ spring:
   kafka:
     transaction-topic: transaction-avro-topic
     bootstrap-servers:
-      - kafka-service.sb-apps.svc.cluster.local:9092
+      - kafkabroker.sandbox.net:9092
     properties:
       # Schema Registry Connection parameter
-      schema.registry.url: http://kafka-service.sb-apps.svc.cluster.local:8081
+      schema.registry.url: http://schemaregistry.sandbox.net:8081
       schema.registry.ssl.keystore.location: /apps/security/ssl/clients.keystore.jks
       schema.registry.ssl.keystore.password: confluent
       schema.registry.ssl.key.password: confluent
@@ -62,7 +62,7 @@ spring:
         specific.avro.reader: false
         # spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
         # spring.deserializer.value.delegate.class: io.confluent.kafka.serializers.KafkaAvroDeserializer
-      group-id: sb-sandbox-cg
+      group-id: sb-docker-cg
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer

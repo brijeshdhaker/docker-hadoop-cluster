@@ -5,7 +5,14 @@
 -Dserver.servlet.context-path=/api/v1
 -Dspring.config.location=./bd-spring-module/helm-chart/configs/application-local.yaml
 
--Dspring.profiles.active=default -Dspring.config.location=bd-spring-module/helm-chart/configs/application-local.yaml
+# local
+-Dspring.config.location=bd-spring-module/helm-chart/configs/application.yaml
+
+# local
+-Dspring.profiles.active=local -Dspring.config.location=bd-spring-module/helm-chart/configs/application-local.yaml
+
+# docker
+-Dspring.profiles.active=docker -Dspring.config.location=bd-spring-module/helm-chart/configs/application-docker.yaml
 
 mvn spring-boot:run
 

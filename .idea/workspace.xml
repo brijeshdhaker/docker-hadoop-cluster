@@ -4,16 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-19 Update spring-boot app for K8S Deployment.">
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/OpenAPIConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/SandboxSbApplication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/bd_spring_module.xml" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-20 Add Ehcache Support to sb-springboot-module.">
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/entities/SystemDateTimeConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/bd_spring_module.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/bd_spring_module_default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-k8s-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-k8s-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/mysql/config-file.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/mysql/config-file.cnf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/setup/kafka-topic.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/setup/kafka-topic.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-docker.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-docker.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-local.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/ehcache.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/ehcache.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/configmap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/templates/configmap.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/helpers/ModelHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/helpers/ModelHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/entities/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/entities/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/ehcache.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/ehcache.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +133,8 @@
     "Application.TransactionAvroStream.executor": "Run",
     "Application.TransactionCountExample.executor": "Run",
     "Application.TransactionPipeline.executor": "Run",
-    "Application.bd-spring-module.executor": "Run",
+    "Application.bd-spring-module.executor": "Debug",
+    "Application.bd-spring-module_docker.executor": "Run",
     "Application.local-taxi-ride-counts.executor": "Debug",
     "Application.local-taxi-rides-and-fares.executor": "Debug",
     "Application.local-transaction-pipeline.executor": "Debug",
@@ -324,14 +334,14 @@
       <recent name="org.examples.datasource" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.examples.sb.repositories.entities" />
       <recent name="org.examples.sb.controllers" />
       <recent name="com.org.example.flink.transaction.sink" />
       <recent name="com.org.example.flink" />
       <recent name="com.org.example.flink.config" />
-      <recent name="com.org.example.flink.utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.bd-spring-module">
+  <component name="RunManager" selected="Application.bd-spring-module_docker">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -609,7 +619,8 @@
       <item itemvalue="Application.local-taxi-driver-hourly-max-tips" />
       <item itemvalue="Application.local-transaction-pipeline" />
       <item itemvalue="Application.local-taxi-rides-and-fares" />
-      <item itemvalue="Application.bd-spring-module" />
+      <item itemvalue="Application.bd-spring-module_default" />
+      <item itemvalue="Application.bd-spring-module_docker" />
       <item itemvalue="Docker.cassandra-cluster" />
       <item itemvalue="Docker.flink-cluster" />
       <item itemvalue="Docker.kafka-cluster" />
@@ -643,22 +654,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00146" summary="2025-03-13 add helm chart for springboot application.">
-      <option name="closed" value="true" />
-      <created>1741835257027</created>
-      <option name="number" value="00146" />
-      <option name="presentableId" value="LOCAL-00146" />
-      <option name="project" value="LOCAL" />
-      <updated>1741835257028</updated>
-    </task>
-    <task id="LOCAL-00147" summary="2025-03-17 add helm chart for springboot application.">
-      <option name="closed" value="true" />
-      <created>1742184453646</created>
-      <option name="number" value="00147" />
-      <option name="presentableId" value="LOCAL-00147" />
-      <option name="project" value="LOCAL" />
-      <updated>1742184453647</updated>
     </task>
     <task id="LOCAL-00148" summary="2025-03-18 add helm chart for springboot application.">
       <option name="closed" value="true" />
@@ -1036,7 +1031,23 @@
       <option name="project" value="LOCAL" />
       <updated>1745054032591</updated>
     </task>
-    <option name="localTasksCounter" value="195" />
+    <task id="LOCAL-00195" summary="2025-04-20 Add OpenAPI Swagger Support to sb-springboot-module.">
+      <option name="closed" value="true" />
+      <created>1745113054189</created>
+      <option name="number" value="00195" />
+      <option name="presentableId" value="LOCAL-00195" />
+      <option name="project" value="LOCAL" />
+      <updated>1745113054190</updated>
+    </task>
+    <task id="LOCAL-00196" summary="2025-04-20 Add Ehcache Support to sb-springboot-module.">
+      <option name="closed" value="true" />
+      <created>1745131604539</created>
+      <option name="number" value="00196" />
+      <option name="presentableId" value="LOCAL-00196" />
+      <option name="project" value="LOCAL" />
+      <updated>1745131604539</updated>
+    </task>
+    <option name="localTasksCounter" value="197" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -1097,8 +1108,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2025-03-09 add helm chart for springboot application." />
-    <MESSAGE value="2025-03-10 add helm chart for springboot application." />
     <MESSAGE value="2025-03-11 add helm chart for springboot application." />
     <MESSAGE value="2025-03-12 add helm chart for springboot application." />
     <MESSAGE value="2025-03-13 add helm chart for springboot application." />
@@ -1122,7 +1131,9 @@
     <MESSAGE value="2025-04-17 Update hpa configuration for springboot app." />
     <MESSAGE value="2025-04-19 Update hpa configuration for springboot app." />
     <MESSAGE value="2025-04-19 Update spring-boot app for K8S Deployment." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-04-19 Update spring-boot app for K8S Deployment." />
+    <MESSAGE value="2025-04-20 Add OpenAPI Swagger Support to sb-springboot-module." />
+    <MESSAGE value="2025-04-20 Add Ehcache Support to sb-springboot-module." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-04-20 Add Ehcache Support to sb-springboot-module." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1136,6 +1147,16 @@
           <url>jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-core/1.20.0/flink-core-1.20.0.jar!/org/apache/flink/core/fs/FileSystem.class</url>
           <line>121</line>
           <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/UserController.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/services/UserService.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaCustomProperties.java</url>

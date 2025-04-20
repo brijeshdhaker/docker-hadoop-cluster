@@ -9,7 +9,7 @@
         <key-type>java.lang.Long</key-type>
         <value-type>org.examples.sb.models.User</value-type>
         <expiry>
-            <ttl unit="seconds">30</ttl>
+            <ttl unit="seconds">120</ttl>
         </expiry>
 
         <listeners>
@@ -18,6 +18,7 @@
                 <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
                 <event-ordering-mode>UNORDERED</event-ordering-mode>
                 <events-to-fire-on>CREATED</events-to-fire-on>
+                <events-to-fire-on>EVICTED</events-to-fire-on>
                 <events-to-fire-on>EXPIRED</events-to-fire-on>
             </listener>
         </listeners>

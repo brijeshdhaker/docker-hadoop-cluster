@@ -1,3 +1,4 @@
+#
 server:
   port: 9080
   servlet:
@@ -10,6 +11,11 @@ springdoc:
     path: /api-docs
 #
 spring:
+  #
+#  config:
+#    activate:
+#      on-profile: default
+  #
   application:
     name: bd-spring-module
   output.ansi.enabled: ALWAYS
@@ -29,6 +35,12 @@ spring:
       settings:
         trace: false
         web-allow-others: true
+  #
+#  sql:
+#    init:
+#      mode: always
+#      schema-locations: classpath*:schema.sql
+#      data-locations: classpath*:data.sql
   #
   jpa:
     # database-platform: org.hibernate.dialect.MySQLDialect
@@ -50,6 +62,10 @@ spring:
     contexts: h2
     parameters:
       textColumnType: TEXT
+  #
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
   #
   kafka:
     transaction-topic: transaction-avro-topic
@@ -97,5 +113,5 @@ management:
 logging:
   level:
     root: info
-    org.springframework.kafka: debug
+    org.springframework.kafka: error
     org.springframework.transaction: trace

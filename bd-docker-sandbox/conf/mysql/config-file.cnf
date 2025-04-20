@@ -1,4 +1,4 @@
 [mysqld]
-lower_case_table_names=0
+lower_case_table_names=1
 max_connections=250
 bind_address=0.0.0.0

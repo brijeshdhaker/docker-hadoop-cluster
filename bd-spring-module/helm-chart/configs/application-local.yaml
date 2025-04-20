@@ -74,7 +74,7 @@ spring:
         specific.avro.reader: false
         # spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
         # spring.deserializer.value.delegate.class: io.confluent.kafka.serializers.KafkaAvroDeserializer
-      group-id: sb-sandbox-cg
+      group-id: sb-local-cg
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
@@ -102,5 +102,5 @@ management:
 logging:
   level:
     root: info
-    org.springframework.kafka: debug
-    org.springframework.transaction: trace
+    org.springframework.kafka: info
+    org.springframework.transaction: info

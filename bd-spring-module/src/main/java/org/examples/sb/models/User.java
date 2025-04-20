@@ -6,6 +6,8 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,7 +20,12 @@ public class User implements Serializable {
     private String name;
     private String email;
     private String status;
-    protected LocalDateTime addTs;
-    protected LocalDateTime updTs;
+    private List<String> roles = new ArrayList<>();
+    public Long addTs;
+    public Long updTs;
+
+    public void addRoles(String role) {
+        this.roles.add(role);
+    }
 
 }
