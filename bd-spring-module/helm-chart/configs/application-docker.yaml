@@ -44,6 +44,10 @@ spring:
     parameters:
       textColumnType: TEXT
   #
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
+  #
   kafka:
     transaction-topic: transaction-avro-topic
     bootstrap-servers:
