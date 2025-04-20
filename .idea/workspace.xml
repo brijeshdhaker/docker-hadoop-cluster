@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-20 Add Ehcache Support to sb-springboot-module.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/ehcache.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/ehcache.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/cache/CacheEventLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/cache/CacheEventLogger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/ehcache.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/ehcache.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/OpenAPIConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/OpenAPIConfiguration.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -641,14 +638,6 @@
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
     </task>
-    <task id="LOCAL-00152" summary="2025-03-29 add helm chart for springboot application.">
-      <option name="closed" value="true" />
-      <created>1743217312959</created>
-      <option name="number" value="00152" />
-      <option name="presentableId" value="LOCAL-00152" />
-      <option name="project" value="LOCAL" />
-      <updated>1743217312960</updated>
-    </task>
     <task id="LOCAL-00153" summary="2025-03-31 Add Sandbox Root CA &amp; Certs.">
       <option name="closed" value="true" />
       <created>1743385021685</created>
@@ -1033,7 +1022,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745166997368</updated>
     </task>
-    <option name="localTasksCounter" value="201" />
+    <task id="LOCAL-00201" summary="2025-04-20 Add Ehcache Support to sb-springboot-module.">
+      <option name="closed" value="true" />
+      <created>1745168318317</created>
+      <option name="number" value="00201" />
+      <option name="presentableId" value="LOCAL-00201" />
+      <option name="project" value="LOCAL" />
+      <updated>1745168318317</updated>
+    </task>
+    <option name="localTasksCounter" value="202" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
