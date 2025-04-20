@@ -3,12 +3,13 @@ package org.examples.sb.models;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.Random;
 import java.util.UUID;
 
 @Getter
 @Setter
-public class Transaction {
+public class Transaction implements Serializable {
 
     private java.lang.Integer id;
     private java.lang.String uuid;

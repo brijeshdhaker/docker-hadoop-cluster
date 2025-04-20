@@ -1,9 +1,4 @@
-kafka:
-  transaction-topic: transaction-avro-topic
-topic:
-  name: users
-  partitions-num: 1
-  replication-factor: 1
+#
 server:
   port: 9080
   servlet:
@@ -11,7 +6,15 @@ server:
   http2:
     enabled: true
 #
+springdoc:
+  api-docs:
+    path: /api-docs
+#
 spring:
+  #
+  config:
+    activate:
+      on-profile: docker
   application:
     name: bd-spring-module
   #
@@ -20,7 +23,7 @@ spring:
     username: mysqladmin
     password: mysqladmin
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysql-service.sb-apps.svc.cluster.local:3306/SANDBOXDB?zeroDateTimeBehavior=CONVERT_TO_NULL
+    url: jdbc:mysql://mysql-service.sb-apps.svc.cluster.local:3306/SANDBOXDB?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&zeroDateTimeBehavior=CONVERT_TO_NULL
   #
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect

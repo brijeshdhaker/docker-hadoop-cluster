@@ -7,6 +7,8 @@
 
 -Dspring.profiles.active=default -Dspring.config.location=bd-spring-module/helm-chart/configs/application-local.yaml
 
+mvn spring-boot:run
+
 ### Swagger
 ```shell
 http://localhost:9080/api/v1/api-docs

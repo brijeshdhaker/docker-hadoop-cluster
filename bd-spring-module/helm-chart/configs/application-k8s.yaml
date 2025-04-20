@@ -6,7 +6,15 @@ server:
   http2:
     enabled: true
 #
+springdoc:
+  api-docs:
+    path: /api-docs
+#
 spring:
+  #
+  config:
+    activate:
+      on-profile: k8s
   application:
     name: bd-spring-module
   #

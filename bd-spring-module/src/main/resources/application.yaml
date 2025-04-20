@@ -36,6 +36,12 @@ spring:
         trace: false
         web-allow-others: true
   #
+#  sql:
+#    init:
+#      mode: always
+#      schema-locations: classpath*:schema.sql
+#      data-locations: classpath*:data.sql
+  #
   jpa:
     # database-platform: org.hibernate.dialect.MySQLDialect
     # database-platform: org.hibernate.dialect.H2Dialect
@@ -56,6 +62,10 @@ spring:
     contexts: h2
     parameters:
       textColumnType: TEXT
+  #
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
   #
   kafka:
     transaction-topic: transaction-avro-topic
@@ -103,5 +113,5 @@ management:
 logging:
   level:
     root: info
-    org.springframework.kafka: debug
+    org.springframework.kafka: error
     org.springframework.transaction: trace
