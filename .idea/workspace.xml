@@ -5,8 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-20 Add Ehcache Support to sb-springboot-module.">
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/abstractfactory/ComputerAbstractFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/abstractfactory/ComputerFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/abstractfactory/DesktopFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/abstractfactory/ServerFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/abstractfactory/TestDesignPatterns.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/factory/ComputerFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/factory/TestFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/model/Computer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/model/ComputerSpecification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/model/Desktop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/model/DesktopSpecification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/model/Server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/model/ServerSpecification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/ApplicationProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/AuditlogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/Auditlog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/AuditlogRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/entities/AuditlogEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/services/AuditlogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/audit-type-data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/auditlog-data.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/OpenAPIConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/OpenAPIConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/helpers/ModelHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/helpers/ModelHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0002/table-changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0002/table-changelog.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +43,8 @@
         <option value="JUnit5 Test Class" />
         <option value="JUnit3 Test Class" />
         <option value="JUnit4 Test Class" />
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -114,6 +137,8 @@
     "Application.StreamExample.executor": "Run",
     "Application.TaxiLongRidesAlerts.executor": "Run",
     "Application.TaxiRidesAndFares.executor": "Coverage",
+    "Application.TestDesignPatterns.executor": "Run",
+    "Application.TestFactory.executor": "Run",
     "Application.TransactionAvroStream.executor": "Run",
     "Application.TransactionCountExample.executor": "Run",
     "Application.TransactionPipeline.executor": "Run",
@@ -324,7 +349,7 @@
       <recent name="com.org.example.flink.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.bd-spring-module_default">
+  <component name="RunManager" selected="Application.TestFactory">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -348,6 +373,32 @@
       <module name="bd-spark-module" />
       <option name="PROGRAM_PARAMETERS" value="--embedded --verbose --workflow-type sstream --storage local --property-file bd-spark-module/src/main/resources/app_sstream_workflow.properties" />
       <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestDesignPatterns" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.examples.design.abstractfactory.TestDesignPatterns" />
+      <module name="bd-data-generator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.examples.design.abstractfactory.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestFactory" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.examples.design.factory.TestFactory" />
+      <module name="bd-data-generator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.examples.design.factory.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -377,28 +428,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="" />
       <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="run_tests" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="bd-pyspark-module" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py/run_tests.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -563,21 +592,6 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests in test_Commons.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="bd-pyspark-module" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_Commons.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="Python tests in test_partitioner.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="bd-pyspark-module" />
       <option name="ENV_FILES" value="" />
@@ -604,6 +618,8 @@
       <item itemvalue="Application.local-taxi-rides-and-fares" />
       <item itemvalue="Application.bd-spring-module_default" />
       <item itemvalue="Application.bd-spring-module_docker" />
+      <item itemvalue="Application.TestDesignPatterns" />
+      <item itemvalue="Application.TestFactory" />
       <item itemvalue="Docker.cassandra-cluster" />
       <item itemvalue="Docker.flink-cluster" />
       <item itemvalue="Docker.kafka-cluster" />
@@ -613,19 +629,17 @@
       <item itemvalue="Docker.spark-notebook" />
       <item itemvalue="Docker.zeppelin-notebook" />
       <item itemvalue="Python.confluent_kafka_avro_producer" />
-      <item itemvalue="Python.run_tests" />
       <item itemvalue="Python tests.Python tests for test_Commons.test_print_separator" />
       <item itemvalue="Python tests.Python tests for test_User.test_to_obj" />
-      <item itemvalue="Python tests.Python tests in test_Commons.py" />
       <item itemvalue="Python tests.Python tests in test_partitioner.py" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestFactory" />
+        <item itemvalue="Application.TestDesignPatterns" />
         <item itemvalue="Python tests.Python tests for test_User.test_to_obj" />
         <item itemvalue="Python tests.Python tests in test_partitioner.py" />
         <item itemvalue="Python tests.Python tests for test_Commons.test_print_separator" />
-        <item itemvalue="Python.run_tests" />
-        <item itemvalue="Python tests.Python tests in test_Commons.py" />
       </list>
     </recent_temporary>
   </component>
@@ -637,14 +651,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00154" summary="2025-03-31 Add Sandbox Root CA &amp; Certs.">
-      <option name="closed" value="true" />
-      <created>1743398093996</created>
-      <option name="number" value="00154" />
-      <option name="presentableId" value="LOCAL-00154" />
-      <option name="project" value="LOCAL" />
-      <updated>1743398093996</updated>
     </task>
     <task id="LOCAL-00155" summary="2025-03-31 Add Sandbox Root CA &amp; Certs.">
       <option name="closed" value="true" />
@@ -1030,7 +1036,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745168682827</updated>
     </task>
-    <option name="localTasksCounter" value="203" />
+    <task id="LOCAL-00203" summary="2025-04-20 Add Ehcache Support to sb-springboot-module.">
+      <option name="closed" value="true" />
+      <created>1745168876509</created>
+      <option name="number" value="00203" />
+      <option name="presentableId" value="LOCAL-00203" />
+      <option name="project" value="LOCAL" />
+      <updated>1745168876509</updated>
+    </task>
+    <option name="localTasksCounter" value="204" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">

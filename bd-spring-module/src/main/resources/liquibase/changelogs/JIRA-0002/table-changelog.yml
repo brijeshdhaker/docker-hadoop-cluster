@@ -1,3 +1,54 @@
 ## YAML Template.
 ---
 databaseChangeLog:
+  - changeSet:
+      id:  JIRA-0001-T-001
+      author:  Brijesh D.
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_auditlog
+                  name: ID
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: AUDIT_TYPE
+                  type: VARCHAR(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ACTION
+                  type: VARCHAR(250)
+              - column:
+                  name: DESCRIPTION
+                  type: VARCHAR(512)
+              - column:
+                  name: REF_ID
+                  type: VARCHAR(100)
+              - column:
+                  name: REF_TYPE
+                  type: VARCHAR(100)
+              - column:
+                  name: USERID
+                  type: VARCHAR(50)
+              - column:
+                  name: ADD_TS
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: UPD_TS
+                  type: TIMESTAMP
+            tableName: AUDITLOG
+  - changeSet:
+      id:  JIRA-0001-T-002
+      author:  Brijesh D.
+      changes:
+        - sqlFile:
+            path: ../../objects/audit-type-tables.sql
+            relativeToChangelogFile: true
