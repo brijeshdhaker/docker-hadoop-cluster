@@ -2,8 +2,9 @@
 ---
 databaseChangeLog:
   - changeSet:
-      id:  JIRA-0001-T-001
+      id:  JIRA-0002-T-001
       author:  Brijesh D.
+      context: mysql,h2
       changes:
         - createTable:
             columns:
@@ -23,17 +24,17 @@ databaseChangeLog:
               - column:
                   constraints:
                     nullable: false
-                  name: ACTION
+                  name: LOG_ACTION
                   type: VARCHAR(250)
               - column:
-                  name: DESCRIPTION
+                  name: LOG_MESSAGE
                   type: VARCHAR(512)
               - column:
                   name: REF_ID
                   type: VARCHAR(100)
               - column:
-                  name: REF_TYPE
-                  type: VARCHAR(100)
+                  name: REF_DATA
+                  type: VARCHAR(512)
               - column:
                   name: USERID
                   type: VARCHAR(50)
@@ -44,11 +45,12 @@ databaseChangeLog:
               - column:
                   name: UPD_TS
                   type: TIMESTAMP
-            tableName: AUDITLOG
+            tableName: AUDITLOGS
   - changeSet:
-      id:  JIRA-0001-T-002
+      id:  JIRA-0002-T-002
       author:  Brijesh D.
+      context: mysql,h2
       changes:
         - sqlFile:
-            path: ../../objects/audit-type-tables.sql
+            path: ../../objects/tables/audit-type-table.sql
             relativeToChangelogFile: true

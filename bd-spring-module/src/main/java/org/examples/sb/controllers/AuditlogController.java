@@ -7,6 +7,7 @@ import org.examples.sb.models.Auditlog;
 import org.examples.sb.services.AuditlogService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -68,9 +69,8 @@ public class AuditlogController {
     public ResponseEntity<Auditlog> saveAuditlog(@RequestBody Auditlog r_dto) {
         ResponseEntity<Auditlog> httpResponse;
         try {
-            r_dto.setUuid(UUID.randomUUID().toString());
-            Auditlog s_dto = ModelHelper.toAuditlogDTO(r_dto);
-            httpResponse =  new ResponseEntity<>(r_dto,HttpStatus.CREATED);
+            Auditlog auditlog = auditlogService.saveAuditLog(r_dto);
+            httpResponse =  new ResponseEntity<>(auditlog,HttpStatus.CREATED);
         } catch (Exception ex) {
             log.error(ex.getMessage(),ex);
             httpResponse = new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
@@ -79,13 +79,16 @@ public class AuditlogController {
     }
 
     @PutMapping("/{logid}")
-    public ResponseEntity<Auditlog> updateAuditlog(@PathVariable long logid, @RequestBody Auditlog input) {
+    public ResponseEntity<Auditlog> updateAuditlog(@PathVariable long logid, @RequestBody Auditlog s_auditlog) {
         ResponseEntity<Auditlog> httpResponse;
         try {
-            Auditlog logDto = auditlogService.getAuditlog(logid);
-            if (logDto != null) {
-                auditlogService.saveAuditLog(logDto);
-                httpResponse =  new ResponseEntity<>(input, HttpStatus.OK);
+            Auditlog u_auditlog = auditlogService.getAuditlog(logid);
+            if (u_auditlog != null) {
+                // Merge Properties
+                String[] ignoreProperties = {"id"};
+                BeanUtils.copyProperties(s_auditlog,u_auditlog,ignoreProperties);
+                auditlogService.saveAuditLog(u_auditlog);
+                httpResponse =  new ResponseEntity<>(u_auditlog, HttpStatus.OK);
             } else {
                 httpResponse =  new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }

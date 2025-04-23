@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
  *
  * @author brijeshdhaker
  */
-//@Entity
-//@Table(name = "AUDITLOG")
+@Entity
+@Table(name = "AUDITLOGS")
 public class AuditlogEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -32,37 +32,37 @@ public class AuditlogEntity implements Serializable {
     @Column(name = "AUDIT_TYPE")
     private String auditTypeName;
 
-    @Column(name = "ACTION")
+    @Column(name = "LOG_ACTION")
     private String logAction;
 
-    @Column(name = "DESCRIPTION")
-    private String description;
+    @Column(name = "LOG_MESSAGE")
+    private String logMessage;
 
     @Column(name = "REF_ID")
-    private String refrenceId;
+    private String referenceId;
 
-    @Column(name = "REF_TYPE")
-    private String referenceType;
+    @Column(name = "REF_DATA")
+    private String referenceData;
 
     @Column(name = "USERID")
     private String userid;
 
-    @Convert(converter = LocalDateTimeConverter.class)
+    @Convert(converter = SystemDateTimeConverter.class)
     @Column(name = "ADD_TS")
-    protected LocalDateTime addTs;
+    protected Long addTs;
 
-    @Convert(converter = LocalDateTimeConverter.class)
+    @Convert(converter = SystemDateTimeConverter.class)
     @Column(name = "UPD_TS")
-    protected LocalDateTime updTs;
+    protected Long updTs;
 
     @PrePersist
     public void prePersist() {
-        addTs = updTs = LocalDateTime.now();
+        addTs = updTs = System.currentTimeMillis();
     }
 
     @PreUpdate
     public void preUpdate() {
-        updTs = LocalDateTime.now();
+        updTs = System.currentTimeMillis();
     }
 
     @PostLoad
@@ -95,28 +95,28 @@ public class AuditlogEntity implements Serializable {
         this.logAction = logAction;
     }
 
-    public String getDescription() {
-        return description;
+    public String getLogMessage() {
+        return logMessage;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setLogMessage(String description) {
+        this.logMessage = description;
     }
 
-    public String getRefrenceId() {
-        return refrenceId;
+    public String getReferenceId() {
+        return referenceId;
     }
 
-    public void setRefrenceId(String refrenceId) {
-        this.refrenceId = refrenceId;
+    public void setReferenceId(String referenceId) {
+        this.referenceId = referenceId;
     }
 
-    public String getReferenceType() {
-        return referenceType;
+    public String getReferenceData() {
+        return referenceData;
     }
 
-    public void setReferenceType(String referenceType) {
-        this.referenceType = referenceType;
+    public void setReferenceData(String referenceData) {
+        this.referenceData = referenceData;
     }
 
     public String getUserid() {
@@ -135,19 +135,19 @@ public class AuditlogEntity implements Serializable {
         this.auditTypeName = auditTypeName;
     }
 
-    public LocalDateTime getAddTs() {
+    public Long getAddTs() {
         return addTs;
     }
 
-    public void setAddTs(LocalDateTime addTs) {
+    public void setAddTs(Long addTs) {
         this.addTs = addTs;
     }
 
-    public LocalDateTime getUpdTs() {
+    public Long getUpdTs() {
         return updTs;
     }
 
-    public void setUpdTs(LocalDateTime updTs) {
+    public void setUpdTs(Long updTs) {
         this.updTs = updTs;
     }
 
@@ -173,7 +173,7 @@ public class AuditlogEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "com.example.samples.domain.AuditLog[ id=" + id + " ]";
+        return "org.examples.sb.repositories.entities.AuditlogEntity[ id=" + id + " ]";
     }
 
 }

@@ -13,8 +13,8 @@ public class Auditlog implements Serializable {
     private String auditType;
     private String logAction;
     private String logMessage;
-    private String refrenceId;
-    private String refrenceType;
-    private long addTs;
-    private long updTs;
+    private String referenceId;
+    private String referenceData;
+    private Long addTs;
+    private Long updTs;
 }

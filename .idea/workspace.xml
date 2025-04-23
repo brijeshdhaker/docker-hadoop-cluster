@@ -4,32 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-20 Add Ehcache Support to sb-springboot-module.">
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/abstractfactory/ComputerAbstractFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/abstractfactory/ComputerFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/abstractfactory/DesktopFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/abstractfactory/ServerFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/abstractfactory/TestDesignPatterns.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/factory/ComputerFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/factory/TestFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/model/Computer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/model/ComputerSpecification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/model/Desktop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/model/DesktopSpecification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/model/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-generator/src/main/java/org/examples/design/model/ServerSpecification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/ApplicationProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/AuditlogController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/Auditlog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/AuditlogRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/entities/AuditlogEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/services/AuditlogService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/audit-type-data.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/auditlog-data.sql" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-22 Add Ehcache Support to sb-springboot-module.">
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/tables/audit-type-table.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/AuditlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/AuditlogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/helpers/ModelHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/helpers/ModelHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/Auditlog.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/Auditlog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/AuditlogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/AuditlogRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/entities/AuditlogEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/entities/AuditlogEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/services/AuditlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/services/AuditlogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/script-changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/script-changelog.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/table-changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/table-changelog.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0002/script-changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0002/script-changelog.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0002/table-changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0002/table-changelog.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/tables/table_products.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/tables/table_products.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts-master.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts-master.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/audit-type-data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/audit-type-data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/auditlog-data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/auditlog-data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/tables-master.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/tables-master.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,6 +135,7 @@
     "Application.TransactionCountExample.executor": "Run",
     "Application.TransactionPipeline.executor": "Run",
     "Application.bd-spring-module.executor": "Debug",
+    "Application.bd-spring-module_default.executor": "Debug",
     "Application.bd-spring-module_docker.executor": "Run",
     "Application.local-taxi-ride-counts.executor": "Debug",
     "Application.local-taxi-rides-and-fares.executor": "Debug",
@@ -349,7 +342,7 @@
       <recent name="com.org.example.flink.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestFactory">
+  <component name="RunManager" selected="Application.bd-spring-module_default">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -651,14 +644,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00155" summary="2025-03-31 Add Sandbox Root CA &amp; Certs.">
-      <option name="closed" value="true" />
-      <created>1743398123134</created>
-      <option name="number" value="00155" />
-      <option name="presentableId" value="LOCAL-00155" />
-      <option name="project" value="LOCAL" />
-      <updated>1743398123134</updated>
     </task>
     <task id="LOCAL-00156" summary="2025-03-31 Add Sandbox Root CA &amp; Certs.">
       <option name="closed" value="true" />
@@ -1044,7 +1029,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745168876509</updated>
     </task>
-    <option name="localTasksCounter" value="204" />
+    <task id="LOCAL-00204" summary="2025-04-22 Add Ehcache Support to sb-springboot-module.">
+      <option name="closed" value="true" />
+      <created>1745295380393</created>
+      <option name="number" value="00204" />
+      <option name="presentableId" value="LOCAL-00204" />
+      <option name="project" value="LOCAL" />
+      <updated>1745295380395</updated>
+    </task>
+    <option name="localTasksCounter" value="205" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -1105,7 +1098,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2025-03-11 add helm chart for springboot application." />
     <MESSAGE value="2025-03-12 add helm chart for springboot application." />
     <MESSAGE value="2025-03-13 add helm chart for springboot application." />
     <MESSAGE value="2025-03-17 add helm chart for springboot application." />
@@ -1130,7 +1122,8 @@
     <MESSAGE value="2025-04-19 Update spring-boot app for K8S Deployment." />
     <MESSAGE value="2025-04-20 Add OpenAPI Swagger Support to sb-springboot-module." />
     <MESSAGE value="2025-04-20 Add Ehcache Support to sb-springboot-module." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-04-20 Add Ehcache Support to sb-springboot-module." />
+    <MESSAGE value="2025-04-22 Add Ehcache Support to sb-springboot-module." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-04-22 Add Ehcache Support to sb-springboot-module." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1154,6 +1147,16 @@
           <url>file://$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/services/UserService.java</url>
           <line>30</line>
           <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/AuditlogController.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/AuditlogController.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaCustomProperties.java</url>

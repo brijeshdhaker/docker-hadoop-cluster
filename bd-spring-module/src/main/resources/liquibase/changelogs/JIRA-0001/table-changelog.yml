@@ -103,7 +103,7 @@ databaseChangeLog:
   - changeSet:
       id:  JIRA-0001-T-004
       author:  Brijesh D.
-      context: mysql
+      context: mysql,h2
       changes:
         - sqlFile:
             path: ../../objects/tables/table_products.sql
