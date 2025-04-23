@@ -6,7 +6,15 @@ server:
   http2:
     enabled: true
 #
+springdoc:
+  api-docs:
+    path: /api-docs
+#
 spring:
+  #
+  config:
+    activate:
+      on-profile: k8s
   application:
     name: bd-spring-module
   #
@@ -35,6 +43,10 @@ spring:
     contexts: mysql
     parameters:
       textColumnType: TEXT
+  #
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
   #
   kafka:
     transaction-topic: transaction-avro-topic

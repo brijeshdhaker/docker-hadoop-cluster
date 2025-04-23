@@ -7,11 +7,13 @@ package org.examples.sb.models;
 
 import org.examples.sb.enums.MessageType;
 
+import java.io.Serializable;
+
 /**
  *
  * @author brijeshdhaker
  */
-public class MessageDetail {
+public class MessageDetail implements Serializable {
     
     private MessageType type;
     private String message;

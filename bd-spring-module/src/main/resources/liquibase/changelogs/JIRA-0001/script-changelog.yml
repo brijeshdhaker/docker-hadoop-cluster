@@ -22,3 +22,10 @@ databaseChangeLog:
         - sqlFile:
             path: ../../scripts/user-role-data.sql
             relativeToChangelogFile: true
+  - changeSet:
+      id:  JIRA-0001-S-004
+      author:  Brijesh D.
+      changes:
+        - sqlFile:
+            path: ../../scripts/products-data.sql
+            relativeToChangelogFile: true

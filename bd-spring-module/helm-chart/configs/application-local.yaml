@@ -1,10 +1,20 @@
+#
 server:
   port: 9080
   servlet:
     context-path: /api/v1
   http2:
     enabled: true
+#
+springdoc:
+  api-docs:
+    path: /api-docs
+#
 spring:
+  #
+  config:
+    activate:
+      on-profile: local
   application:
     name: bd-spring-module
   output.ansi.enabled: ALWAYS
@@ -46,6 +56,10 @@ spring:
     parameters:
       textColumnType: TEXT
   #
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
+  #
   kafka:
     transaction-topic: transaction-avro-topic
     bootstrap-servers:
@@ -64,7 +78,7 @@ spring:
         specific.avro.reader: false
         # spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
         # spring.deserializer.value.delegate.class: io.confluent.kafka.serializers.KafkaAvroDeserializer
-      group-id: sb-sandbox-cg
+      group-id: sb-local-cg
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
@@ -92,5 +106,5 @@ management:
 logging:
   level:
     root: info
-    org.springframework.kafka: debug
-    org.springframework.transaction: trace
+    org.springframework.kafka: info
+    org.springframework.transaction: info

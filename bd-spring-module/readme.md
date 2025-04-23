@@ -5,7 +5,25 @@
 -Dserver.servlet.context-path=/api/v1
 -Dspring.config.location=./bd-spring-module/helm-chart/configs/application-local.yaml
 
--Dspring.profiles.active=default -Dspring.config.location=bd-spring-module/helm-chart/configs/application-local.yaml
+# default
+-Dspring.config.location=bd-spring-module/helm-chart/configs/application.yaml
+
+# local
+-Dspring.profiles.active=local -Dspring.config.location=bd-spring-module/helm-chart/configs/application-local.yaml
+
+# docker
+-Dspring.profiles.active=docker -Dspring.config.location=bd-spring-module/helm-chart/configs/application-docker.yaml
+
+# k8s
+-Dspring.profiles.active=k8s -Dspring.config.location=bd-spring-module/helm-chart/configs/application-k8s.yaml
+
+mvn spring-boot:run
+
+### Swagger
+```shell
+http://localhost:9080/api/v1/api-docs
+http://localhost:9080/api/v1/swagger-ui/index.html
+```
 
 ```shell
 kubectl create ns sb-apps
@@ -138,6 +156,12 @@ helm get manifest bd-spring-module -n sb-apps > ./bd-spring-module/helm-chart/ma
 ```
 #
 ```shell
+helm list --all-namespaces
+helm ls --namespace=sb-apps
+
+helm status bd-spring-module --namespace=sb-apps
+helm history bd-spring-module --namespace=sb-apps
+
 helm uninstall bd-spring-module --namespace=sb-apps
 helm delete bd-spring-module --namespace=sb-apps
 ```

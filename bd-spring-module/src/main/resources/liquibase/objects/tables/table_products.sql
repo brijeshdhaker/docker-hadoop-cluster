@@ -4,7 +4,7 @@
  */
 
 CREATE TABLE IF NOT EXISTS PRODUCTS (
-    `ID`            BIGINT(8) NOT NULL AUTO_INCREMENT,
+    `ID`            BIGINT NOT NULL AUTO_INCREMENT,
     `NAME`          VARCHAR(250),
     `PRICE`         DECIMAL(6,2),
     `STATUS`        VARCHAR(30),

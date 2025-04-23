@@ -38,3 +38,4 @@ data:
   {{- else if eq .Values.environment "k8s" }}
   application.yaml: |- {{ .Files.Get "configs/application-k8s.yaml" | nindent 4 -}}
   {{- end }}
+  ehcache.xml: |- {{ .Files.Get "configs/ehcache.xml" | nindent 4 -}}

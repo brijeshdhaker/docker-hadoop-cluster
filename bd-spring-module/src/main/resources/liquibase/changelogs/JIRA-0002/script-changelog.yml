@@ -1,3 +1,11 @@
 ## YAML Template.
 ---
 databaseChangeLog:
+  - changeSet:
+      id:  JIRA-0002-S-001
+      author:  Brijesh D.
+      context: mysql,h2
+      changes:
+        - sqlFile:
+            path: ../../scripts/audit-type-data.sql
+            relativeToChangelogFile: true

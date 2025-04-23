@@ -129,6 +129,8 @@ volumes:
       items:
       - key: application.yaml
         path: application.yaml
+      - key: ehcache.xml
+        path: ehcache.xml
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
  - name: vol-sandbox

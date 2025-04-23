@@ -78,5 +78,5 @@ CREATE TABLE `SANDBOXDB`.`KAFKA_TOPICS`(
 );
 select * from KAFKA_TOPICS;
 select count(*) from KAFKA_TOPICS;
-INSERT INTO KAFKA_TOPICS(`MAIN_TOPIC`,`PARTITIONS`,`ERROR_TOPIC`) VALUES ('transaction-avro-topic', 4, 'error_transaction-avro-topic')
+INSERT INTO KAFKA_TOPICS(`MAIN_TOPIC`,`PARTITIONS`,`ERROR_TOPIC`) VALUES ('transaction-avro-topic', 4, 'error_transaction-avro-topic');
 UPDATE KAFKA_TOPICS SET PARTITIONS=4 where MAIN_TOPIC='transaction-avro-topic';

@@ -10,7 +10,8 @@ package org.examples.sb.exceptions;
  * @author brijeshdhaker
  */
 public enum ExceptionType {
-    SERVICE_EXCEPTION(100, "Service Exception");
+    SERVICE_EXCEPTION(100, "Service Exception"),
+    REPOSITORY_EXCEPTION(200, "Service Exception");
 
     private final Integer typeCode;
 

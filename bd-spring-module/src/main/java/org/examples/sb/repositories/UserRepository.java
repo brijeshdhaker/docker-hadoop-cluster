@@ -5,8 +5,11 @@
  */
 package org.examples.sb.repositories;
 
+import jakarta.persistence.EntityManager;
 import org.examples.sb.repositories.entities.UserEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.stereotype.Repository;
 
 
@@ -15,6 +18,6 @@ import org.springframework.stereotype.Repository;
  * @author brijeshdhaker
  */
 @Repository("userRepository")
-public interface UserRepository extends CrudRepository<UserEntity, Long> {
-    
+public interface UserRepository extends ListCrudRepository<UserEntity, Long> {
+
 }

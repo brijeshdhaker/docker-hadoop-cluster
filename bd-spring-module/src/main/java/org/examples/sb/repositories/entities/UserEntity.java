@@ -47,22 +47,22 @@ public class UserEntity implements Serializable {
     )
     private Set<RoleEntity> roles = new HashSet<>();;
     
-    @Convert(converter = LocalDateTimeConverter.class)
+    @Convert(converter = SystemDateTimeConverter.class)
     @Column(name = "ADD_TS")
-    protected LocalDateTime addTs;
+    protected Long addTs;
 
-    @Convert(converter = LocalDateTimeConverter.class)
+    @Convert(converter = SystemDateTimeConverter.class)
     @Column(name = "UPD_TS")
-    protected LocalDateTime updTs;
+    protected Long updTs;
 
     @PrePersist
     public void prePersist() {
-        addTs = updTs = LocalDateTime.now();
+        addTs = updTs = System.currentTimeMillis();
     }
 
     @PreUpdate
     public void preUpdate() {
-        updTs = LocalDateTime.now();
+        updTs = System.currentTimeMillis();
     }
     
     public Long getId() {
@@ -109,19 +109,19 @@ public class UserEntity implements Serializable {
         this.roles.add(role);
     }
 
-    public LocalDateTime getAddTs() {
+    public Long getAddTs() {
         return addTs;
     }
 
-    public void setAddTs(LocalDateTime addTs) {
+    public void setAddTs(Long addTs) {
         this.addTs = addTs;
     }
 
-    public LocalDateTime getUpdTs() {
+    public Long getUpdTs() {
         return updTs;
     }
 
-    public void setUpdTs(LocalDateTime updTs) {
+    public void setUpdTs(Long updTs) {
         this.updTs = updTs;
     }
     
