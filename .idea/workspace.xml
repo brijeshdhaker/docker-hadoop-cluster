@@ -4,24 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-22 Add Ehcache Support to sb-springboot-module.">
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/tables/audit-type-table.sql" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-22 Add Auditlog Support to sb-springboot-module.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/AuditlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/AuditlogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/helpers/ModelHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/helpers/ModelHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/Auditlog.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/Auditlog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/AuditlogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/AuditlogRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/entities/AuditlogEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/entities/AuditlogEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/services/AuditlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/services/AuditlogService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/script-changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/script-changelog.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/table-changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/table-changelog.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0002/script-changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0002/script-changelog.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0002/table-changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0002/table-changelog.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/tables/table_products.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/tables/table_products.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts-master.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts-master.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/audit-type-data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/audit-type-data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/auditlog-data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/auditlog-data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/tables-master.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/tables-master.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -342,7 +327,7 @@
       <recent name="com.org.example.flink.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.bd-spring-module_default">
+  <component name="RunManager" selected="Docker.mysqlserver">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -644,14 +629,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00156" summary="2025-03-31 Add Sandbox Root CA &amp; Certs.">
-      <option name="closed" value="true" />
-      <created>1743442135827</created>
-      <option name="number" value="00156" />
-      <option name="presentableId" value="LOCAL-00156" />
-      <option name="project" value="LOCAL" />
-      <updated>1743442135829</updated>
     </task>
     <task id="LOCAL-00157" summary="2025-03-31 Add Sandbox Root CA &amp; Certs.">
       <option name="closed" value="true" />
@@ -1037,7 +1014,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745295380395</updated>
     </task>
-    <option name="localTasksCounter" value="205" />
+    <task id="LOCAL-00205" summary="2025-04-22 Add Auditlog Support to sb-springboot-module.">
+      <option name="closed" value="true" />
+      <created>1745380320707</created>
+      <option name="number" value="00205" />
+      <option name="presentableId" value="LOCAL-00205" />
+      <option name="project" value="LOCAL" />
+      <updated>1745380320708</updated>
+    </task>
+    <option name="localTasksCounter" value="206" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -1098,7 +1083,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2025-03-12 add helm chart for springboot application." />
     <MESSAGE value="2025-03-13 add helm chart for springboot application." />
     <MESSAGE value="2025-03-17 add helm chart for springboot application." />
     <MESSAGE value="2025-03-18 add helm chart for springboot application." />
@@ -1123,7 +1107,8 @@
     <MESSAGE value="2025-04-20 Add OpenAPI Swagger Support to sb-springboot-module." />
     <MESSAGE value="2025-04-20 Add Ehcache Support to sb-springboot-module." />
     <MESSAGE value="2025-04-22 Add Ehcache Support to sb-springboot-module." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-04-22 Add Ehcache Support to sb-springboot-module." />
+    <MESSAGE value="2025-04-22 Add Auditlog Support to sb-springboot-module." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-04-22 Add Auditlog Support to sb-springboot-module." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

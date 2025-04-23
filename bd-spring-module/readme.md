@@ -156,6 +156,12 @@ helm get manifest bd-spring-module -n sb-apps > ./bd-spring-module/helm-chart/ma
 ```
 #
 ```shell
+helm list --all-namespaces
+helm ls --namespace=sb-apps
+
+helm status bd-spring-module --namespace=sb-apps
+helm history bd-spring-module --namespace=sb-apps
+
 helm uninstall bd-spring-module --namespace=sb-apps
 helm delete bd-spring-module --namespace=sb-apps
 ```
