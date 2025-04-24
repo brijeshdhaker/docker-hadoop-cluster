@@ -19,6 +19,14 @@
 
 mvn spring-boot:run
 
+### H2 Database 
+```shell
+http://localhost:9080/api/v1/h2-console
+```
+### Actuator
+```shell
+http://localhost:9080/api/v1/actuator
+```
 ### Swagger
 ```shell
 http://localhost:9080/api/v1/api-docs

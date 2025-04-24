@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-22 Add Auditlog Support to sb-springboot-module.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/setup-dirs.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/scripts/setup-dirs.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +122,7 @@
     "Application.TransactionCountExample.executor": "Run",
     "Application.TransactionPipeline.executor": "Run",
     "Application.bd-spring-module.executor": "Debug",
-    "Application.bd-spring-module_default.executor": "Debug",
+    "Application.bd-spring-module_default.executor": "Run",
     "Application.bd-spring-module_docker.executor": "Run",
     "Application.local-taxi-ride-counts.executor": "Debug",
     "Application.local-taxi-rides-and-fares.executor": "Debug",
@@ -327,7 +329,7 @@
       <recent name="com.org.example.flink.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.mysqlserver">
+  <component name="RunManager" selected="Application.bd-spring-module_default">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -629,14 +631,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00157" summary="2025-03-31 Add Sandbox Root CA &amp; Certs.">
-      <option name="closed" value="true" />
-      <created>1743442163091</created>
-      <option name="number" value="00157" />
-      <option name="presentableId" value="LOCAL-00157" />
-      <option name="project" value="LOCAL" />
-      <updated>1743442163091</updated>
     </task>
     <task id="LOCAL-00158" summary="2025-04-01 Add Sandbox Root CA &amp; Certs.">
       <option name="closed" value="true" />
@@ -1022,7 +1016,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745380320708</updated>
     </task>
-    <option name="localTasksCounter" value="206" />
+    <task id="LOCAL-00206" summary="2025-04-22 Add Auditlog Support to sb-springboot-module.">
+      <option name="closed" value="true" />
+      <created>1745381629027</created>
+      <option name="number" value="00206" />
+      <option name="presentableId" value="LOCAL-00206" />
+      <option name="project" value="LOCAL" />
+      <updated>1745381629027</updated>
+    </task>
+    <option name="localTasksCounter" value="207" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">

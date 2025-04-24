@@ -11,7 +11,7 @@ sudo mkdir -p /apps/{.m2,.ivy2}
 sudo mkdir -p /apps/{python,var/logs,security/ssl}
 
 # Storage
-sudo mkdir -p /apps/sandbox/{defaultfs,minio,mysql/data}
+sudo mkdir -p /apps/sandbox/{defaultfs,minio,mysql/data,h2}
 
 # Kafka
 sudo mkdir -p /apps/sandbox/{zookeeper/data,zookeeper/log,kafka/data,kafka/log,schema-registry/data,schema-registry/log}
