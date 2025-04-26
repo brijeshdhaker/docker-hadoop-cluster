@@ -6,6 +6,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.examples.sb.models.avro.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import java.util.concurrent.CompletableFuture;
 
 @Slf4j
 @Service
+@Profile("k8s")
 public class KafkaProducer {
 
     @Autowired

@@ -6,9 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequestMapping("/api/v1")
 public class HomeController {
 
-    @RequestMapping(path ="/home", produces = MediaType.TEXT_HTML_VALUE)
+    @RequestMapping(path ="/api/v1/home", produces = MediaType.TEXT_HTML_VALUE)
     public @ResponseBody String home() {
         return "Hello, World";
     }

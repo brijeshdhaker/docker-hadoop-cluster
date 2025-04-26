@@ -23,7 +23,7 @@ import java.util.UUID;
  */
 @CrossOrigin(origins = {"*localhost*"})
 @RestController
-@RequestMapping(path ="/auditlog", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path ="/api/v1/auditlog", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AuditlogController {
 
     private static final Logger log = LoggerFactory.getLogger(AuditlogController.class);

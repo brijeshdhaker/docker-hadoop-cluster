@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.examples.sb.models.Transaction;
+import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.annotation.DltHandler;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
@@ -22,6 +23,7 @@ import java.util.concurrent.Executors;
 @Slf4j
 @Service
 @RequiredArgsConstructor
+@Profile("k8s")
 public class KafkaConsumer {
 
     ExecutorService executorService = Executors.newFixedThreadPool(16);

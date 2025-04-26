@@ -6,7 +6,7 @@
 -Dspring.config.location=./bd-spring-module/helm-chart/configs/application-local.yaml
 
 # default
--Dspring.config.location=bd-spring-module/helm-chart/configs/application.yaml
+mvn spring-boot:run -Dmaven.multiModuleProjectDirectory=./bd-spring-module -Dspring.config.location=./bd-spring-module/helm-chart/configs/application.yaml
 
 # local
 -Dspring.profiles.active=local -Dspring.config.location=bd-spring-module/helm-chart/configs/application-local.yaml
@@ -18,19 +18,20 @@
 -Dspring.profiles.active=k8s -Dspring.config.location=bd-spring-module/helm-chart/configs/application-k8s.yaml
 
 mvn spring-boot:run
+mvn spring-boot:run -Dspring-boot.run.profiles=azuread
 
 ### H2 Database 
 ```shell
-http://localhost:9080/api/v1/h2-console
+http://localhost:9080/h2-console
 ```
 ### Actuator
 ```shell
-http://localhost:9080/api/v1/actuator
+http://localhost:9080/actuator
 ```
 ### Swagger
 ```shell
-http://localhost:9080/api/v1/api-docs
-http://localhost:9080/api/v1/swagger-ui/index.html
+http://localhost:9080/api-docs
+http://localhost:9080/swagger-ui/index.html
 ```
 
 ```shell

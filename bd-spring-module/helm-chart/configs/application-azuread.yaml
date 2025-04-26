@@ -1,10 +1,10 @@
 #
 server:
   port: 9080
-  servlet:
-    context-path: /api/v1
   http2:
     enabled: true
+#  servlet:
+#    context-path: /api/v1
 #
 springdoc:
   api-docs:
@@ -12,9 +12,9 @@ springdoc:
 #
 spring:
   #
-#  config:
-#    activate:
-#      on-profile: default
+  config:
+    activate:
+      on-profile: azuread
   #
   application:
     name: bd-spring-module
@@ -22,10 +22,24 @@ spring:
   #
   security:
     oauth2:
+      resourceserver:
+        id: api://7f1cf4d7-ca24-47c2-bf17-61a8a796679e
+        jwk:
+          jwk-set-uri: https://login.microsoftonline.com/common/discovery/v2.0/keys
+        jwt:
+          issuer-uri: https://login.microsoftonline.com/da5ac8f7-13d6-46e7-815d-012b01123148/oauth2/v2.0/token
+          authorization:
+            group-to-authorities:
+              "bcd99935-c922-4289-8bee-174369c157a5": SANDBOX_DEFAULT
+              "3c19f1ea-f9e3-47d0-9d4a-aa97c29d0867": SANDBOX_ADMIN
+              "ebddcd37-20a5-4272-ae8d-7e90be4a7e46": SANDBOX_OPERATE
+              "6489408e-121a-4d49-bb45-dbe074435179": SANDBOX_RW
+              "29132c43-c263-4015-9f42-9c848d9b2f3b": SANDBOX_RO
       client:
         provider:
           azure:
             issuer-uri: https://login.microsoftonline.com/da5ac8f7-13d6-46e7-815d-012b01123148/v2.0
+            user-name-attribute: name
         registration:
           azure-dev:
             provider: azure
@@ -41,7 +55,7 @@ spring:
     username: sa
     password: sa
     driverClassName: org.h2.Driver
-#    url: jdbc:h2:mem:SANDBOXDB;DB_CLOSE_DELAY=-1;AUTO_SERVER=TRUE;mode=mysql;
+    #    url: jdbc:h2:mem:SANDBOXDB;DB_CLOSE_DELAY=-1;AUTO_SERVER=TRUE;mode=mysql;
     url: jdbc:h2:file:/apps/sandbox/h2/SANDBOXDB;mode=mysql;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;
   #
   h2:
@@ -52,11 +66,11 @@ spring:
         trace: false
         web-allow-others: true
   #
-#  sql:
-#    init:
-#      mode: always
-#      schema-locations: classpath*:schema.sql
-#      data-locations: classpath*:data.sql
+  #  sql:
+  #    init:
+  #      mode: always
+  #      schema-locations: classpath*:schema.sql
+  #      data-locations: classpath*:data.sql
   #
   jpa:
     # database-platform: org.hibernate.dialect.MySQLDialect
@@ -130,5 +144,6 @@ management:
 logging:
   level:
     root: info
+    org.springframework.security: debug
     org.springframework.kafka: error
-    org.springframework.transaction: trace
+    org.springframework.transaction: error

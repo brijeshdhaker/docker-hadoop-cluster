@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequestMapping("/api/v1")
 public class HealthController {
 
     @RequestMapping(path ="/health", produces = MediaType.TEXT_HTML_VALUE)
