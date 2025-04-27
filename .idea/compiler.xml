@@ -7,10 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="bd-k8s-module" />
         <module name="bd-flink-module" />
-        <module name="bd-spring-module" />
         <module name="bd-spark-module" />
+        <module name="sb-utilities-module" />
+        <module name="bd-k8s-module" />
+        <module name="sb-backend-module" />
+        <module name="sb-frontend-module" />
         <module name="bd-data-generator" />
       </profile>
     </annotationProcessing>
@@ -31,8 +33,11 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="bd-data-generator" options="" />
       <module name="bd-spark-module" options="" />
-      <module name="bd-spring-module" options="-parameters" />
+      <module name="bd-spring-module" options="" />
       <module name="docker-hadoop-cluster" options="" />
+      <module name="sb-backend-module" options="-parameters" />
+      <module name="sb-frontend-module" options="-parameters" />
+      <module name="sb-utilities-module" options="-parameters" />
     </option>
   </component>
 </project>
