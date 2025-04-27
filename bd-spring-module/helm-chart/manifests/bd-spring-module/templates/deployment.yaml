@@ -1,0 +1,96 @@
+---
+# Source: bd-spring-module/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-app
+  labels:
+    date: 2025-04-20
+    helm.sh/chart: bd-spring-module-0.1.0
+    app.kubernetes.io/name: springboot-app
+    app.kubernetes.io/instance: bd-spring-module
+    app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: springboot-app
+      app.kubernetes.io/instance: bd-spring-module
+  template:
+    metadata:
+      labels:
+        date: 2025-04-20
+        helm.sh/chart: bd-spring-module-0.1.0
+        app.kubernetes.io/name: springboot-app
+        app.kubernetes.io/instance: bd-spring-module
+        app.kubernetes.io/version: "1.0.0"
+        app.kubernetes.io/managed-by: Helm
+        env: dev
+        type: spring-boot
+    spec:
+      imagePullSecrets:
+        - name: docker-reg-cred
+      serviceAccountName: sa-devops
+      containers:
+        - name: bd-spring-module
+          image: "brijeshdhaker/bd-spring-module:1.0.0"
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 9080
+              protocol: TCP
+          env:
+            - name: ENVIRONMENT
+              valueFrom:
+                configMapKeyRef:
+                  name: springboot-app-configmap
+                  key: environment
+          livenessProbe:
+            httpGet:
+              path: /api/v1/health
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /api/v1/health
+              port: http
+          resources:
+            limits:
+              cpu: 1500m
+              memory: 512Mi
+            requests:
+              cpu: 500m
+              memory: 128Mi
+          volumeMounts:
+            - mountPath: /mnt/apps
+              name: vol-sandbox
+              readOnly: true
+            - mountPath: /mnt/secrets
+              name: vol-secret
+              readOnly: true
+            - mountPath: /mnt/configs
+              name: vol-configmap
+              readOnly: true
+      volumes:
+        - hostPath:
+            path: /apps
+            type: Directory
+          name: vol-sandbox
+        - name: vol-secret
+          secret:
+            optional: false
+            secretName: springboot-app-secret
+        - configMap:
+            items:
+            - key: application.yaml
+              path: application.yaml
+            name: springboot-app-configmap
+            optional: false
+          name: vol-configmap
+---
+# Source: bd-spring-module/templates/deployment.yaml
+#
+# kubectl run springboot-app -n sb-apps --image=brijeshdhaker/bd-spring-module:1.0.0 --port=9080 --dry-run=client -o yaml > app-springboot.yaml
+# kubectl create deployment springboot-app -n sb-apps --image=brijeshdhaker/bd-spring-module:1.0.0 --dry-run=client -o yaml > app-springboot.yaml
+# kubectl expose pod springboot-app -n sb-apps --port=80 --target-port=9080 --type=NodePort --dry-run=client -o yaml > app-svc.yaml
+#

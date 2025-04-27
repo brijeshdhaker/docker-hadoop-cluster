@@ -1,0 +1,84 @@
+---
+# Source: bd-spring-module/templates/services-external.yaml
+#
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-external-svc
+  labels:
+    date: 2025-04-06
+spec:
+  type: ExternalName
+  externalName: mysqlserver.sandbox.net
+
+#
+---
+# Source: bd-spring-module/templates/services-external.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+spec:
+  ports:
+    - name: mysql
+      protocol: TCP
+      port: 3306
+      targetPort: 3306
+
+#
+---
+# Source: bd-spring-module/templates/services-external.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-docker
+  labels:
+    date: 2025-04-06
+spec:
+  ports:
+    - name: mysql
+      port: 3306
+      targetPort: 3306
+      protocol: TCP
+
+#
+---
+# Source: bd-spring-module/templates/services-external.yaml
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  # by convention, use the name of the Service
+  name: mysql-service-es
+  # as a prefix for the name of the EndpointSlice
+  labels:
+    # You should set the "kubernetes.io/service-name" label.
+    # Set its value to match the name of the Service
+    kubernetes.io/service-name: mysql-service
+addressType: IPv4
+ports:
+  - name: mysql
+    protocol: TCP
+    port: 3306
+endpoints:
+  - addresses:
+      - "192.168.9.128"
+#  - addresses:
+#      - "192.168.30.128"
+#  - addresses:
+#      - "10.0.1.1"
+
+#
+---
+# Source: bd-spring-module/templates/services-external.yaml
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: mysql-docker
+  labels:
+    date: 2025-04-06
+subsets:
+  - addresses:
+      - ip: 10.0.1.1
+    ports:
+      - name: mysql
+        port: 3306

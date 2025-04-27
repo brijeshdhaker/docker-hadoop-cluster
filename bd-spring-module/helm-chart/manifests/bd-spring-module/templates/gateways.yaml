@@ -1,0 +1,60 @@
+---
+# Source: bd-spring-module/templates/gateways.yaml
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: http-gateway
+spec:
+  # The selector matches the ingress gateway pod labels.
+  # If you installed Istio using Helm following the standard documentation, this would be "istio=ingress"
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "sbhttp.sandbox.net"
+---
+# Source: bd-spring-module/templates/gateways.yaml
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: https-gateway
+spec:
+  # The selector matches the ingress gateway pod labels.
+  # If you installed Istio using Helm following the standard documentation, this would be "istio=ingress"
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: ingress-tls-credential
+      hosts:
+        - "sbhttps.sandbox.net"
+---
+# Source: bd-spring-module/templates/gateways.yaml
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: mtls-gateway
+spec:
+  # The selector matches the ingress gateway pod labels.
+  # If you installed Istio using Helm following the standard documentation, this would be "istio=ingress"
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      tls:
+        mode: MUTUAL
+        credentialName: ingress-mtls-credential
+      hosts:
+        - "sbmtls.sandbox.net"

@@ -5,23 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.4</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>org.examples.sb</groupId>
+        <artifactId>bd-spring-module</artifactId>
+        <version>1.0.0</version>
     </parent>
 
     <groupId>org.examples.sb</groupId>
-    <artifactId>bd-spring-module</artifactId>
-    <name>bd-spring-module</name>
+    <artifactId>sb-utilities-module</artifactId>
     <version>1.0.0</version>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>sb-utilities-module</module>
-        <module>sb-frontend-module</module>
-        <module>sb-backend-module</module>
-    </modules>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -33,12 +24,32 @@
     </properties>
 
     <build>
+        <finalName>sb-utilities-module</finalName>
         <plugins>
+            <plugin>
+                <groupId>org.apache.avro</groupId>
+                <artifactId>avro-maven-plugin</artifactId>
+                <version>1.11.3</version>
+                <executions>
+                    <execution>
+                        <id>avro</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>schema</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirectory>${project.basedir}/src/main/resources/avro/</sourceDirectory>
+                            <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+                            <stringType>String</stringType>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
     <dependencies>
-
+        <!--
         <dependency>
             <groupId>io.confluent</groupId>
             <artifactId>kafka-avro-serializer</artifactId>
@@ -55,6 +66,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+            <version>1.18.36</version>
         </dependency>
 
         <dependency>
@@ -69,9 +81,8 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
-
+        -->
     </dependencies>
-
 
     <repositories>
         <repository>
@@ -87,5 +98,4 @@
             <url>https://packages.confluent.io/maven/</url>
         </pluginRepository>
     </pluginRepositories>
-
 </project>
