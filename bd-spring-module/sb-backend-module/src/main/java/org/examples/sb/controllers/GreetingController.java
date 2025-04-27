@@ -20,17 +20,16 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("/api/v1")
 @Slf4j
 public class GreetingController {
 
-    @PreAuthorize("hasAuthority('SCOPE_CallHiApiRole')")
+    @PreAuthorize("hasAuthority('SCOPE_APIReadRole')")
     @GetMapping("/hi")
     public String hi() {
         return "Hi";
     }
 
-    @PreAuthorize("hasAuthority('SCOPE_CallHelloApiRole')")
+    @PreAuthorize("hasAuthority('SCOPE_APIWriteRole')")
     @GetMapping("/hello")
     public String hello(@RequestParam(name = "name", required = true)
                         final String name) {

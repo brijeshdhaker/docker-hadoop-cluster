@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = {"*localhost*"})
 @RestController
-@RequestMapping(path ="/api/v1", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 @Profile("k8s")
 public class KafkaController {
 

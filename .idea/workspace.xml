@@ -4,125 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-26 Add Spring OAuth Security Support to sb-springboot-module.">
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/SBFrontendModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/security/Auth0Parser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/security/GroupsClaimMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/security/JwtAuthorizationProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/security/NamedOidcUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/security/SandboxAuthoritiesExtractor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/security/SandboxPrincipalExtractor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/security/SpringWebSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/application.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/templates/logout.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/bd_spring_module_default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/bd_spring_module_docker.xml" beforeDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-27 Split sb-springboot-module to multimodule .">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/values.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/SandboxSbApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/SBBackendApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/ApplicationProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/config/ApplicationProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/config/KafkaConsumerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaCustomProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/config/KafkaCustomProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/config/KafkaProducerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/OpenAPIConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/config/OpenAPIConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/cache/CacheConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/config/cache/CacheConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/config/cache/CacheEventLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/config/cache/CacheEventLogger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/AuditlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/AuditlogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/GreetingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/GreetingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/HealthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/HealthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/KafkaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/KafkaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/converters/DateTimeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/converters/DateTimeUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/converters/RandomItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/converters/RandomItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/enums/AuditType.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/enums/AuditType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/enums/DBEnumeration.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/enums/DBEnumeration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/enums/InventoryStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/enums/InventoryStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/enums/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/enums/MessageType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/enums/PaymentStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/enums/PaymentStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/enums/RoleTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/enums/RoleTypes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/enums/UserStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/enums/UserStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/exceptions/AppException.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/exceptions/AppException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/exceptions/ExceptionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/exceptions/ExceptionType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/exceptions/NotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/exceptions/NotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/helpers/DateTimeHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/helpers/DateTimeHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/helpers/ModelHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/helpers/ModelHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/kafka/KafkaConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/kafka/KafkaConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/kafka/KafkaProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/kafka/KafkaProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/kafka/TocipManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/kafka/TocipManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/AppRestResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/models/AppRestResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/Auditlog.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/models/Auditlog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/MessageDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/models/MessageDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/models/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/models/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/avro/AuditlogDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/avro/AuditlogDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/avro/OrchestratorRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/avro/OrchestratorRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/avro/OrchestratorResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/avro/OrchestratorResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/avro/OrderStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/avro/OrderStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/avro/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/avro/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/models/avro/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/avro/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/mvc/ModelViewControllerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/mvc/ModelViewControllerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/AuditlogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/repositories/AuditlogRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/repositories/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/entities/AuditlogEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/repositories/entities/AuditlogEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/entities/LocalDateTimeConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/repositories/entities/LocalDateTimeConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/entities/RoleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/repositories/entities/RoleEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/entities/SystemDateTimeConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/repositories/entities/SystemDateTimeConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/repositories/entities/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/repositories/entities/UserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/security/Auth0Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/Auth0Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/security/GroupsClaimMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/GroupsClaimMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/security/JwtAuthorizationProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/JwtAuthorizationProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/security/NamedOidcUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/NamedOidcUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/security/SandboxAuthoritiesExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/SandboxAuthoritiesExtractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/security/SandboxPrincipalExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/SandboxPrincipalExtractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/security/SpringSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/SpringSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/services/AuditlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/services/AuditlogService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/services/TransactionsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/services/TransactionsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application-azuread.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/application-azuread.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/avro/audit.avsc" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/resources/avro/audit.avsc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/avro/order.avsc" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/resources/avro/order.avsc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/avro/transaction.avsc" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/resources/avro/transaction.avsc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/avro/user.avsc" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/resources/avro/user.avsc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/ehcache.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/ehcache.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/base.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/base.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/proc-changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/changelogs/JIRA-0001/proc-changelog.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/script-changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/changelogs/JIRA-0001/script-changelog.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0001/table-changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/changelogs/JIRA-0001/table-changelog.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0002/script-changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/changelogs/JIRA-0002/script-changelog.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/changelogs/JIRA-0002/table-changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/changelogs/JIRA-0002/table-changelog.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/master.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/master.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/procs/P_GET_PRODUCT_DETAILS.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/objects/procs/P_GET_PRODUCT_DETAILS.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/procs/P_GET_USER_DETAILS.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/objects/procs/P_GET_USER_DETAILS.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/tables/audit-type-table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/objects/tables/audit-type-table.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/tables/table_products.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/objects/tables/table_products.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/objects/tables/transaction-table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/objects/tables/transaction-table.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/proc-master.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/proc-master.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts-master.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/scripts-master.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/audit-type-data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/scripts/audit-type-data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/auditlog-data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/scripts/auditlog-data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/products-data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/scripts/products-data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/role-data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/scripts/role-data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/user-data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/scripts/user-data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/scripts/user-role-data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/scripts/user-role-data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/liquibase/tables-master.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/liquibase/tables-master.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/templates/hello.html" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/templates/hello.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/test/java/org/examples/sb/SandboxSbApplicationTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/src/test/resources/application-test.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-azuread.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-azuread.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-docker.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-docker.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-k8s.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-k8s.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-local.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/AuditlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/AuditlogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/GreetingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/GreetingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/HealthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/HealthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/KafkaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/KafkaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/SpringSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/SpringSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -352,8 +248,10 @@
     "Maven.bd-spring-module [clean].executor": "Run",
     "Maven.bd-spring-module [package].executor": "Run",
     "Maven.bd-spring-module [test].executor": "Run",
+    "Maven.sb-backend-module [clean].executor": "Run",
     "Maven.sb-backend-module [package].executor": "Run",
     "Maven.sb-frontend-module [package].executor": "Run",
+    "Maven.sb-utilities-module [install].executor": "Run",
     "Maven.sb-utilities-module [package].executor": "Run",
     "Python tests.Python tests for test_Commons.test_print_separator.executor": "Run",
     "Python tests.Python tests for test_Commons.test_split_csv.executor": "Run",
@@ -399,6 +297,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SHELLCHECK.PATH": "/home/brijeshdhaker/.local/share/JetBrains/IdeaIC2024.3/Shell Script/shellcheck",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
@@ -720,46 +619,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00160" summary="2025-04-01 Add Sandbox Root CA &amp; Certs.">
-      <option name="closed" value="true" />
-      <created>1743522950992</created>
-      <option name="number" value="00160" />
-      <option name="presentableId" value="LOCAL-00160" />
-      <option name="project" value="LOCAL" />
-      <updated>1743522950993</updated>
-    </task>
-    <task id="LOCAL-00161" summary="2025-04-01 Add Sandbox Root CA &amp; Certs.">
-      <option name="closed" value="true" />
-      <created>1743523107958</created>
-      <option name="number" value="00161" />
-      <option name="presentableId" value="LOCAL-00161" />
-      <option name="project" value="LOCAL" />
-      <updated>1743523107959</updated>
-    </task>
-    <task id="LOCAL-00162" summary="2025-04-01 Add Sandbox Root CA &amp; Certs.">
-      <option name="closed" value="true" />
-      <created>1743568570742</created>
-      <option name="number" value="00162" />
-      <option name="presentableId" value="LOCAL-00162" />
-      <option name="project" value="LOCAL" />
-      <updated>1743568570742</updated>
-    </task>
-    <task id="LOCAL-00163" summary="2025-04-03 Add Sandbox Root CA &amp; Certs.">
-      <option name="closed" value="true" />
-      <created>1743632641168</created>
-      <option name="number" value="00163" />
-      <option name="presentableId" value="LOCAL-00163" />
-      <option name="project" value="LOCAL" />
-      <updated>1743632641169</updated>
-    </task>
-    <task id="LOCAL-00164" summary="2025-04-03 Add Sandbox Root CA &amp; Certs.">
-      <option name="closed" value="true" />
-      <created>1743636221056</created>
-      <option name="number" value="00164" />
-      <option name="presentableId" value="LOCAL-00164" />
-      <option name="project" value="LOCAL" />
-      <updated>1743636221056</updated>
     </task>
     <task id="LOCAL-00165" summary="2025-04-03 Add Sandbox Root CA &amp; Certs.">
       <option name="closed" value="true" />
@@ -1113,7 +972,47 @@
       <option name="project" value="LOCAL" />
       <updated>1745670946559</updated>
     </task>
-    <option name="localTasksCounter" value="209" />
+    <task id="LOCAL-00209" summary="2025-04-27 Split sb-springboot-module to multimodule .">
+      <option name="closed" value="true" />
+      <created>1745731369014</created>
+      <option name="number" value="00209" />
+      <option name="presentableId" value="LOCAL-00209" />
+      <option name="project" value="LOCAL" />
+      <updated>1745731369019</updated>
+    </task>
+    <task id="LOCAL-00210" summary="2025-04-27 Split sb-springboot-module to multimodule .">
+      <option name="closed" value="true" />
+      <created>1745731384619</created>
+      <option name="number" value="00210" />
+      <option name="presentableId" value="LOCAL-00210" />
+      <option name="project" value="LOCAL" />
+      <updated>1745731384619</updated>
+    </task>
+    <task id="LOCAL-00211" summary="2025-04-27 Split sb-springboot-module to multimodule .">
+      <option name="closed" value="true" />
+      <created>1745731410945</created>
+      <option name="number" value="00211" />
+      <option name="presentableId" value="LOCAL-00211" />
+      <option name="project" value="LOCAL" />
+      <updated>1745731410945</updated>
+    </task>
+    <task id="LOCAL-00212" summary="2025-04-27 Split sb-springboot-module to multimodule .">
+      <option name="closed" value="true" />
+      <created>1745731427289</created>
+      <option name="number" value="00212" />
+      <option name="presentableId" value="LOCAL-00212" />
+      <option name="project" value="LOCAL" />
+      <updated>1745731427289</updated>
+    </task>
+    <task id="LOCAL-00213" summary="2025-04-27 Split sb-springboot-module to multimodule .">
+      <option name="closed" value="true" />
+      <created>1745731436842</created>
+      <option name="number" value="00213" />
+      <option name="presentableId" value="LOCAL-00213" />
+      <option name="project" value="LOCAL" />
+      <updated>1745731436842</updated>
+    </task>
+    <option name="localTasksCounter" value="214" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -1174,7 +1073,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2025-03-18 add helm chart for springboot application." />
     <MESSAGE value="2025-03-28 add helm chart for springboot application." />
     <MESSAGE value="2025-03-29 add helm chart for springboot application." />
     <MESSAGE value="2025-03-31 Add Sandbox Root CA &amp; Certs." />
@@ -1199,7 +1097,8 @@
     <MESSAGE value="2025-04-22 Add Auditlog Support to sb-springboot-module." />
     <MESSAGE value="2025-04-24 Add Auditlog Support to sb-springboot-module." />
     <MESSAGE value="2025-04-26 Add Spring OAuth Security Support to sb-springboot-module." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-04-26 Add Spring OAuth Security Support to sb-springboot-module." />
+    <MESSAGE value="2025-04-27 Split sb-springboot-module to multimodule ." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-04-27 Split sb-springboot-module to multimodule ." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1233,11 +1132,6 @@
           <url>file://$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/AuditlogController.java</url>
           <line>85</line>
           <option name="timeStamp" value="64" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-oauth2-resource-server/6.4.4/spring-security-oauth2-resource-server-6.4.4.jar!/org/springframework/security/oauth2/server/resource/authentication/JwtAuthenticationConverter.class</url>
-          <line>19</line>
-          <option name="timeStamp" value="92" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/springframework/boot/Main.java</url>
