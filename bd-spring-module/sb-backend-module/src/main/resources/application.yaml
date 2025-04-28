@@ -28,6 +28,7 @@ spring:
           jwk-set-uri: https://login.microsoftonline.com/common/discovery/v2.0/keys
         jwt:
           issuer-uri: https://login.microsoftonline.com/da5ac8f7-13d6-46e7-815d-012b01123148/oauth2/v2.0/token
+          audiences: api://7f1cf4d7-ca24-47c2-bf17-61a8a796679e
           authorization:
             group-to-authorities:
               "bcd99935-c922-4289-8bee-174369c157a5": SANDBOX_DEFAULT

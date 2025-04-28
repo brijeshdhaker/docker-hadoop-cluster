@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
 
-@RestController
 @Slf4j
+@RestController
 public class GreetingController {
 
     @PreAuthorize("hasAuthority('SCOPE_APIReadRole')")
@@ -43,7 +43,8 @@ public class GreetingController {
         SecurityContext securityContext = SecurityContextHolder.getContext();
         log.info("whoami: securityContext.getAuthentication-> {}", securityContext.getAuthentication());
         securityContext.getAuthentication().getAuthorities().stream().forEach(
-                (val) -> log.info("Authority->{}", val.getAuthority()));
+                (val) -> log.info("Authority -> {}", val.getAuthority())
+        );
 
         // Get token value from the header
         String authHeaderValue = request.getHeader("Authorization");

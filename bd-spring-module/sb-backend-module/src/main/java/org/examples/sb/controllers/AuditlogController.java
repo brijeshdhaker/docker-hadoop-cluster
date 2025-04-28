@@ -1,6 +1,7 @@
 package org.examples.sb.controllers;
 
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.examples.sb.exceptions.AppException;
 import org.examples.sb.helpers.ModelHelper;
 import org.examples.sb.models.Auditlog;
@@ -21,12 +22,11 @@ import java.util.UUID;
  *
  * @author brijeshdhaker
  */
-@CrossOrigin(origins = {"*localhost*"})
+@Slf4j
 @RestController
+@CrossOrigin(origins = {"*localhost*"})
 @RequestMapping(path ="/auditlog", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AuditlogController {
-
-    private static final Logger log = LoggerFactory.getLogger(AuditlogController.class);
 
     @Autowired
     AuditlogService auditlogService;

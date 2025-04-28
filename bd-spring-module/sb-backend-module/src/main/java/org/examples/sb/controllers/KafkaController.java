@@ -11,13 +11,14 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = {"*localhost*"})
-@RestController
-@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-@Profile("k8s")
-public class KafkaController {
+import lombok.extern.slf4j.Slf4j;
 
-    private static final Logger log = LoggerFactory.getLogger(KafkaController.class);
+@Slf4j
+@Profile("k8s")
+@RestController
+@CrossOrigin(origins = {"*localhost*"})
+@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+public class KafkaController {
 
     @Autowired
     TransactionsService transactionsService;
@@ -26,6 +27,7 @@ public class KafkaController {
     public ResponseEntity<String> transactions(@PathVariable Integer count) {
         ResponseEntity<String> response = null;
         try {
+            log.debug("Record Counts : {}", count);
             transactionsService.generateAndSendTransaction(count);
             if(true){
                 response = new ResponseEntity<>("Success",HttpStatus.OK);

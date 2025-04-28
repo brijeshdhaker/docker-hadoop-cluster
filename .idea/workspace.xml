@@ -5,19 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-27 Split sb-springboot-module to multimodule .">
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/default_bd_backend_module.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/bd_backend_module.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/azuread_bd_backend_module.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/bd_frontend_module.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/default_bd_frontend_module.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-azuread.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-azuread.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-docker.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-docker.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-k8s.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-k8s.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application-local.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/azure-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/azure-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/AuditlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/AuditlogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/GreetingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/GreetingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/HealthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/HealthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/KafkaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/KafkaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/SpringSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/SpringSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/application-azuread.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -138,6 +139,7 @@
     "Application.bd-spring-module_azuread.executor": "Debug",
     "Application.bd-spring-module_default.executor": "Run",
     "Application.bd-spring-module_docker.executor": "Run",
+    "Application.default-bd-backend-module.executor": "Run",
     "Application.local-taxi-ride-counts.executor": "Debug",
     "Application.local-taxi-rides-and-fares.executor": "Debug",
     "Application.local-transaction-pipeline.executor": "Debug",
@@ -246,6 +248,7 @@
     "Maven.bd-spark-module [package].executor": "Run",
     "Maven.bd-spring-module [clean,package].executor": "Run",
     "Maven.bd-spring-module [clean].executor": "Run",
+    "Maven.bd-spring-module [install].executor": "Run",
     "Maven.bd-spring-module [package].executor": "Run",
     "Maven.bd-spring-module [test].executor": "Run",
     "Maven.sb-backend-module [clean].executor": "Run",
@@ -349,7 +352,7 @@
       <recent name="com.org.example.flink.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.bd-backend-module">
+  <component name="RunManager" selected="Application.default-bd-backend-module">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -586,8 +589,9 @@
       <item itemvalue="Application.local-taxi-driver-hourly-max-tips" />
       <item itemvalue="Application.local-transaction-pipeline" />
       <item itemvalue="Application.local-taxi-rides-and-fares" />
-      <item itemvalue="Application.bd-frontend-module" />
-      <item itemvalue="Application.bd-backend-module" />
+      <item itemvalue="Application.default-bd-frontend-module" />
+      <item itemvalue="Application.azuread-bd-backend-module" />
+      <item itemvalue="Application.default-bd-backend-module" />
       <item itemvalue="Application.TestDesignPatterns" />
       <item itemvalue="Application.TestFactory" />
       <item itemvalue="Docker.cassandra-cluster" />
@@ -603,8 +607,6 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.bd-backend-module" />
-        <item itemvalue="Application.bd-frontend-module" />
         <item itemvalue="Application.TestFactory" />
         <item itemvalue="Application.TestDesignPatterns" />
         <item itemvalue="Python tests.Python tests for test_User.test_to_obj" />
@@ -619,14 +621,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00165" summary="2025-04-03 Add Sandbox Root CA &amp; Certs.">
-      <option name="closed" value="true" />
-      <created>1743636239323</created>
-      <option name="number" value="00165" />
-      <option name="presentableId" value="LOCAL-00165" />
-      <option name="project" value="LOCAL" />
-      <updated>1743636239324</updated>
     </task>
     <task id="LOCAL-00166" summary="2025-04-03 Add Sandbox Root CA &amp; Certs.">
       <option name="closed" value="true" />
@@ -1012,7 +1006,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745731436842</updated>
     </task>
-    <option name="localTasksCounter" value="214" />
+    <task id="LOCAL-00214" summary="2025-04-27 Split sb-springboot-module to multimodule .">
+      <option name="closed" value="true" />
+      <created>1745735759149</created>
+      <option name="number" value="00214" />
+      <option name="presentableId" value="LOCAL-00214" />
+      <option name="project" value="LOCAL" />
+      <updated>1745735759153</updated>
+    </task>
+    <option name="localTasksCounter" value="215" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">

@@ -13,12 +13,6 @@
     <artifactId>sb-backend-module</artifactId>
     <groupId>org.examples.sb</groupId>
 
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
     <build>
         <finalName>sb-backend-module</finalName>
         <plugins>
@@ -41,7 +35,7 @@
                             <outputDirectory>${project.basedir}/jars/</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${basedir}/target</directory>
+                                    <directory>${project.basedir}/target</directory>
                                     <includes>
                                         <include>${project.build.finalName}.${project.packaging}</include>
                                     </includes>
