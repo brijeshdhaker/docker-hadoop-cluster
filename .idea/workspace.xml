@@ -4,22 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-27 Split sb-springboot-module to multimodule .">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/default_bd_backend_module.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/bd_backend_module.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/azuread_bd_backend_module.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/bd_frontend_module.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/default_bd_frontend_module.xml" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-04-20 Split sb-spring-boot-module to multimodule .">
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/utils/JwtUtilities.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/utils/YamlLoaderInitializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/azure-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/azure-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/helm-chart/configs/application.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/SBBackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/SBBackendApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/AuditlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/AuditlogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/GreetingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/GreetingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/HealthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/HealthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/KafkaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/KafkaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/application-azuread.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/GroupsClaimMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/NamedOidcUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/SandboxAuthoritiesExtractor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/SandboxPrincipalExtractor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/SpringSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/SpringSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers/web/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/security/JwtAuthorizationProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/security/JwtAuthorizationProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/security/SpringWebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/security/SpringWebSecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +139,8 @@
     "Application.bd-spring-module_azuread.executor": "Debug",
     "Application.bd-spring-module_default.executor": "Run",
     "Application.bd-spring-module_docker.executor": "Run",
-    "Application.default-bd-backend-module.executor": "Run",
+    "Application.default-bd-backend-module.executor": "Debug",
+    "Application.default-bd-frontend-module.executor": "Debug",
     "Application.local-taxi-ride-counts.executor": "Debug",
     "Application.local-taxi-rides-and-fares.executor": "Debug",
     "Application.local-transaction-pipeline.executor": "Debug",
@@ -253,6 +254,7 @@
     "Maven.bd-spring-module [test].executor": "Run",
     "Maven.sb-backend-module [clean].executor": "Run",
     "Maven.sb-backend-module [package].executor": "Run",
+    "Maven.sb-frontend-module [clean].executor": "Run",
     "Maven.sb-frontend-module [package].executor": "Run",
     "Maven.sb-utilities-module [install].executor": "Run",
     "Maven.sb-utilities-module [package].executor": "Run",
@@ -621,14 +623,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00166" summary="2025-04-03 Add Sandbox Root CA &amp; Certs.">
-      <option name="closed" value="true" />
-      <created>1743651252310</created>
-      <option name="number" value="00166" />
-      <option name="presentableId" value="LOCAL-00166" />
-      <option name="project" value="LOCAL" />
-      <updated>1743651252319</updated>
     </task>
     <task id="LOCAL-00167" summary="2025-04-03 Add Sandbox Root CA &amp; Certs.">
       <option name="closed" value="true" />
@@ -1014,7 +1008,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745735759153</updated>
     </task>
-    <option name="localTasksCounter" value="215" />
+    <task id="LOCAL-00215" summary="2025-04-20 Split sb-spring-boot-module to multimodule .">
+      <option name="closed" value="true" />
+      <created>1745813489230</created>
+      <option name="number" value="00215" />
+      <option name="presentableId" value="LOCAL-00215" />
+      <option name="project" value="LOCAL" />
+      <updated>1745813489234</updated>
+    </task>
+    <option name="localTasksCounter" value="216" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -1075,7 +1077,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2025-03-28 add helm chart for springboot application." />
     <MESSAGE value="2025-03-29 add helm chart for springboot application." />
     <MESSAGE value="2025-03-31 Add Sandbox Root CA &amp; Certs." />
     <MESSAGE value="2025-04-01 Add Sandbox Root CA &amp; Certs." />
@@ -1100,7 +1101,8 @@
     <MESSAGE value="2025-04-24 Add Auditlog Support to sb-springboot-module." />
     <MESSAGE value="2025-04-26 Add Spring OAuth Security Support to sb-springboot-module." />
     <MESSAGE value="2025-04-27 Split sb-springboot-module to multimodule ." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-04-27 Split sb-springboot-module to multimodule ." />
+    <MESSAGE value="2025-04-20 Split sb-spring-boot-module to multimodule ." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-04-20 Split sb-spring-boot-module to multimodule ." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1139,11 +1141,6 @@
           <url>file://$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/springframework/boot/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="95" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/security/SpringWebSecurityConfig.java</url>
-          <line>79</line>
-          <option name="timeStamp" value="101" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-oauth2-client/6.4.4/spring-security-oauth2-client-6.4.4.jar!/org/springframework/security/oauth2/client/oidc/authentication/OidcAuthorizationCodeAuthenticationProvider.class</url>

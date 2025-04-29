@@ -12,7 +12,7 @@ public class JwtAuthorizationProperties {
     // Claim that has the group list
     private String groupsClaim = "groups";
 
-    private String authoritiesPrefix = "ROLE_";
+    private String authoritiesPrefix = "SCOPE_";
 
     // map groupIds to a list of authorities.
     private Map<String, List<String>> groupToAuthorities = new HashMap<>();

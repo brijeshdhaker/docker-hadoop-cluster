@@ -15,6 +15,7 @@ import org.examples.sb.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
@@ -24,6 +25,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @PreAuthorize("hasAuthority('SANDBOX_APIWriteRole')")
     @PostMapping
     public ResponseEntity<?> createUser(@RequestBody User user) {
         ResponseEntity<AppRestResponse> httpResponse;
@@ -56,6 +58,7 @@ public class UserController {
         return userService.getUserById(id);
     }
 
+    @PreAuthorize("hasAuthority('SANDBOX_APIWriteRole')")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
         ResponseEntity<?> httpResponse;

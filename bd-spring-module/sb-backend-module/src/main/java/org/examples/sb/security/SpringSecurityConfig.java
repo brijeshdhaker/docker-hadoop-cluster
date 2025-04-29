@@ -13,14 +13,18 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.oauth2.core.AbstractOAuth2Token;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.client.RestTemplate;
 
 @EnableWebSecurity
 @Configuration
@@ -30,10 +34,6 @@ public class SpringSecurityConfig {
 
     @Value("${spring.security.oauth2.resourceserver.jwk.jwk-set-uri}")
     protected String jwkSetUri;
-
-    @Value("${spring.security.oauth2.resourceserver.id}")
-    protected String apiUri;
-
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
@@ -64,35 +64,36 @@ public class SpringSecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        UserDetails user = User.builder()
-                .username("admin")
-                .password("password")
-                .roles("ACTUATOR")
-                .build();
-        return new InMemoryUserDetailsManager(user);
-    }
-
-    @Bean
-    @Profile("oauth2-extractors-sandbox")
-    public PrincipalExtractor sandboxPrincipalExtractor() {
-        return new SandboxPrincipalExtractor();
-    }
-
-    @Bean
-    @Profile("oauth2-extractors-sandbox")
-    public AuthoritiesExtractor sandboxAuthoritiesExtractor() {
-        return new SandboxAuthoritiesExtractor();
-    }
-
     private JwtAuthenticationConverter jwtAuthenticationConverter() {
         JwtGrantedAuthoritiesConverter grantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
         grantedAuthoritiesConverter.setAuthoritiesClaimName("roles");
+        grantedAuthoritiesConverter.setAuthorityPrefix("SANDBOX_");
         //grantedAuthoritiesConverter.setAuthoritiesClaimName("authorities");
 
         JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
         jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(grantedAuthoritiesConverter);
         return jwtAuthenticationConverter;
     }
+
+    /*
+    @Bean
+    RestTemplate rest() {
+        RestTemplate rest = new RestTemplate();
+        rest.getInterceptors().add((request, body, execution) -> {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (authentication == null) {
+                return execution.execute(request, body);
+            }
+
+            if (!(authentication.getCredentials() instanceof AbstractOAuth2Token)) {
+                return execution.execute(request, body);
+            }
+
+            AbstractOAuth2Token token = (AbstractOAuth2Token) authentication.getCredentials();
+            request.getHeaders().setBearerAuth(token.getTokenValue());
+            return execution.execute(request, body);
+        });
+        return rest;
+    }
+    */
 }

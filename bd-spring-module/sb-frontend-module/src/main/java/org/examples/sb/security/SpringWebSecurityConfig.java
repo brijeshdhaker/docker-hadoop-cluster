@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.core.GrantedAuthority;
@@ -37,11 +38,14 @@ public class SpringWebSecurityConfig {
                 .anyRequest().authenticated())
         .headers((headers) -> headers
                 .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
-        .formLogin((form) -> form.loginPage("/login").permitAll())
+        .formLogin((form) -> form
+                .loginPage("/login").permitAll())
         // .oauth2Login(Customizer.withDefaults())
         .oauth2Login((oauth2) -> oauth2
-                        .userInfoEndpoint(userInfoEndpointConfig -> userInfoEndpointConfig.oidcUserService(customOidcUserService(jwtprops))))
-        .logout(LogoutConfigurer::permitAll);
+                .userInfoEndpoint(userInfoEndpointConfig -> userInfoEndpointConfig
+                        .oidcUserService(customOidcUserService(jwtprops))))
+        .logout(LogoutConfigurer::permitAll)
+        .csrf(AbstractHttpConfigurer::disable);
 
         // @formatter:on
         return http.build();
