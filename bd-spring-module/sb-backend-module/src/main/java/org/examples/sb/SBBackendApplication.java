@@ -8,11 +8,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.kafka.annotation.EnableKafka;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 
 import java.util.Random;
 
 @Slf4j
 @EnableKafka
+@EnableMethodSecurity
 @SpringBootApplication
 public class SBBackendApplication {
 

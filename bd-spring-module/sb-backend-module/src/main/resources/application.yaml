@@ -23,11 +23,11 @@ spring:
   security:
     oauth2:
       resourceserver:
-        id: api://7f1cf4d7-ca24-47c2-bf17-61a8a796679e
+        id: sb-backend-module
         jwk:
           jwk-set-uri: https://login.microsoftonline.com/common/discovery/v2.0/keys
         jwt:
-          issuer-uri: https://login.microsoftonline.com/da5ac8f7-13d6-46e7-815d-012b01123148/oauth2/v2.0
+          issuer-uri: https://sts.windows.net/da5ac8f7-13d6-46e7-815d-012b01123148/
           audiences: api://7f1cf4d7-ca24-47c2-bf17-61a8a796679e
   #
   datasource:
