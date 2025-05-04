@@ -1,0 +1,20 @@
+<!-- src/main/resources/templates/index.html -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<title>Sandbox Web Application</title>
+<body>
+<div sec:authorize="!isAuthenticated()">
+    <a th:href="@{/login}">Log In</a>
+</div>
+<div sec:authorize="isAuthenticated()">
+    <p>You are logged in!</p>
+    <img th:src="${profile.get('picture')}" th:attr="alt=${profile.get('name')}"/>
+    <h2 th:text="${profile.get('given_name')}"></h2>
+    <h2 th:text="${profile.get('family_name')}"></h2>
+    <h2 th:text="${profile.get('name')}"></h2>
+    <p th:text="${profile.get('email')}"></p>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" value="Log out" name="logout" title=""/>
+    </form>
+</div>
+</body>
+</html>

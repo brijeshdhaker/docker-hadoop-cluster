@@ -4,6 +4,15 @@ server:
   http2:
     enabled: true
 #
+baeldung:
+  jwt:
+    mapping:
+      authorities-prefix: "MY_SCOPE_"
+      principal-claim-name: preferred_username
+      scopes:
+        profile: profile.read
+        "profile_read": profile.read
+#
 spring:
   #
   application:
@@ -29,12 +38,14 @@ spring:
         provider:
           azure:
             issuer-uri: https://login.microsoftonline.com/da5ac8f7-13d6-46e7-815d-012b01123148/v2.0
+            authorization-uri: https://login.microsoftonline.com/da5ac8f7-13d6-46e7-815d-012b01123148/v2.0/authorize
+            jwk-set-uri: https://login.microsoftonline.com/common/discovery/v2.0/keys
             user-name-attribute: name
         registration:
           azure-dev:
             provider: azure
-            client-id: 7f1cf4d7-ca24-47c2-bf17-61a8a796679e
-            client-secret: sVy8Q~jmLAlU3N9viydtvGBBGb5WL2XpBtCq_aqU
+            client-id: c5c062d8-4fe2-4319-9897-a59e57ed7ad2
+            client-secret: fXo8Q~qQgHPaJtyViMQMM_PQxSsRAN6uvqPTtdia
             scope:
               - openid
               - email
@@ -43,3 +54,4 @@ spring:
 logging:
   level:
     root: info
+    org.springframework.web: ERROR

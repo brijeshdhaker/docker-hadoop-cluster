@@ -1,4 +1,4 @@
-package org.examples.sb.mvc;
+package org.examples.sb.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -8,11 +8,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class ModelViewControllerConfig implements WebMvcConfigurer {
 
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/home").setViewName("home");
-        registry.addViewController("/").setViewName("home");
-        registry.addViewController("/hello").setViewName("hello");
-        registry.addViewController("/logout").setViewName("logout");
-        //registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/profile").setViewName("profile");
+        registry.addViewController("/").setViewName("index");
     }
 
 }

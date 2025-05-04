@@ -28,6 +28,7 @@ public class LoginController {
 
     @Autowired
     private ClientRegistrationRepository clientRegistrationRepository;
+
     @Autowired
     private OAuth2AuthorizedClientService authorizedClientService;
 

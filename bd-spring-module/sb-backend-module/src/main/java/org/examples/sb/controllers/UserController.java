@@ -17,6 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+
 @Slf4j
 @RestController
 @RequestMapping("/users")
@@ -41,6 +43,7 @@ public class UserController {
         return httpResponse;
     }
 
+
     @Tag(name = "get", description = "Retrieve All Users")
     @Operation(summary = "Update an employee",
             description = "Update an existing employee. The response is updated Employee object with id, first name, and last name.")
@@ -48,11 +51,13 @@ public class UserController {
             @ApiResponse(responseCode = "200", content = {@Content(mediaType = "application/json",schema = @Schema(implementation = UserEntity.class))}),
             @ApiResponse(responseCode = "404", description = "Employee not found",content = @Content)
     })
+    @PreAuthorize("hasAuthority('SANDBOX_APIReadRole')")
     @GetMapping
     public Iterable<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
+    @PreAuthorize("hasAuthority('SANDBOX_APIReadRole')")
     @GetMapping("/{id}")
     public User getUserById(@PathVariable Long id) {
         return userService.getUserById(id);

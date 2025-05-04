@@ -28,7 +28,7 @@ import org.springframework.web.client.RestTemplate;
 
 @EnableWebSecurity
 @Configuration
-@EnableConfigurationProperties(JwtAuthorizationProperties.class)
+@EnableConfigurationProperties()
 public class SpringSecurityConfig {
 
 
@@ -68,14 +68,12 @@ public class SpringSecurityConfig {
         JwtGrantedAuthoritiesConverter grantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
         grantedAuthoritiesConverter.setAuthoritiesClaimName("roles");
         grantedAuthoritiesConverter.setAuthorityPrefix("SANDBOX_");
-        //grantedAuthoritiesConverter.setAuthoritiesClaimName("authorities");
 
         JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
         jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(grantedAuthoritiesConverter);
         return jwtAuthenticationConverter;
     }
 
-    /*
     @Bean
     RestTemplate rest() {
         RestTemplate rest = new RestTemplate();
@@ -95,5 +93,4 @@ public class SpringSecurityConfig {
         });
         return rest;
     }
-    */
 }
