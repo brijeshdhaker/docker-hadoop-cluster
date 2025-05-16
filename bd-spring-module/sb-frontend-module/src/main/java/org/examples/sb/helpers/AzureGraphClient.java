@@ -12,7 +12,7 @@ public class AzureGraphClient {
     public static void main(String args[]) throws Exception{
         // Load properties file and set properties used throughout the sample
         Properties properties = new Properties();
-        properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("application.properties"));
+        properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("graph.properties"));
 
         String authority = properties.getProperty("AUTHORITY");
         String scope = properties.getProperty("SCOPE");
@@ -48,7 +48,6 @@ public class AzureGraphClient {
         }
 
         final GraphServiceClient graphClient = new GraphServiceClient(credential, scopes);
-
 
         //
         GroupCollectionResponse result = graphClient.groups().get();

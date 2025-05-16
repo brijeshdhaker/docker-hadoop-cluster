@@ -74,6 +74,12 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+
         <!-- Spring Boot web dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -124,9 +130,31 @@
             <artifactId>spring-security-oauth2-jose</artifactId>
         </dependency>
 
+        <!-- Azure Active Directory Spring Boot Starter  -->
+        <!--
         <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-oauth2-resource-server</artifactId>
+            <groupId>com.azure.spring</groupId>
+            <artifactId>spring-cloud-azure-starter-active-directory</artifactId>
+            <version>5.22.0</version>
+        </dependency>
+        -->
+        <!-- MS Graph SDK -->
+        <dependency>
+            <groupId>com.microsoft.graph</groupId>
+            <artifactId>microsoft-graph</artifactId>
+            <version>6.36.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.microsoft.azure</groupId>
+            <artifactId>msal4j</artifactId>
+            <version>1.17.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-identity</artifactId>
+            <version>1.11.0</version>
         </dependency>
 
         <dependency>

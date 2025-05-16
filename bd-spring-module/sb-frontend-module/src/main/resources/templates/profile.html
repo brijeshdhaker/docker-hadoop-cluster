@@ -16,7 +16,17 @@
                         <p class="lead text-muted" th:text="${profile.get('email')}"/>
                     </div>
                 </div>
-
+                <div class="row">
+                    <table>
+                    <thead>
+                    <tr><th>Index</th><th>Role</th></tr>
+                    </thead>
+                    <tr class="row" th:each="scope, stat : ${scopes}">
+                        <td th:text="${stat.index}"></td>
+                        <td th:text="${scope}"></td>
+                    </tr>
+                    </table>
+                </div>
                 <div class="row">
                     <pre class="rounded"><code class="json" id="profileJsonEl" th:text="${profileJson}"></code></pre>
                 </div>

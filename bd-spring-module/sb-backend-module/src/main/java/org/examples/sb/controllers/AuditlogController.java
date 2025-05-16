@@ -32,7 +32,7 @@ public class AuditlogController {
     @Autowired
     AuditlogService auditlogService;
 
-    @PreAuthorize("hasAuthority('SANDBOX_APIReadRole')")
+    @PreAuthorize("hasAuthority('SCOPE_Audit.Read')")
     @GetMapping("/list")
     public ResponseEntity<List<Auditlog>> getAllAuditlogs(@RequestParam(required = false) String title) {
         ResponseEntity<List<Auditlog>> response = null;
@@ -50,7 +50,7 @@ public class AuditlogController {
         return  response;
     }
 
-    @PreAuthorize("hasAuthority('SANDBOX_APIReadRole')")
+    @PreAuthorize("hasAuthority('SCOPE_Audit.Read')")
     @GetMapping("/{logid}")
     public ResponseEntity<Auditlog> getAuditlog(@PathVariable long logid) {
         ResponseEntity<Auditlog> response = null;
@@ -68,7 +68,7 @@ public class AuditlogController {
         return  response;
     }
 
-    @PreAuthorize("hasAuthority('SANDBOX_APIWriteRole')")
+    @PreAuthorize("hasAuthority('SCOPE_Audit.Write')")
     @PostMapping
     public ResponseEntity<Auditlog> saveAuditlog(@RequestBody Auditlog r_dto) {
         ResponseEntity<Auditlog> httpResponse;
@@ -82,7 +82,7 @@ public class AuditlogController {
         return httpResponse;
     }
 
-    @PreAuthorize("hasAuthority('SANDBOX_APIWriteRole')")
+    @PreAuthorize("hasAuthority('SCOPE_Audit.Write')")
     @PutMapping("/{logid}")
     public ResponseEntity<Auditlog> updateAuditlog(@PathVariable long logid, @RequestBody Auditlog s_auditlog) {
         ResponseEntity<Auditlog> httpResponse;
@@ -104,7 +104,7 @@ public class AuditlogController {
         return  httpResponse;
     }
 
-    @PreAuthorize("hasAuthority('SANDBOX_APIWriteRole')")
+    @PreAuthorize("hasAuthority('SCOPE_Audit.Write')")
     @DeleteMapping("/{logid}")
     public ResponseEntity<?> delete(@PathVariable long logid) {
         try {

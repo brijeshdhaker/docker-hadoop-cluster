@@ -1,10 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div class="card">
+  <h5 class="card-header bg-primary">Azure OIDC Token Details</h5>
+  <!--
+  <div class="card-body">
+    <p class="card-text">The Subset of some important claims in your ID Token.<br>
+      <th:block th:each="claim : ${claims}">
+        <strong><th:block th:text="${claim.key}"></th:block>: </strong>
+        <th:block th:text="${claim.value}"></th:block>
+        <br>
+      </th:block>
+      <br>
+      <a class="btn btn-success" href="/sign_in_status">Sign-in Status</a>
+      <a class="btn btn-success" href="/call_graph">Call Graph</a>
+    </p>
+  </div>
+  -->
+  <div class="card-body">
+    <h5><strong>User Claims</strong></h5>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Key</th>
+        <th scope="col">Value</th></tr>
+      </thead>
+      <tr th:each="claim, stat : ${claims}">
+        <th scope="row" th:text="${stat.index}"></th>
+        <td th:text="${claim.key}"></td>
+        <td th:text="${claim.value}"></td>
+      </tr>
+    </table>
+  </div>
+  <div class="card-body">
+    <h5><strong>Token Authorities/Grants</strong></h5>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"></th>
+        <th scope="col">Scope</th></tr>
+      </thead>
+      <tr th:each="scope, stat : ${scopes}">
+        <th scope="row" th:text="${stat.index}"></th>
+        <td></td>
+        <td th:text="${scope}"></td>
+      </tr>
+    </table>
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+      <a class="btn btn-success" href="/sign_in_status">Sign-in Status</a>
+      <a class="btn btn-success" href="/call_graph">Call Graph</a>
+    </p>
+  </div>
+</div>

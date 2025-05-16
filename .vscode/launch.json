@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SBBackendApplication<sb-backend-module>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "org.examples.sb.SBBackendApplication",
+            "projectName": "sb-backend-module",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

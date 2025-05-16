@@ -1,4 +1,4 @@
-package org.examples.sb.controllers.web;
+package org.examples.sb.controllers;
 
 import java.util.HashMap;
 import java.util.Map;

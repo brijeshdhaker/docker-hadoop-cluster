@@ -11,7 +11,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collections;
 import java.util.Properties;
-import java.util.concurrent.CompletableFuture;
 
 class ClientCredentialGrant {
 
@@ -22,7 +21,7 @@ class ClientCredentialGrant {
 
         // Load properties file and set properties used throughout the sample
         Properties properties = new Properties();
-        properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("application.properties"));
+        properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("graph.properties"));
 
         String authority = properties.getProperty("AUTHORITY");
         String clientId = properties.getProperty("CLIENT_ID");

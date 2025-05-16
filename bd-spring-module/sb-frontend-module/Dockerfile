@@ -1,6 +1,8 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+#
+# docker build --no-cache -t brijeshdhaker/sb-frontend-module:1.0.0 -f ./bd-spring-module/sb-frontend-module/Dockerfile ./bd-spring-module/sb-frontend-module
+# docker push brijeshdhaker/sb-frontend-module:1.0.0
+#
+
 FROM openjdk:17-jdk-slim
 MAINTAINER Brijesh K Dhaker <brijeshdhaker@gmail.com>
 LABEL PROJECT_NAME=bd-spring-module \

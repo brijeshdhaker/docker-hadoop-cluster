@@ -1,6 +1,5 @@
 package org.examples.sb.security;
 
-import org.examples.sb.service.AccountService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.AuthoritiesExtractor;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.PrincipalExtractor;
@@ -13,25 +12,20 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
-import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserRequest;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
+import org.springframework.security.oauth2.core.AbstractOAuth2Token;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.security.authentication.AbstractAuthenticationToken;
-import org.springframework.security.oauth2.jwt.Jwt;
-import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
-import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
-import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
-import org.springframework.util.StringUtils;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -45,42 +39,6 @@ public class SpringWebSecurityConfig {
 
     @Value("${spring.security.oauth2.client.registration.azure-dev.client-id}")
     private String clientId;
-
-    private final JwtMappingProperties mappingProps;
-    private final AccountService accountService;
-
-    public SpringWebSecurityConfig(JwtMappingProperties mappingProps, AccountService accountService) {
-        this.mappingProps = mappingProps;
-        this.accountService = accountService;
-    }
-
-    @Bean
-    public String jwtGrantedAuthoritiesPrefix() {
-        return mappingProps.getAuthoritiesPrefix();
-    }
-
-    @Bean
-    public Converter<Jwt, Collection<GrantedAuthority>> jwtGrantedAuthoritiesConverter() {
-        MappingJwtGrantedAuthoritiesConverter converter = new MappingJwtGrantedAuthoritiesConverter(mappingProps.getScopes());
-
-        if (StringUtils.hasText(mappingProps.getAuthoritiesPrefix())) {
-            converter.setAuthorityPrefix(mappingProps.getAuthoritiesPrefix()
-                    .trim());
-        }
-
-        if (StringUtils.hasText(mappingProps.getAuthoritiesClaimName())) {
-            converter.setAuthoritiesClaimName(mappingProps.getAuthoritiesClaimName());
-        }
-        return converter;
-    }
-
-    @Bean
-    public Converter<Jwt,AbstractAuthenticationToken> customJwtAuthenticationConverter(AccountService accountService) {
-        return new CustomJwtAuthenticationConverter(
-                accountService,
-                jwtGrantedAuthoritiesConverter(),
-                mappingProps.getPrincipalClaimName());
-    }
 
     /*
     @Bean
@@ -109,13 +67,13 @@ public class SpringWebSecurityConfig {
         .oauth2Login((oauth2) -> oauth2
                 .userInfoEndpoint(userInfoEndpointConfig -> userInfoEndpointConfig
                         .oidcUserService(customOidcUserService(jwtprops))))
-        //.logout(Customizer.withDefaults())
-        .logout(logout -> logout
+        .logout(Customizer.withDefaults())
+        /*.logout(logout -> logout
                 .deleteCookies()
                 .logoutSuccessUrl("http://localhost:8080/")
                 .invalidateHttpSession(true)
                 //.addLogoutHandler(logoutHandler())
-        )
+        )*/
         .csrf(AbstractHttpConfigurer::disable);
 
         // @formatter:on
@@ -179,5 +137,23 @@ public class SpringWebSecurityConfig {
         return new SandboxAuthoritiesExtractor();
     }
 
+    @Bean
+    RestTemplate rest() {
+        RestTemplate rest = new RestTemplate();
+        rest.getInterceptors().add((request, body, execution) -> {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (authentication == null) {
+                return execution.execute(request, body);
+            }
 
+            if (!(authentication.getCredentials() instanceof AbstractOAuth2Token)) {
+                return execution.execute(request, body);
+            }
+
+            AbstractOAuth2Token token = (AbstractOAuth2Token) authentication.getCredentials();
+            request.getHeaders().setBearerAuth(token.getTokenValue());
+            return execution.execute(request, body);
+        });
+        return rest;
+    }
 }

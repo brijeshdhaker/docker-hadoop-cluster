@@ -6,6 +6,7 @@ import org.springframework.security.oauth2.core.oidc.OidcUserInfo;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 
 import java.util.Collection;
+import java.util.Map;
 
 public class NamedOidcUser extends DefaultOidcUser {
     private static final long serialVersionUID = 1L;
@@ -20,5 +21,15 @@ public class NamedOidcUser extends DefaultOidcUser {
     @Override
     public String getName() {
         return this.userName;
+    }
+
+    public String getUserID() {
+        Map<String, Object> claims = getClaims();
+        return (String) claims.get("oid");
+    }
+
+    public String getClaimValue(String key) {
+        Map<String, Object> claims = getClaims();
+        return (String) claims.get(key );
     }
 }

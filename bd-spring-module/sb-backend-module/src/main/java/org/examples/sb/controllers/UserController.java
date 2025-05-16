@@ -28,7 +28,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('SANDBOX_APIWriteRole')")
+    @PreAuthorize("hasAuthority('SCOPE_User.Write')")
     public ResponseEntity<?> createUser(@RequestBody User user) {
         ResponseEntity<AppRestResponse> httpResponse;
         AppRestResponse appResponse;
@@ -52,19 +52,19 @@ public class UserController {
             @ApiResponse(responseCode = "404", description = "Employee not found",content = @Content)
     })
     @GetMapping
-    @PreAuthorize("hasAuthority('SANDBOX_APIReadRole')")
+    @PreAuthorize("hasAuthority('SCOPE_User.Read')")
     public Iterable<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('SANDBOX_APIReadRole')")
+    @PreAuthorize("hasAuthority('SCOPE_User.Write')")
     public User getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('SANDBOX_APIWriteRole')")
+    @PreAuthorize("hasAuthority('SCOPE_User.Write')")
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
         ResponseEntity<?> httpResponse;
         AppRestResponse appResponse;

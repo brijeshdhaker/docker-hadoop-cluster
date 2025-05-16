@@ -1,10 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div class="card">
+  <h5 class="card-header bg-primary">
+    Call Graph User/Group Endpoints
+  </h5>
+  <!--
+  <div class="card-body">
+    <h5><strong>User Details</strong></h5>
+    <p class="card-text">
+      <th:block th:each="detail : ${details}">
+        <strong><th:block th:text="${detail.key}"></th:block>: </strong>
+        <th:block th:text="${detail.value}"></th:block>
+        <br>
+      </th:block>
+    </p>
+  </div>
+  -->
+  <div class="card-body">
+    <h5><strong>User Detail</strong></h5>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Property</th>
+        <th scope="col">Value</th></tr>
+      </thead>
+      <tr th:each="detail, stat : ${details}">
+        <th scope="row" th:text="${stat.index}"></th>
+        <td th:text="${detail.key}"></td>
+        <td th:text="${detail.value}"></td>
+      </tr>
+    </table>
+  </div>
+  <div class="card-body"><br></div>
+  <div class="card-body">
+    <h5><strong>User Groups</strong></h5>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Index</th>
+        <th scope="col">Group ID</th>
+        <th scope="col">Group Name</th></tr>
+      </thead>
+      <tr th:each="group, stat : ${groups}">
+        <th scope="row" th:text="${stat.index}"></th>
+        <td th:text="${group.key}"></td>
+        <td th:text="${group.value}"></td>
+      </tr>
+    </table>
+      <!--
+      <th:block th:each="group : ${groups}">
+        <strong><th:block th:text="${group.key}"></th:block>: </strong>
+        <th:block th:text="${group.value}"></th:block>
+        <br>
+      </th:block>
+      -->
+  </div>
+  <div class="card-body"><br></div>
+  <div class="card-body">
+    <p class="card-text">
+      <br>
+      <a class="btn btn-success" href="/sign_in_status">Sign-in Status</a>
+      <a class="btn btn-success" href="/token_details">Token Details</a>
+    </p>
+  </div>
+</div>

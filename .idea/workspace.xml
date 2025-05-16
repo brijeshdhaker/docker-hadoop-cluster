@@ -5,10 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-05-04 Enable Spring Security.">
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers/SampleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/service/AzureGraphService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/service/ExternalRestService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/utils/Utilities.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/static/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/templates/content/401.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/templates/content/500.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/templates/content/graph.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/templates/content/result.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/templates/content/status.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/templates/content/survey.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/templates/content/token.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/templates/footer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/templates/navbar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/SBBackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/SBBackendApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/AuditlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/AuditlogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/EntitlementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/EntitlementController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/SpringSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/SpringSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers/web/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers/web/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers/web/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers/web/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/security/AccountToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/security/CustomJwtAuthenticationConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/security/NamedOidcUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/security/NamedOidcUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/security/SpringWebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/security/SpringWebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/templates/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/helpers/AzureGraphClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/helpers/AzureGraphClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java/org/examples/sb/helpers/ClientCredentialGrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/helpers/ClientCredentialGrant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/graph.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +164,7 @@
     &quot;Application.bd-spring-module_azuread.executor&quot;: &quot;Debug&quot;,
     &quot;Application.bd-spring-module_default.executor&quot;: &quot;Run&quot;,
     &quot;Application.bd-spring-module_docker.executor&quot;: &quot;Run&quot;,
-    &quot;Application.default-bd-backend-module.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.default-bd-backend-module.executor&quot;: &quot;Run&quot;,
     &quot;Application.default-bd-frontend-module.executor&quot;: &quot;Debug&quot;,
     &quot;Application.local-taxi-ride-counts.executor&quot;: &quot;Debug&quot;,
     &quot;Application.local-taxi-rides-and-fares.executor&quot;: &quot;Debug&quot;,
@@ -249,6 +282,7 @@
     &quot;Maven.sb-backend-module [package].executor&quot;: &quot;Run&quot;,
     &quot;Maven.sb-frontend-module [clean].executor&quot;: &quot;Run&quot;,
     &quot;Maven.sb-frontend-module [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.sb-utilities-module [clean].executor&quot;: &quot;Run&quot;,
     &quot;Maven.sb-utilities-module [install].executor&quot;: &quot;Run&quot;,
     &quot;Maven.sb-utilities-module [package].executor&quot;: &quot;Run&quot;,
     &quot;Python tests.Python tests for test_Commons.test_print_separator.executor&quot;: &quot;Run&quot;,
@@ -304,10 +338,10 @@
     &quot;git-widget-placeholder&quot;: &quot;develop/docker-hadoop334-cluster&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/src/main/java/org/examples/sb&quot;,
+    &quot;last_directory_selection&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/sb-frontend-module/src/main/resources&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/sb-backend-module/src/main/java/org/springframework/boot/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.31724137&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
@@ -323,11 +357,11 @@
       <recent name="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources" />
       <recent name="$PROJECT_DIR$/readme-resources" />
       <recent name="$PROJECT_DIR$/readme-resources/images" />
       <recent name="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/config" />
       <recent name="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers/web" />
-      <recent name="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources/public/images" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -377,7 +411,7 @@
     </configuration>
     <configuration name="AzureGraphClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.examples.sb.helpers.AzureGraphClient" />
-      <module name="sb-utilities-module" />
+      <module name="sb-frontend-module" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.examples.sb.helpers.*" />
@@ -390,7 +424,7 @@
     </configuration>
     <configuration name="ClientCredentialGrant" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.examples.sb.helpers.ClientCredentialGrant" />
-      <module name="sb-utilities-module" />
+      <module name="sb-frontend-module" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.examples.sb.helpers.*" />
@@ -630,11 +664,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AzureGraphClient" />
-        <item itemvalue="Application.ClientCredentialGrant" />
         <item itemvalue="Python tests.Python tests for test_User.test_to_obj" />
         <item itemvalue="Application.TestFactory" />
         <item itemvalue="Application.TestDesignPatterns" />
+        <item itemvalue="Application.ClientCredentialGrant" />
+        <item itemvalue="Application.AzureGraphClient" />
       </list>
     </recent_temporary>
   </component>
@@ -646,14 +680,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00170" summary="2025-04-06 Update Configuration &amp; Resources.">
-      <option name="closed" value="true" />
-      <created>1743914073532</created>
-      <option name="number" value="00170" />
-      <option name="presentableId" value="LOCAL-00170" />
-      <option name="project" value="LOCAL" />
-      <updated>1743914073533</updated>
     </task>
     <task id="LOCAL-00171" summary="2025-04-06 Update Configuration &amp; Resources.">
       <option name="closed" value="true" />
@@ -1039,7 +1065,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746330344932</updated>
     </task>
-    <option name="localTasksCounter" value="219" />
+    <task id="LOCAL-00219" summary="2025-05-04 Enable Spring Security.">
+      <option name="closed" value="true" />
+      <created>1746340510468</created>
+      <option name="number" value="00219" />
+      <option name="presentableId" value="LOCAL-00219" />
+      <option name="project" value="LOCAL" />
+      <updated>1746340510469</updated>
+    </task>
+    <option name="localTasksCounter" value="220" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -1130,22 +1164,22 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/bd-java-module/src/main/java/org/examples/hadoop/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-core/1.20.0/flink-core-1.20.0.jar!/org/apache/flink/core/fs/FileSystem.class</url>
           <line>121</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/controllers/UserController.java</url>
           <line>30</line>
           <option name="timeStamp" value="57" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/bd-spring-module/src/main/java/org/examples/sb/services/UserService.java</url>
           <line>30</line>
           <option name="timeStamp" value="58" />
@@ -1166,7 +1200,7 @@
           <option name="timeStamp" value="95" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers/web/AuthController.java</url>
+          <url>file://$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers/AuthController.java</url>
           <line>41</line>
           <option name="timeStamp" value="115" />
         </line-breakpoint>
@@ -1176,47 +1210,49 @@
           <option name="timeStamp" value="123" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-oauth2-client/6.4.4/spring-security-oauth2-client-6.4.4.jar!/org/springframework/security/oauth2/client/authentication/OAuth2LoginAuthenticationProvider.class</url>
-          <line>49</line>
-          <option name="timeStamp" value="124" />
+          <url>file://$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/service/AzureGraphService.java</url>
+          <line>120</line>
+          <option name="timeStamp" value="150" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-oauth2-resource-server/6.4.4/spring-security-oauth2-resource-server-6.4.4.jar!/org/springframework/security/oauth2/server/resource/authentication/JwtAuthenticationProvider.class</url>
-          <line>34</line>
-          <option name="timeStamp" value="125" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-field">
+        <line-breakpoint type="java-field">
           <url>file://$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/config/KafkaCustomProperties.java</url>
           <line>10</line>
           <properties field="transactionTopic" class="org.examples.sb.config.KafkaCustomProperties" />
           <option name="timeStamp" value="39" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-field">
+        <line-breakpoint type="java-field">
           <url>file://$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/FlinkJobRunnerBase.java</url>
           <line>18</line>
           <properties field="ENGINE_TYPE" class="com.org.example.flink.utils.jobs.FlinkJobRunnerBase" />
           <option name="timeStamp" value="48" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+        <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_partitioner.py</url>
           <line>2</line>
           <option name="timeStamp" value="51" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+        <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_static.py</url>
           <line>8</line>
           <option name="timeStamp" value="56" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint type="java-method">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/6.4.4/spring-security-core-6.4.4.jar!/org/springframework/security/access/prepost/PreAuthorize.class</url>
           <line>19</line>
-          <properties class="org.springframework.security.access.prepost.PreAuthorize" method="value">
+          <properties class="org.springframework.security.access.prepost.PreAuthorize">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="119" />
         </line-breakpoint>
       </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">

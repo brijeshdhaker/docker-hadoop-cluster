@@ -28,33 +28,22 @@ public class EntitlementController {
                 (val) -> log.info("Authority -> {}", val.getAuthority())
         );
 
+        String appId = "";
         // Get token value from the header
         String authHeaderValue = request.getHeader("Authorization");
-        log.debug("authHeaderValue: {}", authHeaderValue);
-
-        String appId = "undefined";
-
         if (!StringUtils.isEmpty(authHeaderValue)) {
-            String token = request.getHeader("Authorization").replaceAll("Bearer ", "");
-            log.debug("token: {}", token);
-
-            // Access all claims from the token itself by using Auth0 JWT impl
+            String token = authHeaderValue.replaceAll("Bearer ", "");
             Map <String, Claim> claims = new Auth0Parser().getClaims(token);
             if (!claims.isEmpty()) {
-                claims.get("roles").asList(String.class).forEach(role -> log.info(role));
+                claims.get("groups").asList(String.class).forEach(role -> log.info(role));
                 appId = claims.get("appid").asString();
             }
         }
-
         return appId;
-
     }
-
 
     @GetMapping("/show")
     public String whoami(HttpServletRequest request, Authentication authentication) {
-        String appId = "undefined";
-
         authentication.getAuthorities().stream().forEach(
                 (val) -> log.info("Authority -> {}", val.getAuthority())
         );

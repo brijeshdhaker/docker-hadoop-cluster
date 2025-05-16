@@ -66,8 +66,8 @@ public class SpringSecurityConfig {
 
     private JwtAuthenticationConverter jwtAuthenticationConverter() {
         JwtGrantedAuthoritiesConverter grantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
-        grantedAuthoritiesConverter.setAuthoritiesClaimName("roles");
-        grantedAuthoritiesConverter.setAuthorityPrefix("SANDBOX_");
+        //grantedAuthoritiesConverter.setAuthoritiesClaimName("roles");
+        //grantedAuthoritiesConverter.setAuthorityPrefix("SANDBOX_");
 
         JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
         jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(grantedAuthoritiesConverter);
