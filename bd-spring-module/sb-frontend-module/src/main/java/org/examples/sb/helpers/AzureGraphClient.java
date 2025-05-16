@@ -18,8 +18,8 @@ public class AzureGraphClient {
         String scope = properties.getProperty("SCOPE");
 
 
-        final String tenantId = "da5ac8f7-13d6-46e7-815d-012b01123148";
-        final String clientId = properties.getProperty("CLIENT_ID");;
+        final String tenantId = properties.getProperty("TENANT_ID"); //"da5ac8f7-13d6-46e7-815d-012b01123148";
+        final String clientId = properties.getProperty("CLIENT_ID");
         final String clientSecret = properties.getProperty("SECRET");
         final String authorizationCode = "AUTH_CODE_FROM_REDIRECT";
         final String redirectUrl = "YOUR_REDIRECT_URI";
@@ -55,10 +55,11 @@ public class AzureGraphClient {
         for (Group g : result.getValue()){
             System.out.println(g.getDisplayName());
         }
-
+        /*
         MessageCollectionResponse mresult = graphClient.me().messages().get();
         for (Message g : mresult.getValue()){
             System.out.println(g.getBodyPreview());
         }
+        */
     }
 }

@@ -1,4 +1,4 @@
-package org.examples.sb.controllers.web;
+package org.examples.sb.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;

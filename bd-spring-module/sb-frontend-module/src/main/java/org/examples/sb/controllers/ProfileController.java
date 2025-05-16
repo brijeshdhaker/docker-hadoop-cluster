@@ -10,6 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,6 +28,11 @@ public class ProfileController {
     @GetMapping("/profile")
     public String profile(Model model, @AuthenticationPrincipal OidcUser oidcUser) {
         model.addAttribute("profile", oidcUser.getClaims());
+        List<String> scopes = new LinkedList<>();
+        oidcUser.getAuthorities().stream().forEach(
+                (val) -> scopes.add(val.getAuthority())
+        );
+        model.addAttribute("scopes", scopes);
         model.addAttribute("profileJson", claimsToJson(oidcUser.getClaims()));
         return "profile";
     }
