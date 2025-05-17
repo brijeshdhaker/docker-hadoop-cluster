@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-05-04 Enable Spring Security.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/SpringSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/security/SpringSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/SBFrontendModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/SBFrontendModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers/SampleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers/SampleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/helpers/AzureGraphClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/helpers/ClientCredentialGrant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/service/AzureGraphService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/service/AzureGraphService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/service/ExternalRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/service/ExternalRestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/unix-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/unix-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/hello-noteboot.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/Iceberg - Getting Started.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/Iceberg - Getting Started.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/spark-python.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/spark-python.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -612,6 +605,14 @@
       <item itemvalue="Application.AppLauncher::BatchWorkflow" />
       <item itemvalue="Application.AppLauncher::DiscretizedStreamWorkflow" />
       <item itemvalue="Application.AppLauncher::StructuredStreamWorkflow" />
+      <item itemvalue="Application.local-taxi-ride-counts" />
+      <item itemvalue="Application.mini-cluster-transaction-pipeline" />
+      <item itemvalue="Application.default-bd-frontend-module" />
+      <item itemvalue="Application.local-taxi-driver-hourly-max-tips" />
+      <item itemvalue="Application.local-transaction-pipeline" />
+      <item itemvalue="Application.local-taxi-rides-and-fares" />
+      <item itemvalue="Application.azuread-bd-backend-module" />
+      <item itemvalue="Application.default-bd-backend-module" />
       <item itemvalue="Application.AzureGraphClient" />
       <item itemvalue="Application.ClientCredentialGrant" />
       <item itemvalue="Application.TestDesignPatterns" />
@@ -623,17 +624,9 @@
       <item itemvalue="Docker.spark-cluster" />
       <item itemvalue="Docker.spark-notebook" />
       <item itemvalue="Docker.zeppelin-notebook" />
-      <item itemvalue="Python tests.Python tests for test_User.test_to_obj" />
-      <item itemvalue="Application.local-taxi-ride-counts" />
-      <item itemvalue="Application.mini-cluster-transaction-pipeline" />
       <item itemvalue="Docker.cassandra-cluster" />
-      <item itemvalue="Application.default-bd-frontend-module" />
       <item itemvalue="Python.confluent_kafka_avro_producer" />
-      <item itemvalue="Application.local-taxi-driver-hourly-max-tips" />
-      <item itemvalue="Application.local-transaction-pipeline" />
-      <item itemvalue="Application.local-taxi-rides-and-fares" />
-      <item itemvalue="Application.azuread-bd-backend-module" />
-      <item itemvalue="Application.default-bd-backend-module" />
+      <item itemvalue="Python tests.Python tests for test_User.test_to_obj" />
     </list>
     <recent_temporary>
       <list>
