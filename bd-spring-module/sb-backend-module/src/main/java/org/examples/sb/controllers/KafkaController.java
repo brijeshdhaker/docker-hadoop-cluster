@@ -16,14 +16,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Profile("k8s")
 @RestController
-@CrossOrigin(origins = {"*localhost*"})
-@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+@CrossOrigin(origins = {"*localhost*"}, maxAge = 3600)
+@RequestMapping(path = "/kafka", produces = MediaType.APPLICATION_JSON_VALUE)
 public class KafkaController {
 
     @Autowired
     TransactionsService transactionsService;
 
-    @GetMapping("/kafka/transactions/{count}")
+    @GetMapping("/transactions/{count}")
     public ResponseEntity<String> transactions(@PathVariable Integer count) {
         ResponseEntity<String> response = null;
         try {

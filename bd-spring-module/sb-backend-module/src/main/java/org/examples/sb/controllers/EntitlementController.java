@@ -4,18 +4,23 @@ import com.auth0.jwt.interfaces.Claim;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.examples.sb.security.Auth0Parser;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
 @Slf4j
 @RestController
+@CrossOrigin(origins = {"*localhost*"}, maxAge = 3600)
+@RequestMapping(produces = MediaType.TEXT_HTML_VALUE)
 public class EntitlementController {
 
     @GetMapping("/whoami")

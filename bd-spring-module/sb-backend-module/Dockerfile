@@ -1,11 +1,12 @@
+#
+# docker build --no-cache -t brijeshdhaker/sb-backend-module:1.0.0 -f ./bd-spring-module/sb-backend-module/Dockerfile ./bd-spring-module/sb-backend-module
+# docker push brijeshdhaker/sb-backend-module:1.0.0
+#
 
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
 FROM openjdk:17-jdk-slim
-MAINTAINER Brijesh K Dhaker <brijeshdhaker@gmail.com>
-LABEL PROJECT_NAME=bd-spring-module \
-      PROJECT=${project.artifactId}
+LABEL maintainer="Brijesh K Dhaker <brijeshdhaker@gmail.com>"
+LABEL PROJECT_NAME=sb-backend-module
+LABEL PROJECT=${project.artifactId}
 
 ARG FOO=${project.artifactId}
 
