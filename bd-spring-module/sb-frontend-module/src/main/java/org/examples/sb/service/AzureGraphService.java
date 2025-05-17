@@ -10,6 +10,8 @@ import com.microsoft.graph.serviceclient.GraphServiceClient;
 import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.authentication.AuthenticationProvider;
 import com.microsoft.kiota.authentication.BaseBearerTokenAuthenticationProvider;
+import com.nimbusds.oauth2.sdk.http.HTTPResponse;
+
 import org.examples.sb.security.NamedOidcUser;
 import org.examples.sb.utils.Utilities;
 import org.jetbrains.annotations.NotNull;
@@ -24,6 +26,12 @@ import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Component;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.*;
 
 @Component
@@ -49,11 +57,8 @@ public class AzureGraphService {
 
     public GraphServiceClient getAzureGraphService() throws Exception {
 
-        if (app == null) {
-            app = ConfidentialClientApplication.builder(clientId,ClientCredentialFactory.createFromSecret(clientSecret))
-                    .authority("https://login.microsoftonline.com/da5ac8f7-13d6-46e7-815d-012b01123148/")
-                    .build();
-        }
+        // Application Creation
+        GetOrCreateApp(clientId, clientSecret, tenantId);
 
         ClientCredentialParameters clientCredentialParam = ClientCredentialParameters.builder(
                         Collections.singleton("https://graph.microsoft.com/.default"))
@@ -62,6 +67,12 @@ public class AzureGraphService {
         // The first time this is called, the app will make an HTTP request to the token issuer, so this is slow. Latency can be >1s
         IAuthenticationResult result = app.acquireToken(clientCredentialParam).get();
 
+        // Now that we have a Bearer token, call the protected API
+        /*
+        String usersListFromGraph = getUsersListFromGraph(result.accessToken());
+        System.out.println("Users in the Tenant = " + usersListFromGraph);
+        */
+        
         return new GraphServiceClient((request, additionalAuthenticationContext) -> {
             Set<String> authHeaders =  new HashSet<>();
             authHeaders.add("Bearer " + result.accessToken());
@@ -145,6 +156,15 @@ public class AzureGraphService {
         */
     }
 
+    private static void GetOrCreateApp(String clientId, String secret, String tenantId) throws MalformedURLException {
+
+        if (app == null) {
+            app = ConfidentialClientApplication.builder(clientId,ClientCredentialFactory.createFromSecret(secret))
+                    .authority("https://login.microsoftonline.com/"+tenantId+"/")
+                    .build();
+        }
+
+    }
 
 
     /**
@@ -166,6 +186,34 @@ public class AzureGraphService {
             Set<String> authHeaders =  new HashSet<>();
             authHeaders.add("Bearer " + accessToken);
             request.headers.put(HttpHeaders.AUTHORIZATION, authHeaders);
+        }
+    }
+
+    private static String getUsersListFromGraph(String accessToken) throws IOException {
+        URL url = new URL("https://graph.microsoft.com/v1.0/me/messages");
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+        conn.setRequestProperty("Accept","application/json");
+
+        int httpResponseCode = conn.getResponseCode();
+        if(httpResponseCode == HTTPResponse.SC_OK) {
+
+            StringBuilder response;
+            try(BufferedReader in = new BufferedReader(
+                    new InputStreamReader(conn.getInputStream()))){
+
+                String inputLine;
+                response = new StringBuilder();
+                while (( inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+            }
+            return response.toString();
+        } else {
+            return String.format("Connection returned HTTP code: %s with message: %s",
+                    httpResponseCode, conn.getResponseMessage());
         }
     }
 }

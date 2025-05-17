@@ -3,6 +3,7 @@ echo Accoo7@k47 | sudo -S -k microk8s start
 echo Accoo7@k47 | sudo -S -v
 sudo whoami
 
+sudo apt purge nodejs
 
 <<comment
 # Schema Registry Test :

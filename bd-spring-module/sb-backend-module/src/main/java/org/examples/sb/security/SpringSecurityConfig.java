@@ -49,16 +49,13 @@ public class SpringSecurityConfig {
                 .requestMatchers("/api/v1/**").authenticated()
                 // All other paths allowed without auth.
                 .anyRequest().permitAll())
-        .headers((headers) -> headers
-                .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
-        .formLogin(AbstractHttpConfigurer::disable)
         .oauth2ResourceServer(oauth2ResourceServer -> oauth2ResourceServer
                 .jwt(jwt -> jwt
                         .jwtAuthenticationConverter(jwtAuthenticationConverter())
                         .jwkSetUri(jwkSetUri)
                 ))
-        .httpBasic(Customizer.withDefaults())
-        .csrf(AbstractHttpConfigurer::disable);
+        .httpBasic(Customizer.withDefaults());
+        //.csrf(AbstractHttpConfigurer::disable);
 
         // @formatter:on
         return http.build();

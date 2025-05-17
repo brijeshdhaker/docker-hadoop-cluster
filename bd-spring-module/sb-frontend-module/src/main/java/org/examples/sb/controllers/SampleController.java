@@ -15,6 +15,7 @@ import com.microsoft.graph.serviceclient.GraphServiceClient;
 import lombok.extern.slf4j.Slf4j;
 import org.examples.sb.security.NamedOidcUser;
 import org.examples.sb.service.AzureGraphService;
+import org.examples.sb.service.ExternalRestService;
 import org.examples.sb.utils.Utilities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -40,6 +41,9 @@ public class SampleController {
 
     @Autowired
     AzureGraphService azureGraphService;
+
+    @Autowired
+    ExternalRestService externalRestService;
 
     //"da5ac8f7-13d6-46e7-815d-012b01123148"
     @Value("${azure.tenant.id}")
@@ -147,8 +151,12 @@ public class SampleController {
 
     @GetMapping(path = "/call_restapi")
     public String callRestAPI(Model model, @AuthenticationPrincipal OidcUser principal) {
+        
+        //"api://7f1cf4d7-ca24-47c2-bf17-61a8a796679e/Audit.Read"
+        final String[] scopes = new String[] {"api://7f1cf4d7-ca24-47c2-bf17-61a8a796679e/.default"};
+        RestTemplate restTemplate = externalRestService.getRestTemplate(scopes);
 
-
+        /* 
         final OnBehalfOfCredential credential = new OnBehalfOfCredentialBuilder()
                 .tenantId(tenantId)
                 .clientId(clientId)
@@ -160,8 +168,10 @@ public class SampleController {
         AccessToken apiAccessToken = credential.getToken(new TokenRequestContext().setScopes(Arrays.asList(scopes))).block();
 
         RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
         headers.add(HttpHeaders.AUTHORIZATION, "Bearer " + apiAccessToken.getToken());
+        */
+
+        HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         HttpEntity<String> entity = new HttpEntity<String>("", headers);
