@@ -160,7 +160,7 @@ public class AzureGraphService {
 
         if (app == null) {
             app = ConfidentialClientApplication.builder(clientId,ClientCredentialFactory.createFromSecret(secret))
-                    .authority("https://login.microsoftonline.com/"+tenantId+"/")
+                    .authority(String.format("https://login.microsoftonline.com/%s/",tenantId))
                     .build();
         }
 

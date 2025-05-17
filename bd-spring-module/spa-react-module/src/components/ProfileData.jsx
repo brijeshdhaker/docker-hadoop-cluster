@@ -7,7 +7,7 @@ import React from "react";
 export const ProfileData = (props) => {
     return (
         <div id="profile-div">
-            <p><strong>First Name: </strong> {props.graphData}</p>
+            <p><strong>First Name: </strong> { JSON.stringify(props.graphData, null, 2) }</p>
             
         </div>
     );

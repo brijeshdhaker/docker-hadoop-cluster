@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class UserController {
 
     @Autowired
@@ -45,11 +46,13 @@ public class UserController {
 
 
     @Tag(name = "get", description = "Retrieve All Users")
-    @Operation(summary = "Update an employee",
-            description = "Update an existing employee. The response is updated Employee object with id, first name, and last name.")
+    @Operation(
+        summary = "Update an employee",
+        description = "Update an existing employee. The response is updated Employee object with id, first name, and last name."
+    )
     @ApiResponses({
-            @ApiResponse(responseCode = "200", content = {@Content(mediaType = "application/json",schema = @Schema(implementation = UserEntity.class))}),
-            @ApiResponse(responseCode = "404", description = "Employee not found",content = @Content)
+        @ApiResponse(responseCode = "200", content = {@Content(mediaType = "application/json",schema = @Schema(implementation = UserEntity.class))}),
+        @ApiResponse(responseCode = "404", description = "Employee not found",content = @Content)
     })
     @GetMapping
     @PreAuthorize("hasAuthority('SCOPE_User.Read')")
