@@ -31,12 +31,40 @@ spring:
           audiences: api://7f1cf4d7-ca24-47c2-bf17-61a8a796679e
   #
   datasource:
-    name: SANDBOXDB
-    username: sa
-    password: sa
-    driverClassName: org.h2.Driver
-#    url: jdbc:h2:mem:SANDBOXDB;DB_CLOSE_DELAY=-1;AUTO_SERVER=TRUE;mode=mysql;
-    url: jdbc:h2:file:/apps/sandbox/h2/SANDBOXDB;mode=mysql;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;
+    region1:
+      jdbcUrl: jdbc:h2:file:/apps/sandbox/h2/SANDBOXDB-R1;mode=mysql;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;
+      username: sa
+      password: sa
+      driverClassName: org.h2.Driver
+      hikari:
+        pool-name: region1
+        maximum-pool-size: 10
+        minimum-idle: 2
+        idle-timeout: 60000
+        connection-timeout: 30000
+        max-lifetime: 1800000
+        connection-test-query: SELECT 1
+        auto-commit: true
+    region2:
+      jdbcUrl: jdbc:h2:file:/apps/sandbox/h2/SANDBOXDB-R2;mode=mysql;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;
+      username: sa
+      password: sa
+      driverClassName: org.h2.Driver
+      hikari:
+        pool-name: region2
+        maximum-pool-size: 10
+        minimum-idle: 2
+        idle-timeout: 60000
+        connection-timeout: 30000
+        max-lifetime: 1800000
+        connection-test-query: SELECT 1
+        auto-commit: true
+#     name: SANDBOXDB
+#     username: sa
+#     password: sa
+#     driverClassName: org.h2.Driver
+# #    url: jdbc:h2:mem:SANDBOXDB;DB_CLOSE_DELAY=-1;AUTO_SERVER=TRUE;mode=mysql;
+#     url: jdbc:h2:file:/apps/sandbox/h2/SANDBOXDB;mode=mysql;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;
   #
   h2:
     console:
@@ -51,7 +79,7 @@ spring:
 #      mode: always
 #      schema-locations: classpath*:schema.sql
 #      data-locations: classpath*:data.sql
-  #
+  
   jpa:
     # database-platform: org.hibernate.dialect.MySQLDialect
     # database-platform: org.hibernate.dialect.MySQL8Dialect
