@@ -1,5 +1,4 @@
 .DS_Store
-target
 *.gz
 *.tgz
 *.tar
@@ -29,6 +28,11 @@ bd-docker-sandbox/conf/cluster/*/*
 */dependency-reduced-pom.xml
 bd-notebooks-module/zeppelin/notebooks/.git
 node_modules
-.anular
 build
+target
+/**/.*/
+!/.gitignore
+!/.vscode
+!/.idea
+
 
