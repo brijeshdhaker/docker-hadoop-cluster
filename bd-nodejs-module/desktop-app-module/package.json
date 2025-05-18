@@ -1,0 +1,23 @@
+{
+  "name": "desktop-app-module",
+  "version": "1.0.0",
+  "description": "desktop-app-module",
+  "main": "app/main.js",
+  "scripts": {
+    "start": "electron app/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brijesh K Dhaker",
+  "license": "ISC",
+  "dependencies": {
+    "@azure/msal-node": "^3.5.3",
+    "@microsoft/microsoft-graph-client": "^3.0.7",
+    "bootstrap": "^5.3.6",
+    "isomorphic-fetch": "^3.0.0",
+    "jquery": "^3.7.1",
+    "popper.js": "^1.16.1"
+  },
+  "devDependencies": {
+    "electron": "^36.2.1"
+  }
+}

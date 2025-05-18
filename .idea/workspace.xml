@@ -4,74 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-05-04 Enable Spring Security.">
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/angular-app-module/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/angular-app-module/angular.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/angular-app-module/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/angular-app-module/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/angular-app-module/readme-files/angular-spa-sign-in.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/angular-app-module/src/app/app-routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/angular-app-module/src/app/app.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/angular-app-module/src/app/app.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/angular-app-module/src/app/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/angular-app-module/src/app/home/home.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/angular-app-module/src/app/home/home.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/angular-app-module/src/app/profile/profile.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/angular-app-module/src/app/profile/profile.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/angular-app-module/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/angular-app-module/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/angular-app-module/src/polyfills.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/angular-app-module/src/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/angular-app-module/tsconfig.app.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/angular-app-module/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/bd-nodejs-module.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/desktop-app-module/.gitignore" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-05-18 Enable Spring Security.">
       <change afterPath="$PROJECT_DIR$/bd-nodejs-module/desktop-app-module/package-lock.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/bd-nodejs-module/desktop-app-module/package.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/bd-nodejs-module/desktop-app-module/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/reactjs-app-module/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/reactjs-app-module/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/reactjs-app-module/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/reactjs-app-module/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/reactjs-app-module/profile.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/reactjs-app-module/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/reactjs-app-module/public/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/reactjs-app-module/src/App.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/reactjs-app-module/src/App.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/reactjs-app-module/src/authConfig.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/reactjs-app-module/src/components/PageLayout.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/reactjs-app-module/src/components/ProfileData.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/reactjs-app-module/src/components/SignInButton.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/reactjs-app-module/src/components/SignOutButton.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/reactjs-app-module/src/graph.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/reactjs-app-module/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/reactjs-app-module/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-nodejs-module/reactjs-app-module/src/logo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/spa-react-module/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/spa-react-module/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/spa-react-module/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/spa-react-module/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/spa-react-module/profile.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/spa-react-module/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/spa-react-module/public/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/spa-react-module/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/spa-react-module/src/App.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/spa-react-module/src/authConfig.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/spa-react-module/src/components/PageLayout.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/spa-react-module/src/components/ProfileData.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/spa-react-module/src/components/SignInButton.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/spa-react-module/src/components/SignOutButton.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/spa-react-module/src/graph.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/spa-react-module/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/spa-react-module/src/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spring-module/spa-react-module/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-hadoop-cluster.code-workspace" beforeDir="false" afterPath="$PROJECT_DIR$/docker-hadoop-cluster.code-workspace" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -711,14 +647,6 @@
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
     </task>
-    <task id="LOCAL-00171" summary="2025-04-06 Update Configuration &amp; Resources.">
-      <option name="closed" value="true" />
-      <created>1743914098210</created>
-      <option name="number" value="00171" />
-      <option name="presentableId" value="LOCAL-00171" />
-      <option name="project" value="LOCAL" />
-      <updated>1743914098211</updated>
-    </task>
     <task id="LOCAL-00172" summary="2025-04-06 Update Configuration &amp; Resources.">
       <option name="closed" value="true" />
       <created>1743916838027</created>
@@ -1103,7 +1031,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746340510469</updated>
     </task>
-    <option name="localTasksCounter" value="220" />
+    <task id="LOCAL-00220" summary="2025-05-18 Enable Spring Security.">
+      <option name="closed" value="true" />
+      <created>1747542939589</created>
+      <option name="number" value="00220" />
+      <option name="presentableId" value="LOCAL-00220" />
+      <option name="project" value="LOCAL" />
+      <updated>1747542939590</updated>
+    </task>
+    <option name="localTasksCounter" value="221" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -1164,7 +1100,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
     </ignored-roots>
-    <MESSAGE value="2025-03-31 Add Sandbox Root CA &amp; Certs." />
     <MESSAGE value="2025-04-01 Add Sandbox Root CA &amp; Certs." />
     <MESSAGE value="2025-04-03 Add Sandbox Root CA &amp; Certs." />
     <MESSAGE value="2025-04-04 Update Configuration &amp; Resources." />
@@ -1189,7 +1124,8 @@
     <MESSAGE value="2025-04-27 Split sb-springboot-module to multimodule ." />
     <MESSAGE value="2025-04-20 Split sb-spring-boot-module to multimodule ." />
     <MESSAGE value="2025-05-04 Enable Spring Security." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-05-04 Enable Spring Security." />
+    <MESSAGE value="2025-05-18 Enable Spring Security." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-05-18 Enable Spring Security." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
