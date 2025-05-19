@@ -31,9 +31,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    JdbcTemplate jdbcTemplate;
-
     @PostMapping
     @PreAuthorize("hasAuthority('SCOPE_User.Write')")
     public ResponseEntity<?> createUser(@RequestBody User user) {
@@ -94,25 +91,4 @@ public class UserController {
         return  httpResponse;
     }
 
-    @GetMapping
-    @PreAuthorize("hasAuthority('SCOPE_User.Read')")
-    public Iterable<User> getListAllUsers() {
-
-        return jdbcTemplate.query("SELECT * FROM USERS",new BeanPropertyRowMapper<>(User.class));
-        /* 
-
-        int count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM STUDENT", Integer.class);
-
-        return jdbcTemplate.query("SELECT * FROM users", (rs, rowNum) -> {
-            User user = new User();
-            user.setId(rs.getLong("id"));
-            user.setName(rs.getString("first_name"));
-            user.setEmail(rs.getString("last_name"));
-            return user;
-        });
-
-        return jdbcTemplate.update("INSERT INTO STUDENT (id, name, country) VALUES (?, ?, ?)",id, name, country);
-
-        */
-    }
 }

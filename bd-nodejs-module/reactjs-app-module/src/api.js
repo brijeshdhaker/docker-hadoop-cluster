@@ -9,6 +9,7 @@ export async function callRestApi(accessToken) {
     const bearer = `Bearer ${accessToken}`;
 
     headers.append("Authorization", bearer);
+    headers.append("X-Tenant-ID", "db-R1");
 
     const options = {
         method: "GET",

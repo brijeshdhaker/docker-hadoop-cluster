@@ -35,7 +35,7 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void createStudent(User student) throws DataAccessException {
         String sql = "INSERT INTO Student (id, name, age) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, student.getId(), student.getName(), student.getAge());
+        jdbcTemplate.update(sql, student.getId(), student.getName(), student.getStatus());
     }
 
     @Override
