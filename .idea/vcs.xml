@@ -2,6 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/bd-nodejs-module/desktop-app-module" vcs="Git" />
   </component>
 </project>

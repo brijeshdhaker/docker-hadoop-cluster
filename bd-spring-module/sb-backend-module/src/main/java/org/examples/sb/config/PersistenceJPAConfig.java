@@ -26,6 +26,7 @@ public class PersistenceJPAConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
         em.setPackagesToScan("org.examples.sb.repositories.entities");
@@ -39,6 +40,7 @@ public class PersistenceJPAConfig {
 
     @Bean
     public PlatformTransactionManager transactionManager() {
+        
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
 

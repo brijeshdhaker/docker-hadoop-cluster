@@ -2,7 +2,6 @@ package org.examples.sb.config;
 
 import javax.sql.DataSource;
 
-import org.examples.sb.helpers.RoutingDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;

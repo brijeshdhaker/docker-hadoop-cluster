@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 
 import { PageLayout } from './components/PageLayout';
-import { loginRequest } from './authConfig';
+import { loginRequest, apiLoginRequest } from './authConfig';
 import { callMsGraph } from './graph';
-import { ProfileData } from './components/ProfileData';
+import { callRestApi } from './api';
+import { ProfileData, RestData  } from './components/ProfileData';
 
 import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from '@azure/msal-react';
 import './App.css';
@@ -16,6 +17,7 @@ import Button from 'react-bootstrap/Button';
 const ProfileContent = () => {
     const { instance, accounts } = useMsal();
     const [graphData, setGraphData] = useState(null);
+    const [restData, setRestData] = useState(null);
 
     function RequestProfileData() {
         // Silently acquires an access token which is then attached to a request for MS Graph data
@@ -29,15 +31,36 @@ const ProfileContent = () => {
             });
     }
 
+    function RequestUserData() {
+        // Silently acquires an access token which is then attached to a request for MS Graph data
+        instance
+            .acquireTokenSilent({
+                ...apiLoginRequest,
+                account: accounts[0],
+            })
+            .then((response) => {
+                callRestApi(response.accessToken).then((response) => setRestData(response));
+            });
+    }
+
     return (
         <>
             <h5 className="profileContent">Welcome {accounts[0].name}</h5>
             {graphData ? (
                 <ProfileData graphData={graphData} />
             ) : (
-                <Button variant="secondary" onClick={RequestProfileData}>
-                    Request Profile
-                </Button>
+                <>
+                <Button variant="secondary" onClick={RequestProfileData}>Request Profile</Button>
+                <Button variant="primary" onClick={RequestUserData}>Request Users</Button>
+                </>
+            )}
+            {restData ? (
+                <RestData restData={restData} />
+            ) : (
+                <>
+                <Button variant="secondary" onClick={RequestProfileData}>Request Profile</Button>
+                <Button variant="primary" onClick={RequestUserData}>Request Users</Button>
+                </>
             )}
         </>
     );

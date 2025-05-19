@@ -27,6 +27,7 @@
 			"imageBuildTool": "Docker"
 		},
 		"postman.settings.dotenv-detection-notification-visibility": false,
-		"python.defaultInterpreterPath": "~/.conda/envs/env_python_39/bin/python"
+		"python.defaultInterpreterPath": "~/.conda/envs/env_python_39/bin/python",
+		"java.configuration.updateBuildConfiguration": "automatic"
 	}
 }

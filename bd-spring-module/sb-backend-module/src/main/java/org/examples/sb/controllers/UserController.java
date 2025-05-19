@@ -16,18 +16,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 
 @Slf4j
 @RestController
-@CrossOrigin(origins = {"*localhost*"}, maxAge = 3600)
+@CrossOrigin(origins = {"*"}, maxAge = 3600)
 @RequestMapping(path ="/users", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    JdbcTemplate jdbcTemplate;
 
     @PostMapping
     @PreAuthorize("hasAuthority('SCOPE_User.Write')")
@@ -87,5 +92,27 @@ public class UserController {
             httpResponse = new ResponseEntity<>(appResponse,HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return  httpResponse;
+    }
+
+    @GetMapping
+    @PreAuthorize("hasAuthority('SCOPE_User.Read')")
+    public Iterable<User> getListAllUsers() {
+
+        return jdbcTemplate.query("SELECT * FROM USERS",new BeanPropertyRowMapper<>(User.class));
+        /* 
+
+        int count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM STUDENT", Integer.class);
+
+        return jdbcTemplate.query("SELECT * FROM users", (rs, rowNum) -> {
+            User user = new User();
+            user.setId(rs.getLong("id"));
+            user.setName(rs.getString("first_name"));
+            user.setEmail(rs.getString("last_name"));
+            return user;
+        });
+
+        return jdbcTemplate.update("INSERT INTO STUDENT (id, name, country) VALUES (?, ?, ?)",id, name, country);
+
+        */
     }
 }

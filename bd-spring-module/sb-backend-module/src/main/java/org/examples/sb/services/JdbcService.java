@@ -3,7 +3,6 @@ package org.examples.sb.services;
 import java.util.List;
 import java.util.Map;
 
-import org.examples.sb.helpers.RoutingDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -19,15 +18,15 @@ public class JdbcService {
 
     public List<Map<String, Object>> getDataFromDb1() {
 
-        RoutingDataSource.setCurrentDataSource("db-R1");
-        return jdbcTemplate.queryForList("SELECT * FROM table1");
+        //RoutingDataSource.setCurrentDataSource("db-R1");
+        return jdbcTemplate.queryForList("SELECT * FROM USERS");
 
     }
 
     public List<Map<String, Object>> getDataFromDb2() {
         
-        RoutingDataSource.setCurrentDataSource("db-R2");
-        return jdbcTemplate.queryForList("SELECT * FROM table2");
+        //RoutingDataSource.setCurrentDataSource("db-R2");
+        return jdbcTemplate.queryForList("SELECT * FROM USERS");
 
     }
 

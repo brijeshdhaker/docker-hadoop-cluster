@@ -5,7 +5,8 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-import org.examples.sb.helpers.RoutingDataSource;
+import org.examples.sb.helpers.MultiRegionDataSourceRouter;
+import org.examples.sb.helpers.RegionResolver;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 @Configuration
 public class DataSourceConfig {
@@ -32,21 +34,35 @@ public class DataSourceConfig {
     
     @Primary
     @Bean
-    public DataSource routingDataSource() {
+    public DataSource dataSourceRouter(@Qualifier("region1DataSource") DataSource region1DataSource,
+        @Qualifier("region2DataSource") DataSource region2DataSource,
+        RegionResolver tenantResolver) {
+
         Map<Object, Object> targetDataSources = new HashMap<>();
         targetDataSources.put("db-R1", region1DataSource());
         targetDataSources.put("db-R2", region2DataSource());
 
-        RoutingDataSource routingDataSource = new RoutingDataSource();
-        routingDataSource.setTargetDataSources(targetDataSources);
-        routingDataSource.setDefaultTargetDataSource(region1DataSource());
-        return routingDataSource;
+        MultiRegionDataSourceRouter router = new MultiRegionDataSourceRouter();
+        router.setTargetDataSources(targetDataSources);
+        // Default if tenant/region is not found
+        router.setDefaultTargetDataSource(region2DataSource()); 
+        router.setTenantResolver(tenantResolver);
+        return router;
     }
-
+    
+    /* 
+    
     @Primary
     @Bean
-    public JdbcTemplate jdbcTemplate(@Qualifier("routingDataSource") DataSource dataSource) {
+    public JdbcTemplate jdbcTemplate(@Qualifier("dataSourceRouter") DataSource dataSource) {
         return new JdbcTemplate(dataSource);
     }
+    
+    @Bean
+    public NamedParameterJdbcTemplate namedParameterJdbcTemplate() {
+        return new NamedParameterJdbcTemplate(dataSource());
+    }
+
+    */
 
 }
