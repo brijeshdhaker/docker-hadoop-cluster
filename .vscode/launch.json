@@ -2,7 +2,7 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Spring Boot-SBBackendApplication<sb-backend-module>",
+            "name": "sb-backend-module",
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "mainClass": "org.examples.sb.SBBackendApplication",
@@ -13,13 +13,14 @@
         },
         {
             "type": "java",
-            "name": "Spring Boot-SBFrontendModule<sb-frontend-module>",
+            "name": "sb-frontend-module",
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "mainClass": "org.examples.sb.SBFrontendModule",
             "projectName": "sb-frontend-module",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": ""
         }
     ]
 }

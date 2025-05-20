@@ -10,6 +10,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.microsoft.graph.models.DirectoryObject;
 import com.microsoft.graph.models.DirectoryObjectCollectionResponse;
 import com.microsoft.graph.models.Group;
+import com.microsoft.graph.models.GroupCollectionResponse;
 import com.microsoft.graph.models.User;
 import com.microsoft.graph.serviceclient.GraphServiceClient;
 import lombok.extern.slf4j.Slf4j;
@@ -106,34 +107,36 @@ public class SampleController {
     //OAuth2AuthenticationToken authentication
     // @AuthenticationPrincipal OidcUser principal
     @GetMapping(path = "/call_graph")
-    public String callGraph(Model model, OAuth2AuthenticationToken authentication) {
+    public String callGraph(Model model, @AuthenticationPrincipal OidcUser principal) {
         try{
-            GraphServiceClient graphClient = azureGraphService.getAzureGraphService();
-            String userId = "";
-            if( authentication.getPrincipal() instanceof NamedOidcUser){
-                NamedOidcUser oidcUser = (NamedOidcUser) authentication.getPrincipal();
-                String id = oidcUser.getUserID();
+
+            
+            String userId = "b7824d54-eff8-4bd1-9caf-ffe259d038d0";
+            if( principal instanceof NamedOidcUser){
+                NamedOidcUser oidcUser = (NamedOidcUser) principal;
                 userId = oidcUser.getClaimValue("oid");
                 Collection<? extends GrantedAuthority> authorities = oidcUser.getAuthorities();
-            }else {
-                userId = "b7824d54-eff8-4bd1-9caf-ffe259d038d0";
             }
-            final User user = graphClient.users().byUserId(userId).get();
+            
+            GraphServiceClient graphClient = azureGraphService.getAzureGraphService();
+            final User userResult = graphClient.users().byUserId(userId).get();
             Map<String,String> userProperties = new LinkedHashMap<>();
-            if (user == null) {
-                userProperties.put("Graph Error", "GraphSDK returned null User object.");
+            if (userResult != null) {
+                userProperties.put("id", userResult.getId());
+                userProperties.put("Display Name", userResult.getDisplayName());
+                userProperties.put("Given Name", userResult.getGivenName());
+                userProperties.put("Last Name", userResult.getSurname());
+                userProperties.put("Phone Number", userResult.getMobilePhone());
+                userProperties.put("City", userResult.getCity());
             } else {
-                userProperties.put("id", user.getId());
-                userProperties.put("Display Name", user.getDisplayName());
-                userProperties.put("Given Name", user.getGivenName());
-                userProperties.put("Last Name", user.getSurname());
-                userProperties.put("Phone Number", user.getMobilePhone());
-                userProperties.put("City", user.getCity());
+                log.error("Graph SDK returned null User object.");
             }
             // Map<String, String> userProperties = azureGraphService.getUserDetails(authentication);
             model.addAttribute("details", userProperties);
 
-            Map<String,String> userGroups = new LinkedHashMap<>();
+            Map<String,String> userGroups = getUserGroups(userId);
+
+            /* 
             DirectoryObjectCollectionResponse graphResponse = graphClient.users().byUserId(userId).memberOf().get();
             // Process the groups
             for (DirectoryObject group : graphResponse.getValue()) {
@@ -141,6 +144,7 @@ public class SampleController {
                     userGroups.put(group.getId(), ((Group) group).getDisplayName());
                 }
             }
+            */
             model.addAttribute("groups", userGroups);
 
             return hydrateUI(model, "graph");
@@ -188,6 +192,41 @@ public class SampleController {
         return hydrateUI(model, "survey");
     }
 
+    private Map<String,String> getUserGroups(String userId) {
+        
+        Map<String,String> userGroups = new LinkedHashMap<>();
+        Set<String> groups = new HashSet<>();
+        try {
+            GraphServiceClient graphClient = azureGraphService.getAzureGraphService();
+            
+            GroupCollectionResponse result = graphClient.users().byUserId(userId).memberOf().graphGroup().get(requestConfiguration -> {
+                assert requestConfiguration.queryParameters != null;
+                requestConfiguration.queryParameters.count = true;
+                requestConfiguration.queryParameters.select = new String[] {"id", "displayName"};
+                //requestConfiguration.queryParameters.filter = "appRoleAssignments/$count gt 0";
+                requestConfiguration.headers.add("ConsistencyLevel", "eventual");
+            });
+
+            if (result != null) {
+                
+                result.getValue().forEach(group -> {
+                    groups.add(group.getId());
+                    userGroups.put(group.getId(), group.getDisplayName());
+                    log.info("Group ID: {} Display Name: {}",group.getId(), group.getDisplayName());
+
+                });
+
+            }else{
+                log.error("Graph SDK returned null GroupCollectionResponse object.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return userGroups;
+
+    }
 
     private String claimsToJson(Map<String, Object> claims) {
         try {
