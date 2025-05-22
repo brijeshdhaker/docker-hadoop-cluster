@@ -1,0 +1,7 @@
+Your Postman Vault Key (brijeshdhaker@gmail.com)
+
+36ac1a0748fba9df8b90806ca8a1f152fefd0bfa16f3c5b566c63a95e3db4fb5
+
+• Keep this key somewhere safe but accessible.
+• Need more information? Visit https://go.pstmn.io/vault
+• This key was generated on: May 01 2025.

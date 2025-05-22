@@ -1,0 +1,22 @@
+---
+# Source: bd-spring-module/templates/volumes.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: springboot-app-volume
+  labels:
+    date: 2025-04-20
+    helm.sh/chart: bd-spring-module-0.1.0
+    app.kubernetes.io/name: springboot-app
+    app.kubernetes.io/instance: bd-spring-module
+    app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/managed-by: Helm
+  namespace: sb-apps
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: /apps/sandbox

@@ -7,11 +7,24 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="bd-k8s-module" />
         <module name="bd-flink-module" />
-        <module name="bd-spring-module" />
         <module name="bd-spark-module" />
+        <module name="bd-k8s-module" />
         <module name="bd-data-generator" />
+      </profile>
+      <profile name="Annotation profile for bd-spring-module" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+        </processorPath>
+        <module name="sb-backend-module-r1" />
+        <module name="sb-discovery-service" />
+        <module name="sb-frontend-module" />
+        <module name="sb-gateway-module" />
+        <module name="sb-backend-module-r2" />
+        <module name="sb-utilities-module" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -25,6 +38,7 @@
       <module name="docker-hadoop-cluster" target="17" />
       <module name="docker-python-module" target="1.8" />
       <module name="flink-playground" target="11" />
+      <module name="sb-backend-module" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -33,6 +47,13 @@
       <module name="bd-spark-module" options="" />
       <module name="bd-spring-module" options="-parameters" />
       <module name="docker-hadoop-cluster" options="" />
+      <module name="sb-backend-module" options="-parameters" />
+      <module name="sb-backend-module-r1" options="-parameters" />
+      <module name="sb-backend-module-r2" options="-parameters" />
+      <module name="sb-discovery-service" options="-parameters" />
+      <module name="sb-frontend-module" options="-parameters" />
+      <module name="sb-gateway-module" options="-parameters" />
+      <module name="sb-utilities-module" options="-parameters" />
     </option>
   </component>
 </project>

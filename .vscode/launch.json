@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "sb-backend-module",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "org.examples.sb.SBBackendApplication",
+            "projectName": "sb-backend-module",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=35225 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=sb-backend-module"
+        },
+        {
+            "type": "java",
+            "name": "sb-frontend-module",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "org.examples.sb.SBFrontendModule",
+            "projectName": "sb-frontend-module",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": ""
+        }
+    ]
+}
