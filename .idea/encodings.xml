@@ -24,8 +24,12 @@
     <file url="file://$PROJECT_DIR$/bd-spark-module/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bd-spark-module/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bd-spark-module/src/main/scala" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bd-spring-module/sb-backend-module-r1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bd-spring-module/sb-backend-module-r2/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bd-spring-module/sb-discovery-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bd-spring-module/sb-gateway-module/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bd-spring-module/sb-utilities-module/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bd-spring-module/src/main/java" charset="UTF-8" />
