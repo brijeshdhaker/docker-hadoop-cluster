@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    
     <parent>
         <groupId>org.examples.sb</groupId>
         <artifactId>bd-spring-module</artifactId>
@@ -11,6 +11,7 @@
     </parent>
 
     <groupId>org.examples.sb</groupId>
+    <name>sb-utilities-module</name>
     <artifactId>sb-utilities-module</artifactId>
     <version>1.0.0</version>
 
@@ -18,9 +19,6 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <confluent.version>7.5.2</confluent.version>
-        <docker.host>unix:///var/run/docker.sock</docker.host>
-        <spring-security-oauth2-autoconfigure.version>2.6.8</spring-security-oauth2-autoconfigure.version>
     </properties>
 
     <build>
@@ -50,20 +48,7 @@
 
     <dependencies>
 
+        
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>confluent</id>
-            <name>Confluent</name>
-            <url>https://packages.confluent.io/maven/</url>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>confluent</id>
-            <url>https://packages.confluent.io/maven/</url>
-        </pluginRepository>
-    </pluginRepositories>
+    
 </project>

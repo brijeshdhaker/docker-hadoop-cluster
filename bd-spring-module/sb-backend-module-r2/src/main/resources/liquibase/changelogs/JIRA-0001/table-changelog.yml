@@ -1,0 +1,110 @@
+## YAML Template.
+---
+databaseChangeLog:
+  - changeSet:
+      id: JIRA-0001-T-001
+      author: Brijesh D.
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_user
+                  name: USERID
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: USERNAME
+                  type: VARCHAR(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: EMAIL
+                  type: VARCHAR(250)
+              - column:
+                  name: STATUS
+                  type: VARCHAR(50)
+              - column:
+                  name: ADD_TS
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: UPD_TS
+                  type: TIMESTAMP
+            tableName: USERS
+  - changeSet:
+      id:  JIRA-0001-T-002
+      author:  Brijesh D.
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_role
+                  name: ROLEID
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: NAME
+                  type: VARCHAR(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: STATUS
+                  type: VARCHAR(20)
+              - column:
+                  name: ADD_TS
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: UPD_TS
+                  type: TIMESTAMP
+            tableName: ROLES
+  - changeSet:
+      id: JIRA-0001-T-003
+      author: Brijesh D.
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_user_role
+                  name: ID
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: USERID
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ROLEID
+                  type: BIGINT
+              - column:
+                  name: ADD_TS
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: UPD_TS
+                  type: TIMESTAMP
+            tableName: USER_ROLES
+  - changeSet:
+      id:  JIRA-0001-T-004
+      author:  Brijesh D.
+      context: mysql,h2
+      changes:
+        - sqlFile:
+            path: ../../objects/tables/table_products.sql
+            relativeToChangelogFile: true        

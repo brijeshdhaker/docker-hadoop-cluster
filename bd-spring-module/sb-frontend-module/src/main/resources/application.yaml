@@ -1,6 +1,8 @@
 #
 server:
   port: 8080
+  servlet:
+    context-path: /web/v1
   http2:
     enabled: true
 #
@@ -24,6 +26,7 @@ spring:
   #
   application:
     name: bd-frontend-module
+    instance-id: global
   output.ansi.enabled: ALWAYS
   #
   security:
@@ -55,6 +58,26 @@ spring:
 #              "ebddcd37-20a5-4272-ae8d-7e90be4a7e46": SANDBOX_OPERATE
 #              "6489408e-121a-4d49-bb45-dbe074435179": SANDBOX_RW
 #              "29132c43-c263-4015-9f42-9c848d9b2f3b": SANDBOX_RO
+#
+
+#
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}-${spring.application.instance-id}
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10    
+#
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 #
 logging:
   level:

@@ -17,11 +17,11 @@ public class User implements Serializable {
     private String name;
     private String email;
     private String status;
-    private List<String> roles = new ArrayList<>();
+    private List<Role> roles = new ArrayList<>();
     public Long addTs;
     public Long updTs;
 
-    public void addRoles(String role) {
+    public void addRoles(Role role) {
         this.roles.add(role);
     }
 

@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-05-18 Enable Spring Security.">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-nodejs-module/desktop-app-module/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-nodejs-module/desktop-app-module/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -347,7 +345,7 @@
       <recent name="com.org.example.flink.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.default-bd-backend-module">
+  <component name="RunManager" selected="Application.sb-api-module-r1">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -602,6 +600,11 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.sb-api-module-r1" />
+      <item itemvalue="Application.sb-api-module-r2" />
+      <item itemvalue="Application.sb-discovery-service" />
+      <item itemvalue="Application.sb-frontend-module" />
+      <item itemvalue="Application.sb-gateway-module" />
       <item itemvalue="Application.AppLauncher::BatchWorkflow" />
       <item itemvalue="Application.AppLauncher::DiscretizedStreamWorkflow" />
       <item itemvalue="Application.AppLauncher::StructuredStreamWorkflow" />

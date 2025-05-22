@@ -10,14 +10,29 @@
     </parent>
 
     <groupId>org.examples.sb</groupId>
+    <name>sb-frontend-module</name>
     <artifactId>sb-frontend-module</artifactId>
-
+    
+	<properties>
+		<java.version>17</java.version>
+		<spring-cloud.version>2024.0.1</spring-cloud.version>
+        <spring-security-oauth2-autoconfigure.version>2.6.8</spring-security-oauth2-autoconfigure.version>
+	</properties>
+    
     <build>
         <finalName>sb-frontend-module</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
             </plugin>
             <!-- Jar local copy -->
             <plugin>
@@ -79,6 +94,10 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
+        <dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>	
+		</dependency>
 
         <!-- Spring Boot web dependencies -->
         <dependency>
