@@ -83,7 +83,7 @@ The web application can then use the Access Token to gain access to the target A
 
 1. User(`Resource Owner`) click on login with Azure(`Authorization Server`) 
     https://login.microsoftonline.com/da5ac8f7-13d6-46e7-815d-012b01123148/adminconsent?client_id=c5c062d8-4fe2-4319-9897-a59e57ed7ad2&state=12345&http://localhost:8080/web/auth_handler
-    https://login.microsoftonline.com/da5ac8f7-13d6-46e7-815d-012b01123148/oauth2/v2.0/authorize?response_type=code&client_id=c5c062d8-4fe2-4319-9897-a59e57ed7ad2&scope=openid%20email%20profile&redirect_uri=http://localhost:8080/web/auth_handler
+    https://login.microsoftonline.com/da5ac8f7-13d6-46e7-815d-012b01123148/oauth2/v2.0/authorize?response_type=code&client_id=c5c062d8-4fe2-4319-9897-a59e57ed7ad2&scope=openid%20email%20profile&redirect_uri=http://localhost:9075/web/v1/auth_handler
 
 2. Authorization Server(`Azure`)  share `auth_token` with client (`sb-frontend-module`) 
 

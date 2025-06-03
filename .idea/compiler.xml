@@ -7,24 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="bd-k8s-module" />
         <module name="bd-flink-module" />
         <module name="bd-spark-module" />
-        <module name="bd-k8s-module" />
         <module name="bd-data-generator" />
-      </profile>
-      <profile name="Annotation profile for bd-spring-module" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
-        </processorPath>
-        <module name="sb-backend-module-r1" />
-        <module name="sb-discovery-service" />
-        <module name="sb-frontend-module" />
-        <module name="sb-gateway-module" />
-        <module name="sb-backend-module-r2" />
-        <module name="sb-utilities-module" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -35,10 +21,17 @@
       <module name="bd-java-module" target="1.8" />
       <module name="bd-pyspark-module" target="1.8" />
       <module name="bd-python-module" target="1.8" />
+      <module name="bd-spring-module" target="17" />
       <module name="docker-hadoop-cluster" target="17" />
       <module name="docker-python-module" target="1.8" />
       <module name="flink-playground" target="11" />
       <module name="sb-backend-module" target="17" />
+      <module name="sb-backend-module-r1" target="17" />
+      <module name="sb-backend-module-r2" target="17" />
+      <module name="sb-discovery-service" target="17" />
+      <module name="sb-frontend-module" target="17" />
+      <module name="sb-gateway-module" target="17" />
+      <module name="sb-utilities-module" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
