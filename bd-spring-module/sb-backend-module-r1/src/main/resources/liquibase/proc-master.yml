@@ -1,6 +1,0 @@
-## YAML Template.
----
-databaseChangeLog:
-  - include :
-      file: changelogs/JIRA-0001/proc-changelog.yml
-      relativeToChangelogFile: true
