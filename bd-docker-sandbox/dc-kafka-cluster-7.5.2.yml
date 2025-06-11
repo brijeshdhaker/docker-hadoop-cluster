@@ -20,7 +20,7 @@ services:
   # Zookeeper Server
   #
   zookeeper:
-    image: confluentinc/cp-zookeeper:7.5.2
+    image: confluentinc/cp-zookeeper:7.5.2.arm64
     hostname: zookeeper.sandbox.net
     container_name: zookeeper
     healthcheck:
@@ -44,7 +44,7 @@ services:
   # Apache Kafka Server
   #
   kafkabroker:
-    image: confluentinc/cp-kafka:7.5.2
+    image: confluentinc/cp-kafka:7.5.2.arm64
     hostname: kafkabroker.sandbox.net
     container_name: kafkabroker
     depends_on:
@@ -85,7 +85,7 @@ services:
   #
   #
   schemaregistry:
-    image: confluentinc/cp-schema-registry:7.5.2
+    image: confluentinc/cp-schema-registry:7.5.2.arm64
     hostname: schemaregistry.sandbox.net
     container_name: schemaregistry
     depends_on:
