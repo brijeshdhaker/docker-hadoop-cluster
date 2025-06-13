@@ -34,13 +34,12 @@ docker run --rm -i -t \
 -v /apps/libs/flink/flink-s3-fs-hadoop-1.20.0-cp1.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0-cp1.jar \
 -v ./bd-docker-sandbox/conf/flink/config.yaml:/opt/flink/conf/config.yaml \
 -v ./bd-flink-module/target/bd-flink-module-1.0.0.jar:/opt/bd-flink-module/bd-flink-module-1.0.0.jar \
--v ./bd-data-generator/target/bd-data-generator-1.0.0.jar:/opt/bd-flink-module/bd-data-generator-1.0.0.jar \
 --name flink-playbox \
 confluentinc/cp-flink:1.20.0-cp1-java17-arm64 /bin/bash
 ```
 # Start Transaction Generation
 ```shell
-java -classpath /opt/bd-flink-module/bd-data-generator-1.0.0.jar:/opt/flink/lib/* org.apache.flink.playground.datagen.DataGenerator
+java -classpath /opt/bd-flink-module/bd-flink-module-1.0.0.jar/opt/flink/lib/* com.org.example.flink.transaction.datagen.DataGenerator
 ```
 
 # Validate Transaction Generation
