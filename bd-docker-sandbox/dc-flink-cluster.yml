@@ -45,6 +45,8 @@ services:
         rest.bind-port: 9081
       - JOB_MANAGER_RPC_ADDRESS=flink-jobmanager
       - JOB_MANAGER_RPC_PORT=6123
+    extra_hosts:
+      - "raspberrypi.sandbox.net:172.18.0.1"
 
   #
   # flink-taskmanager
@@ -74,6 +76,8 @@ services:
         taskmanager.numberOfTaskSlots: 2
       - JOB_MANAGER_RPC_ADDRESS=flink-jobmanager
       - JOB_MANAGER_RPC_PORT=6123
+    extra_hosts:
+      - "raspberrypi.sandbox.net:172.18.0.1"
 
 #
 volumes:

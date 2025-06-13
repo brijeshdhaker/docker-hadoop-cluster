@@ -64,7 +64,7 @@ docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "k
 # start event generation
 ```shell
 
-java -classpath /opt/bd-flink-module/bd-flink-module-1.0.0.jar:/opt/flink/lib/* flink.playgrounds.ops.clickcount.ClickEventGenerator \
+java -classpath /opt/bd-flink-module/bd-flink-module-1.0.0.jar:/opt/flink/lib/* com.org.example.flink.clickcount.ClickEventGenerator \
 --bootstrap.servers kafkabroker.sandbox.net:9092 \
 --topic click-event-source &
 
@@ -74,7 +74,7 @@ java -classpath /opt/bd-flink-module/bd-flink-module-1.0.0.jar:/opt/flink/lib/* 
 ```shell
 
 flink run --detached \
---class flink.playgrounds.ops.clickcount.ClickEventCount /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
+--class com.org.example.flink.clickcount.ClickEventCount /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
 --checkpointing \
 --event-time \
 --bootstrap.servers kafkabroker.sandbox.net:9092 \

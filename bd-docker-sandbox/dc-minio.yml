@@ -38,7 +38,9 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_minio_data:/data
-
+    extra_hosts:
+      - "raspberrypi.sandbox.net:172.18.0.1"
+      
    ##
 #  mc:
 #    image: minio/mc:latest

@@ -32,7 +32,9 @@ services:
       # test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
       timeout: 20s
       retries: 10
-
+    extra_hosts:
+      - "raspberrypi.sandbox.net:172.18.0.1"
+      
   #
   #
   #
