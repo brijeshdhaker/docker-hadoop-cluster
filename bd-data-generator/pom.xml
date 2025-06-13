@@ -24,7 +24,7 @@ under the License.
 
     <groupId>org.examples.flink</groupId>
     <artifactId>bd-data-generator</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
 
     <url>http://flink.apache.org</url>
     <inceptionYear>2024</inceptionYear>

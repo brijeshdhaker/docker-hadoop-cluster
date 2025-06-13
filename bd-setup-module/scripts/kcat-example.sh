@@ -23,7 +23,7 @@ docker run --rm \
 --volume ../bd-docker-sandbox/conf/kerberos/krb5.conf:/etc/krb5.conf \
 --env KRB5_CONFIG=/etc/krb5.conf \
 brijeshdhaker/kafka-clients:7.5.0 \
-kafkacat -F /apps/sandbox/kafka/cnf/$P_CONFIG_FILE -P -K '\t' -t $topic_name -l /apps/sandbox/kafka/json_messages.txt
+kafkacat -F /apps/configs/kafka/$P_CONFIG_FILE -P -K '\t' -t $topic_name -l /apps/sandbox/kafka/json_messages.txt
 
 echo "#"
 echo "# Consume messages"
@@ -39,4 +39,4 @@ docker run --rm \
 --volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
 --env KRB5_CONFIG=/etc/krb5.conf \
 brijeshdhaker/kafka-clients:7.5.0 \
-kafkacat -F /apps/sandbox/kafka/cnf/$C_CONFIG_FILE -C -K '\t' -t $topic_name -f '\nKey (%K bytes): %k\nValue (%S bytes): %s\nTimestamp: %T \nPartition: %p \nOffset: %o \n\n--\n' -e
+kafkacat -F /apps/configs/kafka/$C_CONFIG_FILE -C -K '\t' -t $topic_name -f '\nKey (%K bytes): %k\nValue (%S bytes): %s\nTimestamp: %T \nPartition: %p \nOffset: %o \n\n--\n' -e

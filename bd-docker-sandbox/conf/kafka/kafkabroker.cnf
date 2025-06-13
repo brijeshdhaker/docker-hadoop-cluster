@@ -1,0 +1,33 @@
+[req]
+prompt = no
+distinguished_name = dn
+default_md = sha256
+default_bits = 4096
+req_extensions = v3_req
+
+[ dn ]
+countryName = IN
+organizationName = Sandbox
+organizationalUnitName = Kafka
+localityName = Pune
+commonName=kafkabroker
+emailAddress = support@sandbox.net
+
+[ v3_ca ]
+subjectKeyIdentifier=hash
+basicConstraints = critical,CA:true
+authorityKeyIdentifier=keyid:always,issuer:always
+keyUsage = critical,keyCertSign,cRLSign
+
+[ v3_req ]
+subjectKeyIdentifier = hash
+basicConstraints = CA:FALSE
+nsComment = "OpenSSL Generated Certificate"
+keyUsage = critical, digitalSignature, keyEncipherment
+extendedKeyUsage = serverAuth, clientAuth
+subjectAltName = @alt_names
+
+[ alt_names ]
+DNS.1=kafkabroker
+DNS.2=kafkabroker.sandbox.net
+DNS.3=localhost

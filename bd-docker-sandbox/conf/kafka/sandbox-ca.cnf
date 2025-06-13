@@ -1,0 +1,28 @@
+[ policy_match ]
+countryName = match
+stateOrProvinceName = match
+organizationName = match
+organizationalUnitName = optional
+commonName = supplied
+emailAddress = optional
+
+[ req ]
+prompt = no
+distinguished_name = dn
+default_md = sha256
+default_bits = 4096
+x509_extensions = v3_ca
+
+[ dn ]
+countryName = IN
+organizationName = Sandbox
+organizationalUnitName = Kafka
+localityName = Pune
+commonName = sandbox-ca
+emailAddress = support@sandbox.net
+
+[ v3_ca ]
+subjectKeyIdentifier=hash
+basicConstraints = critical,CA:true
+authorityKeyIdentifier=keyid:always,issuer:always
+keyUsage = critical,keyCertSign,cRLSign

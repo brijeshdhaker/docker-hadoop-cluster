@@ -18,19 +18,10 @@ flink:
 blob:
   server:
     port: '6124'
-env:
-  java:
-    opts:
-      jobmanager: -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf
-      all: --add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED
-      taskmanager: -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf
-  log:
-    max: 5
-    dir: /apps/var/logs/flink
-    level: INFO
 rest:
   flamegraph:
     enabled: 'true'
+  bind-port: '9081'
   bind-address: 0.0.0.0
   address: flink-jobmanager
   profiling:
@@ -54,12 +45,6 @@ state:
     type: hashmap
   checkpoints:
     dir: s3a://defaultfs/state/checkpoints
-security:
-  kerberos:
-    login:
-      use-ticket-cache: false
-      principal: brijeshdhaker@SANDBOX.NET
-      keytab: /apps/security/keytabs/users/brijeshdhaker.keytab
 query:
   server:
     port: '6125'
@@ -80,13 +65,21 @@ execution:
     interval: 10s
 taskmanager:
   host: flink-taskmanager
-  numberOfTaskSlots: 8
+  numberOfTaskSlots: '2'
   memory:
     process:
       size: 1728m
   bind-host: 0.0.0.0
 parallelism:
   default: 4
+env:
+  java:
+    opts:
+      all: --add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED
+  log:
+    max: 5
+    dir: /apps/var/logs/flink
+    level: INFO
 web:
   cancel:
     enable: true

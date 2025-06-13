@@ -17,11 +17,6 @@ docker logs -f txn-data-generator
 docker container stop txn-data-generator
 docker container rm txn-data-generator
 
-docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
---topic transaction-csv-topic \
---bootstrap-server kafkabroker.sandbox.net:9092 \
---consumer.config /apps/sandbox/kafka/cnf/librdkafka_plaintext.config \
---timeout-ms 5000" 2>/dev/null 
 
 ```
 #
@@ -33,15 +28,28 @@ docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "k
 ```shell
 docker run --rm -i -t \
 --network sandbox.net \
+--add-host=raspberrypi.sandbox.net:172.18.0.1 \
 -e JOB_MANAGER_RPC_ADDRESS=flink-jobmanager \
 -e JOB_MANAGER_RPC_PORT=6123 \
--v /apps:/apps \
--v ./bd-flink-module/distro:/opt/bd-flink-module \
+-v /apps/libs/flink/flink-s3-fs-hadoop-1.20.0-cp1.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0-cp1.jar \
 -v ./bd-docker-sandbox/conf/flink/config.yaml:/opt/flink/conf/config.yaml \
--v /apps/libs/flink/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar \
+-v ./bd-flink-module/target/bd-flink-module-1.0.0.jar:/opt/bd-flink-module/bd-flink-module-1.0.0.jar \
+-v ./bd-data-generator/target/bd-data-generator-1.0.0.jar:/opt/bd-flink-module/bd-data-generator-1.0.0.jar \
 --name flink-playbox \
-apache/flink:1.20.0-scala_2.12-java17 /bin/bash
+confluentinc/cp-flink:1.20.0-cp1-java17-arm64 /bin/bash
+```
+# Start Transaction Generation
+```shell
+java -classpath /opt/bd-flink-module/bd-data-generator-1.0.0.jar:/opt/flink/lib/* org.apache.flink.playground.datagen.DataGenerator
+```
 
+# Validate Transaction Generation
+```shell
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
+--topic transaction-csv-topic \
+--bootstrap-server kafkabroker.sandbox.net:9092 \
+--consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
+--timeout-ms 5000 " 2>/dev/null
 ```
 
 # start event generation
@@ -90,8 +98,8 @@ flink stop ca7f71cecf2de500300692328a5b02de
 docker compose -f ./bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
 --topic click-event-source \
 --bootstrap-server kafkabroker.sandbox.net:9092 \
---consumer.config /apps/sandbox/kafka/cnf/librdkafka_plaintext.config \
---timeout-ms 5000" 2>/dev/null
+--consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
+--timeout-ms 5000 " 2>/dev/null
 ```
 
 # Validate Sink
@@ -99,7 +107,7 @@ docker compose -f ./bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c 
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
 --topic click-event-sink \
 --bootstrap-server kafkabroker.sandbox.net:9092 \
---consumer.config /apps/sandbox/kafka/cnf/librdkafka_plaintext.config \
+--consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
 --timeout-ms 5000" 2>/dev/null
 
 # jar tf ./bd-docker-sandbox/resources/libs/s3-fs-hadoop/flink-s3-fs-hadoop-1.16.2.jar | grep "org.apache.hadoop.fs.s3a.S3AFileSystem"

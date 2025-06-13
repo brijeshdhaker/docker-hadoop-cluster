@@ -123,7 +123,7 @@ docker run -it --rm \
 brijeshdhaker/kafka-clients:7.5.0 \
 kafkacat -V
 
-kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_thinkpad_plaintext.config  -L -J | jq .
+kafkacat -F /apps/configs/kafka/librdkafka_thinkpad_plaintext.config  -L -J | jq .
 
 ```
 
@@ -154,12 +154,12 @@ nc -vz kafkabroker.sandbox.net 9092
 
 # Producer
 ```shell
-echo "aea284e3-24c6-4969-a85f-fff8e34fb41c	{'uuid': 'aea284e3-24c6-4969-a85f-fff8e34fb41c', 'addts': 1708533236}"| kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_paintext.config -P -t kafka-simple-topic -K '\t'
+echo "aea284e3-24c6-4969-a85f-fff8e34fb41c	{'uuid': 'aea284e3-24c6-4969-a85f-fff8e34fb41c', 'addts': 1708533236}"| kafkacat -F /apps/configs/kafka/librdkafka_sasl_paintext.config -P -t kafka-simple-topic -K '\t'
 
 ```
 # Consumer
 ```shell
-kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_paintext.config -C -t kafka-simple-topic -f '\nKey (%K bytes): %k\nValue (%S bytes): %s\nTimestamp: %T \nPartition: %p \nOffset: %o \n\n--\n' -e
+kafkacat -F /apps/configs/kafka/librdkafka_sasl_paintext.config -C -t kafka-simple-topic -f '\nKey (%K bytes): %k\nValue (%S bytes): %s\nTimestamp: %T \nPartition: %p \nOffset: %o \n\n--\n' -e
 
 ## with consumer group
 kafkacat -b kafkabroker.sandbox.net:9092 -G kafka-simple-cg kafka-simple-topic -o 600 -e
@@ -176,27 +176,27 @@ docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkaclient sh -
 ```
 ## SASL_PLAINTEXT
 ```shell
-docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_paintext.config -L"
-docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_paintext.config -P -t kafka-simple-topic -l /apps/sandbox/kafka/json_messages.txt 2>/dev/null"
-docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_paintext.config -C -t kafka-simple-topic -o -10 -e"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/configs/kafka/librdkafka_sasl_paintext.config -L"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/configs/kafka/librdkafka_sasl_paintext.config -P -t kafka-simple-topic -l /apps/sandbox/kafka/json_messages.txt 2>/dev/null"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/configs/kafka/librdkafka_sasl_paintext.config -C -t kafka-simple-topic -o -10 -e"
 ```
 ## SASL_SSL
 ```shell
-docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_ssl.config -L"
-docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_ssl.config -P -t kafka-simple-topic -l /apps/sandbox/kafka/json_messages.txt 2>/dev/null"
-docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_ssl.config -C -t kafka-simple-topic -o -10 -f '\nKey (%K bytes): %k\t\nValue (%S bytes): %s\nTimestamp: %T\tPartition: %p\tOffset: %o\n--\n' -e 2>/dev/null"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/configs/kafka/librdkafka_sasl_ssl.config -L"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/configs/kafka/librdkafka_sasl_ssl.config -P -t kafka-simple-topic -l /apps/sandbox/kafka/json_messages.txt 2>/dev/null"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/configs/kafka/librdkafka_sasl_ssl.config -C -t kafka-simple-topic -o -10 -f '\nKey (%K bytes): %k\t\nValue (%S bytes): %s\nTimestamp: %T\tPartition: %p\tOffset: %o\n--\n' -e 2>/dev/null"
 ```
 ## SSL
 ```shell
-docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_ssl.config -L"
-docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_ssl.config -P -t kafka-simple-topic -l /apps/sandbox/kafka/json_messages.txt 2>/dev/null"
-docker compose exec kafkaclient sh -c "kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_ssl.config -C -t kafka-simple-topic -o -10 -e"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/configs/kafka/librdkafka_ssl.config -L"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/configs/kafka/librdkafka_ssl.config -P -t kafka-simple-topic -l /apps/sandbox/kafka/json_messages.txt 2>/dev/null"
+docker compose exec kafkaclient sh -c "kafkacat -F /apps/configs/kafka/librdkafka_ssl.config -C -t kafka-simple-topic -o -10 -e"
 ```
 
 ## From Host machine
 ```shell
-kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_thinkpad_plaintext.config -L
-kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_thinkpad_plaintext.config -C -t kafka-simple-topic -o -10 -e
-kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_thinkpad_sasl_ssl.config -C -t kafka-simple-topic -o -10 -f '\nKey (%K bytes): %k\t\nValue (%S bytes): %s\nTimestamp: %T\tPartition: %p\tOffset: %o\n--\n' -e 2>/dev/null
-kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_thinkpad_ssl.config -C -t kafka-simple-topic -o -10 -e
+kafkacat -F /apps/configs/kafka/librdkafka_thinkpad_plaintext.config -L
+kafkacat -F /apps/configs/kafka/librdkafka_thinkpad_plaintext.config -C -t kafka-simple-topic -o -10 -e
+kafkacat -F /apps/configs/kafka/librdkafka_thinkpad_sasl_ssl.config -C -t kafka-simple-topic -o -10 -f '\nKey (%K bytes): %k\t\nValue (%S bytes): %s\nTimestamp: %T\tPartition: %p\tOffset: %o\n--\n' -e 2>/dev/null
+kafkacat -F /apps/configs/kafka/librdkafka_thinkpad_ssl.config -C -t kafka-simple-topic -o -10 -e
 ```
