@@ -33,13 +33,9 @@ under the License.
 	<name>bd-flink-module</name>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<flink.version>1.20.0</flink.version>
 		<flink.scope>compile</flink.scope>
-		<target.java.version>17</target.java.version>
 		<scala.binary.version>2.12</scala.binary.version>
-		<maven.compiler.source>${target.java.version}</maven.compiler.source>
-		<maven.compiler.target>${target.java.version}</maven.compiler.target>
 		<delta.connectors.version>3.2.1</delta.connectors.version>
 		<hadoop.version>3.3.4</hadoop.version>
 		<log4j.version>2.17.1</log4j.version>
@@ -48,13 +44,7 @@ under the License.
 
 	<profiles>
 		<profile>
-			<id>local</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-		</profile>
-		<profile>
-			<id>cluster</id>
+			<id>flink-cluster</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
@@ -217,9 +207,7 @@ under the License.
 	</dependencies>
 
 	<build>
-        <!--
-        <finalName>bd-spark-module</finalName>
-        -->
+        <finalName>bd-flink-module</finalName>
         <sourceDirectory>src/main/java</sourceDirectory>
         <testSourceDirectory>src/test/java</testSourceDirectory>
         <resources>
