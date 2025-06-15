@@ -15,7 +15,7 @@ public class DataStreamJob {
 
 	public static void main(String[] args) throws Exception {
 
-		URL url = ClassLoader.getSystemResource(".");
+		URL url = ClassLoader.getSystemResource("./local-cluster");
 		File file = (url != null) ? new File(url.getFile()) : new File(".");
 
 		final org.apache.flink.configuration.Configuration config = GlobalConfiguration.loadConfiguration(file.getAbsolutePath());

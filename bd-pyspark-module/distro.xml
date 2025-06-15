@@ -7,6 +7,7 @@
 
     <formats>
         <format>zip</format>
+        <format>tar.gz</format>
     </formats>
 
     <fileSets>
@@ -28,5 +29,22 @@
             </excludes>
         </fileSet>
     </fileSets>
+
+    <!-- 
+    <files>
+        <file>
+            <source> ${project.build.directory}/${project.artifactId}-${project.version}.jar</source>
+            <outputDirectory>/</outputDirectory>
+        </file>
+    </files>
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+            <excludes>
+                <exclude>${project.groupId}:${project.artifactId}:jar:*</exclude>
+            </excludes>
+        </dependencySet>
+    </dependencySets>
+    -->
 
 </assembly>
