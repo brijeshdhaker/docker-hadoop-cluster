@@ -46,7 +46,7 @@ docker run --rm -i -t \
 -v /apps:/apps \
 -v ./bd-docker-sandbox/conf/flink/config.yaml:/opt/flink/conf/config.yaml \
 -v /apps/libs/flink/flink-s3-fs-hadoop-1.20.0-cp1.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0-cp1.jar \
--v ./bd-flink-module/target/bd-flink-module-1.0.0.jar:/opt/bd-flink-module/bd-flink-module-1.0.0.jar \
+-v ./bd-flink-module/target/bd-flink-module.jar:/opt/bd-flink-module/bd-flink-module.jar \
 --name flink-playbox \
 confluentinc/cp-flink:1.20.0-cp1-java17-arm64 /bin/bash
 
@@ -54,7 +54,7 @@ confluentinc/cp-flink:1.20.0-cp1-java17-arm64 /bin/bash
 
 # Start Data Generation
 ```shell
-java -classpath /opt/bd-flink-module/bd-flink-module-1.0.0.jar:/opt/flink/lib/* org.examples.flink.transaction.datagen.DataGenerator
+java -classpath /opt/bd-flink-module/bd-flink-module.jar:/opt/flink/lib/* org.examples.flink.transaction.datagen.DataGenerator
 ```
 
 # Validate Data Generation
@@ -71,7 +71,7 @@ docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "k
 # start event generation
 ```shell
 
-java -classpath /opt/bd-flink-module/bd-flink-module-1.0.0.jar:/opt/flink/lib/* org.examples.flink.clickcount.ClickEventGenerator \
+java -classpath /opt/bd-flink-module/bd-flink-module.jar:/opt/flink/lib/* org.examples.flink.clickcount.ClickEventGenerator \
 --bootstrap.servers kafkabroker.sandbox.net:9092 \
 --topic click-event-source &
 
@@ -81,7 +81,7 @@ java -classpath /opt/bd-flink-module/bd-flink-module-1.0.0.jar:/opt/flink/lib/* 
 ```shell
 
 nohup flink run --detached \
---class org.examples.flink.clickcount.ClickEventCount /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
+--class org.examples.flink.clickcount.ClickEventCount /opt/bd-flink-module/bd-flink-module.jar \
 --checkpointing \
 --event-time \
 --bootstrap.servers kafkabroker.sandbox.net:9092 \
@@ -103,7 +103,7 @@ flink stop 3ee7c8da616b3cfdea2a37916c7ac41e
 
 /opt/flink/bin/flink run --detached \
 --fromSavepoint s3a://defaultfs/execution/savepoints/savepoint-3ee7c8-4671ebd2716c \
---class flink.playgrounds.ops.clickcount.ClickEventCount /opt/bd-flink-module-1.0.0.jar \
+--class flink.playgrounds.ops.clickcount.ClickEventCount /opt/bd-flink-module.jar \
 --checkpointing \
 --event-time \
 --bootstrap.servers kafkabroker.sandbox.net:9092 \
@@ -175,7 +175,7 @@ kafka-topics --describe --topic click-event-sink --bootstrap-server kafkabroker.
 # start event count flink job
 ```shell
 /opt/flink/bin/flink run --detached \
---class flink.playgrounds.delta.sink.DeltaSinkExampleLocal /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
+--class flink.playgrounds.delta.sink.DeltaSinkExampleLocal /opt/bd-flink-module/bd-flink-module.jar \
 --checkpointing \
 --event-time
 ```
@@ -183,7 +183,7 @@ kafka-topics --describe --topic click-event-sink --bootstrap-server kafkabroker.
 # Transaction Pipeline
 ```shell
 /opt/flink/bin/flink run --detached \
---class org.examples.flink.transaction.TransactionPipeline /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
+--class org.examples.flink.transaction.TransactionPipeline /opt/bd-flink-module/bd-flink-module.jar \
 --engine-type remote-cluster \
 --table-name transactions \
 --config-path /opt/flink/conf
@@ -191,7 +191,7 @@ kafka-topics --describe --topic click-event-sink --bootstrap-server kafkabroker.
 #
 ```shell
 /opt/flink/bin/flink run --detached \
---class flink.playgrounds.delta.sink.DeltaSinkExampleCluster /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
+--class flink.playgrounds.delta.sink.DeltaSinkExampleCluster /opt/bd-flink-module/bd-flink-module.jar \
 --checkpointing \
 --event-time
 
@@ -200,7 +200,7 @@ kafka-topics --describe --topic click-event-sink --bootstrap-server kafkabroker.
 # bounded
 ```shell
 flink run --detached \
---class flink.playgrounds.delta.source.bounded.DeltaBoundedSourceClusterExample /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
+--class flink.playgrounds.delta.source.bounded.DeltaBoundedSourceClusterExample /opt/bd-flink-module/bd-flink-module.jar \
 --table-path s3a://defaultfs/delta-flink-example/
 ```
 
@@ -209,7 +209,7 @@ flink run --detached \
 #
 ```shell
 flink run --detached \
---class flink.playgrounds.delta.source.continuous.DeltaContinuousSourceClusterExample /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
+--class flink.playgrounds.delta.source.continuous.DeltaContinuousSourceClusterExample /opt/bd-flink-module/bd-flink-module.jar \
 --table-path s3a://defaultfs/delta-flink-example/
 
 ```
