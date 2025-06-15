@@ -123,7 +123,7 @@ docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "k
 --property print.key=true \
 --property print.value=true \
 --consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
---timeout-ms 20000 " 2>/dev/null
+--timeout-ms 20000 2>/dev/null" 
 
 
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
@@ -159,30 +159,6 @@ docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "k
 --timeout-ms 20000 " 2>/dev/null
 
 kafka-topics --describe --topic click-event-sink --bootstrap-server kafkabroker.sandbox.net:9092
-
-docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
---topic click-event-sink \
---bootstrap-server kafkabroker.sandbox.net:9092 \
---offset 0 \
---partition 1 \
---consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
---timeout-ms 20000 " 2>/dev/null
-
-docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
---topic click-event-sink \
---bootstrap-server kafkabroker.sandbox.net:9092 \
---offset 0 \
---partition 2 \
---consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
---timeout-ms 20000 " 2>/dev/null
-
-docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
---topic click-event-sink \
---bootstrap-server kafkabroker.sandbox.net:9092 \
---offset 0 \
---partition 3 \
---consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
---timeout-ms 20000 " 2>/dev/null
 
 ```
 

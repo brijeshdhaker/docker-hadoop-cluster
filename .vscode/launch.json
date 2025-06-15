@@ -1,3 +1,44 @@
 {
-    "configurations": []
+    "configurations": [
+        {
+            "type": "java",
+            "name": "TaxiRidesAndFares",
+            "request": "launch",
+            "mainClass": "org.examples.flink.taxi.TaxiRidesAndFares",
+            "projectName": "bd-flink-module",
+            "args": "--app-config taxi_workflow.properties --engine-type local-cluster --table-name transactions --config-path ${workspaceFolder}/bd-flink-module/src/main/resources/local-cluster",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": "-Dlog.file=/apps/var/logs/flink/TaxiRidesAndFares.log"
+        },
+        {
+            "type": "java",
+            "name": "TransactionPipeline",
+            "request": "launch",
+            "mainClass": "org.examples.flink.transaction.TransactionPipeline",
+            "projectName": "bd-flink-module",
+            "args": "--app-config transactions_workflow.properties --engine-type local-cluster --table-name transactions --config-path ${workspaceFolder}/bd-flink-module/src/main/resources/local-cluster",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": "-Dlog.file=/apps/var/logs/flink/TransactionPipeline.log"
+        },
+        {
+            "type": "java",
+            "name": "ProductsHourlySales",
+            "request": "launch",
+            "mainClass": "org.examples.flink.transaction.ProductsHourlySales",
+            "projectName": "bd-flink-module",
+            "args": "--app-config transactions_workflow.properties --engine-type local-cluster --table-name transactions --config-path ${workspaceFolder}/bd-flink-module/src/main/resources/local-cluster",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": "-Dlog.file=/apps/var/logs/flink/ProductsHourlySales.log"
+        },
+        {
+            "type": "java",
+            "name": "ClickEventGenerator",
+            "request": "launch",
+            "mainClass": "org.examples.flink.clickcount.ClickEventGenerator",
+            "projectName": "bd-flink-module",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": "-Dlog.file=/apps/var/logs/flink/ClickEventGenerator.log"
+        }
+    ]
 }

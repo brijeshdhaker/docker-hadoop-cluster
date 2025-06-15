@@ -48,6 +48,10 @@ docker compose -f  bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-configs --bootstrap-server kafkabroker.sandbox.net:9092 --entity-type topics --entity-name kafka-simple-topic --describe "
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-configs --bootstrap-server kafkabroker.sandbox.net:9092 --entity-type topics --entity-default --alter --add-config delete.retention.ms=172800000 "
 
+confluent.tier.local.hotset.ms=86400000
+delete.retention.ms=86400000
+file.delete.delay.ms=60000
+
 ### Change Kafka Retention Time
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-configs --bootstrap-server kafkabroker.sandbox.net:9092 --alter --topic transaction-avro-topic --add-config retention.ms=1000"
 

@@ -1,14 +1,13 @@
 package org.examples.flink;
 
-import org.examples.flink.config.WorkflowConfig;
-import org.examples.flink.utils.Constants;
-import org.apache.flink.api.common.JobExecutionResult;
-import org.apache.flink.configuration.Configuration;
-import org.apache.flink.runtime.minicluster.MiniCluster;
-import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
+
+import org.apache.flink.api.common.JobExecutionResult;
+import org.apache.flink.runtime.minicluster.MiniCluster;
+import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.examples.flink.config.WorkflowConfig;
+import org.examples.flink.utils.Constants;
 
 public abstract class AbstractFlinkStreamWorkflow extends Workflow {
 

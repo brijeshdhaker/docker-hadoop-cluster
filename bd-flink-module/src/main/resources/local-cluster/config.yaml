@@ -73,7 +73,7 @@ execution:
     interval: 10s
 taskmanager:
   host: flink-taskmanager
-  numberOfTaskSlots: 8
+  numberOfTaskSlots: 4
   memory:
     process:
       size: 1728m
