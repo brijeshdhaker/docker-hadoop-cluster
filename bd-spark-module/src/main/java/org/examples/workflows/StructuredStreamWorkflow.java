@@ -1,27 +1,28 @@
 package org.examples.workflows;
 
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.parquet.format.StringType;
+import static org.apache.spark.sql.avro.functions.from_avro;
+import static org.apache.spark.sql.functions.col;
+import static org.apache.spark.sql.functions.date_format;
+import static org.apache.spark.sql.functions.expr;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.spark.SparkConf;
-import org.apache.spark.api.java.JavaSparkContext;
 //import org.apache.spark.sql.Row;
-import org.apache.spark.sql.*;
-import static org.apache.spark.sql.functions.*;
-import static org.apache.spark.sql.avro.functions.*;
+import org.apache.spark.sql.Dataset;
+import org.apache.spark.sql.Row;
 //import static org.apache.spark.sql.functions.col;
 import org.apache.spark.sql.SparkSession;
-import org.apache.spark.streaming.Durations;
-import org.apache.spark.streaming.api.java.JavaInputDStream;
-import org.apache.spark.streaming.api.java.JavaStreamingContext;
-import org.apache.spark.streaming.kafka010.ConsumerStrategies;
-import org.apache.spark.streaming.kafka010.KafkaUtils;
-import org.apache.spark.streaming.kafka010.LocationStrategies;
+import org.apache.spark.sql.functions;
+import org.apache.spark.sql.streaming.StreamingQuery;
+import org.apache.spark.sql.types.DataTypes;
 import org.examples.config.KafkaConfig;
 import org.examples.config.WorkflowConfig;
 import org.examples.processor.StreamJobProcessor;
-
-import org.apache.spark.api.java.function.FlatMapFunction;
-import org.apache.spark.sql.streaming.StreamingQuery;
 import org.examples.service.OffsetService;
 import org.examples.service.ServiceProvider;
 import org.examples.service.TopicService;
@@ -31,17 +32,6 @@ import org.examples.writers.ConsoleWriter;
 import org.examples.writers.DataWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.apache.spark.sql.types.DataTypes;
-import org.apache.spark.sql.types.StructField;
-import org.apache.spark.sql.types.StructType;
-
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 public class StructuredStreamWorkflow extends AbstractStreamWorkflow<String, byte[], Row> {
 

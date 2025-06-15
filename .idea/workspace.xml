@@ -348,9 +348,9 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.examples.sb.repositories.entities" />
       <recent name="org.examples.sb.controllers" />
-      <recent name="com.org.example.flink.transaction.sink" />
-      <recent name="com.org.example.flink" />
-      <recent name="com.org.example.flink.config" />
+      <recent name="org.examples.flink.transaction.sink" />
+      <recent name="org.examples.flink" />
+      <recent name="org.examples.flink.config" />
     </key>
   </component>
   <component name="RunManager" selected="Application.AppLauncher::BatchWorkflow">
@@ -1163,7 +1163,7 @@
         <line-breakpoint type="java-field">
           <url>file://$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/FlinkJobRunnerBase.java</url>
           <line>18</line>
-          <properties field="ENGINE_TYPE" class="com.org.example.flink.utils.jobs.FlinkJobRunnerBase" />
+          <properties field="ENGINE_TYPE" class="org.examples.flink.utils.jobs.FlinkJobRunnerBase" />
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
@@ -1197,7 +1197,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/docker_hadoop_cluster$TaxiRidesAndFares.ic" NAME="TaxiRidesAndFares Coverage Results" MODIFIED="1734422321107" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>com.org.example.flink.taxi.*</FILTER>
+      <FILTER>org.examples.flink.taxi.*</FILTER>
     </SUITE>
   </component>
 </project>

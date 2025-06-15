@@ -20,6 +20,12 @@ HADOOP_CLASSPATH=`hadoop classpath` /home/foouser/flink-1.9.0/bin/flink run \
 #
 ```shell
 
+docker compose -f bd-docker-sandbox/docker-compose.yml up -d minio
+docker compose -f bd-docker-sandbox/docker-compose.yml down minio
+
+docker compose -f bd-docker-sandbox/docker-compose.yml up -d zookeeper kafkabroker schemaregistry
+docker compose -f bd-docker-sandbox/docker-compose.yml down zookeeper kafkabroker schemaregistry
+
 docker compose -f bd-docker-sandbox/docker-compose.yml up -d flink-jobmanager flink-taskmanager
 
 ```
@@ -38,16 +44,17 @@ docker run --rm -i -t \
 -e JOB_MANAGER_RPC_ADDRESS=flink-jobmanager \
 -e JOB_MANAGER_RPC_PORT=6123 \
 -v /apps:/apps \
--v /apps/libs/flink/flink-s3-fs-hadoop-1.20.0-cp1.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0-cp1.jar \
 -v ./bd-docker-sandbox/conf/flink/config.yaml:/opt/flink/conf/config.yaml \
+-v /apps/libs/flink/flink-s3-fs-hadoop-1.20.0-cp1.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0-cp1.jar \
 -v ./bd-flink-module/target/bd-flink-module-1.0.0.jar:/opt/bd-flink-module/bd-flink-module-1.0.0.jar \
 --name flink-playbox \
 confluentinc/cp-flink:1.20.0-cp1-java17-arm64 /bin/bash
+
 ```
 
 # Start Data Generation
 ```shell
-java -classpath /opt/bd-flink-module/bd-flink-module-1.0.0.jar:/opt/flink/lib/* com.org.example.flink.transaction.datagen.DataGenerator
+java -classpath /opt/bd-flink-module/bd-flink-module-1.0.0.jar:/opt/flink/lib/* org.examples.flink.transaction.datagen.DataGenerator
 ```
 
 # Validate Data Generation
@@ -57,14 +64,14 @@ docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "k
 --topic transaction-csv-topic \
 --bootstrap-server kafkabroker.sandbox.net:9092 \
 --consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
---timeout-ms 5000 " 2>/dev/null 
+--timeout-ms 10000" 2>/dev/null 
 
 ```
 
 # start event generation
 ```shell
 
-java -classpath /opt/bd-flink-module/bd-flink-module-1.0.0.jar:/opt/flink/lib/* com.org.example.flink.clickcount.ClickEventGenerator \
+java -classpath /opt/bd-flink-module/bd-flink-module-1.0.0.jar:/opt/flink/lib/* org.examples.flink.clickcount.ClickEventGenerator \
 --bootstrap.servers kafkabroker.sandbox.net:9092 \
 --topic click-event-source &
 
@@ -73,13 +80,13 @@ java -classpath /opt/bd-flink-module/bd-flink-module-1.0.0.jar:/opt/flink/lib/* 
 # start event count flink job
 ```shell
 
-flink run --detached \
---class com.org.example.flink.clickcount.ClickEventCount /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
+nohup flink run --detached \
+--class org.examples.flink.clickcount.ClickEventCount /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
 --checkpointing \
 --event-time \
 --bootstrap.servers kafkabroker.sandbox.net:9092 \
 --input-topic click-event-source \
---output-topic click-event-sink
+--output-topic click-event-sink 2>/dev/null &
 
 ```
 
@@ -111,19 +118,71 @@ flink stop 3ee7c8da616b3cfdea2a37916c7ac41e
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
 --topic click-event-source \
 --bootstrap-server kafkabroker.sandbox.net:9092 \
---consumer.config /apps/configs/kafka/client_plaintext.config \
---timeout-ms 5000 " 2>/dev/null
+--from-beginning \
+--property print.timestamp=true \
+--property print.key=true \
+--property print.value=true \
+--consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
+--timeout-ms 20000 " 2>/dev/null
+
+
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
+--topic click-event-source \
+--bootstrap-server kafkabroker.sandbox.net:9092 \
+--partition 0 \
+--offset 0 \
+--consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
+--timeout-ms 20000 " 2>/dev/null
 
 ```
 
 # Validate Sink
 ```shell
 
+
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
 --topic click-event-sink \
 --bootstrap-server kafkabroker.sandbox.net:9092 \
---consumer.config /apps/configs/kafka/client_plaintext.config \
---timeout-ms 5000 " 2>/dev/null
+--from-beginning \
+--property print.timestamp=true \
+--property print.key=true \
+--property print.value=true \
+--consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
+--timeout-ms 20000 " 2>/dev/null
+
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
+--topic click-event-sink \
+--bootstrap-server kafkabroker.sandbox.net:9092 \
+--offset 0 \
+--partition 0 \
+--consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
+--timeout-ms 20000 " 2>/dev/null
+
+kafka-topics --describe --topic click-event-sink --bootstrap-server kafkabroker.sandbox.net:9092
+
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
+--topic click-event-sink \
+--bootstrap-server kafkabroker.sandbox.net:9092 \
+--offset 0 \
+--partition 1 \
+--consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
+--timeout-ms 20000 " 2>/dev/null
+
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
+--topic click-event-sink \
+--bootstrap-server kafkabroker.sandbox.net:9092 \
+--offset 0 \
+--partition 2 \
+--consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
+--timeout-ms 20000 " 2>/dev/null
+
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
+--topic click-event-sink \
+--bootstrap-server kafkabroker.sandbox.net:9092 \
+--offset 0 \
+--partition 3 \
+--consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
+--timeout-ms 20000 " 2>/dev/null
 
 ```
 
@@ -148,7 +207,7 @@ docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "k
 # Transaction Pipeline
 ```shell
 /opt/flink/bin/flink run --detached \
---class com.org.example.flink.transaction.TransactionPipeline /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
+--class org.examples.flink.transaction.TransactionPipeline /opt/bd-flink-module/bd-flink-module-1.0.0.jar \
 --engine-type remote-cluster \
 --table-name transactions \
 --config-path /opt/flink/conf

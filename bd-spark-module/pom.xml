@@ -4,6 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+	<parent>
+		<groupId>org.examples.bd</groupId>
+		<artifactId>docker-hadoop-cluster</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
     <groupId>org.examples.spark</groupId>
     <artifactId>bd-spark-module</artifactId>
     <name>bd-spark-module</name>
@@ -90,13 +96,6 @@
                     <excludes>META-INF/*.DSA</excludes>
                     <excludes>META-INF/*.RSA</excludes>
                 </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <!--
             <plugin>
@@ -110,7 +109,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.basedir}/dist</outputDirectory>
+                            <outputDirectory>${project.basedir}/distro</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>${project.basedir}/target</directory>
@@ -422,29 +421,6 @@
             <version>3.2.1</version>
         </dependency>
 
-        <!-- Test dependencies -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>confluent</id>
-            <name>Confluent</name>
-            <url>https://packages.confluent.io/maven/</url>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>confluent</id>
-            <url>https://packages.confluent.io/maven/</url>
-        </pluginRepository>
-    </pluginRepositories>
 
 </project>

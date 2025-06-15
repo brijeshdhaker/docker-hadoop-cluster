@@ -5,8 +5,6 @@
 # docker compose -f bd-docker-sandbox/docker-compose.yml up -d flink-jobmanager flink-taskmanager
 # docker compose -f bd-docker-sandbox/docker-compose.yml down flink-jobmanager flink-taskmanager
 #
-# docker compose -f bd-docker-sandbox/dc-flink-cluster.yml up -d flink-jobmanager, flink-taskmanager
-# docker compose -f bd-docker-sandbox/dc-flink-cluster.yml down
 #
 
 # version: "3.9"
@@ -22,13 +20,13 @@ services:
     hostname: flink-jobmanager
     container_name: flink-jobmanager
     command: "jobmanager.sh start-foreground"
-    # depends_on:
-    #   minio:
-    #     condition: service_healthy
-    #   kafkabroker:
-    #     condition: service_healthy
+    depends_on:
+      minio:
+        condition: service_healthy
+      kafkabroker:
+        condition: service_healthy
     ports:
-      - "9081:9081"
+      - "8081:8081"
     healthcheck:
       test: echo $(hostname -f) || exit 1
       retries: 20
@@ -42,7 +40,6 @@ services:
       - |
         FLINK_PROPERTIES=
         rest.flamegraph.enabled: true
-        rest.bind-port: 9081
       - JOB_MANAGER_RPC_ADDRESS=flink-jobmanager
       - JOB_MANAGER_RPC_PORT=6123
     extra_hosts:
@@ -73,7 +70,6 @@ services:
       - |
         FLINK_PROPERTIES=
         rest.flamegraph.enabled: true
-        taskmanager.numberOfTaskSlots: 2
       - JOB_MANAGER_RPC_ADDRESS=flink-jobmanager
       - JOB_MANAGER_RPC_PORT=6123
     extra_hosts:

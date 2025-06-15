@@ -21,7 +21,7 @@ blob:
 rest:
   flamegraph:
     enabled: 'true'
-  bind-port: '9081'
+  bind-port: '8081'
   bind-address: 0.0.0.0
   address: flink-jobmanager
   profiling:
@@ -65,7 +65,7 @@ execution:
     interval: 10s
 taskmanager:
   host: flink-taskmanager
-  numberOfTaskSlots: '2'
+  numberOfTaskSlots: '4'
   memory:
     process:
       size: 1728m
