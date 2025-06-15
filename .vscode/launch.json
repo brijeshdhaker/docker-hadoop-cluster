@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DataStreamJob",
+            "request": "launch",
+            "mainClass": "org.examples.flink.example.DataStreamJob",
+            "projectName": "bd-flink-module"
+        },
+        {
+            "type": "java",
             "name": "TaxiRidesAndFares",
             "request": "launch",
             "mainClass": "org.examples.flink.taxi.TaxiRidesAndFares",

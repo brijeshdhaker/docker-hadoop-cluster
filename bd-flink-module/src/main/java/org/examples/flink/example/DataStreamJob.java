@@ -23,9 +23,12 @@ public class DataStreamJob {
 		final StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironment(2, config);
 
 		DataStream<Person> flintstones = env.fromElements(
-				new Person("Fred", 35),
-				new Person("Wilma", 35),
-				new Person("Pebbles", 2));
+			new Person("Brijesh ", 43),
+			new Person("Neeta", 40),
+			new Person("Jenaaya", 2),
+			new Person("Tejas", 7),
+			new Person("Keshvi", 13)
+		);
 
 		DataStream<Person> adults = flintstones.filter(new FilterFunction<Person>() {
 			@Override

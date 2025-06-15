@@ -38,7 +38,7 @@ public class Workflow {
             String engine_type = workflowConf.get(Constants.ENGINE_TYPE);
 
             Configuration flinkConfig = workflowConfig.flinkConf();
-            flinkConfig.set(RestOptions.PORT, 8881);
+            flinkConfig.set(RestOptions.PORT, 8081);
             switch (engine_type){
                 case Constants.LOCAL_CLUSTER :
                     FileSystem.initialize(flinkConfig);
@@ -67,7 +67,7 @@ public class Workflow {
     protected MiniCluster getMiniCluster() {
 
         Configuration config = workflowConfig.flinkConf();
-        config.set(RestOptions.PORT, 8881);
+        config.set(RestOptions.PORT, 8081);
         final MiniClusterConfiguration cfg =
                 new MiniClusterConfiguration.Builder()
                         .setNumTaskManagers(1)

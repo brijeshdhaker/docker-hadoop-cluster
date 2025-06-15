@@ -25,6 +25,7 @@
         <hbase.client.version>2.4.9</hbase.client.version>
         <classifier>local</classifier>
         <runclass>org.examples.spark.AppLauncher</runclass>
+        <main.class>org.examples.spark.AppLauncher</main.class>
         <params>10</params>
         <confluent.version>7.5.2</confluent.version>
     </properties>

@@ -35,6 +35,7 @@ under the License.
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<flink.version>1.20.0</flink.version>
+		<flink.scope>compile</flink.scope>
 		<target.java.version>17</target.java.version>
 		<scala.binary.version>2.12</scala.binary.version>
 		<maven.compiler.source>${target.java.version}</maven.compiler.source>
@@ -42,6 +43,7 @@ under the License.
 		<delta.connectors.version>3.2.1</delta.connectors.version>
 		<hadoop.version>3.3.4</hadoop.version>
 		<log4j.version>2.17.1</log4j.version>
+		<main.class>org.examples.flink.transaction.TransactionPipeline</main.class>
 	</properties>
 
 	<profiles>
@@ -50,17 +52,6 @@ under the License.
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
-			<properties>
-				<flink.scope>compile</flink.scope>
-			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>org.apache.flink</groupId>
-					<artifactId>flink-s3-fs-hadoop</artifactId>
-					<version>${flink.version}</version>
-					<scope>${flink.scope}</scope>
-				</dependency>
-			</dependencies>
 		</profile>
 		<profile>
 			<id>cluster</id>
@@ -130,6 +121,13 @@ under the License.
 		<dependency>
 			<groupId>org.apache.flink</groupId>
 			<artifactId>flink-clients</artifactId>
+			<version>${flink.version}</version>
+			<scope>${flink.scope}</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-hadoop-compatibility_2.12</artifactId>
 			<version>${flink.version}</version>
 			<scope>${flink.scope}</scope>
 		</dependency>
