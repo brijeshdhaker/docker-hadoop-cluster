@@ -4,13 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+	<parent>
+		<groupId>org.examples.bd</groupId>
+		<artifactId>docker-hadoop-cluster</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
     <groupId>org.examples.spark</groupId>
     <artifactId>bd-spark-module</artifactId>
     <name>bd-spark-module</name>
     <version>1.0.0</version>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <encoding>UTF-8</encoding>
         <scala.version>2.12.17</scala.version>
@@ -19,14 +25,14 @@
         <hbase.client.version>2.4.9</hbase.client.version>
         <classifier>local</classifier>
         <runclass>org.examples.spark.AppLauncher</runclass>
+        <main.class>org.examples.spark.AppLauncher</main.class>
         <params>10</params>
         <confluent.version>7.5.2</confluent.version>
     </properties>
 
     <build>
-        <!--
+        
         <finalName>bd-spark-module</finalName>
-        -->
         <sourceDirectory>src/main/java</sourceDirectory>
         <testSourceDirectory>src/test/java</testSourceDirectory>
         <resources>
@@ -49,6 +55,7 @@
         </testResources>
 
         <plugins>
+        
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
@@ -90,40 +97,8 @@
                     <excludes>META-INF/*.DSA</excludes>
                     <excludes>META-INF/*.RSA</excludes>
                 </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
-            <!--
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.0.2</version>
-                <executions>
-                    <execution>
-                        <id>copy-artifact</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.basedir}/dist</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${project.basedir}/target</directory>
-                                    <includes>
-                                        <include>${project.build.finalName}.${project.packaging}</include>
-                                    </includes>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            -->
+            
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -253,50 +228,6 @@
                 </executions>
             </plugin>
 
-            <!-- Use the shade plugin to remove all the provided artifacts (such as spark itself) from the jar -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.1</version>
-                <configuration>
-                    <!-- Remove signed keys to prevent security exceptions on uber jar -->
-                    <!-- See https://stackoverflow.com/a/6743609/7245239 -->
-                    <filters>
-                        <filter>
-                            <artifact>*:*</artifact>
-                            <excludes>
-                                <exclude>META-INF/*.SF</exclude>
-                                <exclude>META-INF/*.DSA</exclude>
-                                <exclude>META-INF/*.RSA</exclude>
-                            </excludes>
-                        </filter>
-                    </filters>
-                    <transformers>
-                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                            <mainClass>net.martinprobson.spark.SparkTest</mainClass>
-                        </transformer>
-                    </transformers>
-                    <artifactSet>
-                        <excludes>
-                            <exclude>javax.servlet:*</exclude>
-                            <exclude>org.apache.hadoop:*</exclude>
-                            <exclude>org.apache.maven.plugins:*</exclude>
-                            <exclude>org.apache.spark:*</exclude>
-                            <exclude>org.apache.avro:*</exclude>
-                            <exclude>org.apache.parquet:*</exclude>
-                            <exclude>org.scala-lang:*</exclude>
-                        </excludes>
-                    </artifactSet>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
@@ -396,18 +327,6 @@
         </dependency>
         -->
 
-        <dependency>
-            <groupId>org.codejargon</groupId>
-            <artifactId>fluentjdbc</artifactId>
-            <version>1.8.6</version>
-        </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.23</version>
-        </dependency>
-
         <!-- org.apache.spark:spark-hadoop-cloud_2.12:3.4.1 -->
         <dependency>
             <groupId>org.apache.spark</groupId>
@@ -422,29 +341,6 @@
             <version>3.2.1</version>
         </dependency>
 
-        <!-- Test dependencies -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>confluent</id>
-            <name>Confluent</name>
-            <url>https://packages.confluent.io/maven/</url>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>confluent</id>
-            <url>https://packages.confluent.io/maven/</url>
-        </pluginRepository>
-    </pluginRepositories>
 
 </project>

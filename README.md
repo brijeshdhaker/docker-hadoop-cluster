@@ -1,3 +1,6 @@
+$ git config --global user.name "John Doe"
+$ git config --global user.email johndoe@example.com
+
 # docker-hadoop-cluster
 A sample docker application on docker hadoop cluster.
 

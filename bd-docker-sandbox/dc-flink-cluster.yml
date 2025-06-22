@@ -5,17 +5,18 @@
 # docker compose -f bd-docker-sandbox/docker-compose.yml up -d flink-jobmanager flink-taskmanager
 # docker compose -f bd-docker-sandbox/docker-compose.yml down flink-jobmanager flink-taskmanager
 #
-# docker compose -f bd-docker-sandbox/dc-flink-cluster.yml up -d flink-jobmanager, flink-taskmanager
-# docker compose -f bd-docker-sandbox/dc-flink-cluster.yml down
 #
 
 # version: "3.9"
 
 #
 services:
-  ##
+  #
+  # flink-jobmanager
+  #
   flink-jobmanager:
-    image: apache/flink:1.20.0-scala_2.12-java17
+#    image: apache/flink:1.20.0-scala_2.12-java17
+    image: confluentinc/cp-flink:1.20.0-cp1-java17-arm64
     hostname: flink-jobmanager
     container_name: flink-jobmanager
     command: "jobmanager.sh start-foreground"
@@ -25,15 +26,15 @@ services:
       kafkabroker:
         condition: service_healthy
     ports:
-      - "8881:8081"
+      - "8081:8081"
     healthcheck:
-      test: curl -f http://flink-jobmanager:8081 || exit 1
+      test: echo $(hostname -f) || exit 1
       retries: 20
       interval: 10s
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/flink/config.yaml:/opt/flink/conf/config.yaml
-      - /apps/libs/flink/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar
+      - /apps/libs/flink/flink-s3-fs-hadoop-1.20.0-cp1.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0-cp1.jar
 #      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       - |
@@ -41,10 +42,15 @@ services:
         rest.flamegraph.enabled: true
       - JOB_MANAGER_RPC_ADDRESS=flink-jobmanager
       - JOB_MANAGER_RPC_PORT=6123
+    extra_hosts:
+      - "raspberrypi.sandbox.net:172.18.0.1"
 
-  ##
+  #
+  # flink-taskmanager
+  #
   flink-taskmanager:
-    image: apache/flink:1.20.0-scala_2.12-java17
+#    image: apache/flink:1.20.0-scala_2.12-java17
+    image: confluentinc/cp-flink:1.20.0-cp1-java17-arm64
     hostname: flink-taskmanager
     container_name: flink-taskmanager
     command: "taskmanager.sh start-foreground"
@@ -58,7 +64,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/flink/config.yaml:/opt/flink/conf/config.yaml
-      - /apps/libs/flink/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0.jar
+      - /apps/libs/flink/flink-s3-fs-hadoop-1.20.0-cp1.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0-cp1.jar
 #      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       - |
@@ -66,6 +72,8 @@ services:
         rest.flamegraph.enabled: true
       - JOB_MANAGER_RPC_ADDRESS=flink-jobmanager
       - JOB_MANAGER_RPC_PORT=6123
+    extra_hosts:
+      - "raspberrypi.sandbox.net:172.18.0.1"
 
 #
 volumes:

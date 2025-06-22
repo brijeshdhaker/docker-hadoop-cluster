@@ -20,7 +20,7 @@ services:
   # Zookeeper Server
   #
   zookeeper:
-    image: confluentinc/cp-zookeeper:7.5.2
+    image: confluentinc/cp-zookeeper:7.5.2.arm64
     hostname: zookeeper.sandbox.net
     container_name: zookeeper
     healthcheck:
@@ -39,12 +39,14 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
       ALLOW_UNSIGNED: "true"
+    extra_hosts:
+      - "raspberrypi.sandbox.net:172.18.0.1"
 
   #
   # Apache Kafka Server
   #
   kafkabroker:
-    image: confluentinc/cp-kafka:7.5.2
+    image: confluentinc/cp-kafka:7.5.2.arm64
     hostname: kafkabroker.sandbox.net
     container_name: kafkabroker
     depends_on:
@@ -65,10 +67,10 @@ services:
       KRB5_CONFIG: "/etc/krb5.conf"
       KAFKA_BROKER_ID: "1"
       #KAFKA_BROKER_RACK: "R1"
-      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper.sandbox.net:2181'
-      KAFKA_ADVERTISED_HOST_NAME: 192.168.9.128
-      KAFKA_LISTENERS: INTERNAL://kafkabroker:19092,EXTERNAL://0.0.0.0:9092
-      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafkabroker:19092,EXTERNAL://192.168.9.128:9092
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper.sandbox.net:2181
+      KAFKA_ADVERTISED_HOST_NAME: raspberrypi.sandbox.net
+      KAFKA_LISTENERS: INTERNAL://0.0.0.0:19092,EXTERNAL://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafkabroker.sandbox.net:19092,EXTERNAL://kafkabroker.sandbox.net:9092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
@@ -77,15 +79,17 @@ services:
       KAFKA_CONFLUENT_BALANCER_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
-      KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL: http://schemaregistry:8081
-      KAFKA_CREATE_TOPICS: "kafka:1:1"
+      KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL: http://schemaregistry.sandbox.net:8081
+      KAFKA_CREATE_TOPICS: "kafka-simple-topic:1:1"
       # HOSTNAME_COMMAND: "route -n | awk '/UG[ \t]/{print $2}'"
+    extra_hosts:
+      - "raspberrypi.sandbox.net:172.18.0.1"
 
   #
   #
   #
   schemaregistry:
-    image: confluentinc/cp-schema-registry:7.5.2
+    image: confluentinc/cp-schema-registry:7.5.2.arm64
     hostname: schemaregistry.sandbox.net
     container_name: schemaregistry
     depends_on:
@@ -108,6 +112,8 @@ services:
       SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'kafkabroker:19092'
       SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
       SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL: INFO
+    extra_hosts:
+      - "raspberrypi.sandbox.net:172.18.0.1"
 
   #
   control-center:
@@ -154,7 +160,7 @@ services:
 #    environment:
 #      KRB5_CONFIG: "/etc/krb5.conf"
 #    extra_hosts:
-#      - "thinkpad.sandbox.net:172.18.0.1"
+#      - "raspberrypi.sandbox.net:172.18.0.1"
 
 
 #

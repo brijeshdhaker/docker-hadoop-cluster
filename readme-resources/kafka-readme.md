@@ -48,6 +48,10 @@ docker compose -f  bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-configs --bootstrap-server kafkabroker.sandbox.net:9092 --entity-type topics --entity-name kafka-simple-topic --describe "
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-configs --bootstrap-server kafkabroker.sandbox.net:9092 --entity-type topics --entity-default --alter --add-config delete.retention.ms=172800000 "
 
+confluent.tier.local.hotset.ms=86400000
+delete.retention.ms=86400000
+file.delete.delay.ms=60000
+
 ### Change Kafka Retention Time
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-configs --bootstrap-server kafkabroker.sandbox.net:9092 --alter --topic transaction-avro-topic --add-config retention.ms=1000"
 
@@ -88,7 +92,7 @@ docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "k
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-producer \
 --topic kafka-simple-topic \
 --broker-list kafkabroker.sandbox.net:9092 \
---producer.config /apps/sandbox/kafka/cnf/client_plaintext.config \
+--producer.config /apps/configs/kafka/client_plaintext.config \
 --property parse.key=true \
 < /apps/sandbox/kafka/json_messages.txt \
 2>/dev/null"
@@ -104,20 +108,20 @@ docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "k
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
 --topic kafka-simple-topic \
 --bootstrap-server kafkabroker.sandbox.net:9092" \
---consumer.config "/apps/sandbox/kafka/cnf/client_plaintext.config" \
+--consumer.config "/apps/configs/kafka/client_plaintext.config" \
 --property "print.key=true"
 
 docker compose -f  bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
 --topic kafka-simple-topic \
 --bootstrap-server kafkabroker.sandbox.net:9092 \
---consumer.config /apps/sandbox/kafka/cnf/client_plaintext.config \
+--consumer.config /apps/configs/kafka/client_plaintext.config \
 --timeout-ms 5000 2>/dev/null"
 
 #
 docker compose -f  bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
 --topic kafka-simple-topic \
 --bootstrap-server kafkabroker.sandbox.net:19092 \
---consumer.config /apps/sandbox/kafka/cnf/client_plaintext.config \
+--consumer.config /apps/configs/kafka/client_plaintext.config \
 --offset 0 \
 --partition 0 \
 --property print.key=true \
@@ -128,7 +132,7 @@ docker compose -f  bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "
 --topic kafka-simple-topic \
 --group kafka-simple-cg \
 --bootstrap-server kafkabroker.sandbox.net:9092 \
---consumer.config /apps/sandbox/kafka/cnf/client_plaintext.config \
+--consumer.config /apps/configs/kafka/client_plaintext.config \
 --property print.key=true \
 --property key.separator='  -  ' \
 --timeout-ms 5000 2>/dev/null"
@@ -162,7 +166,7 @@ docker run -it --rm \
 --volume ./conf/kerberos/krb5.conf:/etc/krb5.conf \
 --env KRB5_CONFIG=/etc/krb5.conf \
 brijeshdhaker/kafka-clients:7.5.0 \
-kafkacat -F /apps/sandbox/kafka/cnf/librdkafka_sasl_ssl.config -C -t kafka-simple-topic -o beginning \
+kafkacat -F /apps/configs/kafka/librdkafka_sasl_ssl.config -C -t kafka-simple-topic -o beginning \
 -K '\t' \
 -f '\nKey (%K bytes): %k\nValue (%S bytes): %s\nTimestamp: %T \nPartition: %p \nOffset: %o \n\n--\n' -e
 
