@@ -36,7 +36,7 @@ services:
       - ALLOW_ANONYMOUS_LOGIN=yes
       - CASSANDRA_BROADCAST_ADDRESS=cassandra-node01.sandbox.net
     extra_hosts:
-      - "raspberrypi.sandbox.net:172.18.0.1"
+      - "docker.sandbox.net:172.18.0.1"
 
   #
   cassandra-node02:
@@ -58,7 +58,7 @@ services:
       - CASSANDRA_BROADCAST_ADDRESS=cassandra-node02.sandbox.net
       - CASSANDRA_SEEDS=cassandra-node01.sandbox.net
     extra_hosts:
-      - "raspberrypi.sandbox.net:172.18.0.1"
+      - "docker.sandbox.net:172.18.0.1"
 
 #
 volumes:

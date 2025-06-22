@@ -40,7 +40,7 @@ docker compose -f bd-docker-sandbox/docker-compose.yml up -d flink-jobmanager fl
 ```shell
 docker run --rm -i -t \
 --network sandbox.net \
---add-host=raspberrypi.sandbox.net:172.18.0.1 \
+--add-host=docker.sandbox.net:172.18.0.1 \
 -e JOB_MANAGER_RPC_ADDRESS=flink-jobmanager \
 -e JOB_MANAGER_RPC_PORT=6123 \
 -v /apps:/apps \

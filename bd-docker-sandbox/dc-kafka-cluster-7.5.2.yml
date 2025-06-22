@@ -20,7 +20,7 @@ services:
   # Zookeeper Server
   #
   zookeeper:
-    image: confluentinc/cp-zookeeper:7.5.2.arm64
+    image: confluentinc/cp-zookeeper:7.5.2
     hostname: zookeeper.sandbox.net
     container_name: zookeeper
     healthcheck:
@@ -40,13 +40,13 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
       ALLOW_UNSIGNED: "true"
     extra_hosts:
-      - "raspberrypi.sandbox.net:172.18.0.1"
+      - "docker.sandbox.net:172.18.0.1"
 
   #
   # Apache Kafka Server
   #
   kafkabroker:
-    image: confluentinc/cp-kafka:7.5.2.arm64
+    image: confluentinc/cp-kafka:7.5.2
     hostname: kafkabroker.sandbox.net
     container_name: kafkabroker
     depends_on:
@@ -68,7 +68,7 @@ services:
       KAFKA_BROKER_ID: "1"
       #KAFKA_BROKER_RACK: "R1"
       KAFKA_ZOOKEEPER_CONNECT: zookeeper.sandbox.net:2181
-      KAFKA_ADVERTISED_HOST_NAME: raspberrypi.sandbox.net
+      KAFKA_ADVERTISED_HOST_NAME: docker.sandbox.net
       KAFKA_LISTENERS: INTERNAL://0.0.0.0:19092,EXTERNAL://0.0.0.0:9092
       KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafkabroker.sandbox.net:19092,EXTERNAL://kafkabroker.sandbox.net:9092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
@@ -83,13 +83,13 @@ services:
       KAFKA_CREATE_TOPICS: "kafka-simple-topic:1:1"
       # HOSTNAME_COMMAND: "route -n | awk '/UG[ \t]/{print $2}'"
     extra_hosts:
-      - "raspberrypi.sandbox.net:172.18.0.1"
+      - "docker.sandbox.net:172.18.0.1"
 
   #
   #
   #
   schemaregistry:
-    image: confluentinc/cp-schema-registry:7.5.2.arm64
+    image: confluentinc/cp-schema-registry:7.5.2
     hostname: schemaregistry.sandbox.net
     container_name: schemaregistry
     depends_on:
@@ -113,7 +113,7 @@ services:
       SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
       SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL: INFO
     extra_hosts:
-      - "raspberrypi.sandbox.net:172.18.0.1"
+      - "docker.sandbox.net:172.18.0.1"
 
   #
   control-center:
@@ -160,7 +160,7 @@ services:
 #    environment:
 #      KRB5_CONFIG: "/etc/krb5.conf"
 #    extra_hosts:
-#      - "raspberrypi.sandbox.net:172.18.0.1"
+#      - "docker.sandbox.net:172.18.0.1"
 
 
 #
