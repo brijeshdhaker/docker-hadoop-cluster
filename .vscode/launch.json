@@ -2,25 +2,50 @@
     "configurations": [
         {
             "type": "java",
-            "name": "sb-backend-module",
+            "name": "DataStreamJob",
             "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "mainClass": "org.examples.sb.SBBackendApplication",
-            "projectName": "sb-backend-module",
-            "args": "",
-            "envFile": "${workspaceFolder}/.env",
-            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=35225 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=sb-backend-module"
+            "mainClass": "org.examples.flink.example.DataStreamJob",
+            "projectName": "bd-flink-module"
         },
         {
             "type": "java",
-            "name": "sb-frontend-module",
+            "name": "TaxiRidesAndFares",
             "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "mainClass": "org.examples.sb.SBFrontendModule",
-            "projectName": "sb-frontend-module",
+            "mainClass": "org.examples.flink.taxi.TaxiRidesAndFares",
+            "projectName": "bd-flink-module",
+            "args": "--app-config taxi_workflow.properties --engine-type local-cluster --table-name transactions --config-path ${workspaceFolder}/bd-flink-module/src/main/resources/local-cluster",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": "-Dlog.file=/apps/var/logs/flink/TaxiRidesAndFares.log"
+        },
+        {
+            "type": "java",
+            "name": "TransactionPipeline",
+            "request": "launch",
+            "mainClass": "org.examples.flink.transaction.TransactionPipeline",
+            "projectName": "bd-flink-module",
+            "args": "--app-config transactions_workflow.properties --engine-type local-cluster --table-name transactions --config-path ${workspaceFolder}/bd-flink-module/src/main/resources/local-cluster",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": "-Dlog.file=/apps/var/logs/flink/TransactionPipeline.log"
+        },
+        {
+            "type": "java",
+            "name": "ProductsHourlySales",
+            "request": "launch",
+            "mainClass": "org.examples.flink.transaction.ProductsHourlySales",
+            "projectName": "bd-flink-module",
+            "args": "--app-config transactions_workflow.properties --engine-type local-cluster --table-name transactions --config-path ${workspaceFolder}/bd-flink-module/src/main/resources/local-cluster",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": "-Dlog.file=/apps/var/logs/flink/ProductsHourlySales.log"
+        },
+        {
+            "type": "java",
+            "name": "ClickEventGenerator",
+            "request": "launch",
+            "mainClass": "org.examples.flink.clickcount.ClickEventGenerator",
+            "projectName": "bd-flink-module",
             "args": "",
             "envFile": "${workspaceFolder}/.env",
-            "vmArgs": ""
+            "vmArgs": "-Dlog.file=/apps/var/logs/flink/ClickEventGenerator.log"
         }
     ]
 }

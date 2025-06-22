@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-06-03 Moved springboot module as separate project." />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-06-03 Moved springboot module as separate project.">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-cassandra.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-cassandra.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-flink-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-flink-cluster.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-kafka-cluster-7.5.2.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-kafka-cluster-7.5.2.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-minio.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-minio.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-mysqlserver.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-mysqlserver.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/flink-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/flink-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/hosts" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/hosts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,22 +53,22 @@
     &quot;assignee&quot;: &quot;brijeshdhaker&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/brijeshdhaker/docker-hadoop-cluster.git",
-    "accountId": "32a6027c-5adc-44fe-b44b-96d7dfb134ec"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/brijeshdhaker/docker-hadoop-cluster.git&quot;,
+    &quot;accountId&quot;: &quot;32a6027c-5adc-44fe-b44b-96d7dfb134ec&quot;
   },
-  "recentNewPullRequestHead": {
-    "server": {
-      "useHttp": false,
-      "host": "github.com",
-      "port": null,
-      "suffix": null
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
     },
-    "owner": "brijeshdhaker",
-    "repository": "docker-hadoop-cluster"
+    &quot;owner&quot;: &quot;brijeshdhaker&quot;,
+    &quot;repository&quot;: &quot;docker-hadoop-cluster&quot;
   }
-}]]></component>
+}</component>
   <component name="JvmLoggingSettingsStorage">
     <option name="loggerId" value="Slf4j" />
     <option name="loggerName" value="logger" />
@@ -348,9 +358,9 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.examples.sb.repositories.entities" />
       <recent name="org.examples.sb.controllers" />
-      <recent name="com.org.example.flink.transaction.sink" />
-      <recent name="com.org.example.flink" />
-      <recent name="com.org.example.flink.config" />
+      <recent name="org.examples.flink.transaction.sink" />
+      <recent name="org.examples.flink" />
+      <recent name="org.examples.flink.config" />
     </key>
   </component>
   <component name="RunManager" selected="Application.AppLauncher::BatchWorkflow">
@@ -1163,7 +1173,7 @@
         <line-breakpoint type="java-field">
           <url>file://$PROJECT_DIR$/bd-flink-module/src/main/java/com/org/example/flink/utils/jobs/FlinkJobRunnerBase.java</url>
           <line>18</line>
-          <properties field="ENGINE_TYPE" class="com.org.example.flink.utils.jobs.FlinkJobRunnerBase" />
+          <properties field="ENGINE_TYPE" class="org.examples.flink.utils.jobs.FlinkJobRunnerBase" />
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
@@ -1179,7 +1189,7 @@
         <line-breakpoint type="java-method">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/6.4.4/spring-security-core-6.4.4.jar!/org/springframework/security/access/prepost/PreAuthorize.class</url>
           <line>19</line>
-          <properties class="org.springframework.security.access.prepost.PreAuthorize">
+          <properties class="org.springframework.security.access.prepost.PreAuthorize" method="value">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -1197,7 +1207,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/docker_hadoop_cluster$TaxiRidesAndFares.ic" NAME="TaxiRidesAndFares Coverage Results" MODIFIED="1734422321107" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>com.org.example.flink.taxi.*</FILTER>
+      <FILTER>org.examples.flink.taxi.*</FILTER>
     </SUITE>
   </component>
 </project>
