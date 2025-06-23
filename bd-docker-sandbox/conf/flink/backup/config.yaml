@@ -1,45 +1,57 @@
 flink:
   hadoop:
     fs:
-      default-scheme: s3a://defaultfs/
+      default-scheme: s3a://defaultfs
       s3a:
-        access:
-          key: admin
+        secret:
+          key: zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
         impl: org.apache.hadoop.fs.s3a.S3AFileSystem
+        access:
+          key: pgm2H2bR7a5kMc5XCYdO
         aws:
           credentials:
             provider: org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider
-        secret:
-          key: password
+        endpoint: http://minio.sandbox.net:9010
         path:
           style:
             access: true
-        endpoint: http://minio.sandbox.net:9010
-env:
-  java:
-    opts:
-      jobmanager: -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf
-      all: --add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED
-    # all: --add-exports=java.base/sun.net.util=ALL-UNNAMED --add-exports=java.rmi/sun.rmi.registry=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-exports=java.security.jgss/sun.security.krb5=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.text=ALL-UNNAMED --add-opens=java.base/java.time=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.locks=ALL-UNNAMED
-      taskmanager: -Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=true -Djava.security.krb5.kdc=kdcserver.sandbox.net -Djava.security.krb5.realm=SANDBOX.NET -Djava.security.auth.login.config=/apps/security/jaas/kafkaclients-jaas.conf
-  log:
-    max: 5
-    dir: /apps/var/logs/flink/
-    level: INFO
+blob:
+  server:
+    port: '6124'
+rest:
+  flamegraph:
+    enabled: 'true'
+  bind-port: '8081'
+  bind-address: 0.0.0.0
+  address: flink-jobmanager
+  profiling:
+    enabled: true
+fs:
+  default-scheme: s3a://defaultfs/
 jobmanager:
+  execution:
+    failover-strategy: region
   rpc:
     address: flink-jobmanager
     port: 6123
-  execution:
-    failover-strategy: region
   bind-host: 0.0.0.0
   memory:
     process:
       size: 1600m
+state:
+  savepoints:
+    dir: s3a://defaultfs/state/savepoints
+  backend:
+    type: hashmap
+  checkpoints:
+    dir: s3a://defaultfs/state/checkpoints
+query:
+  server:
+    port: '6125'
 s3:
   secret-key: password
-  access-key: admin
   endpoint: http://minio.sandbox.net:9010
+  access-key: admin
   path:
     style:
       access: true
@@ -49,65 +61,27 @@ io:
 execution:
   checkpointing:
     savepoint-dir: s3a://defaultfs/execution/savepoints
-    interval: 10s
     dir: s3a://defaultfs/execution/
-parallelism:
-  default: 4
-state:
-  backend:
-    type: hashmap
-    incremental: false
-    fs:
-      checkpointdir: s3a://defaultfs/fs/checkpoints
-  savepoints:
-    dir: s3a://defaultfs/state/savepoints
-  checkpoints:
-    dir: s3a://defaultfs/state/checkpoints
-fs:
-  default-scheme: s3a://defaultfs/
-  s3a:
-    access:
-      key: admin
-    impl: org.apache.hadoop.fs.s3a.S3AFileSystem
-    aws:
-      credentials:
-        provider: org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider
-    secret:
-      key: password
-    path:
-      style:
-        access: true
-    buffer:
-      dir: /tmp
-    endpoint: http://minio.sandbox.net:9010
+    interval: 10s
 taskmanager:
+  host: flink-taskmanager
+  numberOfTaskSlots: '4'
   memory:
     process:
       size: 1728m
-  host: flink-taskmanager
-  numberOfTaskSlots: 8
   bind-host: 0.0.0.0
+parallelism:
+  default: 4
+env:
+  java:
+    opts:
+      all: --add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED
+  log:
+    max: 5
+    dir: /apps/var/logs/flink
+    level: INFO
 web:
   cancel:
     enable: true
   submit:
     enable: true
-rest:
-  bind-address: 0.0.0.0
-  address: flink-jobmanager
-  profiling:
-    enabled: true
-  flamegraph:
-    enabled: true
-security:
-  kerberos:
-    login:
-      principal: brijeshdhaker@SANDBOX.NET
-      keytab: /apps/security/keytabs/users/brijeshdhaker.keytab
-      use-ticket-cache: false
-blob:
-  server:
-    port: '6124'
-query:
-  server:
-    port: '6125'

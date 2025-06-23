@@ -23,8 +23,8 @@ services:
     depends_on:
       minio:
         condition: service_healthy
-      kafkabroker:
-        condition: service_healthy
+#      kafkabroker:
+#        condition: service_healthy
     ports:
       - "8081:8081"
     healthcheck:
@@ -34,7 +34,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/flink/config.yaml:/opt/flink/conf/config.yaml
-      - /apps/libs/flink/flink-s3-fs-hadoop-1.20.0-cp1.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0-cp1.jar
+      - /apps/libs/flink/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0-cp1.jar
 #      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       - |
@@ -64,7 +64,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/flink/config.yaml:/opt/flink/conf/config.yaml
-      - /apps/libs/flink/flink-s3-fs-hadoop-1.20.0-cp1.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0-cp1.jar
+      - /apps/libs/flink/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0-cp1.jar
 #      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       - |

@@ -1,8 +1,9 @@
 package org.examples.flink.utils;
 
-import org.apache.hadoop.fs.FSDataInputStream;
-import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.fs.Path;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.flink.core.fs.FSDataInputStream;
+import org.apache.flink.core.fs.FileSystem;
+import org.apache.flink.core.fs.Path;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,25 +11,27 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.net.URL;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Properties;
 
+@Slf4j
 public class PropertyFileReader {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PropertyFileReader.class);
+    public static Map<String, String> loadFromDefaultFS(String path) throws IOException {
+        //
+        FileSystem fileSystem = FileSystem.get(URI.create(path));
+        log.info("FileSystem : HomeDirectory {}", fileSystem.getHomeDirectory().toString());
+        log.info("FileSystem : WorkingDirectory {}", fileSystem.getWorkingDirectory().toString());
+        log.info("FileSystem : URI {}", fileSystem.getUri().toString());
 
-    private PropertyFileReader(){
-
-    }
-
-    public static Map<String, String> loadFromDefaultFS(String path, FileSystem fs) {
         Properties properties = new LinkedProperties();
-        if(path != null && !path.isEmpty()){
+        if(!path.isEmpty()){
             System.out.println("Reading Workflow Properties from file " + path);
-            try(FSDataInputStream fdis = fs.open(new Path(path)) ){
-                properties.load(fdis);
+            try(FSDataInputStream fsDataInputStream = fileSystem.open(new Path(path)) ){
+                properties.load(fsDataInputStream);
             } catch (IOException e) {
                 System.out.println("Failed to Read Workflow Properties from file " + path);
             }
@@ -36,32 +39,9 @@ public class PropertyFileReader {
 
         Map<String, String> allProperties = new LinkedHashMap<>();
         properties.forEach((key, value) -> allProperties.put(key.toString(), value.toString()));
-        LOGGER.info("Read {} properties ", allProperties.size());
-
+        log.info("Read {} properties ", allProperties.size());
         allProperties.forEach((k, v) -> System.out.println("***** Property " + k + " set to ****** " + v));
         return allProperties;
     }
 
-    public static Map<String, String> loadFromFile(String path){
-        Properties properties = new LinkedProperties();
-        if(path != null && !path.isEmpty()){
-            System.out.println("Reading Workflow Properties from file " + path);
-
-            URL url = ClassLoader.getSystemResource(path);
-            File file = (url != null) ? new File(url.getFile()) : new File(path);
-
-            try(InputStream fis = new FileInputStream(file)){
-                properties.load(fis);
-            } catch (IOException e) {
-                System.out.println("Failed to Read Workflow Properties from file " + path);
-            }
-        }
-
-        Map<String, String> allProperties = new LinkedHashMap<>();
-        properties.forEach((key, value) -> allProperties.put(key.toString(), value.toString()));
-        LOGGER.info("Read {} properties ", allProperties.size());
-
-        allProperties.forEach((k, v) -> System.out.println("***** Property " + k + " set to ****** " + v));
-        return allProperties;
-    }
 }
