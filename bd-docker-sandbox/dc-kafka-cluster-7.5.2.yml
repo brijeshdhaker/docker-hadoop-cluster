@@ -1,6 +1,9 @@
 #
-# docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml up -d
-# docker compose -f bd-docker-sandbox/dc-kafka-cluster.yaml down
+# docker compose -f bd-docker-sandbox/dc-kafka-cluster-7.5.2.yaml up -d
+# docker compose -f bd-docker-sandbox/dc-kafka-cluster-7.5.2.yaml down
+#
+# docker compose -f bd-docker-sandbox/docker-compose.yml up -d zookeeper kafkabroker schemaregistry
+# docker compose -f bd-docker-sandbox/docker-compose.yml down zookeeper kafkabroker schemaregistry
 #
 # docker volume create --name sandbox_security_secrets --opt type=none --opt device=/apps/security/ssl --opt o=bind
 #
