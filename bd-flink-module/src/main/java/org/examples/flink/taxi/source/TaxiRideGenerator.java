@@ -20,7 +20,6 @@ package org.examples.flink.taxi.source;
 
 import org.examples.flink.taxi.models.TaxiRide;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;

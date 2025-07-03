@@ -1,6 +1,6 @@
 package org.examples.flink.example.models;
 
-public class Person {
+public class Person implements java.io.Serializable {
 
     public String name;
     public Integer age;

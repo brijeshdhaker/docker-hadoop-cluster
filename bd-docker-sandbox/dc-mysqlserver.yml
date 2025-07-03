@@ -4,6 +4,9 @@
 # docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
 # docker volume create --name sandbox_mysql_data --opt type=none --opt device=/apps/sandbox/mysql/data --opt o=bind
 #
+# docker compose -f bd-docker-sandbox/docker-compose.yml up -d mysqlserver
+# docker compose -f bd-docker-sandbox/docker-compose.yml down mysqlserver
+#
 # docker exec -it mysqlserver mysql --user=root --password=p@SSW0rd --host=mysqlserver.sandbox.net --database=SANDBOXDB
 #
 ---
@@ -25,6 +28,7 @@ services:
       - sandbox_apps_path:/apps
       - sandbox_mysql_data:/var/lib/mysql
       - ./conf/mysql:/etc/mysql/conf.d
+      - ./conf/mysql/initdb:/docker-entrypoint-initdb.d
     env_file:
       - ./envs/docker_mysql.env
     healthcheck:

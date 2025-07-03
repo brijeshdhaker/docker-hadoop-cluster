@@ -5,7 +5,9 @@
             "name": "DataStreamJob",
             "request": "launch",
             "mainClass": "org.examples.flink.example.DataStreamJob",
-            "projectName": "bd-flink-module"
+            "projectName": "bd-flink-module",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": "-Dlog.file=/apps/var/logs/flink/DataStreamJob.log"
         },
         {
             "type": "java",

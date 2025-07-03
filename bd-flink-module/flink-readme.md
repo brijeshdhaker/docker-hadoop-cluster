@@ -64,11 +64,11 @@ docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "k
 --topic transaction-csv-topic \
 --bootstrap-server kafkabroker.sandbox.net:9092 \
 --consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
---timeout-ms 10000" 2>/dev/null 
+--timeout-ms 10000 2>/dev/null"  
 
 ```
 
-# start event generation
+# Start event generation
 ```shell
 
 java -classpath /opt/bd-flink-module/bd-flink-module.jar:/opt/flink/lib/* org.examples.flink.clickcount.ClickEventGenerator \
@@ -77,7 +77,7 @@ java -classpath /opt/bd-flink-module/bd-flink-module.jar:/opt/flink/lib/* org.ex
 
 ```
 
-# start event count flink job
+# Start event count flink job
 ```shell
 
 nohup flink run --detached \

@@ -74,8 +74,7 @@ sudo -E /opt/conda/bin/conda update -n base -c defaults conda
 
 
 conda activate mr-delta
-pip install confluent-kafka[avro]==1.8.2 faker mysql-connector-python avro-python3 pycodestyle
-pip install confluent-kafka[avro]==2.5.3 faker mysql-connector-python avro-python3 pycodestyle
+pip install confluent-kafka[avro]==2.10.1 faker mysql-connector-python avro-python3 pycodestyle
 pip install numpy pandas scipy grpcio pandasql ipython ipykernel
 pip install jupyter_client nb_conda panel pyyaml seaborn plotnine hvplot intake
 pip install intake-parquet intake-xarray altair vega_datasets pyarrow pytest
