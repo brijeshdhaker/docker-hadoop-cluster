@@ -24,7 +24,6 @@
         <spark.version>3.4.1</spark.version>
         <hbase.client.version>2.4.9</hbase.client.version>
         <classifier>local</classifier>
-        <runclass>org.examples.spark.AppLauncher</runclass>
         <main.class>org.examples.spark.AppLauncher</main.class>
         <params>10</params>
         <confluent.version>7.5.2</confluent.version>
@@ -55,34 +54,54 @@
         </testResources>
 
         <plugins>
-        
+            <!-- We use the maven-shade plugin to create a fat jar that contains all necessary dependencies. -->
+            <!-- Change the value of <mainClass>...</mainClass> if your program entry point changes. -->
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.0.0</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.1</version>
                 <executions>
+                    <!-- Run shade goal on package phase -->
                     <execution>
-                        <id>add-source</id>
-                        <phase>generate-sources</phase>
+                        <phase>package</phase>
                         <goals>
-                            <goal>add-source</goal>
+                            <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <sources>
-                                <source>src/main/java</source>
-                            </sources>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>add-test-source</id>
-                        <phase>generate-test-sources</phase>
-                        <goals>
-                            <goal>add-test-source</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>src/test/java</source>
-                            </sources>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <artifactSet>
+                                <excludes>
+                                    <!-- Spark Jobs -->
+                                    <exclude>javax.servlet:*</exclude>
+                                    <exclude>org.apache.hadoop:*</exclude>
+                                    <exclude>org.apache.maven.plugins:*</exclude>
+                                    <exclude>org.apache.spark:*</exclude>
+                                    <exclude>org.apache.avro:*</exclude>
+                                    <exclude>org.apache.parquet:*</exclude>
+                                    <exclude>org.scala-lang:*</exclude>
+                                    <exclude>com.google.code.findbugs:jsr305</exclude>
+                                    <exclude>org.slf4j:*</exclude>
+                                    <exclude>org.apache.logging.log4j:*</exclude>
+                                </excludes>
+                            </artifactSet>
+                            <filters>
+                                <filter>
+                                    <!-- Do not copy the signatures in the META-INF folder.
+                                    Otherwise, this might cause SecurityExceptions when using the JAR. -->
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>${main.class}</mainClass>
+                                </transformer>
+                            </transformers>
                         </configuration>
                     </execution>
                 </executions>
@@ -125,7 +144,7 @@
                                 <argument>--conf</argument>
                                 <argument>spark.jars.ivy=/apps/.ivy2</argument>
                                 <argument>--class</argument>
-                                <argument>${runclass}</argument>
+                                <argument>${main.class}</argument>
                                 <argument>${project.build.directory}/${project.artifactId}-${project.version}.jar</argument>
                                 <argument>${params}</argument>
                             </arguments>
@@ -172,7 +191,7 @@
                                 <argument>--packages</argument>
                                 <argument>org.apache.spark:spark-streaming-kafka-0-10_2.12:${spark.version},org.apache.spark:spark-sql-kafka-0-10_2.12:${spark.version}</argument>
                                 <argument>--class</argument>
-                                <argument>${runclass}</argument>
+                                <argument>${main.class}</argument>
                                 <argument>${project.build.directory}/${project.artifactId}-${project.version}.jar</argument>
                                 <argument>${params}</argument>
                             </arguments>
@@ -219,7 +238,7 @@
                                 <argument>--packages</argument>
                                 <argument>org.apache.spark:spark-streaming-kafka-0-10_${spark.scala}:${spark.version},org.apache.spark:spark-sql-kafka-0-10_${spark.scala}:${spark.version}</argument>
                                 <argument>--class</argument>
-                                <argument>${runclass}</argument>
+                                <argument>${main.class}</argument>
                                 <argument>${project.build.directory}/${project.artifactId}-${project.version}.jar</argument>
                                 <argument>${params}</argument>
                             </arguments>

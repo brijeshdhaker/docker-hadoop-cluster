@@ -34,7 +34,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/flink/config.yaml:/opt/flink/conf/config.yaml
-      - ~/.m2/repository/org/apache/flink/flink-s3-fs-hadoop/1.20.0/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0-cp1.jar
+      - /apps/libs/flink/flink-s3-fs-hadoop-1.20.0-cp1.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0-cp1.jar
 #      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       - |
@@ -43,7 +43,7 @@ services:
       - JOB_MANAGER_RPC_ADDRESS=flink-jobmanager
       - JOB_MANAGER_RPC_PORT=6123
     extra_hosts:
-      - "raspberrypi.sandbox.net:172.18.0.1"
+      - "docker.sandbox.net:172.18.0.1"
 
   #
   # flink-taskmanager
@@ -73,7 +73,7 @@ services:
       - JOB_MANAGER_RPC_ADDRESS=flink-jobmanager
       - JOB_MANAGER_RPC_PORT=6123
     extra_hosts:
-      - "raspberrypi.sandbox.net:172.18.0.1"
+      - "docker.sandbox.net:172.18.0.1"
 
 #
 volumes:
