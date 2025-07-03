@@ -1,0 +1,104 @@
+#
+# docker compose -f bd-docker-sandbox/dc-flink-cluster.yml up -d
+# docker compose -f bd-docker-sandbox/dc-flink-cluster.yml down
+#
+
+#
+# docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
+# docker volume create --name sandbox_security_secrets --opt type=none --opt device=/apps/security/ssl --opt o=bind
+#
+# docker volume create --name sandbox_krb5_stash --opt type=none --opt device=/apps/sandbox/kerberos/stash --opt o=bind
+# docker volume create --name sandbox_krb5_principal --opt type=none --opt device=/apps/sandbox/kerberos/principal --opt o=bind
+#
+# docker volume create --name sandbox_zookeeper334_data --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop334/data --opt o=bind
+# docker volume create --name sandbox_zookeeper334_log --opt type=none --opt device=/apps/sandbox/zookeeper/hadoop334/log --opt o=bind
+#
+# docker volume create --name sandbox_hadoop_334 --opt type=none --opt device=/opt/hadoop-3.3.4 --opt o=bind
+# docker volume create --name sandbox_hadoop_334_dfs --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/dfs --opt o=bind
+# docker volume create --name sandbox_hadoop_334_yarn --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/yarn --opt o=bind
+# docker volume create --name sandbox_hadoop_334_mapred --opt type=none --opt device=/apps/sandbox/hadoop-3.3.4/mapred --opt o=bind
+#
+# docker volume create --name sandbox_spark_350 --opt type=none --opt device=/opt/spark-3.5.0 --opt o=bind
+# docker volume create --name sandbox_hive_313 --opt type=none --opt device=/opt/hive-3.1.3 --opt o=bind
+# docker volume create --name sandbox_tez_102 --opt type=none --opt device=/opt/tez-0.10.2 --opt o=bind
+# docker volume create --name sandbox_hbase_246 --opt type=none --opt device=/opt/hbase-2.4.6 --opt o=bind
+# docker volume create --name sandbox_hbase_117 --opt type=none --opt device=/opt/hbase-1.1.7 --opt o=bind
+# docker volume create --name sandbox_flink_112 --opt type=none --opt device=/opt/flink-1.12.2 --opt o=bind
+#
+---
+# version: "3.9"
+
+include:
+  - ./dc-minio.yml
+  - ./dc-hive-cluster.yml
+
+services:
+  #
+  # Grafana Dashboard
+  #
+  grafana:
+    image: grafana/grafana:7.5.8
+    container_name: gateway
+    hostname: gateway.sandbox.net
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+    healthcheck:
+      test: nc -vz gateway.sandbox.net 22 || exit 1
+      retries: 20
+      interval: 10s
+    restart: always
+    command:
+      - "/usr/sbin/sshd -D"
+    volumes:
+      - sandbox_apps_path:/apps
+      - ../docker/grafana-spend-report-init/provisioning/:/etc/grafana/provisioning/
+      - ../docker/grafana-spend-report-init/dashboard.json:/etc/grafana/dashboard.json
+      - ../docker/grafana-spend-report-init/grafana.ini:/etc/grafana/grafana.ini
+    environment:
+      ALLOW_ANONYMOUS_LOGIN: "yes"
+    env_file:
+      - ./envs/docker_clients.env
+    extra_hosts:
+      - "thinkpad.sandbox.net:172.18.0.1"
+
+#
+#
+#
+volumes:
+  #
+  sandbox_maven_363:
+    external: true
+  sandbox_m2:
+    external: true
+  sandbox_ivy2:
+    external: true
+  #
+  sandbox_hbase_246:
+    external: true
+  sandbox_hbase_117:
+    external: true
+  #
+  sandbox_hive_313:
+    external: true
+  sandbox_tez_102:
+    external: true
+  #
+  sandbox_spark_350:
+    external: true
+  #
+  sandbox_flink_112:
+    external: true
+  #
+  sandbox_zeppelin_conf:
+    external: true
+  sandbox_zeppelin_notebook:
+    external: true
+
+#
+networks:
+  default:
+    external: true
+    driver: bridge
+    name: sandbox.net

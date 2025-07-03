@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-06-03 Moved springboot module as separate project." />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-06-22 Moved springboot module as separate project.">
+      <change afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-grafana.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/spendreport/SpendReport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/spendreport/UnimplementedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/hosts" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/hosts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +39,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="develop/docker-hadoop334-cluster" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,22 +50,22 @@
     &quot;assignee&quot;: &quot;brijeshdhaker&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/brijeshdhaker/docker-hadoop-cluster.git",
-    "accountId": "32a6027c-5adc-44fe-b44b-96d7dfb134ec"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/brijeshdhaker/docker-hadoop-cluster.git&quot;,
+    &quot;accountId&quot;: &quot;32a6027c-5adc-44fe-b44b-96d7dfb134ec&quot;
   },
-  "recentNewPullRequestHead": {
-    "server": {
-      "useHttp": false,
-      "host": "github.com",
-      "port": null,
-      "suffix": null
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
     },
-    "owner": "brijeshdhaker",
-    "repository": "docker-hadoop-cluster"
+    &quot;owner&quot;: &quot;brijeshdhaker&quot;,
+    &quot;repository&quot;: &quot;docker-hadoop-cluster&quot;
   }
-}]]></component>
+}</component>
   <component name="JvmLoggingSettingsStorage">
     <option name="loggerId" value="Slf4j" />
     <option name="loggerName" value="logger" />
@@ -75,7 +82,6 @@
         <option name="userSettingsFile" value="$USER_HOME$/.m2/settings.xml" />
       </MavenGeneralSettings>
     </option>
-    <option name="explicitlyEnabledProfiles" value="local" />
   </component>
   <component name="MavenRunner">
     <option name="skipTests" value="true" />
@@ -145,6 +151,7 @@
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;Docker.Docker Image.executor&quot;: &quot;Run&quot;,
     &quot;Docker.bd-docker-sandbox.minio: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.bd-docker-sandbox/dc-flink-cluster.yml.flink-jobmanager: Compose Deployment.executor&quot;: &quot;Run&quot;,
     &quot;Docker.bd-docker-sandbox/dc-flink-cluster.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
     &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.datanode: Compose Deployment.executor&quot;: &quot;Run&quot;,
     &quot;Docker.bd-docker-sandbox/dc-hadoop-cluster.yaml.namenode: Compose Deployment.executor&quot;: &quot;Run&quot;,
@@ -250,6 +257,7 @@
     &quot;Maven.bd-spring-module [install].executor&quot;: &quot;Run&quot;,
     &quot;Maven.bd-spring-module [package].executor&quot;: &quot;Run&quot;,
     &quot;Maven.bd-spring-module [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.docker-hadoop-cluster [package].executor&quot;: &quot;Run&quot;,
     &quot;Maven.sb-backend-module [clean].executor&quot;: &quot;Run&quot;,
     &quot;Maven.sb-backend-module [package].executor&quot;: &quot;Run&quot;,
     &quot;Maven.sb-frontend-module [clean].executor&quot;: &quot;Run&quot;,
@@ -307,11 +315,11 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3&quot;: &quot;junit.framework.TestCase&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop/docker-hadoop334-cluster&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop-raspberrypi__setup&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-nodejs-module&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-docker-sandbox/conf/flink/backup&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/sb-backend-module/src/main/java/org/springframework/boot/Main.java&quot;,
     &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
@@ -322,11 +330,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-docker-sandbox/conf/flink/backup" />
       <recent name="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources" />
       <recent name="$PROJECT_DIR$/bd-spring-module/sb-frontend-module" />
       <recent name="$PROJECT_DIR$/bd-spring-module/sb-backend-module" />
       <recent name="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb" />
-      <recent name="$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources" />
@@ -353,7 +361,7 @@
       <recent name="org.examples.flink.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AppLauncher::BatchWorkflow">
+  <component name="RunManager" selected="Application.mini-cluster-transaction-pipeline">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -460,6 +468,19 @@
     <configuration default="true" type="docker-deploy" factoryName="docker-image" temporary="true">
       <deployment type="docker-image">
         <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="bd-docker-sandbox/dc-flink-cluster.yml.flink-jobmanager: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="flink-jobmanager" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-flink-cluster.yml" />
+        </settings>
       </deployment>
       <method v="2" />
     </configuration>
@@ -600,11 +621,13 @@
       <item itemvalue="Docker.spark-notebook" />
       <item itemvalue="Docker.zeppelin-notebook" />
       <item itemvalue="Docker.cassandra-cluster" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-flink-cluster.yml.flink-jobmanager: Compose Deployment" />
       <item itemvalue="Python.confluent_kafka_avro_producer" />
       <item itemvalue="Python tests.Python tests for test_User.test_to_obj" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.bd-docker-sandbox/dc-flink-cluster.yml.flink-jobmanager: Compose Deployment" />
         <item itemvalue="Python tests.Python tests for test_User.test_to_obj" />
         <item itemvalue="Application.TestFactory" />
         <item itemvalue="Application.TestDesignPatterns" />
@@ -619,14 +642,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00175" summary="2025-04-07 Update Configuration &amp; Resources.">
-      <option name="closed" value="true" />
-      <created>1743999157319</created>
-      <option name="number" value="00175" />
-      <option name="presentableId" value="LOCAL-00175" />
-      <option name="project" value="LOCAL" />
-      <updated>1743999157319</updated>
     </task>
     <task id="LOCAL-00176" summary="2025-04-07 Update Configuration &amp; Resources.">
       <option name="closed" value="true" />
@@ -1012,7 +1027,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748918895338</updated>
     </task>
-    <option name="localTasksCounter" value="224" />
+    <task id="LOCAL-00224" summary="2025-06-22 Moved springboot module as separate project.">
+      <option name="closed" value="true" />
+      <created>1750613073031</created>
+      <option name="number" value="00224" />
+      <option name="presentableId" value="LOCAL-00224" />
+      <option name="project" value="LOCAL" />
+      <updated>1750613073032</updated>
+    </task>
+    <option name="localTasksCounter" value="225" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -1074,7 +1097,6 @@
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
       <path value="$PROJECT_DIR$/bd-nodejs-module/desktop-app-module" />
     </ignored-roots>
-    <MESSAGE value="2025-04-04 Update Configuration &amp; Resources." />
     <MESSAGE value="2025-04-06 Update Configuration &amp; Resources." />
     <MESSAGE value="2025-04-07 Update Configuration &amp; Resources." />
     <MESSAGE value="2025-04-08 Update ssl configuration for springboot app." />
@@ -1099,7 +1121,8 @@
     <MESSAGE value="2025-05-18 Enable Spring Security." />
     <MESSAGE value="2025-05-22 Enable Multi Region Support." />
     <MESSAGE value="2025-06-03 Moved springboot module as separate project." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-06-03 Moved springboot module as separate project." />
+    <MESSAGE value="2025-06-22 Moved springboot module as separate project." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-06-22 Moved springboot module as separate project." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1154,6 +1177,11 @@
           <line>131</line>
           <option name="timeStamp" value="150" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/config/AbstractAppConfig.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="157" />
+        </line-breakpoint>
         <line-breakpoint type="java-field">
           <url>file://$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/config/KafkaCustomProperties.java</url>
           <line>10</line>
@@ -1179,7 +1207,7 @@
         <line-breakpoint type="java-method">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/6.4.4/spring-security-core-6.4.4.jar!/org/springframework/security/access/prepost/PreAuthorize.class</url>
           <line>19</line>
-          <properties class="org.springframework.security.access.prepost.PreAuthorize">
+          <properties class="org.springframework.security.access.prepost.PreAuthorize" method="value">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
