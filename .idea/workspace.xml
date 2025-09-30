@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-09-22 Update Window Functions.">
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/sql-inner-join.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-defaults.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/spark/conf/spark-defaults.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-notebook.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-notebook.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-iceberg/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-iceberg/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/hello-notebook.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/hello-notebook.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/.ipynb_checkpoints/MinIOTest-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/.ipynb_checkpoints/MinIOTest-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/Iceberg - Getting Started.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/Iceberg - Getting Started.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/MinIOTest.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/MinIOTest.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/iceberg-jdbc.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/iceberg/iceberg-jdbc.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/bd-pyspark-module.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/bd-pyspark-module.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/env_python_311.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/env_python3_11_13.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/conda-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/conda-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/spark-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/spark-help.md" afterDir="false" />
-    </list>
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-09-22 Update Window Functions." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
