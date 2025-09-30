@@ -21,7 +21,7 @@
         <encoding>UTF-8</encoding>
         <scala.version>2.12.17</scala.version>
         <spark.scala>2.12</spark.scala>
-        <spark.version>3.4.1</spark.version>
+        <spark.version>3.5.3</spark.version>
         <hbase.client.version>2.4.9</hbase.client.version>
         <classifier>local</classifier>
         <main.class>org.examples.spark.AppLauncher</main.class>
@@ -350,14 +350,14 @@
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-hadoop-cloud_${spark.scala}</artifactId>
-            <version>3.4.1</version>
+            <version>${spark.version}</version>
         </dependency>
 
         <!-- io.delta:delta-core_2.12:2.4.0 -->
         <dependency>
             <groupId>io.delta</groupId>
             <artifactId>delta-spark_2.12</artifactId>
-            <version>3.2.1</version>
+            <version>3.3.2</version>
         </dependency>
 
     </dependencies>

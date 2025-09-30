@@ -10,30 +10,32 @@
 services:
 # /usr/local/spark
   notebook:
-    image: quay.io/jupyter/all-spark-notebook:spark-3.5.2
+    image: quay.io/jupyter/all-spark-notebook:spark-3.5.3
     container_name: notebook
     hostname: notebook.sandbox.net
-    user: root
+#    user: root
     ports:
       - "8888:8888"
       - "4040:4040"
     volumes:
       - sandbox_apps_path:/apps
-      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
-      - ./conf/spark/conf:/usr/local/spark/conf
-      - sandbox_hadoop_334:/opt/hadoop
-      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-      - /opt/maven-3.6.3:/opt/maven-3.6.3
-      - ./conf/maven/settings.xml:/home/jovyan/.m2/settings.xml
-      - sandbox_hive_313:/opt/hive
-      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
-      - /apps/sandbox/notebooks:/home/jovyan/work/notebooks
+#      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
+#      - ./conf/spark/conf:/usr/local/spark/conf
+#      - sandbox_hadoop_334:/opt/hadoop
+#      - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
+#      - /opt/maven-3.6.3:/opt/maven-3.6.3
+#      - ./conf/maven/settings.xml:/home/jovyan/.m2/settings.xml
+#      - sandbox_hive_313:/opt/hive
+#      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
+      - ../bd-notebooks-module/jupyter/notebooks:/home/jovyan/work/notebooks
+      - /home/brijeshdhaker/.m2:/home/jovyan/.m2
+      - /home/brijeshdhaker/.ivy2:/home/jovyan/.ivy2
     environment:
       GRANT_SUDO: yes
-      KUBECONFIG: /home/notebook/.kube/config
-      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
-      M2_HOME: /opt/maven-3.6.3
-      SPARK_HOME: /usr/local/spark
+#      KUBECONFIG: /home/notebook/.kube/config
+#      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
+#      M2_HOME: /opt/maven-3.6.3
+#      SPARK_HOME: /usr/local/spark
       PYARROW_IGNORE_TIMEZONE: 1
 #    env_file:
 #      - ./envs/docker_clients.env
@@ -46,11 +48,7 @@ volumes:
     external: true
   sandbox_security_secrets:
     external: true
-  #
-  sandbox_hadoop_334:
-    external: true
-  sandbox_hive_313:
-    external: true
+
 #
 networks:
   default:

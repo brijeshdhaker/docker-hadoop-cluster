@@ -159,6 +159,7 @@ spark-sql --hiveconf hive.cli.print.header=true --hiveconf hive.cli.print.curren
 #
 # Java 17 & Spark
 #
+-XX:+IgnoreUnrecognizedVMOptions -XX:ReservedCodeCacheSize=512m -XX:+UseCodeCacheFlushing -XX:-UseContainerSupport -XX:+PrintFlagsFinal -XX:+PrintGCDateStamps -XX:+PrintGCDetails
 --add-opens=java.base/java.lang=ALL-UNNAMED
 --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
 --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
