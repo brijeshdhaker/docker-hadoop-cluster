@@ -70,6 +70,8 @@ if __name__ == "__main__":
     list_unique_carrier = [i.UNIQUE_CARRIER for i in rows_unique_carrier]
     convUniqueCarrier = udf(
         lambda x: list_unique_carrier.index(x), IntegerType())
+    
+    
     df = df.withColumn("UNIQUE_CARRIER",
                        when(df["UNIQUE_CARRIER"].isNotNull(),
                             convUniqueCarrier(df.UNIQUE_CARRIER)).otherwise(len(list_unique_carrier)))
