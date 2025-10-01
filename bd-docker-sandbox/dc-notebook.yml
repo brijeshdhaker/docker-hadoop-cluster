@@ -1,16 +1,18 @@
 #
 # docker-compose -H tcp://raspberry:2375 -f dc-notebook.yml up -d
-# /home/jovyan/work
-# brijeshdhaker/notebook:3.5.0
+# 
+# jupyter/all-spark-notebook:lab-3.5.3
+# jupyter/all-spark-notebook:spark-2.4.3 or jupyter/all-spark-notebook:822f02b8ce23
 #
-
+# docker compose -f bd-docker-sandbox/dc-notebook.yml up -d notebook
+# docker compose -f bd-docker-sandbox/dc-notebook.yml down notebook
 #
 # version: "3.9"
 #
 services:
-# /usr/local/spark
+  #
   notebook:
-    image: quay.io/jupyter/all-spark-notebook:spark-3.5.3
+    image: jupyter/all-spark-notebook:lab-3.5.3
     container_name: notebook
     hostname: notebook.sandbox.net
 #    user: root
@@ -32,11 +34,17 @@ services:
       - /home/brijeshdhaker/.ivy2:/home/jovyan/.ivy2
     environment:
       GRANT_SUDO: yes
+      PYARROW_IGNORE_TIMEZONE: 1
 #      KUBECONFIG: /home/notebook/.kube/config
 #      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
 #      M2_HOME: /opt/maven-3.6.3
 #      SPARK_HOME: /usr/local/spark
-      PYARROW_IGNORE_TIMEZONE: 1
+#      PYARROW_IGNORE_TIMEZONE: 1
+#      DOCKER_STACKS_JUPYTER_CMD: lab   # lab notebook nbclassic
+#      AWS_ENDPOINT_URL_S3: http://minio.sandbox.net:9010
+#      AWS_ACCESS_KEY_ID: pgm2H2bR7a5kMc5XCYdO
+#      AWS_SECRET_ACCESS_KEY: zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
+#      AWS_DEFAULT_REGION: us-east-1
 #    env_file:
 #      - ./envs/docker_clients.env
 #

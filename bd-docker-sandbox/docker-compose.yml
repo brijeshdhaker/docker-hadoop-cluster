@@ -7,14 +7,17 @@
 #
 # docker compose -f bd-docker-sandbox/docker-compose.yml up -d mysqlserver
 # docker compose -f bd-docker-sandbox/docker-compose.yml down mysqlserver
-#
+# 
 # docker compose -f bd-docker-sandbox/docker-compose.yml up -d spark-master spark-worker-a spark-worker-b
 #
 # docker compose -f bd-docker-sandbox/docker-compose.yml up -d zookeeper kafkabroker schemaregistry
 # docker compose -f bd-docker-sandbox/docker-compose.yml down zookeeper kafkabroker schemaregistry
 #
 # docker compose -f bd-docker-sandbox/docker-compose.yml up -d zeppelin
-# docker compose -f bd-docker-sandbox/docker-compose.yml up -d spark-notebook
+# docker compose -f bd-docker-sandbox/docker-compose.yml down zeppelin
+#
+# docker compose -f bd-docker-sandbox/docker-compose.yml up -d notebook
+# docker compose -f bd-docker-sandbox/docker-compose.yml down notebook
 #
 # docker compose -f bd-docker-sandbox/docker-compose.yml up -d cassandra-node01 cassandra-node02
 # docker compose -f bd-docker-sandbox/docker-compose.yml down cassandra-node01 cassandra-node02
@@ -56,42 +59,11 @@ include:
   - path: ../bd-docker-sandbox/dc-spark-cluster.yml
   - path: ../bd-docker-sandbox/dc-zeppelin.yml
   - path: ../bd-docker-sandbox/dc-grafana.yml
+  - path: ../bd-docker-sandbox/dc-notebook.yml
+
   #
   #services:
-  ##
-  # notebook:
-  #   image: brijeshdhaker/notebook:3.5.1
-  #   container_name: notebook
-  #   hostname: notebook.sandbox.net
-  #   depends_on:
-  #     minio:
-  #       condition: service_healthy
-  #   ports:
-  #     - "8888:8888"
-  #     - "4040:4040"
-  #   volumes:
-  #     - sandbox_apps_path:/apps
-  #     - ./conf/kerberos/krb5.conf:/etc/krb5.conf
-  #     - /apps/sandbox/notebooks:/home/jovyan/notebooks
-  #     - sandbox_hadoop_334:/opt/hadoop
-  #     - ./conf/hadoop/client:/opt/hadoop/etc/hadoop
-  #     - sandbox_hive_313:/opt/hive
-  #     - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
-  #     - ./conf/spark/conf:/usr/local/spark/conf
-  #     - /opt/maven-3.6.3:/opt/maven-3.6.3
-  #     - ./conf/maven/settings.xml:/home/jovyan/.m2/settings.xml
-  #   environment:
-  #     GRANT_SUDO: yes
-  #     KUBECONFIG: /home/notebook/.kube/config
-  #     JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
-  #     M2_HOME: /opt/maven-3.6.3
-  #     SPARK_HOME: /usr/local/spark
-  #     PYARROW_IGNORE_TIMEZONE: 1
-  #     DOCKER_STACKS_JUPYTER_CMD: lab   # lab notebook nbclassic
-  #     AWS_ENDPOINT_URL_S3: http://minio.sandbox.net:9010
-  #     AWS_ACCESS_KEY_ID: pgm2H2bR7a5kMc5XCYdO
-  #     AWS_SECRET_ACCESS_KEY: zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG
-  #     AWS_DEFAULT_REGION: us-east-1
+  #
 
   #
   # Gateway Node
