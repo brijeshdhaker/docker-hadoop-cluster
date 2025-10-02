@@ -23,8 +23,8 @@ export PATH=$M2_HOME/bin:$PATH
 export CLUSTER_TYPE=SANDBOX3
 
 #
-export PYSPARK_PYTHON=/opt/conda/envs/env_python_39/bin/python
-export PYSPARK_DRIVER_PYTHON=/opt/conda/envs/env_python_39/bin/python
+export PYSPARK_PYTHON=/opt/conda/bin/python
+export PYSPARK_DRIVER_PYTHON=/opt/conda/bin/python
 #
 export SPARK_HOME=/opt/spark-3.4.1
 export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin

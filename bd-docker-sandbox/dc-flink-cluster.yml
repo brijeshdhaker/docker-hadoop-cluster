@@ -16,7 +16,7 @@ services:
   #
   flink-jobmanager:
 #    image: apache/flink:1.20.0-scala_2.12-java17
-    image: confluentinc/cp-flink:1.20.0-cp1-java17
+    image: confluentinc/cp-flink:1.20.0-cp1-java17-arm64
     hostname: flink-jobmanager
     container_name: flink-jobmanager
     command: "jobmanager.sh start-foreground"
@@ -50,7 +50,7 @@ services:
   #
   flink-taskmanager:
 #    image: apache/flink:1.20.0-scala_2.12-java17
-    image: confluentinc/cp-flink:1.20.0-cp1-java17
+    image: confluentinc/cp-flink:1.20.0-cp1-java17-arm64
     hostname: flink-taskmanager
     container_name: flink-taskmanager
     command: "taskmanager.sh start-foreground"
@@ -64,7 +64,7 @@ services:
     volumes:
       - sandbox_apps_path:/apps
       - ./conf/flink/config.yaml:/opt/flink/conf/config.yaml
-      - /apps/libs/flink/flink-s3-fs-hadoop-1.20.0-cp1.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0-cp1.jar
+      - ~/.m2/repository/org/apache/flink/flink-s3-fs-hadoop/1.20.0/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0-cp1.jar
 #      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
       - |

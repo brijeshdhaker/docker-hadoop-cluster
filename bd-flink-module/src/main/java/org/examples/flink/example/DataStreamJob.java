@@ -6,9 +6,11 @@ import org.apache.flink.core.fs.FileSystem;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.api.common.functions.FilterFunction;
+import org.apache.flink.api.common.typeinfo.TypeInformation;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Arrays;
 
 
 public class DataStreamJob {
@@ -19,16 +21,17 @@ public class DataStreamJob {
 		File file = (url != null) ? new File(url.getFile()) : new File(".");
 
 		final org.apache.flink.configuration.Configuration config = GlobalConfiguration.loadConfiguration(file.getAbsolutePath());
-		FileSystem.initialize(config);
+		//FileSystem.initialize(config);
 		final StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironment(2, config);
 
-		DataStream<Person> flintstones = env.fromElements(
-			new Person("Brijesh ", 43),
+		DataStream<Person> flintstones = env.fromData(
+			Arrays.asList(new Person("Brijesh ", 43),
 			new Person("Neeta", 40),
 			new Person("Jenaaya", 2),
 			new Person("Tejas", 7),
 			new Person("Keshvi", 13)
-		);
+		), 
+		TypeInformation.of(Person.class));	
 
 		DataStream<Person> adults = flintstones.filter(new FilterFunction<Person>() {
 			@Override

@@ -19,10 +19,10 @@ kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitio
 kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic kafka-avro-topic --if-not-exists
 kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic kafka-json-topic --if-not-exists
 
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 4 --replication-factor 1 --topic transaction-text-topic --if-not-exists
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 4 --replication-factor 1 --topic transaction-csv-topic --if-not-exists
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 4 --replication-factor 1 --topic transaction-json-topic --if-not-exists
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 4 --replication-factor 1 --topic transaction-avro-topic --if-not-exists
+kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-text-topic --if-not-exists
+kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-csv-topic --if-not-exists
+kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-json-topic --if-not-exists
+kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-avro-topic --if-not-exists
 
 # Topic - Create
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 4 --replication-factor 1 --topic transaction-avro-topic --if-not-exists"
@@ -178,42 +178,50 @@ docker system prune -a --volumes --filter "label=io.confluent.docker"
 
 
 # To check the end offset set parameter time to value -1
+```shell
 kafka-run-class kafka.tools.GetOffsetShell \
 --broker-list kafkabroker.sandbox.net:9092 \
 --topic transaction-avro-topic \
 --time -1
-
+```
 # To check the start offset, use --time -2
+```shell
 kafka-run-class kafka.tools.GetOffsetShell \
 --broker-list kafkabroker.sandbox.net:9092 \
 --topic transaction-avro-topic \
 --time -2
-
+```
 
 ### Get Detail Info about Your Consumer Group –
+```shell
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --list"
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --describe --group transaction-avro-cg --members"
-
+```
 #### Delete Offset
+```shell
 docker-compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --delete --group kafka-simple-cg "
-
+```
 #### Reset Offset
+```shell
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --reset-offsets --to-earliest --all-topics --execute --group transaction-avro-cg "
-
+```
 ##### --shift-by :- Reset the offset by incrementing the current offset position by take both +ve or -ve number
+```shell
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --group kafka-simple-cg --reset-offsets --shift-by 10 --topic sales_topic --execute "
-
+```
 ##### --to-datetime :- Reset offsets to offset from datetime. Format: ‘YYYY-MM-DDTHH:mm:SS.sss’
+```shell
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --group kafka-simple-cg --reset-offsets --to-datetime 2020-11-01T00:00:00Z --topic sales_topic --execute "
-
+```
 ##### --to-earliest :- Reset offsets to earliest (oldest) offset available in the topic.
+```shell
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --group kafka-simple-cg --reset-offsets --to-earliest --topic sales_topic --execute "
-
+```
 ##### --to-latest :- Reset offsets to latest (recent) offset available in the topic.
+```shell
 docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-consumer-groups --bootstrap-server kafkabroker.sandbox.net:9092 --group kafka-simple-cg --reset-offsets --to-latest --topic taxi-rides --execute "
-
+```
 ### View Only 10  Messages on the Terminal –
-
 ```shell
 #!/bin/bash
 echo "Enter name of topic to empty:"
@@ -306,8 +314,6 @@ $ curl -X PUT -i -H "Content-Type: application/vnd.schemaregistry.v1+json" \
 http://schemaregistry.sandbox.net:8081/config
 
 ```
-
-
 
 http://schemaregistry:8081/subjects
 ["users-value","order-updated-value","order-created-value"]

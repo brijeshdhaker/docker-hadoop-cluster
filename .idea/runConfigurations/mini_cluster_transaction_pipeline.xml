@@ -1,9 +1,13 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="mini-cluster-transaction-pipeline" type="Application" factoryName="Application">
+    <envs>
+      <env name="AWS_ACCESS_KEY" value="pgm2H2bR7a5kMc5XCYdO" />
+      <env name="AWS_SECRET_ACCESS_KEY" value="zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG" />
+    </envs>
     <option name="MAIN_CLASS_NAME" value="org.examples.flink.transaction.TransactionPipeline" />
     <module name="bd-flink-module" />
-    <option name="PROGRAM_PARAMETERS" value="--app-config transactions_workflow.properties --engine-type mini-cluster --table-name transactions --config-path $PROJECT_DIR$/bd-flink-module/src/main/resources/mini-cluster" />
-    <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED -Dlog.file=/apps/var/logs/flink/flink-minicluster-session.log" />
+    <option name="PROGRAM_PARAMETERS" value="--app-config bd-flink-module/src/main/resources/transactions_workflow.properties --engine-type mini-cluster --table-name transactions --config-path bd-flink-module/src/main/resources/mini-cluster" />
+    <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED -Dlog.file=/apps/var/logs/flink/flink-minicluster-session.log -DAWS_ACCESS_KEY=pgm2H2bR7a5kMc5XCYdO -DAWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG " />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="org.examples.flink.transaction.*" />

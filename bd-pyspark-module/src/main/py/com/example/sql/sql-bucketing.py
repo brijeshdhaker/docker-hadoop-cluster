@@ -3,7 +3,7 @@ from pyspark.sql import SparkSession
 
 conf = SparkConf() \
     .set("spark.eventLog.enabled", "true") \
-    .set("spark.eventLog.dir", "file:///apps/hostpath/spark/logs/")
+    .set("spark.eventLog.dir", "file:///apps/var/logs/spark-events")
 
 spark = SparkSession \
     .builder \

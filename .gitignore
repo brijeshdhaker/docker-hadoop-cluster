@@ -21,6 +21,7 @@
 *.der
 *-creds
 *.extfile
+.ipynb_checkpoints
 /data/postgresql/*
 /data/mysql/*
 /data/cassandra/*

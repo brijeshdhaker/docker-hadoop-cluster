@@ -84,3 +84,13 @@ mysqldump -u root --password=$MYSQL_PASSWORD metastore | mysql -u root --passwor
 ```
 
 mysqldump -u root --password=p@SSW0rd ICEBERG_CATALOG >> /apps/ICEBERG_CATALOG.sql 
+
+## Creating database dumps
+```shell
+docker exec some-mysql sh -c 'exec mysqldump --all-databases -uroot -p"$MYSQL_ROOT_PASSWORD"' > /some/path/on/your/host/all-databases.sql
+```
+
+## Restoring data from dump files
+```shell
+docker exec -i some-mysql sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < /some/path/on/your/host/all-databases.sql
+```

@@ -1,5 +1,6 @@
 package org.examples.flink.config;
 
+import org.apache.flink.core.fs.FileSystem;
 import org.examples.flink.utils.Constants;
 import org.examples.flink.utils.PropertyFileReader;
 import org.apache.flink.api.java.utils.ParameterTool;
@@ -9,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scala.Tuple2;
 
+import java.net.URI;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -87,8 +89,8 @@ public class AbstractAppConfig {
 
     protected void loadWorkflowConfig(String path) throws Exception {
 
-        Map<String,String> workflowParams = PropertyFileReader.loadFromFile(path);
-        if(workflowParams != null && !workflowParams.isEmpty()){
+        Map<String,String> workflowParams = PropertyFileReader.loadFromDefaultFS(path);
+        if(!workflowParams.isEmpty()){
             workflowParams.forEach(this.params::put);
         }
 
@@ -101,7 +103,6 @@ public class AbstractAppConfig {
     public Configuration flinkConf(){
         String engine_type = params.get(Constants.ENGINE_TYPE);
         String config_dir = params.getOrDefault(Constants.FLINK_CONFIG_PATH, "/opt/flink/conf");
-
         return engine_type.equalsIgnoreCase(Constants.REMOTE_CLUSTER) ?
                 GlobalConfiguration.loadConfiguration() :
                 GlobalConfiguration.loadConfiguration(config_dir);

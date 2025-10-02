@@ -5,41 +5,53 @@ from pyspark.sql.window import Window
 # create Spark context with Spark configuration
 spark = SparkSession \
     .builder \
-    .appName("PySpark Window Functions") \
+    .appName("PySpark_Analytical_Functions") \
     .enableHiveSupport() \
     .getOrCreate()
 spark.sparkContext.setLogLevel("WARN")
 
-# Create Data Frame From Hive table
-dataset = [
-    ("Thin",       "cell phone", 6000),
-    ("Normal",     "tablet",     1500),
-    ("Mini",       "tablet",     5500),
-    ("Ultra thin", "cell phone", 5000),
-    ("Very thin",  "cell phone", 6000),
-    ("Big",        "tablet",     2500),
-    ("Bendable",   "cell phone", 3000),
-    ("Foldable",   "cell phone", 3000),
-    ("Pro",        "tablet",     4500),
-    ("Pro2",       "tablet",     6500)
-]
+# Create sample data for dataframe
+sampleData = (("Ram", 28, "Sales", 3000),
+              ("Meena", 33, "Sales", 4600),
+              ("Robin", 40, "Sales", 4100),
+              ("Kunal", 25, "Finance", 3000),
+              ("Ram", 28, "Sales", 3000),
+              ("Srishti", 46, "Management", 3300),
+              ("Jeny", 26, "Finance", 3900),
+              ("Hitesh", 30, "Marketing", 3000),
+              ("Kailash", 29, "Marketing", 2000),
+              ("Sharad", 39, "Sales", 4100)
+              )
 
-df = spark.createDataFrame(dataset, ["category", "product",  "revenue"])
+# column names for dataframe
+columns = ["Employee_Name", "Age", "Department", "Salary"]
+
+df = spark.createDataFrame(data=sampleData, schema=columns)
 df.show()
 
-windowSpec = Window.partitionBy(df['category']).orderBy(df['revenue'].desc())
+windowPartition = Window.partitionBy("Department").orderBy("Age")
 
 """ cume_dist """
+# importing cume_dist()
+# from pyspark.sql.functions
 from pyspark.sql.functions import cume_dist
-df.withColumn("cume_dist", cume_dist().over(windowSpec)).show()
+
+# applying window function with the help of DataFrame.withColumn
+df.withColumn("cume_dist", cume_dist().over(windowPartition)).show()
 
 """lag"""
+# importing lag() from pyspark.sql.functions
 from pyspark.sql.functions import lag
-df.withColumn("lag", lag("revenue", 2).over(windowSpec)).show()
+
+df.withColumn("Lag", lag("Salary", 2).over(windowPartition)) \
+    .show()
 
 """lead"""
+# importing lead() from pyspark.sql.functions
 from pyspark.sql.functions import lead
-df.withColumn("lead", lead("revenue", 2).over(windowSpec)).show()
+
+df.withColumn("Lead", lead("salary", 2).over(windowPartition)) \
+    .show()
 
 #
 spark.stop()

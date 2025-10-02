@@ -5,18 +5,16 @@
 
 ###
 127.0.0.1           localhost
+127.0.1.1           raspberrypi.sandbox.net raspberrypi
 
 # thinkpad-win-11
 192.168.1.2         thinkpad.sandbox.net thinkpad
 
-# Raspberrypi
-192.168.1.40        raspberrypi.sandbox.net raspberrypi
-
 # ubuntu-vmware
-192.168.26.128      ubuntu-vmware.sandbox.net hostmaster
+192.168.9.128       ubuntu-vmware.sandbox.net hostmaster
 
 # Docker
-172.18.0.1          docker.sandbox.net
+172.18.0.1          docker.sandbox.net docker
 
 # Kubernetes
 127.0.0.1           kubernetes.default.svc.cluster.local kubernetes.sandbox.net kubernetes

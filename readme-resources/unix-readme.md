@@ -137,16 +137,18 @@ s_filter=${s_path#*:}
 #
 #
 #
+```shell
 nc -v -n -z -w 1 192.168.65.1 22
 netstat -na | grep 7180
 
 #
+
 last | grep -i reboot
 ps -ef | grep -i java
 
-#
 #
 ls -l | awk '$1 !~ /^d/ {print $9}'
 ls -l | awk '$1 ~ /^d/ {print $9}'
 awk '/pattern/{ print $0 }' file
 awk '{for(i=1;i<=NF;i++){ if($i=="yyy"){print $i} } }' file
+```

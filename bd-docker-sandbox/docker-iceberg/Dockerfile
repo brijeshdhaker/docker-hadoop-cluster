@@ -3,7 +3,7 @@
 # docker push docker.io/brijeshdhaker/spark-notebook:3.4.1
 #
 
-FROM tabulario/spark-iceberg:3.4.1_1.4.1
+FROM tabulario/spark-iceberg:3.5.5_1.8.1
 
 #
 COPY resources/libs/*.jar /opt/spark/jars/

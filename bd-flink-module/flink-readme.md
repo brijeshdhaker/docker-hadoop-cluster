@@ -44,11 +44,13 @@ docker run --rm -i -t \
 -e JOB_MANAGER_RPC_ADDRESS=flink-jobmanager \
 -e JOB_MANAGER_RPC_PORT=6123 \
 -v /apps:/apps \
+-v /apps/libs/flink/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0-cp1.jar \
+-v /apps/configs/flink/transactions_workflow.properties:/opt/flink/conf/transactions_workflow.properties \
 -v ./bd-docker-sandbox/conf/flink/config.yaml:/opt/flink/conf/config.yaml \
--v /apps/libs/flink/flink-s3-fs-hadoop-1.20.0-cp1.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0-cp1.jar \
 -v ./bd-flink-module/target/bd-flink-module.jar:/opt/bd-flink-module/bd-flink-module.jar \
+-v ~/.m2/repository/org/apache/flink/flink-s3-fs-hadoop/1.20.0/flink-s3-fs-hadoop-1.20.0.jar:/opt/flink/plugins/s3-fs-hadoop/flink-s3-fs-hadoop-1.20.0-cp1.jar \
 --name flink-playbox \
-confluentinc/cp-flink:1.20.0-cp1-java17-arm64 /bin/bash
+confluentinc/cp-flink:1.20.0-cp1-java17 /bin/bash
 
 ```
 
@@ -64,11 +66,11 @@ docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "k
 --topic transaction-csv-topic \
 --bootstrap-server kafkabroker.sandbox.net:9092 \
 --consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
---timeout-ms 10000" 2>/dev/null 
+--timeout-ms 10000 2>/dev/null"  
 
 ```
 
-# start event generation
+# Start event generation
 ```shell
 
 java -classpath /opt/bd-flink-module/bd-flink-module.jar:/opt/flink/lib/* org.examples.flink.clickcount.ClickEventGenerator \
@@ -77,7 +79,7 @@ java -classpath /opt/bd-flink-module/bd-flink-module.jar:/opt/flink/lib/* org.ex
 
 ```
 
-# start event count flink job
+# Start event count flink job
 ```shell
 
 nohup flink run --detached \
@@ -171,22 +173,36 @@ kafka-topics --describe --topic click-event-sink --bootstrap-server kafkabroker.
 
 ```
 
-
-# start event count flink job
+#
+# Start event count flink job
+#
 ```shell
 /opt/flink/bin/flink run --detached \
 --class flink.playgrounds.delta.sink.DeltaSinkExampleLocal /opt/bd-flink-module/bd-flink-module.jar \
 --checkpointing \
 --event-time
 ```
-
+#
 # Transaction Pipeline
+#
 ```shell
+# mini-cluster
 /opt/flink/bin/flink run --detached \
+--class org.examples.flink.transaction.TransactionPipeline /opt/bd-flink-module/bd-flink-module.jar \
+--engine-type mini-cluster \
+--table-name transactions \
+--app-config transactions_workflow.properties \
+--config-path /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-flink-module/src/main/resources/mini-cluster
+
+# remote-cluster
+/opt/flink/bin/flink run --detached \
+--fromSavepoint s3a://defaultfs/execution/savepoints/savepoint-eecc8b-c2b562817f15 \
 --class org.examples.flink.transaction.TransactionPipeline /opt/bd-flink-module/bd-flink-module.jar \
 --engine-type remote-cluster \
 --table-name transactions \
---config-path /opt/flink/conf
+--app-config s3a://defaultfs/workflows/1001/conf/transactions_workflow.properties \
+--config-path file://opt/flink/conf
+
 ```
 #
 ```shell
