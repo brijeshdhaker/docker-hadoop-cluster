@@ -5,15 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-09-22 Update Window Functions.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-flink-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-flink-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-minio.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-minio.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-spark-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-spark-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-zeppelin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-zeppelin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/spark-sql/sql-practice.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/spark-sql/sql-practice.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/deltalake-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/deltalake-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/notebooks/spark-rdd/narrow-transformation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/notebooks/spark-rdd/narrow-transformation.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/notebooks/spark-rdd/wide-transformation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/notebooks/spark-rdd/wide-transformation.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/pairrdd/aggregate-by-key.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/pairrdd/group-by-key.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/pairrdd/reduce-by-key.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/pairrdd/sort-by-key.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/coalesce.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/distinct.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/file-rdd.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/filter.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/flat-map-partitions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/flat-map.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/map-partitions-with-index.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/map-partitions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/map.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/pyspark-test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/re-partition.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/sample.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/union.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_create.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_delete.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_merge.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_overwrite.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_timetravel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_update.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
