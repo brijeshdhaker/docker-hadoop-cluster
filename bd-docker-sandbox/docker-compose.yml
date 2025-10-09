@@ -58,7 +58,6 @@ include:
   - path: ../bd-docker-sandbox/dc-flink-cluster.yml
   - path: ../bd-docker-sandbox/dc-spark-cluster.yml
   - path: ../bd-docker-sandbox/dc-zeppelin.yml
-  - path: ../bd-docker-sandbox/dc-grafana.yml
   - path: ../bd-docker-sandbox/dc-notebook.yml
 
   #

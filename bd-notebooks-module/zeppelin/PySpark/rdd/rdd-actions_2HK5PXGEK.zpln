@@ -1,9 +1,17 @@
 {
   "paragraphs": [
     {
+      "text": "",
       "user": "anonymous",
+      "dateUpdated": "2025-10-07 15:56:17.263",
       "progress": 0,
-      "config": {},
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
       "settings": {
         "params": {},
         "forms": {}

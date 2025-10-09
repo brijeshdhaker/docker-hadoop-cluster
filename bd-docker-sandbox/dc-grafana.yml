@@ -29,8 +29,8 @@
 # version: "3.9"
 
 include:
-  - ./dc-minio.yml
-  - ./dc-hive-cluster.yml
+  - path: ../bd-docker-sandbox/dc-minio.yml
+  - path: ../bd-docker-sandbox/dc-hive-cluster.yml
 
 services:
   #
@@ -68,32 +68,7 @@ services:
 #
 volumes:
   #
-  sandbox_maven_363:
-    external: true
-  sandbox_m2:
-    external: true
-  sandbox_ivy2:
-    external: true
-  #
-  sandbox_hbase_246:
-    external: true
-  sandbox_hbase_117:
-    external: true
-  #
-  sandbox_hive_313:
-    external: true
-  sandbox_tez_102:
-    external: true
-  #
-  sandbox_spark_350:
-    external: true
-  #
-  sandbox_flink_112:
-    external: true
-  #
-  sandbox_zeppelin_conf:
-    external: true
-  sandbox_zeppelin_notebook:
+  sandbox_apps_path:
     external: true
 
 #

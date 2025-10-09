@@ -4,10 +4,11 @@ from datetime import datetime
 from pyspark import SparkContext, SparkConf
 
 APP_NAME = 'in-reduce-secondary-sort-compute'
-INPUT_FILE = '/data/Taxi_Trips.csv.xsmall'
+INPUT_FILE = '/apps/sandbox/defaultfs/trip_data.txt'
 OUTPUT_DIR = '/data/output-in-reduce-sort-compute-{timestamp}.txt'
 
 COMMA_DELIMITER = re.compile(''',(?=(?:[^"]*"[^"]*")*[^"]*$)''')
+trips = ['trip_id',	'taxi_id',	'trip_start_timestamp',	'trip_end_timestamp']
 
 FIRST_KEY = 1
 SECOND_KEY = 2
