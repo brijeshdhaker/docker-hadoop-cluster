@@ -5,33 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-09-22 Update Window Functions.">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/notebooks/spark-rdd/narrow-transformation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/notebooks/spark-rdd/narrow-transformation.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/notebooks/spark-rdd/wide-transformation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/notebooks/spark-rdd/wide-transformation.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/pairrdd/aggregate-by-key.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/pairrdd/group-by-key.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/pairrdd/reduce-by-key.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/pairrdd/sort-by-key.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/coalesce.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/distinct.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/file-rdd.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/filter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/flat-map-partitions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/flat-map.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/map-partitions-with-index.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/map-partitions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/map.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/pyspark-test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/re-partition.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/sample.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/core/rdd/union.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_create.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_delete.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_merge.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_overwrite.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_timetravel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/deltalake/deltalake_update.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-zeppelin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-zeppelin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/notebooks/deltalake/spark-deltalake.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/notebooks/deltalake/spark-deltalake.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -388,7 +364,7 @@
       <recent name="org.examples.flink.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.bd-docker-sandbox/dc-notebook.yml.notebook: Compose Deployment">
+  <component name="RunManager" selected="Application.AppLauncher::BatchWorkflow">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -711,6 +687,7 @@
       <item itemvalue="Application.mini-cluster-transaction-pipeline" />
       <item itemvalue="Application.local-taxi-driver-hourly-max-tips" />
       <item itemvalue="Application.local-taxi-ride-counts" />
+      <item itemvalue="Docker.cassandra-cluster" />
       <item itemvalue="Docker.flink-cluster" />
       <item itemvalue="Docker.kafka-cluster" />
       <item itemvalue="Docker.minio" />
@@ -718,7 +695,6 @@
       <item itemvalue="Docker.spark-cluster" />
       <item itemvalue="Docker.spark-notebook" />
       <item itemvalue="Docker.zeppelin-notebook" />
-      <item itemvalue="Docker.cassandra-cluster" />
       <item itemvalue="Docker.bd-docker-sandbox/dc-minio.yml.minio: Compose Deployment" />
       <item itemvalue="Docker.bd-docker-sandbox/dc-notebook.yml.notebook: Compose Deployment" />
       <item itemvalue="Python.confluent_kafka_avro_producer" />
@@ -728,11 +704,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.bd-docker-sandbox/dc-notebook.yml.notebook: Compose Deployment" />
-        <item itemvalue="Python.window_aggregate_functions" />
         <item itemvalue="Python.window_ranking_functions" />
         <item itemvalue="Python.window_analytic_functions" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-minio.yml.minio: Compose Deployment" />
+        <item itemvalue="Python.window_aggregate_functions" />
       </list>
     </recent_temporary>
   </component>
