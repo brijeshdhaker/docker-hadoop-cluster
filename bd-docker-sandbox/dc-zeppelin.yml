@@ -52,7 +52,7 @@ services:
     #      - ./envs/docker_clients.env
     ports:
       - "9080:8080"
-      - "4040:4040"
+#      - "4040:4040"
     depends_on:
       minio:
         condition: service_healthy
