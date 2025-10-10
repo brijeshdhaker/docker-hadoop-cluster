@@ -40,8 +40,11 @@ df.withColumn("Cureated Name", upperCaseUDF(col("Name"))) \
     .show(truncate=False)
 
 """ Using UDF on SQL """
+
 spark.udf.register("convertUDF", convertCase, StringType())
+
 df.createOrReplaceTempView("NAME_TABLE")
+
 spark.sql("select Seqno, convertUDF(Name) as Name from NAME_TABLE") \
     .show(truncate=False)
 
