@@ -71,8 +71,7 @@ if __name__ == "__main__":
     #
     list_unique_carrier = [i.UNIQUE_CARRIER for i in rows_unique_carrier]
     
-    convUniqueCarrier = udf(
-        lambda x: list_unique_carrier.index(x), IntegerType())
+    convUniqueCarrier = udf(lambda x: list_unique_carrier.index(x), IntegerType())
     
     
     df = df.withColumn("UNIQUE_CARRIER",
@@ -84,17 +83,18 @@ if __name__ == "__main__":
     rows_origin = df.select("ORIGIN").distinct().collect()
     list_origin = [i.ORIGIN for i in rows_origin]
     convOrigin = udf(lambda x: list_origin.index(x), IntegerType())
+
     df = df.withColumn("ORIGIN",
-                       when(df["ORIGIN"].isNotNull(),
-                            convOrigin(df.ORIGIN)).otherwise(len(list_origin)))
+                       when(df["ORIGIN"].isNotNull(),convOrigin(df.ORIGIN))
+                       .otherwise(len(list_origin)))
 
     # DEST
     rows_dest = df.select("DEST").distinct().collect()
     list_dest = [i.DEST for i in rows_dest]
     convDest = udf(lambda x: list_dest.index(x), IntegerType())
     df = df.withColumn("DEST",
-                       when(df["DEST"].isNotNull(),
-                            convDest(df.DEST)).otherwise(len(list_dest)))
+                       when(df["DEST"].isNotNull(),convDest(df.DEST))
+                        .otherwise(len(list_dest)))
 
     #
     # Create LabeledPoint object (label is "ARR_DEL15")
