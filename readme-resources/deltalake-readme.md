@@ -17,7 +17,7 @@ Time travel. We can read older versions of data via time travel feature since th
 ```shell
 conda install pyspark==3.5.3 
 
-pip install -i https://test.pypi.org/simple/ delta-spark==1.0.1
+pip install -i https://test.pypi.org/simple/ delta-spark==3.3.2
 pip install importlib-metadata
 
 export HADOOP_CONF_DIR=/home/brijeshdhaker/IdeaProjects/spark-python-examples/docker-sandbox/conf/hadoop/client
