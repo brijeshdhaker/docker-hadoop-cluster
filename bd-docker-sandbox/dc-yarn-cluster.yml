@@ -40,7 +40,7 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000 namenode.sandbox.net:9870"
     env_file:
-      - ./envs/docker_hadoop.env
+      - ./conf/hadoop/docker_hadoop.env
 
   #
   nodemanager:
@@ -68,7 +68,7 @@ services:
       YARN_CONF_DIR: "/opt/hadoop/etc/hadoop"
       SERVICE_PRECONDITION: "resourcemanager.sandbox.net:8088"
     env_file:
-      - ./envs/docker_hadoop.env
+      - ./conf/hadoop/docker_hadoop.env
 
   # YARN Timeline Server
   timelineserver:
@@ -94,7 +94,7 @@ services:
       - sandbox_apps_path:/apps
       - sandbox_hadoop_334_yarn:/yarn
     env_file:
-      - ./envs/docker_hadoop.env
+      - ./conf/hadoop/docker_hadoop.env
 
   # MR History Server
 #  historyserver:
@@ -120,7 +120,7 @@ services:
 #      - sandbox_apps_path:/apps
 #      - sandbox_hadoop_334_mapred:/mapred
 #    env_file:
-#      - envs/docker_hadoop.env
+#      - ./conf/hadoop/docker_hadoop.env
 
 
 #

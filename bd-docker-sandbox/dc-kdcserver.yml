@@ -7,10 +7,7 @@
 #
 
 # version: "3.9"
-
-include:
-  - path: ../bd-docker-sandbox/dc-base.yaml
-
+#
 services:
   #
   #
@@ -42,7 +39,7 @@ services:
       KADMIN_PASSWORD: kadmin
       KUSERS_PASSWORD: kuser
     env_file:
-      - ./envs/docker_kerberos.env
+      - ./conf/kerberos/docker_kerberos.env
 
 #
 # Docker Volumes
@@ -54,7 +51,12 @@ volumes:
   #
   sandbox_security_secrets:
     external: true
-
+  #
+  sandbox_krb5_stash:
+    external: true
+  #  
+  sandbox_krb5_principal:
+    external: true
 #
 # Docker Networks
 #

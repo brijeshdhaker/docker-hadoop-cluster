@@ -47,8 +47,8 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode.sandbox.net:9870 zookeeper.sandbox.net:2181"
     env_file:
-      - envs/docker_hbase.env
-      - envs/docker_clients.env
+      - ./conf/hbase/docker_hbase.env
+      - ./conf/docker_clients.env
     ports:
       - "16000:16000"
       - "16010:16010"
@@ -67,8 +67,8 @@ services:
       retries: 20
       interval: 10s
     env_file:
-      - envs/docker_hbase.env
-      - envs/docker_clients.env
+      - ./conf/hbase/docker_hbase.env
+      - ./conf/docker_clients.env
     environment:
       SERVICE_PRECONDITION: "namenode.sandbox.net:9870 zookeeper.sandbox.net:2181 hmaster.sandbox.net:16010"
     ports:
