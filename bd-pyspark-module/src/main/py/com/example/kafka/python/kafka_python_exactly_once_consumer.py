@@ -47,7 +47,7 @@ class KafkaDBHelper(object):
     def __init__(self):
         self.connection = mysql.connector.connect(
             user="root",
-            password="p@SSW0rd",
+            password="paSSW0rd",
             host="mysqlserver",
             port="3306",
             database="SANDBOXDB",

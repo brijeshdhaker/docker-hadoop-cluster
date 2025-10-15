@@ -9,7 +9,7 @@ class DB(object):
     def __init__(self, uuid=None):
         self.connection = mysql.connector.connect(
             user="operate",
-            password="p@SSW0rd",
+            password="paSSW0rd",
             host="mysqlserver",
             port="3306",
             database="SANDBOXDB",

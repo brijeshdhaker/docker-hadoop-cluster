@@ -165,7 +165,7 @@
       "status": "READY"
     },
     {
-      "text": "%mysql\n\nCREATE USER \u0027root\u0027@\u0027%\u0027 IDENTIFIED BY \u0027p@SSW0rd\u0027;\nREVOKE ALL PRIVILEGES, GRANT OPTION FROM \u0027root\u0027@\u0027%\u0027;\nGRANT ALL PRIVILEGES ON *.* TO \u0027root\u0027@\u0027%\u0027;\n\nFLUSH PRIVILEGES;\n",
+      "text": "%mysql\n\nCREATE USER \u0027root\u0027@\u0027%\u0027 IDENTIFIED BY \u0027paSSW0rd\u0027;\nREVOKE ALL PRIVILEGES, GRANT OPTION FROM \u0027root\u0027@\u0027%\u0027;\nGRANT ALL PRIVILEGES ON *.* TO \u0027root\u0027@\u0027%\u0027;\n\nFLUSH PRIVILEGES;\n",
       "user": "anonymous",
       "dateUpdated": "2024-10-14 03:23:32.964",
       "progress": 0,

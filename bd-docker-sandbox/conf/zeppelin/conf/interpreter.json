@@ -1740,7 +1740,7 @@
         },
         "default.password": {
           "name": "default.password",
-          "value": "p@SSW0rd",
+          "value": "paSSW0rd",
           "type": "password",
           "description": "The JDBC user password"
         },

@@ -1,5 +1,5 @@
 #
-# Use root/p@SSW0rd user/password credentials
+# Use root/paSSW0rd user/password credentials
 #
 # docker volume create --name sandbox_apps_path --opt type=none --opt device=/apps --opt o=bind
 # docker volume create --name sandbox_mysql_data --opt type=none --opt device=/apps/sandbox/mysql/data --opt o=bind
@@ -7,7 +7,8 @@
 # docker compose -f bd-docker-sandbox/docker-compose.yml up -d mysqlserver
 # docker compose -f bd-docker-sandbox/docker-compose.yml down mysqlserver
 #
-# docker exec -it mysqlserver mysql --user=root --password=p@SSW0rd --host=mysqlserver.sandbox.net --database=SANDBOXDB
+# docker exec -it mysqlserver mysql --user=root --password=paSSW0rd --host=localhost
+# docker exec -it mysqlserver mysql --user=root --password=paSSW0rd --host=mysqlserver.sandbox.net --database=SANDBOXDB
 #
 ---
 
@@ -23,19 +24,21 @@ services:
     restart: always
     ports:
       - "3306:3306"
-    command: "mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci"
+    command: "mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci"
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_mysql_data:/var/lib/mysql
       - ./conf/mysql:/etc/mysql/conf.d
-      - ./conf/mysql/initdb:/docker-entrypoint-initdb.d
+    secrets:
+      - mysql-root-password
     env_file:
-      - ./envs/docker_mysql.env
+      - ./conf/mysql/envvars
     healthcheck:
-      test: "/usr/bin/mysql --user=root --password=p@SSW0rd --execute \"SHOW DATABASES;\""
-      # test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      test: "/usr/bin/mysql --user=root --password=$$MYSQL_ADMIN_PASSWORD --execute \"SHOW DATABASES;\""
+      # test: ["CMD", 'mysqladmin', 'ping', '-h', 'localhost', '-u', 'root', '-p$$MYSQL_ADMIN_PASSWORD']
       timeout: 20s
       retries: 10
+      interval: 10s
     extra_hosts:
       - "docker.sandbox.net:172.18.0.1"
       
@@ -50,6 +53,10 @@ services:
 #    ports:
 #      - 8080:8080
 
+#
+secrets:
+  mysql-root-password:
+    file: ./conf/mysql/password.txt
 
 #
 volumes:

@@ -48,7 +48,7 @@ show tables;
 commit;
 
 ---
---- mysql --user=root --password=p@SSW0rd --host=mysqlserver.sandbox.net --database=SANDBOXDB
+--- mysql --user=root --password=paSSW0rd --host=mysqlserver.sandbox.net --database=SANDBOXDB
 --- mysql --user=brijeshdhaker --password=Accoo7@k47 --host=mysqlserver.sandbox.net --database=SANDBOXDB
 ---
 
