@@ -5,28 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-09-22 Update Window Functions.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/mysql/config-file.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/mysql/config-file.cnf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/zeppelin/conf/interpreter.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/zeppelin/conf/interpreter.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/mysql/initdb/create-table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/mysql/initdb/create-table.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/zeppelin/conf/interpreter.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/configs/regular/zeppelin/conf/interpreter.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-airflow.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-airflow.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-mysqlserver.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-mysqlserver.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-hive/hive-mysql.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-hive/hive-mysql.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_airflow.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_airflow.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_mysql.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/docker_mysql.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/envs/regular/docker_clients.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/regular/docker_clients.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/envs/regular/docker_mysql.env" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/envs/regular/docker_mysql.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/resources/dc-hive-cluster.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/resources/dc-hive-cluster.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/notebooks/deltalake/spark-deltalake.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/notebooks/deltalake/spark-deltalake.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-notebooks-module/notebooks/minio/MinIOTest.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/notebooks/minio/MinIOTest.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-notebooks-module/notebooks/mysql/hello-mysql.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/notebooks/mysql/hello-mysql.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_exactly_once_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_exactly_once_consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_exactly_once_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_exactly_once_consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/mysql/DB.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/mysql/DB.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured-kafka-txn-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured-kafka-txn-stream.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-spark-module/setup/kafka-topic.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/setup/kafka-topic.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/mysql-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/mysql-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
