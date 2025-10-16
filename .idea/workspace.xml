@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-09-22 Update Window Functions.">
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/spark-sql/sql-practice.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/jupyter/notebooks/spark-sql/sql-practice.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/notebooks/minio/MinIOTest.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/notebooks/minio/MinIOTest.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/notebooks/mysql/hello-mysql.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/notebooks/mysql/hello-mysql.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/setup/kafka-topic.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/setup/kafka-topic.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -362,7 +364,7 @@
       <recent name="org.examples.flink.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.bd-docker-sandbox/dc-notebook.yml.notebook: Compose Deployment">
+  <component name="RunManager" selected="Application.AppLauncher::BatchWorkflow">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -685,6 +687,7 @@
       <item itemvalue="Application.mini-cluster-transaction-pipeline" />
       <item itemvalue="Application.local-taxi-driver-hourly-max-tips" />
       <item itemvalue="Application.local-taxi-ride-counts" />
+      <item itemvalue="Docker.cassandra-cluster" />
       <item itemvalue="Docker.flink-cluster" />
       <item itemvalue="Docker.kafka-cluster" />
       <item itemvalue="Docker.minio" />
@@ -692,7 +695,6 @@
       <item itemvalue="Docker.spark-cluster" />
       <item itemvalue="Docker.spark-notebook" />
       <item itemvalue="Docker.zeppelin-notebook" />
-      <item itemvalue="Docker.cassandra-cluster" />
       <item itemvalue="Docker.bd-docker-sandbox/dc-minio.yml.minio: Compose Deployment" />
       <item itemvalue="Docker.bd-docker-sandbox/dc-notebook.yml.notebook: Compose Deployment" />
       <item itemvalue="Python.confluent_kafka_avro_producer" />
@@ -702,11 +704,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.bd-docker-sandbox/dc-notebook.yml.notebook: Compose Deployment" />
-        <item itemvalue="Python.window_aggregate_functions" />
         <item itemvalue="Python.window_ranking_functions" />
         <item itemvalue="Python.window_analytic_functions" />
-        <item itemvalue="Docker.bd-docker-sandbox/dc-minio.yml.minio: Compose Deployment" />
+        <item itemvalue="Python.window_aggregate_functions" />
       </list>
     </recent_temporary>
   </component>

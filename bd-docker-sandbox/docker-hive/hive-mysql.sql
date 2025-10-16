@@ -1,5 +1,5 @@
 
-mysql --user=root --password=p@SSW0rd
+mysql --user=root --password=paSSW0rd
 
 CREATE DATABASE HMS334;
 

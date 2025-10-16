@@ -30,7 +30,7 @@ services:
     env_file:
       - ./envs/docker_mysql.env
     healthcheck:
-      test: "/usr/bin/mysql --user=root --password=p@SSW0rd --execute \"SHOW DATABASES;\""
+      test: "/usr/bin/mysql --user=root --password=paSSW0rd --execute \"SHOW DATABASES;\""
       # test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
       timeout: 20s
       retries: 10

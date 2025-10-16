@@ -159,7 +159,7 @@ def process_txn_stream(args):
             .option("driver", "com.mysql.jdbc.Driver") \
             .option("dbtable", "USER") \
             .option("user", "root") \
-            .option("password", "p@SSW0rd") \
+            .option("password", "paSSW0rd") \
             .mode('append') \
             .trigger(processingTime="15 seconds") \
             .save()

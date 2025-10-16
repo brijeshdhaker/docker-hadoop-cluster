@@ -25,20 +25,16 @@ conda init --reverse --all
 #
 
 export PATH=/opt/conda/bin:$PATH
-PYSPARK_PYTHON=/opt/conda/envs/pyspark37/bin/python
-PYSPARK_DRIVER_PYTHON=/opt/conda/envs/pyspark37/bin/python
+PYSPARK_PYTHON=/opt/conda/envs/env_python3_11_13/bin/python
+PYSPARK_DRIVER_PYTHON=/opt/conda/envs/env_python3_11_13/bin/python
 
 #
-#### Create Conda Virtual Env : Python 3.9
+#### Create Conda Virtual Env : Python 3.11.13
 #
-conda create -y -n env_python_39 -c conda-forge python=3.9.20 pyarrow pandas conda-pack
-mamba env update -f bd-pyspark-module/env_python_39.yml --prune
-conda activate env_python_39
-conda update -n base -c defaults conda
-conda pack -f -o /apps/python/env_python_39_20221125.tar.gz
-
 conda create -y -n env_python3_11_13 -c conda-forge python=3.11.13 pyarrow pandas conda-pack
 conda activate env_python3_11_13
+conda update -n base -c defaults conda
+conda pack -f -o /apps/python/env_python_31113_20221125.tar.gz
 
 #
 #### Install Package in Virtual Environment

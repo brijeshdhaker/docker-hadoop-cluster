@@ -1,7 +1,7 @@
 ---
 --- Add User
 ---
-CREATE USER 'brijeshdhaker'@'%' IDENTIFIED BY 'Accoo7@k47';
+CREATE USER 'brijeshdhaker'@'%' IDENTIFIED BY 'paSSW0rd';
 GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO 'brijeshdhaker'@'%' WITH GRANT OPTION;
 GRANT ALL PRIVILEGES ON *.* TO 'brijeshdhaker'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
@@ -48,8 +48,8 @@ show tables;
 commit;
 
 ---
---- mysql --user=root --password=p@SSW0rd --host=mysqlserver.sandbox.net --database=SANDBOXDB
---- mysql --user=brijeshdhaker --password=Accoo7@k47 --host=mysqlserver.sandbox.net --database=SANDBOXDB
+--- mysql --user=root --password=paSSW0rd --host=mysqlserver.sandbox.net --database=SANDBOXDB
+--- mysql --user=brijeshdhaker --password=paSSW0rd --host=mysqlserver.sandbox.net --database=SANDBOXDB
 ---
 
 USE SANDBOXDB;

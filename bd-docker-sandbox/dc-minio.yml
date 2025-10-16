@@ -2,6 +2,10 @@
 # docker volume create --name sandbox_minio_data --opt type=none --opt device=/apps/sandbox/minio --opt o=bind
 # docker pull minio/minio:RELEASE.2024-07-29T22-14-52Z
 #
+#
+# docker compose -f bd-docker-sandbox/dc-minio.yml up -d minio
+# docker compose -f bd-docker-sandbox/dc-minio.yml down minio
+#
 ---
 
 services:

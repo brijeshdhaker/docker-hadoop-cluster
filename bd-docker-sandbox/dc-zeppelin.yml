@@ -1,6 +1,6 @@
 #
-# docker compose -f bd-docker-sandbox/dc-flink-cluster.yml up -d
-# docker compose -f bd-docker-sandbox/dc-flink-cluster.yml down
+# docker compose -f bd-docker-sandbox/dc-zeppelin.yml up -d zeppelin
+# docker compose -f bd-docker-sandbox/dc-zeppelin.yml down zeppelin
 #
 
 #
@@ -52,7 +52,7 @@ services:
     #      - ./envs/docker_clients.env
     ports:
       - "9080:8080"
-      - "4040:4040"
+#      - "4040:4040"
     depends_on:
       minio:
         condition: service_healthy
@@ -63,8 +63,8 @@ services:
     volumes:
 #      - ./conf/kerberos/krb5.conf:/etc/krb5.conf
       - sandbox_apps_path:/apps
-      - /apps/sandbox/zeppelin/conf:/opt/zeppelin/conf
-      - ../bd-notebooks-module/zeppelin/notebooks:/opt/zeppelin/notebook
+#      - /apps/sandbox/zeppelin/conf:/opt/zeppelin/conf
+      - ../bd-notebooks-module/zeppelin:/opt/zeppelin/notebook
       - /apps/var/logs/zeppelin:/opt/zeppelin/logs
 #      - /apps/sandbox/zeppelin/local-repo:/opt/zeppelin/local-repo
       - /opt/spark-3.4.1:/opt/spark

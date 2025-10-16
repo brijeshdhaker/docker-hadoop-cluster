@@ -1,0 +1,39 @@
+{
+  "paragraphs": [
+    {
+      "text": "",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-07 15:56:17.263",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1669680497262_1762900445",
+      "id": "paragraph_1669680497262_1762900445",
+      "dateCreated": "2022-11-29 00:08:17.262",
+      "status": "READY"
+    }
+  ],
+  "name": "rdd-actions",
+  "id": "2HK5PXGEK",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

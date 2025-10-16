@@ -34,6 +34,7 @@ services:
       - /apps/sandbox/cassandra/node01:/var/lib/cassandra
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
+      - CASSANDRA_ANONYMOUS_LOGIN=yes
       - CASSANDRA_BROADCAST_ADDRESS=cassandra-node01.sandbox.net
     extra_hosts:
       - "docker.sandbox.net:172.18.0.1"
@@ -55,6 +56,7 @@ services:
       - /apps/sandbox/cassandra/node02:/var/lib/cassandra
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
+      - CASSANDRA_ANONYMOUS_LOGIN=yes      
       - CASSANDRA_BROADCAST_ADDRESS=cassandra-node02.sandbox.net
       - CASSANDRA_SEEDS=cassandra-node01.sandbox.net
     extra_hosts:

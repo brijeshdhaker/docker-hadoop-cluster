@@ -27,8 +27,8 @@ services:
       mysqlserver:
         condition: service_healthy
     env_file:
-      - ./envs/docker_hive.env
-      - ./envs/docker_clients.env
+      - ./conf/hive/docker_hive.env
+      - ./conf/docker_clients.env
     command: /opt/hive/bin/hive --service metastore
     environment:
       SERVICE_PRECONDITION: "mysqlserver.sandbox.net:3306"
@@ -52,8 +52,8 @@ services:
       metastore:
         condition: service_healthy
     env_file:
-      - ./envs/docker_hive.env
-      - ./envs/docker_clients.env
+      - ./conf/hive/docker_hive.env
+      - ./conf/docker_clients.env
     environment:
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000 metastore.sandbox.net:9083"
     ports:

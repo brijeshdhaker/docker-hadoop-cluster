@@ -2,10 +2,25 @@
 #
 #
 
-$ jupyter lab --port=8888 --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token='' --notebook-dir=/home/notebooks/
+conda activate env_python3_11_13
+
+#
+#
+#
+
+```bash
+$ jupyter notebook --port=8888 --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token='' --notebook-dir=/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-notebooks-module/notebooks
+```
+
+#
+#
+#
+```bash
+$ jupyter lab --port=8888 --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token='' --notebook-dir=~/IdeaProjects/docker-hadoop-cluster/bd-notebooks-module/notebooks
 
 # Check the newly built image
 $ docker run -it --rm quay.io/jupyter/all-spark-notebook:spark-3.5.2 pyspark --version
+```
 
 Entered start.sh with args: pyspark --version
 Running hooks in: /usr/local/bin/start-notebook.d as uid: 1000 gid: 100

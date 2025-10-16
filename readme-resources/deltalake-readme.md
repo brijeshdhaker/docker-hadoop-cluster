@@ -15,13 +15,13 @@ Time travel. We can read older versions of data via time travel feature since th
 
 # Install delta-spark Python package
 ```shell
-conda install pyspark==3.5.0
+conda install pyspark==3.5.3 
 
-pip install -i https://test.pypi.org/simple/ delta-spark==1.0.1
+pip install -i https://test.pypi.org/simple/ delta-spark==3.3.2
 pip install importlib-metadata
 
 export HADOOP_CONF_DIR=/home/brijeshdhaker/IdeaProjects/spark-python-examples/docker-sandbox/conf/hadoop/client
-spark-submit --packages "io.delta:delta-core_2.12:2.4.0" spark-delta-lake.py
+spark-submit --packages "io.delta:delta-core_2.12:3.3.2" spark-delta-lake.py
 hadoop fs -ls -R /deltalake/test_table
 
 pyspark --packages io.delta:delta-core_2.12:2.4.0 --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension" --conf "spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog"
@@ -36,9 +36,9 @@ pyspark --packages io.delta:delta-core_2.12:2.4.0 --conf "spark.sql.extensions=i
 bin/spark-sql --packages io.delta:delta-spark_2.12:3.2.0 --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension" --conf "spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog"
 
 #
-# For Spark 3.5.1
+# For Spark 3.5.3
 #
-pyspark --packages io.delta:delta-spark_2.12:3.2.0 --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension" --conf "spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog"
+pyspark --packages io.delta:delta-spark_2.12:3.3.2 --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension" --conf "spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog"
 
 #
 # For Spark 3.4.1

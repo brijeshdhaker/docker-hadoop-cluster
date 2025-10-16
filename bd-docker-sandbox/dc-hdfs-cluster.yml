@@ -46,7 +46,7 @@ services:
       CLUSTER_NAME: "docker-sandbox"
       MULTIHOMED_NETWORK: 2
     env_file:
-      - ./envs/docker_hadoop.env
+      - ./conf/hadoop/docker_hadoop.env
 
   #
   datanode:
@@ -75,7 +75,7 @@ services:
       CLUSTER_NAME: "docker-sandbox"
       SERVICE_PRECONDITION: "namenode.sandbox.net:9000"
     env_file:
-      - ./envs/docker_hadoop.env
+      - ./conf/hadoop/docker_hadoop.env
 
 #
 volumes:

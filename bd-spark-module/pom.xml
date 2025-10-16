@@ -353,7 +353,7 @@
             <version>${spark.version}</version>
         </dependency>
 
-        <!-- io.delta:delta-core_2.12:2.4.0 -->
+        <!-- io.delta:delta-core_2.12:2.4.0 or io.delta:delta-spark_2.12:3.3.2-->
         <dependency>
             <groupId>io.delta</groupId>
             <artifactId>delta-spark_2.12</artifactId>

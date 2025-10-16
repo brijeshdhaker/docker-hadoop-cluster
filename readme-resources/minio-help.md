@@ -42,6 +42,7 @@ These credentials are open to public. Feel free to use this service for testing 
 
 ## install aws cli
 ```shell
+sudo snap install aws-cli --classic
 sudo apt install curl unzip
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
@@ -92,14 +93,11 @@ make_bucket: s3://warehouse/
 aws --endpoint-url http://minio.sandbox.net:9010 s3 cp /apps/hostpath/datasets/airlines.csv s3://warehouse
 upload: ../../../../apps/hostpath/datasets/airlines.csv to s3://warehouse/airlines.csv
 
-aws --endpoint-url http://minio.sandbox.net:9010 s3 cp /apps/hostpath/datasets/airports.csv s3://warehouse
-upload: ../../../../apps/hostpath/datasets/airports.csv to s3://warehouse/airports.csv
-
 ```                                   
 
 ## To delete an object from a bucket
 ```shell
-aws --endpoint-url http://minio.sandbox.net:9010 s3 rm s3://warehouse/airports.csv
+aws --endpoint-url http://minio.sandbox.net:9010 s3 rm s3://warehouse/airports.csv --recursive
 delete: s3://warehouse/airports.csv
 ```
 
