@@ -169,7 +169,7 @@ LOCATION  's3://qtest-qubole-com/datasets/presto/functional/nation_s3_orc'
 
 ```
 ### #ORC Tables : The Optimized Row Columnar (ORC) file format offers an efficient way for storing Hive data.
-```
+```sql
 create external table nation_s3_orc (
     N_NATIONKEY INT, 
     N_NAME STRING, 

@@ -3,10 +3,10 @@
     {
       "text": "%md\n\nApache Spark 2.2 recently shipped with a state-of-art cost-based optimization framework that collects and leverages a variety of per-column data statistics (e.g., cardinality, number of distinct values, NULL values, max/min, average/max length, etc.) to improve the quality of query execution plans. Leveraging these statistics helps Spark to make better decisions in picking the most optimal query plan. Examples of these optimizations include selecting the correct build side in a hash-join, choosing the right join type (broadcast hash-join vs. shuffled hash-join) or adjusting a multi-way join order, among others.\n\nLet us demonstrate this with a simple example. Consider a query shown below that filters a table t1 of size 500GB and joins the output with another table t2 of size 20GB. Spark implements this query using a hash join by choosing the smaller join relation as the build side (to build a hash table) and the larger relation as the probe side 1. Given that t2 is smaller than t1, Apache Spark 2.1 would choose the right side as the build side without factoring in the effect of the filter operator (which in this case filters out the majority of t1‘s records). Choosing the incorrect side as the build side often forces the system to give up on a fast hash join and turn to sort-merge join due to memory constraints.\n\n![cbo](https://databricks.com/wp-content/uploads/2017/08/image5.png)\n\nApache Spark 2.2, on the other hand, collects statistics for each operator and figures out that the left side would be only 100MB (1 million records) after filtering, and the right side would be 20GB (100 million records). With the correct size/cardinality information for both sides, Spark 2.2 would choose the left side as the build side resulting in significant query speedups.\nAccoo7@k47\n",
       "user": "anonymous",
-      "dateUpdated": "2022-02-16 03:22:24.469",
+      "dateUpdated": "2025-10-17 23:44:56.647",
       "progress": 0,
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
@@ -16,7 +16,7 @@
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
         "fontSize": 12.0,
-        "editorHide": false,
+        "editorHide": true,
         "results": {},
         "enabled": true
       },
@@ -29,7 +29,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eApache Spark 2.2 recently shipped with a state-of-art cost-based optimization framework that collects and leverages a variety of per-column data statistics (e.g., cardinality, number of distinct values, NULL values, max/min, average/max length, etc.) to improve the quality of query execution plans. Leveraging these statistics helps Spark to make better decisions in picking the most optimal query plan. Examples of these optimizations include selecting the correct build side in a hash-join, choosing the right join type (broadcast hash-join vs. shuffled hash-join) or adjusting a multi-way join order, among others.\u003c/p\u003e\n\u003cp\u003eLet us demonstrate this with a simple example. Consider a query shown below that filters a table t1 of size 500GB and joins the output with another table t2 of size 20GB. Spark implements this query using a hash join by choosing the smaller join relation as the build side (to build a hash table) and the larger relation as the probe side 1. Given that t2 is smaller than t1, Apache Spark 2.1 would choose the right side as the build side without factoring in the effect of the filter operator (which in this case filters out the majority of t1‘s records). Choosing the incorrect side as the build side often forces the system to give up on a fast hash join and turn to sort-merge join due to memory constraints.\u003c/p\u003e\n\u003cp\u003e\u003cimg src\u003d\"https://databricks.com/wp-content/uploads/2017/08/image5.png\" alt\u003d\"cbo\" /\u003e\u003c/p\u003e\n\u003cp\u003eApache Spark 2.2, on the other hand, collects statistics for each operator and figures out that the left side would be only 100MB (1 million records) after filtering, and the right side would be 20GB (100 million records). With the correct size/cardinality information for both sides, Spark 2.2 would choose the left side as the build side resulting in significant query speedups.\u003c/p\u003e\n\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eApache Spark 2.2 recently shipped with a state-of-art cost-based optimization framework that collects and leverages a variety of per-column data statistics (e.g., cardinality, number of distinct values, NULL values, max/min, average/max length, etc.) to improve the quality of query execution plans. Leveraging these statistics helps Spark to make better decisions in picking the most optimal query plan. Examples of these optimizations include selecting the correct build side in a hash-join, choosing the right join type (broadcast hash-join vs. shuffled hash-join) or adjusting a multi-way join order, among others.\u003c/p\u003e\n\u003cp\u003eLet us demonstrate this with a simple example. Consider a query shown below that filters a table t1 of size 500GB and joins the output with another table t2 of size 20GB. Spark implements this query using a hash join by choosing the smaller join relation as the build side (to build a hash table) and the larger relation as the probe side 1. Given that t2 is smaller than t1, Apache Spark 2.1 would choose the right side as the build side without factoring in the effect of the filter operator (which in this case filters out the majority of t1‘s records). Choosing the incorrect side as the build side often forces the system to give up on a fast hash join and turn to sort-merge join due to memory constraints.\u003c/p\u003e\n\u003cp\u003e\u003cimg src\u003d\"https://databricks.com/wp-content/uploads/2017/08/image5.png\" alt\u003d\"cbo\" /\u003e\u003c/p\u003e\n\u003cp\u003eApache Spark 2.2, on the other hand, collects statistics for each operator and figures out that the left side would be only 100MB (1 million records) after filtering, and the right side would be 20GB (100 million records). With the correct size/cardinality information for both sides, Spark 2.2 would choose the left side as the build side resulting in significant query speedups.\u003cbr /\u003e\nAccoo7@k47\u003c/p\u003e\n\n\u003c/div\u003e"
           }
         ]
       },
@@ -39,8 +39,8 @@
       "jobName": "paragraph_1641387228343_1888952001",
       "id": "paragraph_1641387228343_1888952001",
       "dateCreated": "2022-01-05 12:53:48.343",
-      "dateStarted": "2022-01-05 15:07:48.886",
-      "dateFinished": "2022-01-05 15:07:48.904",
+      "dateStarted": "2025-10-17 23:44:56.651",
+      "dateFinished": "2025-10-17 23:44:59.909",
       "status": "FINISHED"
     },
     {
@@ -83,7 +83,7 @@
       "title": "Joins Without CBO",
       "text": "%spark.conf\n\n//\nspark.range(1000000).write.mode(\"overwrite\").saveAsTable(\"1000K\")\nspark.range(100000).write.mode(\"overwrite\").saveAsTable(\"100K\")\nspark.range(10000).write.mode(\"overwrite\").saveAsTable(\"10K\")\n\nval evalDF \u003d spark.table(\"1000K\").join(spark.table(\"100K\"), \"id\").join(spark.table(\"10K\"), \"id\")\n\nevalDF.foreach(x \u003d\u003e ())\n",
       "user": "anonymous",
-      "dateUpdated": "2022-01-05 15:11:02.240",
+      "dateUpdated": "2025-10-17 23:48:31.838",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -115,7 +115,7 @@
       "title": "Joins With CBO Enabled",
       "text": "%spark\n\n//\nspark.conf.set(\"spark.sql.crossJoin.enabled\", \"true\")\nspark.conf.set(\"spark.sql.cbo.enabled\", \"true\")\nspark.conf.set(\"spark.sql.cbo.joinRecorder.enabled\", \"true\")\n\n//\nspark.range(1000000).write.mode(\"overwrite\").saveAsTable(\"1000K\")\nspark.range(100000).write.mode(\"overwrite\").saveAsTable(\"100K\")\nspark.range(10000).write.mode(\"overwrite\").saveAsTable(\"10K\")\n\n//\nspark.sql(\"Analyze table 1000K compute statistics\")\nspark.sql(\"Analyze table 100K compute statistics\")\nspark.sql(\"Analyze table 10K compute statistics\")\n\nval evalDF \u003d spark.table(\"1000K\").join(spark.table(\"100K\"), \"id\").join(spark.table(\"10K\"), \"id\")\n\nevalDF.foreach(x \u003d\u003e ())\n",
       "user": "anonymous",
-      "dateUpdated": "2022-01-05 15:11:24.666",
+      "dateUpdated": "2025-10-17 23:49:05.474",
       "progress": 100,
       "config": {
         "editorSetting": {
