@@ -11,5 +11,6 @@
     "terminal.integrated.env.linux": {
         "PYTHONPATH": "${workspaceFolder}/bd-data-platform:${env:PYTHONPATH}"
     },
-    "maven.view": "hierarchical"
+    "maven.view": "hierarchical",
+    "python.envFile": "${workspaceFolder}/.env"
 }

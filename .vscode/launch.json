@@ -50,12 +50,22 @@
             "vmArgs": "-Dlog.file=/apps/var/logs/flink/ClickEventGenerator.log"
         },
         {
-            "name": "Python: bd-data-platform",
+            "name": "Run: bd-data-platform",
             "type": "debugpy",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "cwd": "${workspaceFolder}/bd-data-platform"
+            "cwd": "${workspaceFolder}/bd-data-platform",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "name": "Debug: bd-data-platform",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/bd-data-platform",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
