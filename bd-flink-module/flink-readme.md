@@ -230,7 +230,7 @@ flink run --detached \
 
 ```
 
-
+```shell
 mvn package exec:java -Dexec.cleanupDaemonThreads=false -Dexec.mainClass=org.example.source.bounded.DeltaBoundedSourceExample -Dstaging.repo.url={maven_repo} -Dconnectors.version={version}
 mvn package exec:java -Dexec.cleanupDaemonThreads=false -Dexec.mainClass=org.example.sink.DeltaSinkExample -Dstaging.repo.url={maven_repo} -Dconnectors.version={version}
 
@@ -258,3 +258,4 @@ mvn package exec:java \
 /usr/lib/jvm/java-1.17.0-openjdk-amd64/bin/java -Dmaven.multiModuleProjectDirectory=/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-flink-module -Djansi.passthrough=true -Dmaven.home=/snap/intellij-idea-community/560/plugins/maven/lib/maven3 -Dclassworlds.conf=/snap/intellij-idea-community/560/plugins/maven/lib/maven3/bin/m2.conf -Dmaven.ext.class.path=/snap/intellij-idea-community/560/plugins/maven/lib/maven-event-listener.jar -javaagent:/snap/intellij-idea-community/560/lib/idea_rt.jar=39325:/snap/intellij-idea-community/560/bin -Dfile.encoding=UTF-8 -classpath /snap/intellij-idea-community/560/plugins/maven/lib/maven3/boot/plexus-classworlds-2.8.0.jar:/snap/intellij-idea-community/560/plugins/maven/lib/maven3/boot/plexus-classworlds.license org.codehaus.classworlds.Launcher -Didea.version=2024.3.1 --update-snapshots -s /home/brijeshdhaker/.m2/settings.xml -Dmaven.repo.local=/apps/.m2/repository -DskipTests=true clean package -P cluster
 
 mvn clean install 
+```
