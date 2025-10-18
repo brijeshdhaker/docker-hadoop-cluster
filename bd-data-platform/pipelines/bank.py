@@ -3,7 +3,8 @@ from ingestion.DataWriter import DataWriter
 from utils.logger import Logger
 from utils.spark_session import SparkSessionManager
 from pyspark.sql.functions import concat_ws
-
+import os
+from pathlib import Path
 
 class BankPipeline:
     def __init__(self) -> None:
@@ -15,9 +16,9 @@ class BankPipeline:
 
         # Read datasets based on ETL logic
         # Create temp view to replicate table like structure
-        accounts = self.spark.read.parquet("../datasets/silver/accounts/")
-        customers = self.spark.read.parquet("../datasets/silver/customers/")
-        transactions = self.spark.read.parquet("../datasets/silver/transactions/")
+        accounts = self.spark.read.parquet("./datasets/silver/accounts/")
+        customers = self.spark.read.parquet("./datasets/silver/customers/")
+        transactions = self.spark.read.parquet("./datasets/silver/transactions/")
         accounts.createOrReplaceTempView('accounts_table')
         customers.createOrReplaceTempView('customers_table')
         transactions.createOrReplaceTempView('transactions_table')
@@ -90,7 +91,12 @@ class BankPipeline:
 
 
 if __name__ == '__main__':
-    config_feed = "../config/bank.json"
+
+    #
+    work_dir= os.getcwd()
+    current_working_directory = Path.cwd()
+    file = Path(__file__)
+    config_feed = "./config/bank.json"
 
     # read the raw data from bronze layer
     reader = DataReader(config_feed)

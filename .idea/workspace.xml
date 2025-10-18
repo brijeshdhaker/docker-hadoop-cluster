@@ -5,69 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-09-22 Update Window Functions.">
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/bd-data-platform.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/config/accounts-dim.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/config/bank.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/config/customers-dim.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/bronze/accounts/accounts_20240101060606.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/bronze/accounts/accounts_20240101080808.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/bronze/customers/customers_20240101070707.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/bronze/customers/customers_20240101090909.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/bronze/transactions/transactions_20240101090909.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/gold/bank/_delta_log/.00000000000000000000.crc.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/gold/bank/_delta_log/.00000000000000000000.json.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/gold/bank/_delta_log/.00000000000000000001.crc.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/gold/bank/_delta_log/.00000000000000000001.json.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/gold/bank/_delta_log/00000000000000000000.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/gold/bank/_delta_log/00000000000000000000.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/gold/bank/_delta_log/00000000000000000001.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/gold/bank/_delta_log/00000000000000000001.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/gold/bank/date_id=2024-1-1/.part-00000-6fbcc199-a0ad-428d-abab-71f9422d4326.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/gold/bank/date_id=2024-1-1/.part-00000-b67f34dd-6456-4dbd-82f7-d1467dd33ec8.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/gold/bank/date_id=2024-1-1/part-00000-6fbcc199-a0ad-428d-abab-71f9422d4326.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/gold/bank/date_id=2024-1-1/part-00000-b67f34dd-6456-4dbd-82f7-d1467dd33ec8.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/.part-00000-d346f871-5e43-4ee7-a2f5-effd285f53f0.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/.part-00000-eaf15128-0254-426b-8266-738812d0d372.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/part-00000-d346f871-5e43-4ee7-a2f5-effd285f53f0.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/part-00000-eaf15128-0254-426b-8266-738812d0d372.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/silver/accounts/._SUCCESS.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/silver/accounts/_SUCCESS" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/silver/accounts/year=2024/month=01/day=01/.part-00000-c88fd13c-5b32-40e6-a1c2-b6b43cb3beae.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/silver/accounts/year=2024/month=01/day=01/part-00000-c88fd13c-5b32-40e6-a1c2-b6b43cb3beae.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/silver/customers/._SUCCESS.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/silver/customers/_SUCCESS" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/silver/customers/year=2024/month=01/day=01/.part-00000-8e27c628-e230-4294-962c-062aaf981168.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/silver/customers/year=2024/month=01/day=01/part-00000-8e27c628-e230-4294-962c-062aaf981168.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/silver/transactions/._SUCCESS.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/silver/transactions/_SUCCESS" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/silver/transactions/year=2024/month=01/day=01/.part-00000-2911585f-2547-4e9a-ac75-05b2fa451e6c.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/datasets/silver/transactions/year=2024/month=01/day=01/part-00000-2911585f-2547-4e9a-ac75-05b2fa451e6c.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/ddl/gold/customers.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/docker/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/ingestion/DataReader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/ingestion/DataWriter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/nbproject/project.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/pipelines/accounts-dim.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/pipelines/bank.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/pipelines/customers-dim.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/pyproject.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/test/create_scd1_datasets.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/test/create_scd2_datasets.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/test/createtables.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/test/read-json.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/test/utils/readTest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/utils/logger.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/utils/read.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/utils/scdhandler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-data-platform/utils/spark_session.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-flink-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-flink-cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-flink-module/flink-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/flink-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/notebooks/scd-t2-implementation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/notebooks/scd-t2-implementation.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/notebooks/spark-sql/spark-udf.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/notebooks/spark-sql/spark-udf.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-data-platform/config/accounts-dim.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-data-platform/config/accounts-dim.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-data-platform/config/bank.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-data-platform/config/bank.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-data-platform/config/customers-dim.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-data-platform/config/customers-dim.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-data-platform/pipelines/accounts-dim.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-data-platform/pipelines/accounts-dim.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-data-platform/pipelines/bank.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-data-platform/pipelines/bank.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-data-platform/pipelines/customers-dim.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-data-platform/pipelines/customers-dim.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -342,7 +290,7 @@
     "Python.__main__.executor": "Run",
     "Python.app.executor": "Run",
     "Python.avro-test.executor": "Debug",
-    "Python.bank.executor": "Run",
+    "Python.bank.executor": "Debug",
     "Python.confluent_kafka_AvroConsumer.executor": "Run",
     "Python.confluent_kafka_AvroProducer.executor": "Run",
     "Python.confluent_kafka_ConsumerFactory.executor": "Run",
@@ -495,7 +443,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-data-platform/pipelines" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-data-platform" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -789,14 +737,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00177" summary="2025-04-08 Update ssl configuration for springboot app.">
-      <option name="closed" value="true" />
-      <created>1744068412484</created>
-      <option name="number" value="00177" />
-      <option name="presentableId" value="LOCAL-00177" />
-      <option name="project" value="LOCAL" />
-      <updated>1744068412485</updated>
     </task>
     <task id="LOCAL-00178" summary="2025-04-08 Update ssl configuration for springboot app.">
       <option name="closed" value="true" />
@@ -1182,7 +1122,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758547492722</updated>
     </task>
-    <option name="localTasksCounter" value="226" />
+    <task id="LOCAL-00226" summary="2025-09-22 Update Window Functions.">
+      <option name="closed" value="true" />
+      <created>1760783607128</created>
+      <option name="number" value="00226" />
+      <option name="presentableId" value="LOCAL-00226" />
+      <option name="project" value="LOCAL" />
+      <updated>1760783607128</updated>
+    </task>
+    <option name="localTasksCounter" value="227" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">

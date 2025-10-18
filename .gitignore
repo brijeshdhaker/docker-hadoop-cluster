@@ -35,7 +35,6 @@ target
 !/.gitignore
 !/.vscode
 !/.idea
-
-
 /bd-data-platform/datasets/gold/
 /bd-data-platform/datasets/silver/
+*.pyc

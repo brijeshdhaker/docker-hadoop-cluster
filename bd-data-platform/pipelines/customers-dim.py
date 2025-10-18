@@ -11,7 +11,7 @@ class CustomersDim:
     def __init__(self):
         self.spark = SparkSessionManager(self.__class__.__name__).create_session()
         self.logger = Logger(self.__class__.__name__)
-        self.config = readHandler().read_json("../config/customers-dim.json")
+        self.config = readHandler().read_json("./config/customers-dim.json")
 
     def etl(self):
         source_path = self.config.get("source_table")

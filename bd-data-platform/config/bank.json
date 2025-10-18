@@ -1,23 +1,23 @@
 {
   "datasets": {
     "accounts": {
-      "input_path": "../datasets/bronze/accounts/",
-      "output_path": "../datasets/silver/accounts/",
+      "input_path": "./datasets/bronze/accounts/",
+      "output_path": "./datasets/silver/accounts/",
       "format": "csv",
       "header": "true",
       "delimiter": "|",
       "regex": "accounts_\\d{14}.*"
     },
     "customers": {
-      "input_path": "../datasets/bronze/customers/",
-      "output_path": "../datasets/silver/customers/",
+      "input_path": "./datasets/bronze/customers/",
+      "output_path": "./datasets/silver/customers/",
       "format": "csv",
       "header": "true",
       "regex": "customers_\\d{14}.*"
     },
     "transactions": {
-      "input_path": "../datasets/bronze/transactions/",
-      "output_path": "../datasets/silver/transactions/",
+      "input_path": "./datasets/bronze/transactions/",
+      "output_path": "./datasets/silver/transactions/",
       "format": "json",
       "regex": "transactions_\\d{14}.*"
     }
@@ -52,7 +52,7 @@
       "avg_balance": "avg(accounts_table.balance) as avg_balance"
     },
     "output": {
-      "path": "../datasets/gold/bank/",
+      "path": "./datasets/gold/bank/",
       "format": "delta"
     }
   }

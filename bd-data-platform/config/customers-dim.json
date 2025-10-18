@@ -1,6 +1,6 @@
 {
-  "source_table": "../datasets/silver/customers/",
-  "target_table": "../datasets/gold/customers/",
+  "source_table": "./datasets/silver/customers/",
+  "target_table": "./datasets/gold/customers/",
   "join_keys": [
     "customer_id"
   ],

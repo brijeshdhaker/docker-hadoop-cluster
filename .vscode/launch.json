@@ -48,6 +48,14 @@
             "args": "",
             "envFile": "${workspaceFolder}/.env",
             "vmArgs": "-Dlog.file=/apps/var/logs/flink/ClickEventGenerator.log"
+        },
+        {
+            "name": "Python: bd-data-platform",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/bd-data-platform"
         }
     ]
 }

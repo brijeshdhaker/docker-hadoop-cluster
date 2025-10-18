@@ -1,9 +1,15 @@
 {
     "java.compile.nullAnalysis.mode": "automatic",
     "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable",
-    "python.defaultInterpreterPath": "~/.conda/envs/env_python_39/bin/python",
+    "python.defaultInterpreterPath": "/opt/conda/envs/env_python3_11_13/bin/python",
     "python.autoComplete.extraPaths": [
-        
+        "${workspaceFolder}/bd-data-platform",
     ],
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/bd-data-platform"
+    ],
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "${workspaceFolder}/bd-data-platform:${env:PYTHONPATH}"
+    },
     "maven.view": "hierarchical"
 }
