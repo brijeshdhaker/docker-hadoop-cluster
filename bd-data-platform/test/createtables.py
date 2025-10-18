@@ -1,4 +1,6 @@
 from utils.spark_session import SparkSessionManager
+
+#
 spark = SparkSessionManager("test").create_session()
 
 spark.sql("select * from bank_str1").show()
@@ -16,7 +18,7 @@ CREATE TABLE bank_str2 (
 ,name string)
 USING DELTA 
 PARTITIONED BY (date_id string)
-LOCATION '../datasets/gold/bank'
+LOCATION './datasets/gold/bank'
 """
 
 spark.sql(table_ddl).show()
@@ -36,7 +38,7 @@ spark.sql("select * from bank").printSchema()
 
 spark.sql("CREATE DATABASE IF NOT EXISTS gold LOCATION 'datasets/gold/'")
 
-#df = spark.read.format("delta").load('../datasets/gold/bank/')
+#df = spark.read.format("delta").load('./datasets/gold/bank/')
 #df.show(20,0)
 
 #df.printSchema()

@@ -30,7 +30,7 @@ def _add_metadata_columns(df, file):
 
 
 #################### Create Target dataset @Gold layer #############
-path = "../datasets/bronze/accounts/accounts_20240101060606.csv"
+path = "./datasets/bronze/accounts/accounts_20240101060606.csv"
 file = path.split("/")[-1]
 df = _read_csv(path)
 df = _add_metadata_columns(df, file)
@@ -40,14 +40,14 @@ df = df.withColumn("date_id", concat_ws("-", "year", "month", "day")) \
 
 df.show()
 
-df.write.partitionBy('date_id').mode('overwrite').parquet("../datasets/gold/accounts/")
+df.write.partitionBy('date_id').mode('overwrite').parquet("./datasets/gold/accounts/")
 
 #################### Create Source dataset @silver layer #############
-path = "../datasets/bronze/accounts/accounts_20240101080808.csv"
+path = "./datasets/bronze/accounts/accounts_20240101080808.csv"
 file = path.split("/")[-1]
 df = _read_csv(path)
 df = _add_metadata_columns(df, file)
 
 df.show()
 
-df.write.partitionBy('year', 'month', 'day').mode('overwrite').parquet("../datasets/silver/accounts/")
+df.write.partitionBy('year', 'month', 'day').mode('overwrite').parquet("./datasets/silver/accounts/")
