@@ -1,0 +1,8 @@
+{
+  "source_table": "./resources/datasets/silver/customers/",
+  "target_table": "./resources/datasets/gold/customers/",
+  "join_keys": [
+    "customer_id"
+  ],
+  "scd_type": "scd2"
+}

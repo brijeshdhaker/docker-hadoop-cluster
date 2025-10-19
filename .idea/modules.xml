@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/bd-data-platform/bd-data-platform.iml" filepath="$PROJECT_DIR$/bd-data-platform/bd-data-platform.iml" />
       <module fileurl="file://$PROJECT_DIR$/bd-docker-sandbox/bd-docker-sandbox.iml" filepath="$PROJECT_DIR$/bd-docker-sandbox/bd-docker-sandbox.iml" />
       <module fileurl="file://$PROJECT_DIR$/bd-notebooks-module/bd-notebooks-module.iml" filepath="$PROJECT_DIR$/bd-notebooks-module/bd-notebooks-module.iml" />
       <module fileurl="file://$PROJECT_DIR$/bd-pyspark-module/bd-pyspark-module.iml" filepath="$PROJECT_DIR$/bd-pyspark-module/bd-pyspark-module.iml" />

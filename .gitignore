@@ -35,6 +35,8 @@ target
 !/.gitignore
 !/.vscode
 !/.idea
-/bd-data-platform/datasets/gold/
-/bd-data-platform/datasets/silver/
 *.pyc
+/bd-pyspark-module/src/main/py/resources/datasets/gold/
+/bd-pyspark-module/src/main/py/resources/datasets/silver/
+/bd-pyspark-module/src/test/py/resources/datasets/gold/
+/bd-pyspark-module/src/test/py/resources/datasets/silver/
