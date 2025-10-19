@@ -66,6 +66,34 @@
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}/bd-data-platform",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "name": "Run: bd-pyspark-module",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/bd-pyspark-module/src/main/py",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "name": "Debug: bd-pyspark-module",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/bd-pyspark-module/src/main/py",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "name": "Test: bd-pyspark-module",
+            "type": "debugpy",
+            "request": "launch",
+            "purpose": ["debug-test"],
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/bd-pyspark-module/src/test/py",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

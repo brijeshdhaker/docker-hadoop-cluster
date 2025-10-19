@@ -3,7 +3,7 @@ Code that goes along with the Airflow tutorial located at:
 https://github.com/airbnb/airflow/blob/master/airflow/example_dags/tutorial.py
 """
 import pendulum
-from airflow import DAG
+from com.example.airflow.dags.airflow_dag import DAG
 from airflow.operators.bash import BashOperator
 from datetime import datetime, timedelta
 

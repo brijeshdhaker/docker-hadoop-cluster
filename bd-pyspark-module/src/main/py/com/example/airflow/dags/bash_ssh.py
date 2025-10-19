@@ -1,4 +1,4 @@
-from airflow import DAG
+from com.example.airflow.dags.airflow_dag import DAG
 import pendulum
 from airflow.providers.ssh.operators.ssh import SSHOperator
 from airflow.providers.ssh.hooks.ssh import SSHHook

@@ -1,5 +1,5 @@
 import pendulum
-from airflow import DAG
+from com.example.airflow.dags.airflow_dag import DAG
 from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
 from datetime import datetime, timedelta
 
