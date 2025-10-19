@@ -3,17 +3,15 @@
     "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable",
     "python.defaultInterpreterPath": "/opt/conda/envs/env_python3_11_13/bin/python",
     "python.autoComplete.extraPaths": [
-        "${workspaceFolder}/bd-data-platform",
         "${workspaceFolder}/bd-pyspark-module/src/main/py",
         "${workspaceFolder}/bd-pyspark-module/src/test/py"
     ],
     "python.analysis.extraPaths": [
-        "${workspaceFolder}/bd-data-platform",
         "${workspaceFolder}/bd-pyspark-module/src/main/py",
         "${workspaceFolder}/bd-pyspark-module/src/test/py"
     ],
     "terminal.integrated.env.linux": {
-        "PYTHONPATH": "${workspaceFolder}/bd-data-platform:${workspaceFolder}/bd-pyspark-module/src/main/py:${workspaceFolder}/bd-pyspark-module/src/test/py:${env:PYTHONPATH}"
+        "PYTHONPATH": "${workspaceFolder}/bd-pyspark-module/src/main/py:${workspaceFolder}/bd-pyspark-module/src/test/py:${env:PYTHONPATH}"
     },
     "maven.view": "hierarchical",
     "python.envFile": "${workspaceFolder}/.env",

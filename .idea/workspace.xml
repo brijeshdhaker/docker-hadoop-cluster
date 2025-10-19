@@ -5,159 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-10-19 Update bd-pyspark-module configurations">
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/accounts/._SUCCESS.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/accounts/date_id=2024-01-01/.part-00000-ad0e0c8d-cae8-4896-8f04-b9f762ffe164.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/accounts/date_id=2024-01-01/part-00000-ad0e0c8d-cae8-4896-8f04-b9f762ffe164.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/_delta_log/.00000000000000000000.crc.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/_delta_log/.00000000000000000000.json.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/_delta_log/.00000000000000000001.crc.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/_delta_log/.00000000000000000001.json.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/_delta_log/.00000000000000000002.crc.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/_delta_log/.00000000000000000002.json.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/_delta_log/.00000000000000000003.crc.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/_delta_log/.00000000000000000003.json.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/_delta_log/00000000000000000000.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/_delta_log/00000000000000000000.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/_delta_log/00000000000000000001.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/_delta_log/00000000000000000001.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/_delta_log/00000000000000000002.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/_delta_log/00000000000000000002.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/_delta_log/00000000000000000003.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/_delta_log/00000000000000000003.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/date_id=2024-1-1/.part-00000-056e5427-9677-4c87-bc0d-53b5324a8adc.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/date_id=2024-1-1/.part-00000-52191889-110f-40df-be7e-518058d8cb67.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/date_id=2024-1-1/.part-00000-c3828c14-864e-456a-8fb4-598971d08064.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/date_id=2024-1-1/.part-00000-e1b8f92f-0868-4d17-b21d-f16c30b7efc5.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/date_id=2024-1-1/part-00000-056e5427-9677-4c87-bc0d-53b5324a8adc.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/date_id=2024-1-1/part-00000-52191889-110f-40df-be7e-518058d8cb67.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/date_id=2024-1-1/part-00000-c3828c14-864e-456a-8fb4-598971d08064.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/date_id=2024-1-1/part-00000-e1b8f92f-0868-4d17-b21d-f16c30b7efc5.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/.part-00000-20153c3f-c783-4547-9bd6-1f0958f1cf52.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/.part-00000-201b1850-c622-49ab-a68a-4328321f4ed7.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/.part-00000-215e5443-f297-403e-8026-5149a39b4194.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/.part-00000-daf55999-f4f3-41da-b500-30c9aa391376.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/part-00000-20153c3f-c783-4547-9bd6-1f0958f1cf52.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/part-00000-201b1850-c622-49ab-a68a-4328321f4ed7.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/part-00000-215e5443-f297-403e-8026-5149a39b4194.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/part-00000-daf55999-f4f3-41da-b500-30c9aa391376.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/customers/._SUCCESS.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/customers/_SUCCESS" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/customers/date_id=2024-01-01/.part-00000-288f7be5-b00a-44d1-8964-58aa33d44555.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/customers/date_id=2024-01-01/part-00000-288f7be5-b00a-44d1-8964-58aa33d44555.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/silver/accounts/._SUCCESS.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/silver/accounts/_SUCCESS" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/silver/customers/._SUCCESS.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/silver/customers/_SUCCESS" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/silver/transactions/._SUCCESS.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/silver/transactions/_SUCCESS" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/avro/test_schema.avsc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/avro/transaction-record.avsc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/avro/user-record.avsc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/config/accounts-dim.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/config/bank.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/config/customers-dim.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/bronze/accounts/accounts_20240101060606.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/bronze/accounts/accounts_20240101080808.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/bronze/customers/customers_20240101070707.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/bronze/customers/customers_20240101090909.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/bronze/transactions/transactions_20240101090909.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/accounts/._SUCCESS.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/accounts/_SUCCESS" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/_delta_log/.00000000000000000000.crc.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/_delta_log/.00000000000000000000.json.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/_delta_log/.00000000000000000001.crc.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/_delta_log/.00000000000000000001.json.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/_delta_log/.00000000000000000002.crc.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/_delta_log/.00000000000000000002.json.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/_delta_log/.00000000000000000003.crc.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/_delta_log/.00000000000000000003.json.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/_delta_log/.00000000000000000004.crc.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/_delta_log/.00000000000000000004.json.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/_delta_log/00000000000000000000.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/_delta_log/00000000000000000000.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/_delta_log/00000000000000000001.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/_delta_log/00000000000000000001.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/_delta_log/00000000000000000002.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/_delta_log/00000000000000000002.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/_delta_log/00000000000000000003.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/_delta_log/00000000000000000003.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/_delta_log/00000000000000000004.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/_delta_log/00000000000000000004.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/date_id=2024-1-1/.part-00000-056e5427-9677-4c87-bc0d-53b5324a8adc.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/date_id=2024-1-1/.part-00000-52191889-110f-40df-be7e-518058d8cb67.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/date_id=2024-1-1/.part-00000-c3828c14-864e-456a-8fb4-598971d08064.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/date_id=2024-1-1/.part-00000-d39f608d-e9a8-4a0d-aa57-c599d10f0685.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/date_id=2024-1-1/.part-00000-e1b8f92f-0868-4d17-b21d-f16c30b7efc5.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/date_id=2024-1-1/part-00000-056e5427-9677-4c87-bc0d-53b5324a8adc.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/date_id=2024-1-1/part-00000-52191889-110f-40df-be7e-518058d8cb67.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/date_id=2024-1-1/part-00000-c3828c14-864e-456a-8fb4-598971d08064.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/date_id=2024-1-1/part-00000-d39f608d-e9a8-4a0d-aa57-c599d10f0685.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/date_id=2024-1-1/part-00000-e1b8f92f-0868-4d17-b21d-f16c30b7efc5.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/.part-00000-20153c3f-c783-4547-9bd6-1f0958f1cf52.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/.part-00000-201b1850-c622-49ab-a68a-4328321f4ed7.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/.part-00000-215e5443-f297-403e-8026-5149a39b4194.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/.part-00000-c8f0c720-168d-46fd-87f6-240043c4e0e2.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/.part-00000-daf55999-f4f3-41da-b500-30c9aa391376.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/part-00000-20153c3f-c783-4547-9bd6-1f0958f1cf52.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/part-00000-201b1850-c622-49ab-a68a-4328321f4ed7.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/part-00000-215e5443-f297-403e-8026-5149a39b4194.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/part-00000-c8f0c720-168d-46fd-87f6-240043c4e0e2.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/bank/date_id=__HIVE_DEFAULT_PARTITION__/part-00000-daf55999-f4f3-41da-b500-30c9aa391376.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/customers/._SUCCESS.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/customers/_SUCCESS" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/customers/date_id=2024-01-01/.part-00000-288f7be5-b00a-44d1-8964-58aa33d44555.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/gold/customers/date_id=2024-01-01/part-00000-288f7be5-b00a-44d1-8964-58aa33d44555.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/silver/accounts/._SUCCESS.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/silver/accounts/_SUCCESS" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/silver/customers/._SUCCESS.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/silver/customers/_SUCCESS" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/silver/customers/year=2024/month=01/day=01/.part-00000-efb78f16-1ba3-43ca-9d63-19a96854c7b0.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/silver/customers/year=2024/month=01/day=01/part-00000-efb78f16-1ba3-43ca-9d63-19a96854c7b0.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/silver/transactions/._SUCCESS.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/silver/transactions/_SUCCESS" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/silver/transactions/year=2024/month=01/day=01/.part-00000-afa9abff-8c96-4ae6-9d99-5be4d8911051.c000.snappy.parquet.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/datasets/silver/transactions/year=2024/month=01/day=01/part-00000-afa9abff-8c96-4ae6-9d99-5be4d8911051.c000.snappy.parquet" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/kafka_consumer.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/kafka_producer.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/bank.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/bank_pipeline.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/create_scd1_datasets.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/create_scd2_datasets.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/bd-data-platform.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/config/accounts-dim.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/config/accounts-dim.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/config/bank.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/config/bank.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/config/customers-dim.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/config/customers-dim.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/datasets/bronze/accounts/accounts_20240101060606.csv" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/bronze/accounts/accounts_20240101060606.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/datasets/bronze/accounts/accounts_20240101080808.csv" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/bronze/accounts/accounts_20240101080808.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/datasets/bronze/customers/customers_20240101070707.csv" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/bronze/customers/customers_20240101070707.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/datasets/bronze/customers/customers_20240101090909.csv" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/bronze/customers/customers_20240101090909.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/datasets/bronze/transactions/transactions_20240101090909.json" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/bronze/transactions/transactions_20240101090909.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/ddl/gold/customers.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/ddl/gold/customers.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/docker/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/ingestion/DataReader.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/ingestion/DataReader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/ingestion/DataWriter.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/ingestion/DataWriter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/ingestion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/ingestion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/nbproject/project.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/pipelines/accounts-dim.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/pipelines/accounts-dim.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/pipelines/bank.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/pipelines/bank.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/pipelines/customers-dim.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/pipelines/customers-dim.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/pyproject.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/test/create_scd1_datasets.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/create_scd1_datasets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/test/create_scd2_datasets.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/create_scd2_datasets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/test/createtables.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/createtables.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/test/read-json.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/read-json.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/test/utils/readTest.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/datasets/gold/accounts/_SUCCESS" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/utils/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/logger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/utils/read.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/read.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/utils/scdhandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/scdhandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-data-platform/utils/spark_session.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/spark_session.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/distro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/distro.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -446,6 +296,7 @@
     "Python.confluent_kafka_simple_consumer.executor": "Run",
     "Python.confluent_transaction_producer.executor": "Run",
     "Python.create_scd1_datasets.executor": "Run",
+    "Python.create_scd2_datasets.executor": "Run",
     "Python.hello-spark.executor": "Run",
     "Python.hello.executor": "Run",
     "Python.kafka_python_partitioned_consumer.executor": "Run",
@@ -519,7 +370,7 @@
       <recent name="org.examples.flink.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.bank-pipeline">
+  <component name="RunManager" selected="Python.create_scd1_datasets">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -594,28 +445,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/app.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="create_scd1_datasets" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="bd-pyspark-module" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py/create_scd1_datasets.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -834,6 +663,7 @@
       <item itemvalue="Docker.cassandra-cluster" />
       <item itemvalue="Python.confluent_kafka_avro_producer" />
       <item itemvalue="Python.bank-pipeline" />
+      <item itemvalue="Python.create_scd2_datasets" />
       <item itemvalue="Python.create_scd1_datasets" />
       <item itemvalue="Python.app" />
       <item itemvalue="Python tests.Python tests for TestUsers.TestUsers.test_random" />
@@ -841,11 +671,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.bank-pipeline" />
+        <item itemvalue="Python.create_scd2_datasets" />
         <item itemvalue="Python.create_scd1_datasets" />
+        <item itemvalue="Python.bank-pipeline" />
         <item itemvalue="Python.app" />
         <item itemvalue="Python tests.Python tests for TestUsers.TestUsers.test_random" />
-        <item itemvalue="Python tests.Python tests for test_Commons.test_split_csv" />
       </list>
     </recent_temporary>
   </component>
@@ -857,22 +687,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00179" summary="2025-04-08 Update ssl configuration for springboot app.">
-      <option name="closed" value="true" />
-      <created>1744080721975</created>
-      <option name="number" value="00179" />
-      <option name="presentableId" value="LOCAL-00179" />
-      <option name="project" value="LOCAL" />
-      <updated>1744080721975</updated>
-    </task>
-    <task id="LOCAL-00180" summary="2025-04-09 Update ssl configuration for springboot app.">
-      <option name="closed" value="true" />
-      <created>1744169608325</created>
-      <option name="number" value="00180" />
-      <option name="presentableId" value="LOCAL-00180" />
-      <option name="project" value="LOCAL" />
-      <updated>1744169608326</updated>
     </task>
     <task id="LOCAL-00181" summary="2025-04-09 Update ssl configuration for springboot app.">
       <option name="closed" value="true" />
@@ -1250,7 +1064,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760871906075</updated>
     </task>
-    <option name="localTasksCounter" value="228" />
+    <task id="LOCAL-00228" summary="2025-10-19 Update bd-pyspark-module configurations">
+      <option name="closed" value="true" />
+      <created>1760880053322</created>
+      <option name="number" value="00228" />
+      <option name="presentableId" value="LOCAL-00228" />
+      <option name="project" value="LOCAL" />
+      <updated>1760880053322</updated>
+    </task>
+    <task id="LOCAL-00229" summary="2025-10-19 Update bd-pyspark-module configurations">
+      <option name="closed" value="true" />
+      <created>1760880127435</created>
+      <option name="number" value="00229" />
+      <option name="presentableId" value="LOCAL-00229" />
+      <option name="project" value="LOCAL" />
+      <updated>1760880127435</updated>
+    </task>
+    <option name="localTasksCounter" value="230" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">

@@ -50,25 +50,7 @@
             "vmArgs": "-Dlog.file=/apps/var/logs/flink/ClickEventGenerator.log"
         },
         {
-            "name": "Run: bd-data-platform",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "cwd": "${workspaceFolder}/bd-data-platform",
-            "envFile": "${workspaceFolder}/.env"
-        },
-        {
-            "name": "Debug: bd-data-platform",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "cwd": "${workspaceFolder}/bd-data-platform",
-            "envFile": "${workspaceFolder}/.env"
-        },
-        {
-            "name": "Run: bd-pyspark-module",
+            "name": "Run & Debug : bd-pyspark-module",
             "type": "debugpy",
             "request": "launch",
             "program": "${file}",
@@ -77,16 +59,7 @@
             "envFile": "${workspaceFolder}/.env"
         },
         {
-            "name": "Debug: bd-pyspark-module",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "cwd": "${workspaceFolder}/bd-pyspark-module/src/main/py",
-            "envFile": "${workspaceFolder}/.env"
-        },
-        {
-            "name": "Test: bd-pyspark-module",
+            "name": "Test & Debug : bd-pyspark-module",
             "type": "debugpy",
             "request": "launch",
             "purpose": ["debug-test"],
