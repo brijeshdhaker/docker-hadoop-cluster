@@ -27,8 +27,8 @@ if __name__ == "__main__":
 
     print ("Executed when invoked directly")
     parser = argparse.ArgumentParser(description="Consumer Example client with serialization capabilities")
-    parser.add_argument('-m', dest="host", default="localhost", required=True, help="hostname")
-    parser.add_argument('-n', dest="appname", required=True, help="App Name")
+    parser.add_argument('--Host', dest="host", default="localhost", required=True, help="hostname")
+    parser.add_argument('--App', dest="appname", required=True, help="app_name")
     args = parser.parse_args()
     print (args)
     if args.host :
