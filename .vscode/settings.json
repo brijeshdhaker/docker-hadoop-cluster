@@ -14,10 +14,14 @@
     },
     "python.envFile": "${workspaceFolder}/.env",
     "python.testing.autoTestDiscoverOnSaveEnabled": true,
-    "python.testing.cwd": "${workspaceFolder}/bd-pyspark-module/src/main/py",
+    "python.testing.cwd": "${workspaceFolder}/bd-pyspark-module/src/test/py",
+    "python.testing.pytestEnabled": false,
     "python.testing.pytestArgs": [
         "${workspaceFolder}/bd-pyspark-module/src/test/py"
     ],
-    "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.unittestEnabled": true,
+    "python.testing.unittestArgs": [
+        "-v", "-s", "${workspaceFolder}/bd-pyspark-module/src/test/py", "-p", "Test*.py"
+    ],
+    
 }
