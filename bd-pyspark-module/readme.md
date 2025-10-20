@@ -85,3 +85,5 @@ export WORK_DIR=/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-pyspar
 pyspark --archives bd-pyspark-module/target/bd-pyspark-module-1.0.0.zip#
 from com.example.models.Transaction import Transaction
 from main import print_hi
+
+python -m unittest ${workspaceFolder}/bd-pyspark-module/src/test/py/TestUsers.py

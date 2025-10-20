@@ -1,21 +1,23 @@
 {
     "java.compile.nullAnalysis.mode": "automatic",
     "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable",
+    "maven.view": "hierarchical",
     "python.defaultInterpreterPath": "/opt/conda/envs/env_python3_11_13/bin/python",
     "python.autoComplete.extraPaths": [
-        "${workspaceFolder}/bd-pyspark-module/src/main/py",
-        "${workspaceFolder}/bd-pyspark-module/src/test/py"
+        "${workspaceFolder}/bd-pyspark-module/src/main/py"
     ],
     "python.analysis.extraPaths": [
-        "${workspaceFolder}/bd-pyspark-module/src/main/py",
-        "${workspaceFolder}/bd-pyspark-module/src/test/py"
+        "${workspaceFolder}/bd-pyspark-module/src/main/py"
     ],
     "terminal.integrated.env.linux": {
-        "PYTHONPATH": "${workspaceFolder}/bd-pyspark-module/src/main/py:${workspaceFolder}/bd-pyspark-module/src/test/py:${env:PYTHONPATH}"
+        "PYTHONPATH": "${workspaceFolder}/bd-pyspark-module/src/main/py:${env:PYTHONPATH}"
     },
-    "maven.view": "hierarchical",
     "python.envFile": "${workspaceFolder}/.env",
-    "python.testing.pytestEnabled": true,
-    "python.testing.unittestEnabled": true,
-    "python.testing.nosetestsEnabled": false
+    "python.testing.autoTestDiscoverOnSaveEnabled": true,
+    "python.testing.cwd": "${workspaceFolder}/bd-pyspark-module/src/main/py",
+    "python.testing.pytestArgs": [
+        "${workspaceFolder}/bd-pyspark-module/src/test/py"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }
