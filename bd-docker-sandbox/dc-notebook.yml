@@ -12,7 +12,7 @@
 services:
   #
   notebook:
-    image: jupyter/all-spark-notebook:lab-3.5.3
+    image: jupyter/all-spark-notebook:latest
     container_name: notebook
     hostname: notebook.sandbox.net
 #    user: root

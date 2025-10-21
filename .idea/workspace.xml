@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-10-21 Update bd-pyspark-module unit tests." />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-10-21 Update bd-pyspark-module unit tests.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-notebook.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-notebook.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/bd-notebooks-module.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/bd-notebooks-module.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/notebook.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -384,7 +389,7 @@
       <recent name="org.examples.flink.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.python -m unittest ./bd-pyspark-module/src/test/py/TestUsers.py">
+  <component name="RunManager" selected="Docker.bd-docker-sandbox/dc-notebook.yml.notebook: Compose Deployment">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -459,28 +464,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="" />
       <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="avro-test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="bd-pyspark-module" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/main/py" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py/avro-test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -575,6 +558,19 @@
     <configuration default="true" type="docker-deploy" factoryName="docker-image" temporary="true">
       <deployment type="docker-image">
         <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="bd-docker-sandbox/dc-notebook.yml.notebook: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="notebook" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="bd-docker-sandbox/dc-notebook.yml" />
+        </settings>
       </deployment>
       <method v="2" />
     </configuration>
@@ -720,11 +716,11 @@
       <item itemvalue="Application.AppLauncher::BatchWorkflow" />
       <item itemvalue="Application.AppLauncher::DiscretizedStreamWorkflow" />
       <item itemvalue="Application.AppLauncher::StructuredStreamWorkflow" />
-      <item itemvalue="Python.TimeUtils" />
-      <item itemvalue="Python.avro-test" />
-      <item itemvalue="Python.fack-data" />
-      <item itemvalue="Python.fastavro-test" />
-      <item itemvalue="Python.python -m unittest ./bd-pyspark-module/src/test/py/TestUsers.py" />
+      <item itemvalue="Application.local-taxi-rides-and-fares" />
+      <item itemvalue="Application.local-transaction-pipeline" />
+      <item itemvalue="Application.mini-cluster-transaction-pipeline" />
+      <item itemvalue="Application.local-taxi-driver-hourly-max-tips" />
+      <item itemvalue="Application.local-taxi-ride-counts" />
       <item itemvalue="Docker.flink-cluster" />
       <item itemvalue="Docker.kafka-cluster" />
       <item itemvalue="Docker.minio" />
@@ -732,24 +728,24 @@
       <item itemvalue="Docker.spark-cluster" />
       <item itemvalue="Docker.spark-notebook" />
       <item itemvalue="Docker.zeppelin-notebook" />
-      <item itemvalue="Python.create_scd1_datasets" />
-      <item itemvalue="Application.local-taxi-rides-and-fares" />
-      <item itemvalue="Application.local-transaction-pipeline" />
       <item itemvalue="Docker.cassandra-cluster" />
+      <item itemvalue="Docker.bd-docker-sandbox/dc-notebook.yml.notebook: Compose Deployment" />
+      <item itemvalue="Python.create_scd1_datasets" />
       <item itemvalue="Python.confluent_kafka_avro_producer" />
-      <item itemvalue="Application.mini-cluster-transaction-pipeline" />
-      <item itemvalue="Application.local-taxi-driver-hourly-max-tips" />
       <item itemvalue="Python.create_scd2_datasets" />
       <item itemvalue="Python.bank-pipeline" />
-      <item itemvalue="Application.local-taxi-ride-counts" />
+      <item itemvalue="Python.TimeUtils" />
+      <item itemvalue="Python.fack-data" />
+      <item itemvalue="Python.fastavro-test" />
+      <item itemvalue="Python.python -m unittest ./bd-pyspark-module/src/test/py/TestUsers.py" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.bd-docker-sandbox/dc-notebook.yml.notebook: Compose Deployment" />
         <item itemvalue="Python.python -m unittest ./bd-pyspark-module/src/test/py/TestUsers.py" />
         <item itemvalue="Python.TimeUtils" />
         <item itemvalue="Python.fack-data" />
         <item itemvalue="Python.fastavro-test" />
-        <item itemvalue="Python.avro-test" />
       </list>
     </recent_temporary>
   </component>

@@ -1,28 +1,30 @@
-#
-#
+### Activate Python VENV
 ```bash
+
 conda activate env_python3_11_13
 ```
-
 ### jupyter lab
-#
 ```bash
+
 $ jupyter lab --port=8888 --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token='' --notebook-dir=~/IdeaProjects/docker-hadoop-cluster/bd-notebooks-module/notebooks
 ```
 
 ### jupyter notebook
 #
 ```bash
+
 $ jupyter notebook --port=8888 --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token='' --notebook-dir=/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-notebooks-module/notebooks
 ```
 
-# Check the newly built image
+### Check the newly built image
 ```bash
-$ docker run -it --rm jupyter/all-spark-notebook:lab-3.5.3 pyspark --version
+
+$ docker run -it --rm jupyter/all-spark-notebook:latest pyspark --version
 ```
 ```bash
-$ docker run -it --rm quay.io/jupyter/all-spark-notebook:spark-3.5.2 spark-shell \
---conf spark.jars.ivy=/apps/.ivy2 \
+
+$ docker run -it --rm jupyter/all-spark-notebook:latest spark-shell \
+--conf spark.jars.ivy=/home/brijeshdhaker/.ivy2 \
 --conf spark.jars.packages=org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.6.1,org.apache.hadoop:hadoop-aws:3.0.0 \
 --conf spark.hadoop.fs.s3a.endpoint=http://minio.sandbox.net:9010 \
 --conf spark.hadoop.fs.s3a.access.key=pgm2H2bR7a5kMc5XCYdO \
