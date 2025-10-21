@@ -22,35 +22,49 @@ finally produces the report which will be partitioned on date_id for easy queryi
 7. Dashboard to visualise datasets on a day to day basis.
 8. setup hive/hive metastore and create external tables and use those tables.
 
-#
 ## Create Zip File
-#
+```bash
+
 python -m zipfile -c bd-pyspark-module/target/bd-pyspark-module-1.0.0.zip bd-pyspark-module/src/main/py/*
+```
 
-#
-# Run Python __main__.py get executed
-#
+## Run Python __main__.py get executed
+```bash
+
 python bd-pyspark-module/target/bd-pyspark-module-1.0.0.zip --Host localhost --App hello_py
+````
 
-#
-#
-#
+## Run Python module
+```bash
+
 export PYSPARK_DRIVER_PYTHON=/opt/conda/envs/env_python3_11_13/bin/python
 export PYSPARK_PYTHON=/opt/conda/envs/env_python3_11_13/bin/python
+
 export PYTHONPATH=$PYTHONPATH:./bd-pyspark-module/target/bd-pyspark-module-1.0.0.zip
+# or
+export PYTHONPATH=$PYTHONPATH:~/IdeaProjects/docker-hadoop-cluster/bd-pyspark-module/src/main/py
+export WORK_DIR=~/IdeaProjects/docker-hadoop-cluster/bd-pyspark-module/src/main/py
 
 python -m com.example.app --Host localhost --App hello_py
 python -m com.example.hello --Host localhost --App hello_py
+```
 
 # Check the newly built image
 ```bash
 
-$ docker run -it --rm brijeshdhaker/python-base:3.11.13 python /apps/bd-pyspark-module-1.0.0.zip --Host localhost --App hello_py
+$ docker run -it --rm \
+  -e PYSPARK_DRIVER_PYTHON=/usr/local/bin/python \
+  -e PYSPARK_PYTHON=/usr/local/bin/python \
+  brijeshdhaker/python-base:3.11.13 python /apps/bd-pyspark-module-1.0.0.zip --Host localhost --App hello_py
+```
+```bash
 
 $ docker run -it --rm \
   -e PYSPARK_DRIVER_PYTHON=/usr/local/bin/python \
   -e PYSPARK_PYTHON=/usr/local/bin/python \
   brijeshdhaker/python-base:3.11.13 python -m com.example.app --Host localhost --App hello_py
+```
+```bash
 
 $ docker run -it --rm \
   -e PYSPARK_DRIVER_PYTHON=/usr/local/bin/python \
@@ -70,10 +84,11 @@ hello.greet("Pythonista")
 ```python
 import sys
 sys.path.insert(0, "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-pyspark-module/src/main/py")
-
+```
 # or
+```bash
 
-PYTHONPATH=$PYTHONPATH:/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-pyspark-module/src/main/py
+export PYTHONPATH=$PYTHONPATH:/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-pyspark-module/src/main/py
 export WORK_DIR=/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-pyspark-module/src/main/py
 /home/brijeshdhaker/.conda/envs/env_python_39/bin/python /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_AvroProducer.py
 /home/brijeshdhaker/.conda/envs/env_python_39/bin/python /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_AvroConsumer.py
@@ -81,9 +96,18 @@ export WORK_DIR=/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-pyspar
 
 ```
 
-#
+## Import modules in pyspark
+```bash
+
 pyspark --archives bd-pyspark-module/target/bd-pyspark-module-1.0.0.zip#
 from com.example.models.Transaction import Transaction
 from main import print_hi
+```
 
-python -m unittest ${workspaceFolder}/bd-pyspark-module/src/test/py/TestUsers.py
+## Run Python Unit Test
+```bash
+
+export PYTHONPATH=$PYTHONPATH:~/IdeaProjects/docker-hadoop-cluster/bd-pyspark-module/target/bd-pyspark-module-1.0.0.zip
+export PYTHONPATH=$PYTHONPATH:~/IdeaProjects/docker-hadoop-cluster/bd-pyspark-module/src/main/py
+python -m unittest ~/IdeaProjects/docker-hadoop-cluster/bd-pyspark-module/src/test/py/TestUsers.py
+```

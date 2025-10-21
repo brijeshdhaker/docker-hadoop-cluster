@@ -2,7 +2,7 @@ import re
 
 from pyspark.sql.functions import concat_ws, when, concat, lit, length, to_date
 
-from com.example.utils.spark_session import SparkSessionManager
+from com.example.utils.SparkSessionManager import SparkSessionManager
 
 spark = SparkSessionManager("test").create_session()
 

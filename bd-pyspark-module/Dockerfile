@@ -6,7 +6,6 @@
 
 FROM python:3.11.13
 
-ENV HADOOP_VERSION=3.3.4
 ENV PYTHONPATH=$PYTHONPATH:/apps/bd-pyspark-module-1.0.0.zip
 
 RUN set -x && \

@@ -1,7 +1,7 @@
 from com.example.ingestion.DataReader import DataReader
 from com.example.ingestion.DataWriter import DataWriter
 from com.example.utils.logger import Logger
-from com.example.utils.spark_session import SparkSessionManager
+from com.example.utils.SparkSessionManager import SparkSessionManager
 from pyspark.sql.functions import concat_ws
 import os
 from pathlib import Path

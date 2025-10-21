@@ -3,10 +3,12 @@ from delta import configure_spark_with_delta_pip
 
 
 class SparkSessionManager:
+    #
     def __init__(self, app_name, spark_conf=None):
         self.app_name = app_name
         self.spark_conf = spark_conf if spark_conf else {}
 
+    #
     def create_session(self):
         # Create a SparkSession
         spark_builder = SparkSession.builder.appName(self.app_name) \
@@ -18,4 +20,7 @@ class SparkSessionManager:
             spark_builder.config(key, value)
 
         spark = configure_spark_with_delta_pip(spark_builder).getOrCreate()
+        spark.sparkContext.setLogLevel("WARN")
+
+        #
         return spark

@@ -1,4 +1,4 @@
-from com.example.utils.spark_session import SparkSessionManager
+from com.example.utils.SparkSessionManager import SparkSessionManager
 from com.example.utils.logger import Logger
 from com.example.utils.scdhandler import SCDHandler
 from com.example.ingestion.DataWriter import write_output
