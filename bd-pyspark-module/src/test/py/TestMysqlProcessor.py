@@ -1,7 +1,7 @@
 import unittest
 from com.example.mysql.MysqlProcessor import MysqlProcessor
 
-class TestUsers(unittest.TestCase):
+class TestMysqlProcessor(unittest.TestCase):
 
     #
     @classmethod
