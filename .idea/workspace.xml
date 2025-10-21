@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-10-21 Update bd-pyspark-module unit tests.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-notebook.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-notebook.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/bd-notebooks-module.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/bd-notebooks-module.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/notebook.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-10-21 Update bd-pyspark-module unit tests." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -365,11 +360,11 @@
       <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main/py" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-notebooks-module" />
       <recent name="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
       <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main/resources" />
       <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main" />
       <recent name="$PROJECT_DIR$/bd-pyspark-module" />
-      <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -758,14 +753,6 @@
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
     </task>
-    <task id="LOCAL-00183" summary="2025-04-10 Update ssl configuration for springboot app.">
-      <option name="closed" value="true" />
-      <created>1744271663088</created>
-      <option name="number" value="00183" />
-      <option name="presentableId" value="LOCAL-00183" />
-      <option name="project" value="LOCAL" />
-      <updated>1744271663088</updated>
-    </task>
     <task id="LOCAL-00184" summary="2025-04-10 Update ssl configuration for springboot app.">
       <option name="closed" value="true" />
       <created>1744271975027</created>
@@ -1150,7 +1137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761011711109</updated>
     </task>
-    <option name="localTasksCounter" value="232" />
+    <task id="LOCAL-00232" summary="2025-10-21 Update bd-pyspark-module unit tests.">
+      <option name="closed" value="true" />
+      <created>1761038540618</created>
+      <option name="number" value="00232" />
+      <option name="presentableId" value="LOCAL-00232" />
+      <option name="project" value="LOCAL" />
+      <updated>1761038540619</updated>
+    </task>
+    <option name="localTasksCounter" value="233" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
