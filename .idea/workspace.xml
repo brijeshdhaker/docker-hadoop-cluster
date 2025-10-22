@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-10-21 Update bd-pyspark-module unit tests.">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-10-22 Update bd-pyspark-module unit tests.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-airflow.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-airflow.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/notebooks/deltalake/spark-deltalake.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/notebooks/deltalake/spark-deltalake.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/notebooks/hello-notebook.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/notebooks/hello-notebook.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/bd-pyspark-module.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/bd-pyspark-module.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-setup-module/hosts" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/hosts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/conda-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/conda-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -352,9 +344,9 @@
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-pyspark-module/src/main/py/com/example/postgres",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-pyspark-module",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/sb-backend-module/src/main/java/org/springframework/boot/Main.java",
-    "project.structure.last.edited": "Global Libraries",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.31724137",
     "run.code.analysis.last.selected.profile": "pProject Default",
@@ -763,22 +755,6 @@
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
     </task>
-    <task id="LOCAL-00184" summary="2025-04-10 Update ssl configuration for springboot app.">
-      <option name="closed" value="true" />
-      <created>1744271975027</created>
-      <option name="number" value="00184" />
-      <option name="presentableId" value="LOCAL-00184" />
-      <option name="project" value="LOCAL" />
-      <updated>1744271975028</updated>
-    </task>
-    <task id="LOCAL-00185" summary="2025-04-14 Update ssl configuration for springboot app.">
-      <option name="closed" value="true" />
-      <created>1744609689179</created>
-      <option name="number" value="00185" />
-      <option name="presentableId" value="LOCAL-00185" />
-      <option name="project" value="LOCAL" />
-      <updated>1744609689180</updated>
-    </task>
     <task id="LOCAL-00186" summary="2025-04-14 Update hpa configuration for springboot app.">
       <option name="closed" value="true" />
       <created>1744627103396</created>
@@ -1155,7 +1131,23 @@
       <option name="project" value="LOCAL" />
       <updated>1761038540619</updated>
     </task>
-    <option name="localTasksCounter" value="233" />
+    <task id="LOCAL-00233" summary="2025-10-22 Update bd-pyspark-module unit tests.">
+      <option name="closed" value="true" />
+      <created>1761095536054</created>
+      <option name="number" value="00233" />
+      <option name="presentableId" value="LOCAL-00233" />
+      <option name="project" value="LOCAL" />
+      <updated>1761095536055</updated>
+    </task>
+    <task id="LOCAL-00234" summary="2025-10-22 Update bd-pyspark-module unit tests.">
+      <option name="closed" value="true" />
+      <created>1761095797704</created>
+      <option name="number" value="00234" />
+      <option name="presentableId" value="LOCAL-00234" />
+      <option name="project" value="LOCAL" />
+      <updated>1761095797704</updated>
+    </task>
+    <option name="localTasksCounter" value="235" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -1218,7 +1210,6 @@
       <path value="$PROJECT_DIR$/bd-nodejs-module/desktop-app-module" />
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin" />
     </ignored-roots>
-    <MESSAGE value="2025-04-09 Update ssl configuration for springboot app." />
     <MESSAGE value="2025-04-10 Update ssl configuration for springboot app." />
     <MESSAGE value="2025-04-14 Update ssl configuration for springboot app." />
     <MESSAGE value="2025-04-14 Update hpa configuration for springboot app." />
@@ -1243,7 +1234,8 @@
     <MESSAGE value="2025-10-19 Update bd-pyspark-module configurations" />
     <MESSAGE value="2025-10-20 Update bd-pyspark-module unit tests." />
     <MESSAGE value="2025-10-21 Update bd-pyspark-module unit tests." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-10-21 Update bd-pyspark-module unit tests." />
+    <MESSAGE value="2025-10-22 Update bd-pyspark-module unit tests." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-10-22 Update bd-pyspark-module unit tests." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

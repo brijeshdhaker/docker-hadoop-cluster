@@ -33,3 +33,8 @@ curl \
 --cert ./bd-k8s-module/istio/certs/client.sandbox.net.crt \
 --key ./bd-k8s-module/istio/certs/client.sandbox.net.key \
 https://example.com/api
+
+#
+# Postman API Key
+#
+PMAK-68f4eb00b698cb0001908b04-73f1bbd2826a6917647feb1214b6c523a9
