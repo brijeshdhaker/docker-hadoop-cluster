@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-10-22 Update bd-pyspark-module unit tests.">
+      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/TestTransaction.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_Faker.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_Order.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/bd-pyspark-module.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/bd-pyspark-module.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/models/Order.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/models/Order.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/conda-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/conda-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,16 +282,20 @@
     "Python tests.Python tests for TestMysqlProcessor.TestUsers.test_insert.executor": "Run",
     "Python tests.Python tests for TestMysqlProcessor.TestUsers.test_insertBlank.executor": "Run",
     "Python tests.Python tests for TestMysqlProcessor.TestUsers.test_insertBlankSql.executor": "Debug",
+    "Python tests.Python tests for TestTransaction.test_random.executor": "Run",
     "Python tests.Python tests for TestUsers.TestUsers.executor": "Run",
     "Python tests.Python tests for TestUsers.TestUsers.test_random.executor": "Run",
     "Python tests.Python tests for TestUsers.TestUsers.test_to_dict.executor": "Run",
     "Python tests.Python tests for test_Commons.test_print_separator.executor": "Run",
     "Python tests.Python tests for test_Commons.test_split_csv.executor": "Run",
     "Python tests.Python tests for test_Commons.test_split_csv_line.executor": "Debug",
+    "Python tests.Python tests for test_Faker.test__Faker.executor": "Run",
+    "Python tests.Python tests for test_Order.test__wrap.executor": "Debug",
     "Python tests.Python tests for test_User.test_random.executor": "Run",
     "Python tests.Python tests for test_User.test_to_dict.executor": "Run",
     "Python tests.Python tests for test_User.test_to_obj.executor": "Run",
     "Python tests.Python tests for test_static.test_flake8.executor": "Run",
+    "Python tests.Python tests in TestUsers.py.executor": "Run",
     "Python tests.Python tests in test_Commons.py.executor": "Run",
     "Python tests.Python tests in test_User.py.executor": "Run",
     "Python tests.Python tests in test_partitioner.py.executor": "Run",
@@ -344,26 +355,26 @@
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers",
-    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-pyspark-module",
+    "last_opened_file_path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-pyspark-module/src/test/py",
     "onboarding.tips.debug.path": "/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/sb-backend-module/src/main/java/org/springframework/boot/Main.java",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.31724137",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+    "settings.editor.selected.configurable": "reference.idesettings.debugger.python"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main/py" />
       <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/postgres" />
       <recent name="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
       <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main/resources" />
       <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources" />
-      <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main/py" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/bd-notebooks-module" />
       <recent name="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
+      <recent name="$PROJECT_DIR$/bd-notebooks-module" />
       <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main/resources" />
       <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main" />
       <recent name="$PROJECT_DIR$/bd-pyspark-module" />
@@ -386,7 +397,7 @@
       <recent name="org.examples.flink.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.bd-docker-sandbox/dc-notebook.yml.notebook: Compose Deployment">
+  <component name="RunManager" selected="Python tests.Python tests for test_Faker.test__Faker">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -425,28 +436,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TimeUtils" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="bd-pyspark-module" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/utils/TimeUtils.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -465,72 +454,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="fack-data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="bd-pyspark-module" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/models/fack-data.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="fastavro-test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="bd-pyspark-module" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py/fastavro-test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="python -m unittest ./bd-pyspark-module/src/test/py/TestUsers.py" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="bd-pyspark-module" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="unittest" />
-      <option name="PARAMETERS" value="./bd-pyspark-module/src/test/py/TestUsers.py" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="true" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
       <method v="2" />
@@ -555,19 +478,6 @@
     <configuration default="true" type="docker-deploy" factoryName="docker-image" temporary="true">
       <deployment type="docker-image">
         <settings />
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="bd-docker-sandbox/dc-notebook.yml.notebook: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="notebook" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-notebook.yml" />
-        </settings>
       </deployment>
       <method v="2" />
     </configuration>
@@ -709,6 +619,81 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for TestTransaction.test_random" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="bd-pyspark-module" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;TestTransaction.test_random&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for TestUsers.TestUsers" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="bd-pyspark-module" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;TestUsers.TestUsers&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_Faker.test__Faker" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="bd-pyspark-module" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_Faker.test__Faker&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_Order.test__wrap" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="bd-pyspark-module" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_Order.test__wrap&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests in TestUsers.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="bd-pyspark-module" />
+      <option name="ENV_FILES" value="$PROJECT_DIR$/.env" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/bd-pyspark-module/src/test/py/TestUsers.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.AppLauncher::BatchWorkflow" />
       <item itemvalue="Application.AppLauncher::DiscretizedStreamWorkflow" />
@@ -726,23 +711,23 @@
       <item itemvalue="Docker.spark-cluster" />
       <item itemvalue="Docker.spark-notebook" />
       <item itemvalue="Docker.zeppelin-notebook" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-notebook.yml.notebook: Compose Deployment" />
       <item itemvalue="Python.confluent_kafka_avro_producer" />
       <item itemvalue="Python.create_scd1_datasets" />
       <item itemvalue="Python.create_scd2_datasets" />
       <item itemvalue="Python.bank-pipeline" />
-      <item itemvalue="Python.TimeUtils" />
-      <item itemvalue="Python.fack-data" />
-      <item itemvalue="Python.fastavro-test" />
-      <item itemvalue="Python.python -m unittest ./bd-pyspark-module/src/test/py/TestUsers.py" />
+      <item itemvalue="Python tests.Python tests for TestTransaction.test_random" />
+      <item itemvalue="Python tests.Python tests for TestUsers.TestUsers" />
+      <item itemvalue="Python tests.Python tests for test_Faker.test__Faker" />
+      <item itemvalue="Python tests.Python tests for test_Order.test__wrap" />
+      <item itemvalue="Python tests.Python tests in TestUsers.py" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.bd-docker-sandbox/dc-notebook.yml.notebook: Compose Deployment" />
-        <item itemvalue="Python.python -m unittest ./bd-pyspark-module/src/test/py/TestUsers.py" />
-        <item itemvalue="Python.TimeUtils" />
-        <item itemvalue="Python.fack-data" />
-        <item itemvalue="Python.fastavro-test" />
+        <item itemvalue="Python tests.Python tests for test_Faker.test__Faker" />
+        <item itemvalue="Python tests.Python tests for test_Order.test__wrap" />
+        <item itemvalue="Python tests.Python tests for TestTransaction.test_random" />
+        <item itemvalue="Python tests.Python tests for TestUsers.TestUsers" />
+        <item itemvalue="Python tests.Python tests in TestUsers.py" />
       </list>
     </recent_temporary>
   </component>

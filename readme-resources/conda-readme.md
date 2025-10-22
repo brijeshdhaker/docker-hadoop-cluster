@@ -11,7 +11,7 @@ export PATH=/opt/conda/bin:$PATH
 
 conda config --set auto_activate_base false
 conda config --set always_yes yes
-conda config --set changeps1 yes
+conda config --set changeps1 true
 
 conda info -a
 conda update -n base -c defaults conda
@@ -109,16 +109,25 @@ hadoop fs -chmod 775 /archives/pyspark/env_python3_11_13_${YYYYMMDD}.tar.gz
 
 ```
 
-#
-#### Deactivate Cond Env
+####
+conda list --explicit > bd-pyspark-module/env_python3_11_13_spec_file.txt
 
+#### Export Cond Env Configuration
+```bash
+conda env export > bd-pyspark-module/env_python3_11_13_packages.yaml
+conda export --name env_python3_11_13 --format=environment-yaml --file=./bd-pyspark-module/env_python3_11_13_packages.yaml
+
+conda export --file=environment.yaml    # Auto-detects YAML format
+conda export --file=environment.json    # Auto-detects JSON format
+conda export --file=explicit.txt        # Auto-detects explicit format
+conda export --file=requirements.txt    # Auto-detects requirements format
+```
+
+#### Deactivate Cond Env
 conda deactivate
 
-#
 #### 
 conda install anaconda-clean
 
-#
 #### Remove all Anaconda-related files and directories with a confirmation prompt before deleting each one:
-#
 anaconda-clean --yes
