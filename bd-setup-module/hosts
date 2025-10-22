@@ -5,19 +5,37 @@
 
 ###
 127.0.0.1           localhost
-127.0.1.1           raspberrypi.sandbox.net raspberrypi
 
-# thinkpad-win-11
-192.168.1.2         thinkpad.sandbox.net thinkpad
+# hostmaster Win-11
+192.168.26.1        hostmaster.sandbox.net hostmaster
 
 # ubuntu-vmware
-192.168.9.128       ubuntu-vmware.sandbox.net hostmaster
+192.168.26.131      ubuntu-vmware.sandbox.net ubuntu-vmware
+
+# raspberrypi
+192.168.1.40        raspberrypi.sandbox.net raspberrypi
 
 # Docker
 172.18.0.1          docker.sandbox.net docker
 
-# Kubernetes
-127.0.0.1           kubernetes.default.svc.cluster.local kubernetes.sandbox.net kubernetes
+# mysql-server
+127.0.0.1           mysqlserver.sandbox.net mysqlserver
+127.0.0.1           postgresql.sandbox.net postgresql
+
+# flink
+127.0.0.1           flink-jobmanager.sandbox.net flink-jobmanager
+127.0.0.1           flink-taskmanager.sandbox.net flink-taskmanager
+
+# minio
+127.0.0.1           minio.sandbox.net minio
+
+# kafka
+127.0.0.1           kafkabroker.sandbox.net kafkabroker
+127.0.0.1           schemaregistry.sandbox.net schemaregistry
+127.0.0.1           control-center.sandbox.net control-center
+
+# airflow
+127.0.0.1           airflow-server.sandbox.net airflow-server
 
 # Kerberos
 127.0.0.1           kdcserver.sandbox.net kdcserver
@@ -29,12 +47,8 @@
 127.0.0.1           es03.sandbox.net es03
 127.0.0.1           kibana.sandbox.net kibana
 
-# cassandra
+# cassandra cluster
 127.0.0.1           cassandra.sandbox.net cassandra
-
-# mysqlserver
-127.0.0.1           mysqlserver.sandbox.net mysqlserver
-127.0.0.1           postgresql.sandbox.net postgresql
 
 # hadoop & yarn cluster
 127.0.0.1           namenode.sandbox.net namenode
@@ -45,42 +59,27 @@
 127.0.0.1           timelineserver.sandbox.net timelineserver
 127.0.0.1           gateway.sandbox.net gateway
 
-# hbase
+# hbase cluster
 127.0.0.1           zookeeper.sandbox.net zookeeper
 127.0.0.1           hmaster.sandbox.net hmaster
 127.0.0.1           hregion.sandbox.net hregion
 
-# hive
+# hive cluster
 127.0.0.1           metastore.sandbox.net metastore
 127.0.0.1           hiveserver.sandbox.net hiveserver
 127.0.0.1	        hivetezui.sandbox.net hivetezui
 
-# spark
+# spark cluster
 127.0.0.1           spark-master.sandbox.net spark-master
 127.0.0.1           spark-worker-a.sandbox.net spark-worker-a
 127.0.0.1           spark-worker-b.sandbox.net spark-worker-b
 127.0.0.1           spark-history.sandbox.net spark-history
 127.0.0.1           spark-notebook.sandbox.net spark-notebook
 
-# flink
-127.0.0.1           flink-jobmanager.sandbox.net flink-jobmanager
-127.0.0.1           flink-taskmanager.sandbox.net flink-taskmanager
-
-# minio
-127.0.0.1           minio.sandbox.net minio
-
-# zeppelin
+# notebook
 127.0.0.1           zeppelin.sandbox.net zeppelin
 127.0.0.1	        notebook.sandbox.net notebook
-127.0.0.1           nififlow.sandbox.net nififlow
-
-# kafka
-127.0.0.1           kafkabroker.sandbox.net kafkabroker
-127.0.0.1           schemaregistry.sandbox.net schemaregistry
-127.0.0.1           control-center.sandbox.net control-center
-
-# airflow
-127.0.0.1           airflowwebserver.sandbox.net airflowwebserver
+127.0.0.1           nifi-flow.sandbox.net nifi-flow
 
 # Monitoring Tools
 127.0.0.1           prometheus prometheus.sandbox.net
@@ -89,18 +88,12 @@
 127.0.0.1           node-exporter node-exporter.sandbox.net
 127.0.0.1           grafana grafana.sandbox.net
 127.0.0.1           influxdb influxdb.sandbox.net
-127.0.0.1           statsdexporter statsd-exporter.sandbox.net
-127.0.0.1           graphiteexporter graphite-exporter.sandbox.net
+127.0.0.1           statsd-exporter statsd-exporter.sandbox.net
+127.0.0.1           graphite-exporter graphite-exporter.sandbox.net
 127.0.0.1           graphite graphite.sandbox.net
 
-#
-192.168.1.103       sandbox-hdp.hortonworks.com
-192.168.1.103       sandbox-host.hortonworks.com
-192.168.1.110       raspberry-pi.hortonworks.com
-
-# virtual box
-192.168.56.1	    quickstart-hostmaster
-192.168.56.101      quickstart-bigdata
+# Kubernetes
+127.0.0.1           kubernetes.default.svc.cluster.local kubernetes.sandbox.net kubernetes
 
 # k8s cluster
 192.168.122.1       k8c1h0.sandbox.net k8c1h0

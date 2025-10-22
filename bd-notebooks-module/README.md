@@ -2,6 +2,8 @@
 ```bash
 
 conda activate env_python3_11_13
+conda install jupyter -c defaults
+
 ```
 ### jupyter lab
 ```bash
