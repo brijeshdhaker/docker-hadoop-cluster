@@ -1,16 +1,20 @@
-from com.example.utils.logger import Logger
+from com.example.utils.Logger import Logger
 from com.example.utils.SparkSessionManager import SparkSessionManager
 
 
-class readHandler:
+class SparkReadHandler:
+    
+    #
     def __init__(self):
         self.spark = SparkSessionManager(self.__class__.__name__).create_session()
         self.logger = Logger(self.__class__.__name__)
 
+    #
     def read_parquet(self, path):
         df = self.spark.read.parquet(path)
         return df
-
+    
+    #
     def read_json(self, path):
         import json
         with open(path) as f:

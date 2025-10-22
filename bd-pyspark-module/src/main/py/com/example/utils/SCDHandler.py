@@ -1,15 +1,18 @@
 from pyspark.sql import DataFrame
 from pyspark.sql.functions import concat_ws, md5, col, current_date, lit
 
-from com.example.utils.logger import Logger
+from com.example.utils.Logger import Logger
 from com.example.utils.SparkSessionManager import SparkSessionManager
 
 
 class SCDHandler:
+    
+    #
     def __init__(self):
         self.spark = SparkSessionManager(self.__class__.__name__).create_session()
         self.logger = Logger(self.__class__.__name__)
 
+    #
     def check_columns_presence(self, source_df, target_df, metadata_cols):
         """
         Check if all columns from the target DataFrame are present in the source DataFrame.
@@ -28,6 +31,7 @@ class SCDHandler:
         if cols_missing:
             raise Exception(f"Cols missing in source DataFrame: {cols_missing}")
 
+    #
     def apply_hash_and_alias(self, source_df, target_df, metadata_cols) -> ([DataFrame, DataFrame]):
         """
         Apply hash calculation and alias to source and target DataFrames.
@@ -52,6 +56,7 @@ class SCDHandler:
 
         return source_df, target_df
 
+    #
     def scd_1(self, source_df, target_df, join_keys, metadata_cols=None) -> DataFrame:
         if metadata_cols is None:
             metadata_cols = []
@@ -86,6 +91,7 @@ class SCDHandler:
 
         return result_df
 
+    #
     def scd_2(self, source_df, target_df, join_keys, metadata_cols=None) -> DataFrame:
         if metadata_cols is None:
             metadata_cols = ['eff_start_date', 'eff_end_date', 'flag']

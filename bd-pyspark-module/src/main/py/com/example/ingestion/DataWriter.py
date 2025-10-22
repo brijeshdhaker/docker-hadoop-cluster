@@ -1,4 +1,4 @@
-from com.example.utils.logger import Logger
+from com.example.utils.Logger import Logger
 
 
 def write_output(df, path, file_format, write_mode, part_cols):

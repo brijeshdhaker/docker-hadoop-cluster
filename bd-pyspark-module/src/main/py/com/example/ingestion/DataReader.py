@@ -2,7 +2,7 @@ import json
 import os
 import re
 
-from com.example.utils.logger import Logger
+from com.example.utils.Logger import Logger
 from com.example.utils.SparkSessionManager import SparkSessionManager
 
 from pyspark.sql.functions import *

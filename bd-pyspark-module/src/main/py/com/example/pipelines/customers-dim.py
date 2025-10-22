@@ -1,9 +1,9 @@
 from com.example.utils.SparkSessionManager import SparkSessionManager
-from com.example.utils.logger import Logger
-from com.example.utils.scdhandler import SCDHandler
+from com.example.utils.Logger import Logger
+from com.example.utils.SCDHandler import SCDHandler
 from com.example.ingestion.DataWriter import write_output
 
-from com.example.utils.read import readHandler
+from com.example.utils.SparkReadHandler import SparkReadHandler as readHandler
 from pyspark.sql.functions import *
 
 

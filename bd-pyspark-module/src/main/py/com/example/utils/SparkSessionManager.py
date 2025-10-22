@@ -3,6 +3,7 @@ from delta import configure_spark_with_delta_pip
 
 
 class SparkSessionManager:
+    
     #
     def __init__(self, app_name, spark_conf=None):
         self.app_name = app_name
