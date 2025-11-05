@@ -111,3 +111,6 @@
 127.0.0.1           sb-gateway-module
 127.0.0.1           sb-resource-server
 127.0.0.1           sb-reactjs-module
+
+# neetastudio.in
+127.0.0.1           neetastudio.in www.neetastudio.in
