@@ -5,6 +5,7 @@ channels:
 dependencies:
   - python=3.11.13
   - conda-pack
+  - ipykernel
 #  - nb_conda
   - kafka-python=2.2.14
 #  - pycodestyle

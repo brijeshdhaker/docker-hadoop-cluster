@@ -32,7 +32,7 @@ export PYSPARK_DRIVER_PYTHON=/opt/conda/envs/env_python3_11_13/bin/python
 
 conda env create -f bd-pyspark-module/env_python3_11_13.yaml
 sudo -E /opt/conda/bin/conda create -y -n env_python3_11_13 -c conda-forge python=3.11.13 pyarrow pandas conda-pack
-sudo -E /opt/conda/bin/conda update -n base -c defaults conda
+sudo -E /opt/conda/bin/conda update -n env_python3_11_13 -c defaults conda
 conda activate env_python3_11_13
 
 conda install jupyter -c defaults
