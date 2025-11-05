@@ -6,11 +6,13 @@
 ###
 127.0.0.1           localhost
 
-# hostmaster Win-11
+# windows-11
 192.168.26.1        hostmaster.sandbox.net hostmaster
 
-# ubuntu-vmware
-192.168.26.131      ubuntu-vmware.sandbox.net ubuntu-vmware
+# vmware-hosts
+192.168.26.130      vmware-rhel.sandbox.net vmware-rhel
+192.168.26.131      vmware-ubuntu.sandbox.net vmware-ubuntu
+192.168.26.133      vmware-kubuntu.sandbox.net vmware-kubuntu
 
 # raspberrypi
 192.168.1.40        raspberrypi.sandbox.net raspberrypi
@@ -113,4 +115,4 @@
 127.0.0.1           sb-reactjs-module
 
 # neetastudio.in
-127.0.0.1           neetastudio.in www.neetastudio.in
+127.0.0.1           neetastudio.in
