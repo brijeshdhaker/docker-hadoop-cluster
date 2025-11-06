@@ -23,5 +23,9 @@
     "python.testing.unittestArgs": [
         "-v", "-s", "${workspaceFolder}/bd-pyspark-module/src/test/py", "-p", "Test*.py"
     ],
-    "postman.settings.dotenv-detection-notification-visibility": false
+    "postman.settings.dotenv-detection-notification-visibility": false,
+    "python-envs.defaultEnvManager": "ms-python.python:conda",
+    "python-envs.defaultPackageManager": "ms-python.python:conda",
+    "python-envs.pythonProjects": [],
+    "python.terminal.activateEnvironment": true
 }

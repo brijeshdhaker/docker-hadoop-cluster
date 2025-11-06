@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-11-05 Update host details.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/notebooks/hello-notebook.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/notebooks/hello-notebook.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/env_python3_11_13.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/env_python3_11_13.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/conda-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/conda-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/mysql-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/mysql-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/minio-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/minio-help.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -730,12 +726,11 @@
       <item itemvalue="Application.AppLauncher::BatchWorkflow" />
       <item itemvalue="Application.AppLauncher::DiscretizedStreamWorkflow" />
       <item itemvalue="Application.AppLauncher::StructuredStreamWorkflow" />
-      <item itemvalue="Application.local-taxi-rides-and-fares" />
-      <item itemvalue="Application.local-transaction-pipeline" />
       <item itemvalue="Application.mini-cluster-transaction-pipeline" />
       <item itemvalue="Application.local-taxi-driver-hourly-max-tips" />
+      <item itemvalue="Application.local-taxi-rides-and-fares" />
       <item itemvalue="Application.local-taxi-ride-counts" />
-      <item itemvalue="Docker.cassandra-cluster" />
+      <item itemvalue="Application.local-transaction-pipeline" />
       <item itemvalue="Docker.flink-cluster" />
       <item itemvalue="Docker.kafka-cluster" />
       <item itemvalue="Docker.minio" />
@@ -743,9 +738,10 @@
       <item itemvalue="Docker.spark-cluster" />
       <item itemvalue="Docker.spark-notebook" />
       <item itemvalue="Docker.zeppelin-notebook" />
-      <item itemvalue="Python.confluent_kafka_avro_producer" />
-      <item itemvalue="Python.create_scd1_datasets" />
+      <item itemvalue="Docker.cassandra-cluster" />
       <item itemvalue="Python.create_scd2_datasets" />
+      <item itemvalue="Python.create_scd1_datasets" />
+      <item itemvalue="Python.confluent_kafka_avro_producer" />
       <item itemvalue="Python.bank-pipeline" />
       <item itemvalue="Python tests.Python tests for TestTransaction.test_random" />
       <item itemvalue="Python tests.Python tests for TestUsers.TestUsers" />
