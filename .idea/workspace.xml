@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-11-05 Update host details.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
-    </list>
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-11-06 Update python module details." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -768,14 +765,6 @@
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
     </task>
-    <task id="LOCAL-00188" summary="2025-04-15 Update hpa configuration for springboot app.">
-      <option name="closed" value="true" />
-      <created>1744690229667</created>
-      <option name="number" value="00188" />
-      <option name="presentableId" value="LOCAL-00188" />
-      <option name="project" value="LOCAL" />
-      <updated>1744690229667</updated>
-    </task>
     <task id="LOCAL-00189" summary="2025-04-16 Update hpa configuration for springboot app.">
       <option name="closed" value="true" />
       <created>1744776989265</created>
@@ -1160,7 +1149,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762358610872</updated>
     </task>
-    <option name="localTasksCounter" value="237" />
+    <task id="LOCAL-00237" summary="2025-11-06 Update python module details.">
+      <option name="closed" value="true" />
+      <created>1762447159040</created>
+      <option name="number" value="00237" />
+      <option name="presentableId" value="LOCAL-00237" />
+      <option name="project" value="LOCAL" />
+      <updated>1762447159041</updated>
+    </task>
+    <option name="localTasksCounter" value="238" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -1223,7 +1220,6 @@
       <path value="$PROJECT_DIR$/bd-nodejs-module/desktop-app-module" />
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin" />
     </ignored-roots>
-    <MESSAGE value="2025-04-14 Update ssl configuration for springboot app." />
     <MESSAGE value="2025-04-14 Update hpa configuration for springboot app." />
     <MESSAGE value="2025-04-15 Update hpa configuration for springboot app." />
     <MESSAGE value="2025-04-16 Update hpa configuration for springboot app." />
@@ -1248,7 +1244,8 @@
     <MESSAGE value="2025-10-21 Update bd-pyspark-module unit tests." />
     <MESSAGE value="2025-10-22 Update bd-pyspark-module unit tests." />
     <MESSAGE value="2025-11-05 Update host details." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-11-05 Update host details." />
+    <MESSAGE value="2025-11-06 Update python module details." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-11-06 Update python module details." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
