@@ -20,7 +20,7 @@ conda install pyspark==3.5.3
 pip install -i https://test.pypi.org/simple/ delta-spark==3.3.2
 pip install importlib-metadata
 
-export HADOOP_CONF_DIR=/home/brijeshdhaker/IdeaProjects/spark-python-examples/docker-sandbox/conf/hadoop/client
+export HADOOP_CONF_DIR=${HOME}/IdeaProjects/spark-python-examples/docker-sandbox/conf/hadoop/client
 spark-submit --packages "io.delta:delta-core_2.12:3.3.2" spark-delta-lake.py
 hadoop fs -ls -R /deltalake/test_table
 

@@ -110,7 +110,7 @@ Lets verify this table emp in HBase shell and view its metadata.
 
 
     hive> create table testemp(id int, name string, role string) row format delimited fields terminated by '\t';
-    hive> load data local inpath '/home/brijeshdhaker/sample.txt' into table testemp;
+    hive> load data local inpath '${HOME}/sample.txt' into table testemp;
     hive> select * from testemp;
 
 ## 5. Insert Data into Hbase Hive Table

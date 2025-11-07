@@ -113,25 +113,25 @@ spark-submit \
 --name "structured-kafka-stream" \
 --master local[4] \
 --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.3.4 \
-/home/brijeshdhaker/IdeaProjects/spark-bigdata-examples/pyspark-examples/src/main/py/com/example/streams/structured/structured-kafka-stream.py
+${HOME}/IdeaProjects/spark-bigdata-examples/pyspark-examples/src/main/py/com/example/streams/structured/structured-kafka-stream.py
 
 spark-submit \
 --name "structured-kafka-stream" \
 --master local[4] \
 --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 \
-/home/brijeshdhaker/IdeaProjects/spark-python-examples/src/main/py/com/example/streams/structured/KafkaStreamDemo.py
+${HOME}/IdeaProjects/spark-python-examples/src/main/py/com/example/streams/structured/KafkaStreamDemo.py
 
 spark-submit \
 --name "structured-kafka-stream" \
 --master local[4] \
 --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 \
-/home/brijeshdhaker/IdeaProjects/pyspark-examples/src/main/py/com/example/streams/structured/structured-kafka-stream.py
+${HOME}/IdeaProjects/pyspark-examples/src/main/py/com/example/streams/structured/structured-kafka-stream.py
 
 spark-submit \
 --name "structured-kafka-stream" \
 --master yarn \
 --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 \
-/home/brijeshdhaker/IdeaProjects/pyspark-examples/src/main/py/com/example/streams/structured/structured-kafka-stream.py
+${HOME}/IdeaProjects/pyspark-examples/src/main/py/com/example/streams/structured/structured-kafka-stream.py
 
 
 spark-submit ^
@@ -151,7 +151,7 @@ spark-submit \
 --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 \
 --repositories http://repo.hortonworks.com/content/groups/public/ \
 --files /opt/sandbox/hbase-2.4.9/conf/hbase-site.xml \
-/home/brijeshdhaker/IdeaProjects/pyspark-data-pipelines/com/example/spark/streams/stream-hbase-transformer.py
+${HOME}/IdeaProjects/pyspark-data-pipelines/com/example/spark/streams/stream-hbase-transformer.py
 
 
 spark-submit \
@@ -159,4 +159,4 @@ spark-submit \
 --master local[*] \
 --jars /opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/lib/hbase/hbase-spark-2.1.0-cdh6.3.2.jar \
 --files /opt/sandbox/hbase-2.4.9/conf/hbase-site.xml \
-/home/brijeshdhaker/IdeaProjects/pyspark-data-pipelines/com/example/spark/streams/stream-hbase-transformer.py
+${HOME}/IdeaProjects/pyspark-data-pipelines/com/example/spark/streams/stream-hbase-transformer.py

@@ -31,6 +31,7 @@ helm delete metallb --namespace=metallb-system --purge
 ```
 
 #
+```bash
 docker run --rm -it \
   -p 8080:8080 \
   -e DEBUG=1 \
@@ -38,7 +39,8 @@ docker run --rm -it \
   -e STORAGE_LOCAL_ROOTDIR=/charts \
   -v $(pwd)/charts:/charts \
   ghcr.io/helm/chartmuseum:v0.14.0
-  
+```
+
 ### Install nginx ingress using helm
 ```bash
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
@@ -130,9 +132,7 @@ helm delete istiod --namespace istio-system
 </plugin>
 ```
 
-#
-# Json PATH in Helm
-#
+### Json PATH in Helm
 config:
   app:
     name: myapp
@@ -141,7 +141,7 @@ config:
     host: localhost
     port: 5432
 
-#
+###
 {{- $config := .Values.config | mustYaml | mustToJson -}}
 appName: {{ get $config "config.app.name" }}
 appPort: {{ get $config "config.app.port" }}
@@ -149,7 +149,7 @@ dbHost: {{ get $config "config.database.host" }}
 dbPort: {{ get $config "config.database.port" }}
 
 
-# config.json
+### config.json
 {
 "services": [
     {
@@ -173,13 +173,13 @@ data:
 {{ .name }}.port: {{ .port | quote }}
 {{- end }}
 
-# filters
+### filters
 {{- $config := .Files.Get "config.json" | mustToJson -}}
 {{- range get $config "services[?(@.port > 8080)]" }}
 {{ .name }} has port greater than 8080
 {{- end }}
 
-# sorting
+### sorting
 {{- $config := .Files.Get "config.json" | mustToJson -}}
 {{- range sort (get $config "services[*]" "name") }}
 {{ .name }}: {{ .port }}

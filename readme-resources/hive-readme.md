@@ -87,7 +87,7 @@ INSERT INTO EMPLOYEE VALUES
 
 #### load data from local file
 ```
-LOAD DATA LOCAL INPATH '/home/brijeshdhaker/Downloads/Employee.txt' INTO TABLE SPARK_APPS.EMPLOYEE;
+LOAD DATA LOCAL INPATH '${HOME}/Downloads/Employee.txt' INTO TABLE SPARK_APPS.EMPLOYEE;
 # Note : This command will remove content at source directory and create a internal table
 ```
 #### load data from hdfs://namenode:9000/data/Employee.txt
@@ -595,7 +595,7 @@ export PYSPARK_PYTHON=/opt/conda/envs/pyspark37/bin/python
 $SPARK_HOME/bin/spark-submit \
     --name "PySpark HiveContext" \
     --master local[*] \
-    --py-files /home/brijeshdhaker/PycharmProjects/pyspark-hive-integration.zip pyspark-hive-integration/pyspark-hive-context.py
+    --py-files ${HOME}/PycharmProjects/pyspark-hive-integration.zip pyspark-hive-integration/pyspark-hive-context.py
 
 ```
 
@@ -608,5 +608,5 @@ export PYSPARK_PYTHON=/opt/conda/envs/pyspark37/bin/python
 $SPARK_HOME/bin/spark-submit \
     --name "PySpark Hive Session" \
     --master local[*] \
-    --py-files /home/brijeshdhaker/PycharmProjects/pyspark-hive-integration.zip pyspark-hive-integration/pyspark-hive-session.py
+    --py-files ${HOME}/PycharmProjects/pyspark-hive-integration.zip pyspark-hive-integration/pyspark-hive-session.py
 ```
