@@ -1,8 +1,9 @@
 
-## Delta Lake Architecture
+### Delta Lake Architecture
 
 ![deltalake_architecture.png](images%2Fdeltalake_architecture.png)
-## Advantages of Delta Lake
+
+### Advantages of Delta Lake
 
 It's important for us to understand the benefits of Delta Lake before we deep dive into the details of Delta Lake. For example, why do we need Delta Lake?
 
@@ -13,8 +14,8 @@ Merge statement. In relational databases like SQL Server, Oracle, Teradata, Post
 Streaming data ingestion. Delta table can be used as target for streaming ingestion We can also use delta table as target for Spark structured streaming. This provides the opportunity to unify both batch and streaming within one pipeline.
 Time travel. We can read older versions of data via time travel feature since the data is stored as versions.
 
-# Install delta-spark Python package
-```shell
+### Install delta-spark Python package
+```bash
 conda install pyspark==3.5.3 
 
 pip install -i https://test.pypi.org/simple/ delta-spark==3.3.2
@@ -30,17 +31,13 @@ pyspark --packages io.delta:delta-core_2.12:2.4.0 --conf "spark.sql.extensions=i
 
 * Delta Lake doesn't rely on Hive or Hive metastore as the metadata information is stored in file system directly via log files.
 
-#
-#
-#
+###
+```bash
 bin/spark-sql --packages io.delta:delta-spark_2.12:3.2.0 --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension" --conf "spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog"
 
-#
-# For Spark 3.5.3
-#
+## For Spark 3.5.3
 pyspark --packages io.delta:delta-spark_2.12:3.3.2 --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension" --conf "spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog"
 
-#
-# For Spark 3.4.1
-#
+## For Spark 3.4.1
 bin/spark-shell --packages io.delta:delta-core_2.12:2.4.0 --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension" --conf "spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog"
+```

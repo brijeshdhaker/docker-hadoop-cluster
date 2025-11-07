@@ -82,6 +82,7 @@ aws --endpoint-url http://minio.sandbox.net:9010 s3 ls
 
 ## To make a bucket
 ```bash
+aws --endpoint-url http://minio.sandbox.net:9010 s3 mb s3://datasets
 aws --endpoint-url http://minio.sandbox.net:9010 s3 mb s3://defaultfs
 aws --endpoint-url http://minio.sandbox.net:9010 s3 mb s3://warehouse
 ```

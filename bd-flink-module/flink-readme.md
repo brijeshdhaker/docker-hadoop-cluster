@@ -17,23 +17,20 @@ ${HOME}/foo.jar
 
 ```
 
-#
+#### Start Flink Cluster
 ```shell
 
 docker compose -f bd-docker-sandbox/docker-compose.yml up -d minio
-docker compose -f bd-docker-sandbox/docker-compose.yml down minio
-
 docker compose -f bd-docker-sandbox/docker-compose.yml up -d zookeeper kafkabroker schemaregistry
-docker compose -f bd-docker-sandbox/docker-compose.yml down zookeeper kafkabroker schemaregistry
-
 docker compose -f bd-docker-sandbox/docker-compose.yml up -d flink-jobmanager flink-taskmanager
-
 ```
 
-#
+#### Stop Flink Cluster
 ```shell
 
-
+docker compose -f bd-docker-sandbox/docker-compose.yml down -d flink-jobmanager flink-taskmanager
+docker compose -f bd-docker-sandbox/docker-compose.yml down zookeeper kafkabroker schemaregistry
+docker compose -f bd-docker-sandbox/docker-compose.yml down minio
 ```
 
 #
