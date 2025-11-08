@@ -1,9 +1,7 @@
-#
-#
-#
+### Selector
 -l --selector
 -L label-column
-
+```bash
 kubectl -n kube-system get pods -l 'k8s-app=calico-node' -L k8s-app
 kubectl -n kube-system get pods -l 'k8s-app=calico-node' -L k8s-app
 kubectl -n kube-system get pods -l 'k8s-app in (calico-node)' -L k8s-app
@@ -20,48 +18,41 @@ kubectl -n kube-system get pods -o=jsonpath='{range .items[*]}{.metadata.name}{"
 kubectl -n kube-system get pods -o=jsonpath='{range .items[?(@.status.phase=="Running")]}{.metadata.name}{"\n"}{end}'
 kubectl get svc -l app=myapp -o=jsonpath='{range .items[*]}{.metadata.name} {range .status.loadBalancer.ingress[*]}{.ip},{end}{"\n"}{end}'
 kubectl get pod myapp-pod -o=jsonpath='{.metadata.creationTimestamp} {@.metadata.creationTimestamp:date:"2006-01-02 15:04:05 -0700"}'
+```
 
-# Filters
+### Filters
 ?(@...) - Filters elements based on a condition.
 ?(@.property == 'value') selects elements with a property field equal to 'value'.
 Logical operators like ==, !=, >, <, >=, <=, &&, ||, ! can be used in filters.
 
-Script Expressions
+### Script Expressions
 JSONPath supports basic arithmetic operations and string functions within filter expressions.
 ?(@.price * @.qty >= 20) - Selects elements where the product of price and qty is greater than or equal to 20.
 ?(@.name.length() > 3) - Selects elements where the length of the name string is greater than 3.
 
-Examples
-
+### Examples
 Here are some example JSONPath expressions:
-
 $.store.book[*].author - Retrieves the author from all book elements under store.book.
 $..book[?(@.price < 10)] - Retrieves all book elements with a price less than 10, no matter where they are in the JSON structure.
 $.store..price - Retrieves all prices in the store object, traversing nested objects and arrays.
 $..books[?(@.category=='fiction')].price - Retrieves the prices of all fiction books.
 JSONPath provides a concise and flexible way to query JSON data. It's an essential tool when working with Kubernetes APIs and other JSON-based interfaces.
 
-#
-# POD
-#
+### POD
 ```shell
 kubectl -n ingress-demo run pod nginx --image=nginx:latest --dry-run=client -o yaml
 kubectl -n ingress-demo expose pod nginx --port=80 --target-port=80 --type=NodePort --dry-run=client -o yaml > app-svc.yaml
 kubectl delete --ignore-not-found=true -f samples/httpbin/httpbin.yaml
 kubectl delete pod <> --grace-period=0 --force
 ```
-#
-# Deployment
-#
+### Deployment
 ```shell
 kubectl create deployment nginx --image=nginx:latest --dry-run=client -o yaml
 kubectl expose deployment nginx -n i100121 --port=80 --target-port=8080 --type=NodePort --dry-run=client -o yaml > app-svc.yaml
 
 ```
 
-#
-# Scaling
-#
+### Scaling
 ```shell
 kubectl scale deployment nginx --replicas=4
 kubectl scale deployment nginx --min=5 --max=10 --cpu-percent=85
@@ -70,20 +61,20 @@ kubectl rollout undo deploy nginx
 kubectl autoscale deployment nginx --min=5 --max=10 --cpu-percent=85
 ```
 
-# Jobs & Cron Jobs
+### Jobs & Cron Jobs
 ```shell
 kubectl create job job_hello --image=busybox:latest --dry-run=client -o yaml -- bin/sh -c "date; echo 'Hello World' " >> k8s-job.yaml
 kubectl create cronjob cronjob_hello --image=busybox:latest --schedule="*/1 8 * * * *" --dry-run=client -o yaml -- bin/sh -c "date; echo 'Hello World' " >> cron-job.yaml
 ```
 
-# Roles & Role Bindings
+### Roles & Role Bindings
 ```shell
 kubectl create clusterrolebinding cluster-admin-binding \
 --clusterrole cluster-admin \
 --user $(gcloud config get-value account)
 ```
  
-# ingress
+### ingress
 ```shell
 kubectl create ns nginx-ingress-demo
 kubectl get pods -n nginx-ingress-demo
@@ -137,6 +128,7 @@ status:
 EOF
 ```
 
+```bash
 kubectl -n nginx-ingress-demo create ingress hello-app-ingress --class=nginx --rule="hello-app.example/*=hello-app-v1:8080" --rule="hello-app.example/v1=hello-app-v1:8080" --rule="hello-app.example/v2=hello-app-v2:8080" --dry-run=client -o yaml
 kubectl -n nginx-ingress-demo get ingress hello-app-ingress -o yaml > ./bd-spring-module/helm/k8s/app-ingress.yaml
 
@@ -156,11 +148,10 @@ curl -D- http://127.0.0.1/v2 -HHost:hello-app.example
 curl --resolve "hello-app.example:80:127.0.0.1" -i http://hello-app.example
 
 kubectl port-forward --namespace=ingress-nginx service/ingress-nginx-controller 8080:80
+```
 
-# 
-# 
-# 
-
+###
+```shell
 kubectl wait --namespace ingress-nginx \
 --for=condition=ready pod \
 --selector=app.kubernetes.io/component=controller \
@@ -169,6 +160,7 @@ kubectl wait --namespace ingress-nginx \
 helm upgrade --install ingress-nginx ingress-nginx \
 --repo https://kubernetes.github.io/ingress-nginx \
 --namespace ingress-nginx --create-namespace
+```
 
 ```shell
 kubectl apply -f - <<EOF
@@ -193,11 +185,9 @@ ports:
 EOF
 ```
 
-#
-# K8S N/W Policies : https://docs.tigera.io/calico/latest/network-policy/get-started/kubernetes-policy/
-#
+### K8S N/W Policies : https://docs.tigera.io/calico/latest/network-policy/get-started/kubernetes-policy/
 
-# Allow ingress traffic from pods in the same namespace
+### Allow ingress traffic from pods in the same namespace
 ```yaml
 #
 # In the following example, incoming traffic to pods with label color=blue are allowed only if they come from a pod with color=red, on port 80.
@@ -397,9 +387,7 @@ spec:
         namespaceSelector: shape == 'circle'
 ```
 
-# 
-## Control traffic to/from endpoints using IP addresses or CIDR ranges
-# 
+### Control traffic to/from endpoints using IP addresses or CIDR ranges
 ```yaml
 apiVersion: projectcalico.org/v3
 kind: NetworkPolicy
@@ -417,4 +405,4 @@ spec:
           - 1.2.3.0/24
 ```
 
-## Apply network policies in specific order
+### Apply network policies in specific order

@@ -74,7 +74,52 @@ git config --global tag.gpgSign true
 #### To add your GPG key to your .bashrc startup file, run the following command:
 
 [ -f ~/.bashrc ] && echo -e '\nexport GPG_TTY=$(tty)' >> ~/.bashrc
+
+#
+# Backup the public and secret keyrings and trust database
+#
+## Export all public keys
+gpg -a --export > /apps/security/gpg/github_pub_keys.asc
+
+## Export all encrypted private keys (which will also include corresponding public keys)
+gpg -a --export-secret-keys > /apps/security/gpg/github_private_keys.asc
+
+## Export gpg's trustdb to a text file
+gpg --export-ownertrust > /apps/security/gpg/otrust.txt
+
+# Restore the public and secret keyrings and trust database
+gpg --import /apps/security/gpg/github_private_keys.asc
+gpg --import /apps/security/gpg/github_pub_keys.asc
+gpg -K
+gpg -k
+gpg --import-ownertrust /apps/security/gpg/otrust.txt
+
+gpg --export DA7F14F53DB10896 > /apps/security/gpg/public.key
+gpg --export-secret-key DA7F14F53DB10896 > /apps/security/gpg/private.key
+
+gpg --import /apps/security/gpg/public.key
+gpg --allow-secret-key-import /apps/security/gpg/private.key
+gpg --import /apps/security/gpg/private.key
+
+#
+expect -c 'spawn gpg --edit-key {KEY} trust quit; send "5\ry\r"; expect eof'
+#
+gpg --list-key
+gpg --list-secret-key
+
+#
+# Method -3
+#
+gpg -a --export brijeshdhaker@gmail.com > /apps/security/gpg/brijeshdhaker-public-gpg.key
+gpg -a --export-secret-keys brijeshdhaker@gmail.com > /apps/security/gpg/brijeshdhaker-secret-gpg.key
+gpg --export-ownertrust > /apps/security/gpg/brijeshdhaker-ownertrust-gpg.txt
+
+# Import secret key (which contains the public key) and ownertrust
+gpg --import /apps/security/gpg/brijeshdhaker-secret-gpg.key
+gpg --import-ownertrust /apps/security/gpg/brijeshdhaker-ownertrust-gpg.txt
+
 ```
+
 #
 ### Generate SSH Key
 #
