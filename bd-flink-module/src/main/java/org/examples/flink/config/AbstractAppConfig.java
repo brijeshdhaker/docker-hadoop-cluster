@@ -38,9 +38,11 @@ public class AbstractAppConfig {
         String engine_type  = args_map.getOrDefault(Constants.ENGINE_TYPE, Constants.LOCAL_CLUSTER);
         params.put(Constants.ENGINE_TYPE, engine_type);
 
-        String workflow_id  = args_map.getOrDefault(Constants.WORKFLOW_ID, "FLINK-0000");
-        String workflow_name  = args_map.getOrDefault(Constants.WORKFLOW_NAME, "Workflow");
         String uuid = UUID.randomUUID().toString().split("-")[0];
+        String workflow_id  = args_map.getOrDefault(Constants.WORKFLOW_ID, uuid);
+        params.put(Constants.WORKFLOW_ID,workflow_id);
+
+        String workflow_name  = args_map.getOrDefault(Constants.WORKFLOW_NAME, "Workflow");
         params.put(Constants.WORKFLOW_NAME,workflow_name+"-"+uuid);
 
         init();

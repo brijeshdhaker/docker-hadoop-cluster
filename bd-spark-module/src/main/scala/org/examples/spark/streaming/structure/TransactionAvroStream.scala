@@ -8,7 +8,7 @@ $SPARK_HOME/bin/spark-submit \
 --packages org.apache.spark:spark-avro_2.12:3.4.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 \
 --conf spark.jars.ivy=/apps/.ivy2 \
 --class org.examples.spark.streaming.structure.TransactionAvroStream \
-bd-spark-module/dist/bd-spark-module-1.0-SNAPSHOT.jar -b kafkabroker.sandbox.net:9092 -t transaction-avro-topic -s http://schemaregistry.sandbox.net:8081
+bd-spark-module/dist/bd-spark-module-1.0-SNAPSHOT.jar -b kafka-broker.sandbox.net:9092 -t transaction-avro-topic -s http://schema-registry.sandbox.net:8081
 
 */
 
@@ -35,7 +35,7 @@ object TransactionAvroStream {
   private var kafkaAvroDeserializer: AvroDeserializer = _
 
   val avro_schema = new String(Files.readAllBytes(Paths.get("/apps/sandbox/schema-registry/avro/transaction-record.avsc")))
-  val SCHEMA_REGISTRY_URL = "http://schemaregistry.sandbox.net:8081"
+  val SCHEMA_REGISTRY_URL = "http://schema-registry.sandbox.net:8081"
   val TOPIC = "transaction-avro-topic"
 
 

@@ -21,7 +21,7 @@ public class KafkaWriter extends DataWriter {
             records.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
                     .write()
                     .format("kafka")
-                    .option("kafka.bootstrap.servers", "kafkabroker.sandbox.net:9092")
+                    .option("kafka.bootstrap.servers", "kafka-broker.sandbox.net:9092")
                     .option("topic", "stream-batch-sink")
                     .save();
 
@@ -33,7 +33,7 @@ public class KafkaWriter extends DataWriter {
                         .writeStream()
                         .format("kafka")
                         .outputMode("append")
-                        .option("kafka.bootstrap.servers", "kafkabroker.sandbox.net:9092")
+                        .option("kafka.bootstrap.servers", "kafka-broker.sandbox.net:9092")
                         .option("topic", "stream-batch-sink")
                         .start();
 
@@ -63,7 +63,7 @@ public class KafkaWriter extends DataWriter {
                     .writeStream()
                     .format("kafka")
                     .outputMode("append")
-                    .option("kafka.bootstrap.servers", "kafkabroker.sandbox.net:9092")
+                    .option("kafka.bootstrap.servers", "kafka-broker.sandbox.net:9092")
                     .option("topic", "stream-batch-sink")
                     .start();
 

@@ -69,7 +69,7 @@ value_serializer = lambda v: json.dumps(v).encode('utf-8')
 
 # Create Producer instance
 producer = KafkaProducer(
-    bootstrap_servers='kafkabroker.sandbox.net:9092',
+    bootstrap_servers='kafka-broker.sandbox.net:9092',
     client_id='kafka_partitioned_producer',
     key_serializer=key_serializer,
     value_serializer=value_serializer,

@@ -14,7 +14,7 @@ openssl req -passin "pass:confluent" -passout "pass:confluent" -key kafkacat.cli
 openssl x509 -req -CA sandbox-ca.crt -CAkey sandbox-ca.key -in kafkacat.client.req -out kafkacat-ca1-signed.pem -days 9999 -CAcreateserial -passin "pass:confluent"
 
 
-for i in zookeeper kafkabroker schemaregistry producer consumer
+for i in zookeeper kafka-broker schema-registry producer consumer
 do
 	echo $i
 	# Create keystores
@@ -45,13 +45,13 @@ done
 
 ## Verify Certificate
 keytool -list -v \
-    -keystore conf/secrets/ssl/kafkabroker.keystore.jks \
+    -keystore conf/secrets/ssl/kafka-broker.keystore.jks \
     -storepass confluent
 
 ## Convert JKS to PKcs12 format
-keytool -importkeystore -srckeystore conf/secrets/ssl/kafkabroker.keystore.jks -destkeystore conf/secrets/ssl/kafkabroker.keystore.pkcs12 -deststoretype pkcs12
+keytool -importkeystore -srckeystore conf/secrets/ssl/kafka-broker.keystore.jks -destkeystore conf/secrets/ssl/kafka-broker.keystore.pkcs12 -deststoretype pkcs12
 
 
 keytool -list -v \
-    -keystore conf/secrets/ssl/kafkabroker.keystore.pkcs12 \
+    -keystore conf/secrets/ssl/kafka-broker.keystore.pkcs12 \
     -storepass confluent

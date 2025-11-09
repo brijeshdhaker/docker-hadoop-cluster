@@ -57,7 +57,7 @@ if __name__ == "__main__":
 
     kafka_df = spark.readStream \
         .format("kafka") \
-        .option("kafka.bootstrap.servers", "kafkabroker.sandbox.net:9092") \
+        .option("kafka.bootstrap.servers", "kafka-broker.sandbox.net:9092") \
         .option("subscribe", "invoices") \
         .option("startingOffsets", "earliest") \
         .load()

@@ -5,12 +5,114 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-11-06 Update python module details.">
-      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/FraudulentTxnDetector.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/frauds/FraudulentTxnDetector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/frauds/config/AppConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/frauds/datagen/DataGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/frauds/models/Alert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/frauds/models/AlertType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/frauds/models/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/frauds/producers/TxnProducer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/frauds/serdes/AlertSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/frauds/serdes/TransactionSerdes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/frauds/utils/StreamingUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/resources/fraud_transactions_workflow.marker" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bd-flink-module/src/main/resources/fraud_transactions_workflow.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/kafka/client-ssl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/kafka/client-ssl.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/kafka/kafkabroker.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/kafka/kafkabroker.cnf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/kafka/librdkafka_plaintext.config" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/kafka/librdkafka_plaintext.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/kafka/librdkafka_sasl_paintext.config" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/kafka/librdkafka_sasl_paintext.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/kafka/librdkafka_sasl_ssl.config" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/kafka/librdkafka_sasl_ssl.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/kafka/librdkafka_ssl.config" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/kafka/librdkafka_ssl.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/kafka/librdkafka_thinkpad_plaintext.config" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/kafka/librdkafka_thinkpad_plaintext.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/kafka/librdkafka_thinkpad_sasl_ssl.config" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/kafka/librdkafka_thinkpad_sasl_ssl.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/kafka/librdkafka_thinkpad_ssl.config" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/kafka/librdkafka_thinkpad_ssl.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/kafka/schemaregistry.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/kafka/schemaregistry.cnf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/jaas/kafkabroker-a-jaas.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/jaas/kafkabroker-a-jaas.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/jaas/kafkabroker-b-jaas.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/jaas/kafkabroker-b-jaas.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/jaas/kafkabroker-c-jaas.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/jaas/kafkabroker-c-jaas.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/jaas/kafkabroker-jaas.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/jaas/kafkabroker-jaas.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/jaas/schemaregistry-jaas.conf" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/jaas/schemaregistry-jaas.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/certs-create.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/certs-create.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/certs-verify.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/certs-verify.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/create-certs.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/create-certs.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/kafka-certs.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/kafka-certs.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/setup-kafka-principles.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/setup-kafka-principles.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/test-kafka.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/conf/security/scripts/test-kafka.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-flink-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-flink-cluster.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-kafka-cluster-7.5.2.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-kafka-cluster-7.5.2.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-kafka-secure-cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-kafka-secure-cluster.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/dc-kafka.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/dc-kafka.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-docker-sandbox/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bd-flink-module/flink-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/flink-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/curl-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/curl-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/deltalake-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/deltalake-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/docker-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/docker-readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme-resources/minio-help.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/minio-help.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/clickcount/ClickEventCount.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/clickcount/ClickEventCount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/clickcount/ClickEventGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/clickcount/ClickEventGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/config/AbstractAppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/config/AbstractAppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/transaction/datagen/DataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/transaction/datagen/DataGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/resources/app_workflow.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/resources/app_workflow.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/resources/local-cluster/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/resources/local-cluster/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/resources/taxi_workflow.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/resources/taxi_workflow.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/main/resources/transactions_workflow.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/main/resources/transactions_workflow.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-flink-module/src/test/resources/test_transactions_workflow.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-flink-module/src/test/resources/test_transactions_workflow.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/bd-pyspark-module.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_ConfigFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_ConfigFactory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_ConsumerFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_ConsumerFactory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_DeserializingConsumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_DeserializingConsumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_ProducerFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_ProducerFactory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_SerializingProducer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_SerializingProducer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_exactly_once_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/confluent_kafka_exactly_once_consumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/custom_avro_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/confluent/custom_avro_consumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_avro_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_avro_consumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_avro_producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_avro_producer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_batch_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_batch_consumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_confluent_avro_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_confluent_avro_consumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_exactly_once_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_exactly_once_consumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_json_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_json_consumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_json_producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_json_producer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_least_once_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_least_once_consumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_most_once_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_most_once_consumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_partitioned_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_partitioned_consumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_partitioned_producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_partitioned_producer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_simple_consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_simple_consumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_simple_producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/kafka/python/kafka_python_simple_producer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/pipelines/fake_tweet_stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/pipelines/fake_tweet_stream.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/discretized/fake_tweet_stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/discretized/fake_tweet_stream.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/kafka-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/kafka-stream.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/pipeline/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/pipeline/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/pipeline/sstreaming-spark-final.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/pipeline/sstreaming-spark-final.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/KafkaStreamDemo.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/KafkaStreamDemo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured-avro-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured-avro-stream.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured-delimiter-txn-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured-delimiter-txn-stream.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured-json-txn-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured-json-txn-stream.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured-kafka-txn-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/streams/structured/structured-kafka-txn-stream.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/kafka_consumer.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/kafka_consumer.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/kafka_producer.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources/kafka_producer.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/kafka_consumer.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/kafka_consumer.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/kafka_producer.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-pyspark-module/src/test/py/resources/kafka_producer.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/hosts" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/hosts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/openssl-certs.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/scripts/openssl-certs.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/scripts/setup-kafka-principles.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/scripts/setup-kafka-principles.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/certs-create.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/certs-create.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/certs-verify.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/certs-verify.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/create-certs.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/create-certs.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-setup-module/security/hosts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bd-setup-module/security/hosts.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/schema/SchemaProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/schema/SchemaProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/spark/AppStreamWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/spark/AppStreamWorkflow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/StructuredStreamWorkflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/workflows/StructuredStreamWorkflow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/KafkaWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/java/org/examples/writers/KafkaWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_batch_workflow.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_batch_workflow.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_dstream_workflow.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_dstream_workflow.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_sstream_workflow.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/resources/app_sstream_workflow.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd-spark-module/src/main/scala/org/examples/spark/streaming/structure/TransactionAvroStream.scala" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/src/main/scala/org/examples/spark/streaming/structure/TransactionAvroStream.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/kafka-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/kafka-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/kcat-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/kcat-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/kerberos-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/kerberos-readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme-resources/openssl-readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme-resources/openssl-readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,6 +225,7 @@
     &quot;Application.DeltaSinkExampleLocal.executor&quot;: &quot;Run&quot;,
     &quot;Application.DemoApplication.executor&quot;: &quot;Debug&quot;,
     &quot;Application.DriverHourlyMaxTips.executor&quot;: &quot;Run&quot;,
+    &quot;Application.FraudulentTxnDetector.executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;Application.ProductsHourlySales.executor&quot;: &quot;Debug&quot;,
     &quot;Application.RideCountExample.executor&quot;: &quot;Run&quot;,
@@ -138,6 +241,7 @@
     &quot;Application.TransactionAvroStream.executor&quot;: &quot;Run&quot;,
     &quot;Application.TransactionCountExample.executor&quot;: &quot;Run&quot;,
     &quot;Application.TransactionPipeline.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TxnProducer.executor&quot;: &quot;Run&quot;,
     &quot;Application.bd-backend-module.executor&quot;: &quot;Run&quot;,
     &quot;Application.bd-spring-module.executor&quot;: &quot;Debug&quot;,
     &quot;Application.bd-spring-module_azuread.executor&quot;: &quot;Debug&quot;,
@@ -353,22 +457,22 @@
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-pyspark-module&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-flink-module/src/main/resources&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/sb-backend-module/src/main/java/org/springframework/boot/Main.java&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.31724137&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources" />
       <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main/py" />
       <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/postgres" />
       <recent name="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
       <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main/resources" />
-      <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main/py/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
@@ -395,7 +499,7 @@
       <recent name="org.examples.flink.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_Faker.test__Faker">
+  <component name="RunManager" selected="Application.FraudulentTxnDetector">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -419,6 +523,20 @@
       <module name="bd-spark-module" />
       <option name="PROGRAM_PARAMETERS" value="--embedded --verbose --workflow-type sstream --storage local --property-file bd-spark-module/src/main/resources/app_sstream_workflow.properties" />
       <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TxnProducer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.examples.flink.frauds.producers.TxnProducer" />
+      <module name="bd-flink-module" />
+      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED -Dlog.file=/apps/var/logs/flink/fraudulent-txn-producer-local.log" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.examples.flink.frauds.producers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -677,21 +795,6 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests in TestUsers.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="bd-pyspark-module" />
-      <option name="ENV_FILES" value="$PROJECT_DIR$/.env" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/bd-pyspark-module/src/test/py/TestUsers.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="tests" factoryName="Autodetect">
       <module name="bd-pyspark-module" />
       <option name="ENV_FILES" value="" />
@@ -735,6 +838,8 @@
       <item itemvalue="Application.local-taxi-rides-and-fares" />
       <item itemvalue="Application.local-taxi-ride-counts" />
       <item itemvalue="Application.local-transaction-pipeline" />
+      <item itemvalue="Application.FraudulentTxnDetector" />
+      <item itemvalue="Application.TxnProducer" />
       <item itemvalue="Docker.flink-cluster" />
       <item itemvalue="Docker.kafka-cluster" />
       <item itemvalue="Docker.minio" />
@@ -751,15 +856,13 @@
       <item itemvalue="Python tests.Python tests for TestUsers.TestUsers" />
       <item itemvalue="Python tests.Python tests for test_Faker.test__Faker" />
       <item itemvalue="Python tests.Python tests for test_Order.test__wrap" />
-      <item itemvalue="Python tests.Python tests in TestUsers.py" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TxnProducer" />
         <item itemvalue="Python tests.Python tests for test_Faker.test__Faker" />
         <item itemvalue="Python tests.Python tests for test_Order.test__wrap" />
         <item itemvalue="Python tests.Python tests for TestTransaction.test_random" />
-        <item itemvalue="Python tests.Python tests for TestUsers.TestUsers" />
-        <item itemvalue="Python tests.Python tests in TestUsers.py" />
       </list>
     </recent_temporary>
   </component>
@@ -1306,6 +1409,16 @@
           <url>file://$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/service/AzureGraphService.java</url>
           <line>131</line>
           <option name="timeStamp" value="150" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/config/AbstractAppConfig.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="155" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bd-flink-module/src/main/java/org/examples/flink/utils/PropertyFileReader.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="156" />
         </line-breakpoint>
         <line-breakpoint type="java-field">
           <url>file://$PROJECT_DIR$/bd-spring-module/sb-backend-module/src/main/java/org/examples/sb/config/KafkaCustomProperties.java</url>

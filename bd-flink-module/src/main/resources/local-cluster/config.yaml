@@ -49,12 +49,12 @@ state:
     type: hashmap
   checkpoints:
     dir: file:///apps/sandbox/defaultfs/state/checkpoints
-security:
-  kerberos:
-    login:
-      use-ticket-cache: false
-      principal: brijeshdhaker@SANDBOX.NET
-      keytab: /apps/security/keytabs/users/brijeshdhaker.keytab
+#security:
+#  kerberos:
+#    login:
+#      use-ticket-cache: false
+#      principal: brijeshdhaker@SANDBOX.NET
+#      keytab: /apps/security/keytabs/users/brijeshdhaker.keytab
 query:
   server:
     port: '6125'
@@ -73,13 +73,13 @@ execution:
     interval: 10s
 taskmanager:
   host: flink-taskmanager
-  numberOfTaskSlots: 4
+  numberOfTaskSlots: 2
   memory:
     process:
       size: 1728m
   bind-host: 0.0.0.0
 parallelism:
-  default: 4
+  default: 2
 web:
   cancel:
     enable: true

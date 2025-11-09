@@ -32,8 +32,8 @@
 127.0.0.1           minio.sandbox.net minio
 
 # kafka
-127.0.0.1           kafkabroker.sandbox.net kafkabroker
-127.0.0.1           schemaregistry.sandbox.net schemaregistry
+127.0.0.1           kafka-broker.sandbox.net kafka-broker
+127.0.0.1           schema-registry.sandbox.net schema-registry
 127.0.0.1           control-center.sandbox.net control-center
 
 # airflow

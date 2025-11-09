@@ -21,7 +21,7 @@ key_serializer = lambda k: k.encode('utf-8')
 value_serializer = lambda v: v.encode('utf-8')
 
 producer = KafkaProducer(
-    bootstrap_servers='kafkabroker.sandbox.net:9092',
+    bootstrap_servers='kafka-broker.sandbox.net:9092',
     client_id='kafka_simple_producer',
     key_serializer=key_serializer,
     value_serializer=value_serializer,

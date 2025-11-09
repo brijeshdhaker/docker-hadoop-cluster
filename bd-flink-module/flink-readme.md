@@ -21,20 +21,31 @@ ${HOME}/foo.jar
 ```shell
 
 docker compose -f bd-docker-sandbox/docker-compose.yml up -d minio
-docker compose -f bd-docker-sandbox/docker-compose.yml up -d zookeeper kafkabroker schemaregistry
+docker compose -f bd-docker-sandbox/docker-compose.yml up -d zookeeper kafka-broker schema-registry
 docker compose -f bd-docker-sandbox/docker-compose.yml up -d flink-jobmanager flink-taskmanager
+
+## Topic - Create
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafka-broker sh -c "kafka-topics --create --bootstrap-server kafka-broker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-text-topic --if-not-exists"
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafka-broker sh -c "kafka-topics --create --bootstrap-server kafka-broker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-csv-topic --if-not-exists"
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafka-broker sh -c "kafka-topics --create --bootstrap-server kafka-broker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-avro-topic --if-not-exists"
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafka-broker sh -c "kafka-topics --create --bootstrap-server kafka-broker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic transaction-json-topic --if-not-exists"
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafka-broker sh -c "kafka-topics --create --bootstrap-server kafka-broker.sandbox.net:9092 --partitions 3 --replication-factor 1 --topic fraud-alerts-topic --if-not-exists"
+
+## List Topics
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafka-broker sh -c "kafka-topics --list --bootstrap-server kafka-broker.sandbox.net:9092"
 ```
 
 #### Stop Flink Cluster
 ```shell
 
 docker compose -f bd-docker-sandbox/docker-compose.yml down -d flink-jobmanager flink-taskmanager
-docker compose -f bd-docker-sandbox/docker-compose.yml down zookeeper kafkabroker schemaregistry
+docker compose -f bd-docker-sandbox/docker-compose.yml down zookeeper kafka-broker schema-registry
 docker compose -f bd-docker-sandbox/docker-compose.yml down minio
 ```
 
 #
-```shell
+```bash
+
 docker run --rm -i -t \
 --network sandbox.net \
 --add-host=docker.sandbox.net:172.18.0.1 \
@@ -52,25 +63,43 @@ confluentinc/cp-flink:1.20.0-cp1-java17 /bin/bash
 
 # Start Data Generation
 ```shell
+
 java -classpath /opt/bd-flink-module/bd-flink-module.jar:/opt/flink/lib/* org.examples.flink.transaction.datagen.DataGenerator
+```
+
+# Start Financial Transactions Data Generation
+```shell
+
+java -classpath ./bd-flink-module/target/original-bd-flink-module.jar org.examples.flink.frauds.producers.TxnProducer
 ```
 
 # Validate Data Generation
 ```shell
 
-docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafka-broker sh -c "kafka-console-consumer \
 --topic transaction-csv-topic \
---bootstrap-server kafkabroker.sandbox.net:9092 \
+--bootstrap-server kafka-broker.sandbox.net:9092 \
 --consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
 --timeout-ms 10000 2>/dev/null"  
 
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafka-broker sh -c "kafka-console-consumer \
+--topic transaction-json-topic \
+--bootstrap-server kafka-broker.sandbox.net:9092 \
+--consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
+--timeout-ms 10000 2>/dev/null" 
+
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafka-broker sh -c "kafka-console-consumer \
+--topic fraud-alerts-topic \
+--bootstrap-server kafka-broker.sandbox.net:9092 \
+--consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
+--timeout-ms 10000 2>/dev/null" 
 ```
 
 # Start event generation
 ```shell
 
 java -classpath /opt/bd-flink-module/bd-flink-module.jar:/opt/flink/lib/* org.examples.flink.clickcount.ClickEventGenerator \
---bootstrap.servers kafkabroker.sandbox.net:9092 \
+--bootstrap.servers kafka-broker.sandbox.net:9092 \
 --topic click-event-source &
 
 ```
@@ -82,7 +111,7 @@ nohup flink run --detached \
 --class org.examples.flink.clickcount.ClickEventCount /opt/bd-flink-module/bd-flink-module.jar \
 --checkpointing \
 --event-time \
---bootstrap.servers kafkabroker.sandbox.net:9092 \
+--bootstrap.servers kafka-broker.sandbox.net:9092 \
 --input-topic click-event-source \
 --output-topic click-event-sink 2>/dev/null &
 
@@ -104,7 +133,7 @@ flink stop 3ee7c8da616b3cfdea2a37916c7ac41e
 --class flink.playgrounds.ops.clickcount.ClickEventCount /opt/bd-flink-module.jar \
 --checkpointing \
 --event-time \
---bootstrap.servers kafkabroker.sandbox.net:9092 \
+--bootstrap.servers kafka-broker.sandbox.net:9092 \
 --input-topic click-event-source \
 --output-topic click-event-sink
 
@@ -113,9 +142,9 @@ flink stop 3ee7c8da616b3cfdea2a37916c7ac41e
 # Validate Source & Sink
 ```shell
 
-docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafka-broker sh -c "kafka-console-consumer \
 --topic click-event-source \
---bootstrap-server kafkabroker.sandbox.net:9092 \
+--bootstrap-server kafka-broker.sandbox.net:9092 \
 --from-beginning \
 --property print.timestamp=true \
 --property print.key=true \
@@ -124,9 +153,9 @@ docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "k
 --timeout-ms 20000 2>/dev/null" 
 
 
-docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafka-broker sh -c "kafka-console-consumer \
 --topic click-event-source \
---bootstrap-server kafkabroker.sandbox.net:9092 \
+--bootstrap-server kafka-broker.sandbox.net:9092 \
 --partition 0 \
 --offset 0 \
 --consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
@@ -138,9 +167,9 @@ docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "k
 ```shell
 
 
-docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafka-broker sh -c "kafka-console-consumer \
 --topic click-event-sink \
---bootstrap-server kafkabroker.sandbox.net:9092 \
+--bootstrap-server kafka-broker.sandbox.net:9092 \
 --from-beginning \
 --property print.timestamp=true \
 --property print.key=true \
@@ -148,15 +177,15 @@ docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "k
 --consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
 --timeout-ms 20000 " 2>/dev/null
 
-docker compose -f bd-docker-sandbox/docker-compose.yml exec kafkabroker sh -c "kafka-console-consumer \
+docker compose -f bd-docker-sandbox/docker-compose.yml exec kafka-broker sh -c "kafka-console-consumer \
 --topic click-event-sink \
---bootstrap-server kafkabroker.sandbox.net:9092 \
+--bootstrap-server kafka-broker.sandbox.net:9092 \
 --offset 0 \
 --partition 0 \
 --consumer.config /apps/configs/kafka/librdkafka_plaintext.config \
 --timeout-ms 20000 " 2>/dev/null
 
-kafka-topics --describe --topic click-event-sink --bootstrap-server kafkabroker.sandbox.net:9092
+kafka-topics --describe --topic click-event-sink --bootstrap-server kafka-broker.sandbox.net:9092
 
 ```
 

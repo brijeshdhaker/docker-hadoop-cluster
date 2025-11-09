@@ -230,7 +230,7 @@ openssl x509 -req \
 openssl s_client -connect localhost:19093 -tls1_3 -showcerts
 
 # Kafka Broker
-openssl s_client -connect kafkabroker.sandbox.net:19093 -tls1_3 -showcerts
+openssl s_client -connect kafka-broker.sandbox.net:19093 -tls1_3 -showcerts
 
 # Zookeeper
 openssl s_client -connect zookeeper.sandbox.net:28080 -tls1_3 -showcerts \ 
@@ -239,7 +239,7 @@ openssl s_client -connect zookeeper.sandbox.net:28080 -tls1_3 -showcerts \
       -key /etc/zookeeper/secrets/clients.key
 
 # Schema Registry
-openssl s_client -connect schemaregistry.sandbox.net:8081 -tls1_3 -showcerts \
+openssl s_client -connect schema-registry.sandbox.net:8081 -tls1_3 -showcerts \
       -cert conf/kafka/secrets/clients.certificate.pem \
       -key conf/kafka/secrets/clients.key
 

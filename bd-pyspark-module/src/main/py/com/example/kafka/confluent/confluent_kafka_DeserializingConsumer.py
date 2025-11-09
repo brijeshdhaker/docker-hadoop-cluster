@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# confluent_kafka_DeserializingConsumer.py -b kafkabroker.sandbox.net:9092 -s http://schemaregistry:8081 -t test-avro-topic -g test-avro-cg
+# confluent_kafka_DeserializingConsumer.py -b kafka-broker.sandbox.net:9092 -s http://schema-registry:8081 -t test-avro-topic -g test-avro-cg
 #
 
 from com.example.models.User import User

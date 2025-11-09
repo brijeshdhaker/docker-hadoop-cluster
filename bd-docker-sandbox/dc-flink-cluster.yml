@@ -22,7 +22,7 @@ services:
     depends_on:
       minio:
         condition: service_healthy
-      kafkabroker:
+      kafka-broker:
         condition: service_healthy
     ports:
       - "8081:8081"

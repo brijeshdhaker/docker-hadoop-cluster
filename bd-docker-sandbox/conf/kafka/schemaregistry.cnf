@@ -10,7 +10,7 @@ countryName = IN
 organizationName = Sandbox
 organizationalUnitName = Kafka
 localityName = Pune
-commonName=schemaregistry
+commonName=schema-registry
 emailAddress = support@sandbox.net
 
 [ v3_ca ]
@@ -28,6 +28,6 @@ extendedKeyUsage = serverAuth, clientAuth
 subjectAltName = @alt_names
 
 [ alt_names ]
-DNS.1=schemaregistry
-DNS.2=schemaregistry.sandbox.net
+DNS.1=schema-registry
+DNS.2=schema-registry.sandbox.net
 DNS.3=localhost

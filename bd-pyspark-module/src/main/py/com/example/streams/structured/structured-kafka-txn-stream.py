@@ -102,7 +102,7 @@ def process_txn_stream(args):
 
     # Subscribe to 1 topic
     structureStreamDf = spark.readStream.format("kafka") \
-        .option("kafka.bootstrap.servers", "kafkabroker.sandbox.net:9092") \
+        .option("kafka.bootstrap.servers", "kafka-broker.sandbox.net:9092") \
         .option("subscribe", args['topic']) \
         .option("startingOffsets", "earliest") \
         .option("failOnDataLoss", "false") \
@@ -148,7 +148,7 @@ def process_txn_stream(args):
         # Writing to Kafka
         structureStreamDf.writeStream \
             .format("kafka") \
-            .option("kafka.bootstrap.servers", "kafkabroker.sandbox.net:9092") \
+            .option("kafka.bootstrap.servers", "kafka-broker.sandbox.net:9092") \
             .option("topic", "structured-stream-sink") \
             .trigger(processingTime="15 seconds") \
             .start()

@@ -10,7 +10,7 @@ countryName = IN
 organizationName = Sandbox
 organizationalUnitName = Kafka
 localityName = Pune
-commonName=kafkabroker
+commonName=kafka-broker
 emailAddress = support@sandbox.net
 
 [ v3_ca ]
@@ -28,6 +28,6 @@ extendedKeyUsage = serverAuth, clientAuth
 subjectAltName = @alt_names
 
 [ alt_names ]
-DNS.1=kafkabroker
-DNS.2=kafkabroker.sandbox.net
+DNS.1=kafka-broker
+DNS.2=kafka-broker.sandbox.net
 DNS.3=localhost
