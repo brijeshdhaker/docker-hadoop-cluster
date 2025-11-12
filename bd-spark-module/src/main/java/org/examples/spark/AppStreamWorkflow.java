@@ -41,14 +41,14 @@ public class AppStreamWorkflow {
         // spark.sparkContext().setLogLevel("ERROR");
 
         Map<String, Object> kafkaParams = new HashMap<>();
-        kafkaParams.put("bootstrap.servers", "kafkabroker.sandbox.net:9092");
+        kafkaParams.put("bootstrap.servers", "kafka-broker.sandbox.net:9092");
         //kafkaParams.put("key.deserializer", org.apache.kafka.common.serialization.StringDeserializer.class);
         kafkaParams.put("key.deserializer", io.confluent.kafka.serializers.KafkaAvroDeserializer.class);
         kafkaParams.put("value.deserializer", io.confluent.kafka.serializers.KafkaAvroDeserializer.class);
         kafkaParams.put("group.id", "transaction-avro-cg");
         kafkaParams.put("auto.offset.reset", "earliest");
         kafkaParams.put("enable.auto.commit", false);
-        kafkaParams.put("schema.registry.url", "http://schemaregistry.sandbox.net:8081");
+        kafkaParams.put("schema.registry.url", "http://schema-registry.sandbox.net:8081");
         /*
         kafkaParams.put("heartbeat.interval.ms", 10_000);
         kafkaParams.put("session.timeout.ms", 5_000);

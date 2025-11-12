@@ -197,10 +197,10 @@ services:
   #
   #
   #
-  kafkabroker-a:
+  kafka-broker-a:
     image: confluentinc/cp-kafka:7.5.2
-    hostname: kafkabroker-a.sandbox.net
-    container_name: kafkabroker-a
+    hostname: kafka-broker-a.sandbox.net
+    container_name: kafka-broker-a
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_security_secrets:/etc/kafka/secrets
@@ -214,16 +214,16 @@ services:
       KAFKA_ZOOKEEPER_SSL_CLIENT_ENABLE: 'true'
       #KAFKA_ZOOKEEPER_SSL_PROTOCOL: TLSv1.3,TLSv1.2
       KAFKA_ZOOKEEPER_CLIENT_CNXN_SOCKET: org.apache.zookeeper.ClientCnxnSocketNetty
-      KAFKA_ZOOKEEPER_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafkabroker-a.keystore.jks
+      KAFKA_ZOOKEEPER_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafka-broker-a.keystore.jks
       KAFKA_ZOOKEEPER_SSL_KEYSTORE_PASSWORD: confluent
       KAFKA_ZOOKEEPER_SSL_KEYSTORE_TYPE: PKCS12
-      KAFKA_ZOOKEEPER_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafkabroker-a.truststore.jks
+      KAFKA_ZOOKEEPER_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka-broker-a.truststore.jks
       KAFKA_ZOOKEEPER_SSL_TRUSTSTORE_PASSWORD: confluent
       KAFKA_ZOOKEEPER_SSL_TRUSTSTORE_TYPE: JKS
       KAFKA_ZOOKEEPER_SET_ACL: 'true'
       #
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,INTERNAL:SASL_PLAINTEXT,EXTERNAL:SASL_SSL,SSL:SSL
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafkabroker-a.sandbox.net:19091,INTERNAL://kafkabroker-a.sandbox.net:19092,EXTERNAL://kafkabroker-a.sandbox.net:19093,SSL://kafkabroker-a.sandbox.net:19094
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-broker-a.sandbox.net:19091,INTERNAL://kafka-broker-a.sandbox.net:19092,EXTERNAL://kafka-broker-a.sandbox.net:19093,SSL://kafka-broker-a.sandbox.net:19094
       KAFKA_INTER_BROKER_LISTENER_NAME: EXTERNAL
       # KAFKA_SECURITY_INTER_BROKER_PROTOCOL: SASL_PLAINTEXT
       ## Kerberos / GSSAPI Authentication mechanism
@@ -247,15 +247,15 @@ services:
         debug=true \
         useKeyTab=true \
         storeKey=true \
-        keyTab="/apps/security/keytabs/services/kafkabroker-a.keytab" \
-        principal="kafka/kafkabroker-a.sandbox.net@SANDBOX.NET";
+        keyTab="/apps/security/keytabs/services/kafka-broker-a.keytab" \
+        principal="kafka/kafka-broker-a.sandbox.net@SANDBOX.NET";
       #
       ## SSL Additions
-      KAFKA_SSL_KEYSTORE_FILENAME: kafkabroker-a.keystore.p12
-      KAFKA_SSL_KEYSTORE_CREDENTIALS: kafkabroker-a-keystore-creds
-      KAFKA_SSL_KEY_CREDENTIALS: kafkabroker-a-sslkey-creds
-      KAFKA_SSL_TRUSTSTORE_FILENAME: kafkabroker-a.truststore.jks
-      KAFKA_SSL_TRUSTSTORE_CREDENTIALS: kafkabroker-a-truststore-creds
+      KAFKA_SSL_KEYSTORE_FILENAME: kafka-broker-a.keystore.p12
+      KAFKA_SSL_KEYSTORE_CREDENTIALS: kafka-broker-a-keystore-creds
+      KAFKA_SSL_KEY_CREDENTIALS: kafka-broker-a-sslkey-creds
+      KAFKA_SSL_TRUSTSTORE_FILENAME: kafka-broker-a.truststore.jks
+      KAFKA_SSL_TRUSTSTORE_CREDENTIALS: kafka-broker-a-truststore-creds
       KAFKA_SSL_CLIENT_AUTH: "required"
       KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: " "
       #
@@ -269,16 +269,16 @@ services:
       KAFKA_LOG4J_ADDITIVITY_KAFKA_AUTHORIZER_LOGGER: "false"
       #
       # ZOOKEEPER_SASL_ENABLED: 'FALSE'
-      KAFKA_OPTS: -Djava.security.auth.login.config=/etc/kafka/secrets/jaas/kafkabroker-a-jaas.conf
+      KAFKA_OPTS: -Djava.security.auth.login.config=/etc/kafka/secrets/jaas/kafka-broker-a-jaas.conf
         -Djava.security.krb5.conf=/etc/krb5.conf
         -Dsun.security.krb5.debug=false
     labels:
       - io.confluent.docker.testing=true
 
-  kafkabroker-b:
+  kafka-broker-b:
     image: confluentinc/cp-kafka:7.5.2
-    hostname: kafkabroker-b.sandbox.net
-    container_name: kafkabroker-b
+    hostname: kafka-broker-b.sandbox.net
+    container_name: kafka-broker-b
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_security_secrets:/etc/kafka/secrets
@@ -289,7 +289,7 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper-a.sandbox.net:2181,zookeeper-b.sandbox.net:2181,zookeeper-c.sandbox.net:2181
       KAFKA_ZOOKEEPER_SSL_CLIENT_ENABLE: 'true'
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,INTERNAL:SASL_PLAINTEXT,EXTERNAL:SASL_SSL,SSL:SSL
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafkabroker-b.sandbox.net:19091,INTERNAL://kafkabroker-b.sandbox.net:19092,EXTERNAL://kafkabroker-b.sandbox.net:19093,SSL://kafkabroker-b.sandbox.net:19094
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-broker-b.sandbox.net:19091,INTERNAL://kafka-broker-b.sandbox.net:19092,EXTERNAL://kafka-broker-b.sandbox.net:19093,SSL://kafka-broker-b.sandbox.net:19094
       KAFKA_INTER_BROKER_LISTENER_NAME: EXTERNAL
       # KAFKA_SECURITY_INTER_BROKER_PROTOCOL: SASL_PLAINTEXT
       #
@@ -314,15 +314,15 @@ services:
         debug=true \
         useKeyTab=true \
         storeKey=true \
-        keyTab="/apps/security/keytabs/services/kafkabroker-b.keytab" \
-        principal="kafka/kafkabroker-b.sandbox.net@SANDBOX.NET";
+        keyTab="/apps/security/keytabs/services/kafka-broker-b.keytab" \
+        principal="kafka/kafka-broker-b.sandbox.net@SANDBOX.NET";
       #
       ## SSL Additions
-      KAFKA_SSL_KEYSTORE_FILENAME: kafkabroker-b.keystore.p12
-      KAFKA_SSL_KEYSTORE_CREDENTIALS: kafkabroker-b-keystore-creds
-      KAFKA_SSL_KEY_CREDENTIALS: kafkabroker-b-sslkey-creds
-      KAFKA_SSL_TRUSTSTORE_FILENAME: kafkabroker-b.truststore.jks
-      KAFKA_SSL_TRUSTSTORE_CREDENTIALS: kafkabroker-b-truststore-creds
+      KAFKA_SSL_KEYSTORE_FILENAME: kafka-broker-b.keystore.p12
+      KAFKA_SSL_KEYSTORE_CREDENTIALS: kafka-broker-b-keystore-creds
+      KAFKA_SSL_KEY_CREDENTIALS: kafka-broker-b-sslkey-creds
+      KAFKA_SSL_TRUSTSTORE_FILENAME: kafka-broker-b.truststore.jks
+      KAFKA_SSL_TRUSTSTORE_CREDENTIALS: kafka-broker-b-truststore-creds
       KAFKA_SSL_CLIENT_AUTH: "required"
       KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: " "
       #
@@ -336,16 +336,16 @@ services:
       KAFKA_LOG4J_ADDITIVITY_KAFKA_AUTHORIZER_LOGGER: "false"
       #
       #ZOOKEEPER_SASL_ENABLED: 'FALSE'
-      KAFKA_OPTS: -Djava.security.auth.login.config=/etc/kafka/secrets/jaas/kafkabroker-b-jaas.conf
+      KAFKA_OPTS: -Djava.security.auth.login.config=/etc/kafka/secrets/jaas/kafka-broker-b-jaas.conf
         -Djava.security.krb5.conf=/etc/krb5.conf
         -Dsun.security.krb5.debug=false
     labels:
       - io.confluent.docker.testing=true
 
-  kafkabroker-c:
+  kafka-broker-c:
     image: confluentinc/cp-kafka:7.5.2
-    hostname: kafkabroker-c.sandbox.net
-    container_name: kafkabroker-c
+    hostname: kafka-broker-c.sandbox.net
+    container_name: kafka-broker-c
     volumes:
       - sandbox_apps_path:/apps
       - sandbox_security_secrets:/etc/kafka/secrets
@@ -355,7 +355,7 @@ services:
       KAFKA_BROKER_ID: 3
       KAFKA_ZOOKEEPER_CONNECT: zookeeper-a.sandbox.net:2181,zookeeper-b.sandbox.net:2181,zookeeper-c.sandbox.net:2181
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,INTERNAL:SASL_PLAINTEXT,EXTERNAL:SASL_SSL,SSL:SSL
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafkabroker-c.sandbox.net:19091,INTERNAL://kafkabroker-c.sandbox.net:19092,EXTERNAL://kafkabroker-c.sandbox.net:19093,SSL://kafkabroker-c.sandbox.net:19094
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-broker-c.sandbox.net:19091,INTERNAL://kafka-broker-c.sandbox.net:19092,EXTERNAL://kafka-broker-c.sandbox.net:19093,SSL://kafka-broker-c.sandbox.net:19094
       KAFKA_INTER_BROKER_LISTENER_NAME: EXTERNAL
       # KAFKA_SECURITY_INTER_BROKER_PROTOCOL: SASL_PLAINTEXT
       ## Kerberos / GSSAPI Authentication mechanism
@@ -379,15 +379,15 @@ services:
         debug=true \
         useKeyTab=true \
         storeKey=true \
-        keyTab="/apps/security/keytabs/services/kafkabroker-c.keytab" \
-        principal="kafka/kafkabroker-c.sandbox.net@SANDBOX.NET";
+        keyTab="/apps/security/keytabs/services/kafka-broker-c.keytab" \
+        principal="kafka/kafka-broker-c.sandbox.net@SANDBOX.NET";
       #
       ## SSL Additions
-      KAFKA_SSL_KEYSTORE_FILENAME: kafkabroker-c.keystore.p12
-      KAFKA_SSL_KEYSTORE_CREDENTIALS: kafkabroker-c-keystore-creds
-      KAFKA_SSL_KEY_CREDENTIALS: kafkabroker-c-sslkey-creds
-      KAFKA_SSL_TRUSTSTORE_FILENAME: kafkabroker-c.truststore.jks
-      KAFKA_SSL_TRUSTSTORE_CREDENTIALS: kafkabroker-c-truststore-creds
+      KAFKA_SSL_KEYSTORE_FILENAME: kafka-broker-c.keystore.p12
+      KAFKA_SSL_KEYSTORE_CREDENTIALS: kafka-broker-c-keystore-creds
+      KAFKA_SSL_KEY_CREDENTIALS: kafka-broker-c-sslkey-creds
+      KAFKA_SSL_TRUSTSTORE_FILENAME: kafka-broker-c.truststore.jks
+      KAFKA_SSL_TRUSTSTORE_CREDENTIALS: kafka-broker-c-truststore-creds
       KAFKA_SSL_CLIENT_AUTH: "required"
       KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: " "
       #
@@ -401,21 +401,21 @@ services:
       KAFKA_LOG4J_ADDITIVITY_KAFKA_AUTHORIZER_LOGGER: "false"
       #
       #ZOOKEEPER_SASL_ENABLED: 'FALSE'
-      KAFKA_OPTS: -Djava.security.auth.login.config=/etc/kafka/secrets/jaas/kafkabroker-c-jaas.conf
+      KAFKA_OPTS: -Djava.security.auth.login.config=/etc/kafka/secrets/jaas/kafka-broker-c-jaas.conf
         -Djava.security.krb5.conf=/etc/krb5.conf
         -Dsun.security.krb5.debug=false
     labels:
       - io.confluent.docker.testing=true
 
   #
-  schemaregistry:
+  schema-registry:
     image: confluentinc/cp-schema-registry:7.5.2
-    hostname: schemaregistry.sandbox.net
-    container_name: schemaregistry
+    hostname: schema-registry.sandbox.net
+    container_name: schema-registry
     depends_on:
-      - kafkabroker-a
-      - kafkabroker-b
-      - kafkabroker-c
+      - kafka-broker-a
+      - kafka-broker-b
+      - kafka-broker-c
     ports:
       - "8081:8081"
     volumes:
@@ -427,14 +427,14 @@ services:
       JAVA_OPTS: |
         -Djava.security.krb5.conf=/etc/krb5.conf 
         -Dsun.security.krb5.debug=false
-        -Djavax.net.ssl.keyStore=/etc/schema-registry/secrets/schemaregistry.keystore.jks
+        -Djavax.net.ssl.keyStore=/etc/schema-registry/secrets/schema-registry.keystore.jks
         -Djavax.net.ssl.keyStorePassword=confluent
-        -Djavax.net.ssl.trustStore=/etc/schema-registry/secrets/schemaregistry.truststore.jks
+        -Djavax.net.ssl.trustStore=/etc/schema-registry/secrets/schema-registry.truststore.jks
         -Djavax.net.ssl.trustStorePassword=confluent
       #
       SCHEMA_REGISTRY_OPTS: "-Djava.security.krb5.conf=/etc/krb5.conf -Dsun.security.krb5.debug=false"
-      SCHEMA_REGISTRY_HOST_NAME: schemaregistry.sandbox.net
-      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'kafkabroker-a.sandbox.net:19093,kafkabroker-b.sandbox.net:19093,kafkabroker-c.sandbox.net:19093'
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry.sandbox.net
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'kafka-broker-a.sandbox.net:19093,kafka-broker-b.sandbox.net:19093,kafka-broker-c.sandbox.net:19093'
       #
       # Configure SASL_SSL if SSL encryption is enabled, otherwise configure SASL_PLAINTEXT
       SCHEMA_REGISTRY_KAFKASTORE_SECURITY_PROTOCOL: SASL_SSL
@@ -444,22 +444,22 @@ services:
         useKeyTab=true
         storeKey=true
         useTicketCache=false
-        keyTab="/apps/security/keytabs/services/schemaregistry.keytab"
-        principal="schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET";
+        keyTab="/apps/security/keytabs/services/schema-registry.keytab"
+        principal="schema-registry/schema-registry.sandbox.net@SANDBOX.NET";
       #
       SCHEMA_REGISTRY_LISTENERS: https://0.0.0.0:8081
       SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL: INFO
       #
-      SCHEMA_REGISTRY_KAFKASTORE_SSL_TRUSTSTORE_LOCATION: /etc/schema-registry/secrets/schemaregistry.truststore.jks
+      SCHEMA_REGISTRY_KAFKASTORE_SSL_TRUSTSTORE_LOCATION: /etc/schema-registry/secrets/schema-registry.truststore.jks
       SCHEMA_REGISTRY_KAFKASTORE_SSL_TRUSTSTORE_PASSWORD: confluent
-      SCHEMA_REGISTRY_KAFKASTORE_SSL_KEYSTORE_LOCATION: /etc/schema-registry/secrets/schemaregistry.keystore.jks
+      SCHEMA_REGISTRY_KAFKASTORE_SSL_KEYSTORE_LOCATION: /etc/schema-registry/secrets/schema-registry.keystore.jks
       SCHEMA_REGISTRY_KAFKASTORE_SSL_KEYSTORE_PASSWORD: confluent
       SCHEMA_REGISTRY_KAFKASTORE_SSL_KEY_PASSWORD: confluent
       SCHEMA_REGISTRY_KAFKASTORE_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: "HTTPS"
       #
-      SCHEMA_REGISTRY_SSL_TRUSTSTORE_LOCATION: /etc/schema-registry/secrets/schemaregistry.truststore.jks
+      SCHEMA_REGISTRY_SSL_TRUSTSTORE_LOCATION: /etc/schema-registry/secrets/schema-registry.truststore.jks
       SCHEMA_REGISTRY_SSL_TRUSTSTORE_PASSWORD: confluent
-      SCHEMA_REGISTRY_SSL_KEYSTORE_LOCATION: /etc/schema-registry/secrets/schemaregistry.keystore.jks
+      SCHEMA_REGISTRY_SSL_KEYSTORE_LOCATION: /etc/schema-registry/secrets/schema-registry.keystore.jks
       SCHEMA_REGISTRY_SSL_KEYSTORE_PASSWORD: confluent
       SCHEMA_REGISTRY_SSL_KEY_PASSWORD: confluent
       SCHEMA_REGISTRY_SSL_CLIENT_AUTH: "true"

@@ -49,9 +49,9 @@ keytool -list -keystore "/apps/security/ssl/ca_truststore.jks" -storepass conflu
 openssl req -new -nodes \
     -days 3650 \
     -newkey rsa:2048 \
-    -keyout /apps/security/ssl/kafkabroker.key \
-    -out /apps/security/ssl/kafkabroker.csr \
-    -config /apps/security/ssl/kafkabroker.cnf
+    -keyout /apps/security/ssl/kafka-broker.key \
+    -out /apps/security/ssl/kafka-broker.csr \
+    -config /apps/security/ssl/kafka-broker.cnf
 
 
 #
@@ -59,72 +59,72 @@ openssl req -new -nodes \
 #
 openssl x509 -req \
     -days 3650 \
-    -in /apps/security/ssl/kafkabroker.csr \
+    -in /apps/security/ssl/kafka-broker.csr \
     -CA /apps/security/ssl/sandbox-ca.crt \
     -CAkey /apps/security/ssl/sandbox-ca.key \
     -CAcreateserial \
-    -out /apps/security/ssl/kafkabroker.crt \
-    -extfile /apps/security/ssl/kafkabroker.cnf \
+    -out /apps/security/ssl/kafka-broker.crt \
+    -extfile /apps/security/ssl/kafka-broker.cnf \
     -extensions v3_req
 
 #
 # convert the server certificate over to the pkcs12 format
 #
 openssl pkcs12 -export \
-    -in /apps/security/ssl/kafkabroker.crt \
-    -inkey /apps/security/ssl/kafkabroker.key \
+    -in /apps/security/ssl/kafka-broker.crt \
+    -inkey /apps/security/ssl/kafka-broker.key \
     -chain \
     -CAfile /apps/security/ssl/sandbox-ca.pem \
-    -name kafkabroker \
-    -out /apps/security/ssl/kafkabroker.p12 \
+    -name kafka-broker \
+    -out /apps/security/ssl/kafka-broker.p12 \
     -password pass:confluent
 
 
 #
-# create the kafkabroker PKCS12 keystore and import the certificate:
+# create the kafka-broker PKCS12 keystore and import the certificate:
 #
 keytool -importkeystore \
     -noprompt \
-    -srckeystore /apps/security/ssl/kafkabroker.p12 \
+    -srckeystore /apps/security/ssl/kafka-broker.p12 \
     -srcstoretype PKCS12 \
     -srcstorepass confluent \
-    -destkeystore /apps/security/ssl/kafkabroker_keystore.pkcs12 \
+    -destkeystore /apps/security/ssl/kafka-broker_keystore.pkcs12 \
     -deststoretype PKCS12  \
     -deststorepass confluent
 
 #
-# Verify the kafkabroker PKCS12 keystore
+# Verify the kafka-broker PKCS12 keystore
 #
 keytool -list -v \
-    -keystore /apps/security/ssl/kafkabroker_keystore.pkcs12 \
+    -keystore /apps/security/ssl/kafka-broker_keystore.pkcs12 \
     -storepass confluent
 
 #
-# create the kafkabroker JKS keystore and import the certificate:
+# create the kafka-broker JKS keystore and import the certificate:
 #
 keytool -importkeystore \
     -noprompt \
-    -srckeystore /apps/security/ssl/kafkabroker.p12 \
+    -srckeystore /apps/security/ssl/kafka-broker.p12 \
     -srcstoretype PKCS12 \
     -srcstorepass confluent \
-    -destkeystore /apps/security/ssl/kafkabroker_keystore.jks \
+    -destkeystore /apps/security/ssl/kafka-broker_keystore.jks \
     -deststorepass confluent
 
 ## Convert PKCS12 to JKS format
 keytool -importkeystore \
         -noprompt \
-        -srckeystore /apps/security/ssl/kafkabroker_keystore.pkcs12 \
+        -srckeystore /apps/security/ssl/kafka-broker_keystore.pkcs12 \
         -srcstoretype PKCS12 \
         -srcstorepass confluent \
-        -destkeystore /apps/security/ssl/kafkabroker_keystore.jks \
+        -destkeystore /apps/security/ssl/kafka-broker_keystore.jks \
         -deststoretype JKS \
         -deststorepass confluent
 
 #
-# Verify the kafkabroker JKS keystore
+# Verify the kafka-broker JKS keystore
 #
 keytool -list -v \
-    -keystore /apps/security/ssl/kafkabroker_keystore.jks \
+    -keystore /apps/security/ssl/kafka-broker_keystore.jks \
     -storepass confluent
 
 #
@@ -136,11 +136,11 @@ tee /apps/security/ssl/ca_truststore_creds << EOF >/dev/null
 confluent
 EOF
 
-tee /apps/security/ssl/kafkabroker_sslkey_creds << EOF >/dev/null
+tee /apps/security/ssl/kafka-broker_sslkey_creds << EOF >/dev/null
 confluent
 EOF
 
-tee /apps/security/ssl/kafkabroker_keystore_creds << EOF >/dev/null
+tee /apps/security/ssl/kafka-broker_keystore_creds << EOF >/dev/null
 confluent
 EOF
 

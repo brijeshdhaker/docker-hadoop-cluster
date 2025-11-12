@@ -28,38 +28,31 @@ sudo netstat -lntp | grep dockerd
 /var/lib/docker
 /var/lib/docker/image/overlay2
 
-#
-# docker login
-#
+### docker login
 docker login --username brijeshdhaker@gmail.com --password Accoo7@k47
 
-#
-# Docker Commands
-#
-## Stop
+## Docker Commands
+### Stop
 docker container stop $(docker container ls -a -q -f "label=io.confluent.docker")
 docker container stop $(docker container ls -a -q -f "label=io.confluent.docker") && docker system prune -a -f --volumes
 
-## Delete 
+### Delete 
 docker system prune -a --volumes --filter "label=io.confluent.docker"
 
-## Save Running Container
+### Save Running Container
 docker commit 5a31a96deee6 brijeshdhaker/ubuntu:22.04
 
-## Tag a Image
+### Tag a Image
 docker image tag ubuntu_20240225:latest brijeshdhaker/ubuntu:22.04
 
-## Upload a Image
+### Upload a Image
 docker push brijeshdhaker/ubuntu:22.04
 
-#
-# Docker Compose 
-#
-##
+## Docker Compose 
+###
 docker-compose --file docker/docker-compose.yml scale nodemanager=2
 
-#
-#
+###
 docker-machine create --virtualbox-memory "4096" --virtualbox-cpu-count "2" --virtualbox-disk-size "1024000" default
 
 
@@ -70,7 +63,7 @@ docker-machine env default
 $ docker-machine env default
 export DOCKER_TLS_VERIFY="1"
 export DOCKER_HOST="tcp://192.168.99.105:2376"
-export DOCKER_CERT_PATH="/Users/<yourusername>/.docker/machine/machines/default"
+export DOCKER_CERT_PATH="${HOME}/.docker/machine/machines/default"
 export DOCKER_MACHINE_NAME="default"
 # Run this command to configure your shell:
 # eval "$(docker-machine env default)"

@@ -1,53 +1,116 @@
 {
-    "configurations": [
-        {
-            "type": "java",
-            "name": "DataStreamJob",
-            "request": "launch",
-            "mainClass": "org.examples.flink.example.DataStreamJob",
-            "projectName": "bd-flink-module",
-            "envFile": "${workspaceFolder}/.env",
-            "vmArgs": "-Dlog.file=/apps/var/logs/flink/DataStreamJob.log"
-        },
-        {
-            "type": "java",
-            "name": "TaxiRidesAndFares",
-            "request": "launch",
-            "mainClass": "org.examples.flink.taxi.TaxiRidesAndFares",
-            "projectName": "bd-flink-module",
-            "args": "--app-config taxi_workflow.properties --engine-type local-cluster --table-name transactions --config-path ${workspaceFolder}/bd-flink-module/src/main/resources/local-cluster",
-            "envFile": "${workspaceFolder}/.env",
-            "vmArgs": "-Dlog.file=/apps/var/logs/flink/TaxiRidesAndFares.log"
-        },
-        {
-            "type": "java",
-            "name": "TransactionPipeline",
-            "request": "launch",
-            "mainClass": "org.examples.flink.transaction.TransactionPipeline",
-            "projectName": "bd-flink-module",
-            "args": "--app-config transactions_workflow.properties --engine-type local-cluster --table-name transactions --config-path ${workspaceFolder}/bd-flink-module/src/main/resources/local-cluster",
-            "envFile": "${workspaceFolder}/.env",
-            "vmArgs": "-Dlog.file=/apps/var/logs/flink/TransactionPipeline.log"
-        },
-        {
-            "type": "java",
-            "name": "ProductsHourlySales",
-            "request": "launch",
-            "mainClass": "org.examples.flink.transaction.ProductsHourlySales",
-            "projectName": "bd-flink-module",
-            "args": "--app-config transactions_workflow.properties --engine-type local-cluster --table-name transactions --config-path ${workspaceFolder}/bd-flink-module/src/main/resources/local-cluster",
-            "envFile": "${workspaceFolder}/.env",
-            "vmArgs": "-Dlog.file=/apps/var/logs/flink/ProductsHourlySales.log"
-        },
-        {
-            "type": "java",
-            "name": "ClickEventGenerator",
-            "request": "launch",
-            "mainClass": "org.examples.flink.clickcount.ClickEventGenerator",
-            "projectName": "bd-flink-module",
-            "args": "",
-            "envFile": "${workspaceFolder}/.env",
-            "vmArgs": "-Dlog.file=/apps/var/logs/flink/ClickEventGenerator.log"
-        }
-    ]
+  "configurations": [
+    {
+      "type": "java",
+      "name": "TestFactory",
+      "request": "launch",
+      "mainClass": "org.examples.design.factory.TestFactory",
+      "projectName": "bd-flink-module"
+    },
+    {
+      "name": "Python: Current File with Args",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "args": [
+        "--Host",
+        "localhost",
+        "--App",
+        "PythonApp"
+      ]
+    },
+    {
+      "name": "Launch Chrome",
+      "request": "launch",
+      "type": "chrome",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "name": "Python Debugger: Current File with Arguments",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "args": "${command:pickArgs}"
+    },
+    {
+      "name": "Python Debugger: Current File",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "java",
+      "name": "DataStreamJob",
+      "request": "launch",
+      "mainClass": "org.examples.flink.example.DataStreamJob",
+      "projectName": "bd-flink-module",
+      "envFile": "${workspaceFolder}/.env",
+      "vmArgs": "-Dlog.file=/apps/var/logs/flink/DataStreamJob.log"
+    },
+    {
+      "type": "java",
+      "name": "TaxiRidesAndFares",
+      "request": "launch",
+      "mainClass": "org.examples.flink.taxi.TaxiRidesAndFares",
+      "projectName": "bd-flink-module",
+      "args": "--app-config taxi_workflow.properties --engine-type local-cluster --table-name transactions --config-path ${workspaceFolder}/bd-flink-module/src/main/resources/local-cluster",
+      "envFile": "${workspaceFolder}/.env",
+      "vmArgs": "-Dlog.file=/apps/var/logs/flink/TaxiRidesAndFares.log"
+    },
+    {
+      "type": "java",
+      "name": "TransactionPipeline",
+      "request": "launch",
+      "mainClass": "org.examples.flink.transaction.TransactionPipeline",
+      "projectName": "bd-flink-module",
+      "args": "--app-config transactions_workflow.properties --engine-type local-cluster --table-name transactions --config-path ${workspaceFolder}/bd-flink-module/src/main/resources/local-cluster",
+      "envFile": "${workspaceFolder}/.env",
+      "vmArgs": "-Dlog.file=/apps/var/logs/flink/TransactionPipeline.log"
+    },
+    {
+      "type": "java",
+      "name": "ProductsHourlySales",
+      "request": "launch",
+      "mainClass": "org.examples.flink.transaction.ProductsHourlySales",
+      "projectName": "bd-flink-module",
+      "args": "--app-config transactions_workflow.properties --engine-type local-cluster --table-name transactions --config-path ${workspaceFolder}/bd-flink-module/src/main/resources/local-cluster",
+      "envFile": "${workspaceFolder}/.env",
+      "vmArgs": "-Dlog.file=/apps/var/logs/flink/ProductsHourlySales.log"
+    },
+    {
+      "type": "java",
+      "name": "ClickEventGenerator",
+      "request": "launch",
+      "mainClass": "org.examples.flink.clickcount.ClickEventGenerator",
+      "projectName": "bd-flink-module",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env",
+      "vmArgs": "-Dlog.file=/apps/var/logs/flink/ClickEventGenerator.log"
+    },
+    {
+      "name": "Run & Debug : bd-pyspark-module",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/bd-pyspark-module/src/main/py",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "name": "Test & Debug : bd-pyspark-module",
+      "type": "debugpy",
+      "request": "launch",
+      "purpose": [
+        "debug-test"
+      ],
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/bd-pyspark-module/src/test/py",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
 }

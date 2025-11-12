@@ -10,8 +10,8 @@
 # 
 # docker compose -f bd-docker-sandbox/docker-compose.yml up -d spark-master spark-worker-a spark-worker-b
 #
-# docker compose -f bd-docker-sandbox/docker-compose.yml up -d zookeeper kafkabroker schemaregistry
-# docker compose -f bd-docker-sandbox/docker-compose.yml down zookeeper kafkabroker schemaregistry
+# docker compose -f bd-docker-sandbox/docker-compose.yml up -d zookeeper kafka-broker schema-registry
+# docker compose -f bd-docker-sandbox/docker-compose.yml down zookeeper kafka-broker schema-registry
 #
 # docker compose -f bd-docker-sandbox/docker-compose.yml up -d zeppelin
 # docker compose -f bd-docker-sandbox/docker-compose.yml down zeppelin

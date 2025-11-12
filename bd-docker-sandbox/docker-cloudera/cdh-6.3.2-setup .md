@@ -200,13 +200,13 @@ spark-submit \
 spark-submit \
     --name "Python Spark Application" \
     --master local[*] \
-    --py-files /home/brijeshdhaker/PycharmProjects/pyspark-hive-integration.zip pyspark-hive-integration/pyspark-hive.py
+    --py-files ${HOME}/PycharmProjects/pyspark-hive-integration.zip pyspark-hive-integration/pyspark-hive.py
 
 
 spark-submit \
     --name "Python Spark Application" \
     --master local[*] \
-    --py-files /home/brijeshdhaker/PycharmProjects/pyspark-hive-integration.zip pyspark-hive-integration/pyspark-hive-session.py
+    --py-files ${HOME}/PycharmProjects/pyspark-hive-integration.zip pyspark-hive-integration/pyspark-hive-session.py
     
 #
 # Schema Registory

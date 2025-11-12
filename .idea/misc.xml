@@ -16,6 +16,7 @@
         <option value="$PROJECT_DIR$/bd-flink-module/pom.xml" />
         <option value="$PROJECT_DIR$/bd-spring-module/pom.xml" />
         <option value="$PROJECT_DIR$/bd-k8s-module/pom.xml" />
+        <option value="$PROJECT_DIR$/bd-pyspark-module/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -23,6 +24,7 @@
         <option value="$PROJECT_DIR$/bd-flink-operations/pom.xml" />
         <option value="$PROJECT_DIR$/bd-flink-spend-report/pom.xml" />
         <option value="$PROJECT_DIR$/bd-hadoop-module/pom.xml" />
+        <option value="$PROJECT_DIR$/bd-pyspark-module/pom.xml" />
         <option value="$PROJECT_DIR$/bd-spring-module/pom.xml" />
         <option value="$PROJECT_DIR$/bd-spring-module/sb-backend-module-r1/pom.xml" />
         <option value="$PROJECT_DIR$/bd-spring-module/sb-backend-module-r2/pom.xml" />

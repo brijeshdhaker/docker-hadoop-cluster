@@ -14,7 +14,7 @@ public class SchemaProvider {
 
 
     private static final Logger logger = LoggerFactory.getLogger(SchemaProvider.class);
-    private static final String SCHEMA_REGISTRY_URL = "http://schemaregistry.sandbox.net:8081";
+    private static final String SCHEMA_REGISTRY_URL = "http://schema-registry.sandbox.net:8081";
 
     public static StructType structType(String topic_name) throws Exception {
 

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-PWD=/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-hdp-sandbox
+PWD=${HOME}/IdeaProjects/docker-hadoop-cluster/docker-hdp-sandbox
 docker rm -f sandbox-proxy 2>/dev/null
 docker run --name sandbox-proxy --network=cda \
--v /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-hdp-sandbox/proxy/nginx.conf:/etc/nginx/nginx.conf \
--v /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-hdp-sandbox/proxy/conf.d:/etc/nginx/conf.d \
--v /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/docker-hdp-sandbox/proxy/conf.stream.d:/etc/nginx/conf.stream.d \
+-v ${HOME}/IdeaProjects/docker-hadoop-cluster/docker-hdp-sandbox/proxy/nginx.conf:/etc/nginx/nginx.conf \
+-v ${HOME}/IdeaProjects/docker-hadoop-cluster/docker-hdp-sandbox/proxy/conf.d:/etc/nginx/conf.d \
+-v ${HOME}/IdeaProjects/docker-hadoop-cluster/docker-hdp-sandbox/proxy/conf.stream.d:/etc/nginx/conf.stream.d \
 -p 1080:1080 \
 -p 4200:4200 \
 -p 7777:7777 \

@@ -80,7 +80,7 @@ public class ClickEventGenerator {
 	}
 
 	private static Properties createKafkaProperties(final ParameterTool params) {
-		String brokers = params.get("bootstrap.servers", "kafkabroker.sandbox.net:9092");
+		String brokers = params.get("bootstrap.servers", "kafka-broker.sandbox.net:9092");
 		Properties kafkaProps = new Properties();
 		kafkaProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, brokers);
 		kafkaProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, ByteArraySerializer.class.getCanonicalName());

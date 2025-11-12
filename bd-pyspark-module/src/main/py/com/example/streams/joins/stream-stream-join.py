@@ -5,7 +5,7 @@ from pyspark.sql.types import *
 spark = SparkSession.builder \
     .appName("stream-stream-join") \
     .getOrCreate()
-spark.conf.set("spark.sql.streaming.checkpointLocation", "/home/brijeshdhaker/stream-stream-join/checkpoints/")
+spark.conf.set("spark.sql.streaming.checkpointLocation", "${HOME}/stream-stream-join/checkpoints/")
 spark.sparkContext.setLogLevel('ERROR')
 spark.conf.set("spark.sql.shuffle.partitions", "1")
 

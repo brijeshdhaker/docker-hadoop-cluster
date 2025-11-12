@@ -65,12 +65,12 @@ Version 1.5.0-5-ge98256 (JSON, librdkafka 1.3.0 builtin.features=gzip,snappy,ssl
 ```
 Test it:
 ```shell
-➜ kafkacat -b kafkabroker.sandbox.net:9092 -L
-Metadata for all topics (from broker 3: kafkabroker.sandbox.net:9092/3):
+➜ kafkacat -b kafka-broker.sandbox.net:9092 -L
+Metadata for all topics (from broker 3: kafka-broker.sandbox.net:9092/3):
 3 brokers:
-broker 2 at kafkabroker.sandbox.net:19092
-broker 3 at kafkabroker.sandbox.net:9092 (controller)
-broker 1 at kafkabroker.sandbox.net:9092
+broker 2 at kafka-broker.sandbox.net:19092
+broker 3 at kafka-broker.sandbox.net:9092 (controller)
+broker 1 at kafka-broker.sandbox.net:9092
 ```
 Note
 kafkacat is now known as kcat (ref). When invoking the command you will need to use kcat in place of kafkacat.
@@ -84,18 +84,18 @@ kafkacat -V
 You just need to make sure you wrap your head around Docker networking if you do this, because localhost to a Docker container is not the same (by default) as localhost on your host machine:
 
 ➜ docker run --rm edenhill/kafkacat:1.5.0 \
-kafkacat -b kafkabroker.sandbox.net:9092 -L
+kafkacat -b kafka-broker.sandbox.net:9092 -L
 % ERROR: Failed to acquire metadata: Local: Broker transport failure
 If you add --network=host then it will use the network as if executing locally:
 
 ➜ docker run --rm --network=host edenhill/kafkacat:1.5.0 \
-kafkacat -b kafkabroker.sandbox.net:9092 -L
+kafkacat -b kafka-broker.sandbox.net:9092 -L
 
-Metadata for all topics (from broker 3: kafkabroker.sandbox.net:9092/3):
+Metadata for all topics (from broker 3: kafka-broker.sandbox.net:9092/3):
 3 brokers:
-broker 2 at kafkabroker.sandbox.net:19092
-broker 3 at kafkabroker.sandbox.net:9092 (controller)
-broker 1 at kafkabroker.sandbox.net:9092
+broker 2 at kafka-broker.sandbox.net:19092
+broker 3 at kafka-broker.sandbox.net:9092 (controller)
+broker 1 at kafka-broker.sandbox.net:9092
 
 
 E.g. to consume all messages from mytopic partition 2 and then exit:
@@ -134,7 +134,7 @@ docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkaclient sh -
 docker run --interactive \
 --network sandbox.net \
 brijeshdhaker/kafka-clients:7.5.0 \
-kafkacat -b kafkabroker.sandbox.net:19092 -P \
+kafkacat -b kafka-broker.sandbox.net:19092 -P \
 -t kafka-simple-topic \
 -K : \
 -l /apps/sandbox/kafka/json_messages.txt
@@ -150,7 +150,7 @@ brijeshdhaker/kafka-clients:7.5.0 \
 kafkacat -F /etc/kafka/secrets/cnf/librdkafka.config -C -t test_topic -o -10 \
 -f '\nKey (%K bytes): %k\nValue (%S bytes): %s\nTimestamp: %T\tPartition: %p\tOffset: %o\n--\n'
 
-nc -vz kafkabroker.sandbox.net 9092
+nc -vz kafka-broker.sandbox.net 9092
 
 # Producer
 ```shell
@@ -162,17 +162,17 @@ echo "aea284e3-24c6-4969-a85f-fff8e34fb41c	{'uuid': 'aea284e3-24c6-4969-a85f-fff
 kafkacat -F /apps/configs/kafka/librdkafka_sasl_paintext.config -C -t kafka-simple-topic -f '\nKey (%K bytes): %k\nValue (%S bytes): %s\nTimestamp: %T \nPartition: %p \nOffset: %o \n\n--\n' -e
 
 ## with consumer group
-kafkacat -b kafkabroker.sandbox.net:9092 -G kafka-simple-cg kafka-simple-topic -o 600 -e
-docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkaclient sh -c "kafkacat -b kafkabroker.sandbox.net:19092 -C -G kafka-simple-cg -t kafka-simple-topic -f '\nKey (%K bytes): %k\nValue (%S bytes): %s\nTimestamp: %T \nPartition: %p \nOffset: %o \n\n--\n' "
-docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkabroker sh -c "kafka-console-consumer --bootstrap-server kafkabroker.sandbox.net:19092 --topic kafka-simple-topic --from-beginning"
+kafkacat -b kafka-broker.sandbox.net:9092 -G kafka-simple-cg kafka-simple-topic -o 600 -e
+docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkaclient sh -c "kafkacat -b kafka-broker.sandbox.net:19092 -C -G kafka-simple-cg -t kafka-simple-topic -f '\nKey (%K bytes): %k\nValue (%S bytes): %s\nTimestamp: %T \nPartition: %p \nOffset: %o \n\n--\n' "
+docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafka-broker sh -c "kafka-console-consumer --bootstrap-server kafka-broker.sandbox.net:19092 --topic kafka-simple-topic --from-beginning"
 
 ```
 
 ## PLAINTEXT
 ```shell
-docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkaclient sh -c "kafkacat -b kafkabroker.sandbox.net:19092 -L"
-docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkaclient sh -c "kafkacat -b kafkabroker.sandbox.net:19092 -P -t kafka-simple-topic -l /apps/sandbox/kafka/json_messages.txt 2>/dev/null"
-docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkaclient sh -c "kafkacat -b kafkabroker.sandbox.net:19092 -C -t kafka-simple-topic -o -10 -e"
+docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkaclient sh -c "kafkacat -b kafka-broker.sandbox.net:19092 -L"
+docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkaclient sh -c "kafkacat -b kafka-broker.sandbox.net:19092 -P -t kafka-simple-topic -l /apps/sandbox/kafka/json_messages.txt 2>/dev/null"
+docker compose -f  bd-docker-sandbox/dc-kafka-cluster.yaml exec kafkaclient sh -c "kafkacat -b kafka-broker.sandbox.net:19092 -C -t kafka-simple-topic -o -10 -e"
 ```
 ## SASL_PLAINTEXT
 ```shell

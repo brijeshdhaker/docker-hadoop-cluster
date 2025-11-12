@@ -296,7 +296,7 @@ INSERT INTO EMPLOYEE VALUES
 (8002, 'Tejas', 12, null, '10-12-2021',7000, null, 20);
 
 ## load data from local file
-LOAD DATA LOCAL INPATH '/home/brijeshdhaker/Downloads/Employee.txt' INTO TABLE SPARK_APPS.EMPLOYEE;
+LOAD DATA LOCAL INPATH '${HOME}/Downloads/Employee.txt' INTO TABLE SPARK_APPS.EMPLOYEE;
 
 ## load data from hdfs://namenode:9000/data/Employee.txt
 LOAD DATA INPATH '/data/Employee.txt' OVERWRITE INTO TABLE SPARK_APPS.EMPLOYEE;
@@ -468,7 +468,7 @@ CREATE TABLE zipcodes(
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ',';
 
-hdfs dfs -put /home/brijeshdhaker/Downloads/zipcodes.csv /data/
+hdfs dfs -put ${HOME}/Downloads/zipcodes.csv /data/
 LOAD DATA INPATH '/data/zipcodes.csv' INTO TABLE zipcodes;
 
 SHOW PARTITIONS zipcodes;

@@ -70,7 +70,7 @@ public class StructuredStreamWorkflow extends AbstractStreamWorkflow<String, byt
                 Dataset<Row> streamDF = spark
                         .readStream()
                         .format("kafka")
-                        .option("kafka.bootstrap.servers", "kafkabroker.sandbox.net:9092")
+                        .option("kafka.bootstrap.servers", "kafka-broker.sandbox.net:9092")
                         .option("subscribe", "transaction-avro-topic")
                         .option("includeHeaders", "true")
                         .option("startingOffsets", "latest")

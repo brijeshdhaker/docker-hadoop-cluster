@@ -60,7 +60,7 @@ import java.util.UUID;
 
 /*
 
---app-config transactions_workflow.properties --engine-type local-cluster --table-name transactions --config-path /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-flink-module/src/main/resources/local-cluster
+--app-config transactions_workflow.properties --engine-type local-cluster --table-name transactions --config-path ${HOME}/IdeaProjects/docker-hadoop-cluster/bd-flink-module/src/main/resources/local-cluster
 
 AWS_ACCESS_KEY_ID=pgm2H2bR7a5kMc5XCYdO;AWS_SECRET_ACCESS_KEY=zjd8T0hXFGtfemVQ6AH3yBAPASJNXNbVSx5iddqG;AWS_REGION=us-east-1;AWS_S3_ENDPOINT=http://minio.sandbox.net:9010
 

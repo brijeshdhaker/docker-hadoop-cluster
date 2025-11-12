@@ -6,11 +6,11 @@ zookeeper-b
 zookeeper-c
 hmaster
 hregion
-kafkabroker
-kafkabroker-a
-kafkabroker-b
-kafkabroker-c
-schemaregistry
+kafka-broker
+kafka-broker-a
+kafka-broker-b
+kafka-broker-c
+schema-registry
 restproxy
 connect
 controlcenter

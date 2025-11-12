@@ -82,7 +82,7 @@ public class ClickEventCount {
 
 		String inputTopic = params.get("input-topic", "click-event-source");
 		String outputTopic = params.get("output-topic", "click-event-sink");
-		String brokers = params.get("bootstrap.servers", "kafkabroker.sandbox.net:9092");
+		String brokers = params.get("bootstrap.servers", "kafka-broker.sandbox.net:9092");
 
 		Properties kafkaProps = new Properties();
 		kafkaProps.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, brokers);

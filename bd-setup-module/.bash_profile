@@ -1,6 +1,9 @@
 #
 export TERM=xterm-color
 
+# k8s
+alias kubectl='microk8s kubectl'
+
 #conda path
 export PATH=/opt/conda/bin:$PATH
 

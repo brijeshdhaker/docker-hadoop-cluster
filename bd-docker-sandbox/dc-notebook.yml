@@ -12,7 +12,7 @@
 services:
   #
   notebook:
-    image: jupyter/all-spark-notebook:lab-3.5.3
+    image: jupyter/all-spark-notebook:latest
     container_name: notebook
     hostname: notebook.sandbox.net
 #    user: root
@@ -30,8 +30,8 @@ services:
 #      - sandbox_hive_313:/opt/hive
 #      - ./conf/hive/client/hive-site.xml:/opt/hive/conf/hive-site.xml
       - ../bd-notebooks-module/notebooks:/home/jovyan/work
-      - /home/brijeshdhaker/.m2:/home/jovyan/.m2
-      - /home/brijeshdhaker/.ivy2:/home/jovyan/.ivy2
+      - ${HOME}/.m2:/home/jovyan/.m2
+      - ${HOME}/.ivy2:/home/jovyan/.ivy2
     environment:
       GRANT_SUDO: yes
       PYARROW_IGNORE_TIMEZONE: 1

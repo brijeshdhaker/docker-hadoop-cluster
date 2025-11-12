@@ -1,9 +1,32 @@
 {
     "java.compile.nullAnalysis.mode": "automatic",
-    "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable",
-    "python.defaultInterpreterPath": "~/.conda/envs/env_python_39/bin/python",
+    "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx4G -Xms100m -Xlog:disable",
+    "maven.view": "flat",
+    "python.defaultInterpreterPath": "/opt/conda/bin/python",
     "python.autoComplete.extraPaths": [
-        
+        "${workspaceFolder}/bd-pyspark-module/src/main/py"
     ],
-    "maven.view": "hierarchical"
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/bd-pyspark-module/src/main/py"
+    ],
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "${workspaceFolder}/bd-pyspark-module/src/main/py:${env:PYTHONPATH}"
+    },
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.testing.autoTestDiscoverOnSaveEnabled": true,
+    "python.testing.cwd": "${workspaceFolder}/bd-pyspark-module/src/test/py",
+    "python.testing.pytestEnabled": false,
+    "python.testing.pytestArgs": [
+        "${workspaceFolder}/bd-pyspark-module/src/test/py"
+    ],
+    "python.testing.unittestEnabled": true,
+    "python.testing.unittestArgs": [
+        "-v", "-s", "${workspaceFolder}/bd-pyspark-module/src/test/py", "-p", "Test*.py"
+    ],
+    "postman.settings.dotenv-detection-notification-visibility": false,
+    "python-envs.defaultEnvManager": "ms-python.python:conda",
+    "python-envs.defaultPackageManager": "ms-python.python:conda",
+    "python-envs.pythonProjects": [],
+    "python.terminal.activateEnvironment": true,
+    "java.configuration.updateBuildConfiguration": "automatic"
 }

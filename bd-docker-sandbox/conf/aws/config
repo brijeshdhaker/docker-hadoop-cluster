@@ -1,0 +1,5 @@
+[default]
+region = us-east-1
+endpoint_url = http://minio.sandbox.net:9010
+s3 =
+    signature_version = s3v4

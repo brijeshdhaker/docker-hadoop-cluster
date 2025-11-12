@@ -13,6 +13,7 @@ sudo -S <<< "Accoo7@k47" microk8s status --wait-ready
 #
 #
 sudo usermod -a -G microk8s $USER
+newgrp microk8s
 cd $HOME
 mkdir -p ~/.kube
 chmod 0700 ~/.kube
@@ -35,6 +36,8 @@ microk8s enable helm3
 microk8s enable prometheus
 microk8s enable ingress
 microk8s enable cert-manager
+
+192.168.1.128-192.168.1.250,192.168.26.150-192.168.26.250
 
 # Community Supported 
 microk8s enable community

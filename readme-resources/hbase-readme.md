@@ -243,7 +243,7 @@ spark-submit \
 --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 \
 --repositories http://repo.hortonworks.com/content/groups/public/ \
 --files /opt/sandbox/hbase-2.4.9/conf/hbase-site.xml \
-/home/brijeshdhaker/IdeaProjects/pyspark-hbase-integration/pyspark-shc-hbase.py
+${HOME}/IdeaProjects/pyspark-hbase-integration/pyspark-shc-hbase.py
 
 #
 ### Run using Spark HBase Connector ( hbase-spark )
@@ -262,7 +262,7 @@ spark-submit \
 --packages org.apache.hbase.connectors.spark:hbase-spark:1.0.0 \
 --repositories https://repo1.maven.org/maven2/ \
 --files /opt/sandbox/hbase-2.4.9/conf/hbase-site.xml \
-/home/brijeshdhaker/IdeaProjects/pyspark-hbase-integration/pyspark-spark-hbase.py
+${HOME}/IdeaProjects/pyspark-hbase-integration/pyspark-spark-hbase.py
 
 #
 ### Run using Cloudera “hbase-spark” connector
@@ -280,7 +280,7 @@ spark-submit \
 --packages org.apache.hbase:hbase-spark:2.1.0-cdh6.3.2 \
 --repositories https://repository.cloudera.com/content/repositories/releases/ \
 --files /opt/sandbox/hbase-2.4.9/conf/hbase-site.xml \
-/home/brijeshdhaker/IdeaProjects/pyspark-hbase-integration/pyspark-spark-hbase.py
+${HOME}/IdeaProjects/pyspark-hbase-integration/pyspark-spark-hbase.py
 
 #
 ### Run using Hortonworks “hbase-spark” connector
@@ -299,13 +299,13 @@ spark-submit \
 --packages org.apache.hbase:hbase-spark:2.1.6.3.1.7.0-79 \
 --repositories 	https://repo.hortonworks.com/content/repositories/releases/ \
 --files /opt/sandbox/hbase-2.4.9/conf/hbase-site.xml \
-/home/brijeshdhaker/IdeaProjects/pyspark-hbase-integration/pyspark-spark-hbase.py
+${HOME}/IdeaProjects/pyspark-hbase-integration/pyspark-spark-hbase.py
 
 
 spark-submit \
 --name "PySpark Hbase Spark Demo" \
 --master local[*] \
-/home/brijeshdhaker/IdeaProjects/pyspark-hbase-integration/pyspark-spark-hbase.py
+${HOME}/IdeaProjects/pyspark-hbase-integration/pyspark-spark-hbase.py
 
 
 #
@@ -316,7 +316,7 @@ spark-submit \
 --master local[*] \
 --jars /opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/lib/hbase/hbase-spark-2.1.0-cdh6.3.2.jar \
 --files /opt/sandbox/hbase-2.4.9/conf/hbase-site.xml \
-/home/brijeshdhaker/IdeaProjects/pyspark-data-pipelines/com/example/spark/streams/stream-hbase-transformer.py
+${HOME}/IdeaProjects/pyspark-data-pipelines/com/example/spark/streams/stream-hbase-transformer.py
 
 #
 ## Spark & Hbase Integration
@@ -477,7 +477,7 @@ Note : The last point means that accessing HBase from Spark through Hive is only
 ### 2. Run Sparkshell
 ```
 
-spark-shell --jars /home/brijeshdhaker/IdeaProjects/hbase-connectors/spark/hbase-spark/target/hbase-spark-1.0.1-SNAPSHOT.jar
+spark-shell --jars ${HOME}/IdeaProjects/hbase-connectors/spark/hbase-spark/target/hbase-spark-1.0.1-SNAPSHOT.jar
 export HBASE_CONN_PATH=/opt/sandbox/spark-2.4.8/hbase
 export HBASE_CLASSPATH=$HBASE_CONN_PATH/hbase-spark-1.0.1_2.11-2.4.8.jar:$HBASE_CONN_PATH/hbase-spark-it-1.0.1_2.11-2.4.8.jar:$HBASE_CONN_PATH/hbase-spark-protocol-1.0.1_2.11-2.4.8.jar:$HBASE_CONN_PATH/hbase-spark-protocol-shaded-1.0.1_2.11-2.4.8.jar
 spark-shell --jars $HBASE_CONN_PATH/hbase-spark-1.0.1_2.11-2.4.8.jar,$HBASE_CONN_PATH/hbase-spark-it-1.0.1_2.11-2.4.8.jar,$HBASE_CONN_PATH/hbase-spark-protocol-1.0.1_2.11-2.4.8.jar,$HBASE_CONN_PATH/hbase-spark-protocol-shaded-1.0.1_2.11-2.4.8.jar

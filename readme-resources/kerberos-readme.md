@@ -163,62 +163,62 @@ kadmin: addprinc -randkey zookeeper/zookeeper.sandbox.net@SANDBOX.NET
 # 2. Create a keytab file for the ZooKeeper server
 $ kadmin
 kadmin: xst -norandkey -k zookeeper.service.keytab zookeeper/zookeeper.sandbox.net@SANDBOX.NET
-kadmin: xst -norandkey -k /apps/security/keytabs/services/appuser.keytab appuser/kafkabroker.sandbox.net@SANDBOX.NET
+kadmin: xst -norandkey -k /apps/security/keytabs/services/appuser.keytab appuser/kafka-broker.sandbox.net@SANDBOX.NET
 
 # 3. Create Keytab for kafka broker & registry 
 $ kadmin
 kadmin: delete_principal zookeeper/zookeeper.sandbox.net@SANDBOX.NET
-kadmin: delete_principal kafka/kafkabroker.sandbox.net@SANDBOX.NET
+kadmin: delete_principal kafka/kafka-broker.sandbox.net@SANDBOX.NET
 kadmin: delete_principal zkclient@SANDBOX.NET
 kadmin: delete_principal consumer@SANDBOX.NET
 kadmin: delete_principal producer@SANDBOX.NET
 kadmin: delete_principal kafkaclient@SANDBOX.NET
-kadmin: delete_principal schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET
+kadmin: delete_principal schema-registry/schema-registry.sandbox.net@SANDBOX.NET
 
 kadmin: addprinc -randkey zookeeper/zookeeper.sandbox.net@SANDBOX.NET
-kadmin: addprinc -randkey kafka/kafkabroker.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey kafka/kafka-broker.sandbox.net@SANDBOX.NET
 kadmin: addprinc -randkey zkclient@SANDBOX.NET
 kadmin: addprinc -randkey consumer@SANDBOX.NET
 kadmin: addprinc -randkey producer@SANDBOX.NET
 kadmin: addprinc -randkey kafkaclient@SANDBOX.NET
-kadmin: addprinc -randkey schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey schema-registry/schema-registry.sandbox.net@SANDBOX.NET
 
 kadmin: ktadd -k /apps/security/keytabs/services/zookeeper.keytab zookeeper/zookeeper.sandbox.net@SANDBOX.NET
-kadmin: ktadd -k /apps/security/keytabs/services/kafkabroker.keytab kafka/kafkabroker.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /apps/security/keytabs/services/kafka-broker.keytab kafka/kafka-broker.sandbox.net@SANDBOX.NET
 kadmin: ktadd -k /apps/security/keytabs/services/zkclient.keytab zkclient@SANDBOX.NET
 kadmin: ktadd -k /apps/security/keytabs/services/consumer.keytab consumer@SANDBOX.NET
 kadmin: ktadd -k /apps/security/keytabs/services/producer.keytab producer@SANDBOX.NET
 kadmin: ktadd -k /apps/security/keytabs/services/kafkaclient.keytab kafkaclient@SANDBOX.NET
-kadmin: ktadd -k /apps/security/keytabs/services/schemaregistry.keytab schemaregistry/schemaregistry.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /apps/security/keytabs/services/schema-registry.keytab schema-registry/schema-registry.sandbox.net@SANDBOX.NET
 
 
 delete_principal zookeeper/zookeeper-a.sandbox.net@SANDBOX.NET
 delete_principal zookeeper/zookeeper-b.sandbox.net@SANDBOX.NET
 delete_principal zookeeper/zookeeper-c.sandbox.net@SANDBOX.NET
-delete_principal kafka/kafkabroker-a.sandbox.net@SANDBOX.NET
-delete_principal kafka/kafkabroker-b.sandbox.net@SANDBOX.NET
-delete_principal kafka/kafkabroker-c.sandbox.net@SANDBOX.NET
+delete_principal kafka/kafka-broker-a.sandbox.net@SANDBOX.NET
+delete_principal kafka/kafka-broker-b.sandbox.net@SANDBOX.NET
+delete_principal kafka/kafka-broker-c.sandbox.net@SANDBOX.NET
 
 kadmin: addprinc -randkey zookeeper/zookeeper-a.sandbox.net@SANDBOX.NET
 kadmin: addprinc -randkey zookeeper/zookeeper-b.sandbox.net@SANDBOX.NET
 kadmin: addprinc -randkey zookeeper/zookeeper-c.sandbox.net@SANDBOX.NET
-kadmin: addprinc -randkey kafka/kafkabroker-a.sandbox.net@SANDBOX.NET
-kadmin: addprinc -randkey kafka/kafkabroker-b.sandbox.net@SANDBOX.NET
-kadmin: addprinc -randkey kafka/kafkabroker-c.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey kafka/kafka-broker-a.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey kafka/kafka-broker-b.sandbox.net@SANDBOX.NET
+kadmin: addprinc -randkey kafka/kafka-broker-c.sandbox.net@SANDBOX.NET
 
 
 kadmin: ktadd -k /apps/security/keytabs/services/zookeeper-a.keytab zookeeper/zookeeper-a.sandbox.net@SANDBOX.NET
 kadmin: ktadd -k /apps/security/keytabs/services/zookeeper-b.keytab zookeeper/zookeeper-b.sandbox.net@SANDBOX.NET
 kadmin: ktadd -k /apps/security/keytabs/services/zookeeper-c.keytab zookeeper/zookeeper-c.sandbox.net@SANDBOX.NET
-kadmin: ktadd -k /apps/security/keytabs/services/kafkabroker-a.keytab kafka/kafkabroker-a.sandbox.net@SANDBOX.NET
-kadmin: ktadd -k /apps/security/keytabs/services/kafkabroker-b.keytab kafka/kafkabroker-b.sandbox.net@SANDBOX.NET
-kadmin: ktadd -k /apps/security/keytabs/services/kafkabroker-c.keytab kafka/kafkabroker-c.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /apps/security/keytabs/services/kafka-broker-a.keytab kafka/kafka-broker-a.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /apps/security/keytabs/services/kafka-broker-b.keytab kafka/kafka-broker-b.sandbox.net@SANDBOX.NET
+kadmin: ktadd -k /apps/security/keytabs/services/kafka-broker-c.keytab kafka/kafka-broker-c.sandbox.net@SANDBOX.NET
 
 kadmin:  quit
 
 $ ktutil
-ktutil:  rkt /apps/security/keytabs/services/kafkabroker.keytab
-ktutil:  rkt /apps/security/keytabs/services/schemaregistry.keytab
+ktutil:  rkt /apps/security/keytabs/services/kafka-broker.keytab
+ktutil:  rkt /apps/security/keytabs/services/schema-registry.keytab
 ktutil:  wkt /apps/security/keytabs/services/kafka.keytab
 ktutil:  clear
 ktutil:  quit

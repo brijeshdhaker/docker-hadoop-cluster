@@ -42,9 +42,9 @@
       "status": "ERROR"
     },
     {
-      "text": "%pyspark\n\nspark.catalog.databaseExists(\"default\")\n",
+      "text": "%pyspark\n\n\nspark.catalog.databaseExists(\"default\")",
       "user": "anonymous",
-      "dateUpdated": "2024-02-17 11:56:54.356",
+      "dateUpdated": "2025-10-18 00:22:27.166",
       "progress": 0,
       "config": {
         "editorSetting": {

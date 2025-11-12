@@ -46,7 +46,7 @@ if __name__ == '__main__':
 
     # Report malformed record, discard results, continue polling
     avro_consumer = Consumer({
-        'bootstrap.servers': 'kafkabroker.sandbox.net:9092',
+        'bootstrap.servers': 'kafka-broker.sandbox.net:9092',
         'group.id': 'python-custom-cg',
         'auto.offset.reset': 'earliest'
     })

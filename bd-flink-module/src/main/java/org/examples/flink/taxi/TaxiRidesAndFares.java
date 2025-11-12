@@ -24,7 +24,7 @@ import org.examples.flink.AbstractFlinkStreamWorkflow;
 
 
 /*
---app-config taxi_workflow.properties --engine-type local-cluster --table-name transactions --config-path /home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-flink-module/src/main/resources/local-cluster
+--app-config taxi_workflow.properties --engine-type local-cluster --table-name transactions --config-path ${HOME}/IdeaProjects/docker-hadoop-cluster/bd-flink-module/src/main/resources/local-cluster
 
 */
 public class TaxiRidesAndFares extends AbstractFlinkStreamWorkflow  {

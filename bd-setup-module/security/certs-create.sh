@@ -39,7 +39,7 @@ cat /apps/security/ssl/sandbox-ca.crt /apps/security/ssl/sandbox-ca.key > /apps/
 #
 # Create new keys,certificates, keystore & truststore
 #
-for i in zookeeper zookeeper-a zookeeper-b zookeeper-b hmaster hregion kafkabroker kafkabroker-a kafkabroker-b kafkabroker-c schemaregistry clients restproxy connect controlcenter clientrestproxy ksqldb
+for i in zookeeper zookeeper-a zookeeper-b zookeeper-b hmaster hregion kafka-broker kafka-broker-a kafka-broker-b kafka-broker-c schema-registry clients restproxy connect controlcenter clientrestproxy ksqldb
 do
     echo "------------------------------- $i -------------------------------"
 

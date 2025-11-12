@@ -13,39 +13,39 @@ Let's quickly visualize how the data will flow:
 ```shell
 
 # Topic - Creation
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic tweeter-tweets --if-not-exists
+kafka-topics --create --bootstrap-server kafka-broker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic tweeter-tweets --if-not-exists
 
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 2 --replication-factor 1 --topic test-partitioned-topic
+kafka-topics --create --bootstrap-server kafka-broker.sandbox.net:9092 --partitions 2 --replication-factor 1 --topic test-partitioned-topic
 
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic txn-text-stream-topic --if-not-exists
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic txn-json-stream-topic
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic txn-avro-stream-topic
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic txn-xml-stream-topic
-kafka-topics --create --bootstrap-server kafkabroker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic txn-delimiter-stream-topic
+kafka-topics --create --bootstrap-server kafka-broker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic txn-text-stream-topic --if-not-exists
+kafka-topics --create --bootstrap-server kafka-broker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic txn-json-stream-topic
+kafka-topics --create --bootstrap-server kafka-broker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic txn-avro-stream-topic
+kafka-topics --create --bootstrap-server kafka-broker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic txn-xml-stream-topic
+kafka-topics --create --bootstrap-server kafka-broker.sandbox.net:9092 --partitions 1 --replication-factor 1 --topic txn-delimiter-stream-topic
 
 ##### Topic - List
-kafka-topics --list --bootstrap-server kafkabroker.sandbox.net:9092
+kafka-topics --list --bootstrap-server kafka-broker.sandbox.net:9092
 
 ##### Topic - Describe
-kafka-topics --describe --topic tweeter-tweets --bootstrap-server kafkabroker.sandbox.net:9092
+kafka-topics --describe --topic tweeter-tweets --bootstrap-server kafka-broker.sandbox.net:9092
 
 ##### Topic - Alter
 kafka-topics --alter --topic tweeter-tweets --partitions 3 --bootstrap-server zookeeper.sandbox.net:2181
 
 ##### Topic - Delete
-kafka-topics --delete --topic tweeter-tweets --bootstrap-server kafkabroker.sandbox.net:9092
+kafka-topics --delete --topic tweeter-tweets --bootstrap-server kafka-broker.sandbox.net:9092
 
 ##### Command Line Producer :
-kafka-console-producer --topic tweeter-tweets --broker-list kafkabroker.sandbox.net:9092
+kafka-console-producer --topic tweeter-tweets --broker-list kafka-broker.sandbox.net:9092
 
-kafka-console-producer --topic tweeter-tweets --broker-list kafkabroker.sandbox.net:9092 --property parse.key=true --property key.separator=":"
+kafka-console-producer --topic tweeter-tweets --broker-list kafka-broker.sandbox.net:9092 --property parse.key=true --property key.separator=":"
 
 ##### Command Line Consumer :
-kafka-console-consumer --topic tweeter-tweets --group pyspark-structured-stream-cg --bootstrap-server kafkabroker.sandbox.net:9092
+kafka-console-consumer --topic tweeter-tweets --group pyspark-structured-stream-cg --bootstrap-server kafka-broker.sandbox.net:9092
 
 ```
 
-listeners=PLAINTEXT://kafkabroker.sandbox.net:9092
+listeners=PLAINTEXT://kafka-broker.sandbox.net:9092
 advertised.listeners=PLAINTEXT://localhost:19092
 
 ### Create Hive Table
@@ -113,25 +113,25 @@ spark-submit \
 --name "structured-kafka-stream" \
 --master local[4] \
 --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.3.4 \
-/home/brijeshdhaker/IdeaProjects/spark-bigdata-examples/pyspark-examples/src/main/py/com/example/streams/structured/structured-kafka-stream.py
+${HOME}/IdeaProjects/spark-bigdata-examples/pyspark-examples/src/main/py/com/example/streams/structured/structured-kafka-stream.py
 
 spark-submit \
 --name "structured-kafka-stream" \
 --master local[4] \
 --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 \
-/home/brijeshdhaker/IdeaProjects/spark-python-examples/src/main/py/com/example/streams/structured/KafkaStreamDemo.py
+${HOME}/IdeaProjects/spark-python-examples/src/main/py/com/example/streams/structured/KafkaStreamDemo.py
 
 spark-submit \
 --name "structured-kafka-stream" \
 --master local[4] \
 --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 \
-/home/brijeshdhaker/IdeaProjects/pyspark-examples/src/main/py/com/example/streams/structured/structured-kafka-stream.py
+${HOME}/IdeaProjects/pyspark-examples/src/main/py/com/example/streams/structured/structured-kafka-stream.py
 
 spark-submit \
 --name "structured-kafka-stream" \
 --master yarn \
 --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 \
-/home/brijeshdhaker/IdeaProjects/pyspark-examples/src/main/py/com/example/streams/structured/structured-kafka-stream.py
+${HOME}/IdeaProjects/pyspark-examples/src/main/py/com/example/streams/structured/structured-kafka-stream.py
 
 
 spark-submit ^
@@ -151,7 +151,7 @@ spark-submit \
 --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 \
 --repositories http://repo.hortonworks.com/content/groups/public/ \
 --files /opt/sandbox/hbase-2.4.9/conf/hbase-site.xml \
-/home/brijeshdhaker/IdeaProjects/pyspark-data-pipelines/com/example/spark/streams/stream-hbase-transformer.py
+${HOME}/IdeaProjects/pyspark-data-pipelines/com/example/spark/streams/stream-hbase-transformer.py
 
 
 spark-submit \
@@ -159,4 +159,4 @@ spark-submit \
 --master local[*] \
 --jars /opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/lib/hbase/hbase-spark-2.1.0-cdh6.3.2.jar \
 --files /opt/sandbox/hbase-2.4.9/conf/hbase-site.xml \
-/home/brijeshdhaker/IdeaProjects/pyspark-data-pipelines/com/example/spark/streams/stream-hbase-transformer.py
+${HOME}/IdeaProjects/pyspark-data-pipelines/com/example/spark/streams/stream-hbase-transformer.py

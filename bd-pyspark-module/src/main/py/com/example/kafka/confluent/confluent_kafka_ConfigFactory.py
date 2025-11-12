@@ -12,7 +12,7 @@ class KafkaConfigFactory(object):
 
     def __init__(self) :
         self.kafka_config = {
-            'bootstrap.servers': 'kafkabroker.sandbox.net:9092',
+            'bootstrap.servers': 'kafka-broker.sandbox.net:9092',
             'group.id': 'kafka_simple_cg'
         }
 
@@ -52,11 +52,11 @@ class KafkaConfigFactory(object):
 
         if(connection_type=="PLAINTEXT"):
             kafka_config.update({
-                'bootstrap.servers': 'kafkabroker.sandbox.net:9092',
+                'bootstrap.servers': 'kafka-broker.sandbox.net:9092',
             })
         elif(connection_type=="SASL_PLAINTEXT"):
             kafka_config.update({
-                'bootstrap.servers': 'kafkabroker.sandbox.net:19092',
+                'bootstrap.servers': 'kafka-broker.sandbox.net:19092',
                 'sasl.mechanism': 'PLAIN',
                 'sasl.username': 'admin',
                 'sasl.password': 'admin-secret',
@@ -65,7 +65,7 @@ class KafkaConfigFactory(object):
             })
         elif(connection_type=="SASL_SSL"):
             kafka_config.update({
-                'bootstrap.servers': 'kafkabroker.sandbox.net:19093',
+                'bootstrap.servers': 'kafka-broker.sandbox.net:19093',
                 'sasl.mechanism': 'GSSAPI',
                 'security.protocol': 'SASL_SSL',
                 'sasl.kerberos.service.name': 'kafka',
@@ -78,7 +78,7 @@ class KafkaConfigFactory(object):
             })
         elif(connection_type=="SSL"):
             kafka_config.update({
-                'bootstrap.servers': 'kafkabroker.sandbox.net:19094',
+                'bootstrap.servers': 'kafka-broker.sandbox.net:19094',
                 'security.protocol': 'SSL',
                 'ssl.key.location': '/apps/security/ssl/clients.key',
                 'ssl.key.password': 'confluent',

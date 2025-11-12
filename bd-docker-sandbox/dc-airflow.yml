@@ -112,10 +112,10 @@ services:
   #
   #
   #
-  airflow-webserver:
+  airflow-server:
     <<: *airflow-common
-    container_name: airflow-webserver
-    hostname: airflow-webserver
+    container_name: airflow-server
+    hostname: airflow-server
     command: webserver
     ports:
       - 8080:8080

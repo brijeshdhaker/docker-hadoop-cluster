@@ -132,7 +132,7 @@
                             <!--
                             <environmentVariables>
                                 <HADOOP_CONF_DIR>/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-docker-sandbox/conf/hadoop/conf</HADOOP_CONF_DIR>
-                                <YARN_CONF_DIR>/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-docker-sandbox/conf/hadoop/conf</YARN_CONF_DIR>
+                                <YARN_CONF_DIR>${HOME}/IdeaProjects/docker-hadoop-cluster/bd-docker-sandbox/conf/hadoop/conf</YARN_CONF_DIR>
                             </environmentVariables>
                             -->
                             <executable>spark-submit</executable>

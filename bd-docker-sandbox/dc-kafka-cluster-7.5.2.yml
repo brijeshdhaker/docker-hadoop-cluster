@@ -2,8 +2,8 @@
 # docker compose -f bd-docker-sandbox/dc-kafka-cluster-7.5.2.yaml up -d
 # docker compose -f bd-docker-sandbox/dc-kafka-cluster-7.5.2.yaml down
 #
-# docker compose -f bd-docker-sandbox/docker-compose.yml up -d zookeeper kafkabroker schemaregistry
-# docker compose -f bd-docker-sandbox/docker-compose.yml down zookeeper kafkabroker schemaregistry
+# docker compose -f bd-docker-sandbox/docker-compose.yml up -d zookeeper kafka-broker schema-registry
+# docker compose -f bd-docker-sandbox/docker-compose.yml down zookeeper kafka-broker schema-registry
 #
 # docker volume create --name sandbox_security_secrets --opt type=none --opt device=/apps/security/ssl --opt o=bind
 #
@@ -48,16 +48,16 @@ services:
   #
   # Apache Kafka Server
   #
-  kafkabroker:
+  kafka-broker:
     image: confluentinc/cp-kafka:7.5.2
-    hostname: kafkabroker.sandbox.net
-    container_name: kafkabroker
+    hostname: kafka-broker.sandbox.net
+    container_name: kafka-broker
     depends_on:
       - zookeeper
     ports:
       - "9092:9092"
     healthcheck:
-      test: nc -vz kafkabroker.sandbox.net 19092 || exit 1
+      test: nc -vz kafka-broker.sandbox.net 19092 || exit 1
       retries: 20
       interval: 10s
     volumes:
@@ -73,7 +73,7 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper.sandbox.net:2181
       KAFKA_ADVERTISED_HOST_NAME: docker.sandbox.net
       KAFKA_LISTENERS: INTERNAL://0.0.0.0:19092,EXTERNAL://0.0.0.0:9092
-      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafkabroker.sandbox.net:19092,EXTERNAL://kafkabroker.sandbox.net:9092
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka-broker.sandbox.net:19092,EXTERNAL://kafka-broker.sandbox.net:9092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
@@ -82,7 +82,7 @@ services:
       KAFKA_CONFLUENT_BALANCER_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
-      KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL: http://schemaregistry.sandbox.net:8081
+      KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL: http://schema-registry.sandbox.net:8081
       KAFKA_CREATE_TOPICS: "kafka-simple-topic:1:1"
       # HOSTNAME_COMMAND: "route -n | awk '/UG[ \t]/{print $2}'"
     extra_hosts:
@@ -91,15 +91,15 @@ services:
   #
   #
   #
-  schemaregistry:
+  schema-registry:
     image: confluentinc/cp-schema-registry:7.5.2
-    hostname: schemaregistry.sandbox.net
-    container_name: schemaregistry
+    hostname: schema-registry.sandbox.net
+    container_name: schema-registry
     depends_on:
       - zookeeper
-      - kafkabroker
+      - kafka-broker
     healthcheck:
-      test: curl -f http://schemaregistry.sandbox.net:8081 || exit 1
+      test: curl -f http://schema-registry.sandbox.net:8081 || exit 1
       retries: 20
       interval: 10s
     ports:
@@ -111,8 +111,8 @@ services:
       - sandbox_schema_registry_log:/var/lib/schema-registry/log
       - ./conf/kerberos/krb5.conf:/etc/krb5.conf
     environment:
-      SCHEMA_REGISTRY_HOST_NAME: schemaregistry
-      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'kafkabroker:19092'
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'kafka-broker:19092'
       SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
       SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL: INFO
     extra_hosts:
@@ -124,8 +124,8 @@ services:
     hostname: control-center.sandbox.net
     container_name: control-center
     depends_on:
-      - kafkabroker
-      - schemaregistry
+      - kafka-broker
+      - schema-registry
 #      - connect
 #      - ksqldb-server
     healthcheck:
@@ -135,11 +135,11 @@ services:
     ports:
       - "9021:9021"
     environment:
-      CONTROL_CENTER_BOOTSTRAP_SERVERS: 'kafkabroker:19092'
+      CONTROL_CENTER_BOOTSTRAP_SERVERS: 'kafka-broker:19092'
 #      CONTROL_CENTER_CONNECT_CONNECT-DEFAULT_CLUSTER: 'connect:8083'
 #      CONTROL_CENTER_KSQL_KSQLDB1_URL: "http://ksqldb-server:8088"
 #      CONTROL_CENTER_KSQL_KSQLDB1_ADVERTISED_URL: "http://localhost:8088"
-      CONTROL_CENTER_SCHEMA_REGISTRY_URL: "http://schemaregistry:8081"
+      CONTROL_CENTER_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
       CONTROL_CENTER_REPLICATION_FACTOR: 1
       CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 1
       CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1

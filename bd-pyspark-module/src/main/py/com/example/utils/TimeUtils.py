@@ -1,21 +1,23 @@
 import time
 from datetime import datetime
+class TimeUtils:
 
-def unix_time_millis(dt):
-    epoch = datetime.utcfromtimestamp(0)
-    return (dt - epoch).total_seconds() * 1000.0
+    def __init__(self):
+        pass
 
-def getTime() :
-    t2 = time.time()
-    print(t2)
-    print(time.gmtime(0))
-    print()
-    # localtime
-    obj = time.localtime(1627987508.6496193)
-    print(obj)
-    from time import gmtime, strftime
-    s = strftime("%a, %d %b %Y %H:%M:%S",
-             gmtime(1627987508.6496193))
-    print(s)
+    def unix_time_millis(self, dt):
+        epoch = datetime.utcfromtimestamp(0)
+        return (dt - epoch).total_seconds() * 1000.0
 
-getTime()
+    def getTime(self): 
+        t2 = time.time()
+        print(t2)
+        print(time.gmtime(0))
+        print()
+        # localtime
+        obj = time.localtime(1627987508.6496193)
+        print(obj)
+        
+        s = time.strftime("%a, %d %b %Y %H:%M:%S", time.gmtime(1627987508.6496193))
+        print(s)
+        return s

@@ -28,7 +28,7 @@ public class DataGenerator {
   private static final Logger LOG = LoggerFactory.getLogger(DataGenerator.class);
 
   private static final String KAFKA =
-      Optional.ofNullable(System.getenv("DATAGEN_KAFKA")).orElse("kafkabroker.sandbox.net:9092");
+      Optional.ofNullable(System.getenv("DATAGEN_KAFKA")).orElse("kafka-broker.sandbox.net:9092");
 
   private static final String TOPIC =
       Optional.ofNullable(System.getenv("DATAGEN_TOPIC")).orElse("transaction-csv-topic");

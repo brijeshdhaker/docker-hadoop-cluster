@@ -5,7 +5,7 @@ from random import randint
 from time import sleep
 from uuid import uuid4
 
-BROKER = 'kafkabroker.sandbox.net:9092'
+BROKER = 'kafka-broker.sandbox.net:9092'
 TOPIC = 'tweeter-tweets'
 
 WORD_FILE = '/usr/share/dict/words'

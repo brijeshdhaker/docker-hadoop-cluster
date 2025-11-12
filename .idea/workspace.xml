@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-09-22 Update Window Functions.">
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/notebooks/minio/MinIOTest.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/notebooks/minio/MinIOTest.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-notebooks-module/notebooks/mysql/hello-mysql.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/bd-notebooks-module/notebooks/mysql/hello-mysql.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd-spark-module/setup/kafka-topic.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd-spark-module/setup/kafka-topic.sql" afterDir="false" />
+    <list default="true" id="3bdc845a-73b0-4b8f-9160-c36ec6b5b17f" name="Changes" comment="2025-11-09 Update kafka-broker details and add fraud pipeline.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +48,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/brijeshdhaker/docker-hadoop-cluster.git&quot;,
-    &quot;accountId&quot;: &quot;19894e2a-b0ec-4816-86fc-f4b85fee88ab&quot;
+    &quot;accountId&quot;: &quot;251578de-c4ca-4eca-b9d6-9ec11af0aa62&quot;
   },
   &quot;recentNewPullRequestHead&quot;: {
     &quot;server&quot;: {
@@ -120,6 +118,7 @@
     &quot;Application.DeltaSinkExampleLocal.executor&quot;: &quot;Run&quot;,
     &quot;Application.DemoApplication.executor&quot;: &quot;Debug&quot;,
     &quot;Application.DriverHourlyMaxTips.executor&quot;: &quot;Run&quot;,
+    &quot;Application.FraudulentTxnDetector.executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;Application.ProductsHourlySales.executor&quot;: &quot;Debug&quot;,
     &quot;Application.RideCountExample.executor&quot;: &quot;Run&quot;,
@@ -135,6 +134,7 @@
     &quot;Application.TransactionAvroStream.executor&quot;: &quot;Run&quot;,
     &quot;Application.TransactionCountExample.executor&quot;: &quot;Run&quot;,
     &quot;Application.TransactionPipeline.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TxnProducer.executor&quot;: &quot;Run&quot;,
     &quot;Application.bd-backend-module.executor&quot;: &quot;Run&quot;,
     &quot;Application.bd-spring-module.executor&quot;: &quot;Debug&quot;,
     &quot;Application.bd-spring-module_azuread.executor&quot;: &quot;Debug&quot;,
@@ -244,6 +244,8 @@
     &quot;Maven.bd-flink-module [compile,package].executor&quot;: &quot;Run&quot;,
     &quot;Maven.bd-flink-module [compile].executor&quot;: &quot;Run&quot;,
     &quot;Maven.bd-flink-module [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-pyspark-module [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bd-pyspark-module [package].executor&quot;: &quot;Run&quot;,
     &quot;Maven.bd-python-module [clean].executor&quot;: &quot;Run&quot;,
     &quot;Maven.bd-python-module [install].executor&quot;: &quot;Run&quot;,
     &quot;Maven.bd-python-module [org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy].executor&quot;: &quot;Run&quot;,
@@ -263,13 +265,32 @@
     &quot;Maven.sb-utilities-module [clean].executor&quot;: &quot;Run&quot;,
     &quot;Maven.sb-utilities-module [install].executor&quot;: &quot;Run&quot;,
     &quot;Maven.sb-utilities-module [package].executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for TestCommonsMethods.TestCommonsMethods.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for TestDataPartitioner.TestDataPartitioner.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for TestMysqlProcessor.TestUsers.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for TestMysqlProcessor.TestUsers.test_execute.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for TestMysqlProcessor.TestUsers.test_executeCreate.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for TestMysqlProcessor.TestUsers.test_executeDelete.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for TestMysqlProcessor.TestUsers.test_executeDrop.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for TestMysqlProcessor.TestUsers.test_fetchAll.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for TestMysqlProcessor.TestUsers.test_init.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests for TestMysqlProcessor.TestUsers.test_insert.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for TestMysqlProcessor.TestUsers.test_insertBlank.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for TestMysqlProcessor.TestUsers.test_insertBlankSql.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests for TestTransaction.test_random.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for TestUsers.TestUsers.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for TestUsers.TestUsers.test_random.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for TestUsers.TestUsers.test_to_dict.executor&quot;: &quot;Run&quot;,
     &quot;Python tests.Python tests for test_Commons.test_print_separator.executor&quot;: &quot;Run&quot;,
     &quot;Python tests.Python tests for test_Commons.test_split_csv.executor&quot;: &quot;Run&quot;,
     &quot;Python tests.Python tests for test_Commons.test_split_csv_line.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests for test_Faker.test__Faker.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_Order.test__wrap.executor&quot;: &quot;Debug&quot;,
     &quot;Python tests.Python tests for test_User.test_random.executor&quot;: &quot;Run&quot;,
     &quot;Python tests.Python tests for test_User.test_to_dict.executor&quot;: &quot;Run&quot;,
     &quot;Python tests.Python tests for test_User.test_to_obj.executor&quot;: &quot;Run&quot;,
     &quot;Python tests.Python tests for test_static.test_flake8.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in TestUsers.py.executor&quot;: &quot;Run&quot;,
     &quot;Python tests.Python tests in test_Commons.py.executor&quot;: &quot;Run&quot;,
     &quot;Python tests.Python tests in test_User.py.executor&quot;: &quot;Run&quot;,
     &quot;Python tests.Python tests in test_partitioner.py.executor&quot;: &quot;Run&quot;,
@@ -281,7 +302,9 @@
     &quot;Python.User.executor&quot;: &quot;Run&quot;,
     &quot;Python.__main__.executor&quot;: &quot;Run&quot;,
     &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.avro-test.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.avro-test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.bank-pipeline.executor&quot;: &quot;Run&quot;,
+    &quot;Python.bank.executor&quot;: &quot;Run&quot;,
     &quot;Python.confluent_kafka_AvroConsumer.executor&quot;: &quot;Run&quot;,
     &quot;Python.confluent_kafka_AvroProducer.executor&quot;: &quot;Run&quot;,
     &quot;Python.confluent_kafka_ConsumerFactory.executor&quot;: &quot;Run&quot;,
@@ -291,6 +314,10 @@
     &quot;Python.confluent_kafka_avro_producer.executor&quot;: &quot;Run&quot;,
     &quot;Python.confluent_kafka_simple_consumer.executor&quot;: &quot;Run&quot;,
     &quot;Python.confluent_transaction_producer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.create_scd1_datasets.executor&quot;: &quot;Run&quot;,
+    &quot;Python.create_scd2_datasets.executor&quot;: &quot;Run&quot;,
+    &quot;Python.fack-data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.fastavro-test.executor&quot;: &quot;Run&quot;,
     &quot;Python.hello-spark.executor&quot;: &quot;Run&quot;,
     &quot;Python.hello.executor&quot;: &quot;Run&quot;,
     &quot;Python.kafka_python_partitioned_consumer.executor&quot;: &quot;Run&quot;,
@@ -300,6 +327,7 @@
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;Python.pie.executor&quot;: &quot;Run&quot;,
     &quot;Python.pyspark-pandas.executor&quot;: &quot;Run&quot;,
+    &quot;Python.python -m unittest ./bd-pyspark-module/src/test/py/TestUsers.py.executor&quot;: &quot;Run&quot;,
     &quot;Python.run_tests.executor&quot;: &quot;Run&quot;,
     &quot;Python.sql-s3a-read.executor&quot;: &quot;Run&quot;,
     &quot;Python.structured-avro-stream.executor&quot;: &quot;Debug&quot;,
@@ -322,9 +350,9 @@
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-pyspark-module/src/main/py/com/example/sql&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-flink-module/src/main/resources&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;/home/brijeshdhaker/IdeaProjects/docker-hadoop-cluster/bd-spring-module/sb-backend-module/src/main/java/org/springframework/boot/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.31724137&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
@@ -333,18 +361,18 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql" />
-      <recent name="$PROJECT_DIR$/bd-pyspark-module" />
-      <recent name="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources" />
-      <recent name="$PROJECT_DIR$/bd-spring-module/sb-frontend-module" />
-      <recent name="$PROJECT_DIR$/bd-spring-module/sb-backend-module" />
+      <recent name="$PROJECT_DIR$/bd-flink-module/src/main/resources" />
+      <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main/py" />
+      <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/postgres" />
+      <recent name="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
+      <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/resources" />
-      <recent name="$PROJECT_DIR$/readme-resources" />
-      <recent name="$PROJECT_DIR$/readme-resources/images" />
-      <recent name="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/config" />
-      <recent name="$PROJECT_DIR$/bd-spring-module/sb-frontend-module/src/main/java/org/examples/sb/controllers/web" />
+      <recent name="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
+      <recent name="$PROJECT_DIR$/bd-notebooks-module" />
+      <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main/resources" />
+      <recent name="$PROJECT_DIR$/bd-pyspark-module/src/main" />
+      <recent name="$PROJECT_DIR$/bd-pyspark-module" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -364,7 +392,7 @@
       <recent name="org.examples.flink.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AppLauncher::BatchWorkflow">
+  <component name="RunManager" selected="Application.FraudulentTxnDetector">
     <configuration name="AppLauncher::BatchWorkflow" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.examples.spark.AppLauncher" />
       <module name="bd-spark-module" />
@@ -388,6 +416,20 @@
       <module name="bd-spark-module" />
       <option name="PROGRAM_PARAMETERS" value="--embedded --verbose --workflow-type sstream --storage local --property-file bd-spark-module/src/main/resources/app_sstream_workflow.properties" />
       <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TxnProducer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.examples.flink.frauds.producers.TxnProducer" />
+      <module name="bd-flink-module" />
+      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED -Dlog.file=/apps/var/logs/flink/fraudulent-txn-producer-local.log" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.examples.flink.frauds.producers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -425,72 +467,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="window_aggregate_functions" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="bd-pyspark-module" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/window_aggregate_functions.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="window_analytic_functions" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="bd-pyspark-module" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/window_analytic_functions.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="window_ranking_functions" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="bd-pyspark-module" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/sql/window_ranking_functions.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="Tox" factoryName="Tox">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -511,32 +487,6 @@
     <configuration default="true" type="docker-deploy" factoryName="docker-image" temporary="true">
       <deployment type="docker-image">
         <settings />
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="bd-docker-sandbox/dc-minio.yml.minio: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="minio" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-minio.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="bd-docker-sandbox/dc-notebook.yml.notebook: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="notebook" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="bd-docker-sandbox/dc-notebook.yml" />
-        </settings>
       </deployment>
       <method v="2" />
     </configuration>
@@ -678,16 +628,111 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for TestTransaction.test_random" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="bd-pyspark-module" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;TestTransaction.test_random&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for TestUsers.TestUsers" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="bd-pyspark-module" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;TestUsers.TestUsers&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_Faker.test__Faker" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="bd-pyspark-module" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_Faker.test__Faker&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_Order.test__wrap" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="bd-pyspark-module" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bd-pyspark-module/src/test/py" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_Order.test__wrap&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Autodetect">
+      <module name="bd-pyspark-module" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <module name="bd-pyspark-module" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.AppLauncher::BatchWorkflow" />
       <item itemvalue="Application.AppLauncher::DiscretizedStreamWorkflow" />
       <item itemvalue="Application.AppLauncher::StructuredStreamWorkflow" />
-      <item itemvalue="Application.local-taxi-rides-and-fares" />
-      <item itemvalue="Application.local-transaction-pipeline" />
       <item itemvalue="Application.mini-cluster-transaction-pipeline" />
       <item itemvalue="Application.local-taxi-driver-hourly-max-tips" />
+      <item itemvalue="Application.local-taxi-rides-and-fares" />
       <item itemvalue="Application.local-taxi-ride-counts" />
-      <item itemvalue="Docker.cassandra-cluster" />
+      <item itemvalue="Application.local-transaction-pipeline" />
+      <item itemvalue="Application.FraudulentTxnDetector" />
+      <item itemvalue="Application.TxnProducer" />
       <item itemvalue="Docker.flink-cluster" />
       <item itemvalue="Docker.kafka-cluster" />
       <item itemvalue="Docker.minio" />
@@ -695,18 +740,22 @@
       <item itemvalue="Docker.spark-cluster" />
       <item itemvalue="Docker.spark-notebook" />
       <item itemvalue="Docker.zeppelin-notebook" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-minio.yml.minio: Compose Deployment" />
-      <item itemvalue="Docker.bd-docker-sandbox/dc-notebook.yml.notebook: Compose Deployment" />
+      <item itemvalue="Docker.cassandra-cluster" />
+      <item itemvalue="Python.create_scd2_datasets" />
+      <item itemvalue="Python.create_scd1_datasets" />
       <item itemvalue="Python.confluent_kafka_avro_producer" />
-      <item itemvalue="Python.window_aggregate_functions" />
-      <item itemvalue="Python.window_analytic_functions" />
-      <item itemvalue="Python.window_ranking_functions" />
+      <item itemvalue="Python.bank-pipeline" />
+      <item itemvalue="Python tests.Python tests for TestTransaction.test_random" />
+      <item itemvalue="Python tests.Python tests for TestUsers.TestUsers" />
+      <item itemvalue="Python tests.Python tests for test_Faker.test__Faker" />
+      <item itemvalue="Python tests.Python tests for test_Order.test__wrap" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.window_ranking_functions" />
-        <item itemvalue="Python.window_analytic_functions" />
-        <item itemvalue="Python.window_aggregate_functions" />
+        <item itemvalue="Application.TxnProducer" />
+        <item itemvalue="Python tests.Python tests for test_Faker.test__Faker" />
+        <item itemvalue="Python tests.Python tests for test_Order.test__wrap" />
+        <item itemvalue="Python tests.Python tests for TestTransaction.test_random" />
       </list>
     </recent_temporary>
   </component>
@@ -718,110 +767,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708244105744</updated>
-    </task>
-    <task id="LOCAL-00177" summary="2025-04-08 Update ssl configuration for springboot app.">
-      <option name="closed" value="true" />
-      <created>1744068412484</created>
-      <option name="number" value="00177" />
-      <option name="presentableId" value="LOCAL-00177" />
-      <option name="project" value="LOCAL" />
-      <updated>1744068412485</updated>
-    </task>
-    <task id="LOCAL-00178" summary="2025-04-08 Update ssl configuration for springboot app.">
-      <option name="closed" value="true" />
-      <created>1744077963883</created>
-      <option name="number" value="00178" />
-      <option name="presentableId" value="LOCAL-00178" />
-      <option name="project" value="LOCAL" />
-      <updated>1744077963883</updated>
-    </task>
-    <task id="LOCAL-00179" summary="2025-04-08 Update ssl configuration for springboot app.">
-      <option name="closed" value="true" />
-      <created>1744080721975</created>
-      <option name="number" value="00179" />
-      <option name="presentableId" value="LOCAL-00179" />
-      <option name="project" value="LOCAL" />
-      <updated>1744080721975</updated>
-    </task>
-    <task id="LOCAL-00180" summary="2025-04-09 Update ssl configuration for springboot app.">
-      <option name="closed" value="true" />
-      <created>1744169608325</created>
-      <option name="number" value="00180" />
-      <option name="presentableId" value="LOCAL-00180" />
-      <option name="project" value="LOCAL" />
-      <updated>1744169608326</updated>
-    </task>
-    <task id="LOCAL-00181" summary="2025-04-09 Update ssl configuration for springboot app.">
-      <option name="closed" value="true" />
-      <created>1744169958284</created>
-      <option name="number" value="00181" />
-      <option name="presentableId" value="LOCAL-00181" />
-      <option name="project" value="LOCAL" />
-      <updated>1744169958284</updated>
-    </task>
-    <task id="LOCAL-00182" summary="2025-04-10 Update ssl configuration for springboot app.">
-      <option name="closed" value="true" />
-      <created>1744266255522</created>
-      <option name="number" value="00182" />
-      <option name="presentableId" value="LOCAL-00182" />
-      <option name="project" value="LOCAL" />
-      <updated>1744266255524</updated>
-    </task>
-    <task id="LOCAL-00183" summary="2025-04-10 Update ssl configuration for springboot app.">
-      <option name="closed" value="true" />
-      <created>1744271663088</created>
-      <option name="number" value="00183" />
-      <option name="presentableId" value="LOCAL-00183" />
-      <option name="project" value="LOCAL" />
-      <updated>1744271663088</updated>
-    </task>
-    <task id="LOCAL-00184" summary="2025-04-10 Update ssl configuration for springboot app.">
-      <option name="closed" value="true" />
-      <created>1744271975027</created>
-      <option name="number" value="00184" />
-      <option name="presentableId" value="LOCAL-00184" />
-      <option name="project" value="LOCAL" />
-      <updated>1744271975028</updated>
-    </task>
-    <task id="LOCAL-00185" summary="2025-04-14 Update ssl configuration for springboot app.">
-      <option name="closed" value="true" />
-      <created>1744609689179</created>
-      <option name="number" value="00185" />
-      <option name="presentableId" value="LOCAL-00185" />
-      <option name="project" value="LOCAL" />
-      <updated>1744609689180</updated>
-    </task>
-    <task id="LOCAL-00186" summary="2025-04-14 Update hpa configuration for springboot app.">
-      <option name="closed" value="true" />
-      <created>1744627103396</created>
-      <option name="number" value="00186" />
-      <option name="presentableId" value="LOCAL-00186" />
-      <option name="project" value="LOCAL" />
-      <updated>1744627103397</updated>
-    </task>
-    <task id="LOCAL-00187" summary="2025-04-15 Update hpa configuration for springboot app.">
-      <option name="closed" value="true" />
-      <created>1744684916276</created>
-      <option name="number" value="00187" />
-      <option name="presentableId" value="LOCAL-00187" />
-      <option name="project" value="LOCAL" />
-      <updated>1744684916276</updated>
-    </task>
-    <task id="LOCAL-00188" summary="2025-04-15 Update hpa configuration for springboot app.">
-      <option name="closed" value="true" />
-      <created>1744690229667</created>
-      <option name="number" value="00188" />
-      <option name="presentableId" value="LOCAL-00188" />
-      <option name="project" value="LOCAL" />
-      <updated>1744690229667</updated>
-    </task>
-    <task id="LOCAL-00189" summary="2025-04-16 Update hpa configuration for springboot app.">
-      <option name="closed" value="true" />
-      <created>1744776989265</created>
-      <option name="number" value="00189" />
-      <option name="presentableId" value="LOCAL-00189" />
-      <option name="project" value="LOCAL" />
-      <updated>1744776989267</updated>
     </task>
     <task id="LOCAL-00190" summary="2025-04-17 Update hpa configuration for springboot app.">
       <option name="closed" value="true" />
@@ -1111,7 +1056,111 @@
       <option name="project" value="LOCAL" />
       <updated>1758547492722</updated>
     </task>
-    <option name="localTasksCounter" value="226" />
+    <task id="LOCAL-00226" summary="2025-09-22 Update Window Functions.">
+      <option name="closed" value="true" />
+      <created>1760783607128</created>
+      <option name="number" value="00226" />
+      <option name="presentableId" value="LOCAL-00226" />
+      <option name="project" value="LOCAL" />
+      <updated>1760783607128</updated>
+    </task>
+    <task id="LOCAL-00227" summary="2025-10-19 Update bd-pyspark-module configurations">
+      <option name="closed" value="true" />
+      <created>1760871906074</created>
+      <option name="number" value="00227" />
+      <option name="presentableId" value="LOCAL-00227" />
+      <option name="project" value="LOCAL" />
+      <updated>1760871906075</updated>
+    </task>
+    <task id="LOCAL-00228" summary="2025-10-19 Update bd-pyspark-module configurations">
+      <option name="closed" value="true" />
+      <created>1760880053322</created>
+      <option name="number" value="00228" />
+      <option name="presentableId" value="LOCAL-00228" />
+      <option name="project" value="LOCAL" />
+      <updated>1760880053322</updated>
+    </task>
+    <task id="LOCAL-00229" summary="2025-10-19 Update bd-pyspark-module configurations">
+      <option name="closed" value="true" />
+      <created>1760880127435</created>
+      <option name="number" value="00229" />
+      <option name="presentableId" value="LOCAL-00229" />
+      <option name="project" value="LOCAL" />
+      <updated>1760880127435</updated>
+    </task>
+    <task id="LOCAL-00230" summary="2025-10-20 Update bd-pyspark-module unit tests.">
+      <option name="closed" value="true" />
+      <created>1760924325130</created>
+      <option name="number" value="00230" />
+      <option name="presentableId" value="LOCAL-00230" />
+      <option name="project" value="LOCAL" />
+      <updated>1760924325130</updated>
+    </task>
+    <task id="LOCAL-00231" summary="2025-10-21 Update bd-pyspark-module unit tests.">
+      <option name="closed" value="true" />
+      <created>1761011711108</created>
+      <option name="number" value="00231" />
+      <option name="presentableId" value="LOCAL-00231" />
+      <option name="project" value="LOCAL" />
+      <updated>1761011711109</updated>
+    </task>
+    <task id="LOCAL-00232" summary="2025-10-21 Update bd-pyspark-module unit tests.">
+      <option name="closed" value="true" />
+      <created>1761038540618</created>
+      <option name="number" value="00232" />
+      <option name="presentableId" value="LOCAL-00232" />
+      <option name="project" value="LOCAL" />
+      <updated>1761038540619</updated>
+    </task>
+    <task id="LOCAL-00233" summary="2025-10-22 Update bd-pyspark-module unit tests.">
+      <option name="closed" value="true" />
+      <created>1761095536054</created>
+      <option name="number" value="00233" />
+      <option name="presentableId" value="LOCAL-00233" />
+      <option name="project" value="LOCAL" />
+      <updated>1761095536055</updated>
+    </task>
+    <task id="LOCAL-00234" summary="2025-10-22 Update bd-pyspark-module unit tests.">
+      <option name="closed" value="true" />
+      <created>1761095797704</created>
+      <option name="number" value="00234" />
+      <option name="presentableId" value="LOCAL-00234" />
+      <option name="project" value="LOCAL" />
+      <updated>1761095797704</updated>
+    </task>
+    <task id="LOCAL-00235" summary="2025-10-22 Update bd-pyspark-module unit tests.">
+      <option name="closed" value="true" />
+      <created>1761112142339</created>
+      <option name="number" value="00235" />
+      <option name="presentableId" value="LOCAL-00235" />
+      <option name="project" value="LOCAL" />
+      <updated>1761112142340</updated>
+    </task>
+    <task id="LOCAL-00236" summary="2025-11-05 Update host details.">
+      <option name="closed" value="true" />
+      <created>1762358610872</created>
+      <option name="number" value="00236" />
+      <option name="presentableId" value="LOCAL-00236" />
+      <option name="project" value="LOCAL" />
+      <updated>1762358610872</updated>
+    </task>
+    <task id="LOCAL-00237" summary="2025-11-06 Update python module details.">
+      <option name="closed" value="true" />
+      <created>1762447159040</created>
+      <option name="number" value="00237" />
+      <option name="presentableId" value="LOCAL-00237" />
+      <option name="project" value="LOCAL" />
+      <updated>1762447159041</updated>
+    </task>
+    <task id="LOCAL-00238" summary="2025-11-09 Update kafka-broker details and add fraud pipeline.">
+      <option name="closed" value="true" />
+      <created>1762657466226</created>
+      <option name="number" value="00238" />
+      <option name="presentableId" value="LOCAL-00238" />
+      <option name="project" value="LOCAL" />
+      <updated>1762657466227</updated>
+    </task>
+    <option name="localTasksCounter" value="239" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -1172,14 +1221,8 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin/notebooks" />
       <path value="$PROJECT_DIR$/bd-nodejs-module/desktop-app-module" />
+      <path value="$PROJECT_DIR$/bd-notebooks-module/zeppelin" />
     </ignored-roots>
-    <MESSAGE value="2025-04-06 Update Configuration &amp; Resources." />
-    <MESSAGE value="2025-04-07 Update Configuration &amp; Resources." />
-    <MESSAGE value="2025-04-08 Update ssl configuration for springboot app." />
-    <MESSAGE value="2025-04-09 Update ssl configuration for springboot app." />
-    <MESSAGE value="2025-04-10 Update ssl configuration for springboot app." />
-    <MESSAGE value="2025-04-14 Update ssl configuration for springboot app." />
-    <MESSAGE value="2025-04-14 Update hpa configuration for springboot app." />
     <MESSAGE value="2025-04-15 Update hpa configuration for springboot app." />
     <MESSAGE value="2025-04-16 Update hpa configuration for springboot app." />
     <MESSAGE value="2025-04-17 Update hpa configuration for springboot app." />
@@ -1198,7 +1241,14 @@
     <MESSAGE value="2025-05-22 Enable Multi Region Support." />
     <MESSAGE value="2025-06-03 Moved springboot module as separate project." />
     <MESSAGE value="2025-09-22 Update Window Functions." />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-09-22 Update Window Functions." />
+    <MESSAGE value="2025-10-19 Update bd-pyspark-module configurations" />
+    <MESSAGE value="2025-10-20 Update bd-pyspark-module unit tests." />
+    <MESSAGE value="2025-10-21 Update bd-pyspark-module unit tests." />
+    <MESSAGE value="2025-10-22 Update bd-pyspark-module unit tests." />
+    <MESSAGE value="2025-11-05 Update host details." />
+    <MESSAGE value="2025-11-06 Update python module details." />
+    <MESSAGE value="2025-11-09 Update kafka-broker details and add fraud pipeline." />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-11-09 Update kafka-broker details and add fraud pipeline." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1274,6 +1324,16 @@
           <url>file://$PROJECT_DIR$/bd-pyspark-module/src/test/py/test_static.py</url>
           <line>8</line>
           <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/mysql/MysqlProcessor.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="151" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bd-pyspark-module/src/main/py/com/example/pipelines/stream-hive-transformer.py</url>
+          <line>2</line>
+          <option name="timeStamp" value="152" />
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/6.4.4/spring-security-core-6.4.4.jar!/org/springframework/security/access/prepost/PreAuthorize.class</url>

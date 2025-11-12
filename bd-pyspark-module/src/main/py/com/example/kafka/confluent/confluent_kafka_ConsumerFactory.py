@@ -46,7 +46,7 @@ class ConsumerFactory(object):
     @staticmethod
     def avro(consumer_config):
         consumer_config.update({
-            'schema.registry.url': 'http://schemaregistry:8081',
+            'schema.registry.url': 'http://schema-registry:8081',
             'auto.offset.reset': "earliest",
             'group.id': 'kafka_avro_cg'
         })
@@ -75,7 +75,7 @@ class ConsumerFactory(object):
     def serializer(consumer_config, schema_file, deserializer_ctx):
         #
         key_str, schema_str = load_avro_str(schema_file)
-        schema_registry_client = SchemaRegistryClient({'url': 'http://schemaregistry:8081'})
+        schema_registry_client = SchemaRegistryClient({'url': 'http://schema-registry:8081'})
         custom_deserializer = AvroDeserializer(schema_registry_client, schema_str, deserializer_ctx)
         string_deserializer = StringDeserializer('utf_8')
         consumer_config.update({

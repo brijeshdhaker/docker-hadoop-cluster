@@ -1,4 +1,5 @@
-# Run with sudo password
+#### Run with sudo password
+```shell
 echo Accoo7@k47 | sudo -S -k microk8s start
 echo Accoo7@k47 | sudo -S -v
 sudo whoami
@@ -44,30 +45,39 @@ echo "lang : ${lang}"
 echo "prot : ${prot}"
 echo
 
-## TCP Port Scan
-nc -z -v kdcserver.sandbox.net 749
+```
 
-## UDP Port Scan
+#### TCP Port Scan
+```shell
+nc -z -v kdcserver.sandbox.net 749
+```
+
+#### UDP Port Scan
+```shell
 netcat -u kdcserver.sandbox.net 88
 netstat -na | grep 9080
+```
 
-# Passphrase-less SSH
+#### Passphrase-less SSH
+```shell
 $ ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa_hadoop
 $ cat ~/.ssh/id_rsa_hadoop.pub >> ~/.ssh/authorized_keys
 $ chmod 0600 ~/.ssh/authorized_keys
+```
 
-###
+#### 
+```shell
 ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsacat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keyschmod 0600 ~/.ssh/authorized_keysssh localhost
 
 yarn logs -applicationId your_application_id > your_application_id.log 2>&1
+```
 
-#
-## Find Hidden Files Using Find Command
-#
+#### Find Hidden Files Using Find Command
+```shell
+
 find /tmp/* -mtime +7 -type f -size +1G
 find /tmp/* -mtime +7 -type f -exec rm {} \;
 
-```shell
 find . -name ".*" -type f 
 for i in $(find . -name ".*" -type f)
 do
@@ -76,6 +86,9 @@ do
 done
 
 ```
+
+####
+```shell
 
 update-alternatives --config java
 
@@ -99,23 +112,20 @@ echo $pkgs
 for pkg in $(cat ./bd-setup-module/security/hosts.txt); do
 echo $pkg
 done
+```
 
-#
-# SMBA Client
-```shell
+#### SMBA Client
+```bash
 smbclient -L //thinkpad.sandbox.net --user='brijeshdhaker@gmail.com' --password='Windows2024$' --workgroup='THINKPAD-WIN-11'
 ```
 
-#
-#
+#### Date Format
 ```shell
 today=$(date +'%s')
 now=`date +"%Y-%m-%dT%H:%M:%S"`
 YYYYMMDD=`date +"%Y%m%d"`
 ```
-#
-# Split Strings
-#
+#### Split Strings
 ```shell
 A="$(echo 'one_two_three_four_five' | cut -d'_' -f2)"
 B="$(echo 'one_two_three_four_five' | cut -d'_' -f4)"
@@ -125,18 +135,14 @@ D=$(awk -F_ '{print $4}' <<< 'one_two_three_four_five')
 
 ```
 
-#
-# break string with token
-#
+#### break string with token
 ```shell
 s_path="/ib/core/data/csv:dfilter_44
 s_dir_path=${s_path%%:*}
 s_filter=${s_path#*:}
 ```
 
-#
-#
-#
+####
 ```shell
 nc -v -n -z -w 1 192.168.65.1 22
 netstat -na | grep 7180

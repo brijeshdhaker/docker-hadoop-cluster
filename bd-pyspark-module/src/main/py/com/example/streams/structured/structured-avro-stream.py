@@ -37,7 +37,7 @@ def process_avro_stream(args):
 
     # Subscribe to 1 topic
     structureStreamDf = spark.readStream.format("kafka") \
-        .option("kafka.bootstrap.servers", "kafkabroker.sandbox.net:9092") \
+        .option("kafka.bootstrap.servers", "kafka-broker.sandbox.net:9092") \
         .option("subscribe", args['topic']) \
         .option("startingOffsets", "earliest")\
         .option("failOnDataLoss", "false") \
@@ -56,7 +56,7 @@ def process_avro_stream(args):
     # Confluent Schema Registry
     #
     schema_registry_conf = {
-        'url': 'http://schemaregistry.sandbox.net:8081',
+        'url': 'http://schema-registry.sandbox.net:8081',
         'basic.auth.user.info': '{}:{}'.format('userid', 'password')
     }
     schema_registry_client = SchemaRegistryClient(schema_registry_conf)
