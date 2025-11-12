@@ -1,3 +1,7 @@
+###
+git config --global user.name "Brijesh K Dhaker"
+git config --global user.email brijeshdhaker@gmail.com
+
 ### Setup Git Repository
 git init
 git add README.md
