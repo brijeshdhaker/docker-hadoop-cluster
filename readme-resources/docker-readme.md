@@ -1,20 +1,24 @@
-#
-#
-#
-# to get available version
+### to get available version
+```bash
+
 apt-cache madison docker-ce
 
 sudo apt remove docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-compose-v2 docker-doc podman-docker containerd runc | cut -f1)
 
-# install specific version
-apt-get install docker-ce=5:28.5.2-1~ubuntu.25.04~plucky \
-docker-ce-cli=5:28.5.2-1~ubuntu.25.04~plucky \
-containerd.io docker-buildx-plugin docker-compose-plugin
+```
 
-#
-sudo apt-mark hold docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+### install specific version
+```bash
+# 24.04
+sudo apt-get install docker-ce=5:28.5.2-1~ubuntu.24.04~noble docker-ce-cli=5:28.5.2-1~ubuntu.24.04~noble containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
 
+# 25.04
+sudo apt-get install docker-ce=5:28.5.2-1~ubuntu.25.04~plucky docker-ce-cli=5:28.5.2-1~ubuntu.25.04~plucky containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
+
+# Hold Upgrade ( Version Lock)
+sudo apt-mark hold docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
+```
 #
 # Enable Remote login
 #
